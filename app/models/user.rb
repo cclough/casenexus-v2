@@ -49,6 +49,13 @@ class User < ActiveRecord::Base
 	validates :accepts_tandc, :acceptance => {:accept => true}
 
 
+  ### Outputs
+
+  # Map marker for json conversion
+  def self.markers
+    markers = User.all.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
+  end
+
   ### Private Functions
   # function called above in before_saves to create session remember token
   private

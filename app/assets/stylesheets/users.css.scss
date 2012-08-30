@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.mappcontainer {
+.mapcontainer {
   position: absolute;
   z-index: 1;
   background: url(misc/white-wash.png);
@@ -31,5 +31,8 @@
   display: none;
 }
 
-
+#users_new_map {
+	height:450px;
+	width:100%;
+}
 

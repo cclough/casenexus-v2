@@ -1,9 +1,27 @@
 @import "bootstrap";
 @import "font-awesome";
 
+html {
+  overflow-y: scroll;
+
+}
+body {
+  padding-top: 40px;
+  background-color: #93ff93;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
 #logo_nav{
   position: absolute;
   top: 0px;
+}
+
+#nav_links_left {
+  margin-left:220px;
 }
 
 #flash_application {
@@ -16,6 +34,15 @@
   z-index:200;
   margin-top:0px;
 
+}
+
+/* For views/shared/_error_messages - is this used for all forms? */
+#error_explanation {
+  color:#f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
 }
 
 .container {

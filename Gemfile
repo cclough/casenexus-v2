@@ -4,10 +4,12 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'jquery-rails'
+gem 'faker'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
   gem 'guard-rspec', '0.5.5'
+
 end
 
 group :assets do

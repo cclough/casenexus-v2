@@ -1,7 +1,7 @@
+/////////////////////////////////////////////////////////////////
+/////////////////////////// INDEX ///////////////////////////////
+/////////////////////////////////////////////////////////////////
 
-$("#users_index_map").ready(function() {
-	users_index_loadmap();
-});
 
 var users_index_markerArray = [];
 
@@ -26,30 +26,31 @@ var users_index_customMarkers = {
   }
 };
 
+
+
 function users_index_loadmap() {
 
-	   // build lat-lng start position
-     // user_lat & _lng defined with inline javascript in users#index
-     // seems to not be possible to get 'current_user' within this .js.erb asset
-	  lat_start = 51;
-	  lng_start = 0;
+   // build lat-lng start position
+   // user_lat & _lng defined with inline javascript in users#index
+   // seems to not be possible to get 'current_user' within this .js.erb asset
+  lat_start = user_lat;
+  lng_start = user_lng;
 
-  	var mapOptions = {
-   		center: new google.maps.LatLng(lat_start, lng_start),
-	    zoom: 14,
-	    mapTypeId: 'roadmap',
+	var mapOptions = {
+ 		center: new google.maps.LatLng(lat_start, lng_start),
+    zoom: 14,
+    mapTypeId: 'roadmap',
 		streetViewControl: false,
 		mapTypeControl: false,
-	    panControlOptions: {
-	        //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-	        position: google.maps.ControlPosition.LEFT_CENTER
-	    },
-	    zoomControlOptions: {
-	        //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-	        position: google.maps.ControlPosition.LEFT_CENTER
-	    }
+    panControlOptions: {
+        //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.LEFT_CENTER
+    },
+    zoomControlOptions: {
+        //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.LEFT_CENTER
+    }
 	};
-
 
 	var map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions);
 
@@ -117,4 +118,60 @@ function users_index_showInPanel(uid) {
 
   });
 
+}
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+///////////////////////////// NEW ///////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+function users_new_geocodePosition(pos) {
+	var users_new_geocoder = new google.maps.Geocoder();
+  
+  users_new_geocoder.geocode({
+    latLng: pos
+  });
+}
+
+
+function users_new_loadmap() {
+
+  // start point centered
+  var latLng = new google.maps.LatLng(51.5171, 0.1062);
+
+  var map = new google.maps.Map(document.getElementById("users_new_map"), {
+    // zoomed right out
+    zoom: 2,
+    center: latLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    streetViewControl: false,
+    mapTypeControl: false
+  });
+  var marker = new google.maps.Marker({
+    position: latLng,
+    title: 'User Location',
+    map: map,
+    draggable: true
+  });
+
+  // Update current position info.
+
+  google.maps.event.addListener(marker, 'drag', function() {
+    users_new_updateMarkerPosition(marker.getPosition());
+  });
+  
+  google.maps.event.addListener(marker, 'dragend', function() {
+    users_new_geocodePosition(marker.getPosition());
+  }); 
+}
+
+
+function users_new_updateMarkerPosition(latLng) {
+  document.getElementById('lat').value = latLng.lat(); 
+  document.getElementById('lng').value = latLng.lng();
 }

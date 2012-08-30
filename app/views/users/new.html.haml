@@ -1,0 +1,49 @@
+- provide(:title, 'Sign up')
+
+= content_for :content do
+
+  // NEED TO FIND BETTER PLACE FOR THIS
+  :javascript
+
+    $(function() {
+      users_new_loadmap();
+    });
+
+  %h1 Sign up
+  
+  = form_for(@user) do |f|
+  
+    .row
+      .span5
+        .panel.kill_left.kill_right
+
+          = render 'shared/error_messages', object: @user
+          = f.label :first_name
+          = f.text_field :first_name
+          = f.label :last_name
+          = f.text_field :last_name
+          = f.label :email
+          = f.text_field :email
+          = f.label :password
+          = f.password_field :password
+          = f.label :password_confirmation, "Confirm Password"
+          = f.password_field :password_confirmation
+
+          = f.label :status, "Describe your current situation"
+          = f.text_area :status
+
+          = f.label :email_admin, "Receive case interview advice email letter"
+          = f.check_box :email_admin
+          = f.label :email_users, "Send notifications from users to your email"
+          = f.check_box :email_users
+
+          = f.label :accepts_tandc, "Accept the terms and conditions"
+          = f.check_box :accepts_tandc
+
+          = f.hidden_field :lat, id: "lat"
+          = f.hidden_field :lng, id: "lng"
+
+          %br
+          = f.submit "Create my account", class: "btn btn-large btn-inverse"
+      .span7
+        #users_new_map.map
