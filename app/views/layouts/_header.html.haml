@@ -1,0 +1,39 @@
+%header.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      #logo_nav
+        - if signed_in?
+          = link_to image_tag("misc/logo-dome.png"), users_path, id: "logo-dome"
+          = link_to image_tag("misc/logo-text.png"), users_path, id: "logo-text"
+      %nav
+        - if signed_in?
+          %ul.nav.pull-left
+
+            %li.divider-vertical
+
+            / MAP: pushpin or globe or picture or road or map-marker
+            %li
+              = link_to raw("<i class='icon-globe icon-large'></i> Users"), users_path
+
+          %ul.nav.pull-right
+
+
+            / Profile pull-down
+            %li#fat-menu.dropdown
+            
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.icon-user.icon-white.icon-large
+                = @user_name
+                %span.caret
+
+              %ul.dropdown-menu
+                %li= link_to raw("<i class=icon-cogs></i> Settings")
+                %li.divider
+                %li= link_to raw("<i class=icon-bolt></i> Sign out"), signout_path, method: "delete", id: "signout"
+  
+        - else
+          %ul.nav.pull-left
+
+            %li.divider-vertical
+            %li
+              = link_to raw("<i class='icon-globe icon-question'></i> About"), about_path

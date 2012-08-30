@@ -1,3 +1,35 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.mappcontainer {
+  position: absolute;
+  z-index: 1;
+  background: url(misc/white-wash.png);
+}
+
+#users_index_map {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#users_index_mapcontainer_users {
+  top: 37px;
+  left: 80px;
+  width: 400px;
+}
+
+#users_index_mapcontainer_user {
+  top: 37px;
+  right: 80px;
+  width: 320px;
+  display: none;
+}
+
+
+

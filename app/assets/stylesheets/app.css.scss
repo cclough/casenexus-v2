@@ -1,0 +1,61 @@
+@import "bootstrap";
+@import "font-awesome";
+
+#logo_nav{
+  position: absolute;
+  top: 0px;
+}
+
+#flash_application {
+
+  position: absolute;
+  top: 40px;
+  margin-left:20%;
+  margin-right:20%;
+  width:60%;
+  z-index:200;
+  margin-top:0px;
+
+}
+
+.container {
+  &.main{
+    /* gives twitter like white translucent background */
+    background: url(misc/white-wash.png);
+  }
+}
+
+.panel{
+  background: white;
+  margin: 20px;
+  border: 1px solid $grayLight;
+  padding: 10px;
+
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  &.type1{
+    background-color: #FCFCFC;
+  }
+
+  &.kill_right {
+    margin-right: 0px;
+  }
+
+  &.kill_left{
+    margin-left: 0px;
+  }
+
+  &.kill_bottom{
+    margin-bottom: 0px;
+  }
+
+  &.kill_top{
+    margin-bottom: 0px;
+  }
+}
+
+.map img {
+  max-width: none;
+}

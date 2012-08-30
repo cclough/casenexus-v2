@@ -1,0 +1,19 @@
+= content_for :content do
+  .row
+    .span8
+      .panel.kill_right
+        = image_tag('misc/banner.png')
+
+    .span4
+      .panel.type1.kill_left
+        = form_for(:session, url: sessions_path) do |f|
+          = f.label :email
+          = f.text_field :email
+          = f.label :password
+          = f.password_field :password
+          = f.submit "Sign in", class: "btn btn-inverse pull-right"
+
+      .panel.kill_left
+        .center
+          %p
+          = link_to "Sign up now!", signup_path, class: "btn btn-large btn btn-inverse"

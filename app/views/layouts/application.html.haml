@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    / think about where else to put this...
+    = javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false"
+    = csrf_meta_tags
+    / IE shim
+    = render 'layouts/shim'
+
+  %body
+    / header
+    = render 'layouts/header'
+
+    / flash div 
+    #flash_application
+      = render :partial => 'layouts/flash' , :locals => { :flash => flash }
+
+    .container.main
+
+      / :content now specified in all views - anoying, but enables nested view templates for 
+      / e.g. for notifications and cases controllers
+      = yield :content
+
+      / footer
+      = render 'layouts/footer'

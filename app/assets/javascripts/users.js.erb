@@ -1,0 +1,120 @@
+
+$("#users_index_map").ready(function() {
+	users_index_loadmap();
+});
+
+var users_index_markerArray = [];
+
+var users_index_customMarkers = {
+  Beginner: {
+    icon: '<%= asset_path 'markers/mark_beginner.png' %>'
+  },
+  Novice: {
+    icon: '/app/assets/images/markers/mark_novice.png'
+  },
+  Intermediate: {
+    icon: 'c/assets/images/markers/mark_intermediate.png'
+  },
+  Advanced: {
+    icon: '/assets/images/markers/mark_advanced.png'
+  },
+  God: {
+    icon: '/assets/images/markers/mark_god.png'
+  },
+  'Victor Cheng-like': {
+    icon: '/assets/images/markers/mark_victorchenglike.png'
+  }
+};
+
+function users_index_loadmap() {
+
+	   // build lat-lng start position
+     // user_lat & _lng defined with inline javascript in users#index
+     // seems to not be possible to get 'current_user' within this .js.erb asset
+	  lat_start = 51;
+	  lng_start = 0;
+
+  	var mapOptions = {
+   		center: new google.maps.LatLng(lat_start, lng_start),
+	    zoom: 14,
+	    mapTypeId: 'roadmap',
+		streetViewControl: false,
+		mapTypeControl: false,
+	    panControlOptions: {
+	        //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+	        position: google.maps.ControlPosition.LEFT_CENTER
+	    },
+	    zoomControlOptions: {
+	        //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+	        position: google.maps.ControlPosition.LEFT_CENTER
+	    }
+	};
+
+
+	var map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions);
+
+	var shadow = new google.maps.MarkerImage("<%= asset_path 'markers/mark_shadow.png' %>",
+	    new google.maps.Size(62.0, 62.0),
+	    new google.maps.Point(0, 0),
+	    new google.maps.Point(15.0, 62.0)
+	    );
+
+	$.getJSON("users", function(json) {
+	    for (var i = 0; i < json.length; i++) {
+
+      		var point = new google.maps.LatLng(
+          		parseFloat(json[i].lat),
+          		parseFloat(json[i].lng));          
+
+		    //var icon = users_index_customMarkers[json[i].level] || {};
+		    var marker = new google.maps.Marker({
+		        map: map,
+		        position: point,
+		        //icon: icon.icon,
+		        icon: '<%= asset_path 'markers/mark_god.png' %>',
+		        shadow: shadow,
+		        animation: google.maps.Animation.DROP
+		    });
+
+      		users_index_bindInfo(marker, map, json[i].id);
+      		users_index_markerArray[json[i].id] = marker;
+
+    	}
+
+		//var mcOptions = {gridSize: 50, maxZoom: 15};
+		//var markerCluster = new MarkerClusterer(map, users_index_markerArray);
+  
+	});
+
+}
+
+function users_index_bindInfo(marker, map, uid) {
+  google.maps.event.addListener(marker, 'click', function() {
+    users_index_showInPanel(uid);
+
+    newlatlng = marker.getPosition();
+    map.panTo(newlatlng);
+    map.setZoom(5);
+
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){ marker.setAnimation(null); }, 700);
+
+  });
+  google.maps.event.addListener(marker, 'mouseover', function() {
+    //showInSmallPanel(uid);
+  });
+}
+
+
+
+function users_index_showInPanel(uid) {
+
+  $("#users_index_mapcontainer_user").fadeOut('slow', function() {
+
+        $('#users_index_user').load('/users/' + uid, function() {
+             $("#users_index_mapcontainer_userr").fadeIn('slow');
+        });
+
+  });
+
+}
