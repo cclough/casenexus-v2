@@ -1,3 +1,50 @@
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// SHARED //////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+function users_geocodePosition(pos) {
+	var users_geocoder = new google.maps.Geocoder();
+  
+  users_geocoder.geocode({
+    latLng: pos
+  });
+}
+
+function users_loadmap(map_id, lat_start, lng_start) {
+
+  var latLng = new google.maps.LatLng(lat_start, lng_start);
+
+  var map = new google.maps.Map(document.getElementById(map_id), {
+    zoom: 12,
+    center: latLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    streetViewControl: false,
+    mapTypeControl: false
+  });
+  var marker = new google.maps.Marker({
+    position: latLng,
+    title: 'User Location',
+    map: map,
+    draggable: true
+  });
+
+  // Update current position info.
+  google.maps.event.addListener(marker, 'drag', function() {
+    users_updateMarkerPosition(marker.getPosition());
+  });
+  
+  google.maps.event.addListener(marker, 'dragend', function() {
+    users_geocodePosition(marker.getPosition());
+  }); 
+}
+
+function users_updateMarkerPosition(latLng) {
+  document.getElementById('lat').value = latLng.lat(); 
+  document.getElementById('lng').value = latLng.lng();
+}
+
 /////////////////////////////////////////////////////////////////
 /////////////////////////// INDEX ///////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -25,8 +72,6 @@ var users_index_customMarkers = {
     icon: '/assets/images/markers/mark_victorchenglike.png'
   }
 };
-
-
 
 function users_index_loadmap() {
 
@@ -113,7 +158,7 @@ function users_index_showInPanel(uid) {
   $("#users_index_mapcontainer_user").fadeOut('slow', function() {
 
         $('#users_index_user').load('/users/' + uid, function() {
-             $("#users_index_mapcontainer_userr").fadeIn('slow');
+             $("#users_index_mapcontainer_user").fadeIn('slow');
         });
 
   });
@@ -123,55 +168,28 @@ function users_index_showInPanel(uid) {
 
 
 
-
-
 /////////////////////////////////////////////////////////////////
 ///////////////////////////// NEW ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 
 
-function users_new_geocodePosition(pos) {
-	var users_new_geocoder = new google.maps.Geocoder();
-  
-  users_new_geocoder.geocode({
-    latLng: pos
-  });
-}
 
 
-function users_new_loadmap() {
-
-  // start point centered
-  var latLng = new google.maps.LatLng(51.5171, 0.1062);
-
-  var map = new google.maps.Map(document.getElementById("users_new_map"), {
-    // zoomed right out
-    zoom: 2,
-    center: latLng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    streetViewControl: false,
-    mapTypeControl: false
-  });
-  var marker = new google.maps.Marker({
-    position: latLng,
-    title: 'User Location',
-    map: map,
-    draggable: true
-  });
-
-  // Update current position info.
-
-  google.maps.event.addListener(marker, 'drag', function() {
-    users_new_updateMarkerPosition(marker.getPosition());
-  });
-  
-  google.maps.event.addListener(marker, 'dragend', function() {
-    users_new_geocodePosition(marker.getPosition());
-  }); 
-}
+/////////////////////////////////////////////////////////////////
+///////////////////////////// EDIT //////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
-function users_new_updateMarkerPosition(latLng) {
-  document.getElementById('lat').value = latLng.lat(); 
-  document.getElementById('lng').value = latLng.lng();
-}
+// $(".datepicker").datepicker();
+
+
+/////////////////////////////////////////////////////////////////
+///////////////////////////// SHOW //////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+// why won't this work?
+$("#users_show_close").click(function() {
+  $('#users_index_mapcontainer_user').fadeOut('slow');
+});
+

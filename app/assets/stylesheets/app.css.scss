@@ -1,6 +1,12 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+
+
 html {
   overflow-y: scroll;
 
@@ -55,7 +61,7 @@ textarea {
 .panel{
   background: white;
   margin: 20px;
-  border: 1px solid $grayLight;
+  border: 1px solid $gray_Light;
   padding: 10px;
 
   border-radius: 5px;

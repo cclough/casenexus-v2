@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+// Shouldn't need these here as well as in app.css.scss
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+
+
+
 .mapcontainer {
   position: absolute;
   z-index: 1;
@@ -36,3 +43,31 @@
 	width:100%;
 }
 
+#users_edit_map {
+	height:450px;
+	width:100%;
+}
+
+.users_edit_date_column {
+  width: 60px;
+}
+
+
+#users_show_close {
+  border: 0;
+  background-color: white;
+}
+
+#users_show_list {
+  margin: 0px;
+  li {
+    list-style-type: none;
+    &.users_show_list_header{
+      border-bottom: 1px solid $gray_Lighter;
+      font-weight:bold;   
+    }
+    &.users_show_list_name{
+      margin-bottom: 20px;
+    }
+  }
+}

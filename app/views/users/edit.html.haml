@@ -1,4 +1,127 @@
 - provide(:title, 'Edit Profile')
 
 = content_for :content do
-	Edit Profile
+
+  // Load map from Users.js.erb
+  // Best way I could find to do this
+  :javascript
+
+    $(function() {
+      users_loadmap("users_edit_map", #{current_user.lat}, #{current_user.lng});
+    });
+
+  %h1 Edit Profile
+
+  = form_for(@user) do |f|
+
+    .row
+      .span4
+        .panel.type1.kill_right
+
+          = render 'shared/error_messages', object: @user
+          = f.label :first_name
+          = f.text_field :first_name
+          = f.label :last_name
+          = f.text_field :last_name
+          = f.label :email
+          = f.text_field :email
+          = f.label :password
+          = f.password_field :password
+          = f.label :password_confirmation, "Confirm Password"
+          = f.password_field :password_confirmation
+
+          = f.label :status, "Describe your current situation"
+          = f.text_area :status
+
+          = f.label :skype
+          = f.text_field :skype
+          = f.label :linkedin
+          = f.text_field :linkedin
+
+          = f.hidden_field :lat, id: "lat"
+          = f.hidden_field :lng, id: "lng"
+
+          .row
+            .span2
+              = f.label :email_admin, "Receive case interview advice email letter"
+            .span1
+              = f.check_box :email_admin
+          .row
+            .span2
+              = f.label :email_users, "Send notifications from users to your email"
+            .span1
+              = f.check_box :email_users
+
+          %br
+          = f.submit "Save changes", class: "btn btn-large btn-inverse"
+
+      .span8
+        .row
+          .span8
+            #users_edit_map.map
+
+        .row
+          .span8
+            .panel.type1.content.kill_right.kill_left
+              .row
+                .span4
+                  %table(style="width:275px;")
+                    %tr
+                      %th
+                        Education
+                      %th.users_edit_date_column
+                        From
+                      %th.users_edit_date_column
+                        To
+                    %tr
+                      %td
+                        = f.text_field :education1, placeholder: "Education 1"
+                      %td
+                        = f.text_field :education1_from, placeholder: "Education 1", class: "datepicker"
+                      %td
+                        = f.text_field :education1_to, placeholder: "Education 1", class: "datepicker"
+                    %tr
+                      %td
+                        = f.text_field :education2, placeholder: "Education 2"
+                      %td
+                        = f.text_field :education2_from, placeholder: "Education 2", class: "datepicker"
+                      %td
+                        = f.text_field :education2_to, placeholder: "Education 2", class: "datepicker"
+                    %tr
+                      %td 
+                        = f.text_field :education3, placeholder: "Education 3"
+                      %td
+                        = f.text_field :education3_from, placeholder: "Education 3", class: "datepicker"
+                      %td
+                        = f.text_field :education3_to, placeholder: "Education 3", class: "datepicker"
+
+                .span3
+                  %table(style="width:275px;")
+                    %tr
+                      %th
+                        Professional Experience
+                      %th.users_edit_date_column
+                        From
+                      %th.users_edit_date_column
+                        To
+                    %tr
+                      %td
+                        = f.text_field :experience1, placeholder: "experience 1"
+                      %td
+                        = f.text_field :experience1_from, placeholder: "experience 1", class: "datepicker"
+                      %td
+                        = f.text_field :experience1_to, placeholder: "experience 1", class: "datepicker"
+                    %tr
+                      %td
+                        = f.text_field :experience2, placeholder: "experience 2"
+                      %td
+                        = f.text_field :experience2_from, placeholder: "experience 2", class: "datepicker"
+                      %td
+                        = f.text_field :experience2_to, placeholder: "experience 2", class: "datepicker"
+                    %tr
+                      %td
+                        = f.text_field :experience3, placeholder: "experience 3"
+                      %td
+                        = f.text_field :experience3_from, placeholder: "experience 3", class: "datepicker"
+                      %td
+                        = f.text_field :experience3_to, placeholder: "experience 3", class: "datepicker"

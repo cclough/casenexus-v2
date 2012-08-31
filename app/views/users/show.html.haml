@@ -1,0 +1,79 @@
+- if @user.approved?
+  .panel
+    %blockquote
+      %p
+        = @user.status
+
+.panel
+
+  %button#users_show_close.close ×
+
+  %ul#users_show_list
+    %li.users_show_list_name
+      %h3
+        / = avatar_for(@user)
+        = @user.first_name
+      %h5  
+        50
+
+    %li.users_show_list_header
+      Location
+    %li
+      xxx
+
+    %li.users_show_list_header
+      Education
+    %li
+      .pull-left
+        = @user.education1
+      .pull-right
+        = @user.education1_from.strftime("%Y") + "-" + @user.education1_to.strftime("%Y")
+      %br/
+      .pull-left
+        = @user.education2
+      .pull-right
+        = @user.education2_from.strftime("%Y") + "-" + @user.education2_to.strftime("%Y")
+      %br/
+      .pull-left
+        = @user.education3
+      .pull-right
+        = @user.education3_from.strftime("%Y") + "-" + @user.education3_to.strftime("%Y")
+      %br/
+    %li.users_show_list_header
+      Experience
+    %li
+      .pull-left
+        = @user.experience1
+      .pull-right
+        = @user.experience1_from.strftime("%Y") + "-" + @user.experience1_to.strftime("%Y")
+      %br/
+      .pull-left
+        = @user.experience2
+      .pull-right
+        = @user.experience2_from.strftime("%Y") + "-" + @user.experience2_to.strftime("%Y")
+      %br/
+      .pull-left
+        = @user.experience3
+      .pull-right
+        = @user.experience3_from.strftime("%Y") + "-" + @user.experience3_to.strftime("%Y")
+      %br/
+
+    %li.users_show_list_header
+      LinkedIn:
+    %li
+      / linkedin button
+      = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
+
+    %li.users_show_list_header
+      Skype:
+    %li
+      / skype button
+      %a{:href => "#{@user.skype}?add"}
+        %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
+
+    %li.users_show_list_header
+      Actions:
+    %li
+      Message
+      Send Feedback
+      Request Feedback

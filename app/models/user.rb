@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                   :experience2_from, :experience2_to,
                   :experience3_from, :experience3_to,
                   :skype, :linkedin,
-                  :email_admin,:email_users, :accepts_tandc, :completed
+                  :email_admin,:email_users, :accepts_tandc, 
 
   ### Bcrypt
   has_secure_password
@@ -45,16 +45,31 @@ class User < ActiveRecord::Base
   validates :lat, presence: true
   validates :lng, presence: true
 
+  # Initially upapproved profile
+  validates :approved, :acceptance => {:accept => false}
+
+  # Initially uncompleted profile
+  validates :completed, :acceptance => {:accept => false}
+
   # Accepts Terms and Conditions?
 	validates :accepts_tandc, :acceptance => {:accept => true}
 
 
+
   ### Outputs
+
+  # Name amalgamtion (not used that often - primarily just first name)
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   # Map marker for json conversion
   def self.markers
     markers = User.all.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
   end
+
+
+
 
   ### Private Functions
   # function called above in before_saves to create session remember token

@@ -13,24 +13,22 @@ describe "Static Pages" do
 					text: full_title('')) }
 		it { should_not have_selector('title', text: '| Home') }
   
-  	# NEED TO COMPLETE THIS - SIGN-IN DOESNT WORK
-    # describe "for signed-in users" do
+  	# NEED TO COMPLETE THIS
+    describe "for signed-in users" do
 
-    #   let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user) }
 
-    #   before do
-    #     sign_in user
-    #     visit root_path
-    #   end
+      before do
+        sign_in user
+        visit root_path
+      end
 
-    #   describe "should render the user's xxxx" do
+      describe "should render the user's xxxx" do
+        # xxxx tests that call something that resembles a functioning users#index
+        it { should have_selector('title', text: 'Map') }
+      end
 
-    #     # xxxx tests that call something that resembles a functioning users#index
-    #     it { should have_selector('h1', text: 'Map') }
-
-    #   end
-
-    # end
+    end
 
   end
 

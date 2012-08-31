@@ -2,118 +2,6 @@ namespace :db do
 	desc "Fill database with sample data"
 	task populate: :environment do
 
-    admin = User.create!(
-    			 first_name: "Christian",
-    			 last_name: "Clough",
-           email: "christian.clough@gmail.com",
-           password: "numbnuts",
-           password_confirmation: "numbnuts",
-           lat: 51.901128232665856,
-           lng: -0.54241188764572144,
-					 status: "a" * 51,
-
-           skype: "christianclough",
-           linkedin: "christian.clough",
-
-           education1: "Imperial",
-           education2: "Oxford",
-           education3: "Cambridge",
-           experience1: "MRC-T",
-           experience2: "WHO",
-           experience3: "Candesic",
-
-           education1_from: randomDate(:year_range => 3, :year_latest => 0),
-           education1_to: randomDate(:year_range => 3, :year_latest => 0),
-           education2_from: randomDate(:year_range => 3, :year_latest => 0),
-           education2_to: randomDate(:year_range => 3, :year_latest => 0),
-           education3_from: randomDate(:year_range => 3, :year_latest => 0),
-           education3_to: randomDate(:year_range => 3, :year_latest => 0),
-
-           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
-					 
-					 accepts_tandc: true)
-
-    admin.toggle!(:admin)
-
-    admin2 = User.create!(
-           first_name: "Robin",
-           last_name: "Clough",
-           email: "robin.clough@gmail.com",
-           password: "numbnuts",
-           password_confirmation: "numbnuts",
-           lat: 51.9128232665856,
-           lng: -0.541188764572144,
-           status: "b" * 51,
-
-           skype: "robinclough",
-           linkedin: "robin.clough",
-
-           education1: "Imperial",
-           education2: "Oxford",
-           education3: "Cambridge",
-           experience1: "MRC-T",
-           experience2: "WHO",
-           experience3: "Candesic",
-
-           education1_from: randomDate(:year_range => 3, :year_latest => 0),
-           education1_to: randomDate(:year_range => 3, :year_latest => 0),
-           education2_from: randomDate(:year_range => 3, :year_latest => 0),
-           education2_to: randomDate(:year_range => 3, :year_latest => 0),
-           education3_from: randomDate(:year_range => 3, :year_latest => 0),
-           education3_to: randomDate(:year_range => 3, :year_latest => 0),
-
-           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
-           
-           accepts_tandc: true)
-
-    admin2.toggle!(:admin)
-
-    designer = User.create!(
-           first_name: "Design",
-           last_name: "Pro",
-           email: "design@design.com",
-           password: "design",
-           password_confirmation: "design",
-           lat: 51.9128232665856,
-           lng: -0.541188764572144,
-           status: "c" * 51,
-
-           skype: "greatdesign",
-           linkedin: "great.design",
-
-           education1: "Imperial",
-           education2: "Oxford",
-           education3: "Cambridge",
-           experience1: "MRC-T",
-           experience2: "WHO",
-           experience3: "Candesic",
-
-           education1_from: randomDate(:year_range => 3, :year_latest => 0),
-           education1_to: randomDate(:year_range => 3, :year_latest => 0),
-           education2_from: randomDate(:year_range => 3, :year_latest => 0),
-           education2_to: randomDate(:year_range => 3, :year_latest => 0),
-           education3_from: randomDate(:year_range => 3, :year_latest => 0),
-           education3_to: randomDate(:year_range => 3, :year_latest => 0),
-
-           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
-           
-           accepts_tandc: true)
-
     98.times do |n|
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
@@ -165,6 +53,138 @@ namespace :db do
                accepts_tandc: accepts_tandc)
 
     end
+
+    User.all.each do |user|
+
+      if rand(2) == 1
+        user.toggle!(:approved)
+      end
+
+      if rand(2) == 1
+        user.toggle!(:completed)
+      end
+
+    end
+
+
+    admin = User.create!(
+    			 first_name: "Christian",
+    			 last_name: "Clough",
+           email: "christian.clough@gmail.com",
+           password: "numbnuts",
+           password_confirmation: "numbnuts",
+           lat: 51.901128232665856,
+           lng: -0.54241188764572144,
+					 status: "a" * 51,
+
+           skype: "christianclough",
+           linkedin: "christian.clough",
+
+           education1: "Imperial",
+           education2: "Oxford",
+           education3: "Cambridge",
+           experience1: "MRC-T",
+           experience2: "WHO",
+           experience3: "Candesic",
+
+           education1_from: randomDate(:year_range => 3, :year_latest => 0),
+           education1_to: randomDate(:year_range => 3, :year_latest => 0),
+           education2_from: randomDate(:year_range => 3, :year_latest => 0),
+           education2_to: randomDate(:year_range => 3, :year_latest => 0),
+           education3_from: randomDate(:year_range => 3, :year_latest => 0),
+           education3_to: randomDate(:year_range => 3, :year_latest => 0),
+
+           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
+
+					 accepts_tandc: true)
+
+    admin.toggle!(:approved)
+    admin.toggle!(:completed)
+    admin.toggle!(:admin)
+
+    admin2 = User.create!(
+           first_name: "Robin",
+           last_name: "Clough",
+           email: "robin.clough@gmail.com",
+           password: "numbnuts",
+           password_confirmation: "numbnuts",
+           lat: 51.9128232665856,
+           lng: -0.541188764572144,
+           status: "b" * 51,
+
+           skype: "robinclough",
+           linkedin: "robin.clough",
+
+           education1: "Imperial",
+           education2: "Oxford",
+           education3: "Cambridge",
+           experience1: "MRC-T",
+           experience2: "WHO",
+           experience3: "Candesic",
+
+           education1_from: randomDate(:year_range => 3, :year_latest => 0),
+           education1_to: randomDate(:year_range => 3, :year_latest => 0),
+           education2_from: randomDate(:year_range => 3, :year_latest => 0),
+           education2_to: randomDate(:year_range => 3, :year_latest => 0),
+           education3_from: randomDate(:year_range => 3, :year_latest => 0),
+           education3_to: randomDate(:year_range => 3, :year_latest => 0),
+
+           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
+
+           accepts_tandc: true)
+
+    admin2.toggle!(:approved)
+    admin2.toggle!(:completed)
+    admin2.toggle!(:admin)
+
+    designer = User.create!(
+           first_name: "Design",
+           last_name: "Pro",
+           email: "design@design.com",
+           password: "design",
+           password_confirmation: "design",
+           lat: 51.9128232665856,
+           lng: -0.541188764572144,
+           status: "c" * 51,
+
+           skype: "greatdesign",
+           linkedin: "great.design",
+
+           education1: "Imperial",
+           education2: "Oxford",
+           education3: "Cambridge",
+           experience1: "MRC-T",
+           experience2: "WHO",
+           experience3: "Candesic",
+
+           education1_from: randomDate(:year_range => 3, :year_latest => 0),
+           education1_to: randomDate(:year_range => 3, :year_latest => 0),
+           education2_from: randomDate(:year_range => 3, :year_latest => 0),
+           education2_to: randomDate(:year_range => 3, :year_latest => 0),
+           education3_from: randomDate(:year_range => 3, :year_latest => 0),
+           education3_to: randomDate(:year_range => 3, :year_latest => 0),
+
+           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
+           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
+
+           accepts_tandc: true)
+
+    designer.toggle!(:approved)
+    designer.toggle!(:completed)
 
   end
 

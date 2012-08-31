@@ -43,6 +43,7 @@ describe User do
 	it { should respond_to(:email_users) }
 	it { should respond_to(:accepts_tandc) }
 	it { should respond_to(:completed) }
+  it { should respond_to(:approved) }
 	it { should respond_to(:admin) }
 
 	# not sure what this does yet
@@ -206,20 +207,41 @@ describe User do
     its(:completed) { should_not be_true }
   end
 
+  # Approved
+  describe "approved defaults to false" do
+    before { @user.save }
+    its(:approved) { should_not be_true }
+  end
 
+  # Terms and Conditions
   describe "when Terms and Conditions have not been accepted" do
     before { @user.accepts_tandc = false }
     it { should_not be_valid }
   end
 
 
-  # Admin
+
+  # Non-accessible Attributes
   describe "accessible attributes" do
+    
     it "should not allow access to admin" do
       expect do
         User.new(admin: "1")
       end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end
+
+    it "should not allow access to completed" do
+      expect do
+        User.new(completed: "1")
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+
+    it "should not allow access to approved" do
+      expect do
+        User.new(approved: "1")
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+
   end
 
   # Error "can not update on a new record object" - seems reasonable, but lifted from MH...

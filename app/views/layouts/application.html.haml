@@ -4,8 +4,10 @@
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
-    / think about where else to put this...
+    / likely not the best place for this...but not sure where else?
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+    = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
+
     = csrf_meta_tags
     / IE shim
     = render 'layouts/shim'

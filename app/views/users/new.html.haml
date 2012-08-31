@@ -2,11 +2,12 @@
 
 = content_for :content do
 
-  // NEED TO FIND BETTER PLACE FOR THIS
+  // Load map from Users.js.erb
+  // Best way I could find to do this
   :javascript
 
     $(function() {
-      users_new_loadmap();
+      users_loadmap("users_new_map", 51.5171, 0.1062);
     });
 
   %h1 Sign up
