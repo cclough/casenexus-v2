@@ -2,13 +2,10 @@
 
 = content_for :content do
 
-  // Load map from Users.js.erb
-  // Best way I could find to do this
+  / can't see another way to do this yet...
   :javascript
-
-    $(function() {
-      users_loadmap("users_new_map", 51.5171, 0.1062);
-    });
+    var lat_start = '52.2100';
+    var lng_start = '0.1300';
 
   %h1 Sign up
   
@@ -41,8 +38,8 @@
           = f.label :accepts_tandc, "Accept the terms and conditions"
           = f.check_box :accepts_tandc
 
-          = f.hidden_field :lat, id: "lat"
-          = f.hidden_field :lng, id: "lng"
+          = f.text_field :lat, id: "lat"
+          = f.text_field :lng, id: "lng"
 
           %br
           = f.submit "Create my account", class: "btn btn-large btn-inverse"

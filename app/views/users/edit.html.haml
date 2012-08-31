@@ -2,13 +2,10 @@
 
 = content_for :content do
 
-  // Load map from Users.js.erb
-  // Best way I could find to do this
+  / can't see another way to do this yet...
   :javascript
-
-    $(function() {
-      users_loadmap("users_edit_map", #{current_user.lat}, #{current_user.lng});
-    });
+    var lat_start = "#{current_user.lat}";
+    var lng_start = "#{current_user.lng}";
 
   %h1 Edit Profile
 

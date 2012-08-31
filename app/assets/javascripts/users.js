@@ -1,151 +1,116 @@
-
+$(document).ready(function(){
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// SHARED //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
 
-function users_geocodePosition(pos) {
-	var users_geocoder = new google.maps.Geocoder();
-  
-  users_geocoder.geocode({
-    latLng: pos
-  });
-}
+  $('#users_new_map,#users_edit_map').gmap({
 
-function users_loadmap(map_id, lat_start, lng_start) {
+      'zoom': 12,
+      'center': new google.maps.LatLng(lat_start, lng_start),
+      'mapTypeId': google.maps.MapTypeId.ROADMAP,
+      'streetViewControl': false,
+      'mapTypeControl': false
 
-  var latLng = new google.maps.LatLng(lat_start, lng_start);
+  }).bind('init', function(ev, map) {
 
-  var map = new google.maps.Map(document.getElementById(map_id), {
-    zoom: 12,
-    center: latLng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    streetViewControl: false,
-    mapTypeControl: false
-  });
-  var marker = new google.maps.Marker({
-    position: latLng,
-    title: 'User Location',
-    map: map,
-    draggable: true
+    $('#users_new_map,#users_edit_map').gmap('addMarker', {
+        'position': new google.maps.LatLng(lat_start, lng_start),
+        'bounds': false,
+        'draggable': true
+    }).drag(function() {
+      document.getElementById('lat').value = this.position.lat();
+      document.getElementById('lng').value = this.position.lng();    
+    });
+
   });
 
-  // Update current position info.
-  google.maps.event.addListener(marker, 'drag', function() {
-    users_updateMarkerPosition(marker.getPosition());
-  });
-  
-  google.maps.event.addListener(marker, 'dragend', function() {
-    users_geocodePosition(marker.getPosition());
-  }); 
-}
-
-function users_updateMarkerPosition(latLng) {
-  document.getElementById('lat').value = latLng.lat(); 
-  document.getElementById('lng').value = latLng.lng();
-}
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// INDEX ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 
+  // for URL-to-marker
+  var users_index_markerArray = [];
 
-var users_index_markerArray = [];
+  //    // build lat-lng start position
+  //    // user_lat & _lng defined with inline javascript in users#index
+  //    // seems to not be possible to get 'current_user' within this .js.erb asset
+  //   lat_start = user_lat;
+  //   lng_start = user_lng;
 
+  $('#users_index_map').gmap({
 
-function users_index_loadmap() {
-
-   // build lat-lng start position
-   // user_lat & _lng defined with inline javascript in users#index
-   // seems to not be possible to get 'current_user' within this .js.erb asset
-  lat_start = user_lat;
-  lng_start = user_lng;
-
-	var mapOptions = {
- 		center: new google.maps.LatLng(lat_start, lng_start),
-    zoom: 14,
-    mapTypeId: 'roadmap',
-		streetViewControl: false,
-		mapTypeControl: false,
-    panControlOptions: {
+    'center': new google.maps.LatLng(lat_start, lng_start),
+    'zoom': 14,
+    'mapTypeId': 'roadmap',
+    'streetViewControl': false,
+    'mapTypeControl': false,
+    'panControlOptions': {
         //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         position: google.maps.ControlPosition.LEFT_CENTER
     },
-    zoomControlOptions: {
+    'zoomControlOptions': {
         //style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         position: google.maps.ControlPosition.LEFT_CENTER
     }
-	};
 
-	var map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions);
+    }).bind('init', function() { 
 
-	var shadow = new google.maps.MarkerImage('http://www.casenexus.com/images/markers/mark_shadow.png',
-	    new google.maps.Size(62.0, 62.0),
-	    new google.maps.Point(0, 0),
-	    new google.maps.Point(15.0, 62.0)
-	    );
+    var shadow = new google.maps.MarkerImage('http://www.casenexus.com/images/markers/mark_shadow.png',
+        new google.maps.Size(62.0, 62.0),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(15.0, 62.0)
+        );
 
-	$.getJSON("users", function(json) {
-	    for (var i = 0; i < json.length; i++) {
+    $.getJSON('users', function(json) { 
+      //for (var i = 0; i < json.length; i++) {
 
-      		var point = new google.maps.LatLng(
-          		parseFloat(json[i].lat),
-          		parseFloat(json[i].lng));          
+      $.each( json, function(i, marker) {
 
-		    //var icon = users_index_customMarkers[json[i].level] || {};
-		    var marker = new google.maps.Marker({
-		        map: map,
-		        position: point,
-		        //icon: icon.icon,
-		        icon: 'http://www.casenexus.com/images/markers/mark_god.png',
-		        shadow: shadow,
-		        animation: google.maps.Animation.DROP
-		    });
+        $('#users_index_map').gmap('addMarker', { 
+          'position': new google.maps.LatLng(marker.lat, marker.lng), 
+          'bounds': false,
+          'shadow': shadow,
+          'animation': google.maps.Animation.DROP,
+          'icon': 'http://www.casenexus.com/images/markers/mark_god.png'
 
-      		users_index_bindInfo(marker, map, json[i].id);
-      		users_index_markerArray[json[i].id] = marker;
+        }).click(function() {
 
-    	}
+          //// panTo & Zoom
+          newlatlng = this.getPosition();
+          $(this).get(0).map.panTo(newlatlng);
+          $(this).get(0).map.setZoom(10);
 
-		//var mcOptions = {gridSize: 50, maxZoom: 15};
-		//var markerCluster = new MarkerClusterer(map, users_index_markerArray);
-  
-	});
+          //// Animate
+          // Start Bounce
+          this.setAnimation(google.maps.Animation.BOUNCE);
 
-}
+          // Stop Bounce
+          var that = this; // <- Cache the item (no idea why this is needed)
+          setTimeout(function () {
+            that.setAnimation(null);
+          }, 1400);
 
-function users_index_bindInfo(marker, map, uid) {
-  google.maps.event.addListener(marker, 'click', function() {
-    users_index_showInPanel(uid);
+          //// Hide, reload and show User Panel
+          $("#users_index_mapcontainer_user").fadeOut('slow', function() {
 
-    newlatlng = marker.getPosition();
-    map.panTo(newlatlng);
-    map.setZoom(5);
+            $('#users_index_user').load('/users/' + marker.id, function() {
+              $("#users_index_mapcontainer_user").fadeIn('slow');
+            });
 
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-    setTimeout(function(){ marker.setAnimation(null); }, 700);
-
-  });
-  google.maps.event.addListener(marker, 'mouseover', function() {
-    //showInSmallPanel(uid);
-  });
-}
+          });
 
 
-
-function users_index_showInPanel(uid) {
-
-  $("#users_index_mapcontainer_user").fadeOut('slow', function() {
-
-        $('#users_index_user').load('/users/' + uid, function() {
-             $("#users_index_mapcontainer_user").fadeIn('slow');
         });
 
+        //users_index_markerArray[marker.id] = this;
+
+      });
+
+    });
   });
-
-}
-
 
 
 
@@ -161,14 +126,13 @@ function users_index_showInPanel(uid) {
 /////////////////////////////////////////////////////////////////
 
 
-// $(".datepicker").datepicker();
+  // $(".datepicker").datepicker();
 
 
 /////////////////////////////////////////////////////////////////
 ///////////////////////////// SHOW //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-$(document).ready(function(){
 
   // why won't this work?
   $("#users_show_close").click(function() {
@@ -176,4 +140,11 @@ $(document).ready(function(){
   });
 
 
-)};
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+});
+
+

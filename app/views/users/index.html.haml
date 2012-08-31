@@ -2,16 +2,12 @@
 
 = content_for :content do
 
-  / yet to find a way to get these user details in users.js.erb...
-  / how can I call the .ready function outside of the view!!
+  / can't see another way to do this yet...
   :javascript
-    var user_lat = "#{current_user.lat}";
-    var user_lng = "#{current_user.lng}";
+    var lat_start = "#{current_user.lat}";
+    var lng_start = "#{current_user.lng}";
 
-    $(function() {
-      users_index_loadmap();
-    });
-
+    
   #users_index_map.map
 
   #users_index_mapcontainer_users.mapcontainer
@@ -20,4 +16,3 @@
 
   #users_index_mapcontainer_user.mapcontainer
     #users_index_user
-      User

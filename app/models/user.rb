@@ -45,12 +45,6 @@ class User < ActiveRecord::Base
   validates :lat, presence: true
   validates :lng, presence: true
 
-  # Initially upapproved profile
-  validates :approved, :acceptance => {:accept => false}
-
-  # Initially uncompleted profile
-  validates :completed, :acceptance => {:accept => false}
-
   # Accepts Terms and Conditions?
 	validates :accepts_tandc, :acceptance => {:accept => true}
 
