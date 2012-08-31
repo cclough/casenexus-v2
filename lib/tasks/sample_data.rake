@@ -20,19 +20,19 @@ namespace :db do
       experience2 = "WHO"
       experience3 = "Candesic"
 
-      education1_to = randomDate(:year_range => 3, :year_latest => 0)
-      education1_from = randomDate(:year_range => 3, :year_latest => 0)
-      education2_to = randomDate(:year_range => 3, :year_latest => 0)
-      education2_from = randomDate(:year_range => 3, :year_latest => 0)
-      education3_to = randomDate(:year_range => 3, :year_latest => 0)
-      education3_from = randomDate(:year_range => 3, :year_latest => 0)
+      education1_to = randomDate(:year_range => 3, :year_latest => 1)
+      education1_from = randomDate(:year_range => 3, :year_latest => 1)
+      education2_to = randomDate(:year_range => 3, :year_latest => 1)
+      education2_from = randomDate(:year_range => 3, :year_latest => 1)
+      education3_to = randomDate(:year_range => 3, :year_latest => 1)
+      education3_from = randomDate(:year_range => 3, :year_latest => 1)
 
-      experience1_to = randomDate(:year_range => 3, :year_latest => 0)
-      experience1_from = randomDate(:year_range => 3, :year_latest => 0)
-      experience2_to = randomDate(:year_range => 3, :year_latest => 0)
-      experience2_from = randomDate(:year_range => 3, :year_latest => 0)
-      experience3_to = randomDate(:year_range => 3, :year_latest => 0)
-      experience3_from = randomDate(:year_range => 3, :year_latest => 0)
+      experience1_to = randomDate(:year_range => 3, :year_latest => 1)
+      experience1_from = randomDate(:year_range => 3, :year_latest => 1)
+      experience2_to = randomDate(:year_range => 3, :year_latest => 1)
+      experience2_from = randomDate(:year_range => 3, :year_latest => 1)
+      experience3_to = randomDate(:year_range => 3, :year_latest => 1)
+      experience3_from = randomDate(:year_range => 3, :year_latest => 1)
 
       accepts_tandc = true
 
@@ -87,19 +87,19 @@ namespace :db do
            experience2: "WHO",
            experience3: "Candesic",
 
-           education1_from: randomDate(:year_range => 3, :year_latest => 0),
-           education1_to: randomDate(:year_range => 3, :year_latest => 0),
-           education2_from: randomDate(:year_range => 3, :year_latest => 0),
-           education2_to: randomDate(:year_range => 3, :year_latest => 0),
-           education3_from: randomDate(:year_range => 3, :year_latest => 0),
-           education3_to: randomDate(:year_range => 3, :year_latest => 0),
+           education1_from: randomDate(:year_range => 3, :year_latest => 1),
+           education1_to: randomDate(:year_range => 3, :year_latest => 1),
+           education2_from: randomDate(:year_range => 3, :year_latest => 1),
+           education2_to: randomDate(:year_range => 3, :year_latest => 1),
+           education3_from: randomDate(:year_range => 3, :year_latest => 1),
+           education3_to: randomDate(:year_range => 3, :year_latest => 1),
 
-           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience1_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience1_to: randomDate(:year_range => 3, :year_latest => 1),
+           experience2_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience2_to: randomDate(:year_range => 3, :year_latest => 1),
+           experience3_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience3_to: randomDate(:year_range => 3, :year_latest => 1),
 
 					 accepts_tandc: true)
 
@@ -114,7 +114,7 @@ namespace :db do
            password: "numbnuts",
            password_confirmation: "numbnuts",
            lat: 51.9128232665856,
-           lng: -0.541188764572144,
+           lng: -1.541188764572144,
            status: "b" * 51,
 
            skype: "robinclough",
@@ -127,19 +127,19 @@ namespace :db do
            experience2: "WHO",
            experience3: "Candesic",
 
-           education1_from: randomDate(:year_range => 3, :year_latest => 0),
-           education1_to: randomDate(:year_range => 3, :year_latest => 0),
-           education2_from: randomDate(:year_range => 3, :year_latest => 0),
-           education2_to: randomDate(:year_range => 3, :year_latest => 0),
-           education3_from: randomDate(:year_range => 3, :year_latest => 0),
-           education3_to: randomDate(:year_range => 3, :year_latest => 0),
+           education1_from: randomDate(:year_range => 3, :year_latest => 1),
+           education1_to: randomDate(:year_range => 3, :year_latest => 1),
+           education2_from: randomDate(:year_range => 3, :year_latest => 1),
+           education2_to: randomDate(:year_range => 3, :year_latest => 1),
+           education3_from: randomDate(:year_range => 3, :year_latest => 1),
+           education3_to: randomDate(:year_range => 3, :year_latest => 1),
 
-           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience1_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience1_to: randomDate(:year_range => 3, :year_latest => 1),
+           experience2_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience2_to: randomDate(:year_range => 3, :year_latest => 1),
+           experience3_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience3_to: randomDate(:year_range => 3, :year_latest => 1),
 
            accepts_tandc: true)
 
@@ -167,19 +167,19 @@ namespace :db do
            experience2: "WHO",
            experience3: "Candesic",
 
-           education1_from: randomDate(:year_range => 3, :year_latest => 0),
-           education1_to: randomDate(:year_range => 3, :year_latest => 0),
-           education2_from: randomDate(:year_range => 3, :year_latest => 0),
-           education2_to: randomDate(:year_range => 3, :year_latest => 0),
-           education3_from: randomDate(:year_range => 3, :year_latest => 0),
-           education3_to: randomDate(:year_range => 3, :year_latest => 0),
+           education1_from: randomDate(:year_range => 3, :year_latest => 1),
+           education1_to: randomDate(:year_range => 3, :year_latest => 1),
+           education2_from: randomDate(:year_range => 3, :year_latest => 1),
+           education2_to: randomDate(:year_range => 3, :year_latest => 1),
+           education3_from: randomDate(:year_range => 3, :year_latest => 1),
+           education3_to: randomDate(:year_range => 3, :year_latest => 1),
 
-           experience1_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 0),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 0),
+           experience1_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience1_to: randomDate(:year_range => 3, :year_latest => 1),
+           experience2_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience2_to: randomDate(:year_range => 3, :year_latest => 1),
+           experience3_from: randomDate(:year_range => 3, :year_latest => 1),
+           experience3_to: randomDate(:year_range => 3, :year_latest => 1),
 
            accepts_tandc: true)
 
