@@ -4,7 +4,7 @@ $(document).ready(function(){
 /////////////////////////// SHARED //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-
+  // Map Load
   $('#users_new_map,#users_edit_map').gmap({
 
       'zoom': 12,
@@ -31,15 +31,10 @@ $(document).ready(function(){
 /////////////////////////// INDEX ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-  // for URL-to-marker
-  var users_index_markerArray = [];
 
-  //    // build lat-lng start position
-  //    // user_lat & _lng defined with inline javascript in users#index
-  //    // seems to not be possible to get 'current_user' within this .js.erb asset
-  //   lat_start = user_lat;
-  //   lng_start = user_lng;
+  //var users_index_markerArray = [];
 
+  // Map Load
   $('#users_index_map').gmap({
 
     'center': new google.maps.LatLng(lat_start, lng_start),
@@ -63,13 +58,14 @@ $(document).ready(function(){
         new google.maps.Point(0, 0),
         new google.maps.Point(15.0, 62.0)
         );
-
+    
     $.getJSON('users', function(json) { 
       //for (var i = 0; i < json.length; i++) {
 
       $.each( json, function(i, marker) {
 
         $('#users_index_map').gmap('addMarker', { 
+          'id': '99',
           'position': new google.maps.LatLng(marker.lat, marker.lng), 
           'bounds': false,
           'shadow': shadow,
@@ -104,7 +100,7 @@ $(document).ready(function(){
 
 
         });
-
+        
         //users_index_markerArray[marker.id] = this;
 
       });
@@ -113,6 +109,16 @@ $(document).ready(function(){
   });
 
 
+  // Marker Click Trigger Function
+  $("#triggermarkerbutton").click(function() {
+
+    $('#users_index_map').gmap('find', 'markers', { 'property': 'id', 'value': '1' }, function(marker, found) {
+        marker.triggerEvent('click');
+    });
+
+    //google.maps.event.trigger(users_index_markerArray[51],'click');
+
+  });
 
 /////////////////////////////////////////////////////////////////
 ///////////////////////////// NEW ///////////////////////////////

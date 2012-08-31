@@ -24,6 +24,8 @@ describe "User pages" do
     it { should have_selector('div', id: 'users_index_panel_user') }
   
   	###### NEED MORE JAVASCRIPT TESTING OF MAP FUNCTION ETC HERE!!######
+
+    
   end
 
   ### Signup/Registration

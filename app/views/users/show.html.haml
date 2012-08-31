@@ -14,7 +14,9 @@
         / = avatar_for(@user)
         = @user.first_name
       %h5  
-        50
+        = @user.id
+      %h3
+        Number of cases: x
 
     %li.users_show_list_header
       Location

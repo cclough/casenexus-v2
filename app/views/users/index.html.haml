@@ -6,12 +6,15 @@
   :javascript
     var lat_start = "#{current_user.lat}";
     var lng_start = "#{current_user.lng}";
-
+    // for URL-to-marker
     
+
+
   #users_index_map.map
 
   #users_index_mapcontainer_users.mapcontainer
     .panel
+      %button#triggermarkerbutton.btn Trigger Marker Test
       Users
 
   #users_index_mapcontainer_user.mapcontainer
