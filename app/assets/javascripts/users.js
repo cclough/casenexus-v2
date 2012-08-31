@@ -1,4 +1,5 @@
 
+
 /////////////////////////////////////////////////////////////////
 /////////////////////////// SHARED //////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -52,26 +53,6 @@ function users_updateMarkerPosition(latLng) {
 
 var users_index_markerArray = [];
 
-var users_index_customMarkers = {
-  Beginner: {
-    icon: '<%= asset_path 'markers/mark_beginner.png' %>'
-  },
-  Novice: {
-    icon: '/app/assets/images/markers/mark_novice.png'
-  },
-  Intermediate: {
-    icon: 'c/assets/images/markers/mark_intermediate.png'
-  },
-  Advanced: {
-    icon: '/assets/images/markers/mark_advanced.png'
-  },
-  God: {
-    icon: '/assets/images/markers/mark_god.png'
-  },
-  'Victor Cheng-like': {
-    icon: '/assets/images/markers/mark_victorchenglike.png'
-  }
-};
 
 function users_index_loadmap() {
 
@@ -99,7 +80,7 @@ function users_index_loadmap() {
 
 	var map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions);
 
-	var shadow = new google.maps.MarkerImage("<%= asset_path 'markers/mark_shadow.png' %>",
+	var shadow = new google.maps.MarkerImage('http://www.casenexus.com/images/markers/mark_shadow.png',
 	    new google.maps.Size(62.0, 62.0),
 	    new google.maps.Point(0, 0),
 	    new google.maps.Point(15.0, 62.0)
@@ -117,7 +98,7 @@ function users_index_loadmap() {
 		        map: map,
 		        position: point,
 		        //icon: icon.icon,
-		        icon: '<%= asset_path 'markers/mark_god.png' %>',
+		        icon: 'http://www.casenexus.com/images/markers/mark_god.png',
 		        shadow: shadow,
 		        animation: google.maps.Animation.DROP
 		    });
@@ -187,9 +168,12 @@ function users_index_showInPanel(uid) {
 ///////////////////////////// SHOW //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
+$(document).ready(function(){
 
-// why won't this work?
-$("#users_show_close").click(function() {
-  $('#users_index_mapcontainer_user').fadeOut('slow');
-});
+  // why won't this work?
+  $("#users_show_close").click(function() {
+    $('#users_index_mapcontainer_user').fadeOut('slow');
+  });
 
+
+)};
