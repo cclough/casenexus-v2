@@ -22,19 +22,23 @@ describe "User pages" do
     it { should have_selector('div', id: 'users_index_map') }
     it { should have_selector('div', id: 'users_index_panel_posts') }
     it { should have_selector('div', id: 'users_index_panel_user') }
-  
+
+
+
   	###### NEED MORE JAVASCRIPT TESTING OF MAP FUNCTION ETC HERE!!######
 
-    # FIRST ATTEMPT
-    # describe "should show correct show user panel when marker click event is triggered" do
-    #   before do
-    #     execute_script("$($('#users_index_map').gmap('get', 'markers')['101']).triggerEvent('click');")
-    #   end
-
-    #   it { should have_content('Christian') }      
-    # end
+    # Trigger Click - test for entire map system
+    describe "clicking a marker should correctly function", :js => true do
+      before do
+        sleep(10)
+        click_link('users_index_list_item_3')
+      end
+      it { should have_content('Lesley') }      
+    end
 
   end
+
+
 
   ### Signup/Registration
   describe "signup page" do
@@ -261,3 +265,10 @@ end
 #   end
 #   date
 # end
+
+def wait_until_scope_exists(scope, &block)
+  wait_until { page.has_css?(scope) }
+  within scope, &block
+rescue Capybara::TimeoutError
+  flunk "Expected '#{scope}' to be present."
+end

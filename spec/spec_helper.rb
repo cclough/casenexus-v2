@@ -14,8 +14,9 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   # for capybara-webkit gem
-  require 'capybara/rspec'
-  Capybara.javascript_driver = :webkit
+  # require 'capybara/rspec'
+  # Capybara.javascript_driver = :webkit
+  
   # for email-rspec gem
   require "email_spec"
   # for sunspot

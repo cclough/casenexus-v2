@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     # refactor into model?
     @list = User.search do
               fulltext params[:search]
-              with(:approved, true)
+              with(:approved, false)
               paginate(per_page: 7, page: params[:page])
             end.results
 
