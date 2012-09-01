@@ -1,0 +1,10 @@
+%li.btn.users_index_list_item{id: "users_index_list_item_" + list_item.id.to_s}
+  %table
+    %tr
+      %td
+        *avatar*
+      %td
+        %strong
+          = list_item.name
+        %br
+          = list_item.status_trunc

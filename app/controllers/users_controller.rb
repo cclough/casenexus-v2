@@ -9,9 +9,19 @@ class UsersController < ApplicationController
   # Map
 	def index
 
+
+    # Users Sunspot search, according to 'searchable' in User model
+    # refactor into model?
+    @list = User.search do
+              fulltext params[:search]
+              with(:approved, true)
+              paginate(per_page: 7, page: params[:page])
+            end.results
+
 		# load json of map markers, inc. only user id, lat & lng
     respond_to do |format|
       format.html 
+      format.js # links index.js.erb!
       format.json { render json: User.markers }
     end
 

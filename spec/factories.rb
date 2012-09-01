@@ -6,14 +6,17 @@ FactoryGirl.define do
     sequence(:email) { |n| "person_#{n}@example.com" }
     password "foobar"
     password_confirmation "foobar"
-    lat 50
-    lng 0
+    lat Random.rand(180)
+    lng Random.rand(360)
     accepts_tandc true
     status "a" * 51
 
+    # for when you want to test capabilty of an admin user
+    # eg 'let(:admin) { FactoryGirl.create(:admin) }'
     factory :admin do
       admin true
     end
+
   end
 
 end

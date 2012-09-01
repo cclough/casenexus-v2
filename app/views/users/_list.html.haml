@@ -1,0 +1,12 @@
+/ loop through list items
+- if @list.count > 0
+  - for list_item in @list
+
+    / render list_item partial
+    = render partial: 'list_item' , locals: { :list_item => list_item }
+
+- else
+  %li
+    No users found
+
+= will_paginate @list, class: "nexus_pagination", :inner_window => 1, :outer_window => 0

@@ -252,5 +252,75 @@ describe User do
 
 
 
+  # Custom Attributes
+
+  # Name
+  describe "name should concatenate first_namd and last_name" do
+    its(:name) { should == @user.first_name + " " + @user.last_name }
+  end
+
+  # Status Trunc
+  describe "status truncated should be first 35 characters (until a space)" do
+    its(:status_trunc) { should == @user.status.truncate(35, :separator => ' ') }
+  end
+
+  # Markers Array
+  describe "markers" do
+
+    # before do 30
+    #  15.times { FactoryGirl.create(:user) }
+    #  15.times { FactoryGirl.create(:user, approved: true) }
+    # end
+
+    # ####### NEED ED HELP ##########
+
+    # it "should contain approved user lat, lng and id" do
+    #   User.all.each do |user|
+
+    #     subject { User.markers }
+        
+    #     it should_not have_content(user.lat)
+    #     it should_not have_content(user.lng)
+    #     it should_not have_content(user.id)
+      
+    #   end
+    # end
+
+
+    # User.unapproved.each do |user|
+    #   User.markers should_not include(user.lat)
+    #   User.markers should_not include(user.lng)
+    #   User.markers should_not include(user.id)
+    # end
+
+  end
+
+  # Approved & Unapproved Scopes
+
+  # Do I need to test this? already checking model basis in test above (line 210)
+
+
+
+
+  # Search (using sunspot_test gem)
+  describe "searching", :search => true do
+    it 'looks for a users first name' do
+      user = FactoryGirl.create(:user, first_name: "Idiot")
+      Sunspot.commit
+      User.search { keywords "Idiot" }.results.should == [user]
+    end
+
+    it 'looks for a users last name' do
+      user = FactoryGirl.create(:user, last_name: "Retard")
+      Sunspot.commit
+      User.search { keywords "Retard" }.results.should == [user]
+    end
+
+    it 'can search for just a substring AND looks for a users status' do
+      user = FactoryGirl.create(:user, status: "z" * 51)
+      Sunspot.commit
+      User.search { keywords "zzzzz" }.results.should == [user]
+    end
+  end
 
 end

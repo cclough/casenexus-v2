@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 /////////////////////////////////////////////////////////////////
 /////////////////////////// SHARED //////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -32,7 +33,29 @@ $(document).ready(function(){
 /////////////////////////////////////////////////////////////////
 
 
-  //var users_index_markerArray = [];
+
+
+  // List populate
+  updatelist();
+
+  // Update List on search field change
+  $("#users_index_list_form input").keyup(function() {
+    updatelist();
+  });
+
+  // Update the User List - submits form...
+  function updatelist () {
+    $.get($("#users_index_list_form").attr("action"), $("#users_index_list_form").serialize(), null, "script");
+    return false;
+  }
+
+  // For Ajax pagination
+  $("#users_index_list .nexus_pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+
+
 
   // Map Load
   $('#users_index_map').gmap({
@@ -64,8 +87,9 @@ $(document).ready(function(){
 
       $.each( json, function(i, marker) {
 
-        $('#users_index_map').gmap('addMarker', { 
-          'id': '99',
+        $('#users_index_map').gmap('addMarker', {
+
+          'id': marker.id,
           'position': new google.maps.LatLng(marker.lat, marker.lng), 
           'bounds': false,
           'shadow': shadow,
@@ -93,32 +117,33 @@ $(document).ready(function(){
           $("#users_index_mapcontainer_user").fadeOut('slow', function() {
 
             $('#users_index_user').load('/users/' + marker.id, function() {
+
+
+              // Fade panel back in
               $("#users_index_mapcontainer_user").fadeIn('slow');
+
+
+              // Code for 'close button' - needs to be here otherwise not applied in time
+              $("#users_show_close").click(function() {
+                $('#users_index_mapcontainer_user').fadeOut('slow');
+              });
+
             });
 
           });
 
-
         });
         
-        //users_index_markerArray[marker.id] = this;
-
       });
 
     });
-  });
-
-
-  // Marker Click Trigger Function
-  $("#triggermarkerbutton").click(function() {
-
-    $('#users_index_map').gmap('find', 'markers', { 'property': 'id', 'value': '1' }, function(marker, found) {
-        marker.triggerEvent('click');
-    });
-
-    //google.maps.event.trigger(users_index_markerArray[51],'click');
 
   });
+
+
+
+
+
 
 /////////////////////////////////////////////////////////////////
 ///////////////////////////// NEW ///////////////////////////////
@@ -140,10 +165,8 @@ $(document).ready(function(){
 /////////////////////////////////////////////////////////////////
 
 
-  // why won't this work?
-  $("#users_show_close").click(function() {
-    $('#users_index_mapcontainer_user').fadeOut('slow');
-  });
+
+
 
 
 /////////////////////////////////////////////////////////////////

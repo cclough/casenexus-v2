@@ -6,16 +6,19 @@
   :javascript
     var lat_start = "#{current_user.lat}";
     var lng_start = "#{current_user.lng}";
-    // for URL-to-marker
-    
-
 
   #users_index_map.map
 
   #users_index_mapcontainer_users.mapcontainer
     .panel
-      %button#triggermarkerbutton.btn Trigger Marker Test
-      Users
 
+      = form_tag users_path, method: 'get', id: "users_index_list_form" do
+        %span.pull-left
+          / search field
+          = text_field_tag :search, params[:search], placeholder: "Search users..."
+
+      #users_index_list
+        / content is rendered by index.js.erb
+        / = render 'list'
   #users_index_mapcontainer_user.mapcontainer
-    #users_index_user
+    %ul#users_index_user

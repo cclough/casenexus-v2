@@ -25,7 +25,15 @@ describe "User pages" do
   
   	###### NEED MORE JAVASCRIPT TESTING OF MAP FUNCTION ETC HERE!!######
 
-    
+    # FIRST ATTEMPT
+    # describe "should show correct show user panel when marker click event is triggered" do
+    #   before do
+    #     execute_script("$($('#users_index_map').gmap('get', 'markers')['101']).triggerEvent('click');")
+    #   end
+
+    #   it { should have_content('Christian') }      
+    # end
+
   end
 
   ### Signup/Registration

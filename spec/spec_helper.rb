@@ -18,6 +18,8 @@ Spork.prefork do
   Capybara.javascript_driver = :webkit
   # for email-rspec gem
   require "email_spec"
+  # for sunspot
+  require 'sunspot_test/rspec'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.

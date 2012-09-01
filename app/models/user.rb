@@ -50,17 +50,42 @@ class User < ActiveRecord::Base
 
 
 
+  ### Scopes
+
+  # Approved Scopes
+  scope :approved, where(:approved => true)
+  scope :unapproved, where(:approved => false)
+
+
+  # SunSpot Gem Search Scope
+  searchable do
+    text :first_name, :last_name, :status
+    boolean :approved, :using => :approved?
+  end
+
+
+
   ### Outputs
 
+  ## Micro
   # Name amalgamtion (not used that often - primarily just first name)
   def name
     "#{first_name} #{last_name}"
   end
 
+  def status_trunc
+    status.truncate(35, :separator => ' ')
+  end
+
+
+
+  ## Macro
+
   # Map marker for json conversion
   def self.markers
-    markers = User.all.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
+    markers = User.approved.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
   end
+
 
 
 
