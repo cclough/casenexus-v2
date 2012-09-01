@@ -52,16 +52,12 @@ class User < ActiveRecord::Base
 
   ### Scopes
 
+  # Scoped_search Gem
+  scoped_search :on => [:first_name, :last_name, :status]
+
   # Approved Scopes
   scope :approved, where(:approved => true)
   scope :unapproved, where(:approved => false)
-
-
-  # SunSpot Gem Search Scope
-  searchable do
-    text :first_name, :last_name, :status
-    boolean :approved, :using => :approved?
-  end
 
 
 

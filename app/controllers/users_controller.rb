@@ -12,11 +12,9 @@ class UsersController < ApplicationController
 
     # Users Sunspot search, according to 'searchable' in User model
     # refactor into model?
-    @list = User.search do
-              fulltext params[:search]
-              with(:approved, false)
-              paginate(per_page: 7, page: params[:page])
-            end.results
+
+    @list = User.approved.search_for(params[:search])
+            .paginate(per_page: 7, page: params[:page])
 
 		# load json of map markers, inc. only user id, lat & lng
     respond_to do |format|

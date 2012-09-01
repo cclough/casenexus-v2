@@ -12,15 +12,9 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-  require 'rspec/autorun'
-  # for capybara-webkit gem
-  # require 'capybara/rspec'
-  # Capybara.javascript_driver = :webkit
-  
+  require 'rspec/autorun'  
   # for email-rspec gem
   require "email_spec"
-  # for sunspot
-  require 'sunspot_test/rspec'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -47,26 +41,10 @@ Spork.prefork do
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
 
-
-    # For capybara-webkit gem
-
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = false
-
-    config.before(:suite) do
-      DatabaseCleaner.strategy = :truncation
-    end
-
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
-
+    config.use_transactional_fixtures = true
 
   end
 

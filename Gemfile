@@ -7,12 +7,11 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'mail'
 gem 'will_paginate', '3.0.3'
-gem 'sunspot_rails'
+gem 'scoped_search'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
   gem 'guard-rspec', '0.5.5'
-  gem 'sunspot_solr'
 end
 
 group :assets do
@@ -32,7 +31,5 @@ group :test do
   gem 'growl', '1.0.3'
   gem 'guard-spork', '0.3.2' 
   gem 'spork', '0.9.2'
-  # gem "capybara-webkit"
   gem "database_cleaner"
-  gem "sunspot_test"
 end
