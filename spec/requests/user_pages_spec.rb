@@ -330,10 +330,3 @@ end
 #   end
 #   date
 # end
-
-def wait_until_scope_exists(scope, &block)
-  wait_until { page.has_css?(scope) }
-  within scope, &block
-rescue Capybara::TimeoutError
-  flunk "Expected '#{scope}' to be present."
-end

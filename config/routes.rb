@@ -1,17 +1,20 @@
 Casenexus::Application.routes.draw do
 
-  # Users
-  resources :users
-  match '/signup', to: 'users#new'
-
   # Static Pages
   root to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
+
+  # Users
+  resources :users
+  match '/signup', to: 'users#new'
 
   # Sessions
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin', to: 'sessions#new'
   match '/signout',  to: 'sessions#destroy', via: :delete
+
+  # Cases
+  resources :cases
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

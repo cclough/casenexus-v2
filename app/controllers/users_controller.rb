@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
 
-	# only signed in users can do these
   before_filter :signed_in_user,
-                only: [:index, :edit, :show, :update, :destroy]
-  # only current user can do these
+                only: [:index, :edit, :show, :update]
   before_filter :correct_user, only: [:edit, :update]
 
   # Map
@@ -79,5 +77,13 @@ class UsersController < ApplicationController
       format.html { render :layout => false }
      end  
   end
+
+
+  private
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_path unless current_user?(@user)
+    end
 
 end

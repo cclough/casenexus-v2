@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
                   :experience2_from, :experience2_to,
                   :experience3_from, :experience3_to,
                   :skype, :linkedin,
-                  :email_admin,:email_users, :accepts_tandc, 
+                  :email_admin,:email_users, :accepts_tandc
+
+  ### Possessions
+  has_many :cases
 
   ### Bcrypt
   has_secure_password

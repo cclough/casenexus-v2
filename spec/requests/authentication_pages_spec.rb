@@ -97,15 +97,60 @@ describe "Authentication" do
           it { should have_selector('title', text: 'Sign in') }
         end
 
+        describe "visiting the user show action" do
+          before { visit user_path(user) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
       end
+
+      describe "in the Cases controller" do
+
+        describe "visiting the case index" do
+          before { visit cases_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        # CANT GET THIS SHIT TO WORK
+        # describe "visiting the case show action" do
+
+        #   let(:user2) { FactoryGirl.create(:user) }
+        #   let(:cas) { FactoryGirl.create(:cas) }
+          
+        #   before do
+        #     sign_in user2
+        #     visit case_path(cas)
+        #   end
+
+        #   it { should have_selector('title', text: 'Sign in') }
+        # end
+
+        describe "visiting the new case action" do
+          before { visit new_case_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "submitting to the create action" do
+          before { post cases_path }
+          specify { response.should redirect_to(signin_path)}
+        end
+
+      end
+
     end
 
-	 	##### CHECK HERE ALL SUBISSIONS TO ALL DIFFERENT CONTROLLER RESTFUL ACTIONS
+
+
+    ##### CHECK CORRECT USER FOR ALL CONTROLLERS
 
     describe "as wrong user" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
       before { sign_in user }
+
+
+
+      ##### USERS CONTROLLER
 
       # This test below is weak
       describe "visiting Users#edit page" do
@@ -117,6 +162,19 @@ describe "Authentication" do
         before { put user_path(wrong_user) }
         specify { response.should redirect_to(root_path) }
       end
+
+
+      ##### CASES CONTROLLER   
+
+      # CANT GET TO WORK
+      # This test below is weak
+      # describe "visiting Cases#show page" do
+      #   before { visit case_path(wrong_user) }
+      #   it { should_not have_selector('title', text: 'Case') }
+      # end
+
+      # Not possible or neccessary for Cases Index page?
+
     end
 
     # ADMIN USER TESTS NOT REQUIRED AS NO SPECIFC ACTIONS YET

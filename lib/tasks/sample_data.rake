@@ -186,7 +186,43 @@ namespace :db do
     designer.toggle!(:approved)
     designer.toggle!(:completed)
 
+
+    User.all.each do |user|
+
+      rand(60).times do |n|
+        user.cases.create!(
+          :interviewer_id => rand(100),
+          :date => randomDate(:year_range => 2, :year_latest => 0.5),
+          :subject => Faker::Lorem.sentence(5),
+          :source => Faker::Lorem.sentence(5),    
+          :structure => rand(1..10),
+          :structure_comment => Faker::Lorem.sentence(5),
+          :analytical => rand(1..10),
+          :analytical_comment => Faker::Lorem.sentence(5),
+          :commercial => rand(1..10),
+          :commercial_comment => Faker::Lorem.sentence(5),
+          :conclusion => rand(1..10),
+          :conclusion_comment => Faker::Lorem.sentence(5),
+          :comment => Faker::Lorem.sentence(5),
+          :notes => Faker::Lorem.sentence(5)
+        )
+      end
+
+    end
+
+
+
+
+
   end
+
+
+
+
+
+
+
+
 
   private
 

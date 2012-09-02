@@ -3,10 +3,10 @@
   - for users_item in @users
 
     / render list_item partial
-    = render partial: 'users_item' , locals: { :users_item => users_item }
+    = render partial: 'users_item' , locals: { users_item: users_item }
 
 - else
   %div
     No users found
 
-= will_paginate @list, class: "nexus_pagination", :inner_window => 1, :outer_window => 0
+= will_paginate @list, class: "nexus_pagination", inner_window: 1, outer_window: 0
