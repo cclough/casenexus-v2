@@ -8,6 +8,7 @@ gem 'faker'
 gem 'mail'
 gem 'will_paginate', '3.0.3'
 gem 'scoped_search'
+gem 'geokit-rails3'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'

@@ -12,7 +12,8 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-  require 'rspec/autorun'  
+  require 'rspec/autorun'
+  require 'capybara/rspec'
   # for email-rspec gem
   require "email_spec"
 
@@ -44,7 +45,19 @@ Spork.prefork do
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
+    # MUST BE FALSE FOR SELENIUM TO WORK
+
+    # Database Cleaner On - REQUIRED FOR SELENIUM
+    DatabaseCleaner.strategy = :truncation
+
+    config.before :each do
+      DatabaseCleaner.start
+    end
+    config.after :each do
+      DatabaseCleaner.clean
+    end
+
 
   end
 

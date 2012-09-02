@@ -256,42 +256,46 @@ describe User do
 
   # Name
   describe "name should concatenate first_namd and last_name" do
-    its(:name) { should == @user.first_name + " " + @user.last_name }
+    before { @user.save }
+    its(:name) { should == "Example User" }
   end
 
   # Status Trunc
   describe "status truncated should be first 35 characters (until a space)" do
-    its(:status_trunc) { should == @user.status.truncate(35, :separator => ' ') }
+    before { @user.save }
+    its(:status_trunc) { should == "a" * 32 + "..." }
   end
 
   # Markers Array
   describe "markers" do
 
-    # before do 30
-    #  15.times { FactoryGirl.create(:user) }
-    #  15.times { FactoryGirl.create(:user, approved: true) }
-    # end
+    before do
+     15.times { FactoryGirl.create(:user) }
+     15.times { FactoryGirl.create(:approved) }
+    end
 
-    # ####### NEED ED HELP ##########
+    
 
-    # it "should contain approved user lat, lng and id" do
-    #   User.all.each do |user|
+    it "should contain approved user lat lng and id" do
+    ####### NEED TO IMPROVE THIS TEST #######
 
-    #     subject { User.markers }
-        
-    #     it should_not have_content(user.lat)
-    #     it should_not have_content(user.lng)
-    #     it should_not have_content(user.id)
+      User.markers.should have(15).items  
+
+      # User.approved.each do |user|
+
+      #   # it should include(user.lat)
+      #   # it should include(user.lng)
+      #   # it should include(user.id)
       
-    #   end
-    # end
+      # end
 
+      # User.unapproved.each do |user|
+      #   User.markers should_not include(user.lat)
+      #   User.markers should_not include(user.lng)
+      #   User.markers should_not include(user.id)
+      # end
 
-    # User.unapproved.each do |user|
-    #   User.markers should_not include(user.lat)
-    #   User.markers should_not include(user.lng)
-    #   User.markers should_not include(user.id)
-    # end
+    end
 
   end
 
@@ -299,28 +303,60 @@ describe User do
 
   # Do I need to test this? already checking model basis in test above (line 210)
 
+  describe "approved scope" do
+
+    before do
+     15.times { FactoryGirl.create(:user) }
+     15.times { FactoryGirl.create(:approved) }
+    end
+
+    it "should only contain approved users" do
+      User.approved.should have(15).items
+    end
+
+  end
 
 
+  # Search (using scoped_search gem)
+  describe "searching" do
 
-  # Search (using sunspot_test gem)
-  describe "searching", :search => true do
+    before { FactoryGirl.create(:approved, first_name: "Idiot", 
+             last_name: "Retard", status: "z" * 51) }
+
     it 'looks for a users first name' do
-      user = FactoryGirl.create(:user, first_name: "Idiot")
-      Sunspot.commit
-      User.search { keywords "Idiot" }.results.should == [user]
+      User.approved.search_for("Idiot").should have(1).item
     end
 
     it 'looks for a users last name' do
-      user = FactoryGirl.create(:user, last_name: "Retard")
-      Sunspot.commit
-      User.search { keywords "Retard" }.results.should == [user]
+      User.approved.search_for("Retard").should have(1).item
     end
 
     it 'can search for just a substring AND looks for a users status' do
-      user = FactoryGirl.create(:user, status: "z" * 51)
-      Sunspot.commit
-      User.search { keywords "zzzzz" }.results.should == [user]
+      User.approved.search_for("zzz").should have(1).item
     end
+  end
+
+  describe "filtering" do
+
+    before do
+      2.times { FactoryGirl.create(:user) }
+      2.times { FactoryGirl.create(:approved, lat: 51.90155190493969, lng: -0.56060799360273) }
+      2.times { FactoryGirl.create(:approved, lat: 46.7526281332615, lng: 7.96478263139727) }
+    end
+
+    it 'using list_global gives all approved results' do
+      User.list_global.should have(4).item
+    end
+
+    # could do better test here, but only an order thing + might get rid of later
+    it 'using list_rand gives all approved results' do
+      User.list_rand.should have(4).item
+    end
+
+    it 'using list_local gives only approved results within 100km' do
+      User.list_local(51.9011282326659,-0.542411887645721).should have(2).item
+    end
+
   end
 
 end

@@ -12,13 +12,11 @@
   #users_index_mapcontainer_users.mapcontainer
     .panel
 
-      = form_tag users_path, method: 'get', id: "users_index_list_form" do
-        %span.pull-left
-          / search field
-          = text_field_tag :search, params[:search], placeholder: "Search users..."
+      = render 'users_form'
 
-      #users_index_list
+      #users_index_users
         / content is rendered by index.js.erb
-        / = render 'list'
+
   #users_index_mapcontainer_user.mapcontainer
-    %ul#users_index_user
+    #users_index_user
+      / content is rendered by on marker click (in users.js)

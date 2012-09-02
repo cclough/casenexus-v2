@@ -1,0 +1,10 @@
+.btn.users_index_users_item{id: "users_index_users_item_" + users_item.id.to_s}
+  %table
+    %tr
+      %td
+        = avatar_for(users_item)
+      %td
+        %strong
+          = users_item.name
+        %br
+          = users_item.casecount

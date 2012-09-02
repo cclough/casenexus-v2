@@ -61,10 +61,20 @@ class User < ActiveRecord::Base
 
 
 
+  ### GeoKit 
+  
+  acts_as_mappable :default_units => :kms,
+                   :default_formula => :flat,
+                   :distance_field_name => :distance,
+                   :lat_column_name => :lat,
+                   :lng_column_name => :lng
+
+
+
   ### Outputs
 
   ## Micro
-  # Name amalgamtion (not used that often - primarily just first name)
+
   def name
     "#{first_name} #{last_name}"
   end
@@ -73,16 +83,30 @@ class User < ActiveRecord::Base
     status.truncate(35, :separator => ' ')
   end
 
-
+  def casecount
+    50
+    # cases.count
+  end
 
   ## Macro
 
-  # Map marker for json conversion
   def self.markers
     markers = User.approved.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
   end
 
+  # Filters
+  def self.list_global
+    User.approved.order('created_at desc')
+  end
 
+  def self.list_local(origin_lat, origin_lng)
+    User.approved.within(100, origin: [origin_lat, origin_lng])
+                 .order('created_at desc')
+  end
+
+  def self.list_rand
+    User.approved.order("RANDOM()")
+  end
 
 
 

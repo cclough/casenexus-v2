@@ -9,12 +9,21 @@ class UsersController < ApplicationController
   # Map
 	def index
 
+    # Set scope of users list depending on params from filter menu
+    case params[:users_listtype]
+    when "global"
+      users_scope = User.list_global
+    when "local"
+      users_scope = User.list_local(current_user.lat, current_user.lng)
+    when "rand"
+      users_scope = User.list_rand
+    end
 
-    # Users Sunspot search, according to 'searchable' in User model
-    # refactor into model?
-
-    @list = User.approved.search_for(params[:search])
-            .paginate(per_page: 7, page: params[:page])
+    # Using scoped_search gem
+    if users_scope
+      @users = users_scope.search_for(params[:search])
+               .paginate(per_page: 7, page: params[:page])
+    end
 
 		# load json of map markers, inc. only user id, lat & lng
     respond_to do |format|

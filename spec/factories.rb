@@ -6,8 +6,8 @@ FactoryGirl.define do
     sequence(:email) { |n| "person_#{n}@example.com" }
     password "foobar"
     password_confirmation "foobar"
-    lat Random.rand(180)
-    lng Random.rand(360)
+    lat Random.rand(150..180)
+    lng Random.rand(200..360)
     accepts_tandc true
     status "a" * 51
 

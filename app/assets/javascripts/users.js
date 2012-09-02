@@ -32,25 +32,27 @@ $(document).ready(function(){
 /////////////////////////// INDEX ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-
-
-
-  // List populate
+  // List populate on page load
   updatelist();
-
-  // Update List on search field change
-  $("#users_index_list_form input").keyup(function() {
-    updatelist();
-  });
 
   // Update the User List - submits form...
   function updatelist () {
-    $.get($("#users_index_list_form").attr("action"), $("#users_index_list_form").serialize(), null, "script");
+    $.get($("#users_index_users_form").attr("action"), $("#users_index_users_form").serialize(), null, "script");
     return false;
   }
 
-  // For Ajax pagination
-  $("#users_index_list .nexus_pagination a").live("click", function() {
+  // List populate on search field change
+  $("#users_index_users_form input").keyup(function() {
+    updatelist();
+  });
+
+  // List populate on change radio buttons in filter
+  $("input[name=users_listtype]").change(function () {
+    updatelist();
+  });
+
+  // Ajax pagination
+  $("#users_index_users .nexus_pagination a").live("click", function() {
     $.getScript(this.href);
     return false;
   });
