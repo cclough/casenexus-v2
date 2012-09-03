@@ -14,7 +14,11 @@ Casenexus::Application.routes.draw do
   match '/signout',  to: 'sessions#destroy', via: :delete
 
   # Cases
-  resources :cases
+  resources :cases do
+    collection do
+      get 'analysis'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

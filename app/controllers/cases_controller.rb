@@ -1,18 +1,14 @@
 class CasesController < ApplicationController
 
-  before_filter :signed_in_user,
-                only: [:index, :show, :new, :create]
-
+  before_filter :signed_in_user, only: [:index, :show, :new, :create, :analysis]
   before_filter :correct_user, only: [:show]
 
 	def index
-
-		@cases = current_user.cases.paginate(per_page: 10, page: 
-			     	 params[:page], order: "created_at DESC")
-		
+		@cases = current_user.cases.paginate(per_page: 10, page: params[:page])
 	end
 
 	def show
+		@case = Case.find(params[:id])
 	end
 
 	def new
@@ -21,6 +17,8 @@ class CasesController < ApplicationController
 	def create
 	end
 
+	def analysis
+	end
 
 	private
 

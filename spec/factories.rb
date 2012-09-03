@@ -23,7 +23,7 @@ FactoryGirl.define do
     end
 
     # has_many association
-    cases { FactoryGirl.create_list(:case, 2) }
+    cases { FactoryGirl.create_list(:case, 11) }
 
   end
 
