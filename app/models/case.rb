@@ -33,8 +33,6 @@ class Case < ActiveRecord::Base
   validates :notes, length: { maximum: 1000 }
 
 
-  # Scopes
-  default_scope order: 'cases.created_at DESC'
 
 
 

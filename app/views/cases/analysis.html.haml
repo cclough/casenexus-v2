@@ -1,10 +1,10 @@
 - provide(:title, 'Your Progress')
 
 - content_for :javascript_includes do
-  = javascript_include_tag "cases_analysis.js"
+  = javascript_include_tag "cases_analysis"
   
 :javascript
-  var chartData_radar = #{Case.chart_analysis_radar(current_user)};
+  var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
 
 / table for top row (stats, comments and radar)
 %table{:style => "width:100%;"}

@@ -1,5 +1,10 @@
 - provide(:title, 'Sign up')
 
+- content_for :javascript_includes do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+  = javascript_include_tag "jquery.ui.map.min"
+  = javascript_include_tag "users_new&show"
+
 = content_for :content do
 
   / can't see another way to do this yet...

@@ -1,5 +1,11 @@
 - provide(:title, 'Map')
 
+- content_for :javascript_includes do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+  = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
+  = javascript_include_tag "jquery.ui.map.min"
+  = javascript_include_tag "users_index"
+
 = content_for :content do
 
   / can't see another way to do this yet...
