@@ -1,7 +1,4 @@
 - provide(:title, 'Your Progress')
-
-- content_for :javascript_includes do
-  = javascript_include_tag "cases_analysis"
   
 :javascript
   var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
