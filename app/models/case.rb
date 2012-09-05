@@ -65,69 +65,42 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
-  def chart_case_radar
-    chart_case_radar = "[{criteria: \"Structure\", score: "+structure.to_s+"},
-                        {criteria: \"Analytical\", score: "+analytical.to_s+"},
-                        {criteria: \"Commercial\", score: "+commercial.to_s+"},
-                        {criteria: \"Conclusion\", score: "+conclusion.to_s+"}]"
-  end
 
+  def chart_case_radar
+    "[{criteria: \"Structure\", score: "+structure.to_s+"},
+     {criteria: \"Analytical\", score: "+analytical.to_s+"},
+     {criteria: \"Commercial\", score: "+commercial.to_s+"},
+     {criteria: \"Conclusion\", score: "+conclusion.to_s+"}]"
+  end
 
   ## Analysis
 
-
-  # Radar
-  def self.chart_analysis_radar_first5
-    @userCases_first5 = @user.cases.limit(5).order('id asc')
-  end
-    
-  def self.chart_analysis_radar_last5
-    @userCases_last5 = @user.cases.limit(5).order('id desc')
-
-
-
-  def chart_analysis_radar_structure
-    @plan_avg = @userCases_last5.collect(&:plan).sum.to_f/@userCases_last5.length
-  end
-
-  def chart_analysis_radar_analytic
-    @analytic_avg = @userCases_last5.collect(&:analytic).sum.to_f/@userCases_last5.length
-  end
-
-  def chart_analysis_radar_commercial
-    @struc_avg = @userCases_last5.collect(&:struc).sum.to_f/@userCases_last5.length
-  end
-
-  def chart_analysis_radar_conclusion
-    @conc_avg = @userCases_last5.collect(&:conc).sum.to_f/@userCases_last5.length
-  end
-
-
-
-  def self.chart_analysis_radar
+  def self.chart_analysis_radar(user)
     # LAST 5: load scores into json for radar chart
-    @chartData_radar = "[{criteria: \"Plan\", last5: " + @plan_avg.to_s + ", first5: " + @plan_avg_first5.to_s + "},
-               {criteria: \"Analytical\", last5: " + @analytic_avg.to_s + ", first5: " + @plan_avg_first5.to_s + "},
-               {criteria: \"Structure\", last5: " + @struc_avg.to_s + ", first5: " + @plan_avg_first5.to_s + "},
-               {criteria: \"Conclusion\", last5: " + @conc_avg.to_s + ", first5: " + @plan_avg_first5.to_s + "}]"
+      "[
+      {criteria: \"Structure\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:structure).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:structure).sum.to_f/5).to_s + "},
+      {criteria: \"Analytical\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:analytical).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:analytical).sum.to_f/5).to_s + "},
+      {criteria: \"Commercial\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:commercial).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:commercial).sum.to_f/5).to_s + "},
+      {criteria: \"Conclusion\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:conclusion).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:conclusion).sum.to_f/5).to_s + "}
+      ]"
+  end
 
+  def self.chart_analysis_progress(user)
+    chart_analysis_progress = user.cases.order('date asc').map {|c|
+                { date: c.date.strftime("%Y-%m-%d"), structure: c.structure, analytical: c.analytical, 
+                commercial: c.commercial, conclusion: c.conclusion } }
   end
 
 
-  # Progress
 
-  def chart_analysis_progress
-
-    respond_to do |format|
-    format.html
-    # this is model stuff ...defining an action in the model...?
-    format.json { render json: current_user.cases.order('date asc').map {|c|
-                { date: c.date.strftime("%Y-%m-%d"), plan: c.plan, analytic: c.analytic, 
-                struc: c.struc, conc: c.conc } }}
-
-    end
-  
-  end
 
 
 end

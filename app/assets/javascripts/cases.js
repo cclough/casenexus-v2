@@ -6,9 +6,9 @@
 ///////////////////////////// SHOW //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-  var chart;
 
-  var chartData = #{@case.chart_case_radar};
+
+  var chart;
 
   AmCharts.ready(function () {
     // RADAR CHART
@@ -63,13 +63,7 @@
 // Radar Chart Javascript
 ////////////////////////////////////////////
 
-
-:javascript
-
   var chart_radar;
-
-  // load data from rails variable (defined in controller)
-  var chartData_radar = #{@chartData_radar};
 
   // Draw AM Radar Chart
   AmCharts.ready(function () {
@@ -143,17 +137,15 @@
 ////////////////////////////////////////////
 
 
-:javascript
-
   var chart_area;
 
   // loop through model json, construct AM compatabile array + run parseDate
   chartData_progress = [];
-  $.getJSON("analysis", function(json) {
+  $.getJSON("cases/analysis", function(json) {
 
     for (var i = 0; i < json.length; i++) {
 
-      var dataObject = {date:parseDate(json[i].date), plan:json[i].plan, analytic:json[i].analytic, struc:json[i].struc, conc:json[i].conc};
+      var dataObject = {date:parseDate(json[i].date), structure:json[i].structure, analytical:json[i].analytical, commercial:json[i].commercial, conclusion:json[i].conclusion};
 
       // load array for chart
       chartData_progress.push(dataObject); 
@@ -220,8 +212,8 @@
     // first graph - PLAN
     var graph = new AmCharts.AmGraph();
     graph.type = "line";
-    graph.title = "Planning";
-    graph.valueField = "plan";
+    graph.title = "Structure";
+    graph.valueField = "structure";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6; // setting fillAlphas to > 0 value makes it area graph
     chart.addGraph(graph);
@@ -230,7 +222,7 @@
     graph = new AmCharts.AmGraph();
     graph.type = "line";
     graph.title = "Analytical";
-    graph.valueField = "analytic";
+    graph.valueField = "analytical";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6;
     chart.addGraph(graph);
@@ -238,8 +230,8 @@
     // third graph - STRUC
     graph = new AmCharts.AmGraph();
     graph.type = "line";
-    graph.title = "Structure";
-    graph.valueField = "struc";
+    graph.title = "Commercial";
+    graph.valueField = "commercial";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6;
     chart.addGraph(graph);
@@ -248,7 +240,7 @@
     graph = new AmCharts.AmGraph();
     graph.type = "line";
     graph.title = "Conclusion";
-    graph.valueField = "conc";
+    graph.valueField = "conclusion";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6;
     chart.addGraph(graph);

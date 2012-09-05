@@ -118,12 +118,13 @@ $(document).ready(function(){
           //// Hide, reload and show User Panel
           $("#users_index_mapcontainer_user").fadeOut('slow', function() {
 
-            $('#users_index_user').load('/users/' + marker.id, function() {
+            $.get('/users/' + marker.id, function(data) {
 
+              // Insert ajax data!
+              $('#users_index_user').html(data);
 
               // Fade panel back in
               $("#users_index_mapcontainer_user").fadeIn('slow');
-
 
               // Code for 'close button' - needs to be here otherwise not applied in time
               $("#users_show_close").click(function() {

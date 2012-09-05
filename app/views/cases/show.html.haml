@@ -1,5 +1,8 @@
 - provide(:title, 'Case with ' + @case.interviewer.name)
 
+:javascript
+  var chartData = #{@case.chart_case_radar};
+
 %table{:style => "width:100%;"}
   %tr
     %td{:style => "width:60%", :valign => "top"}

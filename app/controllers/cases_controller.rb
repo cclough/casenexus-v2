@@ -18,7 +18,14 @@ class CasesController < ApplicationController
 	end
 
 	def analysis
+		
+		respond_to do |format|
+	      format.html
+	      format.json { render json: Case.chart_analysis_progress(current_user) }
+	  end
+
 	end
+
 
 	private
 

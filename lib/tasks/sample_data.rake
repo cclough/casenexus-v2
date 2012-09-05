@@ -189,7 +189,7 @@ namespace :db do
 
     User.all.each do |user|
 
-      rand(60).times do |n|
+      rand(4..60).times do
         user.cases.create!(
           :interviewer_id => rand(100),
           :date => randomDate(:year_range => 2, :year_latest => 0.5),
