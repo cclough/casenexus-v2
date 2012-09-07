@@ -20,6 +20,7 @@ group :assets do
   gem 'bootstrap-sass', '2.0.4.1'
   gem 'font-awesome-sass-rails'
   gem 'haml'
+  gem 'jquery-ui-rails'
   # what is uglifier for? JS wrapper?
   gem 'uglifier', '1.2.3'
 end
@@ -33,4 +34,5 @@ group :test do
   gem 'guard-spork', '0.3.2' 
   gem 'spork', '0.9.2'
   gem "database_cleaner"
+  gem "launchy"
 end

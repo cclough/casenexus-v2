@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :user do
-    
+
     first_name "Person"
     sequence(:last_name)  { |n| "#{n}" }
     sequence(:email) { |n| "person_#{n}@example.com" }
@@ -11,6 +11,28 @@ FactoryGirl.define do
     lng Random.rand(200..360)
     accepts_tandc true
     status "a" * 51
+
+    education1 "Eton"
+    education2 "Oxford"
+    education3 "Cambridge"
+
+    experience1 "WHO"
+    experience2 "Candesic"
+    experience3 "Carter Press"
+
+    education1_from Date.new(2012, 12, 1)
+    education2_from Date.new(2012, 12, 1)
+    education3_from Date.new(2012, 12, 1)
+    education1_to Date.new(2012, 12, 1)
+    education2_to Date.new(2012, 12, 1)
+    education3_to Date.new(2012, 12, 1)
+
+    experience1_from Date.new(2012, 12, 1)
+    experience2_from Date.new(2012, 12, 1)
+    experience3_from Date.new(2012, 12, 1)
+    experience1_to Date.new(2012, 12, 1)
+    experience2_to Date.new(2012, 12, 1)
+    experience3_to Date.new(2012, 12, 1)
 
     # for when you want to test capabilty of an admin user
     # eg 'let(:admin) { FactoryGirl.create(:admin) }'
@@ -22,34 +44,6 @@ FactoryGirl.define do
       approved true
     end
 
-    # has_many association
-    cases { FactoryGirl.create_list(:case, 11) }
-
   end
-
-  
-  factory :case do
-    
-    user_id 1
-    interviewer_id 2
-    date Date.new(2012, 3, 3)
-    subject "Some Subject"
-    source "Some Source"
-
-    structure 5
-    structure_comment "Structure Comment"
-    analytical 9
-    analytical_comment "Analytical Comment"
-    commercial 10
-    commercial_comment "Commercial Comment"
-    conclusion 1
-    conclusion_comment "Conclusion Comment"
-
-    comment "Overall Comment"
-    notes "Some Notes"
-
-  end
-
-
 
 end

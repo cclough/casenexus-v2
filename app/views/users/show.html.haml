@@ -76,5 +76,8 @@
       Actions:
     %li
       Message
-      Send Feedback
+      %br
       Request Feedback
+      %br
+      / send feedback button
+      = link_to raw("<i class=\"icon-edit icon-white\"/>Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse", id: "users_index_user_button_sendfeedback"

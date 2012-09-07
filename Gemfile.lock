@@ -82,7 +82,12 @@ GEM
     jquery-rails (2.1.1)
       railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
+    jquery-ui-rails (1.0.0)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.5)
+    launchy (2.1.2)
+      addressable (~> 2.3)
     libwebsocket (0.1.5)
       addressable
     listen (0.5.0)
@@ -183,6 +188,8 @@ DEPENDENCIES
   guard-spork (= 0.3.2)
   haml
   jquery-rails
+  jquery-ui-rails
+  launchy
   mail
   pg
   rails (= 3.2.8)

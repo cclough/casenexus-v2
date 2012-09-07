@@ -4,6 +4,7 @@ describe "User pages" do
 
   subject { page }
 
+
   ### Map Page
   describe "index" do
 
@@ -19,7 +20,7 @@ describe "User pages" do
       visit users_path
     end
 
-    after(:all) do
+    after(:each) do
       User.delete_all
     end
 
@@ -32,7 +33,7 @@ describe "User pages" do
     describe "pagination (& Global list selection)", js: true do
 
       before do
-        click_link('users_index_users_filterbutton')
+        click_link('users_index_users_button_filter')
         choose('users_listtype_global')
         sleep(3)
       end
@@ -60,7 +61,6 @@ describe "User pages" do
     end
 
 
-
     describe "filters", js: true do
 
       before(:all) { FactoryGirl.create(:approved, first_name: "Dave",
@@ -69,7 +69,7 @@ describe "User pages" do
                      lat: 46.7526281332615, lng: 7.96478263139727) }
 
       before do
-        click_link('users_index_users_filterbutton')
+        click_link('users_index_users_button_filter')
       end
 
       it 'using list_global gives all approved results' do
@@ -84,26 +84,61 @@ describe "User pages" do
     end
 
 
-
   	###### THE ELUSIVE MAP TEST ######
 
     # Trigger Click - test for entire map system
 
     #  Current problem - show panel doesn't popup - google map not loading properly
 
-    # describe "clicking a marker should correctly function", :js => true do
-    #   before do
-    #     sleep(4)
-    #     click_button('users_index_list_item_1')
-    #     sleep(4)
-    #   end
-    #   it { page.should have_content('Person') }      
-    # end
+    describe "triggering a marker click should correctly show the user profile (test of entire map system)", :js => true do
+      before do
+        sleep(4)
+        click_link('users_index_users_item_' + user.id)
+        sleep(4)
+      end
+      it { should have_content('Person') }      
+    end
 
+end
+
+  describe "#show" do
+
+    let(:user) { FactoryGirl.create(:approved, first_name: "Steve") }
+
+    before do
+      sign_in user
+      visit user_path(user)
+    end
+
+    it "should show the user's profile" do
+      page.should have_content(user.first_name)
+    end
+
+    describe "send feedback button should lead to new case form" do
+      
+      before do
+        click_link('users_index_user_button_sendfeedback')
+      end
+
+      it { should have_selector('title', text: 'Give Feedback') }
+
+    end
+
+    describe "should not show the profile if user is not approved" do
+
+      before do
+        FactoryGirl.create(:user)
+        visit user_path(2)
+        save_and_open_page
+      end
+
+      it { should have_selector('title', text: 'Map') }
+
+    end
+
+    # more buttons etc. to come here
 
   end
-
-
 
   ### Signup/Registration
   describe "signup page" do

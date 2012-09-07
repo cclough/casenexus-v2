@@ -72,9 +72,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     
-    respond_to do |format|
-      format.html { render :layout => false }
-     end  
+    if @user.approved?
+      respond_to do |format|
+        format.html { render :layout => false }
+       end
+    else
+      render 'index'
+    end
+
   end
 
 

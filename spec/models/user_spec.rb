@@ -358,4 +358,27 @@ describe User do
 
   end
 
+  describe "casecount" do
+    
+    let(:user) { FactoryGirl.create(:user) }
+    
+    before do
+      2.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+              "Some Subject", source: "Some Source",
+              structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
+              structure_comment: "Structure Comment",
+              analytical_comment: "Analytical Comment",
+              commercial_comment: "Commercial Comment",
+              conclusion_comment: "Conclusion Comment",
+              comment: "Overall Comment",
+              notes: "Some Notes") }
+
+    end
+
+    it "case count should be correct" do
+      user.casecount.should == 2
+    end
+
+  end
+
 end

@@ -3,6 +3,8 @@
 :javascript
   var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
 
+#testing123
+  hello!
 / table for top row (stats, comments and radar)
 %table{:style => "width:100%;"}
   %tr
@@ -43,11 +45,6 @@
 
     %td{:valign => "top"}
       = Case.chart_analysis_radar(current_user)
-
-
-
-
-
 
       / / comments panel
       / #comments_panel.panel.kill_left
@@ -106,8 +103,6 @@
       /               = User.find_by_id(comment.marker_id).name
       /             .content
       /               = comment.conc_s
-
-
 
 
     %td{:style => "width:340px;"}

@@ -36,6 +36,8 @@ describe "Authentication" do
       it { should have_selector('img', id: "logo-text") }
       it { should have_selector('i', class: "icon-user") }
 
+      
+
       it { should_not have_selector('title', text: 'Sign in') }
 
       describe "followed by signout" do

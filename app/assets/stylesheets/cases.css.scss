@@ -1,3 +1,63 @@
 // Place all the styles related to the cases controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Shouldn't need these here as well as in app.css.scss
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+
+/* case form */
+
+.cases_new_form {
+  textarea {
+    height: 50px;
+    margin-bottom: 5px;
+    width: 300px;
+  }
+}
+
+#cases_new_user_target {
+  padding-top:40px;
+  font-size:200%;
+  font-weight:bold;
+  text-align:center;
+  width:100%;
+}
+
+
+.cases_new_block_title {
+  color: gray;
+  border-bottom: 1px solid $gray_Lighter;
+}
+
+.cases_new_block_desc {
+  color: gray;
+  width: 100%;
+  font-size:80%;
+  margin-top:-7px;
+  margin-bottom:5px;
+}
+
+
+
+.cases_new_slider {
+  width: 252px;
+  float: left;
+  margin-top:10px;
+  margin-right:10px;
+  margin-left:6px;
+  z-index:0;
+}
+
+.cases_new_slider_input {
+  border:0;
+  height:20px;
+  font-size:180%;
+  color:#b9b9b9;
+  font-weight:bold;
+  text-align:center;
+  width:30px;
+  text-align:center;
+}
+

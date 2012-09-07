@@ -1,0 +1,66 @@
+- provide(:title, 'Give Feedback')
+
+= form_for @case, url: { action: :create, user_id: @case_user.id } do |f|
+
+  / error message div
+  = render 'shared/error_messages', object: @case
+
+  .cases_new_form
+    .row
+      .span4
+        / display target name
+        %h5
+          Feedback For
+        #cases_new_user_target
+          = avatar_for(@case_user)
+          = @case_user.name
+
+      .span4
+        = f.text_field :date, placeholder: "Date", id: "cases_new_datepicker", tabindex: "1"
+        = f.text_area :subject, placeholder: "Subject", tabindex: "2"    
+        = f.text_field :source, placeholder: "Source", tabindex: "3"
+
+    .row
+      .span4
+        %div
+          .cases_new_block_title
+            Structure
+          #cases_new_slider_structure.cases_new_slider
+          = f.text_field :structure, class: "cases_new_slider_input", tabindex: "-1"
+          .cases_new_block_desc
+            Brief instructions on how to score and comment
+          = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4"
+        %div
+          .cases_new_block_title
+            Commercial Awareness
+          #cases_new_slider_commercial.cases_new_slider
+          = f.text_field :commercial, class: "cases_new_slider_input", tabindex: "-1"
+          .cases_new_block_desc
+            Brief instructions on how to score and comment  
+          = f.text_area :commercial_comment, placeholder: "Comment...", tabindex: "5"
+      .span4
+        %div
+          .cases_new_block_title
+            Analytical/Problem Solving
+          #cases_new_slider_analytical.cases_new_slider
+          = f.text_field :analytical, class: "cases_new_slider_input", tabindex: "-1"
+          .cases_new_block_desc
+            Brief instructions on how to score and comment
+          = f.text_area :analytical_comment, placeholder: "Comment...", tabindex: "6"
+        %div
+          .cases_new_block_title
+            Conclusion/Solution
+          #cases_new_slider_conclusion.cases_new_slider
+          = f.text_field :conclusion, class: "cases_new_slider_input", tabindex: "-1"
+          .cases_new_block_desc
+            Brief instructions on how to score and comment
+          = f.text_area :conclusion_comment, placeholder: "Comment...", tabindex: "7"
+
+    .row
+      .span8
+        = f.text_area :comment, placeholder: "Any further comments", tabindex: "8"
+        %div
+
+          = f.hidden_field :user_id, value: @case_user.id
+          = f.hidden_field :interviewer_id, value: current_user.id
+          = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"

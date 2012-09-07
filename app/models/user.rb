@@ -87,9 +87,9 @@ class User < ActiveRecord::Base
   end
 
   def casecount
-    50
-    # cases.count
+    cases.all.count
   end
+
 
   ## Macro
 

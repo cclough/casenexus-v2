@@ -1,5 +1,5 @@
 class Case < ActiveRecord::Base
-  attr_accessible :interviewer_id, :date, :subject, :source, 
+  attr_accessible :user_id, :interviewer_id, :date, :subject, :source, 
   								:structure, :structure_comment,
   				        :analytical, :analytical_comment, 
   				        :commercial, :commercial_comment, 
@@ -34,8 +34,6 @@ class Case < ActiveRecord::Base
 
 
 
-
-
   ### Outputs
 
   ## Micro
@@ -60,7 +58,6 @@ class Case < ActiveRecord::Base
   end
 
 
-
   ### Charts
 
 
@@ -68,9 +65,9 @@ class Case < ActiveRecord::Base
 
   def chart_show_radar
     "[{criteria: \"Structure\", score: "+structure.to_s+"},
-     {criteria: \"Analytical\", score: "+analytical.to_s+"},
      {criteria: \"Commercial\", score: "+commercial.to_s+"},
-     {criteria: \"Conclusion\", score: "+conclusion.to_s+"}]"
+     {criteria: \"Conclusion\", score: "+conclusion.to_s+"},
+     {criteria: \"Analytical\", score: "+analytical.to_s+"}]"
   end
 
 
@@ -82,29 +79,27 @@ class Case < ActiveRecord::Base
       {criteria: \"Structure\", 
       last5: " + (user.cases.limit(5).order('id desc').collect(&:structure).sum.to_f/5).to_s + ", 
       first5: " + (user.cases.limit(5).order('id asc').collect(&:structure).sum.to_f/5).to_s + "},
-      {criteria: \"Analytical\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:analytical).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:analytical).sum.to_f/5).to_s + "},
       {criteria: \"Commercial\", 
       last5: " + (user.cases.limit(5).order('id desc').collect(&:commercial).sum.to_f/5).to_s + ", 
       first5: " + (user.cases.limit(5).order('id asc').collect(&:commercial).sum.to_f/5).to_s + "},
       {criteria: \"Conclusion\", 
       last5: " + (user.cases.limit(5).order('id desc').collect(&:conclusion).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:conclusion).sum.to_f/5).to_s + "}
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:conclusion).sum.to_f/5).to_s + "},
+      {criteria: \"Analytical\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:analytical).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:analytical).sum.to_f/5).to_s + "},
       ]"
   end
 
   def self.chart_analysis_progress(user)
     chart_analysis_progress = user.cases.order('date asc').map {|c|
-                              { date: c.date.strftime("%Y-%m-%d"), 
+                              { id: c.id,
+                              date: c.date.strftime("%Y-%m-%d"), 
                               structure: c.structure, 
                               analytical: c.analytical, 
                               commercial: c.commercial, 
                               conclusion: c.conclusion } }
   end
-
-
-
 
 
 end

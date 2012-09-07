@@ -12,9 +12,22 @@ class CasesController < ApplicationController
 	end
 
 	def new
+		# declare separately so can be used in the view
+		@case_user = User.find_by_id(params[:user_id])
+		@case = @case_user.cases.build
 	end
 
 	def create
+    @case = User.find_by_id(params[:case][:user_id]).cases.build(params[:case])
+
+	  	if @case.save
+      	# flash success and re-direct
+	  		flash[:success] = 'Feedback Sent'
+	  		redirect_to users_path
+	  	else
+	  		@case_user = User.find_by_id(params[:user_id])
+      	render 'new'
+	  	end
 	end
 
 	def analysis
@@ -25,7 +38,6 @@ class CasesController < ApplicationController
 	  end
 
 	end
-
 
 	private
 

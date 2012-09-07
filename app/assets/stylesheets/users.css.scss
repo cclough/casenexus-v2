@@ -44,6 +44,17 @@ $gray_Lightest: #f6f6f6;
   height:420px;
 }
 
+#users_index_casecount {
+  font-size: 1.1em;
+  color: white;
+  margin-left: 4px;
+  letter-spacing: 1px;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 #users_new_map {
 	height:450px;
 	width:100%;
