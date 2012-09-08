@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
 
   ### Possessions
   has_many :cases
-
+  has_many :notifications
+  
   ### Bcrypt
   has_secure_password
 
@@ -59,8 +60,8 @@ class User < ActiveRecord::Base
   scoped_search :on => [:first_name, :last_name, :status]
 
   # Approved Scopes
-  scope :approved, where(:approved => true)
-  scope :unapproved, where(:approved => false)
+  scope :approved, where(approved: true)
+  scope :unapproved, where(approved: false)
 
 
 

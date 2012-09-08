@@ -212,6 +212,33 @@ namespace :db do
 
 
 
+    User.all.each do |user|
+      user.notifications.create!(:ntype => "welcome",
+                                 :sender_id => rand(100))
+
+      10.times do
+        user.notifications.create!(:ntype => "message",
+                                   :sender_id => rand(100), 
+                                   :content => Faker::Lorem.sentence(5))
+        user.notifications.create!(:ntype => "feedback_new",
+                                   :sender_id => rand(100), 
+                                   :content => Faker::Lorem.sentence(5),
+                                   :event_date => randomDate(:year_range => 1, :year_latest => 0),
+                                   :case_id => rand(1000))
+        user.notifications.create!(:ntype => "feedback_request",
+                                   :sender_id => rand(100), 
+                                   :content => Faker::Lorem.sentence(5),
+                                   :event_date => randomDate(:year_range => 1, :year_latest => 0))
+      end
+    end
+
+    Notification.all.each do |notification|
+
+      if rand(2) == 1
+        notification.read == true
+      end
+
+    end
 
 
   end

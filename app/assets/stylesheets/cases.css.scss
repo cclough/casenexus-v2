@@ -40,7 +40,6 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-
 .cases_new_slider {
   width: 252px;
   float: left;
@@ -60,4 +59,49 @@ $gray_Lightest: #f6f6f6;
   width:30px;
   text-align:center;
 }
+
+
+.cases_analysis_comment {
+  margin: 5px;
+  margin-bottom: 0px;
+  padding: 5px; 
+  border: 1px solid $gray_Light;
+
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+
+  .cases_analysis_comment_from {
+    
+    font-weight: bold;
+
+    .cases_analysis_comment_date {
+      font-weight: normal;
+      color: gray;
+    }
+
+  }
+
+  .cases_analysis_comment_content {
+    font-style: italic;
+    color: gray;
+  }
+}
+
+
+#cases_analysis_comments {
+  font-size:85%;
+  background-color: $gray_Lightest;
+  ul {
+    margin:0px;
+  }
+}
+
+.cases_analysis_comments_tab {
+  overflow-y:auto;
+  height:200px;
+  background-color:white;
+}
+
+
 

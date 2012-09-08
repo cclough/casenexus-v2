@@ -1,0 +1,61 @@
+#cases_analysis_comments.panel.kill_left
+  %ul.nav.nav-tabs
+    %li
+      %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_structure"} Structure
+    %li
+      %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_analytical"} Analytical
+    %li
+      %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_commercial"} Commercial
+    %li
+      %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_conclusion"} Conclusion
+
+  .tab-content
+
+    #cases_analysis_comments_tab_structure.cases_analysis_comments_tab.tab-pane.active
+      - if Case.comments_structure(current_user).count > 0
+        - for comment in Case.comments_structure(current_user)
+
+          .cases_analysis_comment
+            .cases_analysis_comment_from
+              / line below is causing problems on heroku for no reason! - its to do with comment.marker_id
+              = User.find_by_id(comment.interviewer_id).name
+              %span.cases_analysis_comment_date
+                = comment.created_at.strftime("%d/%m/%Y")
+            .cases_analysis_comment_content
+              = comment.structure_comment
+
+    #cases_analysis_comments_tab_analytical.cases_analysis_comments_tab.tab-pane
+      - if Case.comments_analytical(current_user).count > 0
+        - for comment in Case.comments_analytical(current_user)
+
+          .cases_analysis_comment
+            .cases_analysis_comment_from
+              = User.find_by_id(comment.interviewer_id).name
+              %span.cases_analysis_comment_date
+                = comment.created_at.strftime("%d/%m/%Y")
+            .cases_analysis_comment_content
+              = comment.analytical_comment
+
+    #cases_analysis_comments_tab_commercial.cases_analysis_comments_tab.tab-pane
+      - if Case.comments_commercial(current_user).count > 0
+        - for comment in Case.comments_commercial(current_user)
+
+          .cases_analysis_comment
+            .cases_analysis_comment_from
+              = User.find_by_id(comment.interviewer_id).name
+              %span.cases_analysis_comment_date
+                = comment.created_at.strftime("%d/%m/%Y")
+            .cases_analysis_comment_content
+              = comment.commercial_comment
+
+    #cases_analysis_comments_tab_conclusion.cases_analysis_comments_tab.tab-pane
+      - if Case.comments_conclusion(current_user).count > 0
+        - for comment in Case.comments_conclusion(current_user)
+
+          .cases_analysis_comment
+            .cases_analysis_comment_from
+              = User.find_by_id(comment.interviewer_id).name
+              %span.cases_analysis_comment_date
+                = comment.created_at.strftime("%d/%m/%Y")
+            .cases_analysis_comment_content
+              = comment.conclusion_comment

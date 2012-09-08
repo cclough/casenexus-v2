@@ -3,8 +3,6 @@ class UserMailer < ActionMailer::Base
   # is layout below actually used?
  	layout 'email' # use awesome.(html|text).erb as the layout
 
-  # host prefix for all email URLs
-  url_host = "https://radiant-shore-5325.herokuapp.com/"
 
   def welcome_email(user)
     @user = user

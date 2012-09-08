@@ -20,6 +20,9 @@ Casenexus::Application.routes.draw do
     end
   end
 
+  # Notifications
+  resources :notifications
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

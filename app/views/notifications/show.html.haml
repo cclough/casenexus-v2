@@ -1,0 +1,13 @@
+- provide(:title, "Notification")
+
+
+%h3
+  Notification from
+  = avatar_for(@notification.sender)
+  = @notification.sender.name
+%br
+= @notification.content
+%br
+= @notification.ntype
+%br
+= @notification.url

@@ -1,0 +1,46 @@
+// Place all the styles related to the header here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Shouldn't need these here as well as in app.css.scss
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+
+
+
+#logo_nav{
+  position: absolute;
+  top: 0px;
+}
+
+#nav_links_left {
+  margin-left:220px;
+}
+
+#flash_application {
+
+  position: absolute;
+  top: 40px;
+  margin-left:20%;
+  margin-right:20%;
+  width:60%;
+  z-index:200;
+  margin-top:0px;
+
+}
+
+#header_menu_profile_casecount {
+  font-size: 1.1em;
+  color: white;
+  margin-left: 4px;
+  letter-spacing: 1px;
+}
+
+#header_menu_notifications_unreadcount {
+  font-size: 1.1em;
+  color: #ff7484;
+  margin-left: 4px;
+  letter-spacing: 1px;
+}

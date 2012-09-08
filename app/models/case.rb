@@ -12,6 +12,7 @@ class Case < ActiveRecord::Base
   validates :user_id, presence: true
   validates :interviewer_id, presence: true
   validates :date, presence: true
+
   validates :subject, presence: true, length: { maximum: 500 }
   validates :source, length: { maximum: 100 }
   
@@ -99,6 +100,32 @@ class Case < ActiveRecord::Base
                               analytical: c.analytical, 
                               commercial: c.commercial, 
                               conclusion: c.conclusion } }
+  end
+
+
+  # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
+  def self.comments_structure(user)
+    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
+                          created_at: m.created_at, 
+                          structure_comment: m.structure_comment } }
+  end
+
+  def self.comments_analytical(user)
+    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
+                          created_at: m.created_at, 
+                          analytical_comment: m.analytical_comment } }
+  end
+
+  def self.comments_commercial(user)
+    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
+                          created_at: m.created_at, 
+                          commercial_comment: m.commercial_comment } }
+  end
+
+  def self.comments_conclusion(user)
+    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
+                          created_at: m.created_at, 
+                          conclusion_comment: m.conclusion_comment } }
   end
 
 

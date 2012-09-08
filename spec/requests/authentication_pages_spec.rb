@@ -113,19 +113,26 @@ describe "Authentication" do
           it { should have_selector('title', text: 'Sign in') }
         end
 
-        # CANT GET THIS SHIT TO WORK
-        # describe "visiting the case show action" do
 
-        #   let(:user2) { FactoryGirl.create(:user) }
-        #   let(:cas) { FactoryGirl.create(:cas) }
+        describe "visiting the case show action" do
           
-        #   before do
-        #     sign_in user2
-        #     visit case_path(cas)
-        #   end
+          before do
+            1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+                    "Some Subject", source: "Some Source",
+                    structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
+                    structure_comment: "Structure Comment",
+                    analytical_comment: "Analytical Comment",
+                    commercial_comment: "Commercial Comment",
+                    conclusion_comment: "Conclusion Comment",
+                    comment: "Overall Comment",
+                    notes: "Some Notes") }
 
-        #   it { should have_selector('title', text: 'Sign in') }
-        # end
+            visit case_path(1)
+          end
+
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
 
         describe "visiting the new case action" do
           before { visit new_case_path }
@@ -134,6 +141,37 @@ describe "Authentication" do
 
         describe "submitting to the create action" do
           before { post cases_path }
+          specify { response.should redirect_to(signin_path)}
+        end
+
+      end
+
+      describe "in the Notifications controller" do
+
+        describe "visiting the notification index" do
+          before { visit notifications_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+
+        describe "visiting the notification show action" do
+          
+          before do
+
+            1.times { user.notifications.build(sender_id: 2, 
+                      ntype: "feedback_new", content: "Some subject",
+                      url: "http://ww.asd.com/" , event_date: Date.new(2012, 3, 3)) }
+            
+            visit notification_path(1)
+
+          end
+
+          it { should have_selector('title', text: 'Sign up') }
+        end
+
+
+        describe "submitting to the create action" do
+          before { post notifications_path }
           specify { response.should redirect_to(signin_path)}
         end
 
@@ -149,7 +187,6 @@ describe "Authentication" do
       let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
       before { sign_in user }
-
 
 
       ##### USERS CONTROLLER
@@ -168,14 +205,52 @@ describe "Authentication" do
 
       ##### CASES CONTROLLER   
 
-      # CANT GET TO WORK
-      # This test below is weak
-      # describe "visiting Cases#show page" do
-      #   before { visit case_path(wrong_user) }
-      #   it { should_not have_selector('title', text: 'Case') }
-      # end
+      describe "visiting the case show action" do
+
+        let(:user2) { FactoryGirl.create(:user) }
+        
+        before do
+          1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+                  "Some Subject", source: "Some Source",
+                  structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
+                  structure_comment: "Structure Comment",
+                  analytical_comment: "Analytical Comment",
+                  commercial_comment: "Commercial Comment",
+                  conclusion_comment: "Conclusion Comment",
+                  comment: "Overall Comment",
+                  notes: "Some Notes") }
+
+          sign_in user2
+          visit case_path(1)
+        end
+
+        it { should have_selector('title', text: 'Map') }
+
+      end
+
 
       # Not possible or neccessary for Cases Index page?
+
+      ##### NOTIFICATIONS CONTROLLER
+
+
+      describe "visiting the notification show action" do
+
+        let(:user2) { FactoryGirl.create(:user) }
+        
+        before do
+          1.times { user.notifications.build(sender_id: 2, 
+                    ntype: "feedback_new", content: "Some subject",
+                    url: "http://ww.asd.com/" , event_date: Date.new(2012, 3, 3)) }
+
+          sign_in user2
+          visit notification_path(1)
+        end
+
+        it { should have_selector('title', text: 'Map') }
+        
+      end
+
 
     end
 

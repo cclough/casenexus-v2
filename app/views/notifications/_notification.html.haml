@@ -1,0 +1,15 @@
+= link_to ("/notifications/" + notification.id.to_s) do
+
+  %table
+    %tr
+      %td
+        = avatar_for(notification.sender)
+      %td
+        %strong
+          = notification.sender.name
+        %span
+          #{time_ago_in_words(notification.created_at)} ago.
+        %div
+          = notification.ntype
+        %div
+          = notification.read

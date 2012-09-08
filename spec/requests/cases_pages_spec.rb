@@ -11,7 +11,7 @@ describe "Case Pages" do
   	before do
       1.times { FactoryGirl.create(:user,id: 2) }
 
-      11.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+      11.times {  user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
                   "Some Subject", source: "Some Source",
                   structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
                   structure_comment: "Structure Comment",
@@ -28,9 +28,7 @@ describe "Case Pages" do
     it { should have_selector('title', text: 'Your Cases') }
 
 
-    describe "pagination (& Global list selection)" do
-
-      
+    describe "pagination" do
 
       it { should have_selector('div.nexus_pagination') }
 
@@ -79,30 +77,7 @@ describe "Case Pages" do
 
   end
 
-  describe "#analysis" do
 
-    let(:user) { FactoryGirl.create(:user) }
-
-    before do
-      1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
-                "Some Subject", source: "Some Source",
-                structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
-                structure_comment: "Structure Comment",
-                analytical_comment: "Analytical Comment",
-                commercial_comment: "Commercial Comment",
-                conclusion_comment: "Conclusion Comment",
-                comment: "Overall Comment",
-                notes: "Some Notes") }
-
-      sign_in user
-      visit '/cases/analysis'
-      #save_and_open_page
-    end
-
-    it { should have_selector('title', text: 'Your Progress') }
-
-    # NEED JAVASCRIPT TESTS HERE!
-  end
 
 
   describe "#new case" do
@@ -203,6 +178,43 @@ describe "Case Pages" do
 
       end
 
+    end
+
+  end
+
+  describe "#analysis" do
+
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      1.times { FactoryGirl.create(:user,id: 2) } # so that interviewer id works
+
+      2.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+                "Some Subject", source: "Some Source",
+                structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
+                structure_comment: "Structure Comment",
+                analytical_comment: "Analytical Comment",
+                commercial_comment: "Commercial Comment",
+                conclusion_comment: "Conclusion Comment",
+                comment: "Overall Comment",
+                notes: "Some Notes") }
+
+      sign_in user
+      visit '/cases/analysis'
+      #save_and_open_page
+    end
+
+    it { should have_selector('title', text: 'Your Progress') }
+
+    # NEED JAVASCRIPT TESTS HERE!
+
+    it "should list each user" do
+      user.cases.each do |c|
+        page.should have_selector('div', text: c.structure_comment)
+        page.should have_selector('div', text: c.analytical_comment)
+        page.should have_selector('div', text: c.commercial_comment)
+        page.should have_selector('div', text: c.conclusion_comment)
+      end
     end
 
   end

@@ -1,0 +1,23 @@
+%li#fat-menu.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    / notifications icon + notification count
+    %i.icon-comments.icon-white.icon-large
+    %span#header_menu_notifications_unreadcount
+      = current_user.notifications.unread.count.to_s
+    %span.caret
+  %ul.dropdown-menu
+    %li
+      / see all link
+      = link_to "See all", '/notifications', style: "text-align:center;"
+    %li.divider
+
+    %li
+      / Build notification list for notifcations icon
+      - if Notification.header(current_user).count > 0
+        - Notification.header(current_user).each do |notification|
+
+          / render notification_header partial
+          = render partial: 'header/menu_notifications_item' , locals: { :notification => notification }
+
+      - else
+        = link_to "You have no Notifications", '#'

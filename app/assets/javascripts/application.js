@@ -15,4 +15,5 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require bootstrap-dropdown
+//= require bootstrap-tab
 //= require_tree .

@@ -271,5 +271,31 @@ describe Case do
   
   end
 
+  describe "Analysis Comments" do
+
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      3.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+                  "Some Subject", source: "Some Source",
+                  structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
+                  structure_comment: "Structure Comment",
+                  analytical_comment: "Analytical Comment",
+                  commercial_comment: "Commercial Comment",
+                  conclusion_comment: "Conclusion Comment",
+                  comment: "Overall Comment",
+                  notes: "Some Notes") }
+    end
+    
+    # No test for syntax of JSON, or that JSON is being made in controller
+
+    it "should contain the correct number of data points" do
+      Case.comments_structure(user).should have(3).items
+      Case.comments_analytical(user).should have(3).items
+      Case.comments_commercial(user).should have(3).items
+      Case.comments_conclusion(user).should have(3).items
+    end
+  
+  end
 
 end
