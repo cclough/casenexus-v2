@@ -1,5 +1,6 @@
  $(document).ready(function(){
 
+
  // List populate on page load
   updatelist();
 
@@ -93,9 +94,34 @@
               // Fade panel back in
               $("#users_index_mapcontainer_user").fadeIn('slow');
 
+
               // Code for 'close button' - needs to be here otherwise not applied in time
               $("#users_show_close").click(function() {
                 $('#users_index_mapcontainer_user').fadeOut('slow');
+              });
+
+
+              // Modal Stuff!
+              $('#modal_message').modal({
+                backdrop: false,
+                show: false
+              });
+
+              $('#modal_feedback_req').modal({
+                backdrop: false,
+                show: false
+              });
+
+              // message button click, hides other modal
+              // not using TBS data-toggle etc. as doesn't let you hide others
+              $('#users_index_user_button_message').click(function() {
+                $('#modal_message').modal('show');
+                $('#modal_feedback_req').modal('hide')
+              });
+
+              $('#users_index_user_button_feedback_req').click(function() {
+                $('#modal_message').modal('hide');
+                $('#modal_feedback_req').modal('show')
               });
 
             });
@@ -134,8 +160,10 @@
   });
 
 
-  // $(".datepicker").datepicker();
 
+
+
+  $("#modal_feedback_req_datepicker").datepicker();
 
 
 });

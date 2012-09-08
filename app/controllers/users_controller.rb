@@ -74,6 +74,7 @@ class UsersController < ApplicationController
     
     if @user.approved?
       respond_to do |format|
+        @notification = Notification.new
         format.html { render :layout => false }
        end
     else

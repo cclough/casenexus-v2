@@ -75,9 +75,23 @@
     %li.users_show_list_header
       Actions:
     %li
-      Message
-      %br
-      Request Feedback
-      %br
+      / send message button
+      %a#users_index_user_button_message.btn.btn-inverse
+        %i.icon-comment.icon-white
+        %span
+          Message
+
+      / send feedback req button
+      %a#users_index_user_button_feedback_req.btn.btn-inverse
+        %i.icon-refresh.icon-white
+        %span
+          Request Feedback
+
       / send feedback button
       = link_to raw("<i class=\"icon-edit icon-white\"/>Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse", id: "users_index_user_button_sendfeedback"
+
+
+
+= render 'shared/modal_message'
+= render 'shared/modal_feedback_req'
+

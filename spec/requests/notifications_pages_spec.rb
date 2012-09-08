@@ -74,8 +74,6 @@ describe "Notification Pages" do
 
 
 
-
-
   # describe "signup" do
     
   #   before { visit signup_path }
