@@ -25,15 +25,29 @@ $gray_Lightest: #f6f6f6;
   height: 100%;
 }
 
+/***** for custom control position hack *****/
+
+#users_index_map_zoomcontrol {
+  position: absolute;
+  left: 405px;
+}
+
+/* When the below is used, control disappears on mouse over */
+// .gmnoprint{
+//     display: none;
+// }
+
+/********************************************/
+
+
 #users_index_mapcontainer_users {
-  top: 37px;
-  left: 80px;
+  top: 39px;
+  left: 0px;
   width: 400px;
-  height:100%;
 }
 
 #users_index_mapcontainer_user {
-  top: 37px;
+  top: 39px;
   right: 80px;
   width: 320px;
   display: none;
@@ -41,7 +55,7 @@ $gray_Lightest: #f6f6f6;
 
 #users_index_users {
   margin-top:37px;
-  height:420px;
+  height:570px;
 }
 
 
@@ -89,3 +103,20 @@ $gray_Lightest: #f6f6f6;
   padding: 0px;
   display: none;
 }
+
+
+
+
+
+
+
+
+
+.hidden {
+  position:absolute;
+  left:-999em;
+  top:-999em;
+  width:1%;
+}
+
+

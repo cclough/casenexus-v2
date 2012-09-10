@@ -20,18 +20,21 @@ class NotificationsController < ApplicationController
 
     if @notification.save
 
-      user_target = @notification.target
-      url = @notification.url
-
-      # used as message, but also case subject
-      !@notification.content.nil? ? content = @notification.content : nil
-			!@notification.event_date.nil? ? event_date = @notification.event_date : nil
-
+      # NB .content has varying roles
       case params[:notification][:ntype]
-      when "welcome" then UserMailer.welcome(user_target, url).deliver
-      when "message" then UserMailer.message(user_target, url, content).deliver
-      when "feedback" then UserMailer.feedback(user_target, url, content, event_date).deliver
-      when "feedback_req" then UserMailer.feedback_req(user_target, url, content, event_date).deliver
+      when "welcome" then UserMailer.welcome(@notification.target, 
+                                             @notification.url).deliver
+      when "message" then UserMailer.message(@notification.target, 
+                                             @notification.url, 
+                                             @notification.content).deliver
+      when "feedback" then UserMailer.feedback(@notification.target, 
+                                               @notification.url, 
+                                               @notification.content, 
+                                               @notification.event_date).deliver
+      when "feedback_req" then UserMailer.feedback_req(@notification.target, 
+                                                       @notification.url,
+                                                       @notification.content, 
+                                                       @notification.event_date).deliver
       end
 
       flash.now[:success] = 'Notification sent & emailed!'

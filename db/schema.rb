@@ -42,10 +42,9 @@ ActiveRecord::Schema.define(:version => 20120908151336) do
     t.text     "content"
     t.date     "event_date"
     t.integer  "case_id"
-    t.boolean  "read",                          :default => false
+    t.boolean  "read",       :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
@@ -87,7 +86,6 @@ ActiveRecord::Schema.define(:version => 20120908151336) do
     t.boolean  "approved",         :default => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
-
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

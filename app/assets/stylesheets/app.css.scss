@@ -81,6 +81,7 @@ textarea {
   border: 1px solid #e5e5e5;
   text-align: center;
   padding: 5px;
+  margin-top: 2px;
   cursor: default; }
   .nexus_pagination a, .nexus_pagination span {
     padding: 0.2em 0.3em; }
@@ -103,3 +104,11 @@ textarea {
     color: black; }
     .nexus_pagination a:hover, .nexus_pagination a:focus {
       text-decoration: underline; }
+
+
+/* remove small skype box hack */
+
+#skypedetectionswf{
+  margin-left: -10000px;
+  width: .001em;
+}
