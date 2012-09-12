@@ -10,18 +10,18 @@ describe "Notification Pages" do
     let(:user) { FactoryGirl.create(:user) }
 
   	before do
-      1.times { FactoryGirl.create(:user,id: 2) }
+      1.times { FactoryGirl.create(:user, id: 2) }
 
       11.times { user.notifications.create(sender_id: 2, 
-                 ntype: "feedback_new", content: "Some subject",
-                 url: "http://ww.asd.com/" , event_date: Date.new(2012, 3, 3)) }
+                 ntype: "feedback", content: "Some subject",
+                 event_date: Date.new(2012, 3, 3)) }
 
       sign_in user
       visit notifications_path
+
     end
 
     it { should have_selector('title', text: 'Your Notifications') }
-
 
     describe "pagination" do
 
@@ -48,8 +48,8 @@ describe "Notification Pages" do
       1.times { FactoryGirl.create(:user, id: 2) } # so that interviewer id works
 
       1.times { user.notifications.create(sender_id: 2, 
-                ntype: "feedback_new", content: "Some subject",
-                url: "http://ww.asd.com/" , event_date: Date.new(2012, 3, 3)) }
+                 ntype: "feedback", content: "Some subject",
+                 event_date: Date.new(2012, 3, 3)) }
 
       sign_in user
       visit notification_path(1)
@@ -58,8 +58,7 @@ describe "Notification Pages" do
 
     it "should contain the right info" do
       page.should have_content('Some subject')
-      page.should have_content('feedback_new')
-      page.should have_content('http://ww.asd.com/')
+      page.should have_content('feedback')
     end
 
     it "should set read to true" do
@@ -74,73 +73,159 @@ describe "Notification Pages" do
 
 
 
-  # describe "signup" do
+  describe "send message", js: true do
     
-  #   before { visit signup_path }
+    let(:user) { FactoryGirl.create(:approved) }
 
-  #   let(:submit) { "Create my account" }
+    before do
+      sign_in user
+      sleep(0.2)
+      click_link('users_index_users_button_filter')
+      choose('users_listtype_global')
+      sleep(0.2)
+      page.execute_script "$('#users_index_users_item_1').trigger('click');"
+      sleep(0.2)
+      page.execute_script "$('#users_index_user_button_message').trigger('click');"
+      sleep(0.2)
+    end
 
-  #   describe "with invalid information" do
-  #     it "should not create a user" do
-  #       expect { click_button submit }.not_to change(User, :count)
-  #     end
+    let(:submit) { "Send Message" }
 
-  #     describe "after submission" do
-  #       before { click_button submit }
+    describe "without content" do
+      it "should not create a notification" do
+        expect { click_button submit }.not_to change(Notification, :count)
+      end
 
-  #       it { should have_selector('title', text: 'Sign up') }
-  #       it { should have_content('error') }
-  #       it { should_not have_content('Password digest') }
-  #     end
-  #   end
+      describe "after submission" do
+        before { click_button submit }
 
-  #   describe "with valid information" do
+        it { should have_content('error') }
+      end
+    end
 
-  #     before do
-  #       fill_in "First name", with: "Example"
-  #       fill_in "Last name", with: "User"
-  #       fill_in "Email", with: "user@example.com"
-  #       fill_in "Password", with: "foobar"
-  #       fill_in "Confirm Password", with: "foobar"
-  #       # capybara can't fill_in hidden fields - using a javascript workaround! cool!
-  #       find(:xpath, "//input[@id='lat']").set "51"
-  #       find(:xpath, "//input[@id='lng']").set "1"
-  #       fill_in "Describe your current situation", with: "a" * 51
-  #       check "Accept the terms and conditions"
-  #     end
+    describe "with valid information" do
+
+      before do
+        fill_in 'notification_content', with: "Testing 123"
+      end
       
-  #     it "should create a user" do
-  #       expect { click_button submit }.to change(User, :count).by(1)
-  #     end
+      it "should create a notification" do
+        expect { click_button submit }.to change(Notification, :count).by(1)
+      end
 
-  #     describe "should receive a welcome email" do
+      describe "should receive a welcome email" do
 
-  #       subject { last_email_sent }
+        subject { last_email_sent }
 
-  #       it { should be_delivered_from("info@casenexus.com") }
-  #       it { should deliver_to("Example User <user@example.com>") }
-  #       it { should have_subject("casenexus: Welcome") }
-  #       it { should have_body_text("Welcome") }
-  #       it { should have_body_text("http://www.casenexus.com/signin") }
+        it { should be_delivered_from("mailer@casenexus.com") }
+        it { should deliver_to("Person 3 <person_3@example.com>") }
+        it { should have_subject("casenexus: You have been sent a message") }
+        it { should have_body_text("You have been sent a message by Person 3") }
+        it { should have_body_text("notifications/1") }
 
-  #     end
+      end
 
-  #     describe "after saving a user" do
-  #       before { click_button submit }
+      describe "after saving a notification" do
+        before do
+          click_button submit
+          sleep(1)
+        end
 
-  #       let(:user) { User.find_by_email("user@example.com") }
+        it { should have_selector('div.alert.alert-success') }
 
-  #       it { should have_selector('title', text: "Map") }
-  #       it { should have_selector('div.alert.alert-success', text: 'Welcome') }
-  #       it { should have_link('Sign out') }
-  #     end
+      end
 
-  #   end
+    end
 
-  # end
+  end
 
 
+  describe "send feedback request", js: true do
+    
+    let(:user) { FactoryGirl.create(:approved) }
 
+    before do
+      sign_in user
+      sleep(0.2)
+      click_link('users_index_users_button_filter')
+      choose('users_listtype_global')
+      sleep(0.2)
+      page.execute_script "$('#users_index_users_item_1').trigger('click');"
+      sleep(0.2)
+      page.execute_script "$('#users_index_user_button_feedback_req').trigger('click');"
+      sleep(0.2)
+    end
+
+    let(:submit) { "Send Feedback Request" }
+
+    describe "without subject" do
+      it "should not create a notification" do
+        fill_in 'modal_feedback_req_datepicker', with: '12/12/2012'
+        expect { click_button submit }.not_to change(Notification, :count)
+      end
+
+      describe "after submission" do
+        before do
+          fill_in 'modal_feedback_req_datepicker', with: '12/12/2012'
+          click_button submit
+        end
+
+        it { should have_content('error') }
+      end
+    end
+
+    describe "without date" do
+      it "should not create a notification" do
+        fill_in 'notification_content', with: 'xxxx'
+        expect { click_button submit }.not_to change(Notification, :count)
+      end
+
+      describe "after submission" do
+        before do
+          fill_in 'notification_content', with: 'xxxx'
+          click_button submit
+        end
+
+        it { should have_content('error') }
+      end
+    end
+
+    describe "with valid information" do
+
+      before do
+        fill_in 'modal_feedback_req_datepicker', with: '12/12/2012'
+        fill_in 'notification_content', with: "Testing 123"
+      end
+      
+      it "should create a notification" do
+        expect { click_button submit }.to change(Notification, :count).by(1)
+      end
+
+      describe "should receive a welcome email" do
+
+        subject { last_email_sent }
+
+        it { should be_delivered_from("mailer@casenexus.com") }
+        it { should deliver_to("Person 5 <person_5@example.com>") }
+        it { should have_subject("casenexus: You have been sent a feedback request") }
+        it { should have_body_text("You have been sent a feedback request by Person 5") }
+        it { should have_body_text("cases/new") }
+
+      end
+
+      describe "after saving a notification" do
+        before do
+          click_button submit
+          sleep(1)
+        end
+
+        it { should have_selector('div.alert.alert-success') }
+
+      end
+
+    end
+
+  end
 
 
 

@@ -2,8 +2,7 @@
   .navbar-inner
     .container
       #logo_nav
-        = link_to image_tag("app/logo-dome.png"), users_path, id: "logo-dome"
-        = link_to image_tag("app/logo-text.png"), users_path, id: "logo-text"
+        = link_to image_tag("app/logo.png"), users_path
 
       - if signed_in?
         %ul#nav_links_left.nav.pull-left
@@ -34,3 +33,4 @@
 
           %button.btn.btn-inverse{:href => "#", :type => "submit", tabindex: "3"}
             %i.icon-share-alt.icon-white
+            Sign in

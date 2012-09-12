@@ -18,31 +18,54 @@ class NotificationsController < ApplicationController
 
     @notification = Notification.new(params[:notification])
 
-    if @notification.save
+    respond_to do |format|
 
-      # NB .content has varying roles
-      case params[:notification][:ntype]
-      when "welcome" then UserMailer.welcome(@notification.target, 
-                                             @notification.url).deliver
-      when "message" then UserMailer.message(@notification.target, 
-                                             @notification.url, 
-                                             @notification.content).deliver
-      when "feedback" then UserMailer.feedback(@notification.target, 
-                                               @notification.url, 
-                                               @notification.content, 
-                                               @notification.event_date).deliver
-      when "feedback_req" then UserMailer.feedback_req(@notification.target, 
-                                                       @notification.url,
-                                                       @notification.content, 
-                                                       @notification.event_date).deliver
+      if @notification.save
+
+        # NB .content has varying roles
+        case params[:notification][:ntype]
+        when "welcome"
+          UserMailer.welcome(@notification.target, 
+                             @notification.url).deliver
+        when "feedback"
+          UserMailer.feedback(current_user,
+                              @notification.target, 
+                              @notification.url, 
+                              @notification.event_date,
+                              @notification.content).deliver
+        when "feedback_req"
+          UserMailer.feedback_req(current_user,
+                                  @notification.target, 
+                                  @notification.url,
+                                  @notification.event_date,
+                                  @notification.content).deliver
+          format.js
+          flash.now[:success] = 'Feedback request sent'
+        when "message"
+          UserMailer.usermessage(current_user,
+                                 @notification.target, 
+                                 @notification.url, 
+                                 @notification.content).deliver
+          format.js
+          flash.now[:success] = 'Message sent'
+        end
+
+      else
+
+        case params[:notification][:ntype]
+        when "message", "feedback_req"
+          # need to declare target user again for form
+          @user = @notification.target
+          format.js
+        when "welcome", "feedback"
+          flash.now[:error] = 'Notification could not be sent'
+        end
+
       end
 
-      flash.now[:success] = 'Notification sent & emailed!'
-    else
-    	flash.now[:error] = 'Notification could not be saved!'
     end
-
-	end
+	
+  end
 
 	private
 

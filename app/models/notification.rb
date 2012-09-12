@@ -10,6 +10,13 @@ class Notification < ActiveRecord::Base
 
   validates :content, length: { maximum: 500 }
 
+  # cool validation from: http://stackoverflow.com/questions/1673812/rails-validation-for-users-email-only-want-it-to-validate-when-a-user-signs-up
+  validates_presence_of :content, :if => lambda {self.ntype == 'message'}
+  validates_presence_of :content, :event_date, :if => lambda {self.ntype == 'feedback_req'}
+  validates_presence_of :content, :event_date, :if => lambda {self.ntype == 'feedback'}
+
+
+
   ### Scopes
 
   # Read Scope
@@ -35,7 +42,7 @@ class Notification < ActiveRecord::Base
 
   def url
 
-    host = "https://localhost:3000/"
+    host = "http://localhost:3000/"
 
     case ntype
     when "welcome"

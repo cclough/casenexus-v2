@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      You have been sent a feedback request by #{@user_from.name}
+    %h3
+      Case on #{@date}
+    %p
+      = @subject
+    %p
+      Use this link to go to the form:
+      = link_to @url, @url

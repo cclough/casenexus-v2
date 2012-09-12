@@ -91,7 +91,9 @@
       = link_to raw("<i class=\"icon-edit icon-white\"/>Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse", id: "users_index_user_button_sendfeedback"
 
 
+#modal_message.modal.hide.fade
+  = render 'shared/modal_form_message'
 
-= render 'shared/modal_message'
-= render 'shared/modal_feedback_req'
+#modal_feedback_req.modal.hide.fade
+  = render 'shared/modal_form_feedback_req'
 

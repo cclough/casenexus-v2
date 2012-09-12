@@ -182,8 +182,6 @@ describe Case do
     it { should_not be_valid }
   end
 
-
-
   describe "interviewer should be user found by interviewer_id" do
 
     let(:user) { FactoryGirl.create(:user, id: 2) }

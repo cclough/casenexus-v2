@@ -6,9 +6,7 @@
     %h1
       Welcome to casenexus.com, #{@user.first_name}
     %p
-      You have successfully signed up to casenexus.com,
-      your email address is: #{@user.email}.
-      %br/
+      Your email is: #{@user.email}.
     %p
-      To login to the site, just follow this link: #{@url}.
-    %p Thanks for joining and have a great day!
+      To sign-in, follow this link:
+        = link_to @url, @url

@@ -84,19 +84,18 @@ describe "User pages" do
     end
 
 
-  	###### THE ELUSIVE MAP TEST ######
-
-    # Trigger Click - test for entire map system
-
-    #  Current problem - show panel doesn't popup - google map not loading properly
+  	###### THE AMAZING MAP TEST ######
 
     describe "triggering a marker click should correctly show the user profile (test of entire map system)", :js => true do
       before do
-        sleep(4)
-        click_link('users_index_users_item_' + user.id)
-        sleep(4)
+        sleep(0.2)
+        click_link('users_index_users_button_filter')
+        choose('users_listtype_global')
+        sleep(0.2)
+        page.execute_script "$('#users_index_users_item_31').trigger('click');"
+        sleep(0.2)
       end
-      it { should have_content('Person') }      
+      it { should have_content('Eton') }      
     end
 
 end

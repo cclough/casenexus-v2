@@ -1,0 +1,13 @@
+
+
+<%- if @notification.errors.any? %>
+
+  $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_form_' + @notification.ntype)) %>');
+<%- else %>
+
+	$('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
+
+  $("#flash_application").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+	$("#flash_application").fadeIn("fast");
+
+<%- end %>

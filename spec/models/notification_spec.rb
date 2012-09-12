@@ -57,6 +57,47 @@ describe Notification do
   end
 
 
+  describe "with blank content if ntype is message" do
+    before do
+      @notification.ntype = 'message'
+      @notification.content = ""
+    end
+    it { should_not be_valid }
+  end
+
+  describe "with blank content if ntype is feedback_req" do
+    before do
+      @notification.ntype = 'feedback_req'
+      @notification.content = ""
+    end
+    it { should_not be_valid }
+  end
+
+  describe "with blank content if ntype is feedback" do
+    before do
+      @notification.ntype = 'feedback'
+      @notification.content = ""
+    end
+    it { should_not be_valid }
+  end
+
+  describe "with blank event_date if ntype is feedback_req" do
+    before do
+      @notification.ntype = 'feedback_req'
+      @notification.event_date = ""
+    end
+    it { should_not be_valid }
+  end
+
+  describe "with blank event_date if ntype is feedback" do
+    before do
+      @notification.ntype = 'feedback'
+      @notification.event_date = ""
+    end
+    it { should_not be_valid }
+  end
+
+
   describe "sender should be user found by sender_id" do
 
     let(:user) { FactoryGirl.create(:user, id: 2) }
@@ -125,7 +166,7 @@ describe Notification do
 
     let(:user) { FactoryGirl.create(:user) }
 
-    let(:host) { "https://localhost:3000/" }
+    let(:host) { "http://localhost:3000/" }
 
     before { @notification.save }
 

@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   # Map
 	def index
 
+    @notification = Notification.new
+    
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
     when "global"
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html 
       format.js # links index.js.erb!
-      format.json { render json: User.markers }
+      format.json { render json: User.markers } # map marker feed
     end
 
 	end
