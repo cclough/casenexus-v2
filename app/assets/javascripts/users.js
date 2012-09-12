@@ -1,6 +1,151 @@
  $(document).ready(function(){
 
 
+
+  // Hide stuff with the JavaScript. If JS is disabled, the form will still be useable.
+  // NOTE:
+  // Sometimes using the .hide(); function isn't as ideal as it uses display: none; 
+  // which has problems with some screen readers. Applying a CSS class to kick it off the
+  // screen is usually prefered, but since we will be UNhiding these as well, this works.
+
+  $("#users_new_education_group_optional_1, #users_new_education_group_optional_2").hide();
+  $("#users_new_experience_group_optional_1, #users_new_experience_group_optional_2").hide();
+
+  // Reset form elements back to default values on page load
+  // ... don't want browser remembering values like checked checkboxes in this case
+  $("#submit_button").attr("disabled",true);
+
+
+  $("#num_attendees").val('Please Choose');
+  $("#step_2 input[type=radio]").each(function(){
+    this.checked = false;
+  });
+  $("#rock").each(function(){
+    this.checked = false;
+  });
+  
+
+  // Fade out steps 2 and 3 until ready
+  $("#users_new_form_panel_step_2, #users_new_form_panel_step_3").css({ opacity: 0.3 });
+
+
+
+
+
+
+
+
+  $("#user_password_confirmation").keyup(function() {
+    if ($('#user_password_confirmation').val() == $('#user_password').val()) {
+      $("#users_new_form_panel_step_2").css({
+        opacity: 1
+      });
+    } else {
+      $("#users_new_form_panel_step_2").css({
+        opacity: 0.3
+      });
+    };
+  });
+
+
+
+
+
+
+
+
+
+  var users_new_education_group_count = 1;
+
+  $("#users_new_button_education_add").click(function() {
+
+    if (users_new_education_group_count == 1) {
+      $('#users_new_education_group_optional_1').slideDown();
+      users_new_education_group_count = users_new_education_group_count + 1;
+    } else if (users_new_education_group_count == 2) {
+      $('#users_new_education_group_optional_2').slideDown();
+      users_new_education_group_count = users_new_education_group_count + 1;
+    }
+
+  });
+
+  $("#users_new_button_education_remove").click(function() {
+
+    if (users_new_education_group_count == 2) {
+      $('#users_new_education_group_optional_1').slideUp();
+      users_new_education_group_count++;
+    } else if (users_new_education_group_count == 3) {
+      $('#users_new_education_group_optional_2').slideDown();
+      users_new_education_group_count++;
+    }
+
+  });
+
+  var users_new_experience_group_count = 1;
+
+  $("#users_new_button_experience_add").click(function() {
+
+    if (users_new_experience_group_count == 1) {
+      $('#users_new_experience_group_optional_1').slideDown();
+      users_new_experience_group_count++;
+    } else if (users_new_experience_group_count == 2) {
+      $('#users_new_experience_group_optional_2').slideDown();
+      users_new_experience_group_count++;
+    }
+
+  });
+
+  $("#users_new_button_experience_remove").click(function() {
+
+    if (users_new_experience_group_count == 2) {
+      $('#users_new_experience_group_optional_1').slideUp();
+      users_new_experience_group_count++;
+    } else if (users_new_experience_group_count == 3) {
+      $('#users_new_experience_group_optional_2').slideDown();
+      users_new_experience_group_count++;
+    }
+
+  });
+
+
+
+
+
+
+
+  $("#user_accepts_tandc").click(function(){
+
+    if (this.checked && (step1complete == true) && (step2complete == true) && (step3complete == true)) { // check entire form is complete
+      $("#submit_button").attr("disabled",false);
+    } else {
+      $("#submit_button").attr("disabled",false);
+    };
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  // List populate on page load
   updatelist();
 
@@ -63,7 +208,6 @@
         );
     
     $.getJSON('users', function(json) { 
-      //for (var i = 0; i < json.length; i++) {
 
       $.each( json, function(i, marker) {
 
@@ -171,17 +315,21 @@
   });
 
 
+  $(".users_datepicker").datepicker();
+  // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
 
 
 
+
+
+  
   // Hide stuff with the JavaScript. If JS is disabled, the form will still be useable.
   // NOTE:
   // Sometimes using the .hide(); function isn't as ideal as it uses display: none; 
   // which has problems with some screen readers. Applying a CSS class to kick it off the
   // screen is usually prefered, but since we will be UNhiding these as well, this works.
-
   $(".name_wrap, #company_name_wrap, #special_accommodations_wrap").hide();
-  
+
   // Reset form elements back to default values on page load
   // ... don't want browser remembering values like checked checkboxes in this case
   $("#submit_button").attr("disabled",true);
@@ -195,49 +343,11 @@
   
 
 
-
-
-
-  // When a dropdown selection is made
-  $("#num_attendees").change(function() {
-
-    $(".name_wrap").slideUp().find("input").removeClass("active_name_field");
-
-        var numAttendees = $("#num_attendees option:selected").text();
-                
-        for ( i=1; i<=numAttendees; i++ ) {
-            $("#attendee_" + i + "_wrap").slideDown().find("input").addClass("active_name_field");
-        }
-                  
-  });
-  
-
-
-
-
-
-  
-  // Hide stuff with the JavaScript. If JS is disabled, the form will still be useable.
-  // NOTE:
-  // Sometimes using the .hide(); function isn't as ideal as it uses display: none; 
-  // which has problems with some screen readers. Applying a CSS class to kick it off the
-  // screen is usually prefered, but since we will be UNhiding these as well, this works.
-  $(".name_wrap, #company_name_wrap, #special_accommodations_wrap").hide();
-  
-  // Reset form elements back to default values on page load
-  // ... don't want browser remembering values like checked checkboxes in this case
-  $("#submit_button").attr("disabled",true);
-  $("#num_attendees").val('Please Choose');
-  $("#step_2 input[type=radio]").each(function(){
-    this.checked = false;
-  });
-  $("#rock").each(function(){
-    this.checked = false;
-  });
-  
 
   // Fade out steps 2 and 3 until ready
   $("#step_2, #step_3").css({ opacity: 0.3 });
+
+
 
 
 
@@ -335,6 +445,8 @@
     stepTwoTest();
   });
   
+
+
   $("#rock").click(function(){
     if (this.checked && $("#num_attendees option:selected").text() != 'Please Choose'
         && $.stepTwoComplete_one == 'complete' && $.stepTwoComplete_two == 'complete') {
@@ -343,8 +455,6 @@
         $("#submit_button").attr("disabled",true);
     }
   });
-  
-
 
 
 

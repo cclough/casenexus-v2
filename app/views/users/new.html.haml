@@ -15,8 +15,8 @@
   = form_for(@user) do |f|
   
     .row
-      .span5
-        .panel.kill_left.kill_right
+      .span4
+        #users_new_form_panel_step_1.panel.kill_right
 
           = render 'shared/error_messages', object: @user
           = f.label :first_name
@@ -30,24 +30,81 @@
           = f.label :password_confirmation, "Confirm Password"
           = f.password_field :password_confirmation
 
-          = f.label :status, "Describe your current situation"
-          = f.text_area :status
-
           = f.label :email_admin, "Receive case interview advice email letter"
           = f.check_box :email_admin
           = f.label :email_users, "Send notifications from users to your email"
           = f.check_box :email_users
 
+      .span4
+        #users_new_form_panel_step_2.panel.kill_left.kill_right
+
+          #users_new_education_group
+
+          = f.text_field :education1, placeholder: "Education 1"
+          = f.text_field :education1_from, placeholder: "From", class: "users_datepicker"
+          = f.text_field :education1_to, placeholder: "To", class: "users_datepicker"
+
+          #users_new_education_group_optional_1
+
+            = f.text_field :education2, placeholder: "Education 2"
+            = f.text_field :education2_from, placeholder: "From", class: "users_datepicker"
+            = f.text_field :education2_to, placeholder: "To", class: "users_datepicker"
+
+          #users_new_education_group_optional_2
+
+            = f.text_field :education3, placeholder: "Education 3"
+            = f.text_field :education3_from, placeholder: "From", class: "users_datepicker"
+            = f.text_field :education3_to, placeholder: "To", class: "users_datepicker"
+
+          %a#users_new_button_education_add.btn.btn-inverse Add School
+          %a#users_new_button_education_remove.btn.btn-inverse Remove School
+
+
+
+
+          #users_new_experience_group
+            = f.text_field :experience1, placeholder: "Experience 1"
+            = f.text_field :experience1_from, placeholder: "From", class: "users_datepicker"
+            = f.text_field :experience1_to, placeholder: "To", class: "users_datepicker"
+
+          #users_new_experience_group_optional_1
+            = f.text_field :experience2, placeholder: "Experience 2"
+            = f.text_field :experience2_from, placeholder: "From", class: "users_datepicker"
+            = f.text_field :experience2_to, placeholder: "To", class: "users_datepicker"
+
+          #users_new_experience_group_optional_2
+
+            = f.text_field :experience3, placeholder: "experience 3"
+            = f.text_field :experience3_from, placeholder: "From", class: "users_datepicker"
+            = f.text_field :experience3_to, placeholder: "To", class: "users_datepicker"
+
+          %a#users_new_button_experience_add.btn.btn-inverse Add Work
+          %a#users_new_button_experience_remove.btn.btn-inverse Remove Work
+
+          = f.label :skype
+          = f.text_field :skype, placeholder: "Skype"
+          = f.label :linkedin
+          = f.text_field :linkedin, placeholder: "LinkedIn"
+
+      .span4
+        #users_new_form_panel_step_2.panel.kill_left
+
+          = f.label :status, "Describe your current situation"
+          = f.text_area :status
+
+          #users_new_map.map
+
+          = f.hidden_field :lat, id: "lat"
+          = f.hidden_field :lng, id: "lng"
+
+
           = f.label :accepts_tandc, "Accept the terms and conditions"
           = f.check_box :accepts_tandc
-
-          = f.text_field :lat, id: "lat"
-          = f.text_field :lng, id: "lng"
-
           %br
           = f.submit "Create my account", class: "btn btn-large btn-inverse"
-      .span7
-        #users_new_map.map
+
+
+
 
 
 

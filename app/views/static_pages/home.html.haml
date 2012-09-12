@@ -1,19 +1,17 @@
 = content_for :content do
+
   .row
-    .span8
-      .panel.kill_right
-        = image_tag('misc/banner.png')
+    .span12
+      .panel.kill_bottom
+        .row
+          .span6
+            = image_tag('home/banner.png', id: 'static_home_banner')
+          .span5
 
-    .span4
-      .panel.type1.kill_left
-        = form_for(:session, url: sessions_path) do |f|
-          = f.label :email
-          = f.text_field :email
-          = f.label :password
-          = f.password_field :password
-          = f.submit "Sign in", class: "btn btn-inverse pull-right"
+            = image_tag('home/slider/1.png', id: 'static_home_slider')
 
-      .panel.kill_left
-        .center
-          %p
-          = link_to "Sign up now!", signup_path, class: "btn btn-large btn btn-inverse"
+            .row
+              .span3
+                %h3 Start practising case interviews
+              .span2
+                = link_to "Sign up", signup_path, class: "btn btn-large btn btn-inverse"

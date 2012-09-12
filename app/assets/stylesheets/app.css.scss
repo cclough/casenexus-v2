@@ -21,6 +21,31 @@ textarea {
 }
 
 
+footer {
+  padding-top: 15px;
+  a{
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+
+  ul {
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+.container {
+  &.main{
+    /* gives twitter like white translucent background */
+    background: url(app/white-wash.png);
+  }
+}
 
 /* For views/shared/_error_messages - is this used for all forms? */
 #error_explanation {
@@ -31,12 +56,6 @@ textarea {
   }
 }
 
-.container {
-  &.main{
-    /* gives twitter like white translucent background */
-    background: url(misc/white-wash.png);
-  }
-}
 
 .panel{
   background: white;
