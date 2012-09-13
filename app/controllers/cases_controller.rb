@@ -25,13 +25,6 @@ class CasesController < ApplicationController
     @case = case_user.cases.build(params[:case])
 
 	  	if @case.save
-      	# NOT FINISHED - DOES NOT SUBMIT EMAIL
-      	case_user.notifications.create(sender_id: current_user.id,
-      																 ntype: "feedback",
-                           					   content: @case.subject,
-                           					   case_id: @case.id,
-                           					   event_date: @case.date)
-
 	  		flash[:success] = 'Feedback Sent'
 	  		redirect_to users_path
 	  	else

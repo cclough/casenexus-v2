@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
                   :skype, :linkedin,
                   :email_admin,:email_users, :accepts_tandc
 
-  ### Possessions
+  ### Relationships
   has_many :cases
   has_many :notifications
   
@@ -23,9 +23,12 @@ class User < ActiveRecord::Base
   has_secure_password
 
 
-  ### Before Saves
+  ### Callbacks
   before_save { |user| user.email = user.email.downcase }
   before_save :create_remember_token
+
+  after_create :create_notification
+
 
 
   ### Validations
@@ -113,12 +116,16 @@ class User < ActiveRecord::Base
   end
 
 
-
-  ### Private Functions
-  # function called above in before_saves to create session remember token
   private
 
   	def create_remember_token
   		self.remember_token = SecureRandom.urlsafe_base64
   	end
+
+    def create_notification
+      self.notifications.create(user_id: self.id,
+                                sender_id: 1, # Admin user set in seeds.rb
+                                ntype: "welcome")
+    end
+
 end

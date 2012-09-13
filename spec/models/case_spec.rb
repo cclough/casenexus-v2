@@ -5,7 +5,7 @@ describe Case do
   let(:user) { FactoryGirl.create(:user) }
 
   before do
-    @case = user.cases.build(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+    @case = user.cases.build(interviewer_id: 3, date: Date.new(2012, 3, 3), subject:
     				"Some Subject", source: "Some Source",
   				  structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
 				    structure_comment: "Structure Comment",
@@ -184,7 +184,7 @@ describe Case do
 
   describe "interviewer should be user found by interviewer_id" do
 
-    let(:user) { FactoryGirl.create(:user, id: 2) }
+    let(:user) { FactoryGirl.create(:user, id: 3) }
 
     before { @case.save }
 
@@ -217,7 +217,7 @@ describe Case do
     let(:user) { FactoryGirl.create(:user) }
 
     before do
-      11.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+      11.times { user.cases.create(interviewer_id: 3, date: Date.new(2012, 3, 3), subject:
                   "Some Subject", source: "Some Source",
                   structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
                   structure_comment: "Structure Comment",
@@ -250,7 +250,7 @@ describe Case do
     let(:user) { FactoryGirl.create(:user) }
 
     before do
-      11.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+      11.times { user.cases.create(interviewer_id: 3, date: Date.new(2012, 3, 3), subject:
                   "Some Subject", source: "Some Source",
                   structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
                   structure_comment: "Structure Comment",
@@ -274,7 +274,7 @@ describe Case do
     let(:user) { FactoryGirl.create(:user) }
 
     before do
-      3.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
+      3.times { user.cases.create(interviewer_id: 3, date: Date.new(2012, 3, 3), subject:
                   "Some Subject", source: "Some Source",
                   structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
                   structure_comment: "Structure Comment",

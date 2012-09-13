@@ -187,18 +187,6 @@ end
         expect { click_button submit }.to change(User, :count).by(1)
       end
 
-      describe "should receive a welcome email" do
-
-        subject { last_email_sent }
-
-        it { should be_delivered_from("info@casenexus.com") }
-        it { should deliver_to("Example User <user@example.com>") }
-        it { should have_subject("casenexus: Welcome") }
-        it { should have_body_text("Welcome") }
-        it { should have_body_text("http://www.casenexus.com/signin") }
-
-      end
-
       describe "after saving a user" do
         before { click_button submit }
 

@@ -1,4 +1,7 @@
 class Notification < ActiveRecord::Base
+  
+  # NB An observer handles after_create email sending!
+
   attr_accessible :user_id, :sender_id, :ntype, :content, 
 									:case_id, :event_date, :read
 

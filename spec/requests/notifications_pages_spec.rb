@@ -8,11 +8,9 @@ describe "Notification Pages" do
   describe "#index" do
 
     let(:user) { FactoryGirl.create(:user) }
-
+    let(:user2) { FactoryGirl.create(:user) }
   	before do
-      1.times { FactoryGirl.create(:user, id: 2) }
-
-      11.times { user.notifications.create(sender_id: 2, 
+      11.times { user.notifications.create(sender_id: user2.id, 
                  ntype: "feedback", content: "Some subject",
                  event_date: Date.new(2012, 3, 3)) }
 
@@ -43,16 +41,15 @@ describe "Notification Pages" do
 
     let(:user) { FactoryGirl.create(:user) }
 
+    let(:notification) { user.notifications.create(sender_id: 3, 
+                         ntype: "feedback", content: "Some subject",
+                         event_date: Date.new(2012, 3, 3)) }
+
     before do
 
-      1.times { FactoryGirl.create(:user, id: 2) } # so that interviewer id works
-
-      1.times { user.notifications.create(sender_id: 2, 
-                 ntype: "feedback", content: "Some subject",
-                 event_date: Date.new(2012, 3, 3)) }
-
+      1.times { FactoryGirl.create(:user, id: 3) } # so that interviewer id works
       sign_in user
-      visit notification_path(1)
+      visit notification_path(notification)
       # save_and_open_page
     end
 
@@ -62,14 +59,19 @@ describe "Notification Pages" do
     end
 
     it "should set read to true" do
-    	Notification.find(1).read.should == true
+    	Notification.find(notification).read.should == true
     end
 
     it "should leave read as true when you visit again" do
-    	visit notification_path(1)
-    	Notification.find(1).read.should == true
+    	visit notification_path(notification)
+    	Notification.find(notification).read.should == true
     end
   end
+
+
+
+
+
 
 
 
@@ -107,20 +109,21 @@ describe "Notification Pages" do
 
       before do
         fill_in 'notification_content', with: "Testing 123"
+        sleep(0.5)
       end
       
       it "should create a notification" do
         expect { click_button submit }.to change(Notification, :count).by(1)
       end
 
-      describe "should receive a welcome email" do
+      describe "should send a message email" do
 
         subject { last_email_sent }
 
         it { should be_delivered_from("mailer@casenexus.com") }
-        it { should deliver_to("Person 3 <person_3@example.com>") }
+        it { should deliver_to(user.name + " <" + user.email + ">") }
         it { should have_subject("casenexus: You have been sent a message") }
-        it { should have_body_text("You have been sent a message by Person 3") }
+        it { should have_body_text("You have been sent a message by " + user.name) }
         it { should have_body_text("notifications/1") }
 
       end
@@ -143,6 +146,7 @@ describe "Notification Pages" do
   describe "send feedback request", js: true do
     
     let(:user) { FactoryGirl.create(:approved) }
+
 
     before do
       sign_in user
@@ -201,14 +205,18 @@ describe "Notification Pages" do
         expect { click_button submit }.to change(Notification, :count).by(1)
       end
 
-      describe "should receive a welcome email" do
+
+
+
+      describe "should receive a feedback request email" do
 
         subject { last_email_sent }
 
         it { should be_delivered_from("mailer@casenexus.com") }
-        it { should deliver_to("Person 5 <person_5@example.com>") }
+        it { should deliver_to(user.name + " <" + user.email + ">") }
         it { should have_subject("casenexus: You have been sent a feedback request") }
-        it { should have_body_text("You have been sent a feedback request by Person 5") }
+        it { should have_body_text("You have been sent a feedback request by " + user.name) }
+        it { should have_body_text("12/12/2012") }
         it { should have_body_text("cases/new") }
 
       end
@@ -228,6 +236,133 @@ describe "Notification Pages" do
   end
 
 
+
+  describe "create case" do
+
+    let(:user) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+
+    before do      
+      1.times { user.cases.create(interviewer_id: user2.id, date: Date.new(2012, 3, 3), subject:
+            "Some Subject", source: "Some Source",
+            structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
+            structure_comment: "Structure Comment",
+            analytical_comment: "Analytical Comment",
+            commercial_comment: "Commercial Comment",
+            conclusion_comment: "Conclusion Comment",
+            comment: "Overall Comment",
+            notes: "Some Notes") }
+
+      sign_in user
+      visit '/cases/new?user_id=' + user.id.to_s
+      #save_and_open_page 
+    end
+
+    let(:submit) { "Send case feedback" }
+
+    describe "with invalid information" do
+
+      it "should not create a case" do
+        expect { click_button submit }.not_to change(Notification, :count)
+      end
+
+    end
+
+    describe "with valid information" do
+
+      before do
+
+        #save_and_open_page 
+
+        find(:xpath, "//input[@id='case_user_id']").set user.id
+        find(:xpath, "//input[@id='case_interviewer_id']").set user2.id
+
+        fill_in "cases_new_datepicker", with: "12/12/2010"
+        fill_in "case_subject", with: "Some Subject"
+        fill_in "case_source", with: "Some Source"
+        fill_in "case_structure", with: 5
+        fill_in "case_analytical", with: 9
+        fill_in "case_commercial", with: 10
+        fill_in "case_conclusion", with: 1
+        fill_in "case_structure_comment", with: "Structure Comment"
+        fill_in "case_analytical_comment", with: "Analytical Comment"
+        fill_in "case_commercial_comment", with: "Commercial Comment"
+        fill_in "case_conclusion_comment", with: "Conclusion Comment"
+        fill_in "case_comment", with: "Overall Comment"
+      end
+      
+      it "should create a notification" do
+        expect { click_button submit }.to change(Notification, :count).by(1)
+      end
+
+      describe "should receive a feedback new email" do
+
+        subject { last_email_sent }
+
+        it { should be_delivered_from("mailer@casenexus.com") }
+        it { should deliver_to(user2.name + " <" + user2.email + ">") }
+        it { should have_subject("casenexus: You have been sent case feedback") }
+        it { should have_body_text("You have been sent case feedback by " + user2.name) }
+        it { should have_body_text("12/12/2010") }
+        it { should have_body_text("cases/2") }
+
+      end
+
+    end
+
+  end
+
+
+  describe "signup user" do
+    
+    let(:user2) { FactoryGirl.create(:user) }
+
+    before do
+      visit signup_path
+    end
+
+    let(:submit) { "Create my account" }
+
+    describe "with invalid information" do
+      it "should not create a user" do
+        expect { click_button submit }.not_to change(Notification, :count)
+      end
+    end
+
+    describe "with valid information" do
+
+      before do
+        fill_in "First name", with: "Example"
+        fill_in "Last name", with: "User"
+        fill_in "Email", with: "user@example.com"
+        fill_in "Password", with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
+        # capybara can't fill_in hidden fields - using a javascript workaround! cool!
+        find(:xpath, "//input[@id='lat']").set "51"
+        find(:xpath, "//input[@id='lng']").set "1"
+        fill_in "Describe your current situation", with: "a" * 51
+        check "Accept the terms and conditions"
+      end
+
+      it "should create a notification" do
+        expect { click_button submit }.to change(Notification, :count).by(1)
+      end
+
+      describe "should receive a welcome email" do
+
+        subject { last_email_sent }
+
+        it { should be_delivered_from("mailer@casenexus.com") }
+        it { should deliver_to("Example User <user@example.com>") }
+        it { should have_subject("casenexus: Welcome") }
+        it { should have_body_text("user@example.com") }
+        it { should have_body_text("http://localhost:3000/") }
+
+      end
+
+    end
+
+  end
 
 
 end

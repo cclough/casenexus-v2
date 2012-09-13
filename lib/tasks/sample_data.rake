@@ -2,7 +2,7 @@ namespace :db do
 	desc "Fill database with sample data"
 	task populate: :environment do
 
-    98.times do |n|
+    100.times do |n|
       first_name = Faker::Name.first_name
       last_name = Faker::Name.last_name
       email = "example#{n+1}@casenexus.com"
@@ -65,47 +65,6 @@ namespace :db do
       end
 
     end
-
-
-    admin = User.create!(
-    			 first_name: "Christian",
-    			 last_name: "Clough",
-           email: "christian.clough@gmail.com",
-           password: "numbnuts",
-           password_confirmation: "numbnuts",
-           lat: 51.901128232665856,
-           lng: -0.54241188764572144,
-					 status: "a" * 51,
-
-           skype: "christianclough",
-           linkedin: "christian.clough",
-
-           education1: "Imperial",
-           education2: "Oxford",
-           education3: "Cambridge",
-           experience1: "MRC-T",
-           experience2: "WHO",
-           experience3: "Candesic",
-
-           education1_from: randomDate(:year_range => 3, :year_latest => 1),
-           education1_to: randomDate(:year_range => 3, :year_latest => 1),
-           education2_from: randomDate(:year_range => 3, :year_latest => 1),
-           education2_to: randomDate(:year_range => 3, :year_latest => 1),
-           education3_from: randomDate(:year_range => 3, :year_latest => 1),
-           education3_to: randomDate(:year_range => 3, :year_latest => 1),
-
-           experience1_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 1),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 1),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 1),
-
-					 accepts_tandc: true)
-
-    admin.toggle!(:approved)
-    admin.toggle!(:completed)
-    admin.toggle!(:admin)
 
     admin2 = User.create!(
            first_name: "Robin",
@@ -191,7 +150,7 @@ namespace :db do
 
       rand(4..60).times do
         user.cases.create!(
-          :interviewer_id => rand(100),
+          :interviewer_id => rand(1..100),
           :date => randomDate(:year_range => 2, :year_latest => 0.5),
           :subject => Faker::Lorem.sentence(5),
           :source => Faker::Lorem.sentence(5),    
@@ -213,20 +172,22 @@ namespace :db do
 
 
     User.all.each do |user|
-      user.notifications.create!(:ntype => "welcome",
-                                 :sender_id => rand(100))
+      
+      # no longer needed as automatically created by after_create in user
+      #user.notifications.create!(sender_id: 1, :ntype => "welcome")
 
       10.times do
         user.notifications.create!(:ntype => "message",
-                                   :sender_id => rand(100), 
+                                   :sender_id => rand(1..100), 
                                    :content => Faker::Lorem.sentence(5))
-        user.notifications.create!(:ntype => "feedback_new",
-                                   :sender_id => rand(100), 
-                                   :content => Faker::Lorem.sentence(5),
-                                   :event_date => randomDate(:year_range => 1, :year_latest => 0),
-                                   :case_id => rand(1000))
+        ## created in case.rb
+        # user.notifications.create!(:ntype => "feedback_new",
+        #                            :sender_id => rand(1..100), 
+        #                            :content => Faker::Lorem.sentence(5),
+        #                            :event_date => randomDate(:year_range => 1, :year_latest => 0),
+        #                            :case_id => rand(1000))
         user.notifications.create!(:ntype => "feedback_request",
-                                   :sender_id => rand(100), 
+                                   :sender_id => rand(1..100), 
                                    :content => Faker::Lorem.sentence(5),
                                    :event_date => randomDate(:year_range => 1, :year_latest => 0))
       end

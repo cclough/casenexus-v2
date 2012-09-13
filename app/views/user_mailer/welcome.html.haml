@@ -4,9 +4,9 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
     %h1
-      Welcome to casenexus.com, #{@user.first_name}
+      Welcome to casenexus.com, #{@user_target.first_name}
     %p
-      Your email is: #{@user.email}.
+      Your email is: #{@user_target.email}.
     %p
       To sign-in, follow this link:
-        = link_to @url, @url
+      = link_to @url, @url

@@ -1,4 +1,6 @@
 class Case < ActiveRecord::Base
+  
+  ### Mass assignables
   attr_accessible :user_id, :interviewer_id, :date, :subject, :source, 
   								:structure, :structure_comment,
   				        :analytical, :analytical_comment, 
@@ -6,9 +8,15 @@ class Case < ActiveRecord::Base
   				        :conclusion, :conclusion_comment,
   				        :comment, :notes
 
+  ### Relationships
   belongs_to :user
 
-  # Validations
+  ### Callbacks
+  after_create :create_notification
+
+
+
+  ### Validations
   validates :user_id, presence: true
   validates :interviewer_id, presence: true
   validates :date, presence: true
@@ -128,5 +136,14 @@ class Case < ActiveRecord::Base
                           conclusion_comment: m.conclusion_comment } }
   end
 
+  private
 
+    def create_notification
+      self.user.notifications.create(sender_id: self.interviewer.id,
+                                     ntype: "feedback",
+                                     content: self.subject,
+                                     case_id: self.id,
+                                     event_date: self.date)
+    end
+    
 end

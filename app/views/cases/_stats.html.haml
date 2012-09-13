@@ -10,7 +10,7 @@
       %td
         1st Case Date
       %td
-        = current_user.cases.first.created_at.strftime("%m/%d/%Y")
+        = current_user.cases.first.created_at.strftime("%m/%d/%Y") unless current_user.casecount < 1
     %tr
       %td
         Avg Score /50

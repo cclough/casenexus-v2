@@ -9,6 +9,10 @@ gem 'mail'
 gem 'will_paginate', '3.0.3'
 gem 'scoped_search'
 gem 'geokit-rails3'
+# vincent:
+gem 'nokogiri'
+gem 'request_exception_handler'
+
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'

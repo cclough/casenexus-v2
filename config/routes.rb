@@ -23,6 +23,20 @@ Casenexus::Application.routes.draw do
   # Notifications
   resources :notifications
 
+  # Roulette
+  resources :roulette, only: [:index]
+  
+  match "service/registration"
+  match "service/configuration"
+
+  match "svc/services/registration" => 'roulette#registration'
+  match 'svc/services/configuration' => 'roulette#configuration'
+  match "/svc/config/config.xml"  => 'roulette#configfile'
+
+
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

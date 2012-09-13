@@ -126,6 +126,8 @@ GEM
     rb-fsevent (0.9.1)
     rdoc (3.12)
       json (~> 1.4)
+    request_exception_handler (0.3)
+      actionpack (>= 2.1)
     rspec (2.10.0)
       rspec-core (~> 2.10.0)
       rspec-expectations (~> 2.10.0)
@@ -191,9 +193,11 @@ DEPENDENCIES
   jquery-ui-rails
   launchy
   mail
+  nokogiri
   pg
   rails (= 3.2.8)
   rb-fsevent (= 0.9.1)
+  request_exception_handler
   rspec-rails (= 2.10.0)
   sass-rails (= 3.2.5)
   scoped_search

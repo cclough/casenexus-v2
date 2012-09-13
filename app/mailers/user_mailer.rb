@@ -6,11 +6,11 @@ class UserMailer < ActionMailer::Base
  	layout 'email'
 
 
-  def welcome(user, url)
-    @user = user
+  def welcome(user_target, url)
+    @user_target = user_target
     @url  = url
 
-    email_with_name = "#{@user.name} <#{@user.email}>"
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus: Welcome")
   end
 
@@ -44,7 +44,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
     
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent a feedback request")
+    mail(to: email_with_name, subject: "casenexus: You have been sent case feedback")
   end
 
 end

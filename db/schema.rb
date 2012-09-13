@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908151336) do
+ActiveRecord::Schema.define(:version => 20120913162633) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
-    t.integer  "interviewer_id",     :null => false
     t.date     "date",               :null => false
     t.text     "subject"
     t.string   "source"
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120908151336) do
     t.text     "notes"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "interviewer_id",     :null => false
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"
@@ -48,6 +48,27 @@ ActiveRecord::Schema.define(:version => 20120908151336) do
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "roulette_registrations", :force => true do |t|
+    t.string   "username",   :null => false
+    t.datetime "updatetime"
+    t.string   "old_id"
+    t.string   "partner"
+    t.string   "status",     :null => false
+    t.string   "ip",         :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roulette_reports", :force => true do |t|
+    t.string   "userip",           :null => false
+    t.string   "reporteruserip",   :null => false
+    t.datetime "timestamp",        :null => false
+    t.string   "username",         :null => false
+    t.string   "reporterusername", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name",                          :null => false
@@ -77,15 +98,15 @@ ActiveRecord::Schema.define(:version => 20120908151336) do
     t.date     "experience3_to"
     t.string   "skype"
     t.string   "linkedin"
-    t.text     "status"
     t.boolean  "email_admin",      :default => true
     t.boolean  "email_users",      :default => true
     t.boolean  "accepts_tandc",    :default => false
     t.boolean  "admin",            :default => false
     t.boolean  "completed",        :default => false
-    t.boolean  "approved",         :default => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.text     "status"
+    t.boolean  "approved",         :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

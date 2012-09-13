@@ -2,7 +2,7 @@
 
 <%- if @notification.errors.any? %>
 
-  $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_form_' + @notification.ntype)) %>');
+  $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
 <%- else %>
 
 	$('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');

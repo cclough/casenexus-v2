@@ -164,11 +164,11 @@ describe "Case Pages" do
 
       end
       
-      it "should create a user" do
+      it "should create a case" do
         expect { click_button submit }.to change(Case, :count).by(1)
       end
 
-      describe "after saving a user, redirect and flash" do
+      describe "after saving a case, redirect and flash" do
 
          before { click_button submit }
 
