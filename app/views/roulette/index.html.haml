@@ -1,0 +1,70 @@
+= content_for :content do
+  %head
+    %style{:media => "screen", :type => "text/css"}
+      object:focus { outline:none; }
+      \#flashContent { display:none; }
+
+    %script{:src => "svc/lib/swfobject.js", :type => "text/javascript"}
+    :javascript
+      var swfVersionStr = "10.2.0";
+      
+      var xiSwfUrlStr = "svc/lib/playerProductInstall.swf";
+      var flashvars = {};
+      var params = {};
+      params.quality = "high";
+      params.bgcolor = "#ffffff";
+      params.allowscriptaccess = "sameDomain";
+      params.allowfullscreen = "true";
+      params.wmode = "transparent";
+      var attributes = {};
+      attributes.id = "VideoChat";
+      attributes.name = "VideoChat";
+      attributes.align = "middle";
+      swfobject.embedSWF(
+          "VideoChat.swf", "flashContent", 
+          "600", "500", 
+          swfVersionStr, xiSwfUrlStr, 
+          flashvars, params, attributes);
+      
+      swfobject.createCSS("#flashContent", "text-align:left;"); //display:block;
+  
+  .row
+    .span12
+      .panel
+        .row
+          .span3
+            #roulette_case_new
+              = render 'cases/new'
+          .span8
+            %div{:style => "width:600px;height:500px;"}
+              /
+                SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough
+                JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+                when JavaScript is disabled.
+              #flashContent
+                %p
+                  To view this page ensure that Adobe Flash Player version
+                  10.2.0 or greater is installed.
+                :javascript
+                  var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+                      document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+                      %noscript
+                %object#VideoChat{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :height => "500", :width => "600"}
+                  %param{:name => "movie", :value => "VideoChat.swf"}/
+                  %param{:name => "quality", :value => "high"}/
+                  %param{:name => "allowScriptAccess", :value => "sameDomain"}/
+                  %param{:name => "allowFullScreen", :value => "true"}/
+                  / [if !IE]>
+                  %object{:data => "VideoChat.swf", :height => "500", :type => "application/x-shockwave-flash", :width => "600"}
+                    %param{:name => "quality", :value => "high"}/
+                    %param{:name => "allowScriptAccess", :value => "sameDomain"}/
+                    %param{:name => "allowFullScreen", :value => "true"}/
+                    / <![endif]
+                    / [if gte IE 6]>
+                    %p
+                      Either scripts and active content are not permitted to run or Adobe Flash Player version 10.2.0 or greater is not installed.
+                    / <![endif]
+                    %a{:href => "http://www.adobe.com/go/getflashplayer"}
+                      %img{:alt => "Get Adobe Flash Player", :src => "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"}/
+                    / [if !IE]>
+                  / <![endif]
