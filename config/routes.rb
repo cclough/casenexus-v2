@@ -33,6 +33,8 @@ Casenexus::Application.routes.draw do
   match 'svc/services/configuration' => 'roulette#configuration'
   match "/svc/config/config.xml"  => 'roulette#configfile'
 
+  # Roulette 2
+  resources :roulette2, only: [:index]
 
 
 
