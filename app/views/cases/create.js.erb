@@ -1,0 +1,12 @@
+<%- if @case.errors.any? %>
+
+	$('#roulette_case_new').html('<%= escape_javascript(render('cases/new')) %>');
+
+<%- else %>
+
+	$('#roulette_case_new').html('Feedback sent!');
+
+  $("#flash_application").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+	$("#flash_application").fadeIn("fast");
+
+<%- end %>

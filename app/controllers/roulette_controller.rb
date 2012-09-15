@@ -3,6 +3,10 @@ class RouletteController < ApplicationController
 
   def index
     @case = Case.new
+    respond_to do |format|
+      format.html 
+      format.js # links index.js.erb!
+    end
   end
 
   # VideoSoftware.pro Roulette Function by Vincent

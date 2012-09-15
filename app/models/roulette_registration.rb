@@ -55,7 +55,24 @@ class RouletteRegistration < ActiveRecord::Base
     ret << "</result>\n"
   end
   
-  private 
+
+
+
+
+  def self.current_partner(user)
+    user_record = self.find(:first, conditions:
+                  ['username ~* ?', '<id>'+user.id.to_s+'</id>'])
+    partner_id = /<id>(.*)<\/id>/.match(user_record.partner)
+    User.find_by_id(partner_id[1]) unless !partner_id
+  end
+
+
+
+
+  private
+
+
+
   def self.remove_all_phantom_users
     self.where("updatetime <= '#{$VALID_INTERVAL.seconds.ago}'").delete_all
   end
@@ -140,5 +157,6 @@ class RouletteRegistration < ActiveRecord::Base
     user, reporter = find_by_username([user_name, reporter_user_name])
     RouletteReport.create(userip: user.ip, reporteruserip: reporter.ip, timestamp: Time.now, username: user_name, reporterusername: reporter_user_name)
   end
+
 
 end

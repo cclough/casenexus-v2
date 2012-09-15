@@ -1,4 +1,4 @@
-= form_for(@case) do |f|
+= form_for @case, remote: true, url: { action: :create, user_id: case_user.id } do |f|
 
   / error message div
   = render 'shared/error_messages', object: @case
@@ -9,6 +9,8 @@
         / display target name
         %h5
           Feedback For
+          
+          = case_user.name
         .target_name
           / need to rig this in!
           / = avatar_for(@user_target)
@@ -59,6 +61,7 @@
         = f.text_area :comment, placeholder: "Any further comments", tabindex: "8"
         %div
 
-          / = f.hidden_field :user_id, value: @case_user.id
+
+          = f.hidden_field :user_id, value: case_user.id
           = f.hidden_field :interviewer_id, value: current_user.id
           = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"
