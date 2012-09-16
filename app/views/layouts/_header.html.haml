@@ -1,7 +1,7 @@
 %header.navbar.navbar-inverse.navbar-fixed-top
-  .navbar-inner
+  .navbar-inner{:class => ("header_navbar-inner_signedout" if !signed_in?)}
     .container
-      #logo_nav
+      #header_logo_nav{:class => ("header_logo_nav_signedout" if !signed_in?)}
         = link_to image_tag("app/logo.png"), root_path
 
       - if signed_in?
@@ -26,11 +26,28 @@
 
           %li.divider-vertical
           %li
-            = link_to raw("<i class='icon-eye-open icon-large icon-white'></i> About"), about_path
+            = link_to raw("<i class='icon-bolt icon-large icon-white'></i> About"), about_path
 
-        = form_for(:session, url: sessions_path, :html => { :class => "navbar-form pull-right"} ) do |f|
+        #header_signin_form
+          = form_for(:session, url: sessions_path, :html => { :class => "navbar-form"} ) do |f|
+            
+            .row
+              .span16
+                = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "Email Address", id: "header_signin_email"
+              .span16
+                .input-append
+                  = f.password_field :password, class: 'span15', tabindex: "2", placeholder: "Password", id: "header_signin_password"
+                  %button.btn.btn-inverse{:href => "#", :type => "submit", tabindex: "3"}
+                    %i.icon-arrow-right.icon-white
+            .row
+              .span16
+                = link_to "Forgotten your password?", "#", class: 'font_small'
+              .span16
+                .span8
+                  = f.label :remember_me, class: 'font_small pull-right'
+                .span2.offset3
+                  = f.check_box :remember_me, {:checked => true}
 
-          = f.text_field :email, class: 'span10', tabindex: "1"
-          = f.password_field :password, class: 'span10', tabindex: "2"
-          %button.btn.btn-inverse{:href => "#", :type => "submit", tabindex: "3"}
-            %i.icon-signin.icon-white
+              
+
+            

@@ -10,12 +10,12 @@
     / IE shim
     = render 'layouts/shim'
 
-  %body
+  %body{:class => ("application_body_signedout" if !signed_in?)}
     / header
     = render 'layouts/header'
 
     / flash div 
-    #flash_application
+    #application_flash{:class => ("application_flash_signedout" if !signed_in?)}
       = render :partial => 'layouts/flash' , :locals => { :flash => flash }
 
     .container.main
