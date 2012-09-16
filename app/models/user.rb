@@ -38,8 +38,9 @@ class User < ActiveRecord::Base
 
   # Email (using Hartl RegEx)
   VALID_EM_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_SK_REGEX = /^[-a-z]+$/i
   validates :email, presence: true, format: { with: VALID_EM_REGEX },
-  					uniqueness: { case_sensitive: false } 
+  					uniqueness: { case_sensitive: true } 
 
   # Passwords
   validates :password, length: { minimum: 6 }
@@ -52,8 +53,26 @@ class User < ActiveRecord::Base
   validates :lat, presence: true
   validates :lng, presence: true
 
+
+  # Skype & Linkedin
+  validates :skype, length: { maximum: 32 },
+            format: { with: VALID_SK_REGEX },
+            allow_blank: true
+
+  validates :linkedin, format: { with: VALID_EM_REGEX },
+            allow_blank: true
+
+
+
+
+
+  # Education
+  validates :education1, presence: true
+
   # Accepts Terms and Conditions?
 	validates :accepts_tandc, :acceptance => {:accept => true}
+
+
 
 
 

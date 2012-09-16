@@ -6,3 +6,9 @@ en:
     attributes:
       user:
         password_digest: "Password"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "cannot be empty"

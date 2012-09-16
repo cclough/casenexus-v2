@@ -11,6 +11,7 @@ end
 
 module Casenexus
   class Application < Rails::Application
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -56,6 +57,12 @@ module Casenexus
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    # for font awesome    
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
+
+    # Enable Lib Assets - doesn't work for e.g. Amcharts
+    # config.autoload_paths << "#{config.root}/lib"
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

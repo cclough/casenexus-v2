@@ -12,9 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
 //= require jquery.ui.slider
-//= require bootstrap-dropdown
-//= require bootstrap-modal
-//= require bootstrap-tab
+//= require jquery.ui.datepicker
+//= require rails.validations
 //= require_tree .

@@ -10,7 +10,7 @@ Casenexus::Application.routes.draw do
 
   # Sessions
   resources :sessions, only: [:new, :create, :destroy]
-  match '/signin', to: 'sessions#new'
+  match '/signin', to: 'static_pages#home'
   match '/signout',  to: 'sessions#destroy', via: :delete
 
   # Cases

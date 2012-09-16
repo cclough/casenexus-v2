@@ -12,7 +12,8 @@ gem 'geokit-rails3'
 # vincent:
 gem 'nokogiri'
 gem 'request_exception_handler'
-
+#
+gem 'client_side_validations'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
@@ -21,8 +22,8 @@ end
 
 group :assets do
   gem 'sass-rails', '3.2.5'
-  gem 'bootstrap-sass', '2.0.4.1'
-  gem 'font-awesome-sass-rails'
+  #gem 'bootstrap-sass', '2.1.0.0'
+  #gem 'font-awesome-sass-rails'
   gem 'haml'
   gem 'jquery-ui-rails'
   # what is uglifier for? JS wrapper?

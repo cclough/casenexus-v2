@@ -12,7 +12,7 @@
 
   %h1 Sign up
   
-  = form_for(@user) do |f|
+  = form_for @user, :validate => true do |f|
   
     .row
       .span4
@@ -40,21 +40,21 @@
 
           #users_new_education_group
 
-          = f.text_field :education1, placeholder: "Education 1"
-          = f.text_field :education1_from, placeholder: "From", class: "users_datepicker"
-          = f.text_field :education1_to, placeholder: "To", class: "users_datepicker"
+          = f.text_field :education1, placeholder: "Education 1", class: "users_edex_field"
+          = f.text_field :education1_from, placeholder: "From", class: "users_edex_datepicker"
+          = f.text_field :education1_to, placeholder: "To", class: "users_edex_datepicker"
 
           #users_new_education_group_optional_1
 
-            = f.text_field :education2, placeholder: "Education 2"
-            = f.text_field :education2_from, placeholder: "From", class: "users_datepicker"
-            = f.text_field :education2_to, placeholder: "To", class: "users_datepicker"
+            = f.text_field :education2, placeholder: "Education 2", class: "users_edex_field"
+            = f.text_field :education2_from, placeholder: "From", class: "users_edex_datepicker"
+            = f.text_field :education2_to, placeholder: "To", class: "users_edex_datepicker"
 
           #users_new_education_group_optional_2
 
-            = f.text_field :education3, placeholder: "Education 3"
-            = f.text_field :education3_from, placeholder: "From", class: "users_datepicker"
-            = f.text_field :education3_to, placeholder: "To", class: "users_datepicker"
+            = f.text_field :education3, placeholder: "Education 3", class: "users_edex_field"
+            = f.text_field :education3_from, placeholder: "From", class: "users_edex_datepicker"
+            = f.text_field :education3_to, placeholder: "To", class: "users_edex_datepicker"
 
           %a#users_new_button_education_add.btn.btn-inverse Add School
           %a#users_new_button_education_remove.btn.btn-inverse Remove School
@@ -63,28 +63,28 @@
 
 
           #users_new_experience_group
-            = f.text_field :experience1, placeholder: "Experience 1"
-            = f.text_field :experience1_from, placeholder: "From", class: "users_datepicker"
-            = f.text_field :experience1_to, placeholder: "To", class: "users_datepicker"
+            = f.text_field :experience1, placeholder: "Experience 1", class: "users_edex_field"
+            = f.text_field :experience1_from, placeholder: "From", class: "users_edex_datepicker"
+            = f.text_field :experience1_to, placeholder: "To", class: "users_edex_datepicker"
 
           #users_new_experience_group_optional_1
-            = f.text_field :experience2, placeholder: "Experience 2"
-            = f.text_field :experience2_from, placeholder: "From", class: "users_datepicker"
-            = f.text_field :experience2_to, placeholder: "To", class: "users_datepicker"
+            = f.text_field :experience2, placeholder: "Experience 2", class: "users_edex_field"
+            = f.text_field :experience2_from, placeholder: "From", class: "users_edex_datepicker"
+            = f.text_field :experience2_to, placeholder: "To", class: "users_edex_datepicker"
 
           #users_new_experience_group_optional_2
 
-            = f.text_field :experience3, placeholder: "experience 3"
-            = f.text_field :experience3_from, placeholder: "From", class: "users_datepicker"
-            = f.text_field :experience3_to, placeholder: "To", class: "users_datepicker"
+            = f.text_field :experience3, placeholder: "experience 3", class: "users_edex_field"
+            = f.text_field :experience3_from, placeholder: "From", class: "users_edex_datepicker"
+            = f.text_field :experience3_to, placeholder: "To", class: "users_edex_datepicker"
 
           %a#users_new_button_experience_add.btn.btn-inverse Add Work
           %a#users_new_button_experience_remove.btn.btn-inverse Remove Work
 
           = f.label :skype
-          = f.text_field :skype, placeholder: "Skype"
+          = f.text_field :skype
           = f.label :linkedin
-          = f.text_field :linkedin, placeholder: "LinkedIn"
+          = f.text_field :linkedin
 
       .span4
         #users_new_form_panel_step_2.panel.kill_left

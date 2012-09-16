@@ -58,25 +58,16 @@ $gray_Lightest: #f6f6f6;
   height:570px;
 }
 
-
-#users_new_map {
-	height:250px;
-	width:250px;
+.users_index_users_item {
+  width: 100%;
+  height: 50px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0px;
+  display: none;
 }
-
-.users_datepicker {
-  width: 70px;
-}
-
-#users_edit_map {
-	height:450px;
-	width:100%;
-}
-
-.users_edit_date_column {
-  width: 60px;
-}
-
 
 #users_show_close {
   border: 0;
@@ -97,16 +88,38 @@ $gray_Lightest: #f6f6f6;
   }
 }
 
-.users_index_users_item {
-  width: 100%;
-  height: 50px;
-  margin-top: 0px;
-  margin-bottom: 2px;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0px;
-  display: none;
+
+
+#users_new_map {
+	height:250px;
+	width:250px;
 }
+
+
+.users_edex_datepicker {
+  width: 50px;
+}
+
+.users_edex_field {
+  width: 130px;
+}
+
+
+#users_edit_map {
+	height:450px;
+	width:100%;
+}
+
+.users_edit_date_column {
+  width: 60px;
+}
+
+
+
+
+
+
+
 
 
 

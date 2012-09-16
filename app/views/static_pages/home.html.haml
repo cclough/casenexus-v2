@@ -1,17 +1,20 @@
 = content_for :content do
 
   .row
-    .span12
+    .span94
       .panel.kill_bottom
         .row
-          .span6
+          .span30
             = image_tag('home/banner.png', id: 'static_home_banner')
-          .span5
+          .span40
 
             = image_tag('home/slider/1.png', id: 'static_home_slider')
 
             .row
-              .span3
+              .span30
                 %h3 Start practising case interviews
-              .span2
-                = link_to "Sign up", signup_path, class: "btn btn-large btn btn-inverse"
+              .span20
+                %a.btn.btn-large.btn-inverse(href="/signup")
+                  %i.icon-share-alt.icon-white
+                  %span
+                    Sign up
