@@ -1,22 +1,22 @@
 - provide(:title, 'Your Progress')
-  
-:javascript
-  var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
 
+= content_for :content do
 
-%table{:style => "width:100%;"}
-  %tr
-    %td{:style => "width:240px;", :valign => "top"}
+  :javascript
+    var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
 
-      = render 'stats'
-
-    %td{:valign => "top"}
-
-      = render 'comments'
-
-    %td{:style => "width:340px;"}
-
+  .row
+    .span60
+      .panel
+        .row
+          .span25
+            = render 'stats'
+          .span25
+            = render 'comments'
+    .span30
       #chart_radar{:style => "height: 300px; width: 340px;"}
-
-#chart_progress{:style => "width:100%; height:350px;"}
+  .row
+    .span94
+      .panel
+        #chart_progress{:style => "width:100%; height:350px;"}
 
