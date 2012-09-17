@@ -1,0 +1,21 @@
+#header_signin_form
+  = form_for(:session, url: sessions_path, :html => { :class => "navbar-form"} ) do |f|
+    
+    .row
+      .span16
+        = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "Email Address", id: "header_signin_email"
+      .span16
+        .input-append
+          = f.password_field :password, class: 'span15', tabindex: "2", placeholder: "Password", id: "header_signin_password"
+          %button.btn.btn-inverse{:href => "#", :type => "submit", tabindex: "3"}
+            %i.icon-arrow-right.icon-white
+    .row
+      .span16
+        = link_to "Forgotten your password?", new_password_reset_path, class: 'font_small'
+      .span16
+        .span8
+          = f.label :remember_me, class: 'font_small pull-right'
+        .span2.offset3
+          = f.check_box :remember_me, {:checked => true}
+
+      

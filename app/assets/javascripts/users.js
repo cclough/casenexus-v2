@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
 
-
   // Hide stuff with the JavaScript. If JS is disabled, the form will still be useable.
   // NOTE:
   // Sometimes using the .hide(); function isn't as ideal as it uses display: none; 

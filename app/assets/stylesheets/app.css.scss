@@ -1,20 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require jquery.ui.datepicker
- *= require jquery.ui.slider
- *= require_self
- *= require_tree .
- */
-
-
 
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
@@ -37,25 +20,25 @@ html {
   background-size: cover; /*generic*/
 
   background: -webkit-linear-gradient(
-  top bottom, rgba(99, 130, 169, 0.1),
-  rgba(99, 130, 169, 0.7)),
-  url(app/bg.jpg) no-repeat center center fixed;
+    top bottom, rgba(99, 130, 169, 0.1),
+    rgba(99, 130, 169, 0.7)),
+    url(app/bg.jpg) no-repeat center center fixed;
   background: -moz-linear-gradient(
-  top, rgba(99, 130, 169, 0.1),
-  rgba(99, 130, 169, 0.7)),
-  url(app/bg.jpg) no-repeat center center fixed;
+    top, rgba(99, 130, 169, 0.1),
+    rgba(99, 130, 169, 0.7)),
+    url(app/bg.jpg) no-repeat center center fixed;
   background: -o-linear-gradient(
-  top, rgba(99, 130, 169, 0.1),
-  rgba(99, 130, 169, 0.7)),
-  url(app/bg.jpg) no-repeat center center fixed;
+    top, rgba(99, 130, 169, 0.1),
+    rgba(99, 130, 169, 0.7)),
+    url(app/bg.jpg) no-repeat center center fixed;
   background: -ms-linear-gradient(
-  top, rgba(99, 130, 169, 0.1),
-  rgba(99, 130, 169, 0.7)),
-  url(app/bg.jpg) no-repeat center center fixed;
+    top, rgba(99, 130, 169, 0.1),
+    rgba(99, 130, 169, 0.7)),
+    url(app/bg.jpg) no-repeat center center fixed;
   background: linear-gradient(
-  top, rgba(99, 130, 169, 0.1),
-  rgba(99, 130, 169, 0.7)),
-  url(app/bg.jpg) no-repeat center center fixed;
+    top, rgba(99, 130, 169, 0.1),
+    rgba(99, 130, 169, 0.7)),
+    url(app/bg.jpg) no-repeat center center fixed;
 }
 
 body {

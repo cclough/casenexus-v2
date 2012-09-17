@@ -15,7 +15,7 @@
   = form_for @user, :validate => true do |f|
   
     .row
-      .span4
+      .span30
         #users_new_form_panel_step_1.panel.kill_right
 
           = render 'shared/error_messages', object: @user
@@ -35,7 +35,7 @@
           = f.label :email_users, "Send notifications from users to your email"
           = f.check_box :email_users
 
-      .span4
+      .span30
         #users_new_form_panel_step_2.panel.kill_left.kill_right
 
           #users_new_education_group
@@ -86,7 +86,7 @@
           = f.label :linkedin
           = f.text_field :linkedin
 
-      .span4
+      .span30
         #users_new_form_panel_step_2.panel.kill_left
 
           = f.label :status, "Describe your current situation"

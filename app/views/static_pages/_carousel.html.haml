@@ -1,0 +1,21 @@
+#static_home_carousel.carousel.slide
+  / Carousel items
+  .carousel-inner
+    .active.item
+      = image_tag('home/slider/1.png')
+      .carousel-caption
+        %h4 First
+        %p Donec id elit non mi porta gravida at eget metus.
+    .item
+      = image_tag('home/slider/2.png')
+      .carousel-caption
+        %h4 Second
+        %p Nullam id dolor id nibh ultricies vehicula ut id elit.
+    .item
+      = image_tag('home/slider/3.png')
+      .carousel-caption
+        %h4 Third
+        %p Cras justo odio
+
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#static_home_carousel"} ‹
+  %a.carousel-control.right{"data-slide" => "next", :href => "#static_home_carousel"} ›

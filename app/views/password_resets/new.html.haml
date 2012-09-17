@@ -1,9 +1,10 @@
 - provide(:title, 'Forgotten your password')
 
 = content_for :content do
-
-  = form_tag password_resets_path, :method => :post do
-    .field
-      = label_tag :email
-      = text_field_tag :email, params[:email]
-    .actions= submit_tag "Reset Password"
+  .row
+    .span29.offset32
+      .panel
+        = form_tag password_resets_path, :method => :post do
+          = label_tag :email
+          = text_field_tag :email, params[:email]
+          = submit_tag "Reset Password", class: 'btn btn-inverse'
