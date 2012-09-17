@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913162633) do
+ActiveRecord::Schema.define(:version => 20120916234344) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(:version => 20120913162633) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name",                          :null => false
-    t.string   "last_name",                           :null => false
-    t.string   "email",                               :null => false
+    t.string   "first_name",                                :null => false
+    t.string   "last_name",                                 :null => false
+    t.string   "email",                                     :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.float    "lat"
@@ -98,15 +98,17 @@ ActiveRecord::Schema.define(:version => 20120913162633) do
     t.date     "experience3_to"
     t.string   "skype"
     t.string   "linkedin"
-    t.boolean  "email_admin",      :default => true
-    t.boolean  "email_users",      :default => true
-    t.boolean  "accepts_tandc",    :default => false
-    t.boolean  "admin",            :default => false
-    t.boolean  "completed",        :default => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.boolean  "email_admin",            :default => true
+    t.boolean  "email_users",            :default => true
+    t.boolean  "accepts_tandc",          :default => false
+    t.boolean  "admin",                  :default => false
+    t.boolean  "completed",              :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.text     "status"
-    t.boolean  "approved",         :default => false
+    t.boolean  "approved",               :default => false
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

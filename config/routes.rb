@@ -1,5 +1,7 @@
 Casenexus::Application.routes.draw do
 
+  get "password_resets/new"
+
   # Static Pages
   root to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
@@ -7,6 +9,9 @@ Casenexus::Application.routes.draw do
   # Users
   resources :users
   match '/signup', to: 'users#new'
+
+  # Password Reset
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   # Sessions
   resources :sessions, only: [:new, :create, :destroy]

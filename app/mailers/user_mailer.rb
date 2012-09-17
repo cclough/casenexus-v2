@@ -47,4 +47,10 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus: You have been sent case feedback")
   end
 
+  def password_reset(user)
+    @user_target = user
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: "casenexus: Password Reset")
+  end
 end
