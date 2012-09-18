@@ -22,7 +22,7 @@
   
     .row
       .span26
-        #users_new_form_panel_step_1.panel
+        #users_new_step1.panel
 
           = render 'shared/error_messages', object: @user
           = f.text_field :first_name, placeholder: 'First Name'
@@ -44,7 +44,7 @@
               = f.check_box :email_users
 
       .span35
-        #users_new_form_panel_step_2.panel.kill_left.kill_right
+        #users_new_step2.panel.kill_left.kill_right
 
           = f.text_area :status, id: 'users_new_status', placeholder: "Describe your current situation"
 
@@ -109,7 +109,7 @@
 
 
       .span33
-        #users_new_form_panel_step_3.panel
+        #users_new_step3.panel
 
           .row
             .span7

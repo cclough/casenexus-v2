@@ -14,33 +14,17 @@ html {
   overflow-y: scroll;
   height: 100%;
 
-
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(99, 130, 169, 0.7) 100%), url(app/bg.jpg) no-repeat center center fixed; /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0, 0, 0, 0)), color-stop(100%, rgba(99, 130, 169, 0.7))), url(app/bg.jpg) no-repeat center center fixed; /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%,rgba(0,0,0,0.16) 100%), url(app/bg.jpg) no-repeat center center fixed; /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%,rgba(99, 130, 169, 0.7) 100%), url(app/bg.jpg) no-repeat center center fixed; /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%,rgba(99, 130, 169, 0.7) 100%), url(app/bg.jpg) no-repeat center center fixed; /* IE10+ */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%,rgba(99, 130, 169, 0.7) 100%), url(app/bg.jpg) no-repeat center center fixed; /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#29000000',GradientType=0 ); /* IE6-9 */
-
   -webkit-background-size: cover; /*for webKit*/
   -moz-background-size: cover; /*Mozilla*/
   -o-background-size: cover; /*opera*/
   background-size: cover; /*generic*/
 
-  // background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(99, 130, 169, 0.7))), url(app/bg.jpg); /* Chrome,Safari4+ */
-  // background-image: -webkit-linear-gradient(top, transparent, rgba(0,0,0,0.16)), url(app/bg.jpg); /* Chrome10+,Safari5.1+ */
-  // background-image:    -moz-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* FF3.6+ */
-  // background-image:     -ms-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* IE10+ */
-  // background-image:      -o-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* Opera 11.10+ */
-  // background-image:         linear-gradient(to bottom, transparent, rgba(99,130,169,0.7)), url(app/bg.jpg); /* W3C */
-
-  // background-repeat: no-repeat;
-  // background-position: 50% 50%;
-  // background-attachment: fixed;
-  
-  // min-height: 100%;
-
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(99, 130, 169, 0.7))), url(app/bg.jpg); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* Chrome10+,Safari5.1+ */
+  background-image:    -moz-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* IE10+ */
+  background-image:      -o-linear-gradient(top, transparent, rgba(99,130,169,.7)), url(app/bg.jpg); /* Opera 11.10+ */
+  background-image:         linear-gradient(to bottom, transparent, rgba(99,130,169,0.7)), url(app/bg.jpg); /* W3C */
 
 }
 
@@ -135,7 +119,7 @@ textarea {
 
 .panel{
   background: white;
-  margin: 20px;
+  margin: 15px;
   border: 1px solid $gray_Light;
   padding: 10px;
 

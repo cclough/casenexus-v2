@@ -15,75 +15,54 @@ $(document).ready(function(){
 
   // reset form here?
 
-  $("#users_new_form_panel_step_2, #users_new_form_panel_step_3").css({ opacity: 0.3 });
+  $("#users_new_step2, #users_new_step_3").css({ opacity: 0.3 });
 
 
   $("#user_password_confirmation").keyup(function() {
     if ($('#user_password_confirmation').val() == $('#user_password').val()) {
-      $("#users_new_form_panel_step_2").css({
+      $("#users_new_step2").css({
         opacity: 1
       });
-      $.step1complete = true;
+      $.users_new_step1_complete = true;
     } else {
-      $("#users_new_form_panel_step_2").css({
+      $("#users_new_step2").css({
         opacity: 0.3
       });
     };
   });
 
 
-  var users_new_education_group_count = 1;
-
-  $(".users_new_edex_button_add").click(function() {
-
-    //if users_new_education_group_count
-
-  });
-
-  $(".users_new_edex_button_remove").click(function() {
-
-    if (users_new_education_group_count == 2) {
-      $('#users_new_education_group_optional_1').slideUp();
-      users_new_education_group_count++;
-    } else if (users_new_education_group_count == 3) {
-      $('#users_new_education_group_optional_2').slideDown();
-      users_new_education_group_count++;
-    }
-
-  });
-
-
-  function stepTwoTest1() {
-    if (($.stepTwoComplete_one == "complete") && ($.stepTwoComplete_two == "complete") && ($.stepTwoComplete_three == "complete")) {
+  function users_new_step2_test() {
+    if (($.users_new_step1_complete_1 == "complete") && ($.users_new_step1_complete_2 == "complete") && ($.users_new_step1_complete_3 == "complete")) {
       
-      $("#users_new_form_panel_step_2")
+      $("#users_new_step2")
       .css({
         "background-image": "url(app/tick.png)",
         "background-position": "top right",
         "background-repeat": "no-repeat"
       });
       
-      $("#users_new_form_panel_step_3").css({
+      $("#users_new_step3").css({
         opacity: 1
       });
 
-      $.step2complete = true;
+      $.users_new_step2_complete = true;
     }
   };
   
   $("#users_new_status").keyup(function(){
-    $.stepTwoComplete_one = "complete"; 
-    stepTwoTest1();
+    $.users_new_step1_complete_1 = "complete"; 
+    users_new_step2_test();
   });
   
   $("#user_education1").keyup(function(){
-    $.stepTwoComplete_two = "complete"; 
-    stepTwoTest1();
+    $.users_new_step1_complete_2 = "complete"; 
+    users_new_step2_test();
   });
 
   $("#user_experience1").keyup(function(){
-    $.stepTwoComplete_three = "complete"; 
-    stepTwoTest1();
+    $.users_new_step1_complete_3 = "complete"; 
+    users_new_step2_test();
   });
 
 
@@ -91,7 +70,7 @@ $(document).ready(function(){
 
     $.step3complete = true;
 
-    if (this.checked && ($.step1complete == true) && ($.step2complete == true) && ($.step3complete == true)) { // check entire form is complete
+    if (this.checked && ($.users_new_step1_complete == true) && ($.users_new_step2_complete == true) && ($.users_new_step3_complete == true)) { // check entire form is complete
       $("input[type=submit]").attr("disabled",false);
     } else {
       $("input[type=submit]").attr("disabled",true);
