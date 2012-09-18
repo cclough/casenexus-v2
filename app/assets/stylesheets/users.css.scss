@@ -89,15 +89,16 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-
 #users_new_map {
 	height:250px;
 	width:250px;
 }
 
-
+#users_new_status{
+  height:100px;
+}
 .users_edex_datepicker {
-  width: 50px;
+  width: 40px;
 }
 
 .users_edex_field {
@@ -114,7 +115,9 @@ $gray_Lightest: #f6f6f6;
   width: 60px;
 }
 
-
+label { // why the hell won't this work in app.css?
+  font-size:12px;
+}
 
 
 

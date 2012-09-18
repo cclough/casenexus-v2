@@ -3,17 +3,22 @@
   .row
     .span94
       .panel.kill_bottom
-        .row
-          .span45
+        .row.gradient
+          .span50
             = image_tag('home/banner.png', id: 'static_home_banner')
-          .span30
-            = render 'static_pages/carousel'
+          .span37
 
-            .row
-              .span30
-                %h3 Start practising case interviews
-              .span20
-                %a.btn.btn-large.btn-inverse{ href: "/signup"}
-                  %i.icon-share-alt.icon-white
-                  %span
-                    Sign up
+            #static_home_slider.royalSlider.rsDefaultInv
+              = image_tag('home/slider/1.png', class: 'rsImg', alt: "image desc")
+              = image_tag('home/slider/2.png', class: 'rsImg', alt: "image desc")
+              = image_tag('home/slider/3.png', class: 'rsImg', alt: "image desc")
+
+            #static_home_signup
+              .row.panel.gradient
+                .span21
+                  %h5 Start practising case interviews
+                .span11
+                  %a.btn.btn-large.btn-inverse{ href: "/signup"}
+                    %i.icon-share-alt.icon-white
+                    %span
+                      Sign up

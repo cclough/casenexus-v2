@@ -12,14 +12,16 @@ $gray_Lightest: #f6f6f6;
 #header_logo_nav{
   position: absolute;
   top: 3px;
-  &.header_logo_nav_signedout {
+  &.signedout {
     top:18px;
   }
 }
 
-.header_navbar-inner_signedout {
-  padding-top:15px;
-  padding-bottom:15px;
+.navbar-inner {
+  &.signedout {
+    padding-top:15px;
+    padding-bottom:15px;
+  }
 }
 
 

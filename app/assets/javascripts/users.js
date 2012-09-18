@@ -1,32 +1,21 @@
 $(document).ready(function(){
 
 
-  // Hide stuff with the JavaScript. If JS is disabled, the form will still be useable.
-  // NOTE:
-  // Sometimes using the .hide(); function isn't as ideal as it uses display: none; 
-  // which has problems with some screen readers. Applying a CSS class to kick it off the
-  // screen is usually prefered, but since we will be UNhiding these as well, this works.
 
-  $("#users_new_education_group_optional_1, #users_new_education_group_optional_2").hide();
-  $("#users_new_experience_group_optional_1, #users_new_experience_group_optional_2").hide();
-
-  // Reset form elements back to default values on page load
-  // ... don't want browser remembering values like checked checkboxes in this case
-  $("#submit_button").attr("disabled",true);
+////////////////////////////////////////////////////////////////////
+/////////////////////////    NEW     ///////////////////////////////
+////////////////////////////////////////////////////////////////////
 
 
-  $("#num_attendees").val('Please Choose');
-  $("#step_2 input[type=radio]").each(function(){
-    this.checked = false;
-  });
-  $("#rock").each(function(){
-    this.checked = false;
-  });
-  
+  // $("#users_new_education_group_optional_1, #users_new_education_group_optional_2").hide();
+  // $("#users_new_experience_group_optional_1, #users_new_experience_group_optional_2").hide();
 
-  // Fade out steps 2 and 3 until ready
+  $("input[type=submit]").attr("disabled",true);
+  $('#user_accepts_tandc').attr('checked', false);
+
+  // reset form here?
+
   $("#users_new_form_panel_step_2, #users_new_form_panel_step_3").css({ opacity: 0.3 });
-
 
 
   $("#user_password_confirmation").keyup(function() {
@@ -34,6 +23,7 @@ $(document).ready(function(){
       $("#users_new_form_panel_step_2").css({
         opacity: 1
       });
+      $.step1complete = true;
     } else {
       $("#users_new_form_panel_step_2").css({
         opacity: 0.3
@@ -42,14 +32,11 @@ $(document).ready(function(){
   });
 
 
-
-
   var users_new_education_group_count = 1;
 
   $(".users_new_edex_button_add").click(function() {
 
     //if users_new_education_group_count
-
 
   });
 
@@ -66,219 +53,86 @@ $(document).ready(function(){
   });
 
 
+  function stepTwoTest1() {
+    if (($.stepTwoComplete_one == "complete") && ($.stepTwoComplete_two == "complete") && ($.stepTwoComplete_three == "complete")) {
+      
+      $("#users_new_form_panel_step_2")
+      .css({
+        "background-image": "url(app/tick.png)",
+        "background-position": "top right",
+        "background-repeat": "no-repeat"
+      });
+      
+      $("#users_new_form_panel_step_3").css({
+        opacity: 1
+      });
 
+      $.step2complete = true;
+    }
+  };
+  
+  $("#users_new_status").keyup(function(){
+    $.stepTwoComplete_one = "complete"; 
+    stepTwoTest1();
+  });
+  
+  $("#user_education1").keyup(function(){
+    $.stepTwoComplete_two = "complete"; 
+    stepTwoTest1();
+  });
 
-
+  $("#user_experience1").keyup(function(){
+    $.stepTwoComplete_three = "complete"; 
+    stepTwoTest1();
+  });
 
 
   $("#user_accepts_tandc").click(function(){
 
-    if (this.checked && (step1complete == true) && (step2complete == true) && (step3complete == true)) { // check entire form is complete
-      $("#submit_button").attr("disabled",false);
+    $.step3complete = true;
+
+    if (this.checked && ($.step1complete == true) && ($.step2complete == true) && ($.step3complete == true)) { // check entire form is complete
+      $("input[type=submit]").attr("disabled",false);
     } else {
-      $("#submit_button").attr("disabled",false);
+      $("input[type=submit]").attr("disabled",true);
     };
 
   });
 
 
 
+////////////////////////////////////////////////////////////////////
+///////////////////////    NEW & EDIT     //////////////////////////
+////////////////////////////////////////////////////////////////////
 
+  // Map Load
+  $('#users_new_map,#users_edit_map').gmap({
 
+      'zoom': 12,
+      'center': new google.maps.LatLng(lat_start, lng_start),
+      'mapTypeId': google.maps.MapTypeId.ROADMAP,
+      'streetViewControl': false,
+      'mapTypeControl': false
 
+  }).bind('init', function(ev, map) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  // Hide stuff with the JavaScript. If JS is disabled, the form will still be useable.
-  // NOTE:
-  // Sometimes using the .hide(); function isn't as ideal as it uses display: none; 
-  // which has problems with some screen readers. Applying a CSS class to kick it off the
-  // screen is usually prefered, but since we will be UNhiding these as well, this works.
-  $(".name_wrap, #company_name_wrap, #special_accommodations_wrap").hide();
-
-  // Reset form elements back to default values on page load
-  // ... don't want browser remembering values like checked checkboxes in this case
-  $("#submit_button").attr("disabled",true);
-  $("#num_attendees").val('Please Choose');
-  $("#step_2 input[type=radio]").each(function(){
-    this.checked = false;
-  });
-  $("#rock").each(function(){
-    this.checked = false;
-  });
-  
-
-
-
-  // Fade out steps 2 and 3 until ready
-  $("#step_2, #step_3").css({ opacity: 0.3 });
-
-
-
-
-
-  $.stepTwoComplete_one = "not complete";
-  $.stepTwoComplete_two = "not complete"; 
-    
-  // When a dropdown selection is made
-  $("#num_attendees").change(function() {
-
-    $(".name_wrap").slideUp().find("input").removeClass("active_name_field");
-
-        var numAttendees = $("#num_attendees option:selected").text();
-                
-        for ( i=1; i<=numAttendees; i++ ) {
-            $("#attendee_" + i + "_wrap").slideDown().find("input").addClass("active_name_field");
-        }
-                  
-  });
-  
-  // Check completeness of fields quickly
-  $(".name_input").keyup(function() {
-  
-    var all_complete = true;
-        
-    $(".active_name_field").each(function() {
-      if ($(this).val() == '' ) {
-        all_complete = false;
-      };
+    $('#users_new_map,#users_edit_map').gmap('addMarker', {
+        'position': new google.maps.LatLng(lat_start, lng_start),
+        'bounds': false,
+        'draggable': true
+    }).drag(function() {
+      document.getElementById('lat').value = this.position.lat();
+      document.getElementById('lng').value = this.position.lng();    
     });
-    
-    if (all_complete) {
-      $("#step_1")
-        .animate({
-          paddingBottom: 120
-        })
-        .css({
-          "background-image": "url(images/check.png)",
-          "background-position": "bottom center",
-          "background-repeat": "no-repeat"
-        });
-      $("#step_2").css({
-        opacity: 1
-      });
-      $("#step_2 legend").css({
-        opacity: 1 // For dumb Internet Explorer
-      });
-    } else { // not complete
-      $("#step_1")
-        .animate({
-          paddingBottom: 20
-        })
-        .css({
-          "background-image": "none"
-        });
-    };
-  });
-  
-  function stepTwoTest() {
-    if (($.stepTwoComplete_one == "complete") && ($.stepTwoComplete_two == "complete")) {
-      $("#step_2")
-      .animate({
-        paddingBottom: 120
-      })
-      .css({
-        "background-image": "url(images/check.png)",
-        "background-position": "bottom center",
-        "background-repeat": "no-repeat"
-      });
-      $("#step_3").css({
-        opacity: 1
-      });
-      $("#step_3 legend").css({
-        opacity: 1 // For dumb Internet Explorer
-      });
-    }
-  };
-  
-  $("#step_2 input[name=company_name_toggle_group]").click(function(){
-    $.stepTwoComplete_one = "complete"; 
-    if ($("#company_name_toggle_on:checked").val() == 'on') {
-      $("#company_name_wrap").slideDown();
-    } else {
-      $("#company_name_wrap").slideUp();
-    };
-    stepTwoTest();
-  });
-  
-  $("#step_2 input[name=special_accommodations_toggle]").click(function(){
-    $.stepTwoComplete_two = "complete"; 
-    if ($("#special_accommodations_toggle_on:checked").val() == 'on') {
-      $("#special_accommodations_wrap").slideDown();
-    } else {
-      $("#special_accommodations_wrap").slideUp();
-    };
-    stepTwoTest();
-  });
-  
 
-
-  $("#rock").click(function(){
-    if (this.checked && $("#num_attendees option:selected").text() != 'Please Choose'
-        && $.stepTwoComplete_one == 'complete' && $.stepTwoComplete_two == 'complete') {
-        $("#submit_button").attr("disabled",false);
-      } else {
-        $("#submit_button").attr("disabled",true);
-    }
   });
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+////////////////////////////////////////////////////////////////////
+////////////////////////    INDEX    ///////////////////////////////
+////////////////////////////////////////////////////////////////////
 
 
 
@@ -430,28 +284,12 @@ $(document).ready(function(){
 
   });
 
-  // Map Load
-  $('#users_new_map,#users_edit_map').gmap({
 
-      'zoom': 12,
-      'center': new google.maps.LatLng(lat_start, lng_start),
-      'mapTypeId': google.maps.MapTypeId.ROADMAP,
-      'streetViewControl': false,
-      'mapTypeControl': false
 
-  }).bind('init', function(ev, map) {
 
-    $('#users_new_map,#users_edit_map').gmap('addMarker', {
-        'position': new google.maps.LatLng(lat_start, lng_start),
-        'bounds': false,
-        'draggable': true
-    }).drag(function() {
-      document.getElementById('lat').value = this.position.lat();
-      document.getElementById('lng').value = this.position.lng();    
-    });
-
-  });
-
+////////////////////////////////////////////////////////////////////
+///////////////////////////    ALL    //////////////////////////////
+////////////////////////////////////////////////////////////////////
 
   $(".users_datepicker").datepicker();
   // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify

@@ -68,6 +68,13 @@ class User < ActiveRecord::Base
 
   # Education
   validates :education1, presence: true
+  validates :education1_from, presence: true
+  validates :education1_to, presence: true
+
+  # Experience
+  validates :experience1, presence: true
+  validates :experience1_from, presence: true
+  validates :experience1_to, presence: true
 
   # Accepts Terms and Conditions?
 	validates :accepts_tandc, :acceptance => {:accept => true}

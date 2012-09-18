@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.slider
 //= require jquery.ui.datepicker
+//= require jquery.ui.all
 //= require rails.validations
+//= require rails.validations.callbacks
 //= require_tree .

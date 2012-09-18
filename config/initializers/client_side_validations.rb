@@ -2,7 +2,11 @@
 
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   unless html_tag =~ /^<label/
-    %{<div class="application_error_message alert alert-error">#{html_tag}<label for="#{instance.send(:tag_id)}" class="message">#{instance.error_message.first}</label></div>}.html_safe
+  	errorboom = 
+		#%{<div class="field_with_errors">#{html_tag}<label for="#{instance.send(:tag_id)}" class="message">#{instance.error_message.first}</label></div>}.html_safe
+    #%{<div class="">#{html_tag}<label for="#{instance.send(:tag_id)}" class="message application_error_message font-small">#{instance.error_message.first}</label></div>}.html_safe
+  	%{<div class="message" data-content="hello!">#{html_tag}<label for="#{instance.send(:tag_id)}" class="message application_error_message font-small">#{instance.error_message.first}</label></div>}.html_safe
+  	#%{<div class="">#{html_tag}<div class="message application_error_message font-small">#{instance.error_message.first}</div></div>}.html_safe
   else
     %{<div>#{html_tag}</div>}.html_safe
   end

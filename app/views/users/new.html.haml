@@ -7,172 +7,133 @@
 
   / can't see another way to do this yet...
   :javascript
-    var lat_start = '52.2100';
-    var lng_start = '0.1300';
+    if ($('#lat').val() == "") {
+      var lat_start = '52.2100';
+      var lng_start = '0.1300';
+    } else {
+      var lat_start = $('#lat').val();
+      var lng_start = $('#lng').val();
+    }
+    
 
   %h1 Sign up
   
   = form_for @user, :validate => true do |f|
   
     .row
-      .span30
-        #users_new_form_panel_step_1.panel.kill_right
+      .span26
+        #users_new_form_panel_step_1.panel
 
           = render 'shared/error_messages', object: @user
-          = f.label :first_name
-          = f.text_field :first_name
-          = f.label :last_name
-          = f.text_field :last_name
-          = f.label :email
-          = f.text_field :email
-          = f.label :password
-          = f.password_field :password
-          = f.label :password_confirmation, "Confirm Password"
-          = f.password_field :password_confirmation
+          = f.text_field :first_name, placeholder: 'First Name'
+          = f.text_field :last_name, placeholder: 'Last Name'
+          .spacer5
+          = f.text_field :email, placeholder: 'Email'
+          .spacer5
+          = f.password_field :password, placeholder: 'Password'
+          = f.password_field :password_confirmation, placeholder: 'Confirm Password'
+          .row
+            .span16
+              = f.label :email_admin, "Subscribe to advice letter"
+            .span3
+              = f.check_box :email_admin
+          .row
+            .span16
+              = f.label :email_users, "Receive email notifications"
+            .span3
+              = f.check_box :email_users
 
-          = f.label :email_admin, "Receive case interview advice email letter"
-          = f.check_box :email_admin
-          = f.label :email_users, "Send notifications from users to your email"
-          = f.check_box :email_users
-
-      .span30
+      .span35
         #users_new_form_panel_step_2.panel.kill_left.kill_right
 
-          #users_new_education_group
+          = f.text_area :status, id: 'users_new_status', placeholder: "Describe your current situation"
 
-          = f.text_field :education1, placeholder: "Education 1", class: "users_edex_field"
-          = f.text_field :education1_from, placeholder: "From", class: "users_edex_datepicker"
-          = f.text_field :education1_to, placeholder: "To", class: "users_edex_datepicker"
+          .row
+            .span27
+              .row.application_form_table_title.font-small
+                .span15
+                  University/College
+                .span6
+                  From
+                .span2
+                  To
+              #users_new_education_group
+              = f.text_field :education1, placeholder: "1", class: "users_edex_field"
+              = f.text_field :education1_from, class: "users_edex_datepicker"
+              = f.text_field :education1_to, class: "users_edex_datepicker"
 
-          #users_new_education_group_optional_1
+              #users_new_education_group_optional_1
 
-            = f.text_field :education2, placeholder: "Education 2", class: "users_edex_field"
-            = f.text_field :education2_from, placeholder: "From", class: "users_edex_datepicker"
-            = f.text_field :education2_to, placeholder: "To", class: "users_edex_datepicker"
+                = f.text_field :education2, placeholder: "2", class: "users_edex_field"
+                = f.text_field :education2_from, class: "users_edex_datepicker"
+                = f.text_field :education2_to, class: "users_edex_datepicker"
 
-          #users_new_education_group_optional_2
+              #users_new_education_group_optional_2
 
-            = f.text_field :education3, placeholder: "Education 3", class: "users_edex_field"
-            = f.text_field :education3_from, placeholder: "From", class: "users_edex_datepicker"
-            = f.text_field :education3_to, placeholder: "To", class: "users_edex_datepicker"
+                = f.text_field :education3, placeholder: "3", class: "users_edex_field"
+                = f.text_field :education3_from, class: "users_edex_datepicker"
+                = f.text_field :education3_to, class: "users_edex_datepicker"
+            .span5.pull-right
+              %a#users_new_button_education_remove.btn.btn-inverse -
+              %a#users_new_button_education_add.btn.btn-inverse +
+          .spacer10
+          .row
+            .span27
+              .row.application_form_table_title.font-small
+                .span15
+                  Professional Experience
+                .span6
+                  From
+                .span2
+                  To
+              #users_new_experience_group
+                = f.text_field :experience1, placeholder: "1", class: "users_edex_field"
+                = f.text_field :experience1_from, class: "users_edex_datepicker"
+                = f.text_field :experience1_to, class: "users_edex_datepicker"
 
-          %a#users_new_button_education_add.btn.btn-inverse Add School
-          %a#users_new_button_education_remove.btn.btn-inverse Remove School
+
+              #users_new_experience_group_optional_1
+                = f.text_field :experience2, placeholder: "2", class: "users_edex_field"
+                = f.text_field :experience2_from, class: "users_edex_datepicker"
+                = f.text_field :experience2_to, class: "users_edex_datepicker"
+
+              #users_new_experience_group_optional_2
+
+                = f.text_field :experience3, placeholder: "3", class: "users_edex_field"
+                = f.text_field :experience3_from, class: "users_edex_datepicker"
+                = f.text_field :experience3_to, class: "users_edex_datepicker"
+
+            .span5.pull-right
+              %a#users_new_button_experience_remove.btn.btn-inverse -
+              %a#users_new_button_experience_add.btn.btn-inverse +
 
 
+      .span33
+        #users_new_form_panel_step_3.panel
 
+          .row
+            .span7
+              = image_tag 'icons/skype_large.png'
+            .span15.offset2
+              = f.text_field :skype, placeholder: 'Skype username'
+          .row
+            .span7
+              = image_tag 'icons/linkedin_large.png'
+            .span15.offset2
+              = f.text_field :linkedin, placeholder: 'LinkedIn email address'
 
-          #users_new_experience_group
-            = f.text_field :experience1, placeholder: "Experience 1", class: "users_edex_field"
-            = f.text_field :experience1_from, placeholder: "From", class: "users_edex_datepicker"
-            = f.text_field :experience1_to, placeholder: "To", class: "users_edex_datepicker"
-
-          #users_new_experience_group_optional_1
-            = f.text_field :experience2, placeholder: "Experience 2", class: "users_edex_field"
-            = f.text_field :experience2_from, placeholder: "From", class: "users_edex_datepicker"
-            = f.text_field :experience2_to, placeholder: "To", class: "users_edex_datepicker"
-
-          #users_new_experience_group_optional_2
-
-            = f.text_field :experience3, placeholder: "experience 3", class: "users_edex_field"
-            = f.text_field :experience3_from, placeholder: "From", class: "users_edex_datepicker"
-            = f.text_field :experience3_to, placeholder: "To", class: "users_edex_datepicker"
-
-          %a#users_new_button_experience_add.btn.btn-inverse Add Work
-          %a#users_new_button_experience_remove.btn.btn-inverse Remove Work
-
-          = f.label :skype
-          = f.text_field :skype
-          = f.label :linkedin
-          = f.text_field :linkedin
-
-      .span30
-        #users_new_form_panel_step_2.panel.kill_left
-
-          = f.label :status, "Describe your current situation"
-          = f.text_area :status
+          .spacer10
 
           #users_new_map.map
 
-          = f.hidden_field :lat, id: "lat"
-          = f.hidden_field :lng, id: "lng"
+          = f.text_field :lat, id: "lat"
+          = f.text_field :lng, id: "lng"
 
-
-          = f.label :accepts_tandc, "Accept the terms and conditions"
-          = f.check_box :accepts_tandc
+          .spacer10
+          .row
+            .span16
+              = f.label :accepts_tandc, "I accept the terms and conditions"
+            .span3
+              = f.check_box :accepts_tandc
           %br
           = f.submit "Create my account", class: "btn btn-large btn-inverse"
-
-
-
-
-
-
-
-
-  %form{:action => "#", :method => "post"}
-
-    %fieldset#step_1
-      %legend Step 1
-      %label{:for => "num_attendees"}
-        How many people will be attending?
-      %select#num_attendees
-        %option#opt_0{:value => "0"} Please Choose
-        %option#opt_1{:value => "1"} 1
-        %option#opt_2{:value => "2"} 2
-        %option#opt_3{:value => "3"} 3
-        %option#opt_4{:value => "4"} 4
-        %option#opt_5{:value => "5"} 5
-      %br
-        #attendee_1_wrap.name_wrap.push
-          %h3 Please provide full names:
-          %label{:for => "name_attendee_1"}
-            Attendee 1 Name:
-          %input#name_attendee_1.name_input{:type => "text"}
-        #attendee_2_wrap.name_wrap
-          %label{:for => "name_attendee_2"}
-            Attendee 2 Name:
-          %input#name_attendee_2.name_input{:type => "text"}
-        #attendee_3_wrap.name_wrap
-          %label{:for => "name_attendee_3"}
-            Attendee 3 Name:
-          %input#name_attendee_3.name_input{:type => "text"}
-        #attendee_4_wrap.name_wrap
-          %label{:for => "name_attendee_4"}
-            Attendee 4 Name:
-          %input#name_attendee_4.name_input{:type => "text"}
-        #attendee_5_wrap.name_wrap
-          %label{:for => "name_attendee_5"}
-            Attendee 5 Name:
-          %input#name_attendee_5.name_input{:type => "text"}
-    %fieldset#step_2
-      %legend Step 2
-      %p
-        Would you like your company name on your badges?
-      %input#company_name_toggle_on{:name => "company_name_toggle_group", :type => "radio"}
-        %label{:for => "company_name_toggle_on"} Yes
-         
-        %input#company_name_toggle_off{:name => "company_name_toggle_group", :type => "radio"}
-          %label{:for => "company_name_toggle_off"} No
-          #company_name_wrap
-            %label{:for => "company_name"}
-              Company Name:
-            %input#company_name{:type => "text"}
-          .push
-            %p
-              Will anyone in your group require special accommodations?
-            %input#special_accommodations_toggle_on{:name => "special_accommodations_toggle", :type => "radio"}
-              %label{:for => "special_accommodations_toggle_on"} Yes
-               
-              %input#special_accommodations_toggle_off{:name => "special_accommodations_toggle", :type => "radio"}
-                %label{:for => "special_accommodations_toggle_off"} No
-          #special_accommodations_wrap
-            %label{:for => "special_accomodations_text"}
-              Please explain below:
-            %textarea#special_accomodations_text{:cols => "10", :rows => "10"}
-    %fieldset#step_3
-      %legend Step 3
-      %label{:for => "rock"}
-        Are you ready to rock?
-      %input#rock{:type => "checkbox"}
-        %input#submit_button.push{:type => "submit", :value => "Complete Registration"}

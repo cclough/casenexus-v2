@@ -33,6 +33,23 @@ class UsersController < ApplicationController
 
 	end
 
+
+  # Show Profile (used without layout on map page only)
+  def show
+    @user = User.find(params[:id])
+    
+    if @user.approved?
+      respond_to do |format|
+        @notification = Notification.new
+        format.html { render :layout => false }
+       end
+    else
+      render 'index'
+    end
+
+  end
+
+  
   # Signup
   def new
     @user = User.new
@@ -65,20 +82,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # Show Profile (used without layout on map page only)
-  def show
-    @user = User.find(params[:id])
-    
-    if @user.approved?
-      respond_to do |format|
-        @notification = Notification.new
-        format.html { render :layout => false }
-       end
-    else
-      render 'index'
-    end
-
-  end
 
 
   private
