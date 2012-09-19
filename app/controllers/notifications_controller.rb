@@ -29,12 +29,15 @@ class NotificationsController < ApplicationController
         when "message"
           format.js
           flash.now[:success] = 'Message sent'
+        when "friend_req"
+          format.js
+          flash.now[:success] = 'Contact Request sent'
         end
 
       else
         
         case params[:notification][:ntype]
-        when "message", "feedback_req"
+        when "message", "feedback_req", "friend_req"
           # need to declare target user again for form
           @user = @notification.target
           format.js

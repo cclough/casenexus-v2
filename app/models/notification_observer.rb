@@ -27,9 +27,16 @@ class NotificationObserver < ActiveRecord::Observer
                              notification.target, 
                              notification.url, 
                              notification.content).deliver
+    when "friend_req"
+      UserMailer.usermessage(user_from,
+                             notification.target,
+                             notification.content).deliver
+    when "friend_app"
+      UserMailer.usermessage(user_from,
+                             notification.target, 
+                             notification.url).deliver
     end
   
   end
-
 
 end

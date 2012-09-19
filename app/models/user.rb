@@ -18,9 +18,14 @@ class User < ActiveRecord::Base
   ### Relationships
   has_many :cases
   has_many :notifications
-  
+
+  ### Friendships Model
+  include Amistad::FriendModel
+
+
   ### Bcrypt
   has_secure_password
+
 
 
   ### Callbacks
@@ -135,6 +140,7 @@ class User < ActiveRecord::Base
   end
 
 
+
   ## Macro
 
   def self.markers
@@ -146,13 +152,17 @@ class User < ActiveRecord::Base
     User.approved.order('created_at desc')
   end
 
-  def self.list_local(origin_lat, origin_lng)
-    User.approved.within(100, origin: [origin_lat, origin_lng])
+  def self.list_local(user)
+    User.approved.within(100, origin: [user.lat, user.lng])
                  .order('created_at desc')
   end
 
   def self.list_rand
     User.approved.order("RANDOM()")
+  end
+
+  def self.list_contacts(user)
+    user.friends
   end
 
 

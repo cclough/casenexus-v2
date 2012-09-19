@@ -1,0 +1,8 @@
+You have been sent a contact request by <%= @user_from.name %>
+===============================================
+
+<%= @message %>
+
+To accept this request, follow this link: 
+<%= link_to "Confirm friend?", friend_path(@user_from), :method => "put" %>
+

@@ -1,23 +1,20 @@
-= form_for(@notification, remote: true) do |f|
+= form_for(@friendship, remote: true, :url => friends_path) do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    %h3 Send Message
+    %h3 Send Contact Request
 
   .modal-body
 
     %p
-      Contact this user
-
+      Introduce yourself
+  
     #flash_notifications
-      = render 'shared/error_messages', object: @notification
+      = render 'shared/error_messages', object: @friendship
 
     %div
       = f.text_area :content, placeholder: "Send message...", tabindex: "1"
-
-      = f.hidden_field :user_id, :value => @user.id
-      = f.hidden_field :sender_id, :value => current_user.id
-      = f.hidden_field :ntype, :value => "message"
+      = f.hidden_field :user_id, value: 1
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close

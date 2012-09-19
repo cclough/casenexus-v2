@@ -75,11 +75,7 @@
     %li.users_show_list_header
       Actions:
     %li
-      / send message button
-      %a#users_index_user_button_message.btn.btn-inverse
-        %i.icon-comment.icon-white
-        %span
-          Message
+      = render 'button_friend_req_or_message'
 
       / send feedback req button
       %a#users_index_user_button_feedback_req.btn.btn-inverse
@@ -94,6 +90,8 @@
 #modal_message.modal.hide.fade
   = render 'shared/modal_message_form'
 
+#modal_friend_req.modal.hide.fade
+  = render 'shared/modal_friend_req_form' unless current_user.friend_with?(@user)
+
 #modal_feedback_req.modal.hide.fade
   = render 'shared/modal_feedback_req_form'
-

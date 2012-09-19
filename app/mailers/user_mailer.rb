@@ -14,6 +14,7 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus: Welcome")
   end
 
+
   # conflicts with actionmailer function if just called message
   def usermessage(user_from, user_target, url, message)
     @user_from = user_from
@@ -24,6 +25,7 @@ class UserMailer < ActionMailer::Base
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus: You have been sent a message")
   end
+
 
   def feedback_req(user_from, user_target, url, date, subject)
     @user_from = user_from
@@ -45,6 +47,23 @@ class UserMailer < ActionMailer::Base
     
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus: You have been sent case feedback")
+  end
+
+  def friend_req(user_from, user_target, message)
+    @user_from = user_from
+    @user_target = user_target
+    @message = message
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: "casenexus: You have been sent a contact request")
+  end
+
+  def friend_app(user_from, user_target)
+    @user_from = user_from
+    @user_target = user_target
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: "casenexus: Your contact request has been accepted")
   end
 
   def password_reset(user)

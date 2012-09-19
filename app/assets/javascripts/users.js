@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   // reset form here?
 
-  $("#users_new_step2, #users_new_step_3").css({ opacity: 0.3 });
+  $("#users_new_step2, #users_new_step3").css({ opacity: 0.3 });
 
 
   $("#user_password_confirmation").keyup(function() {
@@ -262,12 +262,7 @@ $(document).ready(function(){
           });
 
           // Modal Stuff!
-          $('#modal_message').modal({
-            backdrop: false,
-            show: false
-          });
-
-          $('#modal_feedback_req').modal({
+          $('#modal_message, #modal_feedback_req, #modal_friend_req').modal({
             backdrop: false,
             show: false
           });
@@ -275,12 +270,17 @@ $(document).ready(function(){
           // message button click, hides other modal
           // not using TBS data-toggle etc. as doesn't let you hide others
           $('#users_index_user_button_message').click(function() {
+            $('.modal').modal('hide');
             $('#modal_message').modal('show');
-            $('#modal_feedback_req').modal('hide')
+          });
+
+          $('#users_index_user_button_friend_req').click(function() {
+            $('.modal').modal('hide');
+            $('#modal_friend_req').modal('show')
           });
 
           $('#users_index_user_button_feedback_req').click(function() {
-            $('#modal_message').modal('hide');
+            $('.modal').modal('hide');
             $('#modal_feedback_req').modal('show')
           });
 

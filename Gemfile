@@ -11,6 +11,7 @@ gem 'will_paginate', '3.0.3'
 gem 'scoped_search'
 gem 'geokit-rails3'
 gem 'client_side_validations'
+gem 'amistad'
 
 # vincent:
 gem 'nokogiri'

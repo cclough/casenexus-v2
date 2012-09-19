@@ -1,0 +1,9 @@
+- provide(:title, 'Your friends')
+
+= content_for :content do
+
+  %ul
+    - for user in @pending_requests
+      %li
+        = user.email
+        = link_to "Confirm friend?", friend_path(user), :method => "put"

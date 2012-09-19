@@ -13,9 +13,12 @@ class UsersController < ApplicationController
     when "global"
       users_scope = User.list_global
     when "local"
-      users_scope = User.list_local(current_user.lat, current_user.lng)
+      users_scope = User.list_local(current_user)
     when "rand"
       users_scope = User.list_rand
+    when "contacts"
+      # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
+      users_scope = User.joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(:friendships => {:user_id => current_user.id, :pending => false, :blocker_id => nil})
     end
 
     # Using scoped_search gem
@@ -41,6 +44,7 @@ class UsersController < ApplicationController
       if @user.approved?
         respond_to do |format|
           @notification = Notification.new
+          @friendship = Friendship.new #unless current_user.friend_with?(@user)
           format.html { render :layout => false }
         end
       else
@@ -84,13 +88,13 @@ class UsersController < ApplicationController
 
 
 
+  # AJAX
+
   def getlatlng
     respond_to do |format|
       format.json { render json: { lat: current_user.lat, lng: current_user.lng } }
     end
   end
-
-
 
 
   private

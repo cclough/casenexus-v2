@@ -24,5 +24,4 @@ module UsersHelper
 	
 	end
 
-
 end

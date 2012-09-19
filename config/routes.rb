@@ -9,6 +9,11 @@ Casenexus::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/getlatlng',  :to => 'users#getlatlng'
 
+  # Friendships
+  resources :friends, :controller => 'friendships', :except => [:show, :edit] do
+    get "requests", :on => :collection
+    get "invites", :on => :collection
+  end
 
   # Password Reset
   resources :password_resets, only: [:new, :create, :edit, :update]

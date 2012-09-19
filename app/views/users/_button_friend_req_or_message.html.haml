@@ -1,0 +1,10 @@
+- if current_user.friend_with?(@user)
+  %a#users_index_user_button_message.btn.btn-inverse
+    %i.icon-comment.icon-white
+    %span
+      Message
+- else
+  %a#users_index_user_button_friend_req.btn.btn-inverse
+    %i.icon-comment.icon-white
+    %span
+      Send Friend Request

@@ -56,6 +56,10 @@ class Notification < ActiveRecord::Base
       host + "cases/" + case_id.to_s
     when "feedback_req"
       host + "cases/new"
+    when "friend_req"
+      # host + "friends/" + sender_id.to_s #done using link_to put request in email
+    when "friend_app"
+      host
     end
 
   end

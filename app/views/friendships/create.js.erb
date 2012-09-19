@@ -1,0 +1,12 @@
+<%- if @friendship.errors.any? %>
+
+  $('#modal_friend_req').html('<%= escape_javascript(render('shared/modal_friend_req_form')) %>');
+  
+<%- else %>
+
+	$('#modal_friend_req').modal('hide');
+
+  $("#flash_application").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+	$("#flash_application").fadeIn("fast");
+
+<%- end %>
