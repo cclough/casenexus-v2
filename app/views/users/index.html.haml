@@ -1,16 +1,12 @@
 - provide(:title, 'Map')
 
 - content_for :javascript_includes do
-  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
+  
   = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
 
 = content_for :content do
-
-  / can't see another way to do this yet...
-  :javascript
-    var lat_start = "#{current_user.lat}";
-    var lng_start = "#{current_user.lng}";
-
+    
+  #users_index_map_footerspacer
   #users_index_map.map
 
   #users_index_mapcontainer_users.mapcontainer

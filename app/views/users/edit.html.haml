@@ -1,127 +1,121 @@
 - provide(:title, 'Edit Profile')
 
-- content_for :javascript_includes do
-  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
-
 = content_for :content do
-
-  / can't see another way to do this yet...
-  :javascript
-    var lat_start = "#{current_user.lat}";
-    var lng_start = "#{current_user.lng}";
 
   %h1 Edit Profile
 
   = form_for(@user, :validate => true) do |f|
 
     .row
-      .span4
-        .panel.type1.kill_right
+      .span94
+        = render 'shared/error_messages', object: @user
+        .span47
+          .panel
+            .row
+              .span15
+                = f.label :first_name
+              .span25
+                = f.text_field :first_name
+            .row
+              .span15
+                = f.label :last_name
+              .span25
+                = f.text_field :last_name
+            .row
+              .span15  
+                = f.label :email
+              .span25 
+                = f.text_field :email
+            .row
+              .span15   
+                = f.label :password
+              .span25
+                = f.password_field :password
+            .row
+              .span15   
+                = f.label :password_confirmation, "Confirm Password"
+              .span25
+                = f.password_field :password_confirmation
+            .row  
+              .span15
+                = f.label :skype
+              .span25  
+                = f.text_field :skype
+            .row
+              .span15   
+                = f.label :linkedin
+              .span25
+                = f.text_field :linkedin
 
-          = render 'shared/error_messages', object: @user
-          = f.label :first_name
-          = f.text_field :first_name
-          = f.label :last_name
-          = f.text_field :last_name
-          = f.label :email
-          = f.text_field :email
-          = f.label :password
-          = f.password_field :password
-          = f.label :password_confirmation, "Confirm Password"
-          = f.password_field :password_confirmation
+            .spacer20
+            .row
+              .span25
+                .row.application_form_table_title.font-small
+                  .span15
+                    University/College
+                  .span6
+                    From
+                  .span2
+                    To
+            .row
+              .span15
+                = f.text_field :education1, placeholder: "Education 1", class: "users_edex_field"
+                = f.text_field :education2, placeholder: "Education 2", class: "users_edex_field"
+                = f.text_field :education3, placeholder: "Education 3", class: "users_edex_field"
+              .span5
+                = f.text_field :education1_from, placeholder: "Education 1", class: "users_edex_datepicker"
+                = f.text_field :education2_from, placeholder: "Education 2", class: "users_edex_datepicker"
+                = f.text_field :education3_from, placeholder: "Education 3", class: "users_edex_datepicker"
+              .span5
+                = f.text_field :education1_to, placeholder: "Education 1", class: "users_edex_datepicker"
+                = f.text_field :education2_to, placeholder: "Education 2", class: "users_edex_datepicker"
+                = f.text_field :education3_to, placeholder: "Education 3", class: "users_edex_datepicker"
 
-          = f.label :status, "Describe your current situation"
-          = f.text_area :status
+            .spacer10
+            .row
+              .span25
+                .row.application_form_table_title.font-small
+                  .span15
+                    Professional Experience
+                  .span6
+                    From
+                  .span2
+                    To
+            .row
+              .span15              
+                = f.text_field :experience1, placeholder: "experience 1", class: "users_edex_field"
+                = f.text_field :experience2, placeholder: "experience 2", class: "users_edex_field"
+                = f.text_field :experience3, placeholder: "experience 3", class: "users_edex_field"
+              .span5
+                = f.text_field :experience1_from, placeholder: "experience 1", class: "users_edex_datepicker"
+                = f.text_field :experience2_from, placeholder: "experience 2", class: "users_edex_datepicker"
+                = f.text_field :experience3_from, placeholder: "experience 3", class: "users_edex_datepicker"
+              .span5
+                = f.text_field :experience1_to, placeholder: "experience 1", class: "users_edex_datepicker"
+                = f.text_field :experience2_to, placeholder: "experience 2", class: "users_edex_datepicker"
+                = f.text_field :experience3_to, placeholder: "experience 3", class: "users_edex_datepicker"
 
-          = f.label :skype
-          = f.text_field :skype
-          = f.label :linkedin
-          = f.text_field :linkedin
+        .span35
+          .panel.inverse.kill_left
+            .row
+              .span20
+                = f.label :status, "Describe your current situation"
+              .span30  
+                = f.text_area :status
 
-          = f.text_field :lat, id: "lat"
-          = f.text_field :lng, id: "lng"
+            #users_newedit_map.map
+            = f.text_field :lat, id: "lat"
+            = f.text_field :lng, id: "lng"
 
-          .row
-            .span2
-              = f.label :email_admin, "Receive case interview advice email letter"
-            .span1
-              = f.check_box :email_admin
-          .row
-            .span2
-              = f.label :email_users, "Send notifications from users to your email"
-            .span1
-              = f.check_box :email_users
+            .row
+              .span20
+                = f.label :email_admin, "Receive case interview advice email letter"
+              .span30
+                = f.check_box :email_admin
+            .row
+              .span20
+                = f.label :email_users, "Send notifications from users to your email"
+              .span30
+                = f.check_box :email_users
 
-          %br
-          = f.submit "Save changes", class: "btn btn-large btn-inverse"
-
-      .span8
-        .row
-          .span8
-            #users_edit_map.map
-
-        .row
-          .span8
-            .panel.type1.content.kill_right.kill_left
-              .row
-                .span4
-                  %table(style="width:275px;")
-                    %tr
-                      %th
-                        Education
-                      %th.users_edit_date_column
-                        From
-                      %th.users_edit_date_column
-                        To
-                    %tr
-                      %td
-                        = f.text_field :education1, placeholder: "Education 1"
-                      %td
-                        = f.text_field :education1_from, placeholder: "Education 1", class: "datepicker"
-                      %td
-                        = f.text_field :education1_to, placeholder: "Education 1", class: "datepicker"
-                    %tr
-                      %td
-                        = f.text_field :education2, placeholder: "Education 2"
-                      %td
-                        = f.text_field :education2_from, placeholder: "Education 2", class: "datepicker"
-                      %td
-                        = f.text_field :education2_to, placeholder: "Education 2", class: "datepicker"
-                    %tr
-                      %td 
-                        = f.text_field :education3, placeholder: "Education 3"
-                      %td
-                        = f.text_field :education3_from, placeholder: "Education 3", class: "datepicker"
-                      %td
-                        = f.text_field :education3_to, placeholder: "Education 3", class: "datepicker"
-
-                .span3
-                  %table(style="width:275px;")
-                    %tr
-                      %th
-                        Professional Experience
-                      %th.users_edit_date_column
-                        From
-                      %th.users_edit_date_column
-                        To
-                    %tr
-                      %td
-                        = f.text_field :experience1, placeholder: "experience 1"
-                      %td
-                        = f.text_field :experience1_from, placeholder: "experience 1", class: "datepicker"
-                      %td
-                        = f.text_field :experience1_to, placeholder: "experience 1", class: "datepicker"
-                    %tr
-                      %td
-                        = f.text_field :experience2, placeholder: "experience 2"
-                      %td
-                        = f.text_field :experience2_from, placeholder: "experience 2", class: "datepicker"
-                      %td
-                        = f.text_field :experience2_to, placeholder: "experience 2", class: "datepicker"
-                    %tr
-                      %td
-                        = f.text_field :experience3, placeholder: "experience 3"
-                      %td
-                        = f.text_field :experience3_from, placeholder: "experience 3", class: "datepicker"
-                      %td
-                        = f.text_field :experience3_to, placeholder: "experience 3", class: "datepicker"
+            = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "users_edit_button_submit"

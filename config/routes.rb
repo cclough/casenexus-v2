@@ -7,6 +7,8 @@ Casenexus::Application.routes.draw do
   # Users
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   match '/signup', to: 'users#new'
+  match '/getlatlng',  :to => 'users#getlatlng'
+
 
   # Password Reset
   resources :password_resets, only: [:new, :create, :edit, :update]

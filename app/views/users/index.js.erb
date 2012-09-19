@@ -1,4 +1,4 @@
-// re-renders the user list
+// Re-renders the user list
 $("#users_index_users").html("<%= escape_javascript(render("users")) %>")
 
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
@@ -6,10 +6,8 @@ $('.users_index_users_item').click(function() {
 
 	// Break up id string, so can get id off the end
 	var target_id = this.id.split('_');
-	// Get the marker, using jquery-ui-map
-	var target_marker = $('#users_index_map').gmap('get', 'markers')[target_id[4]]
-	// trigger a click on the marker
-	$(target_marker).triggerEvent('click');
+	// Trigger Click
+	google.maps.event.trigger(users_index_map_markers[target_id[4]], 'click');
 
 });
 

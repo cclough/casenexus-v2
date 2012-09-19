@@ -48,6 +48,7 @@ AmCharts.ready(function () {
   chart.startDuration = 0.3;
   chart.startEffect = ">";
   chart.sequencedAnimation = true;
+  chart.color = "#FFFFFF";
 
   // GRAPH - FIRST 5
   var graph = new AmCharts.AmGraph();
@@ -118,7 +119,7 @@ var chart_area;
 // loop through model json, construct AM compatabile array + run parseDate
 chartData_progress = [];
 
-$.getJSON("analysis", function(json) {
+$.getJSON("/cases/analysis", function(json) {
 
   for (var i = 0; i < json.length; i++) {
 

@@ -6,17 +6,17 @@
     var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
 
   .row
-    .span60
-      .panel
-        .row
-          .span25
-            = render 'stats'
-          .span25
-            = render 'comments'
-    .span30
-      #chart_radar{:style => "height: 300px; width: 340px;"}
+    .span51
+      .row
+        .span25
+          = render 'stats'
+        .span25
+          = render 'comments'
+    .span40
+      .panel.inverse.kill_left
+        #chart_radar{:style => "height: 300px; width: 340px;"}
   .row
     .span94
-      .panel
+      .panel.kill_top
         #chart_progress{:style => "width:100%; height:350px;"}
 

@@ -37,15 +37,15 @@ class UsersController < ApplicationController
   # Show Profile (used without layout on map page only)
   def show
     @user = User.find(params[:id])
-    
-    if @user.approved?
-      respond_to do |format|
-        @notification = Notification.new
-        format.html { render :layout => false }
-       end
-    else
-      render 'index'
-    end
+
+      if @user.approved?
+        respond_to do |format|
+          @notification = Notification.new
+          format.html { render :layout => false }
+        end
+      else
+        render 'index'
+      end
 
   end
 
@@ -81,6 +81,15 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
+
+
+  def getlatlng
+    respond_to do |format|
+      format.json { render json: { lat: current_user.lat, lng: current_user.lng } }
+    end
+  end
+
 
 
 

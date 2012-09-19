@@ -69,8 +69,6 @@ textarea {
   font-size:12px;
 }
 
-
-
 .container {
   &.main{
     /* gives twitter like white translucent background */
@@ -137,6 +135,14 @@ textarea {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#29000000',GradientType=0 ); /* IE6-9 */
   }
 
+  &.inverse {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#FFFFFF);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#FFFFFF)";
+    color: white;
+  }
+
   &.kill_right {
     margin-right: 0px;
   }
@@ -150,7 +156,7 @@ textarea {
   }
 
   &.kill_top{
-    margin-bottom: 0px;
+    margin-top: 0px;
   }
 }
 

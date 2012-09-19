@@ -11,9 +11,11 @@ gem 'will_paginate', '3.0.3'
 gem 'scoped_search'
 gem 'geokit-rails3'
 gem 'client_side_validations'
+
 # vincent:
 gem 'nokogiri'
 gem 'request_exception_handler'
+
 
 
 group :development, :test do

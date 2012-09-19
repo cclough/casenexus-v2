@@ -1,20 +1,6 @@
 - provide(:title, 'Sign up')
 
-- content_for :javascript_includes do
-  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false"
-
 = content_for :content do
-
-  / can't see another way to do this yet...
-  :javascript
-    if ($('#lat').val() == "") {
-      var lat_start = '52.2100';
-      var lng_start = '0.1300';
-    } else {
-      var lat_start = $('#lat').val();
-      var lng_start = $('#lng').val();
-    }
-    
 
   %h1 Sign up
   
@@ -76,6 +62,7 @@
             .span5.pull-right
               %a#users_new_button_education_remove.btn.btn-inverse -
               %a#users_new_button_education_add.btn.btn-inverse +
+              
           .spacer10
           .row
             .span27
@@ -124,7 +111,7 @@
 
           .spacer10
 
-          #users_new_map.map
+          #users_newedit_map.map
 
           = f.text_field :lat, id: "lat"
           = f.text_field :lng, id: "lng"
@@ -136,4 +123,4 @@
             .span3
               = f.check_box :accepts_tandc
           %br
-          = f.submit "Create my account", class: "btn btn-large btn-inverse"
+          = f.submit "Create my account", class: "btn btn-large btn-inverse", id: "users_new_button_submit"

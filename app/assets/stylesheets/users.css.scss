@@ -18,18 +18,33 @@ $gray_Lightest: #f6f6f6;
 
 #users_index_map {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 4%;
+  right: 4%;
+  top: 57px;
+  bottom: 6%;
   z-index: 0;
-  width: 100%;
-  height: 100%;
+  width: 92%;
+  height: 92%;
+
+  // -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
+
+  -moz-box-shadow: 0px 5px 28px #000000;
+  -webkit-box-shadow: 0px 5px 28px #000000;
+  box-shadow: 0px 5px 28px #000000;
+
+}
+
+// Pushes footer to bottom of page on map
+#users_index_map_footerspacer {
+  height:96.7%;
+  width:0px;
 }
 
 /***** for custom control position hack *****/
 
 #users_index_map_zoomcontrol {
   position: absolute;
-  left: 405px;
+  left: 350px;
 }
 
 /* When the below is used, control disappears on mouse over */
@@ -41,9 +56,20 @@ $gray_Lightest: #f6f6f6;
 
 
 #users_index_mapcontainer_users {
-  top: 39px;
+  top: 15%;
   left: 0px;
   width: 400px;
+
+  // Inset
+  -moz-box-shadow:inset 2px 0px 13px #000000;
+  -webkit-box-shadow:inset 2px 0px 13px #000000;
+  box-shadow:inset 2px 0px 13px #000000;
+
+  // Outset
+  // -moz-box-shadow: 2px 3px 14px #4a494a;
+  // -webkit-box-shadow: 2px 3px 14px #4a494a;
+  // box-shadow: 2px 3px 14px #4a494a;
+
 }
 
 #users_index_mapcontainer_user {
@@ -89,7 +115,7 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-#users_new_map {
+#users_newedit_map {
 	height:250px;
 	width:250px;
 }
@@ -106,97 +132,11 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-#users_edit_map {
-	height:450px;
-	width:100%;
-}
-
 .users_edit_date_column {
   width: 60px;
 }
 
 label { // why the hell won't this work in app.css?
   font-size:12px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .hidden {
-//   position:absolute;
-//   left:-999em;
-//   top:-999em;
-//   width:1%;
-// }
-
-
-
-fieldset {
-  width: 280px; 
-  padding: 15px; 
-  float: left; 
-  border: none;
-  margin: 0 10px 0 0; 
-  }
-  fieldset#step_1 { 
-    background: #b2e7ca; 
-  }
-  fieldset#step_2 { 
-    background: #b2d9e7; 
-  }
-  fieldset#step_3 { 
-    background: #e7c7b2; 
-  }
-
-legend { 
-  font-weight: bold; 
-  font-size: 20px; 
-  background: white;
-  -moz-border-radius: 10px; 
-  -webkit-border-radius: 10px;
-  padding: 5px 10px; 
-  letter-spacing: -1px;
-}
-                        
-option { 
-  padding: 0 5px; 
-}
-
-.name_wrap { 
-  margin: 5px 0; 
-  }
-  .name_wrap label { 
-    font-size: 12px; 
-    display: block; 
-    width: 102px; 
-    float: left; 
-  }
-  
-.push {
-  margin: 20px 0 0 0; 
-}
-
-#special_accommodations_wrap,
-#company_name_wrap { 
-  margin: 8px 0 0 0; 
-}
-
-#company_name_wrap label,
-#special_accommodations_wrap label { 
-  font-size: 12px; 
-}
-
-#special_accommodations_wrap textarea { 
-  width: 100%; height: 100px; 
 }
 
