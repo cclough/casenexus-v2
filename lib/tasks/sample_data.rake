@@ -9,9 +9,9 @@ namespace :db do
       password = "password"
       lat = -90 + rand(180)
       lng = -180 + rand(360)
-      status = "#{n}" * 51
+      status = Faker::Lorem.sentence(20)
       skype = "skye"
-      linkedin = "christian.clough"
+      linkedin = "christian.clough@gmail.com"
 
       education1 = "Imperial"
       education2 = "Oxford"
@@ -74,10 +74,10 @@ namespace :db do
            password_confirmation: "numbnuts",
            lat: 51.9128232665856,
            lng: -1.541188764572144,
-           status: "b" * 51,
+           status: Faker::Lorem.sentence(20),
 
            skype: "robinclough",
-           linkedin: "robin.clough",
+           linkedin: "christian.clough@gmail.com",
 
            education1: "Imperial",
            education2: "Oxford",
@@ -114,10 +114,10 @@ namespace :db do
            password_confirmation: "design",
            lat: 51.9128232665856,
            lng: -0.541188764572144,
-           status: "c" * 51,
+           status: Faker::Lorem.sentence(20),
 
            skype: "greatdesign",
-           linkedin: "great.design",
+           linkedin: "great.design@linkedin.com",
 
            education1: "Imperial",
            education2: "Oxford",
@@ -203,13 +203,6 @@ namespace :db do
 
 
   end
-
-
-
-
-
-
-
 
 
   private

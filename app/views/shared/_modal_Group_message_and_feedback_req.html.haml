@@ -1,0 +1,5 @@
+- if (current_user.friend_with?(@user) && (@user != current_user))
+  #modal_message.modal.hide.fade
+    = render 'shared/modal_message_form'
+  #modal_feedback_req.modal.hide.fade
+    = render 'shared/modal_feedback_req_form'

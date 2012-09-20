@@ -16,7 +16,8 @@ class NotificationsController < ApplicationController
 
 	def create
 
-    @notification = Notification.new(params[:notification])
+    @user = User.find(params[:notification][:user_id])
+    @notification = @user.notifications.build(params[:notification])
 
     respond_to do |format|
 
@@ -25,19 +26,19 @@ class NotificationsController < ApplicationController
         case params[:notification][:ntype]
         when "feedback_req"
           format.js
-          flash.now[:success] = 'Feedback request sent'
+          #flash.now[:success] = 'Feedback request sent'
         when "message"
           format.js
-          flash.now[:success] = 'Message sent'
-        when "friend_req"
+          #flash.now[:success] = 'Message sent'
+        when "friendship_req"
           format.js
-          flash.now[:success] = 'Contact Request sent'
+          #flash.now[:success] = 'Message sent'
         end
 
       else
-        
+
         case params[:notification][:ntype]
-        when "message", "feedback_req", "friend_req"
+        when "message", "feedback_req", "friendship_req"
           # need to declare target user again for form
           @user = @notification.target
           format.js

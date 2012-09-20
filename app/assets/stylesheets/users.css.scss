@@ -61,22 +61,32 @@ $gray_Lightest: #f6f6f6;
   width: 400px;
 
   // Inset
-  -moz-box-shadow:inset 2px 0px 13px #000000;
-  -webkit-box-shadow:inset 2px 0px 13px #000000;
-  box-shadow:inset 2px 0px 13px #000000;
+  // -moz-box-shadow:inset 2px 0px 13px #000000;
+  // -webkit-box-shadow:inset 2px 0px 13px #000000;
+  // box-shadow:inset 2px 0px 13px #000000;
 
   // Outset
-  // -moz-box-shadow: 2px 3px 14px #4a494a;
-  // -webkit-box-shadow: 2px 3px 14px #4a494a;
-  // box-shadow: 2px 3px 14px #4a494a;
+  -moz-box-shadow: 2px 3px 14px #4a494a;
+  -webkit-box-shadow: 2px 3px 14px #4a494a;
+  box-shadow: 2px 3px 14px #4a494a;
 
 }
 
 #users_index_mapcontainer_user {
-  top: 39px;
-  right: 80px;
-  width: 320px;
+  top: 15%;
+  right: 0px;
+  width: 400px;
   display: none;
+
+  // Inset
+  // -moz-box-shadow:inset 2px 0px 13px #000000;
+  // -webkit-box-shadow:inset 2px 0px 13px #000000;
+  // box-shadow:inset 2px 0px 13px #000000;
+
+  // Outset 
+  -moz-box-shadow: 2px 3px 14px #4a494a;
+  -webkit-box-shadow: 2px 3px 14px #4a494a;
+  box-shadow: 2px 3px 14px #4a494a;
 }
 
 #users_index_users {
@@ -100,18 +110,18 @@ $gray_Lightest: #f6f6f6;
   background-color: white;
 }
 
-#users_show_list {
-  margin: 0px;
-  li {
-    list-style-type: none;
-    &.users_show_list_header{
-      border-bottom: 1px solid $gray_Lighter;
-      font-weight:bold;   
-    }
-    &.users_show_list_name{
-      margin-bottom: 20px;
-    }
-  }
+
+.users_show_list_header{
+  border-bottom: 1px solid $gray_Lighter;
+  font-weight:bold;   
+}
+
+.users_show_list_name{
+  margin-bottom: 20px;
+}
+
+#users_show_status {
+  font-weight:italic;
 }
 
 
@@ -123,6 +133,7 @@ $gray_Lightest: #f6f6f6;
 #users_new_status{
   height:100px;
 }
+
 .users_edex_datepicker {
   width: 40px;
 }
@@ -131,10 +142,6 @@ $gray_Lightest: #f6f6f6;
   width: 130px;
 }
 
-
-.users_edit_date_column {
-  width: 60px;
-}
 
 label { // why the hell won't this work in app.css?
   font-size:12px;

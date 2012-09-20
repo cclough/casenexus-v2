@@ -10,7 +10,7 @@ Casenexus::Application.routes.draw do
   match '/getlatlng',  :to => 'users#getlatlng'
 
   # Friendships
-  resources :friends, :controller => 'friendships', :except => [:show, :edit] do
+  resources :friendships, controller: 'friendships', :except => [:show, :edit] do#:friendships, :except => [:show, :edit] do 
     get "requests", :on => :collection
     get "invites", :on => :collection
   end
@@ -25,9 +25,7 @@ Casenexus::Application.routes.draw do
 
   # Cases
   resources :cases, only: [:index, :show, :new, :create, :analysis] do
-    collection do
-      get 'analysis'
-    end
+    get "analysis", :on => :collection
   end
 
   # Notifications

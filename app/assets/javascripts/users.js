@@ -175,6 +175,7 @@ $(document).ready(function(){
     var mapOptions = {
       center: new google.maps.LatLng(users_map_lat_start, users_map_lng_start),
       zoom: 14,
+      minZoom: 4,
       mapTypeId: 'roadmap', // option: terrain
       disableDefaultUI: true,
       zoomControl: true,
@@ -242,7 +243,7 @@ $(document).ready(function(){
       map.setZoom(5);
 
       marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){ marker.setAnimation(null); }, 700);
+      setTimeout(function(){ marker.setAnimation(null); }, 1500);
 
       // Show User Panel
 
@@ -262,7 +263,7 @@ $(document).ready(function(){
           });
 
           // Modal Stuff!
-          $('#modal_message, #modal_feedback_req, #modal_friend_req').modal({
+          $('#modal_message, #modal_feedback_req, #modal_friendship_req').modal({
             backdrop: false,
             show: false
           });
@@ -276,7 +277,7 @@ $(document).ready(function(){
 
           $('#users_index_user_button_friend_req').click(function() {
             $('.modal').modal('hide');
-            $('#modal_friend_req').modal('show')
+            $('#modal_friendship_req').modal('show')
           });
 
           $('#users_index_user_button_feedback_req').click(function() {

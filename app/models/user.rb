@@ -162,8 +162,11 @@ class User < ActiveRecord::Base
   end
 
   def self.list_contacts(user)
-    user.friends
+    # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
+    User.joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(:friendships => {:user_id => user.id, :pending => false, :blocker_id => nil})
   end
+
+
 
 
   private

@@ -3,7 +3,12 @@
     %i.icon-comment.icon-white
     %span
       Message
-- else
+      
+- elsif current_user.invited? @user
+  .alert.alert-info
+    Partner Request Pending
+
+- elsif (@user != current_user)
   %a#users_index_user_button_friend_req.btn.btn-inverse
     %i.icon-comment.icon-white
     %span

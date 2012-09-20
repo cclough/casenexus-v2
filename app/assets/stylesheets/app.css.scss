@@ -109,10 +109,11 @@ textarea {
   height:20px;
 }
 
-.application_form_table_title{
+.application_table_title {
   border-bottom: 1px solid $gray_Light;
   padding-bottom:5px;
   margin-bottom:5px;
+  font-size:12px;
 }
 
 .panel{
@@ -126,21 +127,35 @@ textarea {
   -webkit-border-radius: 5px;
 
   &.gradient{
-    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.16) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.16))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.16) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.16) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.16) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.16) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#29000000',GradientType=0 ); /* IE6-9 */
-  }
+ 
+    background: rgb(254,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(254,255,255,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,255,1)), color-stop(100%,rgba(234,234,234,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
 
-  &.inverse {
+   }
+
+  &.transparent {
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#FFFFFF);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#FFFFFF)";
     color: white;
+  }
+
+  &.dark {
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 13%, rgba(0,0,0,0.19) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(13%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.19))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 13%,rgba(0,0,0,0.19) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 13%,rgba(0,0,0,0.19) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 13%,rgba(0,0,0,0.19) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 13%,rgba(0,0,0,0.19) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#30000000',GradientType=0 ); /* IE6-9 */
+
   }
 
   &.kill_right {
@@ -158,6 +173,10 @@ textarea {
   &.kill_top{
     margin-top: 0px;
   }
+
+  &.kill_all{
+    margin: 0px;
+  }
 }
 
 .map img {
@@ -165,20 +184,24 @@ textarea {
 }
 
 
-/* Paginate Theme */
+.application_button_feedback {
+  width:70px;
+}
 
-.nexus_pagination {
+
+
+.application_pagination {
   background: #f1f1f1;
   border: 1px solid #e5e5e5;
   text-align: center;
   padding: 5px;
   margin-top: 2px;
   cursor: default; }
-  .nexus_pagination a, .nexus_pagination span {
+  .application_pagination a, .application_pagination span {
     padding: 0.2em 0.3em; }
-  .nexus_pagination .disabled {
+  .application_pagination .disabled {
     color: #aaaaaa; }
-  .nexus_pagination .current {
+  .application_pagination .current {
     font-style: normal;
     font-weight: bold;
     background-color: #bebebe;
@@ -190,10 +213,10 @@ textarea {
     -webkit-border-radius: 1em;
     border-radius: 1em;
     text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
-  .nexus_pagination a {
+  .application_pagination a {
     text-decoration: none;
     color: black; }
-    .nexus_pagination a:hover, .nexus_pagination a:focus {
+    .application_pagination a:hover, .application_pagination a:focus {
       text-decoration: underline; }
 
 
@@ -203,4 +226,6 @@ textarea {
   margin-left: -10000px;
   width: .001em;
 }
+
+
 

@@ -1,97 +1,88 @@
-.panel
-  %blockquote
-    %p
-      = @user.status
-
-.panel
-
+.panel.gradient
+  
   %button#users_show_close.close ×
 
-  %ul#users_show_list
-    %li.users_show_list_name
-      %h3
-        / = avatar_for(@user)
-        = @user.first_name
-      %h5  
-        = @user.id
-      %h3
-        Number of cases: x
+  .row
+    .span5
+      = avatar_for(@user)
+    .span20.users_show_list_name
+      = @user.name
+      = @user.id
+  .row
+    .span18.font-small
+      .row
+        .span10
+          Number of Cases
+        .span8
+          = @user.casecount
+      .row
+        .span10
+          LinkedIn:
+        .span8
+          = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
+      .row
+        .span10
+          Skype:
+        .span8
+          %a{:href => "#{@user.skype}?add"}
+            %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
 
-    %li.users_show_list_header
-      Location
-    %li
-      xxx
-
-    %li.users_show_list_header
-      Education
-    %li
-      .pull-left
-        = @user.education1
-      .pull-right
-        = @user.education1_from.strftime("%Y") + "-" + @user.education1_to.strftime("%Y")
-      %br/
-      .pull-left
-        = @user.education2
-      .pull-right
-        = @user.education2_from.strftime("%Y") + "-" + @user.education2_to.strftime("%Y")
-      %br/
-      .pull-left
-        = @user.education3
-      .pull-right
-        = @user.education3_from.strftime("%Y") + "-" + @user.education3_to.strftime("%Y")
-      %br/
-    %li.users_show_list_header
-      Experience
-    %li
-      .pull-left
-        = @user.experience1
-      .pull-right
-        = @user.experience1_from.strftime("%Y") + "-" + @user.experience1_to.strftime("%Y")
-      %br/
-      .pull-left
-        = @user.experience2
-      .pull-right
-        = @user.experience2_from.strftime("%Y") + "-" + @user.experience2_to.strftime("%Y")
-      %br/
-      .pull-left
-        = @user.experience3
-      .pull-right
-        = @user.experience3_from.strftime("%Y") + "-" + @user.experience3_to.strftime("%Y")
-      %br/
-
-    %li.users_show_list_header
-      LinkedIn:
-    %li
-      / linkedin button
-      = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
-
-    %li.users_show_list_header
-      Skype:
-    %li
-      / skype button
-      %a{:href => "#{@user.skype}?add"}
-        %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
-
-    %li.users_show_list_header
-      Actions:
-    %li
-      = render 'button_friend_req_or_message'
-
-      / send feedback req button
-      %a#users_index_user_button_feedback_req.btn.btn-inverse
-        %i.icon-refresh.icon-white
-        %span
-          Request Feedback
-
-      / send feedback button
-      = link_to raw("<i class=\"icon-edit icon-white\"/>Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse", id: "users_index_user_button_sendfeedback"
+    .span15
+      = render 'shared/button_Group_message_and_feedback_req'
 
 
-#modal_message.modal.hide.fade
-  = render 'shared/modal_message_form'
+.panel
+  .row
+    .span40
+      #users_show_status
+        %blockquote
+          %p
+            = @user.status
+  .row
+    .span20.offset20
+      = render 'shared/button_friend_req_or_message'
+  
+.panel
 
-#modal_friend_req.modal.hide.fade
-  = render 'shared/modal_friend_req_form' unless current_user.friend_with?(@user)
+  .application_form_title
+    Education
+  .row
+    .span25
+      = @user.education1
+    .span10
+      = @user.education1_from.strftime("%Y") + "-" + @user.education1_to.strftime("%Y")
+  .row
+    .span25
+      = @user.education2
+    .span10
+      = @user.education2_from.strftime("%Y") + "-" + @user.education2_to.strftime("%Y")
+  .row
+    .span25
+      = @user.education3
+    .span10
+      = @user.education3_from.strftime("%Y") + "-" + @user.education3_to.strftime("%Y")
+      
 
-#modal_feedback_req.modal.hide.fade
-  = render 'shared/modal_feedback_req_form'
+  .application_form_title
+    Experience
+  .row
+    .span25
+      = @user.experience1
+    .span10
+      = @user.experience1_from.strftime("%Y") + "-" + @user.experience1_to.strftime("%Y")
+  .row
+    .span25
+      = @user.experience2
+    .span10
+      = @user.experience2_from.strftime("%Y") + "-" + @user.experience2_to.strftime("%Y")
+  .row
+    .span25
+      = @user.experience3
+    .span10
+      = @user.experience3_from.strftime("%Y") + "-" + @user.experience3_to.strftime("%Y")
+
+
+#modal_friendship_req.modal.hide.fade
+  = render 'shared/modal_friendship_req_form'
+
+= render 'shared/modal_Group_message_and_feedback_req'

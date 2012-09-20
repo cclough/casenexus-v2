@@ -11,23 +11,39 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    invitee = User.find_by_id(params[:user_id])
-    if current_user.invite invitee
-      redirect_to new_friend_path, :notice => "Successfully invited friend!"
-    else
-      redirect_to new_friend_path, :notice => "Sorry! You can't invite that user!"
+
+    @user = User.find(params[:friendship][:user_id])
+    @friendship = @user.friendships.build(params[:friendship])
+
+    respond_to do |format|
+      # I do not use the amistad .invite method here - several reasons inc. no model callback possible
+      if @friendship.save
+        format.js
+        flash.now[:success] = 'Friend request sent'
+      else
+        format.js
+        flash.now[:notice] = 'Sorry you cannot invite that user'
+      end
+
     end
+
   end
 
   def update
     inviter = User.find_by_id(params[:id])
     if current_user.approve inviter
-      redirect_to new_friend_path, :notice => "Successfully confirmed friend!"
+      
+      #not nice, but model after_update callback won't work as amistad approve method uses update_attribute
+      inviter.notifications.create(user_id: inviter.id,
+                                   sender_id: current_user.id,
+                                   ntype: "friendship_app")
+
+      redirect_to new_friendship_path, :notice => "Successfully confirmed friend!"
     else
-      redirect_to new_friend_path, :notice => "Sorry! Could not confirm friend!"
+      redirect_to new_friendship_path, :notice => "Sorry! Could not confirm friend!"
     end
   end
-  
+
   def requests
     @pending_requests = current_user.pending_invited_by
   end
@@ -39,9 +55,9 @@ class FriendshipsController < ApplicationController
   def destroy
     user = User.find_by_id(params[:id])
     if current_user.remove_friendship user
-      redirect_to friends_path, :notice => "Successfully removed friend!"
+      redirect_to friendships_path, :notice => "Successfully removed friend!"
     else
-      redirect_to friends_path, :notice => "Sorry, couldn't remove friend!"
+      redirect_to friendships_path, :notice => "Sorry, couldn't remove friend!"
     end
   end 
   

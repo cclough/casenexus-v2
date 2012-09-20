@@ -16,8 +16,8 @@
         - elsif user.invited? current_user
           = user.email
           |
-          = link_to "Confirm friend?", friend_path(user), :method => "put"
+          = link_to "Confirm friend?", friendship_path(user), :method => "put"
         - else
           = user.email
           |
-          = link_to "Add friend?", friends_path(:user_id => user), :method => "post"
+          = link_to "Add friend?", friendships_path(:user_id => user), :method => "post"

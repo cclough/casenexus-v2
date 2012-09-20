@@ -1,5 +1,5 @@
 class Friendship < ActiveRecord::Base
-  attr_accessible :user_id, :friend_id
+  attr_accessible :user_id, :friend_id, :content
 
   # For friendship request message
   attr_accessor :content
@@ -8,13 +8,24 @@ class Friendship < ActiveRecord::Base
   
   ### Callbacks
   after_create :create_notification_req
-  after_update :create_notification_app
+
+  ### Validations
+  validates :user_id, presence: true
+  validates :friend_id, presence: true
+
+
+
+  ### Methods
+
+
+
 
   private
 
-    def create_notification_app
-      self.user.notifications.create(sender_id: 1,
-                                		 ntype: "friend_req",
+    def create_notification_req
+      self.user.notifications.create(user_id: self.friend_id,
+                                     sender_id: self.user.id,
+                                		 ntype: "friendship_req",
                                      content: @content)
     end
 

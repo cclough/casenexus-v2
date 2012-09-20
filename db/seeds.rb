@@ -14,10 +14,10 @@ admin = User.create!(
         password_confirmation: "numbnuts",
         lat: 51.901128232665856,
         lng: -0.54241188764572144,
-			  status: "a" * 51,
+        status: Faker::Lorem.sentence(20),
 
         skype: "christianclough",
-        linkedin: "christian.clough",
+        linkedin: "christian.clough@linkedin.com",
 
         education1: "Imperial",
         education2: "Oxford",

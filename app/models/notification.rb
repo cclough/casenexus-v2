@@ -42,7 +42,6 @@ class Notification < ActiveRecord::Base
   	user.notifications.limit(5).order('id desc').reverse
   end
 
-
   def url
 
     host = "http://localhost:3000/"
@@ -56,9 +55,9 @@ class Notification < ActiveRecord::Base
       host + "cases/" + case_id.to_s
     when "feedback_req"
       host + "cases/new"
-    when "friend_req"
-      # host + "friends/" + sender_id.to_s #done using link_to put request in email
-    when "friend_app"
+    when "friendship_req"
+      host + "friendships/" + sender_id.to_s
+    when "friendship_app"
       host
     end
 

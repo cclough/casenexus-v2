@@ -5,7 +5,7 @@
 
 	$('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
 
-  $("#flash_application").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
-	$("#flash_application").fadeIn("fast");
+  $("#application_flash").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+	$("#application_flash").fadeIn("fast");
 
 <%- end %>

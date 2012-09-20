@@ -15,8 +15,8 @@ class CasesController < ApplicationController
 
 	def new
 		# declare separately so can be used in the view
-		@case_user = User.find_by_id(params[:user_id])
-		
+		@case_user = User.find(params[:user_id])
+
 		@case = @case_user.cases.build
 
     respond_to do |format|
@@ -40,7 +40,7 @@ class CasesController < ApplicationController
 	end
 
 	def create
-		# declare separately so can be used for notification create below
+		# declare separately so can be used for notification create below - EDIT: really!?
 		case_user = User.find_by_id(params[:case][:user_id])
 
     @case = case_user.cases.build(params[:case])

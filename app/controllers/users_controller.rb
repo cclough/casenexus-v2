@@ -6,8 +6,6 @@ class UsersController < ApplicationController
   # Map
 	def index
 
-    @notification = Notification.new
-    
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
     when "global"
@@ -16,9 +14,8 @@ class UsersController < ApplicationController
       users_scope = User.list_local(current_user)
     when "rand"
       users_scope = User.list_rand
-    when "contacts"
-      # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
-      users_scope = User.joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(:friendships => {:user_id => current_user.id, :pending => false, :blocker_id => nil})
+    when "friendships"
+      users_scope = User.list_contacts(current_user)
     end
 
     # Using scoped_search gem
@@ -43,14 +40,14 @@ class UsersController < ApplicationController
 
       if @user.approved?
         respond_to do |format|
-          @notification = Notification.new
-          @friendship = Friendship.new #unless current_user.friend_with?(@user)
-          format.html { render :layout => false }
+          @notification = @user.notifications.build
+          @friendship = @user.friendships.build unless current_user.friend_with?(@user)
+
+          format.html { render :layout => false } 
         end
       else
         render 'index'
       end
-
   end
 
   
