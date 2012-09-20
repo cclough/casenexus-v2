@@ -150,17 +150,17 @@ namespace :db do
 
       rand(60).times do
         user.cases.create!(
-          :interviewer_id => rand(1..100),
+          :interviewer_id => rand(100),
           :date => randomDate(:year_range => 2, :year_latest => 0.5),
           :subject => Faker::Lorem.sentence(5),
           :source => Faker::Lorem.sentence(5),    
-          :structure => rand(1..10),
+          :structure => rand(10),
           :structure_comment => Faker::Lorem.sentence(5),
-          :analytical => rand(1..10),
+          :analytical => rand(10),
           :analytical_comment => Faker::Lorem.sentence(5),
-          :commercial => rand(1..10),
+          :commercial => rand(10),
           :commercial_comment => Faker::Lorem.sentence(5),
-          :conclusion => rand(1..10),
+          :conclusion => rand(10),
           :conclusion_comment => Faker::Lorem.sentence(5),
           :comment => Faker::Lorem.sentence(5),
           :notes => Faker::Lorem.sentence(5)
@@ -178,7 +178,7 @@ namespace :db do
 
       10.times do
         user.notifications.create!(:ntype => "message",
-                                   :sender_id => rand(1..100), 
+                                   :sender_id => rand(100), 
                                    :content => Faker::Lorem.sentence(5))
         ## created in case.rb
         # user.notifications.create!(:ntype => "feedback_new",
@@ -187,7 +187,7 @@ namespace :db do
         #                            :event_date => randomDate(:year_range => 1, :year_latest => 0),
         #                            :case_id => rand(1000))
         user.notifications.create!(:ntype => "feedback_request",
-                                   :sender_id => rand(1..100), 
+                                   :sender_id => rand(100), 
                                    :content => Faker::Lorem.sentence(5),
                                    :event_date => randomDate(:year_range => 1, :year_latest => 0))
       end
