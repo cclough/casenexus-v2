@@ -150,17 +150,17 @@ namespace :db do
 
       rand(60).times do
         user.cases.create!(
-          :interviewer_id => rand(100),
+          :interviewer_id => 1 + rand(98),
           :date => randomDate(:year_range => 2, :year_latest => 0.5),
           :subject => Faker::Lorem.sentence(5),
-          :source => Faker::Lorem.sentence(5),    
-          :structure => 5,
+          :source => Faker::Lorem.sentence(3),    
+          :structure => 1 + rand(9),
           :structure_comment => Faker::Lorem.sentence(5),
-          :analytical => 10,
+          :analytical => 1 + rand(9),
           :analytical_comment => Faker::Lorem.sentence(5),
-          :commercial => 7,
+          :commercial => 1 + rand(9),
           :commercial_comment => Faker::Lorem.sentence(5),
-          :conclusion => 3,
+          :conclusion => 1 + rand(9),
           :conclusion_comment => Faker::Lorem.sentence(5),
           :comment => Faker::Lorem.sentence(5),
           :notes => Faker::Lorem.sentence(5)
@@ -201,6 +201,23 @@ namespace :db do
 
     end
 
+
+    # Friendships
+    User.all.each do |user|
+
+      23.times do |n|
+        user.friendships.create!(friend_id: n)
+      end
+
+    end
+
+    Friendship.all.each do |friendship|
+
+      if rand(2) == 1
+        friendship.pending == false
+      end
+
+    end
 
   end
 
