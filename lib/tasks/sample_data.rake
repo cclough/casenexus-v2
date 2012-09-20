@@ -10,7 +10,7 @@ namespace :db do
       lat = -90 + rand(180)
       lng = -180 + rand(360)
       status = Faker::Lorem.sentence(20)
-      skype = "skye"
+      skype = "skpye"
       linkedin = "christian.clough@gmail.com"
 
       education1 = "Imperial"
@@ -148,7 +148,7 @@ namespace :db do
 
     User.all.each do |user|
 
-      rand(4..60).times do
+      rand(60).times do
         user.cases.create!(
           :interviewer_id => rand(1..100),
           :date => randomDate(:year_range => 2, :year_latest => 0.5),
