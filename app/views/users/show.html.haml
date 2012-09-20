@@ -27,8 +27,14 @@
           %a{:href => "#{@user.skype}?add"}
             %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
 
+      .spacer5
+      
+      .row
+        .span18
+          = render 'shared/button_friend_remove'
     .span15
-      = render 'shared/button_Group_message_and_feedback_req'
+      #users_show_button_Group_message_and_feedback_req
+        = render 'shared/button_Group_feedback_req_and_send'
 
 
 .panel

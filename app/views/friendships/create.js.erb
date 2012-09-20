@@ -6,6 +6,9 @@
 
 	$('#modal_friendship_req').modal('hide');
 
+	// won't work for some reason!
+	//$('#users_show_button_Group_message_and_feedback_req').html('<%= escape_javascript(render('shared/button_Group_message_and_feedback_req')) %>');
+
   $("#application_flash").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
 	$("#application_flash").fadeIn("fast");
 
