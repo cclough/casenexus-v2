@@ -12,7 +12,7 @@ class Case < ActiveRecord::Base
   belongs_to :user
 
   ### Callbacks
-  # after_create :create_notification
+  after_create :create_notification
 
 
 
@@ -138,12 +138,12 @@ class Case < ActiveRecord::Base
 
   private
 
-    # def create_notification
-    #   self.user.notifications.create(sender_id: self.interviewer.id,
-    #                                  ntype: "feedback",
-    #                                  content: self.subject,
-    #                                  case_id: self.id,
-    #                                  event_date: self.date)
-    # end
+    def create_notification
+      self.user.notifications.create(sender_id: self.interviewer.id,
+                                     ntype: "feedback",
+                                     content: self.subject,
+                                     case_id: self.id,
+                                     event_date: self.date)
+    end
     
 end

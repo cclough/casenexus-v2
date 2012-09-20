@@ -34,9 +34,9 @@ class FriendshipsController < ApplicationController
     if current_user.approve inviter
       
       #not nice, but model after_update callback won't work as amistad approve method uses update_attribute
-      # inviter.notifications.create(user_id: inviter.id,
-      #                              sender_id: current_user.id,
-      #                              ntype: "friendship_app")
+      inviter.notifications.create(user_id: inviter.id,
+                                   sender_id: current_user.id,
+                                   ntype: "friendship_app")
 
       redirect_to new_friendship_path, :notice => "Successfully confirmed friend!"
     else
