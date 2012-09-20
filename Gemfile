@@ -17,7 +17,8 @@ gem 'amistad'
 gem 'nokogiri'
 gem 'request_exception_handler'
 
-
+# heroku needs this outside of assets
+gem 'haml'
 
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
@@ -26,7 +27,6 @@ end
 
 group :assets do
   gem 'sass-rails', '3.2.5'
-  gem 'haml'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
 end
