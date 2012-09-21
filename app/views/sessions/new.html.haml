@@ -3,15 +3,14 @@
 = content_for :content do
 
   .row
-    .span6.offset3
-      .panel.type1
+    .span28.offset34
+      .panel.gradient
         = form_for(:session, url: sessions_path) do |f|
-          = f.label :email
-          = f.text_field :email
-          = f.label :password
-          = f.password_field :password
-
-          = f.submit "Sign in", class: "btn btn-inverse pull-right"
-
-        %p
-          New user? #{link_to "Sign up now!", signup_path}
+          .row
+            = f.text_field :email, placeholder: 'Email Address'
+            = f.password_field :password, placeholder: 'Password'
+          .row
+            .span15
+              #{link_to "Sign up!", signup_path}
+            .span115
+              = f.submit "Sign in", class: "btn btn-inverse pull-right"
