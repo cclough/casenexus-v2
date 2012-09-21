@@ -42,77 +42,73 @@
 
       #chartdiv{:style => "width: 100%; height: 250px;"}
 
+.panel
 
-%table{:style => "width:100%;"}
+  %table{:style => "width:100%;"}
 
-  %tr
-    %td{:style => "width:50%;"}
-      %div
+    %tr
+      %td{:style => "width:50%;"}
         %div
-          Structure
-        %table
-          %tr
-            %td
-              %div
-                = @case.structure
-            %td
-              %div
-                = @case.structure_comment
-    %td
-      %div
+          %div
+            Structure
+          %table
+            %tr
+              %td
+                %div
+                  = @case.structure
+              %td
+                %div
+                  = @case.structure_comment
+      %td
         %div
-          Analytical/Problem-solving  
-        %table
-          %tr
-            %td
-              %div
-                = @case.analytical
-            %td
-              %div
-                = @case.analytical_comment
+          %div
+            Analytical/Problem-solving  
+          %table
+            %tr
+              %td
+                %div
+                  = @case.analytical
+              %td
+                %div
+                  = @case.analytical_comment
 
-  %tr
-    %td
-      .case_comment
+    %tr
+      %td
+        .case_comment
+          %div
+            Commercial Awareness
+          %table
+            %tr
+              %td
+                %div
+                  = @case.commercial
+              %td
+                %div
+                  = @case.commercial_comment
+
+      %td
         %div
-          Commercial Awareness
-        %table
-          %tr
-            %td
-              %div
-                = @case.commercial
-            %td
-              %div
-                = @case.commercial_comment
+          %div
+            Conclusion
+          %table
+            %tr
+              %td
+                %div
+                  = @case.conclusion
+              %td
+                %div
+                  = @case.conclusion_comment
 
-    %td
-      %div
+    %tr
+      %td
         %div
-          Conclusion
-        %table
-          %tr
-            %td
-              %div
-                = @case.conclusion
-            %td
-              %div
-                = @case.conclusion_comment
-
-  %tr
-    %td
-      %div
-        %div
-          Further Comment
-        %div
-          = @case.comment
+          %div
+            Further Comment
+          %div
+            = @case.comment
 
 
-%div
-  Notes
   %div
-    = @case.notes
-
-
-
-
-:javascript
+    Notes
+    %div
+      = @case.notes
