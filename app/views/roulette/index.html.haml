@@ -6,26 +6,25 @@
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
     	// call the server-side function 'adduser' and send one parameter (value of prompt)
-    	socket.emit('adduser', prompt("What's your name?"));
+    	socket.emit('adduser', '#{Faker::Name.name}');
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
     socket.on('updatelog', function (username, data) {
-    	$('#log').append(''+username + ': ' + data + '');
+    	$('#roulette_log').append(''+username + ': ' + data + '');
     });
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
-    	$('#users').empty();
+    	$('#roulette_users').empty();
     	$.each(data, function(key, value) {
-    		$('#users').append('' + key + '');
+    		$('#roulette_users').append('' + key + '');
     	});
     });
 
-
   .panel
-    %div{:style => "float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;"}
-      %b USERS
-      #users
-    %div{:style => "float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;"}
-      #log
+    .row
+      .span20
+        #roulette_users
+      .span30
+        #roulette_log
