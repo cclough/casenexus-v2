@@ -10,12 +10,12 @@ Casenexus::Application.routes.draw do
   match '/getlatlng',  :to => 'users#getlatlng'
 
   # Friendships
-  resources :friendships, controller: 'friendships', :except => [:show, :edit] do#:friendships, :except => [:show, :edit] do 
+  resources :friendships, controller: 'friendships', :except => [:show, :edit] do
     get "requests", :on => :collection
     get "invites", :on => :collection
   end
 
-  # Password Reset
+  # Password Resets
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   # Sessions
@@ -33,16 +33,8 @@ Casenexus::Application.routes.draw do
 
   # Roulette
   resources :roulette, only: [:index]
-  
-  match "service/registration"
-  match "service/configuration"
 
-  match "svc/services/registration" => 'roulette#registration'
-  match 'svc/services/configuration' => 'roulette#configuration'
-  match "/svc/config/config.xml"  => 'roulette#configfile'
 
-  # Roulette 2
-  resources :roulette2, only: [:index]
 
 
 
