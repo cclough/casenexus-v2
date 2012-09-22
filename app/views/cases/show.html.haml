@@ -11,8 +11,9 @@
         .span10
           = avatar_for(@case.interviewer)
         .span20
-          = @case.interviewer.name
-          .row
+          .application_name
+            = @case.interviewer.name
+          .row.application_timestamp
             = @case.date.strftime("%m/%d/%Y")
       .row
         .span30
@@ -34,47 +35,55 @@
 .row
   .span40
     .panel
-      Structure
+      .cases_show_title
+        Structure
       .row
-        .span10
+        .span5.cases_score
           = @case.structure
-        .span30
+        .span25
           = @case.structure_comment
   .span40
     .panel
-      Analytical/Problem-solving  
+      .cases_show_title
+        Analytical/Problem-solving  
       .row
-        .span10
+        .span5.cases_score
           = @case.analytical
-        .span30
+        .span25
           = @case.analytical_comment
 
 .row
   .span40
     .panel
-      Commercial Awareness
+      .cases_show_title
+        Commercial Awareness
       .row
-        .span10
+        .span5.cases_score
           = @case.commercial
-        .span30
+        .span25
           = @case.commercial_comment
   .span40
     .panel
-      Conclusion
+      .cases_show_title
+        Conclusion
       .row
-        .span10
+        .span5.cases_score
           = @case.conclusion
-        .span30
+        .span25
           = @case.conclusion_comment
 
 .row
-  .panel
-    .row
-      .span40
+
+  .span40
+    .panel
+      .cases_show_title
         Further Comment
-        .row
-          = @case.comment
-      .span30
+      .row
+        = @case.comment
+
+  .span40
+    .panel
+      .cases_show_title
         Notes
-        .row
-          = @case.notes
+      .row
+        = @case.notes

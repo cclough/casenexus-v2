@@ -8,6 +8,14 @@ $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 
 
+.cases_score {
+  font-size: 20px;
+  font-face: bold;
+  text-align:center;
+  color: $gray_Light;
+}
+
+
 .cases_index_item {
   padding:5px;
   text-decoration:none;
@@ -18,15 +26,16 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-.cases_index_score {
-  font-size: 20px;
-  font-face: bold;
-  text-align:center;
-  color: $gray_Light;
+#cases_show_radar{
+  width:200px;
+  height:200px;
 }
 
-
-#cases_show_radar
+.cases_show_title {
+  text-align:center;
+  border-bottom: 1px solid $gray_Lighter;
+  padding-bottom: 5px;
+}
 
 
 /* case form */
