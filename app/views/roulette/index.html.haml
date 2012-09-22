@@ -1,7 +1,7 @@
 = content_for :content do
 
   :javascript
-    var socket = io.connect('https://cclough.rsj.jit.su', {secure: true});
+    var socket = io.connect('https://cclough.rsj.nodejitsu.com', {secure: true});
 
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){

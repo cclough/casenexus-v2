@@ -3,64 +3,78 @@
 :javascript
   var chartData_show_radar = #{@case.chart_show_radar};
 
-      .panel.gradient
-        .row
-          .span10
-            = avatar_for(@case.interviewer)
-          .span20
-            = @case.interviewer.name
-        .row
-          .span
+.row
+  .span40
+
+    .panel.gradient
+      .row
+        .span10
+          = avatar_for(@case.interviewer)
+        .span20
+          = @case.interviewer.name
+          .row
             = @case.date.strftime("%m/%d/%Y")
+      .row
+        .span30
+          = @case.subject
+      .row
+        .span10
+          Source
+        .span20
+          = @case.source
+      .row
+        .span10
+          Submitted
+        .span20
+          = @case.created_at.strftime("%m/%d/%Y")
 
-              Subject
+  .span40
+    #cases_show_radar
 
-              = @case.subject
+.row
+  .span40
+    .panel
+      Structure
+      .row
+        .span10
+          = @case.structure
+        .span30
+          = @case.structure_comment
+  .span40
+    .panel
+      Analytical/Problem-solving  
+      .row
+        .span10
+          = @case.analytical
+        .span30
+          = @case.analytical_comment
 
-              Source
+.row
+  .span40
+    .panel
+      Commercial Awareness
+      .row
+        .span10
+          = @case.commercial
+        .span30
+          = @case.commercial_comment
+  .span40
+    .panel
+      Conclusion
+      .row
+        .span10
+          = @case.conclusion
+        .span30
+          = @case.conclusion_comment
 
-              = @case.source
-
-              Submitted
-
-              = @case.created_at.strftime("%m/%d/%Y")
-
-
-      #cases_show_radar
-
-.panel
-
-
-            Structure
-
-                  = @case.structure
-
-                  = @case.structure_comment
-
-            Analytical/Problem-solving  
-
-                  = @case.analytical
-
-                  = @case.analytical_comment
-
-
-            Commercial Awareness
-
-                  = @case.commercial
-
-                  = @case.commercial_comment
-
-            Conclusion
-
-                  = @case.conclusion
-
-                  = @case.conclusion_comment
-
-
-            Further Comment
-
-            = @case.comment
-
-
-    Notes
-      = @case.notes
+.row
+  .panel
+    .row
+      .span40
+        Further Comment
+        .row
+          = @case.comment
+      .span30
+        Notes
+        .row
+          = @case.notes
