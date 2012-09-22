@@ -2,12 +2,11 @@
 
 
 %h3
-  Notification from
   = avatar_for(@notification.sender)
   = @notification.sender.name
-%br
-= @notification.content
-%br
-= @notification.ntype
-%br
-= @notification.url
+.row
+  = @notification.content
+.row
+  = @notification.ntype
+.row
+  = @notification.url

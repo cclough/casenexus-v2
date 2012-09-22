@@ -12,12 +12,12 @@ class FriendshipsController < ApplicationController
 
   def create
 
-    @user = User.find(params[:friendship][:user_id])
-    @friendship = @user.friendships.build(params[:friendship])
+    #broken!
+    invitee = User.find_by_id(params[:user_id])
+    @content = params[:content]
 
     respond_to do |format|
-      # I do not use the amistad .invite method here - several reasons inc. no model callback possible
-      if @friendship.save
+      if current_user.invite invitee
         format.js
         flash.now[:success] = 'Friend request sent'
       else

@@ -38,8 +38,8 @@ class Notification < ActiveRecord::Base
     User.find_by_id(user_id)
   end
 
-  def self.header(user)
-  	user.notifications.limit(5).order('id desc').reverse
+  def content_trunc
+    content.truncate(35, :separator => ' ') unless (content == nil)
   end
 
   def url
@@ -61,6 +61,12 @@ class Notification < ActiveRecord::Base
       host
     end
 
+  end
+
+  ## Macro
+
+  def self.header(user)
+    user.notifications.limit(5).order('id desc').reverse
   end
 
 end

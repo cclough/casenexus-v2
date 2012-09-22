@@ -1,0 +1,19 @@
+// Place all the styles related to the cases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Shouldn't need these here as well as in app.css.scss
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+
+
+
+.notifications_index_item {
+  padding:5px;
+  text-decoration:none;
+  color: black;
+  &:hover {
+    background-color: $gray_Lightest;
+  }
+}

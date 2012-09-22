@@ -186,7 +186,8 @@ namespace :db do
         #                            :content => Faker::Lorem.sentence(5),
         #                            :event_date => randomDate(:year_range => 1, :year_latest => 0),
         #                            :case_id => rand(1000))
-        user.notifications.create!(:ntype => "feedback_request",
+
+        user.notifications.create!(:ntype => "feedback_req",
                                    :sender_id => rand(100), 
                                    :content => Faker::Lorem.sentence(5),
                                    :event_date => randomDate(:year_range => 1, :year_latest => 0))

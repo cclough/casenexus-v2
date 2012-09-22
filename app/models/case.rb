@@ -55,6 +55,11 @@ class Case < ActiveRecord::Base
     structure + analytical + commercial + conclusion
   end
 
+  def subject_trunc
+    subject.truncate(60, :separator => ' ')
+  end
+
+
   ## Macro
 
   # Comments

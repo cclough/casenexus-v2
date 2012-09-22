@@ -7,6 +7,28 @@ $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 
+
+.cases_index_item {
+  padding:5px;
+  text-decoration:none;
+  color: black;
+  &:hover {
+    background-color: $gray_Lightest;
+  }
+}
+
+
+.cases_index_score {
+  font-size: 20px;
+  font-face: bold;
+  text-align:center;
+  color: $gray_Light;
+}
+
+
+#cases_show_radar
+
+
 /* case form */
 
 .cases_new_form {
@@ -25,7 +47,6 @@ $gray_Lightest: #f6f6f6;
   width:100%;
 }
 
-
 .cases_new_block_title {
   color: gray;
   border-bottom: 1px solid $gray_Lighter;
@@ -38,7 +59,6 @@ $gray_Lightest: #f6f6f6;
   margin-top:-7px;
   margin-bottom:5px;
 }
-
 
 .cases_new_slider {
   width: 252px;

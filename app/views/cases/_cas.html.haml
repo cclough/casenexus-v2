@@ -1,14 +1,16 @@
 = link_to ("/cases/" + cas.id.to_s) do
-  %table
-    %tr
-      %td
-        = avatar_for(cas.interviewer)
-      %td
-        = cas.score
-      %td
-        %strong
+  .row.cases_index_item
+    .span7
+      = avatar_for(cas.interviewer)
+    .span15
+      .row
+        %strong 
           = cas.interviewer.name
-        %span
-          #{time_ago_in_words(cas.created_at)} ago.
-        .content
-          = cas.subject
+      .row.application_timestamp
+        #{time_ago_in_words(cas.created_at)} ago.
+    .span8.cases_index_score
+      = cas.score
+    .span55
+      .row
+        .span60
+          = cas.subject_trunc

@@ -197,10 +197,15 @@ $(document).ready(function(){
     });
 
     // Draw markers
-    var shadow = new google.maps.MarkerImage('http://www.casenexus.com/images/markers/mark_shadow.png',
-      new google.maps.Size(62.0, 62.0),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(15.0, 62.0)
+    var image = new google.maps.MarkerImage("/assets/markers/marker_orange.png",
+        new google.maps.Size(40.0, 52.0),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(20.0, 26.0)
+    );
+    var shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png",
+        new google.maps.Size(67.0, 52.0),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(20.0, 26.0)
     );
 
     $.getJSON("users", function(json) {
@@ -213,7 +218,7 @@ $(document).ready(function(){
           map: map,
           position: new google.maps.LatLng(parseFloat(marker.lat),parseFloat(marker.lng)),
           //icon: icon.icon,
-          icon: 'http://www.casenexus.com/images/markers/mark_god.png',
+          icon: image,
           shadow: shadow,
           animation: google.maps.Animation.DROP
         });
