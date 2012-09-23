@@ -16,23 +16,19 @@
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
-    	$('#roulette_users').empty();
+    	$('#roulette_index_users').empty();
     	$.each(data, function(key, value) {
-    		roulette_index_users_get_item(key);
+
+        $.get('/get_item?id=' + key, function(data) {
+
+          $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key+'>' + data + '</div>');
+          
+          $('#roulette_index_item_' + key).fadeIn('fast');
+
+        });
+
     	});
     });
-
-    function roulette_index_users_get_item(uid) {
-
-      $.get('/get_item?id=' + uid, function(data) {
-
-        $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key+'>' + data + '</div>');
-        
-        $('#roulette_index_item_' + uid).fadeIn('fast');
-
-      });
-
-    }
 
   .panel.gradient.roulette
     .row
