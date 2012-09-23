@@ -18,7 +18,7 @@
     socket.on('updateusers', function(data) {
     	$('#roulette_users').empty();
     	$.each(data, function(key, value) {
-    		roulette_index_users_get_item(uid);
+    		roulette_index_users_get_item(key);
     	});
     });
 
