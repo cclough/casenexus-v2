@@ -6,13 +6,23 @@
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
-
+$blue_pastel: #98cdff;
 
 .cases_score {
-  font-size: 20px;
-  font-face: bold;
+  font-size: 27px;
+  font-weight: bold;
   text-align:center;
-  color: $gray_Light;
+  color: $blue_pastel;
+  padding:5px;
+  &.show{
+    padding-top:27px;
+  }
+}
+
+.cases_radar{
+  height: 300px;
+  width: 370px;
+
 }
 
 
@@ -26,15 +36,17 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-#cases_show_radar{
-  width:200px;
-  height:200px;
-}
-
 .cases_show_title {
   text-align:center;
+  font-weight: bold;
   border-bottom: 1px solid $gray_Lighter;
-  padding-bottom: 5px;
+  margin-bottom: 5px;
+  color: $gray_Light;
+}
+
+.cases_show_comment {
+  overflow-y: scroll;
+  height:100px;
 }
 
 

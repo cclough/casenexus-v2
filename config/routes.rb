@@ -7,12 +7,13 @@ Casenexus::Application.routes.draw do
   # Users
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   match '/signup', to: 'users#new'
-  match '/getlatlng',  :to => 'users#getlatlng'
+  match '/tooltip', to: 'users#tooltip'
+  match '/get_latlng', to: 'users#get_latlng'
 
   # Friendships
   resources :friendships, controller: 'friendships', :except => [:show, :edit] do
-    get "requests", :on => :collection
-    get "invites", :on => :collection
+    get "requests", on: :collection
+    get "invites", on: :collection
   end
 
   # Password Resets
@@ -25,17 +26,16 @@ Casenexus::Application.routes.draw do
 
   # Cases
   resources :cases, only: [:index, :show, :new, :create, :analysis] do
-    get "analysis", :on => :collection
+    get "analysis", on: :collection
   end
+  match '/get_radar_analysis', to: 'cases#get_radar_analysis'
+
 
   # Notifications
   resources :notifications, only: [:index, :show, :create]
 
   # Roulette
   resources :roulette, only: [:index]
-
-
-
 
 
 

@@ -4,7 +4,7 @@
   var chartData_show_radar = #{@case.chart_show_radar};
 
 .row
-  .span40
+  .span47
 
     .panel.gradient
       .row
@@ -15,9 +15,11 @@
             = @case.interviewer.name
           .row.application_timestamp
             = @case.date.strftime("%m/%d/%Y")
+      .spacer10
       .row
         .span30
           = @case.subject
+      .spacer10
       .row
         .span10
           Source
@@ -29,59 +31,59 @@
         .span20
           = @case.created_at.strftime("%m/%d/%Y")
 
-  .span40
-    #cases_show_radar
+  .span47
+    #cases_show_chart_radar.cases_radar
 
 .row
-  .span40
+  .span47
     .panel
       .cases_show_title
         Structure
       .row
-        .span5.cases_score
+        .span5.cases_score.show
           = @case.structure
-        .span25
+        .span35.cases_show_comment
           = @case.structure_comment
-  .span40
+  .span47
     .panel
       .cases_show_title
         Analytical/Problem-solving  
       .row
-        .span5.cases_score
+        .span5.cases_score.show
           = @case.analytical
-        .span25
+        .span35.cases_show_comment
           = @case.analytical_comment
 
 .row
-  .span40
+  .span47
     .panel
       .cases_show_title
         Commercial Awareness
       .row
-        .span5.cases_score
+        .span5.cases_score.show
           = @case.commercial
-        .span25
+        .span35.cases_show_comment
           = @case.commercial_comment
-  .span40
+  .span47
     .panel
       .cases_show_title
         Conclusion
       .row
-        .span5.cases_score
+        .span5.cases_score.show
           = @case.conclusion
-        .span25
+        .span35.cases_show_comment
           = @case.conclusion_comment
 
 .row
 
-  .span40
+  .span47
     .panel
       .cases_show_title
         Further Comment
       .row
         = @case.comment
 
-  .span40
+  .span47
     .panel
       .cases_show_title
         Notes

@@ -1,12 +1,12 @@
-/ loop through list items
-- if @users.count > 0
-  - for users_item in @users
 
-    / render list_item partial
-    = render partial: 'users_item' , locals: { users_item: users_item }
+#users_index_users_form_body
+  - if @users.count > 0
+    - for users_item in @users
 
-- else
-  %div
-    No users found
+      = render partial: 'users_item' , locals: { users_item: users_item }
 
-= will_paginate @users, class: "application_pagination", inner_window: 1, outer_window: 0
+  - else
+    %div
+      No users found
+#users_index_users_form_paginate
+  = will_paginate @users, class: "application_pagination", inner_window: 1, outer_window: 0

@@ -225,7 +225,7 @@ $(document).ready(function(){
 
         users_index_map_marker_bind(marker, map);
         users_index_map_markers[marker.id] = marker;
-          
+
       });
 
     });
@@ -236,9 +236,16 @@ $(document).ready(function(){
 
   function users_index_map_marker_bind(marker, map) {
 
-    // google.maps.event.addListener(marker, 'mouseover', function() {
-    //   //showInSmallPanel(uid);
-    // });
+    google.maps.event.addListener(marker, 'mouseover', function() {
+
+      $.get('/tooltip?id=' + marker.id, function(data) {
+
+        $('#users_index_map_mouseover').html(data);
+        $('#users_index_map_mouseover').fadeIn('fast');
+      
+      });
+
+    });
 
     google.maps.event.addListener(marker, 'click', function() {
 
@@ -309,9 +316,9 @@ $(document).ready(function(){
 
 
 
-  function users_getlatlng (callback) {
+  function users_get_latlng (callback) {
 
-    $.getJSON("/getlatlng", function(json) {
+    $.getJSON("/get_latlng", function(json) {
 
       if ((!json.lat) && (!json.lng)) {
         callback(52.2100,0.1300);
@@ -335,11 +342,11 @@ $(document).ready(function(){
 
 
   // why do I have to call the json twice?
-  users_getlatlng(function(users_map_lat_start, users_map_lng_start) {
+  users_get_latlng(function(users_map_lat_start, users_map_lng_start) {
     users_index_loadmap(users_map_lat_start, users_map_lng_start);
   });
 
-  users_getlatlng(function(users_map_lat_start, users_map_lng_start) {
+  users_get_latlng(function(users_map_lat_start, users_map_lng_start) {
     users_newedit_loadmap(users_map_lat_start, users_map_lng_start);
   });
 

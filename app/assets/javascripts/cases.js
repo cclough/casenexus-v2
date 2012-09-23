@@ -27,48 +27,28 @@ $(document).ready(function(){
   
 });
 
+
+
+
 /////////////////////////////////////////////////////////////////
-///////////////////////// ANALYSIS //////////////////////////////
+///////////////////////////// SHOW //////////////////////////////
 /////////////////////////////////////////////////////////////////
-
-
-
-////////////////////////////////////////////
-// Radar Chart Javascript
-////////////////////////////////////////////
 
 var chart;
 
-// Draw AM Radar Chart
+// var chartData_show_radar is set in view
+
 AmCharts.ready(function () {
+
   // RADAR CHART
   chart = new AmCharts.AmRadarChart();
-  chart.dataProvider = chartData_analysis_radar;
+  chart.dataProvider = chartData_show_radar;
   chart.categoryField = "criteria";
-  chart.startDuration = 0.3;
+  chart.startDuration = 1;
   chart.startEffect = ">";
   chart.sequencedAnimation = true;
   chart.color = "#FFFFFF";
 
-  // GRAPH - FIRST 5
-  var graph = new AmCharts.AmGraph();
-  graph.title = "First 5";
-  graph.lineColor = "#bdd523"
-  graph.fillAlphas = 0.2;
-  graph.bullet = "round"
-  graph.valueField = "first5"
-  graph.balloonText = "[[category]]: [[value]]/10"
-  chart.addGraph(graph);
-
-  // GRAPH - LAST 5
-  var graph = new AmCharts.AmGraph();
-  graph.title = "Last 5";
-  graph.lineColor = "#98cdff"
-  graph.fillAlphas = 0.2;
-  graph.bullet = "round"
-  graph.valueField = "last5"
-  graph.balloonText = "[[category]]: [[value]]/10"
-  chart.addGraph(graph);
 
   // VALUE AXIS
   var valueAxis = new AmCharts.ValueAxis();
@@ -82,31 +62,136 @@ AmCharts.ready(function () {
   valueAxis.maximum = 10;
   chart.addValueAxis(valueAxis);
 
+  // GRAPH
+  var graph = new AmCharts.AmGraph();
+  graph.lineColor = "#98cdff";
+  graph.fillAlphas = 0.4;
+  graph.bullet = "round";
+  graph.valueField = "score";
+  graph.balloonText = "[[category]]: [[value]]/10";
+  chart.addGraph(graph);
+
   // Balloon Settings
   var balloon = chart.balloon;
   balloon.adjustBorderColor = true;
   balloon.color = "#000000";
   balloon.cornerRadius = 5;
   balloon.fillColor = "#000000";
-  balloon.fillAlpha = 0.7
-  balloon.color = "#FFFFFF"
-
-  // Legend Settings
-  var legend = new AmCharts.AmLegend();
-  legend.position = "bottom";
-  legend.align = "center";
-  legend.markerType = "square";
-  legend.rollOverGraphAlpha = 0;
-  legend.horizontalGap = 5;
-  legend.valueWidth = 5;
-  legend.switchable = false;
-  chart.addLegend(legend);
+  balloon.fillAlpha = 0.7;
+  balloon.color = "#FFFFFF";
 
   // WRITE
-  chart.write("chart_radar");
+  chart.write("cases_show_chart_radar");
 });
 
 
+
+
+
+/////////////////////////////////////////////////////////////////
+///////////////////////// ANALYSIS //////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////
+// Radar
+////////////////////////////////////////////
+
+
+
+
+cases_get_radar_analysis(function(data) {
+  drawchart_radar_analysis(data);
+});
+
+
+
+
+function cases_get_radar_analysis (callback) {
+
+    $.get("/get_radar_analysis", function(data) {
+
+      callback(data);
+
+    });
+    
+}
+
+
+function drawchart_radar_analysis(data) {
+
+  var chart;
+
+  // Draw AM Radar Chart
+  AmCharts.ready(function () {
+    // RADAR CHART
+    chart = new AmCharts.AmRadarChart();
+    chart.dataProvider = data;
+    chart.categoryField = "criteria";
+    chart.startDuration = 0.3;
+    chart.startEffect = ">";
+    chart.sequencedAnimation = true;
+    chart.color = "#FFFFFF";
+
+    // GRAPH - FIRST 5
+    var graph = new AmCharts.AmGraph();
+    graph.title = "First 5";
+    graph.lineColor = "#bdd523"
+    graph.fillAlphas = 0.2;
+    graph.bullet = "round"
+    graph.valueField = "first5"
+    graph.balloonText = "[[category]]: [[value]]/10"
+    chart.addGraph(graph);
+
+    // GRAPH - LAST 5
+    var graph = new AmCharts.AmGraph();
+    graph.title = "Last 5";
+    graph.lineColor = "#98cdff"
+    graph.fillAlphas = 0.2;
+    graph.bullet = "round"
+    graph.valueField = "last5"
+    graph.balloonText = "[[category]]: [[value]]/10"
+    chart.addGraph(graph);
+
+    // VALUE AXIS
+    var valueAxis = new AmCharts.ValueAxis();
+    valueAxis.gridType = "circles";
+    valueAxis.fillAlpha = 0.02;
+    valueAxis.fillColor = "#000000"
+    valueAxis.axisAlpha = 0.1;
+    valueAxis.gridAlpha = 0.1;
+    valueAxis.fontWeight = "bold"
+    valueAxis.minimum = 0;
+    valueAxis.maximum = 10;
+    chart.addValueAxis(valueAxis);
+
+    // Balloon Settings
+    var balloon = chart.balloon;
+    balloon.adjustBorderColor = true;
+    balloon.color = "#000000";
+    balloon.cornerRadius = 5;
+    balloon.fillColor = "#000000";
+    balloon.fillAlpha = 0.7
+    balloon.color = "#FFFFFF"
+
+    // Legend Settings
+    var legend = new AmCharts.AmLegend();
+    legend.position = "bottom";
+    legend.align = "center";
+    legend.markerType = "square";
+    legend.rollOverGraphAlpha = 0;
+    legend.horizontalGap = 5;
+    legend.valueWidth = 5;
+    legend.switchable = false;
+    chart.addLegend(legend);
+
+    // WRITE
+    chart.write("cases_analysis_chart_radar");
+  });
+
+}
 
 
 ////////////////////////////////////////////
@@ -284,7 +369,7 @@ AmCharts.ready(function () {
   chart.addChartScrollbar(chartScrollbar);
 
   // WRITE
-  chart.write("chart_progress");
+  chart.write("cases_analysis_chart_progress");
   
 });
 
@@ -331,60 +416,14 @@ function addrolloverlistener(graph) {
   });
 
 
-
 }
 
 
 
 
-/////////////////////////////////////////////////////////////////
-///////////////////////////// SHOW //////////////////////////////
-/////////////////////////////////////////////////////////////////
 
 
-var chart;
 
-// var chartData is set in view
 
-AmCharts.ready(function () {
-  // RADAR CHART
-  chart = new AmCharts.AmRadarChart();
-  chart.dataProvider = chartData_show_radar;
-  chart.categoryField = "criteria";
-  chart.startDuration = 1;
-  chart.startEffect = ">";
-  chart.sequencedAnimation = true;
 
-  // VALUE AXIS
-  var valueAxis = new AmCharts.ValueAxis();
-  valueAxis.gridType = "circles";
-  valueAxis.fillAlpha = 0.02;
-  valueAxis.fillColor = "#000000"
-  valueAxis.axisAlpha = 0.1;
-  valueAxis.gridAlpha = 0.1;
-  valueAxis.fontWeight = "bold"
-  valueAxis.minimum = 0;
-  valueAxis.maximum = 10;
-  chart.addValueAxis(valueAxis);
 
-  // GRAPH
-  var graph = new AmCharts.AmGraph();
-  graph.lineColor = "#98cdff"
-  graph.fillAlphas = 0.4;
-  graph.bullet = "round"
-  graph.valueField = "score"
-  graph.balloonText = "[[category]]: [[value]]/10"
-  chart.addGraph(graph);
-
-  // Balloon Settings
-  var balloon = chart.balloon;
-  balloon.adjustBorderColor = true;
-  balloon.color = "#000000";
-  balloon.cornerRadius = 5;
-  balloon.fillColor = "#000000";
-  balloon.fillAlpha = 0.7
-  balloon.color = "#FFFFFF"
-
-  // WRITE
-  chart.write("cases_show_radar");
-});

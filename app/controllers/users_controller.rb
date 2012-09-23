@@ -84,10 +84,19 @@ class UsersController < ApplicationController
   end
 
 
+  # CUSTOM
+
+  def tooltip
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html { render :layout => false } 
+    end
+  end
+
 
   # AJAX
 
-  def getlatlng
+  def get_latlng
     respond_to do |format|
       format.json { render json: { lat: current_user.lat, lng: current_user.lng } }
     end
