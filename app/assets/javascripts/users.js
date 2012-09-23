@@ -1,6 +1,7 @@
+// Marker array var needs to be declared here, so that users list item click works
+var users_index_map_markers = [];
+
 $(document).ready(function(){
-
-
 
 ////////////////////////////////////////////////////////////////////
 /////////////////////////    NEW     ///////////////////////////////
@@ -128,25 +129,36 @@ $(document).ready(function(){
     return false;
   }
 
-  // List populate on search field change
-  $("#users_index_users_form input").keyup(function() {
-    users_updatelist();
+  // // List populate on search field change
+  // $("#users_index_users_form input").keyup(function() {
+    
+  // });
+
+
+  $("#users_index_users_form input").keypress(function(e) {
+    if(e.which == 13) {
+      users_updatelist();
+    }
   });
 
   // Listtype Button-Radio link
-  $('#users_index_users_form_button_global').click(function() {
+  $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').click(function() {
 
     // Break up id string, so can get id off the end
     var listtype = this.id.split('_');
 
-    $('#users_index_users_form_radio_global').attr('checked', 'checked');
+    $('input[name=users_listtype]:eq('+listtype[5]+')').attr('checked', 'checked');
+
+    $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').removeClass('active');
+
+    $(this).addClass('active');
 
     users_updatelist();
 
   });
 
   // Ajax pagination
-  $("#users_index_users .nexus_pagination a").live("click", function() {
+  $("#users_index_users .application_pagination a").live("click", function() {
     $.getScript(this.href);
     return false;
   });
@@ -158,7 +170,7 @@ $(document).ready(function(){
 
   // Map
 
-  var users_index_map_markers = [];
+
 
   var users_index_customMarkers = {
     Beginner: {
@@ -180,8 +192,6 @@ $(document).ready(function(){
       icon: '/assets/images/markers/mark_victorchenglike.png'
     }
   };
-
-
 
   function users_index_loadmap(users_map_lat_start, users_map_lng_start) {
 
@@ -247,6 +257,8 @@ $(document).ready(function(){
 
   }
 
+
+
   function users_index_map_marker_bind(marker, map) {
 
     google.maps.event.addListener(marker, 'mouseover', function() {
@@ -276,10 +288,9 @@ $(document).ready(function(){
       map.setZoom(5);
 
       marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){ marker.setAnimation(null); }, 1500);
+      setTimeout(function(){ marker.setAnimation(null); }, 1420);
 
       // Show User Panel
-
       $("#users_index_mapcontainer_user").fadeOut('slow', function() {
 
         $.get('/users/' + marker.id, function(data) {
@@ -310,15 +321,14 @@ $(document).ready(function(){
 
           $('#users_index_user_button_friend_req').click(function() {
             $('.modal').modal('hide');
-            $('#modal_friendship_req').modal('show')
+            $('#modal_friendship_req').modal('show');
           });
 
           $('#users_index_user_button_feedback_req').click(function() {
             $('.modal').modal('hide');
-            $('#modal_feedback_req').modal('show')
+            $('#modal_feedback_req').modal('show');
+            $("#modal_feedback_req_datepicker").datepicker();
           });
-
-          $("#modal_feedback_req_datepicker").datepicker();
 
         });
 

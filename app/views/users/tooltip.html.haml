@@ -1,7 +1,9 @@
 %button#users_index_tooltip_close.close ×
-.span5
+
+.span5.application_avatar
   = avatar_for(@user)
-.span20
-  = @user.name
-.span5
-  = @user.casecount
+.span24#users_index_tooltip_text
+  %strong
+    = @user.name
+  .row
+    = @user.status_trunc

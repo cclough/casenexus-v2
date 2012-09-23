@@ -1,18 +1,20 @@
-= form_tag users_path, method: 'get', id: "users_index_users_form" do
+= form_tag users_path, method: 'get', id: "users_index_users_form", onsubmit: 'return false' do
   .row
     / search field
     = text_field_tag :search, params[:search], placeholder: "Search users...", id: "users_index_users_form_searchfield", class: 'search-query'
   .spacer5
   .row
-    .btn-group
-      %a#users_index_users_form_button_local.btn.btn-inverse.active <100km
-      %a#users_index_users_form_button_global.btn.btn-inverse Global
-      %a#users_index_users_form_button_random.btn.btn-inverse Random
-      %a#users_index_users_form_button_contacts.btn.btn-inverse Contacts
-  %div
-    = radio_button_tag :users_listtype, 'local', checked: true, id: 'users_index_users_form_radio_local'
-    = radio_button_tag :users_listtype, 'global', id: 'users_index_users_form_radio_global'
-    = radio_button_tag :users_listtype, 'rand', id: 'users_index_users_form_radio_random'
-    = radio_button_tag :users_listtype, 'contacts', id: 'users_index_users_form_radio_contacts'
+    #users_index_users_form_buttons
+      .btn-group
+        %a#users_index_users_form_button_0.btn.active <100km
+        %a#users_index_users_form_button_1.btn Global
+        %a#users_index_users_form_button_2.btn Random
+        %a#users_index_users_form_button_3.btn.btn-inverse Contacts
+
+  #users_index_users_form_radiogroup
+    = radio_button_tag :users_listtype, 'local', checked: true
+    = radio_button_tag :users_listtype, 'global'
+    = radio_button_tag :users_listtype, 'rand'
+    = radio_button_tag :users_listtype, 'contacts'
             
 

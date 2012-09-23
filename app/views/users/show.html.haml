@@ -2,48 +2,39 @@
   
   %button#users_index_show_close.close ×
 
+  #users_show_casecount
+    .panel.dark
+      = @user.casecount
+      .font-small
+        cases
+
   .row
     .span5
-      = avatar_for(@user)
-    .span20.users_show_list_name
-      = @user.name
-      = @user.id
+      .application_avatar
+        = avatar_for(@user)
+    .span20
+      #users_show_name
+        = @user.name
+  .spacer5
+  .row.font-small
+    .span8
+      = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
+    .span7
+      %a{:href => "#{@user.skype}?add"}
+        %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
+        Skype
+    .span
+      = render 'shared/button_friend_remove'
+  .spacer5
   .row
-    .span18.font-small
-      .row
-        .span10
-          Number of Cases
-        .span8
-          = @user.casecount
-      .row
-        .span10
-          LinkedIn:
-        .span8
-          = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
-      .row
-        .span10
-          Skype:
-        .span8
-          %a{:href => "#{@user.skype}?add"}
-            %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
-
-      .spacer5
-      
-      .row
-        .span18
-          = render 'shared/button_friend_remove'
-    .span15
-      #users_show_button_Group_message_and_feedback_req
-        = render 'shared/button_Group_feedback_req_and_send'
+    = render 'shared/button_Group_feedback_req_and_send'
 
 
 .panel
   .row
     .span40
       #users_show_status
-        %blockquote
-          %p
-            = @user.status
+        = @user.status
   .row
     .span20.offset20
       = render 'shared/button_friend_req_or_message'

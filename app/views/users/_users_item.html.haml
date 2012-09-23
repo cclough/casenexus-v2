@@ -1,12 +1,11 @@
 .btn.users_index_users_item{id: "users_index_users_item_" + users_item.id.to_s}
-  %table
-    %tr
-      %td
+  .row
+    .span6
+      .application_avatar
         = avatar_for(users_item)
-      %td
+    .span25.users_index_users_item_text
+      .row
         %strong
           = users_item.name
-        %span
-          = users_item.casecount
-        %br
-          = users_item.status_trunc
+      .row
+        = users_item.status_trunc

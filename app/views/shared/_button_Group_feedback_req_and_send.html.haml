@@ -1,12 +1,13 @@
 - if (current_user.friend_with?(@user) && (@user != current_user))
-  
-  .panel.dark.kill_all
 
-    %a#users_index_user_button_feedback_req.btn.btn-inverse.application_button_feedback
-      %i.icon-refresh.icon-white
-      %span
-        Request
-
-    .spacer5
-
-    = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse application_button_feedback", id: "users_index_user_button_sendfeedback"
+  #users_show_button_Group_feedback
+    .span
+      #users_show_button_Group_feedback_title.font-small
+        Feedback
+    .span
+      = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse application_button_feedback", id: "users_index_user_button_sendfeedback"
+    .span
+      %a#users_index_user_button_feedback_req.btn.btn-inverse.application_button_feedback
+        %i.icon-refresh.icon-white
+        %span
+          Request

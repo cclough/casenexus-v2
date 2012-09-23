@@ -1,2 +1,3 @@
 - if current_user.friend_with?(@user)
-	= link_to raw("<i class=\"icon-edit icon-white\"/> Remove as Contact"), friendships_path(@user), :method => "delete", class: "btn btn-inverse application_button_feedback"
+	.font-small
+		= link_to raw("Remove as Contact"), friendships_path(@user), :method => "delete", id: 'users_show_button_removefriend'
