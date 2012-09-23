@@ -9,7 +9,7 @@
       %a#users_index_users_form_button_global.btn.btn-inverse Global
       %a#users_index_users_form_button_random.btn.btn-inverse Random
       %a#users_index_users_form_button_contacts.btn.btn-inverse Contacts
-  %div{style: "display:none;"}
+  %div
     = radio_button_tag :users_listtype, 'local', checked: true, id: 'users_index_users_form_radio_local'
     = radio_button_tag :users_listtype, 'global', id: 'users_index_users_form_radio_global'
     = radio_button_tag :users_listtype, 'rand', id: 'users_index_users_form_radio_random'
