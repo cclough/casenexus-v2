@@ -8,7 +8,7 @@
   .panel.inverse
     .cases_new_form
       .row
-        .span40
+        .span43
           / display target name
           %h5
             Feedback For
@@ -16,13 +16,13 @@
             = avatar_for(@case_user)
             = @case_user.name
 
-        .span40
-          = f.text_field :date, placeholder: "Date", id: "cases_new_datepicker", tabindex: "1"
-          = f.text_area :subject, placeholder: "Subject", tabindex: "2"    
+        .span43
+          = f.text_field :date, placeholder: "Date", id: "cases_new_datepicker", tabindex: "1"  
           = f.text_field :source, placeholder: "Source", tabindex: "3"
+          = f.text_area :subject, placeholder: "Subject", tabindex: "2"  
 
       .row
-        .span40
+        .span43
           %div
             .cases_new_block_title
               Structure
@@ -39,7 +39,7 @@
             .cases_new_block_desc
               Brief instructions on how to score and comment  
             = f.text_area :commercial_comment, placeholder: "Comment...", tabindex: "5"
-        .span40
+        .span43
           %div
             .cases_new_block_title
               Analytical/Problem Solving
@@ -58,10 +58,11 @@
             = f.text_area :conclusion_comment, placeholder: "Comment...", tabindex: "7"
 
       .row
-        .span80
+        .span46
           = f.text_area :comment, placeholder: "Any further comments", tabindex: "8"
           %div
 
             = f.hidden_field :user_id, value: @case_user.id
             = f.hidden_field :interviewer_id, value: current_user.id
-            = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"
+      .row
+        = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"

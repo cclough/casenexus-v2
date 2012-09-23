@@ -36,7 +36,7 @@ Casenexus::Application.routes.draw do
 
   # Roulette
   resources :roulette, only: [:index]
-
+  match '/get_item', to: 'roulette#item'
 
 
   # The priority is based upon order of creation:

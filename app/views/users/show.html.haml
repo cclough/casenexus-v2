@@ -17,12 +17,7 @@
         = @user.name
   .spacer5
   .row.font-small
-    .span8
-      = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
-    .span7
-      %a{:href => "#{@user.skype}?add"}
-        %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
-        Skype
+    = render 'shared/button_Group_linkedin_and_skype'
     .span
       = render 'shared/button_friend_remove'
   .spacer5
@@ -41,41 +36,44 @@
   
 .panel
 
-  .application_form_title
+  .users_show_edex_title
     Education
+  .spacer5
   .row
-    .span25
+    .span15
       = @user.education1
-    .span10
+    .span8.pull-right
       = @user.education1_from.strftime("%Y") + "-" + @user.education1_to.strftime("%Y")
   .row
-    .span25
+    .span15
       = @user.education2
-    .span10
+    .span8.pull-right
       = @user.education2_from.strftime("%Y") + "-" + @user.education2_to.strftime("%Y")
   .row
-    .span25
+    .span15
       = @user.education3
-    .span10
+    .span8.pull-right
       = @user.education3_from.strftime("%Y") + "-" + @user.education3_to.strftime("%Y")
       
+  .spacer10
 
-  .application_form_title
+  .users_show_edex_title
     Experience
+  .spacer5
   .row
-    .span25
+    .span15
       = @user.experience1
-    .span10
+    .span8.pull-right
       = @user.experience1_from.strftime("%Y") + "-" + @user.experience1_to.strftime("%Y")
   .row
-    .span25
+    .span15
       = @user.experience2
-    .span10
+    .span8.pull-right
       = @user.experience2_from.strftime("%Y") + "-" + @user.experience2_to.strftime("%Y")
   .row
-    .span25
+    .span15
       = @user.experience3
-    .span10
+    .span8.pull-right
       = @user.experience3_from.strftime("%Y") + "-" + @user.experience3_to.strftime("%Y")
 
 

@@ -88,7 +88,8 @@ $(document).ready(function(){
 
   function users_newedit_loadmap(users_map_lat_start, users_map_lng_start) {
 
-    var users_newedit_latlng = new google.maps.LatLng(users_map_lat_start, users_map_lng_start)
+    //var users_newedit_latlng = new google.maps.LatLng(users_map_lat_start, users_map_lng_start)
+    var users_newedit_latlng = new google.maps.LatLng(50, 0.1)
 
     var map = new google.maps.Map(document.getElementById('users_newedit_map'), {
       // zoomed right out

@@ -56,12 +56,12 @@ $blue_pastel: #98cdff;
   textarea {
     height: 50px;
     margin-bottom: 5px;
-    width: 300px;
+    width: 350px;
   }
 }
 
 #cases_new_user_target {
-  padding-top:40px;
+  padding-top:20px;
   font-size:200%;
   font-weight:bold;
   text-align:center;
@@ -70,6 +70,7 @@ $blue_pastel: #98cdff;
 
 .cases_new_block_title {
   color: gray;
+  margin-bottom:5px;
   border-bottom: 1px solid $gray_Lighter;
 }
 
@@ -82,7 +83,7 @@ $blue_pastel: #98cdff;
 }
 
 .cases_new_slider {
-  width: 252px;
+  width: 300px;
   float: left;
   margin-top:10px;
   margin-right:10px;
@@ -93,11 +94,10 @@ $blue_pastel: #98cdff;
 .cases_new_slider_input {
   border:0;
   height:20px;
-  font-size:180%;
+  width:30px;
+  font-size:25px;
   color:#b9b9b9;
   font-weight:bold;
-  text-align:center;
-  width:30px;
   text-align:center;
 }
 

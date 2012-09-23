@@ -93,7 +93,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   # AJAX
 
   def get_latlng
