@@ -1,7 +1,12 @@
 .row
   .span5
     = avatar_for(@user)
-  .span20
+  .span20.offset3
     = @user.name
-  .span20
-    = render 'shared/button_Group_linkedin_and_skype'
+  .span20.offset3
+    .span8
+      = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
+    .span7
+      %a{:href => "#{@user.skype}?add"}
+        %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
+        Skype
