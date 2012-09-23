@@ -118,6 +118,10 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 
 
+
+
+
+
   // Update the User List - submits form...
   function users_updatelist () {
     $.get($("#users_index_users_form").attr("action"), $("#users_index_users_form").serialize(), null, "script");
@@ -129,9 +133,16 @@ $(document).ready(function(){
     users_updatelist();
   });
 
-  // List populate on change radio buttons in filter
-  $("input[name=users_listtype]").change(function () {
+  // Listtype Button-Radio link
+  $('#users_index_users_form_button_global').click(function() {
+
+    // Break up id string, so can get id off the end
+    var listtype = this.id.split('_');
+
+    $('#users_index_users_form_radio_global').attr('checked', 'checked');
+
     users_updatelist();
+
   });
 
   // Ajax pagination
@@ -139,6 +150,8 @@ $(document).ready(function(){
     $.getScript(this.href);
     return false;
   });
+
+
 
 
 
@@ -240,12 +253,20 @@ $(document).ready(function(){
 
       $.get('/tooltip?id=' + marker.id, function(data) {
 
-        $('#users_index_map_mouseover').html(data);
-        $('#users_index_map_mouseover').fadeIn('fast');
+        $('#users_index_tooltip').html(data);
+
+        // Code for 'close button'
+        $("#users_index_tooltip_close").click(function() {
+          $('#users_index_tooltip').fadeOut('slow');
+        });
+
+        $('#users_index_tooltip').fadeIn('fast');
       
       });
 
     });
+
+
 
     google.maps.event.addListener(marker, 'click', function() {
 
@@ -269,7 +290,7 @@ $(document).ready(function(){
           // Fade panel back in
           $("#users_index_mapcontainer_user").fadeIn('slow');
 
-          // Code for 'close button' - needs to be here otherwise not applied in time
+          // Code for 'close button'
           $("#users_show_close").click(function() {
             $('#users_index_mapcontainer_user').fadeOut('slow');
           });

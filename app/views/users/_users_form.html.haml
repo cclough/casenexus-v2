@@ -1,27 +1,18 @@
 = form_tag users_path, method: 'get', id: "users_index_users_form" do
-  %span.pull-left
+  .row
     / search field
     = text_field_tag :search, params[:search], placeholder: "Search users...", id: "users_index_users_form_searchfield", class: 'search-query'
-  %span.pull-right
-    / sort/filter pulldown menu
+  .spacer5
+  .row
     .btn-group
-      %a#users_index_users_button_filter.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        Filter
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          %a
-            = radio_button_tag :users_listtype, 'local', checked: true
-            Within 100km
-        %li
-          %a
-            = radio_button_tag :users_listtype, 'global'
-            Global
-        %li
-          %a
-            = radio_button_tag :users_listtype, 'rand'
-            Randomise
-        %li
-          %a
-            = radio_button_tag :users_listtype, 'contacts'
-            Contacts
+      %a#users_index_users_form_button_local.btn.btn-inverse.active <100km
+      %a#users_index_users_form_button_global.btn.btn-inverse Global
+      %a#users_index_users_form_button_random.btn.btn-inverse Random
+      %a#users_index_users_form_button_contacts.btn.btn-inverse Contacts
+  %div{style: "display:none;"}
+    = radio_button_tag :users_listtype, 'local', checked: true, id: 'users_index_users_form_radio_local'
+    = radio_button_tag :users_listtype, 'global', id: 'users_index_users_form_radio_global'
+    = radio_button_tag :users_listtype, 'rand', id: 'users_index_users_form_radio_random'
+    = radio_button_tag :users_listtype, 'contacts', id: 'users_index_users_form_radio_contacts'
+            
+
