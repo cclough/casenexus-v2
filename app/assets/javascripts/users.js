@@ -8,8 +8,6 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 
 
-  // $("#users_new_education_group_optional_1, #users_new_education_group_optional_2").hide();
-  // $("#users_new_experience_group_optional_1, #users_new_experience_group_optional_2").hide();
 
   $("#users_new_button_submit").attr("disabled",true);
   $('#user_accepts_tandc').attr('checked', false);
@@ -31,11 +29,9 @@ $(document).ready(function(){
       });
     };
   });
+  
+  $("#users_new_status").keyup(function(){
 
-
-  function users_new_step2_test() {
-    if (($.users_new_step1_complete_1 == "complete") && ($.users_new_step1_complete_2 == "complete") && ($.users_new_step1_complete_3 == "complete")) {
-      
       $("#users_new_step2")
       .css({
         "background-image": "url(app/tick.png)",
@@ -48,25 +44,9 @@ $(document).ready(function(){
       });
 
       $.users_new_step2_complete = true;
-    }
-  };
-  
-  $("#users_new_status").keyup(function(){
-    $.users_new_step1_complete_1 = "complete"; 
-    users_new_step2_test();
+
   });
   
-  $("#user_education1").keyup(function(){
-    $.users_new_step1_complete_2 = "complete"; 
-    users_new_step2_test();
-  });
-
-  $("#user_experience1").keyup(function(){
-    $.users_new_step1_complete_3 = "complete"; 
-    users_new_step2_test();
-  });
-
-
   $("#user_accepts_tandc").click(function(){
 
     $.step3complete = true;

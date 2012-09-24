@@ -33,67 +33,6 @@
 
           = f.text_area :status, id: 'users_new_status', placeholder: "Describe your current situation"
 
-          .row
-            .span27
-              .row.application_table_title
-                .span15
-                  University/College
-                .span6
-                  From
-                .span2
-                  To
-              #users_new_education_group
-              = f.text_field :education1, placeholder: "1", class: "users_edex_field"
-              = f.text_field :education1_from, class: "users_edex_datepicker"
-              = f.text_field :education1_to, class: "users_edex_datepicker"
-
-              #users_new_education_group_optional_1
-
-                = f.text_field :education2, placeholder: "2", class: "users_edex_field"
-                = f.text_field :education2_from, class: "users_edex_datepicker"
-                = f.text_field :education2_to, class: "users_edex_datepicker"
-
-              #users_new_education_group_optional_2
-
-                = f.text_field :education3, placeholder: "3", class: "users_edex_field"
-                = f.text_field :education3_from, class: "users_edex_datepicker"
-                = f.text_field :education3_to, class: "users_edex_datepicker"
-            .span5.pull-right
-              %a#users_new_button_education_remove.btn.btn-inverse -
-              %a#users_new_button_education_add.btn.btn-inverse +
-
-          .spacer10
-          .row
-            .span27
-              .row.application_form_title
-                .span15
-                  Professional Experience
-                .span6
-                  From
-                .span2
-                  To
-              #users_new_experience_group
-                = f.text_field :experience1, placeholder: "1", class: "users_edex_field"
-                = f.text_field :experience1_from, class: "users_edex_datepicker"
-                = f.text_field :experience1_to, class: "users_edex_datepicker"
-
-
-              #users_new_experience_group_optional_1
-                = f.text_field :experience2, placeholder: "2", class: "users_edex_field"
-                = f.text_field :experience2_from, class: "users_edex_datepicker"
-                = f.text_field :experience2_to, class: "users_edex_datepicker"
-
-              #users_new_experience_group_optional_2
-
-                = f.text_field :experience3, placeholder: "3", class: "users_edex_field"
-                = f.text_field :experience3_from, class: "users_edex_datepicker"
-                = f.text_field :experience3_to, class: "users_edex_datepicker"
-
-            .span5.pull-right
-              %a#users_new_button_experience_remove.btn.btn-inverse -
-              %a#users_new_button_experience_add.btn.btn-inverse +
-
-
       .span33
         #users_new_step3.panel
 

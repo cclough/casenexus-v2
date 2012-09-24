@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920233617) do
+ActiveRecord::Schema.define(:version => 20120924092626) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -66,24 +66,6 @@ ActiveRecord::Schema.define(:version => 20120920233617) do
     t.string   "remember_token"
     t.float    "lat"
     t.float    "lng"
-    t.string   "education1"
-    t.string   "education2"
-    t.string   "education3"
-    t.string   "experience1"
-    t.string   "experience2"
-    t.string   "experience3"
-    t.date     "education1_from"
-    t.date     "education1_to"
-    t.date     "education2_from"
-    t.date     "education2_to"
-    t.date     "education3_from"
-    t.date     "education3_to"
-    t.date     "experience1_from"
-    t.date     "experience1_to"
-    t.date     "experience2_from"
-    t.date     "experience2_to"
-    t.date     "experience3_from"
-    t.date     "experience3_to"
     t.string   "skype"
     t.string   "linkedin"
     t.boolean  "email_admin",            :default => true

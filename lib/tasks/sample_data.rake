@@ -13,27 +13,6 @@ namespace :db do
       skype = "skpye"
       linkedin = "christian.clough@gmail.com"
 
-      education1 = "Imperial"
-      education2 = "Oxford"
-      education3 = "Cambridge"
-      experience1 = "MRC-T"
-      experience2 = "WHO"
-      experience3 = "Candesic"
-
-      education1_to = randomDate(:year_range => 3, :year_latest => 1)
-      education1_from = randomDate(:year_range => 3, :year_latest => 1)
-      education2_to = randomDate(:year_range => 3, :year_latest => 1)
-      education2_from = randomDate(:year_range => 3, :year_latest => 1)
-      education3_to = randomDate(:year_range => 3, :year_latest => 1)
-      education3_from = randomDate(:year_range => 3, :year_latest => 1)
-
-      experience1_to = randomDate(:year_range => 3, :year_latest => 1)
-      experience1_from = randomDate(:year_range => 3, :year_latest => 1)
-      experience2_to = randomDate(:year_range => 3, :year_latest => 1)
-      experience2_from = randomDate(:year_range => 3, :year_latest => 1)
-      experience3_to = randomDate(:year_range => 3, :year_latest => 1)
-      experience3_from = randomDate(:year_range => 3, :year_latest => 1)
-
       accepts_tandc = true
 
       User.create!(first_name: first_name, last_name: last_name,
@@ -41,15 +20,6 @@ namespace :db do
                password_confirmation: password,
                lat: lat, lng: lng, status: status,
                skype: skype, linkedin: linkedin,
-               education1: education1, education2: education2,
-               education3: education3, experience1: experience1,
-               experience2: experience2, experience3: experience3,
-               education1_from: education1_from, education1_to: education1_to,
-               education2_from: education2_from, education2_to: education2_to,
-               education3_from: education3_from, education3_to: education3_to,
-               experience1_from: education1_from, experience1_to: education1_to,
-               experience2_from: education2_from, experience2_to: education2_to,
-               experience3_from: education3_from, experience3_to: education3_to,
                accepts_tandc: accepts_tandc)
 
     end
@@ -79,27 +49,6 @@ namespace :db do
            skype: "robinclough",
            linkedin: "christian.clough@gmail.com",
 
-           education1: "Imperial",
-           education2: "Oxford",
-           education3: "Cambridge",
-           experience1: "MRC-T",
-           experience2: "WHO",
-           experience3: "Candesic",
-
-           education1_from: randomDate(:year_range => 3, :year_latest => 1),
-           education1_to: randomDate(:year_range => 3, :year_latest => 1),
-           education2_from: randomDate(:year_range => 3, :year_latest => 1),
-           education2_to: randomDate(:year_range => 3, :year_latest => 1),
-           education3_from: randomDate(:year_range => 3, :year_latest => 1),
-           education3_to: randomDate(:year_range => 3, :year_latest => 1),
-
-           experience1_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 1),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 1),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 1),
-
            accepts_tandc: true)
 
     admin2.toggle!(:approved)
@@ -118,27 +67,6 @@ namespace :db do
 
            skype: "greatdesign",
            linkedin: "great.design@linkedin.com",
-
-           education1: "Imperial",
-           education2: "Oxford",
-           education3: "Cambridge",
-           experience1: "MRC-T",
-           experience2: "WHO",
-           experience3: "Candesic",
-
-           education1_from: randomDate(:year_range => 3, :year_latest => 1),
-           education1_to: randomDate(:year_range => 3, :year_latest => 1),
-           education2_from: randomDate(:year_range => 3, :year_latest => 1),
-           education2_to: randomDate(:year_range => 3, :year_latest => 1),
-           education3_from: randomDate(:year_range => 3, :year_latest => 1),
-           education3_to: randomDate(:year_range => 3, :year_latest => 1),
-
-           experience1_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience1_to: randomDate(:year_range => 3, :year_latest => 1),
-           experience2_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience2_to: randomDate(:year_range => 3, :year_latest => 1),
-           experience3_from: randomDate(:year_range => 3, :year_latest => 1),
-           experience3_to: randomDate(:year_range => 3, :year_latest => 1),
 
            accepts_tandc: true)
 

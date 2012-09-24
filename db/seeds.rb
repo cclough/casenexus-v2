@@ -19,28 +19,7 @@ admin = User.create!(
         skype: "christianclough",
         linkedin: "christian.clough@linkedin.com",
 
-        education1: "Imperial",
-        education2: "Oxford",
-        education3: "Cambridge",
-        experience1: "MRC-T",
-        experience2: "WHO",
-        experience3: "Candesic",
-
-        education1_from: randomDate(:year_range => 3, :year_latest => 1),
-        education1_to: randomDate(:year_range => 3, :year_latest => 1),
-        education2_from: randomDate(:year_range => 3, :year_latest => 1),
-        education2_to: randomDate(:year_range => 3, :year_latest => 1),
-        education3_from: randomDate(:year_range => 3, :year_latest => 1),
-        education3_to: randomDate(:year_range => 3, :year_latest => 1),
-
-        experience1_from: randomDate(:year_range => 3, :year_latest => 1),
-        experience1_to: randomDate(:year_range => 3, :year_latest => 1),
-        experience2_from: randomDate(:year_range => 3, :year_latest => 1),
-        experience2_to: randomDate(:year_range => 3, :year_latest => 1),
-        experience3_from: randomDate(:year_range => 3, :year_latest => 1),
-        experience3_to: randomDate(:year_range => 3, :year_latest => 1),
-
-			  accepts_tandc: true)
+        accepts_tandc: true)
 
 admin.toggle!(:approved)
 admin.toggle!(:completed)
