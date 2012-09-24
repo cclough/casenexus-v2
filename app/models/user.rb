@@ -4,14 +4,6 @@ class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, 
   								:password, :password_confirmation, 
                   :lat, :lng, :status,
-                  :education1, :education2, :education3,
-                  :experience1, :experience2, :experience3,
-                  :education1_from, :education1_to,
-                  :education2_from, :education2_to,
-                  :education3_from, :education3_to,
-                  :experience1_from, :experience1_to,
-                  :experience2_from, :experience2_to,
-                  :experience3_from, :experience3_to,
                   :skype, :linkedin,
                   :email_admin,:email_users, :accepts_tandc
 
@@ -67,19 +59,6 @@ class User < ActiveRecord::Base
   validates :linkedin, format: { with: VALID_EM_REGEX },
             allow_blank: true
 
-
-
-
-
-  # Education
-  validates :education1, presence: true
-  validates :education1_from, presence: true
-  validates :education1_to, presence: true
-
-  # Experience
-  validates :experience1, presence: true
-  validates :experience1_from, presence: true
-  validates :experience1_to, presence: true
 
   # Accepts Terms and Conditions?
 	validates :accepts_tandc, :acceptance => {:accept => true}
@@ -167,7 +146,15 @@ class User < ActiveRecord::Base
   end
 
 
-
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.email = auth["info"]["email"]
+      user.first_name = auth["info"]["first_name"]
+      user.last_name = auth["info"]["last_name"]
+      user.headline = auth["info"]["headline"]
+    end
+  end
 
   private
 

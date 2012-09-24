@@ -10,19 +10,22 @@ Casenexus::Application.routes.draw do
   match '/tooltip', to: 'users#tooltip'
   match '/get_latlng', to: 'users#get_latlng'
 
-  # Friendships
-  resources :friendships, controller: 'friendships', :except => [:show, :edit] do
-    get "requests", on: :collection
-    get "invites", on: :collection
-  end
-
-  # Password Resets
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  # LinkedIn
+  match '/auth/linkedin/callback', to: 'sessions#create'
 
   # Sessions
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin', to: 'sessions#new'
   match '/signout',  to: 'sessions#destroy', via: :delete
+
+  # Password Resets
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
+  # Friendships
+  resources :friendships, controller: 'friendships', :except => [:show, :edit] do
+    get "requests", on: :collection
+    get "invites", on: :collection
+  end
 
   # Cases
   resources :cases, only: [:index, :show, :new, :create, :analysis] do

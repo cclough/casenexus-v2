@@ -12,10 +12,8 @@ gem 'scoped_search'
 gem 'geokit-rails3'
 gem 'client_side_validations'
 gem 'amistad'
-
-# vincent:
-gem 'nokogiri'
-gem 'request_exception_handler'
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 # heroku needs this outside of assets
 gem 'haml'
