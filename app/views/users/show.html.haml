@@ -33,48 +33,6 @@
   .row
     .span20.offset20
       = render 'shared/button_friend_req_or_message'
-  
-.panel
-
-  .users_show_edex_title
-    Education
-  .spacer5
-  .row
-    .span15
-      = @user.education1
-    .span8.pull-right
-      = @user.education1_from.strftime("%Y") + "-" + @user.education1_to.strftime("%Y")
-  .row
-    .span15
-      = @user.education2
-    .span8.pull-right
-      = @user.education2_from.strftime("%Y") + "-" + @user.education2_to.strftime("%Y")
-  .row
-    .span15
-      = @user.education3
-    .span8.pull-right
-      = @user.education3_from.strftime("%Y") + "-" + @user.education3_to.strftime("%Y")
-      
-  .spacer10
-
-  .users_show_edex_title
-    Experience
-  .spacer5
-  .row
-    .span15
-      = @user.experience1
-    .span8.pull-right
-      = @user.experience1_from.strftime("%Y") + "-" + @user.experience1_to.strftime("%Y")
-  .row
-    .span15
-      = @user.experience2
-    .span8.pull-right
-      = @user.experience2_from.strftime("%Y") + "-" + @user.experience2_to.strftime("%Y")
-  .row
-    .span15
-      = @user.experience3
-    .span8.pull-right
-      = @user.experience3_from.strftime("%Y") + "-" + @user.experience3_to.strftime("%Y")
 
 
 #modal_friendship_req.modal.hide.fade
