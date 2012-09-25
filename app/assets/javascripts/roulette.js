@@ -19,7 +19,7 @@ $(document).ready(function(){
     socket.on('updateusers', function(data) {
 
     	$('#roulette_index_users').empty();
-      
+
     	$.each(data, function(key, value) {
 
         $.get('/get_item?id=' + key, function(data) {
@@ -34,6 +34,6 @@ $(document).ready(function(){
       
     });
 
-  )};
+  });
 
 });
