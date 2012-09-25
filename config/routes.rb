@@ -8,7 +8,6 @@ Casenexus::Application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   match '/signup', to: 'users#new'
   match '/tooltip', to: 'users#tooltip'
-  match '/get_latlng', to: 'users#get_latlng'
 
   # LinkedIn
   match '/auth/linkedin/callback', to: 'sessions#create'
@@ -31,8 +30,6 @@ Casenexus::Application.routes.draw do
   resources :cases, only: [:index, :show, :new, :create, :analysis] do
     get "analysis", on: :collection
   end
-  match '/get_radar_analysis', to: 'cases#get_radar_analysis'
-
 
   # Notifications
   resources :notifications, only: [:index, :show, :create]
