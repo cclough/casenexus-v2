@@ -15,8 +15,11 @@ class CasesController < ApplicationController
 	end
 
 	def new
-		# declare separately so can be used in the view
-		@case_user = User.find(params[:user_id])
+		if params[:roulette_token]
+			@case_user = User.find_by_roulette_token(params[:roulette_token])
+		else
+			@case_user = User.find(params[:user_id])
+		end
 
 		@case = @case_user.cases.build
 

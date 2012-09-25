@@ -9,29 +9,32 @@
 
   .panel.gradient.roulette
 
-    .span90
+    .span85.offset2
 
       .row
-        .span13
-          %button#roulette_index_button_connect.btn.btn-inverse
+        .span14
+          %button#roulette_index_button_connect.btn.btn-inverse.roulette_index_button_connection
             %i.icon-share-alt.icon-white
             %span#roulette_index_button_connect_text
               Connect
-        .span13
-          %button#roulette_index_button_disconnect.btn.btn-inverse
+        .span14
+          %button#roulette_index_button_disconnect.btn.btn-inverse.roulette_index_button_connection
             %i.icon-share-alt.icon-white
             %span
               Disconnect
-        .span20.font-small
+        .span18.font-small
           .row
             Your roulette token
           .row
             #roulette_index_token
               = current_user.roulette_token
-        .span25
-          = text_field_tag :roulette_token
-        .span15
-          = link_to raw("Feedback Form"), { controller: "cases", action: "new", roulette_token: "TOKEN" }, class: "btn btn-inverse"
+
+        = form_tag ('/cases/new') do
+          .span23
+            = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee Token"
+          .span12
+            = submit_tag "Feedback Form", class: "btn btn-inverse"
+
       .row
         #roulette_index_users
       .row
