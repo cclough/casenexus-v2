@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
     else
 
-	    user = User.find_by_email(auth["info"]["email"]) || User.create_with_omniauth(auth)
+	    user = User.find_by_email(auth["info"]["email"]) || User.create_using_linkedin(auth)
 	    sign_in user
 
 	    if completed?

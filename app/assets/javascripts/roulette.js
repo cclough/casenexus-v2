@@ -3,6 +3,7 @@ $(document).ready(function(){
   $("#roulette_index_button_connect").attr("disabled", false);
   $("#roulette_index_button_disconnect").attr("disabled", true);
 
+  var roulette_index_users[];
 
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
@@ -31,16 +32,25 @@ $(document).ready(function(){
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
 
-    	$('#roulette_index_users').empty();
+      $.each(data, function(key, value) {
+        if ($.inArray(key, roulette_index_users) == -1) {
 
-    	$.each(data, function(key, value) {
+          roulette_index_users.push(key);
+            
+          $.get('/get_item?id=' + key, function(data) {
+            $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key+'>' + data + '</div>');
+            $('#roulette_index_users_item_' + key).fadeIn('fast');
+          });
 
-        $.get('/get_item?id=' + key, function(data) {
-          $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key+'>' + data + '</div>');
-          $('#roulette_index_users_item_' + key).fadeIn('fast');
-        });
+        } else {
 
-    	});
+          $('#roulette_index_users_item_' + key).fadeOut('fast', function() {
+            $('#roulette_index_users_item_' + key).remove();
+          });
+
+        }
+
+      }
 
     });
 

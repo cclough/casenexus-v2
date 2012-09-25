@@ -160,7 +160,7 @@ class User < ActiveRecord::Base
   end
 
 
-  def self.create_with_omniauth(auth)
+  def self.create_using_linkedin(auth)
     create! do |user|
       user.provider = auth["provider"]
       user.email = auth["info"]["email"]

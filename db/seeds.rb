@@ -51,8 +51,8 @@ admin3 = User.create!(
         email: "design@design.com",
         password: "design",
         password_confirmation: "design",
-        lat: 51.9128232665856,
-        lng: -0.541188764572144,
+        lat: 51.3128232665856,
+        lng: -0.941188764572144,
         status: Faker::Lorem.sentence(20),
 
         skype: "greatdesign",
@@ -64,6 +64,17 @@ admin3.toggle!(:approved)
 admin3.toggle!(:completed)
 
 
-University.create!(name: "University of Cambridge", image: "cambridge.gif")
-University.create!(name: "University of Oxford", image: "oxford.jpg")
-University.create!(name: "Harvard College", image: "harvard.gif")
+University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
+University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
+University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
+
+
+# Friendships
+User.find(1) do |user|
+
+  user.invite User.find(2)
+  User.find(2).approve user
+  user.invite User.find(3)
+  User.find(3).approve user
+
+end

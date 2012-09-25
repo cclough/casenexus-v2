@@ -22,25 +22,6 @@ class CasesController < ApplicationController
 		end
 
 		@case = @case_user.cases.build
-
-    respond_to do |format|
-
-	    if params[:size] == 'roulette'
-
-	    	# For Roulette!
-	    	@case_user = RouletteRegistration.current_partner(current_user)
-	    	if !@case_user
-	    		format.html { render text: "You are not connected to anyone" }
-	    	else
-	      	format.html { render 'new_roulette', :layout => false }
-	      end
-
-	    else
-	      format.html { render 'new' }
-	    end
-
-    end
-
 	end
 
 	def create
@@ -49,32 +30,14 @@ class CasesController < ApplicationController
 
     @case = case_user.cases.build(params[:case])
 
-    respond_to do |format|
+  	if @case.save
+  		flash[:success] = 'Feedback Sent'
+	  	redirect_to users_path
+  	else
+  		@case_user = User.find_by_id(params[:user_id])
+	  	render 'new'
+  	end
 
-    params[:size] ||= 'roulette'
-
-	  	if @case.save
-
-	  		flash[:success] = 'Feedback Sent'
-	  		
-	  		if params[:size] == 'roulette'
-		  		format.js
-		  	else
-		  		redirect_to users_path
-		  	end
-
-	  	else
-
-	  		@case_user = User.find_by_id(params[:user_id])
-
-	  		if params[:size] == 'roulette'
-		  		format.js
-		  	else
-		  		render 'new'
-		  	end
-	  		
-	  	end
-	  end
 	end
 
 	def analysis

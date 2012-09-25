@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925181047) do
+ActiveRecord::Schema.define(:version => 20120925205244) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -92,5 +92,6 @@ ActiveRecord::Schema.define(:version => 20120925181047) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["roulette_token"], :name => "index_users_on_roulette_token"
 
 end
