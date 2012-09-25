@@ -7,7 +7,7 @@ $(document).ready(function(){
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
     	// call the server-side function 'adduser' and send one parameter (value of prompt)
-    	socket.emit('adduser', roulette_index_user_name);
+    	socket.emit('adduser', roulette_index_user_id);
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
