@@ -1,7 +1,9 @@
 - provide(:title, 'Case with ' + @case.interviewer.name)
 
-:javascript
-  var chartData_show_radar = #{@case.chart_show_radar};
+- content_for :javascript_includes do
+
+  :javascript
+    var cases_show_chart_radar_data = #{@case.cases_show_chart_radar_data};
 
 .row
   .span47

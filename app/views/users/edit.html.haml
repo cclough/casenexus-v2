@@ -1,10 +1,16 @@
 - provide(:title, 'Edit Profile')
 
+- content_for :javascript_includes do
+
+  :javascript
+    var users_newedit_map_lat_start = "#{current_user.lat}";
+    var users_newedit_map_lng_start = "#{current_user.lng}";
+
 = content_for :content do
 
   %h1 Edit Profile
 
-  = form_for(@user, :validate => true) do |f|
+  = form_for(@user, validate: true) do |f|
 
     .row
       .span94

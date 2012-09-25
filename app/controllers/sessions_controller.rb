@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     # raise auth.to_yaml
 
-    if current_user.without_linkedin?
+    if !auth
 
 			user = User.find_by_email(params[:session][:email])
 			if user && user.authenticate(params[:session][:password])

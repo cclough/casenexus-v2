@@ -103,14 +103,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # AJAX
-
-  def get_latlng
-    respond_to do |format|
-      format.json { render json: { lat: current_user.lat, lng: current_user.lng } }
-    end
-  end
-
 
   private
 

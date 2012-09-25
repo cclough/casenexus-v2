@@ -1,9 +1,11 @@
 - provide(:title, 'Your Progress')
 
-= content_for :content do
+- content_for :javascript_includes do
 
   :javascript
-    var chartData_analysis_radar = #{Case.chart_analysis_radar(current_user)};
+    var cases_analysis_chart_radar_data = #{Case.cases_analysis_chart_radar_data(current_user)};
+
+= content_for :content do
 
   .row
     .span51

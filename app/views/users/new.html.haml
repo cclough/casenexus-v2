@@ -4,7 +4,7 @@
 
   %h1 Sign up
   
-  = form_for @user, :validate => true do |f|
+  = form_for @user, validate: true do |f|
   
     .row
       = render 'shared/error_messages', object: @user

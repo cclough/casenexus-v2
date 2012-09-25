@@ -78,20 +78,10 @@ class CasesController < ApplicationController
 		
 		respond_to do |format|
       format.html
-      format.json { render json: Case.chart_analysis_progress(current_user) }
+      format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
 	  end
 
 	end
-
-
-  # AJAX
-
-  def get_radar_analysis
-    respond_to do |format|
-      format.html { render text: Case.chart_analysis_radar(current_user) }
-    end
-  end
-
 
 
 	private

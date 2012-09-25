@@ -49,10 +49,10 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 
 
-  function users_newedit_loadmap(users_map_lat_start, users_map_lng_start) {
+  if ( typeof users_newedit_map_lat_start == 'string' ) {
 
     //var users_newedit_latlng = new google.maps.LatLng(users_map_lat_start, users_map_lng_start)
-    var users_newedit_latlng = new google.maps.LatLng(50, 0.1)
+    var users_newedit_latlng = new google.maps.LatLng(users_newedit_map_lat_start, users_newedit_map_lng_start)
 
     var map = new google.maps.Map(document.getElementById('users_newedit_map'), {
       // zoomed right out
@@ -73,6 +73,7 @@ $(document).ready(function(){
       $('#users_newedit_lat').val(users_newedit_latlng.lat());
       $('#users_newedit_lng').val(users_newedit_latlng.lng());
     });
+
 
   }
 
@@ -134,33 +135,32 @@ $(document).ready(function(){
 
   // Map
 
+  if ( typeof users_index_map_lat_start == 'string' ) {
 
+    var users_index_customMarkers = {
+      Beginner: {
+        icon: '/app/assets/images/markers/mark_novice.png'
+      },
+      Novice: {
+        icon: '/app/assets/images/markers/mark_novice.png'
+      },
+      Intermediate: {
+        icon: 'c/assets/images/markers/mark_intermediate.png'
+      },
+      Advanced: {
+        icon: '/assets/images/markers/mark_advanced.png'
+      },
+      God: {
+        icon: '/assets/images/markers/mark_god.png'
+      },
+      'Victor Cheng-like': {
+        icon: '/assets/images/markers/mark_victorchenglike.png'
+      }
+    };
 
-  var users_index_customMarkers = {
-    Beginner: {
-      icon: '/app/assets/images/markers/mark_novice.png'
-    },
-    Novice: {
-      icon: '/app/assets/images/markers/mark_novice.png'
-    },
-    Intermediate: {
-      icon: 'c/assets/images/markers/mark_intermediate.png'
-    },
-    Advanced: {
-      icon: '/assets/images/markers/mark_advanced.png'
-    },
-    God: {
-      icon: '/assets/images/markers/mark_god.png'
-    },
-    'Victor Cheng-like': {
-      icon: '/assets/images/markers/mark_victorchenglike.png'
-    }
-  };
-
-  function users_index_loadmap(users_map_lat_start, users_map_lng_start) {
 
     var mapOptions = {
-      center: new google.maps.LatLng(users_map_lat_start, users_map_lng_start),
+      center: new google.maps.LatLng(users_index_map_lat_start, users_index_map_lng_start),
       zoom: 14,
       minZoom: 4,
       mapTypeId: 'roadmap', // option: terrain
@@ -189,6 +189,7 @@ $(document).ready(function(){
         new google.maps.Point(0, 0),
         new google.maps.Point(20.0, 26.0)
     );
+
     var shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png",
         new google.maps.Size(67.0, 52.0),
         new google.maps.Point(0, 0),
@@ -219,86 +220,84 @@ $(document).ready(function(){
 
     var markerCluster = new MarkerClusterer(map, users_index_map_markers);
 
-  }
 
+    function users_index_map_marker_bind(marker, map) {
 
+      google.maps.event.addListener(marker, 'mouseover', function() {
 
-  function users_index_map_marker_bind(marker, map) {
+        $.get('/tooltip?id=' + marker.id, function(data) {
 
-    google.maps.event.addListener(marker, 'mouseover', function() {
-
-      $.get('/tooltip?id=' + marker.id, function(data) {
-
-        $('#users_index_tooltip').html(data);
-
-        // Code for 'close button'
-        $("#users_index_tooltip_close").click(function() {
-          $('#users_index_tooltip').fadeOut('slow');
-        });
-
-        $('#users_index_tooltip').fadeIn('fast');
-      
-      });
-
-    });
-
-
-
-    google.maps.event.addListener(marker, 'click', function() {
-
-      // Pan, Zoom, Animate
-      newlatlng = marker.getPosition();
-      map.panTo(newlatlng);
-      map.setZoom(5);
-
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function(){ marker.setAnimation(null); }, 1420);
-
-      // Show User Panel
-      $("#users_index_mapcontainer_user").fadeOut('slow', function() {
-
-        $.get('/users/' + marker.id, function(data) {
-
-          // Insert ajax data!
-          $('#users_index_user').html(data);
-
-          // Fade panel back in
-          $("#users_index_mapcontainer_user").fadeIn('slow');
+          $('#users_index_tooltip').html(data);
 
           // Code for 'close button'
-          $("#users_show_close").click(function() {
-            $('#users_index_mapcontainer_user').fadeOut('slow');
+          $("#users_index_tooltip_close").click(function() {
+            $('#users_index_tooltip').fadeOut('slow');
           });
 
-          // Modal Stuff!
-          $('#modal_message, #modal_feedback_req, #modal_friendship_req').modal({
-            backdrop: false,
-            show: false
-          });
+          $('#users_index_tooltip').fadeIn('fast');
+        
+        });
 
-          // message button click, hides other modal
-          // not using TBS data-toggle etc. as doesn't let you hide others
-          $('#users_index_user_button_message').click(function() {
-            $('.modal').modal('hide');
-            $('#modal_message').modal('show');
-          });
+      });
 
-          $('#users_index_user_button_friend_req').click(function() {
-            $('.modal').modal('hide');
-            $('#modal_friendship_req').modal('show');
-          });
 
-          $('#users_index_user_button_feedback_req').click(function() {
-            $('.modal').modal('hide');
-            $('#modal_feedback_req').modal('show');
-            $("#modal_feedback_req_datepicker").datepicker();
+      google.maps.event.addListener(marker, 'click', function() {
+
+        // Pan, Zoom, Animate
+        newlatlng = marker.getPosition();
+        map.panTo(newlatlng);
+        map.setZoom(5);
+
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){ marker.setAnimation(null); }, 1420);
+
+        // Show User Panel
+        $("#users_index_mapcontainer_user").fadeOut('slow', function() {
+
+          $.get('/users/' + marker.id, function(data) {
+
+            // Insert ajax data!
+            $('#users_index_user').html(data);
+
+            // Fade panel back in
+            $("#users_index_mapcontainer_user").fadeIn('slow');
+
+            // Code for 'close button'
+            $("#users_show_close").click(function() {
+              $('#users_index_mapcontainer_user').fadeOut('slow');
+            });
+
+            // Modal Stuff!
+            $('#modal_message, #modal_feedback_req, #modal_friendship_req').modal({
+              backdrop: false,
+              show: false
+            });
+
+            // message button click, hides other modal
+            // not using TBS data-toggle etc. as doesn't let you hide others
+            $('#users_index_user_button_message').click(function() {
+              $('.modal').modal('hide');
+              $('#modal_message').modal('show');
+            });
+
+            $('#users_index_user_button_friend_req').click(function() {
+              $('.modal').modal('hide');
+              $('#modal_friendship_req').modal('show');
+            });
+
+            $('#users_index_user_button_feedback_req').click(function() {
+              $('.modal').modal('hide');
+              $('#modal_feedback_req').modal('show');
+              $("#modal_feedback_req_datepicker").datepicker();
+            });
+
           });
 
         });
 
       });
 
-    });
+    }
 
   }
 
@@ -311,21 +310,6 @@ $(document).ready(function(){
 
 
 
-  function users_get_latlng (callback) {
-
-    $.getJSON("/get_latlng", function(json) {
-
-      if ((!json.lat) && (!json.lng)) {
-        callback(52.2100,0.1300);
-      } else {
-        callback(json.lat, json.lng);
-      }
-
-    });
-    
-  }
-
-
 
 
 ////////////////////////////////////////////////////////////////////
@@ -334,22 +318,11 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-
-
-  // why do I have to call the json twice?
-  users_get_latlng(function(users_map_lat_start, users_map_lng_start) {
-    users_index_loadmap(users_map_lat_start, users_map_lng_start);
-  });
-
-  users_get_latlng(function(users_map_lat_start, users_map_lng_start) {
-    users_newedit_loadmap(users_map_lat_start, users_map_lng_start);
-  });
-
   users_updatelist();
 
 
-
-
-
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
 
 });

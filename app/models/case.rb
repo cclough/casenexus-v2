@@ -77,7 +77,7 @@ class Case < ActiveRecord::Base
 
   # Show
 
-  def chart_show_radar
+  def cases_show_chart_radar_data
     "[{criteria: \"Structure\", score: "+structure.to_s+"},
      {criteria: \"Commercial\", score: "+commercial.to_s+"},
      {criteria: \"Conclusion\", score: "+conclusion.to_s+"},
@@ -87,7 +87,7 @@ class Case < ActiveRecord::Base
 
   # Analysis
 
-  def self.chart_analysis_radar(user)
+  def self.cases_analysis_chart_radar_data(user)
     # LAST 5: load scores into json for radar chart
       "[
       {criteria: \"Structure\", 
@@ -105,7 +105,7 @@ class Case < ActiveRecord::Base
       ]"
   end
 
-  def self.chart_analysis_progress(user)
+  def self.cases_analysis_chart_progress_data(user)
     chart_analysis_progress = user.cases.order('date asc').map {|c|
                               { id: c.id,
                               date: c.date.strftime("%Y-%m-%d"), 
