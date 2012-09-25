@@ -28,12 +28,16 @@
           .row
             #roulette_index_token
               = current_user.roulette_token
-
-        = form_tag ('/cases/new') do
-          .span23
-            = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee's Token"
-          .span12
-            = submit_tag "Feedback Form", class: "btn btn-inverse"
+        .span36
+          .row.font-small
+            If you are interviewer, ask the interviewee for their roulette token:
+          .row
+            = form_tag ('/cases/new') do
+              .input-append
+                = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee's Token"
+                %button.btn.btn-inverse{ type: "submit" }
+                  Feedback Form 
+                  %i.icon-arrow-right.icon-white
 
       .row
         #roulette_index_users
