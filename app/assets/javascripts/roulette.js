@@ -42,7 +42,11 @@ $(document).ready(function(){
 
   $("#roulette_index_button_disconnect").click(function() {
     
-    var socket = io.disconnect();
+    var socket = io.connect('https://cclough.nodejitsu.com', {secure: true});
+    
+    socket.on('connect', function () {
+      socket.disconnect();
+    });
 
     $("#roulette_index_button_connect").attr("disabled", false);
     $("#roulette_index_button_disconnect").attr("disabled", true);
