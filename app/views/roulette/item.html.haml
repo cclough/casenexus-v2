@@ -1,19 +1,22 @@
 .row
   .span5
+    .spacer10
     = avatar_for(@user)
   .span20.offset3
+    .spacer10
     .application_name
       = @user.name
   .span30.offset3
-    .span8
+    .spacer10
+    .span9
       = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
-    .span7
+    .span5
       %a{:href => "#{@user.skype}?add"}
         %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
         Skype
   .span5.offset3
-    .panel.darker
-      .roulette_index_users_item_casecount
+    .roulette_index_users_item_casecount
+      .panel.darker.kill_all
         = @user.casecount
         .font-small
           cases
