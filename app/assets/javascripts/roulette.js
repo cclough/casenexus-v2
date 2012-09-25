@@ -49,7 +49,7 @@ $(document).ready(function(){
             $('#roulette_index_users_item_' + key).remove();
           });
 
-        }
+        };
 
       });
 
