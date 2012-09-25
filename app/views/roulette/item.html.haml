@@ -10,10 +10,10 @@
     .spacer20
     .span9
       = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
-    .span9
-      %a{:href => "#{@user.skype}?add"}
-        %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
-        Skype
+    .span20
+      %a{:href => "skype:#{@user.skype}?call"}
+        %img{:alt => "#{@user.skype} status", :height => "44", :src => "http://mystatus.skype.com/bigclassic/#{@user.skype}", :style => "border: none;", :width => "182"}/
+
   .span5.offset3
     .roulette_index_users_item_casecount
       .panel.darker.kill_all
