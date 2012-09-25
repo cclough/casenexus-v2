@@ -8,6 +8,9 @@ $(document).ready(function(){
     socket.on('connect', function(){
     	// call the server-side function 'adduser' and send one parameter (value of prompt)
     	socket.emit('adduser', roulette_index_user_id);
+
+      $("#roulette_index_button_connect").attr("disabled", true);
+      $("#roulette_index_button_disconnect").attr("disabled", false);
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
@@ -33,6 +36,15 @@ $(document).ready(function(){
     	});
       
     });
+
+  });
+
+  $("#roulette_index_button_disconnect").click(function() {
+    
+    socket.disconnect();
+
+    $("#roulette_index_button_connect").attr("disabled", false);
+    $("#roulette_index_button_disconnect").attr("disabled", true);
 
   });
 
