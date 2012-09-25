@@ -12,12 +12,12 @@
     .span85.offset2
 
       .row
-        .span14
+        .span15
           %button#roulette_index_button_connect.btn.btn-inverse.roulette_index_button_connection
             %i.icon-share-alt.icon-white
             %span#roulette_index_button_connect_text
               Connect
-        .span14
+        .span15
           %button#roulette_index_button_disconnect.btn.btn-inverse.roulette_index_button_connection
             %i.icon-share-alt.icon-white
             %span
@@ -31,7 +31,7 @@
 
         = form_tag ('/cases/new') do
           .span23
-            = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee Token"
+            = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee's Token"
           .span12
             = submit_tag "Feedback Form", class: "btn btn-inverse"
 
