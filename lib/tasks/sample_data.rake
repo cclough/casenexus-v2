@@ -38,7 +38,7 @@ namespace :db do
 
     User.all.each do |user|
 
-      rand(60).times do
+      rand(51).times do
         user.cases.create!(
           :interviewer_id => 1 + rand(98),
           :date => randomDate(:year_range => 2, :year_latest => 0.5),
@@ -66,7 +66,7 @@ namespace :db do
       # no longer needed as automatically created by after_create in user
       #user.notifications.create!(sender_id: 1, :ntype => "welcome")
 
-      10.times do
+      5.times do
         user.notifications.create!(:ntype => "message",
                                    :sender_id => rand(100), 
                                    :content => Faker::Lorem.sentence(5))
@@ -96,7 +96,7 @@ namespace :db do
     # Friendships
     User.all.each do |user|
 
-      23.times do |n|
+      15.times do |n|
         user.friendships.create!(friend_id: n)
       end
 

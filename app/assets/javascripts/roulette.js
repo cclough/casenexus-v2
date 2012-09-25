@@ -3,8 +3,6 @@ $(document).ready(function(){
   $("#roulette_index_button_connect").attr("disabled", false);
   $("#roulette_index_button_disconnect").attr("disabled", true);
 
-
-
   $("#roulette_index_button_connect").click(function() {
 
     $("#roulette_index_button_connect").attr("disabled", true);

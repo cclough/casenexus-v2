@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925001606) do
+ActiveRecord::Schema.define(:version => 20120925163251) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120925001606) do
   create_table "universities", :force => true do |t|
     t.string "name"
     t.string "image"
+    t.string "domain"
   end
 
   create_table "users", :force => true do |t|
