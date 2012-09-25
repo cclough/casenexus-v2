@@ -57,7 +57,7 @@ module Casenexus
 
     # Prevents heroku rake abort on assets compile
     # From http://www.simonecarletti.com/blog/2012/02/heroku-and-rails-3-2-assetprecompile-error/
-    # config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = false
 
     # Enable the asset pipeline
     config.assets.enabled = true
