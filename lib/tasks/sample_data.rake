@@ -36,44 +36,6 @@ namespace :db do
 
     end
 
-    admin2 = User.create!(
-           first_name: "Robin",
-           last_name: "Clough",
-           email: "robin.clough@gmail.com",
-           password: "numbnuts",
-           password_confirmation: "numbnuts",
-           lat: 51.9128232665856,
-           lng: -1.541188764572144,
-           status: Faker::Lorem.sentence(20),
-
-           skype: "robinclough",
-           linkedin: "christian.clough@gmail.com",
-
-           accepts_tandc: true)
-
-    admin2.toggle!(:approved)
-    admin2.toggle!(:completed)
-    admin2.toggle!(:admin)
-
-    designer = User.create!(
-           first_name: "Design",
-           last_name: "Pro",
-           email: "design@design.com",
-           password: "design",
-           password_confirmation: "design",
-           lat: 51.9128232665856,
-           lng: -0.541188764572144,
-           status: Faker::Lorem.sentence(20),
-
-           skype: "greatdesign",
-           linkedin: "great.design@linkedin.com",
-
-           accepts_tandc: true)
-
-    designer.toggle!(:approved)
-    designer.toggle!(:completed)
-
-
     User.all.each do |user|
 
       rand(60).times do

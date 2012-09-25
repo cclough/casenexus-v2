@@ -8,7 +8,7 @@
 
 admin = User.create!(
         first_name: "Christian",
-	last_name: "Clough",
+	    last_name: "Clough",
         email: "christian.clough@gmail.com",
         password: "numbnuts",
         password_confirmation: "numbnuts",
@@ -25,6 +25,43 @@ admin.toggle!(:approved)
 admin.toggle!(:completed)
 admin.toggle!(:admin)
 
+
+admin2 = User.create!(
+        first_name: "Rodrigo",
+        last_name: "D",
+        email: "rodrigo@rodrigo.com",
+        password: "rodrigo",
+        password_confirmation: "rodrigo",
+        lat: 51.01128232665856,
+        lng: -0.4241188764572144,
+        status: Faker::Lorem.sentence(20),
+
+        skype: "rodrigo",
+        linkedin: "rodrigo@rodrigo.com",
+
+        accepts_tandc: true)
+
+admin2.toggle!(:approved)
+admin2.toggle!(:completed)
+admin2.toggle!(:admin)
+
+admin3 = User.create!(
+        first_name: "Design",
+        last_name: "Pro",
+        email: "design@design.com",
+        password: "design",
+        password_confirmation: "design",
+        lat: 51.9128232665856,
+        lng: -0.541188764572144,
+        status: Faker::Lorem.sentence(20),
+
+        skype: "greatdesign",
+        linkedin: "great.design@linkedin.com",
+
+        accepts_tandc: true)
+
+admin3.toggle!(:approved)
+admin3.toggle!(:completed)
 
 
 University.create!(name: "University of Cambridge", image: "cambridge.gif")
