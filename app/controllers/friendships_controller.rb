@@ -1,7 +1,8 @@
 class FriendshipsController < ApplicationController
   
   before_filter :signed_in_user
-  
+  before_filter :completed_user
+    
   def index
     @friends = current_user.friends
   end

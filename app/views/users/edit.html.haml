@@ -54,9 +54,9 @@
               .span30  
                 = f.text_area :status
 
-            #users_newedit_map.map
-            = f.text_field :lat, id: "lat"
-            = f.text_field :lng, id: "lng"
+            #users_newedit_map.edit.map
+            = f.text_field :lat, id: "users_newedit_lat"
+            = f.text_field :lng, id: "users_newedit_lng"
 
             .row
               .span20

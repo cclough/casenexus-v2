@@ -235,14 +235,21 @@ $gray_Lightest: #f6f6f6;
   border-bottom: 1px solid $gray_Lighter;  
 }
 
-
 #users_newedit_map {
-	height:250px;
-	width:250px;
+  &.new {
+    height:400px;
+    width:400px;
+  }
+  &.edit {
+    height:250px;
+    width:250px;
+  }
 }
 
+
 #users_new_status{
-  height:100px;
+  height:200px;
+  width:100%;
 }
 
 .users_edex_datepicker {

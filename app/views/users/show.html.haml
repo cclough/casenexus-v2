@@ -24,16 +24,15 @@
   .row
     = render 'shared/button_Group_feedback_req_and_send'
 
-
-.panel
-  .row
-    .span40
-      #users_show_status
-        = @user.status
-  .row
-    .span20.offset20
-      = render 'shared/button_friend_req_or_message'
-
+- if @user.approved
+  .panel
+    .row
+      .span40
+        #users_show_status
+          = @user.status
+    .row
+      .span20.offset20
+        = render 'shared/button_friend_req_or_message'
 
 #modal_friendship_req.modal.hide.fade
   = render 'shared/modal_friendship_req_form'

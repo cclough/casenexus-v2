@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924155626) do
+ActiveRecord::Schema.define(:version => 20120925001606) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -58,6 +58,11 @@ ActiveRecord::Schema.define(:version => 20120924155626) do
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
+  create_table "universities", :force => true do |t|
+    t.string "name"
+    t.string "image"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "first_name",                                :null => false
     t.string   "last_name",                                 :null => false
@@ -79,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20120924155626) do
     t.boolean  "approved",               :default => false
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.string   "country"
     t.string   "provider"
     t.string   "headline"
   end

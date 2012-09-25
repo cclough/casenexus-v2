@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :edit, :show, :update]
+  before_filter :signed_in_user, only: [:index, :new, :edit, :show, :update]
   before_filter :correct_user, only: [:edit, :update]
+  before_filter :completed_user, except: [:new, :create, :update]
+
 
   # Map
 	def index
@@ -38,22 +40,23 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-      if @user.approved?
-        respond_to do |format|
-          @notification = @user.notifications.build
-          @friendship = @user.friendships.build unless current_user.friend_with?(@user)
+    respond_to do |format|
+      @notification = @user.notifications.build
+      @friendship = @user.friendships.build unless current_user.friend_with?(@user)
 
-          format.html { render :layout => false } 
-        end
-      else
-        render 'index'
-      end
+      format.html { render :layout => false } 
+    end
+
   end
 
   
-  # Signup
+  # Signup Part 2!
   def new
-    @user = User.new
+    if completed?
+      redirect_to users_path
+    else
+      @user = current_user
+    end
   end
 
   # Create User
@@ -75,8 +78,15 @@ class UsersController < ApplicationController
   # Update Profile
   def update
     if @user.update_attributes(params[:user])
+
       sign_in @user
-      flash[:success] = '<strong>Success</strong> - Profile updated'.html_safe
+
+      if !completed?
+        @user.toggle!(:completed)
+        flash[:success] = 'Welcome to casenexus.com'.html_safe
+      else
+        flash[:success] = 'Success - Profile updated'.html_safe
+      end
       redirect_to users_path
     else
       render 'edit'

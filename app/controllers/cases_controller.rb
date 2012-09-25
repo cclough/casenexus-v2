@@ -2,6 +2,7 @@ class CasesController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :show, :new, :create, :analysis]
   before_filter :correct_user, only: [:show]
+  before_filter :completed_user
 
   # before_filter :notself_user, only: [:create]
 

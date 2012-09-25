@@ -1,7 +1,8 @@
 class RouletteController < ApplicationController
 
   before_filter :signed_in_user, only: [:index]
-
+  before_filter :completed_user
+  
   def index
   end
 

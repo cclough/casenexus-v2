@@ -46,6 +46,18 @@ module SessionsHelper
       redirect_to signin_path, notice: "Please sign in." 
     end
   end
-  
 
+  def completed_user
+    unless completed?
+      redirect_to new_user_path, notice: "Please complete the sign up process." 
+    end
+  end
+
+  def completed?
+    current_user.completed?
+  end
+
+  def approved?
+    current_user.approved?
+  end
 end

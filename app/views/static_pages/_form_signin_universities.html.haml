@@ -1,0 +1,5 @@
+#static_home_signup_university_list
+  - if University.all.count > 0
+    - for university in University.all
+
+      = image_tag 'universities/' + university.image, class: 'static_home_signup_university_logo'

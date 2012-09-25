@@ -1,25 +1,27 @@
 %header.navbar.navbar-inverse.navbar-fixed-top
-  .navbar-inner{:class => ("signedout" if !signed_in?)}
+  .navbar-inner{:class => ("signedout" if !signed_in? || !completed?)}
     .container
-      #header_logo_nav{:class => ("signedout" if !signed_in?)}
+      #header_logo_nav{:class => ("signedout" if !signed_in? || !completed?)}
         = link_to image_tag("app/logo.png"), root_path
 
       - if signed_in?
-        %ul#nav_links_left.nav.pull-left
 
-          %li.divider-vertical
+        - if completed?
+          %ul#nav_links_left.nav.pull-left
 
-          / MAP: pushpin or globe or picture or road or map-marker
-          %li
-            = link_to raw("<i class='icon-globe icon-large icon-white'></i> Users"), users_path
-          %li
-            = link_to raw("<i class='icon-random icon-large icon-white'></i> Roulette"), '/roulette'
+            %li.divider-vertical
 
-        %ul.nav.pull-right
+            / MAP: pushpin or globe or picture or road or map-marker
+            %li
+              = link_to raw("<i class='icon-globe icon-large icon-white'></i> Users"), users_path
+            %li
+              = link_to raw("<i class='icon-random icon-large icon-white'></i> Roulette"), '/roulette'
 
-          = render 'header/menu_notifications'
+          %ul.nav.pull-right
 
-          = render 'header/menu_profile'
+            = render 'header/menu_notifications'
+
+            = render 'header/menu_profile'
 
       - else
         %ul#nav_links_left.nav.pull-left

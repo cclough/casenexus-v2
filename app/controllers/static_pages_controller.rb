@@ -1,10 +1,13 @@
 class StaticPagesController < ApplicationController
 
   def home
-  	# Home re-directs to user path here if signed in
+
 	 	if signed_in?
 			redirect_to users_path
+		else
+			@user = User.new
 		end
+
   end
 
   def about

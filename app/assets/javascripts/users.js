@@ -3,59 +3,42 @@ var users_index_map_markers = [];
 
 $(document).ready(function(){
 
+
 ////////////////////////////////////////////////////////////////////
 /////////////////////////    NEW     ///////////////////////////////
 ////////////////////////////////////////////////////////////////////
-
-
 
   $("#users_new_button_submit").attr("disabled",true);
   $('#user_accepts_tandc').attr('checked', false);
 
   // reset form here?
 
-  $("#users_new_step2, #users_new_step3").css({ opacity: 0.3 });
-
-
-  $("#user_password_confirmation").keyup(function() {
-    if ($('#user_password_confirmation').val() == $('#user_password').val()) {
-      $("#users_new_step2").css({
-        opacity: 1
-      });
-      $.users_new_step1_complete = true;
-    } else {
-      $("#users_new_step2").css({
-        opacity: 0.3
-      });
-    };
-  });
+  $("#users_new_step2").css({ opacity: 0.3 });
   
-  $("#users_new_status").keyup(function(){
+  $("#users_newedit_lat").change(function(){
 
-      $("#users_new_step2")
+      $("#users_new_step1")
       .css({
         "background-image": "url(app/tick.png)",
         "background-position": "top right",
         "background-repeat": "no-repeat"
       });
-      
-      $("#users_new_step3").css({
+
+      $("#users_new_step2").css({
         opacity: 1
       });
 
-      $.users_new_step2_complete = true;
+      $.users_new_step1_complete = true;
 
   });
   
-  $("#user_accepts_tandc").click(function(){
+  $("#users_new_status").keyup(function(){
 
-    $.step3complete = true;
-
-    if (this.checked && ($.users_new_step1_complete == true) && ($.users_new_step2_complete == true) && ($.users_new_step3_complete == true)) { // check entire form is complete
-      $("#users_new_button_submit").attr("disabled",false);
-    } else {
-      $("#users_new_button_submit").attr("disabled",true);
-    };
+      if (($("#users_new_status").val().length > 50) && ($.users_new_step1_complete == true)) { // check entire form is complete
+        $("#users_new_button_submit").attr("disabled",false);
+      } else {
+        $("#users_new_button_submit").attr("disabled",true);
+      };
 
   });
 
@@ -87,8 +70,8 @@ $(document).ready(function(){
     });
   
     google.maps.event.addListener(marker, 'drag', function() {
-      $('lat').val(users_newedit_latlng.lat());
-      $('lng').val(users_newedit_latlng.lng());
+      $('#users_newedit_lat').val(users_newedit_latlng.lat());
+      $('#users_newedit_lng').val(users_newedit_latlng.lng());
     });
 
   }

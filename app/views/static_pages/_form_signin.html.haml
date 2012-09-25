@@ -1,0 +1,29 @@
+= form_for @user, :validate => true do |f|                
+
+  = render 'shared/error_messages', object: @user
+
+  = f.text_field :first_name, placeholder: 'First Name'
+  = f.text_field :last_name, placeholder: 'Last Name'
+  .spacer5
+  = f.text_field :email, placeholder: 'Email'
+  .spacer5
+  = f.password_field :password, placeholder: 'Password'
+  = f.password_field :password_confirmation, placeholder: 'Confirm Password'
+  .row
+    .span16
+      = f.label :email_admin, "Subscribe to advice letter"
+    .span3
+      = f.check_box :email_admin
+  .row
+    .span16
+      = f.label :email_users, "Receive email notifications"
+    .span3
+      = f.check_box :email_users
+  .row
+    .span16
+      = f.label :accepts_tandc, "Accept the Terms & Conditions"
+    .span3
+      = f.check_box :accepts_tandc
+  .spacer5
+  .row
+    = f.submit "Sign up", class: "btn btn-inverse pull-right", id: "static_home_signup_button_submit"

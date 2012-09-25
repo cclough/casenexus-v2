@@ -14,11 +14,8 @@ class User < ActiveRecord::Base
   ### Friendships Model
   include Amistad::FriendModel
 
-
   ### Bcrypt
   has_secure_password
-
-
 
   ### Callbacks
   before_save { |user| user.email = user.email.downcase }
@@ -29,6 +26,9 @@ class User < ActiveRecord::Base
 
 
   ### Validations
+
+  ## ALWAYS
+
   # Names
   validates :first_name, presence: true, length: { maximum: 30 }
   validates :last_name, presence: true, length: { maximum: 30 }
@@ -39,29 +39,38 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EM_REGEX },
   					uniqueness: { case_sensitive: true } 
 
+  # Accepts Terms and Conditions?
+  validates :accepts_tandc, :acceptance => {:accept => true}
+
+
+  ## WITHOUT LINKEDIN
+
   # Passwords
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :password, length: { minimum: 6 }, if: :without_linkedin?
+  validates :password_confirmation, presence: true, if: :without_linkedin?
+
+
+  ## ON UPDATE
 
   # Status
-  validates :status, presence: true, length: { maximum: 500, minimum: 50 }
+  validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update
 
   # Location
-  validates :lat, presence: true
-  validates :lng, presence: true
-
+  validates :lat, presence: true, on: :update
+  validates :lng, presence: true, on: :update
 
   # Skype & Linkedin
   validates :skype, length: { maximum: 32 },
             format: { with: VALID_SK_REGEX },
-            allow_blank: true
+            allow_blank: true,
+            on: :update
 
   validates :linkedin, format: { with: VALID_EM_REGEX },
-            allow_blank: true
+            allow_blank: true,
+            on: :update
 
 
-  # Accepts Terms and Conditions?
-	validates :accepts_tandc, :acceptance => {:accept => true}
+
 
 
 
@@ -76,8 +85,6 @@ class User < ActiveRecord::Base
   scope :approved, where(approved: true)
   scope :unapproved, where(approved: false)
 
-
-
   ### GeoKit 
   
   acts_as_mappable :default_units => :kms,
@@ -85,6 +92,14 @@ class User < ActiveRecord::Base
                    :distance_field_name => :distance,
                    :lat_column_name => :lat,
                    :lng_column_name => :lng
+
+
+  ### Custom Methods
+
+  def without_linkedin?
+    provider == "linkedin"
+  end
+
 
   ### Password Reset
 
@@ -119,11 +134,10 @@ class User < ActiveRecord::Base
   end
 
 
-
   ## Macro
 
   def self.markers
-    markers = User.approved.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
+    markers = User.all.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
   end
 
   # Filters

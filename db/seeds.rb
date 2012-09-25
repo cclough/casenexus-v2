@@ -24,3 +24,9 @@ admin = User.create!(
 admin.toggle!(:approved)
 admin.toggle!(:completed)
 admin.toggle!(:admin)
+
+
+
+University.create!(name: "University of Cambridge", image: "cambridge.gif")
+University.create!(name: "University of Oxford", image: "oxford.jpg")
+University.create!(name: "Harvard College", image: "harvard.gif")

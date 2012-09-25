@@ -2,7 +2,8 @@ class NotificationsController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :show, :create]
   before_filter :correct_user, only: [:show]
-
+  before_filter :completed_user
+  
 	def index
   	@notifications = current_user.notifications.paginate(per_page: 10, page: 
                      params[:page], order: "created_at DESC")
