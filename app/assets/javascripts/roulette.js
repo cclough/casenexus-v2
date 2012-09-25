@@ -6,7 +6,7 @@ $(document).ready(function(){
   $("#roulette_index_button_connect").click(function() {
 
     $("#roulette_index_button_connect").attr("disabled", true);
-    $("#roulette_index_button_connect").val("Connecting...");
+    $("#roulette_index_button_connect_text").html("Connecting...");
 
     var socket = io.connect('https://cclough.nodejitsu.com', {secure: true});
 
@@ -15,7 +15,7 @@ $(document).ready(function(){
     	// call the server-side function 'adduser' and send one parameter (value of prompt)
     	socket.emit('adduser', roulette_index_user_id);
 
-      $("#roulette_index_button_connect").val("Connected");
+      $("#roulette_index_button_connect_text").html("Connected");
       $("#roulette_index_button_disconnect").attr("disabled", false);
     });
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
         $('#roulette_index_users').empty();
         $('#roulette_index_log').append('<div class=roulette_index_log_item>You have disconnected.</div>');
 
-        $("#roulette_index_button_connect").val("Connect");
+        $("#roulette_index_button_connect_text").html("Connect");
         $("#roulette_index_button_connect").attr("disabled", false);
         $("#roulette_index_button_disconnect").attr("disabled", true);
 
