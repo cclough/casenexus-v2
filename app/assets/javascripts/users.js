@@ -17,28 +17,28 @@ $(document).ready(function(){
   
   $("#users_newedit_lat").change(function(){
 
-      $("#users_new_step1")
-      .css({
-        "background-image": "url(app/tick.png)",
-        "background-position": "top right",
-        "background-repeat": "no-repeat"
-      });
+    $("#users_new_step1")
+    .css({
+      "background-image": "url(app/tick.png)",
+      "background-position": "top right",
+      "background-repeat": "no-repeat"
+    });
 
-      $("#users_new_step2").css({
-        opacity: 1
-      });
+    $("#users_new_step2").css({
+      opacity: 1
+    });
 
-      $.users_new_step1_complete = true;
+    $.users_new_step1_complete = true;
 
   });
   
   $("#users_new_status").keyup(function(){
 
-      if (($("#users_new_status").val().length > 50) && ($.users_new_step1_complete == true)) { // check entire form is complete
-        $("#users_new_button_submit").attr("disabled",false);
-      } else {
-        $("#users_new_button_submit").attr("disabled",true);
-      };
+    if (($("#users_new_status").val().length > 50) && ($.users_new_step1_complete == true)) { // check entire form is complete
+      $("#users_new_button_submit").attr("disabled",false);
+    } else {
+      $("#users_new_button_submit").attr("disabled",true);
+    };
 
   });
 
