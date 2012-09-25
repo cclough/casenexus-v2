@@ -20,8 +20,11 @@
                   .span20
                     = render 'static_pages/form_signin'
             .row.panel.gradient
-              .span21
-                %a.btn.btn-large.btn-inverse{ href: "/auth/linkedin"}
-                  %i.icon-share-alt.icon-white
+              .span10
+                Alternatively
+              .span20
+                %a#static_home_signup_linkedin_button.btn.btn-large.btn-inverse{ href: "/auth/linkedin"}
+                  %span#static_home_signup_linkedin_button_logo
+                    = image_tag 'home/button_logo_linkedin.png'
                   %span
                     Sign up with LinkedIn

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925163251) do
+ActiveRecord::Schema.define(:version => 20120925181047) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20120925163251) do
     t.datetime "password_reset_sent_at"
     t.string   "provider"
     t.string   "headline"
+    t.string   "roulette_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
