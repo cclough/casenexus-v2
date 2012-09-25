@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
   $("#roulette_index_button_connect").click(function() {
 
     var socket = io.connect('https://cclough.nodejitsu.com', {secure: true});
@@ -41,7 +42,7 @@ $(document).ready(function(){
 
   $("#roulette_index_button_disconnect").click(function() {
     
-    socket.disconnect();
+    var socket = io.disconnect();
 
     $("#roulette_index_button_connect").attr("disabled", false);
     $("#roulette_index_button_disconnect").attr("disabled", true);
