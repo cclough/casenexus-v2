@@ -132,7 +132,7 @@ $(document).ready(function(){
         chart = new AmCharts.AmSerialChart();
         // still not yet sure if below line is working?
         // add curly brackets below
-        chart.pathToImages = '/assets/amcharts/';
+        // chart.pathToImages = '/assets/amcharts/';
         // below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
         chart.panEventsEnabled = true;
         chart.zoomOutButton = {
@@ -299,8 +299,8 @@ $(document).ready(function(){
     }
 
 
-    // // lifted from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    // // this method is called when chart is first inited as we listen for "dataUpdated" event
+    // lifted from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
+    // this method is called when chart is first inited as we listen for "dataUpdated" event
     // function zoomChart(data1) {
     //     // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
     //     chart.zoomToIndexes(data1.length - 40, data1.length - 1);
@@ -415,9 +415,6 @@ $(document).ready(function(){
 
 
   } // End of if statement
-
-
-
 
 
 
