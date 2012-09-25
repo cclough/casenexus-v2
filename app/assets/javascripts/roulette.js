@@ -34,7 +34,7 @@ $(document).ready(function(){
 
       $.each(data, function(key, value) {
 
-        if ($.inArray(key, roulette_index_users) == -1) {
+        if ($.inArray(key, roulette_index_users) === -1) {
 
           roulette_index_users.push(key);
 
