@@ -3,14 +3,14 @@
     .spacer10
     = avatar_for(@user)
   .span20.offset3
-    .spacer10
+    .spacer15
     .application_name
       = @user.name
-  .span30.offset3
-    .spacer10
+  .span45.offset3
+    .spacer20
     .span9
       = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
-    .span5
+    .span9
       %a{:href => "#{@user.skype}?add"}
         %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
         Skype
