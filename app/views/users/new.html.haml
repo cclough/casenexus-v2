@@ -1,5 +1,12 @@
 - provide(:title, 'Sign up')
 
+
+- content_for :javascript_includes do
+
+  :javascript
+    var users_newedit_map_lat_start = "50";
+    var users_newedit_map_lng_start = "0";
+
 = content_for :content do
 
   %h1 Sign up

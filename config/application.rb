@@ -55,10 +55,14 @@ module Casenexus
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    # Prevents heroku rake abort on assets compile
+    # From http://www.simonecarletti.com/blog/2012/02/heroku-and-rails-3-2-assetprecompile-error/
+    config.assets.initialize_on_precompile = false
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    # for font awesome    
+    # for font awesome
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
 
     # Enable Lib Assets - doesn't work for e.g. Amcharts
@@ -67,8 +71,6 @@ module Casenexus
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    # Prevents heroku rake abort on assets compile
-    # From http://www.simonecarletti.com/blog/2012/02/heroku-and-rails-3-2-assetprecompile-error/
-    # config.assets.initialize_on_precompile = false
+
   end
 end
