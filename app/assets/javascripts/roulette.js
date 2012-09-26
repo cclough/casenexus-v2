@@ -12,9 +12,7 @@ $(document).ready(function(){
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
-    var url = 'https://cclough.nodejitsu.com';
-
-    var socket = io.connect(url, {secure: true});
+    var socket = io.connect('https://cclough.nodejitsu.com', {secure: true});
 
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
@@ -94,7 +92,7 @@ $(document).ready(function(){
         socket.disconnect();
 
         // to enable reconnect https://github.com/LearnBoost/socket.io-client/issues/251
-        delete io.sockets[url];
+        delete io.sockets['https://cclough.nodejitsu.com'];
         io.j = [];
         
         $('#roulette_index_users').empty();
