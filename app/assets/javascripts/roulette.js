@@ -41,8 +41,8 @@ $(document).ready(function(){
 
           roulette_index_users_local.push(key_remote);
 
-          $.get('/get_item?id=' + key_remote, function(data) {
-            $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key_remote+'>' + data + '</div>');
+          $.get('/get_item?id=' + key_remote, function(data_item) {
+            $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
           });
 
@@ -58,11 +58,11 @@ $(document).ready(function(){
 
         if ($.inArray(key_local, roulette_index_users_remote) === -1) {
 
-          
+          $("#debug_localnotinremote").append(key_local);
 
           var idx = roulette_index_users_local.indexOf(key_local); // Find the index
 
-          $("#debug_localnotinremote").append(idx);
+          $("#debug_indexoflocalnotinremote").append(idx);
 
           if(idx!=-1) {
             
