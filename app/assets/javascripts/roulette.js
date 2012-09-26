@@ -91,9 +91,12 @@ $(document).ready(function(){
       
         socket.disconnect();
 
+        roulette_index_users_local = [];
+        roulette_index_users_remote = [];
+
         // to enable reconnect https://github.com/LearnBoost/socket.io-client/issues/251
-        delete io.sockets['https://cclough.nodejitsu.com'];
-        io.j = [];
+        // delete io.sockets['https://cclough.nodejitsu.com'];
+        // io.j = [];
         
         $('#roulette_index_users').empty();
         $('#roulette_index_log').append('<div class=roulette_index_log_item>You have disconnected.</div>');
