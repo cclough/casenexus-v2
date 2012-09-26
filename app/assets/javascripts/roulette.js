@@ -12,10 +12,7 @@ $(document).ready(function(){
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
-    var url = 'https://cclough.nodejitsu.com'
-
-    delete io.sockets[url];
-    io.j = [];
+    var url = 'https://cclough.nodejitsu.com';
 
     var socket = io.connect(url, {secure: true});
 
@@ -37,7 +34,6 @@ $(document).ready(function(){
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
-
 
 
       $.each(data, function(key_remote, value) {
@@ -97,6 +93,10 @@ $(document).ready(function(){
       
         socket.disconnect();
 
+        // to enable reconnect https://github.com/LearnBoost/socket.io-client/issues/251
+        delete io.sockets[url];
+        io.j = [];
+        
         $('#roulette_index_users').empty();
         $('#roulette_index_log').append('<div class=roulette_index_log_item>You have disconnected.</div>');
 
