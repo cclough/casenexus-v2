@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#roulette_index_button_disconnect").attr("disabled", true);
 
   var roulette_index_users = [];
-  
+
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
 
@@ -32,28 +32,52 @@ $(document).ready(function(){
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
 
-      $.each(data, function(key, value) {
 
-        if ($.inArray(key, roulette_index_users) === -1) {
 
-          roulette_index_users.push(key);
+      $.each(data, function(key_remote, value) {
 
-          $.get('/get_item?id=' + key, function(data) {
-            $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key+'>' + data + '</div>');
-            $('#roulette_index_users_item_' + key).fadeIn('fast');
+        if ($.inArray(key_remote, roulette_index_users) === -1) {
+
+          roulette_index_users.push(key_remote);
+
+          $.get('/get_item?id=' + key_remote, function(data) {
+            $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key_remote+'>' + data + '</div>');
+            $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
           });
 
-        } else {
+        }
 
-          $('#roulette_index_users_item_' + key).fadeOut('fast', function() {
-            $('#roulette_index_users_item_' + key).remove();
+      });
+
+
+      $.each(roulette_index_users, function(key_local) {
+
+        if ($.inArray(key_local, data) === -1) {
+
+          var idx = visibleIds.indexOf(key_local); // Find the index
+
+          if(idx!=-1) visibleIds.splice(idx, 1);
+
+          $('#roulette_index_users_item_' + key_local).fadeOut('fast', function() {
+            $('#roulette_index_users_item_' + key_local).remove();
           });
 
         };
 
       });
 
+
+
+
     });
+
+
+
+
+
+
+
+
 
     // Disconnect Button
     $("#roulette_index_button_disconnect").click(function() {
