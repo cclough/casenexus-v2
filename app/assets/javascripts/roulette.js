@@ -52,7 +52,7 @@ $(document).ready(function(){
 
       $.each(roulette_index_users, function(key_local) {
 
-        if ($.inArray(key_local, data) === -1) {
+        //if ($.inArray(key_local, data) === -1) {
 
           var idx = roulette_index_users.indexOf(key_local); // Find the index
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
             $('#roulette_index_users_item_' + key_local).remove();
           });
 
-        };
+        //};
 
       });
 
