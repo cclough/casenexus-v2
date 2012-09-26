@@ -15,25 +15,15 @@ namespace :db do
 
       accepts_tandc = true
 
-      User.create!(first_name: first_name, last_name: last_name,
-               email: email, password: password,
-               password_confirmation: password,
-               lat: lat, lng: lng, status: status,
-               skype: skype, linkedin: linkedin,
-               accepts_tandc: accepts_tandc)
+      user = User.create!(first_name: first_name, last_name: last_name,
+             email: email, password: password,
+             password_confirmation: password,
+             lat: lat, lng: lng, status: status,
+             skype: skype, linkedin: linkedin,
+             accepts_tandc: accepts_tandc)
 
-    end
-
-    User.all.each do |user|
-
-      if rand(2) == 1
-        user.toggle!(:approved)
-      end
-
-      if rand(2) == 1
-        user.toggle!(:completed)
-      end
-
+      user.toggle!(:approved)
+      user.toggle!(:completed)
     end
 
     User.all.each do |user|
@@ -58,8 +48,6 @@ namespace :db do
       end
 
     end
-
-
 
     User.all.each do |user|
       
@@ -94,21 +82,21 @@ namespace :db do
 
 
     # Friendships
-    User.all.each do |user|
+    # User.all.each do |user|
 
-      15.times do |n|
-        user.friendships.create!(friend_id: n)
-      end
+    #   15.times do |n|
+    #     user.friendships.create!(friend_id: n)
+    #   end
 
-    end
+    # end
 
-    Friendship.all.each do |friendship|
+    # Friendship.all.each do |friendship|
 
-      if rand(2) == 1
-        friendship.pending == false
-      end
+    #   if rand(2) == 1
+    #     friendship.pending == false
+    #   end
 
-    end
+    # end
 
   end
 

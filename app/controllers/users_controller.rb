@@ -26,11 +26,10 @@ class UsersController < ApplicationController
                .paginate(per_page: 10, page: params[:page])
     end
 
-		# load json of map markers, inc. only user id, lat & lng
     respond_to do |format|
       format.html 
       format.js # links index.js.erb!
-      format.json { render json: User.markers } # map marker feed
+      format.json { render json: User.markers } # USING get_markers_within_viewport INSTEAD
     end
 
 	end
@@ -103,6 +102,20 @@ class UsersController < ApplicationController
     end
   end
 
+  # AJAX
+  
+  # def get_markers_within_viewport
+
+  #   bounds = params[:bounds].split(",")
+
+  #   @sw = GeoKit::LatLng.new(bounds[0],bounds[1])
+  #   @ne = GeoKit::LatLng.new(bounds[2],bounds[3])
+
+  #   respond_to do |format|
+  #     format.json { render json: User.in_bounds([@sw, @ne]) }
+  #   end
+
+  # end
 
   private
 

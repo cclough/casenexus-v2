@@ -12,6 +12,7 @@ $(document).ready(function(){
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
+    // force new connection to enable reconnect - might be messy - https://github.com/LearnBoost/socket.io-client/issues/251
     var socket = io.connect('https://cclough.nodejitsu.com', {secure: true, 'force new connection': true});
 
     // on connection to server, ask for user's name with an anonymous callback
@@ -77,12 +78,6 @@ $(document).ready(function(){
 
 
     });
-
-
-
-
-
-
 
 
 

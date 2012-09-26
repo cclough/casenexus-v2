@@ -89,6 +89,7 @@ textarea {
   &.signedout {
     top:80px;
   }
+
 }
 
 /* For views/shared/_error_messages - is this used for all forms? */
@@ -129,7 +130,8 @@ textarea {
   padding:3px;
 }
 
-.panel{
+.panel {
+
   background: white;
   margin: 15px;
   border: 1px solid $gray_Light;
@@ -263,4 +265,13 @@ textarea {
 }
 
 
+.message {
+  background-color: red;
+  border-bottom-right-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  padding: 2px 5px;
+}
 
+div.field_with_errors div.ui-effects-wrapper {
+  display: inline-block !important;
+}
