@@ -37,9 +37,6 @@ $(document).ready(function(){
 
       $.each(data, function(key_remote, value) {
 
-        // load up managable array of remote users
-        roulette_index_users_remote.push(key_remote)
-
         if ($.inArray(key_remote, roulette_index_users_local) === -1) {
 
           roulette_index_users_local.push(key_remote);
@@ -54,7 +51,7 @@ $(document).ready(function(){
       });
 
 
-      var roulette_index_users_remote = $.map(data, function (key, value) { return key; });
+      var roulette_index_users_remote = $.map(data, function(key, value) { return key; });
 
 
       $.each(roulette_index_users_local, function(key_local) {
@@ -103,6 +100,9 @@ $(document).ready(function(){
         $("#roulette_index_button_disconnect").attr("disabled", true);
 
     });
+
+
+
 
   });
 
