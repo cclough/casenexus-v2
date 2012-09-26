@@ -52,23 +52,27 @@ $(document).ready(function(){
 
       $.each(roulette_index_users, function(key_local) {
 
-        //if ($.inArray(key_local, data) === -1) {
+        if ($.inArray(key_local, data) === -1) {
 
           var idx = roulette_index_users.indexOf(key_local); // Find the index
 
-          if(idx!=-1) roulette_index_users.splice(idx, 1);
+          if(idx!=-1) {
+            
+            roulette_index_users.splice(idx, 1);
 
-          $('#roulette_index_users_item_' + key_local).fadeOut('fast', function() {
-            $('#roulette_index_users_item_' + key_local).remove();
-          });
+            $('#roulette_index_users_item_' + key_local).fadeOut('fast', function() {
+              $('#roulette_index_users_item_' + key_local).remove();
+            });
 
-        //};
+          };
+
+        };
 
       });
 
 
-      $("#debug").html(roulette_index_users.toString());
-
+      $("#debug_local").html(roulette_index_users.toString());
+      $("#debug_remote").html(roulette_index_users.toString());
     });
 
 
