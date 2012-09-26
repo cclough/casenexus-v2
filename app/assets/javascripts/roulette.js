@@ -54,9 +54,9 @@ $(document).ready(function(){
 
         if ($.inArray(key_local, data) === -1) {
 
-          var idx = visibleIds.indexOf(key_local); // Find the index
+          var idx = roulette_index_users.indexOf(key_local); // Find the index
 
-          if(idx!=-1) visibleIds.splice(idx, 1);
+          if(idx!=-1) roulette_index_users.splice(idx, 1);
 
           $('#roulette_index_users_item_' + key_local).fadeOut('fast', function() {
             $('#roulette_index_users_item_' + key_local).remove();
