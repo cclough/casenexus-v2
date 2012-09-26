@@ -58,11 +58,7 @@ $(document).ready(function(){
 
         if ($.inArray(key_local, roulette_index_users_remote) === -1) {
 
-          $("#debug_localnotinremote").append(key_local);
-
           var idx = roulette_index_users_local.indexOf(key_local); // Find the index
-
-          $("#debug_indexoflocalnotinremote").append(idx);
 
           if(idx!=-1) {
             
@@ -78,8 +74,6 @@ $(document).ready(function(){
 
       });
 
-      $("#debug_local").html(roulette_index_users_local.toString());
-      $("#debug_remote").html(roulette_index_users_remote.toString());
 
     });
 
