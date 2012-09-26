@@ -12,7 +12,12 @@ $(document).ready(function(){
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
-    var socket = io.connect('https://cclough.nodejitsu.com', {secure: true});
+    var url = 'https://cclough.nodejitsu.com'
+
+    delete io.sockets[url];
+    io.j = [];
+
+    var socket = io.connect(url, {secure: true});
 
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
