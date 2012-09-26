@@ -70,9 +70,9 @@ $(document).ready(function(){
 
       });
 
-
       $("#debug_local").html(roulette_index_users.toString());
-      $("#debug_remote").html(roulette_index_users.toString());
+      $("#debug_remote").html(data.toString());
+
     });
 
 
