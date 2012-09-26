@@ -58,7 +58,9 @@ $(document).ready(function(){
 
         if ($.inArray(key_local, roulette_index_users_remote) === -1) {
 
-          var idx = roulette_index_users_local.indexOf(key_local); // Find the index
+          //var idx = roulette_index_users_local.indexOf(key_local); // Find the index
+
+          var idx = $.inArray(key_local, roulette_index_users_local);
 
           if(idx!=-1) {
             
