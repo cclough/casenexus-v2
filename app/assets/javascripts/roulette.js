@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
-    var socket = io.connect('https://cclough.nodejitsu.com', {secure: true});
+    var socket = io.connect('https://cclough.nodejitsu.com', {secure: true, 'force new connection': true});
 
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
@@ -33,7 +33,7 @@ $(document).ready(function(){
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
 
-
+      // loop through remote to see if any new users, if so, add them
       $.each(data, function(key_remote, value) {
 
         if ($.inArray(key_remote, roulette_index_users_local) === -1) {
@@ -49,10 +49,10 @@ $(document).ready(function(){
 
       });
 
-
+      // make array of remote users
       var roulette_index_users_remote = $.map(data, function(key, value) { return key; });
 
-
+      // loop through local to see if any missing users, if so, remove them
       $.each(roulette_index_users_local, function(index, key_local) {
 
         if ($.inArray(key_local, roulette_index_users_remote) === -1) {
