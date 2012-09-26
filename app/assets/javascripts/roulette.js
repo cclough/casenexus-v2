@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#roulette_index_button_disconnect").attr("disabled", true);
 
   var roulette_index_users_local = [];
-  var roulette_index_users_remote = [];
+
 
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
@@ -52,6 +52,9 @@ $(document).ready(function(){
         }
 
       });
+
+
+      var roulette_index_users_remote = $.map(data, function (key, value) { return key; });
 
 
       $.each(roulette_index_users_local, function(key_local) {
