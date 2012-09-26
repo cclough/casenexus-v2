@@ -3,7 +3,8 @@ $(document).ready(function(){
   $("#roulette_index_button_connect").attr("disabled", false);
   $("#roulette_index_button_disconnect").attr("disabled", true);
 
-  var roulette_index_users = [];
+  var roulette_index_users_local = [];
+  var roulette_index_users_remote = [];
 
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
@@ -36,9 +37,12 @@ $(document).ready(function(){
 
       $.each(data, function(key_remote, value) {
 
-        if ($.inArray(key_remote, roulette_index_users) === -1) {
+        // load up managable array of remote users
+        roulette_index_users_remote.push(key_remote)
 
-          roulette_index_users.push(key_remote);
+        if ($.inArray(key_remote, roulette_index_users_local) === -1) {
+
+          roulette_index_users_local.push(key_remote);
 
           $.get('/get_item?id=' + key_remote, function(data) {
             $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key_remote+'>' + data + '</div>');
@@ -50,15 +54,15 @@ $(document).ready(function(){
       });
 
 
-      $.each(roulette_index_users, function(key_local) {
+      $.each(roulette_index_users_local, function(key_local) {
 
-        if ($.inArray(key_local, data) === -1) {
+        if ($.inArray(key_local, roulette_index_users_remote) === -1) {
 
-          var idx = roulette_index_users.indexOf(key_local); // Find the index
+          var idx = roulette_index_users_local.indexOf(key_local); // Find the index
 
           if(idx!=-1) {
             
-            roulette_index_users.splice(idx, 1);
+            roulette_index_users_local.splice(idx, 1);
 
             $('#roulette_index_users_item_' + key_local).fadeOut('fast', function() {
               $('#roulette_index_users_item_' + key_local).remove();
@@ -70,8 +74,8 @@ $(document).ready(function(){
 
       });
 
-      $("#debug_local").html(roulette_index_users.toString());
-      $("#debug_remote").html(data.toString());
+      $("#debug_local").html(roulette_index_users_local.toString());
+      $("#debug_remote").html(roulette_index_users_remote.toString());
 
     });
 
