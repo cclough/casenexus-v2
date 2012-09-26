@@ -54,7 +54,7 @@ $(document).ready(function(){
       var roulette_index_users_remote = $.map(data, function(key, value) { return key; });
 
 
-      $.each(roulette_index_users_local, function(key_local) {
+      $.each(roulette_index_users_local, function(index, key_local) {
 
         if ($.inArray(key_local, roulette_index_users_remote) === -1) {
 
