@@ -67,7 +67,7 @@ $(document).ready(function(){
       });
 
 
-
+      $("#debug").html(roulette_index_users.toString());
 
     });
 
