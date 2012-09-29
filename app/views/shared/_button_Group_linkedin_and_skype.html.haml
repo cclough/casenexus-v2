@@ -2,6 +2,6 @@
   .span8
     = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
   .span7
-    %a{:href => "#{@user.skype}?add"}
-      %img{:alt => "#{@user.skype}'s status", :height => "16", :src => "http://mystatus.skype.com/smallicon/#{@user.skype}", :width => "16"}
+    %a{href: "#{@user.skype}?add"}
+      %img#users_show_skype{alt: "#{@user.skype}'s status", src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
       Skype

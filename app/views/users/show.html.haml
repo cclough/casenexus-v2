@@ -27,11 +27,11 @@
 - if @user.approved
   .panel
     .row
-      .span40
+      .span35
         #users_show_status
           = @user.status
     .row
-      .span20.offset20
+      .pull-right
         = render 'shared/button_friend_req_or_message'
 
 #modal_friendship_req.modal.hide.fade

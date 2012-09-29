@@ -7,6 +7,55 @@ var markerClusterer = null;
 var map = null;
 
 
+function users_index_map_marker_click (marker_id) {
+
+  // Show User Panel
+  $("#users_index_mapcontainer_user").fadeOut('fast', function() {
+
+    $.get('/users/' + marker_id, function(data) {
+
+      // Insert ajax data!
+      $('#users_index_user').html(data);
+
+      // Code for 'close button'
+      $("#users_show_close").click(function() {
+        $('#users_index_mapcontainer_user').fadeOut('slow');
+      });
+
+      // Modal Stuff!
+      $('#modal_message, #modal_feedback_req, #modal_friendship_req').modal({
+        backdrop: false,
+        show: false
+      });
+
+      $('#users_index_user_button_message').click(function() {
+        $('.modal').modal('hide');
+        $('#modal_message').modal('show');
+      });
+
+      $('#users_index_user_button_friend_req').click(function() {
+        $('.modal').modal('hide');
+        $('#modal_friendship_req').modal('show');
+      });
+
+      $('#users_index_user_button_feedback_req').click(function() {
+        $('.modal').modal('hide');
+        $('#modal_feedback_req').modal('show');
+        $("#modal_feedback_req_datepicker").datepicker();
+      });
+
+      // Fade panel back in
+      $("#users_index_mapcontainer_user").fadeIn('fast');
+
+    });
+
+  });
+
+}
+
+
+
+
 
 $(document).ready(function(){
 
@@ -217,6 +266,7 @@ $(document).ready(function(){
     /////////////////////////// PLOTS ALL MARKERS //////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
 
+
     $.getJSON("users", function(json) {
 
       $.each(json, function(i, marker) {
@@ -232,9 +282,18 @@ $(document).ready(function(){
           animation: google.maps.Animation.DROP
         });
 
-        users_index_map_marker_bind(marker, map);
-        //users_index_map_markers[marker.id] = marker;
+        google.maps.event.addListener(marker, 'mouseover', function() {
+          users_index_map_tooltip(marker.id);
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          users_index_map_marker_locate(marker);
+          setTimeout(function(){ users_index_map_marker_click(marker.id); }, 500);        
+        });
+
+        // Load marker array for MarkerCluster (& User list trigger click)
         users_index_map_markers.push(marker);
+        //users_index_map_markers[marker.id] = marker;
 
       });
 
@@ -248,95 +307,53 @@ $(document).ready(function(){
         textSize: 10
       }]];
 
-      // var markerClusterer = new MarkerClusterer(map, users_index_map_markers, {
-      //   minimumClusterSize: 2,
-      //   gridSize: 100 // 60 is default
-      //   //styles: styles[style]
-      // });
+      var markerClusterer = new MarkerClusterer(map, users_index_map_markers, {
+        minimumClusterSize: 2,
+        gridSize: 100 // 60 is default
+        //styles: styles[style]
+      });
 
 
     });
 
-
-    function users_index_map_marker_bind(marker, map) {
-
-      google.maps.event.addListener(marker, 'mouseover', function() {
-
-        $.get('/tooltip?id=' + marker.id, function(data) {
-
-          $('#users_index_tooltip').html(data);
-
-          // Code for 'close button'
-          $("#users_index_tooltip_close").click(function() {
-            $('#users_index_tooltip').fadeOut('slow');
-          });
-
-          $('#users_index_tooltip').fadeIn('fast');
-        
-        });
-
-      });
+  }
 
 
-      google.maps.event.addListener(marker, 'click', function() {
+  function users_index_map_marker_locate (marker) {
 
-        // Pan, Zoom, Animate
-        newlatlng = marker.getPosition();
-        map.panTo(newlatlng);
-        map.setZoom(5);
+    newlatlng = marker.getPosition();
 
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function(){ marker.setAnimation(null); }, 1420);
-
-        // Show User Panel
-        $("#users_index_mapcontainer_user").fadeOut('slow', function() {
-
-          $.get('/users/' + marker.id, function(data) {
-
-            // Insert ajax data!
-            $('#users_index_user').html(data);
-
-            // Fade panel back in
-            $("#users_index_mapcontainer_user").fadeIn('slow');
-
-            // Code for 'close button'
-            $("#users_show_close").click(function() {
-              $('#users_index_mapcontainer_user').fadeOut('slow');
-            });
-
-            // Modal Stuff!
-            $('#modal_message, #modal_feedback_req, #modal_friendship_req').modal({
-              backdrop: false,
-              show: false
-            });
-
-            // message button click, hides other modal
-            // not using TBS data-toggle etc. as doesn't let you hide others
-            $('#users_index_user_button_message').click(function() {
-              $('.modal').modal('hide');
-              $('#modal_message').modal('show');
-            });
-
-            $('#users_index_user_button_friend_req').click(function() {
-              $('.modal').modal('hide');
-              $('#modal_friendship_req').modal('show');
-            });
-
-            $('#users_index_user_button_feedback_req').click(function() {
-              $('.modal').modal('hide');
-              $('#modal_feedback_req').modal('show');
-              $("#modal_feedback_req_datepicker").datepicker();
-            });
-
-          });
-
-        });
-
-      });
-
-    }
+    //map.setZoom(5);
+    //map.panTo(newlatlng);
+    map.setCenter(newlatlng);
+    
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){ marker.setAnimation(null); }, 1440);
 
   }
+
+
+
+  function users_index_map_tooltip(marker_id) {
+
+    $.get('/tooltip?id=' + marker_id, function(data) {
+
+      $('#users_index_tooltip').html(data);
+
+      // Code for 'close button'
+      $("#users_index_tooltip_close").click(function() {
+        $('#users_index_tooltip').fadeOut('slow');
+      });
+
+      $('#users_index_tooltip').fadeIn('fast');
+    
+    });
+
+  }
+
+
+
+
 
 
 
