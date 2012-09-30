@@ -54,6 +54,12 @@ function users_index_map_marker_click (marker_id) {
 }
 
 
+// Update the User List - submits form...
+function users_updatelist () {
+  $.get($("#users_index_users_form").attr("action"), $("#users_index_users_form").serialize(), null, "script");
+  return false;
+}
+
 
 
 
@@ -359,11 +365,6 @@ $(document).ready(function(){
 
   //// USER LIST
 
-  // Update the User List - submits form...
-  function users_updatelist () {
-    $.get($("#users_index_users_form").attr("action"), $("#users_index_users_form").serialize(), null, "script");
-    return false;
-  }
 
   // // List populate on search field change
   // $("#users_index_users_form input").keyup(function() {

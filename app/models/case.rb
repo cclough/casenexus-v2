@@ -12,7 +12,7 @@ class Case < ActiveRecord::Base
   belongs_to :user
 
   ### Callbacks
-  # after_create :create_notification
+  after_create :create_notification
 
 
 
@@ -117,25 +117,25 @@ class Case < ActiveRecord::Base
 
 
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
-  def self.comments_structure(user)
+  def self.cases_analysis_comments_structure(user)
     user.cases.all {|m| { interviewer_id: m.interviewer_id, 
                           created_at: m.created_at, 
                           structure_comment: m.structure_comment } }
   end
 
-  def self.comments_analytical(user)
+  def self.cases_analysis_comments_analytical(user)
     user.cases.all {|m| { interviewer_id: m.interviewer_id, 
                           created_at: m.created_at, 
                           analytical_comment: m.analytical_comment } }
   end
 
-  def self.comments_commercial(user)
+  def self.cases_analysis_comments_commercial(user)
     user.cases.all {|m| { interviewer_id: m.interviewer_id, 
                           created_at: m.created_at, 
                           commercial_comment: m.commercial_comment } }
   end
 
-  def self.comments_conclusion(user)
+  def self.cases_analysis_comments_conclusion(user)
     user.cases.all {|m| { interviewer_id: m.interviewer_id, 
                           created_at: m.created_at, 
                           conclusion_comment: m.conclusion_comment } }
@@ -143,12 +143,12 @@ class Case < ActiveRecord::Base
 
   private
 
-    # def create_notification
-    #   self.user.notifications.create(sender_id: self.interviewer.id,
-    #                                  ntype: "feedback",
-    #                                  content: self.subject,
-    #                                  case_id: self.id,
-    #                                  event_date: self.date)
-    # end
+    def create_notification
+      self.user.notifications.create(sender_id: self.interviewer.id,
+                                     ntype: "feedback",
+                                     content: self.subject,
+                                     case_id: self.id,
+                                     event_date: self.date)
+    end
     
 end

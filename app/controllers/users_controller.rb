@@ -13,11 +13,11 @@ class UsersController < ApplicationController
     when "global"
       users_scope = User.list_global
     when "local"
-      users_scope = User.list_local(current_user)
+      users_scope = User.list_local(current_user.lat, current_user.lng)
     when "rand"
       users_scope = User.list_rand
     when "friendships"
-      users_scope = User.list_contacts(current_user)
+      users_scope = User.list_contacts
     end
 
     # Using scoped_search gem
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   		flash[:success] = "Welcome to casenexus.com"
   		redirect_to users_path
   	else
-  		render 'new'
+  		render "/static_pages/home"
   	end
   end
 

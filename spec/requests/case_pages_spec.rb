@@ -6,7 +6,7 @@ describe "Case Pages" do
 
   describe "index" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
 
   	before do
       1.times { FactoryGirl.create(:user,id: 2) }
@@ -23,6 +23,7 @@ describe "Case Pages" do
 
       sign_in user
       visit cases_path
+
     end
 
     it { should have_selector('title', text: 'Your Cases') }
@@ -30,7 +31,7 @@ describe "Case Pages" do
 
     describe "pagination" do
 
-      it { should have_selector('div.nexus_pagination') }
+      it { should have_selector('div.application_pagination') }
 
       it "should list each case" do
         
@@ -47,7 +48,7 @@ describe "Case Pages" do
 
   describe "#show" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
 
     before do
 
@@ -82,7 +83,7 @@ describe "Case Pages" do
 
   describe "#new case" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
 
     before do
       1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
@@ -96,7 +97,7 @@ describe "Case Pages" do
             notes: "Some Notes") }
       sign_in user
       visit '/cases/new?user_id=1'
-      #save_and_open_page
+      save_and_open_page
     end
 
     it "should load the page without errors" do
@@ -107,7 +108,7 @@ describe "Case Pages" do
 
   describe "create case" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
 
     before do
       1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
@@ -184,7 +185,7 @@ describe "Case Pages" do
 
   describe "#analysis" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
 
     before do
       1.times { FactoryGirl.create(:user,id: 2) } # so that interviewer id works

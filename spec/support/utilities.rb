@@ -8,10 +8,10 @@ RSpec::Matchers.define :have_error_message do |message|
 end
 
 def sign_in(user)
-  visit signin_path
-  fill_in "Email",    with: user.email
-  fill_in "Password", with: user.password
-  click_button "Sign in"
+  visit root_path
+  fill_in "header_signin_email",    with: user.email
+  fill_in "header_signin_password", with: user.password
+  click_button "static_home_signin"
   # Sign in when not using Capybara.
   cookies[:remember_token] = user.remember_token
 end

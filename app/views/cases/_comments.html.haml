@@ -12,8 +12,8 @@
   .tab-content
 
     #cases_analysis_comments_tab_structure.cases_analysis_comments_tab.tab-pane.active
-      - if Case.comments_structure(current_user).count > 0
-        - for comment in Case.comments_structure(current_user)
+      - if Case.cases_analysis_comments_structure(current_user).count > 0
+        - for comment in Case.cases_analysis_comments_structure(current_user)
 
           .cases_analysis_comment
             .cases_analysis_comment_from
@@ -25,8 +25,8 @@
               = comment.structure_comment
 
     #cases_analysis_comments_tab_analytical.cases_analysis_comments_tab.tab-pane
-      - if Case.comments_analytical(current_user).count > 0
-        - for comment in Case.comments_analytical(current_user)
+      - if Case.cases_analysis_comments_analytical(current_user).count > 0
+        - for comment in Case.cases_analysis_comments_analytical(current_user)
 
           .cases_analysis_comment
             .cases_analysis_comment_from
@@ -37,8 +37,8 @@
               = comment.analytical_comment
 
     #cases_analysis_comments_tab_commercial.cases_analysis_comments_tab.tab-pane
-      - if Case.comments_commercial(current_user).count > 0
-        - for comment in Case.comments_commercial(current_user)
+      - if Case.cases_analysis_comments_commercial(current_user).count > 0
+        - for comment in Case.cases_analysis_comments_commercial(current_user)
 
           .cases_analysis_comment
             .cases_analysis_comment_from
@@ -49,8 +49,8 @@
               = comment.commercial_comment
 
     #cases_analysis_comments_tab_conclusion.cases_analysis_comments_tab.tab-pane
-      - if Case.comments_conclusion(current_user).count > 0
-        - for comment in Case.comments_conclusion(current_user)
+      - if Case.cases_analysis_comments_conclusion(current_user).count > 0
+        - for comment in Case.cases_analysis_comments_conclusion(current_user)
 
           .cases_analysis_comment
             .cases_analysis_comment_from

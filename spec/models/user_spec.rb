@@ -18,24 +18,6 @@ describe User do
 	it { should respond_to(:password_confirmation) }
 	it { should respond_to(:lat) }
 	it { should respond_to(:lng) }
-	it { should respond_to(:education1) }
-	it { should respond_to(:education2) }
-	it { should respond_to(:education3) }
-	it { should respond_to(:experience1) }
-	it { should respond_to(:experience2) }
-	it { should respond_to(:experience3) }
-	it { should respond_to(:education1_from) }
-	it { should respond_to(:education2_from) }
-	it { should respond_to(:education3_from) }
-	it { should respond_to(:education1_to) }
-	it { should respond_to(:education2_to) }
-	it { should respond_to(:education3_to) }
-	it { should respond_to(:experience1_from) }
-	it { should respond_to(:experience2_from) }
-	it { should respond_to(:experience3_from) }
-	it { should respond_to(:experience1_to) }
-	it { should respond_to(:experience2_to) }
-	it { should respond_to(:experience3_to) }
 	it { should respond_to(:skype) }
 	it { should respond_to(:linkedin) }
 	it { should respond_to(:email_admin) }
@@ -44,6 +26,15 @@ describe User do
 	it { should respond_to(:completed) }
   it { should respond_to(:approved) }
 	it { should respond_to(:admin) }
+
+  it { should respond_to(:status) }
+
+  it { should respond_to(:provider) }
+  it { should respond_to(:headline) }
+  it { should respond_to(:roulette_token) }
+
+  it { should respond_to(:password_reset_token) }
+  it { should respond_to(:password_reset_sent_at) }
 
 	# not sure what this does yet
 	it { should respond_to(:authenticate) }
@@ -159,6 +150,28 @@ describe User do
   end
 
 
+
+
+
+
+  # Email Admin & Users
+  describe "email_admin defaults to true" do
+    before { @user.save }
+    its(:email_admin) { should_not be_false }
+  end
+
+  describe "email_users defaults to true" do
+    before { @user.save }
+    its(:email_users) { should_not be_false }
+  end
+
+
+
+
+
+
+  # Registration Part 2
+
   # Location
   describe "when latitude is not present" do
     before { @user.lat = " " }
@@ -188,16 +201,6 @@ describe User do
   end
 
 
-  # Email Admin & Users
-  describe "email_admin defaults to true" do
-    before { @user.save }
-    its(:email_admin) { should_not be_false }
-  end
-
-  describe "email_users defaults to true" do
-    before { @user.save }
-    its(:email_users) { should_not be_false }
-  end
 
 
   # Completed Profile
@@ -217,6 +220,11 @@ describe User do
     before { @user.accepts_tandc = false }
     it { should_not be_valid }
   end
+
+
+
+
+
 
 
 
@@ -244,11 +252,20 @@ describe User do
   end
 
   # Error "can not update on a new record object" - seems reasonable, but lifted from MH...
-  # describe "with admin attribute set to 'true'" do
-  #   before { @user.toggle!(:admin) }
-  #   it { should be_admin }
-  # end
+  describe "with admin attribute set to 'true'" do
+    before { @user.toggle!(:admin) }
+    it { should be_admin }
+  end
 
+  describe "with completed attribute set to 'true'" do
+    before { @user.toggle!(:completed) }
+    it { should be_completed }
+  end
+
+  describe "with approved attribute set to 'true'" do
+    before { @user.toggle!(:completed) }
+    it { should be_approved }
+  end
 
 
   # Custom Attributes
@@ -274,25 +291,9 @@ describe User do
     end
 
     
+    it "should contain all user lat lng and id" do
 
-    it "should contain approved user lat lng and id" do
-    ####### NEED TO IMPROVE THIS TEST #######
-
-      User.markers.should have(15).items  
-
-      # User.approved.each do |user|
-
-      #   # it should include(user.lat)
-      #   # it should include(user.lng)
-      #   # it should include(user.id)
-      
-      # end
-
-      # User.unapproved.each do |user|
-      #   User.markers should_not include(user.lat)
-      #   User.markers should_not include(user.lng)
-      #   User.markers should_not include(user.id)
-      # end
+      User.markers.should have(30).items  
 
     end
 
@@ -343,16 +344,16 @@ describe User do
       2.times { FactoryGirl.create(:approved, lat: 46.7526281332615, lng: 7.96478263139727) }
     end
 
-    it 'using list_global gives all approved results' do
-      User.list_global.should have(4).item
+    it 'using list_global gives all results (approved and unapproved)' do
+      User.list_global.should have(6).item
     end
 
     # could do better test here, but only an order thing + might get rid of later
-    it 'using list_rand gives all approved results' do
-      User.list_rand.should have(4).item
+    it 'using list_rand gives all results (approved and unapproved)' do
+      User.list_rand.should have(6).item
     end
 
-    it 'using list_local gives only approved results within 100km' do
+    it 'using list_local give results within 100km only' do
       User.list_local(51.9011282326659,-0.542411887645721).should have(2).item
     end
 

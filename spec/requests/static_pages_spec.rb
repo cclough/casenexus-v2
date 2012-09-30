@@ -16,7 +16,7 @@ describe "Static Pages" do
   	# NEED TO COMPLETE THIS
     describe "for signed-in users" do
 
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, completed: true) }
 
       before do
         sign_in user

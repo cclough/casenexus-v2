@@ -46,8 +46,8 @@ class User < ActiveRecord::Base
   ## WITHOUT LINKEDIN
 
   # Passwords
-  validates :password, length: { minimum: 6 }, if: :without_linkedin?
-  validates :password_confirmation, presence: true, if: :without_linkedin?
+  validates :password, length: { minimum: 6 }, if: :without_linkedin?, on: :create
+  validates :password_confirmation, presence: true, if: :without_linkedin?, on: :create
 
 
   ## ON UPDATE
@@ -68,8 +68,6 @@ class User < ActiveRecord::Base
   validates :linkedin, format: { with: VALID_EM_REGEX },
             allow_blank: true,
             on: :update
-
-
 
 
 
@@ -97,7 +95,7 @@ class User < ActiveRecord::Base
   ### Custom Methods
 
   def without_linkedin?
-    provider == "linkedin"
+    provider != "linkedin"
   end
 
 
@@ -142,16 +140,15 @@ class User < ActiveRecord::Base
 
   # Filters
   def self.list_global
-    User.approved.order('created_at desc')
+    User.order('created_at desc')
   end
 
-  def self.list_local(user)
-    User.approved.within(100, origin: [user.lat, user.lng])
-                 .order('created_at desc')
+  def self.list_local(lat, lng)
+    User.within(100, origin: [lat, lng]).order('created_at desc')
   end
 
   def self.list_rand
-    User.approved.order("RANDOM()")
+    User.order("RANDOM()")
   end
 
   def self.list_contacts(user)

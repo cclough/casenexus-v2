@@ -157,7 +157,8 @@ describe Notification do
     end
 
     it "should only contain unread notifications" do
-      user.notifications.unread.should have(3).items
+      # 3 + welcome notification = 4
+      user.notifications.unread.should have(4).items
     end
 
   end
@@ -170,7 +171,7 @@ describe Notification do
 
     before { @notification.save }
 
-    its(:url) { should == host + "notifications/1" }
+    its(:url) { should == host + "notifications/2" }
 
 
 

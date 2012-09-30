@@ -28,20 +28,19 @@ describe "Authentication" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+      
+      let(:user) { FactoryGirl.create(:user, completed: true) }
+
       before { sign_in user }
 
       it { should have_selector('title', text: 'Map') }
-      it { should have_selector('img', id: "logo-globe") }
-      it { should have_selector('img', id: "logo-text") }
+      it { should have_selector('img', src: 'app/logo.png') }
       it { should have_selector('i', class: "icon-user") }
-
-      
 
       it { should_not have_selector('title', text: 'Sign in') }
 
       describe "followed by signout" do
-        before { click_link "signout" }
+        before { click_link "Sign out" }
 				it { should have_selector('img', src: 'misc/banner.png') }
       end
     end
@@ -51,13 +50,13 @@ describe "Authentication" do
   describe "authorization" do
     
     describe "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user, completed: true) }
 
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
-          fill_in "Email",    with: user.email
-          fill_in "Password", with: user.password
+          fill_in "session_email",    with: user.email
+          fill_in "session_password", with: user.password
           click_button "Sign in"
         end
 
@@ -68,10 +67,11 @@ describe "Authentication" do
 
           describe "when signing in again" do
             before do
-              click_link "signout"
-              fill_in "Email",    with: user.email
-              fill_in "Password", with: user.password
-              click_button "Sign in"              
+              
+              click_link "Sign out"
+              fill_in "header_signin_email",    with: user.email
+              fill_in "header_signin_password", with: user.password
+              click_button "static_home_signin"              
             end
 
             it "should render the default (profile) page" do
@@ -116,7 +116,14 @@ describe "Authentication" do
 
         describe "visiting the case show action" do
           
+          let(:user) { FactoryGirl.create(:approved, completed: true) }
+          let(:user2) { FactoryGirl.create(:approved, completed: true) }
+
           before do
+
+            user.invite user2
+            user2.approve user
+
             1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
                     "Some Subject", source: "Some Source",
                     structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
@@ -160,13 +167,13 @@ describe "Authentication" do
 
             1.times { user.notifications.build(sender_id: 2, 
                       ntype: "feedback_new", content: "Some subject",
-                      url: "http://ww.asd.com/" , event_date: Date.new(2012, 3, 3)) }
+                      event_date: Date.new(2012, 3, 3)) }
             
             visit notification_path(1)
 
           end
 
-          it { should have_selector('title', text: 'Sign up') }
+          it { should have_selector('title', text: 'Sign in') }
         end
 
 
@@ -207,9 +214,13 @@ describe "Authentication" do
 
       describe "visiting the case show action" do
 
-        let(:user2) { FactoryGirl.create(:user) }
+        let(:user2) { FactoryGirl.create(:user, completed: true) }
         
         before do
+
+          user2.invite user
+          user.approve user2
+
           1.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
                   "Some Subject", source: "Some Source",
                   structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
@@ -220,6 +231,8 @@ describe "Authentication" do
                   comment: "Overall Comment",
                   notes: "Some Notes") }
 
+          click_link "Sign out"
+          visit root_path
           sign_in user2
           visit case_path(1)
         end
@@ -241,7 +254,7 @@ describe "Authentication" do
         before do
           1.times { user.notifications.build(sender_id: 2, 
                     ntype: "feedback_new", content: "Some subject",
-                    url: "http://ww.asd.com/" , event_date: Date.new(2012, 3, 3)) }
+                    event_date: Date.new(2012, 3, 3)) }
 
           sign_in user2
           visit notification_path(1)

@@ -7,7 +7,7 @@ describe "Notification Pages" do
 
   describe "#index" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
     let(:user2) { FactoryGirl.create(:user) }
   	before do
       11.times { user.notifications.create(sender_id: user2.id, 
@@ -23,7 +23,7 @@ describe "Notification Pages" do
 
     describe "pagination" do
 
-      it { should have_selector('div', class: 'nexus_pagination') }
+      it { should have_selector('div', class: 'application_pagination') }
 
       it "should list each notification" do
         
@@ -37,9 +37,14 @@ describe "Notification Pages" do
   end
 
 
+
+
+
+
+
   describe "#show" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
 
     let(:notification) { user.notifications.create(sender_id: 3, 
                          ntype: "feedback", content: "Some subject",
@@ -75,17 +80,23 @@ describe "Notification Pages" do
 
 
 
+
   describe "send message", js: true do
     
-    let(:user) { FactoryGirl.create(:approved) }
+    let(:user) { FactoryGirl.create(:approved, completed: true) }
+    let(:user2) { FactoryGirl.create(:approved, completed: true) }
 
     before do
+
+      # Create friendship
+      user.invite user2
+      user2.approve user
+
       sign_in user
       sleep(0.2)
-      click_link('users_index_users_button_filter')
-      choose('users_listtype_global')
+      page.execute_script "$('#users_index_users_form_button_1').trigger('click');"
       sleep(0.2)
-      page.execute_script "$('#users_index_users_item_1').trigger('click');"
+      page.execute_script "$('#users_index_users_item_2').trigger('click');"
       sleep(0.2)
       page.execute_script "$('#users_index_user_button_message').trigger('click');"
       sleep(0.2)
@@ -143,18 +154,28 @@ describe "Notification Pages" do
   end
 
 
+
+
+
+
+
+
+
   describe "send feedback request", js: true do
     
-    let(:user) { FactoryGirl.create(:approved) }
-
+    let(:user) { FactoryGirl.create(:approved, completed: true) }
+    let(:user2) { FactoryGirl.create(:approved, completed: true) }
 
     before do
+      # Create friendship
+      user.invite user2
+      user2.approve user
+
       sign_in user
       sleep(0.2)
-      click_link('users_index_users_button_filter')
-      choose('users_listtype_global')
+      page.execute_script "$('#users_index_users_form_button_1').trigger('click');"
       sleep(0.2)
-      page.execute_script "$('#users_index_users_item_1').trigger('click');"
+      page.execute_script "$('#users_index_users_item_2').trigger('click');"
       sleep(0.2)
       page.execute_script "$('#users_index_user_button_feedback_req').trigger('click');"
       sleep(0.2)
@@ -237,12 +258,24 @@ describe "Notification Pages" do
 
 
 
+
+
+
+
+
+
+
   describe "create case" do
 
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, completed: true) }
     let(:user2) { FactoryGirl.create(:user) }
 
-    before do      
+    before do
+
+      # Create friendship
+      user.invite user2
+      user2.approve user
+
       1.times { user.cases.create(interviewer_id: user2.id, date: Date.new(2012, 3, 3), subject:
             "Some Subject", source: "Some Source",
             structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
@@ -313,15 +346,23 @@ describe "Notification Pages" do
   end
 
 
+
+
+
+
+
+
+
+
   describe "signup user" do
     
-    let(:user2) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user, completed: true) }
 
     before do
-      visit signup_path
+      visit root_path
     end
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Sign up" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -332,16 +373,12 @@ describe "Notification Pages" do
     describe "with valid information" do
 
       before do
-        fill_in "First name", with: "Example"
-        fill_in "Last name", with: "User"
-        fill_in "Email", with: "user@example.com"
-        fill_in "Password", with: "foobar"
-        fill_in "Confirm Password", with: "foobar"
-        # capybara can't fill_in hidden fields - using a javascript workaround! cool!
-        find(:xpath, "//input[@id='lat']").set "51"
-        find(:xpath, "//input[@id='lng']").set "1"
-        fill_in "Describe your current situation", with: "a" * 51
-        check "Accept the terms and conditions"
+        fill_in "user_first_name", with: "Example"
+        fill_in "user_last_name", with: "User"
+        fill_in "user_email", with: "user@example.com"
+        fill_in "user_password", with: "foobar"
+        fill_in "user_password_confirmation", with: "foobar"
+        check "user_accepts_tandc"
       end
 
       it "should create a notification" do

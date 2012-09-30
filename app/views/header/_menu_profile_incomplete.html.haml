@@ -1,0 +1,11 @@
+%li#fat-menu.dropdown
+
+  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    %i.icon-user.icon-white.icon-large
+    = current_user.name
+    %span#header_menu_profile_casecount
+      = current_user.casecount.to_s
+    %span.caret
+
+  %ul.dropdown-menu
+    %li= link_to raw("<i class=icon-bolt></i> Sign out"), signout_path, method: "delete"

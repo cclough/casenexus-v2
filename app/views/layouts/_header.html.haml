@@ -23,6 +23,12 @@
 
             = render 'header/menu_profile'
 
+        - else
+
+          %ul.nav.pull-right
+
+            = render 'header/menu_profile_incomplete'
+
       - else
         %ul#nav_links_left.nav.pull-left
 
