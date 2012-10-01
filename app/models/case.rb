@@ -51,7 +51,7 @@ class Case < ActiveRecord::Base
     User.find_by_id(interviewer_id)
   end
 
-  def score
+  def totalscore
     structure + analytical + commercial + conclusion
   end
 
@@ -112,7 +112,8 @@ class Case < ActiveRecord::Base
                               structure: c.structure, 
                               analytical: c.analytical, 
                               commercial: c.commercial, 
-                              conclusion: c.conclusion } }
+                              conclusion: c.conclusion,
+                              totalscore: c.totalscore } }
   end
 
 

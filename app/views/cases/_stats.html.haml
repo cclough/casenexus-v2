@@ -1,31 +1,28 @@
-.panel.type1
-  %table
-    %tr
-      %td
-        Total Cases
-      %td
-        = avatar_for(current_user)
-        #50
-    %tr
-      %td
-        1st Case Date
-      %td
-        = current_user.cases.first.created_at.strftime("%m/%d/%Y") unless current_user.casecount < 1
-    %tr
-      %td
-        Avg Score /50
-      %td
-        36.4
-    %tr
-      %td
-        Improvement Rate, %
-      %td
-        5%/week
-    %tr
-      %td
-        Weakest Skill
-      %td
-        Analytical (Avg 5.4/10)
-
-.btn
-  Print Analysis for Interview
+.panel.dark
+  .row
+    .span5
+      = avatar_for(current_user)
+    .span5.offset7
+      #cases_analysis_casecount
+        .panel.dark
+          = current_user.casecount
+  .row
+    .span10
+      1st Case Date
+    .span10
+      = current_user.cases.first.created_at.strftime("%m/%d/%Y") unless current_user.casecount < 1
+  .row
+    .span10
+      Avg Score /50
+    .span10
+      36.4
+  .row
+    .span10
+      Improvement Rate, %
+    .span10
+      5%/week
+  .row
+    .span10
+      Weakest Skill
+    .span10
+      Analytical (Avg 5.4/10)

@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+
 $(document).ready(function(){
 
 /////////////////////////////////////////////////////////////////
@@ -96,32 +97,28 @@ $(document).ready(function(){
   if ( typeof cases_analysis_chart_radar_data == 'object' ) {
 
 
-  ////////////////////////////////////////////
-  // Progress chart javascript
-  ////////////////////////////////////////////
-
+    ////////////////////////////////////////////
+    // Progress chart javascript
+    ////////////////////////////////////////////
 
     var chart_area;
 
     // loop through model json, construct AM compatabile array + run parseDate
     cases_analysis_chart_progress_data = [];
 
-    function cases_analysis_chart_progress_get (callback) {
+    $.getJSON("/cases/analysis", function(json) {
 
-      $.getJSON("/cases/analysis", function(json) {
-
-        for (var i = 0; i < json.length; i++) {
-
-          var dataObject = {id:json[i].id, date:parseDate(json[i].date), structure:json[i].structure, analytical:json[i].analytical, commercial:json[i].commercial, conclusion:json[i].conclusion};
-          // load array for chart
-          cases_analysis_chart_progress_data.push(dataObject); 
-        }
-
+      $.each(json, function(i, item) {
+        var dataObject = {id:json[i].id, date:parseDate(json[i].date), structure:json[i].structure, analytical:json[i].analytical, commercial:json[i].commercial, conclusion:json[i].conclusion, totalscore:json[i].totalscore};
+        // load array for chart
+        cases_analysis_chart_progress_data.push(dataObject); 
       });
 
-      callback(cases_analysis_chart_progress_data);
+    }).complete(function() { 
+      cases_analysis_chart_progress_draw(cases_analysis_chart_progress_data);
+      cases_analysis_chart_radar_draw();
+    });
 
-    }
 
     function cases_analysis_chart_progress_draw(data) {
 
@@ -130,9 +127,7 @@ $(document).ready(function(){
 
         // SERIAL CHART
         chart = new AmCharts.AmSerialChart();
-        // still not yet sure if below line is working?
-        // add curly brackets below
-        // chart.pathToImages = '/assets/amcharts/';
+        chart.pathToImages = cases_analysis_chart_progress_pathToImages;
         // below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
         chart.panEventsEnabled = true;
         chart.zoomOutButton = {
@@ -145,7 +140,7 @@ $(document).ready(function(){
         // neccessary ?
         chart.autoMargins = false;
         chart.marginRight = 15;
-        chart.marginLeft = 15;
+        chart.marginLeft = 25;
         chart.marginBottom = 35;
         chart.marginTop = 10;
 
@@ -176,7 +171,7 @@ $(document).ready(function(){
         valueAxis.axisAlpha = 0;
         // change to 50?
         valueAxis.maximum = 40;
-        valueAxis.labelsEnabled = false
+        valueAxis.labelsEnabled = true;
         chart.addValueAxis(valueAxis);
 
         // DONT FORGET YOU CAN USE 'GUIDES'
@@ -239,13 +234,25 @@ $(document).ready(function(){
 
         chart.addGraph(graph);
 
+        // Fifth graph - FOR ZOOMER - NOT DRAWN
+        graph = new AmCharts.AmGraph();
+        graph.type = "line";
+        graph.title = "Total Score";
+        graph.valueField = "totalscore";
+        graph.lineAlpha = 1;
+        graph.fillAlphas = 0.6;
+        graph.bullet = "round";
+        graph.hidden = true;
+
+        chart.addGraph(graph);
+
         // LEGEND
         var legend = new AmCharts.AmLegend();
         legend.position = "bottom";
         legend.align = "center"
         legend.rollOverGraphAlpha = "0.15";
         legend.horizontalGap = 5;
-        legend.switchable = false;
+        legend.switchable = true;
         legend.valueWidth = 5;
         chart.addLegend(legend);
 
@@ -273,7 +280,7 @@ $(document).ready(function(){
         // SCROLLBAR
         // http://www.amcharts.com/javascript/line-chart-with-date-based-data/
         var chartScrollbar = new AmCharts.ChartScrollbar();
-        chartScrollbar.graph = graph;
+        chartScrollbar.graph = graph; // uses 'fifth graph' above - last to use graph variable
         chartScrollbar.autoGridCount = true;
         chartScrollbar.scrollbarHeight = 25;
         chartScrollbar.color = "#000000";
@@ -281,11 +288,10 @@ $(document).ready(function(){
 
         // WRITE
         chart.write("cases_analysis_chart_progress");
-        
+
       });
 
     }
-
 
     // method to parse sql date string into AM compataible Date Object
     function parseDate(dateString) {
@@ -298,14 +304,12 @@ $(document).ready(function(){
       return date;
     }
 
-
     // lifted from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
     // this method is called when chart is first inited as we listen for "dataUpdated" event
     // function zoomChart(data1) {
     //     // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
     //     chart.zoomToIndexes(data1.length - 40, data1.length - 1);
     // }
-
 
     function addclicklistener(graph) {
       graph.addListener("clickGraphItem", function (event) {
@@ -332,90 +336,88 @@ $(document).ready(function(){
 
     }
 
-    // CALL IT!
-    cases_analysis_chart_progress_get (function(data) {
-      cases_analysis_chart_progress_draw(data);
-    });
+
+    ////////////////////////////////////////////
+    // Radar
+    ////////////////////////////////////////////
 
 
+    function cases_analysis_chart_radar_draw() {
 
-  ////////////////////////////////////////////
-  // Radar
-  ////////////////////////////////////////////
+      var chart;
 
-    var chart;
+      // Draw AM Radar Chart
+      AmCharts.ready(function () {
+        // RADAR CHART
+        chart = new AmCharts.AmRadarChart();
+        chart.dataProvider = cases_analysis_chart_radar_data;
+        chart.categoryField = "criteria";
+        chart.startDuration = 0.3;
+        chart.startEffect = ">";
+        chart.sequencedAnimation = true;
+        chart.color = "#FFFFFF";
 
-    // Draw AM Radar Chart
-    AmCharts.ready(function () {
-      // RADAR CHART
-      chart = new AmCharts.AmRadarChart();
-      chart.dataProvider = cases_analysis_chart_radar_data;
-      chart.categoryField = "criteria";
-      chart.startDuration = 0.3;
-      chart.startEffect = ">";
-      chart.sequencedAnimation = true;
-      chart.color = "#FFFFFF";
+        // GRAPH - FIRST 5
+        var graph = new AmCharts.AmGraph();
+        graph.title = "First 5";
+        graph.lineColor = "#bdd523"
+        graph.fillAlphas = 0.2;
+        graph.bullet = "round"
+        graph.valueField = "first5"
+        graph.balloonText = "[[category]]: [[value]]/10"
+        chart.addGraph(graph);
 
-      // GRAPH - FIRST 5
-      var graph = new AmCharts.AmGraph();
-      graph.title = "First 5";
-      graph.lineColor = "#bdd523"
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "first5"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart.addGraph(graph);
+        // GRAPH - LAST 5
+        var graph = new AmCharts.AmGraph();
+        graph.title = "Last 5";
+        graph.lineColor = "#98cdff"
+        graph.fillAlphas = 0.2;
+        graph.bullet = "round"
+        graph.valueField = "last5"
+        graph.balloonText = "[[category]]: [[value]]/10"
+        chart.addGraph(graph);
 
-      // GRAPH - LAST 5
-      var graph = new AmCharts.AmGraph();
-      graph.title = "Last 5";
-      graph.lineColor = "#98cdff"
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "last5"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart.addGraph(graph);
+        // VALUE AXIS
+        var valueAxis = new AmCharts.ValueAxis();
+        valueAxis.gridType = "circles";
+        valueAxis.fillAlpha = 0.02;
+        valueAxis.fillColor = "#000000"
+        valueAxis.axisAlpha = 0.1;
+        valueAxis.gridAlpha = 0.1;
+        valueAxis.fontWeight = "bold"
+        valueAxis.minimum = 0;
+        valueAxis.maximum = 10;
+        chart.addValueAxis(valueAxis);
 
-      // VALUE AXIS
-      var valueAxis = new AmCharts.ValueAxis();
-      valueAxis.gridType = "circles";
-      valueAxis.fillAlpha = 0.02;
-      valueAxis.fillColor = "#000000"
-      valueAxis.axisAlpha = 0.1;
-      valueAxis.gridAlpha = 0.1;
-      valueAxis.fontWeight = "bold"
-      valueAxis.minimum = 0;
-      valueAxis.maximum = 10;
-      chart.addValueAxis(valueAxis);
+        // Balloon Settings
+        var balloon = chart.balloon;
+        balloon.adjustBorderColor = true;
+        balloon.color = "#000000";
+        balloon.cornerRadius = 5;
+        balloon.fillColor = "#000000";
+        balloon.fillAlpha = 0.7
+        balloon.color = "#FFFFFF"
 
-      // Balloon Settings
-      var balloon = chart.balloon;
-      balloon.adjustBorderColor = true;
-      balloon.color = "#000000";
-      balloon.cornerRadius = 5;
-      balloon.fillColor = "#000000";
-      balloon.fillAlpha = 0.7
-      balloon.color = "#FFFFFF"
+        // Legend Settings
+        var legend = new AmCharts.AmLegend();
+        legend.position = "bottom";
+        legend.align = "center";
+        legend.markerType = "square";
+        legend.rollOverGraphAlpha = 0;
+        legend.horizontalGap = 5;
+        legend.valueWidth = 5;
+        legend.switchable = false;
+        chart.addLegend(legend);
 
-      // Legend Settings
-      var legend = new AmCharts.AmLegend();
-      legend.position = "bottom";
-      legend.align = "center";
-      legend.markerType = "square";
-      legend.rollOverGraphAlpha = 0;
-      legend.horizontalGap = 5;
-      legend.valueWidth = 5;
-      legend.switchable = false;
-      chart.addLegend(legend);
+        // WRITE
+        chart.write("cases_analysis_chart_radar");
+      });
 
-      // WRITE
-      chart.write("cases_analysis_chart_radar");
-    });
+    }
 
 
 
   } // End of if statement
-
 
 
 
@@ -425,8 +427,6 @@ $(document).ready(function(){
 
 
 });
-
-
 
 
 

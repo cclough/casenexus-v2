@@ -4,21 +4,20 @@
 
   :javascript
     var cases_analysis_chart_radar_data = #{Case.cases_analysis_chart_radar_data(current_user)};
-
-= content_for :content do
-
-  .row
-    .span51
-      .row
-        .span25
-          = render 'stats'
-        .span25
-          = render 'comments'
-    .span40
-      .panel.transparent.kill_left
-        #cases_analysis_chart_radar.cases_radar
-  .row
-    .span94
-      .panel.kill_top
-        #cases_analysis_chart_progress{:style => "width:100%; height:350px;"}
+    var cases_analysis_chart_progress_pathToImages = '#{asset_path('amcharts/')}';
+.row
+  .span25
+    .row
+      = render 'stats'
+  .span69
+    .row
+      .panel.dark.kill_left.kill-right
+        #cases_analysis_chart_progress      
+.row
+  .span40
+    .panel.dark.kill_top
+      #cases_analysis_chart_radar.cases_radar
+  .span52
+    = render 'comments'
+      
 
