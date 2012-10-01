@@ -249,15 +249,18 @@ describe "Authentication" do
 
       describe "visiting the notification show action" do
 
-        let(:user2) { FactoryGirl.create(:user) }
+        let(:user2) { FactoryGirl.create(:user, completed: true) }
         
         before do
           1.times { user.notifications.build(sender_id: 2, 
                     ntype: "feedback_new", content: "Some subject",
                     event_date: Date.new(2012, 3, 3)) }
 
+          click_link "Sign out"
+          visit root_path
           sign_in user2
           visit notification_path(1)
+          save_and_open_page
         end
 
         it { should have_selector('title', text: 'Map') }

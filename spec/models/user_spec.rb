@@ -172,33 +172,33 @@ describe User do
 
   # Registration Part 2
 
-  # Location
-  describe "when latitude is not present" do
-    before { @user.lat = " " }
-    it { should_not be_valid }
-  end
+  # # Location
+  # describe "when latitude is not present" do
+  #   before { @user.lat = " " }
+  #   it { should_not be_valid }
+  # end
 
-  describe "when longitude is not present" do
-    before { @user.lng = " " }
-    it { should_not be_valid }
-  end
+  # describe "when longitude is not present" do
+  #   before { @user.lng = " " }
+  #   it { should_not be_valid }
+  # end
 
 
-  # Status
-  describe "when status is not present" do
-    before { @user.status = " " }
-    it { should_not be_valid }
-  end
+  # # Status
+  # describe "when status is not present" do
+  #   before { @user.status = " " }
+  #   it { should_not be_valid }
+  # end
 
-  describe "when status is too long" do
-    before { @user.status = "a" * 501  }
-    it { should_not be_valid }
-  end
+  # describe "when status is too long" do
+  #   before { @user.status = "a" * 501  }
+  #   it { should_not be_valid }
+  # end
 
-  describe "when status is too short" do
-    before { @user.status = "a" * 49 }
-    it { should_not be_valid }
-  end
+  # describe "when status is too short" do
+  #   before { @user.status = "a" * 49 }
+  #   it { should_not be_valid }
+  # end
 
 
 
@@ -360,8 +360,9 @@ describe User do
   end
 
   describe "casecount" do
-    
+
     let(:user) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user, id: 2) }
     
     before do
       2.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:

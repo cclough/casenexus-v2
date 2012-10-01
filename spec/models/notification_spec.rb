@@ -102,7 +102,9 @@ describe Notification do
 
     let(:user) { FactoryGirl.create(:user, id: 2) }
 
-    before { @notification.save }
+    before do
+      @notification.save
+    end
 
     its(:sender) { should == user }
 
@@ -110,9 +112,9 @@ describe Notification do
 
   describe "target should be user found by user_id" do
 
-    let(:user) { FactoryGirl.create(:user) }
-
-    before { @notification.save }
+    before do
+      @notification.save
+    end
 
     its(:target) { should == user }
 
@@ -120,8 +122,6 @@ describe Notification do
 
 
   describe "header feed" do
-
-    let(:user) { FactoryGirl.create(:user) }
 
     before do
 
@@ -164,8 +164,6 @@ describe Notification do
   end
 
   describe "url should be correct depending on ntype" do
-
-    let(:user) { FactoryGirl.create(:user) }
 
     let(:host) { "http://localhost:3000/" }
 
