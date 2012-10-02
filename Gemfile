@@ -14,6 +14,7 @@ gem 'client_side_validations'
 gem 'amistad'
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'bootstrap-wysihtml5-rails'
 
 # heroku needs this outside of assets
 gem 'haml'

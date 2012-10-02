@@ -1,11 +1,20 @@
 = form_tag cases_path, method: 'get', id: "cases_index_cases_form", onsubmit: 'return false' do
-  .row
-    / search field
-    = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query'
-  .spacer5
-  .row
-    #cases_index_cases_form_sort
-      = sortable "subject"
+  .panel.darker
+    .row
+      .span22
+        / search field
+        = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span19'
+      .span5
+        #cases_index_cases_form_sort
+          / sort/filter pulldown menu
+          .btn-group
+            %a#cases_index_cases_button_filter.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Sort
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                / = radio_button_tag :cases_listtype, 'local', checked: true
+                = sortable "subject"
 
   #cases_index_cases
   / content is rendered by index.js.erb

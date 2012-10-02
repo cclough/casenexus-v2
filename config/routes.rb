@@ -28,7 +28,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Cases
-  resources :cases, only: [:index, :show, :new, :create, :analysis] do
+  resources :cases, only: [:index, :show, :new, :create, :analysis, :update] do
     get "analysis", on: :collection
   end
 

@@ -10,59 +10,26 @@ function cases_index_cases_updatelist () {
 }
 
 
-$(document).ready(function(){
 
 
-/////////////////////////////////////////////////////////////////
-//////////////////////////// INDEX //////////////////////////////
-/////////////////////////////////////////////////////////////////
-
-  $("#cases_index_cases_form input").keypress(function(e) {
-    if(e.which == 13) {
-      cases_index_cases_updatelist();
-    }
-  });
 
 
-  // Ajax pagination
-  $("#cases_index_cases .application_pagination a, #cases_index_cases_form_sort a").live("click", function() {
-    $.getScript(this.href);
-    return false;
-  });
 
 
-/////////////////////////////////////////////////////////////////
-///////////////////////////// NEW ///////////////////////////////
-/////////////////////////////////////////////////////////////////
 
-
-  $(".cases_new_slider").slider({
-    range: "min",
-    step: 1,
-    min: 1,
-    max: 10,
-    value: 1,
-    slide: function(event, ui) {
-      var cases_new_slider_name = $(this).attr("id").split('_')
-      $("#case_" + cases_new_slider_name[3]).val(ui.value);
-      $("#case_" + cases_new_slider_name[3]).css( 'color', '#6db9ff' )
-    }
-  });
-
-  $("#cases_new_datepicker").datepicker();
-  // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
-  
 
 
 /////////////////////////////////////////////////////////////////
 ///////////////////////////// SHOW //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-  if ( typeof cases_show_chart_radar_data == 'object' ) {
+    
+
+function cases_show_chart_radar_draw(cases_show_chart_radar_data) {
+
+  // if ( typeof cases_show_chart_radar_data == 'object' ) {
 
     var chart;
-
-    // var chartData_show_radar is set in view
 
     AmCharts.ready(function () {
 
@@ -110,10 +77,63 @@ $(document).ready(function(){
       chart.write("cases_show_chart_radar");
     });
 
+  // }
 
-  }
+}
 
 
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+
+/////////////////////////////////////////////////////////////////
+//////////////////////////// INDEX //////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+  $("#cases_index_cases_form input").keypress(function(e) {
+    if(e.which == 13) {
+      cases_index_cases_updatelist();
+    }
+  });
+
+
+  // Ajax pagination
+  $("#cases_index_cases .application_pagination a, #cases_index_cases_form_sort a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+
+
+/////////////////////////////////////////////////////////////////
+///////////////////////////// NEW ///////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+  $(".cases_new_slider").slider({
+    range: "min",
+    step: 1,
+    min: 1,
+    max: 10,
+    value: 1,
+    slide: function(event, ui) {
+      var cases_new_slider_name = $(this).attr("id").split('_')
+      $("#case_" + cases_new_slider_name[3]).val(ui.value);
+      $("#case_" + cases_new_slider_name[3]).css( 'color', '#6db9ff' )
+    }
+  });
+
+  $("#cases_new_datepicker").datepicker();
+  // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
+  
 
 
 /////////////////////////////////////////////////////////////////

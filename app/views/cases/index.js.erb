@@ -8,18 +8,32 @@ $("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>")
 
       $('#cases_index_case').fadeOut('fast', function() {
         $("#cases_index_case").html(data); 
+
+        var cases_show_chart_radar_data = $('#cases_show_chart_radar_data_storage').attr('data-cases_show_chart_radar');
+
+        cases_show_chart_radar_draw(cases_show_chart_radar_data);
+    
         $('#cases_index_case').fadeIn('fast');
 
-        // Breaks hover!
-        // $(".cases_index_item").css("background-color", "transparent")
-        // $("#cases_index_item_" + case_id[3]).css("background-color", "white")
+
+        $('#cases_show_notes_form_notes').wysihtml5({
+            "link": false, //Button to insert a link. Default true
+            "image": false //Button to insert an image. Default true,
+        });
+
+
+        $('#cases_show_notes_form_notes').keyup(function() {
+          $('#cases_show_notes_form_callback').fadeOut('slow');
+
+          setTimeout(function(){ 
+            $('#edit_case_' + case_id[4]).submit();
+          }, 3000);  
+        });
+
+
+
       });
 
     });
 
   });
-
-// Users Item Cascade Fade
-$(".cases_index_cases_item").each(function(i) {
-   $(this).delay((i + 1) * 50).fadeIn();
-});

@@ -45,7 +45,12 @@ class Case < ActiveRecord::Base
   ### Scopes
 
   # Scoped_search Gem
-  scoped_search :on => [:subject, :source]
+  scoped_search :in => :user, :on => :first_name
+  scoped_search :in => :user, :on => :last_name
+  scoped_search :on => [:subject, :source, 
+                        :structure_comment, :analytical_comment,
+                        :commercial_comment, :conclusion_comment,
+                        :comment, :notes]
 
 
   ### Outputs
@@ -61,7 +66,7 @@ class Case < ActiveRecord::Base
   end
 
   def subject_trunc
-    subject.truncate(40, :separator => ' ')
+    subject.truncate(25, :separator => ' ')
   end
 
 

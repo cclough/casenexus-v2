@@ -1,7 +1,7 @@
 = form_tag users_path, method: 'get', id: "users_index_users_form", onsubmit: 'return false' do
   .row
     / search field
-    = text_field_tag :search, params[:search], placeholder: "Search users...", id: "users_index_users_form_searchfield", class: 'search-query'
+    = text_field_tag :search, params[:search], placeholder: "Search users...", id: "users_index_users_form_searchfield", class: 'search-query span30'
   .spacer5
   .row
     #users_index_users_form_buttons

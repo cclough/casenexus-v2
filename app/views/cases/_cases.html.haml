@@ -1,14 +1,16 @@
-- if @cases.count > 0
-  - @cases.each do |cases_item|
+.panel.dark
+  #cases_index_cases_form_body
+    - if @cases.count > 0
+      - @cases.each do |cases_item|
 
-    = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
+        = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
 
-- else
-  %h3 You have no cases
-  %h5
-  Use the user map or the roulette page to find new case partners and start practising!
+    - else
+      %h4 No cases Found
+      %h5
+      Find a case partner and start practising!
 
-= hidden_field_tag :direction, params[:direction]
-= hidden_field_tag :sort, params[:sort]
-
-= will_paginate @cases, class: "application_pagination", inner_window: 2, outer_window: 2
+    = hidden_field_tag :direction, params[:direction]
+    = hidden_field_tag :sort, params[:sort]
+  #cases_index_cases_form_paginate
+    = will_paginate @cases, class: "application_pagination", inner_window: 2, outer_window: 2

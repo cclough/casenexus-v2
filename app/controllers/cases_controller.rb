@@ -1,6 +1,6 @@
 class CasesController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :show, :new, :create, :analysis]
+  before_filter :signed_in_user, only: [:index, :show, :new, :create, :analysis, :update]
   before_filter :correct_user, only: [:show]
   before_filter :completed_user
 
@@ -54,6 +54,25 @@ class CasesController < ApplicationController
   	end
 
 	end
+
+
+  def update
+
+    @case = Case.find(params[:case][:id])
+
+    respond_to do |format|
+
+      if @case.update_attributes(params[:case])
+        format.js
+        flash.now[:success] = 'Notes Saved'
+      else
+        format.js
+        flash.now[:notice] = 'Error - notes not saved'
+      end
+
+    end
+
+  end
 
 	def analysis
 		

@@ -1,14 +1,18 @@
 - provide(:title, 'Case with ' + @case.interviewer.name)
 
-- content_for :javascript_includes do
+/ - content_for :javascript_includes do
 
-  :javascript
-    var cases_show_chart_radar_data = #{@case.cases_show_chart_radar_data};
+/ :javascript
+/   var cases_show_chart_radar_data = #{@case.cases_show_chart_radar_data};
+
+/ Chart data
+%span#cases_show_chart_radar_data_storage{"data-cases_show_chart_radar" => @case.cases_show_chart_radar_data}
+
 
 .row
   .span30
 
-    .panel.gradient.kill_left.kill_right.kill_bottom
+    .panel.gradient.kill_left.kill_right
       .row
         .span6
           = avatar_for(@case.interviewer)
@@ -77,7 +81,6 @@
           = @case.conclusion_comment
 
 .row
-
   .span30
     .panel.kill_left.kill_right.kill_bottom
       .cases_show_title
@@ -90,4 +93,6 @@
       .cases_show_title
         Notes
       .row
-        = @case.notes
+        #cases_show_notes_form_container
+          = render 'notes_form'
+        #cases_show_notes_form_callback

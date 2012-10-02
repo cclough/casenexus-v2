@@ -1,0 +1,7 @@
+= form_for(@case, remote: true, class: 'cases_show_notes_form') do |f|
+
+  = render 'shared/error_messages', object: @case
+
+  = f.hidden_field :id, value: @case.id
+  = f.text_area :notes, id: 'cases_show_notes_form_notes'
+  = f.submit

@@ -8,26 +8,46 @@ $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $blue_pastel: #98cdff;
 
+#cases_index_cases_form_sort .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+#cases_index_cases_form_sort .asc {
+  background-image: url(app/sort_up_arrow.gif);
+}
+
+#cases_index_cases_form_sort .desc {
+  background-image: url(app/sort_down_arrow.gif);
+}
+
+
+
+.cases_avatar {
+  text-align:center;
+  &.index{
+    padding-left:10px;
+  }
+}
+
 .cases_score {
   font-size: 27px;
   font-weight: bold;
   text-align:center;
   color: $blue_pastel;
-  padding:5px;
-  &.show{
-    padding-top:27px;
-  }
 }
 
-.cases_radar{
-  height: 300px;
-  width: 376px;
-
+.cases_index_item_scoreandtime { 
+  text-align:center;
+  padding-right:7px;
+  padding-top:3px;
 }
-
 
 .cases_index_cases_item {
-  padding:5px;
+  // display:none;
+  height:55px;
+  padding-top:12px;
   text-decoration:none;
   color: black;
   &:hover {
@@ -35,6 +55,14 @@ $blue_pastel: #98cdff;
   }
 }
 
+#cases_index_cases_form_body {
+  height:670px;
+}
+
+.cases_radar{
+  height: 200px;
+  width: 200px;
+}
 
 .cases_show_title {
   text-align:center;
@@ -47,6 +75,16 @@ $blue_pastel: #98cdff;
 .cases_show_comment {
   overflow-y: scroll;
   height:100px;
+}
+
+#cases_show_notes_form_notes {
+  height: 200px;
+  width: 250px;
+}
+
+
+#cases_show_notes_form_callback {
+  text-align:center;
 }
 
 

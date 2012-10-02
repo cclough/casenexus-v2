@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 	end
 
 
-  # Show Profile (used without layout on map page only)
+  # used without layout on map page only
   def show
     @user = User.find(params[:id])
 
@@ -58,7 +58,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # Create User
   def create
     @user = User.new(params[:user])
   	if @user.save
@@ -70,11 +69,11 @@ class UsersController < ApplicationController
   	end
   end
 
-  # Edit Profile
+
 	def edit
 	end
 
-  # Update Profile
+
   def update
     if @user.update_attributes(params[:user])
 

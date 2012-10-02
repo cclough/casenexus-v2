@@ -1,11 +1,13 @@
 .row.cases_index_cases_item{id: "cases_index_cases_item_" + cases_item.id.to_s }
   .span5
+    .cases_avatar.index
     = avatar_for(cases_item.interviewer)
-  .span7
+  .span7.cases_index_item_scoreandtime
     .cases_score
       = cases_item.totalscore
-    .row.application_timestamp.font-small #{time_ago_in_words(cases_item.created_at)} ago.
-  .span12
+    .row.application_timestamp.font-small
+      = cases_item.created_at.strftime("%a %m '%y")
+  .span15
     .row
       %strong 
         = cases_item.interviewer.name
