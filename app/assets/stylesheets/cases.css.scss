@@ -21,12 +21,12 @@ $blue_pastel: #98cdff;
 
 .cases_radar{
   height: 300px;
-  width: 370px;
+  width: 376px;
 
 }
 
 
-.cases_index_item {
+.cases_index_cases_item {
   padding:5px;
   text-decoration:none;
   color: black;
@@ -132,7 +132,6 @@ $blue_pastel: #98cdff;
 
 #cases_analysis_comments {
   font-size:85%;
-  background-color: $gray_Lightest;
   ul {
     margin:0px;
   }
@@ -141,7 +140,6 @@ $blue_pastel: #98cdff;
 .cases_analysis_comments_tab {
   overflow-y:auto;
   height:260px;
-  background-color:white;
 }
 
 

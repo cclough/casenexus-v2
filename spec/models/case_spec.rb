@@ -199,11 +199,11 @@ describe Case do
   end
 
 
-  describe "score should equal sum of four sub-scores" do
+  describe "totalscore should equal sum of four sub-scores" do
 
     before { @case.save }
 
-    its(:score) { should == 25 }
+    its(:totalscore) { should == 25 }
 
   end
 

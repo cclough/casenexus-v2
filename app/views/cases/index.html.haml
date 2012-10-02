@@ -2,16 +2,8 @@
 - provide(:sub_title, 'Records of all your case feedback')
 
 / NB cas is used instead of 'case' as it's apparently used for something else in rails and fails!
-.panel
-  - if @cases.count > 0
-    - @cases.each do |cas|
-
-      = render partial: 'cases/cas' , locals: { cas: cas }
-
-  - else
-    %h3 You have no cases
-    %h5
-    Use the user map or the roulette page to find new case partners and start practising!
-
-
-  = will_paginate @cases, class: "application_pagination", inner_window: 2, outer_window: 2
+.span32
+  .panel.dark
+    = render 'cases_form'
+.span62
+  #cases_index_case

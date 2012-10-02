@@ -1,0 +1,14 @@
+- if @cases.count > 0
+  - @cases.each do |cases_item|
+
+    = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
+
+- else
+  %h3 You have no cases
+  %h5
+  Use the user map or the roulette page to find new case partners and start practising!
+
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
+
+= will_paginate @cases, class: "application_pagination", inner_window: 2, outer_window: 2

@@ -42,6 +42,11 @@ class Case < ActiveRecord::Base
   validates :notes, length: { maximum: 1000 }
 
 
+  ### Scopes
+
+  # Scoped_search Gem
+  scoped_search :on => [:subject, :source]
+
 
   ### Outputs
 
@@ -56,7 +61,7 @@ class Case < ActiveRecord::Base
   end
 
   def subject_trunc
-    subject.truncate(60, :separator => ' ')
+    subject.truncate(40, :separator => ' ')
   end
 
 
@@ -74,18 +79,12 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
-
-  # Show
-
   def cases_show_chart_radar_data
     "[{criteria: \"Structure\", score: "+structure.to_s+"},
      {criteria: \"Commercial\", score: "+commercial.to_s+"},
      {criteria: \"Conclusion\", score: "+conclusion.to_s+"},
      {criteria: \"Analytical\", score: "+analytical.to_s+"}]"
   end
-
-
-  # Analysis
 
   def self.cases_analysis_chart_radar_data(user)
     # LAST 5: load scores into json for radar chart
@@ -117,6 +116,9 @@ class Case < ActiveRecord::Base
   end
 
 
+
+  ## Comments
+
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
   def self.cases_analysis_comments_structure(user)
     user.cases.all {|m| { interviewer_id: m.interviewer_id, 
@@ -141,6 +143,69 @@ class Case < ActiveRecord::Base
                           created_at: m.created_at, 
                           conclusion_comment: m.conclusion_comment } }
   end
+
+
+
+  # STATISTICS
+
+  def self.cases_analysis_stats_uniques(user)
+    user.cases.pluck(:sender_id).uniq.count
+  end
+
+  def self.cases_analysis_stats_casedate(user, type)
+    case type
+    when "first"
+      user.cases.all.last.date.strftime("%d/%m/%Y") unless user.casecount < 1
+    when "last"
+      user.cases.all.first.date.strftime("%d/%m/%Y") unless user.casecount < 1
+    end
+  end
+
+  def self.cases_analysis_stats_averagescore(user)
+    user.cases.map{ |a| a.totalscore }.sum
+  end
+
+  def self.cases_analysis_stats_improvement(user, area)
+    case area
+    when "structure"
+    when "analytical"
+    when "commercial"
+    when "conclusion"
+    end
+  end
+
+  def self.cases_analysis_stats_skill(user, type)
+
+    sums = { 'Structure' => user.cases.average('structure').round(1),
+             'Analytical' => user.cases.average('analytical').round(1),
+             'Commercial' => user.cases.average('commercial').round(1),
+             'Conclusion' => user.cases.average('conclusion').round(1) }
+
+    case type
+    when "weakest"
+      sums.sort.reverse.map { |key, value| key + " (" + value.to_s + ")"}.first
+    when "strongest"
+      sums.sort.map { |key, value| key + " (" + value.to_s + ")"}.first
+    end
+
+  end
+
+  def self.cases_analysis_stats_global(type)
+    case type
+    when "totalscore"
+      (Case.all.map{ |a| a.totalscore }.sum/Case.all.count) if Case.all.count > 0
+    when "structure"
+      Case.average(:structure).round(2)
+    when "analytical"
+      Case.average(:analytical).round(2)
+    when "commercial"
+      Case.average(:commercial).round(2)
+    when "conclusion"
+      Case.average(:conclusion).round(2)
+    end
+
+  end
+
 
   private
 

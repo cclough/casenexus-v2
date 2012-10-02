@@ -1,4 +1,5 @@
 - provide(:title, 'Your Progress')
+- provide(:sub_title, 'Statistics calculated from your feedback from other users')
 
 - content_for :javascript_includes do
 
@@ -14,10 +15,10 @@
       .panel.dark.kill_left.kill-right
         #cases_analysis_chart_progress      
 .row
-  .span40
+  .span42
     .panel.dark.kill_top
       #cases_analysis_chart_radar.cases_radar
-  .span52
+  .span50
     = render 'comments'
       
 

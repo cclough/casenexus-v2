@@ -6,11 +6,11 @@
     var cases_show_chart_radar_data = #{@case.cases_show_chart_radar_data};
 
 .row
-  .span47
+  .span30
 
-    .panel.gradient
+    .panel.gradient.kill_left.kill_right.kill_bottom
       .row
-        .span10
+        .span6
           = avatar_for(@case.interviewer)
         .span20
           .application_name
@@ -33,60 +33,60 @@
         .span20
           = @case.created_at.strftime("%m/%d/%Y")
 
-  .span47
+  .span30
     #cases_show_chart_radar.cases_radar
 
 .row
-  .span47
-    .panel
+  .span30
+    .panel.kill_all
       .cases_show_title
         Structure
       .row
         .span5.cases_score.show
           = @case.structure
-        .span35.cases_show_comment
+        .span20.cases_show_comment
           = @case.structure_comment
-  .span47
-    .panel
+  .span30
+    .panel.kill_right.kill_bottom.kill_top
       .cases_show_title
         Analytical/Problem-solving  
       .row
         .span5.cases_score.show
           = @case.analytical
-        .span35.cases_show_comment
+        .span20.cases_show_comment
           = @case.analytical_comment
 
 .row
-  .span47
-    .panel
+  .span30
+    .panel.kill_bottom.kill_left.kill_right
       .cases_show_title
         Commercial Awareness
       .row
         .span5.cases_score.show
           = @case.commercial
-        .span35.cases_show_comment
+        .span20.cases_show_comment
           = @case.commercial_comment
-  .span47
-    .panel
+  .span30
+    .panel.kill_right.kill_bottom
       .cases_show_title
         Conclusion
       .row
         .span5.cases_score.show
           = @case.conclusion
-        .span35.cases_show_comment
+        .span20.cases_show_comment
           = @case.conclusion_comment
 
 .row
 
-  .span47
-    .panel
+  .span30
+    .panel.kill_left.kill_right.kill_bottom
       .cases_show_title
         Further Comment
       .row
         = @case.comment
 
-  .span47
-    .panel
+  .span30
+    .panel.kill_right.kill_bottom
       .cases_show_title
         Notes
       .row

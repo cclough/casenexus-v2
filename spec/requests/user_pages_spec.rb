@@ -49,7 +49,7 @@ describe "User pages" do
       before do
         fill_in "users_index_users_form_searchfield", with: "Steve"
 
-        page.execute_script "users_updatelist();"
+        page.execute_script "users_index_users_updatelist();"
 
       end
 

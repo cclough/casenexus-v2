@@ -97,7 +97,6 @@ describe "Case Pages" do
             notes: "Some Notes") }
       sign_in user
       visit '/cases/new?user_id=1'
-      save_and_open_page
     end
 
     it "should load the page without errors" do

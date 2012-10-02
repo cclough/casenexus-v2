@@ -260,7 +260,6 @@ describe "Authentication" do
           visit root_path
           sign_in user2
           visit notification_path(1)
-          save_and_open_page
         end
 
         it { should have_selector('title', text: 'Map') }

@@ -4,14 +4,29 @@ class CasesController < ApplicationController
   before_filter :correct_user, only: [:show]
   before_filter :completed_user
 
+  helper_method :sort_column, :sort_direction
+
   # before_filter :notself_user, only: [:create]
 
 	def index
-		@cases = current_user.cases.paginate(per_page: 10, page: params[:page])
+		@cases = current_user.cases
+						 .search_for(params[:search])
+		         .order(sort_column + " " + sort_direction)
+						 .paginate(per_page: 10, page: params[:page])
+
+    respond_to do |format|
+      format.html 
+      format.js # links index.js.erb!
+    end
+
 	end
 
 	def show
 		@case = Case.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :layout => false } 
+    end
 	end
 
 	def new
@@ -49,7 +64,6 @@ class CasesController < ApplicationController
 
 	end
 
-
 	private
 
     def correct_user
@@ -66,4 +80,13 @@ class CasesController < ApplicationController
      #  end
 
     end
+
+    # For Index case sorting
+    def sort_column
+    	current_user.cases.column_names.include?(params[:sort]) ? params[:sort] : "subject"
+  	end
+  
+  	def sort_direction
+    	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  	end
 end

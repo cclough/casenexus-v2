@@ -1,4 +1,4 @@
-.panel.dark
+.panel.dark.font-small
   .row
     .span5
       = avatar_for(current_user)
@@ -10,19 +10,54 @@
     .span10
       1st Case Date
     .span10
-      = current_user.cases.first.created_at.strftime("%m/%d/%Y") unless current_user.casecount < 1
+      = Case.cases_analysis_stats_casedate(current_user, "first")
   .row
     .span10
-      Avg Score /50
+      Last Case Date
     .span10
-      36.4
+      = Case.cases_analysis_stats_casedate(current_user, "last")
+  .row
+    .span10
+      Avg Score /40
+    .span10
+      = Case.cases_analysis_stats_averagescore(current_user)
   .row
     .span10
       Improvement Rate, %
     .span10
-      5%/week
+      xxx
+  .row
+    .span10
+      Strongest Skill
+    .span10
+      = Case.cases_analysis_stats_skill(current_user, "weakest")
   .row
     .span10
       Weakest Skill
     .span10
-      Analytical (Avg 5.4/10)
+      = Case.cases_analysis_stats_skill(current_user, "strongest")
+  .row
+    .span10
+      Global Average Total Score
+    .span10
+      = Case.cases_analysis_stats_global("totalscore")
+  .row
+    .span10
+      Structure
+    .span10
+      = Case.cases_analysis_stats_global("structure")
+  .row
+    .span10
+      Analytical
+    .span10
+      = Case.cases_analysis_stats_global("analytical")
+  .row
+    .span10
+      Commercial
+    .span10
+      = Case.cases_analysis_stats_global("commercial")
+  .row
+    .span10
+      Conclusion
+    .span10
+      = Case.cases_analysis_stats_global("conclusion")

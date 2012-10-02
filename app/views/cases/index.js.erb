@@ -1,0 +1,25 @@
+$("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>")
+
+  $(".cases_index_cases_item").click(function() {
+
+    var case_id = this.id.split('_');
+
+    $.get("/cases/" + case_id[4], function(data) {
+
+      $('#cases_index_case').fadeOut('fast', function() {
+        $("#cases_index_case").html(data); 
+        $('#cases_index_case').fadeIn('fast');
+
+        // Breaks hover!
+        // $(".cases_index_item").css("background-color", "transparent")
+        // $("#cases_index_item_" + case_id[3]).css("background-color", "white")
+      });
+
+    });
+
+  });
+
+// Users Item Cascade Fade
+$(".cases_index_cases_item").each(function(i) {
+   $(this).delay((i + 1) * 50).fadeIn();
+});

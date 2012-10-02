@@ -55,12 +55,10 @@ function users_index_map_marker_click (marker_id) {
 
 
 // Update the User List - submits form...
-function users_updatelist () {
+function users_index_users_updatelist () {
   $.get($("#users_index_users_form").attr("action"), $("#users_index_users_form").serialize(), null, "script");
   return false;
 }
-
-
 
 
 $(document).ready(function(){
@@ -360,21 +358,13 @@ $(document).ready(function(){
 
 
 
-
-
-
   //// USER LIST
 
-
-  // // List populate on search field change
-  // $("#users_index_users_form input").keyup(function() {
-    
-  // });
-
+  // Function users_updatelist is at top of file
 
   $("#users_index_users_form input").keypress(function(e) {
     if(e.which == 13) {
-      users_updatelist();
+      users_index_users_updatelist();
     }
   });
 
@@ -390,7 +380,7 @@ $(document).ready(function(){
 
     $(this).addClass('active');
 
-    users_updatelist();
+    users_index_users_updatelist();
 
   });
 
@@ -399,7 +389,6 @@ $(document).ready(function(){
     $.getScript(this.href);
     return false;
   });
-
 
 
 
@@ -420,7 +409,7 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-  users_updatelist();
+  users_index_users_updatelist();
 
 
 ////////////////////////////////////////////////////////////////////
