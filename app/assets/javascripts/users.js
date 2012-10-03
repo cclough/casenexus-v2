@@ -109,7 +109,6 @@ $(document).ready(function(){
 
   if ( typeof users_newedit_map_lat_start == 'string' ) {
 
-    //var users_newedit_latlng = new google.maps.LatLng(users_map_lat_start, users_map_lng_start)
     var users_newedit_latlng = new google.maps.LatLng(users_newedit_map_lat_start, users_newedit_map_lng_start)
 
     var map = new google.maps.Map(document.getElementById('users_newedit_map'), {
@@ -127,9 +126,11 @@ $(document).ready(function(){
       draggable: true
     });
   
-    google.maps.event.addListener(marker, 'drag', function() {
-      $('#users_newedit_lat').val(users_newedit_latlng.lat());
-      $('#users_newedit_lng').val(users_newedit_latlng.lng());
+    google.maps.event.addListener(marker, 'drag', function(event) {
+
+       document.getElementById("users_newedit_lat").value = event.latLng.lat();
+       document.getElementById("users_newedit_lng").value = event.latLng.lng();
+
     });
 
 
