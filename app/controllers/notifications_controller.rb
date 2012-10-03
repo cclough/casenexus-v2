@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
   before_filter :signed_in_user, only: [:index, :show, :create]
-  before_filter :correct_user, only: [:show]
+  #before_filter :correct_user, only: [:show]
   before_filter :completed_user
   
   helper_method :sort_column, :sort_direction
@@ -27,9 +27,11 @@ class NotificationsController < ApplicationController
 	end
 
 	def show
-		@notification = Notification.find(params[:id])
+    @notifications = Notification.history(params[:id], current_user.id)
 
-		@notification.read? ? nil : @notification.toggle!(:read) 
+    respond_to do |format|
+      format.html { render :layout => false } 
+    end
 	end
 
 	def create
@@ -67,6 +69,7 @@ class NotificationsController < ApplicationController
     end
 	
   end
+
 
 	private
 

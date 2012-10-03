@@ -1,0 +1,13 @@
+- case notifications_item.ntype
+- when "message"
+  
+  .notifications_index_notifications_item_button_history{'data-id' => notifications_item.sender_id.to_s }
+    Message History
+
+- when "feedback"
+
+  = link_to 'Jump to Case', '/cases/' + notifications_item.case_id.to_s
+
+- when "feedback_req"
+
+  = link_to 'Goto Feedback form', ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date })

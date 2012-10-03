@@ -72,4 +72,11 @@ class Notification < ActiveRecord::Base
     user.notifications.limit(5).order('id desc').reverse
   end
 
+  def self.history(from_id, to_id)
+    notifications_from = Notification.where(sender_id: from_id, 
+                                            user_id: to_id)
+    notifications_to = Notification.where(sender_id: to_id,
+                                          user_id: from_id)
+    notifications_to + notifications_from
+  end
 end

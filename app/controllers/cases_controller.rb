@@ -31,13 +31,13 @@ class CasesController < ApplicationController
 
 	def new
 		if params[:roulette_token]
-			@case_user = User.find_by_roulette_token(params[:roulette_token])
+			@user = User.find_by_roulette_token(params[:roulette_token])
 		else
-			@case_user = User.find(params[:user_id])
+			@user = User.find(params[:user_id])
       if params[:subject] then @subject = params[:subject] end
 		end
 
-		@case = @case_user.cases.build
+		@case = @user.cases.build
 	end
 
 	def create
@@ -50,7 +50,7 @@ class CasesController < ApplicationController
   		flash[:success] = 'Feedback Sent'
 	  	redirect_to users_path
   	else
-  		@case_user = User.find_by_id(params[:user_id])
+  		@user = User.find_by_id(params[:user_id])
 	  	render 'new'
   	end
 

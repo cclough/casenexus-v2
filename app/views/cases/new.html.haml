@@ -1,68 +1,139 @@
 - provide(:title, 'Give Feedback')
+- provide(:sub_title, 'Score and comment on your case partners performance')
 
-= form_for @case, url: { action: :create, user_id: @case_user.id } do |f|
+= form_for @case, url: { action: :create, user_id: @user.id } do |f|
 
   / error message div
-  = render 'shared/error_messages', object: @case
+  
 
-  .panel.inverse
-    .cases_new_form
-      .row
-        .span43
-          / display target name
-          %h5
-            Feedback For
-          #cases_new_user_target
-            = avatar_for(@case_user)
-            = @case_user.name
+  .cases_new_form
+    = render 'shared/error_messages', object: @case
+    .row
+      .span42
+        .panel.gradient.kill_right
+          .row
+            .span30
+              .row
+                .span5
+                  = avatar_for(@user)
+                .span20
+                  #cases_new_target_name
+                    = @user.name
+              .spacer5
+              .row.font-small
+                = render 'shared/button_Group_linkedin_and_skype'
+            .span6
+              #cases_new_target_casecount
+                .panel.dark
+                  = @user.casecount
+                  .font-small
+                    cases
 
-        .span43
-          = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", tabindex: "1"  
-          = f.text_field :source, placeholder: "Source", tabindex: "3"
-          = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "2"  
+      .span52
+        .panel.dark
+          .row
+            .span16
+              = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", tabindex: "1", class: "span15"
+              = f.text_field :source, placeholder: "Source", tabindex: "2", class: "span15"
+            .span30
+              = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "3"
 
-      .row
-        .span43
-          %div
-            .cases_new_block_title
-              Structure
-            #cases_new_slider_structure.cases_new_slider
-            = f.text_field :structure, class: "cases_new_slider_input", tabindex: "-1"
-            .cases_new_block_desc
-              Brief instructions on how to score and comment
-            = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4"
-          %div
-            .cases_new_block_title
-              Commercial Awareness
-            #cases_new_slider_commercial.cases_new_slider
-            = f.text_field :commercial, class: "cases_new_slider_input", tabindex: "-1"
-            .cases_new_block_desc
-              Brief instructions on how to score and comment  
-            = f.text_area :commercial_comment, placeholder: "Comment...", tabindex: "5"
-        .span43
-          %div
-            .cases_new_block_title
-              Analytical/Problem Solving
-            #cases_new_slider_analytical.cases_new_slider
-            = f.text_field :analytical, class: "cases_new_slider_input", tabindex: "-1"
-            .cases_new_block_desc
-              Brief instructions on how to score and comment
-            = f.text_area :analytical_comment, placeholder: "Comment...", tabindex: "6"
-          %div
-            .cases_new_block_title
-              Conclusion/Solution
-            #cases_new_slider_conclusion.cases_new_slider
-            = f.text_field :conclusion, class: "cases_new_slider_input", tabindex: "-1"
-            .cases_new_block_desc
-              Brief instructions on how to score and comment
-            = f.text_area :conclusion_comment, placeholder: "Comment...", tabindex: "7"
+    .row    
+      .span47
+        .panel.dark.kill_top
+          .cases_new_block_title
+            Structure
+          .cases_new_block_desc
+            %ul
+              %li Point
+              %li Point
+              %li Point
+              %li Point
+      .span47
+        .panel.darker.kill_top.kill_left
+          .row
+            .span33
+              .row
+                #cases_new_slider_structure.cases_new_slider
+              .spacer15
+              .row
+                = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+            .span8
+              = f.text_field :structure, class: "cases_new_slider_input panel darker", tabindex: "-1"
 
-      .row
-        .span46
-          = f.text_area :comment, placeholder: "Any further comments", tabindex: "8"
-          %div
+    .row    
+      .span47
+        .panel.dark.kill_top
+          .cases_new_block_title
+            Analytical
+          .cases_new_block_desc
+            %ul
+              %li Point
+              %li Point
+              %li Point
+              %li Point
+      .span47
+        .panel.darker.kill_top.kill_left
+          .row
+            .span33
+              .row
+                #cases_new_slider_analytical.cases_new_slider
+              .spacer15
+              .row
+                = f.text_area :analytical_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+            .span8
+              = f.text_field :analytical, class: "cases_new_slider_input panel darker", tabindex: "-1"
 
-            = f.hidden_field :user_id, value: @case_user.id
+    .row    
+      .span47
+        .panel.dark.kill_top
+          .cases_new_block_title
+            Commercial
+          .cases_new_block_desc
+            %ul
+              %li Point
+              %li Point
+              %li Point
+              %li Point
+      .span47
+        .panel.darker.kill_top.kill_left
+          .row
+            .span33
+              .row
+                #cases_new_slider_commercial.cases_new_slider
+              .spacer15
+              .row
+                = f.text_area :commercial_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+            .span8
+              = f.text_field :commercial, class: "cases_new_slider_input panel darker", tabindex: "-1"
+    .row    
+      .span47
+        .panel.dark.kill_top
+          .cases_new_block_title
+            Conclusion
+          .cases_new_block_desc
+            %ul
+              %li Point
+              %li Point
+              %li Point
+              %li Point
+      .span47
+        .panel.darker.kill_top.kill_left.kill_bottom
+          .row
+            .span33
+              .row
+                #cases_new_slider_conclusion.cases_new_slider
+              .spacer15
+              .row
+                = f.text_area :conclusion_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+            .span8
+              = f.text_field :conclusion, class: "cases_new_slider_input panel darker", tabindex: "-1"
+    .row
+      .panel.dark.kill_top.kill_bottom.offset47
+        .row
+          .span45
+            = f.text_area :comment, placeholder: "Any further comments", tabindex: "8"
+            = f.hidden_field :user_id, value: @user.id
             = f.hidden_field :interviewer_id, value: current_user.id
-      .row
-        = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"
+        .row
+          = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"

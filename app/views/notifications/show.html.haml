@@ -1,12 +1,7 @@
-- provide(:title, "Notification")
+- if @notifications.count > 0
+  - @notifications.each do |notifications_history_item|
 
+    = render partial: 'notifications/notifications_history_item' , locals: { :notifications_history_item => notifications_history_item }
 
-%h3
-  = avatar_for(@notification.sender)
-  = @notification.sender.name
-.row
-  = @notification.content
-.row
-  = @notification.ntype
-.row
-  = @notification.url
+- else
+  %p No notifications found

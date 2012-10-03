@@ -1,8 +1,9 @@
 - if object.errors.any?
   #application_error_explanation
-    .alert.alert-error
-      The form contains #{pluralize(object.errors.count, "error")}.
-    %ul
-      - object.errors.full_messages.each do |msg|
-        %li
-          * #{msg}
+    .panel.darker.kill_bottom
+      .alert.alert-error
+        The form contains #{pluralize(object.errors.count, "error")}.
+      %ul
+        - object.errors.full_messages.each do |msg|
+          %li
+            * #{msg}

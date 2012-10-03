@@ -337,19 +337,19 @@ $(document).ready(function(){
       });
 
       // Marker Clusterer
-      var styles = [[{
-        url: '/assets/markers/cluser.png',
-        height: 35,
-        width: 35,
-        anchor: [16, 0],
-        textColor: '#ff00ff',
-        textSize: 10
-      }]];
+      var styles = [{
+        url: '/assets/clusters/cluster_4.png',
+        height: 67,
+        width: 67,
+        anchor: [24, 0],
+        textColor: '#ffffff',
+        textSize: 20
+      }];
 
       var markerClusterer = new MarkerClusterer(map, users_index_map_markers, {
         minimumClusterSize: 2,
-        gridSize: 100 // 60 is default
-        //styles: styles[style]
+        gridSize: 100, // 60 is default
+        styles: styles
       });
 
 

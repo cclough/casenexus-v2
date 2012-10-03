@@ -1,65 +1,20 @@
-- case notifications_item.ntype
-- when "message"
-
-  .notifications_index_notifications_item{'data-id' => notifications_item.id.to_s, 'data-ntype' => 'message', :class => ("read" if notifications_item.read?)}
-    .row
-      .span7
-        = avatar_for(notifications_item.sender)
-      .span15
-        .row
-          %strong 
-            = notifications_item.sender.name
-        .row.application_timestamp
-          #{time_ago_in_words(notifications_item.created_at)} ago.
-      .span20
+.notifications_index_notifications_item{:class => ("read" if notifications_item.read?)}
+  .row
+    .span7
+      = avatar_for(notifications_item.sender)
+    .span15
+      .row
+        %strong 
+          = notifications_item.sender.name
+      .row.application_timestamp
+        #{time_ago_in_words(notifications_item.created_at)} ago.
+    .span25
+      .notifications_index_notifications_item_content_trunc{id: 'notifications_index_notifications_item_content_trunc_' + notifications_item.id.to_s }
         = notifications_item.content_trunc
-
-      .span15.notifications_index_notifications_item_action.pull-right
-        Show Message
-        .caret
-
-    .notifications_index_notifications_item_message{id: 'notifications_index_notifications_item_message_body_' + notifications_item.id.to_s }
-      .row
+      .notifications_index_notifications_item_content{id: 'notifications_index_notifications_item_content_' + notifications_item.id.to_s }
         = notifications_item.content
+    .span3.notifications_index_notifications_item_button_expand{'data-id' => notifications_item.id.to_s}
+      %i.icon-arrow-down.icon-large
 
-
-- when "feedback"
-  
-  = link_to '/cases/' + notifications_item.case_id.to_s do
-
-    .notifications_index_notifications_item{:class => ("read" if notifications_item.read?)}
-      .row
-        .span7
-          = avatar_for(notifications_item.sender)
-        .span15
-          .row
-            %strong 
-              = notifications_item.sender.name
-          .row.application_timestamp
-            #{time_ago_in_words(notifications_item.created_at)} ago.
-        .span20
-          = notifications_item.content_trunc
-
-
-        .span15.notifications_index_notifications_item_action.pull-right
-          Jump to Case
-
-- when "feedback_req"
-
-  = link_to ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date }) do
-  
-    .notifications_index_notifications_item{:class => ("read" if notifications_item.read?)}
-      .row
-        .span7
-          = avatar_for(notifications_item.sender)
-        .span15
-          .row
-            %strong 
-              = notifications_item.sender.name
-          .row.application_timestamp
-            #{time_ago_in_words(notifications_item.created_at)} ago.
-        .span20
-          = notifications_item.content_trunc
-        .span15.notifications_index_notifications_item_action.pull-right
-          Send Feedback
-        
+    .span12.notifications_index_notifications_item_action.pull-right
+      = render partial: 'notifications_item_actions' , locals: { notifications_item: notifications_item }

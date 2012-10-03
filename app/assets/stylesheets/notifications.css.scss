@@ -36,15 +36,33 @@ $gray_Lightest: #f6f6f6;
   }
 }
 
-.notifications_index_notifications_item_message {
+.notifications_index_notifications_item_content {
   display:none;
 }
 
 .notifications_index_notifications_item_action {
-  font-size:16px;
+  font-size:14px;
   color: gray;
   padding-top:10px;
 }
+
+.notifications_index_notifications_history_item {
+  padding:5px;
+  text-decoration:none;
+  color: black;
+  &:hover {
+    background-color: $gray_Lightest;
+  }
+  &.read {
+    -moz-opacity: 0.30;
+    opacity: 0.30;
+  }
+}
+
+.notifications_index_notifications_item_button_expand {
+  padding-top:15px;
+}
+
 .notifications_index_sidenav_item {
   padding:5px;
   border: 1px solid transparent;
