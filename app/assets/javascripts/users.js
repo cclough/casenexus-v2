@@ -75,22 +75,7 @@ $(document).ready(function(){
 
   $("#users_new_step2").css({ opacity: 0.3 });
   
-  $("#users_newedit_lat").change(function(){
-
-    $("#users_new_step1")
-    .css({
-      "background-image": "url(app/tick.png)",
-      "background-position": "top right",
-      "background-repeat": "no-repeat"
-    });
-
-    $("#users_new_step2").css({
-      opacity: 1
-    });
-
-    $.users_new_step1_complete = true;
-
-  });
+  // Step 2 is made opaque in map code!
   
   $("#users_new_status").keyup(function(){
 
@@ -128,8 +113,18 @@ $(document).ready(function(){
   
     google.maps.event.addListener(marker, 'drag', function(event) {
 
-       document.getElementById("users_newedit_lat").value = event.latLng.lat();
-       document.getElementById("users_newedit_lng").value = event.latLng.lng();
+      document.getElementById("users_newedit_lat").value = event.latLng.lat();
+      document.getElementById("users_newedit_lng").value = event.latLng.lng();
+
+      if (!$.users_new_step1_complete) {
+
+        $("#users_new_step2").css({
+          opacity: 1
+        });
+
+        $.users_new_step1_complete = true;
+
+      }
 
     });
 

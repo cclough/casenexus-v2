@@ -236,10 +236,12 @@ $gray_Lightest: #f6f6f6;
   border-bottom: 1px solid $gray_Lighter;  
 }
 
+
+
 #users_newedit_map {
   &.new {
-    height:400px;
-    width:400px;
+    height:430px;
+    width:435px;
   }
   &.edit {
     height:430px;
@@ -248,7 +250,7 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-#users_newedit_status{
+#users_edit_status, #users_new_status {
   height:148px;
   width:400px;
 }

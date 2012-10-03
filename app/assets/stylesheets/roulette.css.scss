@@ -31,6 +31,11 @@ $blue_pastel: #98cdff;
 #roulette_index_token {
 	font-weight: bold;
 	font-size: 12px;
+
+}
+
+#roulette_index_token_text {
+	text-align:center;
 }
 
 #roulette_index_field_token {
@@ -41,7 +46,7 @@ $blue_pastel: #98cdff;
 
 .roulette_index_button_connection {
 	width:140px;
-	margin-top:30px;
+	margin-top:15px;
 }
 
 .roulette_index_users_item_casecount {
