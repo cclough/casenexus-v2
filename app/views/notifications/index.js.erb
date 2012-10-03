@@ -1,0 +1,38 @@
+$("#notifications_index_notifications").html("<%= escape_javascript(render("notifications")) %>")
+
+///////// Index Item Actions
+
+$('.notifications_index_notifications_item_button_message').click(function() {
+
+	var item_id = $(this).attr('data-id');
+
+	$('#notifications_index_notifications_item_message_body_' + item_id).slideDown('fast');
+
+});
+
+
+
+$('.notifications_index_notifications_item_button_feedback').click(function() {
+
+	var case_id = $(this).attr('data-case_id');
+
+	window.location = '/cases/' + case_id;
+
+});
+
+
+$('.notifications_index_notifications_item_button_feedback_req').click(function() {
+
+	var user_id = $(this).attr('data-user_id');
+
+	window.location = '/cases/new?user_id=' + user_id 
+	
+});
+
+
+
+$('.notifications_index_notifications_item_button_partners').click(function() {
+
+
+	
+});

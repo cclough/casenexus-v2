@@ -1,39 +1,38 @@
 $("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>")
 
-  $(".cases_index_cases_item").click(function() {
 
-    var case_id = this.id.split('_');
+$(".cases_index_cases_item").click(function() {
 
-    $.get("/cases/" + case_id[4], function(data) {
+  var case_id = this.id.split('_');
 
-      $('#cases_index_case').fadeOut('fast', function() {
-        $("#cases_index_case").html(data); 
+  $.get("/cases/" + case_id[4], function(data) {
 
-        var cases_show_chart_radar_data = $('#cases_show_chart_radar_data_storage').attr('data-cases_show_chart_radar');
+    $('#cases_index_case').fadeOut('fast', function() {
+      $("#cases_index_case").html(data); 
 
-        cases_show_chart_radar_draw(cases_show_chart_radar_data);
-    
-        $('#cases_index_case').fadeIn('fast');
+      var cases_show_chart_radar_data = $('#cases_show_chart_radar_data_storage').attr('data-cases_show_chart_radar');
 
-
-        $('#cases_show_notes_form_notes').wysihtml5({
-            "link": false, //Button to insert a link. Default true
-            "image": false //Button to insert an image. Default true,
-        });
+      cases_show_chart_radar_draw(cases_show_chart_radar_data);
+  
+      $('#cases_index_case').fadeIn('fast');
 
 
-        $('#cases_show_notes_form_notes').keyup(function() {
-          $('#cases_show_notes_form_callback').fadeOut('slow');
-
-          setTimeout(function(){ 
-            $('#edit_case_' + case_id[4]).submit();
-          }, 3000);  
-        });
+      $('#cases_show_notes_form_notes').wysihtml5({
+          "link": false, //Button to insert a link. Default true
+          "image": false //Button to insert an image. Default true,
+      });
 
 
+      $('#cases_show_notes_form_notes').keyup(function() {
+        $('#cases_show_notes_form_callback').fadeOut('slow');
 
+        setTimeout(function(){ 
+          $('#edit_case_' + case_id[4]).submit();
+        }, 3000);  
       });
 
     });
 
   });
+
+});

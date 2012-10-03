@@ -18,13 +18,16 @@ class Notification < ActiveRecord::Base
   validates_presence_of :content, :event_date, :if => lambda {self.ntype == 'feedback_req'}
   validates_presence_of :content, :event_date, :if => lambda {self.ntype == 'feedback'}
 
-
-
   ### Scopes
 
   # Read Scope
   scope :unread, where(read: false)
 
+
+  # Scoped_search Gem
+  scoped_search :in => :user, :on => :first_name
+  scoped_search :in => :user, :on => :last_name
+  scoped_search :on => [:content]
 
   ### Outputs
 

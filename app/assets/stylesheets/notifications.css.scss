@@ -7,13 +7,63 @@ $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 
+#notifications_index_notifications_form_sort .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+#notifications_index_notifications_form_sort .asc {
+  background-image: url(app/sort_up_arrow.gif);
+}
+
+#notifications_index_notifications_form_sort .desc {
+  background-image: url(app/sort_down_arrow.gif);
+}
 
 
-.notifications_index_item {
+
+.notifications_index_notifications_item {
   padding:5px;
   text-decoration:none;
   color: black;
   &:hover {
     background-color: $gray_Lightest;
   }
+  &.read {
+		-moz-opacity: 0.30;
+		opacity: 0.30;
+  }
+}
+
+
+.notifications_index_sidenav_item {
+  padding:5px;
+  border: 1px solid transparent;
+  &:hover {
+    color:white;
+  }
+  &.active {
+    
+    color:white;
+
+    border: 1px solid gray;
+
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0.18))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#2effffff',GradientType=0 ); /* IE6-9 */
+
+  }
+}
+
+#notifications_index_notifications_form_body {
+  height:600px;
+}
+
+#notifications_index_notifications_form_radiogroup {
+  display:none;
 }

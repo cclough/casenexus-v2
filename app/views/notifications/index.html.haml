@@ -1,11 +1,10 @@
 - provide(:title, 'Your Notifications')
-
-- if @notifications.count > 0
-  - @notifications.each do |notification|
-
-    = render partial: 'notifications/notification' , locals: { :notification => notification }
-
-- else
-  %p You currently have no notifications
-
-= will_paginate @notifications, class: "application_pagination", :inner_window => 2, :outer_window => 2
+- provide(:sub_title, 'Browse through all of your notifications')
+.row
+  .span25
+    .panel.dark
+      = render 'notifications_form'
+  .span67
+    .panel.kill_left.kill_right
+      #notifications_index_notifications
+      / content is rendered by index.js.erb

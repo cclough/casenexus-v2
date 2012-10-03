@@ -1,0 +1,39 @@
+= form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form", onsubmit: 'return false' do
+  .row
+    .span22
+      / search field
+      = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span18'
+    / .span5
+    /   #notifications_index_notifications_form_sort
+    /     / sort/filter pulldown menu
+    /     .btn-group
+    /       %a#notifications_index_notifications_button_filter.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    /         Sort
+    /         %span.caret
+    /       %ul.dropdown-menu
+    /         %li
+    /           / = radio_button_tag :cases_listtype, 'local', checked: true
+    /           = sortable "subject"
+
+  .row
+    #notifications_index_notifications_form_button_0.notifications_index_sidenav_item
+      All
+  .row
+    #notifications_index_notifications_form_button_1.notifications_index_sidenav_item
+      Messages
+  .row
+    #notifications_index_notifications_form_button_2.notifications_index_sidenav_item
+      Feedback Requests
+  .row
+    #notifications_index_notifications_form_button_3.notifications_index_sidenav_item
+      Feedback
+  .row
+    #notifications_index_notifications_form_button_4.notifications_index_sidenav_item
+      Case Partners
+
+  #notifications_index_notifications_form_radiogroup
+    = radio_button_tag :notifications_listtype, 'all'
+    = radio_button_tag :notifications_listtype, 'message', checked: true
+    = radio_button_tag :notifications_listtype, 'feedback_req'
+    = radio_button_tag :notifications_listtype, 'feedback'
+    = radio_button_tag :notifications_listtype, 'partners'

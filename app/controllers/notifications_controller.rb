@@ -4,9 +4,26 @@ class NotificationsController < ApplicationController
   before_filter :correct_user, only: [:show]
   before_filter :completed_user
   
+  helper_method :sort_column, :sort_direction
+
 	def index
-  	@notifications = current_user.notifications.paginate(per_page: 10, page: 
-                     params[:page], order: "created_at DESC")
+
+    if params[:notifications_listtype] == "all"
+      notification_scope = current_user.notifications
+    else
+      notification_scope = current_user.notifications.where(ntype: params[:notifications_listtype])
+    end
+
+    @notifications = notification_scope
+                     .search_for(params[:search])
+                     .order(sort_column + " " + sort_direction)
+                     .paginate(per_page: 10, page: params[:page])
+
+    respond_to do |format|
+      format.html 
+      format.js # links index.js.erb!
+    end
+
 	end
 
 	def show
@@ -52,6 +69,15 @@ class NotificationsController < ApplicationController
   end
 
 	private
+
+    # For Index case sorting
+    def sort_column
+      current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "content"
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 
     def correct_user
       @notification = current_user.notifications.find_by_id(params[:id])

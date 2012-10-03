@@ -142,6 +142,41 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 
 
+
+  //// USER LIST
+
+  // Function users_updatelist is at top of file
+
+  $("#users_index_users_form input").keypress(function(e) {
+    if(e.which == 13) {
+      users_index_users_updatelist();
+    }
+  });
+
+  // Listtype Button-Radio link
+  $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').click(function() {
+
+    // Break up id string, so can get id off the end
+    var listtype = this.id.split('_');
+
+    $('input[name=users_listtype]:eq('+listtype[5]+')').attr('checked', 'checked');
+
+    $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').removeClass('active');
+
+    $(this).addClass('active');
+
+    users_index_users_updatelist();
+
+  });
+
+  // Ajax pagination
+  $("#users_index_users .application_pagination a").live("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+
+
+
   //// MAP
 
   if ( typeof users_index_map_lat_start == 'string' ) {
@@ -355,40 +390,6 @@ $(document).ready(function(){
 
   }
 
-
-
-
-  //// USER LIST
-
-  // Function users_updatelist is at top of file
-
-  $("#users_index_users_form input").keypress(function(e) {
-    if(e.which == 13) {
-      users_index_users_updatelist();
-    }
-  });
-
-  // Listtype Button-Radio link
-  $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').click(function() {
-
-    // Break up id string, so can get id off the end
-    var listtype = this.id.split('_');
-
-    $('input[name=users_listtype]:eq('+listtype[5]+')').attr('checked', 'checked');
-
-    $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').removeClass('active');
-
-    $(this).addClass('active');
-
-    users_index_users_updatelist();
-
-  });
-
-  // Ajax pagination
-  $("#users_index_users .application_pagination a").live("click", function() {
-    $.getScript(this.href);
-    return false;
-  });
 
 
 
