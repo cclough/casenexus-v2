@@ -15,7 +15,10 @@ $blue_pastel: #98cdff;
 	font-size:15px;
 	font-face: bold;
 	&:hover {
-    background-color: $gray_Lighter;
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(0, 0, 0) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -38,6 +41,7 @@ $blue_pastel: #98cdff;
 
 .roulette_index_button_connection {
 	width:140px;
+	margin-top:30px;
 }
 
 .roulette_index_users_item_casecount {
