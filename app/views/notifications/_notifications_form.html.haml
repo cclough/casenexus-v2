@@ -32,8 +32,8 @@
       Case Partners
 
   #notifications_index_notifications_form_radiogroup
-    = radio_button_tag :notifications_listtype, 'all'
-    = radio_button_tag :notifications_listtype, 'message', checked: true
+    = radio_button_tag :notifications_listtype, 'all', checked: true
+    = radio_button_tag :notifications_listtype, 'message'
     = radio_button_tag :notifications_listtype, 'feedback_req'
     = radio_button_tag :notifications_listtype, 'feedback'
     = radio_button_tag :notifications_listtype, 'partners'

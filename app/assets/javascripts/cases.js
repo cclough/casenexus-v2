@@ -10,15 +10,6 @@ function cases_index_cases_updatelist () {
 }
 
 
-
-
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////
 ///////////////////////////// SHOW //////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -288,9 +279,15 @@ $(document).ready(function(){
         graph.valueField = "totalscore";
         graph.lineAlpha = 1;
         graph.fillAlphas = 0.6;
-        graph.bullet = "round";
-        graph.hidden = true;
+        graph.bullet = "none";
+        //graph.hidden = true;
 
+        graph.showBalloon = false;
+        graph.visibleInLegend = false;
+        graph.fillAlphas = [0];
+        graph.lineAlpha = 0;
+        graph.includeInMinMax = false;
+        
         chart.addGraph(graph);
 
         // LEGEND

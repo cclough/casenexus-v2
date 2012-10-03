@@ -17,9 +17,9 @@
             = @case_user.name
 
         .span43
-          = f.text_field :date, placeholder: "Date", id: "cases_new_datepicker", tabindex: "1"  
+          = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", tabindex: "1"  
           = f.text_field :source, placeholder: "Source", tabindex: "3"
-          = f.text_area :subject, placeholder: "Subject", tabindex: "2"  
+          = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "2"  
 
       .row
         .span43

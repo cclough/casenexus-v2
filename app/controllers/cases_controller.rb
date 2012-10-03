@@ -34,6 +34,7 @@ class CasesController < ApplicationController
 			@case_user = User.find_by_roulette_token(params[:roulette_token])
 		else
 			@case_user = User.find(params[:user_id])
+      if params[:subject] then @subject = params[:subject] end
 		end
 
 		@case = @case_user.cases.build

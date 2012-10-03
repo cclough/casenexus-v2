@@ -36,7 +36,15 @@ $gray_Lightest: #f6f6f6;
   }
 }
 
+.notifications_index_notifications_item_message {
+  display:none;
+}
 
+.notifications_index_notifications_item_action {
+  font-size:16px;
+  color: gray;
+  padding-top:10px;
+}
 .notifications_index_sidenav_item {
   padding:5px;
   border: 1px solid transparent;
