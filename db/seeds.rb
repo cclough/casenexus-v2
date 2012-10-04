@@ -68,12 +68,9 @@ admin4 = User.create!(
         email: "nicolarowe@mac.com",
         password: "clarecollege",
         password_confirmation: "clarecollege",
-        lat: 43.5000,
-        lng: 172.6000,
+        lat: -43.531637,
+        lng: 172.636645,
         status: Faker::Lorem.sentence(20),
-
-        skype: "",
-        linkedin: "",
 
         accepts_tandc: true)
 

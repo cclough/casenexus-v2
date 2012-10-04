@@ -12,7 +12,7 @@ class Case < ActiveRecord::Base
   belongs_to :user
 
   ### Callbacks
-  after_create :create_notification
+  # after_create :create_notification
 
 
 

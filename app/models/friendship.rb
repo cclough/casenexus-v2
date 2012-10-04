@@ -7,7 +7,7 @@ class Friendship < ActiveRecord::Base
   include Amistad::FriendshipModel
   
   ### Callbacks
-  after_create :create_notification_req
+  # after_create :create_notification_req
 
   ### Validations
   validates :user_id, presence: true

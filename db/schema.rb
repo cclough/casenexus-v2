@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(:version => 20121004210619) do
     t.boolean  "approved",               :default => false
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.string   "country"
     t.string   "provider"
     t.string   "headline"
     t.string   "roulette_token"
