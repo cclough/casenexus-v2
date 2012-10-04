@@ -33,7 +33,7 @@
         .panel.dark
           .row
             .span16
-              = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", tabindex: "1", class: "span15"
+              = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", 'data-date-format' => "dd/mm/yyyy", tabindex: "1", class: "span15"
               = f.text_field :source, placeholder: "Source", tabindex: "2", class: "span15"
             .span30
               = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "3"

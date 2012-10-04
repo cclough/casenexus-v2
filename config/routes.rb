@@ -8,6 +8,8 @@ Casenexus::Application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   match '/signup', to: 'users#new'
   match '/tooltip', to: 'users#tooltip'
+  match '/test', to: 'users#test'
+  
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 
   # LinkedIn

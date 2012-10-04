@@ -61,6 +61,10 @@ textarea {
   resize: vertical;
 }
 
+.search-query {
+  background: white url(icons/search.png) no-repeat 96% 4px;
+  padding-right: 17px;
+}
 
 
 // For jquery placeholder
@@ -153,11 +157,13 @@ textarea {
    }
 
   &.transparent {
+
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#FFFFFF);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#FFFFFF)";
     color: white;
+
   }
 
   &.dark {

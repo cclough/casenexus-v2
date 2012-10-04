@@ -1,5 +1,12 @@
 // Marker array var needs to be declared here, so that users list item click works
 
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+/////////////////////////    GLOBALS    ////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+
 var users_index_map_markers = [];
 
 var markerClusterer = null;
@@ -61,7 +68,18 @@ function users_index_users_updatelist () {
 }
 
 
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+/////////////////////////    ON LOAD    ////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+
+
 $(document).ready(function(){
+
+
 
 
 ////////////////////////////////////////////////////////////////////
@@ -318,7 +336,7 @@ $(document).ready(function(){
         });
 
         google.maps.event.addListener(marker, 'mouseover', function() {
-          users_index_map_tooltip(marker.id);
+          users_index_mappanel_tooltip(marker.id);
         });
 
         google.maps.event.addListener(marker, 'click', function() {
@@ -369,18 +387,18 @@ $(document).ready(function(){
 
 
 
-  function users_index_map_tooltip(marker_id) {
+  function users_index_mappanel_tooltip(marker_id) {
 
     $.get('/tooltip?id=' + marker_id, function(data) {
 
-      $('#users_index_tooltip').html(data);
+      $('#users_index_mappanel_tooltip').html(data);
 
       // Code for 'close button'
-      $("#users_index_tooltip_close").click(function() {
-        $('#users_index_tooltip').fadeOut('slow');
+      $("#users_index_mappanel_tooltip_close").click(function() {
+        $('#users_index_mappanel_tooltip').fadeOut('slow');
       });
 
-      $('#users_index_tooltip').fadeIn('fast');
+      $('#users_index_mappanel_tooltip').fadeIn('fast');
     
     });
 
@@ -393,12 +411,7 @@ $(document).ready(function(){
 ///////////////////////////    ALL    //////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-  $(".users_datepicker").datepicker();
-  // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
-
-
-
-
+  $(".chzn-select").chosen();
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////

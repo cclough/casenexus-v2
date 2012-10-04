@@ -13,9 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.slider
-//= require jquery.ui.datepicker
-//= require jquery.ui.all
 //= require rails.validations
 //= require rails.validations.callbacks
 //= require bootstrap-wysihtml5-all
+//= require chosen-jquery
 //= require_tree .

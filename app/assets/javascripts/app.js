@@ -1,9 +1,8 @@
 $(document).ready(function(){
 
-	$("select, input:checkbox").uniform();
+	$("input:checkbox").uniform();
 
 	$('input, textarea').placeholder();
-
 
   $('#modal_help').modal({
     backdrop: false,

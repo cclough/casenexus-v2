@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_filter :correct_user, only: [:edit, :update]
   before_filter :completed_user, except: [:new, :create, :update]
 
+  def test
+  end
 
   # Map
 	def index
