@@ -102,12 +102,12 @@ class User < ActiveRecord::Base
   reverse_geocoded_by :lat, :lng do |obj,results|
     if geo = results.first
       obj.city    = geo.city
-      obj.country = geo.country_code
+      obj.country = geo.country
     end
   end
 
   after_create :geocode
-  after_update :reverse_geocode
+  after_validation :reverse_geocode
 
 
 
