@@ -65,11 +65,20 @@
           .span47
             
             .panel.darker.kill_left
-
-              #users_newedit_map.edit.map
               = f.hidden_field :lat, id: "users_newedit_lat"
               = f.hidden_field :lng, id: "users_newedit_lng"
-
+              #users_newedit_map.edit.map
+              .spacer10
+              #users_newedit_map_location
+                .row
+                  .span8
+                    Country:
+                  .span14
+                    = @user.country
+                  .span8
+                    City:
+                  .span10
+                    = @user.city
             .panel.dark.kill_top.kill_left
               .row
                 .span29

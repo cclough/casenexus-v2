@@ -51,7 +51,7 @@ header {
 
 #users_index_map_zoomcontrol {
   position: absolute;
-  left: 350px;
+  left: 420px;
 }
 
 /* When the below is used, control disappears on mouse over */
@@ -325,6 +325,7 @@ header {
 
 
 #users_newedit_map {
+
   &.new {
     height:430px;
     width:435px;
@@ -335,9 +336,13 @@ header {
   }
 }
 
+#users_newedit_map_location {
+  height:20px;
+}
+
 
 #users_edit_status, #users_new_status {
-  height:148px;
+  height:178px;
   width:400px;
 }
 

@@ -10,7 +10,8 @@ $(document).ready(function(){
   });
 
   $('#header_link_help').click(function() {
-    $('.modal').modal('show');
+  	$('.modal').modal('hide');
+    $('#modal_help').modal('show');
   });
 
 });
