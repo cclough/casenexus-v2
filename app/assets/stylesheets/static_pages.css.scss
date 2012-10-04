@@ -4,8 +4,10 @@
 }
 
 #static_home_banner{
-	padding:30px;
-	padding-top:70px;
+	padding:80px;
+	padding-top:80px;
+  padding-bottom:80px;
+
 }
 
 #static_home_signup{
@@ -34,4 +36,67 @@
   padding-top: -3px;
   margin-right: 10px;
   border-right: 1px solid #86c7fe;
+}
+
+
+
+
+
+
+.arrownav_page {
+  display:none;
+}
+
+.arrownav {
+
+  margin-top:-20px;
+  margin-left:-10px;
+  margin-right:-10px;
+
+  background: #f6f6f6;
+  border-bottom: 1px solid #eaeaea;
+  height:35px;
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+  border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+
+  nav { position: relative; left:70px; }
+  nav ul {
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+  }
+
+  nav ul li {
+    float: left;
+    margin-left: 30px;
+    margin-top:6px;
+    position: relative;
+  }   
+
+  nav ul li a{
+    color: #b5b5b5;
+    font-size: 12px;
+    -webkit-transition:color 0.2s ease-in;  
+    -moz-transition:color 0.2s ease-in;  
+    -o-transition:color 0.2s ease-in;  
+    transition:color 0.2s ease-in;
+  }
+  
+  nav ul li a:hover { color: #777; }
+  nav ul li.current a{ color: #555; font-weight: bold; }
+
+  nav span.arrow {
+    width: 24px;
+    height: 13px;
+    background: url('app/light-nav_arrow.png') no-repeat;
+    display: none;
+    position: absolute;
+    top: 35px;
+  }
+
 }

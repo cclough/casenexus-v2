@@ -1,33 +1,62 @@
 = content_for :content do
 
+  :javascript
+    $(document).ready(function(){
+      ArrowNav.init();
+    });
+    
   .row
-    .span94
+    .span62
       .panel.kill_bottom
-        .row.gradient
-          .span50.offset4
-            .spacer20
-            = image_tag('home/banner.png', id: 'static_home_banner')
-          .span29
+        .row
 
-            / #static_home_slider.royalSlider.rsDefaultInv
-            /   = image_tag('home/slider/1.png', class: 'rsImg', alt: "image desc")
-            /   = image_tag('home/slider/2.png', class: 'rsImg', alt: "image desc")
-            /   = image_tag('home/slider/3.png', class: 'rsImg', alt: "image desc")
-            .row
-              .panel.gradient.kill_top
-                University Sign up
-                .spacer5
-                .row
-                  / .span8
-                  /   = render 'static_pages/form_signup_universities'
-                  .span20
-                    = render 'static_pages/form_signup'
-            .row.panel.gradient.kill_all
-              .span5
-                Or
-              .span20
-                %a#static_home_signup_linkedin_button.btn.btn-large.btn-inverse{ href: "/auth/linkedin"}
-                  %span#static_home_signup_linkedin_button_logo
-                    = image_tag 'home/button_logo_linkedin.png'
-                  %span
-                    Sign up with LinkedIn
+          .arrownav
+
+            %nav
+              %ul
+                %li
+                  %a{:href => "#1"} Home
+                %li
+                  %a{:href => "#2"} Team
+                %li
+                  %a{:href => "#3"} Features
+                %li
+                  %a{:href => "#4"} Screenshots
+                %li
+                  %a{:href => "#5"} Updates
+              %span.arrow
+
+          #static_home_arrownav_1.arrownav_page
+            = image_tag('home/banner.png', id: 'static_home_banner')
+
+          #static_home_arrownav_2.arrownav_page
+            = image_tag('home/banner.png', id: 'static_home_banner')
+
+          #static_home_arrownav_3.arrownav_page
+            = image_tag('home/banner.png', id: 'static_home_banner')
+
+          #static_home_arrownav_4.arrownav_page
+            = image_tag('home/banner.png', id: 'static_home_banner')
+
+          #static_home_arrownav_5.arrownav_page
+            = image_tag('home/banner.png', id: 'static_home_banner')
+
+    .span30
+      .row
+        .panel.gradient.kill_left.kill_right
+          University Sign up
+          .spacer5
+          .row
+            / .span8
+            /   = render 'static_pages/form_signup_universities'
+            .span20
+              = render 'static_pages/form_signup'
+      .row.panel.gradient.kill_all
+        .span5
+          Or
+        .span20
+          %a#static_home_signup_linkedin_button.btn.btn-large.btn-inverse{ href: "/auth/linkedin"}
+            %span#static_home_signup_linkedin_button_logo
+              = image_tag 'home/button_logo_linkedin.png'
+            %span
+              Sign up with LinkedIn
