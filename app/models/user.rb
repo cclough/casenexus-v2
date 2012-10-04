@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
   #   end
   # end
 
-  after_validation :geocode, #:reverse_geocode
+  after_validation :geocode #:reverse_geocode
 
 
 
