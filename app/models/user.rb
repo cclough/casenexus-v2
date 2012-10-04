@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   # Email (using Hartl RegEx)
   VALID_EM_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_SK_REGEX = /^[-a-z]+$/i
+  VALID_SK_REGEX = /^[\w+\-.]+[-a-z]+$/i
   validates :email, presence: true, format: { with: VALID_EM_REGEX },
   					uniqueness: { case_sensitive: true } 
 
