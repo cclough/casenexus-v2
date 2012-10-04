@@ -167,7 +167,7 @@ class Case < ActiveRecord::Base
   end
 
   def self.cases_analysis_stats_averagescore(user)
-    user.cases.map{ |a| a.totalscore }.sum
+    user.cases.map{ |a| a.totalscore }.sum/user.cases.count
   end
 
   def self.cases_analysis_stats_improvement(user, area)

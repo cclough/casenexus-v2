@@ -7,59 +7,62 @@
         .panel.dark
           = current_user.casecount
   .row
-    .span12
+    .span11
       1st Case Date
     .span3
       = Case.cases_analysis_stats_casedate(current_user, "first")
   .row
-    .span12
+    .span11
       Last Case Date
     .span3
       = Case.cases_analysis_stats_casedate(current_user, "last")
+  .spacer10
   .row
-    .span12
+    .span11
       Avg Score /40
     .span3
       = Case.cases_analysis_stats_averagescore(current_user)
   .row
-    .span12
-      Improvement Rate, %
+    .span11
+      Global Avg /40
+    .span3
+      = Case.cases_analysis_stats_global("totalscore")
+  .spacer10
+  .row
+    .span11
+      Rate of Improv, %/case
     .span3
       xxx
   .spacer10
   .row
-    .span12
+    .span11
       Strongest Skill
-    .span3
+    .span8
       = Case.cases_analysis_stats_skill(current_user, "weakest")
   .row
-    .span12
+    .span11
       Weakest Skill
-    .span3
+    .span8
       = Case.cases_analysis_stats_skill(current_user, "strongest")
   .spacer10
+
   .row
-    .span12
-      Global Average Total Score
-    .span3
-      = Case.cases_analysis_stats_global("totalscore")
-  .row
-    .span12
-      Structure
+    .span11
+      Structure Avg
     .span3
       = Case.cases_analysis_stats_global("structure")
   .row
-    .span12
-      Analytical
+    .span11
+      Analytical Avg
     .span3
       = Case.cases_analysis_stats_global("analytical")
   .row
-    .span12
-      Commercial
+    .span11
+      Commercial Avg
     .span3
       = Case.cases_analysis_stats_global("commercial")
   .row
-    .span12
-      Conclusion
+    .span11
+      Conclusion Avg
     .span3
       = Case.cases_analysis_stats_global("conclusion")
