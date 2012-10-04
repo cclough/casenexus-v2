@@ -10,36 +10,7 @@
       .panel.kill_bottom
         .row
 
-          .arrownav
-
-            %nav
-              %ul
-                %li
-                  %a{:href => "#1"} Home
-                %li
-                  %a{:href => "#2"} Team
-                %li
-                  %a{:href => "#3"} Features
-                %li
-                  %a{:href => "#4"} Screenshots
-                %li
-                  %a{:href => "#5"} Updates
-              %span.arrow
-
-          #static_home_arrownav_1.arrownav_page
-            = image_tag('home/banner.png', id: 'static_home_banner')
-
-          #static_home_arrownav_2.arrownav_page
-            = image_tag('home/banner.png', id: 'static_home_banner')
-
-          #static_home_arrownav_3.arrownav_page
-            = image_tag('home/banner.png', id: 'static_home_banner')
-
-          #static_home_arrownav_4.arrownav_page
-            = image_tag('home/banner.png', id: 'static_home_banner')
-
-          #static_home_arrownav_5.arrownav_page
-            = image_tag('home/banner.png', id: 'static_home_banner')
+          = render 'arrownav_home'
 
     .span30
       .row
