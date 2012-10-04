@@ -304,6 +304,8 @@ textarea {
 }
 
 
+/* For client side validations */
+
 .message {
   background-color: red;
   border-bottom-right-radius: 5px 5px;
@@ -314,3 +316,14 @@ textarea {
 div.field_with_errors div.ui-effects-wrapper {
   display: inline-block !important;
 }
+
+
+
+.modal_textarea {
+  height: 150px;
+  width: 97%;
+}
+
+
+
+

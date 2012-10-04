@@ -14,7 +14,7 @@
     %div   
       = f.text_field :event_date, placeholder: "Date", id: "modal_feedback_req_datepicker", tabindex: "1"
     %div
-      = f.text_area :content, placeholder: "Case Subject...", rows: '5', tabindex: "2"
+      = f.text_area :content, placeholder: "Case Subject...", rows: '5', tabindex: "2", class: "modal_textarea"
 
       = f.hidden_field :user_id, :value => @user.id
       = f.hidden_field :sender_id, :value => current_user.id

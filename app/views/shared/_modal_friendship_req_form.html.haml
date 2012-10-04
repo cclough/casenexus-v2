@@ -13,7 +13,7 @@
       #flash_notifications
 
       %div
-        = f.text_area :content, placeholder: "Send message...", tabindex: "1"
+        = f.text_area :content, placeholder: "Send message...", tabindex: "1", class: "modal_textarea"
         = f.hidden_field :user_id, :value => current_user.id
         = f.hidden_field :friend_id, :value => @user.id
 
