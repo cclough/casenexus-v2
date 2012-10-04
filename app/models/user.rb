@@ -99,14 +99,14 @@ class User < ActiveRecord::Base
   geocoded_by :ip_address,
     :latitude => :lat, :longitude => :lng
 
-  reverse_geocoded_by :lat, :lng do |obj,results|
-    if geo = results.first
-      obj.city    = geo.city
-      obj.country = geo.country_code
-    end
-  end
+  # reverse_geocoded_by :lat, :lng do |obj,results|
+  #   if geo = results.first
+  #     obj.city    = geo.city
+  #     obj.country = geo.country_code
+  #   end
+  # end
 
-  after_validation :geocode, :reverse_geocode
+  after_validation :geocode, #:reverse_geocode
 
 
 
