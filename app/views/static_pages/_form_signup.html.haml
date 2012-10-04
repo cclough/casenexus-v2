@@ -26,4 +26,6 @@
       = f.check_box :accepts_tandc
   .spacer5
   .row
+    = f.hidden_field :ip_address, value: request.remote_ip
+    
     = f.submit "Sign up", class: "btn btn-inverse pull-right", id: "static_home_signup_button_submit"

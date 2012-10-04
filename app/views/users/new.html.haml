@@ -4,8 +4,8 @@
 - content_for :javascript_includes do
 
   :javascript
-    var users_newedit_map_lat_start = "50";
-    var users_newedit_map_lng_start = "0";
+    var users_newedit_map_lat_start = '#{current_user.lat}';
+    var users_newedit_map_lng_start = '#{current_user.lng}';
 
 = content_for :content do
 

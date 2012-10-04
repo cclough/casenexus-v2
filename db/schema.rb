@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925205244) do
+ActiveRecord::Schema.define(:version => 20121004210619) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",            :null => false
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(:version => 20120925205244) do
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"
+
+  create_table "countries", :force => true do |t|
+    t.string "name"
+    t.string "code"
+    t.float  "lat"
+    t.float  "lng"
+  end
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"
@@ -85,12 +92,15 @@ ActiveRecord::Schema.define(:version => 20120925205244) do
     t.boolean  "approved",               :default => false
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "country"
     t.string   "provider"
     t.string   "headline"
     t.string   "roulette_token"
+    t.string   "city"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["lat", "lng"], :name => "index_users_on_lat_and_lng"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["roulette_token"], :name => "index_users_on_roulette_token"
 

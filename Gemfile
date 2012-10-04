@@ -10,13 +10,12 @@ gem 'mail'
 gem 'will_paginate', '3.0.3'
 gem 'scoped_search'
 gem 'geokit-rails3'
+gem 'geocoder'
 gem 'client_side_validations'
 gem 'amistad'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'bootstrap-wysihtml5-rails'
-gem 'chosen-rails'
-
 
 # heroku needs this outside of assets
 gem 'haml'

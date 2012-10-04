@@ -1,0 +1,3 @@
+- for country in Country.all
+	%option{value: country.lat.to_s+"_"+country.lng.to_s }
+		= country.name

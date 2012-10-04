@@ -181,34 +181,42 @@ class Case < ActiveRecord::Base
 
   def self.cases_analysis_stats_skill(user, type)
 
-    sums = { 'Structure' => user.cases.average('structure').round(1),
-             'Analytical' => user.cases.average('analytical').round(1),
-             'Commercial' => user.cases.average('commercial').round(1),
-             'Conclusion' => user.cases.average('conclusion').round(1) }
+    if user.casecount > 0
+      sums = { 'Structure' => user.cases.average('structure').round(1),
+               'Analytical' => user.cases.average('analytical').round(1),
+               'Commercial' => user.cases.average('commercial').round(1),
+               'Conclusion' => user.cases.average('conclusion').round(1) }
 
-    case type
-    when "weakest"
-      sums.sort.reverse.map { |key, value| key + " (" + value.to_s + ")"}.first
-    when "strongest"
-      sums.sort.map { |key, value| key + " (" + value.to_s + ")"}.first
+      case type
+      when "weakest"
+        sums.sort.reverse.map { |key, value| key + " (" + value.to_s + ")"}.first
+      when "strongest"
+        sums.sort.map { |key, value| key + " (" + value.to_s + ")"}.first
+      end
+    else
+      "No data"
     end
 
   end
 
   def self.cases_analysis_stats_global(type)
-    case type
-    when "totalscore"
-      (Case.all.map{ |a| a.totalscore }.sum/Case.all.count) if Case.all.count > 0
-    when "structure"
-      Case.average(:structure).round(2)
-    when "analytical"
-      Case.average(:analytical).round(2)
-    when "commercial"
-      Case.average(:commercial).round(2)
-    when "conclusion"
-      Case.average(:conclusion).round(2)
-    end
 
+    if Case.all.count > 0
+      case type
+      when "totalscore"
+        (Case.all.map{ |a| a.totalscore }.sum/Case.all.count) if Case.all.count > 0
+      when "structure"
+        Case.average(:structure).round(2)
+      when "analytical"
+        Case.average(:analytical).round(2)
+      when "commercial"
+        Case.average(:commercial).round(2)
+      when "conclusion"
+        Case.average(:conclusion).round(2)
+      end
+    else
+      "No data"
+    end
   end
 
 

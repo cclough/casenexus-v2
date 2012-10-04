@@ -25,7 +25,6 @@ admin.toggle!(:approved)
 admin.toggle!(:completed)
 admin.toggle!(:admin)
 
-
 admin2 = User.create!(
         first_name: "Rodrigo",
         last_name: "D",
@@ -63,11 +62,28 @@ admin3 = User.create!(
 admin3.toggle!(:approved)
 admin3.toggle!(:completed)
 
+admin4 = User.create!(
+        first_name: "Nicola",
+        last_name: "Rowe",
+        email: "nicolarowe@mac.com",
+        password: "clarecollege",
+        password_confirmation: "clarecollege",
+        lat: 43.5000,
+        lng: 172.6000,
+        status: Faker::Lorem.sentence(20),
+
+        skype: "",
+        linkedin: "",
+
+        accepts_tandc: true)
+
+admin4.toggle!(:approved)
+admin4.toggle!(:completed)
+
 
 University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
 University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
 University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
-
 
 # Friendships
 User.find(1) do |user|
@@ -76,5 +92,14 @@ User.find(1) do |user|
   User.find(2).approve user
   user.invite User.find(3)
   User.find(3).approve user
+  user.invite User.find(4)
+  User.find(4).approve user
+
+end
+
+User.find(4) do |user|
+
+  user.invite User.find(1)
+  User.find(1).approve user
 
 end

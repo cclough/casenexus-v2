@@ -11,7 +11,8 @@ var users_index_map_markers = [];
 
 var markerClusterer = null;
 
-var map = null;
+// var map = null;
+
 
 
 function users_index_map_marker_click (marker_id) {
@@ -59,6 +60,9 @@ function users_index_map_marker_click (marker_id) {
   });
 
 }
+
+
+
 
 
 // Update the User List - submits form...
@@ -217,6 +221,8 @@ $(document).ready(function(){
     };
 
 
+
+
     var mapOptions = {
       center: new google.maps.LatLng(users_index_map_lat_start, users_index_map_lng_start),
       zoom: 14,
@@ -231,6 +237,12 @@ $(document).ready(function(){
 
     map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions);
 
+    function users_index_map_pan(latlng) {
+
+      map.panTo(latlng);
+      map.setZoom(5);
+
+    }
 
     // Zoom Control Position Hack
     google.maps.event.addDomListener(map, 'tilesloaded', function(){
@@ -411,7 +423,17 @@ $(document).ready(function(){
 ///////////////////////////    ALL    //////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-  $(".chzn-select").chosen();
+  // $(".chzn-select").chosen();
+
+  $('.chzn-select').chosen().change(function() {
+
+    var latlng_chosen = $(this).find('option:selected').val().split("_");
+ 
+    var users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
+
+    users_index_map_pan(users_chosen_latlng);
+
+  });
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -420,7 +442,6 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////
 
   users_index_users_updatelist();
-
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////

@@ -5,15 +5,17 @@ $("#users_index_users").html("<%= escape_javascript(render("users")) %>")
 $('.users_index_users_item').click(function() {
 
 	// Break up id string, so can get id off the end
-	var target_id = this.id.split('_');
-	// Trigger Click
-	// google.maps.event.trigger(users_index_map_markers[target_id[4]], 'click');
+	// var target_id = this.id.split('_');
 
-  // map.panTo(target_id[4], target_id[5]);
-  // map.setZoom(5);
+	var target_id = $(this).attr('data-id');
+	var target_lat = $(this).attr('data-lat');
+	var target_lng = $(this).attr('data-lng');
 
-  users_index_map_marker_click(target_id[4]);
+  	users_index_map_marker_click(target_id);
 
+    var target_latlng = new google.maps.LatLng(target_lat, target_lng)
+
+    users_index_map_pan(target_latlng);
 });
 
 // Users Item Cascade Fade

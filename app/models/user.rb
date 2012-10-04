@@ -2,10 +2,13 @@ class User < ActiveRecord::Base
 
 	### Mass assignables
   attr_accessible :first_name, :last_name, :email, 
-  								:password, :password_confirmation, 
+  								:password, :password_confirmation,
+                  :ip_address,
                   :lat, :lng, :status,
                   :skype, :linkedin,
                   :email_admin,:email_users, :accepts_tandc
+
+  attr_accessor :ip_address
 
   ### Relationships
   has_many :cases
@@ -90,6 +93,23 @@ class User < ActiveRecord::Base
                    :distance_field_name => :distance,
                    :lat_column_name => :lat,
                    :lng_column_name => :lng
+
+  ### Geocoder
+
+  geocoded_by :ip_address,
+    :latitude => :lat, :longitude => :lng
+
+  reverse_geocoded_by :lat, :lng do |obj,results|
+    if geo = results.first
+      obj.city    = geo.city
+      obj.country = geo.country_code
+    end
+  end
+
+  after_validation :geocode, :reverse_geocode
+
+
+
 
 
   ### Custom Methods

@@ -23,7 +23,8 @@
                 = comment.created_at.strftime("%d/%m/%Y")
             .cases_analysis_comment_content
               = comment.structure_comment
-
+      - else
+        No comments found
     #cases_analysis_comments_tab_analytical.cases_analysis_comments_tab.tab-pane
       - if Case.cases_analysis_comments_analytical(current_user).count > 0
         - for comment in Case.cases_analysis_comments_analytical(current_user)
@@ -35,7 +36,8 @@
                 = comment.created_at.strftime("%d/%m/%Y")
             .cases_analysis_comment_content
               = comment.analytical_comment
-
+      - else
+        No comments found
     #cases_analysis_comments_tab_commercial.cases_analysis_comments_tab.tab-pane
       - if Case.cases_analysis_comments_commercial(current_user).count > 0
         - for comment in Case.cases_analysis_comments_commercial(current_user)
@@ -47,7 +49,8 @@
                 = comment.created_at.strftime("%d/%m/%Y")
             .cases_analysis_comment_content
               = comment.commercial_comment
-
+      - else
+        No comments found
     #cases_analysis_comments_tab_conclusion.cases_analysis_comments_tab.tab-pane
       - if Case.cases_analysis_comments_conclusion(current_user).count > 0
         - for comment in Case.cases_analysis_comments_conclusion(current_user)
@@ -59,3 +62,5 @@
                 = comment.created_at.strftime("%d/%m/%Y")
             .cases_analysis_comment_content
               = comment.conclusion_comment
+      - else
+        No comments found

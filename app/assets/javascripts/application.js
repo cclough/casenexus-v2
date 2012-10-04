@@ -16,5 +16,4 @@
 //= require rails.validations
 //= require rails.validations.callbacks
 //= require bootstrap-wysihtml5-all
-//= require chosen-jquery
 //= require_tree .
