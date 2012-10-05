@@ -110,14 +110,14 @@ class Case < ActiveRecord::Base
   end
 
   def self.cases_analysis_chart_progress_data(user)
-    chart_analysis_progress = user.cases.order('date asc').map {|c|
-                              { id: c.id,
-                              date: c.date.strftime("%Y-%m-%d"), 
-                              structure: c.structure, 
-                              analytical: c.analytical, 
-                              commercial: c.commercial, 
-                              conclusion: c.conclusion,
-                              totalscore: c.totalscore } }
+    cases_analysis_chart_progress_data = user.cases.order('date asc').map {|c|
+                                         { id: c.id,
+                                         date: c.date.strftime("%Y-%m-%d"), 
+                                         structure: c.structure, 
+                                         analytical: c.analytical, 
+                                         commercial: c.commercial, 
+                                         conclusion: c.conclusion,
+                                         totalscore: c.totalscore } }
   end
 
 

@@ -15,12 +15,15 @@ namespace :db do
 
       accepts_tandc = true
 
+      ip_address = "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)]
+      
       user = User.create!(first_name: first_name, last_name: last_name,
              email: email, password: password,
              password_confirmation: password,
              lat: lat, lng: lng, status: status,
              skype: skype, linkedin: linkedin,
-             accepts_tandc: accepts_tandc)
+             accepts_tandc: accepts_tandc,
+             ip_address: ip_address)
 
       user.toggle!(:approved)
       user.toggle!(:completed)

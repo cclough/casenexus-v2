@@ -19,7 +19,9 @@ admin = User.create!(
         skype: "christianclough",
         linkedin: "christian.clough@linkedin.com",
 
-        accepts_tandc: true)
+        accepts_tandc: true,
+
+        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin.toggle!(:approved)
 admin.toggle!(:completed)
@@ -38,7 +40,9 @@ admin2 = User.create!(
         skype: "rodrigo",
         linkedin: "rodrigo@rodrigo.com",
 
-        accepts_tandc: true)
+        accepts_tandc: true,
+
+        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin2.toggle!(:approved)
 admin2.toggle!(:completed)
@@ -57,7 +61,9 @@ admin3 = User.create!(
         skype: "greatdesign",
         linkedin: "great.design@linkedin.com",
 
-        accepts_tandc: true)
+        accepts_tandc: true,
+
+        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin3.toggle!(:approved)
 admin3.toggle!(:completed)
@@ -72,7 +78,9 @@ admin4 = User.create!(
         lng: 172.636645,
         status: Faker::Lorem.sentence(20),
 
-        accepts_tandc: true)
+        accepts_tandc: true,
+
+        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin4.toggle!(:approved)
 admin4.toggle!(:completed)

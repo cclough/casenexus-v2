@@ -1,3 +1,3 @@
-- for country in Country.all
-	%option{value: country.lat.to_s+"_"+country.lng.to_s }
-		= country.name
+- for item in Country.inuse
+	%option{value: item.lat.to_s+"_"+item.lng.to_s }
+		#{item.country} - #{item.city}
