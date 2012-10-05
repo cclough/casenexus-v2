@@ -235,7 +235,7 @@ describe "User pages" do
         fill_in "Email",            with: new_email
         find(:xpath, "//input[@id='users_newedit_lat']").set new_lat
         find(:xpath, "//input[@id='users_newedit_lng']").set new_lng
-        fill_in "user_status", with: new_status
+        fill_in "user_edit_status", with: new_status
 
         fill_in "Password",         with: user.password
         fill_in "Confirm Password", with: user.password

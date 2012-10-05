@@ -1,13 +1,42 @@
 #modal_help.modal.hide.fade
-  .modal-header
+  .modal-body{style:"height:700px;"}
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    %h3 casenexus.com
+    .arrownav_help
 
-  .modal-body
+      %nav
+        %ul
+          %li
+            %a{:href => "#1"} *
+          %li
+            %a{:href => "#2"} Find Partners
+          %li
+            %a{:href => "#3"} Roulette
+          %li
+            %a{:href => "#4"} Feedback
+          %li
+            %a{:href => "#5"} Track Progress
+        %span.arrow
 
-    %p
-      FUCK! HELP!
+    #application_arrownav_page_1.arrownav_page
+      = image_tag('home/banner.png')
 
+    #application_arrownav_page_2.arrownav_page
+      .row
+        .span30
+          = image_tag('home/banner.png')
+        .span10
+          %h1 Find Case Partners
+          %p Some random interesting text
+    #application_arrownav_page_3.arrownav_page
+      ROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGEROULETTE PAGE
+
+    #application_arrownav_page_4.arrownav_page
+      FEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACKFEEDBACK
+
+    #application_arrownav_page_5.arrownav_page
+      PROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILEPROFILE
+
+      
   .modal-footer
-    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    %a.btn.pull-right{"data-dismiss" => "modal", href: "#"} Close

@@ -324,6 +324,72 @@ div.field_with_errors div.ui-effects-wrapper {
   width: 97%;
 }
 
+#modal_help {
+  height:600px;
+  width:800px !important;
+  margin-left:-400px;
+  margin-bottom:-200px;
+}
 
 
+
+.arrownav_page {
+  display:none;
+}
+
+
+.arrownav_help {
+
+  margin-top:-30px;
+  margin-left:-14px;
+  margin-right:-14px;
+  margin-bottom:30px;
+
+  background: #f6f6f6;
+  border-bottom: 1px solid #eaeaea;
+  height:50px;
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+  border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+
+  nav { position: relative; left:130px; }
+  nav ul {
+    list-style: none;
+    padding: 0px 0px 0px 0px;
+  }
+
+  nav ul li {
+    float: left;
+    margin-left: 30px;
+    margin-top:0px;
+    position: relative;
+  }   
+
+  nav ul li a{
+    color: #b5b5b5;
+    font-size: 12px;
+    -webkit-transition:color 0.2s ease-in;  
+    -moz-transition:color 0.2s ease-in;  
+    -o-transition:color 0.2s ease-in;  
+    transition:color 0.2s ease-in;
+  }
+  
+  nav ul li a:hover { color: #777; }
+  nav ul li.current a{ color: #555; font-weight: bold; }
+
+  nav span.arrow {
+    width: 24px;
+    height: 13px;
+    background: url('app/light-nav_arrow.png') no-repeat;
+    display: none;
+    position: absolute;
+    top: 50px;
+  }
+
+}
 
