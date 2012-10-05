@@ -1,5 +1,5 @@
 - if current_user.friend_with?(@user)
-  %a#users_index_user_button_message.btn.btn-inverse
+  %a#users_index_user_button_message.btn.btn-inverse.btn-small
     %i.icon-comment.icon-white
     %span
       Message
@@ -9,7 +9,7 @@
     Partner Request Pending
 
 - elsif (@user != current_user)
-  %a#users_index_user_button_friend_req.btn.btn-inverse
+  %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
     %i.icon-comment.icon-white
     %span
       Send Friend Request

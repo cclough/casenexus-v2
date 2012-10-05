@@ -3,12 +3,10 @@ module UsersHelper
 	def avatar_for(user)
 
 		case user.casecount
-		when 0..4 then avatar_colour = "grey"
-		when 5..9 then avatar_colour = "yellow"
-		when 10..19 then avatar_colour = "orange"
-		when 20..29 then avatar_colour = "red"
-		when 30..39 then avatar_colour = "green"
-		when 40..49 then avatar_colour = "blue"
+		when 0..9 then avatar_colour = "grey"
+		when 10..19 then avatar_colour = "blue"
+		when 20..29 then avatar_colour = "yellow"
+		when 30..49 then avatar_colour = "orange"
 		when 50..1000 then avatar_colour = "purple"
 		end
 

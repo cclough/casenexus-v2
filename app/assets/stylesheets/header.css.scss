@@ -44,15 +44,20 @@ $gray_Lightest: #f6f6f6;
 
 
 #header_menu_profile_casecount {
-  font-size: 1.1em;
+  font-size: 1.3em;
   color: white;
   margin-left: 4px;
   letter-spacing: 1px;
+  font-weight:bold;
+}
+
+#header_menu_profile_name {
+
 }
 
 #header_menu_notifications_unreadcount {
   font-size: 1.1em;
-  color: #ff7484;
+  font-weight:bold;
   margin-left: 4px;
   letter-spacing: 1px;
 }

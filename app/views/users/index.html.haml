@@ -20,14 +20,12 @@
   #users_index_mappanel_footer.users_index_mappanel
     = render 'footer_map'
 
-  #users_index_mapcontainer_users.mapcontainer
+  #users_index_mapcontainer_users.mapcontainer{style:"padding:10px;"}
 
-    .panel.gradient
+    = render 'users_form'
 
-      = render 'users_form'
-
-      #users_index_users
-      / content is rendered by index.js.erb
+    #users_index_users
+    / content is rendered by index.js.erb
 
   #users_index_mapcontainer_user.mapcontainer
     #users_index_user

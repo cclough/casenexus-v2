@@ -1,12 +1,12 @@
 .btn.users_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s }
   / + "_" + users_item.lat.to_s + "_" + users_item.lng.to_s }
   .row
-    .span6
+    .span4
       .application_avatar
         = avatar_for(users_item)
     .span25.users_index_users_item_text
       .row
         %strong
           = users_item.name
-      .row
+      .row.font-small
         = users_item.status_trunc
