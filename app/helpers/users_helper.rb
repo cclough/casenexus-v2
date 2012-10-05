@@ -2,14 +2,16 @@ module UsersHelper
 
 	def avatar_for(user)
 
-		case user.casecount
-		when 0..9 then avatar_colour = "grey"
-		when 10..19 then avatar_colour = "blue"
-		when 20..29 then avatar_colour = "yellow"
-		when 30..49 then avatar_colour = "orange"
-		when 50..1000 then avatar_colour = "purple"
-		end
+		# case user.casecount
+		# when 0..9 then avatar_colour = "grey"
+		# when 10..19 then avatar_colour = "blue"
+		# when 20..29 then avatar_colour = "yellow"
+		# when 30..49 then avatar_colour = "orange"
+		# when 50..1000 then avatar_colour = "purple"
+		# end
 
+		avatar_colour = "orange"
+		
 		avatar_url = "avatars/avatar_" + avatar_colour + ".png"
 
 		avatar_alt = user.name + " has done " + user.casecount.to_s + " cases"

@@ -19,6 +19,7 @@ $gray_Lightest: #f6f6f6;
   position: absolute;
   z-index: 1;
   background: url(app/white-wash.png);
+  // background: rgba(255, 255, 255, 0.6);
 }
 
 #users_index_map {
@@ -73,7 +74,7 @@ header {
   top: 0px;
   margin-top:40px;
   left: 30px;
-  width: 350px;
+  width: 320px;
   height:100%;
   // z-index:10000000;
 
@@ -85,7 +86,7 @@ header {
 
 // Spacer that forces paginate to bottom of list
 #users_index_users_form_body {
-  height:500px;
+  height:520px;
 }
 
 #users_index_users {
@@ -96,12 +97,12 @@ header {
 
 .users_index_users_item {
   width: 100%;
-  height: 48px;
+  height: 50px;
   margin-top: 0px;
   margin-bottom: 2px;
   margin-left: 0px;
   margin-right: 0px;
-  padding: 3px;
+  padding: 4px;
   display: none;
   @include box_sizing;
 }

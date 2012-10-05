@@ -254,7 +254,7 @@ $(document).ready(function(){
     });
 
     // Draw markers
-    var image = new google.maps.MarkerImage("/assets/markers/marker_orange2.png",
+    var image = new google.maps.MarkerImage("/assets/markers/marker_orange.png",
         new google.maps.Size(40.0, 52.0),
         new google.maps.Point(0, 0),
         new google.maps.Point(20.0, 26.0)
