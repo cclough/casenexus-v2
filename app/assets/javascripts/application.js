@@ -13,7 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.slider
-//= require rails.validations
-//= require rails.validations.callbacks
 //= require bootstrap-wysihtml5-all
 //= require_tree .
