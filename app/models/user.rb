@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
   ### Scopes
 
   # Scoped_search Gem
-  scoped_search :on => [:first_name, :last_name, :status]
+  scoped_search :on => [:first_name, :last_name, :status, :headline]
 
   # Approved Scopes
   scope :approved, where(approved: true)
