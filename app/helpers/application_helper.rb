@@ -18,4 +18,11 @@ module ApplicationHelper
 	  link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
 	end
 
+
+	def filterable(ntype, title)
+		item = content_tag(:div, title, class: "notifications_index_sidenav_item")
+		link_to item, params.merge(ntype: ntype)
+	end
+
+
 end

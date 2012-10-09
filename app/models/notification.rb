@@ -5,6 +5,8 @@ class Notification < ActiveRecord::Base
   attr_accessible :user_id, :sender_id, :ntype, :content, 
 									:case_id, :event_date, :read
 
+  attr_accessor :sender
+
   belongs_to :user
 
   validates :user_id, presence: true
@@ -25,8 +27,9 @@ class Notification < ActiveRecord::Base
 
 
   # Scoped_search Gem
-  scoped_search :in => :user, :on => :first_name
-  scoped_search :in => :user, :on => :last_name
+
+  # scoped_search :in => :user, :on => :first_name
+  # scoped_search :in => :user, :on => :last_name
   scoped_search :on => [:content]
 
   ### Outputs

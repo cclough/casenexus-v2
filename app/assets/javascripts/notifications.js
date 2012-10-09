@@ -2,13 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 
-// Update the User List - submits form...
-function notifications_index_notifications_updatelist () {
-  $.get($("#notifications_index_notifications_form").attr("action"), $("#notifications_index_notifications_form").serialize(), null, "script");
-  return false;
-}
-
-
 $(document).ready(function(){
 
 
@@ -16,48 +9,66 @@ $(document).ready(function(){
 //////////////////////////// INDEX //////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-  ///////// Filters
+  // Show content
+  $('.notifications_index_notifications_item').click(function() {
 
-  $("#notifications_index_notifications_form input").keypress(function(e) {
-    if(e.which == 13) {
-      notifications_index_notifications_updatelist();
-    }
-  });
+    $(this).addClass('read');
+   
+    var item_id = $(this).attr('data-id');
 
-  // Listtype Button-Radio link
-  $('.notifications_index_sidenav_item').click(function() {
+    if ($(this).hasClass('slid')) {
 
-    var listtype = this.id.split('_');
+      $('#notifications_index_notifications_item_content_' + item_id).slideUp('fast'); 
 
-    $('input[name=notifications_listtype]:eq('+listtype[5]+')').attr('checked', 'checked');
+      $(this).removeClass('slid');
+      $(this).addClass('read');
 
-    $('.notifications_index_sidenav_item').removeClass('active');
+    } else {
 
-    $(this).addClass('active');
+      $('#notifications_index_notifications_item_content_' + item_id).slideDown('fast');     
 
-    notifications_index_notifications_updatelist();
+      $(this).addClass('slid');
+      $(this).removeClass('read');
+   }
 
-  });
-
-
-  // Ajax pagination
-  $("#notifications_index_notifications .application_pagination a, #notifications_index_notifications_form_sort a").live("click", function() {
-    $.getScript(this.href);
-    return false;
   });
 
 
+// $('.notifications_index_notifications_item_button_history').click(function() {
+
+//  var user_id = $(this).attr('data-id');
+
+//   $.get("/notifications/" + user_id, function(data) {
+
+//       $("#notifications_index_notifications").html(data); 
+
+//   });
+
+// });
+
+// $('.notifications_index_notifications_item').hover(
+
+//   function() {
+//    if ($(this).hasClass('read')) {
+//        $(this).stop().fadeTo('fast', 1);
+//     }
+//   },
+//   function(){
+//    if ($(this).hasClass('read')) {
+//       $(this).stop().fadeTo('fast', 0.3);
+//     }
+//   }
+
+// );
+
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
-//////////////////////////    CALLS    //////////////////////////
-/////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-  notifications_index_notifications_updatelist();
 
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
+
+
+
 
 });

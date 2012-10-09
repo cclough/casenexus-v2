@@ -8,21 +8,16 @@ class NotificationsController < ApplicationController
 
 	def index
 
-    if params[:notifications_listtype] == "all"
+    if params[:ntype] == "all" || !params[:ntype]
       notification_scope = current_user.notifications
     else
-      notification_scope = current_user.notifications.where(ntype: params[:notifications_listtype])
+      notification_scope = current_user.notifications.where(ntype: params[:ntype])
     end
 
     @notifications = notification_scope
                      .search_for(params[:search])
                      .order(sort_column + " " + sort_direction)
                      .paginate(per_page: 10, page: params[:page])
-
-    respond_to do |format|
-      format.html 
-      format.js # links index.js.erb!
-    end
 
 	end
 
@@ -73,7 +68,6 @@ class NotificationsController < ApplicationController
 
 	private
 
-    # For Index case sorting
     def sort_column
       current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "content"
     end

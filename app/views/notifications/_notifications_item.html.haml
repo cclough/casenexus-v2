@@ -1,4 +1,4 @@
-.notifications_index_notifications_item{:class => ("read" if notifications_item.read?)}
+.notifications_index_notifications_item{'data-id' => notifications_item.id.to_s, :class => ("read" if notifications_item.read?)}
   .row
     .span7
       = avatar_for(notifications_item.sender)
@@ -11,10 +11,13 @@
     .span25
       .notifications_index_notifications_item_content_trunc{id: 'notifications_index_notifications_item_content_trunc_' + notifications_item.id.to_s }
         = notifications_item.content_trunc
-      .notifications_index_notifications_item_content{id: 'notifications_index_notifications_item_content_' + notifications_item.id.to_s }
-        = notifications_item.content
-    .span3.notifications_index_notifications_item_button_expand{'data-id' => notifications_item.id.to_s}
+
+    .span3.notifications_index_notifications_item_button_expand{}
       %i.icon-arrow-down.icon-large
 
     .span12.notifications_index_notifications_item_action.pull-right
       = render partial: 'notifications_item_actions' , locals: { notifications_item: notifications_item }
+  .row
+    .span25.offset22
+      .notifications_index_notifications_item_content{id: 'notifications_index_notifications_item_content_' + notifications_item.id.to_s }
+        = notifications_item.content

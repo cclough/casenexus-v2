@@ -5,34 +5,40 @@ $(".cases_index_cases_item").click(function() {
 
   var case_id = this.id.split('_');
 
-  $.get("/cases/" + case_id[4], function(data) {
-
-    $('#cases_index_case').fadeOut('fast', function() {
-      $("#cases_index_case").html(data); 
-
-      var cases_show_chart_radar_data = $('#cases_show_chart_radar_data_storage').attr('data-cases_show_chart_radar');
-
-      cases_show_chart_radar_draw(cases_show_chart_radar_data);
   
-      $('#cases_index_case').fadeIn('fast');
+
+      $('#cases_index_case').hide("slide", { direction: "right" }, 1000, callback);
 
 
-      $('#cases_show_notes_form_notes').wysihtml5({
-          "link": false, //Button to insert a link. Default true
-          "image": false //Button to insert an image. Default true,
-      });
+      function callback {
 
+          $.get("/cases/" + case_id[4], function(data) {
+            $("#cases_index_case").html(data); 
 
-      $('#cases_show_notes_form_notes').keyup(function() {
-        $('#cases_show_notes_form_callback').fadeOut('slow');
+            $('#cases_index_case').show("slide", { direction: "right" }, 1000);
 
-        setTimeout(function(){ 
-          $('#edit_case_' + case_id[4]).submit();
-        }, 3000);  
-      });
+          });
 
-    });
+      }
 
-  });
 
 });
+
+
+      // var cases_show_chart_radar_data = $('#cases_show_chart_radar_data_storage').attr('data-cases_show_chart_radar');
+
+      // //$('#cases_index_case').show("slide", { direction: "left" }, 1000);
+
+      // $('#cases_show_notes_form_notes').wysihtml5({
+      //     "link": false, //Button to insert a link. Default true
+      //     "image": false //Button to insert an image. Default true,
+      // });
+
+
+      // $('#cases_show_notes_form_notes').keyup(function() {
+      //   $('#cases_show_notes_form_callback').fadeOut('slow');
+
+      //   setTimeout(function(){ 
+      //     $('#edit_case_' + case_id[4]).submit();
+      //   }, 3000);  
+      // });
