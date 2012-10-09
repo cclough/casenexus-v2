@@ -5,7 +5,6 @@ $(document).ready(function(){
 
   var roulette_index_users_local = [];
 
-
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
 
@@ -31,6 +30,21 @@ $(document).ready(function(){
     	$('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
     });
 
+
+
+
+    // listener for private message (roulette request)
+    socket.on("private", function(data) {  
+
+      $('#modal_roulette_req_from').html(data.from);
+      $('#modal_roulette_req_to').html(data.to);
+      $('#modal_roulette_req_msg').html(data.msg);
+
+      $('#modal_roulette_req').modal('show');
+
+    });
+
+
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
 
@@ -42,7 +56,7 @@ $(document).ready(function(){
           roulette_index_users_local.push(key_remote);
 
           $.get('/get_item?id=' + key_remote, function(data_item) {
-            $('#roulette_index_users').append('<div class=roulette_index_users_item id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
+            $('#roulette_index_users').append('<div class=roulette_index_users_item data-socket_id='+key_remote+' id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
           });
 
@@ -79,6 +93,15 @@ $(document).ready(function(){
 
     });
 
+
+    // Request send (private message)
+    $(".roulette_index_item_button_request").click(function() {
+        
+        var target_socket_id = $(self).attr('data-socket_id');
+
+        socket.emit("private", { msg: "Request to skype!", to: target_socket_id });
+
+    });
 
 
     // Disconnect Button

@@ -1,0 +1,189 @@
+- provide(:title, 'Give Feedback')
+- provide(:sub_title, 'Score and comment on your case partners performance')
+
+= form_for @case, url: { action: :create, user_id: @user.id } do |f|
+
+  / error message div
+  
+
+  #cases_new_form
+    = render 'shared/error_messages', object: @case
+    .row
+      .span42
+        .panel.gradient.kill_right
+          .row
+            .span30
+              .row
+                .span5
+                  = avatar_for(@user)
+                .span20
+                  #cases_new_target_name
+                    = @user.name
+              .spacer5
+              .row.font-small
+                = render 'shared/button_Group_linkedin_and_skype'
+            .span6
+              #cases_new_target_casecount
+                .panel.dark
+                  = @user.casecount
+                  .font-small
+                    cases
+
+      .span52
+        .panel.dark
+          .row
+            .span16
+              = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", 'data-date-format' => "dd/mm/yyyy", tabindex: "1", class: "span15"
+              = f.text_field :source, placeholder: "Source", tabindex: "2", class: "span15"
+            .span30
+              = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "3"
+    .panel.dark
+      The Rowe Tripos&#174;
+
+      = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"
+    .row    
+      .span94
+        .row
+          .span20
+            .cases_new_block_circle_outer.panel.dark.businessanalytics
+              .cases_new_block_circle.panel.darker
+                .cases_new_block_circle_text.businessanalytics
+                  Business Analytics
+          .span73
+            .row
+              .panel.dark.kill_top.cases_new_block_panel
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Handles addition, subtraction, multiplication, division and percentages well at back-of-envelope level
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Identifies key issue in case and problem-solving steps needed to solve it
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Prioritises correctly
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Reality-checks assumptions
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span62
+                    = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+                  .span7
+                    = f.text_field :structure, class: "cases_new_slider_input panel darker", tabindex: "-1"
+
+    .row
+      .span94
+        .row
+          .span20
+            .cases_new_block_circle_outer.panel.dark.interpersonal
+              .cases_new_block_circle.panel.darker
+                .cases_new_block_circle_text.interpersonal
+                  Interpersonal
+          .span73
+            .row
+              .panel.dark.kill_top.cases_new_block_panel
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Establishes rapport with interviewer
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Articulates clearly
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Is concise
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Asks for more information when necessary
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span62
+                    = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+                  .span7
+                    = f.text_field :structure, class: "cases_new_slider_input panel darker", tabindex: "-1"
+
+    .row    
+      .span94
+        .row
+          .span20
+            .cases_new_block_circle_outer.panel.dark.structure
+              .cases_new_block_circle.panel.darker
+                .cases_new_block_circle_text
+                  Structure
+          .span73
+            .row
+              .panel.dark.kill_top.cases_new_block_panel
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Makes intended approach to problem clear to interviewer upfront
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Sticks to announced structure unless indicates otherwise
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Explicitly announces any deviation from initially announced structure
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span40
+                    .cases_new_block_desc.panel.dark
+                      Pushes to a conclusion
+                  .span25
+                    #cases_new_slider_structure.cases_new_slider
+                  .span3
+                    = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                .row
+                  .span62
+                    = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+                  .span7
+                    = f.text_field :structure, class: "cases_new_slider_input panel darker", tabindex: "-1"

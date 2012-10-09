@@ -9,6 +9,11 @@ $(document).ready(function(){
     show: false
   });
 
+  $('#modal_roulette_req').modal({
+    backdrop: false,
+    show: false
+  });
+
   $('#header_link_help').click(function() {
   	$('.modal').modal('hide');
     $('#modal_help').modal('show');
