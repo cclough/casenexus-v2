@@ -1,0 +1,20 @@
+#modal_roulette_req
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+    %h3
+      Roulette Request from
+      %span#modal_roulette_req_from
+      To
+      %span#modal_roulette_req_to
+  .modal-body
+
+    %p
+      I would like to do a case with you, call me on skype:
+      %span#modal_roulette_req_msg
+
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "2"}
+      %i.icon-arrow-right.icon-white
+      Send Message
