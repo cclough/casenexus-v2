@@ -1,6 +1,6 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
+/////////////////////////////////////////////////////////////////
+///////////////////// GLOBAL FUNCTIONS //////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
 // Update the User List - submits form...
@@ -10,28 +10,38 @@ function cases_index_cases_updatelist () {
 }
 
 
-/////////////////////////////////////////////////////////////////
-///////////////////////////// SHOW //////////////////////////////
-/////////////////////////////////////////////////////////////////
+function cases_index_case_link () {
+  var query = getQueryParams(document.location.search);
+  // alert(query.foo);
 
-    
+  if (query.id) {
+  
+    $.get("/cases/" + query.id, function(data) {
+      $("#cases_index_case").html(data);
+    });
 
-function cases_show_chart_radar_draw(cases_show_chart_radar_data) {
+  }
+
+}
+
+
+function cases_show_chart_radar_draw(data) {
 
   // if ( typeof cases_show_chart_radar_data == 'object' ) {
+    $("#testing123").html(data);
 
-    var chart;
+    var chart_show_radar;
 
     AmCharts.ready(function () {
 
       // RADAR CHART
-      chart = new AmCharts.AmRadarChart();
-      chart.dataProvider = cases_show_chart_radar_data;
-      chart.categoryField = "criteria";
-      chart.startDuration = 1;
-      chart.startEffect = ">";
-      chart.sequencedAnimation = true;
-      chart.color = "#FFFFFF";
+      chart_show_radar = new AmCharts.AmRadarChart();
+      chart_show_radar.dataProvider = data;
+      chart_show_radar.categoryField = "criteria";
+      // chart_show_radar.startDuration = 1;
+      // chart_show_radar.startEffect = ">";
+      // chart_show_radar.sequencedAnimation = true;
+      chart_show_radar.color = "#FFFFFF";
 
 
       // VALUE AXIS
@@ -44,7 +54,7 @@ function cases_show_chart_radar_draw(cases_show_chart_radar_data) {
       valueAxis.fontWeight = "bold"
       valueAxis.minimum = 0;
       valueAxis.maximum = 10;
-      chart.addValueAxis(valueAxis);
+      chart_show_radar.addValueAxis(valueAxis);
 
       // GRAPH
       var graph = new AmCharts.AmGraph();
@@ -53,10 +63,10 @@ function cases_show_chart_radar_draw(cases_show_chart_radar_data) {
       graph.bullet = "round";
       graph.valueField = "score";
       graph.balloonText = "[[category]]: [[value]]/10";
-      chart.addGraph(graph);
+      chart_show_radar.addGraph(graph);
 
       // Balloon Settings
-      var balloon = chart.balloon;
+      var balloon = chart_show_radar.balloon;
       balloon.adjustBorderColor = true;
       balloon.color = "#000000";
       balloon.cornerRadius = 5;
@@ -65,22 +75,26 @@ function cases_show_chart_radar_draw(cases_show_chart_radar_data) {
       balloon.color = "#FFFFFF";
 
       // WRITE
-      chart.write("cases_show_chart_radar");
+      chart_show_radar.write("cases_show_chart_radar");
     });
 
   // }
 
 }
 
+/////////////////////////////////////////////////////////////////
+//////////////////////////    CALLS    //////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
+  cases_index_cases_updatelist();
+
+  cases_index_case_link();
 
 
-
-
-
-
-
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
 $(document).ready(function(){
@@ -257,7 +271,6 @@ $(document).ready(function(){
 
         chart.addGraph(graph);
         
-
         // fourth graph - CONCLUSION
         graph = new AmCharts.AmGraph();
         graph.type = "line";
@@ -295,6 +308,7 @@ $(document).ready(function(){
         legend.position = "bottom";
         legend.align = "center"
         legend.rollOverGraphAlpha = "0.15";
+        legend.color = '#f6f6f6';
         legend.horizontalGap = 5;
         legend.switchable = true;
         legend.valueWidth = 5;
@@ -357,15 +371,15 @@ $(document).ready(function(){
 
     function addclicklistener(graph) {
       graph.addListener("clickGraphItem", function (event) {
-          window.location = '/cases/' + event.item.dataContext.id;
+          window.location = '/cases?id=' + event.item.dataContext.id;
       });
     }
 
     function addrolloverlistener(graph) {
       graph.addListener("rollOverGraphItem", function (event) {
-          window.location = '/cases/' + event.item.dataContext.id;
-          //addGraph(graph)
 
+          //need to load in new chart data with ajax...ugghh
+          
           var radargraph = new AmCharts.AmGraph();
           radargraph.title = "Last 5";
           radargraph.lineColor = "#98cdff"
@@ -373,8 +387,10 @@ $(document).ready(function(){
           radargraph.bullet = "round"
           radargraph.valueField = "last5"
           radargraph.balloonText = "[[category]]: [[value]]/10"
-          chart.addGraph(graph);
+          chart_analysis_radar.addGraph(radargraph);
+          chart_analysis_radar.validateData();
 
+          
       });
 
 
@@ -388,18 +404,18 @@ $(document).ready(function(){
 
     function cases_analysis_chart_radar_draw() {
 
-      var chart;
+      var chart_analysis_radar;
 
       // Draw AM Radar Chart
       AmCharts.ready(function () {
         // RADAR CHART
-        chart = new AmCharts.AmRadarChart();
-        chart.dataProvider = cases_analysis_chart_radar_data;
-        chart.categoryField = "criteria";
-        chart.startDuration = 0.3;
-        chart.startEffect = ">";
-        chart.sequencedAnimation = true;
-        chart.color = "#FFFFFF";
+        chart_analysis_radar = new AmCharts.AmRadarChart();
+        chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data;
+        chart_analysis_radar.categoryField = "criteria";
+        chart_analysis_radar.startDuration = 0.3;
+        chart_analysis_radar.startEffect = ">";
+        chart_analysis_radar.sequencedAnimation = true;
+        chart_analysis_radar.color = "#f6f6f6";
 
         // GRAPH - FIRST 5
         var graph = new AmCharts.AmGraph();
@@ -409,7 +425,7 @@ $(document).ready(function(){
         graph.bullet = "round"
         graph.valueField = "first5"
         graph.balloonText = "[[category]]: [[value]]/10"
-        chart.addGraph(graph);
+        chart_analysis_radar.addGraph(graph);
 
         // GRAPH - LAST 5
         var graph = new AmCharts.AmGraph();
@@ -419,7 +435,7 @@ $(document).ready(function(){
         graph.bullet = "round"
         graph.valueField = "last5"
         graph.balloonText = "[[category]]: [[value]]/10"
-        chart.addGraph(graph);
+        chart_analysis_radar.addGraph(graph);
 
         // VALUE AXIS
         var valueAxis = new AmCharts.ValueAxis();
@@ -431,7 +447,7 @@ $(document).ready(function(){
         valueAxis.fontWeight = "bold"
         valueAxis.minimum = 0;
         valueAxis.maximum = 10;
-        chart.addValueAxis(valueAxis);
+        chart_analysis_radar.addValueAxis(valueAxis);
 
         // Balloon Settings
         var balloon = chart.balloon;
@@ -446,15 +462,16 @@ $(document).ready(function(){
         var legend = new AmCharts.AmLegend();
         legend.position = "bottom";
         legend.align = "center";
+        legend.color = '#f6f6f6';
         legend.markerType = "square";
         legend.rollOverGraphAlpha = 0;
         legend.horizontalGap = 5;
         legend.valueWidth = 5;
         legend.switchable = false;
-        chart.addLegend(legend);
+        chart_analysis_radar.addLegend(legend);
 
         // WRITE
-        chart.write("cases_analysis_chart_radar");
+        chart_analysis_radar.write("cases_analysis_chart_radar");
       });
 
     }
@@ -463,14 +480,6 @@ $(document).ready(function(){
 
   } // End of if statement
 
-
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-//////////////////////////    CALLS    //////////////////////////
-/////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////
-
-  cases_index_cases_updatelist();
 
 
 /////////////////////////////////////////////////////////////////

@@ -160,9 +160,9 @@ class Case < ActiveRecord::Base
   def self.cases_analysis_stats_casedate(user, type)
     case type
     when "first"
-      user.cases.all.last.date.strftime("%d/%m/%Y") unless user.casecount < 1
+      user.cases.all.last.date.strftime("%d %b '%y") unless user.casecount < 1
     when "last"
-      user.cases.all.first.date.strftime("%d/%m/%Y") unless user.casecount < 1
+      user.cases.all.first.date.strftime("%d %b '%y") unless user.casecount < 1
     end
   end
 
@@ -189,9 +189,9 @@ class Case < ActiveRecord::Base
 
       case type
       when "weakest"
-        sums.sort.reverse.map { |key, value| key + " (" + value.to_s + ")"}.first
-      when "strongest"
         sums.sort.map { |key, value| key + " (" + value.to_s + ")"}.first
+      when "strongest"
+        sums.sort.reverse.map { |key, value| key + " (" + value.to_s + ")"}.first
       end
     else
       "No data"

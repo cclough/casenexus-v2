@@ -72,7 +72,7 @@ class Notification < ActiveRecord::Base
   ## Macro
 
   def self.header(user)
-    user.notifications.limit(5).order('id desc').reverse
+    user.notifications.where(read: false).limit(5).order('created_at desc').reverse
   end
 
   def self.history(from_id, to_id)

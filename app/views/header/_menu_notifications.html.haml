@@ -11,13 +11,12 @@
       = link_to "See all", '/notifications', style: "text-align:center;"
     %li.divider
 
-    %li
-      / Build notification list for notifcations icon
-      - if Notification.header(current_user).count > 0
-        - Notification.header(current_user).each do |notification|
+    / Build notification list for notifcations icon
+    - if Notification.header(current_user).count > 0
+      - Notification.header(current_user).each do |notification|
 
-          / render notification_header partial
-          = render partial: 'header/menu_notifications_item' , locals: { :notification => notification }
+        / render notification_header partial
+        = render partial: 'header/menu_notifications_item' , locals: { :notification => notification }
 
-      - else
-        = link_to "You have no Notifications", '#'
+    - else
+      = link_to "You have no Notifications", '#'

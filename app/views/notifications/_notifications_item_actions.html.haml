@@ -6,7 +6,7 @@
 
 - when "feedback"
 
-  = link_to 'Jump to Case', '/cases/' + notifications_item.case_id.to_s
+  = link_to 'Jump to Case', '/cases?id=' + notifications_item.case_id.to_s
 
 - when "feedback_req"
 

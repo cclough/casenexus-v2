@@ -1,4 +1,4 @@
-.row.cases_index_cases_item{id: "cases_index_cases_item_" + cases_item.id.to_s }
+.row.cases_index_cases_item{"data-id" => cases_item.id.to_s }
   .span5
     .cases_avatar.index
     = avatar_for(cases_item.interviewer)

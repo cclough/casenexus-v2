@@ -1,12 +1,7 @@
-
-/ - content_for :javascript_includes do
-
-/ :javascript
-/   var cases_show_chart_radar_data = #{@case.cases_show_chart_radar_data};
-
-/ Chart data
+/ Load chart data
 %span#cases_show_chart_radar_data_storage{"data-cases_show_chart_radar" => @case.cases_show_chart_radar_data}
 
+#testing123
 
 .row
   .span30
@@ -23,7 +18,7 @@
       .spacer10
       .row
         .span30
-          = @case.subject
+          = @case.id
       .spacer10
       .row
         .span10

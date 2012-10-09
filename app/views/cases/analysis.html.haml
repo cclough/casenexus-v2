@@ -9,15 +9,32 @@
 .row
   .span25
     .row
+      .panel.gradient.font-small.kill_bottom
+        .row
+          .span12.application_name
+            = current_user.name
+          .span5
+            #cases_analysis_casecount
+              .panel.dark.kill_all
+                = current_user.casecount
+    .row
       = render 'stats'
   .span69
     .row
       .panel.dark.kill_left.kill-right
-        #cases_analysis_chart_progress      
+        .row
+          .cases_analysis_block_title
+            Progress over time
+        .row
+          #cases_analysis_chart_progress      
 .row
   .span42
-    .panel.dark.kill_top
-      #cases_analysis_chart_radar.cases_radar
+    .panel.dark.kill_top.kill_bottom
+      .row
+        .cases_analysis_block_title
+          Radar
+      .row
+        #cases_analysis_chart_radar.cases_radar
   .span50
     = render 'comments'
       

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.slider
-//= reqyure jquery.ui.all
+//= require jquery.effects.slide
+//= require jquery.effects.core
 //= require bootstrap-wysihtml5-all
 //= require_tree .

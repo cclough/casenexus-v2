@@ -1,68 +1,69 @@
 .panel.dark.font-small
   .row
-    .span5
-      = avatar_for(current_user)
-    .span5.offset7
-      #cases_analysis_casecount
-        .panel.dark
-          = current_user.casecount
+    .cases_analysis_block_title
+      Stats
   .row
-    .span11
-      1st Case Date
-    .span3
+    .span9.cases_analysis_stats_name
+      First Case
+    .span7
       = Case.cases_analysis_stats_casedate(current_user, "first")
   .row
-    .span11
-      Last Case Date
-    .span3
+    .span9.cases_analysis_stats_name
+      Last Case
+    .span7
       = Case.cases_analysis_stats_casedate(current_user, "last")
   .spacer10
   .row
-    .span11
-      Avg Score /40
-    .span3
-      = Case.cases_analysis_stats_averagescore(current_user)
-  .row
-    .span11
-      Global Avg /40
-    .span3
-      = Case.cases_analysis_stats_global("totalscore")
-  .spacer10
-  .row
-    .span11
-      Rate of Improv, %/case
-    .span3
-      xxx
-  .spacer10
-  .row
-    .span11
+    .span9.cases_analysis_stats_name
       Strongest Skill
     .span8
       = Case.cases_analysis_stats_skill(current_user, "weakest")
   .row
-    .span11
+    .span9.cases_analysis_stats_name
       Weakest Skill
     .span8
       = Case.cases_analysis_stats_skill(current_user, "strongest")
   .spacer10
+  .row.cases_analysis_stats_sub
+    .span9.cases_analysis_stats_name
+      Average Score
+    .span3
+      You
+    .span5
+      All users
+  .row
+    .span9.cases_analysis_stats_name
+      Total
+    .span3
+      = Case.cases_analysis_stats_averagescore(current_user)
+    .span3
+      = Case.cases_analysis_stats_global("totalscore")
 
   .row
-    .span11
-      Structure Avg
+    .span9.cases_analysis_stats_name
+      Structure
+    .span3
+      = Case.cases_analysis_stats_global("structure")
     .span3
       = Case.cases_analysis_stats_global("structure")
   .row
-    .span11
-      Analytical Avg
+    .span9.cases_analysis_stats_name
+      Analytical
+    .span3
+      = Case.cases_analysis_stats_global("analytical")
     .span3
       = Case.cases_analysis_stats_global("analytical")
   .row
-    .span11
-      Commercial Avg
+    .span9.cases_analysis_stats_name
+      Commercial
+    .span3
+      = Case.cases_analysis_stats_global("commercial")
     .span3
       = Case.cases_analysis_stats_global("commercial")
   .row
-    .span11
-      Conclusion Avg
+    .span9.cases_analysis_stats_name
+      Conclusion
+    .span3
+      = Case.cases_analysis_stats_global("conclusion")
     .span3
       = Case.cases_analysis_stats_global("conclusion")
