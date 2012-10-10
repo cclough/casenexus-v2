@@ -8,16 +8,19 @@ $(document).ready(function(){
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
 
-
-    $('#testing1231').html(io.sockets.sockets[socket]);
-    $('#testing1232').html(socket);
-    $('#testing1233').html(socket.id);
-
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
     // force new connection to enable reconnect - might be messy - https://github.com/LearnBoost/socket.io-client/issues/251
     var socket = io.connect('https://cclough.nodejitsu.com', {secure: true, 'force new connection': true});
+
+
+
+    $('#testing1231').html(io.sockets.sockets[socket]);
+    $('#testing1232').html(socket);
+    $('#testing1233').html(socket.id);
+
+
 
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
