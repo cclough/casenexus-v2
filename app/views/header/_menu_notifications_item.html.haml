@@ -1,14 +1,13 @@
 %li
   = link_to ("/notifications?id=" + notification.id.to_s) do
-    .row
-      .span3
-        = avatar_for(notification.sender)
-      .span25
-
-        .span15
+    .span5
+      = avatar_for(notification.sender)
+    .span25
+      .row
+        .span10
           = notification.sender.name
         .span5
           = time_ago_in_words(notification.created_at) + " ago"
-        .row
-          .span16
-            = notification.ntype
+      .row
+        .span5
+          = notification.content

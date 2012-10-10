@@ -1,25 +1,25 @@
 .row
   .span5
     .spacer10
-    = avatar_for(@user)
+    = avatar_for(@roulette_user)
   .span20.offset3
     .spacer15
     .application_name
-      = @user.name
+      = @roulette_user.name
   .span45.offset3
     .spacer20
     .span15
       = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
     .span15
-      %a{:href => "skype:#{@user.skype}?call"}
-        %img{:alt => "#{@user.skype} status", :height => "20", :src => "http://mystatus.skype.com/smallclassic/#{@user.skype}", :style => "border: none;", :width => "114"}/
+      %a{:href => "skype:#{@roulette_user.skype}?call"}
+        %img{:alt => "#{@roulette_user.skype} status", :height => "20", :src => "http://mystatus.skype.com/smallclassic/#{@roulette_user.skype}", :style => "border: none;", :width => "114"}/
     .span10
-      .btn.btn-small.roulette_index_item_button_request{"data-socket_id" => @user.id}
+      .btn.btn-small.roulette_index_item_button_request{"data-socket_id" => @roulette_user.id}
         Send Request
 
   .span5.offset3
     .roulette_index_users_item_casecount
       .panel.darker.kill_all
-        = @user.casecount
+        = @roulette_user.casecount
         .font-small
           cases
