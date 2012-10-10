@@ -4,7 +4,7 @@ class RouletteController < ApplicationController
   before_filter :completed_user
   
   def index
-    # current_user.update_attribute(:roulette_token, SecureRandom.urlsafe_base64)
+    current_user.update_attribute(:roulette_token, ('a'..'z').to_a.shuffle[0,8].join)
   end
 
   def item

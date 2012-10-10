@@ -31,17 +31,15 @@ $(document).ready(function(){
     });
 
 
-
-
     // listener for private message (roulette request)
     socket.on("private", function(data) {  
 
-      $('#modal_roulette_req_from').html(data.from);
-      $('#modal_roulette_req_to').html(data.to);
-      $('#modal_roulette_req_msg').html(data.msg);
+      // $('#modal_roulette_req_from').html(data.from);
+      // $('#modal_roulette_req_to').html(data.to);
+      // $('#modal_roulette_req_msg').html(data.msg);
 
-      $('#modal_roulette_req').modal('show');
-
+      // $('#modal_roulette_req').modal('show');
+      $('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
     });
 
 
