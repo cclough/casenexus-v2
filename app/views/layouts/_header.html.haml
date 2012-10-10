@@ -7,7 +7,7 @@
       - if signed_in?
 
         - if completed?
-          %ul#nav_links_left.nav.pull-left
+          %ul#header_nav_links_left.nav.pull-left
 
             %li.divider-vertical
 
@@ -19,7 +19,7 @@
             %li
               = link_to raw("<i class='icon-bolt icon-large icon-white'></i> Help"), '#', id: 'header_link_help'
 
-          %ul.nav.pull-right
+          %ul#header_nav_links_right.nav.pull-right
 
             = render 'header/menu_notifications'
 

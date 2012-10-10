@@ -1,7 +1,7 @@
 %li
   = link_to ("/notifications?id=" + notification.id.to_s) do
     .span5
-      = avatar_for(notification.sender)
+      = avatar_for(notification.sender, 'icon')
     .span25
       .row
         .span10

@@ -25,11 +25,13 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-#nav_links_left {
+#header_nav_links_left {
   margin-left:180px;
 }
 
-
+#header_nav_links_right {
+  margin-right:15px;
+}
 
 #header_signin_form {
   position: absolute;
@@ -44,11 +46,9 @@ $gray_Lightest: #f6f6f6;
 
 
 #header_menu_profile_casecount {
-  font-size: 1.3em;
-  color: white;
   margin-left: 4px;
-  letter-spacing: 1px;
-  font-weight:bold;
+  position:absolute;
+  top:0px;
 }
 
 #header_menu_profile_name {

@@ -11,12 +11,12 @@
     .row
       .panel.gradient.font-small.kill_bottom
         .row
-          .span12.application_name
+          .span13.application_name
             = current_user.name
-          .span5
+          .span6
             #cases_analysis_casecount
-              .panel.dark.kill_all
-                = current_user.casecount
+              = avatar_for(current_user, 'chevron')
+
     .row
       = render 'stats'
   .span69

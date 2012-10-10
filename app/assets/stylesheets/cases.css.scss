@@ -31,6 +31,8 @@ $blue_pastel: #98cdff;
   }
 }
 
+
+
 .cases_score {
   font-size: 27px;
   font-weight: bold;
@@ -216,6 +218,12 @@ $blue_pastel: #98cdff;
   font-weight:bold;
 }
 
+
+#cases_analysis_casecount {
+  margin-left: 4px;
+  margin-top:-13px;
+  font-size: 1.6em;
+}
 
 .cases_analysis_block_title {
   background: url('app/dark-bg.png') repeat top left;

@@ -289,18 +289,14 @@ header {
 }
 
 
+
 #users_show_casecount {
-  position: absolute;
-  top: 0px;
-  right:40px;
-  width:88px;
-
-  font-size:30px;
-  color:white;
-  font-weight: bold;
-  text-align:center;
-
+  margin-left: 4px;
+  position:absolute;
+  top:0px;
+  right:50px;
 }
+
 
 #users_show_button_Group_feedback {
   border-top: 1px solid $gray_Lighter;
