@@ -25,11 +25,14 @@ $(document).ready(function(){
 
     });
 
-    // listener, whenever the server emits 'updatechat', this updates the chat body
-    socket.on('updatelog', function (username, data) {
-    	$('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
-    });
+    // Request send (private message)
+    $(".roulette_index_item_button_request").click(function() {
+        
+        var target_socket_id = $(self).attr('data-socket_id');
 
+        socket.emit("private", { msg: "Request to skype", to: 1 });
+
+    });
 
     // listener for private message (roulette request)
     socket.on("private", function(data) {  
@@ -42,6 +45,10 @@ $(document).ready(function(){
       $('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
     });
 
+    // listener, whenever the server emits 'updatechat', this updates the chat body
+    socket.on('updatelog', function (username, data) {
+    	$('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
+    });
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
@@ -92,14 +99,6 @@ $(document).ready(function(){
     });
 
 
-    // Request send (private message)
-    $(".roulette_index_item_button_request").click(function() {
-        
-        var target_socket_id = $(self).attr('data-socket_id');
-
-        socket.emit("private", { msg: "Request to skype", to: '1' });
-
-    });
 
 
     // Disconnect Button
