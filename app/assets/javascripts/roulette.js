@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 
 
-    $('#testing1231').html(io.sockets.sockets[socket]);
+    // $('#testing1231').html(io.sockets.socket(socket));
     $('#testing1232').html(socket);
     $('#testing1233').html(socket.id);
 
