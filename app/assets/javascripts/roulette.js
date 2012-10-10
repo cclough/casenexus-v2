@@ -8,6 +8,11 @@ $(document).ready(function(){
   // Connect Button
   $("#roulette_index_button_connect").click(function() {
 
+
+    $('#testing1231').html(io.sockets.sockets[socket]);
+    $('#testing1232').html(socket);
+    $('#testing1233').html(socket.id);
+
     $("#roulette_index_button_connect").attr("disabled", true);
     $("#roulette_index_button_connect_text").html("Connecting...");
 
@@ -49,6 +54,9 @@ $(document).ready(function(){
     socket.on('updatelog', function (username, data) {
     	$('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
     });
+
+
+
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
