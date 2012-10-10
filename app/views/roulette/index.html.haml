@@ -11,9 +11,7 @@
     .row
       .span85.offset2
         .row
-          #testing1231
-          #testing1232
-          #testing1233
+
           .span17
             %button#roulette_index_button_connect.btn.btn-inverse.btn-large.roulette_index_button_connection
               %i.icon-link.icon-white
@@ -30,7 +28,10 @@
                 Your roulette token
             .row
               #roulette_index_token
-                = current_user.roulette_token
+                /= current_user.roulette_token
+                #testing1231
+                #testing1232
+                #testing1233
           .span36
             .row.font-small
               If you are interviewer, ask the interviewee for their roulette token:
