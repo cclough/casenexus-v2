@@ -12,15 +12,9 @@ $(".cases_index_cases_item").click(function() {
       // Load the DATA
       $("#cases_index_case").html(data);
 
-
-      // Other show js
-      var cases_show_chart_radar_data = $('#cases_show_chart_radar_data_storage').attr('data-cases_show_chart_radar');
-
-      cases_show_chart_radar_draw(cases_show_chart_radar_data);
-
       $('#cases_show_notes_form_notes').wysihtml5({
-          "link": false, //Button to insert a link. Default true
-          "image": false //Button to insert an image. Default true
+        "link": false, //Button to insert a link. Default true
+        "image": false //Button to insert an image. Default true
       });
 
       $('#cases_show_notes_form_notes').keyup(function() {
@@ -33,6 +27,14 @@ $(".cases_index_cases_item").click(function() {
 
       // Slide in
       $('#cases_index_case').show("slide", { direction: "right" }, 300);
+
+
+
+      setTimeout(function(){ 
+        cases_show_chart_radar_draw($('#cases_show_chart_radar_data_storage').attr("data-cases_show_chart_radar"));
+      }, 3000);
+
+
     });
 
   });

@@ -1,6 +1,6 @@
 module UsersHelper
 
-	def avatar_for(user, type)
+	def avatar_for(user, type, casecount)
 
 		case type
 		when "icon"
@@ -28,7 +28,7 @@ module UsersHelper
 			avatar_style = "background-image: url(/assets/chevrons/chevron_" + avatar_colour + ".png);"
 
 			content_tag :div, style: avatar_style, class: 'application_chevron' do
-				content_tag(:div, current_user.casecount) + content_tag(:div, 'cases', class: 'application_chevron_text')
+				content_tag(:div, casecount) + content_tag(:div, 'cases', class: 'application_chevron_text')
 			end
 		end
 	end

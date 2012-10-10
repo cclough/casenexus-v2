@@ -1,7 +1,7 @@
 .row
   .span5
     .spacer10
-    = avatar_for(@roulette_user)
+    = avatar_for(@roulette_user, 'icon','')
   .span20.offset3
     .spacer15
     .application_name
@@ -19,7 +19,4 @@
 
   .span5.offset3
     .roulette_index_users_item_casecount
-      .panel.darker.kill_all
-        = @roulette_user.casecount
-        .font-small
-          cases
+      = avatar_for(@roulette_user, 'chevron')

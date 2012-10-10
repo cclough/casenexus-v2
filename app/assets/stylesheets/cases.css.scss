@@ -86,6 +86,12 @@ $blue_pastel: #98cdff;
   text-align:center;
 }
 
+#cases_show_casecount {
+  margin-left: 4px;
+  margin-top:-13px;
+  font-size: 1.1em !important;
+}
+
 
 /* case form */
 
@@ -222,7 +228,7 @@ $blue_pastel: #98cdff;
 #cases_analysis_casecount {
   margin-left: 4px;
   margin-top:-13px;
-  font-size: 1.6em;
+  font-size: 1.3em !important;
 }
 
 .cases_analysis_block_title {

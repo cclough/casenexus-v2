@@ -1,12 +1,12 @@
 .row.cases_index_cases_item{"data-id" => cases_item.id.to_s }
   .span5
     .cases_avatar.index
-    = avatar_for(cases_item.interviewer)
+    = avatar_for(cases_item.interviewer, 'icon', '')
   .span7.cases_index_item_scoreandtime
     .cases_score
       = cases_item.totalscore
     .row.application_timestamp.font-small
-      = cases_item.created_at.strftime("%a %m '%y")
+      = cases_item.created_at.strftime("%d %b '%y")
   .span15
     .row
       %strong 

@@ -4,8 +4,11 @@
 - content_for :javascript_includes do
 
   :javascript
-    var cases_analysis_chart_radar_data = #{Case.cases_analysis_chart_radar_data(current_user)};
-    var cases_analysis_chart_progress_pathToImages = "/assets/amcharts/";
+    $(document).ready(function(){
+      var cases_analysis_chart_radar_data = #{Case.cases_analysis_chart_radar_data(current_user)};
+      cases_analysis_charts_draw(cases_analysis_chart_radar_data);
+    });
+
 .row
   .span25
     .row
@@ -15,7 +18,7 @@
             = current_user.name
           .span6
             #cases_analysis_casecount
-              = avatar_for(current_user, 'chevron')
+              = avatar_for(current_user, 'chevron', current_user.casecount)
 
     .row
       = render 'stats'

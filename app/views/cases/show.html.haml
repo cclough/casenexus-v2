@@ -1,21 +1,25 @@
+:javascript
+
 / Load chart data
 %span#cases_show_chart_radar_data_storage{"data-cases_show_chart_radar" => @case.cases_show_chart_radar_data}
 
-#testing123
 
 .row
   .span30
-
+    #testing123
     .panel.gradient.kill_left.kill_right
       .row
         .span6
-          = avatar_for(@case.interviewer)
-        .span20
+          = avatar_for(@case.interviewer, 'icon','')
+        .span14
           .application_name
             = @case.interviewer.name
           .row.application_timestamp
-            = @case.date.strftime("%m/%d/%Y")
-      .spacer10
+            = @case.date.strftime("%d %b '%y")
+        .span6
+          #cases_show_casecount
+            = avatar_for(current_user, 'chevron', @case.interviewer.casecount)
+    .panel.dark.kill_all
       .row
         .span30
           = @case.id
@@ -29,7 +33,7 @@
         .span10
           Submitted
         .span20
-          = @case.created_at.strftime("%m/%d/%Y")
+          = @case.created_at.strftime("%d %b '%y")
 
   .span30
     #cases_show_chart_radar.cases_radar

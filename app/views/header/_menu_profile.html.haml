@@ -6,7 +6,7 @@
       = current_user.name
     %span.caret
     %span#header_menu_profile_casecount
-      = avatar_for(current_user, 'chevron')
+      = avatar_for(current_user, 'chevron', current_user.casecount)
       
 
   %ul.dropdown-menu
