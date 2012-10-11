@@ -29,14 +29,13 @@ function cases_show_chart_radar_draw(data) {
 
   $("#testing123").html(data);
 
+  var chart;
 
-  var chart_show_radar;
-
-  // AmCharts.ready(function () {
+  AmCharts.ready(function () {
 
     // RADAR CHART
     chart = new AmCharts.AmRadarChart();
-    chart.dataProvider = '[{criteria: "Structure", score: 8}, {criteria: "Commercial", score: 3}, {criteria: "Conclusion", score: 3}, {criteria: "Analytical", score: 4}]';
+    chart.dataProvider = data;
     chart.categoryField = "criteria";
     chart.startDuration = 1;
     chart.startEffect = ">";
@@ -75,7 +74,7 @@ function cases_show_chart_radar_draw(data) {
 
     // WRITE
     chart.write('cases_show_chart_radar');
-  // });
+  });
 
 }
 
