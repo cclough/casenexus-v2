@@ -26,14 +26,11 @@ $(".cases_index_cases_item").click(function() {
       });
 
       // Slide in
-      $('#cases_index_case').show("slide", { direction: "right" }, 300);
+      $('#cases_index_case').show("slide", { direction: "right" }, 300, function() {
 
-
-
-      setTimeout(function(){ 
         cases_show_chart_radar_draw($('#cases_show_chart_radar_data_storage').attr("data-cases_show_chart_radar"));
-      }, 3000);
 
+      });
 
     });
 

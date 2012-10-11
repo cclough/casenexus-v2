@@ -105,7 +105,7 @@ class Case < ActiveRecord::Base
       first5: " + (user.cases.limit(5).order('id asc').collect(&:conclusion).sum.to_f/5).to_s + "},
       {criteria: \"Analytical\", 
       last5: " + (user.cases.limit(5).order('id desc').collect(&:analytical).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:analytical).sum.to_f/5).to_s + "},
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:analytical).sum.to_f/5).to_s + "}
       ]"
   end
 
