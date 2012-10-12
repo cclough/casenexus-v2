@@ -65,6 +65,9 @@ module Casenexus
     # for font awesome
     config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
 
+    # wysihtml5 css issue - https://github.com/sferik/rails_admin/issues/1312
+    config.assets.precompile += ['bootstrap-wysihtml5.css', 'bootstrap-wysihtml5-all.js']
+
     # Enable Lib Assets - doesn't work for e.g. Amcharts
     # config.autoload_paths << "#{config.root}/lib"
 

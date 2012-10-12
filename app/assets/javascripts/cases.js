@@ -475,6 +475,12 @@ $(document).ready(function(){
   $("#cases_new_datepicker").datepicker();
   // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
   
+  $('.cases_new_comment').wysihtml5({
+    "emphasis": false, //Italics, bold, etc. Default true
+    "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+    "link": false, //Button to insert a link. Default true
+    "image": false //Button to insert an image. Default true
+  });
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////

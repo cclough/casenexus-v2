@@ -31,8 +31,6 @@ $blue_pastel: #98cdff;
   }
 }
 
-
-
 .cases_score {
   font-size: 27px;
   font-weight: bold;
@@ -73,7 +71,7 @@ $blue_pastel: #98cdff;
 
 .cases_show_comment {
   overflow-y: scroll;
-  height:100px;
+  height:150px;
 }
 
 #cases_show_notes_form_notes {
@@ -126,51 +124,39 @@ $blue_pastel: #98cdff;
 
 .cases_new_block_circle {
     background: #f00;
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin:0px;
 }
 
 .cases_new_block_circle_outer {
     background: #f00;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     margin:0px;
     margin-left:15px;
-
+    margin-top:65px;
     &.businessanalytics {
-      margin-left:80px;
-      margin-top:80px;
     }
     &.structure {
-      margin-left:80px;
-      margin-top:60px;
     }
     &.interpersonal {
-      margin-top:80px;
     }
     padding:10px;
 }
 .cases_new_block_circle_text {
-    margin-top:30px;
+    margin-top:10px;
     text-align:center;
     font-weight:bold;
-    font-size:16px;
-    &.interpersonal {
-      font-size: 14px;
-      margin-left:-3px;
-    }
-    &.businessanalytics {
-      font-size: 14px;
-      margin-top:19px;
-    }
+    font-size:20px;
+    color:#b9b9b9;
 }
 
 
 .cases_new_slider {
-  width: 210px;
+  width: 140px;
   float: left;
   margin-top:30px;
   margin-right:10px;
@@ -181,9 +167,9 @@ $blue_pastel: #98cdff;
 
 .cases_new_slider_input {
   border:0;
-  height:60px !important; 
-  width:60px;
-  font-size:35px !important;
+  height:30px !important; 
+  width:30px;
+  font-size:15px !important;
   color:#b9b9b9;
   font-weight:bold;
   text-align:center;
@@ -202,18 +188,15 @@ $blue_pastel: #98cdff;
 }
 
 .cases_new_comment {
-  width:280px !important;
-  height:85px !important;
+  width:240px !important;
+  height:120px !important;
   margin-left:3px;
 }
 
 #cases_new_target_casecount {
-  width:88px;
-  font-size:30px;
-  color:white;
-  font-weight: bold;
-  text-align:center;
-
+  margin-left: 4px;
+  margin-top:-13px;
+  font-size: 1.1em !important;
 }
 
 

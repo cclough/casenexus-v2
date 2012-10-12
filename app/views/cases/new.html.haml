@@ -15,7 +15,7 @@
             .span30
               .row
                 .span5
-                  = avatar_for(@user, 'icon')
+                  = avatar_for(@user,'icon','')
                 .span20
                   #cases_new_target_name
                     = @user.name
@@ -44,121 +44,149 @@
     .row    
       .span94
         .row
-          .span20
-            .cases_new_block_circle_outer.panel.dark.businessanalytics
-              .cases_new_block_circle.panel.darker
-                .cases_new_block_circle_text.businessanalytics
-                  Business Analytics
-          .span73
-            .panel.dark.kill_top.cases_new_block_panel
-              .row
-                .span39
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Handles addition, subtraction, multiplication, division and percentages well at back-of-envelope level
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Identifies key issue in case and problem-solving steps needed to solve it
-
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Prioritises correctly
-   
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Reality-checks assumptions
-
-                .span28
-                  .row
-                    .span23
-                      #cases_new_slider_structure.cases_new_slider
-                    .span3
-                      = f.text_field :structure, class: "cases_new_slider_input panel darker", tabindex: "-1"
-                  .row
-                    = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
-
-
-    .row
-      .span94
-        .row
-          .span20
-            .cases_new_block_circle_outer.panel.dark.interpersonal
-              .cases_new_block_circle.panel.darker
-                .cases_new_block_circle_text.interpersonal
-                  Interpersonal
-          .span73
-            .panel.dark.kill_top.cases_new_block_panel
-              .row
-                .span39
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Establishes rapport with interviewer
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Articulates clearly
-
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Is concise
-   
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Asks for more information when necessary
-
-                .span28
-                  .row
-                    .span23
-                      #cases_new_slider_commercial.cases_new_slider
-                    .span3
-                      = f.text_field :commercial, class: "cases_new_slider_input panel darker", tabindex: "-1"
-                  .row
-                    = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
-
+          .span59
+            .row
+              .panel.dark.kill_top.cases_new_block_panel
+                .row
+                  .span50
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Addition, subtraction, multiplication, division and percentages at back-of-envelope level
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Identifies key issue in case and problem-solving steps needed to solve it
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Prioritises correctly
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Reality-checks assumptions
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                  .span1
+                    .cases_new_block_circle_outer.panel.dark.businessanalytics
+                      .cases_new_block_circle.panel.darker
+                        .cases_new_block_circle_text
+                          4
+                
+          .span32.offset2
+            .panel.darker.kill_all
+              = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
 
     .row    
       .span94
         .row
-          .span20
-            .cases_new_block_circle_outer.panel.dark.structure
-              .cases_new_block_circle.panel.darker
-                .cases_new_block_circle_text
-                  Structure
-          .span73
-            .panel.dark.kill_top.cases_new_block_panel
-              .row
-                .span39
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Makes intended approach to problem clear to interviewer upfront
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Sticks to announced structure unless indicates otherwise
+          .span61
+            .row
+              .panel.dark.kill_top.cases_new_block_panel
+                .row
+                  .span50
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Addition, subtraction, multiplication, division and percentages at back-of-envelope level
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Identifies key issue in case and problem-solving steps needed to solve it
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Prioritises correctly
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Reality-checks assumptions
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                  .span3
+                    .cases_new_block_circle_outer.panel.dark.businessanalytics
+                      .cases_new_block_circle.panel.darker
+                        .cases_new_block_circle_text
+                          4
+                
+          .span32
+            .panel.darker.kill_all
+              = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
 
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Explicitly announces any deviation from initially announced structure
-   
-                  .row
-                    .span40
-                      .cases_new_block_desc.panel.dark
-                        Pushes to a conclusion
-
-                .span28
-                  .row
-                    .span23
-                      #cases_new_slider_conclusion.cases_new_slider
-                    .span3
-                      = f.text_field :conclusion, class: "cases_new_slider_input panel darker", tabindex: "-1"
-                  .row
-                    = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+    .row    
+      .span94
+        .row
+          .span61
+            .row
+              .panel.dark.kill_top.cases_new_block_panel
+                .row
+                  .span50
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Addition, subtraction, multiplication, division and percentages at back-of-envelope level
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Identifies key issue in case and problem-solving steps needed to solve it
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Prioritises correctly
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                    .row
+                      .span30
+                        .cases_new_block_desc.panel.dark
+                          Reality-checks assumptions
+                      .span16
+                        #cases_new_slider_structure.cases_new_slider
+                      .span3
+                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
+                  .span3
+                    .cases_new_block_circle_outer.panel.dark.businessanalytics
+                      .cases_new_block_circle.panel.darker
+                        .cases_new_block_circle_text
+                          4
+                
+          .span32
+            .panel.darker.kill_all
+              = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
