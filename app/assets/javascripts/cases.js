@@ -107,7 +107,7 @@ function cases_analysis_charts_draw(radar_data) {
   function cases_analysis_chart_progress_draw(data) {
 
     // draw AM Progress Chart
-    AmCharts.ready(function () {
+    // AmCharts.ready(function () {
 
       // SERIAL CHART
       chart = new AmCharts.AmSerialChart();
@@ -279,7 +279,7 @@ function cases_analysis_charts_draw(radar_data) {
       // WRITE
       chart.write("cases_analysis_chart_progress");
 
-    });
+    // });
 
   }
 
@@ -339,7 +339,7 @@ function cases_analysis_charts_draw(radar_data) {
     var chart_analysis_radar;
 
     // Draw AM Radar Chart
-    AmCharts.ready(function () {
+    // AmCharts.ready(function () {
       // RADAR CHART
       chart_analysis_radar = new AmCharts.AmRadarChart();
       chart_analysis_radar.dataProvider = radar_data;
@@ -404,7 +404,7 @@ function cases_analysis_charts_draw(radar_data) {
 
       // WRITE
       chart_analysis_radar.write("cases_analysis_chart_radar");
-    });
+    // });
 
   }
 
