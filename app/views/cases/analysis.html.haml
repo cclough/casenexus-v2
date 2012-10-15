@@ -6,6 +6,7 @@
   :javascript
     $(document).ready(function(){
       var cases_analysis_chart_radar_data = #{Case.cases_analysis_chart_radar_data(current_user)};
+      
       cases_analysis_charts_draw(cases_analysis_chart_radar_data);
     });
 
@@ -29,7 +30,9 @@
           .cases_analysis_block_title
             Progress over time
         .row
-          #cases_analysis_chart_progress      
+          #cases_analysis_chart_progress
+            .cases_analysis_loading.progress.progress-striped.active 
+              .bar
 .row
   .span42
     .panel.dark.kill_top.kill_bottom
@@ -38,6 +41,8 @@
           Radar
       .row
         #cases_analysis_chart_radar.cases_radar
+          .cases_analysis_loading.progress.progress-striped.active 
+            .bar
   .span50
     = render 'comments'
       

@@ -14,9 +14,9 @@ $(".cases_index_cases_item").click(function() {
 
       $('#cases_show_notes_form_notes').wysihtml5({
         "link": false, //Button to insert a link. Default true
-        "image": false //Button to insert an image. Default true
+        "image": false, //Button to insert an image. Default true
         "emphasis": false, //Italics, bold, etc. Default true
-        "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+        "font-styles": false //Font styling, e.g. h1, h2, etc. Default true
       });
 
       $('#cases_show_notes_form_notes').keyup(function() {
@@ -27,17 +27,18 @@ $(".cases_index_cases_item").click(function() {
         }, 3000);  
       });
 
+      
+
       // Slide in
       $('#cases_index_case').show("slide", { direction: "right" }, 300, function() {
 
-        cases_show_chart_radar_draw($('#cases_show_chart_radar_data_storage').attr("data-cases_show_chart_radar"));
-
+        cases_show_chart_radar_draw();
+        
       });
 
     });
 
   });
-
 
 });
 

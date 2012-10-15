@@ -311,3 +311,15 @@ $blue_pastel: #98cdff;
   text-align:center;
 
 }
+
+.cases_analysis_loading {
+  width:150px;
+  position:relative;
+  left:50%;
+  margin-left: -75px;
+  margin-top:-40px;
+  top:50%;
+  .bar {
+    width:100%;
+  }
+}
