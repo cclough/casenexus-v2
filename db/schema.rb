@@ -11,26 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121004231820) do
+ActiveRecord::Schema.define(:version => 20121015220542) do
 
   create_table "cases", :force => true do |t|
-    t.integer  "user_id",            :null => false
-    t.date     "date",               :null => false
+    t.integer  "user_id",                   :null => false
+    t.date     "date",                      :null => false
     t.text     "subject"
     t.string   "source"
-    t.integer  "structure"
-    t.text     "structure_comment"
-    t.integer  "analytical"
-    t.text     "analytical_comment"
-    t.integer  "commercial"
-    t.text     "commercial_comment"
-    t.integer  "conclusion"
-    t.text     "conclusion_comment"
     t.text     "comment"
     t.text     "notes"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "interviewer_id",     :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "interviewer_id",            :null => false
+    t.integer  "arithmetic"
+    t.integer  "problemsolves"
+    t.integer  "prioritises"
+    t.integer  "sensechecks"
+    t.integer  "rapport"
+    t.integer  "articulates"
+    t.integer  "concise"
+    t.integer  "requestsinfo"
+    t.integer  "approachupfront"
+    t.integer  "stickstostructure"
+    t.integer  "announcesdeviation"
+    t.integer  "pushtoconclusion"
+    t.text     "interpersonal_comment"
+    t.text     "businessanalytics_comment"
+    t.text     "structure_comment"
+    t.text     "recommendation1"
+    t.text     "recommendation2"
+    t.text     "recommendation3"
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"

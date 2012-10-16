@@ -22,8 +22,6 @@ $blue_pastel: #98cdff;
   background-image: url(app/sort_down_arrow.gif);
 }
 
-
-
 .cases_avatar {
   text-align:center;
   &.index{
@@ -109,17 +107,37 @@ $blue_pastel: #98cdff;
   width:100%;
 }
 
-.cases_new_block_panel {
+.cases_new_block {
   padding:3px;
   padding-bottom:0px;
 }
 
+.cases_new_block_title {
+  background: url('app/dark-bg.png') repeat top left;
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+  border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+
+  line-height:25px;
+  height:25px;
+  text-align:center;
+  font-weight: bold;
+  font-size:14px;
+  color: $gray_Lighter;
+  margin-left:15px;
+  margin-right:15px;
+  margin-bottom:0px;
+  width:400px;
+}
 .cases_new_block_desc {
   color: $gray_Lighter;
-  width: 91%;
-  font-size:11px;
   margin:0px;
-  margin-bottom:3px;
+  margin-bottom:2px;
 }
 
 .cases_new_block_circle {
@@ -127,6 +145,7 @@ $blue_pastel: #98cdff;
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border:0px !important;
     margin:0px;
 }
 
@@ -136,34 +155,27 @@ $blue_pastel: #98cdff;
     height: 60px;
     border-radius: 50%;
     margin:0px;
-    margin-left:15px;
-    margin-top:65px;
-    &.businessanalytics {
-    }
-    &.structure {
-    }
-    &.interpersonal {
-    }
+    margin-left:19px;
+    margin-top:53px;
     padding:10px;
 }
+
 .cases_new_block_circle_text {
     margin-top:10px;
     text-align:center;
     font-weight:bold;
-    font-size:20px;
+    font-size:25px;
     color:#b9b9b9;
 }
-
 
 .cases_new_slider {
   width: 140px;
   float: left;
-  margin-top:30px;
-  margin-right:10px;
-  margin-left:8px;
+  margin-top:15px;
+  margin-right:20px;
+  margin-left:20px;
   z-index:0;
 }
-
 
 .cases_new_slider_input {
   border:0;
@@ -176,20 +188,15 @@ $blue_pastel: #98cdff;
   margin:0px;
 }
 
-.cases_new_slider_input_sub {
-  border:0;
-  height:30px !important; 
-  width:30px;
-  font-size:15px !important;
-  color:#b9b9b9;
-  font-weight:bold;
-  text-align:center;
-  margin:0px;
+.cases_new_comment {
+  width:307px !important;
+  height:114px !important;
+  margin-left:3px;
 }
 
-.cases_new_comment {
-  width:240px !important;
-  height:120px !important;
+.cases_new_recommendation {
+  width:250px !important;
+  height:50px !important;
   margin-left:3px;
 }
 

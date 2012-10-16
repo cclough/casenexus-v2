@@ -3,9 +3,6 @@
 
 = form_for @case, url: { action: :create, user_id: @user.id } do |f|
 
-  / error message div
-  
-
   #cases_new_form
     = render 'shared/error_messages', object: @case
     .row
@@ -37,156 +34,168 @@
               = f.text_field :source, placeholder: "Source", tabindex: "2", class: "span15"
             .span30
               = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "3"
-    .panel.dark
-      The Rowe Tripos&#174;
-
-      = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"
+    .row
+      .cases_new_block_title
+        Top Recommendations - The Rowe Tripos&#174;
+      .panel.dark.kill_top
+        .row
+          .span28
+            = f.text_area :recommendation1, placeholder: "1st Recommendation", class: "cases_new_recommendation"
+          .span28
+            = f.text_area :recommendation2, placeholder: "2nd Recommendation", class: "cases_new_recommendation"
+          .span28
+            = f.text_area :recommendation3, placeholder: "3rd Recommendation", class: "cases_new_recommendation"
+          .span3
+            = f.submit "Send case feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9"
     .row    
       .span94
-        .row
-          .span59
-            .row
-              .panel.dark.kill_top.cases_new_block_panel
-                .row
-                  .span50
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Addition, subtraction, multiplication, division and percentages at back-of-envelope level
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Identifies key issue in case and problem-solving steps needed to solve it
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Prioritises correctly
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Reality-checks assumptions
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                  .span1
-                    .cases_new_block_circle_outer.panel.dark.businessanalytics
-                      .cases_new_block_circle.panel.darker
-                        .cases_new_block_circle_text
-                          4
-                
-          .span32.offset2
-            .panel.darker.kill_all
-              = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
-
-    .row    
-      .span94
-        .row
-          .span61
-            .row
-              .panel.dark.kill_top.cases_new_block_panel
-                .row
-                  .span50
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Addition, subtraction, multiplication, division and percentages at back-of-envelope level
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Identifies key issue in case and problem-solving steps needed to solve it
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Prioritises correctly
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Reality-checks assumptions
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                  .span3
-                    .cases_new_block_circle_outer.panel.dark.businessanalytics
-                      .cases_new_block_circle.panel.darker
-                        .cases_new_block_circle_text
-                          4
-                
-          .span32
-            .panel.darker.kill_all
-              = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+        .cases_new_block_title
+          Business Analytics
+        .panel.dark.cases_new_block.kill_top
+          .row
+            .span55
+              .row
+                .span43
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Addition, subtraction, multiplication, division and percentages at back-of-envelope level", "data-original-title" => "Arithmetic" }
+                        Arithmetic
+                    .span18
+                      #cases_new_slider_arithmetic.cases_new_slider
+                    .span4
+                      = f.text_field :arithmetic, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Identifies key issue in case and problem-solving steps needed to solve it", "data-original-title" => "Problem Solution" }
+                        Problem Solution
+                    .span18
+                      #cases_new_slider_problemsolves.cases_new_slider
+                    .span4
+                      = f.text_field :problemsolves, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Prioritising", "data-original-title" => "Prioritising" }
+                        Prioritising
+                    .span18
+                      #cases_new_slider_prioritises.cases_new_slider
+                    .span4
+                      = f.text_field :prioritises, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Reality Checks Assumptions", "data-original-title" => "Sense-checking" }
+                        Sense-checking
+                    .span18
+                      #cases_new_slider_sensechecks.cases_new_slider
+                    .span4
+                      = f.text_field :sensechecks, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                .span1
+                  .cases_new_block_circle_outer.panel.dark
+                    .cases_new_block_circle.panel.darker
+                      #cases_new_block_circle_text_businessanalytics.cases_new_block_circle_text
+                        4
+                  
+            .span35
+              .panel.darker.kill_all
+                = f.text_area :businessanalytics_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
 
     .row    
       .span94
-        .row
-          .span61
-            .row
-              .panel.dark.kill_top.cases_new_block_panel
-                .row
-                  .span50
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Addition, subtraction, multiplication, division and percentages at back-of-envelope level
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Identifies key issue in case and problem-solving steps needed to solve it
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Prioritises correctly
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                    .row
-                      .span30
-                        .cases_new_block_desc.panel.dark
-                          Reality-checks assumptions
-                      .span16
-                        #cases_new_slider_structure.cases_new_slider
-                      .span3
-                        = f.text_field :structure, class: "cases_new_slider_input_sub panel darker", tabindex: "-1"
-                  .span3
-                    .cases_new_block_circle_outer.panel.dark.businessanalytics
-                      .cases_new_block_circle.panel.darker
-                        .cases_new_block_circle_text
-                          4
-                
-          .span32
-            .panel.darker.kill_all
-              = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+        .cases_new_block_title
+          Interpersonal
+        .panel.dark.cases_new_block.kill_top
+          .row
+            .span55
+              .row
+                .span43
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Establishes a rapport with interviewer", "data-original-title" => "Rapport" }
+                        Rapport
+                    .span18
+                      #cases_new_slider_rapport.cases_new_slider
+                    .span4
+                      = f.text_field :rapport, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Articulates clearly", "data-original-title" => "Articulation" }
+                        Articulation
+                    .span18
+                      #cases_new_slider_articulates.cases_new_slider
+                    .span4
+                      = f.text_field :articulates, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Is Concise", "data-original-title" => "Concise" }
+                        Concise
+                    .span18
+                      #cases_new_slider_concise.cases_new_slider
+                    .span4
+                      = f.text_field :concise, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Asks for more information when neccessary", "data-original-title" => "Requests Information" }
+                        Requests Information
+                    .span18
+                      #cases_new_slider_requestsinfo.cases_new_slider
+                    .span4
+                      = f.text_field :requestsinfo, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                .span1
+                  .cases_new_block_circle_outer.panel.dark
+                    .cases_new_block_circle.panel.darker
+                      #cases_new_block_circle_text_interpersonal.cases_new_block_circle_text
+                        4
+                  
+            .span35
+              .panel.darker.kill_all
+                = f.text_area :interpersonal_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+
+    .row    
+      .span94
+        .cases_new_block_title
+          Structure
+        .panel.dark.cases_new_block.kill_top
+          .row
+            .span55
+              .row
+                .span43
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Makes intended approach to problem clear to interviewer up front", "data-original-title" => "Approach up front" }
+                        Approach up front
+                    .span18
+                      #cases_new_slider_approachupfront.cases_new_slider
+                    .span4
+                      = f.text_field :approachupfront, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Sticks to announced structure unless indicates otherwise", "data-original-title" => "Sticks to structure" }
+                        Sticks to structure
+                    .span18
+                      #cases_new_slider_stickstostructure.cases_new_slider
+                    .span4
+                      = f.text_field :stickstostructure, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Explicitly announces any deivation from initially announced structure", "data-original-title" => "Announces Deviation" }
+                        Announces Deviation
+                    .span18
+                      #cases_new_slider_announcesdeviation.cases_new_slider
+                    .span4
+                      = f.text_field :announcesdeviation, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                  .row
+                    .span20
+                      .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Pushes to a conclusion", "data-original-title" => "Push to Ccnclusion" }
+                        Push to conclusion
+                    .span18
+                      #cases_new_slider_pushtoconclusion.cases_new_slider
+                    .span4
+                      = f.text_field :pushtoconclusion, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                .span1
+                  .cases_new_block_circle_outer.panel.dark
+                    .cases_new_block_circle.panel.darker
+                      #cases_new_block_circle_text_structure.cases_new_block_circle_text
+                        4
+                  
+            .span35
+              .panel.darker.kill_all
+                = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"

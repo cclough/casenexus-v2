@@ -33,9 +33,9 @@ function cases_show_chart_radar_draw() {
   chart_show_radar = new AmCharts.AmRadarChart();
   chart_show_radar.dataProvider = cases_show_chart_radar_data;
   chart_show_radar.categoryField = "criteria";
-  chart_show_radar.startDuration = 1;
-  chart_show_radar.startEffect = ">";
-  chart_show_radar.sequencedAnimation = true;
+  // chart_show_radar.startDuration = 1;
+  // chart_show_radar.startEffect = ">";
+  // chart_show_radar.sequencedAnimation = true;
   chart_show_radar.color = "#FFFFFF";
 
   // VALUE AXIS
@@ -470,12 +470,58 @@ $(document).ready(function(){
   $("#cases_new_datepicker").datepicker();
   // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
   
-  $('.cases_new_comment').wysihtml5({
+  $('[name="case[businessanalytics_comment]"]').wysihtml5({
     "emphasis": false, //Italics, bold, etc. Default true
     "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
     "link": false, //Button to insert a link. Default true
     "image": false //Button to insert an image. Default true
   });
+
+  $('[name="case[interpersonal_comment]"]').wysihtml5({
+    "emphasis": false, //Italics, bold, etc. Default true
+    "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+    "link": false, //Button to insert a link. Default true
+    "image": false //Button to insert an image. Default true
+  });
+
+  $('[name="case[structure_comment]"]').wysihtml5({
+    "emphasis": false, //Italics, bold, etc. Default true
+    "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
+    "link": false, //Button to insert a link. Default true
+    "image": false //Button to insert an image. Default true
+  });
+
+  $(".cases_new_popover").hover(
+    function() {
+      $(this).popover("show"); 
+    },
+    function() {
+      $(this).popover("hide"); 
+    }
+  );
+
+  $("#cases_new_popover").click(function() {
+    $("#cases_new_popover").popover("show"); 
+  });
+
+
+  // $(".cases_new_slider_input").keyUp(function() {
+
+  //   if ($(this).attr("data-category") == "businessanalytics") {
+
+  //     $('#cases_new_block_circle_text_businessanalytics').html()
+
+  //   } else if ($(this).attr("data-category") == "interpersonal") {
+
+
+
+  //   } else if ($(this).attr("data-category") == "structure") {
+
+
+
+  //   }
+
+  // });
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
