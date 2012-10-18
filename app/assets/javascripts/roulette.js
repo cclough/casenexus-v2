@@ -1,9 +1,10 @@
-$(document).ready(function(){
 
-  $('#modal_roulette_req').modal({
-    backdrop: false,
-    show: false
-  });
+$('#modal_roulette_req').modal({
+  backdrop: false,
+  show: false
+});
+
+$(document).ready(function(){
 
   $("#roulette_index_button_connect").attr("disabled", false);
   $("#roulette_index_button_disconnect").attr("disabled", true);
