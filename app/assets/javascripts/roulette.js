@@ -32,7 +32,7 @@ $(document).ready(function(){
         
         var target_socket_id = $(self).attr('data-socket_id');
 
-        socket.emit("private", { msg: "Request to skype", to: target_socket_id });
+        socket.emit("private", { msg: "Request to skype", to: 1 });
 
     });
 
