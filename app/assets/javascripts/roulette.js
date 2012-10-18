@@ -44,7 +44,10 @@ $(document).ready(function(){
       // $('#modal_roulette_req_msg').html(data.msg);
 
       // $('#modal_roulette_req').modal('show');
-      $('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
+      
+      //$('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
+      
+      alert('hello');
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
