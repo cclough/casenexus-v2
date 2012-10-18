@@ -14,7 +14,7 @@
       %a{:href => "skype:#{@roulette_user.skype}?call"}
         %img{:alt => "#{@roulette_user.skype} status", :height => "20", :src => "http://mystatus.skype.com/smallclassic/#{@roulette_user.skype}", :style => "border: none;", :width => "114"}/
     .span10
-      .btn.btn-small.roulette_index_item_button_request{"data-socket_id" => @roulette_user.id}
+      .btn.btn-small.roulette_index_item_button_request{"data-user_id" => @roulette_user.id}
         Send Request
 
   .span5.offset3
