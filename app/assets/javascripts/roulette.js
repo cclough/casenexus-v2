@@ -39,7 +39,7 @@ $(document).ready(function(){
       
       //$('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
       
-      //alert('hello');
+      alert(data.from);
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
@@ -72,7 +72,7 @@ $(document).ready(function(){
 
               $('#testing123').html(target_user_id)
 
-              //socket.emit("private", { msg: "Request to skype", to: target_user_id });
+              socket.emit("private", { msg: "Request to skype", to: target_user_id });
 
             });
 
