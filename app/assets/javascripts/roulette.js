@@ -16,12 +16,6 @@ $(document).ready(function(){
 
 
 
-    // $('#testing1231').html(io.sockets.socket(socket));
-    $('#testing1232').html(socket);
-    $('#testing1233').html(socket.id);
-
-
-
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
     	
@@ -38,7 +32,7 @@ $(document).ready(function(){
         
         var target_socket_id = $(self).attr('data-socket_id');
 
-        socket.emit("private", { msg: "Request to skype", to: 1 });
+        socket.emit("private", { msg: "Request to skype", to: target_socket_id });
 
     });
 
