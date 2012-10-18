@@ -30,7 +30,7 @@ $(document).ready(function(){
     // Request send (private message)
     $(".roulette_index_item_button_request").click(function() {
         
-        var target_user_id = $(self).attr('data-user_id');
+        var target_user_id = $(this).attr('data-user_id');
 
         socket.emit("private", { msg: "Request to skype", to: target_user_id });
 
