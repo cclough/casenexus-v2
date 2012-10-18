@@ -63,25 +63,27 @@ $(document).ready(function(){
           $.get('/get_item?id=' + key_remote, function(data_item) {
             $('#roulette_index_users').append('<div class=roulette_index_users_item data-socket_id='+key_remote+' id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
-
-
-            // Request send (private message)
-            $(".roulette_index_item_button_request").click(function() {
-          
-              var target_user_id = $(this).attr('data-user_id');
-
-              $('#testing123').html(target_user_id)
-
-              socket.emit("private", { msg: "Request to skype", to: target_user_id });
-
-            });
-
-
           });
 
         }
 
       });
+
+
+      // remove all click events
+      $(".roulette_index_item_button_request").unbind("click");
+
+      // Request send (private message)
+      $(".roulette_index_item_button_request").click(function() {
+    
+        var target_user_id = $(this).attr('data-user_id');
+
+        $('#testing123').html(target_user_id)
+
+        socket.emit("private", { msg: "Request to skype", to: target_user_id });
+
+      });
+
 
       // make array of remote users
       var roulette_index_users_remote = $.map(data, function(key, value) { return key; });
