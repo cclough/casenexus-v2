@@ -7,6 +7,8 @@
 
 = content_for :content do
 
+  = render 'shared/modal_roulette_req' if signed_in?
+  
   .panel.dark
     .row
       .span85.offset2
@@ -31,9 +33,7 @@
             .row
               #roulette_index_token
                 /= current_user.roulette_token
-                #testing1231
-                #testing1232
-                #testing1233
+
           .span36
             .row.font-small
               If you are interviewer, ask the interviewee for their roulette token:
@@ -52,5 +52,3 @@
       #roulette_index_users
     .row
       #roulette_index_log
-
-  = render 'shared/modal_roulette_req' if signed_in?
