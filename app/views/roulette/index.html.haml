@@ -7,8 +7,6 @@
 
 = content_for :content do
 
-  = render 'shared/modal_roulette_req' if signed_in?
-  
   .panel.dark
     .row
       .span85.offset2
@@ -52,3 +50,6 @@
       #roulette_index_users
     .row
       #roulette_index_log
+
+  = render 'shared/modal_roulette_req' if signed_in?
+  
