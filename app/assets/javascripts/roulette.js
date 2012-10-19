@@ -1,10 +1,11 @@
 
-$('#modal_roulette_req').modal({
-  backdrop: false,
-  show: false
-});
 
 $(document).ready(function(){
+
+  $('#modal_roulette_req').modal({
+    backdrop: false,
+    show: false
+  });
 
   $("#roulette_index_button_connect").attr("disabled", false);
   $("#roulette_index_button_disconnect").attr("disabled", true);
@@ -77,7 +78,7 @@ $(document).ready(function(){
     
               var target_user_id = $(this).attr('data-user_id');
 
-              $('#testing123').html(target_user_id)
+              $('#testing123').html(target_user_id);
 
               socket.emit("private", { msg: "Request to skype", to: target_user_id });
 
