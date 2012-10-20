@@ -1,27 +1,27 @@
 Casenexus::Application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  # Static Pages
-  root to: 'static_pages#home'
-  match '/about', to: 'static_pages#about'
+  # User dashboard
+  match '/dashboard' => 'dashboard#index', as: :dashboard
 
   # Users
-  resources :users, only: [:index, :show, :new, :create, :edit, :update]
-  match '/signup', to: 'users#new'
+  # resources :users, only: [:index, :show, :new, :create, :edit, :update]
+  # match '/signup', to: 'users#new'
   match '/tooltip', to: 'users#tooltip'
   match '/test', to: 'users#test'
   
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 
   # LinkedIn
-  match '/auth/linkedin/callback', to: 'sessions#create'
+  # match '/auth/linkedin/callback', to: 'sessions#create'
 
   # Sessions
-  resources :sessions, only: [:new, :create, :destroy]
-  match '/signin', to: 'sessions#new'
-  match '/signout',  to: 'sessions#destroy', via: :delete
+  # resources :sessions, only: [:new, :create, :destroy]
+  # match '/signin', to: 'sessions#new'
+  # match '/signout',  to: 'sessions#destroy', via: :delete
 
   # Password Resets
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  # resources :password_resets, only: [:new, :create, :edit, :update]
 
   # Friendships
   resources :friendships, controller: 'friendships', :except => [:show, :edit] do
@@ -41,4 +41,7 @@ Casenexus::Application.routes.draw do
   resources :roulette, only: [:index]
   match '/get_item', to: 'roulette#item'
 
+  # Static Pages
+  match '/about', to: 'static_pages#about'
+  root to: 'static_pages#home'
 end

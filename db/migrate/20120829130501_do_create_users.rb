@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration
+class DoCreateUsers < ActiveRecord::Migration
   def change
 
 	  create_table "users", :force => true do |t|

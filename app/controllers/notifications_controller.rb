@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :show, :create]
+  before_filter :authenticate_user!, only: [:index, :show, :create]
   #before_filter :correct_user, only: [:show]
   before_filter :completed_user
   

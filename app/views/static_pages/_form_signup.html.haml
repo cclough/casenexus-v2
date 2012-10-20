@@ -1,6 +1,6 @@
-= form_for @user do |f|                
+= simple_form_for(@user, :url => user_registration_path(@user)) do |f|
 
-  = render 'shared/error_messages', object: @user
+  = render 'shared/error_messages', object: f.object
 
   = f.text_field :first_name, placeholder: 'First Name'
   = f.text_field :last_name, placeholder: 'Last Name'
@@ -21,9 +21,9 @@
       = f.check_box :email_users
   .row
     .span16
-      = f.label :accepts_tandc, "Accept the Terms & Conditions"
+      = f.label :confirm_tac, "Accept the Terms & Conditions"
     .span3
-      = f.check_box :accepts_tandc
+      = f.check_box :confirm_tac
   .spacer5
   .row
     = f.hidden_field :ip_address, value: request.remote_ip

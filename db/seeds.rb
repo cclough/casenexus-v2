@@ -1,86 +1,78 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 admin = User.create!(
-        first_name: "Christian",
-	    last_name: "Clough",
-        email: "christian.clough@gmail.com",
-        password: "numbnuts",
-        password_confirmation: "numbnuts",
-        lat: 51.901128232665856,
-        lng: -0.54241188764572144,
-        status: Faker::Lorem.sentence(20),
+    first_name: "Christian",
+    last_name: "Clough",
+    email: "christian.clough@gmail.com",
+    password: "numbnuts",
+    password_confirmation: "numbnuts",
+    lat: 51.901128232665856,
+    lng: -0.54241188764572144,
+    status: Faker::Lorem.sentence(20),
 
-        skype: "christianclough",
-        linkedin: "christian.clough@linkedin.com",
+    skype: "christianclough",
+    linkedin: "christian.clough@linkedin.com",
 
-        accepts_tandc: true,
+    accepts_tandc: true,
 
-        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin.toggle!(:approved)
 admin.toggle!(:completed)
 admin.toggle!(:admin)
 
 admin2 = User.create!(
-        first_name: "Rodrigo",
-        last_name: "D",
-        email: "rodrigo@rodrigo.com",
-        password: "rodrigo",
-        password_confirmation: "rodrigo",
-        lat: 51.01128232665856,
-        lng: -0.4241188764572144,
-        status: Faker::Lorem.sentence(20),
+    first_name: "Rodrigo",
+    last_name: "D",
+    email: "rodrigo@rodrigo.com",
+    password: "rodrigo",
+    password_confirmation: "rodrigo",
+    lat: 51.01128232665856,
+    lng: -0.4241188764572144,
+    status: Faker::Lorem.sentence(20),
 
-        skype: "rodrigo",
-        linkedin: "rodrigo@rodrigo.com",
+    skype: "rdominguez81",
+    linkedin: "rodrigo@rodrigo.com",
 
-        accepts_tandc: true,
+    accepts_tandc: true,
 
-        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin2.toggle!(:approved)
 admin2.toggle!(:completed)
 admin2.toggle!(:admin)
 
 admin3 = User.create!(
-        first_name: "Design",
-        last_name: "Pro",
-        email: "design@design.com",
-        password: "design",
-        password_confirmation: "design",
-        lat: 51.3128232665856,
-        lng: -0.941188764572144,
-        status: Faker::Lorem.sentence(20),
+    first_name: "Design",
+    last_name: "Pro",
+    email: "design@design.com",
+    password: "design",
+    password_confirmation: "design",
+    lat: 51.3128232665856,
+    lng: -0.941188764572144,
+    status: Faker::Lorem.sentence(20),
 
-        skype: "greatdesign",
-        linkedin: "great.design@linkedin.com",
+    skype: "greatdesign",
+    linkedin: "great.design@linkedin.com",
 
-        accepts_tandc: true,
+    accepts_tandc: true,
 
-        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin3.toggle!(:approved)
 admin3.toggle!(:completed)
 
 admin4 = User.create!(
-        first_name: "Nicola",
-        last_name: "Rowe",
-        email: "nicolarowe@mac.com",
-        password: "clarecollege",
-        password_confirmation: "clarecollege",
-        lat: -43.531637,
-        lng: 172.636645,
-        status: Faker::Lorem.sentence(20),
+    first_name: "Nicola",
+    last_name: "Rowe",
+    email: "nicolarowe@mac.com",
+    password: "clarecollege",
+    password_confirmation: "clarecollege",
+    lat: -43.531637,
+    lng: 172.636645,
+    status: Faker::Lorem.sentence(20),
 
-        accepts_tandc: true,
+    accepts_tandc: true,
 
-        ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
 admin4.toggle!(:approved)
 admin4.toggle!(:completed)
@@ -92,19 +84,129 @@ University.create!(name: "Harvard College", image: "harvard.gif", domain: "harva
 
 # Friendships
 User.find(1) do |user|
-
   user.invite User.find(2)
   User.find(2).approve user
   user.invite User.find(3)
   User.find(3).approve user
   user.invite User.find(4)
   User.find(4).approve user
-
 end
 
 User.find(4) do |user|
-
   user.invite User.find(1)
   User.find(1).approve user
-
 end
+
+if Rails.env == 'development'
+
+  def randomDate(params={ })
+    years_back = params[:year_range] || 5
+    latest_year = params [:year_latest] || 0
+    year = (rand * (years_back)).ceil + (Time.now.year - latest_year - years_back)
+    month = (rand * 12).ceil
+    day = (rand * 31).ceil
+    series = [date = Time.local(year, month, day)]
+    if params[:series]
+      params[:series].each do |some_time_after|
+        series << series.last + (rand * some_time_after).ceil
+      end
+      return series
+    end
+    date
+  end
+
+  100.times do |n|
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    email = "example#{n+1}@casenexus.com"
+    password = "password"
+    lat = -90 + rand(180)
+    lng = -180 + rand(360)
+    status = Faker::Lorem.sentence(20)
+    skype = "skpye"
+    linkedin = "christian.clough@gmail.com"
+
+    accepts_tandc = true
+
+    ip_address = "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)]
+
+    user = User.create!(first_name: first_name, last_name: last_name,
+                        email: email, password: password,
+                        password_confirmation: password,
+                        lat: lat, lng: lng, status: status,
+                        skype: skype, linkedin: linkedin,
+                        accepts_tandc: accepts_tandc,
+                        ip_address: ip_address)
+
+    user.toggle!(:approved)
+    user.toggle!(:completed)
+  end
+
+  User.all.each do |user|
+
+    rand(51).times do
+      user.cases.create!(
+          :interviewer_id => 1 + rand(98),
+          :date => randomDate(:year_range => 2, :year_latest => 0.5),
+          :subject => Faker::Lorem.sentence(5),
+          :source => Faker::Lorem.sentence(3),
+
+          :recommendation1 => Faker::Lorem.sentence(10),
+          :recommendation2 => Faker::Lorem.sentence(10),
+          :recommendation3 => Faker::Lorem.sentence(10),
+
+          :structure_comment => Faker::Lorem.sentence(30),
+          :businessanalytics_comment => Faker::Lorem.sentence(30),
+          :interpersonal_comment => Faker::Lorem.sentence(30),
+
+          :quantitativebasics => 1 + rand(9),
+          :problemsolving => 1 + rand(9),
+          :prioritisation => 1 + rand(9),
+          :sanitychecking => 1 + rand(9),
+
+          :rapport => 1 + rand(9),
+          :articulation => 1 + rand(9),
+          :concision => 1 + rand(9),
+          :askingforinformation => 1 + rand(9),
+
+          :approachupfront => 1 + rand(9),
+          :stickingtostructure => 1 + rand(9),
+          :announceschangedstructure => 1 + rand(9),
+          :pushingtoconclusion => 1 + rand(9),
+
+          :notes => Faker::Lorem.sentence(5)
+      )
+    end
+
+  end
+
+  User.all.each do |user|
+
+    # no longer needed as automatically created by after_create in user
+    #user.notifications.create!(sender_id: 1, :ntype => "welcome")
+
+    5.times do
+      user.notifications.create!(:ntype => "message",
+                                 :sender_id => rand(100),
+                                 :content => Faker::Lorem.sentence(5))
+      ## created in case.rb
+      # user.notifications.create!(:ntype => "feedback_new",
+      #                            :sender_id => rand(1..100),
+      #                            :content => Faker::Lorem.sentence(5),
+      #                            :event_date => randomDate(:year_range => 1, :year_latest => 0),
+      #                            :case_id => rand(1000))
+
+      user.notifications.create!(:ntype => "feedback_req",
+                                 :sender_id => rand(100),
+                                 :content => Faker::Lorem.sentence(5),
+                                 :event_date => randomDate(:year_range => 1, :year_latest => 0))
+    end
+  end
+
+  Notification.all.each do |notification|
+    if rand(2) == 1
+      notification.read == true
+    end
+  end
+end
+

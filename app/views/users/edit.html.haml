@@ -7,92 +7,90 @@
     var users_newedit_map_lat_start = "#{current_user.lat}";
     var users_newedit_map_lng_start = "#{current_user.lng}";
 
-= content_for :content do
+= render 'shared/title'
+#users_edit_form
+  = form_for(@user) do |f|
 
-  = render 'shared/title'
-  #users_edit_form
-    = form_for(@user) do |f|
+    .row
+      .span94
+        = render 'shared/error_messages', object: @user
+        .span47
+          .panel.dark
+            .row
+              .span15
+                = f.label :first_name
+              .span25
+                = f.text_field :first_name
+            .row
+              .span15
+                = f.label :last_name
+              .span25
+                = f.text_field :last_name
+            .spacer5
+            .row
+              .span15
+                = f.label :email
+              .span25
+                = f.text_field :email, class: "span27"
+            .spacer5
+            .row
+              .span15
+                = f.label :password
+              .span25
+                = f.password_field :password
+            .row
+              .span15
+                = f.label :password_confirmation, "Confirm Password"
+              .span25
+                = f.password_field :password_confirmation
+            .spacer5
+            .row
+              .span15
+                = f.label :skype
+              .span25
+                = f.text_field :skype
+            .row
+              .span15
+                = f.label :linkedin
+              .span25
+                = f.text_field :linkedin, class: "span27"
 
-      .row
-        .span94
-          = render 'shared/error_messages', object: @user
-          .span47
-            .panel.dark
-              .row
-                .span15
-                  = f.label :first_name
-                .span25
-                  = f.text_field :first_name
-              .row
-                .span15
-                  = f.label :last_name
-                .span25
-                  = f.text_field :last_name
-              .spacer5
-              .row
-                .span15  
-                  = f.label :email
-                .span25 
-                  = f.text_field :email, class: "span27"
-              .spacer5
-              .row
-                .span15   
-                  = f.label :password
-                .span25
-                  = f.password_field :password
-              .row
-                .span15   
-                  = f.label :password_confirmation, "Confirm Password"
-                .span25
-                  = f.password_field :password_confirmation
-              .spacer5
-              .row  
-                .span15
-                  = f.label :skype
-                .span25  
-                  = f.text_field :skype
-              .row
-                .span15   
-                  = f.label :linkedin
-                .span25
-                  = f.text_field :linkedin, class: "span27"
+          .panel.darker.kill_bottom
+            .row
+              = f.label :status, "Describe your current situation"
+              = f.text_area :status, id: 'users_edit_status'
 
-            .panel.darker.kill_bottom
-              .row
-                = f.label :status, "Describe your current situation"
-                = f.text_area :status, id: 'users_edit_status'
+        .span47
 
-          .span47
-            
-            .panel.darker.kill_left
-              = f.hidden_field :lat, id: "users_newedit_lat"
-              = f.hidden_field :lng, id: "users_newedit_lng"
-              #users_newedit_map.edit.map
-              .spacer10
-              #users_newedit_map_location
-                .row
-                  .span7
-                    Country:
-                  .span13
-                    = @user.country
-                  .span7
-                    City:
-                  .span10
-                    = @user.city
-            .panel.dark.kill_top.kill_left
+          .panel.darker.kill_left
+            = f.hidden_field :lat, id: "users_newedit_lat"
+            = f.hidden_field :lng, id: "users_newedit_lng"
+            #users_newedit_map.edit.map
+            .spacer10
+            #users_newedit_map_location
               .row
-                .span29
-                  .row
-                    .span3
-                      = f.check_box :email_admin
-                    .span25
-                      = f.label :email_admin, "Receive case interview advice email letter"
-                  .row
-                    .span3
-                      = f.check_box :email_users
-                    .span25
-                      = f.label :email_users, "Send notifications from users to your email"
+                .span7
+                  Country:
+                .span13
+                  = @user.country
+                .span7
+                  City:
                 .span10
-                  .row
-                    .spacer5
-                    = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "users_edit_button_submit"
+                  = @user.city
+          .panel.dark.kill_top.kill_left
+            .row
+              .span29
+                .row
+                  .span3
+                    = f.check_box :email_admin
+                  .span25
+                    = f.label :email_admin, "Receive case interview advice email letter"
+                .row
+                  .span3
+                    = f.check_box :email_users
+                  .span25
+                    = f.label :email_users, "Send notifications from users to your email"
+              .span10
+                .row
+                  .spacer5
+                  = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "users_edit_button_submit"

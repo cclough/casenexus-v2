@@ -1,14 +1,11 @@
 class User < ActiveRecord::Base
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
+         :confirmable, :omniauthable, :token_authenticatable
 
-	### Mass assignables
-  attr_accessible :first_name, :last_name, :email, 
-  								:password, :password_confirmation,
-                  :ip_address,
-                  :lat, :lng, :status,
-                  :skype, :linkedin,
-                  :email_admin,:email_users, :accepts_tandc
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
+                  :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac
 
-  attr_accessor :ip_address
+  attr_accessor :ip_address, :confirm_tac
 
   ### Relationships
   has_many :cases
@@ -17,91 +14,51 @@ class User < ActiveRecord::Base
   ### Friendships Model
   include Amistad::FriendModel
 
-  ### Bcrypt
-  has_secure_password
-
   ### Callbacks
   before_save { |user| user.email = user.email.downcase }
-  before_save :create_remember_token
 
+  before_create :generate_roulette_token
   after_create :create_notification
 
-
-
   ### Validations
-
-  ## ALWAYS
-
-  # Names
-  validates :first_name, presence: true, length: { maximum: 30 }
-  validates :last_name, presence: true, length: { maximum: 30 }
-
-  # Email (using Hartl RegEx)
-  VALID_EM_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_SK_REGEX = /^[\w+\-.]+[-a-z]+$/i
-  validates :email, presence: true, format: { with: VALID_EM_REGEX },
-  					uniqueness: { case_sensitive: true } 
-
-  # Accepts Terms and Conditions?
-  validates :accepts_tandc, :acceptance => {:accept => true}
-
-
-  ## WITHOUT LINKEDIN
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   # Passwords
-  validates :password, length: { minimum: 6 }, if: :without_linkedin?, on: :create
-  validates :password_confirmation, presence: true, if: :without_linkedin?, on: :create
+  #validates :password, length: { minimum: 6 }, if: :without_linkedin?, on: :create
+  #validates :password_confirmation, presence: true, if: :without_linkedin?, on: :create
 
 
   ## ON UPDATE
-
-  # Status
   validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update
-
-  # Location
   validates :lat, presence: true, on: :update
   validates :lng, presence: true, on: :update
 
-  # Skype & Linkedin
   validates :skype, length: { maximum: 32 },
-            format: { with: VALID_SK_REGEX },
+            format: { with: /^[\w+\-.]+[-a-z]+$/i },
             allow_blank: true,
             on: :update
 
-  validates :linkedin, format: { with: VALID_EM_REGEX },
+  validates :linkedin, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
             allow_blank: true,
             on: :update
-
-
-
-
-
-
-  ### Scopes
 
   # Scoped_search Gem
   scoped_search :on => [:first_name, :last_name, :status, :headline]
 
-  # Approved Scopes
-  scope :approved, where(approved: true)
-  scope :unapproved, where(approved: false)
-
-  ### GeoKit 
-  
-  acts_as_mappable :default_units => :kms,
-                   :default_formula => :flat,
-                   :distance_field_name => :distance,
-                   :lat_column_name => :lat,
-                   :lng_column_name => :lng
+  ### GeoKit
+  acts_as_mappable default_units: :kms,
+                   default_formula: :flat,
+                   distance_field_name: :distance,
+                   lat_column_name: :lat,
+                   lng_column_name: :lng
 
   ### Geocoder
+  geocoded_by :ip_address, latitude: :lat, longitude: :lng
 
-  geocoded_by :ip_address,
-    :latitude => :lat, :longitude => :lng
-
-  reverse_geocoded_by :lat, :lng do |obj,results|
+  reverse_geocoded_by :lat, :lng do |obj, results|
     if geo = results.first
-      obj.city    = geo.city
+      obj.city = geo.city
       obj.country = geo.country
     end
   end
@@ -110,93 +67,76 @@ class User < ActiveRecord::Base
   after_validation :reverse_geocode
 
 
-
-
-  ### Custom Methods
-
-  def without_linkedin?
-    provider != "linkedin"
-  end
-
-
-  ### Password Reset
-
-  def send_password_reset
-    create_password_reset_token(:password_reset_token)
-    self.password_reset_sent_at = Time.zone.now
-    save!(:validate => false)
-    UserMailer.password_reset(self).deliver
-  end
-
-  def create_password_reset_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64
-    end while User.exists?(column => self[column])
-  end
-
-
-  ### Outputs
-
-  ## Micro
-
   def name
     "#{first_name} #{last_name}"
   end
 
   def status_trunc
-    status.truncate(35, :separator => ' ')
+    status.truncate(35, separator: ' ')
   end
 
-  def casecount
-    cases.all.count
+  def case_count
+    cases.count
   end
-
-
-  ## Macro
 
   def self.markers
-    markers = User.all.map {|m| { id: m.id, lat: m.lat, lng: m.lng } }
+    User.all.map { |m| { id: m.id, lat: m.lat, lng: m.lng } }
+  end
+
+  def admin?
+    self.admin == true
   end
 
   # Filters
-  def self.list_global
-    User.order('created_at desc')
-  end
+  class << self
+    def approved
+      where(status_approved: true)
+    end
 
-  def self.list_local(lat, lng)
-    User.within(100, origin: [lat, lng]).order('created_at desc')
-  end
+    def unapproved
+      where(status_approved: false)
+    end
 
-  def self.list_rand
-    User.order("RANDOM()")
-  end
+    def list_global
+      User.order('created_at desc')
+    end
 
-  def self.list_contacts(user)
-    # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
-    User.joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(:friendships => {:user_id => user.id, :pending => false, :blocker_id => nil})
-  end
+    def list_local(lat, lng)
+      User.within(100, origin: [lat, lng]).order('created_at desc')
+    end
 
+    def list_rand
+      User.order("RANDOM()")
+    end
 
-  def self.create_using_linkedin(auth)
-    create! do |user|
-      user.provider = auth["provider"]
-      user.email = auth["info"]["email"]
-      user.first_name = auth["info"]["first_name"]
-      user.last_name = auth["info"]["last_name"]
-      user.headline = auth["info"]["headline"]
+    def list_contacts(user)
+      # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
+      User.joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
+    end
+
+    def create_using_linkedin(auth)
+      create! do |user|
+        user.provider = auth["provider"]
+        user.email = auth["info"]["email"]
+        user.first_name = auth["info"]["first_name"]
+        user.last_name = auth["info"]["last_name"]
+        user.headline = auth["info"]["headline"]
+      end
     end
   end
 
   private
 
-  	def create_remember_token
-  		self.remember_token = SecureRandom.urlsafe_base64
-  	end
+  def create_notification
+    self.notifications.create(user_id: self.id,
+                              sender_id: 1, # Admin user set in seeds.rb
+                              ntype: "welcome")
+  end
 
-    def create_notification
-      self.notifications.create(user_id: self.id,
-                                sender_id: 1, # Admin user set in seeds.rb
-                                ntype: "welcome")
-    end
+  def generate_roulette_token
+    begin
+      self.roulette_token = ('a'..'z').to_a.shuffle[0,8].join
+    end while User.where(roulette_token: self.roulette_token).exists?
+  end
 
 end

@@ -1,12 +1,12 @@
 %header.navbar.navbar-inverse.navbar-fixed-top
-  .navbar-inner{:class => ("signedout" if !signed_in? || !completed?)}
+  .navbar-inner{:class => ("signedout" if !signed_in?) }
     .container
-      #header_logo_nav{:class => ("signedout" if !signed_in? || !completed?)}
+      #header_logo_nav{:class => ("signedout" if !signed_in?) }
         = link_to image_tag("app/logo.png"), root_path
 
       - if signed_in?
 
-        - if completed?
+        - if current_user.completed?
           %ul#header_nav_links_left.nav.pull-left
 
             %li.divider-vertical

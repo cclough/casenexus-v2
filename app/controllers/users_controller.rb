@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :signed_in_user, only: [:index, :new, :edit, :show, :update]
+  before_filter :authenticate_user!, only: [:index, :new, :edit, :show, :update]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :completed_user, except: [:new, :create, :update]
 
@@ -8,33 +8,32 @@ class UsersController < ApplicationController
   end
 
   # Map
-	def index
+  def index
 
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
-    when "global"
-      users_scope = User.list_global
-    when "local"
-      users_scope = User.list_local(current_user.lat, current_user.lng)
-    when "rand"
-      users_scope = User.list_rand
-    when "friendships"
-      users_scope = User.list_contacts
+      when "global"
+        users_scope = User.list_global
+      when "local"
+        users_scope = User.list_local(current_user.lat, current_user.lng)
+      when "rand"
+        users_scope = User.list_rand
+      when "friendships"
+        users_scope = User.list_contacts
     end
 
     # Using scoped_search gem
     if users_scope
-      @users = users_scope.search_for(params[:search])
-               .paginate(per_page: 10, page: params[:page])
+      @users = users_scope.search_for(params[:search]).paginate(per_page: 10, page: params[:page])
     end
 
     respond_to do |format|
-      format.html 
+      format.html
       format.js # links index.js.erb!
       format.json { render json: User.markers } # USING get_markers_within_viewport INSTEAD
     end
 
-	end
+  end
 
 
   # used without layout on map page only
@@ -45,12 +44,12 @@ class UsersController < ApplicationController
       @notification = @user.notifications.build
       @friendship = @user.friendships.build unless current_user.friend_with?(@user)
 
-      format.html { render :layout => false } 
+      format.html { render :layout => false }
     end
 
   end
 
-  
+
   # Signup Part 2!
   def new
     if completed?
@@ -62,18 +61,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-  	if @user.save
+    if @user.save
       sign_in @user
-  		flash[:success] = "Welcome to casenexus.com"
-  		redirect_to users_path
-  	else
-  		render "/static_pages/home"
-  	end
+      flash[:success] = "Welcome to casenexus.com"
+      redirect_to users_path
+    else
+      render "/static_pages/home"
+    end
   end
 
 
-	def edit
-	end
+  def edit
+  end
 
 
   def update
@@ -99,12 +98,12 @@ class UsersController < ApplicationController
   def tooltip
     @user = User.find(params[:id])
     respond_to do |format|
-      format.html { render :layout => false } 
+      format.html { render :layout => false }
     end
   end
 
   # AJAX
-  
+
   # def get_markers_within_viewport
 
   #   bounds = params[:bounds].split(",")
@@ -120,9 +119,9 @@ class UsersController < ApplicationController
 
   private
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to root_path unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user)
+  end
 
 end

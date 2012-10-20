@@ -1,8 +1,6 @@
 - provide(:title, 'Your friends')
 
-= content_for :content do
-
-  %ul
-    - for friend in @friends
-      %li
-        = friend.email
+%ul
+  - for friend in @friends
+    %li
+      = friend.email

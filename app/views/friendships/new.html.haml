@@ -1,23 +1,21 @@
 - provide(:title, 'Get Friends')
 
-= content_for :content do
-
-  %ul
-    - for user in @users
-      %li
-        - if current_user.friend_with? user
-          = user.email
-          |
-          You are already friends!
-        - elsif current_user.invited? user
-          = user.email
-          | 
-          Pending request ...
-        - elsif user.invited? current_user
-          = user.email
-          |
-          = link_to "Confirm friend?", friendship_path(user), :method => "put"
-        - else
-          = user.email
-          |
-          = link_to "Add friend?", friendships_path(:user_id => user), :method => "post"
+%ul
+  - for user in @users
+    %li
+      - if current_user.friend_with? user
+        = user.email
+        |
+        You are already friends!
+      - elsif current_user.invited? user
+        = user.email
+        |
+        Pending request ...
+      - elsif user.invited? current_user
+        = user.email
+        |
+        = link_to "Confirm friend?", friendship_path(user), :method => "put"
+      - else
+        = user.email
+        |
+        = link_to "Add friend?", friendships_path(:user_id => user), :method => "post"

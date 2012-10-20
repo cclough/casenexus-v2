@@ -8,22 +8,16 @@
     = yield :javascript_includes
 
     = csrf_meta_tags
-    / IE shim
-    = render 'layouts/shim'
 
-  %body{:class => ("signedout" if !signed_in? || !completed?)}
+    /[if lte IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
+
+  %body{:class => ("signedout" if !signed_in?) }
     / header
     = render 'layouts/header'
 
-    / flash div 
-    #application_flash{:class => ("signedout" if !signed_in? || !completed?)}
-      = render :partial => 'layouts/flash' , :locals => { :flash => flash }
-
     .container.main
-
-      / :content now specified in all views - anoying, but enables nested view templates for 
-      / e.g. for notifications and cases controllers
-      = yield :content
+      = yield
 
       / footer
       = render 'layouts/footer'
