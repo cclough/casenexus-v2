@@ -42,18 +42,18 @@
         Structure
       .row
         .span5.cases_score.show
-          = @case.structure
+          / = @case.structure
         .span20.cases_show_comment
-          = @case.structure_comment
+          / = @case.structure_comment
   .span30
     .panel.kill_right.kill_bottom.kill_top
       .cases_show_title
         Analytical/Problem-solving  
       .row
         .span5.cases_score.show
-          = @case.analytical
+          / = @case.analytical
         .span20.cases_show_comment
-          = @case.analytical_comment
+          / = @case.analytical_comment
 
 .row
   .span30
@@ -62,27 +62,20 @@
         Commercial Awareness
       .row
         .span5.cases_score.show
-          = @case.commercial
+          / = @case.commercial
         .span20.cases_show_comment
-          = @case.commercial_comment
+          / = @case.commercial_comment
   .span30
     .panel.kill_right.kill_bottom
       .cases_show_title
         Conclusion
       .row
         .span5.cases_score.show
-          = @case.conclusion
+          / = @case.conclusion
         .span20.cases_show_comment
-          = @case.conclusion_comment
+          / = @case.conclusion_comment
 
 .row
-  .span30
-    .panel.kill_left.kill_right.kill_bottom
-      .cases_show_title
-        Further Comment
-      .row
-        = @case.comment
-
   .span30
     .panel.kill_right.kill_bottom
       .cases_show_title

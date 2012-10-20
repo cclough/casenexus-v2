@@ -11,36 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015220542) do
+ActiveRecord::Schema.define(:version => 20121019234534) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
     t.date     "date",                      :null => false
     t.text     "subject"
     t.string   "source"
-    t.text     "comment"
     t.text     "notes"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
     t.integer  "interviewer_id",            :null => false
-    t.integer  "arithmetic"
-    t.integer  "problemsolves"
-    t.integer  "prioritises"
-    t.integer  "sensechecks"
     t.integer  "rapport"
-    t.integer  "articulates"
-    t.integer  "concise"
-    t.integer  "requestsinfo"
     t.integer  "approachupfront"
-    t.integer  "stickstostructure"
-    t.integer  "announcesdeviation"
-    t.integer  "pushtoconclusion"
     t.text     "interpersonal_comment"
     t.text     "businessanalytics_comment"
     t.text     "structure_comment"
     t.text     "recommendation1"
     t.text     "recommendation2"
     t.text     "recommendation3"
+    t.integer  "quantitativebasics"
+    t.integer  "problemsolving"
+    t.integer  "prioritisation"
+    t.integer  "sanitychecking"
+    t.integer  "articulation"
+    t.integer  "concision"
+    t.integer  "askingforinformation"
+    t.integer  "stickingtostructure"
+    t.integer  "announceschangedstructure"
+    t.integer  "pushingtoconclusion"
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"

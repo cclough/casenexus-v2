@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 
   $('#modal_roulette_req').modal({

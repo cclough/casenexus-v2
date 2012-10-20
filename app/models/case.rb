@@ -1,11 +1,12 @@
 class Case < ActiveRecord::Base
   
   ### Mass assignables
-  attr_accessible :user_id, :interviewer_id, :date, :subject, :source, 
-  								:structure, :structure_comment,
-  				        :analytical, :analytical_comment, 
-  				        :commercial, :commercial_comment, 
-  				        :conclusion, :conclusion_comment,
+  attr_accessible :user_id, :interviewer_id, :date, :subject, :source,
+                  :recommendation1, :recommendation2, :recommendation3,
+  								:structure_comment, :businessanalytics_comment, :interpersonal_comment,
+                  :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
+                  :rapport, :articulation, :concision, :askingforinformation,
+                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion,
   				        :comment, :notes
 
   ### Relationships
@@ -14,8 +15,6 @@ class Case < ActiveRecord::Base
   ### Callbacks
   # after_create :create_notification
 
-
-
   ### Validations
   validates :user_id, presence: true
   validates :interviewer_id, presence: true
@@ -23,22 +22,42 @@ class Case < ActiveRecord::Base
 
   validates :subject, presence: true, length: { maximum: 500 }
   validates :source, length: { maximum: 100 }
-  
-  validates :structure, presence: true,
-  					:numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
-  validates :analytical, presence: true,
-  					:numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
-  validates :commercial, presence: true,
-  					:numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
-  validates :conclusion, presence: true,
-  					:numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
 
+  validates :quantitativebasics, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :problemsolving, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :prioritisation, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :sanitychecking, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+
+  validates :rapport, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :articulation, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :concision, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :askingforinformation, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+
+  validates :approachupfront, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :stickingtostructure, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :announceschangedstructure, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+  validates :pushingtoconclusion, presence: true,
+            :numericality => { :greater_than => 0, :less_than_or_equal_to => 10 }
+
+  validates :interpersonal_comment, length: { maximum: 500 }
+  validates :businessanalytics_comment, length: { maximum: 500 }
   validates :structure_comment, length: { maximum: 500 }
-  validates :analytical_comment, length: { maximum: 500 }
-  validates :commercial_comment, length: { maximum: 500 }
-  validates :conclusion_comment, length: { maximum: 500 }
 
-  validates :comment, length: { maximum: 500 }
+  validates :recommendation1, length: { maximum: 200 }
+  validates :recommendation2, length: { maximum: 200 }
+  validates :recommendation3, length: { maximum: 200 }
+
   validates :notes, length: { maximum: 1000 }
 
 
@@ -48,21 +67,35 @@ class Case < ActiveRecord::Base
   scoped_search :in => :user, :on => :first_name
   scoped_search :in => :user, :on => :last_name
   scoped_search :on => [:subject, :source, 
-                        :structure_comment, :analytical_comment,
-                        :commercial_comment, :conclusion_comment,
-                        :comment, :notes]
+                        :recommendation1, :recommendation2, :recommendation3,
+                        :interpersonal_comment, :businessanalytics_comment,
+                        :structure_comment,
+                        :notes]
 
 
   ### Outputs
 
   ## Micro
 
+  def interpersonal_combined
+    (rapport + articulation + concision + askingforinformation).round(1) / 4
+  end
+
+  def businessanalytics_combined
+    (quantitativebasics + problemsolving + prioritisation + sanitychecking).round(1) / 4
+  end
+
+  def structure_combined
+    (approachupfront + stickingtostructure + announceschangedstructure + pushingtoconclusion).round(1) / 4
+  end
+
+
   def interviewer
     User.find_by_id(interviewer_id)
   end
 
   def totalscore
-    structure + analytical + commercial + conclusion
+    interpersonal_combined + businessanalytics_combined + structure_combined
   end
 
   def subject_trunc
@@ -72,40 +105,66 @@ class Case < ActiveRecord::Base
 
   ## Macro
 
-  # Comments
-
-  def comments
-    @comments_plan = current_user.cases.all {|m| { marker_id: m.marker_id, created_at: m.created_at, plan_s: m.plan_s } }
-    @comments_analytic = current_user.cases.all {|m| { marker_id: m.marker_id, analytic_s: m.analytic_s } }
-    @comments_struc = current_user.cases.all {|m| { marker_id: m.marker_id, struc_s: m.struc_s } }
-    @comments_conc = current_user.cases.all {|m| { marker_id: m.marker_id, conc_s: m.conc_s } }
-  end
-
-
   ### Charts
 
   def cases_show_chart_radar_data
-    "[{criteria: \"Structure\", score: "+structure.to_s+"},
-     {criteria: \"Commercial\", score: "+commercial.to_s+"},
-     {criteria: \"Conclusion\", score: "+conclusion.to_s+"},
-     {criteria: \"Analytical\", score: "+analytical.to_s+"}]"
+    "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
+     {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
+     {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
+     {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"},
+
+     {criteria: \"Rapport\", score: "+rapport.to_s+"},
+     {criteria: \"Articulation\", score: "+articulation.to_s+"},
+     {criteria: \"Concision\", score: "+concision.to_s+"},
+     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
+
+     {criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
+     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
+     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
+     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
   end
+
+
 
   def self.cases_analysis_chart_radar_data(user)
     # LAST 5: load scores into json for radar chart
       "[
-      {criteria: \"Structure\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:structure).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:structure).sum.to_f/5).to_s + "},
-      {criteria: \"Commercial\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:commercial).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:commercial).sum.to_f/5).to_s + "},
-      {criteria: \"Conclusion\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:conclusion).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:conclusion).sum.to_f/5).to_s + "},
-      {criteria: \"Analytical\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:analytical).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:analytical).sum.to_f/5).to_s + "}
+      {criteria: \"Quantitative basics\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:quantitativebasics).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:quantitativebasics).sum.to_f/5).to_s + "},
+      {criteria: \"Problem-Solving\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:problemsolving).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:problemsolving).sum.to_f/5).to_s + "},
+      {criteria: \"Prioritisation\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:prioritisation).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:prioritisation).sum.to_f/5).to_s + "},
+      {criteria: \"Sanity-checking\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:sanitychecking).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:sanitychecking).sum.to_f/5).to_s + "},
+      {criteria: \"Rapport\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:rapport).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:rapport).sum.to_f/5).to_s + "},
+      {criteria: \"Articulation\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:articulation).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:articulation).sum.to_f/5).to_s + "},
+      {criteria: \"Concision\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:concision).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:concision).sum.to_f/5).to_s + "},
+      {criteria: \"Asking for information\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:askingforinformation).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:askingforinformation).sum.to_f/5).to_s + "},
+      {criteria: \"Make approach clear up front\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:approachupfront).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:approachupfront).sum.to_f/5).to_s + "},
+      {criteria: \"Sticking to structure\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:stickingtostructure).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:stickingtostructure).sum.to_f/5).to_s + "},
+      {criteria: \"Announces changed Structure\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:announceschangedstructure).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:announceschangedstructure).sum.to_f/5).to_s + "},
+      {criteria: \"Pusing to conclusion\", 
+      last5: " + (user.cases.limit(5).order('id desc').collect(&:pushingtoconclusion).sum.to_f/5).to_s + ", 
+      first5: " + (user.cases.limit(5).order('id asc').collect(&:pushingtoconclusion).sum.to_f/5).to_s + "}
       ]"
   end
 
@@ -113,42 +172,33 @@ class Case < ActiveRecord::Base
     cases_analysis_chart_progress_data = user.cases.order('date asc').map {|c|
                                          { id: c.id,
                                          date: c.date.strftime("%Y-%m-%d"), 
-                                         structure: c.structure, 
-                                         analytical: c.analytical, 
-                                         commercial: c.commercial, 
-                                         conclusion: c.conclusion,
+                                         interpersonal: c.interpersonal_combined, 
+                                         businessanalytics: c.businessanalytics_combined, 
+                                         structure: c.structure_combined, 
                                          totalscore: c.totalscore } }
   end
-
 
 
   ## Comments
 
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
+  def self.cases_analysis_comments_interpersonal(user)
+    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
+                          created_at: m.created_at, 
+                          interpersonal_comment: m.interpersonal_comment } }
+  end
+
+  def self.cases_analysis_comments_businessanalytics(user)
+    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
+                          created_at: m.created_at, 
+                          businessanalytics_comment: m.businessanalytics_comment } }
+  end
+
   def self.cases_analysis_comments_structure(user)
     user.cases.all {|m| { interviewer_id: m.interviewer_id, 
                           created_at: m.created_at, 
                           structure_comment: m.structure_comment } }
   end
-
-  def self.cases_analysis_comments_analytical(user)
-    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
-                          created_at: m.created_at, 
-                          analytical_comment: m.analytical_comment } }
-  end
-
-  def self.cases_analysis_comments_commercial(user)
-    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
-                          created_at: m.created_at, 
-                          commercial_comment: m.commercial_comment } }
-  end
-
-  def self.cases_analysis_comments_conclusion(user)
-    user.cases.all {|m| { interviewer_id: m.interviewer_id, 
-                          created_at: m.created_at, 
-                          conclusion_comment: m.conclusion_comment } }
-  end
-
 
 
   # STATISTICS
@@ -170,22 +220,13 @@ class Case < ActiveRecord::Base
     user.cases.map{ |a| a.totalscore }.sum/user.cases.count
   end
 
-  def self.cases_analysis_stats_improvement(user, area)
-    case area
-    when "structure"
-    when "analytical"
-    when "commercial"
-    when "conclusion"
-    end
-  end
 
   def self.cases_analysis_stats_skill(user, type)
 
     if user.casecount > 0
-      sums = { 'Structure' => user.cases.average('structure').round(1),
-               'Analytical' => user.cases.average('analytical').round(1),
-               'Commercial' => user.cases.average('commercial').round(1),
-               'Conclusion' => user.cases.average('conclusion').round(1) }
+      sums = { 'structure' => user.cases.average('structure').round(1),
+               'businessanalytics' => user.cases.average('businessanalytics').round(1),
+               'interpersonal' => user.cases.average('interpersonal').round(1) }
 
       case type
       when "weakest"
@@ -205,14 +246,12 @@ class Case < ActiveRecord::Base
       case type
       when "totalscore"
         (Case.all.map{ |a| a.totalscore }.sum/Case.all.count) if Case.all.count > 0
+      when "interpersonal"
+        Case.average(:interpersonal).round(2)
+      when "businessanalytics"
+        Case.average(:businessanalytics).round(2)
       when "structure"
         Case.average(:structure).round(2)
-      when "analytical"
-        Case.average(:analytical).round(2)
-      when "commercial"
-        Case.average(:commercial).round(2)
-      when "conclusion"
-        Case.average(:conclusion).round(2)
       end
     else
       "No data"

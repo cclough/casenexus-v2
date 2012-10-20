@@ -59,35 +59,35 @@
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Addition, subtraction, multiplication, division and percentages at back-of-envelope level", "data-original-title" => "Arithmetic" }
-                        Arithmetic
+                        Quantitative basics
                     .span18
                       #cases_new_slider_arithmetic.cases_new_slider
                     .span4
-                      = f.text_field :arithmetic, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                      = f.text_field :quantitativebasics, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Identifies key issue in case and problem-solving steps needed to solve it", "data-original-title" => "Problem Solution" }
-                        Problem Solution
+                        Problem-Solving
                     .span18
                       #cases_new_slider_problemsolves.cases_new_slider
                     .span4
-                      = f.text_field :problemsolves, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                      = f.text_field :problemsolving, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Prioritising", "data-original-title" => "Prioritising" }
-                        Prioritising
+                        Prioritisation
                     .span18
                       #cases_new_slider_prioritises.cases_new_slider
                     .span4
-                      = f.text_field :prioritises, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                      = f.text_field :prioritisation, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Reality Checks Assumptions", "data-original-title" => "Sense-checking" }
-                        Sense-checking
+                        Sanity-checking
                     .span18
                       #cases_new_slider_sensechecks.cases_new_slider
                     .span4
-                      = f.text_field :sensechecks, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
+                      = f.text_field :sanitychecking, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "businessanalytics"
                 .span1
                   .cases_new_block_circle_outer.panel.dark
                     .cases_new_block_circle.panel.darker
@@ -122,23 +122,23 @@
                     .span18
                       #cases_new_slider_articulates.cases_new_slider
                     .span4
-                      = f.text_field :articulates, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                      = f.text_field :articulation, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Is Concise", "data-original-title" => "Concise" }
-                        Concise
+                        Concision
                     .span18
                       #cases_new_slider_concise.cases_new_slider
                     .span4
-                      = f.text_field :concise, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                      = f.text_field :concision, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Asks for more information when neccessary", "data-original-title" => "Requests Information" }
-                        Requests Information
+                        Asking for Information
                     .span18
                       #cases_new_slider_requestsinfo.cases_new_slider
                     .span4
-                      = f.text_field :requestsinfo, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
+                      = f.text_field :askingforinformation, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-category" => "interpersonal"
                 .span1
                   .cases_new_block_circle_outer.panel.dark
                     .cases_new_block_circle.panel.darker
@@ -161,7 +161,7 @@
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Makes intended approach to problem clear to interviewer up front", "data-original-title" => "Approach up front" }
-                        Approach up front
+                        Make approach clear upfront
                     .span18
                       #cases_new_slider_approachupfront.cases_new_slider
                     .span4
@@ -169,27 +169,27 @@
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Sticks to announced structure unless indicates otherwise", "data-original-title" => "Sticks to structure" }
-                        Sticks to structure
+                        Sticking to structure
                     .span18
                       #cases_new_slider_stickstostructure.cases_new_slider
                     .span4
-                      = f.text_field :stickstostructure, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                      = f.text_field :stickingtostructure, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Explicitly announces any deivation from initially announced structure", "data-original-title" => "Announces Deviation" }
-                        Announces Deviation
+                        Announces changed structure
                     .span18
                       #cases_new_slider_announcesdeviation.cases_new_slider
                     .span4
-                      = f.text_field :announcesdeviation, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                      = f.text_field :announceschangedstructure, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
                   .row
                     .span20
                       .cases_new_block_desc.cases_new_popover.panel.dark{ "rel" => "popover", "data-content" => "Pushes to a conclusion", "data-original-title" => "Push to Ccnclusion" }
-                        Push to conclusion
+                        Pushing to conclusion
                     .span18
                       #cases_new_slider_pushtoconclusion.cases_new_slider
                     .span4
-                      = f.text_field :pushtoconclusion, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
+                      = f.text_field :pushingtoconclusion, class: "cases_new_slider_input panel darker", tabindex: "-1", "data-structure" => "interpersonal"
                 .span1
                   .cases_new_block_circle_outer.panel.dark
                     .cases_new_block_circle.panel.darker

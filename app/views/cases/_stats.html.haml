@@ -17,12 +17,12 @@
     .span9.cases_analysis_stats_name
       Strongest Skill
     .span8
-      = Case.cases_analysis_stats_skill(current_user, "weakest")
+      / = Case.cases_analysis_stats_skill(current_user, "weakest")
   .row
     .span9.cases_analysis_stats_name
       Weakest Skill
     .span8
-      = Case.cases_analysis_stats_skill(current_user, "strongest")
+      / = Case.cases_analysis_stats_skill(current_user, "strongest")
   .spacer10
   .row.cases_analysis_stats_sub
     .span9.cases_analysis_stats_name
@@ -41,29 +41,22 @@
 
   .row
     .span9.cases_analysis_stats_name
+      Interpersonal
+    .span3
+      = Case.cases_analysis_stats_global("interpersonal_combined")
+    .span3
+      = Case.cases_analysis_stats_global("interpersonal_combined")
+  .row
+    .span9.cases_analysis_stats_name
+      Business Analytics
+    .span3
+      = Case.cases_analysis_stats_global("businessanalytics_combined")
+    .span3
+      = Case.cases_analysis_stats_global("businessanalytics_combined")
+  .row
+    .span9.cases_analysis_stats_name
       Structure
     .span3
-      = Case.cases_analysis_stats_global("structure")
+      = Case.cases_analysis_stats_global("structure_combined")
     .span3
-      = Case.cases_analysis_stats_global("structure")
-  .row
-    .span9.cases_analysis_stats_name
-      Analytical
-    .span3
-      = Case.cases_analysis_stats_global("analytical")
-    .span3
-      = Case.cases_analysis_stats_global("analytical")
-  .row
-    .span9.cases_analysis_stats_name
-      Commercial
-    .span3
-      = Case.cases_analysis_stats_global("commercial")
-    .span3
-      = Case.cases_analysis_stats_global("commercial")
-  .row
-    .span9.cases_analysis_stats_name
-      Conclusion
-    .span3
-      = Case.cases_analysis_stats_global("conclusion")
-    .span3
-      = Case.cases_analysis_stats_global("conclusion")
+      = Case.cases_analysis_stats_global("structure_combined")

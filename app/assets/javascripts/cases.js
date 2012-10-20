@@ -89,7 +89,7 @@ function cases_analysis_charts_draw(radar_data) {
   $.getJSON("/cases/analysis", function(json) {
 
     $.each(json, function(i, item) {
-      var dataObject = {id:json[i].id, date:parseDate(json[i].date), structure:json[i].structure, analytical:json[i].analytical, commercial:json[i].commercial, conclusion:json[i].conclusion, totalscore:json[i].totalscore};
+      var dataObject = {id:json[i].id, date:parseDate(json[i].date), interpersonal:json[i].interpersonal, businessanalytics:json[i].businessanalytics, structure:json[i].structure, totalscore:json[i].totalscore};
       // load array for chart
       cases_analysis_chart_progress_data.push(dataObject); 
     });
@@ -155,18 +155,18 @@ function cases_analysis_charts_draw(radar_data) {
     valueAxis.gridAlpha = 0.07;
     valueAxis.axisAlpha = 0;
     // change to 50?
-    valueAxis.maximum = 40;
+    valueAxis.maximum = 30;
     valueAxis.labelsEnabled = true;
     chart_analysis_progress.addValueAxis(valueAxis);
 
     // DONT FORGET YOU CAN USE 'GUIDES'
 
     // GRAPHS
-    // first graph - STRUCTURE
+    // first graph - Business Analytics
     var graph = new AmCharts.AmGraph();
     graph.type = "line";
-    graph.title = "Structure";
-    graph.valueField = "structure";
+    graph.title = "Business Analytics";
+    graph.valueField = "businessanalytics";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6; // setting fillAlphas to > 0 value makes it area graph
     graph.bullet = "round";
@@ -176,11 +176,11 @@ function cases_analysis_charts_draw(radar_data) {
 
     chart_analysis_progress.addGraph(graph);
 
-    // second graph - ANALYTICAL
+    // second graph - Interpersonal
     graph = new AmCharts.AmGraph();
     graph.type = "line";
-    graph.title = "Analytical";
-    graph.valueField = "analytical";
+    graph.title = "Interpersonal";
+    graph.valueField = "interpersonal";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6;
     graph.bullet = "round";
@@ -190,25 +190,11 @@ function cases_analysis_charts_draw(radar_data) {
 
     chart_analysis_progress.addGraph(graph);
 
-    // third graph - COMMERCIAL
+    // third graph - Structure
     graph = new AmCharts.AmGraph();
     graph.type = "line";
-    graph.title = "Commercial";
-    graph.valueField = "commercial";
-    graph.lineAlpha = 1;
-    graph.fillAlphas = 0.6;
-    graph.bullet = "round";
-
-    addclicklistener(graph);
-    //addrolloverlistener(graph);
-
-    chart_analysis_progress.addGraph(graph);
-    
-    // fourth graph - CONCLUSION
-    graph = new AmCharts.AmGraph();
-    graph.type = "line";
-    graph.title = "Conclusion";
-    graph.valueField = "conclusion";
+    graph.title = "Structure";
+    graph.valueField = "structure";
     graph.lineAlpha = 1;
     graph.fillAlphas = 0.6;
     graph.bullet = "round";
@@ -218,7 +204,9 @@ function cases_analysis_charts_draw(radar_data) {
 
     chart_analysis_progress.addGraph(graph);
 
-    // Fifth graph - FOR ZOOMER - NOT DRAWN
+
+
+    // Fourth graph - FOR ZOOMER - NOT DRAWN
     graph = new AmCharts.AmGraph();
     graph.type = "line";
     graph.title = "Total Score";
