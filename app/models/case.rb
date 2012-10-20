@@ -78,15 +78,15 @@ class Case < ActiveRecord::Base
   ## Micro
 
   def interpersonal_combined
-    (rapport + articulation + concision + askingforinformation).round(1) / 4
+    (rapport.to_i + articulation.to_i + concision.to_i + askingforinformation.to_i).round(1) / 4
   end
 
   def businessanalytics_combined
-    (quantitativebasics + problemsolving + prioritisation + sanitychecking).round(1) / 4
+    (quantitativebasics.to_i + problemsolving.to_i + prioritisation.to_i + sanitychecking.to_i).round(1) / 4
   end
 
   def structure_combined
-    (approachupfront + stickingtostructure + announceschangedstructure + pushingtoconclusion).round(1) / 4
+    (approachupfront.to_i + stickingtostructure.to_i + announceschangedstructure.to_i + pushingtoconclusion.to_i).round(1) / 4
   end
 
 
