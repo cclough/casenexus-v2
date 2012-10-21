@@ -19,7 +19,7 @@
             = current_user.name
           .span6
             #cases_analysis_casecount
-              = avatar_for(current_user, 'chevron', current_user.casecount)
+              = avatar_for(current_user, 'chevron', current_user.case_count)
 
     .row
       = render 'stats'

@@ -21,7 +21,7 @@
       .span5
         Or
       .span20
-        %a#static_home_signup_linkedin_button.btn.btn-large.btn-inverse{ href: "/auth/linkedin"}
+        %a#static_home_signup_linkedin_button.btn.btn-large.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
           %span#static_home_signup_linkedin_button_logo
             = image_tag 'home/button_logo_linkedin.png'
           %span

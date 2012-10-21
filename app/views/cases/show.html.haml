@@ -15,7 +15,7 @@
             = @case.date.strftime("%d %b '%y")
         .span6
           #cases_show_casecount
-            = avatar_for(current_user, 'chevron', @case.interviewer.casecount)
+            = avatar_for(current_user, 'chevron', @case.interviewer.case_count)
     .panel.dark.kill_all
       .row
         .span30

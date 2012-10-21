@@ -6,7 +6,7 @@
       = current_user.name
     %span.caret
     %span#header_menu_profile_casecount
-      = avatar_for(current_user, 'chevron', current_user.casecount)
+      = avatar_for(current_user, 'chevron', current_user.case_count)
       
 
   %ul.dropdown-menu
@@ -15,4 +15,4 @@
     %li.divider
     %li= link_to raw("<i class=icon-cogs></i> Settings"), edit_user_path(current_user)
     %li.divider
-    %li= link_to raw("<i class=icon-bolt></i> Sign out"), signout_path, method: "delete"
+    %li= link_to raw("<i class=icon-bolt></i> Sign out"), destroy_user_session_path, method: :delete, title: "Sign out"

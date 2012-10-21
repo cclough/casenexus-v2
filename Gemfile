@@ -16,6 +16,7 @@ gem 'geocoder'                                   # Geocoding solution for rails
 gem 'amistad'                                    # TODO: Drop this gem
 gem 'omniauth'                                   # Authentication with Rack
 gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
+gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
 
 
