@@ -24,11 +24,6 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  # Passwords
-  #validates :password, length: { minimum: 6 }, if: :without_linkedin?, on: :create
-  #validates :password_confirmation, presence: true, if: :without_linkedin?, on: :create
-
-
   ## ON UPDATE
   validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update
   validates :lat, presence: true, on: :update
@@ -39,7 +34,7 @@ class User < ActiveRecord::Base
             allow_blank: true,
             on: :update
 
-  validates :linkedin, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+  validates :linkedin_uid, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
             allow_blank: true,
             on: :update
 
@@ -65,7 +60,6 @@ class User < ActiveRecord::Base
 
   after_create :geocode
   after_validation :reverse_geocode
-
 
   def name
     "#{first_name} #{last_name}"
