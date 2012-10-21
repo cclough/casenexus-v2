@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def completed_user
+    redirect_to edit_account_path unless current_user.completed?
     #redirect_to new_user_registration_path, notice: "Please complete the sign up process." unless current_user.completed?
   end
 

@@ -8,8 +8,9 @@
     var users_newedit_map_lng_start = "#{current_user.lng}";
 
 = render 'shared/title'
+
 #users_edit_form
-  = form_for(@user) do |f|
+  = form_for(@user, url: account_path, method: :put) do |f|
 
     .row
       .span94
@@ -49,11 +50,18 @@
                 = f.label :skype
               .span25
                 = f.text_field :skype
-            .row
-              .span15
-                = f.label :linkedin
-              .span25
-                = f.text_field :linkedin, class: "span27"
+            - if current_user.linkedin_uid.blank?
+              .row
+                .span15
+                  = f.label :linkedin
+                .span25
+                  = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'))
+            - else
+              .row
+                .span15
+                  = f.label :linkedin
+                .span25
+                  = f.text_field :linkedin_uid, class: "span27", disabled: disabled
 
           .panel.darker.kill_bottom
             .row

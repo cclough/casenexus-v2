@@ -5,24 +5,10 @@ Casenexus::Application.routes.draw do
   match '/dashboard', to: 'dashboard#index', as: :dashboard
   match '/tooltip', to: 'dashboard#tooltip'
 
-  # Users
-  # resources :users, only: [:index, :show, :new, :create, :edit, :update]
-  # match '/signup', to: 'users#new'
-  #match '/tooltip', to: 'users#tooltip'
-  #match '/test', to: 'users#test'
-  
+  # Account
+  resource :account, controller: 'account'
+
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
-
-  # LinkedIn
-  # match '/auth/linkedin/callback', to: 'sessions#create'
-
-  # Sessions
-  # resources :sessions, only: [:new, :create, :destroy]
-  # match '/signin', to: 'sessions#new'
-  # match '/signout',  to: 'sessions#destroy', via: :delete
-
-  # Password Resets
-  # resources :password_resets, only: [:new, :create, :edit, :update]
 
   # Friendships
   resources :friendships, controller: 'friendships', :except => [:show, :edit] do

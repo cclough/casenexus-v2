@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate_user!, only: [:index, :new, :edit, :show, :update]
-  before_filter :correct_user, only: [:edit, :update]
   before_filter :completed_user, except: [:new, :create, :update]
 
   def test
@@ -72,10 +71,12 @@ class UsersController < ApplicationController
 
 
   def edit
+    @user = current_user
   end
 
 
   def update
+    @user = current_user
     if @user.update_attributes(params[:user])
 
       sign_in @user
@@ -116,12 +117,5 @@ class UsersController < ApplicationController
   #   end
 
   # end
-
-  private
-
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to root_path unless current_user?(@user)
-  end
 
 end
