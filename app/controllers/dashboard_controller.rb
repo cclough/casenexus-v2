@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   before_filter :completed_user
 
   def index
-# Set scope of users list depending on params from filter menu
+  # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
       when "global"
         users_scope = User.list_global
@@ -26,4 +26,12 @@ class DashboardController < ApplicationController
       format.json { render json: User.markers } # USING get_markers_within_viewport INSTEAD
     end
   end
+
+  def tooltip
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: false }
+    end
+  end
+
 end

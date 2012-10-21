@@ -2,13 +2,14 @@ Casenexus::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   # User dashboard
-  match '/dashboard' => 'dashboard#index', as: :dashboard
+  match '/dashboard', to: 'dashboard#index', as: :dashboard
+  match '/tooltip', to: 'dashboard#tooltip'
 
   # Users
   # resources :users, only: [:index, :show, :new, :create, :edit, :update]
   # match '/signup', to: 'users#new'
-  match '/tooltip', to: 'users#tooltip'
-  match '/test', to: 'users#test'
+  #match '/tooltip', to: 'users#tooltip'
+  #match '/test', to: 'users#test'
   
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 

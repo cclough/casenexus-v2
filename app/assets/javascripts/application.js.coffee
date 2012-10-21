@@ -6,6 +6,7 @@
 #= require jquery.effects.core
 #= require jquery.placeholder
 #= require jquery.uniform.min
+#= require chosen.jquery
 
 #= require bootstrap.min
 #= require bootstrap-wysihtml5

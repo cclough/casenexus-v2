@@ -18,7 +18,7 @@ function users_index_map_marker_click (marker_id) {
   // Show User Panel
   $("#users_index_mapcontainer_user").fadeOut('fast', function() {
 
-    $.get('/users/' + marker_id, function(data) {
+    $.get('/dashboard/' + marker_id, function(data) {
 
       // Insert ajax data!
       $('#users_index_user').html(data);
@@ -334,7 +334,7 @@ $(document).ready(function(){
     ////////////////////////////////////////////////////////////////////////////
 
 
-    $.getJSON("users", function(json) {
+    $.getJSON("/dashboard", function(json) {
 
       $.each(json, function(i, marker) {
 

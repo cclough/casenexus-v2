@@ -1,6 +1,8 @@
+
 - provide(:title, 'Map')
 
 - content_for :javascript_includes do
+  = javascript_include_tag "users"
 
   = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
 

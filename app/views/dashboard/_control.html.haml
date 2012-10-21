@@ -3,11 +3,11 @@
     %li
       Total Users:
       %span.users_index_mappanel_control_usercount
-        = User.all.count
+        = User.count
     %li
       Total Cases:
       %span.users_index_mappanel_control_casecount
-        = Case.all.count
+        = Case.count
 
 %span#users_index_mappanel_control_chosen
   %select.chzn-select.span37{"data-placeholder" => "Jump to Country..." }
