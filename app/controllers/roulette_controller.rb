@@ -14,4 +14,12 @@ class RouletteController < ApplicationController
     end
   end
 
+  def request
+    @request_user = User.find(params[:id])
+    @message = params[:msg]
+    respond_to do |format|
+      format.html { render :layout => false } 
+    end
+  end
+
 end

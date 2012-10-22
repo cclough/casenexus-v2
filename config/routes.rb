@@ -26,9 +26,11 @@ Casenexus::Application.routes.draw do
 
   # Roulette
   resources :roulette, only: [:index]
-  match '/get_item', to: 'roulette#item'
+  match '/item', to: 'roulette#item'
+  match '/request', to: 'roulette#request'
 
   # Static Pages
   match '/about', to: 'static_pages#about'
+  match '/terms', to: 'static_pages#terms'
   root to: 'static_pages#home'
 end

@@ -1,0 +1,26 @@
+.modal-header
+  %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+  %h3
+    %span#modal_roulette_req_from
+    = @request_user
+    would like to do a case with you
+
+.modal-body
+
+  .row
+    .span30
+      .row
+        = @message
+      .spacer10
+      .row
+        = @request_user
+        's Status:
+      .row
+        = @request_user.status
+    .span10
+      %a{:href => "skype:"+ @request_user.skype + "?call"}
+        %img{:alt => "Skype Me™!", :height => "63", :src => "http://download.skype.com/share/skypebuttons/buttons/call_green_white_153x63.png", :style => "border: none;", :width => "153"}/
+
+.modal-footer
+  %a.btn{"data-dismiss" => "modal", href: "#"} Dismiss
