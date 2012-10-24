@@ -1,100 +1,111 @@
-admin = User.create!(
-    first_name: "Christian",
-    last_name: "Clough",
-    email: "christian.clough@gmail.com",
-    password: "numbnuts",
-    password_confirmation: "numbnuts",
-    lat: 51.901128232665856,
-    lng: -0.54241188764572144,
-    status: Faker::Lorem.sentence(20),
+if User.count == 0
+  admin = User.create!(
+      first_name: "Christian",
+      last_name: "Clough",
+      email: "christian.clough@gmail.com",
+      password: "numbnuts",
+      password_confirmation: "numbnuts",
+      lat: 51.901128232665856,
+      lng: -0.54241188764572144,
+      status: Faker::Lorem.sentence(20),
 
-    skype: "christianclough",
-    linkedin: "christian.clough@linkedin.com",
+      skype: "christianclough",
 
-    accepts_tandc: true,
+      confirm_tac: true,
 
-    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+  admin.update_attribute(:linkedin_uid, "christian.clough@linkedin_uid.com")
 
-admin.toggle!(:approved)
-admin.toggle!(:completed)
-admin.toggle!(:admin)
+  admin.toggle!(:status_approved)
+  admin.toggle!(:completed)
+  admin.toggle!(:admin)
+  admin.confirm!
 
-admin2 = User.create!(
-    first_name: "Rodrigo",
-    last_name: "D",
-    email: "rodrigo@rodrigo.com",
-    password: "rodrigo",
-    password_confirmation: "rodrigo",
-    lat: 51.01128232665856,
-    lng: -0.4241188764572144,
-    status: Faker::Lorem.sentence(20),
+  puts "Admin #{admin.name} created"
 
-    skype: "rdominguez81",
-    linkedin: "rodrigo@rodrigo.com",
+  admin2 = User.create!(
+      first_name: "Rodrigo",
+      last_name: "D",
+      email: "rodrigo@rodrigo.com",
+      password: "rodrigo",
+      password_confirmation: "rodrigo",
+      lat: 51.01128232665856,
+      lng: -0.4241188764572144,
+      status: Faker::Lorem.sentence(20),
 
-    accepts_tandc: true,
+      skype: "rdominguez81",
 
-    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+      confirm_tac: true,
 
-admin2.toggle!(:approved)
-admin2.toggle!(:completed)
-admin2.toggle!(:admin)
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
-admin3 = User.create!(
-    first_name: "Design",
-    last_name: "Pro",
-    email: "design@design.com",
-    password: "design",
-    password_confirmation: "design",
-    lat: 51.3128232665856,
-    lng: -0.941188764572144,
-    status: Faker::Lorem.sentence(20),
+  admin2.toggle!(:status_approved)
+  admin2.toggle!(:completed)
+  admin2.toggle!(:admin)
+  admin2.confirm!
 
-    skype: "greatdesign",
-    linkedin: "great.design@linkedin.com",
+  puts "Admin #{admin2.name} created"
 
-    accepts_tandc: true,
+  admin3 = User.create!(
+      first_name: "Design",
+      last_name: "Pro",
+      email: "design@design.com",
+      password: "design",
+      password_confirmation: "design",
+      lat: 51.3128232665856,
+      lng: -0.941188764572144,
+      status: Faker::Lorem.sentence(20),
 
-    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+      skype: "greatdesign",
 
-admin3.toggle!(:approved)
-admin3.toggle!(:completed)
+      confirm_tac: true,
 
-admin4 = User.create!(
-    first_name: "Nicola",
-    last_name: "Rowe",
-    email: "nicolarowe@mac.com",
-    password: "clarecollege",
-    password_confirmation: "clarecollege",
-    lat: -43.531637,
-    lng: 172.636645,
-    status: Faker::Lorem.sentence(20),
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
-    accepts_tandc: true,
+  admin3.toggle!(:status_approved)
+  admin3.toggle!(:completed)
+  admin3.toggle!(:admin)
+  admin3.confirm!
 
-    ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+  puts "Admin #{admin3.name} created"
 
-admin4.toggle!(:approved)
-admin4.toggle!(:completed)
+  admin4 = User.create!(
+      first_name: "Nicola",
+      last_name: "Rowe",
+      email: "nicolarowe@mac.com",
+      password: "clarecollege",
+      password_confirmation: "clarecollege",
+      lat: -43.531637,
+      lng: 172.636645,
+      status: Faker::Lorem.sentence(20),
 
+      confirm_tac: true,
 
-University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
-University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
-University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
-# Friendships
-User.find(1) do |user|
-  user.invite User.find(2)
-  User.find(2).approve user
-  user.invite User.find(3)
-  User.find(3).approve user
-  user.invite User.find(4)
-  User.find(4).approve user
-end
+  admin4.toggle!(:status_approved)
+  admin4.toggle!(:completed)
+  admin4.toggle!(:admin)
+  admin4.confirm!
 
-User.find(4) do |user|
-  user.invite User.find(1)
-  User.find(1).approve user
+  puts "Admin #{admin4.name} created"
+
+  University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
+  University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
+  University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
+
+  puts "Universities created"
+
+  # Friendships
+  users = User.order(:id).all
+  users[0].invite(users[1])
+  users[1].approve(users[0])
+  users[0].invite(users[2])
+  users[2].approve(users[0])
+  users[0].invite(users[3])
+  users[3].approve(users[0])
+
+  puts "Friendships created"
 end
 
 if Rails.env == 'development'
@@ -124,9 +135,9 @@ if Rails.env == 'development'
     lng = -180 + rand(360)
     status = Faker::Lorem.sentence(20)
     skype = "skpye"
-    linkedin = "christian.clough@gmail.com"
+    linkedin_uid = "christian.clough@gmail.com"
 
-    accepts_tandc = true
+    confirm_tac = true
 
     ip_address = "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)]
 
@@ -134,12 +145,16 @@ if Rails.env == 'development'
                         email: email, password: password,
                         password_confirmation: password,
                         lat: lat, lng: lng, status: status,
-                        skype: skype, linkedin: linkedin,
-                        accepts_tandc: accepts_tandc,
+                        skype: skype,
+                        confirm_tac: confirm_tac,
                         ip_address: ip_address)
+    user.update_attribute(:linkedin_uid, linkedin_uid)
 
-    user.toggle!(:approved)
+    user.toggle!(:status_approved)
     user.toggle!(:completed)
+    user.confirm!
+
+    puts "User #{user.name} created"
   end
 
   User.all.each do |user|
@@ -176,6 +191,7 @@ if Rails.env == 'development'
 
           :notes => Faker::Lorem.sentence(5)
       )
+      puts "Case created for user #{user.name}"
     end
 
   end
@@ -200,12 +216,15 @@ if Rails.env == 'development'
                                  :sender_id => rand(100),
                                  :content => Faker::Lorem.sentence(5),
                                  :event_date => randomDate(:year_range => 1, :year_latest => 0))
+
+      puts "Notification created for user #{user.name}"
     end
   end
 
   Notification.all.each do |notification|
     if rand(2) == 1
       notification.read == true
+      puts "Notification marked as read"
     end
   end
 end
