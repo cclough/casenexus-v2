@@ -21,6 +21,11 @@
     .spacer5
     .row
       = render '/shared/button_Group_feedback_req_and_send'
+  .row
+    .span14.offset34
+      = link_to("Edit my Profile", edit_account_path, class: 'btn btn-primary btn-large')
+
+
 
 - if @user.status_approved
   .panel
