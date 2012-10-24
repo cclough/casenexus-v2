@@ -7,6 +7,7 @@ class AccountController < ApplicationController
     @user = current_user
   end
 
+  # TODO: We should not ask for password, it log off the user when its updated
   def update
     @user = current_user
 
