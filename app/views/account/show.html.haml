@@ -12,14 +12,15 @@
     .span20
       #users_show_name
         = @user.name
-  .spacer5
-  .row.font-small
-    = render '/shared/button_Group_linkedin_and_skype'
-    .span
-      = render '/shared/button_friend_remove'
-  .spacer5
-  .row
-    = render '/shared/button_Group_feedback_req_and_send'
+  - if current_user.friend_with?(@user) && @user != current_user
+    .spacer5
+    .row.font-small
+      = render '/shared/button_Group_linkedin_and_skype'
+      .span
+        = render '/shared/button_friend_remove'
+    .spacer5
+    .row
+      = render '/shared/button_Group_feedback_req_and_send'
 
 - if @user.status_approved
   .panel

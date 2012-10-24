@@ -7,7 +7,8 @@ class AccountController < ApplicationController
       @notification = @user.notifications.build
       @friendship = @user.friendships.build unless current_user.friend_with?(@user)
 
-      format.html { render :layout => false }
+      #format.html { render :layout => false }
+      format.html
     end
   end
 

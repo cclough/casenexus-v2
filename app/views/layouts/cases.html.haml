@@ -12,12 +12,12 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-  %body{:class => ("signedout" if !signed_in? || !completed?)}
+  %body{:class => ("signedout" if !current_user.completed?)}
     / header
     = render 'layouts/header'
 
     / flash div
-    #application_flash{:class => ("signedout" if !signed_in? || !completed?)}
+    #application_flash{:class => ("signedout" if !current_user.completed?)}
       = render :partial => 'layouts/flash' , :locals => { :flash => flash }
 
     .container.main
