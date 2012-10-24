@@ -39,12 +39,9 @@ $(document).ready(function(){
       //data.to
 
       $.get('/request?id=' + data.from + '&msg=' + data.msg, function(data_request) {
-
         $('#modal_roulette_req').html(data_request);
         $('#modal_roulette_req').modal('show');
-
-      };
-
+      });
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
