@@ -20,11 +20,12 @@ gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
 gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
 
+  gem 'ffaker'                                   # Generate test data, we put it here because of heroku, remove later
+
 
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails
   gem 'guard-rspec'                              # Automatically run RSpec tests
-  gem 'ffaker'                                   # Generate test data
   gem 'capybara'                                 # Browser Engine
   gem 'haml-rails'                               # Haml generator
 end
