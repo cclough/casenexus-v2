@@ -9,6 +9,7 @@
 #= require lib/chosen.jquery
 
 #= require lib/bootstrap.min
+#= require lib/bootstrap-datepicker
 #= require bootstrap-wysihtml5
 
 #= require lib/markerclustererplus
