@@ -108,7 +108,7 @@ if User.count == 0
   puts "Friendships created"
 end
 
-if Rails.env == 'development'
+if true #Rails.env == 'development'
 
   def randomDate(params={ })
     years_back = params[:year_range] || 5
