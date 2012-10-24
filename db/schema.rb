@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(:version => 20121020155404) do
     t.string   "ntype",                         :null => false
     t.text     "content"
     t.date     "event_date"
+    t.integer  "case_id"
     t.boolean  "read",       :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-    t.integer  "case_id"
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
