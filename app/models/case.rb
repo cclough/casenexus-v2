@@ -210,9 +210,9 @@ class Case < ActiveRecord::Base
   def self.cases_analysis_stats_casedate(user, type)
     case type
     when "first"
-      user.cases.all.last.date.strftime("%d %b '%y") unless user.casecount < 1
+      user.cases.all.last.date.strftime("%d %b '%y") unless user.case_count < 1
     when "last"
-      user.cases.all.first.date.strftime("%d %b '%y") unless user.casecount < 1
+      user.cases.all.first.date.strftime("%d %b '%y") unless user.case_count < 1
     end
   end
 
@@ -223,7 +223,7 @@ class Case < ActiveRecord::Base
 
   def self.cases_analysis_stats_skill(user, type)
 
-    if user.casecount > 0
+    if user.case_count > 0
       sums = { 'structure' => user.cases.average('structure').round(1),
                'businessanalytics' => user.cases.average('businessanalytics').round(1),
                'interpersonal' => user.cases.average('interpersonal').round(1) }

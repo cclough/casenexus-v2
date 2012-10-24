@@ -34,9 +34,11 @@ class User < ActiveRecord::Base
             allow_blank: true,
             on: :update
 
-  validates :linkedin_uid, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-            allow_blank: true,
-            on: :update
+  # What exactly do you need from linkedin? You have the first name, last name, headline, company, profile url
+  # and email, as far as I know, you don't have a unique user for linkedin
+  #validates :linkedin_uid, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+  #          allow_blank: true,
+  #          on: :update
 
   # Scoped_search Gem
   scoped_search :on => [:first_name, :last_name, :status, :headline]

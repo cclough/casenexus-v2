@@ -4,11 +4,13 @@
 #= require jquery.ui.slider
 #= require jquery.effects.slide
 #= require jquery.effects.core
-#= require jquery.placeholder
-#= require jquery.uniform.min
-#= require chosen.jquery
+#= require lib/jquery.placeholder
+#= require lib/jquery.uniform.min
+#= require lib/chosen.jquery
 
-#= require bootstrap.min
+#= require lib/bootstrap.min
 #= require bootstrap-wysihtml5
+
+#= require lib/markerclustererplus
 
 #= require app

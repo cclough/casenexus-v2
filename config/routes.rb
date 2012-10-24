@@ -3,7 +3,7 @@ Casenexus::Application.routes.draw do
 
   # User dashboard
   match '/dashboard', to: 'dashboard#index', as: :dashboard
-  match '/tooltip', to: 'dashboard#tooltip'
+  match '/tooltip', to: 'dashboard#tooltip', as: :tooltip
 
   # Account
   resource :account, controller: 'account'

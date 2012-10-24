@@ -2,6 +2,7 @@
 - provide(:sub_title, 'Modify your basic info, your status, and your location')
 
 - content_for :javascript_includes do
+  = javascript_include_tag('users.js')
 
   :javascript
     var users_newedit_map_lat_start = "#{current_user.lat}";
@@ -55,13 +56,13 @@
                 .span15
                   = f.label :linkedin
                 .span25
-                  = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'))
+                  = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'), target: '_blank')
             - else
               .row
                 .span15
                   = f.label :linkedin
                 .span25
-                  = f.text_field :linkedin_uid, class: "span27", disabled: 'disabled'
+                  = link_to("LinkedIn Profile", f.object.public_profile_url, target: '_blank')
 
           .panel.darker.kill_bottom
             .row
