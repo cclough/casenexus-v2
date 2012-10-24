@@ -13,6 +13,6 @@
     %li= link_to raw("<i class=icon-book></i> Case Index"), cases_path
     %li= link_to raw("<i class=icon-search></i> Progress Analysis"), cases_path + '/analysis'
     %li.divider
-    %li= link_to raw("<i class=icon-cogs></i> Settings"), account_path
+    %li= link_to raw("<i class=icon-cogs></i> Settings"), edit_account_path
     %li.divider
     %li= link_to raw("<i class=icon-bolt></i> Sign out"), destroy_user_session_path, method: :delete, title: "Sign out"

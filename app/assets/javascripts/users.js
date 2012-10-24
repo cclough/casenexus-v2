@@ -403,7 +403,7 @@ $(document).ready(function(){
 
   function users_index_mappanel_tooltip(marker_id) {
 
-    $.get('/tooltip?id=' + marker_id, function(data) {
+    $.get('/members/' + marker_id + 'tooltip', function(data) {
 
       $('#users_index_mappanel_tooltip').html(data);
 

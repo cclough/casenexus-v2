@@ -1,15 +1,6 @@
 class AccountController < ApplicationController
   def show
     @user = current_user
-
-    # TODO: This actually should go on the members controller
-    respond_to do |format|
-      @notification = @user.notifications.build
-      @friendship = @user.friendships.build unless current_user.friend_with?(@user)
-
-      #format.html { render :layout => false }
-      format.html
-    end
   end
 
   def edit

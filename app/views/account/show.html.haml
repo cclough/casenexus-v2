@@ -12,20 +12,6 @@
     .span20
       #users_show_name
         = @user.name
-  - if current_user.friend_with?(@user) && @user != current_user
-    .spacer5
-    .row.font-small
-      = render '/shared/button_Group_linkedin_and_skype'
-      .span
-        = render '/shared/button_friend_remove'
-    .spacer5
-    .row
-      = render '/shared/button_Group_feedback_req_and_send'
-  .row
-    .span14.offset34
-      = link_to("Edit my Profile", edit_account_path, class: 'btn btn-primary btn-large')
-
-
 
 - if @user.status_approved
   .panel
@@ -33,11 +19,3 @@
       .span35
         #users_show_status
           = @user.status
-    .row
-      .pull-right
-        = render '/shared/button_friend_req_or_message'
-
-#modal_friendship_req.modal.hide.fade
-  = render '/shared/modal_friendship_req_form'
-
-= render '/shared/modal_Group_message_and_feedback_req'
