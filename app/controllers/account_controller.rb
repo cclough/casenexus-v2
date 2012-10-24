@@ -23,4 +23,8 @@ class AccountController < ApplicationController
       render 'edit'
     end
   end
+
+  def complete_profile
+    @user = current_user
+  end
 end

@@ -5,7 +5,9 @@ Casenexus::Application.routes.draw do
   match '/dashboard', to: 'dashboard#index', as: :dashboard
 
   # Account
-  resource :account, controller: 'account'
+  resource :account, controller: 'account' do
+    get :complete_profile, on: :collection
+  end
 
   # Members
   resources :members, only: [:index, :show] do
