@@ -8,8 +8,11 @@ Casenexus::Application.routes.draw do
   resource :account, controller: 'account'
 
   # Members
-  resources :members do
+  resources :members, only: [:index, :show] do
     get :tooltip, on: :member
+    # TODO: Friendship actions should go on members
+    # so it would be /members/:id/request_friendship and so on
+    # we can use friendly_id to avoid showing the user id and it rocks
   end
 
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users

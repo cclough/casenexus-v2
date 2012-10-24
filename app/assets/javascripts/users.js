@@ -18,7 +18,7 @@ function users_index_map_marker_click (marker_id) {
   // Show User Panel
   $("#users_index_mapcontainer_user").fadeOut('fast', function() {
 
-    $.get('/dashboard/' + marker_id, function(data) {
+    $.get('/members/' + marker_id, function(data) {
 
       // Insert ajax data!
       $('#users_index_user').html(data);
@@ -334,7 +334,7 @@ $(document).ready(function(){
     ////////////////////////////////////////////////////////////////////////////
 
 
-    $.getJSON("/dashboard", function(json) {
+    $.getJSON("/members", function(json) {
 
       $.each(json, function(i, marker) {
 
@@ -403,7 +403,7 @@ $(document).ready(function(){
 
   function users_index_mappanel_tooltip(marker_id) {
 
-    $.get('/members/' + marker_id + 'tooltip', function(data) {
+    $.get('/members/' + marker_id + '/tooltip', function(data) {
 
       $('#users_index_mappanel_tooltip').html(data);
 

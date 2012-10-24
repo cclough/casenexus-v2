@@ -23,7 +23,6 @@ class MembersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
       format.js # links index.js.erb!
       format.json { render json: User.markers } # USING get_markers_within_viewport INSTEAD
     end
@@ -41,6 +40,12 @@ class MembersController < ApplicationController
 
       format.html { render layout: false }
     end
+  end
 
+  def tooltip
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: false }
+    end
   end
 end
