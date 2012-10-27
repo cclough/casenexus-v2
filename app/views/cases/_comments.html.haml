@@ -23,7 +23,7 @@
                 .cases_analysis_comment
                   .cases_analysis_comment_from
                     / line below is causing problems on heroku for no reason! - its to do with comment.marker_id
-                    = User.find_by_id(comment.interviewer_id).name
+                    = User.find(comment.interviewer_id).name
                     %span.cases_analysis_comment_date
                       = comment.created_at.strftime("%d %b '%y")
                   .cases_analysis_comment_content

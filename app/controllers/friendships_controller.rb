@@ -7,13 +7,12 @@ class FriendshipsController < ApplicationController
   end
 
   def new
-    @users = User.all :conditions => ["id != ?", current_user.id]
+    @users = User.where("id != ?", current_user.id).all
   end
 
   def create
-
     #broken!
-    invitee = User.find_by_id(params[:user_id])
+    invitee = User.find(params[:user_id])
     @content = params[:content]
 
     respond_to do |format|
@@ -30,7 +29,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    inviter = User.find_by_id(params[:id])
+    inviter = User.find(params[:id])
     if current_user.approve inviter
       
       #not nice, but model after_update callback won't work as amistad approve method uses update_attribute
@@ -38,9 +37,9 @@ class FriendshipsController < ApplicationController
       #                              sender_id: current_user.id,
       #                              ntype: "friendship_app")
 
-      redirect_to new_friendship_path, :notice => "Successfully confirmed friend!"
+      redirect_to new_friendship_path, notice: "Successfully confirmed friend!"
     else
-      redirect_to new_friendship_path, :notice => "Sorry! Could not confirm friend!"
+      redirect_to new_friendship_path, notice: "Sorry! Could not confirm friend!"
     end
   end
 
@@ -53,11 +52,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find_by_id(params[:id])
+    user = User.find(params[:id])
     if current_user.remove_friendship user
-      redirect_to friendships_path, :notice => "Successfully removed friend!"
+      redirect_to friendships_path, notice: "Successfully removed friend!"
     else
-      redirect_to friendships_path, :notice => "Sorry, couldn't remove friend!"
+      redirect_to friendships_path, notice: "Sorry, couldn't remove friend!"
     end
   end 
   

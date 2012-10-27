@@ -1,9 +1,5 @@
 class Notification < ActiveRecord::Base
-
-  # NB An observer handles after_create email sending!
-
   attr_accessible :user_id, :sender_id, :ntype, :content, :notification_at, :read, :notificable_id, :notificable_type
-  #:case_id, :event_date, :read
 
   attr_accessor :sender
 
@@ -14,14 +10,13 @@ class Notification < ActiveRecord::Base
   validates :user_id, presence: true
   validates :sender_id, presence: true
   validates :ntype, presence: true, length: { maximum: 20 }
-
   validates :content, length: { maximum: 500 }
 
   validates_presence_of :content, if: lambda { self.ntype == 'message' }
   validates_presence_of :content, :event_date, if: lambda { self.ntype == 'feedback_req' }
   validates_presence_of :content, :event_date, if: lambda { self.ntype == 'feedback' }
 
-  ### Scopes
+  after_create :send_email
 
   class << self
     def readed
@@ -36,8 +31,6 @@ class Notification < ActiveRecord::Base
   # scoped_search :in => :user, :on => :first_name
   # scoped_search :in => :user, :on => :last_name
   scoped_search on: [:content]
-
-  ## Micro
 
   def read!
     update_attribute(:read, true)
@@ -64,8 +57,6 @@ class Notification < ActiveRecord::Base
     end
   end
 
-  ## Macro
-
   class << self
     def header(user)
       user.notifications.where(read: false).limit(5).order('created_at desc').reverse
@@ -75,6 +66,48 @@ class Notification < ActiveRecord::Base
       where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
             from_id, to_id,
             to_id, from_id)
+    end
+  end
+
+  private
+
+  def send_email
+    def after_create(notification)
+
+      user_from = notification.sender
+
+      case notification.ntype
+        when "welcome"
+          UserMailer.welcome(notification.target,
+                             notification.url).deliver
+        when "feedback"
+          UserMailer.feedback(user_from,
+                              notification.target,
+                              notification.url,
+                              notification.event_date,
+                              notification.content).deliver
+        when "feedback_req"
+          UserMailer.feedback_req(user_from,
+                                  notification.target,
+                                  notification.url,
+                                  notification.event_date,
+                                  notification.content).deliver
+        when "message"
+          UserMailer.usermessage(user_from,
+                                 notification.target,
+                                 notification.url,
+                                 notification.content).deliver
+        when "friendship_req"
+          UserMailer.friendship_req(user_from,
+                                    notification.target,
+                                    notification.url,
+                                    notification.content).deliver
+        when "friendship_app"
+          UserMailer.friendship_app(user_from,
+                                    notification.target,
+                                    notification.url).deliver
+      end
+
     end
   end
 end

@@ -88,19 +88,6 @@ class Users::OmniauthCallbacksController < ApplicationController
   end
 
   def assign_linkedin_data(user, data, email = false)
-    #begin
-    #  linkedin_location = nil
-    #  if LinkedinLocation.where(code: data['location']['country']['code']).exists?
-    #    linkedin_location = LinkedinLocation.where(code: data['location']['country']['code']).first
-    #  else
-    #    linkedin_location = LinkedinLocation.new(code: data['location']['country']['code'],
-    #                                             name: data['location']['name'])
-    #    linkedin_location.save
-    #  end
-    #rescue Exception
-    #end
-
-    #user.linkedin_location = linkedin_location
     user.email = data['email_address'] if email
     user.first_name = data['first_name']
     user.last_name = data['last_name']

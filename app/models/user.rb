@@ -7,15 +7,12 @@ class User < ActiveRecord::Base
 
   attr_accessor :ip_address, :confirm_tac
 
-  ### Relationships
   has_many :cases
   has_many :notifications
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id
 
-  ### Friendships Model
   include Amistad::FriendModel
 
-  ### Callbacks
   before_save { |user| user.email = user.email.downcase }
 
   before_create :generate_roulette_token
@@ -34,12 +31,6 @@ class User < ActiveRecord::Base
             format: { with: /^[\w+\-.]+[-a-z]+$/i },
             allow_blank: true,
             on: :update
-
-  # What exactly do you need from linkedin? You have the first name, last name, headline, company, profile url
-  # and email, as far as I know, you don't have a unique user for linkedin
-  #validates :linkedin_uid, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-  #          allow_blank: true,
-  #          on: :update
 
   # Scoped_search Gem
   scoped_search :on => [:first_name, :last_name, :status, :headline]
@@ -125,9 +116,7 @@ class User < ActiveRecord::Base
   private
 
   def send_welcome
-    Notification.create(user: self.id,
-                        sender_id: 1,
-                        ntype: "welcome")
+    Notification.create(user: self.id, sender_id: 1, ntype: "welcome")
   end
 
   def generate_roulette_token
