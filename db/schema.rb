@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121020155404) do
+ActiveRecord::Schema.define(:version => 20121026210152) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -61,15 +61,16 @@ ActiveRecord::Schema.define(:version => 20121020155404) do
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
 
   create_table "notifications", :force => true do |t|
-    t.integer  "user_id",                       :null => false
-    t.integer  "sender_id",                     :null => false
-    t.string   "ntype",                         :null => false
+    t.integer  "user_id",                             :null => false
+    t.integer  "sender_id",                           :null => false
+    t.string   "ntype",                               :null => false
     t.text     "content"
     t.date     "event_date"
-    t.integer  "case_id"
-    t.boolean  "read",       :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "read",             :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.integer  "notificable_id"
+    t.string   "notificable_type"
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"

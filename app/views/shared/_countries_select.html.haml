@@ -1,4 +1,4 @@
 %option
-- for item in Country.inuse
+- for item in Country.in_use
 	%option{value: item.lat.to_s+"_"+item.lng.to_s }
 		#{item.country} - #{item.city}

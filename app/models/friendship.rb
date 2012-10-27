@@ -5,6 +5,8 @@ class Friendship < ActiveRecord::Base
   attr_accessor :content
 
   include Amistad::FriendshipModel
+
+  has_many :notifications, as: :notificable
   
   ### Callbacks
   # after_create :create_notification_req
@@ -13,12 +15,7 @@ class Friendship < ActiveRecord::Base
   validates :user_id, presence: true
   validates :friend_id, presence: true
 
-
-
   ### Methods
-
-
-
 
   private
 

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   ### Relationships
   has_many :cases
   has_many :notifications
+  has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id
 
   ### Friendships Model
   include Amistad::FriendModel
@@ -94,20 +95,20 @@ class User < ActiveRecord::Base
     end
 
     def list_global
-      User.order('created_at desc')
+      order('created_at desc')
     end
 
     def list_local(lat, lng)
-      User.within(100, origin: [lat, lng]).order('created_at desc')
+      within(100, origin: [lat, lng]).order('created_at desc')
     end
 
     def list_rand
-      User.order("RANDOM()")
+      order("RANDOM()")
     end
 
     def list_contacts(user)
       # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
-      User.joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
+      joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
     end
 
     def create_using_linkedin(auth)
@@ -124,8 +125,7 @@ class User < ActiveRecord::Base
   private
 
   def create_notification
-    self.notifications.create(user_id: self.id,
-                              sender_id: 1, # Admin user set in seeds.rb
+    self.notifications.create(sender_id: 1, # Admin user set in seeds.rb
                               ntype: "welcome")
   end
 
