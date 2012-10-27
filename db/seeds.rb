@@ -14,8 +14,6 @@ if User.count == 0
       confirm_tac: true,
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  admin.update_attribute(:linkedin_uid, "christian.clough@linkedin_uid.com")
-
   admin.toggle!(:status_approved)
   admin.toggle!(:completed)
   admin.toggle!(:admin)
@@ -135,11 +133,10 @@ if true #Rails.env == 'development'
     lng = -180 + rand(360)
     status = Faker::Lorem.sentence(20)
     skype = "skpye"
-    linkedin_uid = "christian.clough@gmail.com"
 
     confirm_tac = true
 
-    ip_address = "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)]
+    ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 
     user = User.create!(first_name: first_name, last_name: last_name,
                         email: email, password: password,
@@ -148,7 +145,6 @@ if true #Rails.env == 'development'
                         skype: skype,
                         confirm_tac: confirm_tac,
                         ip_address: ip_address)
-    user.update_attribute(:linkedin_uid, linkedin_uid)
 
     user.toggle!(:status_approved)
     user.toggle!(:completed)
@@ -198,9 +194,6 @@ if true #Rails.env == 'development'
 
   User.all.each do |user|
 
-    # no longer needed as automatically created by after_create in user
-    #user.notifications.create!(sender_id: 1, :ntype => "welcome")
-
     5.times do
       user.notifications.create!(:ntype => "message",
                                  :sender_id => rand(100),
@@ -223,7 +216,7 @@ if true #Rails.env == 'development'
 
   Notification.all.each do |notification|
     if rand(2) == 1
-      notification.read == true
+      notification.read!
       puts "Notification marked as read"
     end
   end

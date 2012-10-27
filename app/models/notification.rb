@@ -24,12 +24,12 @@ class Notification < ActiveRecord::Base
   ### Scopes
 
   class << self
-    def ead
-      where(read: false)
-    end
-
     def readed
       where(read: true)
+    end
+
+    def unread
+      where(read: false)
     end
   end
 
@@ -37,8 +37,11 @@ class Notification < ActiveRecord::Base
   # scoped_search :in => :user, :on => :last_name
   scoped_search on: [:content]
 
-
   ## Micro
+
+  def read!
+    update_attribute(:read, true)
+  end
 
   def content_trunc
     content.truncate(35, :separator => ' ') unless (content == nil)

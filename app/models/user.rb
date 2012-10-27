@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = user.email.downcase }
 
   before_create :generate_roulette_token
-  after_create :create_notification
+  after_create :send_welcome
 
   ### Validations
   validates :first_name, presence: true
@@ -124,9 +124,10 @@ class User < ActiveRecord::Base
 
   private
 
-  def create_notification
-    self.notifications.create(sender_id: 1, # Admin user set in seeds.rb
-                              ntype: "welcome")
+  def send_welcome
+    Notification.create(user: self.id,
+                        sender_id: 1,
+                        ntype: "welcome")
   end
 
   def generate_roulette_token
