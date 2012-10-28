@@ -1,13 +1,11 @@
 class Case < ActiveRecord::Base
 
-  ### Mass assignables
-  attr_accessible :user_id, :interviewer_id, :date, :subject, :source,
-                  :recommendation1, :recommendation2, :recommendation3,
-                  :structure_comment, :businessanalytics_comment, :interpersonal_comment,
-                  :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
-                  :rapport, :articulation, :concision, :askingforinformation,
-                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion,
-                  :comment, :notes
+  attr_accessible :user, :user_id, :interviewer, :interviewer_id, :date, :subject, :source, :notes, :rapport,
+                  :approachupfront, :interpersonal_comment, :businessanalytics_comment, :structure_comment,
+                  :recommendation1, :recommendation2, :recommendation3, :quantitativebasics, :problemsolving,
+                  :prioritisation, :sanitychecking, :articulation, :concision, :askingforinformation,
+                  :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
+
 
   ### Relationships
   belongs_to :user

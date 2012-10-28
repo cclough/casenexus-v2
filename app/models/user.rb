@@ -52,8 +52,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  after_create :geocode
-  after_validation :reverse_geocode
+  #after_validation :reverse_geocode
+  #after_create :geocode
 
   def name
     "#{first_name} #{last_name}"
@@ -100,16 +100,6 @@ class User < ActiveRecord::Base
     def list_contacts(user)
       # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
       joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
-    end
-
-    def create_using_linkedin(auth)
-      create! do |user|
-        user.provider = auth["provider"]
-        user.email = auth["info"]["email"]
-        user.first_name = auth["info"]["first_name"]
-        user.last_name = auth["info"]["last_name"]
-        user.headline = auth["info"]["headline"]
-      end
     end
   end
 

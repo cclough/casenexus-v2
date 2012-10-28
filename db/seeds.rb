@@ -1,4 +1,4 @@
-if User.count == 0
+if User.count == 0 && Rails.env != 'test'
   admin = User.create!(
       first_name: "Christian",
       last_name: "Clough",
@@ -106,9 +106,9 @@ if User.count == 0
   puts "Friendships created"
 end
 
-if true #Rails.env == 'development'
+if Rails.env != 'test'
 
-  def randomDate(params={ })
+  def random_date(params={ })
     years_back = params[:year_range] || 5
     latest_year = params [:year_latest] || 0
     year = (rand * (years_back)).ceil + (Time.now.year - latest_year - years_back)
@@ -157,35 +157,35 @@ if true #Rails.env == 'development'
 
     rand(51).times do
       user.cases.create!(
-          :interviewer_id => 1 + rand(98),
-          :date => randomDate(:year_range => 2, :year_latest => 0.5),
-          :subject => Faker::Lorem.sentence(5),
-          :source => Faker::Lorem.sentence(3),
+          interviewer_id: 1 + rand(98),
+          date: random_date(year_range: 2, year_latest: 0.5),
+          subject: Faker::Lorem.sentence(5),
+          source: Faker::Lorem.sentence(3),
 
-          :recommendation1 => Faker::Lorem.sentence(10),
-          :recommendation2 => Faker::Lorem.sentence(10),
-          :recommendation3 => Faker::Lorem.sentence(10),
+          recommendation1: Faker::Lorem.sentence(10),
+          recommendation2: Faker::Lorem.sentence(10),
+          recommendation3: Faker::Lorem.sentence(10),
 
-          :structure_comment => Faker::Lorem.sentence(30),
-          :businessanalytics_comment => Faker::Lorem.sentence(30),
-          :interpersonal_comment => Faker::Lorem.sentence(30),
+          structure_comment: Faker::Lorem.sentence(30),
+          businessanalytics_comment: Faker::Lorem.sentence(30),
+          interpersonal_comment: Faker::Lorem.sentence(30),
 
-          :quantitativebasics => 1 + rand(9),
-          :problemsolving => 1 + rand(9),
-          :prioritisation => 1 + rand(9),
-          :sanitychecking => 1 + rand(9),
+          quantitativebasics: 1 + rand(9),
+          problemsolving: 1 + rand(9),
+          prioritisation: 1 + rand(9),
+          sanitychecking: 1 + rand(9),
 
-          :rapport => 1 + rand(9),
-          :articulation => 1 + rand(9),
-          :concision => 1 + rand(9),
-          :askingforinformation => 1 + rand(9),
+          rapport: 1 + rand(9),
+          articulation: 1 + rand(9),
+          concision: 1 + rand(9),
+          askingforinformation: 1 + rand(9),
 
-          :approachupfront => 1 + rand(9),
-          :stickingtostructure => 1 + rand(9),
-          :announceschangedstructure => 1 + rand(9),
-          :pushingtoconclusion => 1 + rand(9),
+          approachupfront: 1 + rand(9),
+          stickingtostructure: 1 + rand(9),
+          announceschangedstructure: 1 + rand(9),
+          pushingtoconclusion: 1 + rand(9),
 
-          :notes => Faker::Lorem.sentence(5)
+          notes: Faker::Lorem.sentence(5)
       )
       puts "Case created for user #{user.name}"
     end
@@ -195,20 +195,20 @@ if true #Rails.env == 'development'
   User.all.each do |user|
 
     5.times do
-      user.notifications.create!(:ntype => "message",
-                                 :sender_id => rand(100),
-                                 :content => Faker::Lorem.sentence(5))
+      user.notifications.create!(ntype: "message",
+                                 sender_id: rand(100),
+                                 content: Faker::Lorem.sentence(5))
       ## created in case.rb
-      # user.notifications.create!(:ntype => "feedback_new",
-      #                            :sender_id => rand(1..100),
-      #                            :content => Faker::Lorem.sentence(5),
-      #                            :event_date => randomDate(:year_range => 1, :year_latest => 0),
-      #                            :case_id => rand(1000))
+      # user.notifications.create!(ntype: "feedback_new",
+      #                            sender_id: rand(1..100),
+      #                            content: Faker::Lorem.sentence(5),
+      #                            event_date: random_date(:year_range: 1, :year_latest: 0),
+      #                            case_id: rand(1000))
 
-      user.notifications.create!(:ntype => "feedback_req",
-                                 :sender_id => rand(100),
-                                 :content => Faker::Lorem.sentence(5),
-                                 :event_date => randomDate(:year_range => 1, :year_latest => 0))
+      user.notifications.create!(ntype: "feedback_req",
+                                 sender_id: rand(100),
+                                 content: Faker::Lorem.sentence(5),
+                                 event_date: random_date(year_range: 1, year_latest: 0))
 
       puts "Notification created for user #{user.name}"
     end

@@ -19,8 +19,7 @@ gem 'omniauth'                                   # Authentication with Rack
 gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
 gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
-
-  gem 'ffaker'                                   # Generate test data, we put it here because of heroku, remove later
+gem 'ffaker'                                   # Generate test data, we put it here because of heroku, remove later
 
 
 group :development, :test do
@@ -37,13 +36,13 @@ group :assets do
 end
 
 group :test do
-  gem 'turn', require: false                     # Better Test output
   gem 'simplecov'                                # Code coverage
   gem 'database_cleaner'                         # Clean database strategy
   gem 'factory_girl_rails'                       # Fixtures
 
   gem 'launchy'                                  # To open pages when developing capybara tests
-  gem 'ruby-debug19', require: 'ruby-debug'      # Debug on testing
+  #gem 'ruby-debug19', require: 'ruby-debug'      # Debug on testing
+  gem 'debugger'
 
   gem 'email_spec'                               # Email for rspec
   gem 'rb-fsevent', require: false               # Mac OSX FSEvents API

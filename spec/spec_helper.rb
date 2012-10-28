@@ -14,6 +14,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'capybara/rspec'
+
   # for email-rspec gem
   require "email_spec"
 
