@@ -116,7 +116,7 @@ class User < ActiveRecord::Base
   private
 
   def send_welcome
-    Notification.create(user: self.id, sender_id: 1, ntype: "welcome")
+    Notification.create(user: self, sender_id: 1, ntype: "welcome")
   end
 
   def generate_roulette_token

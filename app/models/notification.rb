@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-  attr_accessible :user_id, :sender_id, :ntype, :content, :notification_at, :read, :notificable_id, :notificable_type
+  attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :event_date, :read, :notificable_id, :notificable_type
 
   attr_accessor :sender
 
