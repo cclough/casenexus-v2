@@ -9,14 +9,18 @@ class Case < ActiveRecord::Base
 
   ### Relationships
   belongs_to :user
+  belongs_to :interviewer, class_name: 'User'
   has_many :notifications, as: :notificable
 
   ### Callbacks
   # after_create :create_notification
 
   ### Validations
-  validates :user_id, presence: true
-  validates :interviewer_id, presence: true
+  validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
+  validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
+  validates :interviewer_id, presence: true, if: Proc.new { |c| c.interviewer.nil? }
+  validates :interviewer, presence: true, if: Proc.new { |c| c.interviewer_id.nil? }
+
   validates :date, presence: true
 
   validates :subject, presence: true, length: { maximum: 500 }

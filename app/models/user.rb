@@ -35,13 +35,6 @@ class User < ActiveRecord::Base
   # Scoped_search Gem
   scoped_search :on => [:first_name, :last_name, :status, :headline]
 
-  ### GeoKit
-  acts_as_mappable default_units: :kms,
-                   default_formula: :flat,
-                   distance_field_name: :distance,
-                   lat_column_name: :lat,
-                   lng_column_name: :lng
-
   ### Geocoder
   geocoded_by :ip_address, latitude: :lat, longitude: :lng
 
@@ -51,6 +44,14 @@ class User < ActiveRecord::Base
       obj.country = geo.country
     end
   end
+
+  ### GeoKit
+  # NOTE: Geocoder and geokit-rails3 is a bad combination, we should stay with geokit-rail3 which encapsulates geocoder
+  acts_as_mappable default_units: :kms,
+                   default_formula: :flat,
+                   distance_field_name: :distance,
+                   lat_column_name: :lat,
+                   lng_column_name: :lng
 
   #after_validation :reverse_geocode
   #after_create :geocode

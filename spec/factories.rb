@@ -49,6 +49,44 @@ FactoryGirl.define do
     stickingtostructure { 1 + rand(10) }
     announceschangedstructure { 1 + rand(10) }
     pushingtoconclusion { 1 + rand(10) }
+
+    association :user, factory: :user
+    association :interviewer, factory: :user
   end
 
+  factory :notification do
+    read false
+    association :user, factory: :user
+    association :sender, factory: :user
+
+    factory :welcome_notification do
+      ntype "welcome"
+      association :sender, factory: :admin
+    end
+
+    factory :message_notification do
+      ntype "message"
+      content Faker::Lorem.paragraph
+    end
+
+    factory :feedback_request_notification do
+      ntype "feedback_req"
+      content Faker::Lorem.sentence
+      association :notificable, factory: :case
+    end
+
+    factory :feedback_notification do
+      ntype "feedback"
+      content Faker::Lorem.sentence
+      association :notificable, factory: :case
+    end
+
+    factory :friendship_request_notification do
+      ntype "friendship_req"
+    end
+
+    factory :friendship_approval_notification do
+      ntype "friendship_app"
+    end
+  end
 end

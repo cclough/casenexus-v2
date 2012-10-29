@@ -2,201 +2,153 @@ require 'spec_helper'
 
 describe Notification do
 
-  let(:user) { FactoryGirl.create(:user) }
+  context "associations and attributes" do
 
-  before do
-    @notification = user.notifications.build(sender_id: 2, 
-    				        ntype: "message", content: "Some subject")
+    let(:receiver) { FactoryGirl.create(:user) }
+    let(:sender) { FactoryGirl.create(:user) }
+    let(:notification) { FactoryGirl.build(:message_notification, sender: sender, user: receiver) }
 
-  end
+    subject { notification }
 
-  subject { @notification }
+    context "attributes" do
 
-  it { should respond_to(:user_id) }
-  it { should respond_to(:sender_id) }
-  it { should respond_to(:ntype) }
-  it { should respond_to(:content) }
-  it { should respond_to(:case_id) }
-  it { should respond_to(:event_date) }
-  it { should respond_to(:read) }
+      it { should respond_to(:user_id) }
+      it { should respond_to(:sender_id) }
+      it { should respond_to(:ntype) }
+      it { should respond_to(:content) }
+      it { should respond_to(:event_date) }
+      it { should respond_to(:read) }
+      it { should respond_to(:notificable_id) }
+      it { should respond_to(:notificable_type) }
 
-  # ?
-  it { should respond_to(:user) }
+      it { should respond_to(:user) }
+      it { should respond_to(:sender) }
+      it { should respond_to(:notificable) }
 
-  # ?
-  its(:user) { should == user }
-
-  it { should be_valid }
-
-
-  describe "when user_id is not present" do
-    before { @notification.user_id = nil }
-    it { should_not be_valid }
-  end
-
-  describe "when sender_id is not present" do
-    before { @notification.sender_id = nil }
-    it { should_not be_valid }
-  end
-
-  describe "with blank subject" do
-    before { @notification.ntype = " " }
-    it { should_not be_valid }
-  end
-
-
-  describe "with ntype that is too long" do
-    before { @notification.ntype = "a" * 21 }
-    it { should_not be_valid }
-  end
-
-
-  describe "with content that is too long" do
-    before { @notification.content = "a" * 501 }
-    it { should_not be_valid }
-  end
-
-
-  describe "with blank content if ntype is message" do
-    before do
-      @notification.ntype = 'message'
-      @notification.content = ""
-    end
-    it { should_not be_valid }
-  end
-
-  describe "with blank content if ntype is feedback_req" do
-    before do
-      @notification.ntype = 'feedback_req'
-      @notification.content = ""
-    end
-    it { should_not be_valid }
-  end
-
-  describe "with blank content if ntype is feedback" do
-    before do
-      @notification.ntype = 'feedback'
-      @notification.content = ""
-    end
-    it { should_not be_valid }
-  end
-
-  describe "with blank event_date if ntype is feedback_req" do
-    before do
-      @notification.ntype = 'feedback_req'
-      @notification.event_date = ""
-    end
-    it { should_not be_valid }
-  end
-
-  describe "with blank event_date if ntype is feedback" do
-    before do
-      @notification.ntype = 'feedback'
-      @notification.event_date = ""
-    end
-    it { should_not be_valid }
-  end
-
-
-  describe "sender should be user found by sender_id" do
-
-    let(:user) { FactoryGirl.create(:user, id: 2) }
-
-    before do
-      @notification.save
+      its(:user) { should == receiver }
+      its(:sender) { should == sender }
     end
 
-    its(:sender) { should == user }
-
   end
 
-  describe "target should be user found by user_id" do
+  context "validations" do
 
-    before do
-      @notification.save
+    let(:notification) { FactoryGirl.build(:message_notification) }
+    subject { notification }
+
+    it { should be_valid }
+
+    describe "when user_id is not present" do
+      before { notification.user_id = nil }
+      it { should_not be_valid }
     end
 
-    its(:target) { should == user }
+    describe "when sender_id is not present" do
+      before { notification.sender_id = nil }
+      it { should_not be_valid }
+    end
 
+    describe "with blank subject" do
+      before { notification.ntype = " " }
+      it { should_not be_valid }
+    end
+
+
+    describe "with ntype that is too long" do
+      before { notification.ntype = "a" * 21 }
+      it { should_not be_valid }
+    end
+
+
+    describe "with content that is too long" do
+      before { notification.content = "a" * 501 }
+      it { should_not be_valid }
+    end
+
+    describe "with valid types" do
+      it "validates a welcome notification" do
+        FactoryGirl.build(:welcome_notification).should be_valid
+      end
+
+      it "validates a message notification" do
+        FactoryGirl.build(:message_notification).should be_valid
+      end
+
+      it "validates a feedback and feedback request notification" do
+        FactoryGirl.build(:feedback_request_notification).should be_valid
+        FactoryGirl.build(:feedback_notification).should be_valid
+      end
+
+      it "validates a friendship request and friendship approval" do
+        FactoryGirl.build(:friendship_request_notification).should be_valid
+        FactoryGirl.build(:friendship_approval_notification).should be_valid
+      end
+    end
+
+    describe "with invalid type" do
+      before { notification.ntype = "lala" }
+      it { notification.should_not be_valid }
+    end
   end
 
 
   describe "header feed" do
 
+    let(:user) { FactoryGirl.create(:user) }
+
     before do
-
-      7.times { user.notifications.create(sender_id: 2, 
-                ntype: "feedback_new", content: "Some subject", case_id: 5,
-                event_date: Date.new(2012, 3, 3)) }
-
+      7.times { FactoryGirl.create(:feedback_notification, user: user) }
     end
-    
-    # No test for syntax of JSON, or that JSON is being made in controller
 
     it "should contain the correct number of data points" do
       Notification.header(user).should have(5).items
     end
-  
-    # it "should be ordered correctly" do
-    #   # Notification.header(user)
-    # end
-
   end
 
   describe "unread scope" do
 
+    let(:receiver) { FactoryGirl.create(:user) }
     before do
-      3.times { user.notifications.create(sender_id: 2, 
-                ntype: "feedback_new", content: "Some subject", case_id: 5,
-                event_date: Date.new(2012, 3, 3)) }
-
-      5.times { user.notifications.create(sender_id: 2, 
-                ntype: "feedback_new", content: "Some subject", case_id: 5,
-                event_date: Date.new(2012, 3, 3),
-                read: true) }
+      3.times { FactoryGirl.create(:feedback_notification, user: receiver, read: false)  }
+      5.times { FactoryGirl.create(:feedback_notification, user: receiver, read: true)  }
     end
 
-    it "should only contain unread notifications" do
-      # 3 + welcome notification = 4
-      user.notifications.unread.should have(4).items
+    it "should only contain unread notifications (3 created and 1 welcome)" do
+      receiver.notifications.unread.should have(4).items
     end
 
   end
 
   describe "url should be correct depending on ntype" do
 
-    let(:host) { "http://localhost:3000/" }
-
-    before { @notification.save }
-
-    its(:url) { should == host + "notifications/2" }
-
-
-
     it "welcome" do
-      notification = user.notifications.create(sender_id: 2, 
-                     ntype: "welcome")
+      notification = FactoryGirl.create(:welcome_notification)
+      notification.url.should eql "http://localhost:3000/"
+    end
 
-      notification.url.should == host
+    it "message" do
+      notification = FactoryGirl.create(:message_notification)
+      notification.url.should eql "http://localhost:3000/notifications/#{notification.id}"
     end
 
     it "feedback" do
-      notification = user.notifications.create(sender_id: 2, 
-                     ntype: "feedback", content: "Some subject",
-                     case_id: 24, event_date: Date.new(2012, 3, 3))
-
-      notification.url.should == host + "cases/24"
+      notification = FactoryGirl.create(:feedback_notification)
+      notification.url.should eql "http://localhost:3000/cases/#{notification.notificable.id}"
     end
 
     it "feedback_req" do
-      notification = user.notifications.create(sender_id: 2, 
-                     ntype: "feedback_req", content: "Some subject",
-                     event_date: Date.new(2012, 3, 3))
-
-      notification.url.should == host + "cases/new"
+      notification = FactoryGirl.create(:feedback_request_notification)
+      notification.url.should eql "http://localhost:3000/cases/new"
     end
 
+    it "friendship_req" do
+      notification = FactoryGirl.create(:friendship_request_notification)
+      notification.url.should eql "http://localhost:3000/friendships/#{notification.sender_id}"
+    end
 
+    it "friendship_app" do
+      notification = FactoryGirl.create(:friendship_approval_notification)
+      notification.url.should eql "http://localhost:3000/"
+    end
   end
-
 end

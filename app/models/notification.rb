@@ -1,24 +1,29 @@
 class Notification < ActiveRecord::Base
   attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :event_date, :read, :notificable_id, :notificable_type
 
-  attr_accessor :sender
-
   belongs_to :user
   belongs_to :sender, class_name: 'User'
   belongs_to :notificable, polymorphic: true
 
-  validates :user_id, presence: true
-  validates :sender_id, presence: true
-  validates :ntype, presence: true, length: { maximum: 20 }
+  validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
+  validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
+  validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
+  validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
+
   validates :content, length: { maximum: 500 }
 
   validates_presence_of :content, if: lambda { self.ntype == 'message' }
-  validates_presence_of :content, :event_date, if: lambda { self.ntype == 'feedback_req' }
-  validates_presence_of :content, :event_date, if: lambda { self.ntype == 'feedback' }
+  # TODO: case shoudl be attached to notification by :notificable, that's where we get the date
+  #validates_presence_of :content, :event_date, if: lambda { %w(feedback_req feedback).include?(self.ntype) }
 
   after_create :send_email
 
+  def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app); end
+
+  validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
+
   class << self
+
     def readed
       where(read: true)
     end
@@ -41,19 +46,21 @@ class Notification < ActiveRecord::Base
   end
 
   def url
+    host = Rails.env == 'production' ? 'salty-crag-5200.herokuapp.com' : 'localhost:3000'
+
     case ntype
       when "welcome"
-        root_url
+        Rails.application.routes.url_helpers.root_url(host: host)
       when "message"
-        notification_url(id)
+        Rails.application.routes.url_helpers.notification_url(id, host: host)
       when "feedback"
-        case_url(notificable_id)
+        Rails.application.routes.url_helpers.case_url(notificable_id, host: host)
       when "feedback_req"
-        new_case_url
+        Rails.application.routes.url_helpers.new_case_url(host: host)
       when "friendship_req"
-        friendship_url(sender_id)
+        Rails.application.routes.url_helpers.friendship_url(sender_id, host: host)
       when "friendship_app"
-        root_url
+        Rails.application.routes.url_helpers.root_url(host: host)
     end
   end
 
@@ -73,8 +80,9 @@ class Notification < ActiveRecord::Base
 
   def send_email
     def after_create(notification)
-
       user_from = notification.sender
+
+      breakpoint
 
       case notification.ntype
         when "welcome"
