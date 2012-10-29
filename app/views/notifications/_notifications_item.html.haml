@@ -1,7 +1,7 @@
 .notifications_index_notifications_item{id: "notifications_index_notifications_item_" + notifications_item.id.to_s, 'data-id' => notifications_item.id.to_s, :class => ("read" if notifications_item.read?)}
   .row
     .span7
-      = avatar_for(notifications_item.sender, 'icon', '')
+      = avatar_for(notifications_item.sender, 'icon')
     .span13
       .row
         %strong

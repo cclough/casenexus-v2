@@ -1,7 +1,7 @@
 .row
   .span5
     .spacer10
-    = avatar_for(@roulette_user, 'icon','')
+    = avatar_for(@roulette_user, 'icon')
   .span20.offset3
     .spacer15
     .application_name
@@ -18,7 +18,7 @@
 
   .span5.offset3
     .roulette_index_users_item_casecount
-      = avatar_for(@roulette_user, 'chevron', @roulette_user.case_count)
+      = avatar_for(@roulette_user, 'chevron')
 
 .row{ id: "roulette_index_users_item_status_" + @roulette_user.id, class: "roulette_index_users_item_status"}
   .span50.offset10

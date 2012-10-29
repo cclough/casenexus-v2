@@ -3,12 +3,12 @@
   %button#users_index_show_close.close ×
 
   #users_show_casecount
-    = avatar_for(@user, 'chevron', @user.case_count)
+    = avatar_for(@user, 'chevron')
 
   .row
     .span5
       .application_avatar
-        = avatar_for(@user, 'icon', '')
+        = avatar_for(@user, 'icon')
     .span20
       #users_show_name
         = @user.name

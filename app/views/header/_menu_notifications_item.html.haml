@@ -1,7 +1,7 @@
 %li
   = link_to "/notifications?id=" + notification.id.to_s, {class: "header_menu_notifications_item"} do
     .header_menu_notifications_avatar
-      = avatar_for(notification.sender, 'icon','')
+      = avatar_for(notification.sender, 'icon')
     %div
       %div
         = notification.sender.name

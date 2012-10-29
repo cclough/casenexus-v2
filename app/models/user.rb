@@ -69,7 +69,18 @@ class User < ActiveRecord::Base
   end
 
   def self.markers
-    User.all.map { |m| { id: m.id, case_count: m.case_count, lat: m.lat, lng: m.lng } }
+    User.all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+  end
+
+  def level
+    case case_count
+      when 0..9 then 0
+      when 10..19 then 1
+      when 20..29 then 2
+      when 30..39 then 3
+      when 40..49 then 4
+      when 50..1000 then 5
+    end.to_s
   end
 
   def admin?
