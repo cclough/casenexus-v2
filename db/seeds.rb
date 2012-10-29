@@ -183,9 +183,7 @@ if Rails.env != 'test'
           approachupfront: 1 + rand(9),
           stickingtostructure: 1 + rand(9),
           announceschangedstructure: 1 + rand(9),
-          pushingtoconclusion: 1 + rand(9),
-
-          notes: Faker::Lorem.sentence(5)
+          pushingtoconclusion: 1 + rand(9)
       )
       puts "Case created for user #{user.name}"
     end

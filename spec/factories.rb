@@ -25,7 +25,6 @@ FactoryGirl.define do
 
     subject Faker::Lorem.sentence(5)
     source Faker::Lorem.sentence(3)
-    notes Faker::Lorem.paragraph
 
     recommendation1 Faker::Lorem.sentence(10)
     recommendation2 Faker::Lorem.sentence(10)
