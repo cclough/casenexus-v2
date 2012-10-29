@@ -335,7 +335,17 @@ $(document).ready(function(){
 
       $.each(json, function(i, marker) {
 
-        var icon = users_index_map_customMarkers[marker.level] || {};
+        switch (marker.case_count) {
+          case >=0 && <=9: marker_icon_num == 0; break;
+          case >=10 && <=19: marker_icon_num == 1; break;
+          case >=20 && <=29: marker_icon_num == 2; break;
+          case >=30 && <=39: marker_icon_num == 3; break;
+          case >=40 && <=49: marker_icon_num == 4; break;
+          case >=50 && <=1000: marker_icon_num == 5; break;
+        default: marker_icon_num == 0;
+        }
+
+        var icon = users_index_map_customMarkers[marker.case_count] || {};
         var marker = new google.maps.Marker({
           id: marker.id,
           map: map,

@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   end
 
   def self.markers
-    User.all.map { |m| { id: m.id, lat: m.lat, lng: m.lng } }
+    User.all.map { |m| { id: m.id, case_count: m.case_count, lat: m.lat, lng: m.lng } }
   end
 
   def admin?

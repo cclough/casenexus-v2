@@ -19,45 +19,42 @@ $(document).ready(function(){
     // force new connection to enable reconnect - might be messy - https://github.com/LearnBoost/socket.io-client/issues/251
     var socket = io.connect('https://cclough.nodejitsu.com', {secure: true, 'force new connection': true});
 
-
-
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
-    	
+      
       // call the server-side function 'adduser' and send one parameter (value of prompt)
-    	socket.emit('adduser', roulette_index_user_id);
+      socket.emit('adduser', roulette_index_user_id);
 
       $("#roulette_index_button_connect_text").html("Connected");
       $("#roulette_index_button_disconnect").attr("disabled", false);
 
     });
 
-
     // listener for private message (roulette request)
     socket.on("private", function(data) {  
 
-      //data.to
+      $('#modal_roulette_req_from').html(data.from);
+      $('#modal_roulette_req_to').html(data.to);
+      $('#modal_roulette_req_msg').html(data.msg);
 
-      $.get('/request?id=' + data.from + '&msg=' + data.msg, function(data_request) {
-        $('#modal_roulette_req').html(data_request);
-        $('#modal_roulette_req').modal('show');
-      });
+      $('#modal_roulette_req').modal('show');
+      
+      //$('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
+      
+      // alert(data.from);
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
     socket.on('updatelog', function (username, data) {
-    	$('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
+      $('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
     });
-
-
 
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
 
       // remove all click events
-      $(".roulette_index_users_item_button_request").unbind("click");
-      $(".roulette_index_users_item_expand").unbind("click");
+      $(".roulette_index_item_button_request").unbind("click");
 
       // loop through remote to see if any new users, if so, add them
       $.each(data, function(key_remote, value) {
@@ -66,21 +63,17 @@ $(document).ready(function(){
 
           roulette_index_users_local.push(key_remote);
 
-          $.get('/item?id=' + key_remote, function(data_item) {
+          $.get('/get_item?id=' + key_remote, function(data_item) {
             $('#roulette_index_users').append('<div class=roulette_index_users_item data-socket_id='+key_remote+' id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
             
-            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_users_item_button_request').click(function() {
+            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_item_button_request').click(function() {
     
               var target_user_id = $(this).attr('data-user_id');
 
+              $('#testing123').html(target_user_id);
+
               socket.emit("private", { msg: "Request to skype", to: target_user_id });
-
-            });
-
-            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_users_item_button_expand').click(function() {
-
-              // call slide down function? as per re-done notifications?
 
             });
 
