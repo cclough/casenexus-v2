@@ -67,7 +67,7 @@ class Case < ActiveRecord::Base
   scoped_search in: :user, on: :first_name
   scoped_search in: :user, on: :last_name
   scoped_search on: [:subject, :source, :recommendation1, :recommendation2, :recommendation3, :interpersonal_comment,
-                     :businessanalytics_comment, :structure_comment, :notes]
+                     :businessanalytics_comment, :structure_comment]
 
 
   ### Outputs
@@ -95,7 +95,7 @@ class Case < ActiveRecord::Base
   end
 
   def subject_trunc
-    subject.truncate(25, separator: ' ')
+    subject.truncate(20, separator: ' ')
   end
 
 

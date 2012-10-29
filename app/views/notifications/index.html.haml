@@ -1,12 +1,5 @@
 - provide(:title, 'Your Notifications')
 - provide(:sub_title, 'Browse through all of your notifications')
 
-.row
-  .span25
-    .panel.dark
-      = render 'notifications_form'
-  .span67
-    .panel.kill_left.kill_right
-      #notifications_index_notifications
-      / content is rendered by index.js.erb
-      = render('notifications')
+#notifications_index_notifications
+	= render('notifications')

@@ -17,9 +17,6 @@ class NotificationsController < ApplicationController
   def show
     @notifications = Notification.history(params[:id], current_user.id)
 
-    respond_to do |format|
-      format.html { render layout: false }
-    end
   end
 
   def create

@@ -1,6 +1,9 @@
 - provide(:title, 'Your Cases')
 - provide(:sub_title, 'Records of all your case feedback')
 
+- content_for :javascript_includes do
+  = javascript_include_tag "cases"
+  = javascript_include_tag "lib/amcharts"
 / NB cas is used instead of 'case' as it's apparently used for something else in rails and fails!
 .span30
   = render 'cases_form'

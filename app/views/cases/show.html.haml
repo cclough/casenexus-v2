@@ -20,7 +20,7 @@
               = @case.date.strftime("%d %b '%y")
           .span6
             #cases_show_casecount
-              = avatar_for(current_user, 'chevron', @case.interviewer.casecount)
+              = avatar_for(current_user, 'chevron')
     .row
       #cases_show_block_basics.panel.dark.kill_right.kill_left.kill_top.font-small
         .row
@@ -43,14 +43,30 @@
     #cases_show_chart_radar
 
 .row
+  .span20
+    .panel.darker.kill_left.kill_top
+      .cases_show_title
+        Recommendation 1
+      = @case.recommendation1
+  .span20
+    .panel.darker.kill_left.kill_top
+      .cases_show_title
+        Recommendation 2
+      = @case.recommendation2
+  .span20
+    .panel.darker.kill_left.kill_top
+      .cases_show_title
+        Recommendation 3
+      = @case.recommendation3
+
+.row
   .span63
     .panel.darker.kill_left.kill_right.kill_top
       .cases_show_title
         Business Analytics
       .row
         .span14
-          .panel.dark.kill_all.kill_border
-            #cases_show_businessanalytics_chart_radar
+          #cases_show_businessanalytics_chart_radar
         .span9.offset2
           .cases_show_block_circle_outer.panel.dark
             .cases_show_block_circle.panel.darker
@@ -65,8 +81,7 @@
         Interpersonal
       .row
         .span14
-          .panel.dark.kill_all.kill_border
-            #cases_show_interpersonal_chart_radar
+          #cases_show_interpersonal_chart_radar
         .span9.offset2
           .cases_show_block_circle_outer.panel.dark
             .cases_show_block_circle.panel.darker
@@ -81,8 +96,7 @@
         Structure
       .row
         .span14
-          .panel.dark.kill_all.kill_border
-            #cases_show_structure_chart_radar
+          #cases_show_structure_chart_radar
         .span9.offset2
           .cases_show_block_circle_outer.panel.dark
             .cases_show_block_circle.panel.darker

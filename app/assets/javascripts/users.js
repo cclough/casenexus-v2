@@ -231,19 +231,11 @@ $(document).ready(function(){
       }
     });
 
-    // Draw markers
-    var image = new google.maps.MarkerImage("/assets/markers/marker_0.png",
-        new google.maps.Size(40.0, 52.0),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(20.0, 26.0)
-    );
-
     var shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png",
         new google.maps.Size(67.0, 52.0),
         new google.maps.Point(0, 0),
         new google.maps.Point(20.0, 26.0)
     );
-
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -313,6 +305,13 @@ $(document).ready(function(){
     $.getJSON("members", function(json) {
 
       $.each(json, function(i, marker) {
+    
+        // Draw markers
+        var image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png",
+            new google.maps.Size(40.0, 52.0),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(20.0, 26.0)
+        );
 
         var marker = new google.maps.Marker({
           id: marker.id,

@@ -7,7 +7,6 @@
 ///////////////////// GLOBAL FUNCTIONS //////////////////////////
 /////////////////////////////////////////////////////////////////
 
-
 function notifications_index_notifications_link () {
   var query = getQueryParams(document.location.search);
   // alert(query.foo);
@@ -20,12 +19,9 @@ function notifications_index_notifications_link () {
 
 }
 
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
-
 
 $(document).ready(function(){
 
@@ -69,6 +65,10 @@ $(document).ready(function(){
       notification.removeClass('read');
    }
 
+  });
+
+  $("#notifications_show_back").click(function() {
+    history.go(-1);return false;
   });
 
 
