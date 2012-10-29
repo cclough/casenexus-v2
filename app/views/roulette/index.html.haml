@@ -1,3 +1,4 @@
+
 - provide(:title, 'Roulette')
 
 - content_for :javascript_includes do
@@ -5,49 +6,46 @@
   :javascript
     var roulette_index_user_id = "#{current_user.id}";
 
-= content_for :content do
+.panel.dark
+  .row
+    .span85.offset2
+      .row
 
-  .panel.dark
-    .row
-      .span85.offset2
-        .row
+        .span17
+          %button#roulette_index_button_connect.btn.btn-inverse.btn-large.roulette_index_button_connection
+            %i.icon-link.icon-white
+            %span#roulette_index_button_connect_text
+              Join
+        .span17
+          %button#roulette_index_button_disconnect.btn.btn-inverse.btn-large.roulette_index_button_connection
+            %i.icon-off.icon-white
+            %span
+              Disconnect
+        .span14.font-small
+          .row
+            #roulette_index_token_text
+              Your roulette token
+          .row
+            #roulette_index_token
+              /= current_user.roulette_token
 
-          .span17
-            %button#roulette_index_button_connect.btn.btn-inverse.btn-large.roulette_index_button_connection
-              %i.icon-link.icon-white
-              %span#roulette_index_button_connect_text
-                Join
-          .span17
-            %button#roulette_index_button_disconnect.btn.btn-inverse.btn-large.roulette_index_button_connection
-              %i.icon-off.icon-white
-              %span
-                Disconnect
-          .span14.font-small
-            .row
-              #roulette_index_token_text
-                Your roulette token
-            .row
-              #roulette_index_token
-                /= current_user.roulette_token
-
-          .span36
-            .row.font-small
-              If you are interviewer, ask the interviewee for their roulette token:
-            .spacer5
-            .row
-              = form_tag('/cases/new', :method => "get") do
-                .input-append
-                  = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee's Token"
-                  %button.btn.btn-inverse{ type: "submit" }
-                    Feedback Form 
-                    %i.icon-arrow-right.icon-white
+        .span36
+          .row.font-small
+            If you are interviewer, ask the interviewee for their roulette token:
+          .spacer5
+          .row
+            = form_tag('/cases/new', :method => "get") do
+              .input-append
+                = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee's Token"
+                %button.btn.btn-inverse{ type: "submit" }
+                  Feedback Form
+                  %i.icon-arrow-right.icon-white
 
 
-  .panel.darker.roulette
-    .row
-      #roulette_index_users
-    .row
-      #roulette_index_log
+.panel.darker.roulette
+  .row
+    #roulette_index_users
+  .row
+    #roulette_index_log
 
-  = render 'shared/modal_roulette_req' if signed_in?
-  
+= render 'shared/modal_roulette_req' if signed_in?

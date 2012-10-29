@@ -36,8 +36,7 @@ class CasesController < ApplicationController
   end
 
   def create
-    @case = Case.build(params[:case])
-    # TODO: If params[:case][:user_id] is the current user, replace for current_user
+    @case = Case.new(params[:case])
     @case.user_id = params[:case][:user_id]
 
     if @case.save
