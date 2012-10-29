@@ -65,7 +65,7 @@ function users_index_map_marker_click (marker_id) {
 
 // Update the User List - submits form...
 function users_index_users_updatelist () {
-  $.get($("#users_index_users_form").attr("action"), $("#users_index_users_form").serialize(), null, "script");
+  $.get("/members", $("#users_index_users_form").serialize(), null, "script");
   return false;
 }
 
@@ -376,7 +376,7 @@ $(document).ready(function(){
 
   function users_index_mappanel_tooltip(marker_id) {
 
-    $.get('/tooltip?id=' + marker_id, function(data) {
+    $.get('/members/' + marker_id + '/tooltip', function(data) {
 
       $('#users_index_mappanel_tooltip').html(data);
 

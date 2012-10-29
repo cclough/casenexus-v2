@@ -14,7 +14,7 @@ class MembersController < ApplicationController
       when "rand"
         users_scope = User.list_rand
       when "friendships"
-        users_scope = User.list_contacts
+        users_scope = User.list_contacts(current_user)
     end
 
     # Using scoped_search gem
