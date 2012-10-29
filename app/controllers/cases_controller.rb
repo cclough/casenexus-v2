@@ -66,6 +66,10 @@ class CasesController < ApplicationController
   end
 
   def analysis
+
+    # defines radar chart last 5 count
+    (current_user.casecount < 6) ? (@radar_count = 1) : (@radar_count = 5)
+    
     respond_to do |format|
       format.html
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }

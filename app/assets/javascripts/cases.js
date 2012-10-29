@@ -25,18 +25,25 @@ function cases_index_case_link () {
 }
 
 
-function cases_show_chart_radar_draw() {
+function cases_show_chart_radar_draw(radar_type) {
 
   var chart_show_radar;
 
   // RADAR CHART
   chart_show_radar = new AmCharts.AmRadarChart();
-  chart_show_radar.dataProvider = cases_show_chart_radar_data;
+
+  if (radar_type == "all") {
+    chart_show_radar.dataProvider = cases_show_chart_radar_data_all;
+  } else if (radar_type == "combined") {
+    chart_show_radar.dataProvider = cases_show_chart_radar_data_combined;    
+  }
+
   chart_show_radar.categoryField = "criteria";
   // chart_show_radar.startDuration = 1;
   // chart_show_radar.startEffect = ">";
   // chart_show_radar.sequencedAnimation = true;
   chart_show_radar.color = "#FFFFFF";
+  chart_show_radar.fontSize = 9;
 
   // VALUE AXIS
   var valueAxis = new AmCharts.ValueAxis();
@@ -57,6 +64,7 @@ function cases_show_chart_radar_draw() {
   graph.bullet = "round";
   graph.valueField = "score";
   graph.balloonText = "[[category]]: [[value]]/10";
+  graph.labelPosition = "right";
   chart_show_radar.addGraph(graph);
 
   // Balloon Settings
@@ -73,10 +81,73 @@ function cases_show_chart_radar_draw() {
 
 }
 
+function cases_show_category_chart_radar_draw(category) {
 
-function cases_analysis_charts_draw(radar_data) {
+  var chart_show_category_radar;
+
+  // RADAR CHART
+  chart_show_category_radar = new AmCharts.AmRadarChart();
+
+  if (category == "businessanalytics") {
+    chart_show_category_radar.dataProvider = cases_show_businessanalytics_chart_radar_data;
+  } else if (category == "interpersonal") {
+    chart_show_category_radar.dataProvider = cases_show_interpersonal_chart_radar_data;   
+  } else if (category == "structure") {
+    chart_show_category_radar.dataProvider = cases_show_structure_chart_radar_data;    
+  }
+
+  chart_show_category_radar.categoryField = "criteria";
+  // chart_show_category_radar.startDuration = 1;
+  // chart_show_category_radar.startEffect = ">";
+  // chart_show_category_radar.sequencedAnimation = true;
+  chart_show_category_radar.color = "#FFFFFF";
+  chart_show_category_radar.fontSize = 9;
+
+  // VALUE AXIS
+  var valueAxis = new AmCharts.ValueAxis();
+  valueAxis.gridType = "circles";
+  valueAxis.fillAlpha = 0.02;
+  valueAxis.fillColor = "#000000"
+  valueAxis.axisAlpha = 0.1;
+  valueAxis.gridAlpha = 0.1;
+  valueAxis.fontWeight = "bold"
+  valueAxis.minimum = 0;
+  valueAxis.maximum = 10;
+  chart_show_category_radar.addValueAxis(valueAxis);
 
 
+  // GRAPH
+  var graph = new AmCharts.AmGraph();
+  graph.lineColor = "#98cdff";
+  graph.fillAlphas = 0.4;
+  graph.bullet = "round";
+  graph.valueField = "score";
+  graph.balloonText = "[[category]]: [[value]]/10";
+  chart_show_category_radar.addGraph(graph);
+
+  // Balloon Settings
+  var balloon = chart_show_category_radar.balloon;
+  balloon.adjustBorderColor = true;
+  balloon.color = "#000000";
+  balloon.cornerRadius = 5;
+  balloon.fillColor = "#000000";
+  balloon.fillAlpha = 0.7;
+  balloon.color = "#FFFFFF";
+
+  // WRITE
+  if (category == "businessanalytics") {
+    chart_show_category_radar.write('cases_show_businessanalytics_chart_radar');
+  } else if (category == "interpersonal") {
+    chart_show_category_radar.write('cases_show_interpersonal_chart_radar');  
+  } else if (category == "structure") {
+    chart_show_category_radar.write('cases_show_structure_chart_radar');   
+  }
+
+}
+
+
+
+function cases_analysis_charts_draw(radar_count) {
 
   ////////////////////////////////////////////
   // Progress chart javascript
@@ -94,11 +165,11 @@ function cases_analysis_charts_draw(radar_data) {
       cases_analysis_chart_progress_data.push(dataObject); 
     });
 
-  }).complete(function() { 
+  }).complete(function() {
+    // DRAW BOTH CHARTS
     cases_analysis_chart_progress_draw(cases_analysis_chart_progress_data);
-    cases_analysis_chart_radar_draw();
+    cases_analysis_chart_radar_draw("all", radar_count);
   });
-
 
 
   function cases_analysis_chart_progress_draw(data) {
@@ -119,6 +190,7 @@ function cases_analysis_charts_draw(radar_data) {
         backgroundColor: "#000000",
         backgroundAlpha: 0.15
     };
+    chart_analysis_progress.colors = ["#FCD202","#B0DE09","#0D8ECF"]
     chart_analysis_progress.dataProvider = data;
     chart_analysis_progress.categoryField = "date";
     
@@ -134,10 +206,6 @@ function cases_analysis_charts_draw(radar_data) {
     chart_analysis_progress.startEffect = ">";
     chart_analysis_progress.sequencedAnimation = true;
 
-    // scroll bar stuff from: http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    // listen for "dataUpdated" event (fired when chart is rendered) and call zoomChart method when it happens
-    // chart.addListener("dataUpdated", zoomChart(data));
-    
     // AXES
     // Category
     var categoryAxis = chart_analysis_progress.categoryAxis;
@@ -172,7 +240,6 @@ function cases_analysis_charts_draw(radar_data) {
     graph.bullet = "round";
 
     addclicklistener(graph);
-    //addrolloverlistener(graph);
 
     chart_analysis_progress.addGraph(graph);
 
@@ -186,7 +253,6 @@ function cases_analysis_charts_draw(radar_data) {
     graph.bullet = "round";
 
     addclicklistener(graph);
-    //addrolloverlistener(graph);
 
     chart_analysis_progress.addGraph(graph);
 
@@ -200,11 +266,8 @@ function cases_analysis_charts_draw(radar_data) {
     graph.bullet = "round";
 
     addclicklistener(graph);
-    //addrolloverlistener(graph);
 
     chart_analysis_progress.addGraph(graph);
-
-
 
     // Fourth graph - FOR ZOOMER - NOT DRAWN
     graph = new AmCharts.AmGraph();
@@ -280,136 +343,109 @@ function cases_analysis_charts_draw(radar_data) {
     return date;
   }
 
-  // lifted from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-  // this method is called when chart is first inited as we listen for "dataUpdated" event
-  // function zoomChart(data1) {
-  //     // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
-  //     chart.zoomToIndexes(data1.length - 40, data1.length - 1);
-  // }
-
   function addclicklistener(graph) {
     graph.addListener("clickGraphItem", function (event) {
         window.location = '/cases?id=' + event.item.dataContext.id;
     });
   }
 
-  function addrolloverlistener(graph) {
-    graph.addListener("rollOverGraphItem", function (event) {
-
-        //need to load in new chart data with ajax...ugghh
-        
-        var radargraph = new AmCharts.AmGraph();
-        radargraph.title = "Last 5";
-        radargraph.lineColor = "#98cdff"
-        radargraph.fillAlphas = 0.2;
-        radargraph.bullet = "round"
-        radargraph.valueField = "last5"
-        radargraph.balloonText = "[[category]]: [[value]]/10"
-        chart_analysis_radar.addGraph(radargraph);
-        chart_analysis_radar.validateData();
-
-        
-    });
-
-
-  }
-
-
-  ////////////////////////////////////////////
-  // Radar
-  ////////////////////////////////////////////
-
-
-  function cases_analysis_chart_radar_draw() {
-
-    var chart_analysis_radar;
-
-    // Draw AM Radar Chart
-    // AmCharts.ready(function () {
-      // RADAR CHART
-      chart_analysis_radar = new AmCharts.AmRadarChart();
-      chart_analysis_radar.dataProvider = radar_data;
-      chart_analysis_radar.categoryField = "criteria";
-      chart_analysis_radar.startDuration = 0.3;
-      chart_analysis_radar.startEffect = ">";
-      chart_analysis_radar.sequencedAnimation = true;
-      chart_analysis_radar.color = "#f6f6f6";
-
-      // GRAPH - FIRST 5
-      var graph = new AmCharts.AmGraph();
-      graph.title = "First 5";
-      graph.lineColor = "#bdd523"
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "first5"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart_analysis_radar.addGraph(graph);
-
-      // GRAPH - LAST 5
-      var graph = new AmCharts.AmGraph();
-      graph.title = "Last 5";
-      graph.lineColor = "#98cdff"
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "last5"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart_analysis_radar.addGraph(graph);
-
-      // VALUE AXIS
-      var valueAxis = new AmCharts.ValueAxis();
-      valueAxis.gridType = "circles";
-      valueAxis.fillAlpha = 0.02;
-      valueAxis.fillColor = "#000000"
-      valueAxis.axisAlpha = 0.1;
-      valueAxis.gridAlpha = 0.1;
-      valueAxis.fontWeight = "bold"
-      valueAxis.minimum = 0;
-      valueAxis.maximum = 10;
-      chart_analysis_radar.addValueAxis(valueAxis);
-
-      // Balloon Settings
-      var balloon = chart_analysis_radar.balloon;
-      balloon.adjustBorderColor = true;
-      balloon.cornerRadius = 5;
-      balloon.showBullet = false;
-      balloon.fillColor = "#000000";
-      balloon.fillAlpha = 0.7;
-      balloon.color = "#FFFFFF";
-
-      // Legend Settings
-      var legend = new AmCharts.AmLegend();
-      legend.position = "bottom";
-      legend.align = "center";
-      legend.color = '#f6f6f6';
-      legend.markerType = "square";
-      legend.rollOverGraphAlpha = 0;
-      legend.horizontalGap = 5;
-      legend.valueWidth = 5;
-      legend.switchable = false;
-      chart_analysis_radar.addLegend(legend);
-
-      // WRITE
-      chart_analysis_radar.write("cases_analysis_chart_radar");
-
-  }
-
 } // end charts draw function
 
 
+////////////////////////////////////////////
+// Radar
+////////////////////////////////////////////
 
 
 
+function cases_analysis_chart_radar_draw(radar_type, radar_count) {
+
+  var chart_analysis_radar;
+
+  // RADAR CHART
+  chart_analysis_radar = new AmCharts.AmRadarChart();
+
+  if (radar_type == "all") {
+    chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_all;
+  } else if (radar_type == "combined") {
+    chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_combined;    
+  }
+
+  chart_analysis_radar.categoryField = "criteria";
+  chart_analysis_radar.startDuration = 0.3;
+  chart_analysis_radar.startEffect = ">";
+  chart_analysis_radar.sequencedAnimation = true;
+  chart_analysis_radar.color = "#f6f6f6";
+  chart_analysis_radar.colors = ["#000000","#FF6600","#CC0000"]
+  chart_analysis_radar.fontSize = 9;
+
+  // GRAPH - ALL
+  var graph = new AmCharts.AmGraph();
+  graph.title = "All";
+  graph.fillAlphas = 0.2;
+  graph.bullet = "round"
+  graph.valueField = "all"
+  graph.balloonText = "[[category]]: [[value]]/10"
+  chart_analysis_radar.addGraph(graph);
+
+  // GRAPH - FIRST 5
+  var graph = new AmCharts.AmGraph();
+  graph.title = "First " + radar_count;
+  graph.fillAlphas = 0.2;
+  graph.bullet = "round"
+  graph.valueField = "first"
+  graph.balloonText = "[[category]]: [[value]]/10"
+  chart_analysis_radar.addGraph(graph);
+
+  // GRAPH - LAST 5
+  var graph = new AmCharts.AmGraph();
+  graph.title = "Last " + radar_count;
+  graph.fillAlphas = 0.2;
+  graph.bullet = "round"
+  graph.valueField = "last"
+  graph.balloonText = "[[category]]: [[value]]/10"
+  chart_analysis_radar.addGraph(graph);
+
+  // VALUE AXIS
+  var valueAxis = new AmCharts.ValueAxis();
+  valueAxis.gridType = "circles";
+  valueAxis.fillAlpha = 0.02;
+  valueAxis.fillColor = "#000000"
+  valueAxis.axisAlpha = 0.1;
+  valueAxis.gridAlpha = 0.1;
+  valueAxis.fontWeight = "bold"
+  valueAxis.minimum = 0;
+  valueAxis.maximum = 10;
+  chart_analysis_radar.addValueAxis(valueAxis);
+
+  // Balloon Settings
+  var balloon = chart_analysis_radar.balloon;
+  balloon.adjustBorderColor = true;
+  balloon.cornerRadius = 5;
+  balloon.showBullet = false;
+  balloon.fillColor = "#000000";
+  balloon.fillAlpha = 0.7;
+  balloon.color = "#FFFFFF";
+
+  // Legend Settings
+  var legend = new AmCharts.AmLegend();
+  legend.position = "bottom";
+  legend.align = "center";
+  legend.color = '#f6f6f6';
+  legend.markerType = "square";
+  legend.rollOverGraphAlpha = 0;
+  legend.horizontalGap = 5;
+  legend.valueWidth = 5;
+  legend.switchable = false;
+  chart_analysis_radar.addLegend(legend);
+
+  // WRITE
+  chart_analysis_radar.write("cases_analysis_chart_radar");
+
+  chart_analysis_radar.validateNow();
+}
 
 
-
-
-/////////////////////////////////////////////////////////////////
-//////////////////////////    CALLS    //////////////////////////
-/////////////////////////////////////////////////////////////////
-
-  cases_index_cases_updatelist();
-
-  cases_index_case_link();
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -422,6 +458,7 @@ $(document).ready(function(){
 /////////////////////////////////////////////////////////////////
 //////////////////////////// INDEX //////////////////////////////
 /////////////////////////////////////////////////////////////////
+
 
   $("#cases_index_cases_form input").keypress(function(e) {
     if(e.which == 13) {
@@ -450,8 +487,11 @@ $(document).ready(function(){
     value: 1,
     slide: function(event, ui) {
       var cases_new_slider_name = $(this).attr("id").split('_')
-      $("#case_" + cases_new_slider_name[3]).val(ui.value);
-      $("#case_" + cases_new_slider_name[3]).css( 'color', '#6db9ff' )
+      $("#cases_new_slider_input_" + cases_new_slider_name[3]).val(ui.value);
+      $("#cases_new_slider_input_" + cases_new_slider_name[3]).css( 'color', '#6db9ff')
+
+
+      cases_new_calculatescore($(this).attr("data-category"));
     }
   });
 
@@ -493,28 +533,88 @@ $(document).ready(function(){
   });
 
 
-  // $(".cases_new_slider_input").keyUp(function() {
+  $(".cases_new_slider_input").change(function() {
 
-  //   if ($(this).attr("data-category") == "businessanalytics") {
+    cases_new_calculatescore(this);
 
-  //     $('#cases_new_block_circle_text_businessanalytics').html()
-
-  //   } else if ($(this).attr("data-category") == "interpersonal") {
+  });
 
 
+  function cases_new_calculatescore (category) {
 
-  //   } else if ($(this).attr("data-category") == "structure") {
+    if (category == "businessanalytics") {
+      
+      var category_score_1 = parseInt($('#cases_new_slider_input_quantitativebasics').val());
+      var category_score_2 = parseInt($('#cases_new_slider_input_problemsolving').val());
+      var category_score_3 = parseInt($('#cases_new_slider_input_prioritisation').val());
+      var category_score_4 = parseInt($('#cases_new_slider_input_sanitychecking').val());
 
+      var category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4)/4;
 
+      $('#cases_new_block_circle_text_businessanalytics').html(category_score);
 
-  //   }
+    } else if (category == "interpersonal") {
 
-  // });
+      var category_score_1 = parseInt($('#cases_new_slider_input_rapport').val());
+      var category_score_2 = parseInt($('#cases_new_slider_input_articulation').val());
+      var category_score_3 = parseInt($('#cases_new_slider_input_concision').val());
+      var category_score_4 = parseInt($('#cases_new_slider_input_askingforinformation').val());
 
+      var category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4)/4;
+
+      $('#cases_new_block_circle_text_interpersonal').html(category_score);
+
+    } else if (category == "structure") {
+
+      var category_score_1 = parseInt($('#cases_new_slider_input_approachupfront').val());
+      var category_score_2 = parseInt($('#cases_new_slider_input_stickingtostructure').val());
+      var category_score_3 = parseInt($('#cases_new_slider_input_announceschangedstructure').val());
+      var category_score_4 = parseInt($('#cases_new_slider_input_pushingtoconclusion').val());
+
+      var category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4)/4;
+
+      $('#cases_new_block_circle_text_structure').html(category_score);
+
+    }
+  }
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// ANALYSIS ////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+  // RADAR BUTTONS
+  $('#cases_analysis_chart_radar_button_all').click(function() {
+    
+    $('#cases_analysis_chart_radar').empty();
+
+    cases_analysis_chart_radar_draw("all",cases_analysis_chart_radar_count);
+
+    $('#cases_analysis_chart_radar_button_all').addClass('active');
+    $('#cases_analysis_chart_radar_button_combined').removeClass('active');
+
+  });
+
+  $('#cases_analysis_chart_radar_button_combined').click(function() {
+    
+    $('#cases_analysis_chart_radar').empty();
+
+    cases_analysis_chart_radar_draw("combined",cases_analysis_chart_radar_count);
+
+    $('#cases_analysis_chart_radar_button_all').removeClass('active');
+    $('#cases_analysis_chart_radar_button_combined').addClass('active');
+
+  });
+
+/////////////////////////////////////////////////////////////////
+//////////////////////////    CALLS    //////////////////////////
+/////////////////////////////////////////////////////////////////
+
+  cases_index_cases_updatelist();
+
+  cases_index_case_link();
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
-
 
 });
 

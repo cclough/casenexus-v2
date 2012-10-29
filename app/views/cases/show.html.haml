@@ -1,86 +1,92 @@
 :javascript
-  var cases_show_chart_radar_data = #{@case.cases_show_chart_radar_data};
+  var cases_show_chart_radar_data_all = #{@case.cases_show_chart_radar_data_all};
+  var cases_show_chart_radar_data_combined = #{@case.cases_show_chart_radar_data_combined};
+
+  var cases_show_businessanalytics_chart_radar_data = #{@case.cases_show_businessanalytics_chart_radar_data};
+  var cases_show_interpersonal_chart_radar_data = #{@case.cases_show_interpersonal_chart_radar_data};
+  var cases_show_structure_chart_radar_data = #{@case.cases_show_structure_chart_radar_data};
 
 .row
+  .span22
+    .row
+      .panel.gradient.kill_left.kill_right
+        .row
+          .span6
+            = avatar_for(@case.interviewer, 'icon','')
+          .span7
+            .application_name
+              = @case.interviewer.name
+            .row.application_timestamp.font-small
+              = @case.date.strftime("%d %b '%y")
+          .span6
+            #cases_show_casecount
+              = avatar_for(current_user, 'chevron', @case.interviewer.casecount)
+    .row
+      #cases_show_block_basics.panel.dark.kill_right.kill_left.kill_top.font-small
+        .row
+          .span5.cases_show_block_basics_name
+            Source
+          .span14
+            = @case.source
+        .spacer5
+        .row
+          .span5.cases_show_block_basics_name
+            Subject
+          .span14.cases_show_block_basics_subject
+            = @case.subject
+
   .span30
-    #testing123
-    .panel.gradient.kill_left.kill_right
+    #cases_show_chart_radar_buttongroup
+      .btn-group.offset30
+        %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
+        %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+    #cases_show_chart_radar
+
+.row
+  .span63
+    .panel.darker.kill_left.kill_right.kill_top
+      .cases_show_title
+        Business Analytics
       .row
-        .span6
-          = avatar_for(@case.interviewer, 'icon','')
         .span14
-          .application_name
-            = @case.interviewer.name
-          .row.application_timestamp
-            = @case.date.strftime("%d %b '%y")
-        .span6
-          #cases_show_casecount
-            = avatar_for(current_user, 'chevron', @case.interviewer.case_count)
-    .panel.dark.kill_all
-      .row
-        .span30
-          = @case.id
-      .spacer10
-      .row
-        .span10
-          Source
-        .span20
-          = @case.source
-      .row
-        .span10
-          Submitted
-        .span20
-          = @case.created_at.strftime("%d %b '%y")
-
-  .span30
-    #cases_show_chart_radar.cases_radar
-
+          .panel.dark.kill_all.kill_border
+            #cases_show_businessanalytics_chart_radar
+        .span9.offset2
+          .cases_show_block_circle_outer.panel.dark
+            .cases_show_block_circle.panel.darker
+              .cases_show_block_circle_text
+                = @case.businessanalytics_combined
+        .span35.cases_show_comment
+          = @case.businessanalytics_comment
 .row
-  .span30
-    .panel.kill_all
+  .span63
+    .panel.darker.kill_left.kill_right.kill_top
+      .cases_show_title
+        Interpersonal
+      .row
+        .span14
+          .panel.dark.kill_all.kill_border
+            #cases_show_interpersonal_chart_radar
+        .span9.offset2
+          .cases_show_block_circle_outer.panel.dark
+            .cases_show_block_circle.panel.darker
+              .cases_show_block_circle_text
+                = @case.interpersonal_combined
+        .span35.cases_show_comment
+          = @case.interpersonal_comment
+.row
+  .span63
+    .panel.darker.kill_left.kill_right.kill_top
       .cases_show_title
         Structure
       .row
-        .span5.cases_score.show
-          / = @case.structure
-        .span20.cases_show_comment
-          / = @case.structure_comment
-  .span30
-    .panel.kill_right.kill_bottom.kill_top
-      .cases_show_title
-        Analytical/Problem-solving  
-      .row
-        .span5.cases_score.show
-          / = @case.analytical
-        .span20.cases_show_comment
-          / = @case.analytical_comment
-
-.row
-  .span30
-    .panel.kill_bottom.kill_left.kill_right
-      .cases_show_title
-        Commercial Awareness
-      .row
-        .span5.cases_score.show
-          / = @case.commercial
-        .span20.cases_show_comment
-          / = @case.commercial_comment
-  .span30
-    .panel.kill_right.kill_bottom
-      .cases_show_title
-        Conclusion
-      .row
-        .span5.cases_score.show
-          / = @case.conclusion
-        .span20.cases_show_comment
-          / = @case.conclusion_comment
-
-.row
-  .span30
-    .panel.kill_right.kill_bottom
-      .cases_show_title
-        Notes
-      .row
-        #cases_show_notes_form_container
-          = render 'notes_form'
-        #cases_show_notes_form_callback
+        .span14
+          .panel.dark.kill_all.kill_border
+            #cases_show_structure_chart_radar
+        .span9.offset2
+          .cases_show_block_circle_outer.panel.dark
+            .cases_show_block_circle.panel.darker
+              .cases_show_block_circle_text
+                = @case.structure_combined
+        .span35.cases_show_comment
+          = @case.structure_comment

@@ -12,27 +12,30 @@ $(".cases_index_cases_item").click(function() {
       // Load the DATA
       $("#cases_index_case").html(data);
 
-      $('#cases_show_notes_form_notes').wysihtml5({
-        "link": false, //Button to insert a link. Default true
-        "image": false, //Button to insert an image. Default true
-        "emphasis": false, //Italics, bold, etc. Default true
-        "font-styles": false //Font styling, e.g. h1, h2, etc. Default true
+      // RADAR BUTTONS
+      $('#cases_show_chart_radar_button_all').click(function() {
+        $('#cases_show_chart_radar').empty();
+        cases_show_chart_radar_draw("all");
+        $('#cases_show_chart_radar_button_all').addClass('active');
+        $('#cases_show_chart_radar_button_combined').removeClass('active');
       });
 
-      $('#cases_show_notes_form_notes').keyup(function() {
-        $('#cases_show_notes_form_callback').fadeOut('slow');
-
-        setTimeout(function(){ 
-          $('#edit_case_' + case_id).submit();
-        }, 3000);  
+      $('#cases_show_chart_radar_button_combined').click(function() {
+        $('#cases_show_chart_radar').empty();
+        cases_show_chart_radar_draw("combined");
+        $('#cases_show_chart_radar_button_all').removeClass('active');
+        $('#cases_show_chart_radar_button_combined').addClass('active');
       });
-
 
       // Slide in
       $('#cases_index_case').show("slide", { direction: "right" }, 300, function() {
 
-        cases_show_chart_radar_draw();
+        cases_show_chart_radar_draw("all");
         
+        cases_show_category_chart_radar_draw("businessanalytics");
+        cases_show_category_chart_radar_draw("interpersonal");
+        cases_show_category_chart_radar_draw("structure");
+
       });
 
     });

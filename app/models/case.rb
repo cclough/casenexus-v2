@@ -1,11 +1,11 @@
 class Case < ActiveRecord::Base
 
-  attr_accessible :user, :user_id, :interviewer, :interviewer_id, :date, :subject, :source, :notes, :rapport,
-                  :approachupfront, :interpersonal_comment, :businessanalytics_comment, :structure_comment,
-                  :recommendation1, :recommendation2, :recommendation3, :quantitativebasics, :problemsolving,
-                  :prioritisation, :sanitychecking, :articulation, :concision, :askingforinformation,
-                  :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
-
+  attr_accessible :user, :user_id, :interviewer, :interviewer_id, :date, :subject, :source,
+                  :interpersonal_comment, :businessanalytics_comment, :structure_comment,
+                  :recommendation1, :recommendation2, :recommendation3, 
+                  :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking, 
+                  :rapport, :articulation, :concision, :askingforinformation,
+                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
 
   ### Relationships
   belongs_to :user
@@ -60,9 +60,6 @@ class Case < ActiveRecord::Base
   validates :recommendation1, length: { maximum: 200 }
   validates :recommendation2, length: { maximum: 200 }
   validates :recommendation3, length: { maximum: 200 }
-
-  validates :notes, length: { maximum: 1000 }
-
 
   ### Scopes
 
