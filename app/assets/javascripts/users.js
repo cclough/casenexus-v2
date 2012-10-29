@@ -201,29 +201,26 @@ $(document).ready(function(){
 
   if ( typeof users_index_map_lat_start == 'string' ) {
 
-    var users_index_customMarkers = {
-      Beginner: {
-        icon: '/app/assets/images/markers/mark_novice.png'
+    var users_index_map_customMarkers = {
+      marker_0: {
+        icon: '/assets/images/markers/marker_0.png'
       },
-      Novice: {
-        icon: '/app/assets/images/markers/mark_novice.png'
+      marker_1: {
+        icon: '/assets/images/markers/marker_1.png'
       },
-      Intermediate: {
-        icon: 'c/assets/images/markers/mark_intermediate.png'
+      marker_2: {
+        icon: '/assets/images/markers/marker_2.png'
       },
-      Advanced: {
-        icon: '/assets/images/markers/mark_advanced.png'
+      marker_3: {
+        icon: '/assets/images/markers/marker_3.png'
       },
-      God: {
-        icon: '/assets/images/markers/mark_god.png'
+      marker_4: {
+        icon: '/assets/images/markers/marker_4.png'
       },
-      'Victor Cheng-like': {
-        icon: '/assets/images/markers/mark_victorchenglike.png'
+      marker_5: {
+        icon: '/assets/images/markers/marker_5.png'
       }
     };
-
-
-
 
     var mapOptions = {
       center: new google.maps.LatLng(users_index_map_lat_start, users_index_map_lng_start),
@@ -256,7 +253,7 @@ $(document).ready(function(){
     });
 
     // Draw markers
-    var image = new google.maps.MarkerImage("/assets/markers/marker_orange.png",
+    var image = new google.maps.MarkerImage("/assets/markers/marker_0.png",
         new google.maps.Size(40.0, 52.0),
         new google.maps.Point(0, 0),
         new google.maps.Point(20.0, 26.0)
@@ -334,16 +331,16 @@ $(document).ready(function(){
     ////////////////////////////////////////////////////////////////////////////
 
 
-    $.getJSON("/members", function(json) {
+    $.getJSON("users", function(json) {
 
       $.each(json, function(i, marker) {
 
-        //var icon = users_index_customMarkers[json[i].level] || {};
+        var icon = users_index_map_customMarkers[marker.level] || {};
         var marker = new google.maps.Marker({
           id: marker.id,
           map: map,
           position: new google.maps.LatLng(parseFloat(marker.lat),parseFloat(marker.lng)),
-          //icon: icon.icon,
+          icon: icon.icon,
           icon: image,
           shadow: shadow,
           animation: google.maps.Animation.DROP
@@ -366,7 +363,7 @@ $(document).ready(function(){
 
       // Marker Clusterer
       var styles = [{
-        url: '/assets/clusters/cluster_4.png',
+        url: '/assets/clusters/cluster_1.png',
         height: 67,
         width: 67,
         anchor: [24, 0],
@@ -403,7 +400,7 @@ $(document).ready(function(){
 
   function users_index_mappanel_tooltip(marker_id) {
 
-    $.get('/members/' + marker_id + '/tooltip', function(data) {
+    $.get('/tooltip?id=' + marker_id, function(data) {
 
       $('#users_index_mappanel_tooltip').html(data);
 

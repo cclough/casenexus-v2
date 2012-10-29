@@ -4,8 +4,17 @@ module UsersHelper
 
     case type
       when "icon"
-        avatar_colour = "orange"
-        avatar_url = "avatars/avatar_" + avatar_colour + ".png"
+
+        case user.case_count
+        when 0..9 then avatar_num = 0
+        when 10..19 then avatar_num = 1
+        when 20..29 then avatar_num = 2
+        when 30..39 then avatar_num = 3
+        when 40..49 then avatar_num = 4
+        when 50..1000 then avatar_num = 5
+        end
+
+        avatar_url = "avatars/avatar_" + avatar_num.to_s + ".png"
         avatar_alt = user.name + " has done " + user.case_count.to_s + " cases"
         image_tag(avatar_url, alt: avatar_alt)
 

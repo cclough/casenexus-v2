@@ -4,21 +4,21 @@ $("#users_index_users").html("<%= escape_javascript(render("users")) %>")
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.users_index_users_item').click(function() {
 
-  // Break up id string, so can get id off the end
-  // var target_id = this.id.split('_');
+	// Break up id string, so can get id off the end
+	// var target_id = this.id.split('_');
 
-  var target_id = $(this).attr('data-id');
-  var target_lat = $(this).attr('data-lat');
-  var target_lng = $(this).attr('data-lng');
+	var target_id = $(this).attr('data-id');
+	var target_lat = $(this).attr('data-lat');
+	var target_lng = $(this).attr('data-lng');
 
-  users_index_map_marker_click(target_id);
+  	users_index_map_marker_click(target_id);
 
-  // var target_latlng = new google.maps.LatLng(target_lat, target_lng)
+    // var target_latlng = new google.maps.LatLng(target_lat, target_lng)
 
-  // users_index_map_pan(target_latlng);
+    // users_index_map_pan(target_latlng);
 });
 
 // Users Item Cascade Fade
 $(".users_index_users_item").each(function(i) {
-  $(this).delay((i + 1) * 50).fadeIn();
+   $(this).delay((i + 1) * 50).fadeIn();
 });
