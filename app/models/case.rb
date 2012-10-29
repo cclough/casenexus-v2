@@ -75,17 +75,16 @@ class Case < ActiveRecord::Base
   ## Micro
 
   def interpersonal_combined
-    (rapport.to_i + articulation.to_i + concision.to_i + askingforinformation.to_i).round(1) / 4
+    ((rapport + articulation + concision + askingforinformation).to_f / 4).round(1)
   end
 
   def businessanalytics_combined
-    (quantitativebasics.to_i + problemsolving.to_i + prioritisation.to_i + sanitychecking.to_i).round(1) / 4
+    ((quantitativebasics + problemsolving + prioritisation + sanitychecking).to_f / 4).round(1)
   end
 
   def structure_combined
-    (approachupfront.to_i + stickingtostructure.to_i + announceschangedstructure.to_i + pushingtoconclusion.to_i).round(1) / 4
+    ((approachupfront + stickingtostructure + announceschangedstructure + pushingtoconclusion).to_f / 4).round(1)
   end
-
 
   def interviewer
     User.find(interviewer_id)
@@ -104,7 +103,7 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
-  def cases_show_chart_radar_data
+  def cases_show_chart_radar_data_all
     "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
      {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
      {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
@@ -121,57 +120,115 @@ class Case < ActiveRecord::Base
      {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
   end
 
+  def cases_show_chart_radar_data_combined
+    "[{criteria: \"Quantitative basics\", score: "+interpersonal_combined.to_s+"},
+     {criteria: \"Problem-Solving\", score: "+businessanalytics_combined.to_s+"},
+     {criteria: \"Prioritisation\", score: "+structure_combined.to_s+"}]"
+  end
 
-  def self.cases_analysis_chart_radar_data(user)
+  # case categories
+  def cases_show_businessanalytics_chart_radar_data
+    "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
+     {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
+     {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
+     {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"}]"
+  end
+
+  def cases_show_interpersonal_chart_radar_data
+    "[{criteria: \"Rapport\", score: "+rapport.to_s+"},
+     {criteria: \"Articulation\", score: "+articulation.to_s+"},
+     {criteria: \"Concision\", score: "+concision.to_s+"},
+     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"}]"
+  end
+
+  def cases_show_structure_chart_radar_data
+    "[{criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
+     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
+     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
+     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
+  end
+
+
+  def self.cases_analysis_chart_radar_data_all(user, count)
     # LAST 5: load scores into json for radar chart
-    "[
+      "[
       {criteria: \"Quantitative basics\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:quantitativebasics).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:quantitativebasics).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:quantitativebasics).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:quantitativebasics).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:quantitativebasics).sum.to_f/count).to_s + "},
       {criteria: \"Problem-Solving\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:problemsolving).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:problemsolving).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:problemsolving).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:problemsolving).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:problemsolving).sum.to_f/count).to_s + "},
       {criteria: \"Prioritisation\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:prioritisation).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:prioritisation).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:prioritisation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:prioritisation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:prioritisation).sum.to_f/count).to_s + "},
       {criteria: \"Sanity-checking\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:sanitychecking).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:sanitychecking).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:sanitychecking).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:sanitychecking).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:sanitychecking).sum.to_f/count).to_s + "},
       {criteria: \"Rapport\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:rapport).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:rapport).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:rapport).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:rapport).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:rapport).sum.to_f/count).to_s + "},
       {criteria: \"Articulation\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:articulation).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:articulation).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:articulation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:articulation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:articulation).sum.to_f/count).to_s + "},
       {criteria: \"Concision\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:concision).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:concision).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:concision).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:concision).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:concision).sum.to_f/count).to_s + "},
       {criteria: \"Asking for information\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:askingforinformation).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:askingforinformation).sum.to_f/5).to_s + "},
-      {criteria: \"Make approach clear up front\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:approachupfront).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:approachupfront).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:askingforinformation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:askingforinformation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:askingforinformation).sum.to_f/count).to_s + "},
+      {criteria: \"Approach up front\", 
+      all: " + (user.cases.order('id desc').collect(&:approachupfront).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:approachupfront).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:approachupfront).sum.to_f/count).to_s + "},
       {criteria: \"Sticking to structure\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:stickingtostructure).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:stickingtostructure).sum.to_f/5).to_s + "},
-      {criteria: \"Announces changed Structure\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:announceschangedstructure).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:announceschangedstructure).sum.to_f/5).to_s + "},
+      all: " + (user.cases.order('id desc').collect(&:stickingtostructure).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:stickingtostructure).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:stickingtostructure).sum.to_f/count).to_s + "},
+      {criteria: \"Announces structure change\", 
+      all: " + (user.cases.order('id desc').collect(&:announceschangedstructure).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:announceschangedstructure).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:announceschangedstructure).sum.to_f/count).to_s + "},
       {criteria: \"Pusing to conclusion\", 
-      last5: " + (user.cases.limit(5).order('id desc').collect(&:pushingtoconclusion).sum.to_f/5).to_s + ", 
-      first5: " + (user.cases.limit(5).order('id asc').collect(&:pushingtoconclusion).sum.to_f/5).to_s + "}
+      all: " + (user.cases.order('id desc').collect(&:pushingtoconclusion).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + "}
+      ]"
+  end
+
+  def self.cases_analysis_chart_radar_data_combined(user, count)
+    # LAST count: load scores into json for radar chart
+      "[
+      {criteria: \"Interpersonal\", 
+      all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
+      {criteria: \"Business Analytics\", 
+      all: " + (user.cases.order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + "},
+      {criteria: \"Structure\", 
+      all: " + (user.cases.order('id desc').collect(&:structure_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:structure_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "}
       ]"
   end
 
   def self.cases_analysis_chart_progress_data(user)
-    user.cases.order('date asc').map { |c|
-      { id: c.id,
-        date: c.date.strftime("%Y-%m-%d"),
-        interpersonal: c.interpersonal_combined,
-        businessanalytics: c.businessanalytics_combined,
-        structure: c.structure_combined,
-        totalscore: c.totalscore } }
+    cases_analysis_chart_progress_data = user.cases.order('date asc').map {|c|
+                                         { id: c.id,
+                                         date: c.date.strftime("%Y-%m-%d"), 
+                                         interpersonal: c.interpersonal_combined, 
+                                         businessanalytics: c.businessanalytics_combined, 
+                                         structure: c.structure_combined, 
+                                         totalscore: c.totalscore } }
   end
 
 
@@ -202,57 +259,57 @@ class Case < ActiveRecord::Base
   # STATISTICS
 
   class << self
+
     def cases_analysis_stats_uniques(user)
       user.cases.pluck(:sender_id).uniq.count
     end
 
     def cases_analysis_stats_casedate(user, type)
       case type
-        when "first"
-          user.cases.all.last.date.strftime("%d %b '%y") unless user.case_count < 1
-        when "last"
-          user.cases.all.first.date.strftime("%d %b '%y") unless user.case_count < 1
-      end
-    end
-
-    def cases_analysis_stats_avg_score(user)
-      user.cases.map { |a| a.totalscore }.sum / user.cases.count rescue 0
-    end
-
-
-    def cases_analysis_stats_skill(user, type)
-      if user.case_count > 0
-        sums = { 'structure' => user.cases.average('structure').round(1),
-                 'businessanalytics' => user.cases.average('businessanalytics').round(1),
-                 'interpersonal' => user.cases.average('interpersonal').round(1) }
-
-        case type
-          when "weakest"
-            sums.sort.map { |key, value| key + " (" + value.to_s + ")" }.first
-          when "strongest"
-            sums.sort.reverse.map { |key, value| key + " (" + value.to_s + ")" }.first
-        end
-      else
-        "No data"
+      when "first"
+        user.cases.all.last.date.strftime("%d %b '%y") unless user.case_count < 1
+      when "last"
+        user.cases.all.first.date.strftime("%d %b '%y") unless user.case_count < 1
       end
     end
 
     def cases_analysis_stats_global(type)
-      if Case.count > 0
+
+      if Case.all.count > 0
         case type
-          when "totalscore"
-            (Case.all.map { |a| a.totalscore }.sum/Case.all.count) if Case.all.count > 0
-          when "interpersonal"
-            Case.average(:interpersonal).round(2)
-          when "businessanalytics"
-            Case.average(:businessanalytics).round(2)
-          when "structure"
-            Case.average(:structure).round(2)
+        when "totalscore"
+          (Case.all.map{ |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
+        when "interpersonal"
+          (Case.all.map{ |a| a.interpersonal_combined }.sum/Case.all.count).round(1)
+        when "businessanalytics"
+          (Case.all.map{ |a| a.businessanalytics_combined }.sum/Case.all.count).round(1)
+        when "structure"
+          (Case.all.map{ |a| a.structure_combined }.sum/Case.all.count).round(1)
         end
       else
         "No data"
       end
     end
+
+    def cases_analysis_stats_user(user, type)
+
+      if Case.all.count > 0
+        case type
+        when "totalscore"
+          (user.cases.map{ |a| a.totalscore }.sum/user.cases.count).round(1) if Case.all.count > 0
+        when "interpersonal"
+          (user.cases.map{ |a| a.interpersonal_combined }.sum/user.cases.count).round(1)
+        when "businessanalytics"
+          (user.cases.map{ |a| a.businessanalytics_combined }.sum/user.cases.count).round(1)
+        when "structure"
+          (user.cases.map{ |a| a.structure_combined }.sum/user.cases.count).round(1)
+        end
+      else
+        "No data"
+      end
+    end
+
+
 
   end
 

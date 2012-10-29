@@ -16,13 +16,17 @@
               = sortable "content"
             %li
               = sortable "user.first_name"
-  .row
-    = filterable('all', 'All')
-  .row
-    = filterable('message', 'Messages')
-  .row
-    = filterable('feedback_req', 'Feeback Request')
-  .row
-    = filterable('feedback', 'Feeback')
-  .row
-    = filterable('friend_req', 'Case Partners')
+  .spacer10
+  .panel.dark.kill_all
+    #notifications_index_notifications_filter_title
+      Filter
+    .row
+      = filterable('all', 'All')
+    .row
+      = filterable('message', 'Messages')
+    .row
+      = filterable('feedback_req', 'Feedback Requests')
+    .row
+      = filterable('feedback', 'Feedback')
+    .row
+      = filterable('friend_req', 'Case Partner Requests')

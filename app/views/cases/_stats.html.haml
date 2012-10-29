@@ -1,62 +1,52 @@
 .panel.dark.font-small
   .row
     .cases_analysis_block_title
-      Stats
+      Basic Stats
   .row
-    .span9.cases_analysis_stats_name
+    .span7.cases_analysis_stats_name
       First Case
-    .span7
+    .span10
       = Case.cases_analysis_stats_casedate(current_user, "first")
   .row
-    .span9.cases_analysis_stats_name
+    .span7.cases_analysis_stats_name
       Last Case
-    .span7
+    .span10
       = Case.cases_analysis_stats_casedate(current_user, "last")
-  .spacer10
-  .row
-    .span9.cases_analysis_stats_name
-      Strongest Skill
-    .span8
-      / = Case.cases_analysis_stats_skill(current_user, "weakest")
-  .row
-    .span9.cases_analysis_stats_name
-      Weakest Skill
-    .span8
-      / = Case.cases_analysis_stats_skill(current_user, "strongest")
+
   .spacer10
   .row.cases_analysis_stats_sub
-    .span9.cases_analysis_stats_name
-      Average Score
-    .span3
+    .span7.cases_analysis_stats_name
+      Avg Score
+    .span5
       You
     .span5
       All users
   .row
-    .span9.cases_analysis_stats_name
+    .span7.cases_analysis_stats_name
       Total
-    .span3
-      = Case.cases_analysis_stats_avg_score(current_user)
-    .span3
+    .span5
       = Case.cases_analysis_stats_global("totalscore")
-
+    .span5
+      = Case.cases_analysis_stats_global("totalscore")
+  .spacer10
   .row
-    .span9.cases_analysis_stats_name
+    .span7.cases_analysis_stats_name
       Interpersonal
-    .span3
-      = Case.cases_analysis_stats_global("interpersonal_combined")
-    .span3
-      = Case.cases_analysis_stats_global("interpersonal_combined")
+    .span5
+      = Case.cases_analysis_stats_user(current_user, "interpersonal")
+    .span5
+      = Case.cases_analysis_stats_global("interpersonal")
   .row
-    .span9.cases_analysis_stats_name
-      Business Analytics
-    .span3
-      = Case.cases_analysis_stats_global("businessanalytics_combined")
-    .span3
-      = Case.cases_analysis_stats_global("businessanalytics_combined")
+    .span7.cases_analysis_stats_name
+      B. Analytics
+    .span5
+      = Case.cases_analysis_stats_user(current_user, "businessanalytics")
+    .span5
+      = Case.cases_analysis_stats_global("businessanalytics")
   .row
-    .span9.cases_analysis_stats_name
+    .span7.cases_analysis_stats_name
       Structure
-    .span3
-      = Case.cases_analysis_stats_global("structure_combined")
-    .span3
-      = Case.cases_analysis_stats_global("structure_combined")
+    .span5
+      = Case.cases_analysis_stats_user(current_user, "structure")
+    .span5
+      = Case.cases_analysis_stats_global("structure")

@@ -1,13 +1,11 @@
 %li
-  = link_to ("/notifications?id=" + notification.id.to_s) do
-    .span5
+  = link_to "/notifications?id=" + notification.id.to_s, {class: "header_menu_notifications_item"} do
+    .header_menu_notifications_avatar
       = avatar_for(notification.sender, 'icon','')
-    .span25
-      .row
-        .span10
-          = notification.sender.name
-        .span5
+    %div
+      %div
+        = notification.sender.name
+        %span.font-small.application_timestamp
           = time_ago_in_words(notification.created_at) + " ago"
-      .row
-        .span5
-          = notification.content
+      %div.font-small
+        = notification.content_trunc

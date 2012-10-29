@@ -2,7 +2,8 @@
 - provide(:sub_title, 'Statistics calculated from your feedback from other users')
 
 - content_for :javascript_includes do
-
+  = javascript_include_tag "cases"
+  = javascript_include_tag "lib/amcharts"
   :javascript
 
     var cases_analysis_chart_radar_count = #{@radar_count};

@@ -3,9 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // Shouldn't need these here as well as in app.css.scss
+
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
 
 #notifications_index_notifications_form_sort .current {
   padding-right: 12px;
@@ -33,18 +36,21 @@ padding-top:3px;
     background-color: $gray_Lightest;
   }
   &.read {
-		-moz-opacity: 0.30;
-		opacity: 0.30;
+    -moz-opacity: 0.30;
+    opacity: 0.30;
   }
+}
+
+.notifications_index_notifications_item_content_trunc {
+  padding-top:13px;
 }
 
 .notifications_index_notifications_item_content {
   display:none;
+  border-top: 1px solid $gray_Light;
 }
 
 .notifications_index_notifications_item_action {
-  font-size:14px;
-  color: gray;
   padding-top:10px;
 }
 
@@ -62,42 +68,42 @@ padding-top:3px;
 }
 
 .notifications_index_notifications_item_button_expand {
-  padding-top:15px;
+  padding-top:11px;
+  color:$gray_Dark;
+
+  &:hover {
+    background-color: $gray_Lightest;
+    cursor: pointer; cursor: hand;
+    color:black;
+  }
 }
 
 .notifications_index_sidenav_item {
-  padding:5px;
-  border: 1px solid transparent;
-
+  padding:7px;
+  color: $gray_Light;
   text-decoration:none;
+
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
 
   &:hover {
     color:white;
-
-    border: 1px solid gray;
-
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0.18))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#2effffff',GradientType=0 ); /* IE6-9 */
+    text-decoration:none !important;
+    background: url('app/darker-bg.png') repeat top left;
   }
 
   &.active {
-    
     color:white;
-
-    border: 1px solid gray;
-
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.18) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0.18))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.18) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#2effffff',GradientType=0 ); /* IE6-9 */
-
+    background: url('app/title-bg.png') repeat top left;
   }
+}
+
+#notifications_index_notifications_filter_title {
+  text-align:center;
+  font-weight: bold;
+  border-bottom: 1px solid $gray_Mid;
+  margin-bottom: 5px;
+  margin-top:-5px;
+  color: white;
 }

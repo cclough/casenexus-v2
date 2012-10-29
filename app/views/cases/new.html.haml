@@ -2,7 +2,8 @@
 - provide(:sub_title, 'Score and comment on your case partners performance')
 
 = form_for @case, url: { action: :create, user_id: @user.id } do |f|
-
+  = javascript_include_tag "cases"
+  
   #cases_new_form
     = render 'shared/error_messages', object: @case
     .row
