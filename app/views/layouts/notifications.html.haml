@@ -4,6 +4,7 @@
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
+    = javascript_include_tag "notifications"
     = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
     = yield :javascript_includes
 
@@ -24,7 +25,13 @@
       = render 'shared/title'
       .row
         .span94
-          = yield
+          .row
+            .span25
+              .panel.dark
+                = render 'notifications_form'
+            .span67
+              .panel.kill_left.kill_right
+                = yield
 
       / footer
       = render 'layouts/footer'

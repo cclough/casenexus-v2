@@ -113,6 +113,7 @@ function cases_show_category_chart_radar_draw(category) {
   valueAxis.fontWeight = "bold"
   valueAxis.minimum = 0;
   valueAxis.maximum = 10;
+  valueAxis.radarCategoriesEnabled = false;
   chart_show_category_radar.addValueAxis(valueAxis);
 
 
