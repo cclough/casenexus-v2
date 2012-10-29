@@ -19,7 +19,8 @@ gem 'omniauth'                                   # Authentication with Rack
 gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
 gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
-gem 'ffaker'                                   # Generate test data, we put it here because of heroku, remove later
+gem 'ffaker'                                     # Generate test data, we put it here because of heroku, remove later
+gem 'rack-mini-profiler'                         # Profile on the UI
 
 
 group :development, :test do
