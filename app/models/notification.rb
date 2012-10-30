@@ -13,7 +13,7 @@ class Notification < ActiveRecord::Base
   validates :content, length: { maximum: 500 }
 
   validates_presence_of :content, if: lambda { self.ntype == 'message' }
-  # TODO: case shoudl be attached to notification by :notificable, that's where we get the date
+  # TODO: case should be attached to notification by :notificable, that's where we get the date
   #validates_presence_of :content, :event_date, if: lambda { %w(feedback_req feedback).include?(self.ntype) }
 
   after_create :send_email
@@ -82,37 +82,35 @@ class Notification < ActiveRecord::Base
     def after_create(notification)
       user_from = notification.sender
 
-      breakpoint
-
       case notification.ntype
         when "welcome"
-          UserMailer.welcome(notification.target,
+          UserMailer.welcome(notification.user,
                              notification.url).deliver
         when "feedback"
           UserMailer.feedback(user_from,
-                              notification.target,
+                              notification.user,
                               notification.url,
                               notification.event_date,
                               notification.content).deliver
         when "feedback_req"
           UserMailer.feedback_req(user_from,
-                                  notification.target,
+                                  notification.user,
                                   notification.url,
                                   notification.event_date,
                                   notification.content).deliver
         when "message"
           UserMailer.usermessage(user_from,
-                                 notification.target,
+                                 notification.user,
                                  notification.url,
                                  notification.content).deliver
         when "friendship_req"
           UserMailer.friendship_req(user_from,
-                                    notification.target,
+                                    notification.user,
                                     notification.url,
                                     notification.content).deliver
         when "friendship_app"
           UserMailer.friendship_app(user_from,
-                                    notification.target,
+                                    notification.user,
                                     notification.url).deliver
       end
 

@@ -11,21 +11,26 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    #broken!
-    invitee = User.find(params[:user_id])
-    @content = params[:content]
+    @friendship = Friendship.new(params[:friendship])
+    @friendship.user_id = current_user.id
+    # Check that the user doesn't invite himself
+    if @friendship.user_id.to_i == @friendship.friend_id.to_i
+      @friendship.errors.add(:base, "cannot invite yourself")
+    end
+    # Check that there is not any kind of block, or friendship between the users
+    if current_user.find_any_friendship_with(@friendship.friend)
+      @friendship.errors.add(:base, "cannot invite")
+    end
 
     respond_to do |format|
-      if current_user.invite invitee
+      if @friendship.save
         format.js
         flash.now[:success] = 'Friend request sent'
       else
         format.js
         flash.now[:notice] = 'Sorry you cannot invite that user'
       end
-
     end
-
   end
 
   def update

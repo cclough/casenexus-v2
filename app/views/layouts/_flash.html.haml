@@ -1,5 +1,5 @@
-- if flash.any?
-  #application_flash{ class: ("signedout" if !signed_in? || !completed?) }
+#application_flash{ class: ("signedout" if !signed_in? || !current_user.completed?) }
+  - if flash.any?
     - flash.each do |key, value|
       / fade in function doesn't seem to work yet
       %div{ class: "alert alert-#{key} fade in" }

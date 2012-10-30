@@ -1,8 +1,7 @@
 class Friendship < ActiveRecord::Base
   has_many :notifications, as: :notificable
 
-  attr_accessible :user_id, :user, :friend_id, :friend, :content
-  attr_accessor :content
+  attr_accessible :user_id, :user, :friend_id, :friend, :invitation_message
 
   include Amistad::FriendshipModel
 
@@ -17,6 +16,6 @@ class Friendship < ActiveRecord::Base
     self.user.notifications.create(user_id: self.friend_id,
                                    sender_id: self.user.id,
                                    ntype: "friendship_req",
-                                   content: @content)
+                                   content: self.invitation_message.to_s)
   end
 end

@@ -17,8 +17,7 @@
     = render 'layouts/header'
 
     / flash div
-    #application_flash{:class => ("signedout" if !current_user.completed?)}
-      = render :partial => 'layouts/flash' , :locals => { :flash => flash }
+    = render 'layouts/flash', flash: flash
 
     .container.main
       = render 'shared/title'

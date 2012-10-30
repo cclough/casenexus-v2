@@ -16,6 +16,8 @@
     / header
     = render 'layouts/header'
 
+    = render 'layouts/flash', flash: flash
+
     .container.main
       = yield
 

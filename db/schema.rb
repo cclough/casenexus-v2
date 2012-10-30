@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029191159) do
+ActiveRecord::Schema.define(:version => 20121030223214) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -54,7 +54,8 @@ ActiveRecord::Schema.define(:version => 20121029191159) do
     t.integer "user_id"
     t.integer "friend_id"
     t.integer "blocker_id"
-    t.boolean "pending",    :default => true
+    t.boolean "pending",            :default => true
+    t.text    "invitation_message"
   end
 
   add_index "friendships", ["user_id", "friend_id"], :name => "index_friendships_on_user_id_and_friend_id", :unique => true
