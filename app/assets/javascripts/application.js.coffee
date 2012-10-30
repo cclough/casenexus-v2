@@ -17,7 +17,8 @@
 
 
 # Get query params, global function
-getQueryParams = (qs) ->
+
+window.getQueryParams = (qs) ->
   qs = qs.split("+").join(" ")
   params = {}
   tokens = undefined
