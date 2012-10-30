@@ -13,9 +13,9 @@ class Friendship < ActiveRecord::Base
   private
 
   def create_notification_req
-    self.user.notifications.create(user_id: self.friend_id,
-                                   sender_id: self.user.id,
-                                   ntype: "friendship_req",
-                                   content: self.invitation_message.to_s)
+    Notification.create!(user_id: self.friend_id,
+                          sender_id: self.user_id,
+                          ntype: "friendship_req",
+                          content: self.invitation_message.to_s)
   end
 end
