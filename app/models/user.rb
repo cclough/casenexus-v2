@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   validates :lng, presence: true, on: :update
 
   validates :skype, length: { maximum: 32 },
-            format: { with: /^[\w+\-.]+[-a-z]+$/i },
+            format: { with: /^[\w]+[a-z0-9\-]+$/i },
             allow_blank: true,
             on: :update
 

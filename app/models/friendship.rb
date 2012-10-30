@@ -1,7 +1,7 @@
 class Friendship < ActiveRecord::Base
   has_many :notifications, as: :notificable
 
-  attr_accessible :user_id, :friend_id, :content
+  attr_accessible :user_id, :user, :friend_id, :friend, :content
   attr_accessor :content
 
   include Amistad::FriendshipModel
