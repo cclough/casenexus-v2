@@ -13,7 +13,7 @@ class MembersController < ApplicationController
         users_scope = User.list_local(current_user.lat, current_user.lng)
       when "rand"
         users_scope = User.list_rand
-      when "friendships"
+      when "contacts"
         users_scope = User.list_contacts(current_user)
     end
 

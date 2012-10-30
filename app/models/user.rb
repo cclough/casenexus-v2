@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def status_trunc
-    status.truncate(35, separator: ' ')
+    status.to_s.truncate(35, separator: ' ')
   end
 
   def case_count

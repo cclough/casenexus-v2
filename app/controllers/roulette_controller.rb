@@ -9,7 +9,7 @@ class RouletteController < ApplicationController
   def item
     @roulette_user = User.find(params[:id])
     respond_to do |format|
-      format.html { render layout: false } 
+      format.html { render layout: false }
     end
   end
 
@@ -17,7 +17,7 @@ class RouletteController < ApplicationController
     @request_user = User.find(params[:id])
     @message = params[:msg]
     respond_to do |format|
-      format.html { render layout: false } 
+      format.html { render layout: false }
     end
   end
 
