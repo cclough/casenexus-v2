@@ -8,13 +8,13 @@ class MembersController < ApplicationController
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
       when "global"
-        users_scope = User.list_global
+        users_scope = User.includes(:cases).list_global
       when "local"
-        users_scope = User.list_local(current_user.lat, current_user.lng)
+        users_scope = User.includes(:cases).list_local(current_user.lat, current_user.lng)
       when "rand"
-        users_scope = User.list_rand
+        users_scope = User.includes(:cases).list_rand
       when "contacts"
-        users_scope = User.list_contacts(current_user)
+        users_scope = User.includes(:cases).list_contacts(current_user)
     end
 
     # Using scoped_search gem

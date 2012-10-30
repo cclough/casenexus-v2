@@ -1,15 +1,7 @@
 // Marker array var needs to be declared here, so that users list item click works
-
-/////////////////////////////////////////////////////////////////
-///////////////////// GLOBAL FUNCTIONS //////////////////////////
-/////////////////////////////////////////////////////////////////
-
-
 var users_index_map_markers = [];
 
 var markerClusterer = null;
-
-// var map = null;
 
 function users_index_map_marker_click(marker_id) {
 
@@ -143,7 +135,6 @@ $(document).ready(function () {
   //// USER LIST
 
   // Function users_updatelist is at top of file
-
   $("#users_index_users_form input").keypress(function (e) {
     if (e.which == 13) {
       users_index_users_updatelist();
@@ -152,18 +143,12 @@ $(document).ready(function () {
 
   // Listtype Button-Radio link
   $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').click(function () {
-
     // Break up id string, so can get id off the end
     var listtype = this.id.split('_');
-
     $('input[name=users_listtype]:eq(' + listtype[5] + ')').attr('checked', 'checked');
-
     $('#users_index_users_form_button_0,#users_index_users_form_button_1,#users_index_users_form_button_2,#users_index_users_form_button_3').removeClass('active');
-
     $(this).addClass('active');
-
     users_index_users_updatelist();
-
   });
 
   // Ajax pagination
@@ -174,7 +159,6 @@ $(document).ready(function () {
 
 
   //// MAP
-
   if (typeof users_index_map_lat_start == 'string') {
 
     var mapOptions = {
@@ -213,71 +197,6 @@ $(document).ready(function () {
         new google.maps.Point(20.0, 26.0)
     );
 
-
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////// PLOTS ONLY MARKERS IN VIEWPORT //////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
-    // google.maps.event.addListener(map, 'idle', function() {
-
-    //   for (var i = 0; i < users_index_map_markers.length; i++ ) {
-    //     users_index_map_markers[i].setMap(null);
-    //   }
-
-    //   if (markerClusterer) {
-    //     markerClusterer.clearMarkers();
-    //   }
-
-    //   var bounds = map.getBounds().toUrlValue();
-
-    //   $.getJSON("/get_markers_within_viewport?bounds=" + bounds, function(json) {
-
-    //     $.each(json, function(i, marker) {
-
-    //       //var icon = users_index_customMarkers[json[i].level] || {};
-    //       var marker = new google.maps.Marker({
-    //         id: marker.id,
-    //         map: map,
-    //         position: new google.maps.LatLng(parseFloat(marker.lat),parseFloat(marker.lng)),
-    //         //icon: icon.icon,
-    //         icon: image,
-    //         shadow: shadow,
-    //         animation: google.maps.Animation.DROP
-    //       });
-
-    //       users_index_map_marker_bind(marker, map);
-    //       //users_index_map_markers[marker.id] = marker;
-    //       users_index_map_markers.push(marker);
-
-    //     });
-
-    //     // Marker Clusterer
-    //     var styles = [[{
-    //       url: '/assets/markers/cluster.png',
-    //       height: 35,
-    //       width: 35,
-    //       anchor: [16, 0],
-    //       textColor: '#ff00ff',
-    //       textSize: 10
-    //     }]];
-
-    //     markerClusterer = new MarkerClusterer(map, users_index_map_markers, {
-    //       minimumClusterSize: 10,
-    //       gridSize: 100 // 60 is default
-    //       //styles: styles[style]
-    //     });
-
-
-    //   });
-
-    // });
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    /////////////////////////// PLOTS ALL MARKERS //////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-
-
     $.getJSON("members", function (json) {
 
       $.each(json, function (i, marker) {
@@ -311,8 +230,6 @@ $(document).ready(function () {
 
         // Load marker array for MarkerCluster (& User list trigger click)
         users_index_map_markers.push(marker);
-        //users_index_map_markers[marker.id] = marker;
-
       });
 
       // Marker Clusterer
@@ -327,38 +244,29 @@ $(document).ready(function () {
         }
       ];
 
-      var markerClusterer = new MarkerClusterer(map, users_index_map_markers, {
+      markerClusterer = new MarkerClusterer(map, users_index_map_markers, {
         minimumClusterSize:2,
         gridSize:100, // 60 is default
         styles:styles
       });
-
-
     });
-
   }
-
 
   function users_index_map_marker_locate(marker) {
 
     newlatlng = marker.getPosition();
 
-    //map.setZoom(5);
-    //map.panTo(newlatlng);
     map.setCenter(newlatlng);
 
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function () {
       marker.setAnimation(null);
     }, 1440);
-
   }
 
 
   function users_index_mappanel_tooltip(marker_id) {
-
     $.get('/members/' + marker_id + '/tooltip', function (data) {
-
       $('#users_index_mappanel_tooltip').html(data);
 
       // Code for 'close button'
@@ -367,31 +275,14 @@ $(document).ready(function () {
       });
 
       $('#users_index_mappanel_tooltip').fadeIn('fast');
-
     });
-
   }
 
 
-////////////////////////////////////////////////////////////////////
-///////////////////////////    ALL    //////////////////////////////
-////////////////////////////////////////////////////////////////////
-
-  // $(".chzn-select").chosen();
 
   $('.chzn-select').chosen().change(function () {
-
     var latlng_chosen = $(this).find('option:selected').val().split("_");
-
     var users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
-
     users_index_map_pan(users_chosen_latlng);
-
   });
-
-
-////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-
 });
