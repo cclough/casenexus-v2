@@ -33,19 +33,28 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def update
-    inviter = User.find(params[:id])
-    if current_user.approve inviter
-      
-      #not nice, but model after_update callback won't work as amistad approve method uses update_attribute
-      # inviter.notifications.create(user_id: inviter.id,
-      #                              sender_id: current_user.id,
-      #                              ntype: "friendship_app")
+  def show
 
-      redirect_to new_friendship_path, notice: "Successfully confirmed friend!"
-    else
-      redirect_to new_friendship_path, notice: "Sorry! Could not confirm friend!"
-    end
+  end
+
+  def destroy
+    # current_user.remove_friendship(user)
+    @friendship = current_user.friendships.find(params[:id])
+    @friendship.destroy
+    redirect_to action: :index, success: "Contact Deleted"
+  end
+
+  def accept
+    @friendship = current_user.friendships.find(params[:id])
+    # current_user.approve(inviter)
+  end
+
+  def reject
+    @friendship = current_user.friendships.find(params[:id])
+  end
+
+  def block
+    @friendship = current_user.friendships.find(params[:id])
   end
 
   def requests
@@ -55,14 +64,4 @@ class FriendshipsController < ApplicationController
   def invites
     @pending_invites = current_user.pending_invited
   end
-
-  def destroy
-    user = User.find(params[:id])
-    if current_user.remove_friendship user
-      redirect_to friendships_path, notice: "Successfully removed friend!"
-    else
-      redirect_to friendships_path, notice: "Sorry, couldn't remove friend!"
-    end
-  end 
-  
 end

@@ -11,7 +11,14 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id
 
-  include Amistad::FriendModel
+  # Friends
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, conditions: "friendships.status = #{Friendship::ACCEPTED}", order: "users.first_name ASC, users.last_name ASC"
+  has_many :requested_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::REQUESTED}"
+  has_many :pending_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::PENDING}"
+  has_many :rejected_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::REJECTED}"
+  has_many :blocked_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::BLOCKED}"
+
 
   before_save { |user| user.email = user.email.downcase }
 
@@ -110,8 +117,7 @@ class User < ActiveRecord::Base
     end
 
     def list_contacts(user)
-      # Not neat, but works - http://stackoverflow.com/questions/12497037/rails-why-cant-i-run-paginate-on-current-user-friends/
-      joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
+      #joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
     end
   end
 

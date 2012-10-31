@@ -21,9 +21,16 @@ Casenexus::Application.routes.draw do
 
   # Friendships
   # TODO: Update friendships module
-  resources :friendships, controller: 'friendships', :except => [:show, :edit] do
-    get "requests", on: :collection
-    get "invites", on: :collection
+  resources :friendships, path: 'contacts', except: [:edit, :update] do
+    member do
+      put "accept"
+      put "reject"
+      put "block"
+    end
+    collection do
+      get "requests"
+      get "invites"
+    end
   end
 
   # Cases

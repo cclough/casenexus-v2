@@ -4,4 +4,4 @@
   - for user in @pending_requests
     %li
       = user.email
-      = link_to "Confirm friend?", friend_path(user), :method => "put"
+      = link_to "Confirm friend?", accept_friendship_path(id: user.id), :method => "put"

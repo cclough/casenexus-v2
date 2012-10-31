@@ -1,6 +1,8 @@
-- provide(:title, 'Your friends')
+- provide(:title, 'Your contacts')
 
 %ul
-  - for friend in @friends
+  - @friends.each do |friend|
     %li
       = friend.email
+      = link_to("Block", "#")
+      = link_to("Delete", "#")

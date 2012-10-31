@@ -14,7 +14,6 @@ gem 'simple_form'                                # Rails form builder
 gem 'scoped_search'                              # Active Record Easy Search
 gem 'geokit-rails3'                              # Location Based for Rails
 gem 'geocoder'                                   # Geocoding solution for rails
-gem 'amistad'                                    # TODO: Drop this gem
 gem 'omniauth'                                   # Authentication with Rack
 gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
 gem 'linkedin'                                   # Linkedin client
