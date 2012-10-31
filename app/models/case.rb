@@ -309,8 +309,10 @@ class Case < ActiveRecord::Base
       end
     end
 
+  end
 
-
+  def to_s
+    self.subject
   end
 
   private

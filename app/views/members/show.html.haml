@@ -57,7 +57,8 @@
             %span
               Send Friend Request
 
-#modal_friendship_req.modal.hide.fade
-  = render '/friends/request_form'
+- if @friendship
+  #modal_friendship_req.modal.hide.fade
+    = render '/friends/request_form'
 
 = render '/shared/modal_group_message_and_feedback_req'

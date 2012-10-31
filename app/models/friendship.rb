@@ -1,14 +1,14 @@
 class Friendship < ActiveRecord::Base
   has_many :notifications, as: :notificable
 
-  attr_accessible :user_id, :user, :friend_id, :friend, :invitation_message
+  attr_accessible :user_id, :user, :friend_id, :friend, :invitation_message, :status, :accepted_at, :rejected_at, :blocked_at
 
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
   validates :user_id, presence: true
   validates :friend_id, presence: true
-  validates :status, presence: true, inclusion: { in: [0..4] }
+  validates :status, presence: true, inclusion: { in: [0, 1, 2, 3, 4] }
 
   # Status codes
   REQUESTED = 0
@@ -36,8 +36,8 @@ class Friendship < ActiveRecord::Base
         nil
       else
         transaction do
-          create(user: user, friend: friend, status: PENDING, invitation_message: invitation_message)
-          create(user: friend, friend: user, status: REQUESTED)
+          create!(user: user, friend: friend, status: PENDING, invitation_message: invitation_message)
+          create!(user: friend, friend: user, status: REQUESTED)
           # Now that the friendship was requested, send the message
           send_friend_request(friend, user, invitation_message)
         end
@@ -157,20 +157,20 @@ class Friendship < ActiveRecord::Base
       fs = friendship(user, friend)
       fs.update_attributes!(status: BLOCKED, blocked_at: blocked_at)
     end
-  end
 
-  # Notificates that a friendship has been requested
-  def send_friend_request(sender, friend, invitation_message)
-    Notification.create!(user_id: friend.id,
-                         sender_id: sender.id,
-                         ntype: "friendship_req",
-                         content: invitation_message.to_s)
-  end
+    # Notificates that a friendship has been requested
+    def send_friend_request(sender, friend, invitation_message)
+      Notification.create!(user_id: friend.id,
+                           sender_id: sender.id,
+                           ntype: "friendship_req",
+                           content: invitation_message.to_s)
+    end
 
-  # Notificates that a friendship has been accepted
-  def send_friend_accept(sender, friend)
-    Notification.create!(user_id: friend.id,
-                         sender_id: sender.id,
-                         ntype: "friendship_app")
+    # Notificates that a friendship has been accepted
+    def send_friend_accept(sender, friend)
+      Notification.create!(user_id: friend.id,
+                           sender_id: sender.id,
+                           ntype: "friendship_app")
+    end
   end
 end

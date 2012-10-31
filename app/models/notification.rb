@@ -1,5 +1,6 @@
 class Notification < ActiveRecord::Base
-  attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :event_date, :read, :notificable_id, :notificable_type
+  attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :event_date, :read,
+                  :notificable_id, :notificable_type, :notificable
 
   belongs_to :user
   belongs_to :sender, class_name: 'User'
@@ -13,8 +14,6 @@ class Notification < ActiveRecord::Base
   validates :content, length: { maximum: 500 }
 
   validates_presence_of :content, if: lambda { self.ntype == 'message' }
-  # TODO: case should be attached to notification by :notificable, that's where we get the date
-  #validates_presence_of :content, :event_date, if: lambda { %w(feedback_req feedback).include?(self.ntype) }
 
   after_create :send_email
 

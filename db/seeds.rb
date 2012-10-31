@@ -24,8 +24,8 @@ if User.count == 0 && Rails.env != 'test'
   admin2 = User.create!(
       first_name: "Rodrigo",
       last_name: "D",
-      email: "rodrigo@rodrigo.com",
-      password: "rodrigo",
+      email: "rorra@rorra.com.ar",
+      password: "password",
       password_confirmation: "rodrigo",
       lat: 51.01128232665856,
       lng: -0.4241188764572144,
@@ -96,12 +96,9 @@ if User.count == 0 && Rails.env != 'test'
 
   # Friendships
   users = User.order(:id).all
-  users[0].invite(users[1])
-  users[1].approve(users[0])
-  users[0].invite(users[2])
-  users[2].approve(users[0])
-  users[0].invite(users[3])
-  users[3].approve(users[0])
+  Friendship.connect(users[0], users[1])
+  Friendship.connect(users[0], users[2])
+  Friendship.connect(users[0], users[3])
 
   puts "Friendships created"
 end
@@ -153,7 +150,7 @@ if Rails.env != 'test'
     puts "User #{user.name} created"
   end
 
-  User.all.each do |user|
+  User.limit(20).all.each do |user|
 
     rand(51).times do
       user.cases.create!(
@@ -190,25 +187,23 @@ if Rails.env != 'test'
 
   end
 
-  User.all.each do |user|
+  User.limit(20).each do |user|
 
-    5.times do
+    2.times do
       user.notifications.create!(ntype: "message",
                                  sender_id: rand(100),
                                  content: Faker::Lorem.sentence(5))
-      ## created in case.rb
-      # user.notifications.create!(ntype: "feedback_new",
-      #                            sender_id: rand(1..100),
-      #                            content: Faker::Lorem.sentence(5),
-      #                            event_date: random_date(:year_range: 1, :year_latest: 0),
-      #                            case_id: rand(1000))
 
-      user.notifications.create!(ntype: "feedback_req",
-                                 sender_id: rand(100),
-                                 content: Faker::Lorem.sentence(5),
-                                 event_date: random_date(year_range: 1, year_latest: 0))
+      puts "Message Notifications created for user #{user.name}"
+    end
 
-      puts "Notification created for user #{user.name}"
+    user.cases.each do |kase|
+      Notification.create!(ntype: 'feedback_req',
+                           sender_id: kase.user,
+                           user: kase.interviewer,
+                           content: Faker::Lorem.paragraph,
+                           notificable: kase)
+      puts "Request feedback notificationcreated for case #{kase}"
     end
   end
 
