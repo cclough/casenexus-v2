@@ -26,7 +26,7 @@ if User.count == 0 && Rails.env != 'test'
       last_name: "D",
       email: "rorra@rorra.com.ar",
       password: "password",
-      password_confirmation: "rodrigo",
+      password_confirmation: "password",
       lat: 51.01128232665856,
       lng: -0.4241188764572144,
       status: Faker::Lorem.sentence(20),
