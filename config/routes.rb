@@ -20,7 +20,6 @@ Casenexus::Application.routes.draw do
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 
   # Friendships
-  # TODO: Update friendships module
   resources :friendships, path: 'contacts', except: [:edit, :update] do
     member do
       put "accept"
@@ -30,6 +29,7 @@ Casenexus::Application.routes.draw do
     collection do
       get "requests"
       get "invites"
+      get "blocked"
     end
   end
 

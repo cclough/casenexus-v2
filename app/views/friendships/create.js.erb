@@ -1,12 +1,12 @@
 <%- if @friendship.errors.any? %>
 
-  $('#modal_friendship_req').html('<%= escape_javascript(render('shared/modal_friendship_req_form')) %>');
+  $('#modal_friendship_req').html('<%= escape_javascript(render('request_form')) %>');
 
 <%- else %>
 
 	$('#modal_friendship_req').modal('hide');
 
-  $("#application_flash").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+  $("#application_flash").html("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
 	$("#application_flash").fadeIn("fast");
 
 <%- end %>

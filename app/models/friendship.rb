@@ -10,8 +10,6 @@ class Friendship < ActiveRecord::Base
   validates :friend_id, presence: true
   validates :status, presence: true, inclusion: { in: [0..4] }
 
-  after_create :send_notification
-
   # Status codes
   REQUESTED = 0
   PENDING = 1
@@ -25,6 +23,11 @@ class Friendship < ActiveRecord::Base
     # Return true if the users are (possibly pending) connections.
     def exist?(user, friend)
       not friendship(user, friend).nil?
+    end
+
+    # Return true if the users are friends
+    def friends?(user, friend)
+      accepted?(user, friend)
     end
 
     # Make a pending connection request.
@@ -56,7 +59,14 @@ class Friendship < ActiveRecord::Base
       transaction do
         rejected_at = Time.now
         reject_one_side(user, friend, rejected_at)
-        reject_one_side(friend, user, rejected_at)
+      end
+    end
+
+    # Block a friend
+    def block(user, friend)
+      transaction do
+        blocked_at = Time.now
+        block_one_side(user, friend, blocked_at)
       end
     end
 
@@ -102,7 +112,7 @@ class Friendship < ActiveRecord::Base
 
     # Tells if a request was made
     def requested?(user, friend)
-      friendship(user, friend).status == REQUESTED
+      exist?(user, friend) and friendship(user, friend).status == REQUESTED
     end
 
     # Tells if a friendship is pending
@@ -120,6 +130,11 @@ class Friendship < ActiveRecord::Base
       exist?(user, friend) and friendship(user, friend).status == REJECTED
     end
 
+    # Tells if a friendship is blocked
+    def blocked?(user, friend)
+      exists?(user, friend) and friendship(user, friend).status == BLOCKED
+    end
+
   end
 
   private
@@ -135,6 +150,12 @@ class Friendship < ActiveRecord::Base
     def reject_one_side(user, friend, rejected_at)
       fs = friendship(user, friend)
       fs.update_attributes!(status: REJECTED, rejected_at: rejected_at)
+    end
+
+    # Update the db with one side of a blocked connection request.
+    def blocked_one_side(user, friend, blocked_at)
+      fs = friendship(user, friend)
+      fs.update_attributes!(status: BLOCKED, blocked_at: blocked_at)
     end
   end
 

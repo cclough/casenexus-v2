@@ -13,17 +13,14 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(params[:friendship])
     @friendship.user_id = current_user.id
-    # Check that the user doesn't invite himself
-    if @friendship.user_id.to_i == @friendship.friend_id.to_i
-      @friendship.errors.add(:base, "cannot invite yourself")
-    end
+
     # Check that there is not any kind of block, or friendship between the users
-    if current_user.find_any_friendship_with(@friendship.friend)
-      @friendship.errors.add(:base, "cannot invite")
+    if Friendship.blocked?(@friendship.friend, current_user)
+      flash[:error] = "Cannot invite #{friendship.friend}"
     end
 
     respond_to do |format|
-      if @friendship.save
+      if flash[:error].nil? && @friendship.save
         format.js
         flash.now[:success] = 'Friend request sent'
       else
@@ -34,34 +31,46 @@ class FriendshipsController < ApplicationController
   end
 
   def show
-
+    @friendship = current_user.friendships.find(params[:id])
   end
 
   def destroy
-    # current_user.remove_friendship(user)
     @friendship = current_user.friendships.find(params[:id])
-    @friendship.destroy
-    redirect_to action: :index, success: "Contact Deleted"
+    Friendship.breakup(@friendship.user, @friendship.friend)
+    flash[:success] = "Contact Deleted"
+    redirect_to action: :index
   end
 
   def accept
     @friendship = current_user.friendships.find(params[:id])
-    # current_user.approve(inviter)
+    Friendship.accept(@friendship.user, @friendship.friend)
+    flash[:success] = "Contact Accepted"
+    redirect_to action: :index
   end
 
   def reject
     @friendship = current_user.friendships.find(params[:id])
+    Friendship.reject(@friendship.user, @friendship.friend)
+    flash[:success] = "Contact Rejected"
+    redirect_to action: :index
   end
 
   def block
     @friendship = current_user.friendships.find(params[:id])
+    Friendship.block(@friendship.user, @friendship.friend)
+    flash[:success] = "Contact Rejected"
+    redirect_to action: :index
   end
 
   def requests
-    @pending_requests = current_user.pending_invited_by
+    @pending_requests = current_user.pending_friends
   end
   
   def invites
-    @pending_invites = current_user.pending_invited
+    @pending_invites = current_user.requested_friends
+  end
+
+  def blocked
+    @blocked_users = current_user.blocked_friends
   end
 end

@@ -12,16 +12,26 @@
     .span20
       #users_show_name
         = @user.name
-  - if current_user.friend_with?(@user) && @user != current_user
+  - if Friendship.friends?(current_user, @user)
     .spacer5
     .row.font-small
-      = render '/shared/button_Group_linkedin_and_skype'
+      = render '/shared/button_group_linkedin_skype'
       .span
-        = render '/shared/button_friend_remove'
+        .font-small
+          = link_to raw("Remove as Contact"), friendships_path(@user), method: "delete", id: 'users_show_button_removefriend'
     .spacer5
     .row
-      = render '/shared/button_Group_feedback_req_and_send'
-
+      #users_show_button_Group_feedback
+        .span
+          #users_show_button_Group_feedback_title.font-small
+            Feedback
+        .span
+          = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "users_index_user_button_sendfeedback"
+        .span
+          %a#users_index_user_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
+            %i.icon-refresh.icon-white
+            %span
+              Request
 
 - if @user.status_approved
   .panel
@@ -31,9 +41,23 @@
           = @user.status
     .row
       .pull-right
-        = render '/shared/button_friend_req_or_message'
+        - if Friendship.friends?(current_user, @user)
+          %a#users_index_user_button_message.btn.btn-inverse.btn-small
+            %i.icon-comment.icon-white
+            %span
+              Message
+
+        - elsif Friendship.requested?(current_user, @user)
+          .alert.alert-info
+            Partner Request Pending
+
+        - elsif @user != current_user
+          %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
+            %i.icon-comment.icon-white
+            %span
+              Send Friend Request
 
 #modal_friendship_req.modal.hide.fade
-  = render '/shared/modal_friendship_req_form'
+  = render '/friends/request_form'
 
-= render '/shared/modal_Group_message_and_feedback_req'
+= render '/shared/modal_group_message_and_feedback_req'

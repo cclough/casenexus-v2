@@ -19,9 +19,10 @@
                   #cases_new_target_name
                     = @user.name
 
-              .spacer5
-              .row.font-small
-                = render 'shared/button_Group_linkedin_and_skype'
+              - if Friendship.friends?(current_user, @user)
+                .spacer5
+                .row.font-small
+                  = render 'shared/button_group_linkedin_skype'
             .span4
               #cases_new_target_casecount
                 = avatar_for(@user, 'chevron')
