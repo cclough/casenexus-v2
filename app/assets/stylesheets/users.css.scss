@@ -320,11 +320,33 @@ header {
 }
 
 
+#users_new_button_submit {
+  width: 100%;
+}
+
+#users_new_step2_samplestatus {
+  font-style:italic;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#users_new_title {
+  text-align:center;
+  font-weight: bold;
+  font-size:20px;
+  border-bottom: 1px solid $gray_Light;
+  margin-bottom: 5px;
+  padding-bottom:10px;
+  margin-top:-0px;
+}
+
+
 
 #users_newedit_map {
 
   &.new {
-    height:430px;
+    margin-top:10px;
+    height:488px;
     width:435px;
   }
   &.edit {
@@ -337,8 +359,12 @@ header {
   height:20px;
 }
 
+#users_new_status {
+  height:140px;
+  width:405px;
+}
 
-#users_edit_status, #users_new_status {
+#users_edit_status {
   height:178px;
   width:400px;
 }

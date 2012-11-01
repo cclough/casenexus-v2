@@ -3,8 +3,6 @@
   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
     %i.icon-user.icon-white.icon-large
     = current_user.name
-    %span#header_menu_profile_casecount
-      = current_user.case_count.to_s
     %span.caret
 
   %ul.dropdown-menu

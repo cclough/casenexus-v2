@@ -443,7 +443,6 @@ function cases_analysis_chart_radar_draw(radar_type, radar_count) {
   // WRITE
   chart_analysis_radar.write("cases_analysis_chart_radar");
 
-  chart_analysis_radar.validateNow();
 }
 
 

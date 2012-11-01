@@ -61,26 +61,15 @@ $(document).ready(function () {
   // Update the list of users
   users_index_users_updatelist();
 
-
-  $("#users_new_button_submit").attr("disabled", true);
   $('#user_accepts_tandc').attr('checked', false);
 
   // reset form here?
 
   $("#users_new_step2").css({ opacity:0.3 });
 
-  // Step 2 is made opaque in map code!
+  // NB Step 2 is made opaque in map code!
 
-  $("#users_new_status").keyup(function () {
 
-    if (($("#users_new_status").val().length > 50) && ($.users_new_step1_complete == true)) { // check entire form is complete
-      $("#users_new_button_submit").attr("disabled", false);
-    } else {
-      $("#users_new_button_submit").attr("disabled", true);
-    }
-    ;
-
-  });
 
 ////////////////////////////////////////////////////////////////////
 /////////////////////////// NEW & EDIT /////////////////////////////
