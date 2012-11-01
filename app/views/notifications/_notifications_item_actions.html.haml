@@ -8,3 +8,6 @@
   - when "friendship_req"
     - if notifications_item.notificable
       = link_to 'Jump to Friendship Request', friendship_path(notifications_item.notificable)
+  - when "friendship_app"
+    - if notifications_item.notificable
+      = link_to "Friend Profile", members_path(notifications_item.notificable.friend)

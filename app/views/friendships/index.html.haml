@@ -19,5 +19,5 @@
           %li
             = link_to(friendship.friend, member_path(friendship.friend))
 
-            = link_to("Block", block_friendship_path(friendship))
+            = link_to("Block", block_friendship_path(friendship), method: :put)
             = link_to("Delete", friendship_path(friendship), method: :delete, confirm: "Are you sure?")

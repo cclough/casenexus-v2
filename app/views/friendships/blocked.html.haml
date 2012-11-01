@@ -19,6 +19,6 @@
           - @friendships.each do |friendship|
             %li
               = link_to(friendship.friend, member_path(friendship.friend))
-              = link_to("Unblock", unblock_friendship_path(friendship.friend))
+              = link_to("Unblock", unblock_friendship_path(friendship), method: :put)
       - else
         %h5 You don't have any contact blocked

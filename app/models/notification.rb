@@ -41,7 +41,11 @@ class Notification < ActiveRecord::Base
   end
 
   def content_trunc
-    content.truncate(35, :separator => ' ') unless (content == nil)
+    if self.ntype == "friendship_app"
+      "Contact Accepted"
+    else
+      content.truncate(35, :separator => ' ') unless (content == nil)
+    end
   end
 
   def url

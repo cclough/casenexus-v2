@@ -143,18 +143,21 @@ class Friendship < ActiveRecord::Base
     def accept_one_side(user, friend, accepted_at)
       fs = friendship(user, friend)
       fs.update_attributes!(status: ACCEPTED, accepted_at: accepted_at)
+      fs
     end
 
     # Update the db with one side of an rejected connection request.
     def reject_one_side(user, friend, rejected_at)
       fs = friendship(user, friend)
       fs.update_attributes!(status: REJECTED, rejected_at: rejected_at)
+      fs
     end
 
     # Update the db with one side of a blocked connection request.
     def blocked_one_side(user, friend, blocked_at)
       fs = friendship(user, friend)
       fs.update_attributes!(status: BLOCKED, blocked_at: blocked_at)
+      fs
     end
 
     # Notificates that a friendship has been requested
