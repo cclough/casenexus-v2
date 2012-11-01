@@ -38,7 +38,7 @@ class MembersController < ApplicationController
       @notification = @user.notifications.build
       @friendship = @user.friendships.build unless Friendship.exist?(current_user, @user)
 
-      format.html { render layout: false }
+      format.html
     end
   end
 
