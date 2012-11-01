@@ -11,12 +11,11 @@ class Friendship < ActiveRecord::Base
   validates :status, presence: true, inclusion: { in: [0, 1, 2, 3, 4] }
 
   # Status codes
-  REQUESTED = 0
-  PENDING = 1
-  ACCEPTED = 2
-  REJECTED = 3
-  BLOCKED = 4
-
+  REQUESTED = 0      # friend_id REQUESTED user_id to accept invitation
+  PENDING = 1        # user_id has a PENDING response to invitation from user_id
+  ACCEPTED = 2       # user_id ACCEPTED invitation to friend_id so they are friends
+  REJECTED = 3       # user_id REJECTED invitation to friend_id
+  BLOCKED = 4        # user_id BLOCKED invitation to friend_id
 
   class << self
 
@@ -36,10 +35,10 @@ class Friendship < ActiveRecord::Base
         nil
       else
         transaction do
-          create!(user: user, friend: friend, status: PENDING, invitation_message: invitation_message)
-          create!(user: friend, friend: user, status: REQUESTED)
+          create!(user: user, friend: friend, status: PENDING)
+          friendship = create!(user: friend, friend: user, status: REQUESTED, invitation_message: invitation_message)
           # Now that the friendship was requested, send the message
-          send_friend_request(friend, user, invitation_message)
+          send_friend_request(user, friend, invitation_message, friendship)
         end
       end
     end
@@ -49,8 +48,8 @@ class Friendship < ActiveRecord::Base
       transaction do
         accepted_at = Time.now
         accept_one_side(user, friend, accepted_at)
-        accept_one_side(friend, user, accepted_at)
-        send_friend_accept(user, friend)
+        friendship = accept_one_side(friend, user, accepted_at)
+        send_friend_accept(user, friend, friendship)
       end
     end
 
@@ -132,7 +131,7 @@ class Friendship < ActiveRecord::Base
 
     # Tells if a friendship is blocked
     def blocked?(user, friend)
-      exists?(user, friend) and friendship(user, friend).status == BLOCKED
+      exist?(user, friend) and friendship(user, friend).status == BLOCKED
     end
 
   end
@@ -159,18 +158,20 @@ class Friendship < ActiveRecord::Base
     end
 
     # Notificates that a friendship has been requested
-    def send_friend_request(sender, friend, invitation_message)
+    def send_friend_request(sender, friend, invitation_message, friendship)
       Notification.create!(user_id: friend.id,
                            sender_id: sender.id,
                            ntype: "friendship_req",
-                           content: invitation_message.to_s)
+                           content: invitation_message.to_s,
+                           notificable: friendship)
     end
 
     # Notificates that a friendship has been accepted
-    def send_friend_accept(sender, friend)
+    def send_friend_accept(sender, friend, friendship)
       Notification.create!(user_id: friend.id,
                            sender_id: sender.id,
-                           ntype: "friendship_app")
+                           ntype: "friendship_app",
+                           notificable: friendship)
     end
   end
 end

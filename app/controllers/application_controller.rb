@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Redirection after sign in with devise
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.admin?
-      "/admin"
+      dashboard_path # "/admin" We don't have the admin yet
     else
       dashboard_path
     end

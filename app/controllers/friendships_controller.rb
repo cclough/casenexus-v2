@@ -20,9 +20,9 @@ class FriendshipsController < ApplicationController
     end
 
     respond_to do |format|
-      if flash[:error].nil? && @friendship.save
+      if flash[:error].nil? && Friendship.request(current_user, @friendship.friend, @friendship.invitation_message)
         format.js
-        flash.now[:success] = 'Friend request sent'
+        flash.now[:success] = 'Contact request sent'
       else
         format.js
         flash.now[:notice] = 'Sorry you cannot invite that user'
@@ -62,14 +62,17 @@ class FriendshipsController < ApplicationController
     redirect_to action: :index
   end
 
+  # List all the friendships requests the user has made
   def requests
     @pending_requests = current_user.pending_friends
   end
-  
+
+  # List all the pending friendships the user can accept, reject or block
   def invites
-    @pending_invites = current_user.requested_friends
+    @invites = current_user.requested_friendships
   end
 
+  # List all the friends the user has blocked
   def blocked
     @blocked_users = current_user.blocked_friends
   end

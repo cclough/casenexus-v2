@@ -14,10 +14,14 @@ class User < ActiveRecord::Base
   # Friends
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships, conditions: "friendships.status = #{Friendship::ACCEPTED}", order: "users.first_name ASC, users.last_name ASC"
-  has_many :requested_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::REQUESTED}"
-  has_many :pending_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::PENDING}"
-  has_many :rejected_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::REJECTED}"
-  has_many :blocked_friends, through: :friendships, source: :friend, conditions: "friendships.status = #{Friendship::BLOCKED}"
+  has_many :requested_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REQUESTED}", dependent: :destroy
+  has_many :requested_friends, through: :requested_friendships, source: :friend
+  has_many :pending_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::PENDING}", dependent: :destroy
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+  has_many :rejected_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REJECTED}", dependent: :destroy
+  has_many :rejected_friends, through: :rejected_friendships, source: :friend
+  has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
+  has_many :blocked_friends, through: :blocked_friendships, source: :friend
 
 
   before_save { |user| user.email = user.email.downcase }
