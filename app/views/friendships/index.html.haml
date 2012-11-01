@@ -5,6 +5,15 @@
 
   .row
     .span86
+
+      = link_to("Contacts Requested", requests_friendships_path)
+      |
+      = link_to("Contacts Invitations", invites_friendships_path)
+      |
+      = link_to("Contacts Blocked", blocked_friendships_path)
+
+      %br
+
       %ul
         - @friendships.each do |friendship|
           %li

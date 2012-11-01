@@ -1,12 +1,26 @@
-- provide(:title, 'Invites')
+- provide(:title, 'Contact Invitations')
 
 .panel.gradient
   %button#users_index_show_close.close ×
 
   .row
     .span86
-      %ul
-      - for user in @invites
-        %li
-          = user.email
-          = link_to "Confirm friend?", accept_friendship_path(id: user.id), :method => "put"
+
+      = link_to("Contacts List", friendships_path)
+      |
+      = link_to("Contacts Requested", requests_friendships_path)
+      |
+      = link_to("Contacts Blocked", blocked_friendships_path)
+
+      %br
+
+      - if @friendships.size > 0
+        %ul
+          - @friendships.each do |friendship|
+            %li
+              = link_to(friendship.friend, member_path(friendship.friend))
+              = link_to("Accept", accept_friendship_path(friendship.friend))
+              = link_to("Reject", reject_friendship_path(friendship.friend))
+              = link_to("Block", block_friendship_path(friendship.friend))
+      - else
+        %h5 You don't have any pending contact invitation

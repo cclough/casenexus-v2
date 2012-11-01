@@ -50,7 +50,11 @@ class FriendshipsController < ApplicationController
 
   def reject
     @friendship = current_user.friendships.find(params[:id])
-    Friendship.reject(@friendship.user, @friendship.friend)
+
+    # Instead of marking the Friendship as rejected, we break it so the user may invite the friend again later
+    #Friendship.reject(@friendship.user, @friendship.friend)
+    Friendship..breakup(@friendship.user, @friendship.friend)
+
     flash[:success] = "Contact Rejected"
     redirect_to action: :index
   end
@@ -64,16 +68,16 @@ class FriendshipsController < ApplicationController
 
   # List all the friendships requests the user has made
   def requests
-    @pending_requests = current_user.pending_friends
+    @friendships = current_user.pending_friendships.includes(:friend)
   end
 
   # List all the pending friendships the user can accept, reject or block
   def invites
-    @invites = current_user.requested_friendships
+    @friendships = current_user.requested_friendships.includes(:friend)
   end
 
   # List all the friends the user has blocked
   def blocked
-    @blocked_users = current_user.blocked_friends
+    @friendships = current_user.blocked_friendships.includes(:friend)
   end
 end
