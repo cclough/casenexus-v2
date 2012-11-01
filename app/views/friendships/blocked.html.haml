@@ -1,4 +1,4 @@
-- provide(:title, 'Contact Requests')
+- provide(:title, 'Contact Blocked')
 
 .panel.gradient
   %button#users_index_show_close.close ×
@@ -10,7 +10,7 @@
       |
       = link_to("Contacts Invitations", invites_friendships_path)
       |
-      = link_to("Contacts Blocked", blocked_friendships_path)
+      = link_to("Contacts Requested", requests_friendships_path)
 
       %br
 
@@ -19,5 +19,6 @@
           - @friendships.each do |friendship|
             %li
               = link_to(friendship.friend, member_path(friendship.friend))
+              = link_to("Unblock", unblock_friendship_path(friendship.friend))
       - else
-        %h5 You don't have any pending contact request
+        %h5 You don't have any contact blocked

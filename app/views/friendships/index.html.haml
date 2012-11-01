@@ -1,8 +1,23 @@
 - provide(:title, 'Your contacts')
 
-%ul
-  - @friends.each do |friend|
-    %li
-      = friend.email
-      = link_to("Block", "#")
-      = link_to("Delete", "#")
+.panel.gradient
+  %button#users_index_show_close.close ×
+
+  .row
+    .span86
+
+      = link_to("Contacts Requested", requests_friendships_path)
+      |
+      = link_to("Contacts Invitations", invites_friendships_path)
+      |
+      = link_to("Contacts Blocked", blocked_friendships_path)
+
+      %br
+
+      %ul
+        - @friendships.each do |friendship|
+          %li
+            = link_to(friendship.friend, member_path(friendship.friend))
+
+            = link_to("Block", block_friendship_path(friendship))
+            = link_to("Delete", friendship_path(friendship), method: :delete, confirm: "Are you sure?")

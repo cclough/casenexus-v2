@@ -10,7 +10,7 @@ class Case < ActiveRecord::Base
   ### Relationships
   belongs_to :user
   belongs_to :interviewer, class_name: 'User'
-  has_many :notifications, as: :notificable
+  has_many :notifications, as: :notificable, dependent: :destroy
 
   ### Callbacks
   # after_create :create_notification

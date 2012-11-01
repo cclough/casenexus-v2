@@ -1,5 +1,5 @@
 class Friendship < ActiveRecord::Base
-  has_many :notifications, as: :notificable
+  has_many :notifications, as: :notificable, dependent: :destroy
 
   attr_accessible :user_id, :user, :friend_id, :friend, :invitation_message, :status, :accepted_at, :rejected_at, :blocked_at
 
