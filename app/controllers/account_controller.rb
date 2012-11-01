@@ -19,7 +19,7 @@ class AccountController < ApplicationController
         @user.toggle!(:completed)
         flash[:success] = 'Welcome to casenexus.com'
       end
-      redirect_to dashbaord_path
+      redirect_to dashboard_path
     else
       render 'edit'
     end

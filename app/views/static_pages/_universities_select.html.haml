@@ -1,0 +1,5 @@
+%select.chzn-select.span22{"data-placeholder" => "Select Your University..." }
+  %option
+    - for item in University.order("name asc")
+      %option{value: item.domain }
+        = item.name

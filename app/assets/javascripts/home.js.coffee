@@ -32,3 +32,20 @@ $(document).ready ->
           $("nav .arrow").css left: left_margin - 8
 
     ArrowNav.init()
+
+  $('.chzn-select').chosen().change ->
+    $('#user_email').val("@" + $(this).find('option:selected').val())
+  $('.chzn-search').hide();
+
+  $('#static_home_signup_option_linkedin_switch').click ->
+    $('#static_home_signup_option_university').slideUp "fast"
+    $('#static_home_signup_option_university_submit').slideUp "fast"
+    $('#static_home_signup_option_linkedin').slideDown "fast"
+    $('#static_home_signup_option_linkedin_submit').slideDown "fast"
+
+
+  $('#static_home_signup_option_university_switch').click ->
+    $('#static_home_signup_option_university').slideDown "fast"
+    $('#static_home_signup_option_university_submit').slideDown "fast"
+    $('#static_home_signup_option_linkedin').slideUp "fast"
+    $('#static_home_signup_option_linkedin_submit').slideUp "fast"
