@@ -1,7 +1,12 @@
 - provide(:title, 'Invites')
 
-%ul
-  - for user in @invites
-    %li
-      = user.email
-      = link_to "Confirm friend?", accept_friendship_path(id: user.id), :method => "put"
+.panel.gradient
+  %button#users_index_show_close.close ×
+
+  .row
+    .span86
+      %ul
+      - for user in @invites
+        %li
+          = user.email
+          = link_to "Confirm friend?", accept_friendship_path(id: user.id), :method => "put"

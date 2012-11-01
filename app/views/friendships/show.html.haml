@@ -1,7 +1,5 @@
 .panel.gradient
-
   %button#users_index_show_close.close ×
-
 
   .row
     .span86
@@ -10,11 +8,11 @@
           = "You have requested a contact to #{link_to(@friendship.friend, member_path(@friendship.friend))} on #{@friendship.created_at}".html_safe
         - when Friendship::REQUESTED
           = "#{link_to(@friendship.friend, member_path(@friendship.friend))} requested a contact relationship with you".html_safe
-          = link_to("Accept", "#")
-          = link_to("Reject", "#")
-          = link_to("Block", "#")
+          = link_to("Accept", accept_friendship_path(@friendship))
+          = link_to("Reject", reject_friendship_path(@friendship))
+          = link_to("Block", block_friendship_path(@friendship))
         - when Friendship::REJECTED
           = "You have rejected an invitation from #{link_to(@friendship.friend, member_path(@friendship.friend))}".html_safe
         - when Friendship::REJECTED
           = "You have blocked #{link_to(@friendship.friend, member_path(@friendship.friend))}".html_safe
-          = link_to("Unblock", "#")
+          = link_to("Unblock", unblock_friendship_path(@friendship))

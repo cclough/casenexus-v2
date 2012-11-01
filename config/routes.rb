@@ -22,20 +22,21 @@ Casenexus::Application.routes.draw do
   # Friendships
   resources :friendships, path: 'contacts', except: [:edit, :update] do
     member do
-      put "accept"
-      put "reject"
-      put "block"
+      put :accept
+      put :reject
+      put :block
+      put :unblock
     end
     collection do
-      get "requests"
-      get "invites"
-      get "blocked"
+      get :requests
+      get :invites
+      get :blocked
     end
   end
 
   # Cases
   resources :cases, only: [:index, :show, :new, :create, :update] do
-    get "analysis", on: :collection
+    get :analysis, on: :collection
   end
 
   # Notifications

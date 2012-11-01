@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   before_filter :completed_user
     
   def index
-    @friends = current_user.friends
+    @friendships = current_user.friendships.includes(:friend)
   end
 
   def new
