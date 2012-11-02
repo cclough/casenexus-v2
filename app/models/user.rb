@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   after_create :send_welcome
 
   ### Validations
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: true, on: :update
+  validates :last_name, presence: true, on: :update
 
   ## ON UPDATE
   validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update

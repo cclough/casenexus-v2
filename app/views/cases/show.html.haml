@@ -7,13 +7,13 @@
   var cases_show_structure_chart_radar_data = #{@case.cases_show_structure_chart_radar_data};
 
 .row
-  .span22
+  .span30
     .row
-      .panel.gradient.kill_left.kill_right
+      #cases_show_block_interviewer.panel.gradient.kill_left.kill_right
         .row
           .span6
             = avatar_for(@case.interviewer, 'icon')
-          .span7
+          .span15
             .application_name
               = @case.interviewer.name
             .row.application_timestamp.font-small
@@ -21,43 +21,46 @@
           .span6
             #cases_show_casecount
               = avatar_for(current_user, 'chevron')
-    .row
-      #cases_show_block_basics.panel.dark.kill_right.kill_left.kill_top.font-small
-        .row
-          .span5.cases_show_block_basics_name
-            Source
-          .span14
-            = @case.source
-        .spacer5
-        .row
-          .span5.cases_show_block_basics_name
-            Subject
-          .span14.cases_show_block_basics_subject
-            = @case.subject
 
-  .span30
-    #cases_show_chart_radar_buttongroup
-      .btn-group.offset30
-        %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-        %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
-    #cases_show_chart_radar
+  .span34
+
+    #cases_show_block_basics.panel.darker.font-small
+      .row
+        .span5.cases_show_block_basics_name
+          Source
+        .span23#cases_show_block_basics_source
+          = @case.source
+      .spacer5
+      .row
+        .span5.cases_show_block_basics_name
+          Subject
+        .span23#cases_show_block_basics_subject
+          = @case.subject
 
 .row
-  .span20
-    .panel.darker.kill_left.kill_top
-      .cases_show_title
-        Recommendation 1
-      = @case.recommendation1
-  .span20
-    .panel.darker.kill_left.kill_top
-      .cases_show_title
-        Recommendation 2
-      = @case.recommendation2
-  .span20
-    .panel.darker.kill_left.kill_top
-      .cases_show_title
-        Recommendation 3
-      = @case.recommendation3
+  .span21
+    .panel.darker.kill_left.kill_top.cases_show_recommendation
+      .cases_show_title.recommendation
+        1st Recommendation
+      .cases_show_recommendation_content
+        = @case.recommendation1
+      .spacer10
+      .cases_show_title.recommendation
+        2nd Recommendation
+      .cases_show_recommendation_content
+        = @case.recommendation2
+      .spacer10
+      .cases_show_title.recommendation
+        3rd Recommendation
+      .cases_show_recommendation_content
+        = @case.recommendation3
+  .span40
+
+    #cases_show_chart_radar
+    #cases_show_chart_radar_buttongroup
+      .btn-group.offset32
+        %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
+        %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
 
 .row
   .span63

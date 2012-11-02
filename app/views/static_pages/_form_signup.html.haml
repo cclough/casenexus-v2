@@ -3,21 +3,13 @@
   = render 'shared/error_messages', object: f.object
 
   / = f.text_field :roulette_token, placeholder: 'Enter your 8-digit invite code...'
-  .spacer5
-  = f.text_field :first_name, placeholder: 'First Name'
-  = f.text_field :last_name, placeholder: 'Last Name'
-  .btn.btn-small
-    Prefer to stay anonymous?
-  .spacer5
 
   .row.font-small
-    .span5
-      Use
-    .span9
-      %a#static_home_signup_option_university_switch University Email
-    .span8
-      %a#static_home_signup_option_linkedin_switch LinkedIn
-
+    .span11.offset1
+      %a#static_home_signup_option_university_switch University Sign-up
+    .span10
+      %a#static_home_signup_option_linkedin_switch LinkedIn Sign-up
+  .spacer5
   #static_home_signup_option_university
     = render 'static_pages/universities_select'
 
@@ -26,24 +18,21 @@
     .spacer5
     = f.password_field :password, placeholder: 'Password'
     = f.password_field :password_confirmation, placeholder: 'Confirm Password'
+  .spacer5
   .row
-    .span16.offset2
-      = f.label :email_admin, "Subscribe to advice letter"
-    .span3
-      = f.check_box :email_admin
-  .row
-    .span16.offset2
-      = f.label :email_users, "Receive email notifications"
-    .span3
-      = f.check_box :email_users
-  .row
-    .span16.offset2
-      = f.label :confirm_tac, "Accept the Terms & Conditions"
+    .span20.font-small
+      I agree to the 
+      = link_to "Terms and Conditions", terms_path
     .span3
       = f.check_box :confirm_tac
-  #static_home_signup_option_linkedin
-    Your linkedin Details will not be saved
+
   .spacer5
+  #static_home_signup_option_linkedin.font-small
+    .row
+      .span20.font-small
+        I agree that my email address, and LinkedIn headline can be saved (and nothing else!) 
+      .span3
+        = f.check_box :confirm_tac
   .row
     .offset1
 
@@ -51,6 +40,7 @@
         = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit"
 
       #static_home_signup_option_linkedin_submit
+        .spacer15
         %a#static_home_signup_option_linkedin_button_submit.btn.btn-large.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
           %span#static_home_signup_option_linkedin_button_submit_logo
             = image_tag 'home/button_logo_linkedin.png'

@@ -10,6 +10,20 @@ $gray_Mid: #767676;
 $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 
+.cases_avatar {
+  text-align:center;
+  &.index{
+    padding-left:10px;
+  }
+}
+
+.cases_score {
+  font-size: 21px;
+  font-weight: bold;
+  text-align:center;
+  color: $blue_pastel;
+}
+
 #cases_index_cases_form_sort .current {
   padding-right: 12px;
   background-repeat: no-repeat;
@@ -24,18 +38,14 @@ $blue_pastel: #98cdff;
   background-image: url(app/sort_down_arrow.gif);
 }
 
-.cases_avatar {
-  text-align:center;
-  &.index{
-    padding-left:10px;
-  }
+.cases_index_name {
+  font-weight:bold;
+  font-size:13px;
 }
 
-.cases_score {
-  font-size: 21px;
-  font-weight: bold;
-  text-align:center;
-  color: $blue_pastel;
+.cases_index_timestamp {
+  color: $gray_Mid;
+  font-size:10px;
 }
 
 .cases_index_item_scoreandtime { 
@@ -56,6 +66,33 @@ $blue_pastel: #98cdff;
   }
 }
 
+
+#cases_show_block_interviewer {
+  height:65px;
+}
+
+#cases_show_block_basics {
+  height:65px;
+}
+
+.cases_show_block_basics_name {
+  font-weight:bold;
+  margin-right:5px;
+}
+
+
+#cases_show_block_basics_source {
+  overflow-y: auto;
+  height:20px;
+}
+
+#cases_show_block_basics_subject {
+  overflow-y: auto;
+  height:40px;
+}
+
+
+
 .cases_show_title {
   text-align:center;
   font-weight: bold;
@@ -63,12 +100,16 @@ $blue_pastel: #98cdff;
   margin-bottom: 5px;
   margin-top:-5px;
   color: white;
+  &.recommendation {
+    font-size:11px;
+  }
 }
 
 .cases_show_comment {
   overflow-y: auto;
   height:150px;
 }
+
 
 
 #cases_show_casecount {
@@ -84,12 +125,13 @@ $blue_pastel: #98cdff;
 
 
 #cases_show_chart_radar {
+  padding-top:10px;
   height:250px;
   width:460px;
 }
 
 #cases_show_chart_radar_buttongroup {
-///////////////////////???????????
+  margin-top:-260px;
 }
 
 .cases_show_block_circle_outer {
@@ -119,21 +161,17 @@ $blue_pastel: #98cdff;
     color: #98cdff !important;
 }
 
-.cases_show_block_basics_subject {
-  // border-left: 1px solid $gray_Lighter;
 
-  height:120px;
-  overflow-y: auto;
+.cases_show_recommendation {
+  width:187px;
 }
 
-#cases_show_block_basics {
-  height:150px;
+.cases_show_recommendation_content {
+  overflow-y:auto;
+  height:60px;
+  font-size:11px;
 }
 
-.cases_show_block_basics_name {
-  font-weight:bold;
-  margin-right:5px;
-}
 
 /* case form */
 
