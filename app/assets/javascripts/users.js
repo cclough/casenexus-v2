@@ -14,7 +14,7 @@ function users_index_map_marker_click(marker_id) {
       $('#users_index_user').html(data);
 
       // Code for 'close button'
-      $("#users_show_close").click(function () {
+      $("#users_index_show_close").click(function () {
         $('#users_index_mapcontainer_user').fadeOut('slow');
       });
 
