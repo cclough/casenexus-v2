@@ -122,7 +122,7 @@ class User < ActiveRecord::Base
     end
 
     def list_contacts(user)
-      #joins('INNER JOIN friendships ON friendships.friend_id = users.id').where(friendships: { user_id: user.id, pending: false, blocker_id: nil })
+      user.accepted_friends
     end
   end
 

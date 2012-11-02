@@ -14,7 +14,7 @@ class MembersController < ApplicationController
       when "rand"
         users_scope = User.includes(:cases).list_rand
       when "contacts"
-        users_scope = User.includes(:cases).list_contacts(current_user)
+        users_scope = current_user.accepted_friends.includes(:cases)
     end
 
     # Using scoped_search gem
