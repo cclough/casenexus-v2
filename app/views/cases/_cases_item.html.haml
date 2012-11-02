@@ -2,14 +2,14 @@
   .span4
     .cases_avatar.index
     = avatar_for(cases_item.interviewer, 'icon')
-  .span6.cases_index_item_scoreandtime
+  .span5.cases_index_item_scoreandtime
     .cases_score
       = cases_item.totalscore
-    .row.application_timestamp.font-small
+    .row.cases_index_timestamp
       = cases_item.created_at.strftime("%d %b '%y")
-  .span12
+  .span15
     .row
-      %strong 
+      .cases_index_name
         = cases_item.interviewer.name
     .row.font-small
       = cases_item.subject_trunc

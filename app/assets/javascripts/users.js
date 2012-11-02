@@ -61,13 +61,10 @@ $(document).ready(function () {
   // Update the list of users
   users_index_users_updatelist();
 
-  $('#user_accepts_tandc').attr('checked', false);
+  // for complete_profile
+  $("#users_new_step3").css({ opacity:0.3 });
 
-  // reset form here?
-
-  $("#users_new_step2").css({ opacity:0.3 });
-
-  // NB Step 2 is made opaque in map code!
+  // NB Step 3 is made opaque in map code!
 
 
 
@@ -100,13 +97,13 @@ $(document).ready(function () {
       document.getElementById("users_newedit_lat").value = event.latLng.lat();
       document.getElementById("users_newedit_lng").value = event.latLng.lng();
 
-      if (!$.users_new_step1_complete) {
+      if (!$.users_new_step2_complete) {
 
-        $("#users_new_step2").css({
+        $("#users_new_step3").css({
           opacity:1
         });
 
-        $.users_new_step1_complete = true;
+        $.users_new_step2_complete = true;
 
       }
 
