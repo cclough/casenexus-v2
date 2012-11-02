@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   ### Validations
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
+  validate :validate_university_email, on: :create
 
   ## ON UPDATE
   validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update
@@ -140,6 +141,17 @@ class User < ActiveRecord::Base
     begin
       self.roulette_token = ('a'..'z').to_a.shuffle[0,8].join
     end while User.where(roulette_token: self.roulette_token).exists?
+  end
+
+  def validate_university_email
+    if self.linkedin_uid.blank?
+      begin
+        domain = self.email.split("@")[1]
+        errors.add(:email, "Email doesn't match a University Domain") unless University.where(domain: domain).exists?
+      rescue Exception => e
+        errors.add(:email, "Invalid Email")
+      end
+    end
   end
 
 end

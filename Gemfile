@@ -27,6 +27,7 @@ group :development, :test do
   gem 'guard-rspec'                              # Automatically run RSpec tests
   gem 'capybara'                                 # Browser Engine
   gem 'haml-rails'                               # Haml generator
+  gem 'wirble'                                   # Colors on console
 end
 
 group :assets do
