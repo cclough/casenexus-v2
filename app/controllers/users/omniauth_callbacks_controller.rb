@@ -46,17 +46,32 @@ class Users::OmniauthCallbacksController < ApplicationController
     else
       # The user is not logged in
       # Check if there is a user with that uid, if it exists, login and redirect, otherwise create the user
-      if User.where(linkedin_uid: omniauth['uid']).exists?
+      client = LinkedIn::Client.new(LINKEDIN_KEY, LINKEDIN_SECRET)
+      client.authorize_from_access(credentials['token'], credentials['secret'])
+      data = client.profile(fields: %w(email-address first_name last_name headline industry picture-url public-profile-url location))
+
+      if User.where( linkedin_uid: omniauth['uid']).exists?
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Linkedin"
         user = User.where(linkedin_uid: omniauth['uid']).first
         sign_in(user)
+      elsif User.where(email: data['email_address']).exists?
+        user = User.where(email: data['email_address']).first
+
+        assign_linkedin_credentials(user, credentials, omniauth['uid'])
+
+        user.headline = data['headline']
+        user.industry = data['industry']
+        user.picture_url = data['picture_url']
+        user.public_profile_url = data['public_profile_url']
+
+        user.save
+
+        flash[:notice] = "Linkedin account associated"
+
+        sign_in(user)
+
       else
         # The user doesn't exists, fetch the email, register and sign in
-        client = LinkedIn::Client.new(LINKEDIN_KEY, LINKEDIN_SECRET)
-        client.authorize_from_access(credentials['token'], credentials['secret'])
-
-        data = client.profile(fields: %w(email-address first_name last_name headline industry picture-url public-profile-url location))
-
         user = User.new
 
         assign_linkedin_credentials(user, credentials, omniauth['uid'])

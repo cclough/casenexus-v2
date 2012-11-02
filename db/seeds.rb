@@ -24,7 +24,7 @@ if User.count == 0 && Rails.env != 'test'
   admin2 = User.create!(
       first_name: "Rodrigo",
       last_name: "D",
-      email: "rorra@rorra.com.ar",
+      email: "rorra.rorra@gmail.com",
       password: "password",
       password_confirmation: "password",
       lat: 51.01128232665856,
