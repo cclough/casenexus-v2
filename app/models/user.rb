@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
 
   # Friends
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships, conditions: "friendships.status = #{Friendship::ACCEPTED}", order: "users.first_name ASC, users.last_name ASC"
+  has_many :accepted_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::ACCEPTED}", dependent: :destroy
+  has_many :accepted_friends, through: :accepted_friendships, source: :friend
   has_many :requested_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REQUESTED}", dependent: :destroy
   has_many :requested_friends, through: :requested_friendships, source: :friend
   has_many :pending_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::PENDING}", dependent: :destroy

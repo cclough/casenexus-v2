@@ -11,11 +11,11 @@ class Friendship < ActiveRecord::Base
   validates :status, presence: true, inclusion: { in: [0, 1, 2, 3, 4] }
 
   # Status codes
-  REQUESTED = 0      # friend_id REQUESTED user_id to accept invitation
-  PENDING = 1        # user_id has a PENDING response to invitation from user_id
-  ACCEPTED = 2       # user_id ACCEPTED invitation to friend_id so they are friends
-  REJECTED = 3       # user_id REJECTED invitation to friend_id
-  BLOCKED = 4        # user_id BLOCKED invitation to friend_id
+  REQUESTED = 0         # friend_id REQUESTED user_id to accept invitation
+  PENDING = 1           # user_id has a PENDING response to invitation from user_id
+  ACCEPTED = 2          # user_id ACCEPTED invitation to friend_id so they are friends
+  REJECTED = 3          # user_id REJECTED invitation to friend_id
+  BLOCKED = 4           # user_id BLOCKED friend_id
 
   class << self
 
@@ -66,6 +66,13 @@ class Friendship < ActiveRecord::Base
       transaction do
         blocked_at = Time.now
         block_one_side(user, friend, blocked_at)
+      end
+    end
+
+    # Unblocks a friend
+    def unblock(user, friend)
+      transaction do
+        unblock_one_side(user, friend)
       end
     end
 
@@ -154,9 +161,16 @@ class Friendship < ActiveRecord::Base
     end
 
     # Update the db with one side of a blocked connection request.
-    def blocked_one_side(user, friend, blocked_at)
+    def block_one_side(user, friend, blocked_at)
       fs = friendship(user, friend)
       fs.update_attributes!(status: BLOCKED, blocked_at: blocked_at)
+      fs
+    end
+
+    # Update the db with one side of a blocked connection request.
+    def unblock_one_side(user, friend)
+      fs = friendship(user, friend)
+      fs.update_attributes!(status: REQUESTED, blocked_at: nil)
       fs
     end
 

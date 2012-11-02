@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   before_filter :completed_user
     
   def index
-    @friendships = current_user.friendships.includes(:friend)
+    @friendships = current_user.accepted_friendships.includes(:friend)
   end
 
   def new
@@ -53,18 +53,26 @@ class FriendshipsController < ApplicationController
 
     # Instead of marking the Friendship as rejected, we break it so the user may invite the friend again later
     #Friendship.reject(@friendship.user, @friendship.friend)
-    Friendship..breakup(@friendship.user, @friendship.friend)
+    Friendship.breakup(@friendship.user, @friendship.friend)
 
-    flash[:success] = "Contact Rejected"
+    flash[:success] = "Invitation Rejected"
     redirect_to action: :index
   end
 
   def block
     @friendship = current_user.friendships.find(params[:id])
     Friendship.block(@friendship.user, @friendship.friend)
-    flash[:success] = "Contact Rejected"
+    flash[:success] = "Contact Blocked"
     redirect_to action: :index
   end
+
+  def unblock
+    @friendship = current_user.friendships.find(params[:id])
+    Friendship.unblock(@friendship.user, @friendship.friend)
+    flash[:success] = "Contact Unblocked"
+    redirect_to action: :index
+  end
+
 
   # List all the friendships requests the user has made
   def requests
