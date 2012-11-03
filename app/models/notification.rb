@@ -82,6 +82,7 @@ class Notification < ActiveRecord::Base
   private
 
   def send_email
+    return if self.user.email_users == false
     case self.ntype
       when "welcome"
         UserMailer.welcome(self.user,
