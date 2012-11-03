@@ -20,6 +20,6 @@
     .roulette_index_users_item_casecount
       = avatar_for(@roulette_user, 'chevron')
 
-.row{ id: "roulette_index_users_item_status_" + @roulette_user.id, class: "roulette_index_users_item_status"}
+.row{ id: "roulette_index_users_item_status_" + @roulette_user.id.to_s, class: "roulette_index_users_item_status"}
   .span50.offset10
     = @roulette_user.status
