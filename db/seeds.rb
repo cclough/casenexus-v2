@@ -1,11 +1,13 @@
-if User.count == 0 && Rails.env != 'test'
+if %w(production development).include?(Rails.env) && User.count == 0
+  puts "Creating universities"
+
   University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
   University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
   University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
 
-  puts "Universities created"
+  puts "Creating first user"
 
-  admin = User.create!(
+  admin = User.new(
       first_name: "Christian",
       last_name: "Clough",
       email: "christian.clough@cam.ac.uk",
@@ -20,90 +22,27 @@ if User.count == 0 && Rails.env != 'test'
       confirm_tac: true,
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  admin.toggle!(:status_approved)
-  admin.toggle!(:completed)
-  admin.toggle!(:admin)
+  admin.status_approved = true
+  admin.completed = true
+  admin.save!
   admin.confirm!
 
-  puts "Admin #{admin.name} created"
+  puts "Creating countries"
 
-  admin2 = User.create!(
-      first_name: "Rodrigo",
-      last_name: "D",
-      email: "rorra@cam.ac.uk",
-      password: "password",
-      password_confirmation: "password",
-      lat: 51.01128232665856,
-      lng: -0.4241188764572144,
-      status: Faker::Lorem.sentence(20),
+  file = "#{Rails.root}/db/countries.csv"
 
-      skype: "rdominguez81",
+  CSV.foreach(file, headers: true) do |row|
+    Country.create!(
+        name: row[0],
+        code: row[1],
+        lat: row[2],
+        lng: row[3]
+    )
+  end
 
-      confirm_tac: true,
-
-      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-
-  admin2.toggle!(:status_approved)
-  admin2.toggle!(:completed)
-  admin2.toggle!(:admin)
-  admin2.confirm!
-
-  puts "Admin #{admin2.name} created"
-
-  admin3 = User.create!(
-      first_name: "Design",
-      last_name: "Pro",
-      email: "design@cam.ac.uk",
-      password: "design",
-      password_confirmation: "design",
-      lat: 51.3128232665856,
-      lng: -0.941188764572144,
-      status: Faker::Lorem.sentence(20),
-
-      skype: "greatdesign",
-
-      confirm_tac: true,
-
-      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-
-  admin3.toggle!(:status_approved)
-  admin3.toggle!(:completed)
-  admin3.toggle!(:admin)
-  admin3.confirm!
-
-  puts "Admin #{admin3.name} created"
-
-  admin4 = User.create!(
-      first_name: "Nicola",
-      last_name: "Rowe",
-      email: "nicolarowe@cam.ac.uk",
-      password: "clarecollege",
-      password_confirmation: "clarecollege",
-      lat: -43.531637,
-      lng: 172.636645,
-      status: Faker::Lorem.sentence(20),
-
-      confirm_tac: true,
-
-      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-
-  admin4.toggle!(:status_approved)
-  admin4.toggle!(:completed)
-  admin4.toggle!(:admin)
-  admin4.confirm!
-
-  puts "Admin #{admin4.name} created"
-
-  # Friendships
-  users = User.order(:id).all
-  Friendship.connect(users[0], users[1])
-  Friendship.connect(users[0], users[2])
-  Friendship.connect(users[0], users[3])
-
-  puts "Friendships created"
 end
 
-if Rails.env != 'test'
+if Rails.env == 'development'
 
   def random_date(params={ })
     years_back = params[:year_range] || 5
@@ -135,16 +74,17 @@ if Rails.env != 'test'
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 
-    user = User.create!(first_name: first_name, last_name: last_name,
-                        email: email, password: password,
-                        password_confirmation: password,
-                        lat: lat, lng: lng, status: status,
-                        skype: skype,
-                        confirm_tac: confirm_tac,
-                        ip_address: ip_address)
+    user = User.new(first_name: first_name, last_name: last_name,
+                    email: email, password: password,
+                    password_confirmation: password,
+                    lat: lat, lng: lng, status: status,
+                    skype: skype,
+                    confirm_tac: confirm_tac,
+                    ip_address: ip_address)
 
-    user.toggle!(:status_approved)
-    user.toggle!(:completed)
+    user.status_approved = true
+    user.completed = true
+    user.save!
     user.confirm!
 
     puts "User #{user.name} created"
