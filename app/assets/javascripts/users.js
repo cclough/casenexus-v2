@@ -89,6 +89,8 @@ $(document).ready(function () {
     var marker = new google.maps.Marker({
       position:users_newedit_latlng,
       map:map,
+      icon: new google.maps.MarkerImage("/assets/markers/marker_0.png"),
+      shadow: new google.maps.MarkerImage("/assets/markers/marker_shadow.png"),
       draggable:true
     });
 

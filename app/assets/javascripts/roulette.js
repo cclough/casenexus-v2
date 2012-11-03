@@ -63,7 +63,7 @@ $(document).ready(function(){
 
           roulette_index_users_local.push(key_remote);
 
-          $.get('/get_item?id=' + key_remote, function(data_item) {
+          $.get('/item?id=' + key_remote, function(data_item) {
             $('#roulette_index_users').append('<div class=roulette_index_users_item data-socket_id='+key_remote+' id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
             
