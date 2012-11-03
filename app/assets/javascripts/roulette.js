@@ -40,15 +40,14 @@ $(document).ready(function(){
       $('#modal_roulette_req').modal('show');
       
       //$('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
-      
       // alert(data.from);
+
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
     socket.on('updatelog', function (username, data) {
       $('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
     });
-
 
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
