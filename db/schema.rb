@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031114315) do
+ActiveRecord::Schema.define(:version => 20121103005406) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -112,9 +112,6 @@ ActiveRecord::Schema.define(:version => 20121031114315) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "headline"
-    t.string   "industry"
-    t.string   "picture_url"
-    t.string   "public_profile_url"
     t.float    "lat"
     t.float    "lng"
     t.string   "skype"
@@ -126,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20121031114315) do
     t.string   "roulette_token",                            :null => false
     t.string   "city"
     t.string   "country"
+    t.integer  "university_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
@@ -134,5 +132,6 @@ ActiveRecord::Schema.define(:version => 20121031114315) do
   add_index "users", ["linkedin_uid"], :name => "index_users_on_linkedin_uid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["roulette_token"], :name => "index_users_on_roulette_token", :unique => true
+  add_index "users", ["university_id"], :name => "index_users_on_university_id"
 
 end

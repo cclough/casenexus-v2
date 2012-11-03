@@ -13,7 +13,7 @@ class RouletteController < ApplicationController
     end
   end
 
-  def request
+  def get_request
     @request_user = User.find(params[:id])
     @message = params[:msg]
     respond_to do |format|

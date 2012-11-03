@@ -60,9 +60,6 @@ class Users::OmniauthCallbacksController < ApplicationController
         assign_linkedin_credentials(user, credentials, omniauth['uid'])
 
         user.headline = data['headline']
-        user.industry = data['industry']
-        user.picture_url = data['picture_url']
-        user.public_profile_url = data['public_profile_url']
 
         user.save
 
@@ -107,9 +104,6 @@ class Users::OmniauthCallbacksController < ApplicationController
     user.first_name = data['first_name']
     user.last_name = data['last_name']
     user.headline = data['headline']
-    user.industry = data['industry']
-    user.picture_url = data['picture_url']
-    user.public_profile_url = data['public_profile_url']
     user
   end
 

@@ -3,13 +3,14 @@ class User < ActiveRecord::Base
          :confirmable, :omniauthable, :token_authenticatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
-                  :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac
+                  :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac, :university, :university_id
 
   attr_accessor :ip_address, :confirm_tac
 
-  has_many :cases
-  has_many :notifications
-  has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id
+  belongs_to :university
+  has_many :cases, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
 
   # Friends
   has_many :friendships, dependent: :destroy
@@ -28,6 +29,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = user.email.downcase }
 
   before_create :generate_roulette_token
+  before_create :set_headline_and_university
   after_save :send_welcome
 
   ### Validations
@@ -136,6 +138,14 @@ class User < ActiveRecord::Base
   def send_welcome
     if completed_was == false and completed == true
       Notification.create(user: self, sender_id: 1, ntype: "welcome")
+    end
+  end
+
+  def set_headline_and_university
+    domain = self.email.split("@")[1]
+    if University.where(domain: domain).exists?
+      self.university = University.where(domain: domain).first
+      self.headline = "Student at the #{university.name} University" if self.headline.blank?
     end
   end
 
