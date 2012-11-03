@@ -38,7 +38,7 @@ $(document).ready(function(){
         $('#modal_roulette_req').html(data_request);
         $('#modal_roulette_req').modal('show');
 
-      };
+      });
 
     });
 

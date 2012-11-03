@@ -20,5 +20,4 @@ class RouletteController < ApplicationController
       format.html { render layout: false }
     end
   end
-
 end
