@@ -3,20 +3,21 @@
 
     .row
       .span16
-        = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "Email Address", id: "header_signin_email"
-      .span16
+        = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "University Email", id: "header_signin_email"
+      .span20
         .input-append
           = f.password_field :password, class: 'span15', tabindex: "2", placeholder: "Password", id: "header_signin_password"
           %button.btn.btn-inverse{:href => "#", :type => "submit", tabindex: "3", id: "static_home_signin"}
             %i.icon-arrow-right.icon-white
+      .span6
+        %a#header_signin_button_linkedin.btn.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
+          = image_tag 'home/button_logo_linkedin.png'
     .row
-      .span16
+      .span16#header_signin_forgottenpassword
         %small
           = link_to "Forgotten your password?", new_password_path('user')
-      .span16
+      .span21#header_signin_rememberme
         .span8
-          = f.label :remember_me, class: 'pull-right font-small'
-        .span2.offset3
-          = f.check_box :remember_me, { checked: true}
-
-      
+          = f.label :remember_me, class: 'font-small'
+        .span2.offset1
+          = f.check_box :remember_me, { checked: true }
