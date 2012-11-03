@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
     domain = self.email.split("@")[1]
     if University.where(domain: domain).exists?
       self.university = University.where(domain: domain).first
-      self.headline = "Student at the #{university.name} University" if self.headline.blank?
+      self.headline = "Student at #{university.name}" if self.headline.blank?
     end
   end
 
