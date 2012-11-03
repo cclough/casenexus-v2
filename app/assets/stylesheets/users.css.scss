@@ -7,6 +7,9 @@
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$blue_pastel: #98cdff;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -277,6 +280,13 @@ header {
   padding-top:14px;
   padding-left:8px;
   font-weight:bold;
+}
+
+#users_show_headline {
+  padding-left:8px;
+  color: $gray_Mid;
+  font-size:11px;
+  font-style:italic;
 }
 
 #users_show_skype{

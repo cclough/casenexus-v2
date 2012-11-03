@@ -12,6 +12,8 @@
     .span20
       #users_show_name
         = @user.name
+      #users_show_headline
+        = @user.headline
   - if Friendship.friends?(current_user, @user)
     .spacer5
     .row.font-small
