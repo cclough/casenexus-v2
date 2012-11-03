@@ -10,7 +10,7 @@ $blue_pastel: #98cdff;
 
 .roulette_index_users_item {
 	display:none;
-	width:100%;
+	width:800px;
 	padding:10px;
 	font-size:15px;
 	font-face: bold;
@@ -52,5 +52,9 @@ $blue_pastel: #98cdff;
 .roulette_index_users_item_casecount {
   font-size: 1.1em !important;
   margin-left: 4px;
-  margin-top:-13px;
+  margin-top:-10px;
+}
+
+.roulette_index_users_item_status {
+	display:none;
 }

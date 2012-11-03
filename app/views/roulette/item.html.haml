@@ -11,7 +11,8 @@
     .span15
       = link_to image_tag("icons/linkedin.png", alt: "View xx's profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/xx'
     .span10.roulette_index_users_item_button_expand{"date-id" => @roulette_user.id }
-      Expand ^
+      Show Profile
+      %i.icon-arrow-down.icon-small
     .span10
       .btn.btn-small.roulette_index_users_item_button_request{"data-user_id" => @roulette_user.id}
         Send Request
