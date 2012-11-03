@@ -2,6 +2,7 @@
 - provide(:title, 'Roulette')
 
 - content_for :javascript_includes do
+  = javascript_include_tag 'roulette'
 
   :javascript
     var roulette_index_user_id = "#{current_user.id}";
