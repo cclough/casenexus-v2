@@ -10,7 +10,7 @@ namespace :db do
 	  CSV.foreach(file, :headers => true) do |row|
 	    Country.create ({
 	      :name => row[0],
-	      :code => row[1],ra
+	      :code => row[1],
 	      :lat => row[2],
 	      :lng => row[3]
 	    })
