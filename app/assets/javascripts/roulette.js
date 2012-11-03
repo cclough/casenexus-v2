@@ -138,6 +138,20 @@ $(document).ready(function(){
     });
 
 
+    $(".roulette_index_users_item_button_expand").click(function() {
+
+      var item_id = $(this).attr("data-id");
+      var roulette_item_status = $("#roulette_index_users_item_status_" + item_id);
+
+      if (roulette_item_status.hasClass("slid")) {
+        roulette_item_status.removeClass("slid");
+        roulette_item_status.slideUp("fast");
+      } else {
+        roulette_item_status.addClass("slid");
+        roulette_item_status.slideDown("fast");
+      }
+
+    });
 
 
 
