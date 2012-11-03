@@ -13,11 +13,13 @@
 
             / MAP: pushpin or globe or picture or road or map-marker
             %li
-              = link_to raw("<i class='icon-globe icon-large icon-white'></i> Users"), dashboard_path
+              = link_to raw("<i class='icon-pushpin icon-large icon-white'></i> Users"), dashboard_path
             %li
               = link_to raw("<i class='icon-random icon-large icon-white'></i> Roulette"), roulette_path
             %li
-              = link_to raw("<i class='icon-bolt icon-large icon-white'></i> Help"), '#', id: 'header_link_help'
+              = link_to raw("<i class='icon-info-sign icon-large icon-white'></i> Help"), '#', id: 'header_link_help'
+            %li
+              = link_to raw("<i class='icon-gift icon-large icon-white'></i>"), '#', id: 'header_link_bug'
 
           %ul#header_nav_links_right.nav.pull-right
 

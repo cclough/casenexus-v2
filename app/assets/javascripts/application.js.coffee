@@ -40,8 +40,17 @@ $(document).ready ->
     backdrop: false
     show: false
 
-  # Modal help
+  # Modal help link
   $("#header_link_help").click ->
     $(".modal").modal "hide"
     $("#modal_help").modal "show"
 
+  # Modal bug
+  $("#modal_bug").modal
+    backdrop: false
+    show: false
+
+  # Modal bug link
+  $("#header_link_bug").click ->
+    $(".modal").modal "hide"
+    $("#modal_bug").modal "show"
