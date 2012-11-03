@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = user.email.downcase }
 
   before_create :generate_roulette_token
-  after_udpate :send_welcome
+  after_save :send_welcome
 
   ### Validations
   validates :first_name, presence: true, on: :update
