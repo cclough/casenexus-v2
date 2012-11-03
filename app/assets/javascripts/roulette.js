@@ -38,7 +38,7 @@ $(document).ready(function(){
         $('#modal_roulette_req').html(data_request);
         $('#modal_roulette_req').modal('show');
 
-      };
+      });
 
     });
 
@@ -65,15 +65,14 @@ $(document).ready(function(){
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
             
             // Send request button
-            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_item_button_request').click(function() {
+            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_users_item_button_request').click(function() {
     
               var target_user_id = $(this).attr('data-user_id');
-
-              $('#testing123').html(target_user_id);
 
               socket.emit("private", { msg: "Request to skype", to: target_user_id });
 
             });
+
 
             // Show profile button
             $(".roulette_index_users_item_button_expand").click(function() {
@@ -82,12 +81,18 @@ $(document).ready(function(){
               var roulette_item_status = $("#roulette_index_users_item_status_" + item_id);
 
               if (roulette_item_status.hasClass("slid")) {
-                roulette_item_status.removeClass("slid");
-                roulette_item_status.slideUp("fast");
-              } else {
-                roulette_item_status.addClass("slid");
-                roulette_item_status.slideDown("fast");
-              }
+                
+                roulette_item_status.slideUp("fast", function() {
+                  roulette_item_status.removeClass("slid");  
+                });
+
+              } else if (!roulette_item_status.hasClass("slid")) {
+
+                roulette_item_status.slideDown("fast", function() {
+                  roulette_item_status.addClass("slid"); 
+                });
+                
+              };
 
             });
 
