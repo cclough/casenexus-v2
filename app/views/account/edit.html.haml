@@ -46,12 +46,6 @@
                   = f.label :linkedin
                 .span25
                   = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'), target: '_blank')
-            - else
-              .row
-                .span15
-                  = f.label :linkedin
-                .span25
-                  = link_to("LinkedIn Profile", f.object.public_profile_url, target: '_blank')
 
           .panel.darker.kill_bottom
             .row
