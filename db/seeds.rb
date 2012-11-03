@@ -1,8 +1,14 @@
 if User.count == 0 && Rails.env != 'test'
+  University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
+  University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
+  University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
+
+  puts "Universities created"
+
   admin = User.create!(
       first_name: "Christian",
       last_name: "Clough",
-      email: "christian.clough@gmail.com",
+      email: "christian.clough@cam.ac.uk",
       password: "numbnuts",
       password_confirmation: "numbnuts",
       lat: 51.901128232665856,
@@ -24,7 +30,7 @@ if User.count == 0 && Rails.env != 'test'
   admin2 = User.create!(
       first_name: "Rodrigo",
       last_name: "D",
-      email: "rorra.rorra@gmail.com",
+      email: "rorra@cam.ac.uk",
       password: "password",
       password_confirmation: "password",
       lat: 51.01128232665856,
@@ -47,7 +53,7 @@ if User.count == 0 && Rails.env != 'test'
   admin3 = User.create!(
       first_name: "Design",
       last_name: "Pro",
-      email: "design@design.com",
+      email: "design@cam.ac.uk",
       password: "design",
       password_confirmation: "design",
       lat: 51.3128232665856,
@@ -70,7 +76,7 @@ if User.count == 0 && Rails.env != 'test'
   admin4 = User.create!(
       first_name: "Nicola",
       last_name: "Rowe",
-      email: "nicolarowe@mac.com",
+      email: "nicolarowe@cam.ac.uk",
       password: "clarecollege",
       password_confirmation: "clarecollege",
       lat: -43.531637,
@@ -87,12 +93,6 @@ if User.count == 0 && Rails.env != 'test'
   admin4.confirm!
 
   puts "Admin #{admin4.name} created"
-
-  University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
-  University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
-  University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
-
-  puts "Universities created"
 
   # Friendships
   users = User.order(:id).all
@@ -124,7 +124,7 @@ if Rails.env != 'test'
   100.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    email = "example#{n+1}@casenexus.com"
+    email = "example#{n+1}@cam.ac.uk"
     password = "password"
     lat = -90 + rand(180)
     lng = -180 + rand(360)
