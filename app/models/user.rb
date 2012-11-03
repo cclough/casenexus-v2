@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = user.email.downcase }
 
   before_create :generate_roulette_token
-  after_create :send_welcome
+  after_save :send_welcome
 
   ### Validations
   validates :first_name, presence: true, on: :update
@@ -134,7 +134,9 @@ class User < ActiveRecord::Base
   private
 
   def send_welcome
-    Notification.create(user: self, sender_id: 1, ntype: "welcome")
+    if completed_was == false and completed == true
+      Notification.create(user: self, sender_id: 1, ntype: "welcome")
+    end
   end
 
   def generate_roulette_token
