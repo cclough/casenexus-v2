@@ -140,10 +140,10 @@ $(document).ready(function(){
 
     $(".roulette_index_users_item_button_expand").click(function() {
 
-      item_id = $(this).attr("data-id")
+      item_id = $(this).attr("data-id");
       var roulette_item_status = $("#roulette_index_users_item_status_" + item_id);
 
-      if roulette_item_status.hasClass("slid") {
+      if (roulette_item_status.hasClass("slid")) {
         roulette_item_status.removeClass("slid");
         roulette_item_status.slideDown("fast");
       } else {
