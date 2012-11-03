@@ -6,7 +6,7 @@ class RouletteController < ApplicationController
     # current_user.update_attribute(:roulette_token, ('a'..'z').to_a.shuffle[0,8].join)
   end
 
-  def item
+  def get_item
     @roulette_user = User.find(params[:id])
     respond_to do |format|
       format.html { render layout: false }

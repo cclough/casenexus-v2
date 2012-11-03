@@ -33,14 +33,12 @@ $(document).ready(function(){
     // listener for private message (roulette request)
     socket.on("private", function(data) {  
 
-      $('#modal_roulette_req_from').html(data.from);
-      $('#modal_roulette_req_to').html(data.to);
-      $('#modal_roulette_req_msg').html(data.msg);
+      $.get('/get_request?id=' + data.from + '&msg=' + data.msg, function(data_request) {
 
-      $('#modal_roulette_req').modal('show');
-      
-      //$('#roulette_index_log').append('<div class=roulette_index_log_item>' + data.from + ' sent a message to ' + data.to + ': ' + data.msg + '</div>');
-      // alert(data.from);
+        $('#modal_roulette_req').html(data_request);
+        $('#modal_roulette_req').modal('show');
+
+      };
 
     });
 
@@ -62,7 +60,7 @@ $(document).ready(function(){
 
           roulette_index_users_local.push(key_remote);
 
-          $.get('/item?id=' + key_remote, function(data_item) {
+          $.get('/get_item?id=' + key_remote, function(data_item) {
             $('#roulette_index_users').append('<div class=roulette_index_users_item data-socket_id='+key_remote+' id=roulette_index_users_item_'+key_remote+'>' + data_item + '</div>');
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
             
