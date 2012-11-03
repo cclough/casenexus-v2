@@ -45,7 +45,7 @@ Casenexus::Application.routes.draw do
   # Roulette
   match '/roulette', to: 'roulette#index', as: :roulette
   match '/item', to: 'roulette#item', as: :item_roulette
-  match '/request', to: 'roulette#request', as: :request_roulette
+  match '/request', to: 'roulette#get_request', as: :request_roulette
 
   # Static Pages
   match '/about', to: 'static_pages#about'
