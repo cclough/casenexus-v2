@@ -1,9 +1,9 @@
-#modal_bug.modal.hide.fade
+#modal_contact.modal.hide.fade
   / = form_for(@notification, remote: true) do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    %h3 Found a bug? Suggest a Feature?
+    %h3 Contact us
 
   .modal-body
 
@@ -21,4 +21,4 @@
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
     %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "2"}
       %i.icon-arrow-right.icon-white
-      Send Feedback
+      Send Message

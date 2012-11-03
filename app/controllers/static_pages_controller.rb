@@ -9,9 +9,11 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    @user = User.new unless signed_in?
   end
 
   def terms
+    @user = User.new unless signed_in?  
   end
 
 end

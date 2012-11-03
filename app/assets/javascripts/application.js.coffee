@@ -54,3 +54,13 @@ $(document).ready ->
   $("#header_link_bug").click ->
     $(".modal").modal "hide"
     $("#modal_bug").modal "show"
+
+  # Modal contact
+  $("#modal_contact").modal
+    backdrop: false
+    show: false
+
+  # Modal contact link
+  $("#footer_link_contact").click ->
+    $(".modal").modal "hide"
+    $("#modal_contact").modal "show"
