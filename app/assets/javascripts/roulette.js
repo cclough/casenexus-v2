@@ -65,15 +65,14 @@ $(document).ready(function(){
             $('#roulette_index_users_item_' + key_remote).fadeIn('fast');
             
             // Send request button
-            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_item_button_request').click(function() {
+            $('#roulette_index_users_item_' + key_remote + ' .roulette_index_users_item_button_request').click(function() {
     
               var target_user_id = $(this).attr('data-user_id');
-
-              $('#testing123').html(target_user_id);
 
               socket.emit("private", { msg: "Request to skype", to: target_user_id });
 
             });
+
 
             // Show profile button
             $(".roulette_index_users_item_button_expand").click(function() {
