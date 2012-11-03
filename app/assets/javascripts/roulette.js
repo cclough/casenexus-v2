@@ -81,12 +81,18 @@ $(document).ready(function(){
               var roulette_item_status = $("#roulette_index_users_item_status_" + item_id);
 
               if (roulette_item_status.hasClass("slid")) {
-                roulette_item_status.removeClass("slid");
-                roulette_item_status.slideUp("fast");
-              } else {
-                roulette_item_status.addClass("slid");
-                roulette_item_status.slideDown("fast");
-              }
+                
+                roulette_item_status.slideUp("fast", function() {
+                  roulette_item_status.removeClass("slid");  
+                });
+
+              } else if (!roulette_item_status.hasClass("slid")) {
+
+                roulette_item_status.slideDown("fast", function() {
+                  roulette_item_status.addClass("slid"); 
+                });
+                
+              };
 
             });
 

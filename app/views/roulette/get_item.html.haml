@@ -2,20 +2,19 @@
   .span5
     .spacer10
     = avatar_for(@roulette_user, 'icon')
-  .span25.offset3
+  .span65.offset3
     .spacer15
     .application_name
       = @roulette_user.name
-  .span30.offset3
-    .spacer20
-    .span12.roulette_index_users_item_button_expand{"data-id" => @roulette_user.id }
+    .roulette_index_users_item_button_expand{"data-id" => @roulette_user.id }
       Show Profile
       %i.icon-arrow-down.icon-small
-    .span10
-      .btn.btn-small.roulette_index_users_item_button_request{"data-user_id" => @roulette_user.id}
-        Send Request
+  .span12
+    .spacer20
+    .btn.btn-small.roulette_index_users_item_button_request{"data-user_id" => @roulette_user.id}
+      Send Request
 
-  .span5.offset3
+  .span5
     .roulette_index_users_item_casecount
       = avatar_for(@roulette_user, 'chevron')
 
