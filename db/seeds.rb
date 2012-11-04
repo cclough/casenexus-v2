@@ -5,7 +5,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
   University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
 
-  puts "Creating first user"
+  puts "Creating christian's user"
 
   admin = User.new(
       first_name: "Christian",
@@ -28,6 +28,28 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.save!
   admin.confirm!
 
+  puts "Creating alastair's user"
+
+  admin = User.new(
+      first_name: "Alastair",
+      last_name: "Willey",
+      email: "alastair.willey@cam.ac.uk",
+      password: "design",
+      password_confirmation: "design",
+      lat: 51.90128232665856,
+      lng: -0.5421188764572144,
+      status: Faker::Lorem.sentence(20),
+
+      skype: "",
+
+      confirm_tac: true,
+
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+  admin.status_approved = true
+  admin.completed = true
+  admin.save!
+  admin.confirm!
+
   puts "Creating countries"
 
   file = "#{Rails.root}/db/countries.csv"
@@ -43,7 +65,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 end
 
-if Rails.env == 'development'
+# if Rails.env == 'development'
 
   def random_date(params={ })
     years_back = params[:year_range] || 5
@@ -154,5 +176,6 @@ if Rails.env == 'development'
       puts "Notification marked as read"
     end
   end
-end
+
+# end
 

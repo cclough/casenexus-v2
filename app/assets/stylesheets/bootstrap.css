@@ -5007,12 +5007,12 @@ input[type="submit"].btn.btn-mini {
   padding: 8px 35px 8px 14px;
   margin-bottom: 20px;
   /*  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);*/
-  background-color: #fcf8e3;
+  /*background-color: #fcf8e3;*/
   /*  border: 1px solid #fbeed5;*/
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
-  color: #c09853;
+  color: #FFFF7E;
 
   background: url('app/darker-bg.png') repeat top left;
 }
