@@ -130,9 +130,9 @@ class User < ActiveRecord::Base
   private
 
   def send_welcome
-    if completed_was == false and completed == true
-      Notification.create(user: self, sender_id: 1, ntype: "welcome")
-    end
+    # if completed_was == false and completed == true
+    #   Notification.create(user: self, sender_id: 1, ntype: "welcome")
+    # end
   end
 
   def set_headline_and_university
