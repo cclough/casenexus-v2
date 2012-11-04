@@ -63,13 +63,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
     )
   end
 
-    # Friendships
-
-
-
 end
 
-# if Rails.env == 'development'
+if Rails.env == 'development'
 
 
   def random_date(params={ })
@@ -189,5 +185,5 @@ end
   Friendship.connect(users[0], users[2])
   Friendship.connect(users[0], users[3])  
 
-# end
+end
 
