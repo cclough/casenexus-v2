@@ -29,7 +29,7 @@ class Users::OmniauthCallbacksController < ApplicationController
           client = LinkedIn::Client.new(LINKEDIN_KEY, LINKEDIN_SECRET)
           client.authorize_from_access(credentials['token'], credentials['secret'])
 
-          data = client.profile(fields: %w(email-address first_name last_name headline industry picture-url public-profile-url location))
+          data = client.profile(fields: %w(email-address first_name last_name headline))
 
           assign_linkedin_credentials(user, credentials, omniauth['uid'])
           assign_linkedin_data(user, data)
@@ -48,7 +48,7 @@ class Users::OmniauthCallbacksController < ApplicationController
       # Check if there is a user with that uid, if it exists, login and redirect, otherwise create the user
       client = LinkedIn::Client.new(LINKEDIN_KEY, LINKEDIN_SECRET)
       client.authorize_from_access(credentials['token'], credentials['secret'])
-      data = client.profile(fields: %w(email-address first_name last_name headline industry picture-url public-profile-url location))
+      data = client.profile(fields: %w(email-address first_name last_name headline))
 
       if User.where( linkedin_uid: omniauth['uid']).exists?
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Linkedin"

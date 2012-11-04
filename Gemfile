@@ -12,7 +12,6 @@ gem 'will_paginate'                              # Pagination
 gem 'simple_form'                                # Rails form builder
 gem 'rails_admin'                                # Admin
 gem 'scoped_search'                              # Active Record Easy Search
-gem 'geokit-rails3'                              # Location Based for Rails
 gem 'geocoder'                                   # Geocoding solution for rails
 gem 'omniauth'                                   # Authentication with Rack
 gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth

@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
   # Scoped_search Gem
   scoped_search :on => [:first_name, :last_name, :status, :headline]
 
+
   ### Geocoder
   geocoded_by :ip_address, latitude: :lat, longitude: :lng
 
@@ -60,16 +61,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  ### GeoKit
-  # NOTE: Geocoder and geokit-rails3 is a bad combination, we should stay with geokit-rail3 which encapsulates geocoder
-  acts_as_mappable default_units: :kms,
-                   default_formula: :flat,
-                   distance_field_name: :distance,
-                   lat_column_name: :lat,
-                   lng_column_name: :lng
+  after_create :geocode
+  after_validation :reverse_geocode
 
-  #after_validation :reverse_geocode
-  #after_create :geocode
 
   def name
     "#{first_name} #{last_name}"
@@ -116,8 +110,8 @@ class User < ActiveRecord::Base
       order('created_at desc')
     end
 
-    def list_local(lat, lng)
-      within(100, origin: [lat, lng]).order('created_at desc')
+    def list_local(user)
+      user.nearbys(100).order('created_at desc')
     end
 
     def list_rand

@@ -38,7 +38,7 @@
         = f.check_box :confirm_tac
   .row
     .offset1
-
+      = f.hidden_field :ip_address, value: request.remote_ip
       #static_home_signup_option_university_submit
         = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit"
 
@@ -49,5 +49,3 @@
             = image_tag 'home/button_logo_linkedin.png'
           %span
             Sign up with LinkedIn
-
-  = f.hidden_field :ip_address, value: request.remote_ip

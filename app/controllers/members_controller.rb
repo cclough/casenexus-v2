@@ -10,7 +10,7 @@ class MembersController < ApplicationController
       when "global"
         users_scope = User.includes(:cases).list_global
       when "local"
-        users_scope = User.includes(:cases).list_local(current_user.lat, current_user.lng)
+        users_scope = User.includes(:cases).list_local(current_user)
       when "rand"
         users_scope = User.includes(:cases).list_rand
       when "contacts"
