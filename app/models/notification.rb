@@ -82,37 +82,37 @@ class Notification < ActiveRecord::Base
   private
 
   def send_email
-    return if self.user.email_users == false
-    case self.ntype
-      when "welcome"
-        UserMailer.welcome(self.user,
-                           self.url).deliver
-      when "feedback"
-        UserMailer.feedback(self.sender,
-                            self.user,
-                            self.url,
-                            self.event_date,
-                            self.content).deliver
-      when "feedback_req"
-        UserMailer.feedback_req(self.sender,
-                                self.user,
-                                self.url,
-                                self.event_date,
-                                self.content).deliver
-      when "message"
-        UserMailer.usermessage(self.sender,
-                               self.user,
-                               self.url,
-                               self.content).deliver
-      when "friendship_req"
-        UserMailer.friendship_req(self.sender,
-                                  self.user,
-                                  self.url,
-                                  self.content).deliver
-      when "friendship_app"
-        UserMailer.friendship_app(self.sender,
-                                  self.user,
-                                  self.url).deliver
-    end
+    # return if self.user.email_users == false
+    # case self.ntype
+    #   when "welcome"
+    #     UserMailer.welcome(self.user,
+    #                        self.url).deliver
+    #   when "feedback"
+    #     UserMailer.feedback(self.sender,
+    #                         self.user,
+    #                         self.url,
+    #                         self.event_date,
+    #                         self.content).deliver
+    #   when "feedback_req"
+    #     UserMailer.feedback_req(self.sender,
+    #                             self.user,
+    #                             self.url,
+    #                             self.event_date,
+    #                             self.content).deliver
+    #   when "message"
+    #     UserMailer.usermessage(self.sender,
+    #                            self.user,
+    #                            self.url,
+    #                            self.content).deliver
+    #   when "friendship_req"
+    #     UserMailer.friendship_req(self.sender,
+    #                               self.user,
+    #                               self.url,
+    #                               self.content).deliver
+    #   when "friendship_app"
+    #     UserMailer.friendship_app(self.sender,
+    #                               self.user,
+    #                               self.url).deliver
+    # end
   end
 end

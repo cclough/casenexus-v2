@@ -63,9 +63,14 @@ if %w(production development).include?(Rails.env) && User.count == 0
     )
   end
 
+    # Friendships
+
+
+
 end
 
 # if Rails.env == 'development'
+
 
   def random_date(params={ })
     years_back = params[:year_range] || 5
@@ -176,6 +181,13 @@ end
       puts "Notification marked as read"
     end
   end
+
+  puts "Creating Christian's Friendships"
+  
+  users = User.order(:id).all
+  Friendship.connect(users[0], users[1])
+  Friendship.connect(users[0], users[2])
+  Friendship.connect(users[0], users[3])  
 
 # end
 
