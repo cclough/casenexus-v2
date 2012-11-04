@@ -108,6 +108,13 @@ textarea {
   height:20px;
 }
 
+.alert {
+  -moz-box-shadow: 2px 3px 14px #4a494a;
+  -webkit-box-shadow: 2px 3px 14px #4a494a;
+  box-shadow: 2px 3px 14px #4a494a;
+}
+
+
 .application_table_title {
   border-bottom: 1px solid $gray_Light;
   padding-bottom:5px;
