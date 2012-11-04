@@ -14,12 +14,11 @@
       /   = @message
       / .spacer10
       .row
-        = @request_user
-        's Status:
+        #{@request_user} would like to do a case with you on Skype.
+      .spacer10
       .row#modal_roulette_req_status
-        "
-        = @request_user.status
-        "
+        %blockquote
+          "#{@request_user.status}"
     .span10.offset5
       .spacer40
       %a{:href => "skype:"+ @request_user.skype + "?call"}
