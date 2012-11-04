@@ -5009,6 +5009,7 @@ input[type="submit"].btn.btn-mini {
   /*  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);*/
   /*background-color: #fcf8e3;*/
   /*  border: 1px solid #fbeed5;*/
+  border: 1px solid #00FF66;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
@@ -5030,6 +5031,8 @@ input[type="submit"].btn.btn-mini {
   /*border-color: #d6e9c6;*/
   /*  color: #468847;*/
   color: #00FF66;
+  border-color: #00FF66;
+
 }
 .alert-danger,
 .alert-error {
@@ -5037,12 +5040,14 @@ input[type="submit"].btn.btn-mini {
   /*border-color: #eed3d7;*/
   /*  color: #b94a48;*/
   color: #FF3030;
+  border-color: #FF3030;
 }
 .alert-info {
   /*background-color: #d9edf7;*/
   /*border-color: #bce8f1;*/
   /*  color: #3a87ad;*/
   color: #7EB6FF;
+  border-color: #7EB6FF;
 }
 .alert-block {
   padding-top: 14px;
