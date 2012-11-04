@@ -80,11 +80,6 @@ GEM
     ffaker (1.15.0)
     ffi (1.1.5)
     geocoder (1.1.4)
-    geokit (1.6.5)
-      multi_json
-    geokit-rails3 (0.1.5)
-      geokit (~> 1.5)
-      rails (~> 3.0)
     growl (1.0.3)
     guard (1.4.0)
       listen (>= 0.4.2)
@@ -260,7 +255,6 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   geocoder
-  geokit-rails3
   growl
   guard-rspec
   guard-spork
