@@ -159,7 +159,7 @@ class User < ActiveRecord::Base
     if self.linkedin_uid.blank?
       begin
         domain = self.email.split("@")[1]
-        errors.add(:email, "Email doesn't match a University Domain") unless University.where(domain: domain).exists?
+        errors.add(:email, "not from listed University") unless University.where(domain: domain).exists?
       rescue Exception => e
         errors.add(:email, "Invalid Email")
       end

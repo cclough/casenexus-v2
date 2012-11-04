@@ -1,16 +1,19 @@
-= simple_form_for(@user, :url => user_registration_path(@user)) do |f|
-
-  = render 'shared/error_messages', object: f.object
+= simple_form_for(@user, url: user_registration_path(@user)) do |f|
 
   / = f.text_field :roulette_token, placeholder: 'Enter your 8-digit invite code...'
 
-  .row.font-small
-    .span11.offset1
-      %a#static_home_signup_option_university_switch University Sign-up
-    .span10
-      %a#static_home_signup_option_linkedin_switch LinkedIn Sign-up
-  .spacer5
+  .row
+    #static_home_signup_option
+      .btn-group
+        %a#static_home_signup_option_university_button.btn.btn-small.active With a University Email
+        %a#static_home_signup_option_linkedin_button.btn.btn-small via LinkedIn
+
+
+  .spacer10
   #static_home_signup_option_university
+
+    = render 'shared/error_messages', object: f.object
+
     = render 'static_pages/universities_select'
 
     .spacer5
