@@ -64,10 +64,10 @@ class Case < ActiveRecord::Base
   ### Scopes
 
   # Scoped_search Gem
-  scoped_search in: :user, on: :first_name
-  scoped_search in: :user, on: :last_name
   scoped_search on: [:subject, :source, :recommendation1, :recommendation2, :recommendation3, :interpersonal_comment,
                      :businessanalytics_comment, :structure_comment]
+  scoped_search in: :user, on: [:first_name, :last_name]
+  scoped_search in: :interviewer, on: [:first_name, :last_name]
 
 
   ### Outputs

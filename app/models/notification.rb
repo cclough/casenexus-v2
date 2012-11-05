@@ -32,8 +32,7 @@ class Notification < ActiveRecord::Base
     end
   end
 
-  # scoped_search :in => :user, :on => :first_name
-  # scoped_search :in => :user, :on => :last_name
+  scoped_search in: :sender, on: [:first_name, :last_name]
   scoped_search on: [:content]
 
   def read!

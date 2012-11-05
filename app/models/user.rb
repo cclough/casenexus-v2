@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
             on: :update
 
   # Scoped_search Gem
-  scoped_search :on => [:first_name, :last_name, :status, :headline]
+  scoped_search on: [:first_name, :last_name, :status, :headline]
 
 
   ### Geocoder

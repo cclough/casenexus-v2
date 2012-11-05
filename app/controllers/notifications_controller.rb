@@ -5,13 +5,13 @@ class NotificationsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    if params[:ntype].blank? || params[:ntype] == "all"
-      notification_scope = current_user.notifications
-    else
-      notification_scope = current_user.notifications.where(ntype: params[:ntype])
+    notification_scope = current_user.notifications
+    if !params[:ntype].blank? && params[:ntype] != "all"
+      notification_scope = notification_scope.where(ntype: params[:ntype])
     end
 
     @notifications = notification_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    @notifications.all
   end
 
   def show
@@ -50,7 +50,7 @@ class NotificationsController < ApplicationController
   private
 
   def sort_column
-    current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "notifications.created_at"
   end
 
   def sort_direction
