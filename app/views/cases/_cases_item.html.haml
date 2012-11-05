@@ -4,7 +4,7 @@
     = avatar_for(cases_item.interviewer, 'icon')
   .span6.cases_index_item_scoreandtime
     .cases_score
-      = cases_item.totalscore
+      = sprintf("%.02f", cases_item.totalscore.to_f.round(2))
     .row.cases_index_timestamp
       = cases_item.created_at.strftime("%d %b '%y")
   .span14
