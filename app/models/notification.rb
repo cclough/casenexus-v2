@@ -10,6 +10,7 @@ class Notification < ActiveRecord::Base
   validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
   validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
   validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
+  validate :no_notification_to_self
 
   validates :content, length: { maximum: 500 }
 
@@ -79,6 +80,12 @@ class Notification < ActiveRecord::Base
   end
 
   private
+
+  def no_notification_to_self
+    if !user_id.blank?
+      errors.add(:user_id, "cannot send notification to self") if self.user_id == self.sender_id
+    end
+  end
 
   def send_email
     return if self.user.email_users == false
