@@ -95,7 +95,7 @@ if Rails.env == 'development'
     lng = -180 + rand(360)
     status = Faker::Lorem.sentence(20)
     skype = "skpye"
-    invitation_code: 'BYPASS_CASENEXUS_INV'
+    invitation_code = 'BYPASS_CASENEXUS_INV'
 
     confirm_tac = true
 
