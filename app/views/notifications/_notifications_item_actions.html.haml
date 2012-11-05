@@ -1,6 +1,6 @@
 - case notifications_item.ntype
   - when "message"
-    = link_to "Conversation History", '/notifications/' + notifications_item.sender_id.to_s, class: "notifications_index_notifications_item_button_history", 'data-id' => notifications_item.sender_id.to_s
+    = link_to "Conversation History", notification_path(notifications_item), class: "notifications_index_notifications_item_button_history", 'data-id' => notifications_item.sender_id.to_s
   - when "feedback"
     = link_to 'Jump to Case', '/cases?id=' + notifications_item.case_id.to_s
   - when "feedback_req"

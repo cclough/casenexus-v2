@@ -15,7 +15,8 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notifications = Notification.history(params[:id], current_user.id)
+    @notification = current_user.notifications.find(params[:id])
+    @notifications = Notification.history(@notification.user_id, @notification.sender_id)
 
   end
 
