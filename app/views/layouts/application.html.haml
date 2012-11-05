@@ -3,8 +3,11 @@
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
+    - if request.ssl?
+      = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
+    - else
+      = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
     = javascript_include_tag "application"
-    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
     = yield :javascript_includes
 
     = csrf_meta_tags
