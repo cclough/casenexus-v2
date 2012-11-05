@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
 
+  # Invitations
+  has_many :invitations
+  belongs_to :invitation, foreign_key: 'invited_id'
+
 
   before_save { |user| user.email = user.email.downcase }
 

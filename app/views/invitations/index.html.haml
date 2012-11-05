@@ -1,0 +1,20 @@
+- provide(:title, 'Your Invitations')
+
+.panel.gradient
+  %button#users_index_show_close.close ×
+
+  .row
+    .span86
+      - if current_user.invitations.count > 0
+        - current_user.invitations.each do |invitation|
+          - if invitation.invited
+            = "#{invitation.email} accepted your invitation and created his profile: "
+            = link_to(invitation.invited, member_path(invitation.invited))
+          - else
+            = "#{invitation.email} invited"
+            = link_to("Cancel Invitation", invitation_path(invitation), method: :delete, confirm: "Are you sure?")
+      - else
+        %h3 There are not pending/accepted invitations
+      %br
+      - if current_user.invitations.count < Invitation::INVITATION_LIMIT
+        = link_to("Invite a friend", new_invitation_path)

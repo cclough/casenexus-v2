@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      = "#{@invitation.name}, you have received an Invitation to Casenexus from #{@invitation.user.name}"
+    %p
+      Casenexus is the next web app to create Cases and get better jobs.
+    %p
+      Your invitation code is:
+      %b= @invitation.code
+    %p
+      To accept the invitation, follow this link:
+      = link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))

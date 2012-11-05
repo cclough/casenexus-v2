@@ -15,9 +15,6 @@ Casenexus::Application.routes.draw do
   # Members
   resources :members, only: [:index, :show] do
     get :tooltip, on: :member
-    # TODO: Friendship actions should go on members
-    # so it would be /members/:id/request_friendship and so on
-    # we can use friendly_id to avoid showing the user id and it rocks
   end
 
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
@@ -37,6 +34,9 @@ Casenexus::Application.routes.draw do
     end
   end
 
+  # Invitations
+  resources :invitations, except: [:edit, :update]
+
   # Cases
   resources :cases, only: [:index, :show, :new, :create, :update] do
     get :analysis, on: :collection
@@ -53,5 +53,8 @@ Casenexus::Application.routes.draw do
   # Static Pages
   match '/about', to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
+
+  match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
+
   root to: 'static_pages#home'
 end

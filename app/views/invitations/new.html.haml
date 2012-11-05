@@ -1,0 +1,19 @@
+- provide(:title, 'Your Invitations')
+
+.panel.gradient
+  %button#users_index_show_close.close ×
+
+  .row
+    .span86
+
+      %h3 Invite a new friend
+
+      = simple_form_for @invitation, html: { class: 'form-horizontal' } do |f|
+
+        = f.input :name
+        = f.input :email
+
+        .form-actions
+          = f.submit "Invite", class: 'btn btn-primary btn-large'
+          = link_to "Cancel", invitations_path, class: 'btn btn-large'
+

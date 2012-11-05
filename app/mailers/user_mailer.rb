@@ -2,7 +2,6 @@ class UserMailer < ActionMailer::Base
 
   default from: "mailer@casenexus.com"
 
-  # is layout below actually used?
   layout 'email'
 
 
@@ -73,5 +72,14 @@ class UserMailer < ActionMailer::Base
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus: Password Reset")
+  end
+
+  def invitation(invitation)
+    sender = invitation.user.email
+    receiver = "#{invitation.name} <#{invitation.email}>"
+
+    @invitation = invitation
+
+    mail(to: receiver, from: sender, subject: "Invitation to Casenexus")
   end
 end
