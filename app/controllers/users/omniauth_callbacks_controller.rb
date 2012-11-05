@@ -75,11 +75,17 @@ class Users::OmniauthCallbacksController < ApplicationController
         assign_linkedin_data(user, data, true)
         user.password = user.password_confirmation = generate_password
 
-        user.save
-        user.confirm! # We confirm the user since he logged in though linkedin
+        user.invitation_code = session[:code]
 
-        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Linkedin"
-        sign_in(user)
+        if user.save
+          user.confirm! # We confirm the user since he logged in though linkedin
+
+          flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Linkedin"
+          sign_in(user)
+        else
+          @user = user
+          render '/static_pages/home' and return
+        end
       end
       redirect_to after_sign_in_path_for(user)
     end
