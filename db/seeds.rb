@@ -16,6 +16,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lat: 51.901128232665856,
       lng: -0.54241188764572144,
       status: Faker::Lorem.sentence(20),
+      invitation_code: 'BYPASS_CASENEXUS_INV',
 
       skype: "christianclough",
 
@@ -39,6 +40,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lat: 51.90128232665856,
       lng: -0.5421188764572144,
       status: Faker::Lorem.sentence(20),
+      invitation_code: 'BYPASS_CASENEXUS_INV',
 
       skype: "",
 
@@ -93,6 +95,7 @@ if Rails.env == 'development'
     lng = -180 + rand(360)
     status = Faker::Lorem.sentence(20)
     skype = "skpye"
+    invitation_code: 'BYPASS_CASENEXUS_INV'
 
     confirm_tac = true
 

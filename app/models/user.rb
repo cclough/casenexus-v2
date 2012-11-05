@@ -3,9 +3,10 @@ class User < ActiveRecord::Base
          :confirmable, :omniauthable, :token_authenticatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
-                  :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac, :university, :university_id
+                  :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac, :university, :university_id,
+                  :invitation_code
 
-  attr_accessor :ip_address, :confirm_tac
+  attr_accessor :ip_address, :confirm_tac, :invitation_code
 
   belongs_to :university
   has_many :cases, dependent: :destroy
@@ -34,12 +35,14 @@ class User < ActiveRecord::Base
 
   before_create :generate_roulette_token
   before_create :set_headline_and_university
+  after_create :update_invitation
   after_save :send_welcome
 
   ### Validations
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
   validate :validate_university_email, on: :create
+  validate :validate_invitation, on: :create
 
   ## ON UPDATE
   validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update
@@ -132,6 +135,26 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def validate_invitation
+    return if self.invitation_code == "BYPASS_CASENEXUS_INV"
+    if self.invitation_code.blank?
+      errors.add(:invitation_code, "not supplied")
+    else
+      if Invitation.where(code: self.invitation_code).exists?
+        if Invitation.where("code = ? and invited_id is not null", self.invitation_code).exists?
+          errors.add(:invitaiton_code, "already used")
+        end
+      else
+        errors.add(:invitation_code, "doesn't exists")
+      end
+    end
+  end
+
+  def update_invitation
+    return if self.invitation_code == "BYPASS_CASENEXUS_INV"
+    Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)
+  end
 
   def send_welcome
     if completed_was == false and completed == true
