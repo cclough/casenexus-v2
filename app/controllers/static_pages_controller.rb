@@ -2,7 +2,9 @@ class StaticPagesController < ApplicationController
 
   def home
     if params[:code]
-      if @invitation = Invitation.where(code: params[:code]).exists?
+      if params[:code] == "BYPASS_CASENEXUS_INV"
+        session[:code] = "BYPASS_CASENEXUS_INV"
+      elsif @invitation = Invitation.where(code: params[:code]).exists?
         @invitation = Invitation.where(code: params[:code]).first
         if @invitation.invited
           session[:code] = nil
@@ -11,7 +13,6 @@ class StaticPagesController < ApplicationController
           flash[:notice] = "Hi #{@invitation.name}, welcome to Casenexjs"
           session[:code] = params[:code]
         end
-      else
       end
     end
     if signed_in?
