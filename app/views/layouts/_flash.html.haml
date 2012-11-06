@@ -5,4 +5,4 @@
       %div{ class: "alert alert-#{key} fade in" }
         / inserts close button
         %a.close{"data-dismiss" => "alert", :href => "#"} ×
-        = value
+        = flash.discard(key)

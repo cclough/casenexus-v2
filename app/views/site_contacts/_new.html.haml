@@ -1,0 +1,23 @@
+= form_for(@site_contact, url: site_contact_path, remote: true, class: 'form-horizontal') do |f|
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+    %h3 Contact us
+
+  .modal-body
+
+    = render 'shared/form_errors', object: @site_contact
+
+    %div
+
+      = f.text_field :email, placeholder: "Your Email"
+      %br
+      = f.text_field :subject, placeholder: "Subject"
+      %br
+      = f.text_area :content, placeholder: "Tell us about it...", tabindex: "1", class: "modal_textarea"
+
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "2"}
+      %i.icon-arrow-right.icon-white
+      Send Message

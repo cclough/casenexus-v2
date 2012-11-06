@@ -1,9 +1,9 @@
 - if object.errors.any?
   .error_explanation
     - if object.errors.count == 1
-      %h2 Por favor, corrija el error encontrado
+      %h2 We found a error
     - else
-      %h2 Por favor, corrija los errores encontrados
+      %h2 We found some errors
 
     %ul
       - object.errors.full_messages.each do |msg|

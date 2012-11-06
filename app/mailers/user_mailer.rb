@@ -82,4 +82,13 @@ class UserMailer < ActionMailer::Base
 
     mail(to: receiver, from: sender, subject: "Invitation to Casenexus")
   end
+
+  def site_contact(site_contact)
+    sender = site_contact.email
+    receiver = "info@casenexus.com"
+
+    @site_contact = site_contact
+
+    mail(to: receiver, from: sender, subject: "Casenexus contact: #{site_contact.subject}")
+  end
 end
