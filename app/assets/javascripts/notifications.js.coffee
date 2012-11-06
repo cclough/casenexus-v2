@@ -1,6 +1,6 @@
 notifications_index_notifications_link = ->
   query = getQueryParams(document.location.search)
-  $("#notifications_index_notifications_item_content_" + query.id).slideDown "fast"  if query.id
+  $("#notifications_index_notifications_item_content_" + query.id).slideDown("fast") if query.id
 
 $(document).ready ->
   notifications_index_notifications_link()
@@ -11,7 +11,7 @@ $(document).ready ->
     notification = $("#notifications_index_notifications_item_" + item_id)
 
     # Toggle Read
-    notification.addClass "read"
+    notification.addClass("read")
 
     # Slide
     if notification.hasClass("slid")
@@ -19,6 +19,9 @@ $(document).ready ->
       notification.removeClass "slid"
       notification.addClass "read"
     else
+      # Mark the notification as readed
+      $.ajax("/notifications/" + item_id + "/read", type: 'PUT')
+
       $("#notifications_index_notifications_item_content_" + item_id).slideDown "fast"
       notification.addClass "slid"
       notification.removeClass "read"

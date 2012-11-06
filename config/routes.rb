@@ -43,7 +43,9 @@ Casenexus::Application.routes.draw do
   end
 
   # Notifications
-  resources :notifications, only: [:index, :show, :create]
+  resources :notifications, only: [:index, :show, :create] do
+    put :read, on: :member
+  end
 
   # Site contacts
   match '/site_contact/create', to: 'site_contacts#create', as: :site_contact

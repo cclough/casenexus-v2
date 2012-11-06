@@ -17,7 +17,7 @@ class NotificationsController < ApplicationController
   def show
     @notification = current_user.notifications.find(params[:id])
     @notifications = Notification.history(@notification.user_id, @notification.sender_id)
-
+    @notifications.each {|n| n.read! }
   end
 
   def create
@@ -46,6 +46,12 @@ class NotificationsController < ApplicationController
         end
       end
     end
+  end
+
+  def read
+    @notification = current_user.notifications.find(params[:id])
+    @notification.read!
+    render text: "OK"
   end
 
   private

@@ -1,12 +1,10 @@
 - if @notifications.count > 0
   - @notifications.each do |notifications_item|
-
-    = render partial: 'notifications/notifications_item' , locals: { :notifications_item => notifications_item }
-
+    = render partial: 'notifications/notifications_item' , locals: { notifications_item: notifications_item }
 - else
   %p No notifications found
 
 = hidden_field_tag :direction, params[:direction]
 = hidden_field_tag :sort, params[:sort]
 
-= will_paginate @notifications, class: "application_pagination", :inner_window => 2, :outer_window => 2
+= will_paginate @notifications, class: "application_pagination", inner_window: 2, outer_window: 2
