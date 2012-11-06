@@ -1,8 +1,13 @@
 window.users_index_map_markers = []
 window.markerClusterer = null
+window.map = null
 
-users_index_map_marker_click = (marker_id) ->
+# Option: Pan To and Zoom
+window.users_index_map_pan = (latlng) ->
+  window.map.panTo latlng
+  window.map.setZoom 5
 
+window.users_index_map_marker_click = (marker_id) ->
   # Show User Panel
   $("#users_index_mapcontainer_user").fadeOut "fast", ->
     $.get "/members/" + marker_id, (data) ->
@@ -37,10 +42,9 @@ users_index_map_marker_click = (marker_id) ->
 
 
 # Update the User List - submits form...
-users_index_users_updatelist = ->
+window.users_index_users_updatelist = ->
   $.get("/members", $("#users_index_users_form").serialize(), null, "script")
   false
-
 
 $(document).ready ->
   # Update the list of users
@@ -79,12 +83,7 @@ $(document).ready ->
         position: google.maps.ControlPosition.LEFT_CENTER
 
     # Create the map
-    map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions)
-
-    # Option: Terrain
-    users_index_map_pan = (latlng) ->
-      map.panTo latlng
-      map.setZoom 5
+    window.map = new google.maps.Map(document.getElementById("users_index_map"), mapOptions)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
@@ -141,7 +140,7 @@ $(document).ready ->
 
   users_index_map_marker_locate = (marker) ->
     newlatlng = marker.getPosition()
-    map.setCenter newlatlng
+    window.map.setCenter newlatlng
     marker.setAnimation(google.maps.Animation.BOUNCE)
     setTimeout (->
       marker.setAnimation(null)
@@ -160,4 +159,4 @@ $(document).ready ->
   $(".chzn-select").chosen().change ->
     latlng_chosen = $(this).find("option:selected").val().split("_")
     users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
-    users_index_map_pan users_chosen_latlng
+    users_index_map_pan(users_chosen_latlng)
