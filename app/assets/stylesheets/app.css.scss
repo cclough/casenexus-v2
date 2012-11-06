@@ -345,7 +345,7 @@ textarea {
 }
 
 #modal_help {
-  height:600px;
+  overflow-x: hidden;
   width:840px !important;
   margin-left:-440px;
   margin-top:-300px;
@@ -359,7 +359,7 @@ textarea {
 }
 
 
-.arrownav_help {
+#modal_help_arrownav {
 
   margin-top:-30px;
   margin-left:-14px;
