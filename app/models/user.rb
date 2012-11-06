@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :cases, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
+  has_many :feedbacks, dependent: :nullify
 
   # Friends
   has_many :friendships, dependent: :destroy

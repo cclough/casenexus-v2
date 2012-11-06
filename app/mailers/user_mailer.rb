@@ -91,4 +91,13 @@ class UserMailer < ActionMailer::Base
 
     mail(to: receiver, from: sender, subject: "Casenexus contact: #{site_contact.subject}")
   end
+
+  def site_feedback(feedback)
+    sender = "#{feedback.user.name} <#{feedback.user.email}>"
+    receiver = "info@casenexus.com"
+
+    @feedback = feedback
+
+    mail(to: receiver, from: sender, subject: "Casenexus feedback")
+  end
 end

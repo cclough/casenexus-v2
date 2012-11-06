@@ -46,7 +46,8 @@ Casenexus::Application.routes.draw do
   resources :notifications, only: [:index, :show, :create]
 
   # Site contacts
-  resource :site_contact, only: [:create]
+  match '/site_contact/create', to: 'site_contacts#create', as: :site_contact
+  match '/feedback/create', to: 'site_contacts#feedback', as: :site_feedback
 
   # Roulette
   match '/roulette', to: 'roulette#index', as: :roulette

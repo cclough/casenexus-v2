@@ -11,4 +11,17 @@ class SiteContactsController < ApplicationController
       render 'create_error'
     end
   end
+
+  def feedback
+    @feedback = Feedback.new(params[:feedback])
+    @feedback.user = current_user
+
+    if @feedback.save
+      flash[:notice] = "We received your feedback"
+      render 'feedback_ok'
+    else
+      flash[:error] = "There was an error"
+      render 'feedback_error'
+    end
+  end
 end
