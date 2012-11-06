@@ -18,6 +18,31 @@ function cases_index_case_link () {
   
     $.get("/cases/" + query.id, function(data) {
       $("#cases_index_case").html(data);
+
+
+      // REPEATED IN INDEX.JS.ERB NOT DRY
+      // RADAR BUTTONS
+      $('#cases_show_chart_radar_button_all').click(function() {
+        $('#cases_show_chart_radar').empty();
+        cases_show_chart_radar_draw("all");
+        $('#cases_show_chart_radar_button_all').addClass('active');
+        $('#cases_show_chart_radar_button_combined').removeClass('active');
+      });
+
+      $('#cases_show_chart_radar_button_combined').click(function() {
+        $('#cases_show_chart_radar').empty();
+        cases_show_chart_radar_draw("combined");
+        $('#cases_show_chart_radar_button_all').removeClass('active');
+        $('#cases_show_chart_radar_button_combined').addClass('active');
+      });
+
+      cases_show_chart_radar_draw("all");
+      
+      cases_show_category_chart_radar_draw("businessanalytics");
+      cases_show_category_chart_radar_draw("interpersonal");
+      cases_show_category_chart_radar_draw("structure");
+      ////////////
+
     });
 
   }
@@ -486,10 +511,10 @@ $(document).ready(function(){
     max: 10,
     value: 1,
     slide: function(event, ui) {
-      var cases_new_slider_name = $(this).attr("id").split('_')
-      $("#cases_new_slider_input_" + cases_new_slider_name[3]).val(ui.value);
-      $("#cases_new_slider_input_" + cases_new_slider_name[3]).css( 'color', '#6db9ff')
 
+      var cases_new_slider_name = $(this).attr("id").split('_');
+      
+      $("#cases_new_slider_input_" + cases_new_slider_name[3]).val(ui.value);
 
       cases_new_calculatescore($(this).attr("data-category"));
     }
@@ -544,10 +569,10 @@ $(document).ready(function(){
 
     if (category == "businessanalytics") {
       
-      var category_score_1 = parseInt($('#cases_new_slider_input_quantitativebasics').val());
-      var category_score_2 = parseInt($('#cases_new_slider_input_problemsolving').val());
-      var category_score_3 = parseInt($('#cases_new_slider_input_prioritisation').val());
-      var category_score_4 = parseInt($('#cases_new_slider_input_sanitychecking').val());
+      if ($('#cases_new_slider_input_quantitativebasics').val()) { var category_score_1 = parseInt($('#cases_new_slider_input_quantitativebasics').val()); } else { var category_score_1 = 0; }
+      if ($('#cases_new_slider_input_problemsolving').val()) { var category_score_2 = parseInt($('#cases_new_slider_input_problemsolving').val()); } else { var category_score_2 = 0; }
+      if ($('#cases_new_slider_input_prioritisation').val()) { var category_score_3 = parseInt($('#cases_new_slider_input_prioritisation').val()); } else { var category_score_3 = 0; }
+      if ($('#cases_new_slider_input_sanitychecking').val()) { var category_score_4 = parseInt($('#cases_new_slider_input_sanitychecking').val()); } else { var category_score_4 = 0; }
 
       var category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4)/4;
 
@@ -555,10 +580,10 @@ $(document).ready(function(){
 
     } else if (category == "interpersonal") {
 
-      var category_score_1 = parseInt($('#cases_new_slider_input_rapport').val());
-      var category_score_2 = parseInt($('#cases_new_slider_input_articulation').val());
-      var category_score_3 = parseInt($('#cases_new_slider_input_concision').val());
-      var category_score_4 = parseInt($('#cases_new_slider_input_askingforinformation').val());
+      if ($('#cases_new_slider_input_rapport').val()) { var category_score_1 = parseInt($('#cases_new_slider_input_rapport').val()); } else { var category_score_1 = 0; }
+      if ($('#cases_new_slider_input_articulation').val()) { var category_score_2 = parseInt($('#cases_new_slider_input_articulation').val()); } else { var category_score_2 = 0; }
+      if ($('#cases_new_slider_input_concision').val()) { var category_score_3 = parseInt($('#cases_new_slider_input_concision').val()); } else { var category_score_3 = 0; }
+      if ($('#cases_new_slider_input_askingforinformation').val()) { var category_score_4 = parseInt($('#cases_new_slider_input_askingforinformation').val()); } else { var category_score_4 = 0; }
 
       var category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4)/4;
 
@@ -566,10 +591,10 @@ $(document).ready(function(){
 
     } else if (category == "structure") {
 
-      var category_score_1 = parseInt($('#cases_new_slider_input_approachupfront').val());
-      var category_score_2 = parseInt($('#cases_new_slider_input_stickingtostructure').val());
-      var category_score_3 = parseInt($('#cases_new_slider_input_announceschangedstructure').val());
-      var category_score_4 = parseInt($('#cases_new_slider_input_pushingtoconclusion').val());
+      if ($('#cases_new_slider_input_approachupfront').val()) { var category_score_1 = parseInt($('#cases_new_slider_input_approachupfront').val()); } else { var category_score_1 = 0; }
+      if ($('#cases_new_slider_input_stickingtostructure').val()) { var category_score_2 = parseInt($('#cases_new_slider_input_stickingtostructure').val()); } else { var category_score_2 = 0; }
+      if ($('#cases_new_slider_input_announceschangedstructure').val()) { var category_score_3 = parseInt($('#cases_new_slider_input_announceschangedstructure').val()); } else { var category_score_3 = 0; }
+      if ($('#cases_new_slider_input_pushingtoconclusion').val()) { var category_score_4 = parseInt($('#cases_new_slider_input_pushingtoconclusion').val()); } else { var category_score_4 = 0; }
 
       var category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4)/4;
 

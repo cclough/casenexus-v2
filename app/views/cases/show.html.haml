@@ -76,7 +76,7 @@
               .cases_show_block_circle_text
                 = @case.businessanalytics_combined
         .span35.cases_show_comment
-          = @case.businessanalytics_comment
+          = @case.businessanalytics_comment.html_safe
 .row
   .span63
     .panel.darker.kill_left.kill_right.kill_top
@@ -91,7 +91,7 @@
               .cases_show_block_circle_text
                 = @case.interpersonal_combined
         .span35.cases_show_comment
-          = @case.interpersonal_comment
+          = @case.interpersonal_comment.html_safe
 .row
   .span63
     .panel.darker.kill_left.kill_right.kill_top
@@ -106,4 +106,4 @@
               .cases_show_block_circle_text
                 = @case.structure_combined
         .span35.cases_show_comment
-          = @case.structure_comment
+          = @case.structure_comment.html_safe

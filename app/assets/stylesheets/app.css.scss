@@ -78,7 +78,7 @@ textarea {
 #application_flash {
 
   position: absolute; // Set for the map page - doesn't look great on other pages
-  top: 90px;
+  top: 70px;
   left:50%;
   margin-left:-300px;
   width:600px;
@@ -92,27 +92,12 @@ textarea {
 /* For views/shared/_error_messages - is this used for all forms? */
 #application_error_explanation {
   color:#f00;
+
   ul {
     list-style: none;
-    margin: 0 0 18px 0;
+    margin: 15px 15px 15px 15px;
   }
 }
-
- /* For client_side_validations */
-.application_error_message {
-  margin-top:-7px;
-  padding:0px;
-  text-align:left;
-  color:red;
-  height:20px;
-}
-
-.alert {
-  -moz-box-shadow: 2px 3px 14px #4a494a;
-  -webkit-box-shadow: 2px 3px 14px #4a494a;
-  box-shadow: 2px 3px 14px #4a494a;
-}
-
 
 .application_table_title {
   border-bottom: 1px solid $gray_Light;
