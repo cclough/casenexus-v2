@@ -85,10 +85,6 @@ class Case < ActiveRecord::Base
     ((approachupfront + stickingtostructure + announceschangedstructure + pushingtoconclusion).to_f / 4).round(1)
   end
 
-  def interviewer
-    User.find(interviewer_id)
-  end
-
   def totalscore
     interpersonal_combined + businessanalytics_combined + structure_combined
   end

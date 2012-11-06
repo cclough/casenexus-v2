@@ -12,7 +12,7 @@
       = render 'shared/error_messages', object: @notification
 
     %div   
-      = f.text_field :event_date, placeholder: "Date", id: "modal_feedback_req_datepicker", tabindex: "1"
+      = f.text_field :event_date, placeholder: "Date", id: "modal_feedback_req_datepicker", tabindex: "1", 'data-date-format' => "dd/mm/yyyy"
     %div
       = f.text_area :content, placeholder: "Case Subject...", rows: '5', tabindex: "2", class: "modal_textarea"
 

@@ -495,7 +495,7 @@ $(document).ready(function(){
     }
   });
 
-  $("#cases_new_datepicker").datepicker();
+  $("#cases_new_datepicker").datepicker({dateFormst: 'dd/mm/yy'});
   // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
   
   $('[name="case[businessanalytics_comment]"]').wysihtml5({

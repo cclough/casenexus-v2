@@ -21,7 +21,7 @@ class NotificationsController < ApplicationController
   end
 
   def create
-    @notification = @user.notifications.build(params[:notification])
+    @notification = Notification.new(params[:notification])
     @notification.sender = current_user
 
     respond_to do |format|

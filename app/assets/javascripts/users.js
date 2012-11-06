@@ -37,7 +37,7 @@ function users_index_map_marker_click(marker_id) {
       $('#users_index_user_button_feedback_req').click(function () {
         $('.modal').modal('hide');
         $('#modal_feedback_req').modal('show');
-        $("#modal_feedback_req_datepicker").datepicker();
+        $("#modal_feedback_req_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
       });
 
       // Fade panel back in
