@@ -36,14 +36,16 @@ class CasesController < ApplicationController
   end
 
   def create
+    user_id = params[:case].delete(:user_id)
     @case = Case.new(params[:case])
-    @case.user_id = params[:case][:user_id]
+    @case.user_id = user_id
+    @case.interviewer = current_user
 
     if @case.save
       flash[:success] = 'Feedback Sent'
-      redirect_to users_path
+      redirect_to dashboard_path
     else
-      @user = User.find(params[:user_id])
+      @user = @case.user
       render 'new'
     end
   end
