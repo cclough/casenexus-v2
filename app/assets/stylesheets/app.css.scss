@@ -105,12 +105,6 @@ textarea {
 }
 
 
-.modal form {
-  margin: 0;
-}
-
-
-
 /* For views/shared/_error_messages - is this used for all forms? */
 #application_error_explanation {
   color:#f00;
@@ -346,17 +340,22 @@ textarea {
   width: 97%;
 }
 
+.modal form {
+  margin: 0;
+}
+
 #modal_help {
   height:600px;
   width:840px !important;
-  margin-left:-400px;
-  margin-top:-400px;
+  margin-left:-440px;
+  margin-top:-300px;
 }
 
 
 
 .arrownav_page {
   display:none;
+  margin: 0px;
 }
 
 
@@ -417,7 +416,7 @@ textarea {
 
 // Help modal
 
-#set-1 { height:800px; width:800px; background: url('help/set-1.jpg');  position:relative; }
+#modal_help_page_1 { height:800px; width:800px; background: url('help/set-1.jpg');  position:relative; }
   .set-1a { position:absolute; top:128px; left:60px; width:370px;}
   .set-1b { position:absolute; top:190px; left:60px;  width: 335px;}
   .set-1c { position:absolute; top:250px; left:60px; width:370px;}
@@ -425,17 +424,17 @@ textarea {
   .set-1e { position:absolute; top:590px; left:60px}
   .set-1f { left: 420px; position: absolute; top: 590px; width: 370px;}
 
-#set-2 { height:712px; width:800px; background: url('help/set-2.jpg');  position:relative; }
+#modal_help_page_2 { height:712px; width:800px; background: url('help/set-2.jpg');  position:relative; }
   .set-2a { position: absolute; top:0px; left:400px; width:370px;}
   .set-2b { left: 20px; position: absolute; top: 300px; width: 335px;}
   .set-2c { position: absolute; top:470px; left:400px; width:370px;}
 
-#set-3 { height:800px; width:800px; background: url('help/set-3.jpg');  position:relative; }
+#modal_help_page_3 { height:800px; width:800px; background: url('help/set-3.jpg');  position:relative; }
   .set-3a { position: absolute; top:10px; left:300px; width:450px;}
   .set-3b { position: absolute; top:220px; left:390px; width:350px;}
   .set-3c { position: absolute; top:540px; left:50px; width:650px;}
 
-#set-4 { height:800px; width:800px; background: url('help/set-4.jpg');  position:relative; }
+#modal_help_page_4 { height:800px; width:800px; background: url('help/set-4.jpg');  position:relative; }
   .set-4a { left: 50px; position: absolute; top: 10px; width: 725px;}
   .set-4b { position: absolute; top:100px; left:420px; width:450px;}
   .set-4c { position: absolute; top:270px; left:420px; width:450px;}
@@ -443,11 +442,11 @@ textarea {
   .set-4e { position: absolute; top:670px; left:50px; width:350px;}
   .set-4f { position: absolute; top:700px; left:420px; width:350px;}
 
-#set-5 { height:800px; width:800px; background: url('help/set-5.jpg');  position:relative; }
+#modal_help_page_5 { height:800px; width:800px; background: url('help/set-5.jpg');  position:relative; }
   .set-5a { position: absolute; top: 10px; left:50px;}
   .set-5b { position: absolute; top: 270px; left:50px;}
   .set-5c { position: absolute; top: 650px; left:50px;}
 
-#set-6 { height:800px; width:800px; background: url('help/set-6.jpg');  position:relative; }
+#modal_help_page_6 { height:800px; width:800px; background: url('help/set-6.jpg');  position:relative; }
   .set-6a { left: 319px; position: absolute; top: 35px; width: 400px;}
   .set-6b { position: absolute; right: 0; top: 453px; width: 350px;}

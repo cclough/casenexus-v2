@@ -96,7 +96,7 @@ $blue_pastel: #98cdff;
   }
 }
 
-#application_arrownav_page_1 {
+#static_home_slider_page_1 {
   padding-top:70px;
   padding-left:100px;
   position:relative;
@@ -104,21 +104,21 @@ $blue_pastel: #98cdff;
   width:600px;
 }
 
-#application_arrownav_page_2 {
+#static_home_slider_page_2 {
   background: url('home/slider_1.jpg') no-repeat;
   position:relative;
   height:400px;
   width:600px;
 }
 
-#application_arrownav_page_3 {
+#static_home_slider_page_3 {
   background: url('home/slider_2.jpg') no-repeat;
   position:relative;
   height:400px;
   width:600px;
 }
 
-#application_arrownav_page_4 {
+#static_home_slider_page_4 {
   background: url('home/slider_3.jpg') no-repeat;
   position:relative;
   height:400px;
@@ -148,6 +148,7 @@ $blue_pastel: #98cdff;
   nav { 
     position: relative; 
     left:90px; }
+    
   nav ul {
     list-style: none;
     padding: 0px 0px 0px 0px;
