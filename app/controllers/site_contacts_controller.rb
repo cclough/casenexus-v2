@@ -4,10 +4,10 @@ class SiteContactsController < ApplicationController
     @site_contact.user = current_user if current_user
 
     if @site_contact.save
-      flash[:notice] = "We received your message"
+      flash[:notice] = "Thank you for your message"
       render 'create_ok'
     else
-      flash[:error] = "There was an error"
+      flash[:error] = "Oops! There was an error"
       render 'create_error'
     end
   end
@@ -17,10 +17,10 @@ class SiteContactsController < ApplicationController
     @feedback.user = current_user
 
     if @feedback.save
-      flash[:notice] = "We received your feedback"
+      flash[:notice] = "Thank you for your feedback"
       render 'feedback_ok'
     else
-      flash[:error] = "There was an error"
+      flash[:error] = "Oops! There was an error"
       render 'feedback_error'
     end
   end
