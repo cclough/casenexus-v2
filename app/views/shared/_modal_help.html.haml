@@ -1,5 +1,6 @@
 #modal_help.modal.hide.fade
-  .modal-body{style:"height:700px;"}
+
+  .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
     .arrownav_help
@@ -15,64 +16,107 @@
           %li
             %a{:href => "#4"} New Case Form
           %li
-            %a{:href => "#5"} Your Case Index
+            %a{:href => "#6"} Case Index
           %li
-            %a{:href => "#6"} Progress Analysis
-        %span.arrow
+            %a{:href => "#5"} Progress Analysis
 
+        %span.arrow
+  .modal-body{style:"height:700px;"}
     #application_arrownav_page_1.arrownav_page
-      %ul
-        %li Main sections of the site at the top: Map and the Roulette
-        %li Access the parts of your profile through the menu in the top right
-        %ul
-          %li The case index - review and learn from case feedback sent to you
-          %li Progress analysis - basic stats and a graphical overview of your case interview performance to-date
-          %li Edit your profile...
-          %li Logout
-        %li Click the help button on any page to be reminded of how to use a particular feature of the site
+      #set-1
+        .set-1a
+          %h2 Users
+          %p Access the map and find users.
+        .set-1b
+          %h2 Roulette
+          %p Access the map and find users.
+        .set-1c
+          %h2 Help
+          %p Click the help button on any page to be reminded of how to use a particular feature of the site
+        .set-1d
+          %h2 Feedback
+          %p Help us improve the site
+        .set-1e
+          %h2 Notifications
+          %p Review and learn from case feedback sent to you
+        .set-1f
+          %h2 Profile Menu
+          %ul
+            %li Basic stats and a overview of your case interview performance to-date
+            %li Edit your profile
+            %li Logout
 
     #application_arrownav_page_2.arrownav_page
-      %ul
-        %li Find candidates who live/work near you - click on their map markers to see their status, then send them a case partner request
-        %li When two users approve each other as case partners, they can send messages and feedback to each other at anytime
-        %li When you send a case partner request, sell yourself, explain what you have in common and why you wish to work together
-        %li User list panel
-        %ul
-          %li Browse and search for users from all over the world
-          %li Click on their name to see their profile
-          %li Select 'contacts' to see your case partners
-        %li Pull-down menu at the top to browse cities/countries where there are other candidates around the world
+      #set-2
+        .set-2a
+          %h1 User panel
+          %p Find candidates who live/work near you - click on their map markers to see their status, then send them a case partner request
+          %p Browse and search for users from all over the world
+          %p Select 'contacts' to see your case partners
+          %p Click on their name to see their profile
+        .set-2b
+          %p Pull-down menu at the top to browse cities/countries where there are other candidates around the worldwhat you have in common and why you wish to work together
+        .set-2c
+          %h1 User Profile
+          %p When two users approve each other as case partners, they can send messages and feedback to each other at anytime
+          %p When you send a case partner request, sell yourself, explain ...
 
     #application_arrownav_page_3.arrownav_page
-      %ul
-        %li Click the 'connect' button to join the 'roulette'
-        %li You are now visible as 'online' to all other users on the roulette page
-        %li Sit back, relax and wait for other users to look at your status and send you roulette requests
-        %li When another user sends you a request, a popup will appear on your screen, showing the other user's status and their Skype address, for you to call them and start a case, if you wish
-        %li Alternatively browse for other users in the list, and send them a request yourself
-        %li The other users are likely not case partners of you yet, so as a security measure, to send them feedback when you are the 'interviewer' in the practise case, ask the interviewee for their 'roulette token', a random code generated every time you visit the page shown at the top. Enter their code into your roulette window to be taken to a feedback form for them
+      #set-3
+        .set-3a
+          %h2 Roulette
+          %p Click the 'connect' button to join the 'roulette'
+          %p You are now visible as 'online' to all other users on the roulette page
+          %p Sit back, relax and wait for other users to look at your status and send you roulette requests
+        .set-3b
+          %p When another user sends you a request, a popup will appear on your screen, showing the other user's status and their Skype address, for you to call them and start a case, if you wish
+          %p Alternatively browse for other users in the list, and send them a request yourself
+        .set-3c
+          %p
+            The other users are likely not case partners of you yet, so as a security measure, to send them feedback when you are the 'interviewer' in the practise case, ask the interviewee for their 'roulette token', a random code generated every time you visit the page shown at the top.
+            %br Enter their code into your roulette window to be taken to a feedback form for them
 
     #application_arrownav_page_4.arrownav_page
-      %ul
-        %li Feedback system carefully designed by a consultant at one of the top 3 firms with many years of interviewing experience
-        %li The three main criteria Business Analytics, Interperonsal and Structure and their sub-criteria represent the areas on which candidates most often fail
-        %li To see more instructions on how to mark these criteria move your mouse over a sub-criteria's name
-        %li Move sliders to give a user a score between 1-10 for each sub-criteria - you are required to give a score on each.
-        %li The sub-scriteria scores are aggregated to an average score for the main criteria
-        %li Enter your comments in the text boxes on the right for each criteria
-        %li Enter your Top 3 recommendations, specifying what you thought they need to prioritise in their preparation
+
+      #set-4
+        .set-4a
+          %p Feedback system carefully designed by a consultant at one of the top 3 firms with many years of interviewing experience
+        .set-4b
+          %p Enter your Top 3 recommendations, specifying what you thought they need to prioritise in their preparation
+        .set-4c
+          %p The three main criteria Business Analytics, Interperonsal and Structure and their sub-criteria represent the areas on which candidates most often fail
+        .set-4d
+          %p To see more instructions on how to mark these criteria move your mouse over a sub-criteria's name
+        .set-4e
+          %p Move sliders to give a user a score between 1-10 for each sub-criteria - you are required to give a score on each.
+          %p The sub-scriteria scores are aggregated to an average score for the main criteria
+        .set-4f
+          %p Enter your comments in the text boxes on the right for each criteria
 
     #application_arrownav_page_5.arrownav_page
-      %h3 So this is just a bit of fun…
-      %ul
-        %li The Progress Chart shows your aggregated scores for the three categories over time
-        %li The Radar Chart in the bottom left shows your scores for your first and last case, as well as your overall average, against the different scoring criteria - look for things you are consistenly weak at to improve
-        %li Use the comment aggregator to browse through comments in the different categories, and recommendations, to remind yourself of what you need to improve.
+      #set-6
+        .set-6a
+          %h2 Your Progress
+          %p Statistics calculated from your feedback from other users
+          %p Browse and search for cases you've done in the list on the left.
+        .set-6b
+          %p
+            Clicking on a case brings up the record for it,
+            %br
+              showing graphs of your scores,
+              %br
+                and the comments made by the interviewer.
 
     #application_arrownav_page_6.arrownav_page
-      %ul
-        %li Browse and search for cases you've done in the list on the left.
-        %li Clicking on a case brings up the record for it, showing graphs of your scores, and the comments made by the interviewer.
+      #set-5
+        .set-5a
+          %h2 So this is just a bit of fun...
+        .set-5b
+          %h2 The Progress Chart
+          %p Shows your aggregated scores for the three categories over time
+        .set-5c
+          %h2 Radar Chart
+          %p In the bottom left shows your scores for your first and last case, as well as your overall average, against the different scoring criteria - look for things you are consistenly weak at to improve
 
 
   .modal-footer

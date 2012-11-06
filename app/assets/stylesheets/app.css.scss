@@ -75,6 +75,21 @@ textarea {
   }
 }
 
+
+#application_flash {
+  top: 40px;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  margin-top: 5px;
+  &.signedout {
+    top: 80px;
+  }
+  .alert {
+    margin-bottom: 5px;
+  }
+}
+
 #application_flash {
 
   position: absolute; // Set for the map page - doesn't look great on other pages
@@ -88,6 +103,13 @@ textarea {
   }
 
 }
+
+
+.modal form {
+  margin: 0;
+}
+
+
 
 /* For views/shared/_error_messages - is this used for all forms? */
 #application_error_explanation {
@@ -319,21 +341,6 @@ textarea {
 }
 
 
-/* For client side validations */
-
-.message {
-  background-color: red;
-  border-bottom-right-radius: 5px 5px;
-  border-top-right-radius: 5px 5px;
-  padding: 2px 5px;
-}
-
-div.field_with_errors div.ui-effects-wrapper {
-  display: inline-block !important;
-}
-
-
-
 .modal_textarea {
   height: 150px;
   width: 97%;
@@ -341,9 +348,9 @@ div.field_with_errors div.ui-effects-wrapper {
 
 #modal_help {
   height:600px;
-  width:800px !important;
+  width:840px !important;
   margin-left:-400px;
-  margin-bottom:-200px;
+  margin-top:-400px;
 }
 
 
@@ -358,7 +365,7 @@ div.field_with_errors div.ui-effects-wrapper {
   margin-top:-30px;
   margin-left:-14px;
   margin-right:-14px;
-  margin-bottom:30px;
+  margin-bottom:10px;
 
   background: #f6f6f6;
   border-bottom: 1px solid #eaeaea;
@@ -372,7 +379,7 @@ div.field_with_errors div.ui-effects-wrapper {
   -moz-border-top-right-radius: 5px;
   -webkit-border-top-right-radius: 5px;
 
-  nav { position: relative; left:130px; }
+  nav { position: relative; left:100px; }
   nav ul {
     list-style: none;
     padding: 0px 0px 0px 0px;
@@ -386,7 +393,7 @@ div.field_with_errors div.ui-effects-wrapper {
   }   
 
   nav ul li a{
-    color: #b5b5b5;
+    color: #767676;
     font-size: 12px;
     -webkit-transition:color 0.2s ease-in;  
     -moz-transition:color 0.2s ease-in;  
@@ -408,3 +415,39 @@ div.field_with_errors div.ui-effects-wrapper {
 
 }
 
+// Help modal
+
+#set-1 { height:800px; width:800px; background: url('help/set-1.jpg');  position:relative; }
+  .set-1a { position:absolute; top:128px; left:60px; width:370px;}
+  .set-1b { position:absolute; top:190px; left:60px;  width: 335px;}
+  .set-1c { position:absolute; top:250px; left:60px; width:370px;}
+  .set-1d { position:absolute; top:250px; left:605px}
+  .set-1e { position:absolute; top:590px; left:60px}
+  .set-1f { left: 420px; position: absolute; top: 590px; width: 370px;}
+
+#set-2 { height:712px; width:800px; background: url('help/set-2.jpg');  position:relative; }
+  .set-2a { position: absolute; top:0px; left:400px; width:370px;}
+  .set-2b { left: 20px; position: absolute; top: 300px; width: 335px;}
+  .set-2c { position: absolute; top:470px; left:400px; width:370px;}
+
+#set-3 { height:800px; width:800px; background: url('help/set-3.jpg');  position:relative; }
+  .set-3a { position: absolute; top:10px; left:300px; width:450px;}
+  .set-3b { position: absolute; top:220px; left:390px; width:350px;}
+  .set-3c { position: absolute; top:540px; left:50px; width:650px;}
+
+#set-4 { height:800px; width:800px; background: url('help/set-4.jpg');  position:relative; }
+  .set-4a { left: 50px; position: absolute; top: 10px; width: 725px;}
+  .set-4b { position: absolute; top:100px; left:420px; width:450px;}
+  .set-4c { position: absolute; top:270px; left:420px; width:450px;}
+  .set-4d { position: absolute; top:350px; left:420px; width:450px;}
+  .set-4e { position: absolute; top:670px; left:50px; width:350px;}
+  .set-4f { position: absolute; top:700px; left:420px; width:350px;}
+
+#set-5 { height:800px; width:800px; background: url('help/set-5.jpg');  position:relative; }
+  .set-5a { position: absolute; top: 10px; left:50px;}
+  .set-5b { position: absolute; top: 270px; left:50px;}
+  .set-5c { position: absolute; top: 650px; left:50px;}
+
+#set-6 { height:800px; width:800px; background: url('help/set-6.jpg');  position:relative; }
+  .set-6a { left: 319px; position: absolute; top: 35px; width: 400px;}
+  .set-6b { position: absolute; right: 0; top: 453px; width: 350px;}
