@@ -135,6 +135,13 @@ class User < ActiveRecord::Base
     self.name
   end
 
+  def generate_roulette_token
+    begin
+      self.roulette_token = ('a'..'z').to_a.shuffle[0,8].join
+    end while User.where(roulette_token: self.roulette_token).exists?
+    self.roulette_token
+  end
+
   private
 
   def validate_invitation
@@ -169,12 +176,6 @@ class User < ActiveRecord::Base
       self.university = University.where(domain: domain).first
       self.headline = "Student at #{university.name}" if self.headline.blank?
     end
-  end
-
-  def generate_roulette_token
-    begin
-      self.roulette_token = ('a'..'z').to_a.shuffle[0,8].join
-    end while User.where(roulette_token: self.roulette_token).exists?
   end
 
   def validate_university_email
