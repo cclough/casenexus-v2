@@ -95,6 +95,12 @@ $blue_pastel: #98cdff;
     margin-top:380px;
     margin-left:50px;    
   }
+
+  &.testimonials {
+    position:absolute;
+    margin-top:80px;
+    margin-left:50px;      
+  }
 }
 
 #static_home_slider_page_1 {
@@ -148,7 +154,7 @@ $blue_pastel: #98cdff;
 
   nav { 
     position: relative; 
-    left:90px; }
+    left:30px; }
     
   nav ul {
     list-style: none;

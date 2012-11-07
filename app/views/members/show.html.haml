@@ -14,10 +14,7 @@
         = @user.name
       #users_show_headline
         = @user.headline
-      - if @user.last_online_at
-        #users_show_headline
-          Last online:
-          = time_ago_in_words(@user.last_online_at)
+
   - if Friendship.friends?(current_user, @user)
     .spacer5
     .row.font-small
@@ -40,12 +37,19 @@
               Request
 
 - if @user.status_approved
-  .panel
+  .panel.gradient
     .row
       .span35
         #users_show_status
           = @user.status
+    .spacer10
     .row
+      .pull-left
+        - if @user.last_online_at
+          #users_show_lastonline
+            Last online:
+            = time_ago_in_words(@user.last_online_at)
+
       .pull-right
         - if Friendship.friends?(current_user, @user)
           %a#users_index_user_button_message.btn.btn-inverse.btn-small
