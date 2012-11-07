@@ -1,0 +1,52 @@
+<<<<<<< HEAD
+/ #{@invitation.user.name}
+
+%p Dear #{@invitation.name},
+
+%p You are amongst a group of the first 100 people to be invited to join 'casenexus.com' - a new site that allows consulting candidates to meet each other to practise case interviews with, in person or via Skype, and keep track of their practise case feedback and progress.
+
+%p Developed by Cambridge University students who now work at top firms, it's been designed from the ground up, using the latests web technologies, to address a global unmet need.
+
+%p Features of the site include:
+  %ul
+    %li Hub for case interview candidates globally
+      %ul
+        %li Practise case interviews with other candidates who work or live near you
+        %li Find others around the world applying to the same firms, and practise cases via Skype
+    %li Case Roulette
+      %ul
+        %li Got 45 minutes free after work to do a case?
+        %li Use Case Roulette to practise cases with others online at any time
+    %li Feedback System
+      %ul
+        %li "Interviewers" complete a feedback form for interviewees, including scores and comments
+        %li Form designed by a top-3-firm professional consultant with many years of interviewing experience
+        %li Feedback is recorded and analysed
+
+%p We are doing an 'invite-only' beta period to start. Your one-time invitation code is below. When you subscribe, you will be get 5 invitations for your close friends - please use them!
+
+%b= @invitation.code
+
+%p To accept the invitation follow the link below:
+
+= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
+
+%p We ultimately hope that this service is simply a useful tool for you to prepare for your case interviews. As the initial users of the site, we'd be very grateful if you would, as much as you can, provide us with feedback on anything we can do to improve. There are various places to do this on the site.
+
+%p We're expecting a bit of a bumpy ride to start with, so hope you will bear with us, as flush out any bugs.
+
+%p This is an exciting time for us - we hope you enjoy the site, and wish you every success in your up coming case interviews.
+
+%p casenexus.com
+=======
+%h1
+  = "#{@invitation.name}, you have received an Invitation to Casenexus from #{@invitation.user.name}"
+%p
+  Casenexus is the next web app to create Cases and get better jobs.
+%p
+  Your invitation code is:
+  %b= @invitation.code
+%p
+  To accept the invitation, follow this link:
+  = link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
+>>>>>>> b7020cfd861ee2bb1d24daf7a9bd9cba3fc660e7
