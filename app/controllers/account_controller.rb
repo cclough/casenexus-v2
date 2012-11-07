@@ -30,7 +30,7 @@ class AccountController < ApplicationController
   end
 
   def show_help
-    current_user.help_+params[:help_id]? ? current_user.help_+params[:help_id]? == false : nil
+    # current_user.help_+params[:help_id]? ? current_user.help_+params[:help_id]? == false : nil
   end
 
 end
