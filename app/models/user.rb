@@ -32,11 +32,11 @@ class User < ActiveRecord::Base
   belongs_to :invitation, foreign_key: 'invited_id'
 
 
-  before_save { |user| user.email = user.email.downcase }
-
   before_create :generate_roulette_token
   before_create :set_headline_and_university
   after_create :update_invitation
+  before_save { |user| user.email = user.email.downcase }
+  before_save :update_status_moderated
   after_save :send_welcome
 
   ### Validations
@@ -156,6 +156,14 @@ class User < ActiveRecord::Base
       else
         errors.add(:invitation_code, "doesn't exists")
       end
+    end
+  end
+
+  # Set the moderated and approved tag to false if its updated
+  def update_status_moderated
+    if status_was != status
+      self.status_moderated = false
+      self.status_approved = false
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106233240) do
+ActiveRecord::Schema.define(:version => 20121107190941) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20121106233240) do
     t.boolean  "help_4",                 :default => false
     t.boolean  "help_5",                 :default => false
     t.boolean  "help_6",                 :default => false
+    t.boolean  "status_moderated",       :default => false, :null => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
