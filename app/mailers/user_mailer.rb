@@ -80,7 +80,7 @@ class UserMailer < ActionMailer::Base
 
     @invitation = invitation
 
-    mail(to: receiver, from: sender, subject: "Invitation to Casenexus")
+    mail(to: receiver, subject: "Invitation to Casenexus")
   end
 
   def site_contact(site_contact)
@@ -89,7 +89,7 @@ class UserMailer < ActionMailer::Base
 
     @site_contact = site_contact
 
-    mail(to: receiver, from: sender, subject: "Casenexus contact: #{site_contact.subject}")
+    mail(to: receiver, subject: "Casenexus contact: #{site_contact.subject}")
   end
 
   def site_feedback(feedback)
@@ -98,6 +98,6 @@ class UserMailer < ActionMailer::Base
 
     @feedback = feedback
 
-    mail(to: receiver, from: sender, subject: "Casenexus feedback")
+    mail(to: receiver, subject: "Casenexus feedback")
   end
 end
