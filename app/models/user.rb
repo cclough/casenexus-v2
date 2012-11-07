@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
   # Invitations
   has_many :invitations
-  belongs_to :invitation, foreign_key: 'invited_id'
+  has_one :invitation, foreign_key: 'invited_id'
 
 
   before_create :generate_roulette_token
