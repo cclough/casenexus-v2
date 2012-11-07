@@ -21,7 +21,7 @@
       = render '/shared/button_group_linkedin_skype'
       .span
         .font-small
-          = link_to raw("Remove as Contact"), friendships_path(@user), method: "delete", id: 'users_show_button_removefriend'
+          = link_to("Remove as Case Partner", friend_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?", id: 'users_show_button_removefriend')
     .spacer5
     .row
       #users_show_button_Group_feedback
