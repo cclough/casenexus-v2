@@ -7,7 +7,7 @@
     = link_to 'Jump to Feedback form', ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date })
   - when "friendship_req"
     - if notifications_item.notificable
-      = link_to 'Jump to Friendship Request', friendship_path(notifications_item.notificable)
+      = link_to 'Show Friendship Request', friendship_path(notifications_item.notificable)
   - when "friendship_app"
     - if notifications_item.notificable
-      = link_to "Friend Profile", members_path(notifications_item.notificable.friend)
+      = link_to "Show Friend Profile", members_path(notifications_item.notificable.friend)

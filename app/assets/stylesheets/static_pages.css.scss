@@ -75,25 +75,33 @@ $blue_pastel: #98cdff;
 
 .static_home_slider_bullets {
 
+  font-size:13px;
+  
   &.banner {
     font-style:italic;
     margin-top:20px;
-    margin-left:-50px;    
+    margin-left:-80px;    
   }
   &.partners {
     position:absolute;
-    margin-top:400px;
+    margin-top:350px;
     margin-left:50px;    
   }
   &.roulette {
     position:absolute;
-    margin-top:400px;
+    margin-top:350px;
     margin-left:50px;    
   }
   &.feedback {
     position:absolute;
-    margin-top:380px;
+    margin-top:340px;
     margin-left:50px;    
+  }
+
+  &.testimonials {
+    position:absolute;
+    margin-top:80px;
+    margin-left:50px;      
   }
 }
 
@@ -148,7 +156,7 @@ $blue_pastel: #98cdff;
 
   nav { 
     position: relative; 
-    left:90px; }
+    left:30px; }
     
   nav ul {
     list-style: none;
