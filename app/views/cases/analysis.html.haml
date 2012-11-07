@@ -15,7 +15,11 @@
       cases_analysis_charts_draw(cases_analysis_chart_radar_count);
     });
 
-/ %span#cases_analysis_chart_radar_data{"data-radar_all" => Case.cases_analysis_chart_radar_data_all(current_user).to_s, "data-radar_combined" => Case.cases_analysis_chart_radar_data_combined(current_user).to_s}
+  - if @show_help
+    :javascript
+      $(document).ready(function() {
+        application_show_help(1);
+      });
 
 .row
   .span25

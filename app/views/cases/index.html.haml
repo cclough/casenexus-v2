@@ -4,6 +4,14 @@
 - content_for :javascript_includes do
   = javascript_include_tag "cases"
   = javascript_include_tag "lib/amcharts"
+
+  - if @show_help
+    :javascript
+      $(document).ready(function() {
+        application_show_help(1);
+      });
+
+
 / NB cas is used instead of 'case' as it's apparently used for something else in rails and fails!
 .span30
   = render 'cases_form'

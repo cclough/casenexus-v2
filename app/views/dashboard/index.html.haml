@@ -9,6 +9,12 @@
     var users_index_map_lat_start = "#{current_user.lat}";
     var users_index_map_lng_start = "#{current_user.lng}";
 
+  - if @show_help
+    :javascript
+      $(document).ready(function() {
+        application_show_help(1);
+      });
+
 #users_index_map_footerspacer
 #users_index_map.map
 

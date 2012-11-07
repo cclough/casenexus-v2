@@ -28,4 +28,9 @@ class AccountController < ApplicationController
   def complete_profile
     @user = current_user
   end
+
+  def show_help
+    current_user.help_+params[:help_id]? ? current_user.help_+params[:help_id]? == false : nil
+  end
+
 end

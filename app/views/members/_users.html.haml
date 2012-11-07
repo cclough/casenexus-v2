@@ -3,8 +3,10 @@
     - for users_item in @users
       = render partial: 'users_item' , locals: { users_item: users_item }
   - else
-    #users_index_users_empty.alert.alert-info.offset5
-      No candidates found
+    .spacer20
+    .offset4
+      #users_index_users_empty.alert.alert-info
+        No candidates found
 
 #users_index_users_form_paginate
   = will_paginate @users, class: "application_pagination", inner_window: 1, outer_window: 0

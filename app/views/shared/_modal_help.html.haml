@@ -118,4 +118,10 @@
 
 
   .modal-footer
+    .pull-left
+      .span1
+        %input{ type: "checkbox", value: 1, checked: @page_with_help, "data-page_id" => 1, "data-user_id" => current_user.id, id: "modal_help_checkbox" }
+      .span25.font-small
+        Display this everytime I open this page
     %a.btn.pull-right{"data-dismiss" => "modal", href: "#"} Close
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106112610) do
+ActiveRecord::Schema.define(:version => 20121106233240) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
@@ -168,6 +168,12 @@ ActiveRecord::Schema.define(:version => 20121106112610) do
     t.string   "country"
     t.integer  "university_id"
     t.datetime "last_online_at"
+    t.boolean  "help_1",                 :default => false
+    t.boolean  "help_2",                 :default => false
+    t.boolean  "help_3",                 :default => false
+    t.boolean  "help_4",                 :default => false
+    t.boolean  "help_5",                 :default => false
+    t.boolean  "help_6",                 :default => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

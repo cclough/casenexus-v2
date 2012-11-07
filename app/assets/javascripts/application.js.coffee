@@ -27,6 +27,10 @@ window.getQueryParams = (qs) ->
   params
 
 
+window.application_show_help = (help_page) ->
+  $("#modal_help").show()
+  ArrowNav.goTo help_page
+
 
 $(document).ready ->
   # Style for the checkboxes
@@ -39,6 +43,12 @@ $(document).ready ->
   $("#modal_help").modal
     backdrop: false
     show: false
+
+  # Modal help checkbox
+  $("#modal_help_checkbox").change ->
+    page_id = $(self).attr("data-page_id")
+    user_id = $(self).attr("data-user_id")
+    $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
 
   # Modal help link
   $("#header_link_help").click ->

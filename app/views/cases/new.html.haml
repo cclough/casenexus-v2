@@ -1,7 +1,14 @@
 - provide(:title, 'Give Feedback')
 - provide(:sub_title, 'Score and comment on your case partners performance')
 
-= javascript_include_tag "cases"
+- content_for :javascript_includes do
+  = javascript_include_tag "cases"
+
+  - if @show_help
+    :javascript
+      $(document).ready(function() {
+        application_show_help(1);
+      });
 
 = form_for @case, url: { action: :create } do |f|
   = f.hidden_field :user_id

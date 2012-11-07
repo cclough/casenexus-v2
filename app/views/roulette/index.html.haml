@@ -4,10 +4,15 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'roulette'
   = javascript_include_tag 'lib/socket.io'
-  '
+  
   :javascript
     var roulette_index_user_id = "#{current_user.id}";
 
+  - if @show_help
+    :javascript
+      $(document).ready(function() {
+        application_show_help(1);
+      });
 .panel.dark
   .row
     .span85.offset2
