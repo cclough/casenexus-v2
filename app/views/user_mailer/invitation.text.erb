@@ -1,0 +1,8 @@
+<%= "#{@invitation.name}, you have received an Invitation to Casenexus from #{@invitation.user.name}" %>
+
+Casenexus is the next web app to create Cases and get better jobs.
+
+Your invitation code is: <%= @invitation.code %>
+
+To accept the invitation, copy and pastle the next link:
+<%= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code)) %>
