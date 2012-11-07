@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   index do
+    default_actions
     column :id
     column :email
     column :first_name
