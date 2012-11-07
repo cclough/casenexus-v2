@@ -8,10 +8,19 @@
 
       %h3 Invite a new friend
 
-      = simple_form_for @invitation, html: { class: 'form-horizontal' } do |f|
+      = simple_form_for @invitation, html: { class: 'form-horizontal offset20' } do |f|
 
-        = f.input :name
-        = f.input :email
+        .row
+          .span5
+            Name:
+          .span40
+            = f.text_field :name
+        .spacer20
+        .row
+          .span5
+            Email:
+          .span40
+            = f.text_field :email
 
         .form-actions
           = f.submit "Invite", class: 'btn btn-primary btn-large'
