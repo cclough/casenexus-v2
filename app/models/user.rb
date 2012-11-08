@@ -172,9 +172,9 @@ class User < ActiveRecord::Base
 
   # Set the moderated and approved tag to false if its updated
   def update_status_moderated
-    if status_was != status
-      self.status_moderated = false
+    if self.status_was != self.status
       self.status_approved = false
+      self.status_moderated = false
     end
   end
 

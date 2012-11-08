@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
   def update_last_online_at
     if user_signed_in?
-      current_user.update_attribute(:last_online_at, Time.now())
+      current_user.update_column(:last_online_at, Time.now())
     end
   end
 end
