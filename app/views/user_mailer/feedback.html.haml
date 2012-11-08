@@ -1,14 +1,9 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-    %h1
-      You have been sent case feedback by #{@user_from.name}
-    %h3
-      Case on #{@date}
-    %p
-      = @subject
-    %p
-      Use this link to see the results:
-      = link_to @url, @url
+%h1
+  You have been sent case feedback by #{@user_from.name}
+%h3
+  Case on #{@date}
+%p
+  = @subject
+%p
+  Use this link to see the results:
+  = link_to @url, @url

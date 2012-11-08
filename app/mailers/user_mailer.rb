@@ -100,4 +100,19 @@ class UserMailer < ActionMailer::Base
 
     mail(to: receiver, subject: "Casenexus feedback")
   end
+
+  def status_approved(user)
+    @user = user
+    email_with_name = "#{user.name} <#{@user.email}>"
+
+    mail(to: email_with_name, subject: "Casenexus: Your status on your profile was approved")
+  end
+
+  def status_rejected(user)
+    @user = user
+    email_with_name = "#{user.name} <#{@user.email}>"
+
+    mail(to: email_with_name, subject: "Casenexus: Your status on your profile was rejected")
+  end
+
 end

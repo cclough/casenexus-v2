@@ -10,11 +10,25 @@ ActiveAdmin.register User do
   end
 
   member_action :approve, method: :put do
-
+    user = User.find(params[:id])
+    user.status_approve!
+    flash[:notice] = "Status approved"
+    if params[:dashboard]
+      redirect_to admin_dashboard_path
+    else
+      redirect_to admin_users_path
+    end
   end
 
   member_action :reject, method: :put do
-
+    user = User.find(params[:id])
+    user.status_reject!
+    flash[:notice] = "Status rejected"
+    if params[:dashboard]
+      redirect_to admin_dashboard_path
+    else
+      redirect_to admin_users_path
+    end
   end
   
 end

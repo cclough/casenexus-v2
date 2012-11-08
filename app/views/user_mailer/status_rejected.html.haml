@@ -1,0 +1,12 @@
+%h1
+  = "Dear #{@user.first_name}"
+%p
+  Your status on your profile was rejected, and its not visible by other users on the website.
+%p
+  Your status should follow the next rules:
+  %ul
+    %li Rule 1
+    %li Rule 2
+%p
+  To login and update your status, follow this link:
+  = link_to(root_url, root_url)

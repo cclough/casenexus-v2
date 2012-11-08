@@ -142,6 +142,18 @@ class User < ActiveRecord::Base
     self.roulette_token
   end
 
+  def status_approve!
+    self.update_attribute(:status_approved, true)
+    self.update_attribute(:status_moderated, true)
+    UserMailer.status_approved(self).deliver
+  end
+
+  def status_reject!
+    self.update_attribute(:status_approved, false)
+    self.update_attribute(:status_moderated, true)
+    UserMailer.status_rejected(self).deliver
+  end
+
   private
 
   def validate_invitation
