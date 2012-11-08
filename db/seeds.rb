@@ -13,8 +13,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
       email: "christian.clough@cam.ac.uk",
       password: "numbnuts",
       password_confirmation: "numbnuts",
-      lat: 51.901128232665856,
-      lng: -0.54241188764572144,
+      lat: 51.5100,
+      lng: -0.1344,
       status: Faker::Lorem.sentence(20),
       invitation_code: 'BYPASS_CASENEXUS_INV',
 

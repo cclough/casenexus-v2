@@ -5,7 +5,7 @@ window.map = null
 # Option: Pan To and Zoom
 window.users_index_map_pan = (latlng) ->
   window.map.panTo latlng
-  window.map.setZoom 5
+  window.map.setZoom 9
 
 window.users_index_map_marker_click = (marker_id) ->
   # Show User Panel
