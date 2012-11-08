@@ -8,7 +8,7 @@
   :javascript
     var roulette_index_user_id = "#{current_user.id}";
 
-  - if !current_user.help_3_checked
+  - if current_user.help_3_checked
     :javascript
       $(document).ready(function() {
         window.setTimeout("window.application_show_help(3)", 1000);

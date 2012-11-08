@@ -4,7 +4,7 @@
 - content_for :javascript_includes do
   = javascript_include_tag "cases"
 
-  - if !current_user.help_4_checked
+  - if current_user.help_4_checked
     :javascript
       $(document).ready(function() {
         window.setTimeout("window.application_show_help(4)", 1000);

@@ -15,7 +15,7 @@
       cases_analysis_charts_draw(cases_analysis_chart_radar_count);
     });
 
-  - if !current_user.help_6_checked
+  - if current_user.help_6_checked
     :javascript
       $(document).ready(function() {
         window.setTimeout("window.application_show_help(6)", 1000);

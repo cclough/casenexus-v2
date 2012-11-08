@@ -21,7 +21,7 @@
       window.users_index_map_marker_click("#{current_user.id}");
 
 
-  - if !current_user.help_2_checked
+  - if current_user.help_2_checked
     :javascript
       $(document).ready(function() {
         google.maps.event.addListenerOnce(map, 'idle', function(){

@@ -5,7 +5,7 @@
   = javascript_include_tag "cases"
   = javascript_include_tag "lib/amcharts"
 
-  - if !current_user.help_5_checked
+  - if current_user.help_5_checked
     :javascript
       $(document).ready(function() {
         window.setTimeout("window.application_show_help(5)", 1000);

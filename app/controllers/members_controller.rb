@@ -48,4 +48,10 @@ class MembersController < ApplicationController
       format.html { render layout: false }
     end
   end
+
+  def show_help
+    column_name = "help_#{params[:page_id]}_checked"
+    #current_user.update_attribute(column_name, true)
+    render text: "OK"
+  end
 end

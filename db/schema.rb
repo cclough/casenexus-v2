@@ -184,12 +184,12 @@ ActiveRecord::Schema.define(:version => 20121108141339) do
     t.boolean  "status_moderated",       :default => false, :null => false
     t.boolean  "email_admin",            :default => true
     t.boolean  "email_users",            :default => true
-    t.boolean  "help_1_checked",         :default => false, :null => false
-    t.boolean  "help_2_checked",         :default => false, :null => false
-    t.boolean  "help_3_checked",         :default => false, :null => false
-    t.boolean  "help_4_checked",         :default => false, :null => false
-    t.boolean  "help_5_checked",         :default => false, :null => false
-    t.boolean  "help_6_checked",         :default => false, :null => false
+    t.boolean  "help_1_checked",         :default => true,  :null => false
+    t.boolean  "help_2_checked",         :default => true,  :null => false
+    t.boolean  "help_3_checked",         :default => true,  :null => false
+    t.boolean  "help_4_checked",         :default => true,  :null => false
+    t.boolean  "help_5_checked",         :default => true,  :null => false
+    t.boolean  "help_6_checked",         :default => true,  :null => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

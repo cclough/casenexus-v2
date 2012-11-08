@@ -7,12 +7,12 @@ class UpdateHelpForUsers < ActiveRecord::Migration
     remove_column :users, :help_5
     remove_column :users, :help_6
 
-    add_column :users, :help_1_checked, :boolean, null: false, default: false
-    add_column :users, :help_2_checked, :boolean, null: false, default: false
-    add_column :users, :help_3_checked, :boolean, null: false, default: false
-    add_column :users, :help_4_checked, :boolean, null: false, default: false
-    add_column :users, :help_5_checked, :boolean, null: false, default: false
-    add_column :users, :help_6_checked, :boolean, null: false, default: false
+    add_column :users, :help_1_checked, :boolean, null: false, default: true
+    add_column :users, :help_2_checked, :boolean, null: false, default: true
+    add_column :users, :help_3_checked, :boolean, null: false, default: true
+    add_column :users, :help_4_checked, :boolean, null: false, default: true
+    add_column :users, :help_5_checked, :boolean, null: false, default: true
+    add_column :users, :help_6_checked, :boolean, null: false, default: true
   end
 
   def down
