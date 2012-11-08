@@ -13,11 +13,13 @@ $(document).ready ->
       mapTypeControl: false
     )
 
+    shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
+
     marker = new google.maps.Marker(
       position: users_newedit_latlng
       map: map
       icon: new google.maps.MarkerImage("/assets/markers/marker_0.png")
-      shadow: new google.maps.MarkerImage("/assets/markers/marker_shadow.png")
+      shadow: shadow
       draggable: true
     )
 
