@@ -28,8 +28,11 @@ window.getQueryParams = (qs) ->
 
 
 window.application_show_help = (help_page) ->
-  $("#modal_help").show()
-  ArrowNav.goTo help_page
+  $("#modal_help").on('show', (e) ->
+    window.ArrowNav.goTo help_page
+  )
+  $(".modal").modal "hide"
+  $("#modal_help").modal "show"
 
 
 $(document).ready ->
@@ -46,8 +49,8 @@ $(document).ready ->
 
   # Modal help checkbox
   $("#modal_help_checkbox").change ->
-    page_id = $(self).attr("data-page_id")
-    user_id = $(self).attr("data-user_id")
+    page_id = $(this).attr("data-page_id")
+    user_id = $(this).attr("data-user_id")
     $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
 
   # Modal help link
@@ -78,11 +81,11 @@ $(document).ready ->
 
   # Arrows for the home page and help
   if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0
-    ArrowNav =
+    window.ArrowNav =
       init: ->
         $("a[href*=#]").click (e) ->
           e.preventDefault()
-          ArrowNav.goTo $(this).attr("href").split("#")[1]  if $(this).attr("href").split("#")[1]
+          window.ArrowNav.goTo $(this).attr("href").split("#")[1]  if $(this).attr("href").split("#")[1]
 
         @goTo "1"
 
@@ -95,7 +98,7 @@ $(document).ready ->
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
         next_page.fadeIn 500
-        ArrowNav.centerArrow nav_item
+        window.ArrowNav.centerArrow nav_item
 
       centerArrow: (nav_item, animate) ->
         left_margin = (nav_item.parent().position().left + nav_item.parent().width()) + 24 - (nav_item.parent().width() / 2)
@@ -108,4 +111,4 @@ $(document).ready ->
         else
           $("nav .arrow").css left: left_margin - 8
 
-    ArrowNav.init()
+    window.ArrowNav.init()

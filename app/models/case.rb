@@ -2,8 +2,8 @@ class Case < ActiveRecord::Base
 
   attr_accessible :user, :user_id, :interviewer, :interviewer_id, :date, :subject, :source,
                   :interpersonal_comment, :businessanalytics_comment, :structure_comment,
-                  :recommendation1, :recommendation2, :recommendation3, 
-                  :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking, 
+                  :recommendation1, :recommendation2, :recommendation3,
+                  :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
                   :rapport, :articulation, :concision, :askingforinformation,
                   :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
 
@@ -146,7 +146,7 @@ class Case < ActiveRecord::Base
 
   def self.cases_analysis_chart_radar_data_all(user, count)
     # LAST 5: load scores into json for radar chart
-      "[
+    "[
       {criteria: \"Quantitative basics\", 
       all: " + (user.cases.order('id desc').collect(&:quantitativebasics).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:quantitativebasics).sum.to_f/count).to_s + ", 
@@ -200,7 +200,7 @@ class Case < ActiveRecord::Base
 
   def self.cases_analysis_chart_radar_data_combined(user, count)
     # LAST count: load scores into json for radar chart
-      "[
+    "[
       {criteria: \"Interpersonal\", 
       all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
@@ -217,13 +217,13 @@ class Case < ActiveRecord::Base
   end
 
   def self.cases_analysis_chart_progress_data(user)
-    cases_analysis_chart_progress_data = user.cases.order('date asc').map {|c|
-                                         { id: c.id,
-                                         date: c.date.strftime("%Y-%m-%d"), 
-                                         interpersonal: c.interpersonal_combined, 
-                                         businessanalytics: c.businessanalytics_combined, 
-                                         structure: c.structure_combined, 
-                                         totalscore: c.totalscore } }
+    cases_analysis_chart_progress_data = user.cases.order('date asc').map { |c|
+      { id: c.id,
+        date: c.date.strftime("%Y-%m-%d"),
+        interpersonal: c.interpersonal_combined,
+        businessanalytics: c.businessanalytics_combined,
+        structure: c.structure_combined,
+        totalscore: c.totalscore } }
   end
 
 
@@ -261,10 +261,10 @@ class Case < ActiveRecord::Base
 
     def cases_analysis_stats_casedate(user, type)
       case type
-      when "first"
-        user.cases.all.last.date.strftime("%d %b '%y") unless user.case_count < 1
-      when "last"
-        user.cases.all.first.date.strftime("%d %b '%y") unless user.case_count < 1
+        when "first"
+          user.cases.all.last.date.strftime("%d %b '%y") unless user.case_count < 1
+        when "last"
+          user.cases.all.first.date.strftime("%d %b '%y") unless user.case_count < 1
       end
     end
 
@@ -272,14 +272,14 @@ class Case < ActiveRecord::Base
 
       if Case.all.count > 0
         case type
-        when "totalscore"
-          (Case.all.map{ |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
-        when "interpersonal"
-          (Case.all.map{ |a| a.interpersonal_combined }.sum/Case.all.count).round(1)
-        when "businessanalytics"
-          (Case.all.map{ |a| a.businessanalytics_combined }.sum/Case.all.count).round(1)
-        when "structure"
-          (Case.all.map{ |a| a.structure_combined }.sum/Case.all.count).round(1)
+          when "totalscore"
+            (Case.all.map { |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
+          when "interpersonal"
+            (Case.all.map { |a| a.interpersonal_combined }.sum/Case.all.count).round(1)
+          when "businessanalytics"
+            (Case.all.map { |a| a.businessanalytics_combined }.sum/Case.all.count).round(1)
+          when "structure"
+            (Case.all.map { |a| a.structure_combined }.sum/Case.all.count).round(1)
         end
       else
         "No data"
@@ -287,17 +287,20 @@ class Case < ActiveRecord::Base
     end
 
     def cases_analysis_stats_user(user, type)
-
       if Case.all.count > 0
-        case type
-        when "totalscore"
-          (user.cases.map{ |a| a.totalscore }.sum/user.cases.count).round(1) if Case.all.count > 0
-        when "interpersonal"
-          (user.cases.map{ |a| a.interpersonal_combined }.sum/user.cases.count).round(1)
-        when "businessanalytics"
-          (user.cases.map{ |a| a.businessanalytics_combined }.sum/user.cases.count).round(1)
-        when "structure"
-          (user.cases.map{ |a| a.structure_combined }.sum/user.cases.count).round(1)
+        begin
+          case type
+            when "totalscore"
+              (user.cases.map { |a| a.totalscore }.sum/user.cases.count).round(1) if Case.all.count > 0
+            when "interpersonal"
+              (user.cases.map { |a| a.interpersonal_combined }.sum/user.cases.count).round(1)
+            when "businessanalytics"
+              (user.cases.map { |a| a.businessanalytics_combined }.sum/user.cases.count).round(1)
+            when "structure"
+              (user.cases.map { |a| a.structure_combined }.sum/user.cases.count).round(1)
+          end
+        rescue
+          0
         end
       else
         "No data"

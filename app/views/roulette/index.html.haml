@@ -8,11 +8,12 @@
   :javascript
     var roulette_index_user_id = "#{current_user.id}";
 
-  - if @show_help
+  - if !current_user.help_3_checked
     :javascript
       $(document).ready(function() {
-        application_show_help(1);
+        window.setTimeout("window.application_show_help(3)", 1000);
       });
+
 .panel.dark
   .row
     .span85.offset2

@@ -15,10 +15,10 @@
       cases_analysis_charts_draw(cases_analysis_chart_radar_count);
     });
 
-  - if @show_help
+  - if !current_user.help_6_checked
     :javascript
       $(document).ready(function() {
-        application_show_help(1);
+        window.setTimeout("window.application_show_help(6)", 1000);
       });
 
 .row

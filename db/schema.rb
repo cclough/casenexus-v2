@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108001955) do
+ActiveRecord::Schema.define(:version => 20121108141339) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -181,15 +181,15 @@ ActiveRecord::Schema.define(:version => 20121108001955) do
     t.string   "country"
     t.integer  "university_id"
     t.datetime "last_online_at"
-    t.boolean  "help_1",                 :default => false
-    t.boolean  "help_2",                 :default => false
-    t.boolean  "help_3",                 :default => false
-    t.boolean  "help_4",                 :default => false
-    t.boolean  "help_5",                 :default => false
-    t.boolean  "help_6",                 :default => false
     t.boolean  "status_moderated",       :default => false, :null => false
     t.boolean  "email_admin",            :default => true
     t.boolean  "email_users",            :default => true
+    t.boolean  "help_1_checked",         :default => false, :null => false
+    t.boolean  "help_2_checked",         :default => false, :null => false
+    t.boolean  "help_3_checked",         :default => false, :null => false
+    t.boolean  "help_4_checked",         :default => false, :null => false
+    t.boolean  "help_5_checked",         :default => false, :null => false
+    t.boolean  "help_6_checked",         :default => false, :null => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

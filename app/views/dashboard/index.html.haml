@@ -21,10 +21,12 @@
       window.users_index_map_marker_click("#{current_user.id}");
 
 
-  - if @show_help
+  - if !current_user.help_2_checked
     :javascript
       $(document).ready(function() {
-        application_show_help(1);
+        google.maps.event.addListenerOnce(map, 'idle', function(){
+          window.application_show_help(2);
+        });
       });
 
 #users_index_map_footerspacer

@@ -4,10 +4,10 @@
 - content_for :javascript_includes do
   = javascript_include_tag "cases"
 
-  - if @show_help
+  - if !current_user.help_4_checked
     :javascript
       $(document).ready(function() {
-        application_show_help(1);
+        window.setTimeout("window.application_show_help(4)", 1000);
       });
 
 = form_for @case, url: { action: :create } do |f|

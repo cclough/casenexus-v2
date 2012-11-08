@@ -22,11 +22,6 @@ class MembersController < ApplicationController
       @users = users_scope.search_for(params[:search]).paginate(per_page: 10, page: params[:page])
     end
 
-    # Check help panel display boolean
-    if current_user.help_1 == false
-      @show_help = true
-    end
-
     respond_to do |format|
       format.js # links index.js.erb!
       format.json { render json: User.markers } # USING get_markers_within_viewport INSTEAD
