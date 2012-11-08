@@ -7,6 +7,10 @@ class AccountController < ApplicationController
 
   def edit
     @user = current_user
+
+    @invitations = current_user.invitations
+    redirect_to action: index, notice: "You have already invited 5 friends" if current_user.invitations.count >= Invitation::INVITATION_LIMIT
+    @invitation = Invitation.new
   end
 
   def update
