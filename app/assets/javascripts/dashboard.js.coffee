@@ -20,7 +20,9 @@ window.users_index_map_marker_click = (marker_id) ->
         $("#users_index_mapcontainer_user").fadeOut "slow"
 
       # Modal Stuff!
-      $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal(backdrop: false, show: false)
+      $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal
+        backdrop: false
+        show: false
 
       $("#users_index_user_button_message").click ->
         $(".modal").modal("hide")
