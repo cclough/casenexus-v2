@@ -51,7 +51,7 @@ class MembersController < ApplicationController
 
   def show_help
     column_name = "help_#{params[:page_id]}_checked"
-    #current_user.update_attribute(column_name, true)
+    current_user.update_attribute(column_name, false)
     render text: "OK"
   end
 end

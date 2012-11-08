@@ -48,10 +48,11 @@ $(document).ready ->
     show: false
 
   # Modal help checkbox
-  $("#modal_help_checkbox").change ->
-    page_id = $(this).attr("data-page_id")
-    user_id = $(this).attr("data-user_id")
-    $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
+  $(".modal_help_checkbox").live 'change', ->
+    if !$(this).is(':checked')
+      page_id = $(this).attr("data-page_id")
+      user_id = $(this).attr("data-user_id")
+      $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
 
   # Modal help link
   $("#header_link_help").click ->

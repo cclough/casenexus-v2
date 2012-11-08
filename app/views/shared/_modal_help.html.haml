@@ -26,6 +26,12 @@
     #application_arrownav_page_1.arrownav_page
 
       #modal_help_page_1
+        .row
+          .span3
+            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 1, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+          .span25.font-small
+            Display this everytime I open this page
+
         .set-1a
           %h4 Users
           %p Access the map and find users.
@@ -51,6 +57,12 @@
     #application_arrownav_page_2.arrownav_page
       #modal_help_page_2
 
+        .row
+          .span3
+            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 2, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+          .span25.font-small
+            Display this everytime I open this page
+
         .set-2a
           %h1 User panel
           %p Find candidates who live/work near you - click on their map markers to see their status, then send them a case partner request
@@ -68,6 +80,12 @@
     #application_arrownav_page_3.arrownav_page
       #modal_help_page_3
 
+        .row
+          .span3
+            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 3, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+          .span25.font-small
+            Display this everytime I open this page
+
         .set-3a
           %h4 Roulette
           %p Click the 'connect' button to join the 'roulette'
@@ -83,6 +101,12 @@
 
     #application_arrownav_page_4.arrownav_page
       #modal_help_page_4
+
+        .row
+          .span3
+            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 4, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+          .span25.font-small
+            Display this everytime I open this page
 
         .set-4a
           %p Feedback system carefully designed by a consultant at one of the top 3 firms with many years of interviewing experience
@@ -101,6 +125,13 @@
 
     #application_arrownav_page_5.arrownav_page
       #modal_help_page_6
+
+        .row
+          .span3
+            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 5, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+          .span25.font-small
+            Display this everytime I open this page
+
         .set-6a
           %h4 Your Progress
           %p Statistics calculated from your feedback from other users
@@ -115,6 +146,13 @@
 
     #application_arrownav_page_6.arrownav_page
       #modal_help_page_5
+
+        .row
+          .span3
+            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 6, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+          .span25.font-small
+            Display this everytime I open this page
+
         .set-5a
           %h2 So this is just a bit of fun...
         .set-5b
@@ -129,10 +167,5 @@
 
 
   .modal-footer
-    .pull-left
-      .span1
-        %input{ type: "checkbox", value: 1, checked: @page_with_help, "data-page_id" => 1, "data-user_id" => current_user.id, id: "modal_help_checkbox" }
-      .span25.font-small
-        Display this everytime I open this page
     %a.btn.pull-right{"data-dismiss" => "modal", href: "#"} Close
 
