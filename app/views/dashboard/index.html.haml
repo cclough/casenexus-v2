@@ -1,13 +1,25 @@
 - provide(:title, 'Map')
 
 - content_for :javascript_includes do
-  = javascript_include_tag "map"
+  = javascript_include_tag "dashboard"
 
   = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
 
-  :javascript
-    var users_index_map_lat_start = "#{current_user.lat}";
-    var users_index_map_lng_start = "#{current_user.lng}";
+
+  - if params[:user_id]
+    :javascript
+      var users_index_map_lat_start = "#{User.find(params[:user_id]).lat}";
+      var users_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
+
+      window.users_index_map_marker_click("#{params[:user_id]}");
+      
+  - else
+    :javascript
+      var users_index_map_lat_start = "#{current_user.lat}";
+      var users_index_map_lng_start = "#{current_user.lng}";
+
+      window.users_index_map_marker_click("#{current_user.id]}");
+
 
   - if @show_help
     :javascript

@@ -19,7 +19,6 @@ window.users_index_map_marker_click = (marker_id) ->
       $("#users_index_show_close").click ->
         $("#users_index_mapcontainer_user").fadeOut "slow"
 
-
       # Modal Stuff!
       $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal(backdrop: false, show: false)
 
@@ -35,7 +34,6 @@ window.users_index_map_marker_click = (marker_id) ->
         $(".modal").modal("hide")
         $("#modal_feedback_req").modal("show")
         $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
-
 
       # Fade panel back in
       $("#users_index_mapcontainer_user").fadeIn "fast"
@@ -93,14 +91,15 @@ $(document).ready ->
         $("div.gmnoprint").fadeIn 500
 
     # Marker
-    shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 26.0))
+    shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
 
     # Get the members
     $.getJSON "members", (json) ->
       $.each json, (i, marker) ->
 
         # Draw markers
-        image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png", new google.maps.Size(40.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 26.0))
+        image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
+        
         marker = new google.maps.Marker(
           id: marker.id
           map: map

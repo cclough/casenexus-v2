@@ -9,3 +9,23 @@
 
 - else
   %p No notifications found
+
+
+/ repeated from member#show - should we put this in a helper?
+- if Friendship.friends?(current_user, @user)
+  #users_show_conversation
+    = link_to "Show Conversation History", notification_path(@user)
+  %a#users_index_user_button_message.btn.btn-inverse.btn-small
+    %i.icon-comment.icon-white
+    %span
+      Reply
+
+- elsif Friendship.requested?(current_user, @user)
+  .alert.alert-info
+    Contact Request Pending
+
+- elsif @user != current_user
+  %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
+    %i.icon-comment.icon-white
+    %span
+      Send Friend Request
