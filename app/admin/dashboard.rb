@@ -12,9 +12,9 @@ ActiveAdmin.register_page "Dashboard" do
             column("Email") { |u| u.email }
             column("Status") { |u| u.status }
             column "Actions" do |user|
-              link_to("Approve", approve_admin_user_path(user, dashboard: true), method: :put) +
-                  " &nbsp; ".html_safe +
-                  (link_to "Reject", reject_admin_user_path(user, dashboard: true), method: :put)
+              links = ''.html_safe
+              links << link_to("Approve", approve_admin_user_path(user, dashboard: true), method: :put, class: 'member_link view_link')
+              links << link_to("Reject", reject_admin_user_path(user, dashboard: true), method: :put, class: 'member_link view_link')
             end
           end
         end

@@ -7,6 +7,17 @@ ActiveAdmin.register User do
     column :last_name
     column :status_moderated
     column :status_approved
+    column "Moderation" do |user|
+      links = ''.html_safe
+      if user.status_moderated == false
+        links << link_to("Approve", approve_admin_user_path(user, dashboard: true), method: :put, class: 'member_link view_link')
+        links << link_to("Reject", reject_admin_user_path(user, dashboard: true), method: :put, class: 'member_link view_link')
+      else
+        links << "&nbsp;".html_safe
+      end
+      links
+    end
+
   end
 
   member_action :approve, method: :put do
