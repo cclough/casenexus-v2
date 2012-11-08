@@ -27,7 +27,7 @@
                     %span.cases_analysis_comment_date
                       = comment.created_at.strftime("%d %b '%y")
                   .cases_analysis_comment_content
-                    = comment.businessanalytics_comment
+                    = comment.businessanalytics_comment.html_safe
         - else
           No comments found
       #cases_analysis_comments_tab_interpersonal.cases_analysis_comments_tab.tab-pane
@@ -42,7 +42,7 @@
                     %span.cases_analysis_comment_date
                       = comment.created_at.strftime("%d %b '%y")
                   .cases_analysis_comment_content
-                    = comment.interpersonal_comment
+                    = comment.interpersonal_comment.html_safe
         - else
           No comments found
       #cases_analysis_comments_tab_structure.cases_analysis_comments_tab.tab-pane
@@ -57,6 +57,6 @@
                     %span.cases_analysis_comment_date
                       = comment.created_at.strftime("%d %b '%y")
                   .cases_analysis_comment_content
-                    = comment.structure_comment
+                    = comment.structure_comment.html_safe
         - else
           No comments found
