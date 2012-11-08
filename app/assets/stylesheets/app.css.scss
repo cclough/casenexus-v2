@@ -14,7 +14,8 @@ $gray_Dark: #555555;
 html {
   overflow-y: scroll;
   height: 100%;
-
+  padding-bottom:0px;
+  margin-bottom:0px;
   background: url(app/bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -25,6 +26,7 @@ html {
 body {
   padding-top: 40px;
   height:100%;
+
   &.signedout {
     padding-top: 70px;
   }
@@ -70,7 +72,7 @@ textarea {
   &.main{
     /* gives twitter like white translucent background */
     background: url(app/white-wash.png);
-    height:100%;
+
   }
 }
 
