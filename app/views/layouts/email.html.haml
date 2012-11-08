@@ -128,7 +128,7 @@
                                   %td.w30{:width => "30"}
                                   %td.w325{:height => "8", :width => "350"}
                                     .header-content
-                                      %img#customHeaderImage.w640{:align => "top", :border => "0", :height => "34", :label => "Header Image", :src => "https://salty-crag-5200.herokuapp.com/assets/email/logo-small.png", :style => "display: inline", :width => "157"}/
+                                      %img#customHeaderImage.w640{:align => "top", :border => "0", :height => "34", :label => "Header Image", :src => "https://salty-crag-5200.herokuapp.com/assets/email/logo-white.png", :style => "display: inline", :width => "157"}/
                             %table.w325{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "350"}
                               %tbody
                                 %tr
@@ -143,8 +143,6 @@
                               %tbody
                                 %tr
                                   %td{:valign => "middle"}
-                                    %span#web-version
-                                      %webversion If you prefer, view this e-mail in your browser.
                                   %td{:width => "3"}
                                   %td{:valign => "middle"}
                                   %td.w10{:width => "10"}
@@ -182,7 +180,7 @@
                                             = yield
                                     %tr
                                       %td.w580{:height => "10", :width => "580"}
-                                        %img.line{:src => "/images/line.png"}/
+                                        %img.line{:src => "https://salty-crag-5200.herokuapp.com/assets/email/line.png"}/
 
                           %td.w30{:width => "30"}
                 %tr
@@ -201,7 +199,7 @@
                           %td.w30{:width => "30"}
                           %td.w580{:valign => "top", :width => "360"}
                             %p.footer-content-left{:align => "left"}
-                              %unsubscribe If you would like to unsubscribe click here
+                              %unsubscribe If you do not wish to receive email notifications, change your profile settings
                           %td.hide.w0{:width => "60"}
                           %td.hide.w0{:valign => "top", :width => "160"}
                             %p#street-address.footer-content-right{:align => "right"} © 2012 casenexus.com
