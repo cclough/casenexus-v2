@@ -56,6 +56,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   file = "#{Rails.root}/db/countries.csv"
 
+  require 'csv'
+
   CSV.foreach(file, headers: true) do |row|
     Country.create!(
         name: row[0],

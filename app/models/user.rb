@@ -34,9 +34,9 @@ class User < ActiveRecord::Base
 
   before_create :generate_roulette_token
   before_create :set_headline_and_university
-  after_create :update_invitation
   before_save { |user| user.email = user.email.downcase }
-  before_save :update_status_moderated
+  before_update :update_status_moderated
+  after_create :update_invitation
   after_save :send_welcome
 
   ### Validations
@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
 
   # Scoped_search Gem
   scoped_search on: [:first_name, :last_name, :status, :headline]
-
 
   ### Geocoder
   geocoded_by :ip_address, latitude: :lat, longitude: :lng
