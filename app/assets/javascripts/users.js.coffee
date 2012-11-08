@@ -10,6 +10,8 @@ $(document).ready ->
         window.map.setCenter(users_newedit_latlng)
         $("#users_newedit_lat").val(users_newedit_latlng.lat())
         $("#users_newedit_lng").val(users_newedit_latlng.lng())
+        $("#users_new_step3").css opacity: 1
+        $.users_new_step2_complete = true
 
     window.map = new google.maps.Map(document.getElementById("users_newedit_map"),
       # zoomed right out
