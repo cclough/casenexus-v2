@@ -46,15 +46,26 @@
                   = f.label :linkedin
                 .span25
                   = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'), target: '_blank')
+            .spacer5
 
+            .row
+              .span3.offset15
+                = f.check_box :email_admin
+              .span22
+                = f.label :email_admin, "Receive case interview advice email letter"
+            .row
+              .span3.offset15
+                = f.check_box :email_users
+              .span23
+                = f.label :email_users, "Send notifications from users to your email"
           .panel.darker.kill_bottom
             .row
               = f.label :status, "Describe your current situation"
               = f.text_area :status, id: 'users_edit_status'
 
-          = render 'invitations'
-
         .span47
+
+          = render 'invitations'
 
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "users_newedit_lat"
@@ -73,18 +84,7 @@
                   = @user.city
           .panel.dark.kill_top.kill_left
             .row
-              .span29
-                .row
-                  .span3
-                    = f.check_box :email_admin
-                  .span25
-                    = f.label :email_admin, "Receive case interview advice email letter"
-                .row
-                  .span3
-                    = f.check_box :email_users
-                  .span25
-                    = f.label :email_users, "Send notifications from users to your email"
-              .span10
+              .span10.offset7
                 .row
                   .spacer5
                   = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "users_edit_button_submit"

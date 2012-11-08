@@ -375,9 +375,13 @@ header {
     width:425px;
   }
   &.edit {
-    height:430px;
+    height:300px;
     width:435px;
   }
+}
+
+#users_edit_button_submit {
+  width:300px;
 }
 
 #users_newedit_map_location {
