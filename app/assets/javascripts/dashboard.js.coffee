@@ -19,7 +19,6 @@ window.users_index_map_marker_click = (marker_id) ->
       $("#users_index_show_close").click ->
         $("#users_index_mapcontainer_user").fadeOut "slow"
 
-
       # Modal Stuff!
       $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal(backdrop: false, show: false)
 
@@ -35,7 +34,6 @@ window.users_index_map_marker_click = (marker_id) ->
         $(".modal").modal("hide")
         $("#modal_feedback_req").modal("show")
         $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
-
 
       # Fade panel back in
       $("#users_index_mapcontainer_user").fadeIn "fast"

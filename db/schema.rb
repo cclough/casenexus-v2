@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107222950) do
+ActiveRecord::Schema.define(:version => 20121108001955) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -173,8 +173,6 @@ ActiveRecord::Schema.define(:version => 20121107222950) do
     t.float    "lat"
     t.float    "lng"
     t.string   "skype"
-    t.boolean  "email_admin",            :default => false, :null => false
-    t.boolean  "email_users",            :default => false, :null => false
     t.boolean  "completed",              :default => false, :null => false
     t.text     "status"
     t.boolean  "status_approved",        :default => false, :null => false
@@ -190,6 +188,8 @@ ActiveRecord::Schema.define(:version => 20121107222950) do
     t.boolean  "help_5",                 :default => false
     t.boolean  "help_6",                 :default => false
     t.boolean  "status_moderated",       :default => false, :null => false
+    t.boolean  "email_admin",            :default => true
+    t.boolean  "email_users",            :default => true
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
