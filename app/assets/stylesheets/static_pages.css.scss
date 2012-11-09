@@ -4,29 +4,15 @@ $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
 $blue_pastel: #98cdff;
+$blue_linkedin: #006699;
 
-
-#header_signin_form{
-  width:420px;
-  input {
-    margin-bottom:0px;
-  }
-}
-
-#header_signin_rememberme {
-  padding-left:32px;
-}
-
-#header_signin_forgottenpassword {
-  padding-left:10px;
-}
-
-#header_signin_button_linkedin {
-  margin-top:0px;
-}
 
 #static_home_signup{
-	margin-top:50px;
+  margin-top:80px;
+  width:255px;
+  input {
+    width:218px;
+  }
 }
 
 #static_home_signup_title {
@@ -35,6 +21,17 @@ $blue_pastel: #98cdff;
   border-bottom: 1px solid $gray_Light;
   margin-bottom: 5px;
   margin-top:-5px;
+  padding:8px;
+}
+
+#static_home_signup_option {
+  margin-left:28px;
+}
+
+
+
+#static_home_signup_option_linkedin_button_highlight {
+  color: $blue_linkedin;
 }
 
 #static_home_signup_option_linkedin {
@@ -61,8 +58,6 @@ $blue_pastel: #98cdff;
   margin-right: 10px;
   border-right: 1px solid #86c7fe;
 }
-
-
 
 
 

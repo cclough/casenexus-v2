@@ -12,13 +12,12 @@ $blue_pastel: #98cdff;
 	display:none;
 	width:867px;
 	padding:10px;
+	margin-bottom:3px;
 	font-size:15px;
 	font-face: bold;
+	background: rgba(0, 0, 0, 0.5);
 	&:hover {
-    /* Fallback for web browsers that doesn't support RGBa */
-    background: rgb(0, 0, 0) transparent;
-    /* RGBa with 0.6 opacity */
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
   }
 }
 
