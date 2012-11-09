@@ -1,5 +1,23 @@
 $(document).ready(function(){
 
+  // Submit form
+  $('#feedback_form').submit(function(e) {
+    var result = false;
+    $.ajax("/members/check_roulette?roulette_token=" + $("#roulette_index_field_token").val(),  {
+      type: "GET",
+      async: false,
+      success: function(data, textStatus, jqXHR) {
+        if (parseInt(data) > 0) {
+          result = true
+        } else {
+          alert("Token doesn't exist");
+          result = false;
+        }
+      }
+    });
+    return(result);
+  });
+
   $('#modal_roulette_req').modal({
     backdrop: false,
     show: false

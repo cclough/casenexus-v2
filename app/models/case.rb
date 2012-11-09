@@ -5,7 +5,10 @@ class Case < ActiveRecord::Base
                   :recommendation1, :recommendation2, :recommendation3,
                   :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
                   :rapport, :articulation, :concision, :askingforinformation,
-                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
+                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion,
+                  :roulette_token
+
+  attr_accessor :roulette_token
 
   ### Relationships
   belongs_to :user
@@ -60,6 +63,8 @@ class Case < ActiveRecord::Base
   validates :recommendation1, length: { maximum: 200 }
   validates :recommendation2, length: { maximum: 200 }
   validates :recommendation3, length: { maximum: 200 }
+
+  validate :friend_or_roulette_token
 
   ### Scopes
 
@@ -314,6 +319,16 @@ class Case < ActiveRecord::Base
   end
 
   private
+
+  def friend_or_roulette_token
+    user = User.find(self.user_id)
+    interviewer = User.find(self.interviewer_id)
+    if !Friendship.friendship(user, interviewer)
+      if !self.roulette_token.blank? && self.roulette_token != user.roulette_token
+        errors.add(:base, "You need to be friend or enter a roulette token in order to create a case")
+      end
+    end
+  end
 
   def create_notification
     self.user.notifications.create(sender_id: self.interviewer_id,

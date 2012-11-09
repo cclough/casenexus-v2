@@ -17,6 +17,7 @@ Casenexus::Application.routes.draw do
   resources :members, only: [:index, :show] do
     get :tooltip, on: :member
     put :show_help, on: :member
+    get :check_roulette, on: :collection
   end
 
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users

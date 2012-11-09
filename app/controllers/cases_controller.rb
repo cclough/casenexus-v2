@@ -33,6 +33,7 @@ class CasesController < ApplicationController
     end
 
     @case = @user.cases.build
+    @case.roulette_token = params[:roulette_token] if params[:roulette_token]
   end
 
   def create

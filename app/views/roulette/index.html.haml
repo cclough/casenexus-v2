@@ -41,7 +41,7 @@
             If you are interviewer, ask the interviewee for their roulette token:
           .spacer5
           .row
-            = form_tag('/cases/new', :method => "get") do
+            = form_tag('/cases/new', method: "get", id: 'feedback_form') do
               .input-append
                 = text_field_tag :roulette_token, nil, id: "roulette_index_field_token", placeholder: "Interviewee's Token"
                 %button.btn.btn-inverse{ type: "submit" }

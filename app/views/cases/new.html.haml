@@ -12,6 +12,7 @@
 
 = form_for @case, url: { action: :create } do |f|
   = f.hidden_field :user_id
+  = f.hidden_field :roulette_token
 
   #cases_new_form
     = render 'shared/error_messages', object: @case

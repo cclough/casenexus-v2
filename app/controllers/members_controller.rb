@@ -54,4 +54,14 @@ class MembersController < ApplicationController
     current_user.update_attribute(column_name, false)
     render text: "OK"
   end
+
+  def check_roulette
+    if !params[:roulette_token].blank? && User.where(roulette_token: params[:roulette_token]).exists?
+      @user = User.where(roulette_token: params[:roulette_token]).first
+      render text: @user.id
+    else
+      render text: "-1"
+    end
+  end
+
 end
