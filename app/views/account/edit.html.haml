@@ -36,12 +36,14 @@
             .spacer5
             .row
               .span12
-                = f.label :skype
+                = image_tag 'icons/skype_large.png'
+                #users_newedit_skype_link
+                  = link_to "Need to register?", "https://login.skype.com/account/signup-form"
               .span25
                 = f.text_field :skype
             .spacer5
             .row
-              .span15
+              .span12
                 = f.label :linkedin_name
               .span25
                 = f.text_field :linkedin_name
@@ -58,7 +60,7 @@
                 = f.label :email_users, "Send notifications from users to your email"
           .panel.darker.kill_bottom
             .row
-              = f.label :status, "Describe your current situation"
+              = f.label :status, "Your Status"
               = f.text_area :status, id: 'users_edit_status'
 
         .span47

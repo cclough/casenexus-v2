@@ -98,6 +98,10 @@ header {
 
 }
 
+#users_index_users_form_button_0, #users_index_users_form_button_1, #users_index_users_form_button_2 {
+  width:80px;
+}
+
 #users_index_users_empty {
   text-align: center;
   width:140px;
@@ -379,6 +383,7 @@ header {
   }
 }
 
+
 #users_edit_button_submit {
   width:300px;
 }
@@ -386,6 +391,12 @@ header {
 #users_newedit_map_location {
   height:20px;
 }
+
+#users_newedit_skype_link {
+  margin-top:5px;
+  font-size:10px;
+}
+
 
 #users_new_status {
   height:190px;

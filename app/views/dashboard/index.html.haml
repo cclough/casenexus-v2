@@ -12,15 +12,15 @@
       var users_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
       setTimeout(function() {
         window.users_index_map_marker_click("#{params[:user_id]}");
-      }), 1440
+      }), 1000
       
   - else
     :javascript
       var users_index_map_lat_start = "#{current_user.lat}";
       var users_index_map_lng_start = "#{current_user.lng}";
-
-      window.users_index_map_marker_click("#{current_user.id}");
-
+      setTimeout(function() {
+        window.users_index_map_marker_click("#{current_user.id}");
+      }), 1000
 
   - if current_user.help_2_checked
     :javascript

@@ -5,7 +5,7 @@ class RouletteController < ApplicationController
   def index
     # Check the user has a valid skype
     if current_user.skype.blank?
-      flash[:notice] = "You need to provide a valid Skype user in order to use the Roulette feature"
+      flash[:notice] = "You must provide a valid Skype username to use Case Roulette"
       redirect_to edit_account_path and return
     end
 

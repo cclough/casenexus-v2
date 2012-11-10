@@ -20,3 +20,17 @@ $(document).ready ->
     $('#static_home_signup_option_university_submit').slideDown "fast"
     $('#static_home_signup_option_linkedin').slideUp "fast"
     $('#static_home_signup_option_linkedin_submit').slideUp "fast"
+
+  # slider start
+  c = 2
+  interval = setInterval(->
+    window.ArrowNav.goTo c
+    c++
+    if c >= 5
+      c = 1
+
+  , 5000)
+
+  # stop on mouseover
+  $('#static_home_slider_panel').mouseover ->
+    clearInterval(interval);
