@@ -30,10 +30,6 @@ We'd like to invite you to join a new site, casenexus.com - a new site that we h
       %li Form designed by a top-3-firm professional consultant with many years of interviewing experience
       %li Feedback is recorded and analysed
 
-%p Your one-time invitation code is below. When you subscribe, you will get 5 invitations to give to good friends (accessible in via your account Settings) - do please use them!
-
-%b= @invitation.code
-
 %p As the initial users of the site, we'd be very grateful if you would, as much as you can, provide us with feedback on any bugs you find, or feature suggestions - in fact we're counting on your help!
 
 %p We're expecting a bit of a bumpy ride to start with, so hope you will bear with us, as we get everything running smoothly.
@@ -42,8 +38,14 @@ We'd like to invite you to join a new site, casenexus.com - a new site that we h
 
 %p Apart from the contact methods on the website, do not hesistae to contact us directly at info@casenexus.com if you'd like to get in touch.
 
-%p Ready?
+%p Ready? Click the link below, and enter your unique invitation code: 
 
-= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
+= @invitation.code
+
+%p = link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
+
+%p When you sign-up, you will get 5 invitations to give to good friends (accessible in via your account Settings) - do please use them.
+
+%p Good luck!
 
 %p - casenexus.com

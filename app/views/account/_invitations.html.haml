@@ -1,11 +1,11 @@
-.panel.dark.kill_left
+.panel.dark.font-small
 
   .row
-    .span40
+    .span43
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT
         %p Invite a new friend (#{current_user.invitations.count}/5 Invitations Used)
 
-        = simple_form_for @invitation, html: { class: 'form-vertical' } do |f|
+        = simple_form_for @invitation do |f|
           = hidden_field_tag :back_url, edit_account_path
           .row
             .span16
@@ -16,18 +16,16 @@
                 = f.submit "Invite", class: 'btn btn-inverse'
       - else
         %p You have no more invitations
-
-  .panel.dark.kill_all
-
-    .row
-      .span86
+    .span40
+      #users_edit_invitations_list.panel.dark.kill_all
         - if @invitations.count > 0
           - @invitations.each do |invitation|
-            - if invitation.invited
-              = "#{invitation.email} accepted your invitation and created his profile: "
-              = link_to(invitation.invited, member_path(invitation.invited))
-            - else
-              = "#{invitation.email} invited"
-              = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
+            %div
+              - if invitation.invited
+                = "#{invitation.email} accepted your invitation and created his profile: "
+                = link_to(invitation.invited, member_path(invitation.invited))
+              - else
+                = "#{invitation.email} invited"
+                = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
         - else
           %p There are no pending/accepted invitations

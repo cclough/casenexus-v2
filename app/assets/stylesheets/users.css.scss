@@ -397,14 +397,11 @@ header {
   width:400px;
 }
 
-.users_edex_datepicker {
-  width: 40px;
+#users_edit_invitations_list {
+  height:40px;
+  overflow-y:auto;
+  width:435px;
 }
-
-.users_edex_field {
-  width: 130px;
-}
-
 
 label { // why the hell won't this work in app.css?
   font-size:12px;
