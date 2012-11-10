@@ -47,11 +47,10 @@
               = image_tag 'icons/skype_large.png'
               .users_new_condition
                 (optional)
+              #users_newedit_skype_link
+                = link_to "Need to register?", "https://login.skype.com/account/signup-form"
             .span23
               = f.text_field :skype
-            .span9
-              .font-small
-                = link_to "Not got a Skype username?", "https://login.skype.com/account/signup-form"
                 
           .row
             .span32.offset10

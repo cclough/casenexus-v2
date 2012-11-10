@@ -122,10 +122,6 @@ class User < ActiveRecord::Base
       user.nearbys(100).order('created_at desc')
     end
 
-    def list_rand
-      order("RANDOM()")
-    end
-
     def list_contacts(user)
       user.accepted_friends
     end

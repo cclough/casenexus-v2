@@ -11,8 +11,6 @@ class MembersController < ApplicationController
         users_scope = User.includes(:cases).list_global
       when "local"
         users_scope = User.includes(:cases).list_local(current_user)
-      when "rand"
-        users_scope = User.includes(:cases).list_rand
       when "contacts"
         users_scope = current_user.accepted_friends.includes(:cases)
     end

@@ -3,9 +3,9 @@
   .row
     .span43
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT
-        %p Invite a new friend (#{current_user.invitations.count}/5 Invitations Used)
+        %p Invite a friend to casenexus (#{current_user.invitations.count}/5 Invitations Used)
 
-        = simple_form_for @invitation do |f|
+        = simple_form_for @invitation, html: { id: "users_edit_invitations_form" } do |f|
           = hidden_field_tag :back_url, edit_account_path
           .row
             .span16

@@ -149,12 +149,12 @@ body {
   color: #333333;
 }
 a {
-  color: #0088cc;
+  color: #98cdff;
   text-decoration: none;
 }
 a:hover {
-  color: #005580;
-  text-decoration: underline;
+  color: #ffffff;
+/*  text-decoration: underline;*/
 }
 .img-rounded {
   -webkit-border-radius: 6px;
@@ -5019,7 +5019,7 @@ input[type="submit"].btn.btn-mini {
   -webkit-box-shadow: 2px 3px 14px #4a494a;
   box-shadow: 2px 3px 14px #4a494a;
 
-  background: url('app/title-bg.png') repeat top left;
+  background: rgba(0, 0, 0, 0.8);
 }
 .alert h4 {
   margin: 0;
