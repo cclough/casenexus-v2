@@ -39,14 +39,13 @@
                 = f.label :skype
               .span25
                 = f.text_field :skype
-            - if current_user.linkedin_uid.blank?
-              .row
-                .span12
-                  = f.label :linkedin
-                .span25
-                  = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'), target: '_blank', class: "btn btn-inverse btn-small")
             .spacer5
-
+            .row
+              .span15
+                = f.label :linkedin_name
+              .span25
+                = f.text_field :linkedin_name
+            .spacer5
             .row
               .span3.offset12
                 = f.check_box :email_admin

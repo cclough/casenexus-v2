@@ -12,6 +12,7 @@
 = render 'shared/title'
 
 = form_for(@user, url: account_path) do |f|
+  = hidden_field_tag :back_url, complete_profile_account_path
 
   .row
     = render 'shared/error_messages', object: @user

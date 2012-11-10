@@ -10,7 +10,6 @@ class AccountController < ApplicationController
 
     @invitations = Invitation.where(user_id: current_user.id)
     @invitation = current_user.invitations.build(params[:invitation])
-    a = 1
   end
 
   def update
@@ -28,7 +27,11 @@ class AccountController < ApplicationController
       @invitations = current_user.invitations
       @invitation = current_user.invitations.build(params[:invitation])
 
-      render 'edit'
+      if params[:back_url]
+        redirect_to params[:back_url]
+      else
+        render 'edit'
+      end
     end
   end
 

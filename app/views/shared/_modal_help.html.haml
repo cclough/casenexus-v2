@@ -28,7 +28,7 @@
       #modal_help_page_1
         .row
           .span3
-            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 1, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+            = check_box_tag :help_1_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 1, 'data-user_id' => current_user.id
           .span25.font-small
             Display this everytime I open this page
 
@@ -59,7 +59,7 @@
 
         .row
           .span3
-            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 2, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+            = check_box_tag :help_2_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 2, 'data-user_id' => current_user.id
           .span25.font-small
             Display this everytime I open this page
 
@@ -82,7 +82,7 @@
 
         .row
           .span3
-            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 3, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+            = check_box_tag :help_3_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 3, 'data-user_id' => current_user.id
           .span25.font-small
             Display this everytime I open this page
 
@@ -104,7 +104,7 @@
 
         .row
           .span3
-            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 4, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+            = check_box_tag :help_4_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 4, 'data-user_id' => current_user.id
           .span25.font-small
             Display this everytime I open this page
 
@@ -128,7 +128,7 @@
 
         .row
           .span3
-            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 5, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+            = check_box_tag :help_5_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 5, 'data-user_id' => current_user.id
           .span25.font-small
             Display this everytime I open this page
 
@@ -149,7 +149,7 @@
 
         .row
           .span3
-            %input{ type: "checkbox", value: 1, checked: current_user.help_1_checked, "data-page_id" => 6, "data-user_id" => current_user.id, class: "modal_help_checkbox" }
+            = check_box_tag :help_6_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 6, 'data-user_id' => current_user.id
           .span25.font-small
             Display this everytime I open this page
 
