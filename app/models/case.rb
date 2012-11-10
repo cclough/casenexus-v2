@@ -65,6 +65,7 @@ class Case < ActiveRecord::Base
   validates :recommendation3, length: { maximum: 200 }
 
   validate :friend_or_roulette_token
+  validate :no_case_to_self
 
   ### Scopes
 
@@ -327,6 +328,12 @@ class Case < ActiveRecord::Base
       if !self.roulette_token.blank? && self.roulette_token != user.roulette_token
         errors.add(:base, "You need to be friend or enter a roulette token in order to create a case")
       end
+    end
+  end
+
+  def no_case_to_self
+    unless self.user_id.blank?
+      errors.add(:base, "cannot send feedback to yourself") if self.user_id == self.interviewer_id
     end
   end
 
