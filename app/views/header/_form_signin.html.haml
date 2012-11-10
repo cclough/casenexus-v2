@@ -1,7 +1,7 @@
 #header_signin_form
   = simple_form_for(@user, url: session_path(@user)) do |f|
     .row
-      .span16
+      .span20
         = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "University Email", id: "header_signin_email"
       .span20
         .input-append
@@ -12,10 +12,10 @@
         %a#header_signin_button_linkedin.btn.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
           = image_tag 'home/button_logo_linkedin.png'
     .row
-      .span16#header_signin_forgottenpassword
+      .span17#header_signin_forgottenpassword
         %small
           = link_to "Forgotten your password?", new_password_path('user')
-      .span21#header_signin_rememberme
+      .span25#header_signin_rememberme
         .span8
           = f.label :remember_me, class: 'font-small'
         .span2.offset1

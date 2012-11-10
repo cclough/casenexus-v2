@@ -1,59 +1,62 @@
-.panel.gradient.kill_left.kill_right
-  #static_home_signup_title
-    Sign up
-  .spacer5
-  .row
-    .span23
+#static_home_signup
+  .panel.gradient.kill_left.kill_right
+    #static_home_signup_title
+      Get Started...
+    .spacer5
+    .row
+      .span23
 
-      = simple_form_for(@user, url: user_registration_path(@user)) do |f|
+        = simple_form_for(@user, url: user_registration_path(@user)) do |f|
 
-        / = f.text_field :roulette_token, placeholder: 'Enter your 8-digit invite code...'
-        .row
-          = f.text_field :invitation_code, placeholder: "Enter your invitation code"
-        .row
-          #static_home_signup_option
-            .btn-group
-              %a#static_home_signup_option_university_button.btn.btn-small.active With a University Email
-              %a#static_home_signup_option_linkedin_button.btn.btn-small via LinkedIn
+          / = f.text_field :roulette_token, placeholder: 'Enter your 8-digit invite code...'
+          .row
+            = f.text_field :invitation_code, placeholder: "Enter your invitation code..."
+          .row
+            #static_home_signup_option
+              .btn-group
+                %a#static_home_signup_option_university_button.btn.btn-small.active via University
+                %a#static_home_signup_option_linkedin_button.btn.btn-small
+                  via 
+                  %span#static_home_signup_option_linkedin_button_highlight LinkedIn
 
 
-        .spacer10
-        #static_home_signup_option_university
+          .spacer10
+          #static_home_signup_option_university
 
-          = render 'shared/error_messages', object: f.object
+            = render 'shared/error_messages', object: f.object
 
-          = render 'static_pages/universities_select'
+            = render 'static_pages/universities_select'
 
+            .spacer5
+            = f.text_field :email, placeholder: 'Email'
+            .spacer5
+            = f.password_field :password, placeholder: 'Password'
+            = f.password_field :password_confirmation, placeholder: 'Confirm Password'
           .spacer5
-          = f.text_field :email, placeholder: 'Email'
-          .spacer5
-          = f.password_field :password, placeholder: 'Password'
-          = f.password_field :password_confirmation, placeholder: 'Confirm Password'
-        .spacer5
-        .row
-          .span20.font-small
-            I agree to the 
-            = link_to "Terms and Conditions", terms_path
-          .span3
-            = f.check_box :confirm_tac
-
-        .spacer5
-        #static_home_signup_option_linkedin.font-small
           .row
             .span20.font-small
-              I agree that my email address, and LinkedIn headline can be saved (and nothing else!) 
+              I agree to the 
+              = link_to "Terms and Conditions", terms_path
             .span3
-              = check_box_tag :confirm_linkedin
-        .row
-          .offset1
-            = f.hidden_field :ip_address, value: request.remote_ip
-            #static_home_signup_option_university_submit
-              = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit"
+              = f.check_box :confirm_tac
 
-            #static_home_signup_option_linkedin_submit
-              .spacer15
-              %a#static_home_signup_option_linkedin_button_submit.btn.btn-large.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
-                %span#static_home_signup_option_linkedin_button_submit_logo
-                  = image_tag 'home/button_logo_linkedin.png'
-                %span
-                  Sign up with LinkedIn
+          .spacer5
+          #static_home_signup_option_linkedin.font-small
+            .row
+              .span20.font-small
+                I agree that my email address, and LinkedIn headline can be saved (and nothing else!) 
+              .span3
+                = check_box_tag :confirm_linkedin
+          .row
+            .offset1
+              = f.hidden_field :ip_address, value: request.remote_ip
+              #static_home_signup_option_university_submit
+                = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit"
+
+              #static_home_signup_option_linkedin_submit
+                .spacer15
+                %a#static_home_signup_option_linkedin_button_submit.btn.btn-large.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
+                  %span#static_home_signup_option_linkedin_button_submit_logo
+                    = image_tag 'home/button_logo_linkedin.png'
+                  %span
+                    Sign up with LinkedIn

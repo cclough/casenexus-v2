@@ -36,9 +36,34 @@ $gray_Lightest: #f6f6f6;
 #header_signin_form {
   position: absolute;
   top: 3px;
-  margin-left:590px; // hacky hacky!
+  margin-left:490px; // hacky hacky!
   margin-top:5px;
+  width:620px;
+  input {
+    margin-bottom:0px;
+  }
 }
+
+#header_signin_email {
+  width:178px;
+}
+
+#header_signin_rememberme {
+  padding-left:24px;
+}
+
+#header_signin_forgottenpassword {
+  padding-left:48px;
+}
+
+
+#header_signin_button_linkedin {
+  margin-top:0px;
+}
+
+
+
+
 
 #header_menu_profile_casecount {
   margin-left: 10px;
@@ -67,3 +92,5 @@ $gray_Lightest: #f6f6f6;
   float:left;
   margin-right:5px;
 }
+
+
