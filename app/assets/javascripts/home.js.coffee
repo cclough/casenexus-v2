@@ -26,10 +26,10 @@ $(document).ready ->
   interval = setInterval(->
     window.ArrowNav.goTo c
     c++
-    if c >= 5
+    if c >= 6
       c = 1
 
-  , 5000)
+  , 10000)
 
   # stop on mouseover
   $('#static_home_slider_panel').mouseover ->

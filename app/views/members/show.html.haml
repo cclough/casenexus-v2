@@ -43,34 +43,35 @@
         #users_show_status
           = @user.status
     .spacer10
-    .row
-      .pull-left
-        - if @user.last_online_at
-          #users_show_lastonline
-            Last online:
-            = time_ago_in_words(@user.last_online_at)
+    #users_show_status_actions
+      .row
+        .pull-left
+          - if @user.last_online_at
+            #users_show_lastonline
+              Last online:
+              = time_ago_in_words(@user.last_online_at)
 
-      .pull-right
-        - if Friendship.friends?(current_user, @user)
-          #users_show_conversation
-            = link_to "Show Conversation History", notification_path(@user)
-          %a#users_index_user_button_message.btn.btn-inverse.btn-small
-            %i.icon-comment.icon-white
-            %span
-              Message
+        .pull-right
+          - if Friendship.friends?(current_user, @user)
+            #users_show_conversation
+              = link_to "Show Conversation History", notification_path(@user)
+            %a#users_index_user_button_message.btn.btn-inverse.btn-small
+              %i.icon-comment.icon-white
+              %span
+                Message
 
-        - elsif Friendship.requested?(current_user, @user)
-          .alert.alert-info
-            Contact Request Pending
+          - elsif Friendship.requested?(current_user, @user)
+            .alert.alert-info
+              Contact Request Pending
 
-        - elsif @user != current_user
-          %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
-            %i.icon-comment.icon-white
-            %span
-              Send Friend Request
+          - elsif @user != current_user
+            %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
+              %i.icon-comment.icon-white
+              %span
+                Send Friend Request
 
-- if @friendship
-  #modal_friendship_req.modal.hide.fade
-    = render '/friendships/request_form'
+  - if @friendship
+    #modal_friendship_req.modal.hide.fade
+      = render '/friendships/request_form'
 
-= render '/shared/modal_group_message_and_feedback_req'
+  = render '/shared/modal_group_message_and_feedback_req'

@@ -15,9 +15,9 @@
           %li
             %a{:href => "#4"} New Case Form
           %li
-            %a{:href => "#6"} Case Index
+            %a{:href => "#5"} Case Index
           %li
-            %a{:href => "#5"} Progress Analysis
+            %a{:href => "#6"} Progress Analysis
 
         %span.arrow
   .modal-body
@@ -26,11 +26,6 @@
     #application_arrownav_page_1.arrownav_page
 
       #modal_help_page_1
-        .row
-          .span3
-            = check_box_tag :help_1_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 1, 'data-user_id' => current_user.id
-          .span25.font-small
-            Display this everytime I open this page
 
         .set-1a
           %h4 Users
@@ -56,13 +51,6 @@
 
     #application_arrownav_page_2.arrownav_page
       #modal_help_page_2
-
-        .row
-          .span3
-            = check_box_tag :help_2_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 2, 'data-user_id' => current_user.id
-          .span25.font-small
-            Display this everytime I open this page
-
         .set-2a
           %h1 User panel
           %p Find candidates who live/work near you - click on their map markers to see their status, then send them a case partner request
@@ -79,13 +67,6 @@
 
     #application_arrownav_page_3.arrownav_page
       #modal_help_page_3
-
-        .row
-          .span3
-            = check_box_tag :help_3_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 3, 'data-user_id' => current_user.id
-          .span25.font-small
-            Display this everytime I open this page
-
         .set-3a
           %h4 Roulette
           %p Click the 'connect' button to join the 'roulette'
@@ -101,13 +82,6 @@
 
     #application_arrownav_page_4.arrownav_page
       #modal_help_page_4
-
-        .row
-          .span3
-            = check_box_tag :help_4_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 4, 'data-user_id' => current_user.id
-          .span25.font-small
-            Display this everytime I open this page
-
         .set-4a
           %p Feedback system carefully designed by a consultant at one of the top 3 firms with many years of interviewing experience
         .set-4b
@@ -122,21 +96,13 @@
             %br
               %p Enter your comments in the text boxes on the right for each criteria
 
-
     #application_arrownav_page_5.arrownav_page
-      #modal_help_page_6
+      #modal_help_page_5
 
-        .row
-          .span3
-            = check_box_tag :help_5_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 5, 'data-user_id' => current_user.id
-          .span25.font-small
-            Display this everytime I open this page
-
-        .set-6a
-          %h4 Your Progress
-          %p Statistics calculated from your feedback from other users
+        .set-5a
+          %h4 A Library of your cases
           %p Browse and search for cases you've done in the list on the left.
-        .set-6b
+        .set-5b
           %p
             Clicking on a case brings up the record for it,
             %br
@@ -145,27 +111,23 @@
                 and the comments made by the interviewer.
 
     #application_arrownav_page_6.arrownav_page
-      #modal_help_page_5
+      #modal_help_page_6
 
-        .row
-          .span3
-            = check_box_tag :help_6_checked, 1, !current_user.help_1_checked, :class => 'modal_help_checkbox', 'data-page_id' => 6, 'data-user_id' => current_user.id
-          .span25.font-small
-            Display this everytime I open this page
-
-        .set-5a
+        .set-6a
           %h2 So this is just a bit of fun...
-        .set-5b
+        .set-6b
           %h2 The Progress Chart
           %p Shows your aggregated scores for the three categories over time
-        .set-5c
+        .set-6c
           %h2 Radar Chart
           %p In the bottom left shows your scores for your first and last case, as well as your overall average, against the different scoring criteria - look for things you are consistenly weak at to improve
-        .set-5d
+        .set-6d
           %h2 Comment Aggregator
           %p Use the comment aggregator to browse through comments in the different categories, and recommendations, to remind yourself of what you need to improve.
 
 
   .modal-footer
+    #modal_help_checkbox.pull-left
+
     %a.btn.pull-right{"data-dismiss" => "modal", href: "#"} Close
 

@@ -27,12 +27,34 @@ window.getQueryParams = (qs) ->
   params
 
 
+window.application_help_checkbox = (help_page) ->
+  $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
+    
+    $("#modal_help_checkbox").html data
+    
+    $("input:checkbox").uniform()
+
+    # Modal help checkbox
+    $(".modal_help_checkbox").live 'change', ->
+      if !$(this).is(':checked')
+        page_id = $(this).attr("data-page_id")
+        user_id = $(this).attr("data-user_id")
+        $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
+
+  
+
 window.application_show_help = (help_page) ->
-  $("#modal_help").on('show', (e) ->
-    window.ArrowNav.goTo help_page
-  )
+
   $(".modal").modal "hide"
+
   $("#modal_help").modal "show"
+  
+  setTimeout ->
+    window.ArrowNav.goTo help_page
+  , 200
+
+  window.application_help_checkbox help_page
+
 
 
 $(document).ready ->
@@ -47,17 +69,11 @@ $(document).ready ->
     backdrop: false
     show: false
 
-  # Modal help checkbox
-  $(".modal_help_checkbox").live 'change', ->
-    if !$(this).is(':checked')
-      page_id = $(this).attr("data-page_id")
-      user_id = $(this).attr("data-user_id")
-      $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
-
   # Modal help link
   $("#header_link_help").click ->
     $(".modal").modal "hide"
     $("#modal_help").modal "show"
+    window.ArrowNav.goTo 1
 
   # Modal bug
   $("#modal_bug").modal
@@ -102,7 +118,12 @@ $(document).ready ->
         $(".arrownav_page").hide()
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
-        next_page.fadeIn 500
+        
+        #next_page.fadeIn 500
+        next_page.show "slide", direction: "right", 500
+
+        window.application_help_checkbox page
+
         window.ArrowNav.centerArrow nav_item
 
       centerArrow: (nav_item, animate) ->

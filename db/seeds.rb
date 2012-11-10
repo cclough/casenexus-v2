@@ -52,6 +52,12 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.save!
   admin.confirm!
 
+
+  puts "Creating Christian's Friendships"
+
+  Friendship.connect(User.find(1), User.find(2))
+
+
   puts "Creating countries"
 
   file = "#{Rails.root}/db/countries.csv"
@@ -66,6 +72,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
         lng: row[3]
     )
   end
+
 
 end
 
@@ -88,7 +95,7 @@ if Rails.env == 'development'
     date
   end
 
-  100.times do |n|
+  15.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     email = "example#{n+1}@cam.ac.uk"
@@ -119,11 +126,11 @@ if Rails.env == 'development'
     puts "User #{user.name} created"
   end
 
-  User.limit(20).all.each do |user|
+  User.all.each do |user|
 
     rand(51).times do
       user.cases.create!(
-          interviewer_id: 1 + rand(98),
+          interviewer_id: 1 + rand(15),
           date: random_date(year_range: 2, year_latest: 0.5),
           subject: Faker::Lorem.sentence(5),
           source: Faker::Lorem.sentence(3),
@@ -156,7 +163,7 @@ if Rails.env == 'development'
 
   end
 
-  User.limit(20).each do |user|
+  User.each do |user|
 
     2.times do
       user.notifications.create!(ntype: "message",
@@ -183,12 +190,7 @@ if Rails.env == 'development'
     end
   end
 
-  puts "Creating Christian's Friendships"
-  
-  users = User.order(:id).all
-  Friendship.connect(users[0], users[1])
-  Friendship.connect(users[0], users[2])
-  Friendship.connect(users[0], users[3])  
+
 
 end
 

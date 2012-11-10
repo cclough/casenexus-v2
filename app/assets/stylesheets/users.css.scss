@@ -199,7 +199,7 @@ header {
 
   margin-right:-190px;
 
-  padding:8px 3px;
+  padding:6px 2px;
 
   height:25px;
   width:380px;
@@ -263,6 +263,8 @@ header {
 
   padding-top:6px;
   padding-bottom:2px;
+  padding-left: 3px;
+  padding-right:3px;
 
   height:25px;
   width:317px;
@@ -327,7 +329,10 @@ header {
   font-weight:italic;
 }
 
-
+#users_show_status_actions {
+  border-top: 1px solid $gray_Light;
+  padding-top:10px;
+}
 
 #users_show_casecount {
   margin-left: 4px;
