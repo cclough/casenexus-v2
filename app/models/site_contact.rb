@@ -1,6 +1,8 @@
 class SiteContact < ActiveRecord::Base
   attr_accessible :subject, :email, :content
 
+  belongs_to :user
+
   validates :subject, presence: true
   validates :email, presence: true
   validates :content, presence: true
