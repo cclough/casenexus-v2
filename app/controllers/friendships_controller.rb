@@ -45,7 +45,11 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     Friendship.accept(@friendship.user, @friendship.friend)
     flash[:success] = "Contact Accepted"
-    redirect_to action: :index
+    if params[:back_url]
+      redirect_to params[:back_url]
+    else
+      redirect_to action: :index
+    end
   end
 
   def reject
@@ -56,7 +60,12 @@ class FriendshipsController < ApplicationController
     Friendship.breakup(@friendship.user, @friendship.friend)
 
     flash[:success] = "Invitation Rejected"
-    redirect_to action: :index
+
+    if params[:back_url]
+      redirect_to params[:back_url]
+    else
+      redirect_to action: :index
+    end
   end
 
   def block

@@ -7,11 +7,15 @@
     = link_to 'Jump to Feedback form', ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date })
   - when "friendship_req"
     - if notifications_item.notificable
-      / = link_to 'Show Friendship Request', friendship_path(notifications_item.notificable)
-      Contact request: 
-      = link_to("Accept", accept_friendship_path(notifications_item.notificable), method: :put)
-      = link_to("Reject", reject_friendship_path(notifications_item.notificable), method: :put)
-      / = link_to("Block", block_friendship_path(notifications_item.notificable), method: :put)
+      - if notifications_item.notificable.status == Friendship::ACCEPTED
+        Contact Request Accepted
+      - elsif notifications_item.notificable.status == Friendship::REJECTED
+        Contact Request Rejected
+      - else
+        Contact request:
+        = link_to("Accept", accept_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put)
+        = link_to("Reject", reject_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put)
+        / = link_to("Block", block_friendship_path(notifications_item.notificable), method: :put)
   - when "friendship_app"
     - if notifications_item.notificable
       = link_to "Show Contact's Profile", members_path(notifications_item.notificable.friend)
