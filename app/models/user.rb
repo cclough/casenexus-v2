@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
                   :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac, :university, :university_id,
-                  :invitation_code, :linkedin_name
+                  :invitation_code, :linkedin_name, :status_moderated, :status_approved
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
@@ -172,6 +172,7 @@ class User < ActiveRecord::Base
     if self.status_was != self.status
       self.status_approved = false
       self.status_moderated = false
+      Rails.logger.info("STATUS MODERATED")
     end
   end
 
