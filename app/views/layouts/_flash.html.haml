@@ -2,7 +2,7 @@
   - if flash.any?
     - flash.each do |key, value|
       / fade in function doesn't seem to work yet
-      %div{ class: "alert alert-#{key} fade in" }
+      %div{ class: "alert alert-#{key} fade in", "data-dismiss" => "alert", :href => "#"}
         / inserts close button
-        %a.close{"data-dismiss" => "alert", :href => "#"} ×
+        %a.close ×
         = flash.discard(key)

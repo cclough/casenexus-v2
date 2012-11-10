@@ -5,13 +5,14 @@
 
   = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
 
-
+  / Params link to user marker
   - if params[:user_id]
     :javascript
       var users_index_map_lat_start = "#{User.find(params[:user_id]).lat}";
       var users_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
-
-      window.users_index_map_marker_click("#{params[:user_id]}");
+      setTimeout(function() {
+        window.users_index_map_marker_click("#{params[:user_id]}");
+      }), 1440
       
   - else
     :javascript

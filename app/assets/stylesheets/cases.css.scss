@@ -24,6 +24,11 @@ $blue_pastel: #98cdff;
   color: $blue_pastel;
 }
 
+#cases_index_cases {
+  padding:4px;
+}
+
+
 #cases_index_case_filler {
   height:770px;
   text-align:center;
@@ -47,10 +52,11 @@ $blue_pastel: #98cdff;
 .cases_index_name {
   font-weight:bold;
   font-size:13px;
+  color:white;
 }
 
 .cases_index_timestamp {
-  color: $gray_Mid;
+  color: $gray_Light;
   font-size:10px;
 }
 
@@ -66,8 +72,18 @@ $blue_pastel: #98cdff;
   padding-top:12px;
   text-decoration:none;
   color: black;
+  background: rgba(0, 0, 0, 0.3);
+  margin-bottom:3px;
+  padding-left:5px;
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  color:$gray_Lighter;
+
   &:hover {
-    background-color: $gray_Lightest;
+    background: rgba(0, 0, 0, 0.7);
     cursor:pointer;cursor:hand;
   }
 }

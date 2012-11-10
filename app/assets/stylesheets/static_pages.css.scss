@@ -9,10 +9,14 @@ $blue_linkedin: #006699;
 
 #static_home_signup{
   margin-top:80px;
+  margin-left:4px;
   width:255px;
   input {
     width:218px;
   }
+  // -moz-box-shadow: 1px 1px 31px #3b3b3b;
+  // -webkit-box-shadow: 1px 1px 31px #3b3b3b;
+  // box-shadow: 1px 1px 31px #3b3b3b;
 }
 
 #static_home_signup_title {
@@ -21,7 +25,13 @@ $blue_linkedin: #006699;
   border-bottom: 1px solid $gray_Light;
   margin-bottom: 5px;
   margin-top:-5px;
-  padding:8px;
+  padding:7px;
+}
+
+
+#static_home_signup_confirm_tac_label {
+  margin-top:3px;
+  margin-left:7px;
 }
 
 #static_home_signup_option {
@@ -39,7 +49,11 @@ $blue_linkedin: #006699;
 }
 
 #static_home_signup_option_university_button_submit {
-  width:200px;
+  width:233px !important;
+}
+
+#static_home_signup_option_university_select {
+  width:232px;
 }
 
 #static_home_signup_option_linkedin_submit {
@@ -47,8 +61,8 @@ $blue_linkedin: #006699;
 }
 
 #static_home_signup_option_linkedin_button_submit {
-	font-size: 13px;
-  width:170px;
+	font-size: 14px;
+  width:202px;
 }
 
 #static_home_signup_option_linkedin_button_submit_logo {
@@ -59,12 +73,15 @@ $blue_linkedin: #006699;
   border-right: 1px solid #86c7fe;
 }
 
-
+#static_home_slider_panel {
+  width:605px;
+}
 
 #static_home_slider {
   font-size:12px;
   height:500px;
-  width:600px;
+  width:588px;
+
 }
 
 
