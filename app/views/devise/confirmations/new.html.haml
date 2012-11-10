@@ -3,15 +3,18 @@
     .panel.gradient
       = render 'layouts/flash', flash: flash
 
-      %h2 Resend confirmation instructions
+      %h4 Resend email confirmation instructions
 
       = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
         = f.error_notification
 
         .form-inputs
-          = f.input :email, required: true
+          .offset8
+            Email:
+            = f.text_field :email
 
         .form-actions
-          = f.button :submit, "Resend confirmation instructions"
+          .offset9
+            = f.button :submit, "Resend confirmation instructions"
 
       = render "devise/shared/links"

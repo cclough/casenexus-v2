@@ -9,14 +9,14 @@
           %button.btn.btn-inverse{:href => "#", :type => "submit", tabindex: "3", id: "static_home_signin"}
             %i.icon-arrow-right.icon-white
       .span6
-        %a#header_signin_button_linkedin.btn.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
+        %a#header_signin_button_linkedin.btn.btn-inverse{ href: user_omniauth_authorize_path('linkedin'), tabindex: "4" }
           = image_tag 'home/button_logo_linkedin.png'
     .row
       .span17#header_signin_forgottenpassword
         %small
-          = link_to "Forgotten your password?", new_password_path('user')
+          = link_to "Forgotten your password?", new_password_path('user'), tabindex: "4" 
       .span25#header_signin_rememberme
         .span8
           = f.label :remember_me, class: 'font-small'
         .span2.offset1
-          = f.check_box :remember_me, { checked: true }
+          = f.check_box :remember_me, { checked: true, tabindex: "5" }

@@ -10,14 +10,14 @@
 
           / = f.text_field :roulette_token, placeholder: 'Enter your 8-digit invite code...'
           .row
-            = f.text_field :invitation_code, placeholder: "Enter your invitation code..."
+            = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6"
           .row
             #static_home_signup_option
               .btn-group
-                %a#static_home_signup_option_university_button.btn.btn-small.active via University
+                %a#static_home_signup_option_university_button.btn.btn-small.active{ tabindex: "7" } via University
                 %a#static_home_signup_option_linkedin_button.btn.btn-small
                   via 
-                  %span#static_home_signup_option_linkedin_button_highlight LinkedIn
+                  %span#static_home_signup_option_linkedin_button_highlight{ tabindex: "8" } LinkedIn
 
 
           .spacer10
@@ -28,18 +28,18 @@
             = render 'static_pages/universities_select'
 
             .spacer5
-            = f.text_field :email, placeholder: 'Email'
+            = f.text_field :email, placeholder: 'Email', tabindex: "10"
             .spacer5
-            = f.password_field :password, placeholder: 'Password'
-            = f.password_field :password_confirmation, placeholder: 'Confirm Password'
+            = f.password_field :password, placeholder: 'Password', tabindex: "11"
+            = f.password_field :password_confirmation, placeholder: 'Confirm Password', tabindex: "12"
           .spacer5
           .row
             .span21.font-small
               .static_home_signup_checkbox_label
                 I agree to the 
-                = link_to "Terms and Conditions", terms_path
+                = link_to "Terms and Conditions", terms_path, tabindex: "13"
             .span2
-              = f.check_box :confirm_tac
+              = f.check_box :confirm_tac, tabindex: "14"
 
           .spacer10
           #static_home_signup_option_linkedin.font-small
@@ -48,15 +48,15 @@
                 .static_home_signup_checkbox_label
                   I agree that my email address, and LinkedIn headline can be saved (and nothing else!) 
               .span2
-                = check_box_tag :confirm_linkedin
+                = check_box_tag :confirm_linkedin, tabindex: "15"
           .row
             = f.hidden_field :ip_address, value: request.remote_ip
             #static_home_signup_option_university_submit
-              = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit"
+              = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit", tabindex: "16"
 
             #static_home_signup_option_linkedin_submit
               .spacer15
-              %a#static_home_signup_option_linkedin_button_submit.btn.btn-large.btn-inverse{ href: user_omniauth_authorize_path('linkedin') }
+              %a#static_home_signup_option_linkedin_button_submit.btn.btn-large.btn-inverse{ href: user_omniauth_authorize_path('linkedin'), tabindex: "17" }
                 %span#static_home_signup_option_linkedin_button_submit_logo
                   = image_tag 'home/button_logo_linkedin.png'
                 %span

@@ -296,19 +296,26 @@ textarea {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  background: url('app/title-bg.png') repeat top left;
-  // border-top: 1px solid $gray_Lighter;
+
+  border: 2px solid $gray_Light;
   text-align: center;
   padding: 5px;
   margin-top: 2px;
   cursor: default;
-  color:white;
+
+  background: rgb(254,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(254,255,255,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,255,1)), color-stop(100%,rgba(234,234,234,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+
 }
-.application_pagination a, .application_pagination span {
-  padding: 0.2em 0.3em;
-}
+
 .application_pagination .disabled {
-  color: #aaaaaa;
+  color: $gray_Light;
 }
 .application_pagination .current {
   font-style: normal;
@@ -317,18 +324,22 @@ textarea {
   display: inline-block;
   width: 1.4em;
   height: 1.4em;
-  line-height: 1.5;
+  line-height: 1.4;
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
   border-radius: 1em;
+  color:white;
+}
+.application_pagination a, .application_pagination span {
+  padding: 0.2em 0.3em;
 }
 .application_pagination a {
   text-decoration: none;
-  color: $gray_Light;
+  color: gray;
 }
 .application_pagination a:hover, .application_pagination a:focus {
   text-decoration: none;
-  color:white;
+  color:black;
 }
 
 
