@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
                   :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac, :university, :university_id,
-                  :invitation_code
+                  :invitation_code, :linkedin_name
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
