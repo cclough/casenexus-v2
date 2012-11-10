@@ -21,7 +21,7 @@ class Notification < ActiveRecord::Base
   def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app); end
 
   validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
-  validate :not_self
+  validate :no_notification_to_self
 
   class << self
 
