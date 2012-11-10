@@ -35,7 +35,7 @@
           .spacer5
           .row
             .span21.font-small
-              #static_home_signup_confirm_tac_label
+              .static_home_signup_checkbox_label
                 I agree to the 
                 = link_to "Terms and Conditions", terms_path
             .span2
@@ -44,9 +44,10 @@
           .spacer10
           #static_home_signup_option_linkedin.font-small
             .row
-              .span20.font-small
-                I agree that my email address, and LinkedIn headline can be saved (and nothing else!) 
-              .span3
+              .span21.font-small
+                .static_home_signup_checkbox_label
+                  I agree that my email address, and LinkedIn headline can be saved (and nothing else!) 
+              .span2
                 = check_box_tag :confirm_linkedin
           .row
             = f.hidden_field :ip_address, value: request.remote_ip

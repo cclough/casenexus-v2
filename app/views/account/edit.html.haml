@@ -18,44 +18,44 @@
         .span47
           .panel.dark
             .row
-              .span15
+              .span12
                 = f.label :first_name
               .span25
                 = f.text_field :first_name
             .row
-              .span15
+              .span12
                 = f.label :last_name
               .span25
                 = f.text_field :last_name
             .spacer5
             .row
-              .span15
+              .span12
                 = f.label :email
               .span25
                 = f.text_field :email, class: "span27"
             .spacer5
             .row
-              .span15
+              .span12
                 = f.label :skype
               .span25
                 = f.text_field :skype
             - if current_user.linkedin_uid.blank?
               .row
-                .span15
+                .span12
                   = f.label :linkedin
                 .span25
-                  = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'), target: '_blank')
+                  = link_to("Connect your Linkedin Account", user_omniauth_authorize_path('linkedin'), target: '_blank', class: "btn btn-inverse btn-small")
             .spacer5
 
             .row
-              .span3.offset15
+              .span3.offset12
                 = f.check_box :email_admin
-              .span22
+              .span25
                 = f.label :email_admin, "Receive case interview advice email letter"
             .row
-              .span3.offset15
+              .span3.offset12
                 = f.check_box :email_users
-              .span23
+              .span25
                 = f.label :email_users, "Send notifications from users to your email"
           .panel.darker.kill_bottom
             .row
@@ -88,6 +88,5 @@
     - if current_user.completed?
       .row
         .span94
-          .panel.dark
-            = render 'invitations'
+          = render 'invitations'
 

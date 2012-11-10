@@ -10,7 +10,7 @@ $(document).ready(function(){
         if (parseInt(data) > 0) {
           result = true
         } else {
-          alert("Token doesn't exist");
+          alert("You must enter a valid token");
           result = false;
         }
       }
