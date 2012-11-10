@@ -79,6 +79,10 @@ $(document).ready ->
     $(".modal").modal "hide"
     $("#modal_contact").modal "show"
 
+  # Modal buttons
+  $(".modal-footer button").live 'click', ->
+    $(".modal-footer a, .modal-footer button").attr('disabled', 'disabled')
+
 
   # Arrows for the home page and help
   if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0
