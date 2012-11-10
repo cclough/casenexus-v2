@@ -19,7 +19,7 @@
           - for comment in Case.cases_analysis_comments_businessanalytics(current_user)
 
             - unless (comment.businessanalytics_comment == "")
-              = link_to '/cases?id=' + comment.id.to_s do
+              = link_to '/cases?id=' + comment.id.to_s, class: "cases_analysis_comment_link" do
                 .cases_analysis_comment
                   .cases_analysis_comment_from
                     / line below is causing problems on heroku for no reason! - its to do with comment.marker_id
