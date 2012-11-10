@@ -1,36 +1,33 @@
-- if current_user.completed?
-  .panel.dark.kill_left
+.panel.dark.kill_left
+
+  .row
+    .span40
+      - if current_user.invitations.count < Invitation::INVITATION_LIMIT
+        %p Invite a new friend (#{current_user.invitations.count}/5 Invitations Used)
+
+        = simple_form_for @invitation, html: { class: 'form-vertical' } do |f|
+          = hidden_field_tag :back_url, edit_account_path
+          .row
+            .span16
+              = f.text_field :name, class: 'span15', placeholder: "Name"
+            .span12
+              .input-append
+                = f.text_field :email, class: 'span19', placeholder: "Email"
+                = f.submit "Invite", class: 'btn btn-inverse'
+      - else
+        %p You have no more invitations
+
+  .panel.dark.kill_all
 
     .row
-      .span40
-        - if current_user.invitations.count < Invitation::INVITATION_LIMIT
-          %p Invite a new friend (#{current_user.invitations.count}/5 Invitations Used)
-
-          - @invitation ||= current_user.invitations.build(params[:invitation])
-
-          = simple_form_for @invitation, html: { class: 'form-horizontal offset20' } do |f|
-
-            .row
-              .span16
-                = f.text_field :name, class: 'span15', placeholder: "Name"
-              .span12
-                .input-append
-                  = f.text_field :email, class: 'span19', placeholder: "Email"
-                  = f.submit "Invite", class: 'btn btn-inverse'
+      .span86
+        - if @invitations.count > 0
+          - @invitations.each do |invitation|
+            - if invitation.invited
+              = "#{invitation.email} accepted your invitation and created his profile: "
+              = link_to(invitation.invited, member_path(invitation.invited))
+            - else
+              = "#{invitation.email} invited"
+              = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
         - else
-          %p You have no more invitations
-
-    .panel.dark.kill_all
-
-      .row
-        .span86
-          - if current_user.invitations.count > 0
-            - current_user.invitations.each do |invitation|
-              - if invitation.invited
-                = "#{invitation.email} accepted your invitation and created his profile: "
-                = link_to(invitation.invited, member_path(invitation.invited))
-              - else
-                = "#{invitation.email} invited"
-                = link_to("Cancel Invitation", invitation_path(invitation), method: :delete, confirm: "Are you sure?")
-          - else
-            %p There are no pending/accepted invitations
+          %p There are no pending/accepted invitations

@@ -11,9 +11,8 @@
 = render 'shared/title'
 
 #users_edit_form
-  = form_for(@user, url: account_path, method: :put) do |f|
-
-    .row
+  .row
+    = form_for(@user, url: account_path, method: :put) do |f|
       .span94
         = render 'shared/error_messages', object: @user
         .span47
@@ -65,8 +64,6 @@
 
         .span47
 
-          = render 'invitations'
-
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "users_newedit_lat"
             = f.hidden_field :lng, id: "users_newedit_lng"
@@ -88,3 +85,9 @@
                 .row
                   .spacer5
                   = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "users_edit_button_submit"
+    - if current_user.completed?
+      .row
+        .span94
+          .panel.dark
+            = render 'invitations'
+

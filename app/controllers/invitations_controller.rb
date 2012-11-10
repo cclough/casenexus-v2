@@ -7,10 +7,18 @@ class InvitationsController < ApplicationController
 
     if @invitation.save
       flash[:notice] = "The Invitation was sent to #{@invitation.email}"
-      redirect_to action: :index
+      if params[:back_url]
+        redirect_to params[:back_url]
+      else
+        redirect_to action: :index
+      end
     else
       flash[:error] = "There was a problem with the Invitation"
-      render action: :new
+      if params[:back_url]
+        redirect_to params[:back_url]
+      else
+        render action: :new
+      end
     end
   end
 
@@ -18,6 +26,10 @@ class InvitationsController < ApplicationController
     @invitation = current_user.invitations.find(params[:id])
     @invitation.destroy
     flash[:notice] = "Invitation cancelled"
-    redirect_to action: :index
+    if params[:back_url]
+      redirect_to params[:back_url]
+    else
+      redirect_to action: :index
+    end
   end
 end

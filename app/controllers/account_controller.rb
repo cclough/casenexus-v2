@@ -8,9 +8,9 @@ class AccountController < ApplicationController
   def edit
     @user = current_user
 
-    @invitations = current_user.invitations
-    redirect_to action: index, notice: "You have already invited 5 friends" if current_user.invitations.count >= Invitation::INVITATION_LIMIT
-    @invitation = Invitation.new
+    @invitations = Invitation.where(user_id: current_user.id)
+    @invitation = current_user.invitations.build(params[:invitation])
+    a = 1
   end
 
   def update
@@ -25,6 +25,9 @@ class AccountController < ApplicationController
       end
       redirect_to dashboard_path
     else
+      @invitations = current_user.invitations
+      @invitation = current_user.invitations.build(params[:invitation])
+
       render 'edit'
     end
   end
@@ -32,9 +35,4 @@ class AccountController < ApplicationController
   def complete_profile
     @user = current_user
   end
-
-  def show_help
-    # current_user.help_+params[:help_id]? ? current_user.help_+params[:help_id]? == false : nil
-  end
-
 end
