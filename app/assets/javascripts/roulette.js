@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
   // Submit form
-  $('#feedback_form').submit(function(e) {
+  $('#roulette_index_token_form').submit(function(e) {
     var result = false;
-    $.ajax("/members/check_roulette?roulette_token=" + $("#roulette_index_field_token").val(),  {
+    $.ajax("/members/check_roulette?roulette_token=" + $("#roulette_index_token_form_field").val(),  {
       type: "GET",
       async: false,
       success: function(data, textStatus, jqXHR) {
@@ -18,10 +18,14 @@ $(document).ready(function(){
     return(result);
   });
 
+
+
   $('#modal_roulette_req').modal({
     backdrop: false,
     show: false
   });
+
+
 
   $("#roulette_index_button_connect").attr("disabled", false);
   $("#roulette_index_button_disconnect").attr("disabled", true);

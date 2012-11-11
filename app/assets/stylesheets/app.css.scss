@@ -3,7 +3,7 @@ $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
-$blue_pastel: #98cdff;
+$blue_pastel: #1495dc;
 $blue_linkedin: #006699;
 
 @mixin box_sizing {
@@ -444,7 +444,7 @@ textarea {
       .set-2d { position: absolute; top:470px; left:400px; width:370px;}
 
 #modal_help_page_3 { height:800px; width:800px; background: url('help/set-3.jpg');  position:relative; }
-      .set-3a { position: absolute; top:40px; left:300px; width:450px;}
+      .set-3a { position: absolute; top:67px; left:300px; width:450px;}
       .set-3b { position: absolute; top:220px; left:420px; width:350px;}
       .set-3c { position: absolute; top:540px; left:50px; width:650px;}
 
@@ -456,7 +456,7 @@ textarea {
       .set-4e { left: 450px; position: absolute; top: 627px; width: 309px;}
 
 #modal_help_page_5 { height:800px; width:800px; background: url('help/set-5.jpg');  position:relative; }
-      .set-5a { left: 438px; position: absolute; top: 43px; width: 340px; }
+      .set-5a { left: 465px; position: absolute; top: 90px; width: 340px; }
       .set-5b { left: 55px; position: absolute; top: 343px; width: 350px; }
 
 #modal_help_page_6 { height:800px; width:800px; background: url('help/set-6.jpg');  position:relative; }

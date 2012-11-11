@@ -21,10 +21,20 @@ $blue_pastel: #98cdff;
   }
 }
 
+#roulette_index_log {
+	height:25px;
+	overflow-y:auto;
+	margin-top:10px;
+}
+
 .roulette_index_log_item {
 	width:100%;
 	padding:3px;
 	color: gray;
+}
+
+#roulette_index_token_panel {
+	height:73px;
 }
 
 #roulette_index_token {
@@ -32,6 +42,7 @@ $blue_pastel: #98cdff;
 	font-size: 14px;
 	text-align:center;
 	line-height:37px;
+	padding:3px;
   color:#6db9ff;
 }
 
@@ -39,15 +50,19 @@ $blue_pastel: #98cdff;
 	text-align:center;
 }
 
-#roulette_index_field_token {
-	width:200px;
+#roulette_index_token_form {
+	margin-bottom:0px;
+}
+
+#roulette_index_token_form_field {
+	width:180px;
 	text-align:center;
 	font-size:12px;
 }
 
+
 .roulette_index_button_connection {
 	width:160px;
-	margin-top:15px;
 }
 
 .roulette_index_users_item_casecount {
