@@ -67,7 +67,7 @@ $(document).ready(function(){
     // listener, whenever the server emits 'updatechat', this updates the chat body
     socket.on('updatelog', function (username, data) {
       $('#roulette_index_log').append('<div class=roulette_index_log_item>'+username + ': ' + data + '</div>');
-      $("#roulette_index_log").animate({ scrollTop: $("#roulette_index_log").attr("scrollHeight") }, 500);
+      $("#roulette_index_log").animate({ scrollTop: $("#roulette_index_log").prop("scrollHeight") }, 500);
     });
 
     // listener, whenever the server emits 'updateusers', this updates the username list
