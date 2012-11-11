@@ -33,7 +33,7 @@ class MembersController < ApplicationController
     @user = User.find(params[:id])
 
     # defines radar chart last 5 count
-    (current_user.case_count < 6) ? (@radar_count = 1) : (@radar_count = 5)
+    (current_user.cases.where("interviewer_id = #{@user.id}").count < 6) ? (@radar_count = 1) : (@radar_count = 5)
 
     respond_to do |format|
       @notification = @user.notifications.build
