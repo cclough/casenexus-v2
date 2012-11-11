@@ -3,24 +3,24 @@
 
   %h3
     %span#modal_roulette_req_from
-    Case Request from
-    = @request_user
+    New Roulette Request
 
 .modal-body
 
   .row
-    .span30
+    .span40
       / .row
       /   = @message
       / .spacer10
       .row
-        #{@request_user} would like to do a case with you on Skype.
+        %b= @request_user
+         would like to do a case with you on Skype.
       .spacer10
       .row#modal_roulette_req_status
         %blockquote
           "#{@request_user.status}"
-    .span10.offset5
-      .spacer40
+    .span10.offset3
+      .spacer50
       %a{:href => "skype:"+ @request_user.skype + "?call"}
         %img{:alt => "Skype Me™!", :height => "63", :src => "http://download.skype.com/share/skypebuttons/buttons/call_green_white_153x63.png", :style => "border: none;", :width => "153"}/
 
