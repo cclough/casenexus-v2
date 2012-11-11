@@ -16,10 +16,25 @@ $blue_pastel: #98cdff;
 	font-size:15px;
 	font-face: bold;
 	background: rgba(0, 0, 0, 0.3);
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
 	&:hover {
     background: rgba(0, 0, 0, 0.5);
   }
 }
+
+.roulette_index_users_item_avatar {
+	padding-top:10px;
+}
+
+.roulette_index_users_item_name {
+	padding-top:15px;
+}
+
+
 
 #roulette_index_log {
 	height:25px;
@@ -43,7 +58,6 @@ $blue_pastel: #98cdff;
 	font-size: 14px;
 	text-align:center;
 	line-height:37px;
-	padding:3px;
   color:#6db9ff;
 }
 
