@@ -46,18 +46,18 @@
             .span36
               = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "3", id: "cases_new_subject"
             .span5
-              = f.submit "Submit Feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "9", id: "cases_new_button_submit"
+              = f.submit "Submit Feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "10", id: "cases_new_button_submit"
     .row
       .cases_new_block_title
         Top Recommendations
       .panel.dark.kill_top
         .row
           .span29
-            = f.text_area :recommendation1, placeholder: "1st Recommendation", class: "cases_new_recommendation"
+            = f.text_area :recommendation1, placeholder: "1st Recommendation", class: "cases_new_recommendation", tabindex: "4"
           .span29
-            = f.text_area :recommendation2, placeholder: "2nd Recommendation", class: "cases_new_recommendation"
+            = f.text_area :recommendation2, placeholder: "2nd Recommendation", class: "cases_new_recommendation", tabindex: "5"
           .span29
-            = f.text_area :recommendation3, placeholder: "3rd Recommendation", class: "cases_new_recommendation"
+            = f.text_area :recommendation3, placeholder: "3rd Recommendation", class: "cases_new_recommendation", tabindex: "6"
 
     .row    
       .span94
@@ -108,7 +108,7 @@
                   
             .span35
               .panel.darker.kill_all
-                = f.text_area :businessanalytics_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+                = f.text_area :businessanalytics_comment, placeholder: "Comment...", tabindex: "7", class: "cases_new_comment"
 
     .row    
       .span94
@@ -159,7 +159,7 @@
                   
             .span35
               .panel.darker.kill_all
-                = f.text_area :interpersonal_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+                = f.text_area :interpersonal_comment, placeholder: "Comment...", tabindex: "8", class: "cases_new_comment"
 
     .row    
       .span94
@@ -210,4 +210,4 @@
                   
             .span35
               .panel.darker.kill_all
-                = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "4", class: "cases_new_comment"
+                = f.text_area :structure_comment, placeholder: "Comment...", tabindex: "9", class: "cases_new_comment"

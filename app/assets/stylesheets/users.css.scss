@@ -70,6 +70,9 @@ header {
   margin-top:40px;
 }
 
+#users_index_users_form_searchfield {
+  width:300px;
+}
 #users_index_users_form_radiogroup {
   display:none;
 }
@@ -280,22 +283,20 @@ header {
 }
 
 
-
-
-#users_show_close {
+#users_index_user_close {
   border: 0;
   background-color: white;
 }
 
 
-#users_show_name{
+#users_index_user_name{
   font-size:20px;
   padding-top:6px;
   padding-left:8px;
   font-weight:bold;
 }
 
-#users_show_headline {
+#users_index_user_headline {
   padding-left:8px;
   padding-top:2px;
   color: $gray_Mid;
@@ -303,66 +304,80 @@ header {
   font-style:italic;
 }
 
-#users_show_lastonline {
-  padding-top:0px;
-  padding-left:0px;
-  color: $gray_Mid;
-  font-size:11px;
-  font-style:italic;
-}
-
-#users_show_conversation {
-  padding-top:0px;
-  padding-left:0px;
-  color: $gray_Mid;
-  font-size:11px;
-  font-style:italic;
-}
 
 
-#users_show_skype{
-  width:16px;
-  height:16px;
-}
-
-#users_show_status {
-  font-weight:italic;
-}
-
-#users_show_status_actions {
-  border-top: 1px solid $gray_Light;
-  padding-top:10px;
-}
-
-#users_show_casecount {
+#users_index_user_casecount {
   margin-left: 4px;
   position:absolute;
   top:15px;
   right:50px;
 }
 
-
-#users_show_button_Group_feedback {
-  border-top: 1px solid $gray_Lighter;
-  padding-top:5px;
+#users_index_user_contact {
+  margin-top:15px;
+  padding-top:8px;
+  border-top: 1px solid $gray_Light;
 }
 
-#users_show_button_Group_feedback_title {
+#users_index_user_contact_button_removefriend {
+  color: $gray_Mid;
+  font-size:11px;
+}
+
+#users_index_user_contact_button_skype{
+  width:16px;
+  height:16px;
+}
+
+
+#users_index_user_status {
+  font-weight:italic;
+}
+
+#users_index_user_status_actions {
+  padding-top:8px;
+  border-top: 1px solid $gray_Light;
+}
+
+#users_index_user_status_history {
+  padding:0px;
+  margin:0px;
+  color: $gray_Mid !important;
+  font-size:11px;
+}
+
+#users_index_user_feedback_title {
   color:gray;
   padding-top:6px;
   width:60px;
 }
 
-#users_show_button_removefriend {
-  color:gray;
-  text-decoration:none;
+
+#users_index_user_feedback_button_feedback_req, #users_index_user_feedback_button_sendfeedback {
+  width:100px;
+  height:20px;
 }
 
-.users_show_edex_title {
-  font-weight: bold;
-  border-bottom: 1px solid $gray_Lighter;  
+#users_index_user_feedback {
+  padding-bottom:8px;
+  border-bottom: 1px solid $gray_Light;
 }
 
+#users_index_user_feedback_chart_radar {
+  padding-top:10px;
+  height:220px;
+  width:401px;
+}
+
+#users_index_user_feedback_chart_radar_buttongroup {
+  margin-top:-227px;
+}
+
+
+#users_index_user_feedback_chart_radar_container {
+  height:235px;
+  width:401px;
+}
 
 #users_new_button_submit {
   width: 100%;

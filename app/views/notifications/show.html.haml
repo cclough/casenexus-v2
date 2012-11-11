@@ -1,5 +1,15 @@
-#notifications_show_back
-  %i.icon-arrow-left.icon-large
+- provide(:title, 'Notification History')
+- provide(:sub_title, 'with ' + @user.name)
+
+
+#notifications_show_header
+  %a#notifications_show_header_back
+    .row
+      .span2
+        %i.icon-arrow-left.icon-large
+      #notifications_show_header_back_text.span20
+        Go back to where you were
+
 
 
 - if @notifications.count > 0
@@ -13,19 +23,17 @@
 
 / repeated from member#show - should we put this in a helper?
 - if Friendship.friends?(current_user, @user)
-  #users_show_conversation
-    = link_to "Show Conversation History", notification_path(@user)
-  %a#users_index_user_button_message.btn.btn-inverse.btn-small
-    %i.icon-comment.icon-white
-    %span
-      Reply
+  #notifications_show_footer
+    .row
 
-- elsif Friendship.requested?(current_user, @user)
-  .alert.alert-info
-    Contact Request Pending
+      - if @user.last_online_at
+        .pull-left
+          .application_lastonline
+            Last online:
+            = time_ago_in_words(@user.last_online_at)
+            ago
 
-- elsif @user != current_user
-  %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
-    %i.icon-comment.icon-white
-    %span
-      Send Friend Request
+      %a#notifications_show_footer_button_message.btn.btn-inverse.btn-small.pull-right
+        %i.icon-comment.icon-white
+        %span
+          Send Message

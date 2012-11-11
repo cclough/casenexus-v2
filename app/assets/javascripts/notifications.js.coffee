@@ -26,7 +26,7 @@ $(document).ready ->
       notification.addClass "slid"
       notification.removeClass "read"
 
-  $("#notifications_show_back").click ->
+  $("#notifications_show_header_back").click ->
     history.go -1
     false
 

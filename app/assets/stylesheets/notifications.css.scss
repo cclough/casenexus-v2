@@ -10,6 +10,10 @@ $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
 
+#notifications_index_notifications_form {
+  margin-bottom:0px;
+}
+
 #notifications_index_notifications_form_sort .current {
   padding-right: 12px;
   background-repeat: no-repeat;
@@ -106,4 +110,26 @@ padding-top:3px;
   margin-bottom: 5px;
   margin-top:-5px;
   color: white;
+}
+
+#notifications_show_footer {
+  padding:5px;
+  border-top: 1px solid $gray_Light;
+}
+
+#notifications_show_header_back_text {
+  line-height:13px;
+  font-size:12px;
+  margin-left:10px;
+}
+
+#notifications_show_header {
+  border-bottom: 1px solid $gray_Light;
+  padding:3px;
+}
+
+#notifications_show_header_back {
+  &:hover {
+    cursor:pointer;cursor:hand;
+  }
 }

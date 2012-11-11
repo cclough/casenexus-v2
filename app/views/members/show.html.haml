@@ -1,8 +1,15 @@
+:javascript
+  var users_index_user_feedback_chart_radar_count = #{@radar_count};
+
+  var users_index_user_feedback_chart_radar_data_all = #{Case.users_index_user_feedback_chart_radar_data_all(current_user, @user.id, @radar_count)};
+  var users_index_user_feedback_chart_radar_combined = #{Case.users_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @radar_count)};
+
+
 .panel.gradient
 
   %button#users_index_show_close.close ×
 
-  #users_show_casecount
+  #users_index_user_casecount
     = avatar_for(@user, 'chevron')
 
   .row
@@ -10,55 +17,46 @@
       .application_avatar
         = avatar_for(@user, 'icon')
     .span20
-      #users_show_name
+      #users_index_user_name
         = @user.name
-      #users_show_headline
+      #users_index_user_headline
         = @user.headline
 
   - if Friendship.friends?(current_user, @user)
-    .spacer5
-    .row.font-small
-      = render '/shared/button_group_linkedin_skype'
-      .span
-        .font-small
-          = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?", id: 'users_show_button_removefriend')
-    .spacer5
-    .row
-      #users_show_button_Group_feedback
+    #users_index_user_contact
+      .row.font-small
+        = render '/shared/button_group_linkedin_skype'
         .span
-          #users_show_button_Group_feedback_title.font-small
-            Feedback
-        .span
-          = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "users_index_user_button_sendfeedback"
-        .span
-          %a#users_index_user_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
-            %i.icon-refresh.icon-white
-            %span
-              Request
+          .font-small
+            = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?", id: 'users_index_user_contact_button_removefriend')
+
 
 - if @user.status_approved
   .panel.gradient
     .row
       .span35
-        #users_show_status
+        #users_index_user_status
           = @user.status
     .spacer10
-    #users_show_status_actions
+    .row
+      .pull-left
+        - if @user.last_online_at
+          .application_lastonline
+            Last online
+            = time_ago_in_words(@user.last_online_at)
+            ago
+    #users_index_user_status_actions
       .row
-        .pull-left
-          - if @user.last_online_at
-            #users_show_lastonline
-              Last online:
-              = time_ago_in_words(@user.last_online_at)
-
         .pull-right
           - if Friendship.friends?(current_user, @user)
-            #users_show_conversation
-              = link_to "Show Conversation History", notification_path(@user)
-            %a#users_index_user_button_message.btn.btn-inverse.btn-small
-              %i.icon-comment.icon-white
-              %span
-                Message
+            .row
+              .span12
+                = link_to "Show Message History", notification_path(@user), id: 'users_index_user_status_history'
+              .span12
+                %a#users_index_user_button_message.btn.btn-inverse.btn-small
+                  %i.icon-comment.icon-white
+                  %span
+                    Send Message
 
           - elsif Friendship.requested?(current_user, @user)
             .alert.alert-info
@@ -70,8 +68,35 @@
               %span
                 Send Friend Request
 
-  - if @friendship
-    #modal_friendship_req.modal.hide.fade
-      = render '/friendships/request_form'
+- if Friendship.friends?(current_user, @user)
+  .panel.gradient
+    .row
+      #users_index_user_feedback
+        .row
+          .span9
+            #users_index_user_feedback_title.font-small
+              Feedback
+          .span
+            = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "users_index_user_feedback_button_sendfeedback"
+          .span
+            %a#users_index_user_feedback_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
+              %i.icon-refresh.icon-white
+              %span
+                Request
+    .row
+      #users_index_user_feedback_chart_radar_container
+        #users_index_user_feedback_chart_radar
+        #users_index_user_feedback_chart_radar_buttongroup
+          .btn-group.offset26
+            %a#users_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
+            %a#users_index_user_feedback_chart_radar_combined.btn.btn-mini.btn-inverse Combined
 
-  = render '/shared/modal_group_message_and_feedback_req'
+
+
+
+
+- if @friendship
+  #modal_friendship_req.modal.hide.fade
+    = render '/friendships/request_form'
+
+= render '/shared/modal_group_message_and_feedback_req'
