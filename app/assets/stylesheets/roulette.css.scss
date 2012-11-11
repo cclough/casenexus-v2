@@ -10,7 +10,7 @@ $blue_pastel: #98cdff;
 
 .roulette_index_users_item {
 	display:none;
-	width:867px;
+	width:868px;
 	padding:10px;
 	margin-bottom:3px;
 	font-size:15px;
@@ -27,14 +27,13 @@ $blue_pastel: #98cdff;
 }
 
 .roulette_index_users_item_avatar {
-	padding-top:10px;
+	padding-top:8px;
 }
 
 .roulette_index_users_item_name {
-	padding-top:15px;
+	padding-top:13px;
+	margin-left:5px;
 }
-
-
 
 #roulette_index_log {
 	height:25px;
@@ -58,6 +57,7 @@ $blue_pastel: #98cdff;
 	font-size: 14px;
 	text-align:center;
 	line-height:37px;
+	padding:0px;
   color:#6db9ff;
 }
 
