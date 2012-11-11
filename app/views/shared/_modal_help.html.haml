@@ -7,52 +7,75 @@
       %nav
         %ul
           %li
-            %a{:href => "#1"} Basics
+            %a{:href => "#1"} 
+              %span.modal_help_arrownav_title_number 1.
+              Basics
           %li
-            %a{:href => "#2"} Map
+            %a{:href => "#2"}
+              %span.modal_help_arrownav_title_number 2. 
+              Map
           %li
-            %a{:href => "#3"} Roulette
+            %a{:href => "#3"}
+              %span.modal_help_arrownav_title_number 3. 
+              Roulette
           %li
-            %a{:href => "#4"} New Case Form
+            %a{:href => "#4"}
+              %span.modal_help_arrownav_title_number 4.
+              Feedback Form
           %li
-            %a{:href => "#5"} Case Index
+            %a{:href => "#5"}
+              %span.modal_help_arrownav_title_number 5. 
+              Case Index
           %li
-            %a{:href => "#6"} Progress Analysis
+            %a{:href => "#6"}
+              %span.modal_help_arrownav_title_number 6. 
+              Progress Analysis
 
         %span.arrow
   .modal-body
 
-
     #application_arrownav_page_1.arrownav_page
 
       #modal_help_page_1
-
+        .offset28
+          %h3 ...how to get around
         .set-1a
-          %h4 Users
-          %p Access the map and find users.
+          %h4 Map
+          %p Find and contact other candidates to practise with
         .set-1b
           %h4 Roulette
-          %p Access the map and find users.
+          %p Practise a case with someone else online now
         .set-1c
           %h4 Help
-          %p Click the help button on any page to be reminded of how to use a particular feature of the site
+          %p Instructions on the different elements of casenexus.com
         .set-1d
           %h4 Feedback
-          %p Help us improve the site
+          %p Let us know any about bugs or suggestions for new features
         .set-1e
           %h4 Notifications
-          %p Review and learn from case feedback sent to you
+          %p All correspondance from your contacts is accessible here
         .set-1f
           %h4 Profile Menu
           %ul
-            %li Basic stats and a overview of your case interview performance to-date
-            %li Edit your profile
-            %li Logout
+            %li
+              %b
+                Case Index
+              Review all of your feedback
+            %li
+              %b
+                Progress Analysis
+              See graphical analysis of your feedback
+            %li
+              %b
+                Settings
+              Edit your profile
 
     #application_arrownav_page_2.arrownav_page
       #modal_help_page_2
+        .offset19
+          %h3 ...find other candidates to practise with
         .set-2a
-          %h1 User panel
+          %h3 User panel
           %p Find candidates who live/work near you - click on their map markers to see their status, then send them a case partner request
           %p Browse and search for users from all over the world
           %p Select 'contacts' to see your case partners
@@ -60,15 +83,16 @@
         .set-2b
           %p Pull-down menu at the top to browse cities/countries where there are other candidates around the worldwhat you have in common and why you wish to work together
         .set-2c
-          %h1 User Profile
+          %h3 User Profile
           %p When two users approve each other as case partners, they can send messages and feedback to each other at anytime
           %p When you send a case partner request, sell yourself, explain ...
 
 
     #application_arrownav_page_3.arrownav_page
       #modal_help_page_3
+        .offset25
+          %h3 ...practise with someone now
         .set-3a
-          %h4 Roulette
           %p Click the 'connect' button to join the 'roulette'
           %p You are now visible as 'online' to all other users on the roulette page
           %p Sit back, relax and wait for other users to look at your status and send you roulette requests
@@ -82,6 +106,8 @@
 
     #application_arrownav_page_4.arrownav_page
       #modal_help_page_4
+        .offset15
+          %h3 ...fill out a feedback form for your case partner
         .set-4a
           %p Feedback system carefully designed by a consultant at one of the top 3 firms with many years of interviewing experience
         .set-4b
@@ -98,7 +124,8 @@
 
     #application_arrownav_page_5.arrownav_page
       #modal_help_page_5
-
+        .offset25
+          %h3 ...review your case feedback
         .set-5a
           %h4 A Library of your cases
           %p Browse and search for cases you've done in the list on the left.
@@ -112,9 +139,8 @@
 
     #application_arrownav_page_6.arrownav_page
       #modal_help_page_6
-
-        .set-6a
-          %h2 So this is just a bit of fun...
+        .offset25
+          %h3 ...so this is just a bit of fun
         .set-6b
           %h2 The Progress Chart
           %p Shows your aggregated scores for the three categories over time
@@ -127,7 +153,8 @@
 
 
   .modal-footer
-    #modal_help_checkbox.pull-left
+    .pull-left
+      #modal_help_checkbox
 
     %a.btn.pull-right{"data-dismiss" => "modal", href: "#"} Close
 

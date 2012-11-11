@@ -99,7 +99,10 @@ $(document).ready ->
   $(".modal-footer button").live 'click', ->
     $(".modal-footer a, .modal-footer button").attr('disabled', 'disabled')
 
-
+  setTimeout ->
+    $("#application_flash").fadeOut('fast');
+  , 3000
+  
   # Arrows for the home page and help
   if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0
     window.ArrowNav =
@@ -122,7 +125,9 @@ $(document).ready ->
         #next_page.fadeIn 500
         next_page.show "slide", direction: "right", 500
 
-        window.application_help_checkbox page
+        if $("#modal_help_arrownav").size() > 0
+          $('.modal-body').scrollTop(0)
+          window.application_help_checkbox page
 
         window.ArrowNav.centerArrow nav_item
 
