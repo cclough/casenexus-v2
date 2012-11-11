@@ -29,12 +29,13 @@ $blue_pastel: #98cdff;
 
 .roulette_index_log_item {
 	width:100%;
-	padding:3px;
+	padding:1px;
 	color: gray;
 }
 
 #roulette_index_token_panel {
-	height:73px;
+	height:67px;
+	padding-top:16px;
 }
 
 #roulette_index_token {
@@ -78,6 +79,10 @@ $blue_pastel: #98cdff;
 .roulette_index_users_item_button_expand {
 	font-size: 11px;
 	font-style: italic;
+}
+
+.roulette_index_users_item_button_request {
+	margin-top:20px;
 }
 
 #modal_roulette_req_status {
