@@ -67,6 +67,10 @@
               %i.icon-comment.icon-white
               %span
                 Send Friend Request
+- else
+  .panel.gradient
+    #users_index_user_status_unapproved
+      Status awaiting approval
 
 - if Friendship.friends?(current_user, @user)
   .panel.gradient
