@@ -129,8 +129,10 @@ if Rails.env == 'development'
   User.all.each do |user|
 
     rand(51).times do
+      interviewer_id = 1 + rand(15)
+      next if interviewer_id == user.id
       user.cases.create!(
-          interviewer_id: 1 + rand(15),
+          interviewer_id: interviewer_id,
           date: random_date(year_range: 2, year_latest: 0.5),
           subject: Faker::Lorem.sentence(5),
           source: Faker::Lorem.sentence(3),

@@ -407,7 +407,7 @@ class Case < ActiveRecord::Base
 
   def no_case_to_self
     unless self.user_id.blank?
-      errors.add(:base, "cannot send feedback to yourself") if self.user_id == self.interviewer_id
+      errors.add(:base, "cannot send feedback to yourself") if self.user_id == self.interviewer_id || self.roulette_token == self.interviewer.roulette_token
     end
   end
 
