@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   # Authenticate for active admin
   def authenticate_admin_user!
-    if current_user.admin == false
+    if !user_signed_in? || current_user.admin == false
       flash[:alert] = "Unauthorized Access!"
       redirect_to root_path
     end
