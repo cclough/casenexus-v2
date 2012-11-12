@@ -130,7 +130,7 @@ if Rails.env == 'development'
 
     rand(51).times do
       interviewer_id = 1 + rand(15)
-      next if interviewer_id == user.id
+      next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(
           interviewer_id: interviewer_id,
           date: random_date(year_range: 2, year_latest: 0.5),
@@ -165,23 +165,16 @@ if Rails.env == 'development'
 
   end
 
-  User.each do |user|
+  User.all.each do |user|
 
     2.times do
+      sender_id = rand(15) + 1
+      next if user.id.to_s == sender_id.to_s
       user.notifications.create!(ntype: "message",
-                                 sender_id: rand(100),
+                                 sender_id: sender_id,
                                  content: Faker::Lorem.sentence(5))
 
       puts "Message Notifications created for user #{user.name}"
-    end
-
-    user.cases.each do |kase|
-      Notification.create!(ntype: 'feedback_req',
-                           sender_id: kase.user,
-                           user: kase.interviewer,
-                           content: Faker::Lorem.paragraph,
-                           notificable: kase)
-      puts "Request feedback notificationcreated for case #{kase}"
     end
   end
 

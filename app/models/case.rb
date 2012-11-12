@@ -16,7 +16,7 @@ class Case < ActiveRecord::Base
   has_many :notifications, as: :notificable, dependent: :destroy
 
   ### Callbacks
-  # after_create :create_notification
+  after_create :create_notification
 
   ### Validations
   validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
@@ -415,7 +415,7 @@ class Case < ActiveRecord::Base
     self.user.notifications.create(sender_id: self.interviewer_id,
                                    ntype: "feedback",
                                    content: self.subject,
-                                   case_id: self.id,
+                                   notificable: self,
                                    event_date: self.date)
   end
 
