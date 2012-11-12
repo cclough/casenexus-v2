@@ -29,9 +29,9 @@ window.getQueryParams = (qs) ->
 
 window.application_help_checkbox = (help_page) ->
   $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
-    
+
     $("#modal_help_checkbox").html data
-    
+
     $("input:checkbox").uniform()
 
     # Modal help checkbox
@@ -41,7 +41,7 @@ window.application_help_checkbox = (help_page) ->
         user_id = $(this).attr("data-user_id")
         $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
 
-  
+
 
 window.application_show_help = (help_page) ->
 
@@ -102,7 +102,7 @@ $(document).ready ->
   setTimeout ->
     $("#application_flash").fadeOut('fast');
   , 3000
-  
+
   # Arrows for the home page and help
   if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0
     window.ArrowNav =
@@ -121,13 +121,12 @@ $(document).ready ->
         $(".arrownav_page").hide()
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
-        
+
         #next_page.fadeIn 500
         next_page.show "slide", direction: "right", 500
 
         if $("#modal_help_arrownav").size() > 0
           $('.modal-body').scrollTop(0)
-          window.application_help_checkbox page
 
         window.ArrowNav.centerArrow nav_item
 
