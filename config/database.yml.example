@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: casenexus_development
+  pool: 5
+  username: postgres
+  password:
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: casenexus_test
+  pool: 5
+  username: postgres
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: casenexus
+  pool: 5
+  username: postgres
+  password:
