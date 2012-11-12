@@ -334,6 +334,12 @@ header {
   font-weight:italic;
 }
 
+#users_index_user_status_unapproved {
+  text-align:center;
+  color: $gray_Mid !important;
+  font-size:11px;
+}
+
 #users_index_user_status_actions {
   padding-top:8px;
   border-top: 1px solid $gray_Light;
