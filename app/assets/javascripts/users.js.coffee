@@ -1,4 +1,10 @@
 $(document).ready ->
+  $("#random_name").click (e) ->
+    e.preventDefault()
+    $.ajax("/account/random_name", type: "get", dataType: "script")
+
+
+
   $("#users_new_step3").css opacity: 0.3
 
   if typeof users_newedit_map_lat_start is "string"
