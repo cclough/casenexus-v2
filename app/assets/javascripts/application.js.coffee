@@ -44,17 +44,15 @@ window.application_help_checkbox = (help_page) ->
 
 
 window.application_show_help = (help_page) ->
-
-  $(".modal").modal "hide"
-
-  $("#modal_help").modal "show"
+  if !($("#modal_help").hasClass("in"))
+    $(".modal").modal "hide"
+    $("#modal_help").modal "show"
   
   setTimeout ->
     window.ArrowNav.goTo help_page
   , 200
 
   window.application_help_checkbox help_page
-
 
 
 $(document).ready ->
@@ -71,9 +69,10 @@ $(document).ready ->
 
   # Modal help link
   $("#header_link_help").click ->
-    $(".modal").modal "hide"
-    $("#modal_help").modal "show"
-    window.ArrowNav.goTo 1
+    if !($("#modal_help").hasClass("in"))
+      $(".modal").modal "hide"
+      $("#modal_help").modal "show"
+      window.ArrowNav.goTo 1
 
   # Modal bug
   $("#modal_bug").modal
@@ -82,8 +81,9 @@ $(document).ready ->
 
   # Modal bug link
   $("#header_link_bug").click ->
-    $(".modal").modal "hide"
-    $("#modal_bug").modal "show"
+    if !($("#modal_bug").hasClass("in"))
+      $(".modal").modal "hide"
+      $("#modal_bug").modal "show"
 
   # Modal contact
   $("#modal_contact").modal
@@ -92,8 +92,9 @@ $(document).ready ->
 
   # Modal contact link
   $("#footer_link_contact").click ->
-    $(".modal").modal "hide"
-    $("#modal_contact").modal "show"
+    if !($("#modal_contact").hasClass("in"))
+      $(".modal").modal "hide"
+      $("#modal_contact").modal "show"
 
   # Modal buttons
   $(".modal-footer button").live 'click', (e) ->

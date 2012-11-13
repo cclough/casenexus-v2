@@ -25,17 +25,20 @@ window.users_index_map_marker_click = (marker_id) ->
         show: false
 
       $("#users_index_user_button_message").click ->
-        $(".modal").modal("hide")
-        $("#modal_message").modal("show")
+        if !($("#modal_message").hasClass("in"))
+          $(".modal").modal("hide")
+          $("#modal_message").modal("show")
 
       $("#users_index_user_button_friend_req").click ->
-        $(".modal").modal("hide")
-        $("#modal_friendship_req").modal("show")
+        if !($("#modal_friendship_req").hasClass("in"))
+          $(".modal").modal("hide")
+          $("#modal_friendship_req").modal("show")
 
       $("#users_index_user_feedback_button_feedback_req").click ->
-        $(".modal").modal("hide")
-        $("#modal_feedback_req").modal("show")
-        $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
+        if !($("#modal_feedback_req").hasClass("in"))
+          $(".modal").modal("hide")
+          $("#modal_feedback_req").modal("show")
+          $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
 
       # Radar Button
       $("#users_index_user_feedback_chart_radar_button_all").click ->
