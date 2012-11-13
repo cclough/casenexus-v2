@@ -2,7 +2,7 @@
   var users_index_user_feedback_chart_radar_count = #{@radar_count};
 
   var users_index_user_feedback_chart_radar_data_all = #{Case.users_index_user_feedback_chart_radar_data_all(current_user, @user.id, @radar_count)};
-  var users_index_user_feedback_chart_radar_combined = #{Case.users_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @radar_count)};
+  var users_index_user_feedback_chart_radar_data_combined = #{Case.users_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @radar_count)};
 
 
 .panel.gradient
@@ -87,20 +87,21 @@
               %i.icon-refresh.icon-white
               %span
                 Request
+        #testing123
     .row
       #users_index_user_feedback_chart_radar_container
         #users_index_user_feedback_chart_radar
         #users_index_user_feedback_chart_radar_buttongroup
           .btn-group.offset26
             %a#users_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-            %a#users_index_user_feedback_chart_radar_combined.btn.btn-mini.btn-inverse Combined
+            %a#users_index_user_feedback_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
 
-
-
-
+  #modal_message.modal.hide.fade
+    = render '/shared/modal_message_form'
+  #modal_feedback_req.modal.hide.fade
+    = render '/shared/modal_feedback_req_form'
 
 - if @friendship
   #modal_friendship_req.modal.hide.fade
     = render '/friendships/request_form'
 
-= render '/shared/modal_group_message_and_feedback_req'

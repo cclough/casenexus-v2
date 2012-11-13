@@ -32,7 +32,7 @@ window.users_index_map_marker_click = (marker_id) ->
         $(".modal").modal("hide")
         $("#modal_friendship_req").modal("show")
 
-      $("#users_index_user_button_feedback_req").click ->
+      $("#users_index_user_feedback_button_feedback_req").click ->
         $(".modal").modal("hide")
         $("#modal_feedback_req").modal("show")
         $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
@@ -40,13 +40,13 @@ window.users_index_map_marker_click = (marker_id) ->
       # Radar Button
       $("#users_index_user_feedback_chart_radar_button_all").click ->
         $("#users_index_user_feedback_chart_radar").empty()
-        users_index_user_feedback_chart_radar_draw "all"
+        users_index_user_feedback_chart_radar_draw "all", users_index_user_feedback_chart_radar_count
         $("#users_index_user_feedback_chart_radar_button_all").addClass "active"
         $("#users_index_user_feedback_chart_radar_button_combined").removeClass "active"
 
-      $("#cases_show_chart_radar_button_combined").click ->
+      $("#users_index_user_feedback_chart_radar_button_combined").click ->
         $("#users_index_user_feedback_chart_radar").empty()
-        users_index_user_feedback_chart_radar_draw "combined"
+        users_index_user_feedback_chart_radar_draw "combined", users_index_user_feedback_chart_radar_count
         $("#users_index_user_feedback_chart_radar_button_all").removeClass "active"
         $("#users_index_user_feedback_chart_radar_button_combined").addClass "active"
 
@@ -64,9 +64,6 @@ window.users_index_users_updatelist = ->
   false
 
 
-
-
-
 users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   chart_show_radar = undefined
   
@@ -74,11 +71,11 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   chart_show_radar = new AmCharts.AmRadarChart()
   if radar_type is "all"
     chart_show_radar.dataProvider = users_index_user_feedback_chart_radar_data_all
-  else chart_show_radar.dataProvider = users_index_user_feedback_chart_radar_data_combined  if radar_type is "combined"
+  else chart_show_radar.dataProvider = users_index_user_feedback_chart_radar_data_combined if radar_type is "combined"
   chart_show_radar.categoryField = "criteria"
-  chart_show_radar.startDuration = 0.3
-  chart_show_radar.startEffect = ">"
-  chart_show_radar.sequencedAnimation = true
+  #chart_show_radar.startDuration = 0.3
+  #chart_show_radar.startEffect = ">"
+  #chart_show_radar.sequencedAnimation = true
   chart_show_radar.color = "#000000"
   chart_show_radar.colors = ["#000000", "#FF6600", "#CC0000"]
   chart_show_radar.fontSize = 9
