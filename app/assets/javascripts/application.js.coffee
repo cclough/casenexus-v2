@@ -96,8 +96,10 @@ $(document).ready ->
     $("#modal_contact").modal "show"
 
   # Modal buttons
-  $(".modal-footer button").live 'click', ->
-    $(".modal-footer a, .modal-footer button").attr('disabled', 'disabled')
+  $(".modal-footer button").live 'click', (e) ->
+    $(this).parents(".modal-footer").find("a, button").attr('disabled', 'disabled')
+  $(".modal").on "show", ->
+    $(this).find(".modal-footer").find("a, button").attr('disabled', false)
 
   setTimeout ->
     $("#application_flash").fadeOut('fast');
