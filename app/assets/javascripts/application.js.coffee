@@ -98,8 +98,9 @@ $(document).ready ->
   # Modal buttons
   $(".modal-footer button").live 'click', (e) ->
     $(this).parents(".modal-footer").find("a, button").attr('disabled', 'disabled')
-  $(".modal").on "show", ->
-    $(this).find(".modal-footer").find("a, button").attr('disabled', false)
+    $(this).parents(".modal").on "show", ->
+      $(".modal-footer").find("a, button").attr('disabled', false)
+
 
   setTimeout ->
     $("#application_flash").fadeOut('fast');

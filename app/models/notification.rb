@@ -76,7 +76,7 @@ class Notification < ActiveRecord::Base
     def history(from_id, to_id)
       where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
             from_id, to_id,
-            to_id, from_id)
+            to_id, from_id).where("ntype in (?)", %w(message feedback feedback_req))
     end
   end
 

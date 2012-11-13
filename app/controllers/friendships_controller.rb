@@ -38,7 +38,12 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     Friendship.breakup(@friendship.user, @friendship.friend)
     flash[:success] = "Contact Deleted"
-    redirect_to action: :index
+    if params[:back_url]
+      redirect_to params[:back_url]
+    else
+      #redirect_to action: :index
+      redirect_to notifications_path
+    end
   end
 
   def accept
@@ -48,7 +53,8 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      redirect_to action: :index
+      #redirect_to action: :index
+      redirect_to notifications_path
     end
   end
 
@@ -64,7 +70,8 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      redirect_to action: :index
+      #redirect_to action: :index
+      redirect_to notifications_path
     end
   end
 
@@ -72,14 +79,24 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.find(params[:id])
     Friendship.block(@friendship.user, @friendship.friend)
     flash[:success] = "Contact Blocked"
-    redirect_to action: :index
+    if params[:back_url]
+      redirect_to params[:back_url]
+    else
+      #redirect_to action: :index
+      redirect_to notifications_path
+    end
   end
 
   def unblock
     @friendship = current_user.friendships.find(params[:id])
     Friendship.unblock(@friendship.user, @friendship.friend)
     flash[:success] = "Contact Unblocked"
-    redirect_to action: :index
+    if params[:back_url]
+      redirect_to params[:back_url]
+    else
+      #redirect_to action: :index
+      redirect_to notifications_path
+    end
   end
 
 
