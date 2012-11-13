@@ -28,7 +28,7 @@ window.getQueryParams = (qs) ->
 
 
 # Modal help checkbox
-$(".modal_help_checkbox").live 'change', ->
+$("#modal_help_checkbox").live 'change', ->
   page_id = $(this).attr("data-page_id")
   user_id = $(this).attr("data-user_id")
   if !$(this).is(':checked')
@@ -39,7 +39,7 @@ $(".modal_help_checkbox").live 'change', ->
 
 window.application_help_checkbox = (help_page) ->
   $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
-    $("#modal_help_checkbox").html data
+    $("#modal_help_checkbox_container").html data
     $("input:checkbox").uniform()
 
 

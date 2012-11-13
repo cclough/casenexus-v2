@@ -114,12 +114,16 @@ class User < ActiveRecord::Base
       where(status_approved: false)
     end
 
+    def list_local(user)
+      user.nearbys(100).order('created_at desc')
+    end
+
     def list_global
       order('created_at desc')
     end
 
-    def list_local(user)
-      user.nearbys(100).order('created_at desc')
+    def list_online
+      order('last_online_at asc')
     end
 
     def list_contacts(user)
