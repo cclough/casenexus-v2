@@ -27,20 +27,20 @@ window.getQueryParams = (qs) ->
   params
 
 
+# Modal help checkbox
+$(".modal_help_checkbox").live 'change', ->
+  page_id = $(this).attr("data-page_id")
+  user_id = $(this).attr("data-user_id")
+  if !$(this).is(':checked')
+    $.ajax("/members/" + user_id + "/show_help?act=uncheck&page_id=" + page_id, type: 'PUT')
+  else
+    $.ajax("/members/" + user_id + "/show_help?act=check&page_id=" + page_id, type: 'PUT')
+
+
 window.application_help_checkbox = (help_page) ->
   $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
-
     $("#modal_help_checkbox").html data
-
     $("input:checkbox").uniform()
-
-    # Modal help checkbox
-    $(".modal_help_checkbox").live 'change', ->
-      if !$(this).is(':checked')
-        page_id = $(this).attr("data-page_id")
-        user_id = $(this).attr("data-user_id")
-        $.ajax("/members/" + user_id + "/show_help?page_id=" + page_id, type: 'PUT')
-
 
 
 window.application_show_help = (help_page) ->
@@ -129,6 +129,7 @@ $(document).ready ->
 
         if $("#modal_help_arrownav").size() > 0
           $('.modal-body').scrollTop(0)
+          window.application_help_checkbox(page)
 
         window.ArrowNav.centerArrow nav_item
 
