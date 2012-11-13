@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
 
-  # Map - access via dashboard/
+  # Map - access via /map
   def index
 
     # Set scope of users list depending on params from filter menu

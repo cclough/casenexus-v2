@@ -16,7 +16,7 @@
         %small
           = link_to "Forgotten your password?", new_password_path('user'), tabindex: "4" 
       .span25#header_signin_rememberme
-        .span8
+        .span9
           = f.label :remember_me, class: 'font-small'
-        .span2.offset1
+        .span2
           = f.check_box :remember_me, { checked: true, tabindex: "5" }

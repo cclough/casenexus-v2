@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class MapController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
 

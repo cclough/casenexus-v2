@@ -6,7 +6,7 @@ module MembersHelper
       when "icon"
         avatar_url = "avatars/avatar_" + user.level + ".png"
         avatar_alt = user.name + " has done " + user.cases.count.to_s + " cases"
-        link_to image_tag(avatar_url, alt: avatar_alt), "/dashboard?user_id=" + user.id.to_s
+        link_to image_tag(avatar_url, alt: avatar_alt), "/map?user_id=" + user.id.to_s
 
       when "chevron"
         chevron_num = "1"
