@@ -39,6 +39,14 @@ class AccountController < ApplicationController
     @user = current_user
   end
 
+  def edit_password
+    @user = current_user
+  end
+
+  def destroy
+    @user = current_user
+  end
+
   def random_name
     @first_name = Faker::Name.first_name
     @last_name = Faker::Name.last_name

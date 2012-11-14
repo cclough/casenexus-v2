@@ -35,8 +35,9 @@
                 = f.text_field :email, class: "span27"
             .row
               .span25.offset12
-                .btn.btn-inverse.btn-small
-                  I want to change my password
+                %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
+                  I want to edit my password
+                  
             .spacer5
             .row
               .span12
@@ -65,8 +66,9 @@
             .row
               .span25.offset12
                 .spacer10
-                .btn.btn-inverse.btn-small
-                  I want to delete my account
+                  %a.btn.btn-inverse.btn-small{href: "/account/destroy"}
+                    I want to delete my account
+
           .panel.darker.kill_bottom
             .row
               = f.label :status, "Your Status"
