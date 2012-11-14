@@ -50,8 +50,9 @@
         #users_index_user_status_actions
           .row
             .pull-right
-              .span12
-                = link_to "Show Message History", notification_path(@user), id: 'users_index_user_status_history'
+              - if Notification.history(current_user, @user).count > 0
+                .span12
+                  = link_to "Show Message History", history_notifications_path(user_id: @user.id), id: 'users_index_user_status_history'
               .span12
                 %a#users_index_user_button_message.btn.btn-inverse.btn-small
                   %i.icon-comment.icon-white

@@ -20,7 +20,13 @@ class NotificationsController < ApplicationController
     @notifications.each { |n| n.read! }
 
     @user = User.find(@notification.sender_id)
+  end
 
+  def history
+    @user = User.find(params[:user_id])
+
+    @notifications = Notification.history(current_user, @user.id)
+    @notifications.each { |n| n.read! }
   end
 
   def create
