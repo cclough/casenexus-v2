@@ -45,11 +45,11 @@
             Last online
             = time_ago_in_words(@user.last_online_at)
             ago
-    #users_index_user_status_actions
-      .row
-        .pull-right
-          - if Friendship.friends?(current_user, @user)
-            .row
+    .row
+      - if Friendship.friends?(current_user, @user)
+        #users_index_user_status_actions
+          .row
+            .pull-right
               .span12
                 = link_to "Show Message History", notification_path(@user), id: 'users_index_user_status_history'
               .span12
@@ -58,15 +58,21 @@
                   %span
                     Send Message
 
-          - elsif Friendship.requested?(current_user, @user)
-            .alert.alert-info
-              Contact Request Pending
+      - elsif Friendship.requested?(current_user, @user)
+        #users_index_user_status_actions
+          .row
+            .pull-right
+              .alert.alert-info
+                Contact Request Pending
 
-          - elsif @user != current_user
-            %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
-              %i.icon-comment.icon-white
-              %span
-                Send Friend Request
+      - elsif @user != current_user
+        #users_index_user_status_actions
+          .row
+            .pull-right
+              %a#users_index_user_button_friend_req.btn.btn-inverse.btn-small
+                %i.icon-comment.icon-white
+                %span
+                  Send Friend Request
 - else
   .panel.gradient
     #users_index_user_status_unapproved
@@ -87,12 +93,12 @@
               %i.icon-refresh.icon-white
               %span
                 Request
-        #testing123
+
     .row
       #users_index_user_feedback_chart_radar_container
         #users_index_user_feedback_chart_radar
         #users_index_user_feedback_chart_radar_buttongroup
-          .btn-group.offset26
+          .btn-group
             %a#users_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
             %a#users_index_user_feedback_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
 

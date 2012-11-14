@@ -22,7 +22,7 @@ class AccountController < ApplicationController
         @user.toggle!(:completed)
         flash[:success] = 'Welcome to casenexus.com'
       end
-      redirect_to dashboard_path
+      redirect_to map_path
     else
       @invitations = current_user.invitations
       @invitation = current_user.invitations.build(params[:invitation])

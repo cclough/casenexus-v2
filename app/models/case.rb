@@ -96,7 +96,7 @@ class Case < ActiveRecord::Base
   end
 
   def subject_trunc
-    subject.truncate(20, separator: ' ')
+    subject.truncate(18, separator: ' ')
   end
 
 

@@ -44,7 +44,7 @@ class CasesController < ApplicationController
 
     if @case.save
       flash[:success] = 'Feedback Sent'
-      redirect_to dashboard_path
+      redirect_to map_path
     else
       @user = @case.user
       render 'new'

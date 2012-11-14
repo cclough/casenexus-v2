@@ -360,7 +360,13 @@ textarea {
   }
 }
 
+#modal_help_checkbox_container {
+  text-align:left;
+}
 
+#modal_help_checkbox {
+  margin-top:-20px;
+}
 
 .arrownav_page {
   display:none;
@@ -435,7 +441,7 @@ textarea {
 
 // Help modal
 
-#modal_help_page_1 { height:800px; width:800px; background: url('help/set-1.jpg');  position:relative; }
+#modal_help_page_1 { height:1000px; width:800px; background: url('help/set-1.jpg');  position:relative; }
       .set-1a { position:absolute; top:128px; left:60px; width:370px;}
       .set-1b { position:absolute; top:190px; left:60px;  width: 335px;}
       .set-1c { position:absolute; top:250px; left:60px; width:370px;}
@@ -443,7 +449,7 @@ textarea {
       .set-1e { position:absolute; top:610px; left:60px; width: 300px;}
       .set-1f { left: 420px; position: absolute; top: 610px; width: 370px;}
 
-#modal_help_page_2 { height:712px; width:800px; background: url('help/set-2.jpg');  position:relative; }
+#modal_help_page_2 { height:1000px; width:800px; background: url('help/set-2.jpg');  position:relative; }
       .set-2a { position: absolute; top:30px; left:0px; width:370px;}
       .set-2b { position: absolute; top:30px; left:400px; width:370px;}
       .set-2c { left: 20px; position: absolute; top: 300px; width: 335px;}
@@ -461,11 +467,11 @@ textarea {
       .set-4d { left: 450px; position: absolute; top: 427px; width: 309px;}
       .set-4e { left: 450px; position: absolute; top: 627px; width: 309px;}
 
-#modal_help_page_5 { height:800px; width:800px; background: url('help/set-5.jpg');  position:relative; }
+#modal_help_page_5 { height:1000px; width:800px; background: url('help/set-5.jpg');  position:relative; }
       .set-5a { left: 465px; position: absolute; top: 90px; width: 340px; }
       .set-5b { left: 55px; position: absolute; top: 343px; width: 350px; }
 
-#modal_help_page_6 { height:800px; width:800px; background: url('help/set-6.jpg');  position:relative; }
+#modal_help_page_6 { height:1000px; width:800px; background: url('help/set-6.jpg');  position:relative; }
       .set-6b { left: 50px; position: absolute; top: 360px; width: 320px; }
       .set-6c { left: 410px; position: absolute; top: 360px; width: 360px; }
       .set-6d { left: 50px; position: absolute; top: 535px; width: 230px; }

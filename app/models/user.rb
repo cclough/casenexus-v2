@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def status_trunc
-    status.to_s.truncate(35, separator: ' ')
+    status.to_s.truncate(30, separator: ' ')
   end
 
   def case_count
@@ -114,12 +114,16 @@ class User < ActiveRecord::Base
       where(status_approved: false)
     end
 
+    def list_local(user)
+      user.nearbys(100).order('created_at desc')
+    end
+
     def list_global
       order('created_at desc')
     end
 
-    def list_local(user)
-      user.nearbys(100).order('created_at desc')
+    def list_online
+      order('last_online_at asc')
     end
 
     def list_contacts(user)

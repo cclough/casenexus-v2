@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
     end
     if signed_in?
       flash[:notice] = "You should be logged off to accept an Invitation" if @invitation
-      redirect_to dashboard_path
+      redirect_to map_path
     else
       @user = User.new
       @user.invitation_code = session[:code]
