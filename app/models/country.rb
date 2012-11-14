@@ -3,7 +3,7 @@ class Country < ActiveRecord::Base
 
   class << self
     def in_use
-      User.order('country asc').select("country, city, lat, lng").uniq { |u| { country: u.country, city: u.city, lat: u.lat, lng: u.lng } }
+      User.where("length(country) > 0").order('country asc').select("country, city, lat, lng").uniq { |u| { country: u.country, city: u.city, lat: u.lat, lng: u.lng } }
     end
   end
 end
