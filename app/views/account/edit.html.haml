@@ -66,8 +66,7 @@
             .row
               .span25.offset12
                 .spacer10
-                  %a.btn.btn-inverse.btn-small{href: "/account/destroy"}
-                    I want to delete my account
+                  = link_to("I want to delete my account", account_path, method: :delete, class: "btn btn-inverse btn-small", confirm: "Are you sure you want to delete your account?")
 
           .panel.darker.kill_bottom
             .row

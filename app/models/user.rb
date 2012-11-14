@@ -29,9 +29,8 @@ class User < ActiveRecord::Base
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
 
   # Invitations
-  has_many :invitations
+  has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
-
 
   before_create :generate_roulette_token
   before_create :set_headline_and_university
