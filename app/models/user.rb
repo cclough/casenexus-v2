@@ -129,6 +129,10 @@ class User < ActiveRecord::Base
     def list_contacts(user)
       user.accepted_friends
     end
+
+    def confirmed
+      where("confirmed_at is not null")
+    end
   end
 
   def to_s
