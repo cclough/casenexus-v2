@@ -33,6 +33,10 @@
                 = f.label :email
               .span25
                 = f.text_field :email, class: "span27"
+            .row
+              .span25.offset12
+                .btn.btn-inverse.btn-small
+                  I want to change my password
             .spacer5
             .row
               .span12
@@ -58,6 +62,11 @@
                 = f.check_box :email_users
               .span25
                 = f.label :email_users, "Send notifications from users to your email"
+            .row
+              .span25.offset12
+                .spacer10
+                .btn.btn-inverse.btn-small
+                  I want to delete my account
           .panel.darker.kill_bottom
             .row
               = f.label :status, "Your Status"
