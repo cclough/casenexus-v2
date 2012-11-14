@@ -441,39 +441,42 @@ textarea {
 
 // Help modal
 
-#modal_help_page_1 { height:1000px; width:800px; background: url('help/set-1.jpg');  position:relative; }
-      .set-1a { position:absolute; top:128px; left:60px; width:370px;}
-      .set-1b { position:absolute; top:190px; left:60px;  width: 335px;}
-      .set-1c { position:absolute; top:250px; left:60px; width:370px;}
-      .set-1d { position:absolute; top:250px; left:605px}
-      .set-1e { position:absolute; top:610px; left:60px; width: 300px;}
-      .set-1f { left: 420px; position: absolute; top: 610px; width: 370px;}
+#modal_help_page_1 { height:1000px; width:800px; background: url('help/1.jpg');  position:relative; }
+      .set-1a { position:absolute; top:55px; left:40px; width:250px;}
+      .set-1b { position:absolute; top:160px; left:80px;  width: 335px;}
+      .set-1c { position:absolute; top:250px; left:120px; width:370px;}
+      .set-1d { position:absolute; top:310px; left:590px}
+      .set-1e { position:absolute; top:680px; left:40px; width: 300px;}
+      .set-1f { position: absolute; top:680px; left:410px; width: 370px;}
 
-#modal_help_page_2 { height:1000px; width:800px; background: url('help/set-2.jpg');  position:relative; }
-      .set-2a { position: absolute; top:30px; left:0px; width:370px;}
-      .set-2b { position: absolute; top:30px; left:400px; width:370px;}
-      .set-2c { left: 20px; position: absolute; top: 300px; width: 335px;}
-      .set-2d { position: absolute; top:470px; left:400px; width:370px;}
+#modal_help_page_2 { height:1000px; width:800px; background: url('help/2.jpg');  position:relative; }
+      .set-2a { position: absolute; top:150px; left:40px; width:330px;}
+      .set-2b { position: absolute; top:150px; left:400px; width:370px;}
+      .set-2c { position: absolute; left: 40px; top: 280px; width: 335px;}
+      .set-2d { position: absolute; left: 40px; top: 350px; width: 335px;}
+      .set-2e { position: absolute; left: 40px; top: 400px;  width: 335px;}
+      .set-2f { position: absolute; left: 400px; top: 650px; width: 370px;}
 
-#modal_help_page_3 { height:800px; width:800px; background: url('help/set-3.jpg');  position:relative; }
+#modal_help_page_3 { height:1000px; width:800px; background: url('help/3.jpg');  position:relative; }
       .set-3a { position: absolute; top:67px; left:300px; width:450px;}
-      .set-3b { position: absolute; top:220px; left:420px; width:350px;}
-      .set-3c { position: absolute; top:540px; left:50px; width:650px;}
+      .set-3b { position: absolute; top:400px; left:40px; width:330px;}
+      .set-3c { position: absolute; top:690px; left:40px; width:330px;}
 
-#modal_help_page_4 { height:800px; width:800px; background: url('help/set-4.jpg');  position:relative; }
-      .set-4a { left: 50px; position: absolute; top: 30px; width: 725px;}
-      .set-4b { position: absolute; top:100px; left:420px; width:350px;}
-      .set-4c { left: 30px; position: absolute; top: 427px; width: 350px;}
-      .set-4d { left: 450px; position: absolute; top: 427px; width: 309px;}
-      .set-4e { left: 450px; position: absolute; top: 627px; width: 309px;}
+#modal_help_page_4 { height:1000px; width:800px; background: url('help/4.jpg');  position:relative; }
+      .set-4a { position: absolute; left: 40px; top: 230px; width: 725px;}
+      .set-4b { position: absolute; left: 40px; top: 250px; width:350px;}
+      .set-4c { position: absolute; left: 400px; top: 250px; width: 350px;}
+      .set-4d { position: absolute; left: 40px; top: 480px; width: 309px;}
+      .set-4e { position: absolute; left: 470px; top: 780px; width: 309px;}
 
-#modal_help_page_5 { height:1000px; width:800px; background: url('help/set-5.jpg');  position:relative; }
-      .set-5a { left: 465px; position: absolute; top: 90px; width: 340px; }
-      .set-5b { left: 55px; position: absolute; top: 343px; width: 350px; }
+#modal_help_page_5 { height:1000px; width:800px; background: url('help/5.jpg');  position:relative; }
+      .set-5a { position: absolute; left: 465px; top: 90px; width: 340px; }
+      .set-5b {position: absolute;  left: 40px; top: 343px; width: 330px; }
+      .set-5c {position: absolute;  left: 40px; top: 800px; width: 330px; }
 
-#modal_help_page_6 { height:1000px; width:800px; background: url('help/set-6.jpg');  position:relative; }
-      .set-6b { left: 50px; position: absolute; top: 360px; width: 320px; }
-      .set-6c { left: 410px; position: absolute; top: 360px; width: 360px; }
-      .set-6d { left: 50px; position: absolute; top: 535px; width: 230px; }
+#modal_help_page_6 { height:1000px; width:800px; background: url('help/6.jpg');  position:relative; }
+      .set-6b { position: absolute; left: 50px; top: 90px; width: 320px; }
+      .set-6c { position: absolute; left: 410px; top: 90px; width: 360px; }
+      .set-6d { position: absolute; left: 50px; top: 650px; width: 230px; }
 
 
