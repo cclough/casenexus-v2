@@ -26,17 +26,6 @@ window.getQueryParams = (qs) ->
   params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2])  while tokens = re.exec(qs)
   params
 
-
-# Modal help checkbox
-$("#modal_help_checkbox").live 'change', ->
-  page_id = $(this).attr("data-page_id")
-  user_id = $(this).attr("data-user_id")
-  if !$(this).is(':checked')
-    $.ajax("/members/" + user_id + "/show_help?act=uncheck&page_id=" + page_id, type: 'PUT')
-  else
-    $.ajax("/members/" + user_id + "/show_help?act=check&page_id=" + page_id, type: 'PUT')
-
-
 window.application_help_checkbox = (help_page) ->
   $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
     $("#modal_help_checkbox_container").html data
@@ -47,7 +36,7 @@ window.application_show_help = (help_page) ->
   if !($("#modal_help").hasClass("in"))
     $(".modal").modal "hide"
     $("#modal_help").modal "show"
-  
+
   setTimeout ->
     window.ArrowNav.goTo help_page
   , 200
@@ -58,6 +47,16 @@ window.application_show_help = (help_page) ->
 $(document).ready ->
   # Style for the checkboxes
   $("input:checkbox").uniform()
+
+
+  # Modal help checkbox
+  $("#modal_help_checkbox").live 'change', ->
+    page_id = $(this).attr("data-page_id")
+    user_id = $(this).attr("data-user_id")
+    if !$(this).is(':checked')
+      $.ajax("/members/" + user_id + "/show_help?act=uncheck&page_id=" + page_id, type: 'PUT')
+    else
+      $.ajax("/members/" + user_id + "/show_help?act=check&page_id=" + page_id, type: 'PUT')
 
   # Placeholders
   $("input, textarea").placeholder()

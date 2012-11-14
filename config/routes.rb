@@ -50,6 +50,7 @@ Casenexus::Application.routes.draw do
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
     put :read, on: :member
+    get :history, on: :collection
   end
 
   # Site contacts
