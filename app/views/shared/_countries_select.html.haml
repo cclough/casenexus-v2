@@ -1,8 +1,7 @@
 %option
   - for item in Country.in_use
-    - if item.city != ""
-      %option{value: item.lat.to_s+"_"+item.lng.to_s }
-        - if item.city
-          = "#{item.country} - #{item.city}"
-        - else
-          = "#{item.country}"
+    %option{value: item[:lat].to_s+"_"+item[:lng].to_s }
+      - if item[:city]
+        = "#{item[:country]} - #{item[:city]}"
+      - else
+        = "#{item[:country]}"
