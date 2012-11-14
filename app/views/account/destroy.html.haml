@@ -1,0 +1,10 @@
+- provide(:title, 'Delete my Account')
+- provide(:sub_title, 'Confirm below that you would like to delete your account')
+
+.row
+	.span40.offset20
+		.panel.gradient
+    	= form_for(@user, url: account_path, method: :put) do |f|
+    		= f.text_field :password, "Enter your password Password"
+ 
+    		= f.submit "I confirm that I would like to delete my acocunt", class: "btn btn-large btn-inverse"

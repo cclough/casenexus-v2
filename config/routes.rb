@@ -10,6 +10,7 @@ Casenexus::Application.routes.draw do
   # Account
   resource :account, controller: 'account' do
     get :complete_profile, on: :collection
+    get :edit_password, on: :member
     put :show_help, on: :member
     get :random_name, on: :collection
   end
