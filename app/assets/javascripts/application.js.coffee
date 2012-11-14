@@ -14,8 +14,6 @@
 
 #= require lib/markerclustererplus
 
-
-
 # Get query params, global function
 
 window.getQueryParams = (qs) ->

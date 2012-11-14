@@ -69,7 +69,7 @@ window.users_index_users_updatelist = ->
 
 users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   chart_show_radar = undefined
-  
+
   # RADAR CHART
   chart_show_radar = new AmCharts.AmRadarChart()
   if radar_type is "all"
@@ -82,7 +82,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   chart_show_radar.color = "#000000"
   chart_show_radar.colors = ["#000000", "#FF6600", "#CC0000"]
   chart_show_radar.fontSize = 9
-  
+
   # GRAPH - ALL
   graph = new AmCharts.AmGraph()
   graph.title = "All"
@@ -91,7 +91,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   graph.valueField = "all"
   graph.balloonText = "[[category]]: [[value]]/10"
   chart_show_radar.addGraph graph
-  
+
   # GRAPH - FIRST 5
   graph = new AmCharts.AmGraph()
   graph.title = "First " + radar_count
@@ -100,7 +100,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   graph.valueField = "first"
   graph.balloonText = "[[category]]: [[value]]/10"
   chart_show_radar.addGraph graph
-  
+
   # GRAPH - LAST 5
   graph = new AmCharts.AmGraph()
   graph.title = "Last " + radar_count
@@ -109,7 +109,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   graph.valueField = "last"
   graph.balloonText = "[[category]]: [[value]]/10"
   chart_show_radar.addGraph graph
-  
+
   # VALUE AXIS
   valueAxis = new AmCharts.ValueAxis()
   valueAxis.gridType = "circles"
@@ -121,7 +121,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   valueAxis.minimum = 0
   valueAxis.maximum = 10
   chart_show_radar.addValueAxis valueAxis
-  
+
   # Balloon Settings
   balloon = chart_show_radar.balloon
   balloon.adjustBorderColor = true
@@ -130,7 +130,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   balloon.fillColor = "#000000"
   balloon.fillAlpha = 0.7
   balloon.color = "#FFFFFF"
-  
+
   # Legend Settings
   legend = new AmCharts.AmLegend()
   legend.position = "bottom"
@@ -142,9 +142,10 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   legend.valueWidth = 5
   legend.switchable = false
   chart_show_radar.addLegend legend
-  
+
   # WRITE
-  chart_show_radar.write "users_index_user_feedback_chart_radar"
+  if $("#users_index_user_feedback_chart_radar").size() > 0
+    chart_show_radar.write "users_index_user_feedback_chart_radar"
 
 
 $(document).ready ->
@@ -202,7 +203,7 @@ $(document).ready ->
 
         # Draw markers
         image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
-        
+
         marker = new google.maps.Marker(
           id: marker.id
           map: map
