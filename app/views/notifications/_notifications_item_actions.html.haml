@@ -18,4 +18,7 @@
         / = link_to("Block", block_friendship_path(notifications_item.notificable), method: :put)
   - when "friendship_app"
     - if notifications_item.notificable
-      = link_to "Show Contact's Profile", members_path(notifications_item.notificable.friend)
+      = link_to "Jump to Contact's Profile", "/map?user_id=" + notifications_item.notificable.friend.id.to_s
+
+
+      
