@@ -4,6 +4,22 @@ if %w(production development).include?(Rails.env) && User.count == 0
   University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
   University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
   University.create!(name: "Harvard College", image: "harvard.gif", domain: "harvard.edu")
+  University.create!(name: "HBS", image: "harvard.gif", domain: "hbs.edu")
+  University.create!(name: "UC San Diego - Rady", image: "harvard.gif", domain: "rady.ucsd.edu")
+  University.create!(name: "UC San Diego", image: "harvard.gif", domain: "ucsd.edu")
+  University.create!(name: "Northerwestern - Kellogg", image: "harvard.gif", domain: "kellogg.northwestern.edu")
+  University.create!(name: "UC Berkeley", image: "harvard.gif", domain: "berkeley.edu")
+  University.create!(name: "UC Berkeley - Haas", image: "harvard.gif", domain: "haas.berkeley.edu")
+  University.create!(name: "UPenn", image: "harvard.gif", domain: "upenn.edu")
+  University.create!(name: "Wharton", image: "harvard.gif", domain: "wharton.upenn.edu")
+  University.create!(name: "LSE", image: "harvard.gif", domain: "lse.ac.uk")
+  University.create!(name: "Imperial College London", image: "harvard.gif", domain: "imperial.ac.uk")
+  University.create!(name: "Stanford", image: "harvard.gif", domain: "stanford.edu")
+  University.create!(name: "Columbia", image: "harvard.gif", domain: "columbia.edu")
+  University.create!(name: "Cornell", image: "harvard.gif", domain: "cornell.edu")
+  University.create!(name: "Brown", image: "harvard.gif", domain: "brown.edu")
+  University.create!(name: "Dartmouth", image: "harvard.gif", domain: "dartmouth.edu")
+  University.create!(name: "Princeton", image: "harvard.gif", domain: "princeton.edu")
 
   puts "Creating christian's user"
 

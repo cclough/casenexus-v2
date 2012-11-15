@@ -35,6 +35,7 @@ body {
 }
 
 footer {
+
   padding-top:15px;
   a{
     color:black;
@@ -60,6 +61,7 @@ textarea {
 .search-query {
   background: white url(icons/search.png) no-repeat 94% 5px;
   padding-right: 17px;
+  padding-left:10px;
 }
 
 .simple_form {
@@ -74,7 +76,8 @@ textarea {
 }
 
 .container {
-  &.main{
+    &.main{
+    height:100%;
     /* gives twitter like white translucent background */
     background: url(app/white-wash.png);
   }
@@ -449,7 +452,7 @@ textarea {
       .set-1e { position:absolute; top:680px; left:40px; width: 300px;}
       .set-1f { position: absolute; top:680px; left:410px; width: 370px;}
 
-#modal_help_page_2 { height:1000px; width:800px; background: url('help/2.jpg');  position:relative; }
+#modal_help_page_2 { height:1100px; width:800px; background: url('help/2.jpg');  position:relative; }
       .set-2a { position: absolute; top:150px; left:40px; width:330px;}
       .set-2b { position: absolute; top:150px; left:400px; width:370px;}
       .set-2c { position: absolute; left: 40px; top: 280px; width: 335px;}
@@ -462,14 +465,14 @@ textarea {
       .set-3b { position: absolute; top:400px; left:40px; width:330px;}
       .set-3c { position: absolute; top:690px; left:40px; width:330px;}
 
-#modal_help_page_4 { height:1000px; width:800px; background: url('help/4.jpg');  position:relative; }
+#modal_help_page_4 { height:1100px; width:800px; background: url('help/4.jpg');  position:relative; }
       .set-4a { position: absolute; left: 40px; top: 230px; width: 725px;}
       .set-4b { position: absolute; left: 40px; top: 250px; width:350px;}
       .set-4c { position: absolute; left: 400px; top: 250px; width: 350px;}
       .set-4d { position: absolute; left: 40px; top: 480px; width: 309px;}
       .set-4e { position: absolute; left: 470px; top: 780px; width: 309px;}
 
-#modal_help_page_5 { height:1000px; width:800px; background: url('help/5.jpg');  position:relative; }
+#modal_help_page_5 { height:1200px; width:800px; background: url('help/5.jpg');  position:relative; }
       .set-5a { position: absolute; left: 465px; top: 90px; width: 340px; }
       .set-5b {position: absolute;  left: 40px; top: 343px; width: 330px; }
       .set-5c {position: absolute;  left: 40px; top: 800px; width: 330px; }

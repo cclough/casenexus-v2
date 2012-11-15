@@ -1,5 +1,6 @@
-.span8
-  = link_to image_tag("icons/linkedin.png", alt: "View #{@user.skype}'s profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/' + @user.skype
+- unless @user.linkedin_uid.blank? && @user.linkedin_name.blank?
+  .span8
+    = link_to image_tag("icons/linkedin.png", alt: "View #{@user.skype}'s profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/' + @user.skype
 .span7
   %a{href: "skype:#{@user.skype}?call"}
     %img#users_index_user_contact_button_skype{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }

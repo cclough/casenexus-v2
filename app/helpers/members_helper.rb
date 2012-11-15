@@ -8,6 +8,11 @@ module MembersHelper
         avatar_alt = user.name + " has done " + user.cases.count.to_s + " cases"
         link_to image_tag(avatar_url, alt: avatar_alt), "/map?user_id=" + user.id.to_s
 
+      when "icon_header"
+        avatar_url = "avatars/avatar_" + user.level + ".png"
+        avatar_alt = user.name + " has done " + user.cases.count.to_s + " cases"
+        image_tag(avatar_url, alt: avatar_alt)
+
       when "chevron"
         chevron_num = "1"
         chevron_style = "background-image: url(/assets/chevrons/chevron_" + chevron_num + ".png);"

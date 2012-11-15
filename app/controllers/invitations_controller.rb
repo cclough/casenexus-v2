@@ -6,14 +6,14 @@ class InvitationsController < ApplicationController
     @invitation = current_user.invitations.build(params[:invitation])
 
     if @invitation.save
-      flash[:notice] = "The Invitation was sent to #{@invitation.email}"
+      flash[:notice] = "An invitation was sent to #{@invitation.email}"
       if params[:back_url]
         redirect_to params[:back_url]
       else
         redirect_to action: :index
       end
     else
-      flash[:error] = "There was a problem with the Invitation"
+      flash[:error] = "An error was encountered in sending the invitation"
       if params[:back_url]
         redirect_to params[:back_url]
       else
