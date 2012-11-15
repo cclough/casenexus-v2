@@ -47,7 +47,6 @@ class AccountController < ApplicationController
     @user = current_user
     @user.destroy
     flash[:success] = "Your account has been deleted"
-    sign_out :user
     redirect_to root_path
   end
 
