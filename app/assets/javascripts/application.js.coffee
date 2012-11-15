@@ -37,7 +37,7 @@ window.application_show_help = (help_page) ->
 
   setTimeout ->
     window.ArrowNav.goTo help_page
-  , 200
+  , 100
 
   window.application_help_checkbox help_page
 
