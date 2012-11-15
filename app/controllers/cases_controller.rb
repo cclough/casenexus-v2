@@ -27,6 +27,10 @@ class CasesController < ApplicationController
       @user = User.find_by_roulette_token(params[:roulette_token])
     else
       @user = User.find(params[:user_id])
+      unless Friendship.friendship(current_user, @user)
+        flash[:error] = "You are not friend with #{@user.name}"
+        redirect_to map_path and return
+      end
       if params[:subject] then
         @subject = params[:subject]
       end
