@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   belongs_to :university
   has_many :cases, dependent: :destroy
+  has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
   has_many :feedbacks, dependent: :nullify

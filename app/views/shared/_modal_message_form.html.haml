@@ -1,4 +1,5 @@
-= form_for(@notification, remote: true) do |f|
+- notification = notification || @notification
+= form_for(notification, remote: true) do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
@@ -15,9 +16,10 @@
     %div
       = f.text_area :content, placeholder: "Send message...", tabindex: "1", class: "modal_textarea"
 
-      = f.hidden_field :user_id, :value => @user.id
-      = f.hidden_field :sender_id, :value => current_user.id
-      = f.hidden_field :ntype, :value => "message"
+      = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
+      = f.hidden_field :user_id, value: @user.id
+      = f.hidden_field :sender_id, value: current_user.id
+      = f.hidden_field :ntype, value: "message"
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close

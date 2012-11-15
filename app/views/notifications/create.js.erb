@@ -1,11 +1,17 @@
-<%- if @notification.errors.any? %>
-
-  $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
+<%- if params[:page_reload] == "true" %>
+    window.location = window.location;
 <%- else %>
+    <%- if @notification.errors.any? %>
 
-	$('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
+        $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
 
-  $("#application_flash").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
-	$("#application_flash").fadeIn("fast");
+    <%- else %>
+
+        $('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
+
+        $("#application_flash").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+        $("#application_flash").fadeIn("fast");
+
+    <%- end %>
 
 <%- end %>

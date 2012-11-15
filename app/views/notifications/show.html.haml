@@ -11,11 +11,10 @@
         Go back to where you were
 
 
-
 - if @notifications.count > 0
   - @notifications.each do |notifications_history_item|
 
-    = render partial: 'notifications/notifications_history_item' , locals: { :notifications_history_item => notifications_history_item }
+    = render partial: 'notifications/notifications_history_item' , locals: { notifications_history_item: notifications_history_item }
 
 - else
   %p No notifications found
@@ -37,3 +36,6 @@
         %i.icon-comment.icon-white
         %span
           Send Message
+
+#modal_message.modal.hide.fade
+  = render partial: "/shared/modal_message_form", locals: { notification: Notification.new(user: @user), page_reload: true }
