@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  after_create :geocode
+  before_create :geocode
   after_validation :reverse_geocode
 
 
