@@ -40,9 +40,9 @@ We'd like to invite you to join a new site, casenexus.com - a new site that we h
 
 %p Ready? Click the link below, and use the following unique invitation code: 
 
-= @invitation.code
+%p= @invitation.code
 
-= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
+%p= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
 
 %p When you sign-up, you will get 5 invitations to give to good friends (accessible in via your account Settings) - do please use them.
 
