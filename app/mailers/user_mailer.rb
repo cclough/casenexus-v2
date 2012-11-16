@@ -115,4 +115,10 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "Casenexus: Your status on your profile was rejected")
   end
 
+  def moderation_to_admin(user)
+    @user = user
+
+    mail(to: "info@casenexus.com", subject: "User moderation")
+  end
+
 end

@@ -181,6 +181,7 @@ class User < ActiveRecord::Base
       self.status_approved = false
       self.status_moderated = false
       Rails.logger.info("STATUS MODERATED")
+      UserMailer.moderation_to_admin(self).deliver
     end
   end
 
