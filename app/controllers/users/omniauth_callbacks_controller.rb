@@ -76,6 +76,7 @@ class Users::OmniauthCallbacksController < ApplicationController
         user.password = user.password_confirmation = generate_password
 
         user.invitation_code = session[:code]
+        user.skip_confirmation!
 
         if user.save
           user.confirm! # We confirm the user since he logged in though linkedin
