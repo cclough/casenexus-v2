@@ -20,3 +20,7 @@ $(document).ready ->
 
   $("#confirm_linkedin").click ->
     check_confirm_linkedin()
+
+  $("#static_home_signup_option_linkedin_button_submit, #static_home_signup_option_linkedin_button_submit img, #static_home_signup_option_linkedin_button_submit span").click (e) ->
+    if $("#static_home_signup_option_linkedin_button_submit").attr('disabled') == 'disabled'
+      e.preventDefault()

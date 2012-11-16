@@ -192,7 +192,7 @@ class User < ActiveRecord::Base
 
   def send_welcome
     if completed_was == false and completed == true
-      Notification.create(user: self, sender_id: 1, ntype: "welcome", content: Notification.welcome_content(self))
+      Notification.create!(user: self, sender_id: 1, ntype: "welcome", content: Notification.welcome_content(self))
     end
   end
 
