@@ -14,7 +14,8 @@
             %ul.dropdown-menu
               %li
                 / = radio_button_tag :cases_listtype, 'local', checked: true
-                = sortable "subject"
+                = sortable "subject", "By Subject"
+                = sortable "date", "By Date"
 
   #cases_index_cases.panel.dark
   / content is rendered by index.js.erb

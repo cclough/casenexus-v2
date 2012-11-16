@@ -2,49 +2,44 @@
 
 %p Dear #{@invitation.name},
 
-%p Forgive us for taking your email address from Case Partner 2012-2013.
+%p We'd like to invite you to join a brand new website, casenexus.com, that we're hoping will be the missing link' in the provision for management consulting candidates preparing for case interviews around the world. At the heart of it, it is a social networking site, enabling you to meet others to practise case with, in person or via Skype.
 
-We'd like to invite you to join a new site, casenexus.com - a new site that we hope will be the 'missing link' for consulting candidates around the world - to meet each other to practise case interviews with, in person or via Skype from all over the world.
+%p You are amongst the first 100 users to be asked to participate in the invite-only beta testing period.
 
-%p You are amongst the first 100 users to be invited in an exclusive invite-only beta testing period for the site.
-
-%p Developed by Cambridge University students who now work at top firms who wish they had something like this when they were interviewing, it's been designed from the ground up, using the latests web technologies, to address a global unmet need.
+%p Developed by Cambridge University students to help them prepare for their own interviews, it's been designed from the ground-up using the latests web technologies, to address a global unmet need.
 
 %p Features of the site include:
 
 %ul
   %li
-    Find other candidates
+    A Global Map of users
     %ul
-      %li Practise case interviews with other candidates who work or live near you
-      %li Find others around the world applying to the same firms, and practise cases via Skype
+      %li Practise case interviews with other candidates who work or live immediately near you
+      %li Find others around the world with things in common, and practise cases via Skype
   %li
     Case Roulette
     %ul
-      %li Got 45 minutes free after work to do a case?
-      %li Use Case Roulette to practise cases with others online at any time
+      %li Only got 45 minutes free after work to do a case?
+      %li Use Case Roulette to practise cases via Skype, with others online at any time, without any need to schedule anything
   %li
     Feedback System
     %ul
-      %li "Interviewers" complete a feedback form for interviewees, including scores and comments
-      %li Form designed by a top-3-firm professional consultant with many years of interviewing experience
-      %li Feedback is recorded and analysed
+      %li "Interviewers" complete a feedback form for interviewees, with scores and comments
+      %li The scoring criteria were selected by a top-3-firm professional consultant with many years of interviewing experience
+      %li Feedback is recorded and analysed for you to learn from
 
-%p As the initial users of the site, we'd be very grateful if you would, as much as you can, provide us with feedback on any bugs you find, or feature suggestions - in fact we're counting on your help!
 
-%p We're expecting a bit of a bumpy ride to start with, so hope you will bear with us, as we get everything running smoothly.
+%p This is an exciting time for us - we hope you enjoy the site, and wish you every success in your upcoming interviews.
 
-%p This is an exciting time for us - we hope you enjoy the site, and wish you every success in your upcoming case interviews.
+%p Apart from the different contact forms on the website, do not hesitate to contact us directly at #{link_to 'info@casenexus.com', 'mailto:info@casenexus.com'} if you'd like to get in touch.
 
-%p Apart from the contact methods on the website, do not hesistae to contact us directly at info@casenexus.com if you'd like to get in touch.
-
-%p Ready? Click the link below, and use the following unique invitation code: 
+%p Ready? Click the link below, using the following unique invitation code to sign up using either a univeristy email address or your LinkedIn account: 
 
 %p= @invitation.code
 
 %p= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
 
-%p When you sign-up, you will get 5 invitations to give to good friends (accessible in via your account Settings) - do please use them.
+%p When you sign-up, you will get 5 invitations to give to good friends (accessible via your account Settings) - do please use them.
 
 %p Good luck!
 

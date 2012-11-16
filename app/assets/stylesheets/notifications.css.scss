@@ -21,11 +21,11 @@ $gray_Dark: #555555;
 }
 
 #notifications_index_notifications_form_sort .asc {
-  background-image: url(app/sort_up_arrow.gif);
+  background-image: url(app/sort_up_arrow.png);
 }
 
 #notifications_index_notifications_form_sort .desc {
-  background-image: url(app/sort_down_arrow.gif);
+  background-image: url(app/sort_down_arrow.png);
 }
 
 #notifications_index_notifications_form_sort {
@@ -40,13 +40,13 @@ padding-top:3px;
     background-color: $gray_Lightest;
   }
   &.read {
-    -moz-opacity: 0.30;
-    opacity: 0.30;
+    -moz-opacity: 0.50;
+    opacity: 0.50;
   }
 }
 
 .notifications_index_notifications_item_content_trunc {
-  padding-top:13px;
+  padding-top:0px;
 }
 
 .notifications_index_notifications_item_content {
@@ -66,9 +66,13 @@ padding-top:3px;
     background-color: $gray_Lightest;
   }
   &.read {
-    -moz-opacity: 0.30;
-    opacity: 0.30;
+    -moz-opacity: 0.50;
+    opacity: 0.50;
   }
+}
+
+.notifications_index_notifications_item_title {
+  font-weight:bold;
 }
 
 .notifications_index_notifications_item_button_expand {

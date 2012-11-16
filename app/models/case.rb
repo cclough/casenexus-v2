@@ -99,6 +99,9 @@ class Case < ActiveRecord::Base
     subject.truncate(18, separator: ' ')
   end
 
+  def to_s
+    self.subject
+  end
 
   ## Macro
 
@@ -389,10 +392,6 @@ class Case < ActiveRecord::Base
 
   end
 
-  def to_s
-    self.subject
-  end
-
   private
 
   def friend_or_roulette_token
@@ -400,14 +399,14 @@ class Case < ActiveRecord::Base
     interviewer = User.find(self.interviewer_id)
     if !Friendship.friendship(user, interviewer)
       if !self.roulette_token.blank? && self.roulette_token != user.roulette_token
-        errors.add(:base, "You need to be friend or enter a roulette token in order to create a case")
+        errors.add(:base, "You need to be case partner to send case feedback")
       end
     end
   end
 
   def no_case_to_self
     unless self.user_id.blank?
-      errors.add(:base, "cannot send feedback to yourself") if self.user_id == self.interviewer_id || self.roulette_token == self.interviewer.roulette_token
+      errors.add(:base, "You cannot send feedback to yourself") if self.user_id == self.interviewer_id || self.roulette_token == self.interviewer.roulette_token
     end
   end
 

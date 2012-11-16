@@ -12,13 +12,15 @@
       .row.application_timestamp
         = notifications_item.created_at.strftime("%d %b '%y")
     .span21
+      .notifications_index_notifications_item_title
+        = notifications_item.title
       .notifications_index_notifications_item_content_trunc.font-small{ id: 'notifications_index_notifications_item_content_trunc_' + notifications_item.id.to_s }
         = notifications_item.content_trunc
 
     .span6
       - unless notifications_item.content.blank?
         .notifications_index_notifications_item_button_expand.font-small{'data-id' => notifications_item.id.to_s}
-          Expand
+          Show
           %i.icon-arrow-down.icon-small
 
     .span15.notifications_index_notifications_item_action.font-small.pull-right

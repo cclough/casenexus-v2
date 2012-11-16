@@ -5,15 +5,20 @@ notifications_index_notifications_link = ->
 $(document).ready ->
   notifications_index_notifications_link()
 
-  # Show content
+  $(".notifications_index_notifications_item").click ->
+    item_id = $(this).attr("data-id")
+    notification = $("#notifications_index_notifications_item_" + item_id)
+    notification.addClass "read"
+    
+    # Mark the notification as readed
+    $.ajax("/notifications/" + item_id + "/read", type: 'PUT')
+
   $(".notifications_index_notifications_item_button_expand").click ->
     item_id = $(this).attr("data-id")
     notification = $("#notifications_index_notifications_item_" + item_id)
 
-    # Toggle Read
     notification.addClass("read")
 
-    # Slide
     if notification.hasClass("slid")
       $("#notifications_index_notifications_item_content_" + item_id).slideUp "fast"
       notification.removeClass "slid"

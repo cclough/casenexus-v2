@@ -9,3 +9,7 @@
           = users_item.name
       .row.font-small
         = users_item.headline
+  .users_index_users_item_lastonline
+    - unless users_item.last_online_at.blank?
+      = time_ago_in_words(users_item.last_online_at)
+      ago

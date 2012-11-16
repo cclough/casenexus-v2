@@ -49,6 +49,23 @@ class Notification < ActiveRecord::Base
     end
   end
 
+  def title
+    case ntype
+      when "welcome"
+        "Message"
+      when "message"
+        "Message"
+      when "feedback"
+        "New feedback"
+      when "feedback_req"
+        "Feedback request"
+      when "friendship_req"
+        "Case partner request"
+      when "friendship_app"
+        "Case partner accepted"
+    end    
+  end
+
   def url
     host = Rails.env == 'production' ? 'salty-crag-5200.herokuapp.com' : 'localhost:3000'
 

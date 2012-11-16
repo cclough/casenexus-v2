@@ -13,7 +13,7 @@ class InvitationsController < ApplicationController
         redirect_to action: :index
       end
     else
-      flash[:error] = "An error was encountered in sending the invitation"
+      flash[:error] = "An error was encountered while sending the invitation"
       if params[:back_url]
         redirect_to params[:back_url]
       else

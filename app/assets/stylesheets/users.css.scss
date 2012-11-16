@@ -122,12 +122,27 @@ header {
   margin-right: 0px;
   padding: 4px;
   display: none;
+  position:relative;
   @include box_sizing;
 }
 
 .users_index_users_item_text {
+
   text-align:left;
   padding-left:8px;
+}
+
+.users_index_users_item_lastonline {
+  position:absolute;
+  z-index:99999;
+  top:-7px;
+  right:2px;
+  font-size:9px;
+  font-color:$gray_Mid !important;
+  width:100px;
+  line-height:10px;
+  padding-top:10px;
+  font-style:italic;
 }
 
 #users_index_mapcontainer_user {
@@ -306,7 +321,7 @@ header {
 #users_index_user_casecount {
   margin-left: 4px;
   position:absolute;
-  top:15px;
+  top:13px;
   right:50px;
 }
 
@@ -405,7 +420,7 @@ header {
     width:425px;
   }
   &.edit {
-    height:300px;
+    height:270px;
     width:435px;
   }
 }
@@ -415,9 +430,21 @@ header {
   width:300px;
 }
 
+#users_edit_status_note {
+  color: $gray_Light;
+  font-size:12px;
+  font-style:italic;
+}
+
 #users_newedit_map_location {
   height:20px;
+  font-size:12px;
 }
+
+.users_newedit_map_location_title {
+  font-weight:bold;
+}
+
 
 #users_newedit_skype_link {
   margin-top:5px;
@@ -431,8 +458,8 @@ header {
 }
 
 #users_edit_status {
-  height:178px;
-  width:400px;
+  height:196px;
+  width:403px;
 }
 
 #users_edit_invitations_list {

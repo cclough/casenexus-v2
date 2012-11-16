@@ -11,9 +11,9 @@
     .row
       #cases_show_block_interviewer.panel.gradient.kill_left.kill_right
         .row
-          .span6
+          #cases_show_block_interviewer_avatar.span6
             = avatar_for(@case.interviewer, 'icon')
-          .span15
+          #cases_show_block_interviewer_name.span15
             .application_name
               = @case.interviewer.name
             .row.application_timestamp.font-small

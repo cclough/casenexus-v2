@@ -37,7 +37,7 @@ window.application_show_help = (help_page) ->
 
   setTimeout ->
     window.ArrowNav.goTo help_page
-  , 100
+  , 50
 
   window.application_help_checkbox help_page
 
@@ -102,7 +102,7 @@ $(document).ready ->
 
   setTimeout ->
     $("#application_flash").fadeOut('fast');
-  , 3000
+  , 4000
 
   # Arrows for the home page and help
   if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0
@@ -122,13 +122,13 @@ $(document).ready ->
         $(".arrownav_page").hide()
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
-
-        #next_page.fadeIn 500
-        next_page.show "slide", direction: "right", 500
-
+        
         if $("#modal_help_arrownav").size() > 0
+          next_page.fadeIn 500
           $('.modal-body').scrollTop(0)
           window.application_help_checkbox(page)
+        else
+          next_page.show "slide", direction: "right", 500
 
         window.ArrowNav.centerArrow nav_item
 

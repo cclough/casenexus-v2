@@ -40,20 +40,6 @@
                 .spacer5
             .spacer5
             .row
-              .span12
-                = image_tag 'icons/skype_large.png'
-                #users_newedit_skype_link
-                  = link_to "Need to register?", "https://login.skype.com/account/signup-form"
-              .span25
-                = f.text_field :skype
-            .spacer5
-            .row
-              .span12
-                = image_tag 'icons/linkedin_large.png'
-              .span25
-                = f.text_field :linkedin_name
-            .spacer5
-            .row
               .span3.offset12
                 = f.check_box :email_admin
               .span25
@@ -69,11 +55,28 @@
                 = link_to("I want to delete my account", account_path, method: :delete, class: "btn btn-inverse btn-small", confirm: "Are you sure you want to delete your account?")
 
           .panel.darker.kill_bottom
-            .row
-              = f.label :status, "Your Status"
+            .row.font-small
+              Edit your status
+              %span#users_edit_status_note.pull-right (NB edits must be approved by an administrator)
+              .spacer5
               = f.text_area :status, id: 'users_edit_status'
 
         .span47
+          .panel.dark.kill_left.kill_bottom
+            .spacer5
+            .row
+              .span12
+                = image_tag 'icons/skype_large.png'
+                #users_newedit_skype_link
+                  = link_to "Need to register?", "https://login.skype.com/account/signup-form"
+              .span25
+                = f.text_field :skype, placeholder: "Skype username"
+            .spacer5
+            .row
+              .span12
+                = image_tag 'icons/linkedin_large.png'
+              .span25
+                = f.text_field :linkedin_name, placeholder: "LinkedIn email address"
 
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "users_newedit_lat"
@@ -82,12 +85,12 @@
             .spacer10
             #users_newedit_map_location
               .row
-                .span7
-                  Country:
-                .span13
+                .users_newedit_map_location_title.span6
+                  Country
+                .span15
                   = @user.country
-                .span7
-                  City:
+                .users_newedit_map_location_title.span4
+                  City
                 .span12
                   = @user.city
           .panel.dark.kill_top.kill_left

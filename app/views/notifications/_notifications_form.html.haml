@@ -13,11 +13,11 @@
             %span.caret
           %ul.dropdown-menu
             %li
-              = sortable "notifications.content"
+              = sortable "notifications.content", "By Subject"
             %li
-              = sortable "user.first_name"
+              = sortable "user.name", "By Name"
             %li
-              = sortable "notifications.created_at"
+              = sortable "notifications.created_at", "By Date"
   .spacer10
   .panel.dark.kill_all
     #notifications_index_notifications_filter_title

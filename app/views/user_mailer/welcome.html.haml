@@ -1,7 +1,21 @@
-%h1
-  Welcome to casenexus.com, #{@user_target.first_name}
-%p
-  Your email is: #{@user_target.email}.
-%p
-  To sign-in, follow this link:
-  = link_to @url, @url
+%h1 Welcome to casenexus.com, #{@user_target.first_name}
+
+%p Thank you for signing-up, we hope you enjoy it.
+
+%p As you explore different parts of the website for the first time, the help dialog will popup automatically to explain things.
+
+%p As the very first users, we'd be incredibly grateful if you would, as much as you can, provide us with feedback on any bugs you find, or feature suggestions you have. In fact we're counting on your help! 
+
+%p We're expecting a bit of a bumpy ride to start with, so hope you will bear with us, as we get everything up and running smoothly.
+
+%p Don't hesisate to contact us directly at any time #{link_to 'info@casenexus.com', 'mailto:info@casenexus.com'}
+
+%p If you have registered with your university email address, login using the form at the top of the home page. Alternatively if you have signed-up with LinkedIn use the 'in' button in the top right hand corner to signin.
+
+%p First step once you've registered is to look for other users near you or anywhere in the world and request them as partners. From there you can start scheduling practise in person, and send case feedback to eachother.
+
+%p Your email is: #{@user_target.email}.
+
+%p To head to the site, just click below:
+
+%p= link_to @url, @url

@@ -22,10 +22,14 @@
           - @invitations.each do |invitation|
             %div
               - if invitation.invited
-                = "#{invitation.email} accepted your invitation and created his profile: "
-                = link_to(invitation.invited, member_path(invitation.invited))
+                .span25
+                  = "#{invitation.email} accepted your invitation and created his profile: "
+                .span15
+                  = link_to(invitation.invited, member_path(invitation.invited))
               - else
-                = "#{invitation.email} invited"
-                = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
+                .span25
+                  = "#{invitation.email} was invited"
+                .span15
+                  = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
         - else
           %p You have no pending/accepted invitations

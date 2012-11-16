@@ -6,7 +6,7 @@
     .cases_score
       = cases_item.totalscore.to_f.round(1)
     .row.cases_index_timestamp
-      = cases_item.created_at.strftime("%d %b '%y")
+      = cases_item.date.strftime("%d %b '%y")
   .span13
     .row
       .cases_index_name

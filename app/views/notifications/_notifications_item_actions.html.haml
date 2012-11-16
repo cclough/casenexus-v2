@@ -1,24 +1,24 @@
 - case notifications_item.ntype
   - when "message"
-    = link_to "Conversation History", notification_path(notifications_item), class: "notifications_index_notifications_item_button_history", 'data-id' => notifications_item.sender_id.to_s
+    = link_to "Conversation history", notification_path(notifications_item), class: "notifications_index_notifications_item_button_history", 'data-id' => notifications_item.sender_id.to_s
   - when "feedback"
-    = link_to 'Jump to Case Record', '/cases?id=' + notifications_item.notificable.id.to_s
+    = link_to 'Jump to case record', '/cases?id=' + notifications_item.notificable.id.to_s
   - when "feedback_req"
-    = link_to 'Jump to Feedback form', ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date })
+    = link_to 'Jump to feedback form', ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date })
   - when "friendship_req"
     - if notifications_item.notificable
       - if notifications_item.notificable.status == Friendship::ACCEPTED
-        Contact Request Accepted
+        Request accepted
       - elsif notifications_item.notificable.status == Friendship::REJECTED
-        Contact Request Rejected
+        Request rejected
       - else
-        Contact request:
+        Case partner request:
         = link_to("Accept", accept_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put)
         = link_to("Reject", reject_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put)
         / = link_to("Block", block_friendship_path(notifications_item.notificable), method: :put)
   - when "friendship_app"
     - if notifications_item.notificable
-      = link_to "Jump to Contact's Profile", "/map?user_id=" + notifications_item.notificable.friend.id.to_s
+      = link_to "Jump to their profile", "/map?user_id=" + notifications_item.notificable.friend.id.to_s
 
 
       

@@ -28,6 +28,13 @@ $blue_pastel: #98cdff;
   padding:4px;
 }
 
+#cases_show_block_interviewer_avatar {
+  margin-top:9px;
+}
+
+#cases_show_block_interviewer_name {
+  margin-top:11px;
+}
 
 #cases_index_case_filler {
   height:784px;
@@ -42,11 +49,11 @@ $blue_pastel: #98cdff;
 }
 
 #cases_index_cases_form_sort .asc {
-  background-image: url(app/sort_up_arrow.gif);
+  background-image: url(app/sort_up_arrow.png);
 }
 
 #cases_index_cases_form_sort .desc {
-  background-image: url(app/sort_down_arrow.gif);
+  background-image: url(app/sort_down_arrow.png);
 }
 
 .cases_index_name {
