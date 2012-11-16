@@ -108,6 +108,10 @@
   #modal_feedback_req.modal.hide.fade
     = render '/shared/modal_feedback_req_form'
 
+- if Friendship.pending?(current_user, @user)
+  = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put)
+  = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put)
+
 - if @friendship
   #modal_friendship_req.modal.hide.fade
     = render '/friendships/request_form'
