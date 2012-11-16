@@ -11,7 +11,7 @@ class Users::OmniauthCallbacksController < ApplicationController
         # If the user is the same, login, otherwise, warn that there is another user with that uid
         if User.where(linkedin_uid: omniauth['uid']).first.id == current_user.id
           # Update the credentials
-          assign_linkedin_credentials(user, credentials, omniauth['uid'])
+          assign_linkedin_credentials(current_user, credentials, omniauth['uid'])
 
           current_user.save
 
