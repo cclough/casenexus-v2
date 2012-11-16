@@ -13,8 +13,11 @@ class InvitationsController < ApplicationController
         redirect_to action: :index
       end
     else
-      flash[:error] = "An error was encountered while sending the invitation"
+      flash[:error] = "An error was encountered while sending the invitation."
       if params[:back_url]
+        @invitation.errors.messages.each do |key, value|
+          flash[:error] += "<br/>#{key}: #{value.join(", ")}.".html_safe
+        end
         redirect_to params[:back_url]
       else
         render action: :new
