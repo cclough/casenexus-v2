@@ -38,7 +38,7 @@ body {
 
 footer {
 
-  padding-top:15px;
+  padding-top:5px;
   a{
     color:black;
     &:hover {
@@ -48,10 +48,11 @@ footer {
   }
 
   ul {
+
     list-style: none;
     li {
       float: left;
-      margin-left: 10px;
+      margin-left: 5px;
     }
   }
 }

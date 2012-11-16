@@ -1,7 +1,7 @@
 %li#fat-menu.dropdown
   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
     / notifications icon + notification count
-    %i.icon-comments.icon-white.icon-large
+    %i.icon-envelope.icon-white.icon-large
     %span#header_menu_notifications_unreadcount
       = current_user.notifications.unread.count.to_s
     %span.caret
@@ -19,4 +19,7 @@
         = render partial: 'header/menu_notifications_item' , locals: { :notification => notification }
 
     - else
-      = link_to "You have no unread notifications", '#'
+      #header_menu_notifications_empty
+        #header_menu_notifications_empty_icon
+          %i.icon-envelope
+        %p You have no notifications
