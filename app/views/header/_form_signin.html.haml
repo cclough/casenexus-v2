@@ -1,5 +1,6 @@
+- @login ||= User.new
 #header_signin_form
-  = simple_form_for(@user, url: session_path(@user)) do |f|
+  = simple_form_for(@login, url: session_path(@login)) do |f|
     .row
       .span20
         = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "University Email", id: "header_signin_email"
