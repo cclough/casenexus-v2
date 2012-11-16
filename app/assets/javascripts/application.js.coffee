@@ -95,7 +95,10 @@ $(document).ready ->
 
   # Modal buttons
   $(".modal-footer button").live 'click', (e) ->
-    $(this).parents(".modal-footer").find("a, button").attr('disabled', 'disabled')
+    $that = $(this)
+    setTimeout ->
+      $that.parents(".modal-footer").find("a, button").attr('disabled', 'disabled')
+    , 50
     $(this).parents(".modal").on "show", ->
       $(".modal-footer").find("a, button").attr('disabled', false)
 
