@@ -56,6 +56,23 @@ $blue_pastel: #98cdff;
   background-image: url(app/sort_down_arrow.png);
 }
 
+
+#cases_index_cases_form_empty {
+  height:280px;
+  padding-top:150px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#cases_index_cases_form_empty_icon {
+  font-size:100px;
+  margin-bottom:40px; 
+}
+
+
+
 .cases_index_name {
   font-weight:bold;
   font-size:13px;
@@ -341,18 +358,74 @@ $blue_pastel: #98cdff;
 
 
 
+.cases_analysis_loading {
+  width:150px;
+  position:relative;
+  left:50%;
+  margin-left: -75px;
+  margin-top:-40px;
+  top:50%;
+  .bar {
+    width:100%;
+  }
+}
+
+#cases_analysis_chart_radar_buttongroup {
+  display:none;
+  margin-top:-28px;
+}
+
+
 #cases_analysis_chart_radar {
   padding-left:2px;
   height:302px;
   width:450px;
-  // margin-top:-20px;
+  display:none;
 }
 
-#cases_analysis_casecount {
-  margin-left: 4px;
-  margin-top:-13px;
-  font-size: 1.3em !important;
+#cases_analysis_chart_radar_empty {
+  height:222px;
+  width:410px;
+  display:none;
+  padding-top:80px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
 }
+
+#cases_analysis_chart_radar_empty_icon {
+  font-size:100px;
+  margin-bottom:40px; 
+}
+
+
+
+#cases_analysis_chart_progress {
+  width:100%;
+  height:350px;
+  display:none;
+}
+
+#cases_analysis_chart_progress_empty {
+  height:260px;
+  width:100%;
+  display:none;
+  padding-top:100px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+
+#cases_analysis_chart_progress_empty_icon {
+  font-size:100px;
+  margin-bottom:40px;  
+}
+
+
+
 
 .cases_analysis_block_title {
   background: url('app/dark-bg.png') repeat top left;
@@ -409,6 +482,24 @@ $blue_pastel: #98cdff;
 
 }
 
+
+#cases_analysis_comments_empty {
+  width: 443px;
+  padding-top:40px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#ccases_analysis_comments_empty_icon {
+  font-size:100px;
+  margin-bottom:40px;  
+}
+
+
+
+
 .cases_analysis_comment {
   margin-top: 5px;
   padding: 5px;
@@ -462,33 +553,4 @@ $blue_pastel: #98cdff;
 }
 
 
-#cases_analysis_chart_progress {
-  width:100%;
-  height:350px;
-}
 
-#cases_analysis_casecount {
-  width:88px;
-
-  font-size:30px;
-  color:white;
-  font-weight: bold;
-  text-align:center;
-
-}
-
-.cases_analysis_loading {
-  width:150px;
-  position:relative;
-  left:50%;
-  margin-left: -75px;
-  margin-top:-40px;
-  top:50%;
-  .bar {
-    width:100%;
-  }
-}
-
-#cases_analysis_chart_radar_buttongroup {
-  margin-top:-28px;
-}

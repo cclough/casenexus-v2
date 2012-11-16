@@ -343,12 +343,18 @@ class Case < ActiveRecord::Base
     end
 
     def cases_analysis_stats_casedate(user, type)
-      case type
-        when "first"
-          user.cases.all.last.date.strftime("%d %b '%y") unless user.case_count < 1
-        when "last"
-          user.cases.all.first.date.strftime("%d %b '%y") unless user.case_count < 1
+
+      if user.case_count < 1
+        "-"
+      else
+        case type
+          when "first"
+            user.cases.all.last.date.strftime("%d %b '%y")
+          when "last"
+            user.cases.all.first.date.strftime("%d %b '%y")
+        end
       end
+      
     end
 
     def cases_analysis_stats_global(type)
@@ -365,7 +371,7 @@ class Case < ActiveRecord::Base
             (Case.all.map { |a| a.structure_combined }.sum/Case.all.count).round(1)
         end
       else
-        "No data"
+        "-"
       end
     end
 
@@ -386,7 +392,7 @@ class Case < ActiveRecord::Base
           0
         end
       else
-        "No data"
+        "-"
       end
     end
 

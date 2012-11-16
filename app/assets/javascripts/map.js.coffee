@@ -140,7 +140,7 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   legend.rollOverGraphAlpha = 0
   legend.horizontalGap = 5
   legend.valueWidth = 5
-  legend.switchable = false
+  legend.switchable = true
   chart_show_radar.addLegend legend
 
   # WRITE

@@ -2,7 +2,10 @@
   - @notifications.each do |notifications_item|
     = render partial: 'notifications/notifications_item' , locals: { notifications_item: notifications_item }
 - else
-  %p No notifications found
+  #notifications_index_notifications_empty
+    #notifications_index_notifications_empty_icon
+      %i.icon-envelope
+    %p You have no notifications
 
 = hidden_field_tag :direction, params[:direction]
 = hidden_field_tag :sort, params[:sort]

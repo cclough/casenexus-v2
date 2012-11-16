@@ -10,6 +10,21 @@ $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
 
+
+#notifications_index_notifications_empty {
+  height:280px;
+  padding-top:150px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#notifications_index_notifications_empty_icon {
+  font-size:100px;
+  margin-bottom:40px; 
+}
+
 #notifications_index_notifications_form {
   margin-bottom:0px;
 }

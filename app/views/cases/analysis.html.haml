@@ -6,13 +6,13 @@
   = javascript_include_tag "lib/amcharts"
   :javascript
 
-    var cases_analysis_chart_radar_count = #{@radar_count};
+    var cases_analysis_chart_case_count = #{@case_count};
 
-    var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @radar_count)};
-    var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @radar_count)};
+    var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count)};
+    var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count)};
 
     $(document).ready(function(){    
-      cases_analysis_charts_draw(cases_analysis_chart_radar_count);
+      cases_analysis_charts_draw(cases_analysis_chart_case_count);
     });
 
   - if current_user.help_6_checked
@@ -30,11 +30,16 @@
       .panel.dark.kill_left.kill-right
         .row
           .cases_analysis_block_title
-            Progress over time
+            Progress
         .row
           #cases_analysis_chart_progress
             .cases_analysis_loading.progress.progress-striped.active 
               .bar
+          #cases_analysis_chart_progress_empty
+            #cases_analysis_chart_progress_empty_icon
+              %i.icon-bar-chart
+            %p You must do at least one case, 
+            %p before this chart will work
 .row
   .span46
     .panel.dark.kill_top.kill_bottom
@@ -49,6 +54,11 @@
         #cases_analysis_chart_radar
           .cases_analysis_loading.progress.progress-striped.active 
             .bar
+        #cases_analysis_chart_radar_empty
+          #cases_analysis_chart_radar_empty_icon
+            %i.icon-tasks
+          %p You must do at least one case, 
+          %p before this chart will work
 
   .span46
     = render 'comments'
