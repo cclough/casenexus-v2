@@ -62,8 +62,9 @@ $gray_Lightest: #f6f6f6;
 }
 
 #header_menu_notifications_empty {
-  height:280px;
-  padding-top:150px;
+  height:150px;
+  width:300px;
+  padding-top:60px;
   padding-left:0px;
   padding-right:0px;
   font-weight:bold;
@@ -97,7 +98,7 @@ $gray_Lightest: #f6f6f6;
 
 .header_menu_notifications_item {
   height:45px;
-  width:270px;
+  width:300px;
 }
 
 .header_menu_notifications_avatar {
