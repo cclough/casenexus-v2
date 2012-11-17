@@ -1,5 +1,5 @@
 $(document).ready ->
-  $("#random_name").click (e) ->
+  $("#users_new_button_random_name").click (e) ->
     e.preventDefault()
     $.ajax("/account/random_name", type: "get", dataType: "script")
 
@@ -7,15 +7,15 @@ $(document).ready ->
 
   if typeof users_newedit_map_lat_start is "string"
     users_newedit_latlng = new google.maps.LatLng(users_newedit_map_lat_start, users_newedit_map_lng_start)
-    if users_newedit_map_lat_start == "" && navigator.geolocation
-      navigator.geolocation.getCurrentPosition (position) ->
-        users_newedit_latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        window.marker.setPosition(users_newedit_latlng)
-        window.map.setCenter(users_newedit_latlng)
-        $("#users_newedit_lat").val(users_newedit_latlng.lat())
-        $("#users_newedit_lng").val(users_newedit_latlng.lng())
-        $("#users_new_step3").css opacity: 1
-        $.users_new_step2_complete = true
+    #if users_newedit_map_lat_start == "" && navigator.geolocation
+      #navigator.geolocation.getCurrentPosition (position) ->
+        #users_newedit_latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        #window.marker.setPosition(users_newedit_latlng)
+        #window.map.setCenter(users_newedit_latlng)
+    $("#users_newedit_lat").val(users_newedit_latlng.lat())
+    $("#users_newedit_lng").val(users_newedit_latlng.lng())
+        #$("#users_new_step3").css opacity: 1
+        #$.users_new_step2_complete = true
 
     window.map = new google.maps.Map(document.getElementById("users_newedit_map"),
       # zoomed right out
