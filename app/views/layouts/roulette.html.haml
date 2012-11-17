@@ -4,10 +4,11 @@
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
-    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
     = yield :javascript_includes
 
     = csrf_meta_tags
+
+    = analytics_init if Rails.env.production?
 
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
@@ -30,4 +31,4 @@
 
   = render 'shared/modal_help' if signed_in?
   = render 'shared/modal_bug' if signed_in?
-  = render 'shared/modal_contact' if signed_in?
+  = render 'shared/modal_contact'

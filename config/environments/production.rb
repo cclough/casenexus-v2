@@ -67,4 +67,7 @@ Casenexus::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => "salty-crag-5200.herokuapp.com" }
+
+  # Google analytics Gem
+  GA.tracker = "UA-36414972-1"
 end
