@@ -146,13 +146,7 @@ class Notification < ActiveRecord::Base
     <<STRING
 <h1>Welcome to casenexus.com, #{user.first_name}</h1>
 <p>Thank you for signing-up, we hope you enjoy it.</p>
-<p>As you explore different parts of the website for the first time, the help dialog will popup automatically to explain things.</p>
-<p>As the very first users, we'd be incredibly grateful if you would, as much as you can, provide us with feedback on any bugs you find, or feature suggestions you have. In fact we're counting on your help!</p>
-<p>We're expecting a bit of a bumpy ride to start with, so hope you will bear with us, as we get everything up and running smoothly.</p>
-<p>Don't hesisate to contact us directly at any time <a href="mailto:info@casenexus.com">info@casenexus.com</a></p>
-<p>If you have registered with your university email address, login using the form at the top of the home page. Alternatively if you have signed-up with LinkedIn use the 'in' button in the top right hand corner to signin.</p>
-<p>First step once you've registered is to look for other users near you or anywhere in the world and request them as partners. From there you can start scheduling practise in person, and send case feedback to eachother.</p>
-<p>Your email is: #{user.email}.</p>
+
 STRING
   end
 end
