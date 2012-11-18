@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   before_update :update_status_moderated
   after_create :update_invitation
   after_save :send_welcome
+  # Geocode
+  before_create :geocode
+  after_validation :reverse_geocode
 
   ### Validations
   validates :first_name, presence: true, on: :update
@@ -68,10 +71,6 @@ class User < ActiveRecord::Base
       obj.country = geo.country
     end
   end
-
-  before_create :geocode
-  after_validation :reverse_geocode
-
 
   def name
     "#{first_name} #{last_name}"
