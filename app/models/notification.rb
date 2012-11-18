@@ -10,6 +10,9 @@ class Notification < ActiveRecord::Base
   validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
   validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
   validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
+  validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
+  validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
+
   validate :no_notification_to_self
 
   validates :content, length: { maximum: 500 }
