@@ -133,6 +133,10 @@ class User < ActiveRecord::Base
     def confirmed
       where("confirmed_at is not null")
     end
+
+    def status_approved
+      where("status_approved = true")
+    end
   end
 
   def to_s
