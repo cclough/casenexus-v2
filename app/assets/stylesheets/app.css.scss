@@ -83,6 +83,14 @@ textarea {
   font-size:12px;
 }
 
+.font-bold {
+  font-weight:bold;
+}
+
+.tooltip {
+  z-index: 50000;
+}​
+
 .container {
     &.main{
     min-height: 100%;
@@ -452,42 +460,46 @@ textarea {
 
 // Help modal
 
-#modal_help_page_1 { height:1000px; width:800px; background: url('help/1.jpg');  position:relative; }
+#modal_help_page_1 { height:1000px; width:800px; background: url('help/1.jpg'); position:relative; }
       .set-1a { position:absolute; top:55px; left:40px; width:250px;}
-      .set-1b { position:absolute; top:160px; left:80px;  width: 335px;}
-      .set-1c { position:absolute; top:250px; left:120px; width:370px;}
+      .set-1b { position:absolute; top:165px; left:120px;  width: 335px;}
+      .set-1c { position:absolute; top:260px; left:200px; width:370px;}
       .set-1d { position:absolute; top:310px; left:590px}
-      .set-1e { position:absolute; top:680px; left:40px; width: 300px;}
-      .set-1f { position: absolute; top:680px; left:410px; width: 370px;}
+      .set-1e { position:absolute; top:680px; left:60px; width: 300px;}
+      .set-1f { position: absolute; top:680px; left:420px; width: 300px;}
 
-#modal_help_page_2 { height:1100px; width:800px; background: url('help/2.jpg');  position:relative; }
-      .set-2a { position: absolute; top:150px; left:40px; width:330px;}
-      .set-2b { position: absolute; top:150px; left:400px; width:370px;}
-      .set-2c { position: absolute; left: 40px; top: 280px; width: 335px;}
-      .set-2d { position: absolute; left: 40px; top: 350px; width: 335px;}
-      .set-2e { position: absolute; left: 40px; top: 400px;  width: 335px;}
-      .set-2f { position: absolute; left: 400px; top: 650px; width: 370px;}
+#modal_help_page_2 { height:1100px; width:800px; background: url('help/2.jpg'); position:relative; }
+      .set-2a { position: absolute; top:190px; left:40px; width:280px;}
+      .set-2b { position: absolute; top:190px; left:370px; width:240px;}
+      .set-2c { position: absolute; left: 40px; top: 320px; width: 250px;}
+      .set-2d { position: absolute; left: 40px; top: 520px; width: 250px;}
+      .set-2e { position: absolute; left: 40px; top: 640px;  width: 250px;}
+      .set-2f { position: absolute; left: 410px; top: 800px; width: 370px;}
 
-#modal_help_page_3 { height:1000px; width:800px; background: url('help/3.jpg');  position:relative; }
+#modal_help_page_3 { height:1000px; width:800px; background: url('help/3.jpg'); position:relative; }
       .set-3a { position: absolute; top:67px; left:300px; width:450px;}
       .set-3b { position: absolute; top:400px; left:40px; width:330px;}
       .set-3c { position: absolute; top:690px; left:40px; width:330px;}
 
-#modal_help_page_4 { height:1100px; width:800px; background: url('help/4.jpg');  position:relative; }
+#modal_help_page_4 { height:1100px; width:800px; background: url('help/4.jpg'); position:relative; }
       .set-4a { position: absolute; left: 40px; top: 230px; width: 725px;}
       .set-4b { position: absolute; left: 40px; top: 250px; width:350px;}
       .set-4c { position: absolute; left: 400px; top: 250px; width: 350px;}
       .set-4d { position: absolute; left: 40px; top: 480px; width: 309px;}
       .set-4e { position: absolute; left: 470px; top: 780px; width: 309px;}
 
-#modal_help_page_5 { height:1200px; width:800px; background: url('help/5.jpg');  position:relative; }
+#modal_help_page_5 { height:1200px; width:800px; background: url('help/5.jpg'); position:relative; }
       .set-5a { position: absolute; left: 465px; top: 90px; width: 340px; }
       .set-5b {position: absolute;  left: 40px; top: 343px; width: 330px; }
       .set-5c {position: absolute;  left: 40px; top: 800px; width: 330px; }
 
-#modal_help_page_6 { height:1000px; width:800px; background: url('help/6.jpg');  position:relative; }
+#modal_help_page_6 { height:1000px; width:800px; background: url('help/6.jpg'); position:relative; }
       .set-6b { position: absolute; left: 50px; top: 90px; width: 320px; }
       .set-6c { position: absolute; left: 410px; top: 90px; width: 360px; }
       .set-6d { position: absolute; left: 50px; top: 650px; width: 230px; }
 
-
+.modal_help_list {
+  li { 
+    margin-bottom:10px;
+  }
+}
