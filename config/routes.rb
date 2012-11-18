@@ -13,6 +13,7 @@ Casenexus::Application.routes.draw do
     get :edit_password, on: :member
     put :show_help, on: :member
     get :random_name, on: :collection
+    get :delete, on: :member
   end
 
   # Members

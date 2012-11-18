@@ -2,7 +2,8 @@ class AccountController < ApplicationController
   before_filter :authenticate_user!
 
   def show
-    @user = current_user
+    #@user = current_user
+    redirect_to action: :edit
   end
 
   def edit
@@ -44,6 +45,10 @@ class AccountController < ApplicationController
   end
 
   def edit_password
+    @user = current_user
+  end
+
+  def delete
     @user = current_user
   end
 
