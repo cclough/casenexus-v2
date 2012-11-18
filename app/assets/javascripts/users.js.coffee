@@ -17,7 +17,7 @@ $(document).ready ->
 
     window.map = new google.maps.Map(document.getElementById("users_newedit_map"),
       # zoomed right out
-      zoom: 12
+      zoom: 2
       center: users_newedit_latlng
       mapTypeId: google.maps.MapTypeId.ROADMAP
       streetViewControl: false

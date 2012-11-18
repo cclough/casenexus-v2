@@ -1,12 +1,8 @@
-%h1
+%h3
   = "Dear #{@user.first_name}"
 %p
-  Your status was rejected, and it is not visible by other users on the website.
+  Your status was rejected by an administrator.
 %p
-  Your status should follow the next rules:
-  %ul
-    %li Rule 1
-    %li Rule 2
+  Before you can be contacted by other users, your status must be approved. Sign in below to ammend it:
 %p
-  To login and update your status, follow this link:
-  = link_to(root_url, root_url)
+  = link_to("Sign in to casenexus.com", root_url)

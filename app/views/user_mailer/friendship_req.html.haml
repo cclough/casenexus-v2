@@ -1,10 +1,8 @@
-%h1
-  #{@user_from.name} has requested to add you as a case partner!
+%h3
+  #{@user_from.name} has requested to add you as their case partner.
 %p
   = @message
 
-%p If you accept you will be able to send messages between eachother, send and request case feedback and see a chart of your scores with your case partner specially.
-
-%p
-  To accept this request, follow this link:
-  = link_to @url, @url, :method => "put"
+%p Accept this request to be able to communicate freely and arrange to meet in person or online, as well as send feedback to each other on the cases you do together.
+ 
+%p= link_to "Accept Case Partner request from " + @user_from.name, @url, :method => "put"

@@ -1,9 +1,9 @@
-%h1
-  You have been sent case feedback by #{@user_from.name}
 %h3
+  You have been sent case feedback by #{@user_from.name}
+%h4
   Case on #{@date}
 %p
   = @subject
 %p
   Use this link to see the results:
-  = link_to @url, @url
+  = link_to "Sign in to see your results", @url

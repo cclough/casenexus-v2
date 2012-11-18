@@ -1,7 +1,6 @@
-%h1
+%h3
   = "Dear #{@user.first_name}"
 %p
-  Your Status has been approved - other users can now read this and will start to send you requests to be their case partner.
+  Your status at casenexus.com has been approved - other users can now see it and will start to contact you.
 %p
-  To login, follow this link:
-  = link_to(root_url, root_url)
+  = link_to("Sign in to casenexus.com", root_url)

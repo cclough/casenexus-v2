@@ -1,9 +1,8 @@
-%h1
-  You have been sent a feedback request by #{@user_from.name}
 %h3
-  Case on #{@date}
+  You have been sent a feedback request by #{@user_from.name}
+%h4
+  For a case on #{@date}
 %p
   = @subject
 %p
-  Use this link to go to the form:
-  = link_to @url, @url
+  = link_to "Complete a feedback form for this case", @url
