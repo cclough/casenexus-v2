@@ -28,7 +28,11 @@ class AccountController < ApplicationController
       @invitation = current_user.invitations.build(params[:invitation])
 
       if params[:back_url]
-        redirect_to params[:back_url]
+        if params[:back_url].include?('complete')
+          render 'complete_profile'
+        else
+          redirect_to params[:back_url]
+        end
       else
         render 'edit'
       end

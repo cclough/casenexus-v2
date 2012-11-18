@@ -15,7 +15,7 @@
   = hidden_field_tag :back_url, complete_profile_account_path
 
   .row
-    = render '/shared/error_messages', object: @user
+    = render 'shared/error_messages', object: @user
 
     .span46
       #users_new_step2.panel.darker.kill_right
