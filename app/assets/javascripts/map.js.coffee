@@ -122,6 +122,40 @@ users_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
   valueAxis.maximum = 10
   chart_show_radar.addValueAxis valueAxis
 
+  # GUIDES
+  # Blue - Business Analytics
+  guide = new AmCharts.Guide()
+  guide.angle = 270
+  guide.tickLength = 2
+  guide.toAngle = 390
+  guide.value = 3
+  guide.toValue = 2
+  guide.fillColor = "#0D8ECF"
+  guide.fillAlpha = 0.3
+  valueAxis.addGuide guide
+
+  # Green - Interpersonal
+  guide = new AmCharts.Guide()
+  guide.angle = 30
+  guide.tickLength = 3
+  guide.toAngle = 150
+  guide.value = 3
+  guide.toValue = 2
+  guide.fillColor = "#B0DE09"
+  guide.fillAlpha = 0.3
+  valueAxis.addGuide guide
+
+  # Yellow - Structure
+  guide = new AmCharts.Guide()
+  guide.angle = 150
+  guide.tickLength = 1
+  guide.toAngle = 270
+  guide.value = 3
+  guide.toValue = 2
+  guide.fillColor = "#FCD202"
+  guide.fillAlpha = 0.3
+  valueAxis.addGuide guide
+  
   # Balloon Settings
   balloon = chart_show_radar.balloon
   balloon.adjustBorderColor = true

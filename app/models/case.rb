@@ -315,21 +315,21 @@ class Case < ActiveRecord::Base
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
   class << self
     def cases_analysis_comments_interpersonal(user)
-      user.cases.all { |m| { interviewer_id: m.interviewer_id,
-                             created_at: m.created_at,
-                             interpersonal_comment: m.interpersonal_comment } }
+      user.cases.where("interpersonal_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                                  created_at: m.created_at,
+                                                                  interpersonal_comment: m.interpersonal_comment } }
     end
 
     def cases_analysis_comments_businessanalytics(user)
-      user.cases.all { |m| { interviewer_id: m.interviewer_id,
-                             created_at: m.created_at,
-                             businessanalytics_comment: m.businessanalytics_comment } }
+      user.cases.where("businessanalytics_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                                      created_at: m.created_at,
+                                                                      businessanalytics_comment: m.businessanalytics_comment } }
     end
 
     def cases_analysis_comments_structure(user)
-      user.cases.all { |m| { interviewer_id: m.interviewer_id,
-                             created_at: m.created_at,
-                             structure_comment: m.structure_comment } }
+      user.cases.where("structure_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                              created_at: m.created_at,
+                                                              structure_comment: m.structure_comment } }
     end
   end
 

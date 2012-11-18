@@ -74,7 +74,7 @@ class Notification < ActiveRecord::Base
   end
 
   def url
-    host = Rails.env == 'production' ? 'salty-crag-5200.herokuapp.com' : 'localhost:3000'
+    host = Rails.env == 'production' ? 'www.casenexus.com' : 'localhost:3000'
 
     case ntype
       when "welcome"
@@ -147,13 +147,4 @@ class Notification < ActiveRecord::Base
     end
   end
 
-  public
-
-  def self.welcome_content(user)
-    <<STRING
-<h1>Welcome to casenexus.com, #{user.first_name}</h1>
-<p>Thank you for signing-up, we hope you enjoy it.</p>
-git 
-STRING
-  end
 end

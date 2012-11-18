@@ -4,12 +4,12 @@ $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
 $blue_pastel: #98cdff;
-$blue_linkedin: #006699;
+$blue_linkedin: #86c7fe;
 
 
 #static_home_signup {
   margin-top:80px;
-  margin-left:4px;
+  margin-left:8px;
   width:255px;
   input {
     width:218px;
@@ -35,14 +35,14 @@ $blue_linkedin: #006699;
 }
 
 #static_home_signup_option {
-  margin-left:28px;
+  margin-left:27px;
 }
 
 
-
-#static_home_signup_option_linkedin_button_highlight {
-  color: $blue_linkedin;
+#static_home_signup_option_university_button, #static_home_signup_option_linkedin_button {
+  height:19px;
 }
+
 
 #static_home_signup_option_linkedin {
   display:none;
@@ -74,16 +74,16 @@ $blue_linkedin: #006699;
 }
 
 #static_home_signup_option_linkedin_button_submit_text {
-  border-left: 1px solid #86c7fe;
+  border-left: 1px solid $blue_linkedin;
   padding-left:10px;
 }
 
 #static_home_signup_option_linkedin_button_submit_text2 {
-  color: #86c7fe;
+  color: $blue_linkedin;
 }
 
 #static_home_slider_panel {
-  width:605px;
+  width:615px;
 }
 
 #static_home_slider {
@@ -96,45 +96,30 @@ $blue_linkedin: #006699;
 .static_home_slider_bullets {
 
   font-size:13px;
-  text-align:center;
-  
+  text-align:left;
+  position:absolute;
+  margin-top:330px;
+  margin-left:50px;  
+
   &.banner {
     font-style:italic;
     margin-top:-40px;
-    margin-left:-40px;    
-  }
-  &.partners {
-    position:absolute;
-    margin-top:330px;
-    margin-left:35px;    
-  }
-  &.roulette {
-    position:absolute;
-    margin-top:320px;
-    margin-left:100px;    
-  }
-  &.feedback {
-    position:absolute;
-    margin-top:310px;
-    margin-left:30px;    
-  }
-  &.analysis{
-    position:absolute;
-    margin-top:330px;
-    margin-left:90px;    
-  }
-  &.testimonials {
-    position:absolute;
-    margin-top:80px;
-    margin-left:20px;      
+    margin-left:-5px;    
   }
 }
+
+.static_home_slider_icon {
+  font-size:70px;
+  margin-top:25px;
+}
+
 
 #static_home_slider_page_1 {
   padding-left:20px;
   position:relative;
   height:400px;
   width:600px;
+  margin-left:9px;
 }
 
 #static_home_slider_page_2 {
@@ -142,6 +127,7 @@ $blue_linkedin: #006699;
   position:relative;
   height:400px;
   width:600px;
+  margin-left:9px;
 }
 
 #static_home_slider_page_3 {
@@ -149,6 +135,7 @@ $blue_linkedin: #006699;
   position:relative;
   height:400px;
   width:600px;
+  margin-left:9px;
 }
 
 #static_home_slider_page_4 {
@@ -156,6 +143,7 @@ $blue_linkedin: #006699;
   position:relative;
   height:400px;
   width:600px;
+  margin-left:9px;
 }
 
 #static_home_slider_page_5 {
@@ -163,13 +151,14 @@ $blue_linkedin: #006699;
   position:relative;
   height:400px;
   width:600px;
+  margin-left:9px;
 }
 
 #static_home_arrownav {
 
   margin-top:-20px;
   margin-left:-10px;
-  margin-right:-27px;
+  margin-right:-37px;
   margin-bottom:18px;
 
   background: #f6f6f6;
@@ -186,7 +175,7 @@ $blue_linkedin: #006699;
 
   nav { 
     position: relative; 
-    left:30px; }
+    left:55px; }
     
   nav ul {
     list-style: none;

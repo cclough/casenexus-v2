@@ -18,7 +18,7 @@ class AccountController < ApplicationController
 
     if @user.update_attributes(params[:user])
       if @user.completed
-        flash[:success] = 'Success - Profile updated'
+        flash[:success] = 'Your profile has been updated'
       else
         @user.toggle!(:completed)
         flash[:success] = 'Welcome to casenexus.com'
@@ -55,7 +55,7 @@ class AccountController < ApplicationController
   def destroy
     @user = current_user
     @user.destroy
-    flash[:success] = "Your account has been deleted"
+    flash[:success] = "Your account has now been deleted."
     redirect_to root_path
   end
 

@@ -82,6 +82,39 @@ function cases_show_chart_radar_draw(radar_type) {
   valueAxis.maximum = 10;
   chart_show_radar.addValueAxis(valueAxis);
 
+  // GUIDES
+  // Blue - Business Analytics
+  var guide = new AmCharts.Guide();
+  guide.angle = 270;
+  guide.tickLength = 2;
+  guide.toAngle = 390;
+  guide.value = 3;
+  guide.toValue = 2;
+  guide.fillColor = "#0D8ECF";
+  guide.fillAlpha = 0.3;
+  valueAxis.addGuide(guide);
+
+  // Green - Interpersonal
+  guide = new AmCharts.Guide();
+  guide.angle = 30;
+  guide.tickLength = 3;
+  guide.toAngle = 150;
+  guide.value = 3;
+  guide.toValue = 2;
+  guide.fillColor = "#B0DE09";
+  guide.fillAlpha = 0.3;
+  valueAxis.addGuide(guide);
+
+  // Yellow - Structure
+  guide = new AmCharts.Guide();
+  guide.angle = 150;
+  guide.tickLength = 1;
+  guide.toAngle = 270;
+  guide.value = 3;
+  guide.toValue = 2;
+  guide.fillColor = "#FCD202";
+  guide.fillAlpha = 0.3;
+  valueAxis.addGuide(guide);
   // GRAPH
   var graph = new AmCharts.AmGraph();
   graph.lineColor = "#98cdff";
@@ -191,7 +224,6 @@ function cases_analysis_charts_draw(case_count) {
     $("#cases_analysis_chart_progress").fadeIn("fast");
     $("#cases_analysis_chart_radar_buttongroup").fadeIn("fast");
 
-
     cases_analysis_chart_progress_data = [];
 
     // loop through model json, construct AM compatabile array + run parseDate
@@ -206,7 +238,7 @@ function cases_analysis_charts_draw(case_count) {
     }).complete(function() {
       // DRAW BOTH CHARTS
       cases_analysis_chart_progress_draw(cases_analysis_chart_progress_data);
-      cases_analysis_chart_radar_draw("all", radar_count);
+      cases_analysis_chart_radar_draw("all", case_count);
     });
 
 
@@ -228,7 +260,7 @@ function cases_analysis_charts_draw(case_count) {
           backgroundColor: "#000000",
           backgroundAlpha: 0.15
       };
-      chart_analysis_progress.colors = ["#FCD202","#B0DE09","#0D8ECF"]
+      chart_analysis_progress.colors = ["#0D8ECF","#B0DE09","#FCD202"]
       chart_analysis_progress.dataProvider = data;
       chart_analysis_progress.categoryField = "date";
       
@@ -274,7 +306,7 @@ function cases_analysis_charts_draw(case_count) {
       graph.title = "Business Analytics";
       graph.valueField = "businessanalytics";
       graph.lineAlpha = 1;
-      graph.fillAlphas = 0.6; // setting fillAlphas to > 0 value makes it area graph
+      graph.fillAlphas = 0.7; // setting fillAlphas to > 0 value makes it area graph
       graph.bullet = "round";
 
       addclicklistener(graph);
@@ -287,7 +319,7 @@ function cases_analysis_charts_draw(case_count) {
       graph.title = "Interpersonal";
       graph.valueField = "interpersonal";
       graph.lineAlpha = 1;
-      graph.fillAlphas = 0.6;
+      graph.fillAlphas = 0.7;
       graph.bullet = "round";
 
       addclicklistener(graph);
@@ -300,7 +332,7 @@ function cases_analysis_charts_draw(case_count) {
       graph.title = "Structure";
       graph.valueField = "structure";
       graph.lineAlpha = 1;
-      graph.fillAlphas = 0.6;
+      graph.fillAlphas = 0.7;
       graph.bullet = "round";
 
       addclicklistener(graph);
@@ -387,101 +419,135 @@ function cases_analysis_charts_draw(case_count) {
       });
     }
 
-    ////////////////////////////////////////////
-    // Radar
-    ////////////////////////////////////////////
-
-
-
-    function cases_analysis_chart_radar_draw(radar_type, case_count) {
-
-      var chart_analysis_radar;
-
-      // RADAR CHART
-      chart_analysis_radar = new AmCharts.AmRadarChart();
-
-      if (radar_type == "all") {
-        chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_all;
-      } else if (radar_type == "combined") {
-        chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_combined;    
-      }
-
-      chart_analysis_radar.categoryField = "criteria";
-      chart_analysis_radar.startDuration = 0.3;
-      chart_analysis_radar.startEffect = ">";
-      chart_analysis_radar.sequencedAnimation = true;
-      chart_analysis_radar.color = "#f6f6f6";
-      chart_analysis_radar.colors = ["#000000","#FF6600","#CC0000"]
-      chart_analysis_radar.fontSize = 9;
-
-      // GRAPH - ALL
-      var graph = new AmCharts.AmGraph();
-      graph.title = "All";
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "all"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart_analysis_radar.addGraph(graph);
-
-      // GRAPH - FIRST 5
-      var graph = new AmCharts.AmGraph();
-      graph.title = "First " + case_count;
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "first"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart_analysis_radar.addGraph(graph);
-
-      // GRAPH - LAST 5
-      var graph = new AmCharts.AmGraph();
-      graph.title = "Last " + case_count;
-      graph.fillAlphas = 0.2;
-      graph.bullet = "round"
-      graph.valueField = "last"
-      graph.balloonText = "[[category]]: [[value]]/10"
-      chart_analysis_radar.addGraph(graph);
-
-      // VALUE AXIS
-      var valueAxis = new AmCharts.ValueAxis();
-      valueAxis.gridType = "circles";
-      valueAxis.fillAlpha = 0.02;
-      valueAxis.fillColor = "#000000"
-      valueAxis.axisAlpha = 0.1;
-      valueAxis.gridAlpha = 0.1;
-      valueAxis.fontWeight = "bold"
-      valueAxis.minimum = 0;
-      valueAxis.maximum = 10;
-      chart_analysis_radar.addValueAxis(valueAxis);
-
-      // Balloon Settings
-      var balloon = chart_analysis_radar.balloon;
-      balloon.adjustBorderColor = true;
-      balloon.cornerRadius = 5;
-      balloon.showBullet = false;
-      balloon.fillColor = "#000000";
-      balloon.fillAlpha = 0.7;
-      balloon.color = "#FFFFFF";
-
-      // Legend Settings
-      var legend = new AmCharts.AmLegend();
-      legend.position = "bottom";
-      legend.align = "center";
-      legend.color = '#f6f6f6';
-      legend.markerType = "square";
-      legend.rollOverGraphAlpha = 0;
-      legend.horizontalGap = 5;
-      legend.valueWidth = 5;
-      legend.switchable = true;
-      chart_analysis_radar.addLegend(legend);
-
-      // WRITE
-      chart_analysis_radar.write("cases_analysis_chart_radar");
-
-    }
-
   }
 
 }
+
+
+//////////////////////////////////////////////////////////
+// Radar // Has to be global function for buttons to work
+//////////////////////////////////////////////////////////
+
+function cases_analysis_chart_radar_draw(radar_type, case_count) {
+
+  var chart_analysis_radar;
+
+  // RADAR CHART
+  chart_analysis_radar = new AmCharts.AmRadarChart();
+
+  if (radar_type == "all") {
+    chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_all;
+  } else if (radar_type == "combined") {
+    chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_combined;    
+  }
+
+  chart_analysis_radar.categoryField = "criteria";
+  chart_analysis_radar.startDuration = 0.3;
+  chart_analysis_radar.startEffect = ">";
+  chart_analysis_radar.sequencedAnimation = true;
+  chart_analysis_radar.color = "#f6f6f6";
+  chart_analysis_radar.colors = ["#000000","#3e00bd","#CC0000"]
+  chart_analysis_radar.fontSize = 9;
+
+  // GRAPH - ALL
+  var graph = new AmCharts.AmGraph();
+  graph.title = "All";
+  graph.fillAlphas = 0.2;
+  graph.bullet = "round"
+  graph.valueField = "all"
+  graph.balloonText = "[[category]]: [[value]]/10"
+  chart_analysis_radar.addGraph(graph);
+
+  // GRAPH - FIRST 5
+  var graph = new AmCharts.AmGraph();
+  graph.title = "First " + case_count;
+  graph.fillAlphas = 0.2;
+  graph.bullet = "round"
+  graph.valueField = "first"
+  graph.balloonText = "[[category]]: [[value]]/10"
+  chart_analysis_radar.addGraph(graph);
+
+  // GRAPH - LAST 5
+  var graph = new AmCharts.AmGraph();
+  graph.title = "Last " + case_count;
+  graph.fillAlphas = 0.2;
+  graph.bullet = "round"
+  graph.valueField = "last"
+  graph.balloonText = "[[category]]: [[value]]/10"
+  chart_analysis_radar.addGraph(graph);
+
+  // VALUE AXIS
+  var valueAxis = new AmCharts.ValueAxis();
+  valueAxis.gridType = "circles";
+  valueAxis.fillAlpha = 0.02;
+  valueAxis.fillColor = "#000000"
+  valueAxis.axisAlpha = 0.1;
+  valueAxis.gridAlpha = 0.1;
+  valueAxis.fontWeight = "bold"
+  valueAxis.minimum = 0;
+  valueAxis.maximum = 10;
+  chart_analysis_radar.addValueAxis(valueAxis);
+
+  // GUIDES
+  // Blue - Business Analytics
+  var guide = new AmCharts.Guide();
+  guide.angle = 270;
+  guide.tickLength = 2;
+  guide.toAngle = 390;
+  guide.value = 3;
+  guide.toValue = 2;
+  guide.fillColor = "#0D8ECF";
+  guide.fillAlpha = 0.3;
+  valueAxis.addGuide(guide);
+
+  // Green - Interpersonal
+  guide = new AmCharts.Guide();
+  guide.angle = 30;
+  guide.tickLength = 3;
+  guide.toAngle = 150;
+  guide.value = 3;
+  guide.toValue = 2;
+  guide.fillColor = "#B0DE09";
+  guide.fillAlpha = 0.3;
+  valueAxis.addGuide(guide);
+
+  // Yellow - Structure
+  guide = new AmCharts.Guide();
+  guide.angle = 150;
+  guide.tickLength = 1;
+  guide.toAngle = 270;
+  guide.value = 3;
+  guide.toValue = 2;
+  guide.fillColor = "#FCD202";
+  guide.fillAlpha = 0.3;
+  valueAxis.addGuide(guide);
+
+  // Balloon Settings
+  var balloon = chart_analysis_radar.balloon;
+  balloon.adjustBorderColor = true;
+  balloon.cornerRadius = 5;
+  balloon.showBullet = false;
+  balloon.fillColor = "#000000";
+  balloon.fillAlpha = 0.7;
+  balloon.color = "#FFFFFF";
+
+  // Legend Settings
+  var legend = new AmCharts.AmLegend();
+  legend.position = "bottom";
+  legend.align = "center";
+  legend.color = '#f6f6f6';
+  legend.markerType = "square";
+  legend.rollOverGraphAlpha = 0;
+  legend.horizontalGap = 5;
+  legend.valueWidth = 5;
+  legend.switchable = true;
+  chart_analysis_radar.addLegend(legend);
+
+  // WRITE
+  chart_analysis_radar.write("cases_analysis_chart_radar");
+
+}
+
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -623,7 +689,7 @@ $(document).ready(function(){
     
     $('#cases_analysis_chart_radar').empty();
 
-    cases_analysis_chart_radar_draw("all",cases_analysis_chart_radar_count);
+    cases_analysis_chart_radar_draw("all",cases_analysis_chart_case_count);
 
     $('#cases_analysis_chart_radar_button_all').addClass('active');
     $('#cases_analysis_chart_radar_button_combined').removeClass('active');
@@ -634,7 +700,7 @@ $(document).ready(function(){
     
     $('#cases_analysis_chart_radar').empty();
 
-    cases_analysis_chart_radar_draw("combined",cases_analysis_chart_radar_count);
+    cases_analysis_chart_radar_draw("combined",cases_analysis_chart_case_count);
 
     $('#cases_analysis_chart_radar_button_all').removeClass('active');
     $('#cases_analysis_chart_radar_button_combined').addClass('active');

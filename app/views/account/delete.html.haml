@@ -2,11 +2,9 @@
 - provide(:sub_title, 'Confirm below that you would like to delete your account')
 
 .row
-	.span40.offset20
-		.panel.gradient
+	.span38.offset30
+		#users_delete_panel.panel.gradient
 
-			= link_to("I confirm that I would like to delete my account", account_path, method: :delete, class: "btn btn-inverse btn-small", confirm: "Are you sure you want to delete your account?")
-			%br
-			%br
-			%br
-			= link_to("No, I don't want to delete my account", edit_account_path, class: "btn btn-primary")
+			= link_to("No, I don't want to delete my account", edit_account_path, class: "btn btn-large")
+			.spacer20
+			= link_to("I confirm that I would like to delete my account", account_path, method: :delete, class: "btn btn-inverse", confirm: "This cannot be undone. All of your data will be deleted. Are you sure you want to proceed?")

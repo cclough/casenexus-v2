@@ -3,7 +3,7 @@
   = simple_form_for(@login, url: session_path(@login)) do |f|
     .row
       .span20
-        = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "University Email", id: "header_signin_email"
+        = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "University email address", id: "header_signin_email"
       .span20
         .input-append
           = f.password_field :password, class: 'span15', tabindex: "2", placeholder: "Password", id: "header_signin_password"
