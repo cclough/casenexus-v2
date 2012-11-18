@@ -22,16 +22,12 @@
           .row
             .span20
               .row
-                .span5
+                .span5#cases_new_target_avatar
                   = avatar_for(@user,'icon')
-                .span15
+                .span14
                   #cases_new_target_name
                     = @user.name
 
-              - if Friendship.friends?(current_user, @user)
-                .spacer5
-                .row.font-small
-                  = render 'shared/button_group_linkedin_skype'
             .span4
               #cases_new_target_casecount
                 = avatar_for(@user, 'chevron')

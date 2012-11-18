@@ -1,6 +1,9 @@
 // Re-renders the user list
 $("#users_index_users").html("<%= escape_javascript(render("users")) %>")
 
+// Tooltips on Avatars
+$(".application_avatar_icon").tooltip()
+
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.users_index_users_item').click(function () {
 

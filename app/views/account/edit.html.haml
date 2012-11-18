@@ -1,5 +1,5 @@
 - provide(:title, 'Edit Profile')
-- provide(:sub_title, 'Modify your basic info, your status, and your location')
+- provide(:sub_title, 'Modify your settings, your status, and your location')
 
 - content_for :javascript_includes do
   = javascript_include_tag('users.js')
@@ -7,8 +7,6 @@
   :javascript
     var users_newedit_map_lat_start = "#{current_user.lat}";
     var users_newedit_map_lng_start = "#{current_user.lng}";
-
-= render 'shared/title'
 
 #users_edit_form
   .row
@@ -71,7 +69,9 @@
                   = link_to "Need to register?", "https://login.skype.com/account/signup-form"
               .span25
                 = f.text_field :skype, placeholder: "Skype username"
-            .spacer5
+                .font-small
+                  NB this is required for the roulette
+            .spacer10
             .row
               .span12
                 = image_tag 'icons/linkedin_large.png'

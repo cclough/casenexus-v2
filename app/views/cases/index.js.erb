@@ -1,5 +1,8 @@
 $("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>")
 
+// Tooltips on Avatars
+$(".application_avatar_icon").tooltip()
+
 $(".cases_index_cases_item").click(function() {
 
   var case_id = $(this).attr('data-id');
@@ -26,6 +29,9 @@ $(".cases_index_cases_item").click(function() {
         $('#cases_show_chart_radar_button_all').removeClass('active');
         $('#cases_show_chart_radar_button_combined').addClass('active');
       });
+
+      // Tooltips on Avatars
+      $(".application_avatar_icon").tooltip();
 
       // Slide in
       $('#cases_index_case').show("slide", { direction: "right" }, 300, function() {

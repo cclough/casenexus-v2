@@ -66,6 +66,20 @@ header {
 
 /********************************************/
 
+
+
+#users_index_mapcontainer_users {
+  top: 0px;
+  left: 30px;
+  width: 350px;
+  height:100%;
+  // z-index:10000000;
+  @include box_sizing;
+  -moz-box-shadow: 2px 3px 14px #4a494a;
+  -webkit-box-shadow: 2px 3px 14px #4a494a;
+  box-shadow: 2px 3px 14px #4a494a;
+}
+
 #users_index_users_form {
   margin-top:40px;
 }
@@ -81,28 +95,14 @@ header {
   text-align:center;
 }
 
-#users_index_mapcontainer_users {
-  top: 0px;
-  left: 30px;
-  width: 350px;
-  height:100%;
-  // z-index:10000000;
-  @include box_sizing;
-  -moz-box-shadow: 2px 3px 14px #4a494a;
-  -webkit-box-shadow: 2px 3px 14px #4a494a;
-  box-shadow: 2px 3px 14px #4a494a;
-}
-
 // Spacer that forces paginate to bottom of list
 #users_index_users_form_body {
   height:520px;
-
 }
 
 #users_index_users {
-  margin-top:-15px;
+  margin-top:5px;
   height:630px;
-
 }
 
 
@@ -135,14 +135,15 @@ header {
 .users_index_users_item_lastonline {
   position:absolute;
   z-index:99999;
-  top:-7px;
-  right:2px;
+  top:-6px;
+  right:6px;
   font-size:9px;
   font-color:$gray_Mid !important;
   width:100px;
   line-height:10px;
   padding-top:10px;
   font-style:italic;
+  text-align:right;
 }
 
 #users_index_mapcontainer_user {
@@ -352,17 +353,36 @@ header {
   font-size:11px;
 }
 
-#users_index_user_status_actions {
+
+
+#users_index_user_partner_actions {
   padding-top:8px;
   border-top: 1px solid $gray_Light;
 }
 
-#users_index_user_status_history {
+#users_index_user_history {
   padding:0px;
   margin:0px;
   color: $gray_Mid !important;
   font-size:11px;
 }
+
+#users_index_user_partner_pending {
+  text-align:center;
+  color: $gray_Mid !important;
+  font-size:11px;
+}
+
+
+#users_index_user_partner_request {
+  text-align:center;
+  color: $gray_Mid !important;
+  font-size:11px;
+  width:100%;
+  text-align:center;
+}
+
+
 
 #users_index_user_feedback_title {
   color:gray;
@@ -397,6 +417,15 @@ header {
   width:401px;
 }
 
+
+#users_new_step2, #users_new_step3 {
+  width:424px;
+}
+
+#users_new_step4, #users_new_step5 {
+  width:428px;
+}
+
 #users_new_button_submit {
   width: 100%;
 }
@@ -410,17 +439,18 @@ header {
 .users_new_condition {
   font-style:italic;
   font-size:10px;
+  color:white;
 }
 
 #users_newedit_map {
 
   &.new {
     margin-top:10px;
-    height:300px;
+    height:319px;
     width:425px;
   }
   &.edit {
-    height:270px;
+    height:259px;
     width:435px;
   }
 }
@@ -453,8 +483,8 @@ header {
 
 
 #users_new_status {
-  height:190px;
-  width:395px;
+  height:200px;
+  width:413px;
 }
 
 #users_edit_status {

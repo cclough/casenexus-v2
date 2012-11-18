@@ -8,6 +8,7 @@
     - else
       = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
     = javascript_include_tag "application"
+
     = yield :javascript_includes
 
     = csrf_meta_tags
@@ -17,15 +18,20 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-  %body{:class => ("signedout" if !signed_in?) }
+  %body
     / header
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
 
-    .container
+    .container.main
+      = render 'shared/title'
+      
       = yield
 
-  = render 'shared/modal_help' if signed_in?
-  = render 'shared/modal_bug' if signed_in?
+      / footer
+      = render 'layouts/footer'
+
+  = render 'shared/modal_help'
+  = render 'shared/modal_bug'
   = render 'shared/modal_contact'

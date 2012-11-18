@@ -3681,13 +3681,10 @@ legend + .control-group {
 .btn[disabled] {
   cursor: default;
   background-color: #e6e6e6;
-  background-image: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  opacity: 0.55;
+  filter: alpha(opacity=55);
 }
+
 .btn-large {
   padding: 9px 14px;
   font-size: 16px;
@@ -5004,13 +5001,13 @@ input[type="submit"].btn.btn-mini {
   background-color: #000000 \9;
 }
 .alert {
-  padding: 8px 35px 8px 14px;
-  margin: 15px;
+  padding: 8px 30px 8px 14px;
+  margin: 15px 15px 0px 15px;
   /*  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);*/
   /*background-color: #fcf8e3;*/
   /*  border: 1px solid #fbeed5;*/
 
-/*    border: 1px solid #FFFF7E;*/
+  /* border: 1px solid #FFFF7E;*/
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
@@ -5035,7 +5032,7 @@ input[type="submit"].btn.btn-mini {
   /*background-color: #dff0d8;*/
   /*border-color: #d6e9c6;*/
   /*  color: #468847;*/
-  color: #00FF66;
+  color: #31ff83;
 /*  border-color: #00FF66;*/
 
 }

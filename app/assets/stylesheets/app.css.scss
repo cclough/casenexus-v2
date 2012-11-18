@@ -57,6 +57,11 @@ footer {
   }
 }
 
+form {
+  margin-bottom:0px !important;
+}
+
+
 textarea {
   resize: vertical;
 }
@@ -81,7 +86,6 @@ textarea {
 .container {
     &.main{
     min-height: 100%;
-
     /* gives twitter like white translucent background */
     background: url(app/white-wash.png);
   }

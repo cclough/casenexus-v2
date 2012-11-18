@@ -44,7 +44,7 @@ class NotificationsController < ApplicationController
             format.js
             flash.now[:success] = 'Message sent'
           when "friendship_req"
-            flash.now[:success] = 'Contact request sent'
+            flash.now[:success] = 'Case Partner request sent'
             format.js
         end
       else

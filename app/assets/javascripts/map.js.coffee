@@ -24,12 +24,12 @@ window.users_index_map_marker_click = (marker_id) ->
         backdrop: false
         show: false
 
-      $("#users_index_user_button_message").click ->
+      $("#users_index_user_partner_button_message").click ->
         if !($("#modal_message").hasClass("in"))
           $(".modal").modal("hide")
           $("#modal_message").modal("show")
 
-      $("#users_index_user_button_friend_req").click ->
+      $("#users_index_user_partner_button_friend_req").click ->
         if !($("#modal_friendship_req").hasClass("in"))
           $(".modal").modal("hide")
           $("#modal_friendship_req").modal("show")

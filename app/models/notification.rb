@@ -146,7 +146,7 @@ class Notification < ActiveRecord::Base
     <<STRING
 <h1>Welcome to casenexus.com, #{user.first_name}</h1>
 <p>Thank you for signing-up, we hope you enjoy it.</p>
-
+git 
 STRING
   end
 end

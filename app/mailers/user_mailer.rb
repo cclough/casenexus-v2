@@ -55,7 +55,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent a contact request")
+    mail(to: email_with_name, subject: "casenexus: You have been sent a Case Partner request")
   end
 
   def friendship_app(user_from, user_target, url)
@@ -64,7 +64,7 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: Your contact request has been accepted")
+    mail(to: email_with_name, subject: "casenexus: Your Case Partner has been accepted")
   end
 
   def password_reset(user)

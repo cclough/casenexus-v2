@@ -46,6 +46,8 @@ $(document).ready ->
   # Style for the checkboxes
   $("input:checkbox").uniform()
 
+  # Tooltips on Avatars
+  $(".application_avatar_icon").tooltip()
 
   # Modal help checkbox
   $("#modal_help_checkbox").live 'change', ->

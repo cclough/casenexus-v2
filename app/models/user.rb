@@ -123,7 +123,7 @@ class User < ActiveRecord::Base
     end
 
     def list_online
-      order('last_online_at asc')
+      order('last_online_at desc')
     end
 
     def list_contacts(user)

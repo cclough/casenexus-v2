@@ -227,12 +227,22 @@ $blue_pastel: #98cdff;
     margin-bottom:0px !important;
   }
 }
-#cases_new_user_target {
-  padding-top:20px;
-  font-size:200%;
+
+#cases_new_target_avatar {
+  margin-right:7px;
+  margin-top:6px;
+}
+
+#cases_new_target_name{
+  font-size:15px;
+  padding-top:18px;
   font-weight:bold;
-  text-align:center;
-  width:100%;
+}
+
+#cases_new_target_casecount {
+  margin-left: 4px;
+  margin-top:-13px;
+  font-size: 1.1em !important;
 }
 
 .cases_new_block {
@@ -291,7 +301,9 @@ $blue_pastel: #98cdff;
 
 .cases_new_block_circle_text {
     margin-top:10px;
-    text-align:center;
+    width:150px;
+    margin-left:-55px;
+    text-align: center;
     font-weight:bold;
     font-size:25px;
     color:#b9b9b9;
@@ -341,19 +353,6 @@ $blue_pastel: #98cdff;
   width:265px !important;
   height:50px !important;
   margin-left:12px;
-}
-
-#cases_new_target_casecount {
-  margin-left: 4px;
-  margin-top:-13px;
-  font-size: 1.1em !important;
-}
-
-#cases_new_target_name{
-  font-size:20px;
-  padding-top:14px;
-  padding-left:8px;
-  font-weight:bold;
 }
 
 

@@ -3,8 +3,6 @@ $(document).ready ->
     e.preventDefault()
     $.ajax("/account/random_name", type: "get", dataType: "script")
 
-  $("#users_new_step3").css opacity: 0.3
-
   if typeof users_newedit_map_lat_start is "string"
     users_newedit_latlng = new google.maps.LatLng(users_newedit_map_lat_start, users_newedit_map_lng_start)
     #if users_newedit_map_lat_start == "" && navigator.geolocation
@@ -39,7 +37,4 @@ $(document).ready ->
     google.maps.event.addListener(window.marker, "drag", (event) ->
       $("#users_newedit_lat").val(event.latLng.lat())
       $("#users_newedit_lng").val(event.latLng.lng())
-      unless $.users_new_step2_complete
-        $("#users_new_step3").css opacity: 1
-        $.users_new_step2_complete = true
     )

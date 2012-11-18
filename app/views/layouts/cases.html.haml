@@ -13,11 +13,9 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-  %body{:class => ("signedout" if !current_user.completed?)}
-    / header
+  %body
     = render 'layouts/header'
 
-    / flash div
     = render 'layouts/flash', flash: flash
 
     .container.main
@@ -26,9 +24,8 @@
         .span94
           = yield
 
-      / footer
       = render 'layouts/footer'
 
-  = render 'shared/modal_help' if signed_in?
-  = render 'shared/modal_bug' if signed_in?
+  = render 'shared/modal_help'
+  = render 'shared/modal_bug'
   = render 'shared/modal_contact'
