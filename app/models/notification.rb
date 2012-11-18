@@ -32,6 +32,10 @@ class Notification < ActiveRecord::Base
     def unread
       where(read: false)
     end
+
+    def for_display
+      where("ntype != 'welcome'")
+    end
   end
 
   scoped_search in: :sender, on: [:first_name, :last_name]
@@ -91,7 +95,7 @@ class Notification < ActiveRecord::Base
     end
 
     def history(from_id, to_id)
-      where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
+      for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
             from_id, to_id,
             to_id, from_id).where("ntype in (?)", %w(message feedback feedback_req))
     end
