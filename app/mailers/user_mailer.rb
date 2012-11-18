@@ -45,7 +45,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent case feedback")
+    mail(to: email_with_name, subject: "casenexus: You have been sent feedback on a case")
   end
 
   def friendship_req(user_from, user_target, url, message)
@@ -64,7 +64,7 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: Your Case Partner has been accepted")
+    mail(to: email_with_name, subject: "casenexus: Your Case Partner request has been accepted")
   end
 
   def password_reset(user)
@@ -80,7 +80,7 @@ class UserMailer < ActionMailer::Base
 
     @invitation = invitation
 
-    mail(to: receiver, subject: "Invitation to Casenexus")
+    mail(to: receiver, subject: "Invitation to casenexus.com")
   end
 
   def site_contact(site_contact)
@@ -105,20 +105,20 @@ class UserMailer < ActionMailer::Base
     @user = user
     email_with_name = "#{user.name} <#{@user.email}>"
 
-    mail(to: email_with_name, subject: "Casenexus: Your status on your profile was approved")
+    mail(to: email_with_name, subject: "Casenexus: Your status was approved")
   end
 
   def status_rejected(user)
     @user = user
     email_with_name = "#{user.name} <#{@user.email}>"
 
-    mail(to: email_with_name, subject: "Casenexus: Your status on your profile was rejected")
+    mail(to: email_with_name, subject: "Casenexus: Your status was rejected")
   end
 
   def moderation_to_admin(user)
     @user = user
 
-    mail(to: "info@casenexus.com", subject: "User moderation")
+    mail(to: "info@casenexus.com", subject: "User moderation required")
   end
 
 end

@@ -2,46 +2,41 @@
 
 %p Dear #{@invitation.name},
 
-%p We found your details on Case Partner at consultingcase101.com
+%p We'd like to invite you to join a new website, casenexus.com, that we're hoping will be the 'missing link' in the provision for management consulting candidates preparing for case interviews around the world. You are amongst the first 100 users to be asked to participate in the invite-only testing period. For you, the site is completely free.
 
-%p We'd like to invite you to join a brand new website, casenexus.com, that we're hoping will be the missing link' in the provision for management consulting candidates preparing for case interviews around the world. At the heart of it, it is a social networking site, enabling you to meet others to practise case with, in person or via Skype.
-
-%p You are amongst the first 100 users to be asked to participate in the invite-only beta testing period.
-
-%p Developed by Cambridge University students to help them prepare for their own interviews, it's been designed from the ground-up using the latests web technologies, to address a global unmet need.
+%p The idea is simple: to help candidates to meet others to practise cases with. Developed by Cambridge University students to help them prepare for their own interviews, it's been designed from the ground-up, using the latest web technologies.
 
 %p Features of the site include:
 
 %ul
   %li
-    A Global Map of users
+    A global map of users
     %ul
-      %li Practise case interviews with other candidates who work or live immediately near you
-      %li Find others around the world with things in common, and practise cases via Skype
+      %li Find other candidates who work or live immediately near you, and arrange to meet a local coffee shop to practise a case or two.
+      %li Search for others around the world with things in common e.g. who are applying to the same firms in their countries, and practise cases with them via Skype.
   %li
-    Case Roulette
+    Case "Roulette"
     %ul
-      %li Only got 45 minutes free after work to do a case?
-      %li Use Case Roulette to practise cases via Skype, with others online at any time, without any need to schedule anything
+      %li Only got 45 minutes free after work to do a case? No time to schedule one with someone nearby?
+      %li Use the Roulette to practise with others online at the same time as you, via Skype.
   %li
-    Feedback System
+    Feedback and your performance
     %ul
-      %li "Interviewers" complete a feedback form for interviewees, with scores and comments
-      %li The scoring criteria were selected by a top-3-firm professional consultant with many years of interviewing experience
-      %li Feedback is recorded and analysed for you to learn from
-
+      %li Your "interviewers" can, if you wish, complete a feedback form for you, with scores and comments for you to review at any time.
+      %li Scoring criteria have been carefully selected by top-3-firm professional consultants with many years of interviewing experience
+      %li Your scores can be viewed graphically, enabling you to track your progress over time, and identify where you need to improve most.
 
 %p This is an exciting time for us - we hope you enjoy the site, and wish you every success in your upcoming interviews.
 
-%p Apart from the different contact forms on the website, do not hesitate to contact us directly at #{link_to 'info@casenexus.com', 'mailto:info@casenexus.com'} if you'd like to get in touch.
+%p Apart from the different contact forms on the website, please do not hesitate to email us directly at #{link_to 'info@casenexus.com', 'mailto:info@casenexus.com'} if you'd like to get in touch.
 
-%p Ready? Click the link below, using the following unique invitation code to sign up using either a univeristy email address or your LinkedIn account: 
+%p Ready? Click the link below, and use the following unique invitation code to sign up with either your univeristy email address or, if you are not currently at a listed university, your LinkedIn account: 
 
 %p= @invitation.code
 
-%p= link_to(invitation_registration_url(code: @invitation.code), invitation_registration_url(code: @invitation.code))
+%p= link_to("Proceed to sign up at casenexus.com", invitation_registration_url(code: @invitation.code))
 
-%p When you sign-up, you will get 5 invitations to give to good friends (accessible via your account Settings) - do please use them.
+%p When you sign up you will get 5 invitations to give to good friends, accessible via your account Settings - do please use them.
 
 %p Good luck!
 
