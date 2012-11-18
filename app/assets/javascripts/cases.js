@@ -86,7 +86,6 @@ function cases_show_chart_radar_draw(radar_type) {
   // Blue - Business Analytics
   var guide = new AmCharts.Guide();
   guide.angle = 270;
-  guide.tickLength = 2;
   guide.toAngle = 390;
   guide.value = 3;
   guide.toValue = 2;
@@ -97,7 +96,6 @@ function cases_show_chart_radar_draw(radar_type) {
   // Green - Interpersonal
   guide = new AmCharts.Guide();
   guide.angle = 30;
-  guide.tickLength = 3;
   guide.toAngle = 150;
   guide.value = 3;
   guide.toValue = 2;
@@ -108,13 +106,13 @@ function cases_show_chart_radar_draw(radar_type) {
   // Yellow - Structure
   guide = new AmCharts.Guide();
   guide.angle = 150;
-  guide.tickLength = 1;
   guide.toAngle = 270;
   guide.value = 3;
   guide.toValue = 2;
   guide.fillColor = "#FCD202";
   guide.fillAlpha = 0.3;
   valueAxis.addGuide(guide);
+
   // GRAPH
   var graph = new AmCharts.AmGraph();
   graph.lineColor = "#98cdff";
@@ -492,7 +490,6 @@ function cases_analysis_chart_radar_draw(radar_type, case_count) {
   // Blue - Business Analytics
   var guide = new AmCharts.Guide();
   guide.angle = 270;
-  guide.tickLength = 2;
   guide.toAngle = 390;
   guide.value = 3;
   guide.toValue = 2;
@@ -503,7 +500,6 @@ function cases_analysis_chart_radar_draw(radar_type, case_count) {
   // Green - Interpersonal
   guide = new AmCharts.Guide();
   guide.angle = 30;
-  guide.tickLength = 3;
   guide.toAngle = 150;
   guide.value = 3;
   guide.toValue = 2;
@@ -514,7 +510,6 @@ function cases_analysis_chart_radar_draw(radar_type, case_count) {
   // Yellow - Structure
   guide = new AmCharts.Guide();
   guide.angle = 150;
-  guide.tickLength = 1;
   guide.toAngle = 270;
   guide.value = 3;
   guide.toValue = 2;

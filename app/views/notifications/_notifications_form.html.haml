@@ -1,23 +1,29 @@
 = form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form" do
   .row
-    .span15
+    .span18
       / search field
-      = text_field_tag :search, params[:search], placeholder: "Search...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span13'
-    .span4
-      / sort/filter pulldown menu
-      #notifications_index_notifications_form_sort
-        
-        .btn-group
-          %a#notifications_index_notifications_button_filter.btn.btn-mini.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Sort
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              = sortable "notifications.content", "By Subject"
-            %li
-              = sortable "user.name", "By Name"
-            %li
-              = sortable "notifications.created_at", "By Date"
+      = text_field_tag :search, params[:search], placeholder: "Search...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span18'
+
+      
+    / BUGGY SO COMMENTED FOR LAUNCH      
+    
+    / .span4
+
+    / sort/filter pulldown menu
+    / #notifications_index_notifications_form_sort
+      
+    /   .btn-group
+    /     %a#notifications_index_notifications_button_filter.btn.btn-mini.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+    /       Sort
+    /       %span.caret
+    /     %ul.dropdown-menu
+    /       %li
+    /         = sortable "notifications.content", "By Subject"
+    /       %li
+    /         = sortable "user.name", "By Name"
+    /       %li
+    /         = sortable "notifications.created_at", "By Date"
+
   .spacer10
   .panel.dark.kill_all
     #notifications_index_notifications_filter_title

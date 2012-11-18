@@ -1,8 +1,8 @@
 :javascript
-  var users_index_user_feedback_chart_radar_count = #{@radar_count};
+  var users_index_user_feedback_chart_radar_count = #{@case_count};
 
-  var users_index_user_feedback_chart_radar_data_all = #{Case.users_index_user_feedback_chart_radar_data_all(current_user, @user.id, @radar_count)};
-  var users_index_user_feedback_chart_radar_data_combined = #{Case.users_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @radar_count)};
+  var users_index_user_feedback_chart_radar_data_all = #{Case.users_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
+  var users_index_user_feedback_chart_radar_data_combined = #{Case.users_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
 
 .panel.gradient
@@ -92,16 +92,16 @@
     .row
       #users_index_user_feedback
         .row
-          .span9
-            #users_index_user_feedback_title.font-small
-              Feedback
           .span
-            = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "users_index_user_feedback_button_sendfeedback"
+            = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "users_index_user_feedback_button_sendfeedback"
           .span
             %a#users_index_user_feedback_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
               %i.icon-refresh.icon-white
               %span
-                Request
+                Request Feedback
+          .span4
+            #users_index_user_feedback_results_button.btn.btn-small
+              Your Scores
 
     .row
       #users_index_user_feedback_chart_radar_container
@@ -110,6 +110,12 @@
           .btn-group
             %a#users_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
             %a#users_index_user_feedback_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+
+        #users_index_user_feedback_chart_radar_empty
+          #users_index_user_feedback_chart_radar_empty_icon
+            %i.icon-tasks
+          %p You must do at least one case with #{@user.first_name}, 
+          %p before this chart will work
 
   #modal_message.modal.hide.fade
     = render '/shared/modal_message_form'

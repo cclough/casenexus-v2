@@ -360,7 +360,7 @@ header {
   border-top: 1px solid $gray_Light;
 }
 
-#users_index_user_history {
+#users_index_user_partner_history {
   padding:0px;
   margin:0px;
   color: $gray_Mid !important;
@@ -379,20 +379,11 @@ header {
   color: $gray_Mid !important;
   font-size:11px;
   width:100%;
-  text-align:center;
-}
-
-
-
-#users_index_user_feedback_title {
-  color:gray;
-  padding-top:6px;
-  width:60px;
 }
 
 
 #users_index_user_feedback_button_feedback_req, #users_index_user_feedback_button_sendfeedback {
-  width:100px;
+  width:120px;
   height:20px;
 }
 
@@ -401,21 +392,51 @@ header {
   border-bottom: 1px solid $gray_Light;
 }
 
+#users_index_user_feedback_results_button {
+  text-align:center;
+  color: $gray_Mid !important;
+  font-size:11px;
+  line-height:11px;
+  cursor:pointer;cursor:hand;
+  margin-top:2px;
+}
+
 #users_index_user_feedback_chart_radar {
   padding-top:10px;
   height:220px;
   width:401px;
+  display:none;
 }
 
 #users_index_user_feedback_chart_radar_buttongroup {
   margin-top:-20px;
+  display:none;
 }
 
 
 #users_index_user_feedback_chart_radar_container {
   height:235px;
   width:401px;
+  display:none;
 }
+
+#users_index_user_feedback_chart_radar_empty {
+  height:235px;
+  width:401px;
+  display:none;
+  padding-top:60px;
+  padding-left:0px;
+  padding-right:0px;
+  margin-left:-25px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#users_index_user_feedback_chart_radar_empty_icon {
+  font-size:100px;
+  margin-bottom:40px; 
+}
+
 
 
 #users_new_step2, #users_new_step3 {

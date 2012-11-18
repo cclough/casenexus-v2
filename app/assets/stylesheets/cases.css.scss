@@ -37,9 +37,13 @@ $blue_pastel: #98cdff;
 }
 
 #cases_index_case_filler {
-  height:784px;
+  height:788px;
   text-align:center;
   line-height:700px;
+}
+
+#cases_index_cases_form_body {
+  height: 698px;
 }
 
 #cases_index_cases_form_sort .current {
@@ -55,6 +59,7 @@ $blue_pastel: #98cdff;
 #cases_index_cases_form_sort .desc {
   background-image: url(app/sort_down_arrow.png);
 }
+
 
 
 #cases_index_cases_form_empty {
@@ -153,8 +158,10 @@ $blue_pastel: #98cdff;
 }
 
 .cases_show_comment {
-  overflow-y: auto;
-  height:150px;
+  // overflow-y: auto;
+  min-height:182px;
+  width:305px;
+  border:0px !important;
 }
 
 

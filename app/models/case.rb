@@ -125,9 +125,9 @@ class Case < ActiveRecord::Base
   end
 
   def cases_show_chart_radar_data_combined
-    "[{criteria: \"Quantitative basics\", score: "+interpersonal_combined.to_s+"},
-     {criteria: \"Problem-Solving\", score: "+businessanalytics_combined.to_s+"},
-     {criteria: \"Prioritisation\", score: "+structure_combined.to_s+"}]"
+     "[{criteria: \"Business Analytics\", score: "+businessanalytics_combined.to_s+"},
+     {criteria: \"Interpersonal\", score: "+interpersonal_combined.to_s+"},
+     {criteria: \"Structure\", score: "+structure_combined.to_s+"}]"
   end
 
   # case categories
@@ -210,14 +210,14 @@ class Case < ActiveRecord::Base
   def self.cases_analysis_chart_radar_data_combined(user, count)
     # LAST count: load scores into json for radar chart
     "[
-      {criteria: \"Interpersonal\", 
-      all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
       {criteria: \"Business Analytics\", 
       all: " + (user.cases.order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + ", 
       first: " + (user.cases.limit(count).order('id asc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + "},
+      {criteria: \"Interpersonal\", 
+      all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
       {criteria: \"Structure\", 
       all: " + (user.cases.order('id desc').collect(&:structure_combined).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:structure_combined).sum.to_f/count).to_s + ", 
@@ -295,14 +295,14 @@ class Case < ActiveRecord::Base
   def self.users_index_user_feedback_chart_radar_data_combined(user, interviewer, count)
     # LAST count: load scores into json for radar chart
     "[
-      {criteria: \"Interpersonal\", 
-      all: " + (user.cases.where("interviewer_id = #{interviewer}").order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.where("interviewer_id = #{interviewer}").count).to_s + ", 
-      last: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
       {criteria: \"Business Analytics\", 
       all: " + (user.cases.where("interviewer_id = #{interviewer}").order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.where("interviewer_id = #{interviewer}").count).to_s + ", 
       last: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id desc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + ", 
       first: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id asc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + "},
+      {criteria: \"Interpersonal\", 
+      all: " + (user.cases.where("interviewer_id = #{interviewer}").order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.where("interviewer_id = #{interviewer}").count).to_s + ", 
+      last: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
       {criteria: \"Structure\", 
       all: " + (user.cases.where("interviewer_id = #{interviewer}").order('id desc').collect(&:structure_combined).sum.to_f/user.cases.where("interviewer_id = #{interviewer}").count).to_s + ", 
       last: " + (user.cases.where("interviewer_id = #{interviewer}").limit(count).order('id desc').collect(&:structure_combined).sum.to_f/count).to_s + ", 
