@@ -10,6 +10,9 @@ class Notification < ActiveRecord::Base
   validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
   validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
   validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
+  validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
+  validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
+
   validate :no_notification_to_self
 
   validates :content, length: { maximum: 500 }
@@ -31,6 +34,10 @@ class Notification < ActiveRecord::Base
 
     def unread
       where(read: false)
+    end
+
+    def for_display
+      where("ntype != 'welcome'")
     end
   end
 
@@ -91,7 +98,7 @@ class Notification < ActiveRecord::Base
     end
 
     def history(from_id, to_id)
-      where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
+      for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
             from_id, to_id,
             to_id, from_id).where("ntype in (?)", %w(message feedback feedback_req))
     end

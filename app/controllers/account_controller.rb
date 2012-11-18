@@ -2,7 +2,8 @@ class AccountController < ApplicationController
   before_filter :authenticate_user!
 
   def show
-    @user = current_user
+    #@user = current_user
+    redirect_to action: :edit
   end
 
   def edit
@@ -28,7 +29,11 @@ class AccountController < ApplicationController
       @invitation = current_user.invitations.build(params[:invitation])
 
       if params[:back_url]
-        redirect_to params[:back_url]
+        if params[:back_url].include?('complete')
+          render 'complete_profile'
+        else
+          redirect_to params[:back_url]
+        end
       else
         render 'edit'
       end
@@ -40,6 +45,10 @@ class AccountController < ApplicationController
   end
 
   def edit_password
+    @user = current_user
+  end
+
+  def delete
     @user = current_user
   end
 

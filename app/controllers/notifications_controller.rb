@@ -5,7 +5,7 @@ class NotificationsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    notification_scope = current_user.notifications
+    notification_scope = current_user.notifications.for_display
     if !params[:ntype].blank? && params[:ntype] != "all"
       notification_scope = notification_scope.where(ntype: params[:ntype])
     end
@@ -15,7 +15,7 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = current_user.notifications.find(params[:id])
+    @notification = current_user.notifications.for_display.find(params[:id])
     @notifications = Notification.history(@notification.user_id, @notification.sender_id)
     @notifications.each { |n| n.read! }
 

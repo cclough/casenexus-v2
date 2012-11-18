@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :update_last_online_at
 
   def completed_user
-    redirect_to complete_profile_account_path unless current_user.completed?
+    redirect_to complete_profile_account_path, notice: flash[:notice] unless current_user.completed?
   end
 
   # Authenticate for active admin
