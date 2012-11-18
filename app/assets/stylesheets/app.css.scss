@@ -91,12 +91,11 @@ textarea {
 
 .tooltip {
   z-index: 20000 !important;
-}​
+}
 
 .container {
-    &.main{
+  &.main{
     min-height: 100%;
-    /* gives twitter like white translucent background */
     background: url('app/white-wash.png');
   }
 }

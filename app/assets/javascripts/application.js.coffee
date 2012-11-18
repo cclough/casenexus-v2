@@ -12,8 +12,6 @@
 #= require lib/bootstrap-datepicker
 #= require bootstrap-wysihtml5
 
-#= require lib/markerclustererplus
-
 # Get query params, global function
 
 window.getQueryParams = (qs) ->
