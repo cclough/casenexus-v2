@@ -77,7 +77,9 @@ textarea {
 }
 
 // For jquery placeholder
-.placeholder { color: #aaa; }
+.placeholder { 
+  color: #aaa; 
+}
 
 .font-small {
   font-size:12px;
@@ -95,7 +97,7 @@ textarea {
     &.main{
     min-height: 100%;
     /* gives twitter like white translucent background */
-    background: url(app/white-wash.png);
+    background: url('app/white-wash.png');
   }
 }
 
@@ -205,10 +207,6 @@ textarea {
     border: 1px solid $gray_Mid;
 
     background: url('app/dark-bg.png') repeat top left;
-    // /* Fallback for web browsers that doesn't support RGBa */
-    // background: rgb(0, 0, 0) transparent;
-    // /* RGBa with 0.6 opacity */
-    // background: rgba(0, 0, 0, 0.3);
 
   }
 
@@ -219,10 +217,6 @@ textarea {
     border: 1px solid $gray_Mid;
 
     background: url('app/darker-bg.png') repeat top left;
-    // /* Fallback for web browsers that doesn't support RGBa */
-    // background: rgb(0, 0, 0) transparent;
-    // /* RGBa with 0.6 opacity */
-    // background: rgba(0, 0, 0, 0.5);
 
   }
 
@@ -243,10 +237,6 @@ textarea {
     margin-bottom: 0px;
 
     background: url('app/title-bg.png') repeat top left;
-    // /* Fallback for web browsers that doesn't support RGBa */
-    // background: rgb(0, 0, 0) transparent;
-    // /* RGBa with 0.6 opacity */
-    // background: rgba(0, 0, 0, 0.3);
 
     border: 1px solid gray;
 
@@ -412,7 +402,7 @@ textarea {
   -moz-border-top-right-radius: 5px;
   -webkit-border-top-right-radius: 5px;
 
-  nav { position: relative; left:40px; }
+  nav { position: relative; left:90px; }
   nav ul {
     list-style: none;
     padding: 0px 0px 0px 0px;
@@ -482,21 +472,22 @@ textarea {
       .set-3c { position: absolute; top:690px; left:40px; width:330px;}
 
 #modal_help_page_4 { height:1100px; width:800px; background: url('help/4.jpg'); position:relative; }
-      .set-4a { position: absolute; left: 40px; top: 230px; width: 725px;}
-      .set-4b { position: absolute; left: 40px; top: 250px; width:350px;}
-      .set-4c { position: absolute; left: 400px; top: 250px; width: 350px;}
-      .set-4d { position: absolute; left: 40px; top: 480px; width: 309px;}
-      .set-4e { position: absolute; left: 470px; top: 780px; width: 309px;}
+      .set-4a { position: absolute; left: 60px; top: 50px; width: 725px;}
+      .set-4b { position: absolute; left: 40px; top: 310px; width:330px;}
+      .set-4c { position: absolute; left: 400px; top: 310px; width: 330px;}
+      .set-4d { position: absolute; left: 40px; top: 620px; width: 309px;}
+      .set-4e { position: absolute; left: 470px; top: 890px; width: 290px;}
 
 #modal_help_page_5 { height:1200px; width:800px; background: url('help/5.jpg'); position:relative; }
       .set-5a { position: absolute; left: 465px; top: 90px; width: 340px; }
       .set-5b {position: absolute;  left: 40px; top: 343px; width: 330px; }
-      .set-5c {position: absolute;  left: 40px; top: 800px; width: 330px; }
+      .set-5c {position: absolute;  left: 40px; top: 940px; width: 330px; }
 
 #modal_help_page_6 { height:1000px; width:800px; background: url('help/6.jpg'); position:relative; }
-      .set-6b { position: absolute; left: 50px; top: 90px; width: 320px; }
-      .set-6c { position: absolute; left: 410px; top: 90px; width: 360px; }
+      .set-6b { position: absolute; left: 50px; top: 70px; width: 320px; }
+      .set-6c { position: absolute; left: 410px; top: 70px; width: 360px; }
       .set-6d { position: absolute; left: 50px; top: 650px; width: 230px; }
+
 
 .modal_help_list {
   li { 
