@@ -1,2 +1,3 @@
 $('#modal_bug').replaceWith('<%= j(render('/shared/modal_bug')) %>');
 $("#application_flash").html("<%= j(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
+$("#application_flash").show();
