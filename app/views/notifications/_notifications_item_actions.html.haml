@@ -12,9 +12,8 @@
       - elsif notifications_item.notificable.status == Friendship::REJECTED
         Request rejected
       - else
-        Case partner request:
-        = link_to("Accept", accept_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put)
-        = link_to("Reject", reject_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put)
+        = link_to("Accept", accept_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put, class: "btn btn-inverse btn-mini")
+        = link_to("Reject", reject_friendship_path(id: notifications_item.notificable, back_url: notifications_path), method: :put, class: "btn btn-mini")
         / = link_to("Block", block_friendship_path(notifications_item.notificable), method: :put)
   - when "friendship_app"
     - if notifications_item.notificable

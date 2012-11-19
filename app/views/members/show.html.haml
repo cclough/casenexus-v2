@@ -46,40 +46,41 @@
             = time_ago_in_words(@user.last_online_at)
             ago
     .row
-      #users_index_user_partner_actions
-        .row
-          - if Friendship.friends?(current_user, @user)
+      - if @user != current_user
+        #users_index_user_partner_actions
+          .row
+            - if Friendship.friends?(current_user, @user)
 
-            .pull-right
-              - if Notification.history(current_user, @user).count > 0
+              .pull-right
+                - if Notification.history(current_user, @user).count > 0
+                  .span12
+                    = link_to "Show Message History", history_notifications_path(user_id: @user.id), id: 'users_index_user_partner_history'
                 .span12
-                  = link_to "Show Message History", history_notifications_path(user_id: @user.id), id: 'users_index_user_partner_history'
-              .span12
-                %a#users_index_user_partner_button_message.btn.btn-inverse.btn-small
+                  %a#users_index_user_partner_button_message.btn.btn-inverse.btn-small
+                    %i.icon-comment.icon-white
+                    %span
+                      Send Message
+
+            - elsif Friendship.requested?(@user, current_user)
+
+              #users_index_user_partner_pending
+                Case Partner Request Pending
+
+            - elsif Friendship.pending?(@user, current_user)
+
+              #users_index_user_partner_request
+                Pending case partner request
+                = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
+                = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
+
+
+            - elsif !Friendship.exist?(current_user, @user)
+
+              .pull-right
+                %a#users_index_user_partner_button_friend_req.btn.btn-inverse.btn-small
                   %i.icon-comment.icon-white
                   %span
-                    Send Message
-
-          - elsif Friendship.requested?(@user, current_user)
-
-            #users_index_user_partner_pending
-              Case Partner Request Pending
-
-          - elsif Friendship.pending?(current_user, @user) && !Friendship.requested?(current_user, @user)
-
-            #users_index_user_partner_request
-              Pending case partner request
-              = link_to("Accept", accept_friendship_path(id: Friendship.friendship(@user, current_user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
-              = link_to("Reject", reject_friendship_path(id: Friendship.friendship(@user, current_user), back_url: map_path), method: :put, class: "btn btn-mini")
-
-
-          - elsif @user != current_user && !Friendship.exist?(current_user, @user)
-
-            .pull-right
-              %a#users_index_user_partner_button_friend_req.btn.btn-inverse.btn-small
-                %i.icon-comment.icon-white
-                %span
-                  Send Case Partner Request
+                    Send Case Partner Request
 
 
 - else

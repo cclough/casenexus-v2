@@ -9,8 +9,17 @@
 
         $('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
 
-        $("#application_flash").html("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
-        $("#application_flash").fadeIn("fast");
+			  $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+				
+				$("div[id=application_flash]:last").fadeIn("fast", function () {
+
+			    setTimeout(function() {
+			      $("div[id=application_flash]:last").fadeOut('fast', function() {
+			        $("div[id=application_flash]:last").remove();
+			      });
+			    }, 4000);
+
+				});
 
     <%- end %>
 

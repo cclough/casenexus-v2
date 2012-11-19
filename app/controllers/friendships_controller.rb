@@ -22,10 +22,10 @@ class FriendshipsController < ApplicationController
     respond_to do |format|
       if flash[:error].nil? && Friendship.request(current_user, @friendship.friend, @friendship.invitation_message)
         format.js
-        flash.now[:success] = 'Case Partner request sent'
+        flash.now[:success] = 'Case Partner request sent.'
       else
         format.js
-        flash.now[:notice] = 'You cannot send this person a Case Partner request'
+        flash.now[:notice] = 'You cannot send this person a Case Partner request.'
       end
     end
   end
@@ -37,7 +37,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = current_user.friendships.find(params[:id])
     Friendship.breakup(@friendship.user, @friendship.friend)
-    flash[:success] = "Case Partner Removed"
+    flash[:success] = @friendship.friend.first_name + " is no longer your Case Partner."
     if params[:back_url]
       redirect_to params[:back_url]
     else
@@ -49,7 +49,7 @@ class FriendshipsController < ApplicationController
   def accept
     @friendship = current_user.friendships.find(params[:id])
     Friendship.accept(@friendship.user, @friendship.friend)
-    flash[:success] = "Case Partner Accepted"
+    flash[:success] = @friendship.friend.first_name + " is now a Case Partner!"
     if params[:back_url]
       redirect_to params[:back_url]
     else
@@ -65,7 +65,7 @@ class FriendshipsController < ApplicationController
     #Friendship.reject(@friendship.user, @friendship.friend)
     Friendship.breakup(@friendship.user, @friendship.friend)
 
-    flash[:success] = "Case Partner request Rejected"
+    flash[:success] = "Case Partner request rejected."
 
     if params[:back_url]
       redirect_to params[:back_url]
@@ -78,7 +78,7 @@ class FriendshipsController < ApplicationController
   def block
     @friendship = current_user.friendships.find(params[:id])
     Friendship.block(@friendship.user, @friendship.friend)
-    flash[:success] = "Case Partner Blocked"
+    flash[:success] = "Case Partner blocked."
     if params[:back_url]
       redirect_to params[:back_url]
     else
@@ -90,7 +90,7 @@ class FriendshipsController < ApplicationController
   def unblock
     @friendship = current_user.friendships.find(params[:id])
     Friendship.unblock(@friendship.user, @friendship.friend)
-    flash[:success] = "Case Partner Unblocked"
+    flash[:success] = "Case Partner unblocked."
     if params[:back_url]
       redirect_to params[:back_url]
     else
