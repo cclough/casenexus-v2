@@ -1,7 +1,9 @@
 Site Feedback Received
 
 From: <%= @feedback.user.name %>
-Email:<%= @feedback.user.email %>
+
+Email: <%= @feedback.user.email %>
+
 Subject: <%= @feedback.subject %>
 
-<%= @feedback.content %>
+Message: <%= @feedback.content %>

@@ -1,5 +1,7 @@
-%p= "Welcome #{@resource.email}!"
+%p= "Dear #{@resource.email}!"
 
-%p To confirm your email address, and continue with the sign up process, click the link below:
+%p Thank you for signing up to casenexus.com.
+
+%p To confirm your email address and continue with the sign up process, please click the link below:
 
 %p= link_to 'Confirm my email address', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)

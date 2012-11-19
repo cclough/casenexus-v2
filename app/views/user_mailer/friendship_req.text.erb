@@ -1,7 +1,10 @@
-You have been sent a Case Partner request by <%= @user_from.name %>
+<%= @user_from.name %> has requested to add you as their Case Partner.
 ===============================================
 
 <%= @message %>
 
-To accept this request, follow this link: 
-<%= link_to @url, @url, :method => "put" %>
+Accept this request to be able to communicate freely and arrange to meet in person or online, as well as send feedback to each other on the cases you do together.
+
+Sign in using the URL below, and go to your Notifications to accept this request:
+
+<%= root_url %>
