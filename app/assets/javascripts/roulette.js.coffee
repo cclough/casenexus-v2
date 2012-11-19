@@ -10,7 +10,7 @@ $(document).ready ->
         if parseInt(data) > 0
           result = true
         else
-          alert "You must enter a valid token"
+          alert "Please enter a valid token."
           result = false
 
     result

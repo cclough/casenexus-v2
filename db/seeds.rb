@@ -1,4 +1,5 @@
 if %w(production development).include?(Rails.env) && User.count == 0
+  
   puts "Creating universities"
 
   University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
@@ -90,9 +91,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
   end
 
 
-end
+# end
 
-if Rails.env == 'development'
+# if Rails.env == 'development'
 
 
   def random_date(params={ })
