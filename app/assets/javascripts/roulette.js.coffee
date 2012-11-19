@@ -36,7 +36,7 @@ $(document).ready ->
 
     # Connect the soccekt
     #socket = io.connect("http://127.0.0.1:80", secure: false, "force_new_connection": true)
-    socket = io.connect("https://cclough.nodejitsu.com", secure: true "force new connection": true)
+    socket = io.connect("https://cclough.nodejitsu.com", secure: true, "force new connection": true)
 
     # On connection to server, ask for user's name with an anonymous callback
     socket.on "connect", ->
