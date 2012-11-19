@@ -27,12 +27,12 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin = User.new(
       first_name: "Christian",
       last_name: "Clough",
-      email: "christian.clough@cam.ac.uk",
-      password: "numbnuts",
-      password_confirmation: "numbnuts",
+      email: "casenexus@cam.ac.uk",
+      password: "houseoflies26?",
+      password_confirmation: "houseoflies26?",
       lat: 51.5100,
       lng: -0.1344,
-      status: Faker::Lorem.sentence(20),
+      status: "Interviewing with BCG and Bain in the next few months, looking to practise on Weekday evenings after 9pm and weekends",
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       skype: "christianclough",
@@ -66,6 +66,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
   admin.status_approved = true
   admin.completed = true
+  admin.admin = true
   admin.save!
   admin.confirm!
 
@@ -91,10 +92,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
   end
 
 
-# end
+end
 
-# if Rails.env == 'development'
-
+if Rails.env == 'development'
 
   def random_date(params={ })
     years_back = params[:year_range] || 5
@@ -201,8 +201,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       puts "Notification marked as read"
     end
   end
-
-
 
 end
 

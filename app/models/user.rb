@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
     end
 
     def completed
-      where("completed = true")
+      where("completed = true").where("admin = false")
     end
 
     def status_approved
