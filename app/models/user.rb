@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   after_save :send_welcome
   # Geocode
   before_create :geocode
-  after_validation :reverse_geocode
+  before_update :reverse_geocode
 
   ### Validations
   validates :first_name, presence: true, on: :update
