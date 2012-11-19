@@ -8,11 +8,11 @@ class MembersController < ApplicationController
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
       when "local"
-        users_scope = User.status_approved.includes(:cases).list_local(current_user)
+        users_scope = User.confirmed.includes(:cases).list_local(current_user)
       when "global"
-        users_scope = User.status_approved.includes(:cases).list_global
+        users_scope = User.confirmed.includes(:cases).list_global
       when "online"
-        users_scope = User.status_approved.includes(:cases).list_online
+        users_scope = User.confirmed.includes(:cases).list_online
       when "contacts"
         users_scope = current_user.accepted_friends.includes(:cases)
     end
