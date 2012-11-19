@@ -48,8 +48,13 @@
             .row
               .span21.font-small
                 .static_home_signup_checkbox_label
-                  I agree that my email address and LinkedIn Headline can be saved
-                  Section III(B).4 of LinkedIn APIs Terms of Use
+                  As required by Section III(B).4 of 
+                  = link_to "the LinkedIn APIs Terms of Use", "https://developer.linkedin.com/documents/linkedin-apis-terms-use"
+                  , I agree that my 
+                  %span.font-underline email address 
+                  and 
+                  %span.font-underline LinkedIn Headline 
+                  (only) can be saved
               .span2
                 = check_box_tag :confirm_linkedin, tabindex: "15"
           .row
