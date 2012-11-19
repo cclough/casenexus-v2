@@ -73,7 +73,7 @@
               = link_to("Reject", reject_friendship_path(id: Friendship.friendship(@user, current_user), back_url: map_path), method: :put, class: "btn btn-mini")
 
 
-          - elsif @user != current_user && !Friendship.pending?(current_user, @user)
+          - elsif @user != current_user && !Friendship.exist?(current_user, @user)
 
             .pull-right
               %a#users_index_user_partner_button_friend_req.btn.btn-inverse.btn-small
