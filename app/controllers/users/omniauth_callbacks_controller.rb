@@ -71,6 +71,9 @@ class Users::OmniauthCallbacksController < ApplicationController
         # The user doesn't exists, fetch the email, register and sign in
         user = User.new
 
+        # Set the user ip
+        user.ip_address = request.ip
+
         assign_linkedin_credentials(user, credentials, omniauth['uid'])
         assign_linkedin_data(user, data, true)
         user.password = user.password_confirmation = generate_password

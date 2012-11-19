@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
          :confirmable, :omniauthable, :token_authenticatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
-                  :skype, :linkedin, :email_admin, :email_users, :ip_address, :confirm_tac, :university, :university_id,
-                  :invitation_code, :linkedin_name, :status_moderated, :status_approved
+                  :skype, :linkedin, :email_admin, :email_users, :confirm_tac, :university, :university_id,
+                  :invitation_code, :linkedin_name, :status_moderated, :status_approved, :ip_address
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
@@ -40,8 +40,7 @@ class User < ActiveRecord::Base
   after_create :update_invitation
   after_save :send_welcome
   # Geocode
-  before_create :geocode
-  before_update :reverse_geocode
+  after_validation :geocode, :reverse_geocode
 
   ### Validations
   validates :first_name, presence: true, on: :update
@@ -66,7 +65,6 @@ class User < ActiveRecord::Base
 
   ### Geocoder
   geocoded_by :ip_address, :latitude => :lat, :longitude => :lng
-
   reverse_geocoded_by :lat, :lng do |obj, results|
     if geo = results.first
       obj.city = geo.city
@@ -164,6 +162,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def geocode_by_hand
+
+  end
 
   def validate_invitation
     return if self.invitation_code == "BYPASS_CASENEXUS_INV"
