@@ -1,17 +1,18 @@
-#cases_index_cases_form_body
-  - if @cases.count > 0
-    - @cases.each do |cases_item|
+- if @cases.count > 0
+  #cases_index_cases_form_body
 
+    - @cases.each do |cases_item|
       = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
 
-  - else
+- else
+  #cases_index_cases_form_body_empty
     #cases_index_cases_form_empty
       #cases_index_cases_form_empty_icon
         %i.icon-list-ul
       %p You have no cases
 
-  = hidden_field_tag :direction, params[:direction]
-  = hidden_field_tag :sort, params[:sort]
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
   
 #cases_index_cases_form_paginate
   = will_paginate @cases, class: "application_pagination", inner_window: 2, outer_window: 2

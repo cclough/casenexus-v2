@@ -44,7 +44,11 @@ $blue_pastel: #98cdff;
 }
 
 #cases_index_cases_form_body {
-  height: 698px;
+  height: 697px;
+}
+
+#cases_index_cases_form_body_empty {
+  height: 732px;
 }
 
 #cases_index_cases_form_sort .current {
@@ -65,7 +69,7 @@ $blue_pastel: #98cdff;
 
 #cases_index_cases_form_empty {
   height:280px;
-  padding-top:150px;
+  padding-top:275px;
   padding-left:0px;
   padding-right:0px;
   font-weight:bold;
