@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   end
 
   def self.markers
-    User.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+    User.completed.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
   end
 
   def level
@@ -114,15 +114,15 @@ class User < ActiveRecord::Base
     end
 
     def list_local(user)
-      user.nearbys(100).order('created_at desc')
+      user.nearbys(100).completed.order('created_at desc')
     end
 
     def list_global
-      order('created_at desc')
+      completed.order('created_at desc')
     end
 
     def list_online
-      order('last_online_at desc')
+      completed.order('last_online_at desc')
     end
 
     def list_contacts(user)
@@ -131,6 +131,10 @@ class User < ActiveRecord::Base
 
     def confirmed
       where("confirmed_at is not null")
+    end
+
+    def completed
+      where("completed = true")
     end
 
     def status_approved

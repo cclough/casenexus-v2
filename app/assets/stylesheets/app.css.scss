@@ -3,7 +3,7 @@ $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
-$blue_pastel: #1495dc;
+$blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 @mixin box_sizing {
@@ -417,8 +417,7 @@ textarea {
   nav ul li a {
     color: #767676;
     font-size: 14px;
-
-    -webkit-transition:color 0.2s, ease-in;  
+    -webkit-transition:color 0.2s ease-in;  
     -moz-transition:color 0.2s ease-in;  
     -o-transition:color 0.2s ease-in;  
     transition:color 0.2s ease-in;

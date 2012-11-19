@@ -32,6 +32,9 @@ $blue_linkedin: #86c7fe;
 .static_home_signup_checkbox_label {
   margin-top:3px;
   margin-left:7px;
+  margin-right:7px;
+  line-height:15px;
+  text-align:right;
 }
 
 #static_home_signup_option {
@@ -174,8 +177,9 @@ $blue_linkedin: #86c7fe;
   -webkit-border-top-right-radius: 5px;
 
   nav { 
-    position: relative; 
-    left:55px; }
+    position: relative;
+    // ITS THIS LEFT
+    left:35px; }
     
   nav ul {
     list-style: none;
@@ -185,21 +189,26 @@ $blue_linkedin: #86c7fe;
   nav ul li {
     float: left;
     margin-left: 30px;
-    margin-top:6px;
+    margin-top:9px;
     position: relative;
   }   
 
   nav ul li a{
     color: #b5b5b5;
-    font-size: 12px;
+    font-size: 13px;
     -webkit-transition:color 0.2s ease-in;  
     -moz-transition:color 0.2s ease-in;  
     -o-transition:color 0.2s ease-in;  
     transition:color 0.2s ease-in;
   }
   
-  nav ul li a:hover { color: #777; }
-  nav ul li.current a{ color: #555; font-weight: bold; }
+  nav ul li a:hover { 
+    color: #777; 
+  }
+  nav ul li.current a { 
+    color: #555;
+    border-bottom: 2px solid $blue_pastel;
+  }
 
   nav span.arrow {
     width: 24px;
