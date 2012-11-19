@@ -444,7 +444,7 @@ function cases_analysis_chart_radar_draw(radar_type, case_count) {
   chart_analysis_radar.startEffect = ">";
   chart_analysis_radar.sequencedAnimation = true;
   chart_analysis_radar.color = "#f6f6f6";
-  chart_analysis_radar.colors = ["#000000","#3e00bd","#CC0000"]
+  chart_analysis_radar.colors = ["#ff0000","#f8ff80","#ffe680"]
   chart_analysis_radar.fontSize = 9;
 
   // GRAPH - ALL
