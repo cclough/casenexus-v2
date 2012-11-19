@@ -80,7 +80,10 @@
           .span23
             = f.text_field :skype, placeholder: "Skype username"
             .font-small
-              NB this is required for case roulette
+              NB
+              %span.users_new_condition
+                (required)
+              for case roulette
           .span8
             #users_newedit_skype_link
               = link_to "Need to register?", "https://login.skype.com/account/signup-form"            
@@ -90,7 +93,7 @@
           .font-small
             %ul
               %li 
-                Explain the status of your interview preparation to other candidates, including your background and availability
+                Explain a little about your recruitment situation to other candidates, including your availability for practice, and background
                 %span.users_new_condition
                   (required)
               %li Statuses are reviewed by an admin within 24hrs
@@ -98,7 +101,7 @@
 
           #users_new_step3_samplestatus.panel.dark.kill_all.font-small
 
-            e.g. "I am a Cambridge University student reading Natural Sciences. I am applying to the top three firms in London, and expect to have interviews in the next month. I am a beginner and am looking for other beginners. I'm looking to practise in person on weekday evenings after 7pm, or on Skype any evening after 9pm."
+            e.g. "I am a Cambridge University student reading Natural Sciences. I am applying to the top three firms in London, and expect to have interviews in the next month. I am a beginner, and am looking for others who are also just starting out. I'm looking to practise in person on weekday evenings after 7pm, or on Skype any evening after 9pm."
 
         .row
           = f.text_area :status, id: 'users_new_status', placeholder: "Describe your current situation"
