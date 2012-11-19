@@ -1,7 +1,9 @@
 - if object.errors.any?
+  .spacer10
   #application_error_explanation
     .alert.alert-error
       %ul
         - object.errors.full_messages.each do |msg|
           %li
-            * #{msg}
+            #{msg}
+  .spacer10

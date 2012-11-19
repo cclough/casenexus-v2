@@ -10,7 +10,7 @@ class StaticPagesController < ApplicationController
           session[:code] = nil
           flash[:notice] = "Invitation already used"
         else
-          flash[:notice] = "Hi #{@invitation.name}, thanks for accepting your invitation - welcome to casenexus.com"
+          flash[:notice] = "Hello #{@invitation.name}, thank you for accepting your invitation"
           session[:code] = params[:code]
         end
       end

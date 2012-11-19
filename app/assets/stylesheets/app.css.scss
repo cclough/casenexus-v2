@@ -117,9 +117,9 @@ textarea {
 
 /* For views/shared/_error_messages - is this used for all forms? */
 #application_error_explanation {
-  color:#f00;
+  color:#ff5252;
+  font-size:11px;
   ul {
-    list-style: none;
     margin: 15px 15px 15px 15px;
   }
 }

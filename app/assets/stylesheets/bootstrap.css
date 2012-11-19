@@ -5001,8 +5001,8 @@ input[type="submit"].btn.btn-mini {
   background-color: #000000 \9;
 }
 .alert {
-  padding: 8px 30px 8px 14px;
-  margin: 15px 15px 0px 15px;
+  padding: 8px 14px 8px 14px;
+  margin: 15px 15px 15px 15px;
   /*  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);*/
   /*background-color: #fcf8e3;*/
   /*  border: 1px solid #fbeed5;*/
@@ -5027,6 +5027,7 @@ input[type="submit"].btn.btn-mini {
   top: -2px;
   right: -21px;
   line-height: 20px;
+  margin-right:20px;
 }
 .alert-success {
   /*background-color: #dff0d8;*/
