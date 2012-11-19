@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
   ### Validations
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
+  validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
+  validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
   validate :validate_university_email, on: :create
   validate :validate_invitation, on: :create
 
