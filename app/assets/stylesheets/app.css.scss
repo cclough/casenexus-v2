@@ -417,23 +417,20 @@ textarea {
   nav ul li a {
     color: #767676;
     font-size: 14px;
-    
-    -webkit-transition:color 0.2s ease-in;  
+
+    -webkit-transition:color 0.2s, ease-in;  
     -moz-transition:color 0.2s ease-in;  
     -o-transition:color 0.2s ease-in;  
     transition:color 0.2s ease-in;
-    .modal_help_arrownav_title_number {
-      font-weight:bold;
-      color: $blue_pastel;
-    }
+
   }
   
   nav ul li a:hover {
     color: #777; 
   }
-  nav ul li.current a { 
+  nav ul li.current a {
+    border-bottom: 2px solid $blue_pastel;
     color: #555;
-    font-weight: bold;
   }
 
   nav span.arrow {
