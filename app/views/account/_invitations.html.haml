@@ -1,7 +1,7 @@
 .panel.dark.font-small.kill_bottom
   .row
     .span43
-      - if current_user.invitations.count < Invitation::INVITATION_LIMIT
+      - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
         %p Invite a friend to casenexus (#{current_user.invitations.count}/5 Invitations Used)
 
         = simple_form_for @invitation, html: { id: "users_edit_invitations_form" } do |f|

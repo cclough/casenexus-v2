@@ -31,7 +31,7 @@ class Invitation < ActiveRecord::Base
   #private
 
   def five_invitations_per_user
-    if self.user_id
+    if self.user_id && self.user_id != 1
       if Invitation.where(user_id: self.user_id).count >= INVITATION_LIMIT
         errors.add(:base, "max limit per user is 5 invitations")
       end
