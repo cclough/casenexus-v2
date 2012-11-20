@@ -202,7 +202,7 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome
-    if completed_was == false and completed == true
+    if completed == true # completed_was == false and
       Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
     end
   end
