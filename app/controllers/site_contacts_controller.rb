@@ -8,7 +8,8 @@ class SiteContactsController < ApplicationController
       flash[:notice] = "Thank you for your message"
       render 'create_contact_ok'
     else
-      flash[:error] = "Oops! There was an error"
+      # Not neccessary as errors handled in the form
+      # flash[:error] = "Oops! There was an error"
       render 'create_contact_error'
     end
   end
@@ -21,7 +22,8 @@ class SiteContactsController < ApplicationController
       flash[:notice] = "Thank you for your feedback"
       render 'create_bug_ok'
     else
-      flash[:error] = "Oops! There was an error"
+      # Not neccessary as errors handled in the form
+      # flash[:error] = "Oops! There was an error"
       render 'create_bug_error'
     end
   end

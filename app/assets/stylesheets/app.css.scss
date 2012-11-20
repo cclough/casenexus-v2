@@ -69,7 +69,7 @@ textarea {
 .search-query {
   background: white url(icons/search.png) no-repeat 94% 5px;
   padding-right: 17px;
-  padding-left:10px;
+  padding-left:10px !important;
 }
 
 .simple_form {
@@ -509,7 +509,7 @@ textarea {
       .set-3c { position: absolute; top:730px; left:40px; width:330px;}
 
 #modal_help_page_4 { height:1025px; width:800px; padding-top:50px; position:relative; }
-      .set-4a { position: absolute; left: 110px; top: 100px; width: 725px;}
+      .set-4a { position: absolute; left: 110px; top: 100px; width: 705px;}
       .set-4b { position: absolute; left: 40px; top: 370px; width:330px;}
       .set-4c { position: absolute; left: 400px; top: 370px; width: 300px;}
       .set-4d { position: absolute; left: 40px; top: 690px; width: 309px;}

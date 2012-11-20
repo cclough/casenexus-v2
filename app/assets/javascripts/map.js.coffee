@@ -63,6 +63,9 @@ window.users_index_map_marker_click = (marker_id) ->
         $("#users_index_user_feedback_chart_radar_button_all").removeClass "active"
         $("#users_index_user_feedback_chart_radar_button_combined").addClass "active"
 
+      # Fade out tooltip as no longer needed
+      $("#users_index_mappanel_tooltip").fadeOut "slow"
+
       # Fade panel back in
       $("#users_index_mapcontainer_user").fadeIn "fast"
 
