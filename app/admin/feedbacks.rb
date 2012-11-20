@@ -1,3 +1,3 @@
-ActiveAdmin.register Feedback do
+ActiveAdmin.register SiteBug do
   
 end

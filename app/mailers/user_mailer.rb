@@ -89,16 +89,16 @@ class UserMailer < ActionMailer::Base
 
     @site_contact = site_contact
 
-    mail(to: receiver, subject: "Casenexus contact: #{site_contact.subject}")
+    mail(to: receiver, subject: "Site Contact: #{site_contact.subject}")
   end
 
-  def site_feedback(feedback)
-    sender = "#{feedback.user.name} <#{feedback.user.email}>"
+  def site_bug(site_bug)
+    sender = "#{site_bug.user.name} <#{site_bug.user.email}>"
     receiver = "info@casenexus.com"
 
-    @feedback = feedback
+    @site_bug = site_bug
 
-    mail(to: receiver, subject: "Casenexus feedback")
+    mail(to: receiver, subject: "Site Bug")
   end
 
   def status_approved(user)

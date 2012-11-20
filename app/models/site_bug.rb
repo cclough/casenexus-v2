@@ -1,4 +1,4 @@
-class Feedback < ActiveRecord::Base
+class SiteBug < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :subject, :content
@@ -9,7 +9,7 @@ class Feedback < ActiveRecord::Base
   after_create :send_mail_to_admin
 
   def send_mail_to_admin
-    UserMailer.site_feedback(self).deliver
+    UserMailer.site_bug(self).deliver
   end
 
 end

@@ -56,8 +56,8 @@ Casenexus::Application.routes.draw do
   end
 
   # Site contacts
-  match '/site_contact/create', to: 'site_contacts#create', as: :site_contact
-  match '/feedback/create', to: 'site_contacts#feedback', as: :site_feedback
+  match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact
+  match '/site_contact/create_bug', to: 'site_contacts#create_bug', as: :site_bug
 
   # Roulette
   match '/roulette', to: 'roulette#index', as: :roulette

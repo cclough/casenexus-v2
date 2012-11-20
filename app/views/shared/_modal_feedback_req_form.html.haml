@@ -12,9 +12,9 @@
       = render 'shared/error_messages', object: @notification
 
     %div   
-      = f.text_field :event_date, placeholder: "Date", id: "modal_feedback_req_datepicker", tabindex: "1", 'data-date-format' => "dd/mm/yyyy"
+      = f.text_field :event_date, placeholder: "Date", id: "modal_feedback_req_datepicker", tabindex: "101", 'data-date-format' => "dd/mm/yyyy"
     %div
-      = f.text_area :content, placeholder: "Case Subject...", rows: '5', tabindex: "2", class: "modal_textarea"
+      = f.text_area :content, placeholder: "Case Subject...", rows: '5', tabindex: "102", class: "modal_textarea"
 
       = f.hidden_field :user_id, :value => @user.id
       = f.hidden_field :sender_id, :value => current_user.id
@@ -22,6 +22,6 @@
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "2"}
+    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "103"}
       %i.icon-arrow-right.icon-white
       Send Feedback Request

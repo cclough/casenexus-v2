@@ -14,7 +14,7 @@
       = render 'shared/error_messages', object: @notification
 
     %div
-      = f.text_area :content, placeholder: "Send message...", tabindex: "1", class: "modal_textarea"
+      = f.text_area :content, placeholder: "Send message...", tabindex: "101", class: "modal_textarea"
 
       = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
       = f.hidden_field :user_id, value: @user.id
@@ -23,6 +23,6 @@
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "2"}
+    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "102"}
       %i.icon-arrow-right.icon-white
       Send Message
