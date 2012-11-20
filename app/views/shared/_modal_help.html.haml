@@ -21,15 +21,15 @@
           %li
             %a{:href => "#4"}
               / %span.modal_help_arrownav_title_number 4.
-              Feedback Form
+              Feedback form
           %li
             %a{:href => "#5"}
               / %span.modal_help_arrownav_title_number 5. 
-              Case Index
+              Case index
           %li
             %a{:href => "#6"}
               / %span.modal_help_arrownav_title_number 6. 
-              Progress Analysis
+              Progress analysis
 
         %span.arrow
   .modal-body
@@ -37,8 +37,14 @@
     #application_arrownav_page_1.arrownav_page
 
       #modal_help_page_1
-        .offset20
-          %h3 ...how to get around casenexus.com
+
+        .modal_help_header_icon
+          %i.icon-cog
+        .modal_help_header_title The Basics
+        .modal_help_header_sub ...how to get around
+
+        = image_tag "help/1.jpg"
+
         .set-1a
           %h4 i) Map
           %p Find other candidates
@@ -51,7 +57,7 @@
           %p Open this dialog
         .set-1d
           %h4 iv) Feedback
-          %p Tell us about bugs, or suggest ways to improve the site
+          %p Tell us about bugs, or suggest ways to improve
         .set-1e
           %h4 v) Notifications
           %p All correspondance from your case partners can be found here.
@@ -75,14 +81,22 @@
               change your settings, status, and location 
 
     #application_arrownav_page_2.arrownav_page
+
       #modal_help_page_2
-        .offset19
-          %h3 ...find other candidates to practise with
+
+        .modal_help_header_icon
+          %i.icon-pushpin
+        .modal_help_header_title Map
+        .modal_help_header_sub ...find other candidates to practise with
+
+        = image_tag "help/2.jpg"
+
         .set-2a
           %h4 i) The Map
-          %p 
-            Find other candidates who live or work near you - 
-            %span.font-bold click on a marker to see their profile
+          %p Find other candidates who live or work nearby
+          %p
+            %span.font-bold Click on a marker 
+            to see their profile
         .set-2b
           %h4 
             ii) 
@@ -120,9 +134,16 @@
 
 
     #application_arrownav_page_3.arrownav_page
+
       #modal_help_page_3
-        .offset25
-          %h3 ...practise with someone now
+
+        .modal_help_header_icon
+          %i.icon-random
+        .modal_help_header_title Roulette
+        .modal_help_header_sub ...practise with someone now
+
+        = image_tag "help/3.jpg"
+
         .set-3a
           %h4 i) Connect
           %p Click the 'Join' button to connect to the Case Roulette
@@ -148,12 +169,19 @@
           %p Enter the code into your roulette window, to be taken to a feedback form for them
 
     #application_arrownav_page_4.arrownav_page
+
       #modal_help_page_4
-        .offset9
-          %h3 ...give the "interviewee" feedback on their performance
+
+        .modal_help_header_icon
+          %i.icon-edit
+        .modal_help_header_title Feedback form
+        .modal_help_header_sub ...give the "interviewee" feedback on their performance
+
+        = image_tag "help/4.jpg"
+
         .set-4a
           %p 
-            This form has been carefully designed by
+            Carefully designed by
             %span.font-bold top-3-firm consultants with many years of interviewing experience
         .set-4b
           %h4 ii) Scoring Criteria
@@ -164,7 +192,7 @@
             %li Structure
           %p ...and their sub-criteria, comprise everything interviewers look for, and on which candidates most often fail
           %p
-            %b For the benefit of your Case Partners, take the time to carefully read the descriptions of each sub-criteria
+            %b For the benefit of your Case Partners, take the time to carefully read the description for each sub-criteria
         .set-4c
           %h4 iii) Move the Sliders
           %p 
@@ -190,9 +218,16 @@
           %p Specify three areas they should prioritise in their preparation going forward
 
     #application_arrownav_page_5.arrownav_page
+
       #modal_help_page_5
-        .offset25
-          %h3 ...review your case feedback
+
+        .modal_help_header_icon
+          %i.icon-list-ul
+        .modal_help_header_title Case index
+        .modal_help_header_sub ...review your case feedback
+
+        = image_tag "help/5.jpg"
+
         .set-5a
           %h4 i) A library of feedback to learn from
           %p All of your feedback from cases has been captured and is accessible here for you review at any time
@@ -207,13 +242,13 @@
           %p This chart shows your scores for all of the sub-criteria
           %ul
             %li
-              %span#modal_help_page_5_blue Blue 
+              %span#modal_help_pages_blue Blue 
               is Business Analytics
             %li
-              %span#modal_help_page_5_green Green 
+              %span#modal_help_pages_green Green 
               is Interpersonal
             %li
-              %span#modal_help_page_5_yellow Yellow 
+              %span#modal_help_pages_yellow Yellow 
               is Structure
 
           %p 
@@ -222,9 +257,16 @@
             button to see your average scores for the main criteria
 
     #application_arrownav_page_6.arrownav_page
+
       #modal_help_page_6
-        .offset8
-          %h3 ...so this is just a bit of fun, but maybe you'll find it useful
+
+        .modal_help_header_icon
+          %i.icon-bar-chart
+        .modal_help_header_title Progress analysis
+        .modal_help_header_sub ...so this is just a bit of fun; but maybe you'll find it useful
+
+        = image_tag "help/6.jpg"
+
         .set-6b
           %h4 i) Progress Chart
           %p 
@@ -240,13 +282,13 @@
             button to see your average scores for the main criteria
           %ul
             %li
-              %span#modal_help_page_5_blue Blue 
+              %span#modal_help_pages_blue Blue 
               is Business Analytics
             %li
-              %span#modal_help_page_5_green Green 
+              %span#modal_help_pages_green Green 
               is Interpersonal
             %li
-              %span#modal_help_page_5_yellow Yellow 
+              %span#modal_help_pages_yellow Yellow 
               is Structure
 
         .set-6d
