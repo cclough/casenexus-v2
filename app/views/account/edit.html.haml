@@ -37,16 +37,18 @@
                   I want to edit my password
                 .spacer5
             .spacer5
-            .row
+            .row.font-small
               .span3.offset12
                 = f.check_box :email_admin
               .span25
-                = f.label :email_admin, "Receive case interview advice email letter"
-            .row
+                .spacer5
+                Receive site news and consulting advice
+            .row.font-small
               .span3.offset12
                 = f.check_box :email_users
               .span25
-                = f.label :email_users, "Send notifications from users to your email"
+                .spacer5
+                Receive notiffications via email
             .row
               .span25.offset12
                 .spacer10
@@ -73,15 +75,18 @@
                   NB this is required for the roulette
             .spacer10
             .row
-              .span12
-                = image_tag 'icons/linkedin_large.png'
-              .span25
-                = f.text_field :linkedin_name, placeholder: "LinkedIn email address"
-
+              - if @user.linkedin_uid.blank?
+                .span12
+                  = image_tag 'icons/linkedin_large.png'
+                .span25
+                  = f.text_field :linkedin_name, placeholder: "LinkedIn username (not email)"
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
             = f.hidden_field :lng, id: "account_completeedit_lng"
-            #account_completeedit_map.edit.map
+            - if @user.linkedin_uid.blank?
+              #account_completeedit_map.edit.map
+            - else
+              #account_completeedit_map.edit_linkedin.map
             .spacer10
             #account_completeedit_map_location
               .row

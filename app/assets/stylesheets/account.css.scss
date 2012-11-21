@@ -83,7 +83,11 @@ label { // why the hell won't this work in app.css?
     width:425px;
   }
   &.edit {
-    height:259px;
+    height:261px;
+    width:435px;
+  }
+  &.edit_linkedin {
+    height:300px;
     width:435px;
   }
 }

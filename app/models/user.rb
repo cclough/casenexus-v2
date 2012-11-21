@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   end
 
   def self.markers
-    User.completed.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+    User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
   end
 
   def level
@@ -99,10 +99,6 @@ class User < ActiveRecord::Base
     end.to_s
   end
 
-  def admin?
-    self.admin == true
-  end
-
   # Filters
   class << self
     def approved
@@ -114,15 +110,15 @@ class User < ActiveRecord::Base
     end
 
     def list_local(user)
-      user.nearbys(100).completed.order('created_at desc')
+      user.nearbys(100).completed.not_admin.order('created_at desc')
     end
 
     def list_global
-      completed.order('created_at desc')
+      completed.not_admin.order('created_at desc')
     end
 
     def list_online
-      completed.order('last_online_at desc')
+      completed.not_admin.order('last_online_at desc')
     end
 
     def list_contacts(user)
@@ -134,7 +130,15 @@ class User < ActiveRecord::Base
     end
 
     def completed
-      where("completed = true").where("admin = false")
+      where("completed = true")
+    end
+
+    def admin?
+      admin == true
+    end
+
+    def not_admin
+      where("admin = false")
     end
 
     def status_approved
