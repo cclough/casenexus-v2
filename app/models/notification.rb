@@ -12,19 +12,15 @@ class Notification < ActiveRecord::Base
   validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
   validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
   validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
-
-  validate :no_notification_to_self
-
   validates :content, length: { maximum: 500 }
 
-  validates_presence_of :content, if: lambda { self.ntype == 'message' }
+  validate :no_notification_to_self
+  def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app); end
+  validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
+  validates :content, presence: true, if: lambda { self.ntype == 'message' }
 
   after_create :send_email
 
-  def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app); end
-
-  validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
-  validate :no_notification_to_self
 
   class << self
 

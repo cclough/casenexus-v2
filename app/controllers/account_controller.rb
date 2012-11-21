@@ -20,7 +20,8 @@ class AccountController < ApplicationController
       if @user.completed
         flash[:success] = 'Your profile has been updated'
       else
-        @user.toggle!(:completed)
+        @user.completed = true
+        @user.save
         flash[:success] = 'Welcome to casenexus.com'
       end
       redirect_to map_path
