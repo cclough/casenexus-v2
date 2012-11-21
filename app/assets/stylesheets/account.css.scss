@@ -17,7 +17,6 @@ label { // why the hell won't this work in app.css?
 }
 
 
-
 #account_complete_step2, #account_complete_step3 {
   width:424px;
 }
@@ -34,12 +33,6 @@ label { // why the hell won't this work in app.css?
   font-style:italic;
   margin-top:10px;
   margin-bottom:10px;
-}
-
-.account_complete_condition {
-  font-style:italic;
-  font-size:10px;
-  color:white;
 }
 
 #account_complete_status {
@@ -74,6 +67,17 @@ label { // why the hell won't this work in app.css?
 
 
 
+.account_completedit_bullets {
+  li {
+    list-style: square;
+  } 
+}
+
+.account_completeedit_condition {
+  font-style:italic;
+  font-size:10px;
+  color:white;
+}
 
 #account_completeedit_map {
 
@@ -106,7 +110,14 @@ label { // why the hell won't this work in app.css?
   font-size:10px;
 }
 
-
+.account_completeedit_privacy {
+  font-size:9px !important;
+  line-height:11px;
+  padding:3px !important;
+  text-align:center;
+  margin-left:5px !important;
+  border:0px !important;
+}
 
 
 #account_delete_panel {

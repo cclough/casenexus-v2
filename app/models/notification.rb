@@ -90,7 +90,7 @@ class Notification < ActiveRecord::Base
 
   class << self
     def header(user)
-      user.notifications.where(read: false).limit(5).order('created_at desc').reverse
+      user.notifications.for_display.where(read: false).limit(5).order('created_at desc').reverse
     end
 
     def history(from_id, to_id)

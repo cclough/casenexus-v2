@@ -14,6 +14,10 @@
       / .spacer10
       .row
         %b= @request_user
+        from
+        %b= @request_user.city
+        ,
+        %b= @request_user.country
         would like to do a case with you on Skype.
       .spacer10
       .row#modal_roulette_req_status

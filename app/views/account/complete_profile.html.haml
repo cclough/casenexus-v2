@@ -23,14 +23,14 @@
           .row
             .span10
               First name
-              .account_complete_condition
+              .account_completeedit_condition
                 (required)
             .span30
               = f.text_field :first_name, placeholder: "Enter your first name", id: "account_complete_first_name"
           .row
             .span10
               Last name
-              .account_complete_condition
+              .account_completeedit_condition
                 (required)
             .span30
               = f.text_field :last_name, placeholder: "Enter your last name", id: "account_complete_last_name"
@@ -57,12 +57,12 @@
 
       #account_complete_step3.panel.darker.kill_right.kill_bottom
         .font-small
-          %ul
+          %ul.account_completedit_bullets
             %li
               We've taken a guess at where you are...
             %li
               Move the marker to a location you feel comfortable sharing
-              %span.account_complete_condition
+              %span.account_completeedit_condition
                 (required)
 
         #account_completeedit_map.complete.map
@@ -77,15 +77,16 @@
         .row
           .span10
             = image_tag 'icons/skype_large.png'
-            .account_complete_condition
+            .account_completeedit_condition
               (optional)
           .span23
             = f.text_field :skype, placeholder: "Skype username"
             .font-small
-              NB
-              %span.account_complete_condition
-                (required)
-              for case roulette
+              %ul.account_completedit_bullets
+                %li 
+                  %span.account_completeedit_condition
+                    (required)
+                  for the Roulette
           .span8
             #account_completeedit_skype_link
               = link_to "Need to register?", "https://login.skype.com/account/signup-form"            
@@ -93,10 +94,10 @@
       #account_complete_step5.panel.darker.kill_bottom
         .row
           .font-small
-            %ul
+            %ul.account_completedit_bullets
               %li 
                 Explain a little about your recruitment situation to other candidates, including your availability for practice, and background
-                %span.account_complete_condition
+                %span.account_completeedit_condition
                   (required)
               %li Statuses are reviewed by an admin within 24hrs
               %li Minimum 50 characters

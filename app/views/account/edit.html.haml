@@ -69,16 +69,19 @@
                 = image_tag 'icons/skype_large.png'
                 #account_completeedit_skype_link
                   = link_to "Need to register?", "https://login.skype.com/account/signup-form"
-              .span25
+              .span22
                 = f.text_field :skype, placeholder: "Skype username"
                 .font-small
-                  NB this is required for the roulette
-            .spacer10
-            .row
-              - if @user.linkedin_uid.blank?
+                  %ul.account_completedit_bullets
+                    %li 
+                      %span.account_completeedit_condition
+                        (required)
+                      for the Roulette
+            - if @user.linkedin_uid.blank?
+              .row
                 .span12
                   = image_tag 'icons/linkedin_large.png'
-                .span25
+                .span22
                   = f.text_field :linkedin_name, placeholder: "LinkedIn username (not email)"
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
