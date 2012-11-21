@@ -76,15 +76,15 @@ class Notification < ActiveRecord::Base
       when "welcome"
         Rails.application.routes.url_helpers.root_url(host: host)
       when "message"
-        Rails.application.routes.url_helpers.notification_url(id, host: host)
+        Rails.application.routes.url_helpers.notification_url(id: id, host: host)
       when "feedback"
-        Rails.application.routes.url_helpers.case_url(notificable_id, host: host)
+        Rails.application.routes.url_helpers.case_url(id: notificable_id, host: host)
       when "feedback_req"
-        Rails.application.routes.url_helpers.new_case_url(host: host)
+        Rails.application.routes.url_helpers.new_case_url(host: host, user_id: sender_id, date: event_date, subject: content.truncate(100))
       when "friendship_req"
-        Rails.application.routes.url_helpers.friendship_url(sender_id, host: host)
+        Rails.application.routes.url_helpers.notifications_url(host: host)
       when "friendship_app"
-        Rails.application.routes.url_helpers.root_url(host: host)
+        Rails.application.routes.url_helpers.map_url(host: host, user_id: sender_id)
     end
   end
 
@@ -95,8 +95,8 @@ class Notification < ActiveRecord::Base
 
     def history(from_id, to_id)
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
-            from_id, to_id,
-            to_id, from_id).where("ntype in (?)", %w(message feedback feedback_req))
+                        from_id, to_id,
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req"]])
     end
   end
 
