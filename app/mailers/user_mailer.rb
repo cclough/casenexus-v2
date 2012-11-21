@@ -75,12 +75,15 @@ class UserMailer < ActionMailer::Base
   end
 
   def invitation(invitation)
-    sender = invitation.user.email
     receiver = "#{invitation.name} <#{invitation.email}>"
 
     @invitation = invitation
 
-    mail(to: receiver, subject: "Invitation to casenexus.com")
+    if invitation.user.id == 1
+      mail(to: receiver, subject: "Invitation to casenexus.com")
+    else
+      mail(to: receiver, subject: "Invitation to casenexus.com", template_name: 'invitation_user')
+    end
   end
 
   def site_contact(site_contact)
