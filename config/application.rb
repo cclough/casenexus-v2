@@ -74,5 +74,9 @@ module Casenexus
     config.assets.version = '1.0'
 
 
+    # Layout for devise mailers
+    config.to_prepare do
+      Devise::Mailer.layout "email" # email.haml or email.erb
+    end
   end
 end
