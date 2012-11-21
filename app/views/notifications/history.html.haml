@@ -10,8 +10,6 @@
       #notifications_show_header_back_text.span20
         Go back to where you were
 
-
-
 - if @notifications.count > 0
   - @notifications.each do |notifications_history_item|
 
@@ -19,7 +17,6 @@
 
 - else
   %p No notifications found
-
 
 / repeated from member#show - should we put this in a helper?
 - if Friendship.friends?(current_user, @user)
