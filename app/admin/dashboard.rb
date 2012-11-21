@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Pending Moderations" do
-          table_for User.where("status_moderated = false").order("updated_at asc").limit(10) do
+          table_for User.where("status_moderated = false").order("updated_at asc").limit(100) do
             column("Name") { |u| u.name }
             column("Email") { |u| u.email }
             column("Status") { |u| u.status }
