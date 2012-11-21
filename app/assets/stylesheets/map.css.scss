@@ -25,7 +25,7 @@ $blue_pastel: #98cdff;
   // background: rgba(255, 255, 255, 0.6);
 }
 
-#users_index_map {
+#map_index_map {
   position: absolute;
   left: 0;
   right: 0;
@@ -38,23 +38,15 @@ $blue_pastel: #98cdff;
   // @include box_sizing;
 }
 
-header {
-
-  -webkit-box-shadow: 0px 3px 10px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 3px 10px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 3px 10px rgba(50, 50, 50, 0.75);
-
-}
-
 // Pushes footer to bottom of page on map
-#users_index_map_footerspacer {
+#map_index_map_footerspacer {
   height:96.7%;
   width:0px;
 }
 
 /***** for custom control position hack *****/
 
-#users_index_map_zoomcontrol {
+#map_index_map_zoomcontrol {
   position: absolute;
   left: 400px;
 }
@@ -68,7 +60,7 @@ header {
 
 
 
-#users_index_mapcontainer_users {
+#map_index_mapcontainer_users {
   top: 0px;
   left: 30px;
   width: 350px;
@@ -80,34 +72,34 @@ header {
   box-shadow: 2px 3px 14px #4a494a;
 }
 
-#users_index_users_form {
+#map_index_users_form {
   margin-top:40px;
 }
 
-#users_index_users_form_searchfield {
+#map_index_users_form_searchfield {
   width:299px;
 }
 
-#users_index_users_form_radiogroup {
+#map_index_users_form_radiogroup {
   display:none;
 }
 
-#users_index_users_form_buttons{
+#map_index_users_form_buttons{
   text-align:center;
 }
 
 // Spacer that forces paginate to bottom of list
-#users_index_users_form_body {
+#map_index_users_form_body {
   height:520px;
 }
 
-#users_index_users {
+#map_index_users {
   margin-top:5px;
   height:630px;
 }
 
 
-#users_index_users_empty {
+#map_index_users_empty {
   text-align: center;
   width:140px;
   padding-left:35px;
@@ -115,7 +107,7 @@ header {
   margin-top:30px;
 }
 
-.users_index_users_item {
+.map_index_users_item {
   width: 100%;
   height: 50px;
   margin-top: 0px;
@@ -128,13 +120,13 @@ header {
   @include box_sizing;
 }
 
-.users_index_users_item_text {
+.map_index_users_item_text {
 
   text-align:left;
   padding-left:8px;
 }
 
-.users_index_users_item_lastonline {
+.map_index_users_item_lastonline {
   position:absolute;
   z-index:99999;
   top:-6px;
@@ -148,7 +140,7 @@ header {
   text-align:right;
 }
 
-#users_index_mapcontainer_user {
+#map_index_mapcontainer_user {
   top: 15%;
   right: 30px;
   width: 400px;
@@ -163,7 +155,6 @@ header {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 
-
   // Outset 
   -moz-box-shadow: 2px 3px 14px #4a494a;
   -webkit-box-shadow: 2px 3px 14px #4a494a;
@@ -171,7 +162,7 @@ header {
 }
 
 
-.users_index_mappanel {
+.map_index_mappanel {
   position:absolute;
 
   background-color: #2E2E2E;
@@ -185,7 +176,7 @@ header {
 
 }
 
-.users_index_mappanel_list {
+.map_index_mappanel_list {
 
   color: white;
 
@@ -208,7 +199,7 @@ header {
   }
 }
 
-#users_index_mappanel_control {
+#map_index_mappanel_control {
 
   font-size:12px;
 
@@ -232,12 +223,12 @@ header {
 
 }
 
-#users_index_mappanel_control_chosen {
+#map_index_mappanel_control_chosen {
   margin-left:5px;
 }
 
 
-#users_index_mappanel_tooltip {
+#map_index_mappanel_tooltip {
   
   color: white;
 
@@ -259,7 +250,7 @@ header {
 
 }
 
-#users_index_mappanel_tooltip_close {
+#map_index_mappanel_tooltip_close {
   position:absolute;
   top:21px;
   right:10px;
@@ -267,12 +258,12 @@ header {
   color:white;
 }
 
-#users_index_mappanel_tooltip_text {
+#map_index_mappanel_tooltip_text {
   padding-right:5px;
   padding-top:4px;
 }
 
-#users_index_mappanel_footer {
+#map_index_mappanel_footer {
   
   font-size:12px;
 
@@ -298,20 +289,20 @@ header {
 }
 
 
-#users_index_user_close {
+#map_index_user_close {
   border: 0;
   background-color: white;
 }
 
 
-#users_index_user_name{
+#map_index_user_name{
   font-size:20px;
   padding-top:6px;
   padding-left:8px;
   font-weight:bold;
 }
 
-#users_index_user_headline {
+#map_index_user_headline {
   padding-left:8px;
   padding-top:2px;
   color: $gray_Mid;
@@ -321,35 +312,35 @@ header {
 
 
 
-#users_index_user_casecount {
+#map_index_user_casecount {
   margin-left: 4px;
   position:absolute;
   top:13px;
   right:50px;
 }
 
-#users_index_user_contact {
+#map_index_user_contact {
   margin-top:15px;
   padding-top:8px;
   border-top: 1px solid $gray_Light;
 }
 
-#users_index_user_contact_button_removefriend {
+#map_index_user_contact_button_removefriend {
   color: $gray_Mid;
   font-size:11px;
 }
 
-#users_index_user_contact_button_skype{
+#map_index_user_contact_button_skype{
   width:16px;
   height:16px;
 }
 
 
-#users_index_user_status {
+#map_index_user_status {
   font-weight:italic;
 }
 
-#users_index_user_status_unapproved {
+#map_index_user_status_unapproved {
   text-align:center;
   color: $gray_Mid !important;
   font-size:11px;
@@ -357,26 +348,26 @@ header {
 
 
 
-#users_index_user_partner_actions {
+#map_index_user_partner_actions {
   padding-top:8px;
   border-top: 1px solid $gray_Light;
 }
 
-#users_index_user_partner_history {
+#map_index_user_partner_history {
   padding:0px;
   margin:0px;
   color: $gray_Mid !important;
   font-size:11px;
 }
 
-#users_index_user_partner_pending {
+#map_index_user_partner_pending {
   text-align:center;
   color: $gray_Mid !important;
   font-size:11px;
 }
 
 
-#users_index_user_partner_request {
+#map_index_user_partner_request {
   text-align:center;
   color: $gray_Mid !important;
   font-size:11px;
@@ -384,17 +375,17 @@ header {
 }
 
 
-#users_index_user_feedback_button_feedback_req, #users_index_user_feedback_button_sendfeedback {
+#map_index_user_feedback_button_feedback_req, #map_index_user_feedback_button_sendfeedback {
   width:120px;
   height:20px;
 }
 
-#users_index_user_feedback {
+#map_index_user_feedback {
   padding-bottom:8px;
   border-bottom: 1px solid $gray_Light;
 }
 
-#users_index_user_feedback_results_button {
+#map_index_user_feedback_results_button {
   text-align:center;
   color: $gray_Mid !important;
   font-size:11px;
@@ -403,26 +394,26 @@ header {
   margin-top:2px;
 }
 
-#users_index_user_feedback_chart_radar {
+#map_index_user_feedback_chart_radar {
   padding-top:10px;
   height:220px;
   width:401px;
   display:none;
 }
 
-#users_index_user_feedback_chart_radar_buttongroup {
+#map_index_user_feedback_chart_radar_buttongroup {
   margin-top:-20px;
   display:none;
 }
 
 
-#users_index_user_feedback_chart_radar_container {
+#map_index_user_feedback_chart_radar_container {
   height:235px;
   width:401px;
   display:none;
 }
 
-#users_index_user_feedback_chart_radar_empty {
+#map_index_user_feedback_chart_radar_empty {
   height:235px;
   width:401px;
   display:none;
@@ -434,7 +425,7 @@ header {
   text-align:center;
 }
 
-#users_index_user_feedback_chart_radar_empty_icon {
+#map_index_user_feedback_chart_radar_empty_icon {
   font-size:100px;
   margin-bottom:40px; 
 }

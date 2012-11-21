@@ -1,8 +1,8 @@
 // Re-renders the user list
-$("#users_index_users").html("<%= escape_javascript(render("users")) %>")
+$("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
-$('.users_index_users_item').click(function () {
+$('.map_index_users_item').click(function () {
 
   // Break up id string, so can get id off the end
   // var target_id = this.id.split('_');
@@ -12,13 +12,13 @@ $('.users_index_users_item').click(function () {
   var target_lng = $(this).data('lng');
 
   var target_latlng = new google.maps.LatLng(target_lat, target_lng)
-  window.users_index_map_pan(target_latlng);
+  window.map_index_map_pan(target_latlng);
 
-  window.users_index_map_marker_click(target_id);
+  window.map_index_map_marker_click(target_id);
 
 });
 
 // Users Item Cascade Fade
-$(".users_index_users_item").each(function (i) {
+$(".map_index_users_item").each(function (i) {
   $(this).delay((i + 1) * 50).fadeIn();
 });

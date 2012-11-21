@@ -238,7 +238,7 @@ class Case < ActiveRecord::Base
 
   # Member show charts
 
-  def self.users_index_user_feedback_chart_radar_data_all(user, interviewer, count)
+  def self.map_index_user_feedback_chart_radar_data_all(user, interviewer, count)
     # LAST 5: load scores into json for radar chart
     "[
       {criteria: \"Quantitative basics\", 
@@ -292,7 +292,7 @@ class Case < ActiveRecord::Base
       ]"
   end
 
-  def self.users_index_user_feedback_chart_radar_data_combined(user, interviewer, count)
+  def self.map_index_user_feedback_chart_radar_data_combined(user, interviewer, count)
     # LAST count: load scores into json for radar chart
     "[
       {criteria: \"Business Analytics\", 

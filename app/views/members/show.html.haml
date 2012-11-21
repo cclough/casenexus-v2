@@ -1,15 +1,15 @@
 :javascript
-  var users_index_user_feedback_chart_radar_count = #{@case_count};
+  var map_index_user_feedback_chart_radar_count = #{@case_count};
 
-  var users_index_user_feedback_chart_radar_data_all = #{Case.users_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
-  var users_index_user_feedback_chart_radar_data_combined = #{Case.users_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
+  var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
+  var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
 
 .panel.gradient
 
-  %button#users_index_show_close.close ×
+  %button#map_index_show_close.close ×
 
-  #users_index_user_casecount
+  #map_index_user_casecount
     = avatar_for(@user, 'chevron')
 
   .row
@@ -17,25 +17,25 @@
       .application_avatar
         = avatar_for(@user, 'icon_inert')
     .span20
-      #users_index_user_name
+      #map_index_user_name
         = @user.name
-      #users_index_user_headline
+      #map_index_user_headline
         = @user.headline
 
   - if Friendship.friends?(current_user, @user)
-    #users_index_user_contact
+    #map_index_user_contact
       .row.font-small
         = render '/shared/button_group_linkedin_skype'
         .span
           .font-small
-            = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?", id: 'users_index_user_contact_button_removefriend')
+            = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?", id: 'map_index_user_contact_button_removefriend')
 
 
 - if @user.status_approved
   .panel.gradient
     .row
       .span35
-        #users_index_user_status
+        #map_index_user_status
           = @user.status
     .spacer10
     .row
@@ -47,28 +47,28 @@
             ago
     .row
       - if @user != current_user
-        #users_index_user_partner_actions
+        #map_index_user_partner_actions
           .row
             - if Friendship.friends?(current_user, @user)
 
               .pull-right
                 - if Notification.history(current_user, @user).count > 0
                   .span12
-                    = link_to "Show Message History", history_notifications_path(user_id: @user.id), id: 'users_index_user_partner_history'
+                    = link_to "Show Message History", history_notifications_path(user_id: @user.id), id: 'map_index_user_partner_history'
                 .span12
-                  %a#users_index_user_partner_button_message.btn.btn-inverse.btn-small
+                  %a#map_index_user_partner_button_message.btn.btn-inverse.btn-small
                     %i.icon-comment.icon-white
                     %span
                       Send Message
 
             - elsif Friendship.requested?(@user, current_user)
 
-              #users_index_user_partner_pending
+              #map_index_user_partner_pending
                 Case Partner Request Pending
 
             - elsif Friendship.pending?(@user, current_user)
 
-              #users_index_user_partner_request
+              #map_index_user_partner_request
                 Pending case partner request
                 = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
                 = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
@@ -77,7 +77,7 @@
             - elsif !Friendship.exist?(current_user, @user)
 
               .pull-right
-                %a#users_index_user_partner_button_friend_req.btn.btn-inverse.btn-small
+                %a#map_index_user_partner_button_friend_req.btn.btn-inverse.btn-small
                   %i.icon-comment.icon-white
                   %span
                     Send Case Partner Request
@@ -85,35 +85,35 @@
 
 - else
   .panel.gradient
-    #users_index_user_status_unapproved
+    #map_index_user_status_unapproved
       Status awaiting approval
 
 - if Friendship.friends?(current_user, @user)
   .panel.gradient
     .row
-      #users_index_user_feedback
+      #map_index_user_feedback
         .row
           .span
-            = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "users_index_user_feedback_button_sendfeedback"
+            = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "map_index_user_feedback_button_sendfeedback"
           .span
-            %a#users_index_user_feedback_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
+            %a#map_index_user_feedback_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
               %i.icon-refresh.icon-white
               %span
                 Request Feedback
           .span4
-            #users_index_user_feedback_results_button.btn.btn-small
+            #map_index_user_feedback_results_button.btn.btn-small
               Your Scores
 
     .row
-      #users_index_user_feedback_chart_radar_container
-        #users_index_user_feedback_chart_radar
-        #users_index_user_feedback_chart_radar_buttongroup
+      #map_index_user_feedback_chart_radar_container
+        #map_index_user_feedback_chart_radar
+        #map_index_user_feedback_chart_radar_buttongroup
           .btn-group
-            %a#users_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-            %a#users_index_user_feedback_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+            %a#map_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
+            %a#map_index_user_feedback_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
 
-        #users_index_user_feedback_chart_radar_empty
-          #users_index_user_feedback_chart_radar_empty_icon
+        #map_index_user_feedback_chart_radar_empty
+          #map_index_user_feedback_chart_radar_empty_icon
             %i.icon-tasks
           %p You must do at least one case with #{@user.first_name}, 
           %p before this chart will work

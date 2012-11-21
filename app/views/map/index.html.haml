@@ -10,18 +10,18 @@
   / Params link to user marker
   - if params[:user_id]
     :javascript
-      var users_index_map_lat_start = "#{User.find(params[:user_id]).lat}";
-      var users_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
+      var map_index_map_lat_start = "#{User.find(params[:user_id]).lat}";
+      var map_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
       setTimeout(function() {
-        window.users_index_map_marker_click("#{params[:user_id]}");
+        window.map_index_map_marker_click("#{params[:user_id]}");
       }), 1000
       
   - else
     :javascript
-      var users_index_map_lat_start = "#{current_user.lat}";
-      var users_index_map_lng_start = "#{current_user.lng}";
+      var map_index_map_lat_start = "#{current_user.lat}";
+      var map_index_map_lng_start = "#{current_user.lng}";
       setTimeout(function() {
-        window.users_index_map_marker_click("#{current_user.id}");
+        window.map_index_map_marker_click("#{current_user.id}");
       }), 1000
 
   - if current_user.help_2_checked
@@ -32,23 +32,23 @@
         });
       });
 
-#users_index_map_footerspacer
-#users_index_map.map
+#map_index_map_footerspacer
+#map_index_map.map
 
-#users_index_mappanel_control.users_index_mappanel
+#map_index_mappanel_control.map_index_mappanel
   = render 'control'
-#users_index_mappanel_tooltip.users_index_mappanel
-#users_index_mappanel_footer.users_index_mappanel
+#map_index_mappanel_tooltip.map_index_mappanel
+#map_index_mappanel_footer.map_index_mappanel
   = render 'footer_map'
 
-#users_index_mapcontainer_users.mapcontainer{style:"padding:10px;"}
+#map_index_mapcontainer_users.mapcontainer{style:"padding:10px;"}
 
-  = render 'users_form'
+  = render '/members/users_form'
 
-  #users_index_users
+  #map_index_users
   / content is rendered by members#index.js.erb
 
-#users_index_mapcontainer_user.mapcontainer
-  #users_index_user
+#map_index_mapcontainer_user.mapcontainer
+  #map_index_user
     / content is rendered by on marker click (in users.js)
 

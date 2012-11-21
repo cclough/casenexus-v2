@@ -1,15 +1,15 @@
-.btn.users_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s }
+.btn.map_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s }
   .row
     .span4
       .application_avatar
         = avatar_for(users_item, 'icon_inert')
-    .span25.users_index_users_item_text
+    .span25.map_index_users_item_text
       .row
         %strong
           = users_item.name
       .row.font-small
         = users_item.headline
-  .users_index_users_item_lastonline
+  .map_index_users_item_lastonline
     - unless users_item.last_online_at.blank?
       = time_ago_in_words(users_item.last_online_at)
       ago

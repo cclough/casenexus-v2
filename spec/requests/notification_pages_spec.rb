@@ -94,11 +94,11 @@ describe "Notification Pages" do
 
       sign_in user
       sleep(0.2)
-      page.execute_script "$('#users_index_users_form_button_1').trigger('click');"
+      page.execute_script "$('#map_index_users_form_button_1').trigger('click');"
       sleep(0.2)
-      page.execute_script "$('#users_index_users_item_2').trigger('click');"
+      page.execute_script "$('#map_index_users_item_2').trigger('click');"
       sleep(0.2)
-      page.execute_script "$('#users_index_user_button_message').trigger('click');"
+      page.execute_script "$('#map_index_user_button_message').trigger('click');"
       sleep(0.2)
     end
 
@@ -173,11 +173,11 @@ describe "Notification Pages" do
 
       sign_in user
       sleep(0.2)
-      page.execute_script "$('#users_index_users_form_button_1').trigger('click');"
+      page.execute_script "$('#map_index_users_form_button_1').trigger('click');"
       sleep(0.2)
-      page.execute_script "$('#users_index_users_item_2').trigger('click');"
+      page.execute_script "$('#map_index_users_item_2').trigger('click');"
       sleep(0.2)
-      page.execute_script "$('#users_index_user_button_feedback_req').trigger('click');"
+      page.execute_script "$('#map_index_user_button_feedback_req').trigger('click');"
       sleep(0.2)
     end
 

@@ -7,7 +7,7 @@
 	$('#modal_friendship_req').modal('hide');
 
   // hide user panel (so feedback request button doesn't show anymore)
-	$("#users_index_mapcontainer_user").fadeOut("fast");
+	$("#map_index_mapcontainer_user").fadeOut("fast");
 
   $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
 	

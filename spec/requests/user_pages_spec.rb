@@ -24,15 +24,15 @@ describe "User pages" do
 
     it { should have_selector('title', text: 'Map') }
 
-    it { should have_selector('div', id: 'users_index_map') }
-    it { should have_selector('div', id: 'users_index_panel_users') }
-    it { should have_selector('div', id: 'users_index_panel_user') }
+    it { should have_selector('div', id: 'map_index_map') }
+    it { should have_selector('div', id: 'map_index_panel_users') }
+    it { should have_selector('div', id: 'map_index_panel_user') }
 
     describe "pagination (& Global list selection)", js: true do
 
       before do
         # Click global button
-        page.execute_script "$('#users_index_users_form_button_1').trigger('click');"
+        page.execute_script "$('#map_index_users_form_button_1').trigger('click');"
         sleep(3)
       end
 
@@ -47,9 +47,9 @@ describe "User pages" do
 
     describe "search works", js: true do
       before do
-        fill_in "users_index_users_form_searchfield", with: "Steve"
+        fill_in "map_index_users_form_searchfield", with: "Steve"
 
-        page.execute_script "users_index_users_updatelist();"
+        page.execute_script "map_index_users_updatelist();"
 
       end
 
@@ -70,7 +70,7 @@ describe "User pages" do
                      lat: 46.7526281332615, lng: 7.96478263139727) }
 
       before do
-        page.execute_script "$('#users_index_users_form_button_0').trigger('click');"
+        page.execute_script "$('#map_index_users_form_button_0').trigger('click');"
       end
 
       it 'using list_global gives all results' do
@@ -86,9 +86,9 @@ describe "User pages" do
     describe "triggering a marker click should correctly show the user profile (test of entire map system)", :js => true do
       before do
         sleep(0.2)
-        page.execute_script "$('#users_index_users_form_button_1').trigger('click');"
+        page.execute_script "$('#map_index_users_form_button_1').trigger('click');"
         sleep(0.2)
-        page.execute_script "$('#users_index_users_item_31').trigger('click');"
+        page.execute_script "$('#map_index_users_item_31').trigger('click');"
         sleep(0.2)
       end
 
@@ -184,9 +184,9 @@ describe "User pages" do
 
           click_button submit
 
-          find(:xpath, "//input[@id='users_newedit_lat']").set "51"
-          find(:xpath, "//input[@id='users_newedit_lng']").set "1"
-          fill_in "users_new_status", with: "a" * 51
+          find(:xpath, "//input[@id='account_completeedit_lat']").set "51"
+          find(:xpath, "//input[@id='account_completeedit_lng']").set "1"
+          fill_in "account_complete_status", with: "a" * 51
           click_button submit
 
         end
@@ -233,8 +233,8 @@ describe "User pages" do
         fill_in "First name",       with: new_first_name
         fill_in "Last name",        with: new_last_name
         fill_in "Email",            with: new_email
-        find(:xpath, "//input[@id='users_newedit_lat']").set new_lat
-        find(:xpath, "//input[@id='users_newedit_lng']").set new_lng
+        find(:xpath, "//input[@id='account_completeedit_lat']").set new_lat
+        find(:xpath, "//input[@id='account_completeedit_lng']").set new_lng
         fill_in "user_edit_status", with: new_status
 
         fill_in "Password",         with: user.password

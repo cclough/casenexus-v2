@@ -75,7 +75,7 @@ describe "Authentication" do
             end
 
             it "should render the default (profile) page" do
-              page.should have_selector('div', id: 'users_index_map')
+              page.should have_selector('div', id: 'map_index_map')
             end
           end
         end
