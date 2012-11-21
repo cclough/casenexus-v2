@@ -20,8 +20,8 @@ gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
 gem 'ffaker'                                     # Generate random data
 gem 'rack-mini-profiler'                         # Profile on the UI
-gem 'newrelic_rpm'
-gem 'google-analytics-rails'
+gem 'newrelic_rpm'                               # New Relic
+gem 'google-analytics-rails'                     # Google Analytics
 
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails

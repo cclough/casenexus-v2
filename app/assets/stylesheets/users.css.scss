@@ -85,8 +85,9 @@ header {
 }
 
 #users_index_users_form_searchfield {
-  width:300px;
+  width:299px;
 }
+
 #users_index_users_form_radiogroup {
   display:none;
 }
@@ -439,93 +440,4 @@ header {
 }
 
 
-
-#users_new_step2, #users_new_step3 {
-  width:424px;
-}
-
-#users_new_step4, #users_new_step5 {
-  width:428px;
-}
-
-#users_new_button_submit {
-  width: 100%;
-}
-
-#users_new_step3_samplestatus {
-  font-style:italic;
-  margin-top:10px;
-  margin-bottom:10px;
-}
-
-.users_new_condition {
-  font-style:italic;
-  font-size:10px;
-  color:white;
-}
-
-#users_newedit_map {
-
-  &.new {
-    margin-top:10px;
-    height:316px;
-    width:425px;
-  }
-  &.edit {
-    height:259px;
-    width:435px;
-  }
-}
-
-
-#users_edit_button_submit {
-  width:300px;
-}
-
-#users_edit_status_note {
-  color: $gray_Light;
-  font-size:12px;
-  font-style:italic;
-}
-
-#users_newedit_map_location {
-  height:20px;
-  font-size:12px;
-}
-
-.users_newedit_map_location_title {
-  font-weight:bold;
-}
-
-
-#users_newedit_skype_link {
-  margin-top:5px;
-  font-size:10px;
-}
-
-
-#users_new_status {
-  height:200px;
-  width:413px;
-}
-
-#users_edit_status {
-  height:196px;
-  width:403px;
-}
-
-#users_edit_invitations_list {
-  height:40px;
-  overflow-y:auto;
-  width:435px;
-}
-
-label { // why the hell won't this work in app.css?
-  font-size:12px;
-}
-
-
-#users_delete_panel {
-  text-align:center;
-}
 

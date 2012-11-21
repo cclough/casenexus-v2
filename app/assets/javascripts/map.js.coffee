@@ -10,6 +10,7 @@ window.users_index_map_pan = (latlng) ->
 window.users_index_map_marker_click = (marker_id) ->
   # Show User Panel
   $("#users_index_mapcontainer_user").fadeOut "fast", ->
+
     $.get "/members/" + marker_id, (data) ->
 
       # Insert ajax data!
@@ -63,8 +64,9 @@ window.users_index_map_marker_click = (marker_id) ->
         $("#users_index_user_feedback_chart_radar_button_all").removeClass "active"
         $("#users_index_user_feedback_chart_radar_button_combined").addClass "active"
 
+
       # Fade out tooltip as no longer needed
-      $("#users_index_mappanel_tooltip").fadeOut "slow"
+      $("#users_index_mappanel_tooltip").fadeOut "fast"
 
       # Fade panel back in
       $("#users_index_mapcontainer_user").fadeIn "fast"
@@ -267,7 +269,7 @@ $(document).ready ->
           users_index_map_marker_locate(marker)
           setTimeout (->
             users_index_map_marker_click(marker.id)
-          ), 500
+          ), 300
 
         # Load marker array for MarkerCluster (& User list trigger click)
         users_index_map_markers.push(marker)
@@ -303,7 +305,7 @@ $(document).ready ->
 
       # Code for 'close button'
       $("#users_index_mappanel_tooltip_close").click ->
-        $("#users_index_mappanel_tooltip").fadeOut "slow"
+        $("#users_index_mappanel_tooltip").fadeOut "fast"
 
       $("#users_index_mappanel_tooltip").fadeIn "fast"
 

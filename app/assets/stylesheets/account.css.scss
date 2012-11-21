@@ -1,3 +1,110 @@
 // Place all the styles related to the account controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Shouldn't need these here as well as in app.css.scss
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$blue_pastel: #98cdff;
+
+
+
+label { // why the hell won't this work in app.css?
+  font-size:12px !important;
+}
+
+
+
+#account_complete_step2, #account_complete_step3 {
+  width:424px;
+}
+
+#account_complete_step4, #account_complete_step5 {
+  width:428px;
+}
+
+#account_complete_button_submit {
+  width: 100%;
+}
+
+#account_complete_step3_samplestatus {
+  font-style:italic;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.account_complete_condition {
+  font-style:italic;
+  font-size:10px;
+  color:white;
+}
+
+#account_complete_status {
+  height:200px;
+  width:413px;
+}
+
+
+
+
+
+#account_edit_button_submit {
+  width:300px;
+}
+
+#account_edit_status_note {
+  color: $gray_Light;
+  font-size:12px;
+  font-style:italic;
+}
+
+#account_edit_status {
+  height:196px;
+  width:403px;
+}
+
+#account_edit_invitations_list {
+  height:40px;
+  overflow-y:auto;
+  width:435px;
+}
+
+
+
+
+#account_completeedit_map {
+
+  &.complete {
+    margin-top:10px;
+    height:316px;
+    width:425px;
+  }
+  &.edit {
+    height:259px;
+    width:435px;
+  }
+}
+
+#account_completeedit_map_location {
+  height:20px;
+  font-size:12px;
+}
+
+.account_completeedit_map_location_title {
+  font-weight:bold;
+}
+
+#account_completeedit_skype_link {
+  margin-top:5px;
+  font-size:10px;
+}
+
+
+
+
+#account_delete_panel {
+  text-align:center;
+}

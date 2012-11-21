@@ -2,13 +2,13 @@
 - provide(:sub_title, 'Modify your settings, your status, and your location')
 
 - content_for :javascript_includes do
-  = javascript_include_tag('users.js')
+  = javascript_include_tag('account')
 
   :javascript
-    var users_newedit_map_lat_start = "#{current_user.lat}";
-    var users_newedit_map_lng_start = "#{current_user.lng}";
+    var account_completeedit_map_lat_start = "#{current_user.lat}";
+    var account_completeedit_map_lng_start = "#{current_user.lng}";
 
-#users_edit_form
+#account_edit_form
   .row
     = form_for(@user, url: account_path, method: :put) do |f|
       .span94
@@ -55,9 +55,9 @@
           .panel.darker.kill_bottom
             .row.font-small
               Edit your status
-              %span#users_edit_status_note.pull-right (NB edits must be approved by an administrator)
+              %span#account_edit_status_note.pull-right (NB edits must be approved by an administrator)
               .spacer5
-              = f.text_area :status, id: 'users_edit_status'
+              = f.text_area :status, id: 'account_edit_status'
 
         .span47
           .panel.dark.kill_left.kill_bottom
@@ -65,7 +65,7 @@
             .row
               .span12
                 = image_tag 'icons/skype_large.png'
-                #users_newedit_skype_link
+                #account_completeedit_skype_link
                   = link_to "Need to register?", "https://login.skype.com/account/signup-form"
               .span25
                 = f.text_field :skype, placeholder: "Skype username"
@@ -79,17 +79,17 @@
                 = f.text_field :linkedin_name, placeholder: "LinkedIn email address"
 
           .panel.darker.kill_left
-            = f.hidden_field :lat, id: "users_newedit_lat"
-            = f.hidden_field :lng, id: "users_newedit_lng"
-            #users_newedit_map.edit.map
+            = f.hidden_field :lat, id: "account_completeedit_lat"
+            = f.hidden_field :lng, id: "account_completeedit_lng"
+            #account_completeedit_map.edit.map
             .spacer10
-            #users_newedit_map_location
+            #account_completeedit_map_location
               .row
-                .users_newedit_map_location_title.span6
+                .account_completeedit_map_location_title.span6
                   Country
                 .span15
                   = @user.country
-                .users_newedit_map_location_title.span4
+                .account_completeedit_map_location_title.span4
                   City
                 .span12
                   = @user.city
@@ -98,9 +98,9 @@
               .span10.offset7
                 .row
                   .spacer5
-                  = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "users_edit_button_submit"
+                  = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
     - if current_user.completed?
       .row
         .span94
-          = render 'invitations'
+          = render 'invitations_panel'
 

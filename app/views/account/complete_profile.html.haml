@@ -3,11 +3,11 @@
 
 
 - content_for :javascript_includes do
-  = javascript_include_tag('users.js')
+  = javascript_include_tag('account')
 
   :javascript
-    var users_newedit_map_lat_start = '#{current_user.lat}';
-    var users_newedit_map_lng_start = '#{current_user.lng}';
+    var account_completeedit_map_lat_start = '#{current_user.lat}';
+    var account_completeedit_map_lng_start = '#{current_user.lng}';
 
 = form_for(@user, url: account_path) do |f|
   = hidden_field_tag :back_url, complete_profile_account_path
@@ -16,27 +16,27 @@
     = render 'shared/error_messages', object: @user
 
     .span46
-      #users_new_step2.panel.darker.kill_right
+      #account_complete_step2.panel.darker.kill_right
 
         .row
           .spacer5
           .row
             .span10
               First name
-              .users_new_condition
+              .account_complete_condition
                 (required)
             .span30
-              = f.text_field :first_name, placeholder: "Enter your first name"
+              = f.text_field :first_name, placeholder: "Enter your first name", id: "account_complete_first_name"
           .row
             .span10
               Last name
-              .users_new_condition
+              .account_complete_condition
                 (required)
             .span30
-              = f.text_field :last_name, placeholder: "Enter your last name"
+              = f.text_field :last_name, placeholder: "Enter your last name", id: "account_complete_last_name"
               .row
                 .font-small
-                  %span#users_new_button_random_name.btn.btn-small.btn-inverse
+                  %span#account_complete_button_random_name.btn.btn-small.btn-inverse
                     Generate a random name
                   %div.pull-right ...if you would prefer to stay anonymous
         .spacer15
@@ -53,59 +53,59 @@
             .span27.offset2
               Receive notiffications via email
 
-      #users_new_step3.panel.darker.kill_right.kill_bottom
+      #account_complete_step3.panel.darker.kill_right.kill_bottom
         .font-small
           %ul
             %li
               We've taken a guess at where you are...
             %li
               Move the marker to a location you feel comfortable sharing
-              %span.users_new_condition
+              %span.account_complete_condition
                 (required)
 
-        #users_newedit_map.new.map
+        #account_completeedit_map.complete.map
 
-        = f.hidden_field :lat, id: "users_newedit_lat"
-        = f.hidden_field :lng, id: "users_newedit_lng"
+        = f.hidden_field :lat, id: "account_completeedit_lat"
+        = f.hidden_field :lng, id: "account_completeedit_lng"
 
 
 
     .span47
-      #users_new_step4.panel.darker
+      #account_complete_step4.panel.darker
         .row
           .span10
             = image_tag 'icons/skype_large.png'
-            .users_new_condition
+            .account_complete_condition
               (optional)
           .span23
             = f.text_field :skype, placeholder: "Skype username"
             .font-small
               NB
-              %span.users_new_condition
+              %span.account_complete_condition
                 (required)
               for case roulette
           .span8
-            #users_newedit_skype_link
+            #account_completeedit_skype_link
               = link_to "Need to register?", "https://login.skype.com/account/signup-form"            
 
-      #users_new_step5.panel.darker
+      #account_complete_step5.panel.darker.kill_bottom
         .row
           .font-small
             %ul
               %li 
                 Explain a little about your recruitment situation to other candidates, including your availability for practice, and background
-                %span.users_new_condition
+                %span.account_complete_condition
                   (required)
               %li Statuses are reviewed by an admin within 24hrs
               %li Minimum 50 characters
 
-          #users_new_step3_samplestatus.panel.dark.kill_all.font-small
+          #account_complete_step3_samplestatus.panel.dark.kill_all.font-small
 
             e.g. "I am a Cambridge University student reading Natural Sciences. I am applying to the top three firms in London, and expect to have interviews in the next month. I am a beginner, and am looking for others who are also just starting out. I'm looking to practise in person on weekday evenings after 7pm, or on Skype any evening after 9pm."
 
         .row
-          = f.text_area :status, id: 'users_new_status', placeholder: "Describe your current situation"
+          = f.text_area :status, id: 'account_complete_status', placeholder: "Describe your current situation"
         .spacer15
         .row
-          = f.submit "Complete Sign up", class: "btn btn-large btn-inverse", id: "users_new_button_submit"
+          = f.submit "Complete Sign up", class: "btn btn-large btn-inverse", id: "account_complete_button_submit"
     .clear

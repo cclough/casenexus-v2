@@ -38,13 +38,13 @@ body {
 
 footer {
 
-  padding-top:5px;
+  padding-top:0px;
   a{
-    color:black;
-    &:hover {
-      color:white;
-      text-decoration:none;
-    }
+    // color:black;
+    // &:hover {
+    //   color:white;
+    //   text-decoration:none;
+    // }
   }
 
   ul {
@@ -67,8 +67,8 @@ textarea {
 }
 
 .search-query {
-  background: white url(icons/search.png) no-repeat 94% 5px;
-  padding-right: 17px !important;
+  background: white url(icons/search.png) no-repeat 95% 5px;
+  padding-right: 14px !important;
   padding-left: 14px !important;
 }
 
