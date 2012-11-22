@@ -1,10 +1,10 @@
 .row
   - case @help_page
     - when "1"
-      .span3
-        = check_box_tag :help_1_checked, 1, current_user.help_1_checked, id: 'modal_help_checkbox', 'data-page_id' => 1, 'data-user_id' => current_user.id
-      .span30.font-small
-        Display this everytime I login
+      -#.span3
+      -#  = check_box_tag :help_1_checked, 1, current_user.help_1_checked, id: 'modal_help_checkbox', 'data-page_id' => 1, 'data-user_id' => current_user.id
+      -#.span30.font-small
+      -#  Display this everytime I login
     - when "2"
       .span3
         = check_box_tag :help_2_checked, 1, current_user.help_2_checked, id: 'modal_help_checkbox', 'data-page_id' => 2, 'data-user_id' => current_user.id
