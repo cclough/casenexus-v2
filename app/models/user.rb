@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
   end
   
   def headline_trunc
-    headline.to_s.truncate(50, separator: ' ')
+    headline.to_s.truncate(42, separator: ' ')
   end
 
   def case_count
