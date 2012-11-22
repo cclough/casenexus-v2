@@ -16,9 +16,10 @@ $(document).ready ->
 
   ######################### SIGNUP ############################
 
-  $('.chzn-select').click ->
-    $('.chzn-select').width 400
-
+  $('#static_home_signup_option_university_notlisted_button').click ->
+    if !($("#modal_contact").hasClass("in"))
+      $(".modal").modal "hide"
+      $("#modal_contact").modal "show"
 
   $('.chzn-select').chosen()
     # not really needed...

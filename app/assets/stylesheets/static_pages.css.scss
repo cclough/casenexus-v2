@@ -8,7 +8,7 @@ $blue_linkedin: #86c7fe;
 
 
 #static_home_signup {
-  margin-top:80px;
+  margin-top:75px;
   margin-left:8px;
   width:255px;
   input {
@@ -44,6 +44,11 @@ $blue_linkedin: #86c7fe;
 
 #static_home_signup_option_university_button, #static_home_signup_option_linkedin_button {
   height:19px;
+}
+
+#static_home_signup_option_university_notlisted {
+  font-size:10px;
+  text-align:center;
 }
 
 #static_home_signup_option_linkedin {
@@ -103,10 +108,22 @@ $blue_linkedin: #86c7fe;
   margin-top:330px;
   margin-left:50px;  
 
-  &.banner {
-    font-style:italic;
+  &.banner1 {
+    font-size:13px;
     margin-top:-40px;
-    margin-left:-10px;    
+    margin-left:76px;    
+  }
+
+  &.banner2 {
+    font-weight:bold;
+    font-size:14px;
+    margin-top:-10px;
+    margin-left:193px;
+    color:gray;  
+  }
+
+  .static_home_slider_bullets_sub {
+    color:$gray_Mid;
   }
 }
 
