@@ -60,8 +60,8 @@ $(document).ready ->
     $("#roulette_index_button_connect_text").html "Connecting..."
 
     # Connect the socket
-    window.socket = io.connect("http://127.0.0.1:80", secure: false, "force_new_connection": true)
-    #window.socket = io.connect("https://cclough.nodejitsu.com", secure: true, "force new connection": true)
+    #window.socket = io.connect("http://127.0.0.1:80", secure: false, "force_new_connection": true)
+    window.socket = io.connect("https://cclough.nodejitsu.com", secure: true, "force new connection": true)
 
     # On connection to server, ask for user's name with an anonymous callback
     window.socket.on "connect", ->
