@@ -14,8 +14,8 @@
           .row
             #static_home_signup_option
               .btn-group
-                %a#static_home_signup_option_university_button.btn.btn-small.active{ tabindex: "7" } via University
-                %a#static_home_signup_option_linkedin_button.btn.btn-small
+                %a#static_home_signup_option_university_button.btn.btn-small.active.application_tooltip{ tabindex: "7", "data-original-title"=>"Sign up with with your University email", rel: "tooltip", "data-placement"=>"bottom"} via University
+                %a#static_home_signup_option_linkedin_button.btn.btn-small.application_tooltip{ tabindex: "7", "data-original-title"=>"Sign up with with your LinkedIn account", rel: "tooltip", "data-placement"=>"bottom"}
                   via 
                   %span
                     / #static_home_signup_option_linkedin_button_highlight{ tabindex: "8" }

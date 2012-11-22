@@ -87,6 +87,8 @@ $(document).ready ->
     backdrop: false
     show: false
 
+  $(".application_tooltip").tooltip()
+
   # Modal contact link
   $("#footer_link_contact").click ->
     if !($("#modal_contact").hasClass("in"))
