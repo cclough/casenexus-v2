@@ -76,7 +76,7 @@ class Notification < ActiveRecord::Base
       when "welcome"
         Rails.application.routes.url_helpers.root_url(host: host)
       when "message"
-        Rails.application.routes.url_helpers.notification_url(id: id, host: host)
+        Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
       when "feedback"
         Rails.application.routes.url_helpers.cases_url(id: notificable_id, host: host)
       when "feedback_req"
