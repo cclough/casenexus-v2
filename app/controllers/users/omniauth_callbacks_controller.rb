@@ -118,7 +118,7 @@ class Users::OmniauthCallbacksController < ApplicationController
       if !data['public_profile_url'].blank? && data['public_profile_url'].include?('linkedin')
         user.linkedin_name = data['public_profile_url'].match(/.*\/in\/(.*)/)[1]
       end
-    rescue Exception e
+    rescue Exception => e
       Rails.logger.error("Tried to parse #{data} without success")
     end
   end
