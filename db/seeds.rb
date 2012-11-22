@@ -70,10 +70,37 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.save!
   admin.confirm!
 
+  puts "Creating robin's user"
+
+  admin = User.new(
+      first_name: "Robin",
+      last_name: "Clough",
+      email: "robin.clough@rady.ucsd.edu",
+      password: "T266vjsd",
+      password_confirmation: "T266vjsd",
+      lat: 32.869627,
+      lng: -117.221015,
+      status: "First-year MBA student at Rady school of Management - UCSD. I am applying to the top firms on both sides of the Atlantic for my MBA internship.",
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+
+      skype: "cloughrobin",
+
+      confirm_tac: true,
+
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+
+  admin.status_approved = true
+  admin.completed = true
+  admin.admin = true
+  admin.save!
+  admin.confirm!
+
 
   puts "Creating Christian's Friendships"
 
   Friendship.connect(User.find(1), User.find(2))
+  Friendship.connect(User.find(1), User.find(3))
+
 
 
   puts "Creating countries"
