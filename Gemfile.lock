@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/smartinez87/exception_notification.git
+  revision: aa1052f03252b29e829eb7d0be9ea4e62602877d
+  specs:
+    exception_notification (3.0.0)
+      actionmailer (>= 3.0.4)
+      tinder (~> 1.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -89,9 +97,6 @@ GEM
       mail (~> 2.2)
     erubis (2.7.0)
     eventmachine (1.0.0)
-    exception_notification (3.0.0)
-      actionmailer (>= 3.0.4)
-      tinder (~> 1.8)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.1.0)
@@ -306,7 +311,7 @@ DEPENDENCIES
   debugger
   devise
   email_spec
-  exception_notification
+  exception_notification!
   factory_girl_rails
   ffaker
   geocoder
