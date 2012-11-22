@@ -50,10 +50,16 @@ $gray_Lightest: #f6f6f6;
 
 #header_signin_rememberme {
   padding-left:30px;
+  padding-top:1px;
+}
+
+#header_signin_rememberme_box {
+  margin-top:-1px;
 }
 
 #header_signin_forgottenpassword {
-  padding-left:0px;
+  padding-left:1px;
+  font-size:14px !important;
 }
 
 

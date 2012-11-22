@@ -19,9 +19,11 @@ $(document).ready ->
   $('.chzn-select').click ->
     $('.chzn-select').width 400
 
-  $('.chzn-select').chosen().change ->
-    $('#user_email').val("{your email}" + $(this).find('option:selected').val())
-    $('.chzn-select').css("width:232px;")
+
+  $('.chzn-select').chosen()
+    # not really needed...
+    #.change ->
+    #$('#user_email').val("{your email}" + $(this).find('option:selected').val())
   $('.chzn-search').hide();
 
   $('#static_home_signup_option_linkedin_button').click ->
