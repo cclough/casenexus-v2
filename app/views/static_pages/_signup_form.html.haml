@@ -21,13 +21,16 @@
                     / #static_home_signup_option_linkedin_button_highlight{ tabindex: "8" }
                     = image_tag 'icons/linkedin_button_mini.png'
 
-
           .spacer10
           #static_home_signup_option_university
 
             = render 'shared/error_messages', object: f.object
 
             = render 'static_pages/universities_select'
+
+            #static_home_signup_option_university_notlisted
+              Your university not listed?
+              = link_to "Contact us", "#", id: "static_home_signup_option_university_notlisted_button"
 
             .spacer5
             = f.text_field :email, placeholder: 'University email address', tabindex: "10"
@@ -39,7 +42,7 @@
             .span21.font-small
               .static_home_signup_checkbox_label
                 I agree to the 
-                = link_to "Terms and Conditions", terms_path, tabindex: "13"
+                = link_to "Terms & Conditions", terms_path, tabindex: "13"
             .span2
               = f.check_box :confirm_tac, tabindex: "14"
 
@@ -60,7 +63,6 @@
           .row
             = f.hidden_field :ip_address, value: request.remote_ip
             
-
 
             #static_home_signup_option_university_submit
               = f.submit "Sign up", class: "btn btn-inverse btn-large", id: "static_home_signup_option_university_button_submit", tabindex: "16"

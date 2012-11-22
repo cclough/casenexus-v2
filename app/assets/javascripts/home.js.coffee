@@ -16,12 +16,15 @@ $(document).ready ->
 
   ######################### SIGNUP ############################
 
-  $('.chzn-select').click ->
-    $('.chzn-select').width 400
+  $('#static_home_signup_option_university_notlisted_button').click ->
+    if !($("#modal_contact").hasClass("in"))
+      $(".modal").modal "hide"
+      $("#modal_contact").modal "show"
 
-  $('.chzn-select').chosen().change ->
-    $('#user_email').val("{your email}" + $(this).find('option:selected').val())
-    $('.chzn-select').css("width:232px;")
+  $('.chzn-select').chosen()
+    # not really needed...
+    #.change ->
+    #$('#user_email').val("{your email}" + $(this).find('option:selected').val())
   $('.chzn-search').hide();
 
   $('#static_home_signup_option_linkedin_button').click ->
