@@ -78,7 +78,7 @@ class Notification < ActiveRecord::Base
       when "message"
         Rails.application.routes.url_helpers.notification_url(id: id, host: host)
       when "feedback"
-        Rails.application.routes.url_helpers.case_url(id: notificable_id, host: host)
+        Rails.application.routes.url_helpers.cases_url(id: notificable_id, host: host)
       when "feedback_req"
         Rails.application.routes.url_helpers.new_case_url(host: host, user_id: sender_id, date: event_date, subject: content.truncate(100))
       when "friendship_req"
