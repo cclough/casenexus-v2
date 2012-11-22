@@ -37,16 +37,18 @@
                   I want to edit my password
                 .spacer5
             .spacer5
-            .row
+            .row.font-small
               .span3.offset12
                 = f.check_box :email_admin
               .span25
-                = f.label :email_admin, "Receive case interview advice email letter"
-            .row
+                .spacer5
+                Receive site news and consulting advice
+            .row.font-small
               .span3.offset12
                 = f.check_box :email_users
               .span25
-                = f.label :email_users, "Send notifications from users to your email"
+                .spacer5
+                Receive notiffications via email
             .row
               .span25.offset12
                 .spacer10
@@ -67,21 +69,27 @@
                 = image_tag 'icons/skype_large.png'
                 #account_completeedit_skype_link
                   = link_to "Need to register?", "https://login.skype.com/account/signup-form"
-              .span25
+              .span22
                 = f.text_field :skype, placeholder: "Skype username"
                 .font-small
-                  NB this is required for the roulette
-            .spacer10
-            .row
-              .span12
-                = image_tag 'icons/linkedin_large.png'
-              .span25
-                = f.text_field :linkedin_name, placeholder: "LinkedIn email address"
-
+                  %ul.account_completedit_bullets
+                    %li 
+                      %span.account_completeedit_condition
+                        (required)
+                      for the Roulette
+            - if @user.linkedin_uid.blank?
+              .row
+                .span12
+                  = image_tag 'icons/linkedin_large.png'
+                .span22
+                  = f.text_field :linkedin_name, placeholder: "LinkedIn username (not email)"
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
             = f.hidden_field :lng, id: "account_completeedit_lng"
-            #account_completeedit_map.edit.map
+            - if @user.linkedin_uid.blank?
+              #account_completeedit_map.edit.map
+            - else
+              #account_completeedit_map.edit_linkedin.map
             .spacer10
             #account_completeedit_map_location
               .row

@@ -14,8 +14,11 @@
       / .spacer10
       .row
         %b= @request_user
+        from
+        %b= @request_user.city + ", " + @request_user.country
+
         would like to do a case with you on Skype.
-      .spacer10
+      .spacer20
       .row#modal_roulette_req_status
         %blockquote
           "#{@request_user.status}"

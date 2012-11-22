@@ -48,7 +48,7 @@ footer {
 
   padding-top:0px;
   a{
-    // color:black;
+    color:#333;
     // &:hover {
     //   color:white;
     //   text-decoration:none;
@@ -60,7 +60,7 @@ footer {
     list-style: none;
     li {
       float: left;
-      margin-left: 5px;
+      margin-left: 13px;
     }
   }
 }
@@ -451,7 +451,7 @@ textarea {
   nav { 
     position: relative; 
     // ITS THIS LEFT
-    left:120px; }
+    left:97px; }
   nav ul {
     list-style: none;
     padding: 0px 0px 0px 0px;
@@ -465,8 +465,8 @@ textarea {
   }   
 
   nav ul li a {
-    color: #767676;
-    font-size: 13px;
+    color: #9f9f9f;
+    font-size: 14px;
     -webkit-transition:color 0.2s ease-in;  
     -moz-transition:color 0.2s ease-in;  
     -o-transition:color 0.2s ease-in;  
@@ -505,16 +505,17 @@ textarea {
 
 #modal_help_page_2 { height:1100px; width:800px; padding-top:50px; position:relative; }
       .set-2a { position: absolute; top:240px; left:40px; width:300px;}
-      .set-2b { position: absolute; top:250px; left:400px; width:280px;}
+      .set-2b { position: absolute; top:260px; left:400px; width:290px;}
       #modal_help_page_2_50 { font-size:50px; }
       .set-2c { position: absolute; left: 40px; top: 460px; width: 250px;}
       .set-2d { position: absolute; left: 40px; top: 730px;  width: 220px;}
       .set-2e { position: absolute; left: 410px; top: 1000px; width: 370px;}
 
-#modal_help_page_3 { height:900px; width:800px; padding-top:50px; position:relative; }
-      .set-3a { position: absolute; top:117px; left:300px; width:450px;}
-      .set-3b { position: absolute; top:490px; left:40px; width:310px;}
-      .set-3c { position: absolute; top:730px; left:40px; width:330px;}
+#modal_help_page_3 { height:1025px; width:800px; padding-top:50px; position:relative; }
+      .set-3a { position: absolute; top:100px; left:160px; width:450px;}
+      .set-3b { position: absolute; top:230px; left:300px; width:450px;}
+      .set-3c { position: absolute; top:610px; left:40px; width:310px;}
+      .set-3d { position: absolute; top:860px; left:40px; width:330px;}
 
 #modal_help_page_4 { height:1025px; width:800px; padding-top:50px; position:relative; }
       .set-4a { position: absolute; left: 110px; top: 100px; width: 650px;}

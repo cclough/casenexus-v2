@@ -16,8 +16,12 @@ $(document).ready ->
 
   ######################### SIGNUP ############################
 
+  $('.chzn-select').click ->
+    $('.chzn-select').width 400
+
   $('.chzn-select').chosen().change ->
-    $('#user_email').val("@" + $(this).find('option:selected').val())
+    $('#user_email').val("{your email}" + $(this).find('option:selected').val())
+    $('.chzn-select').css("width:232px;")
   $('.chzn-search').hide();
 
   $('#static_home_signup_option_linkedin_button').click ->

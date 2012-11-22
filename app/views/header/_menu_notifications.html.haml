@@ -3,7 +3,7 @@
     / notifications icon + notification count
     %i.icon-envelope.icon-white.icon-large
     %span#header_menu_notifications_unreadcount
-      = current_user.notifications.unread.count.to_s
+      = current_user.notifications.unread.for_display.count.to_s
     %span.caret
   %ul.dropdown-menu
     %li
