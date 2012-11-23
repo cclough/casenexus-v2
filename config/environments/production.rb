@@ -57,9 +57,7 @@ Casenexus::Application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
-  config.i18n.f
-
-  llbacks = true
+  config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
@@ -76,7 +74,7 @@ Casenexus::Application.configure do
   # Exception notification
   config.middleware.use ExceptionNotifier,
                         email_prefix: "[Casenexus Exception] ",
-                        sender_address: %{"Casenexus Notifier" <no-reply@casenexus.com>},
-                        exception_recipients: %w{christian.clough@gmail.com}
+                        sender_address: %{"Casenexus Notifier" <mailer@casenexus.com>},
+                        exception_recipients: %w{christian.clough@gmail.com mails@rorra.com.ar}
 
 end
