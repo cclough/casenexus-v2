@@ -2,6 +2,10 @@ class InvitationsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
 
+  def show
+    redirect_to edit_account_path
+  end
+
   def create
     @invitation = current_user.invitations.build(params[:invitation])
 
