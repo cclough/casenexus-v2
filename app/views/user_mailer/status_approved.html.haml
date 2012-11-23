@@ -1,6 +1,6 @@
-%h3
-  = "Dear #{@user.first_name},"
+%p= "Dear #{@user.first_name},"
+
 %p
-  Your status at casenexus.com has been approved - other users can now see it and will start to contact you.
+  Your status has been approved - other users can now see it and will start to contact you.
 %p
-  = link_to("Sign in to casenexus.com", root_url)
+  = link_to("Sign in", root_url)
