@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: Welcome")
+    mail(to: email_with_name, subject: "casenexus.com: Welcome")
   end
 
   # conflicts with actionmailer function if just called message
@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent a message")
+    mail(to: email_with_name, subject: "casenexus.com: You have a message")
   end
 
   def feedback_req(user_from, user_target, url, date, subject)
@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent a feedback request")
+    mail(to: email_with_name, subject: "casenexus.com: You have a feedback request")
   end
 
   def feedback(user_from, user_target, url, date, subject)
@@ -43,7 +43,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent feedback on a case")
+    mail(to: email_with_name, subject: "casenexus.com: You have new case feedback")
   end
 
   def friendship_req(user_from, user_target, url, message)
@@ -53,7 +53,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: You have been sent a Case Partner request")
+    mail(to: email_with_name, subject: "casenexus.com: You have a Case Partner request")
   end
 
   def friendship_app(user_from, user_target, url)
@@ -62,14 +62,14 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: Your Case Partner request has been accepted")
+    mail(to: email_with_name, subject: "casenexus.com: Your Case Partner request has been accepted")
   end
 
   def password_reset(user)
     @user_target = user
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus: Password Reset")
+    mail(to: email_with_name, subject: "casenexus.com: Password Reset")
   end
 
   def invitation(invitation)
@@ -78,9 +78,9 @@ class UserMailer < ActionMailer::Base
     @invitation = invitation
 
     if invitation.user.id == 1
-      mail(to: receiver, subject: "Invitation to casenexus.com")
+      mail(to: receiver, subject: "Invitation")
     else
-      mail(to: receiver, subject: "Invitation to casenexus.com", template_name: 'invitation_user')
+      mail(to: receiver, subject: "Invitation", template_name: 'invitation_user')
     end
   end
 
@@ -106,14 +106,14 @@ class UserMailer < ActionMailer::Base
     @user = user
     email_with_name = "#{user.name} <#{@user.email}>"
 
-    mail(to: email_with_name, subject: "Casenexus: Your status was approved")
+    mail(to: email_with_name, subject: "casenexus.com: Your status was approved")
   end
 
   def status_rejected(user)
     @user = user
     email_with_name = "#{user.name} <#{@user.email}>"
 
-    mail(to: email_with_name, subject: "Casenexus: Your status was rejected")
+    mail(to: email_with_name, subject: "casenexus.com: Your status was rejected")
   end
 
   def moderation_to_admin(user)

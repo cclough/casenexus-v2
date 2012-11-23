@@ -1,36 +1,18 @@
 <%= "Dear #{@invitation.name}," %>
 
-We'd like to invite you to join a new website, casenexus.com, that we're hoping will be the 'missing link' in the provision for management consulting candidates preparing for case interviews around the world.
+We hear you are preparing for strategy consulting case interviews, and would like to invite you to something a little bit different, and special.
 
-You are amongst the first 200 users to be asked to participate in the invite-only testing period. For you, the site is completely free.
+We are students from Cambridge University, and we believe that if you are serious about achieving offers from the top firms, you need to aim to have completed more than 50 live practice cases before walking into your first round interview.
 
-The idea is simple: help candidates meet others to practise with. Developed by Cambridge University students to help them prepare for their own interviews, it's been designed from the ground-up, using the latest web technologies.
+We've designed a website that helps you do this, and are pleased to open it up to you today free of charge, as one of the founding first 100 to be invited.
 
-Key features of the site include:
+With the invitation below you can invite 5 others, accessible from your profile settings.
 
-  - A world map of users
-    - Find other candidates who work or live immediately near you, and arrange to meet at a local coffee shop to practise a case or two
-    - Search for others around the world with things in common, e.g. who are applying to the same firms, and practise cases with them via Skype
+Take a look around. There are some features that we think you might just like.
 
-  - Case "roulette"
-	  - Only got 45 minutes free after work to do a case? No time to schedule one with someone nearby?
-    - Use the Roulette feature to practise with others online at the same time as you, using Skype.
+Good luck.
 
-  - Feedback and your performance
-  	- Your "interviewers" can, if you wish, complete a feedback form for you, giving scores and comments for you to review later on
-    - Scoring criteria have been carefully selected by top-3-firm professional consultants with many years of interviewing experience
-    - Your scores can be viewed graphically, enabling you to track your progress over time, and identify where you need to improve the most
+Accept my invitation: <%= invitation_registration_url(code: @invitation.code) %>
 
-This is an exciting time for us - we hope you enjoy the site, and wish you every success in your upcoming interviews.
-
-Ready? The link below contains a unique invitation code: click it and sign up with either your Univeristy email address or, if you are not currently at a listed University, your LinkedIn account.
-
-<%= invitation_registration_url(code: @invitation.code) %>
-
-When you sign up you will get 5 invitations to give to good friends, accessible in your profile settings - do please use them.
-
-Good luck!
-
-- casenexus.com
 
 
