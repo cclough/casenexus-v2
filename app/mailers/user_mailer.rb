@@ -78,9 +78,9 @@ class UserMailer < ActionMailer::Base
     @invitation = invitation
 
     if invitation.user.id == 1
-      mail(to: receiver, subject: "Invitation")
+      mail(to: receiver, subject: "Invitation to casenexus.com")
     else
-      mail(to: receiver, subject: "Invitation", template_name: 'invitation_user')
+      mail(to: receiver, subject: "Invitation to casenexus.com", template_name: 'invitation_user')
     end
   end
 
