@@ -1,5 +1,5 @@
 #static_home_signup
-  .panel.gradient.kill_left.kill_right
+  #static_home_signup_panel.panel.gradient.kill_left.kill_right
     #static_home_signup_title
       Get Started
     .spacer5
@@ -8,9 +8,11 @@
 
         = simple_form_for(@user, url: user_registration_path(@user)) do |f|
 
-          / = f.text_field :roulette_token, placeholder: 'Enter your 8-digit invite code...'
-          .row
-            = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6"
+          .row#static_home_signup_invitation_code_panel.panel.darker.kill_all
+            #static_home_signup_invitation_code_text
+              Your invitation code
+            = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6", id: "static_home_signup_invitation_code"
+          .spacer10
           .row
             #static_home_signup_option
               .btn-group

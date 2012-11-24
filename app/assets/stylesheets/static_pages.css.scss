@@ -6,6 +6,23 @@ $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 $blue_linkedin: #86c7fe;
 
+#static_home_banner {
+
+}
+
+#static_home_banner_container {
+  height:260px;
+  width:260px;
+  text-align:center;
+  -moz-box-shadow: 1px 4px 52px #000000;
+  -webkit-box-shadow: 1px 4px 52px #000000;
+  box-shadow: 1px 4px 52px #000000;
+  border: 1px solid gray;
+  font-size:50px;
+  color: $gray_Dark !important;
+  border-radius:7px;
+  background: rgba(0, 0, 0, 0.5);
+}
 
 #static_home_signup {
   margin-top:75px;
@@ -14,10 +31,16 @@ $blue_linkedin: #86c7fe;
   input {
     width:218px;
   }
-  // -moz-box-shadow: 1px 1px 31px #3b3b3b;
-  // -webkit-box-shadow: 1px 1px 31px #3b3b3b;
-  // box-shadow: 1px 1px 31px #3b3b3b;
+-moz-box-shadow: 1px 4px 52px #000000;
+-webkit-box-shadow: 1px 4px 52px #000000;
+box-shadow: 1px 4px 52px #000000;
+
+  
 }
+
+// #static_home_signup_panel {
+//   background: url('app/banner.png') no-repeat center left !important;
+// }
 
 #static_home_signup_title {
   text-align:center;
@@ -28,6 +51,21 @@ $blue_linkedin: #86c7fe;
   padding:7px;
 }
 
+#static_home_signup_invitation_code {
+  width: 204px !important;
+  margin:0px;
+  text-align:center;
+}
+
+#static_home_signup_invitation_code_panel {
+  padding:5px !important;
+  width:221px;
+}
+
+#static_home_signup_invitation_code_text {
+  font-size:11px;
+  text-align:center;
+}
 
 .static_home_signup_checkbox_label {
   margin-top:5px;

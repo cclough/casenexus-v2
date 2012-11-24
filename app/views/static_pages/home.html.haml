@@ -2,11 +2,18 @@
   = javascript_include_tag 'home'
 
 .row
-  .span66
-    #static_home_slider_panel.panel.kill_bottom
-      .row
-        = render '/static_pages/slider'
-
-  .span25
+  .span30
+    .spacer50
+    .spacer50
+    .spacer20
+    #static_home_banner_container
+      .spacer40
+      = image_tag 'app/banner.png', id: "static_home_banner"
+      / .spacer20
+      / casenexus
+  .span30.offset5
     .row
       = render 'static_pages/signup_form'
+  .span30
+    / .row
+    /   = render '/static_pages/slider'

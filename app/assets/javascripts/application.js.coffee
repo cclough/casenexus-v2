@@ -118,7 +118,7 @@ $(document).ready ->
           window.ArrowNav.goTo $(this).attr("href").split("#")[1]  if $(this).attr("href").split("#")[1]
 
         @goTo "1"
-
+        
       goTo: (page) ->
         next_page = $("#application_arrownav_page_" + page)
         nav_item = $("nav ul li a[href=#" + page + "]")
