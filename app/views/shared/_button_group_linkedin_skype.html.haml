@@ -1,4 +1,4 @@
-- unless @user.linkedin_uid.blank? && @user.linkedin_name.blank?
+- unless @user.linkedin_name.blank?
   .span8
     = link_to image_tag("icons/linkedin.png", alt: "View #{@user.linkedin_name}'s profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", 'http://uk.linkedin.com/in/' + @user.linkedin_name
 
