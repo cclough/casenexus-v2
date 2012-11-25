@@ -1,18 +1,18 @@
 $(document).ready ->
 
   # slider start
-  c = 2
-  interval = setInterval(->
-    window.ArrowNav.goTo c
-    c++
-    if c >= 6
-      c = 1
+  #c = 2
+  #interval = setInterval(->
+  #  window.ArrowNav.goTo c
+  #  c++
+  #  if c >= 6
+  #    c = 1
 
-  , 10000)
+  #, 10000)
 
   # slider stop on mouseover
-  $('#static_home_slider_panel').mouseover ->
-    clearInterval(interval);
+  #$('#static_home_slider_panel').mouseover ->
+  #  clearInterval(interval);
 
   ######################### SIGNUP ############################
 

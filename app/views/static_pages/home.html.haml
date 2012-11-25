@@ -1,19 +1,42 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'home'
+  = javascript_include_tag 'lib/jquery.gallery'
+  = javascript_include_tag 'lib/modernizr.custom.53451'
+
+  :javascript
+    $(function() {
+      $('#dg-container').gallery();
+    });
 
 .row
-  .span30
-    .spacer50
-    .spacer50
-    .spacer20
-    #static_home_banner_container
-      .spacer40
-      = image_tag 'app/banner.png', id: "static_home_banner"
-      / .spacer20
-      / casenexus
-  .span30.offset5
+  / .span30
+  /   .spacer50
+  /   .spacer50
+  /   .spacer20
+  /   #static_home_banner_container.panel
+  /     .spacer40
+  /     = image_tag 'app/banner.png', id: "static_home_banner"
+  /     .spacer20
+  /     / casenexus
+  .span20.offset5
     .row
-      = render 'static_pages/signup_form'
+      
   .span30
-    / .row
-    /   = render '/static_pages/slider'
+
+  %section#dg-container.dg-container
+    .dg-wrapper
+      %a{:href => "#"}
+        = render 'static_pages/signup_form'
+      %a{:href => "#"}
+        .panel
+          %img{:alt => "image02", :src => "/assets/home/slider_3.png"}
+            %div http://www.percivalclo.com/
+      %a{:href => "#"}
+        %img{:alt => "image03", :src => "/assets/home/slider_4.png"}
+          %div http://www.wanda.net/fr
+      %a{:href => "#"}
+        %img{:alt => "image04", :src => "/assets/home/slider_5.png"}
+          %div http://lifeingreenville.com/
+    %nav
+      %span.dg-prev <
+      %span.dg-next >

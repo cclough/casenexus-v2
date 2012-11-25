@@ -41,12 +41,16 @@
 #map_index_mappanel_footer.map_index_mappanel
   = render 'footer_map'
 
-#map_index_mapcontainer_users.mapcontainer{style:"padding:10px;"}
-
-  = render '/members/users_form'
-
-  #map_index_users
-  / content is rendered by members#index.js.erb
+#map_index_mapcontainer_users
+  .row
+    .span.map_index_users_border.side
+    .span
+      = render '/members/users_form'
+      #map_index_users
+      / content is rendered by members#index.js.erb
+    .span.map_index_users_border.side
+  .row
+    .span.map_index_users_border.bottom
 
 #map_index_mapcontainer_user.mapcontainer
   #map_index_user
