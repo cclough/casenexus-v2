@@ -319,23 +319,14 @@ textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 
-  // border: 2px solid $gray_Light;
-  margin:2px;
+  // border: 1px solid $gray_Dark;
+  margin:5px;
+  margin-top:3px;
   text-align: center;
   padding: 5px;
-  margin-top: 2px;
   cursor: default;
 
-  background: rgb(254,255,255); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(254,255,255,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(254,255,255,1)), color-stop(100%,rgba(234,234,234,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(254,255,255,1) 0%,rgba(234,234,234,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
-
-  background: rgba(0, 0, 0, 0.7);
+  background: url('app/dark-bg.png') repeat top left;
 }
 
 .application_pagination .disabled {

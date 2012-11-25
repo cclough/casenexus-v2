@@ -111,6 +111,9 @@ $blue_pastel: #98cdff;
   
 }
 
+#map_index_users {
+  width:329px;
+}
 
 #map_index_users_form {
   margin-top:10px;
@@ -133,7 +136,7 @@ $blue_pastel: #98cdff;
 #map_index_users_form_body {
   height:515px;
   padding:5px;
-  width:319px;
+  width:329px;
 }
 
 #map_index_users_empty {
@@ -150,15 +153,11 @@ $blue_pastel: #98cdff;
 //////////////////////////////////////////////
 
 
-
-
 .map_index_users_item {
-  width: 100%;
+  width: 320px;
   height: 50px;
   margin-top: 0px;
   margin-bottom: 2px;
-  margin-left: 0px;
-  margin-right: 0px;
   padding: 4px;
   display: none;
   position:relative;

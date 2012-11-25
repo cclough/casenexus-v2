@@ -9,8 +9,8 @@ window.map_index_map_pan = (latlng) ->
 
 window.map_index_user_border_height = ->
   # set side height
-  $(".map_index_user_border_side").css("height",0)
-  $(".map_index_user_border_side").css("height",(parseInt($("#map_index_mapcontainer_user").css("height")) - 20))
+  $("#map_index_mapcontainer_user .side").css("height",0)
+  $("#map_index_mapcontainer_user .side").css("height",(parseInt($("#map_index_mapcontainer_user").css("height")) - 20))
 
 window.map_index_map_marker_click = (marker_id) ->
   # Show User Panel
