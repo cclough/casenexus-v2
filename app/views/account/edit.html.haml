@@ -57,7 +57,7 @@
           .panel.darker.kill_bottom
             .row.font-small
               Edit your status
-              %span#account_edit_status_note.pull-right (NB edits must be approved by an administrator)
+              %span#account_edit_status_note (minimum 50 chars; edits are sent for approval)
               .spacer5
               = f.text_area :status, id: 'account_edit_status'
 
