@@ -5,7 +5,7 @@
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
 
-.panel.gradient
+#map_index_user_user.panel.gradient.kill_half
 
   %button#map_index_show_close.close ×
 
@@ -32,7 +32,7 @@
 
 
 - if @user.status_approved
-  .panel.gradient
+  .panel.gradient.kill_half
     .row
       .span35
         #map_index_user_status
@@ -84,12 +84,12 @@
 
 
 - else
-  .panel.gradient
+  .panel.gradient.kill_half
     #map_index_user_status_unapproved
       Status awaiting approval
 
 - if Friendship.friends?(current_user, @user)
-  .panel.gradient
+  .panel.gradient.kill_half
     .row
       #map_index_user_feedback
         .row

@@ -7,9 +7,15 @@ window.map_index_map_pan = (latlng) ->
   window.map.panTo latlng
   window.map.setZoom 9
 
+window.map_index_user_border_height = ->
+  # set side height
+  $(".map_index_user_border_side").css("height",0)
+  $(".map_index_user_border_side").css("height",(parseInt($("#map_index_mapcontainer_user").css("height")) - 20))
+
 window.map_index_map_marker_click = (marker_id) ->
   # Show User Panel
-  $("#map_index_mapcontainer_user").fadeOut "fast", ->
+  $('#map_index_mapcontainer_user').hide "slide", { direction: "right" }, 200, ->
+  #$("#map_index_mapcontainer_user").fadeOut "fast", ->
 
     $.get "/members/" + marker_id, (data) ->
 
@@ -41,16 +47,18 @@ window.map_index_map_marker_click = (marker_id) ->
           $("#modal_feedback_req").modal("show")
           $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
 
-
       $('#map_index_user_feedback_results_button').click ->
         if ($('#map_index_user_feedback_results_button').hasClass("slid"))
-          $('#map_index_user_feedback_chart_radar_container').slideUp "fast"
+          $('#map_index_user_feedback_chart_radar_container').slideUp "fast", ->
+            map_index_user_border_height()
           $('#map_index_user_feedback_results_button').removeClass "slid"
         else
-          $('#map_index_user_feedback_chart_radar_container').slideDown "fast"
+          $('#map_index_user_feedback_chart_radar_container').slideDown "fast", ->
+            map_index_user_border_height()
           $('#map_index_user_feedback_results_button').addClass "slid"
           map_index_user_feedback_chart_radar_draw "all", map_index_user_feedback_chart_radar_count;
-          
+        
+
       # Radar Button
       $("#map_index_user_feedback_chart_radar_button_all").click ->
         $("#map_index_user_feedback_chart_radar").empty()
@@ -66,11 +74,13 @@ window.map_index_map_marker_click = (marker_id) ->
 
 
       # Fade out tooltip as no longer needed
-      $("#map_index_mappanel_tooltip").fadeOut "fast"
+      $("#map_index_mappanel_tooltip").fadeOut "fast", ->
 
-      # Fade panel back in
-      $("#map_index_mapcontainer_user").fadeIn "fast"
+        map_index_user_border_height()
 
+        # Fade panel back in
+        # $("#map_index_mapcontainer_user").fadeIn "fast"
+        $('#map_index_mapcontainer_user').show "slide", { direction: "right" }, 200
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->

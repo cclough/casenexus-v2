@@ -270,27 +270,6 @@ $blue_pastel: #98cdff;
   text-align:right;
 }
 
-#map_index_mapcontainer_user {
-  top: 15%;
-  right: 30px;
-  width: 400px;
-  display: none;
-
-  // Inset
-  // -moz-box-shadow:inset 2px 0px 13px #000000;
-  // -webkit-box-shadow:inset 2px 0px 13px #000000;
-  // box-shadow:inset 2px 0px 13px #000000;
-
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-
-  // Outset 
-  -moz-box-shadow: 2px 3px 14px #4a494a;
-  -webkit-box-shadow: 2px 3px 14px #4a494a;
-  box-shadow: 2px 3px 14px #4a494a;
-}
-
 
 .map_index_mappanel {
   position:absolute;
@@ -419,6 +398,68 @@ $blue_pastel: #98cdff;
 }
 
 
+
+#map_index_mapcontainer_user {
+  top: 15%;
+  right: 00px;
+  width: 406px;
+  display: none;
+  
+  // Inset
+  // -moz-box-shadow:inset 2px 0px 13px #000000;
+  // -webkit-box-shadow:inset 2px 0px 13px #000000;
+  // box-shadow:inset 2px 0px 13px #000000;
+
+  border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+
+  // Outset 
+  -moz-box-shadow: 2px 3px 14px #4a494a;
+  -webkit-box-shadow: 2px 3px 14px #4a494a;
+  box-shadow: 2px 3px 14px #4a494a;
+}
+
+
+
+.map_index_user_border {
+  background: url('app/darker-bg.png') repeat top left;
+  // background: rgba(255, 255, 255, 0.8);
+  &.side {
+    // height:auto;
+    width:10px;
+    // min-height:100px;
+  }
+  &.bottom {
+    height:10px;
+    width:406px;
+    border-bottom-left-radius: 5px;
+    -moz-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+
+  }
+
+  &.top {
+    height:10px;
+    width:406px;
+
+    border-top-left-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+
+  }
+
+}
+
+#map_index_user_user {
+  width:350px;
+}
+
 #map_index_user_close {
   border: 0;
   background-color: white;
@@ -530,7 +571,7 @@ $blue_pastel: #98cdff;
 #map_index_user_feedback_chart_radar {
   padding-top:10px;
   height:220px;
-  width:401px;
+  // width:401px;
   display:none;
 }
 
@@ -542,7 +583,7 @@ $blue_pastel: #98cdff;
 
 #map_index_user_feedback_chart_radar_container {
   height:235px;
-  width:401px;
+  // width:401px;
   display:none;
 }
 
