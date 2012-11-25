@@ -1,42 +1,67 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'home'
-  = javascript_include_tag 'lib/jquery.gallery'
-  = javascript_include_tag 'lib/modernizr.custom.53451'
-
-  :javascript
-    $(function() {
-      $('#dg-container').gallery();
-    });
 
 .row
-  / .span30
-  /   .spacer50
-  /   .spacer50
-  /   .spacer20
-  /   #static_home_banner_container.panel
-  /     .spacer40
-  /     = image_tag 'app/banner.png', id: "static_home_banner"
-  /     .spacer20
-  /     / casenexus
-  .span20.offset5
-    .row
-      
-  .span30
+  #static_home_span_left.span
+    .spacer50
+    .spacer50
+    #static_home_panels_left.panel.kill_all
+      #static_home_panels_left_page_1
+      #static_home_panels_left_page_2
+        .static_home_panels_text
+          .span4.static_home_panels_icon
+            %i.icon-pushpin
+          .span20
+            %h4 Find Case Partners
+            %p.static_home_slider_panels_text_sub Arrange to practise case interviews in person, or via Skype
+      #static_home_panels_left_page_3
+        #static_home_slider_page_4
+          .static_home_panels_text
+            .span4.static_home_panels_icon
+              %i.icon-edit
+            .span20
+              %h4 Score eachother
+              %p.static_home_slider_panels_text_sub Feedback system designed by Top-3-firm consultants
 
-  %section#dg-container.dg-container
-    .dg-wrapper
-      %a{:href => "#"}
-        = render 'static_pages/signup_form'
-      %a{:href => "#"}
-        .panel
-          %img{:alt => "image02", :src => "/assets/home/slider_3.png"}
-            %div http://www.percivalclo.com/
-      %a{:href => "#"}
-        %img{:alt => "image03", :src => "/assets/home/slider_4.png"}
-          %div http://www.wanda.net/fr
-      %a{:href => "#"}
-        %img{:alt => "image04", :src => "/assets/home/slider_5.png"}
-          %div http://lifeingreenville.com/
-    %nav
-      %span.dg-prev <
-      %span.dg-next >
+    
+    .row.static_home_panels_nav
+      .offset12
+        #static_home_panels_left_nav_circle_1.static_home_panels_nav_circle{"data-panel"=>"left", "data-page-id"=>"1"}
+        #static_home_panels_left_nav_circle_2.static_home_panels_nav_circle{"data-panel"=>"left", "data-page-id"=>"2"}
+        #static_home_panels_left_nav_circle_3.static_home_panels_nav_circle{"data-panel"=>"left", "data-page-id"=>"3"}
+
+  #static_home_span_middle.span
+    .row
+      = render 'static_pages/signup_form'
+      #testing123
+  #static_home_span_right.span
+    .spacer50
+    .spacer50
+    #static_home_panels_right.panel.kill_all
+      #static_home_panels_right_page_1
+      #static_home_panels_right_page_2
+        .static_home_panels_text
+          .span4.static_home_panels_icon
+            %i.icon-random
+          .span20
+            %h4 Case Roulette
+            %p.static_home_slider_panels_text_sub Just time for a case after work? Find others who do too.
+
+
+      #static_home_panels_right_page_3
+        .static_home_panels_text
+          .span4.static_home_panels_icon
+            %i.icon-bar-chart
+          .span20
+            %h4 Track your progress
+            %p.static_home_slider_panels_text_sub Scores are displayed graphically, showing you where to improve
+
+    .row.static_home_panels_nav
+      .offset12
+        #static_home_panels_right_nav_circle_1.static_home_panels_nav_circle{"data-panel"=>"right", "data-page-id"=>"1"}
+        #static_home_panels_right_nav_circle_2.static_home_panels_nav_circle{"data-panel"=>"right", "data-page-id"=>"2"}
+        #static_home_panels_right_nav_circle_3.static_home_panels_nav_circle{"data-panel"=>"right", "data-page-id"=>"3"}
+            
+.row
+  #static_home_footer
+    = render 'layouts/footer'
