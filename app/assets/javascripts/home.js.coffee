@@ -44,13 +44,12 @@ $(document).ready ->
               $("#static_home_panels_left_page_" + window.l + " .static_home_panels_text").fadeIn "fast"
               $("#static_home_panels_right_page_" + window.r + " .static_home_panels_text").fadeIn "fast"
 
-              
-
-        , 5000)
+        , 10000)
 
         # slider stop on mouseover
-        $('#static_home_panels_left #static_home_panels_right').mouseover ->
-          clearInterval(window.interval);
+        #$('#static_home_panels_left #static_home_panels_right').mouseover ->
+        #clearInterval(window.interval);
+        
   , 1000)
 
   # Code for circle nav

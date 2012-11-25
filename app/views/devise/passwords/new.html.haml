@@ -1,6 +1,6 @@
 .row
-  .span28.offset35
-    .panel.gradient
+  .span32.offset33
+    .panel.gradient{style:"text-align:center;"}
       = render 'layouts/flash', flash: flash
 
       %h4 Forgotten your password?
@@ -8,10 +8,9 @@
       = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
         = f.error_notification
         .spacer10
-        .form-inputs
-          .row
-            .span25
-              = f.text_field :email, placeholder: "Enter your email address"
-
-        .form-actions
-          = f.button :submit, "Email me", class: "offset5"
+        .row
+          .span25
+            = f.text_field :email, placeholder: "Enter your email address", style:"width:253px;"
+        .spacer10
+        .row
+          = f.button :submit, "Email me instructions"

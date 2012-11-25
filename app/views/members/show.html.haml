@@ -4,7 +4,6 @@
   var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
-
 #map_index_user_user.panel.gradient.kill_half
 
   %button#map_index_show_close.close ×
@@ -109,8 +108,8 @@
         #map_index_user_feedback_chart_radar
         #map_index_user_feedback_chart_radar_buttongroup
           .btn-group
-            %a#map_index_user_feedback_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-            %a#map_index_user_feedback_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+            %a#map_index_user_feedback_chart_radar_button_all.btn.btn-mini.active All
+            %a#map_index_user_feedback_chart_radar_button_combined.btn.btn-mini Combined
 
         #map_index_user_feedback_chart_radar_empty
           #map_index_user_feedback_chart_radar_empty_icon

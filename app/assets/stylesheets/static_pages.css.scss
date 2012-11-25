@@ -10,7 +10,7 @@ $blue_linkedin: #86c7fe;
 
 #static_home_span_left, #static_home_span_right {
   width:300px;
-  height:540px; // sets footer position
+  height:520px; // sets footer position
 }
 
 #static_home_span_middle {
@@ -175,7 +175,7 @@ $blue_linkedin: #86c7fe;
   content:"";
   position: absolute;
   right: 100%;
-  top: 240px;
+  top: 250px;
   width: 0;
   height: 0;
   border-top: 26px solid transparent;
@@ -188,15 +188,13 @@ $blue_linkedin: #86c7fe;
    content:"";
    position: absolute;
    left: 100%;
-   top: 240px;
+   top: 250px;
    width: 0;
    height: 0;
    border-top: 26px solid transparent;
    border-left: 52px solid white;
    border-bottom: 26px solid transparent;
 }
-
-
 
 
 
@@ -263,7 +261,7 @@ $blue_linkedin: #86c7fe;
   height:350px;
   width:258px;
   margin-left:12px;
-  margin-top:145px;
+  margin-top:147px;
   display:none;
 }
 
