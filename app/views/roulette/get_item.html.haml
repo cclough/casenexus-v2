@@ -1,15 +1,17 @@
 .row
   .span6.roulette_index_users_item_avatar
     = avatar_for(@roulette_user, 'icon')
-  .span54.offset3.roulette_index_users_item_name
+  .span52.offset3.roulette_index_users_item_name
     .application_name
       = @roulette_user.name
     .roulette_index_users_item_button_expand{"data-id" => @roulette_user.id }
       Show Status
       %i.icon-arrow-down.icon-small
-  .span12
-    .btn.btn-small.roulette_index_users_item_button_request{"data-user_id" => @roulette_user.id}
-      Send Request
+  .span14
+    .btn.btn-inverse.btn-small.roulette_index_users_item_button_request{"data-user_id" => @roulette_user.id}
+      %i.icon-phone.icon-white
+      %span
+        Send Skype Request
 
   .span5.offset3
     .roulette_index_users_item_casecount
