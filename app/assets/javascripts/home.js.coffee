@@ -6,8 +6,8 @@ $(document).ready ->
     $("#static_home_panels_right").fadeIn "slow", ->
 
       # show page one
-      $("#static_home_panels_left_page_1").show "slide", direction: "right", 500
-      $("#static_home_panels_right_page_1").show "slide", direction: "right", 500, ->
+      $("#static_home_panels_left_page_1").show "slide", direction: "up", 500
+      $("#static_home_panels_right_page_1").show "slide", direction: "up", 500, ->
         
         $("#static_home_panels_left_nav_circle_1").addClass "on_now"
         $("#static_home_panels_right_nav_circle_1").addClass "on_now"
@@ -22,8 +22,8 @@ $(document).ready ->
         window.l = 1
         window.r = 1
         window.interval = setInterval(->
-          $("#static_home_panels_left_page_" + window.l).hide "slide", direction: "left", 500
-          $("#static_home_panels_right_page_" + window.r).hide "slide", direction: "left", 500, ->
+          $("#static_home_panels_left_page_" + window.l).hide "slide", direction: "down", 500
+          $("#static_home_panels_right_page_" + window.r).hide "slide", direction: "down", 500, ->
             $("#static_home_panels_left_page_" + window.l + " .static_home_panels_text").fadeOut "fast"
             $("#static_home_panels_right_page_" + window.r + " .static_home_panels_text").fadeOut "fast"
             
@@ -39,8 +39,8 @@ $(document).ready ->
             $("#static_home_panels_left_nav_circle_" + window.l).addClass "on_now"
             $("#static_home_panels_right_nav_circle_" + window.r).addClass "on_now"
 
-            $("#static_home_panels_left_page_" + window.l).show "slide", direction: "right", 500
-            $("#static_home_panels_right_page_" + window.r).show "slide", direction: "right", 500, ->
+            $("#static_home_panels_left_page_" + window.l).show "slide", direction: "up", 500
+            $("#static_home_panels_right_page_" + window.r).show "slide", direction: "up", 500, ->
               $("#static_home_panels_left_page_" + window.l + " .static_home_panels_text").fadeIn "fast"
               $("#static_home_panels_right_page_" + window.r + " .static_home_panels_text").fadeIn "fast"
 
@@ -75,9 +75,9 @@ $(document).ready ->
       $(that).addClass "on_now"
 
       $("#static_home_panels_" + panel + "_page_" + old_panel_var + " .static_home_panels_text").fadeOut "fast"
-      $("#static_home_panels_" + panel + "_page_" + old_panel_var).hide "slide", direction: "left", 500, ->
+      $("#static_home_panels_" + panel + "_page_" + old_panel_var).hide "slide", direction: "bottom", 500, ->
 
-        $("#static_home_panels_" + panel + "_page_" + page_id).show "slide", direction: "right", 500, ->
+        $("#static_home_panels_" + panel + "_page_" + page_id).show "slide", direction: "top", 500, ->
           $("#static_home_panels_" + panel + "_page_" + page_id + " .static_home_panels_text").fadeIn "fast"
 
 

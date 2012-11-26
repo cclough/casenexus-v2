@@ -254,7 +254,6 @@ $blue_pastel: #98cdff;
 
 
 .map_index_users_item_text {
-
   text-align:left;
   padding-left:8px;
 }
@@ -355,7 +354,7 @@ $blue_pastel: #98cdff;
 
   margin-left: -175px;
 
-  height:50px;
+  height:47px;
   width:350px;
 
   padding: 10px;
@@ -377,6 +376,16 @@ $blue_pastel: #98cdff;
 #map_index_mappanel_tooltip_text {
   padding-right:5px;
   padding-top:4px;
+}
+
+#map_index_mappanel_tooltip_text {
+  padding-right:5px;
+  padding-top:4px;
+}
+
+#map_index_mappanel_tooltip_headline {
+  font-size:12px;
+  color:$gray-Light;
 }
 
 #map_index_mappanel_footer {
