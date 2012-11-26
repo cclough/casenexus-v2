@@ -363,7 +363,7 @@ function cases_analysis_charts_draw(case_count) {
       legend.color = '#f6f6f6';
       legend.horizontalGap = 5;
       legend.switchable = true;
-      legend.valueWidth = 5;
+      legend.valueWidth = 25;
       chart_analysis_progress.addLegend(legend);
 
       // CURSOR //////////
