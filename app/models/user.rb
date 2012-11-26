@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
     end
 
     def list_local(user)
-      user.nearbys(100).completed.not_admin.order('created_at desc')
+      user.nearbys(50).completed.not_admin.order('created_at desc')
     end
 
     def list_global

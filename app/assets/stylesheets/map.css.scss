@@ -425,14 +425,11 @@ $blue_pastel: #98cdff;
   -moz-border-top-left-radius: 5px;
   -webkit-border-top-left-radius: 5px;
 
-
   // Outset 
   -moz-box-shadow: 2px 3px 14px #4a494a;
   -webkit-box-shadow: 2px 3px 14px #4a494a;
   box-shadow: 2px 3px 14px #4a494a;
 }
-
-
 
 .map_index_user_border {
   background: url('app/dark-bg.png') repeat top left;
@@ -597,7 +594,7 @@ $blue_pastel: #98cdff;
 
 #map_index_user_feedback_chart_radar_empty {
   height:235px;
-  width:401px;
+  // width:401px;
   display:none;
   padding-top:60px;
   padding-left:0px;
