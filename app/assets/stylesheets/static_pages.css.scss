@@ -23,7 +23,7 @@ $blue_linkedin: #86c7fe;
 
 
 #static_home_signup {
-  margin-top:75px;
+  margin-top:55px;
   margin-left:42px;
   width:255px;
   input {
@@ -171,30 +171,30 @@ $blue_linkedin: #86c7fe;
 }
 
 
-#static_home_panels_right:before {
-  content:"";
-  position: absolute;
-  right: 100%;
-  top: 155px;
-  width: 0;
-  height: 0;
-  border-top: 26px solid transparent;
-  border-right: 52px solid white;
-  border-bottom: 26px solid transparent;
-}
 
 #static_home_panels_left:before {
    content:"";
    position: absolute;
    left: 100%;
-   top: 155px;
+   top: 5px;
    width: 0;
    height: 0;
-   border-top: 26px solid transparent;
-   border-left: 52px solid white;
-   border-bottom: 26px solid transparent;
+   border-top: 180px solid transparent;
+   border-left: 50px solid white;
+   border-bottom: 180px solid transparent;
 }
 
+#static_home_panels_right:before {
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border-top: 180px solid transparent;
+  border-right: 50px solid white;
+  border-bottom: 180px solid transparent;
+}
 
 
 
@@ -260,7 +260,7 @@ $blue_linkedin: #86c7fe;
   height:350px;
   width:258px;
   margin-left:12px;
-  margin-top:147px;
+  margin-top:155px;
   display:none;
 }
 

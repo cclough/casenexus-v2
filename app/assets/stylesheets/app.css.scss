@@ -193,9 +193,9 @@ textarea {
   border: 1px solid $gray_Light;
   padding: 10px;
 
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  -moz-border-radius:    5px;
   -webkit-border-radius: 5px;
+  border-radius:         5px;
 
   &.gradient{
  
