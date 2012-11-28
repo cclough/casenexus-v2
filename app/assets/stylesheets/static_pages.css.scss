@@ -124,27 +124,28 @@ $blue_linkedin: #86c7fe;
 
 
 .static_home_panels_nav {
-  margin-top:10px;
   text-align:center;
-  width:100%;
   display:none;
+  margin-top:-22px;
+  margin-left:132px;
 }
 
 
 .static_home_panels_nav_circle {
 
-  background: $gray_Darker;
+  background: $gray_Lighter;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   border:0px !important;
-  margin:5px;
+  margin:4px;
+  float:left;
   &:hover {
     background: gray;
     cursor:pointer;cursor:hand;
   }
   &.on_now {
-    background:$gray_Lighter;
+    background: $gray_Darker;
   }
 }
 
