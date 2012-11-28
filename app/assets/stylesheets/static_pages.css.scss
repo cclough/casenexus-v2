@@ -126,14 +126,14 @@ $blue_linkedin: #86c7fe;
 .static_home_panels_nav {
   text-align:center;
   display:none;
-  margin-top:-22px;
   margin-left:132px;
+  margin-top:5px;
 }
 
 
 .static_home_panels_nav_circle {
 
-  background: $gray_Lighter;
+  background: $gray_Darker;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -145,7 +145,7 @@ $blue_linkedin: #86c7fe;
     cursor:pointer;cursor:hand;
   }
   &.on_now {
-    background: $gray_Darker;
+    background: $gray_Lighter;
   }
 }
 
