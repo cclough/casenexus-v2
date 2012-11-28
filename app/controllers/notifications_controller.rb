@@ -50,7 +50,7 @@ class NotificationsController < ApplicationController
       else
         case params[:notification][:ntype]
           when "message", "feedback_req", "friendship_req"
-            @user = @notification.target
+            @user = @notification.user
             format.js
         end
       end
