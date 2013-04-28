@@ -565,7 +565,7 @@ $(document).ready(function(){
 
 
   // Ajax pagination
-  $("#cases_index_cases .application_pagination a, #cases_index_cases_form_sort a").live("click", function() {
+  $("#cases_index_cases .application_pagination a, #cases_index_cases_form_sort a").on("click", function() {
     $.getScript(this.href);
     return false;
   });

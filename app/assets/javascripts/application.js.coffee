@@ -4,8 +4,9 @@
 #= require jquery.ui.slider
 #= require jquery.ui.effect-slide
 #= require jquery.ui.effect
+
 #= require lib/jquery.placeholder
-#= require lib/jquery.uniform.min
+#= require lib/jquery.uniform
 #= require lib/chosen.jquery
 
 #= require lib/bootstrap.min
@@ -48,7 +49,7 @@ $(document).ready ->
   $(".application_avatar_icon").tooltip()
 
   # Modal help checkbox
-  $("#modal_help_checkbox").live 'change', ->
+  $("#modal_help_checkbox").on 'change', ->
     page_id = $(this).attr("data-page_id")
     user_id = $(this).attr("data-user_id")
     if !$(this).is(':checked')
@@ -96,7 +97,7 @@ $(document).ready ->
       $("#modal_contact").modal "show"
 
   # Modal buttons
-  $(".modal-footer button").live 'click', (e) ->
+  $(".modal-footer button").on 'click', (e) ->
     $that = $(this)
     setTimeout ->
       $that.parents(".modal-footer").find("a, button").attr('disabled', 'disabled')

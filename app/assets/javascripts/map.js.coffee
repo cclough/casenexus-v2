@@ -226,7 +226,7 @@ $(document).ready ->
     map_index_users_updatelist()
 
   # Ajax pagination
-  $("#map_index_users .application_pagination a").live "click", ->
+  $("#map_index_users .application_pagination a").on "click", ->
     $.getScript @href
     false
 
