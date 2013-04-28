@@ -1,0 +1,7 @@
+.panel.darker
+  = render partial: 'books/books_item' , locals: { books_item: @book}
+
+  .spacer10
+  = render "comments/comments"
+  .spacer10
+  = render "comments/form"

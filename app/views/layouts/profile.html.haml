@@ -1,0 +1,55 @@
+!!!
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag    "application", media: "all"
+    - if request.ssl?
+      = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
+    - else
+      = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
+    = javascript_include_tag "application"
+
+    = yield :javascript_includes
+
+    = csrf_meta_tags
+
+    = analytics_init if Rails.env.production?
+    
+    /[if lte IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
+
+  %body
+    / header
+    = render 'layouts/header'
+
+    = render 'layouts/flash', flash: flash
+
+
+    .container.main
+      = render 'shared/title'
+      .row
+        .span25
+          .panel.dark.kill_bottom
+            .row
+              = link_to "Summary", summary_path
+            .row
+              = link_to "Cases", cases_path
+            .row
+              = link_to "Notifiations", notifications_path
+            .row
+              = link_to "Progress", analysis_cases_path
+            .row
+              = link_to "Settings", edit_account_path
+        .span67
+          .panel.kill_left.kill_right.kill_bottom
+            content
+            = yield
+
+
+
+      / footer
+      = render 'layouts/footer'
+
+  = render 'shared/modal_help'
+  = render 'shared/modal_bug'
+  = render 'shared/modal_contact'

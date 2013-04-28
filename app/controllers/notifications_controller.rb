@@ -4,6 +4,8 @@ class NotificationsController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
+  layout 'profile'
+
   def index
     notification_scope = current_user.notifications.for_display
     if !params[:ntype].blank? && params[:ntype] != "all"

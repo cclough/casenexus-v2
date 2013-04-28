@@ -8,7 +8,7 @@ class CasesController < ApplicationController
     @cases = current_user.cases.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 
     respond_to do |format|
-      format.html
+      format.html { render layout: 'profile' }
       format.js
     end
 
@@ -85,9 +85,10 @@ class CasesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html { render layout: 'profile' }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
     end
+
 
   end
 

@@ -44,6 +44,7 @@ Casenexus::Application.routes.draw do
   # Invitations
   resources :invitations, except: [:edit, :update]
 
+
   # Cases
   resources :cases, only: [:index, :show, :new, :create, :update] do
     get :analysis, on: :collection
@@ -54,6 +55,15 @@ Casenexus::Application.routes.draw do
     put :read, on: :member
     get :history, on: :collection
   end
+
+  # Library
+  resources :books, only: [:index, :show] do
+    resources :comments, only: [:index, :new, :create]
+  end
+
+  # Summary
+
+  match '/summary', to: 'summary#index', as: :summary
 
   # Site contacts
   match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact

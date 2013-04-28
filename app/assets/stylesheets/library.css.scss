@@ -1,0 +1,67 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$blue_pastel: #98cdff;
+
+////////////// FORM
+
+
+#books_index_books_form_radios_type, #books_index_books_form_radios_sort {
+  display:none;
+}
+
+#books_index_books_form_searchfield {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  padding-left:7px !important;
+  padding-right:30px !important;
+  width:209px;
+}
+
+////////////// ITEM
+
+.books_index_books_item, .books_show_comments_item {
+
+  margin-bottom: 4px !important;
+  padding:10px;
+
+}
+
+.books_index_books_item_author {
+  font-size:11px;
+}
+
+.books_index_books_item_source {
+  font-size:11px;
+}
+
+.books_index_books_item_image {
+	text-align:center;
+  height:100px;
+  width:85px;
+  display:inline-block;
+  position:relative;
+}
+
+.books_rating_read_container {
+  padding:2px;
+}
+
+.books_rating_read {
+  width:150px !important;
+  text-align:center;
+}
+
+.books_rating_read_text {
+  font-size:11px;
+  text-align:center;
+  margin-top:2px;
+}

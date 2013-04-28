@@ -1,0 +1,35 @@
+.row.books_index_books_item.panel.item.has_hover.kill_all
+  .row
+    .span11
+      .books_index_books_item_image.panel.kill_all
+        = image_tag 'library/thumbs/' + books_item.image_url.to_s
+    .span52.offset1
+      .row
+        .span
+          .row
+            = books_item.title
+          .row.books_index_books_item_author
+            = books_item.author
+          .row.books_index_books_item_source
+            = books_item.source
+        .span.pull-right
+          .books_rating_read_container.panel.darker.kill_all
+            .books_rating_read{"data-rating" => books_item.average_rating}
+            .books_rating_read_text
+              User rating:
+              = books_item.average_rating
+      .row
+        .font-small
+          %span
+            = books_item.desc_trunc
+
+          %span.books_index_books_item_full_desc{"data-id"=>books_item.id}
+            = link_to "full description", "#"
+      .row
+        .pull-right
+          .span
+            .btn.btn-inverse.btn-small
+              =link_to "Do this case with a Contact", "/dashboard?id=" + books_item.id.to_s
+          .span.offset1
+            .books_index_books_item_comments{"data-id"=>books_item.id}
+              = link_to "Rate & Comment (#{books_item.comments.count})", "#"
