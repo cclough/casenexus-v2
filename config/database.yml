@@ -3,7 +3,7 @@ development:
   encoding: utf8
   database: casenexus_development
   pool: 5
-  username: postgres
+  username: user1
   password:
 
 test:
@@ -11,7 +11,7 @@ test:
   encoding: utf8
   database: casenexus_test
   pool: 5
-  username: postgres
+  username: user1
   password:
 
 production:
@@ -19,5 +19,5 @@ production:
   encoding: utf8
   database: casenexus
   pool: 5
-  username: postgres
+  username: user1
   password:

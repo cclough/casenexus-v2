@@ -2,8 +2,8 @@
 #= require jquery_ujs
 
 #= require jquery.ui.slider
-#= require jquery.effects.slide
-#= require jquery.effects.core
+#= require jquery.ui.effect-slide
+#= require jquery.ui.effect
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform.min
 #= require lib/chosen.jquery
