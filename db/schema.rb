@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130428170549) do
+ActiveRecord::Schema.define(:version => 20130504111259) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130428170549) do
     t.string   "btype",                            :null => false
     t.string   "title",                            :null => false
     t.string   "source_title",                     :null => false
-    t.integer  "uni_id"
+    t.integer  "university_id"
     t.string   "author"
     t.string   "author_url"
     t.text     "desc",                             :null => false
@@ -77,10 +77,10 @@ ActiveRecord::Schema.define(:version => 20130428170549) do
   create_table "comments", :force => true do |t|
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
-    t.integer  "user_id",                           :null => false
-    t.text     "content",                           :null => false
-    t.integer  "commentable_id",                    :null => false
-    t.string   "commentable_type",                  :null => false
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.float    "rating",           :default => 0.0
   end
 

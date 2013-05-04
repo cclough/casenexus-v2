@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
   belongs_to :university
+
+  has_many :comments
   has_many :cases, dependent: :destroy
   has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
   has_many :notifications, dependent: :destroy

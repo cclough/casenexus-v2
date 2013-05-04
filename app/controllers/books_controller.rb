@@ -1,5 +1,4 @@
-class LibraryController < ApplicationController
-
+class BooksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
   
@@ -21,7 +20,7 @@ class LibraryController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { render :layout => false }
+      format.html
       format.js
     end
 
@@ -33,7 +32,6 @@ class LibraryController < ApplicationController
     @comments = @commentable.comments
     @comment = Comment.new
 
-    render :layout=>false 
   end
 
   private
@@ -46,5 +44,4 @@ class LibraryController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
 end

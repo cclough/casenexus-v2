@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :user_id, :content, :rating
+  attr_accessible :content, :rating, :user_id
 
   belongs_to :commentable, polymorphic: true
   belongs_to :book
@@ -7,5 +7,5 @@ class Comment < ActiveRecord::Base
   
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 500 }
-  validates :rating, :numericality => { less_than_or_equal_to: 5 }
+  validates :rating, presence: true
 end

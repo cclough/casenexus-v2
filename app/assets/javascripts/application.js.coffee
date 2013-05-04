@@ -8,6 +8,7 @@
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
+#= require lib/jquery.raty
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-datepicker

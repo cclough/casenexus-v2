@@ -61,6 +61,12 @@ Casenexus::Application.routes.draw do
     resources :comments, only: [:index, :new, :create]
   end
 
+  get "comments/index"
+  get "comments/new"
+
+  # Map
+  match '/library', to: 'books#index', as: :library
+
   # Summary
 
   match '/summary', to: 'summary#index', as: :summary
