@@ -61,8 +61,18 @@ Casenexus::Application.routes.draw do
     resources :comments, only: [:index, :new, :create]
   end
 
-  get "comments/index"
-  get "comments/new"
+  # get "comments/index"
+  # get "comments/new"
+
+  # Viewer
+
+  resources :console, only: [:index] do
+    get :pdfjs, on: :collection
+    get :select, on: :collection
+  end
+
+  # match '/viewer', to: 'dashboard#index', as: :viewer
+  # match '/viewer', to: 'viewer#pdfjs', as: :pdfjs
 
   # Map
   match '/library', to: 'books#index', as: :library

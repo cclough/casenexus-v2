@@ -1,0 +1,30 @@
+#console_index_container {
+  width:100%;
+  height:100%;
+}
+
+#console_index_pdfjs {
+  // height:100%;
+  // width:49%;
+  float: left; height: 100%; width: 50%;
+}
+
+#console_index_pdfjs_iframe {
+  height:100%;
+  width:100%;  
+}
+
+#console_index_feedback {
+  height:100%;
+  // width:50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+#console_index_feedback_iframe {
+  height:100%;
+  width:100%;  
+}
+
+// #clear { clear: both; height: 1px; overflow: hidden; font-size:0pt; margin-top: -1px; }

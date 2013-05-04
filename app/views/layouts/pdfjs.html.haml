@@ -1,0 +1,44 @@
+!!!
+%html{:dir => "ltr", :mozdisallowselectionprint => "", :moznomarginboxes => ""}
+  %head
+    %title= full_title(yield(:title))
+
+    = stylesheet_link_tag    "pdfjs"
+
+    = javascript_include_tag "lib/pdfjs/pdf"
+
+    :javascript
+      var pdf_path = "/assets/library/#{@book.url}"
+      PDFJS.workerSrc = '/assets/lib/pdfjs/pdf.js';
+
+    / #if !(FIREFOX || MOZCENTRAL || CHROME)
+    = javascript_include_tag "lib/pdfjs/compatibility"
+    / #endif
+    = javascript_include_tag "lib/pdfjs/debugger"
+    = javascript_include_tag "lib/pdfjs/l10n"
+    = javascript_include_tag "lib/pdfjs/viewer"
+
+    /[if lte IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
+
+
+    / ALSO FOR PDFJS
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
+
+    / #if FIREFOX || MOZCENTRAL
+    / #include viewer-snippet-firefox-extension.html
+    / #endif
+
+    / #if GENERIC || CHROME
+    / #include viewer-snippet.html
+    / #endif
+
+    = csrf_meta_tags
+
+    = analytics_init if Rails.env.production?
+
+
+  %body{:tabindex => "1"}
+
+    = yield

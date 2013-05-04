@@ -29,7 +29,7 @@
         .pull-right
           .span
             .btn.btn-inverse.btn-small
-              =link_to "Do this case with a Contact", "/dashboard?id=" + books_item.id.to_s
+              =link_to "Do this case with a Contact", "/console?id=" + books_item.id.to_s
           .span.offset1
             .books_index_books_item_comments{"data-id"=>books_item.id}
               = link_to "Rate & Comment (#{books_item.comments.count})", book_path(books_item)

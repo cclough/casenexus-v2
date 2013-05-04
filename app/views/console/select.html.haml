@@ -1,0 +1,7 @@
+- if @friends.count > 0
+  - @friends.each do |friend|
+    %p 
+      =link_to friend.name, "/cases/new?user_id=#{@friend.id}"
+- else
+  %p You must have some approved case partners before you can offer feedback
+
