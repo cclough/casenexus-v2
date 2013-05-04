@@ -38,6 +38,9 @@ class CasesController < ApplicationController
 
     @case = @user.cases.build
     @case.roulette_token = params[:roulette_token] if params[:roulette_token]
+  
+    render layout: "cases_clipped"
+
   end
 
   def create

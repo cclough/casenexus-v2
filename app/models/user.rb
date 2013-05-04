@@ -228,8 +228,23 @@ class User < ActiveRecord::Base
   def validate_university_email
     if self.linkedin_uid.blank?
       begin
+
+        # crap code - looking for better on: http://stackoverflow.com/questions/16269430/rails-help-to-re-factor-messy-solution-for-searching-variable-for-substrings-fr/16274935?noredirect=1#comment23316987_16274935
         domain = self.email.split("@")[1]
-        errors.add(:email, "not from listed University") unless University.where("domain like ?", "%#{domain}").exists?
+
+        domain_test = false
+
+        University.all.each do |d|
+          if domain.include?(d.domain)
+            domain_test = true
+            break
+          end
+        end
+
+        if domain_test = false
+          errors.add(:email, "Sorry, no match found")
+        end
+
       rescue Exception => e
         errors.add(:email, "Invalid Email")
       end
