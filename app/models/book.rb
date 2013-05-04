@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
 
-  attr_accessible :btype, :title, :source_title, :desc, :uni_id, :author, :author_url, :url, :thumb, :average_rating
+  attr_accessible :btype, :title, :source_title, :desc, :university_id, :author, :author_url, :url, :thumb, :average_rating
 
   has_many :comments, as: :commentable, :after_add => :update_average_rating, :after_remove => :update_average_rating
   
