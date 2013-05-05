@@ -8,20 +8,20 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
   .field
-    Friend
-    %br/
-    = select_tag :partner_id, options_from_collection_for_select(@friends, "id", "name")
-  .field
     Date & time
     %br/
     = f.text_field :datetime
   .field
+    Friend
+    %br/
+    = f.select :partner_id, options_from_collection_for_select(@friends, "id", "name")
+  .field
     Book for your interview
     %br/
-    = select_tag :user_book_id, options_from_collection_for_select(@books, "id", "title")
+    = f.select :user_book_id, options_from_collection_for_select(@books, "id", "title")
   .field
     Book for their interview
     %br/
-    = select_tag :partner_book_id, options_from_collection_for_select(@books, "id", "title")
+    = f.select :partner_book_id, options_from_collection_for_select(@books, "id", "title")
   .actions
     = f.submit

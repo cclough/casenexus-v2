@@ -1,7 +1,6 @@
-%h1= @event.name
+%h1 Appointment with #{@event.partner.name}
 %p.info
-  Published on #{@event.published_on.strftime("%B %e, %Y")}
-= simple_format @event.content
+  Published on #{@event.datetime.strftime("%B %e, %Y")}
 %p
   = link_to "Edit event", edit_event_path(@event)
   |

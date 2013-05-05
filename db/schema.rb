@@ -93,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20130505001801) do
 
   create_table "events", :force => true do |t|
     t.integer  "user_id",         :null => false
-    t.integer  "partner_id",      :null => false
-    t.datetime "datetime",        :null => false
+    t.integer  "partner_id"
+    t.datetime "datetime"
     t.integer  "user_book_id"
     t.integer  "partner_book_id"
     t.datetime "created_at",      :null => false
