@@ -71,9 +71,6 @@ Casenexus::Application.routes.draw do
     get :select, on: :collection
   end
 
-  # match '/viewer', to: 'dashboard#index', as: :viewer
-  # match '/viewer', to: 'viewer#pdfjs', as: :pdfjs
-
   # Map
   match '/library', to: 'books#index', as: :library
 
@@ -89,6 +86,9 @@ Casenexus::Application.routes.draw do
   match '/roulette', to: 'roulette#index', as: :roulette
   match '/get_item', to: 'roulette#get_item', as: :item_roulette
   match '/get_request', to: 'roulette#get_request', as: :request_roulette
+
+  # Events
+  resources :events, except: [:destroy]
 
   # Static Pages
   match '/about', to: 'static_pages#about'

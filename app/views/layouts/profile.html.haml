@@ -3,11 +3,15 @@
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
+
     - if request.ssl?
       = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
     - else
       = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
+
     = javascript_include_tag "application"
+
+    = javascript_include_tag "events"
 
     = yield :javascript_includes
 
@@ -40,9 +44,10 @@
               = link_to "Progress", analysis_cases_path
             .row
               = link_to "Settings", edit_account_path
+            .row
+              = link_to "Calendar", events_path
         .span67
           .panel.kill_left.kill_right.kill_bottom
-            content
             = yield
 
 

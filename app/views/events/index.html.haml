@@ -1,0 +1,15 @@
+- provide(:title, 'Calendar')
+- provide(:sub_title, 'Your appointments')
+
+#events
+  %h2#month
+    = link_to "<", date: @date.prev_month
+    = @date.strftime("%B %Y")
+    = link_to ">", date: @date.next_month
+  = calendar @date do |date|
+    = date.day
+    - if @events_by_date[date]
+      %ul
+        - @events_by_date[date].each do |event|
+          %li= link_to event.datetime, event
+%p= link_to "New event", new_event_path

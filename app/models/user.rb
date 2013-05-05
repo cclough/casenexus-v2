@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   belongs_to :university
 
+  has_many :events
   has_many :comments
   has_many :cases, dependent: :destroy
   has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
@@ -230,20 +231,24 @@ class User < ActiveRecord::Base
       begin
 
         # crap code - looking for better on: http://stackoverflow.com/questions/16269430/rails-help-to-re-factor-messy-solution-for-searching-variable-for-substrings-fr/16274935?noredirect=1#comment23316987_16274935
-        domain = self.email.split("@")[1]
+        # domain = self.email.split("@")[1]
 
-        domain_test = false
+        # domain_test = false
 
-        University.all.each do |d|
-          if domain.include?(d.domain)
-            domain_test = true
-            break
-          end
-        end
+        # University.all.each do |d|
+        #   if domain.include?(d.domain)
+        #     domain_test = true
+        #     break
+        #   end
+        # end
 
-        if domain_test = false
-          errors.add(:email, "Sorry, no match found")
-        end
+        # if domain_test = false
+        #   errors.add(:email, "Sorry, no match found")
+        # end
+
+        #from SO, now need to integrate!
+        regular_expression = Regexp.new(University.all.join("$|") + "$")
+        regular_expression.match(domain)
 
       rescue Exception => e
         errors.add(:email, "Invalid Email")

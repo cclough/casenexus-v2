@@ -1,0 +1,8 @@
+%h1= @event.name
+%p.info
+  Published on #{@event.published_on.strftime("%B %e, %Y")}
+= simple_format @event.content
+%p
+  = link_to "Edit event", edit_event_path(@event)
+  |
+  \#{link_to "Back to events", events_path}
