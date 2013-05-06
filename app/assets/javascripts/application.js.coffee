@@ -4,6 +4,8 @@
 #= require jquery.ui.slider
 #= require jquery.ui.effect-slide
 #= require jquery.ui.effect
+#= require jquery.ui.widget
+#= require jquery.ui.accordion
 
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
@@ -11,7 +13,7 @@
 #= require lib/jquery.raty
 
 #= require lib/bootstrap.min
-#= require lib/bootstrap-datepicker
+#= require lib/bootstrap-datetimepicker.min
 #= require bootstrap-wysihtml5
 
 # Get query params, global function

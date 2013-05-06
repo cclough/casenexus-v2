@@ -10,7 +10,11 @@
   .field
     Date & time
     %br/
-    = f.text_field :datetime
+    #event_datetimepicker.input-append.date
+      = f.text_field :datetime, "data-format" => "dd/MM/yyyy hh:mm:ss"
+      %span.add-on
+        %i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+    
   .field
     Friend
     %br/
