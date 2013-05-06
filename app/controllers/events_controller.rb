@@ -43,4 +43,14 @@ class EventsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      redirect_to events_path, notice: "Event cancelled."
+    else
+      render :show
+    end
+  end
+    
 end

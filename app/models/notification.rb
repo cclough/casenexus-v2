@@ -2,10 +2,12 @@ class Notification < ActiveRecord::Base
   attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :event_date, :read,
                   :notificable_id, :notificable_type, :notificable
 
+  ### Relationships
   belongs_to :user
   belongs_to :sender, class_name: 'User'
   belongs_to :notificable, polymorphic: true
 
+  ### Validations
   validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
   validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
   validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
@@ -16,11 +18,15 @@ class Notification < ActiveRecord::Base
 
   validate :no_notification_to_self
   def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app); end
+  # The two validations below must be after the line above!
   validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
 
+  ### Callbacks
   after_create :send_email
 
+  scoped_search in: :sender, on: [:first_name, :last_name]
+  scoped_search on: [:content]
 
   class << self
 
@@ -35,10 +41,20 @@ class Notification < ActiveRecord::Base
     def for_display
       where("ntype != 'welcome'")
     end
-  end
 
-  scoped_search in: :sender, on: [:first_name, :last_name]
-  scoped_search on: [:content]
+
+    # these were below before in a separate 'self' - can they stay here?
+    def header(user)
+      user.notifications.for_display.where(read: false).limit(5).order('created_at desc').reverse
+    end
+
+    def history(from_id, to_id)
+      for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
+                        from_id, to_id,
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req"]])
+    end
+
+  end
 
   def read!
     update_attribute(:read, true)
@@ -66,6 +82,16 @@ class Notification < ActiveRecord::Base
         "Case partner request"
       when "friendship_app"
         "Case partner accepted"
+      when "event_set_partner"
+        "New case appointment"
+      when "event_set_sender"
+        "New case appointment"
+      when "event_cancel"
+        "Case appointment cancelled"
+      when "event_update"
+        "Case appointment updated"
+      when "event_remind"
+        "Case appointment reminder"
     end    
   end
 
@@ -84,21 +110,20 @@ class Notification < ActiveRecord::Base
       when "friendship_req"
         Rails.application.routes.url_helpers.notifications_url(host: host)
       when "friendship_app"
-        Rails.application.routes.url_helpers.map_url(host: host, user_id: sender_id)
+        Rails.application.routes.url_helpers.events_url(host: host, user_id: sender_id)
+      when "event_set_partner"
+        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+      when "event_set_sender"
+        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+      when "event_cancel"
+        Rails.application.routes.url_helpers.new_event_url(host: host)
+      when "event_update"
+        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+      when "event_remind"
+        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
     end
   end
 
-  class << self
-    def header(user)
-      user.notifications.for_display.where(read: false).limit(5).order('created_at desc').reverse
-    end
-
-    def history(from_id, to_id)
-      for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
-                        from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req"]])
-    end
-  end
 
   private
 
@@ -113,33 +138,63 @@ class Notification < ActiveRecord::Base
     case self.ntype
       when "welcome"
         UserMailer.welcome(self.user,
-                           self.url).deliver
+                           self.url
+                           self.title).deliver
       when "feedback"
         UserMailer.feedback(self.sender,
                             self.user,
                             self.url,
                             self.event_date,
-                            self.content).deliver
+                            self.content
+                            self.title).deliver
       when "feedback_req"
         UserMailer.feedback_req(self.sender,
                                 self.user,
                                 self.url,
                                 self.event_date,
-                                self.content).deliver
+                                self.content
+                                self.title).deliver
       when "message"
         UserMailer.usermessage(self.sender,
                                self.user,
                                self.url,
-                               self.content).deliver
+                               self.content
+                               self.title).deliver
       when "friendship_req"
         UserMailer.friendship_req(self.sender,
                                   self.user,
                                   self.url,
-                                  self.content).deliver
+                                  self.content
+                                  self.title).deliver
       when "friendship_app"
         UserMailer.friendship_app(self.sender,
                                   self.user,
-                                  self.url).deliver
+                                  self.url
+                                  self.title).deliver
+      when "event_set_partner"
+        UserMailer.event_set_partner(self.sender,
+                             self.user,
+                             self.notificable_id
+                             self.title).deliver
+      when "event_set_sender"
+        UserMailer.event_set_sender(self.user,
+                             self.notificable_id
+                             self.title).deliver
+      when "event_cancel"
+        UserMailer.event_cancel(self.sender,
+                                self.user,
+                                self.notificable_id
+                                self.title).deliver
+      when "event_update"
+        UserMailer.event_update(self.sender,
+                                self.user,
+                                self.notificable_id
+                                self.title).deliver
+      when "event_remind"
+        UserMailer.event_remind(self.sender,
+                                self.user,
+                                self.notificable_id
+                                self.title).deliver
     end
   end
 

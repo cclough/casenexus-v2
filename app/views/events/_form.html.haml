@@ -22,10 +22,10 @@
   .field
     Book for your interview
     %br/
-    = f.select :user_book_id, options_from_collection_for_select(@books, "id", "title")
+    = f.select :book_id_user, options_from_collection_for_select(@books, "id", "title")
   .field
     Book for their interview
     %br/
-    = f.select :partner_book_id, options_from_collection_for_select(@books, "id", "title")
+    = f.select :book_id_partner, options_from_collection_for_select(@books, "id", "title")
   .actions
     = f.submit

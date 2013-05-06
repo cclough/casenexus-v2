@@ -1,30 +1,32 @@
 class UserMailer < ActionMailer::Base
 
   default from: "mailer@casenexus.com"
+  subject_prefix = "casenexus.com: "
 
   layout 'email'
 
-
-  def welcome(user_target, url)
+  def welcome(user_target, url, title)
     @user_target = user_target
     @url = url
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: Welcome")
+    mail(to: email_with_name, subject: subject_prefix + title)
   end
+
 
   # conflicts with actionmailer function if just called message
-  def usermessage(user_from, user_target, url, message)
+  def usermessage(user_from, user_target, url, message, title)
     @user_from = user_from
     @user_target = user_target
     @url = url
     @message = message
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: You have a message")
+    mail(to: email_with_name, subject: subject_prefix + title)
   end
 
-  def feedback_req(user_from, user_target, url, date, subject)
+
+  def feedback_req(user_from, user_target, url, date, subject, title)
     @user_from = user_from
     @user_target = user_target
     @url = url
@@ -32,10 +34,10 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: You have a feedback request")
+    mail(to: email_with_name, subject: subject_prefix + title)
   end
 
-  def feedback(user_from, user_target, url, date, subject)
+  def feedback(user_from, user_target, url, date, subject, title)
     @user_from = user_from
     @user_target = user_target
     @url = url
@@ -43,33 +45,79 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: You have new case feedback")
+    mail(to: email_with_name, subject: subject_prefix + title)
   end
 
-  def friendship_req(user_from, user_target, url, message)
+
+  def friendship_req(user_from, user_target, url, message, title)
     @user_from = user_from
     @user_target = user_target
     @url = url
     @message = message
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: You have a Case Partner request")
+    mail(to: email_with_name, subject: subject_prefix + title)
   end
 
-  def friendship_app(user_from, user_target, url)
+  def friendship_app(user_from, user_target, url, title)
     @user_from = user_from
     @user_target = user_target
     @url = url
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: Your Case Partner request has been accepted")
+    mail(to: email_with_name, subject: subject_prefix + title)
   end
+
+  def event_set_partner(user_from, user_target, event_id, title)
+    @user_from = user_from
+    @user_target = user_target
+    @event = Event.find(event_id)
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: subject_prefix + title)
+  end
+
+  def event_set_sender(user_target, event_id, title)
+    @user_target = user_target
+    @event = Event.find(event_id)
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: subject_prefix + title)
+  end
+
+  def event_cancel(user_from, user_target, event_id, title)
+    @user_from = user_from
+    @user_target = user_target
+    @event = Event.find(event_id)
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: subject_prefix + title)
+  end
+
+  def event_update(user_from, user_target, event_id, title)
+    @user_from = user_from
+    @user_target = user_target
+    @event = Event.find(event_id)
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: subject_prefix + title)
+  end
+
+  def event_remind(user_from, user_target, event_id, title)
+    @user_from = user_from
+    @user_target = user_target
+    @event = Event.find(event_id)
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: subject_prefix + title)
+  end
+
 
   def password_reset(user)
     @user_target = user
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: Password Reset")
+    mail(to: email_with_name, subject: subject_prefix + "Password Reset")
   end
 
   def invitation(invitation)
@@ -106,14 +154,14 @@ class UserMailer < ActionMailer::Base
     @user = user
     email_with_name = "#{user.name} <#{@user.email}>"
 
-    mail(to: email_with_name, subject: "casenexus.com: Your status was approved")
+    mail(to: email_with_name, subject: subject_prefix + "Your status was approved")
   end
 
   def status_rejected(user)
     @user = user
     email_with_name = "#{user.name} <#{@user.email}>"
 
-    mail(to: email_with_name, subject: "casenexus.com: Your status was rejected")
+    mail(to: email_with_name, subject: subject_prefix + "Your status was rejected")
   end
 
   def moderation_to_admin(user)
