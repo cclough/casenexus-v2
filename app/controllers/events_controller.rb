@@ -5,8 +5,35 @@ class EventsController < ApplicationController
 
   layout 'profile'
 
+  require 'icalendar'
+
+  def ics
+
+    @calendar = Icalendar::Calendar.new
+    
+    @events = current_user.events
+    @events.each do |event|
+      @calendar.event do
+        start       event.datetime.strftime("%Y%m%dT%H%M%S")
+        summary     "Case Appt: " + event.partner.name
+        description "casenexus.com: case appointment with " + event.partner.name
+        location    "Skype or in person"
+        alarm do
+          action    "DISPLAY" # This line isn't necessary, it's the default
+          summary   "Alarm notification"
+          trigger   "-PT3M" # 15 minutes before
+        end
+      end
+    end
+
+    @calendar.publish
+    headers['Content-Type'] = "text/calendar; charset=UTF-8"
+    render :text => @calendar.to_ical
+
+  end
+
   def index
-    @events_by_date = Event.all.group_by {|i| i.datetime.to_date}
+    @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 

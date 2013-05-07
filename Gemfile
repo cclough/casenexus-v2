@@ -23,6 +23,7 @@ gem 'newrelic_rpm'                               # New Relic
 gem 'google-analytics-rails'                     # Google Analytics
 gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
 gem 'country-select'                             # Country select for admin
+gem 'icalendar'                                  # ICS output for calendar
 
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails

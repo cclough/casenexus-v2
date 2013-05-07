@@ -88,7 +88,9 @@ Casenexus::Application.routes.draw do
   match '/get_request', to: 'roulette#get_request', as: :request_roulette
 
   # Events
-  resources :events
+  resources :events do
+    get :ics, on: :collection
+  end
 
   # Static Pages
   match '/about', to: 'static_pages#about'
