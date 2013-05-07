@@ -1,11 +1,12 @@
 class Friendship < ActiveRecord::Base
-  has_many :notifications, as: :notificable, dependent: :destroy
-
   attr_accessible :user_id, :user, :friend_id, :friend, :invitation_message, :status, :accepted_at, :rejected_at, :blocked_at
 
+  ### Associations
+  has_many :notifications, as: :notificable, dependent: :destroy
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
 
+  ### Validations
   validates :user_id, presence: true
   validates :friend_id, presence: true
   validates :status, presence: true, inclusion: { in: [0, 1, 2, 3, 4] }
@@ -146,6 +147,8 @@ class Friendship < ActiveRecord::Base
   private
 
   class << self
+
+    
     # Update the db with one side of an accepted connection request.
     def accept_one_side(user, friend, accepted_at)
       fs = friendship(user, friend)
@@ -173,6 +176,8 @@ class Friendship < ActiveRecord::Base
       fs.update_attributes!(status: REQUESTED, blocked_at: nil)
       fs
     end
+
+
 
     # Notificates that a friendship has been requested
     def send_friend_request(sender, friend, invitation_message, friendship)

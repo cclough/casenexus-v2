@@ -41,7 +41,6 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      #redirect_to action: :index
       redirect_to notifications_path
     end
   end
@@ -53,7 +52,6 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      #redirect_to action: :index
       redirect_to notifications_path
     end
   end
@@ -70,7 +68,6 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      #redirect_to action: :index
       redirect_to notifications_path
     end
   end
@@ -82,7 +79,6 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      #redirect_to action: :index
       redirect_to notifications_path
     end
   end
@@ -94,7 +90,6 @@ class FriendshipsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      #redirect_to action: :index
       redirect_to notifications_path
     end
   end

@@ -21,9 +21,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(params[:event])
-    if @event.save
-      redirect_to @event, notice: "Appointment booked."
+    @event = Event.new(params[:event])
+    #if @event.save
+    if Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
+      flash[:success] = "Appointment booked."
+      redirect_to @event
     else
       render :new
     end
@@ -38,18 +40,22 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
-      redirect_to @event, notice: "Appointment updated."
+      flash[:success] = "Appointment updated."
+      redirect_to @event
     else
       render :edit
     end
   end
 
   def destroy
-    @event = Event.find(params[:id])
-    if @event.destroy
-      redirect_to events_path, notice: "Appointment cancelled."
+    #@event = Event.find(params[:id])
+    @event = current_user.events.find(params[:id])
+    Event.cancel(@event.user, @event.partner)
+    flash[:success] = "Appointment cancelled. " + @event.partner.first_name + " has been notified."
+    if params[:back_url]
+      redirect_to params[:back_url]
     else
-      render :show
+      redirect_to events_path
     end
   end
     

@@ -176,12 +176,12 @@ class Notification < ActiveRecord::Base
                                   self.title).deliver
       when "event_set_partner"
         UserMailer.event_set_partner(self.sender,
-                             self.user,
-                             self.notificable_id,
-                             self.title,
-                             self.url).deliver
+                                     self.user,
+                                     self.notificable_id,
+                                     self.title,
+                                     self.url).deliver
       when "event_set_sender"
-        UserMailer.event_set_sender(self.sender,
+        UserMailer.event_set_sender(self.user,
                                     self.notificable_id,
                                     self.title,
                                     self.url).deliver

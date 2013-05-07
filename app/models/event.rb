@@ -1,10 +1,10 @@
 class Event < ActiveRecord::Base
-  attr_accessible :partner, :partner_id, :book_id_user, :book_id_partner, :datetime
+  attr_accessible :user, :user_id, :partner, :partner_id, :book_id_user, :book_id_partner, :datetime
 
   ### Relationships
 	belongs_to :user
   belongs_to :partner, class_name: 'User'
-  has_many :notifications, as: :notificable, dependent: :destroy
+  has_many :notifications, as: :notificable
 
   ### Validations
   validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
@@ -13,54 +13,84 @@ class Event < ActiveRecord::Base
   validates :partner, presence: true, if: Proc.new { |n| n.partner_id.nil? }
 
 	### Callbacks
-  after_create :create_notifications_for_create
-  before_destroy :create_notifications_for_destroy
+  # after_create :create_notifications_for_create
+  # before_destroy :create_notifications_for_destroy
   after_update :create_notifications_for_update
 
+
   def send_reminders
-    self.partner.notifications.create(sender_id: self.user_id,
-                                      ntype: "event_set_partner",
-                                      notificable: self)
-    self.user.notifications.create(sender_id: self.partner_id,
-                                   ntype: "event_set_sender",
-                                   notificable: self)    
+    # TBC
+    # CALLED FROM SCHEDULER.RAKE
   end
+
+
+  class << self
+
+    def set(user, partner, datetime, book_id_user, book_id_partner)
+      # ?if statement to check for duplicates/other on same day?
+      transaction do
+        notificable = create!(user: user, partner: partner, datetime: datetime, book_id_user: book_id_user, book_id_partner: book_id_partner)
+        create_notification_for_create(user, partner, notificable, "event_set_sender")
+
+        notificable = create!(user: partner, partner: user, datetime: datetime, book_id_user: book_id_partner, book_id_partner: book_id_user)
+        create_notification_for_create(partner, user, notificable, "event_set_partner")
+      end
+    end
+
+    def cancel(user, partner)
+      transaction do
+        # sent to self so user, user
+        create_notification_for_destroy(user, user, event(user, partner), "event_cancel") 
+        destroy(event(user, partner))
+
+        create_notification_for_destroy(partner, user, event(partner, user), "event_cancel")
+        destroy(event(partner, user))
+      end
+    end
+
+    # Return a event based on the user and partner (used in e.g. cancel method)
+    def event(user, partner)
+      Event.where("user_id = ? and partner_id = ?", user.id, partner.id).first
+    end
+
+  end
+
 
   private
 
-  def create_notifications_for_create
-    self.partner.notifications.create(sender_id: self.user_id,
-                                   	  ntype: "event_set_partner",
-                                   		notificable: self)
-    self.user.notifications.create(sender_id: self.partner_id,
-                                   ntype: "event_set_sender",
-                                   notificable: self)
-  end
+  class << self
 
-  def create_notifications_for_destroy
-    self.partner.notifications.create(sender_id: self.user_id,
-                                      ntype: "event_cancel",
-                                   		notificable: self)
-    self.user.notifications.create(sender_id: self.user_id,
-                                   ntype: "event_cancel",
-                                   notificable: self)
-  end
+    def create_notification_for_create(user, partner, notificable, ntype)
+      Notification.create!(user: user,
+                           sender: partner,
+                           ntype: ntype,
+                           notificable: notificable)
+    end
 
-  def create_notifications_for_update
-    self.partner.notifications.create(sender_id: self.user_id,
-                                      ntype: "event_update",
-                                   		notificable: self)
-    self.user.notifications.create(sender_id: self.user_id,
-                                   ntype: "event_update",
-                                   notificable: self)
-  end
+    def create_notification_for_destroy(user, partner, notificable, ntype)
+      Notification.create!(user: user,
+                           sender: partner,
+                           ntype: ntype,
+                           notificable: notificable)
+    end
 
-  def create_notifications_for_remind
-    self.partner.notifications.create(sender_id: self.user_id,
-                                      ntype: "event_remind",
-                                   		notificable: self)
-    self.user.notifications.create(sender_id: self.user_id,
-                                   ntype: "event_remind",
-                                   notificable: self)
+    def create_notifications_for_update
+      self.partner.notifications.create(sender_id: self.user_id,
+                                        ntype: "event_update",
+                                     		notificable: self)
+      self.user.notifications.create(sender_id: self.user_id,
+                                     ntype: "event_update",
+                                     notificable: self)
+    end
+
+    def create_notifications_for_remind
+      self.partner.notifications.create(sender_id: self.user_id,
+                                        ntype: "event_remind",
+                                     		notificable: self)
+      self.user.notifications.create(sender_id: self.user_id,
+                                     ntype: "event_remind",
+                                     notificable: self)
+    end
+
   end
 end
