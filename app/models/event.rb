@@ -12,10 +12,7 @@ class Event < ActiveRecord::Base
   validates :partner_id, presence: true, if: Proc.new { |n| n.partner.nil? }
   validates :partner, presence: true, if: Proc.new { |n| n.partner_id.nil? }
 
-	### Callbacks
-  # after_create :create_notifications_for_create
-  # before_destroy :create_notifications_for_destroy
-  after_update :create_notifications_for_update
+
 
 
   def send_reminders
@@ -48,6 +45,22 @@ class Event < ActiveRecord::Base
       end
     end
 
+    def change(user, partner, datetime, book_id_user, book_id_partner)
+      # ?if statement to check for duplicates/other on same day?
+      transaction do
+        event = event(user, partner)
+        event.update_attributes!(datetime: datetime, book_id_user: book_id_user, book_id_partner: book_id_partner)
+        event
+        # sent to self so user, user
+        create_notification_for_change(user, user, event, "event_change")
+
+        event = event(partner, user)
+        event.update_attributes!(datetime: datetime, book_id_user: book_id_partner, book_id_partner: book_id_user)
+        event
+        create_notification_for_change(partner, user, event, "event_change")
+      end
+    end
+
     # Return a event based on the user and partner (used in e.g. cancel method)
     def event(user, partner)
       Event.where("user_id = ? and partner_id = ?", user.id, partner.id).first
@@ -74,22 +87,11 @@ class Event < ActiveRecord::Base
                            notificable: notificable)
     end
 
-    def create_notifications_for_update
-      self.partner.notifications.create(sender_id: self.user_id,
-                                        ntype: "event_update",
-                                     		notificable: self)
-      self.user.notifications.create(sender_id: self.user_id,
-                                     ntype: "event_update",
-                                     notificable: self)
-    end
-
-    def create_notifications_for_remind
-      self.partner.notifications.create(sender_id: self.user_id,
-                                        ntype: "event_remind",
-                                     		notificable: self)
-      self.user.notifications.create(sender_id: self.user_id,
-                                     ntype: "event_remind",
-                                     notificable: self)
+    def create_notification_for_change(user, partner, notificable, ntype)
+      Notification.create!(user: user,
+                           sender: partner,
+                           ntype: ntype,
+                           notificable: notificable)
     end
 
   end

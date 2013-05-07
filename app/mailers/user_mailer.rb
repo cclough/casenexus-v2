@@ -96,7 +96,7 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def event_update(user_from, user_target, event_id, title, url)
+  def event_change(user_from, user_target, event_id, title, url)
     @user_from = user_from
     @user_target = user_target
     @event = Event.find(event_id)

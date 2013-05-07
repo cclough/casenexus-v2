@@ -47,8 +47,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = current_user.events.find(params[:id])
+    if Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
+      flash[:success] = "Appointment updated. " + @event.partner.first_name + " has been notified."
+      redirect_to @event
+    else
+      redirect_to events_path
+    end
+  end
+
   def destroy
-    #@event = Event.find(params[:id])
     @event = current_user.events.find(params[:id])
     Event.cancel(@event.user, @event.partner)
     flash[:success] = "Appointment cancelled. " + @event.partner.first_name + " has been notified."
