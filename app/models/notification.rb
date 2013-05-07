@@ -130,7 +130,7 @@ class Notification < ActiveRecord::Base
   def no_notification_to_self
     if !user_id.blank?
       #exclude event notifications as they simulatenously send to self
-      unless self.ntype == 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_update' || 'event_remind'
+      unless self.ntype == "event_set_partner" || "event_set_sender" || "event_cancel" || "event_update" || "event_remind"
         errors.add(:user_id, "Cannot send a notification to self") if self.user_id == self.sender_id
       end
     end

@@ -17,6 +17,15 @@ class Event < ActiveRecord::Base
   before_destroy :create_notifications_for_destroy
   after_update :create_notifications_for_update
 
+  def send_reminders
+    self.partner.notifications.create(sender_id: self.user_id,
+                                      ntype: "event_set_partner",
+                                      notificable: self)
+    self.user.notifications.create(sender_id: self.partner_id,
+                                   ntype: "event_set_sender",
+                                   notificable: self)    
+  end
+
   private
 
   def create_notifications_for_create
