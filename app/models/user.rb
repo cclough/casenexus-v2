@@ -36,12 +36,14 @@ class User < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
+  # Callbacks
   before_create :generate_roulette_token
   before_create :set_headline_and_university
   before_save { |user| user.email = user.email.downcase }
   before_update :update_status_moderated
   after_create :update_invitation
   after_save :send_welcome
+
   # Geocode
   after_validation :geocode, :reverse_geocode
 

@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
 
 	### Callbacks
   after_create :create_notifications_for_create
-  after_destroy :create_notifications_for_destroy
+  before_destroy :create_notifications_for_destroy
   after_update :create_notification_for_update
 
   private
@@ -29,28 +29,28 @@ class Event < ActiveRecord::Base
   end
 
   def create_notifications_for_destroy
-    self.partner.notifications.create(partner_id: self.user_id,
+    self.partner.notifications.create(sender_id: self.user_id,
                                       ntype: "event_cancel",
                                    		notificable: self)
-    self.user.notifications.create(partner_id: self.user_id,
+    self.user.notifications.create(sender_id: self.user_id,
                                    ntype: "event_cancel",
                                    notificable: self)
   end
 
   def create_notifications_for_update
-    self.partner.notifications.create(partner_id: self.user_id,
+    self.partner.notifications.create(sender_id: self.user_id,
                                       ntype: "event_update",
                                    		notificable: self)
-    self.user.notifications.create(partner_id: self.user_id,
+    self.user.notifications.create(sender_id: self.user_id,
                                    ntype: "event_update",
                                    notificable: self)
   end
 
   def create_notifications_for_remind
-    self.partner.notifications.create(partner_id: self.user_id,
+    self.partner.notifications.create(sender_id: self.user_id,
                                       ntype: "event_remind",
                                    		notificable: self)
-    self.user.notifications.create(partner_id: self.user_id,
+    self.user.notifications.create(sender_id: self.user_id,
                                    ntype: "event_remind",
                                    notificable: self)
   end

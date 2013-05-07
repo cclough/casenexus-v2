@@ -39,12 +39,12 @@ class NotificationsController < ApplicationController
 
       if @notification.save
         case params[:notification][:ntype]
-          when "feedback_req"
-            format.js
-            flash.now[:success] = 'Feedback request sent'
           when "message"
             format.js
             flash.now[:success] = 'Message sent'
+          when "feedback_req"
+            format.js
+            flash.now[:success] = 'Feedback request sent'
           when "friendship_req"
             flash.now[:success] = 'Case Partner request sent'
             format.js

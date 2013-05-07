@@ -12,12 +12,12 @@ class Notification < ActiveRecord::Base
   validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
   validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
   validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
-  validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
-  validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback' }
+  validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback' || 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_update' || 'event_remind'}
+  validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback' || 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_update' || 'event_remind' }
   validates :content, length: { maximum: 500 }
 
   validate :no_notification_to_self
-  def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app); end
+  def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app event_set_partner event_set_sender event_cancel event_update event_remind); end
   # The two validations below must be after the line above!
   validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
@@ -51,7 +51,7 @@ class Notification < ActiveRecord::Base
     def history(from_id, to_id)
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
                         from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req"]])
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req","friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_update","event_remind"]])
     end
 
   end
@@ -129,7 +129,7 @@ class Notification < ActiveRecord::Base
 
   def no_notification_to_self
     if !user_id.blank?
-      errors.add(:user_id, "cannot send notification to self") if self.user_id == self.sender_id
+      errors.add(:user_id, "Cannot send a notification to self") if self.user_id == self.sender_id
     end
   end
 
@@ -138,63 +138,68 @@ class Notification < ActiveRecord::Base
     case self.ntype
       when "welcome"
         UserMailer.welcome(self.user,
-                           self.url
+                           self.url,
                            self.title).deliver
       when "feedback"
         UserMailer.feedback(self.sender,
                             self.user,
                             self.url,
                             self.event_date,
-                            self.content
+                            self.content,
                             self.title).deliver
       when "feedback_req"
         UserMailer.feedback_req(self.sender,
                                 self.user,
                                 self.url,
                                 self.event_date,
-                                self.content
+                                self.content,
                                 self.title).deliver
       when "message"
         UserMailer.usermessage(self.sender,
                                self.user,
                                self.url,
-                               self.content
+                               self.content,
                                self.title).deliver
       when "friendship_req"
         UserMailer.friendship_req(self.sender,
                                   self.user,
                                   self.url,
-                                  self.content
+                                  self.content,
                                   self.title).deliver
       when "friendship_app"
         UserMailer.friendship_app(self.sender,
                                   self.user,
-                                  self.url
+                                  self.url,
                                   self.title).deliver
       when "event_set_partner"
         UserMailer.event_set_partner(self.sender,
                              self.user,
-                             self.notificable_id
-                             self.title).deliver
+                             self.notificable_id,
+                             self.title,
+                             self.url).deliver
       when "event_set_sender"
         UserMailer.event_set_sender(self.user,
-                             self.notificable_id
-                             self.title).deliver
+                             self.notificable_id,
+                             self.title,
+                             self.url).deliver
       when "event_cancel"
         UserMailer.event_cancel(self.sender,
                                 self.user,
-                                self.notificable_id
-                                self.title).deliver
+                                self.notificable_id,
+                                self.title,
+                                self.url).deliver
       when "event_update"
         UserMailer.event_update(self.sender,
                                 self.user,
-                                self.notificable_id
-                                self.title).deliver
+                                self.notificable_id,
+                                self.title,
+                                self.url).deliver
       when "event_remind"
         UserMailer.event_remind(self.sender,
                                 self.user,
-                                self.notificable_id
-                                self.title).deliver
+                                self.notificable_id,
+                                self.title,
+                                self.url).deliver
     end
   end
 

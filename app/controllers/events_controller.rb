@@ -23,7 +23,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.new(params[:event])
     if @event.save
-      redirect_to @event, notice: "Created event."
+      redirect_to @event, notice: "Appointment booked."
     else
       render :new
     end
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
-      redirect_to @event, notice: "Updated event."
+      redirect_to @event, notice: "Appointment updated."
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     if @event.destroy
-      redirect_to events_path, notice: "Event cancelled."
+      redirect_to events_path, notice: "Appointment cancelled."
     else
       render :show
     end
