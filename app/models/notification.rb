@@ -129,7 +129,10 @@ class Notification < ActiveRecord::Base
 
   def no_notification_to_self
     if !user_id.blank?
-      errors.add(:user_id, "Cannot send a notification to self") if self.user_id == self.sender_id
+      #exclude event notifications as they simulatenously send to self
+      unless self.ntype == 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_update' || 'event_remind'
+        errors.add(:user_id, "Cannot send a notification to self") if self.user_id == self.sender_id
+      end
     end
   end
 
@@ -178,10 +181,10 @@ class Notification < ActiveRecord::Base
                              self.title,
                              self.url).deliver
       when "event_set_sender"
-        UserMailer.event_set_sender(self.user,
-                             self.notificable_id,
-                             self.title,
-                             self.url).deliver
+        UserMailer.event_set_sender(self.sender,
+                                    self.notificable_id,
+                                    self.title,
+                                    self.url).deliver
       when "event_cancel"
         UserMailer.event_cancel(self.sender,
                                 self.user,

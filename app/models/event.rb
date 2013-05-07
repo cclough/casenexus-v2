@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 	### Callbacks
   after_create :create_notifications_for_create
   before_destroy :create_notifications_for_destroy
-  after_update :create_notification_for_update
+  after_update :create_notifications_for_update
 
   private
 
@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
     self.partner.notifications.create(sender_id: self.user_id,
                                    	  ntype: "event_set_partner",
                                    		notificable: self)
-    self.user.notifications.create(sender_id: self.user_id,
+    self.user.notifications.create(sender_id: self.partner_id,
                                    ntype: "event_set_sender",
                                    notificable: self)
   end

@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   layout 'profile'
 
   def index
-    @events_by_date = Event.all.group_by {|i| i.created_at.to_date}
+    @events_by_date = Event.all.group_by {|i| i.datetime.to_date}
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
