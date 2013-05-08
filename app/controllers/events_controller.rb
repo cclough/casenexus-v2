@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
-  before_filter :authenticate_user!
-  before_filter :completed_user
+  before_filter :authenticate_user!, :except => [:ics]
+  before_filter :completed_user, :except => [:ics]
 
   layout 'profile'
 
