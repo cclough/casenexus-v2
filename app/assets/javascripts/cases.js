@@ -592,7 +592,7 @@ $(document).ready(function(){
     }
   });
 
-  $("#cases_new_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+  $("#cases_new_datepicker").datetimepicker({ "pickSeconds": false });
   // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
   
   $('[name="case[businessanalytics_comment]"]').wysihtml5({
