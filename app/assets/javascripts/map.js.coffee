@@ -14,17 +14,17 @@ window.map_index_user_border_height = ->
 
 window.map_index_map_marker_click = (marker_id) ->
   # Show User Panel
-  $('#map_index_mapcontainer_user').hide "slide", { direction: "right" }, 200, ->
-  #$("#map_index_mapcontainer_user").fadeOut "fast", ->
+  # $('#map_index_mapcontainer_user').hide "slide", { direction: "right" }, 200, ->
+  # #$("#map_index_mapcontainer_user").fadeOut "fast", ->
 
     $.get "/members/" + marker_id, (data) ->
 
-      # Insert ajax data!
-      $("#map_index_user").html data
+      # # Insert ajax data!
+      # $("#map_index_user").html data
 
       # Code for 'close button'
-      $("#map_index_show_close").click ->
-        $("#map_index_mapcontainer_user").fadeOut "slow"
+      # $("#map_index_show_close").click ->
+      #   $("#map_index_mapcontainer_user").fadeOut "slow"
 
       # Modal Stuff!
       $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal
@@ -80,7 +80,7 @@ window.map_index_map_marker_click = (marker_id) ->
 
         # Fade panel back in
         # $("#map_index_mapcontainer_user").fadeIn "fast"
-        $('#map_index_mapcontainer_user').show "slide", { direction: "right" }, 200
+        # $('#map_index_mapcontainer_user').show "slide", { direction: "right" }, 200
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
@@ -245,7 +245,7 @@ $(document).ready ->
         position: google.maps.ControlPosition.LEFT_CENTER
 
     # Create the map
-    window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
+    window.map = new google.maps.Map(document.getElementById("map_index_container_map"), mapOptions)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
@@ -272,8 +272,8 @@ $(document).ready ->
           shadow: shadow
           animation: google.maps.Animation.DROP
         )
-        google.maps.event.addListener marker, "mouseover", ->
-          map_index_mappanel_tooltip(marker.id)
+        # google.maps.event.addListener marker, "mouseover", ->
+        #   map_index_mappanel_tooltip(marker.id)
 
         google.maps.event.addListener marker, "click", ->
           map_index_map_marker_locate(marker)
@@ -309,15 +309,15 @@ $(document).ready ->
       marker.setAnimation(null)
     ), 1440
 
-  map_index_mappanel_tooltip = (marker_id) ->
-    $.get "/members/" + marker_id + "/tooltip", (data) ->
-      $("#map_index_mappanel_tooltip").html data
+  # map_index_mappanel_tooltip = (marker_id) ->
+  #   $.get "/members/" + marker_id + "/tooltip", (data) ->
+  #     $("#map_index_mappanel_tooltip").html data
 
-      # Code for 'close button'
-      $("#map_index_mappanel_tooltip_close").click ->
-        $("#map_index_mappanel_tooltip").fadeOut "fast"
+  #     # Code for 'close button'
+  #     $("#map_index_mappanel_tooltip_close").click ->
+  #       $("#map_index_mappanel_tooltip").fadeOut "fast"
 
-      $("#map_index_mappanel_tooltip").fadeIn "fast"
+  #     $("#map_index_mappanel_tooltip").fadeIn "fast"
 
   $(".chzn-select").chosen().change ->
     latlng_chosen = $(this).find("option:selected").val().split("_")

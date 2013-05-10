@@ -23,50 +23,45 @@
         window.map_index_map_marker_click("#{current_user.id}");
       }), 1000
 
-  - if current_user.help_2_checked
-    :javascript
-      $(document).ready(function() {
-        google.maps.event.addListenerOnce(map, 'idle', function(){
-          window.application_show_help(2);
-        });
-      });
-
-#map_index_map_footerspacer
-
-#map_index_mappanel_control.map_index_mappanel
-  = render 'control'
-#map_index_mappanel_tooltip.map_index_mappanel
-#map_index_mappanel_footer.map_index_mappanel
-  = render 'footer_map'
+  / - if current_user.help_2_checked
+  /   :javascript
+  /     $(document).ready(function() {
+  /       google.maps.event.addListenerOnce(map, 'idle', function(){
+  /         window.application_show_help(2);
+  /       });
+  /     });
 
 
 
-#map_index_mapcontainer_users
-  .row
-    .span.map_index_users_border.side
-    .span
+/ #map_index_map_footerspacer
+
+/ #map_index_mappanel_control.map_index_mappanel
+/   = render 'control'
+/ #map_index_mappanel_tooltip.map_index_mappanel
+/ #map_index_mappanel_footer.map_index_mappanel
+/   = render 'footer_map'
+
+
+#map_index_container
+
+  #map_index_container_users
+    .row
       = render '/members/users_form'
       #map_index_users
       / content is rendered by members#index.js.erb
-    .span.map_index_users_border.side
-  .row
-    .span.map_index_users_border.bottom
 
 
+  #map_index_container_map.map
 
-#map_index_container_map
-
-#map_index_map.map
-
-  .row
-    .span.map_index_user_border.top
-  .row
-    .span.map_index_user_border.side
-    .span
-      #map_index_user
-      / content is rendered by on marker click (in users.js)
-    .span.map_index_user_border.side
-  .row
-    .span.map_index_user_border.bottom
-  
+    .row
+      .span.map_index_user_border.top
+    .row
+      .span.map_index_user_border.side
+      .span
+        #map_index_user
+        / content is rendered by on marker click (in users.js)
+      .span.map_index_user_border.side
+    .row
+      .span.map_index_user_border.bottom
+    
 
