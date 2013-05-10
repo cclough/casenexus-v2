@@ -136,7 +136,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       confirm_tac: true,
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  admin.status_approved = true
   admin.completed = true
   admin.admin = true
   admin.save!
@@ -160,7 +159,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       confirm_tac: true,
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  admin.status_approved = true
   admin.completed = true
   admin.admin = true
   admin.save!
@@ -185,7 +183,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
-  admin.status_approved = true
   admin.completed = true
   admin.admin = true
   admin.save!

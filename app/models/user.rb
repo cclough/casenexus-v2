@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
                   :skype, :linkedin, :email_admin, :email_users, :confirm_tac, :university, :university_id,
-                  :invitation_code, :linkedin_name, :status_moderated, :status_approved, :ip_address
+                  :invitation_code, :linkedin_name, :ip_address
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
@@ -38,9 +38,9 @@ class User < ActiveRecord::Base
 
   # Callbacks
   before_create :generate_roulette_token
-  before_create :set_headline_and_university
+  before_create :set_university
   before_save { |user| user.email = user.email.downcase }
-  before_update :update_status_moderated
+  before_create :send_newuser_email_to_admin
   after_create :update_invitation
   after_save :send_welcome
 
@@ -110,12 +110,12 @@ class User < ActiveRecord::Base
 
   # Filters
   class << self
-    def approved
-      where(status_approved: true)
+    def active
+      where(active: true)
     end
 
-    def unapproved
-      where(status_approved: false)
+    def inactive
+      where(active: false)
     end
 
     def list_local(user)
@@ -150,9 +150,6 @@ class User < ActiveRecord::Base
       where("admin = false")
     end
 
-    def status_approved
-      where("status_approved = true")
-    end
   end
 
   def to_s
@@ -166,23 +163,8 @@ class User < ActiveRecord::Base
     self.roulette_token
   end
 
-  def status_approve!
-    self.update_attribute(:status_approved, true)
-    self.update_attribute(:status_moderated, true)
-    UserMailer.status_approved(self).deliver
-  end
-
-  def status_reject!
-    self.update_attribute(:status_approved, false)
-    self.update_attribute(:status_moderated, true)
-    UserMailer.status_rejected(self).deliver
-  end
 
   private
-
-  def geocode_by_hand
-
-  end
 
   def validate_invitation
     return if self.invitation_code == "BYPASS_CASENEXUS_INV"
@@ -199,14 +181,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Set the moderated and approved tag to false if its updated
-  def update_status_moderated
-    if self.status_was != self.status
-      self.status_approved = false
-      self.status_moderated = false
-      Rails.logger.info("STATUS MODERATED")
-      UserMailer.moderation_to_admin(self).deliver
-    end
+  def send_newuser_email_to_admin
+    UserMailer.newuser_to_admin(self).deliver
   end
 
   def update_invitation
@@ -220,11 +196,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def set_headline_and_university
+  def set_university
     domain = self.email.split("@")[1]
     if University.where(domain: domain).exists?
       self.university = University.where(domain: domain).first
-      self.headline = "Student at #{university.name}" if self.headline.blank?
     end
   end
 

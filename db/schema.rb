@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505001801) do
+ActiveRecord::Schema.define(:version => 20130509224957) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -205,19 +205,15 @@ ActiveRecord::Schema.define(:version => 20130505001801) do
     t.string   "linkedin_secret"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "headline"
     t.float    "lat"
     t.float    "lng"
     t.string   "skype"
     t.boolean  "completed",              :default => false, :null => false
-    t.text     "status"
-    t.boolean  "status_approved",        :default => false, :null => false
     t.string   "roulette_token",                            :null => false
     t.string   "city"
     t.string   "country"
     t.integer  "university_id"
     t.datetime "last_online_at"
-    t.boolean  "status_moderated",       :default => false, :null => false
     t.boolean  "email_admin",            :default => true
     t.boolean  "email_users",            :default => true
     t.boolean  "help_1_checked",         :default => true,  :null => false

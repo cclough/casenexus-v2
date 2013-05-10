@@ -154,24 +154,10 @@ class UserMailer < ActionMailer::Base
     mail(to: receiver, subject: "Site Bug")
   end
 
-  def status_approved(user)
-    @user = user
-    email_with_name = "#{user.name} <#{@user.email}>"
-
-    mail(to: email_with_name, subject: "casenexus.com: " + "Your status was approved")
-  end
-
-  def status_rejected(user)
-    @user = user
-    email_with_name = "#{user.name} <#{@user.email}>"
-
-    mail(to: email_with_name, subject: "casenexus.com: " + "Your status was rejected")
-  end
-
-  def moderation_to_admin(user)
+  def newuser_to_admin(user)
     @user = user
 
-    mail(to: "info@casenexus.com", subject: "User moderation required")
+    mail(to: "info@casenexus.com", subject: "New User")
   end
 
 end
