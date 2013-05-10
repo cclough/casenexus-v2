@@ -8,10 +8,7 @@
         .input-append
           = f.password_field :password, class: 'span15', tabindex: "2", placeholder: "Password", id: "header_signin_password"
           %button.btn.btn-inverse.application_tooltip{:href => "#", :type => "submit", tabindex: "3", id: "static_home_signin", "data-original-title"=>"Sign in with your university email", rel: "tooltip", "data-placement"=>"bottom"}
-            %i.icon-arrow-right.icon-white
-      .span6
-        %a#header_signin_button_linkedin.btn.btn-inverse.application_tooltip{ href: user_omniauth_authorize_path('linkedin'), tabindex: "4", "data-original-title"=>"Sign in with your LinkedIn account", rel: "tooltip", "data-placement"=>"bottom"}
-          = image_tag 'icons/linkedin_button_signin.png'
+            %i.icon-arrow-right.icon-whit
     .row
       .span17#header_signin_forgottenpassword
         %small

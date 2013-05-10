@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, :token_authenticatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng, :status,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
                   :skype, :linkedin, :email_admin, :email_users, :confirm_tac, :university, :university_id,
-                  :invitation_code, :linkedin_name, :ip_address
+                  :invitation_code, :ip_address, :language_id, :firm_id, :cases_external
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
@@ -204,33 +204,32 @@ class User < ActiveRecord::Base
   end
 
   def validate_university_email
-    if self.linkedin_uid.blank?
-      begin
+    begin
 
-        # crap code - looking for better on: http://stackoverflow.com/questions/16269430/rails-help-to-re-factor-messy-solution-for-searching-variable-for-substrings-fr/16274935?noredirect=1#comment23316987_16274935
-        # domain = self.email.split("@")[1]
+      # crap code - looking for better on: http://stackoverflow.com/questions/16269430/rails-help-to-re-factor-messy-solution-for-searching-variable-for-substrings-fr/16274935?noredirect=1#comment23316987_16274935
+      # domain = self.email.split("@")[1]
 
-        # domain_test = false
+      # domain_test = false
 
-        # University.all.each do |d|
-        #   if domain.include?(d.domain)
-        #     domain_test = true
-        #     break
-        #   end
-        # end
+      # University.all.each do |d|
+      #   if domain.include?(d.domain)
+      #     domain_test = true
+      #     break
+      #   end
+      # end
 
-        # if domain_test = false
-        #   errors.add(:email, "Sorry, no match found")
-        # end
+      # if domain_test = false
+      #   errors.add(:email, "Sorry, no match found")
+      # end
 
-        #from SO, now need to integrate!
-        regular_expression = Regexp.new(University.all.join("$|") + "$")
-        regular_expression.match(domain)
+      #from SO, now need to integrate!
+      regular_expression = Regexp.new(University.all.join("$|") + "$")
+      regular_expression.match(domain)
 
-      rescue Exception => e
-        errors.add(:email, "Invalid Email")
-      end
+    rescue Exception => e
+      errors.add(:email, "Invalid Email")
     end
+
   end
 
 end

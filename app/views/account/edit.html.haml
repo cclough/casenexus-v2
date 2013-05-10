@@ -77,19 +77,15 @@
                       %span.account_completeedit_condition
                         (required)
                       for the Roulette
-            - if @user.linkedin_uid.blank?
-              .row
-                .span12
-                  = image_tag 'icons/linkedin_large.png'
-                .span22
-                  = f.text_field :linkedin_name, placeholder: "LinkedIn username (not email)"
+            .row
+              .span12
+                = image_tag 'icons/linkedin_large.png'
+              .span22
+                = f.text_field :linkedin, placeholder: "LinkedIn username (not email)"
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
             = f.hidden_field :lng, id: "account_completeedit_lng"
-            - if @user.linkedin_uid.blank?
-              #account_completeedit_map.edit.map
-            - else
-              #account_completeedit_map.edit_linkedin.map
+            #account_completeedit_map.edit.map
             .spacer10
             #account_completeedit_map_location
               .row
