@@ -18,8 +18,6 @@
     .span20
       #map_index_user_name
         = @user.name
-      #map_index_user_headline
-        = @user.headline
 
   - if Friendship.friends?(current_user, @user)
     #map_index_user_contact

@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
             on: :update
 
   # Scoped_search Gem
-  scoped_search on: [:first_name, :last_name, :status, :headline]
+  scoped_search on: [:first_name, :last_name]
 
   ### Geocoder
   geocoded_by :ip_address, :latitude => :lat, :longitude => :lng
@@ -79,14 +79,6 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
-  end
-
-  def status_trunc
-    status.to_s.truncate(30, separator: ' ')
-  end
-  
-  def headline_trunc
-    headline.to_s.truncate(42, separator: ' ')
   end
 
   def case_count
