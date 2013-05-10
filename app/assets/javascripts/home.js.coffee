@@ -83,7 +83,7 @@ $(document).ready ->
 
   ######################### SIGNUP ############################
 
-  $('#static_home_signup_option_university_notlisted_button').click ->
+  $('#static_home_signup_notlisted_button').click ->
     if !($("#modal_contact").hasClass("in"))
       $(".modal").modal "hide"
       $("#modal_contact").modal "show"
@@ -94,44 +94,15 @@ $(document).ready ->
     #$('#user_email').val("{your email}" + $(this).find('option:selected').val())
   $('.chzn-search').hide();
 
-  $('#static_home_signup_option_linkedin_button').click ->
-    $('#static_home_signup_option_university_button').removeClass('active');
-    $('#static_home_signup_option_linkedin_button').addClass('active');
-    $('#static_home_signup_option_university').slideUp "fast"
-    $('#static_home_signup_option_university_submit').slideUp "fast"
-    $('#static_home_signup_option_linkedin').slideDown "fast"
-    $('#static_home_signup_option_linkedin_submit').slideDown "fast"
-
-  $('#static_home_signup_option_university_button').click ->
-    $('#static_home_signup_option_university_button').addClass('active');
-    $('#static_home_signup_option_linkedin_button').removeClass('active');
-    $('#static_home_signup_option_university').slideDown "fast"
-    $('#static_home_signup_option_university_submit').slideDown "fast"
-    $('#static_home_signup_option_linkedin').slideUp "fast"
-    $('#static_home_signup_option_linkedin_submit').slideUp "fast"
 
   check_confirm_email = ->
     if !$('#user_confirm_tac').is(':checked')
-      $("#static_home_signup_option_university_button_submit").attr('disabled', 'disabled')
+      $("#static_home_signup_button_submit").attr('disabled', 'disabled')
     else
-      $("#static_home_signup_option_university_button_submit").attr('disabled', false)
-
-  check_confirm_linkedin = ->
-    if $('#user_confirm_tac').is(':checked') && $('#confirm_linkedin').is(':checked')
-      $("#static_home_signup_option_linkedin_button_submit").attr('disabled', false)
-    else
-      $("#static_home_signup_option_linkedin_button_submit").attr('disabled', 'disabled')
+      $("#static_home_signup_button_submit").attr('disabled', false)
 
   check_confirm_email()
-  check_confirm_linkedin()
 
   $("#user_confirm_tac").click ->
     check_confirm_email()
     check_confirm_linkedin()
-
-  $("#confirm_linkedin").click ->
-    check_confirm_linkedin()
-
-  $("#static_home_signup_option_linkedin_button_submit, #static_home_signup_option_linkedin_button_submit img, #static_home_signup_option_linkedin_button_submit span").click (e) ->
-    if $("#static_home_signup_option_linkedin_button_submit").attr('disabled') == 'disabled'
-      e.preventDefault()
