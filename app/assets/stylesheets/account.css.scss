@@ -29,36 +29,16 @@ label { // why the hell won't this work in app.css?
   width: 100%;
 }
 
-#account_complete_step3_samplestatus {
-  font-style:italic;
-  margin-top:10px;
-  margin-bottom:10px;
-}
-
-#account_complete_status {
-  height:218px;
-  width:413px;
-}
 
 
 #account_edit_button_submit {
   width:300px;
 }
 
-#account_edit_status_note {
-  color: $gray_Light;
-  font-size:12px;
-  font-style:italic;
-}
-
-#account_edit_status {
-  height:196px;
-  width:403px;
-}
 
 #account_edit_invitations_list {
   height:40px;
-  overflow-y:auto;
+overflow-y:auto;
   width:435px;
 }
 

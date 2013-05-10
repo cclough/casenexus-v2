@@ -24,7 +24,7 @@ class AccountController < ApplicationController
       else
         @user.completed = true
         @user.save
-        flash[:success] = 'Welcome to casenexus.com ' + @user.first_name + ', your status will be reviewed shortly'
+        flash[:success] = 'Welcome to casenexus.com'
       end
       redirect_to map_path
     else

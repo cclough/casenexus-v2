@@ -1,5 +1,5 @@
 - provide(:title, 'Edit Profile')
-- provide(:sub_title, 'Modify your settings, your status, and your location')
+- provide(:sub_title, 'Modify your settings, and your location')
 
 - content_for :javascript_includes do
   = javascript_include_tag('account')
@@ -54,12 +54,6 @@
                 .spacer10
                 = link_to("I want to delete my account", delete_account_path, class: "btn btn-inverse btn-small")
 
-          .panel.darker.kill_bottom
-            .row.font-small
-              Edit your status
-              %span#account_edit_status_note (minimum 50 chars; edits are sent for approval)
-              .spacer5
-              = f.text_area :status, id: 'account_edit_status'
 
         .span47
           .panel.dark.kill_left.kill_bottom

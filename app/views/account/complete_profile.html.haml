@@ -92,21 +92,6 @@
               = link_to "Need to register?", "https://login.skype.com/account/signup-form"            
 
       #account_complete_step5.panel.darker.kill_bottom
-        .row
-          .font-small
-            %ul.application_bullets
-              %li 
-                Explain a little about your recruitment situation to other candidates, including your availability for practice, and background
-                %span.account_completeedit_condition
-                  (required)
-              %li Statuses are reviewed by an admin within 24hrs
-
-          #account_complete_step3_samplestatus.panel.dark.kill_all.font-small
-
-            e.g. "I am a Cambridge University student reading Natural Sciences. I am applying to the top three firms in London, and expect to have interviews in the next month. I am a beginner, and am looking for others who are also just starting out. I'm looking to practise in person on weekday evenings after 7pm, or on Skype any evening after 9pm."
-
-        .row
-          = f.text_area :status, id: 'account_complete_status', placeholder: "Describe your current situation (minimum 50 characters)"
         .spacer15
         .row
           = f.submit "Complete Sign up", class: "btn btn-large btn-inverse", id: "account_complete_button_submit"

@@ -56,7 +56,6 @@ class User < ActiveRecord::Base
   validate :validate_invitation, on: :create
 
   ## ON UPDATE
-  validates :status, presence: true, length: { maximum: 500, minimum: 50 }, on: :update
   validates :lat, presence: true, on: :update
   validates :lng, presence: true, on: :update
 

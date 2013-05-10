@@ -18,12 +18,6 @@ $blue_pastel: #98cdff;
 }
 
 
-.mapcontainer {
-  position: absolute;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.6);
-  // background: rgba(255, 255, 255, 0.6);
-}
 
 #map_index_map {
   position: absolute;
@@ -407,60 +401,6 @@ $blue_pastel: #98cdff;
 
 
 
-#map_index_mapcontainer_user {
-  top: 15%;
-  right: 00px;
-  width: 406px;
-  display: none;
-  
-  // Inset
-  // -moz-box-shadow:inset 2px 0px 13px #000000;
-  // -webkit-box-shadow:inset 2px 0px 13px #000000;
-  // box-shadow:inset 2px 0px 13px #000000;
-
-  border-bottom-left-radius: 5px;
-  -moz-border-bottom-left-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-
-  // Outset 
-  -moz-box-shadow: 2px 3px 14px #4a494a;
-  -webkit-box-shadow: 2px 3px 14px #4a494a;
-  box-shadow: 2px 3px 14px #4a494a;
-}
-
-.map_index_user_border {
-  background: url('app/dark-bg.png') repeat top left;
-  // background: rgba(255, 255, 255, 0.8);
-  &.side {
-    // height:auto;
-    width:10px;
-    // min-height:100px;
-  }
-  &.bottom {
-    height:10px;
-    width:406px;
-    border-bottom-left-radius: 5px;
-    -moz-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-
-  }
-
-  &.top {
-    height:10px;
-    width:406px;
-
-    border-top-left-radius: 5px;
-    -moz-border-top-left-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
-
-  }
-
-}
-
 #map_index_user_user {
   width:350px;
 }
@@ -503,15 +443,6 @@ $blue_pastel: #98cdff;
 }
 
 
-#map_index_user_status {
-  font-weight:italic;
-}
-
-#map_index_user_status_unapproved {
-  text-align:center;
-  color: $gray_Mid !important;
-  font-size:11px;
-}
 
 
 

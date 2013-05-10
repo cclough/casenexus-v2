@@ -18,10 +18,6 @@
         %b= @request_user.city + ", " + @request_user.country
 
         would like to do a case with you on Skype.
-      .spacer20
-      .row#modal_roulette_req_status
-        %blockquote
-          "#{@request_user.status}"
     .span10.offset2
       .spacer40
       %a{:href => "skype:"+ @request_user.skype + "?call"}

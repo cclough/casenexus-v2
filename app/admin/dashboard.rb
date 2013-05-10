@@ -10,7 +10,6 @@ ActiveAdmin.register_page "Dashboard" do
           table_for User.order("updated_at asc").limit(100) do
             column("Name") { |u| u.name }
             column("Email") { |u| u.email }
-            column("Status") { |u| u.status }
           end
         end
       end

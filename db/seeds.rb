@@ -128,7 +128,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       password_confirmation: "houseoflies26?",
       lat: 51.5100,
       lng: -0.1344,
-      status: "Interviewing with BCG and Bain in the next few months, looking to practise on Weekday evenings after 9pm and weekends",
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       skype: "christianclough",
@@ -151,7 +150,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       password_confirmation: "design",
       lat: 51.90128232665856,
       lng: -0.5421188764572144,
-      status: Faker::Lorem.sentence(20),
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       skype: "",
@@ -174,7 +172,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       password_confirmation: "T266vjsd",
       lat: 32.869627,
       lng: -117.221015,
-      status: "First-year MBA student at Rady school of Management - UCSD. I am applying to the top firms on both sides of the Atlantic for my MBA internship.",
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       skype: "cloughrobin",
@@ -239,7 +236,6 @@ if Rails.env == 'development'
     password = "password"
     lat = -90 + rand(180)
     lng = -180 + rand(360)
-    status = Faker::Lorem.sentence(20)
     skype = "skpye"
 
     confirm_tac = true
@@ -249,13 +245,12 @@ if Rails.env == 'development'
     user = User.new(first_name: first_name, last_name: last_name,
                     email: email, password: password,
                     password_confirmation: password,
-                    lat: lat, lng: lng, status: status,
+                    lat: lat, lng: lng,
                     skype: skype,
                     confirm_tac: confirm_tac,
                     ip_address: ip_address,
                     invitation_code: 'BYPASS_CASENEXUS_INV')
 
-    user.status_approved = true
     user.completed = true
     user.save!
     user.confirm!
