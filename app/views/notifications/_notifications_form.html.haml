@@ -1,40 +1,24 @@
 = form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form" do
-  .row
-    .span18
-      / search field
-      = text_field_tag :search, params[:search], placeholder: "Search...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span18'
+  .panel.darker.kill_left.kill_right
+    = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span23'
 
-      
-    / BUGGY SO COMMENTED FOR LAUNCH      
-    
-    / .span4
+    .pull-right#notifications_index_notifications_form_sort
+      .btn-group
+        %button.btn.btn-small.btn-inverse Sort by
+        %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            = sortable "notifications.content", "By Subject"
+          %li
+            = sortable "user.name", "By Name"
+          %li
+            = sortable "notifications.created_at", "By Date"
 
-    / sort/filter pulldown menu
-    / #notifications_index_notifications_form_sort
-      
-    /   .btn-group
-    /     %a#notifications_index_notifications_button_filter.btn.btn-mini.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-    /       Sort
-    /       %span.caret
-    /     %ul.dropdown-menu
-    /       %li
-    /         = sortable "notifications.content", "By Subject"
-    /       %li
-    /         = sortable "user.name", "By Name"
-    /       %li
-    /         = sortable "notifications.created_at", "By Date"
-
-  .spacer10
-  .panel.dark.kill_all
-    #notifications_index_notifications_filter_title
-      Filter
-    .row
-      = filterable('all', 'All')
-    .row
-      = filterable('message', 'Messages')
-    .row
-      = filterable('feedback_req', 'Feedback Requests')
-    .row
-      = filterable('feedback', 'Feedback')
-    .row
-      = filterable('friendship_req', 'Case Partner Requests')
+    .pull-right
+      .btn-group
+        = filterable('all', 'All')
+        = filterable('message', 'Messages')
+        = filterable('feedback_req', 'Feedback')
+        = filterable('feedback', 'Feedback')
+        = filterable('friendship_req', 'Friends')

@@ -19,8 +19,7 @@ module ApplicationHelper
 
 
   def filterable(ntype, title)
-    item = content_tag(:div, title, class: "notifications_index_sidenav_item")
-    link_to item, params.merge(ntype: ntype)
+    link_to title, params.merge(ntype: ntype), class: "btn btn-mini"
   end
 
 

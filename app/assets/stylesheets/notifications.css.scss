@@ -102,35 +102,9 @@ padding-top:3px;
   }
 }
 
-.notifications_index_sidenav_item {
-  padding:7px;
-  color: $gray_Light;
-  text-decoration:none;
 
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
 
-  &:hover {
-    color:white;
-    text-decoration:none !important;
-    background: url('app/darker-bg.png') repeat top left;
-  }
 
-  &.active {
-    color:white;
-    background: url('app/title-bg.png') repeat top left;
-  }
-}
-
-#notifications_index_notifications_filter_title {
-  text-align:center;
-  font-weight: bold;
-  border-bottom: 1px solid $gray_Mid;
-  margin-bottom: 5px;
-  margin-top:-5px;
-  color: white;
-}
 
 #notifications_show_footer {
   padding:5px;

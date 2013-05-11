@@ -1,5 +1,5 @@
 = form_tag cases_path, method: 'get', id: "cases_index_cases_form", onsubmit: 'return false' do
-  .panel.darker
+  .panel.darker.kill_left.kill_right
 
     = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span23'
 
@@ -16,5 +16,5 @@
           %li
             = sortable "date", "By Date"
 
-  #cases_index_cases.panel.dark.kill_bottom
+  #cases_index_cases.panel.dark.kill_bottom.kill_left.kill_right
   / content is rendered by index.js.erb
