@@ -75,17 +75,6 @@ $(document).ready ->
       $("#modal_help").modal "show"
       window.ArrowNav.goTo 1
 
-  # Modal bug
-  $("#modal_bug").modal
-    backdrop: false
-    show: false
-
-  # Modal bug link
-  $("#header_link_bug").click ->
-    if !($("#modal_bug").hasClass("in"))
-      $(".modal").modal "hide"
-      $("#modal_bug").modal "show"
-
   # Modal contact
   $("#modal_contact").modal
     backdrop: false

@@ -145,14 +145,6 @@ class UserMailer < ActionMailer::Base
     mail(to: receiver, subject: "Site Contact: #{site_contact.subject}")
   end
 
-  def site_bug(site_bug)
-    sender = "#{site_bug.user.name} <#{site_bug.user.email}>"
-    receiver = "info@casenexus.com"
-
-    @site_bug = site_bug
-
-    mail(to: receiver, subject: "Site Bug")
-  end
 
   def newuser_to_admin(user)
     @user = user

@@ -14,18 +14,4 @@ class SiteContactsController < ApplicationController
     end
   end
 
-  def create_bug
-    @site_bug = SiteBug.new(params[:site_bug])
-    @site_bug.user = current_user
-
-    if @site_bug.save
-      flash[:notice] = "Thank you for your feedback"
-      render 'create_bug_ok'
-    else
-      # Not neccessary as errors handled in the form
-      # flash[:error] = "Oops! There was an error"
-      render 'create_bug_error'
-    end
-  end
-
 end

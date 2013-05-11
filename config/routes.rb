@@ -80,7 +80,6 @@ Casenexus::Application.routes.draw do
 
   # Site contacts
   match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact
-  match '/site_contact/create_bug', to: 'site_contacts#create_bug', as: :site_bug
 
   # Roulette
   match '/roulette', to: 'roulette#index', as: :roulette

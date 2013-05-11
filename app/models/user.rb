@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
-  has_many :site_bugs, dependent: :nullify
   has_many :site_contacts, dependent: :nullify
 
   # Friends
