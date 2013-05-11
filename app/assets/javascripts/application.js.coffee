@@ -83,7 +83,7 @@ $(document).ready ->
   $(".application_tooltip").tooltip()
 
   # Modal contact link
-  $("#footer_link_contact").click ->
+  $("#header_link_contact").click ->
     if !($("#modal_contact").hasClass("in"))
       $(".modal").modal "hide"
       $("#modal_contact").modal "show"
