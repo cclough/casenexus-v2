@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
          :confirmable, :omniauthable, :token_authenticatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
-                  :skype, :linkedin, :email_admin, :email_users, :confirm_tac, :university, :university_id,
+                  :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
                   :invitation_code, :ip_address, :language_id, :firm_id, :cases_external
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code

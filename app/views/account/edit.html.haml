@@ -11,26 +11,26 @@
 #account_edit_form
   .row
     = form_for(@user, url: account_path, method: :put) do |f|
-      .span94
+      .span75
         = render 'shared/error_messages', object: @user
-        .span47
-          .panel.dark
+        .span35
+          .panel.dark.kill_left
             .row
               .span12
                 = f.label :first_name
               .span25
-                = f.text_field :first_name
+                = f.text_field :first_name, class: "span18"
             .row
               .span12
                 = f.label :last_name
               .span25
-                = f.text_field :last_name
+                = f.text_field :last_name, class: "span18"
             .spacer5
             .row
               .span12
                 = f.label :email
               .span25
-                = f.text_field :email, class: "span27"
+                = f.text_field :email, class: "span21"
             .row
               .span25.offset12
                 %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
@@ -38,15 +38,15 @@
                 .spacer5
             .spacer5
             .row.font-small
-              .span3.offset12
+              .span3
                 = f.check_box :email_admin
-              .span25
+              .span15
                 .spacer5
                 Receive site news and consulting advice
             .row.font-small
-              .span3.offset12
+              .span3
                 = f.check_box :email_users
-              .span25
+              .span15
                 .spacer5
                 Receive notiffications via email
             .row
@@ -54,8 +54,28 @@
                 .spacer10
                 = link_to("I want to delete my account", delete_account_path, class: "btn btn-inverse btn-small")
 
-
-        .span47
+          .panel.dark.kill_left
+            .row
+              .span12
+                = f.label :language_id
+              .span25
+                = f.text_field :language_id, class: "span18"
+            .row
+              .span12
+                = f.label :firm_id
+              .span25
+                = f.text_field :language_id, class: "span18"
+            .row
+              .span12
+                = f.label :university_id
+              .span25
+                = f.text_field :university_id, class: "span18"
+            .row
+              .span12
+                = f.label :cases_external
+              .span25
+                = f.text_field :cases_external, class: "span18"
+        .span40
           .panel.dark.kill_left.kill_bottom
             .spacer5
             .row
@@ -71,11 +91,7 @@
                       %span.account_completeedit_condition
                         (required)
                       for the Roulette
-            .row
-              .span12
-                = image_tag 'icons/linkedin_large.png'
-              .span22
-                = f.text_field :linkedin, placeholder: "LinkedIn username (not email)"
+
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
             = f.hidden_field :lng, id: "account_completeedit_lng"
@@ -93,12 +109,12 @@
                   = @user.city
           .panel.dark.kill_top.kill_left
             .row
-              .span10.offset7
+              .span10.offset4
                 .row
                   .spacer5
                   = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
     - if current_user.completed?
       .row
-        .span94
+        .span73
           = render 'invitations_panel'
 

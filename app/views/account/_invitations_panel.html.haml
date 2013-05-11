@@ -1,34 +1,35 @@
-.panel.dark.font-small.kill_bottom
+.panel.dark.font-small.kill_bottom.kill_left.kill_right
   .row
-    .span43
+    .span25
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
         %p Invite a friend to casenexus (#{current_user.invitations.count}/5 Invitations Used)
 
         = simple_form_for @invitation, html: { id: "account_edit_invitations_form" } do |f|
           = hidden_field_tag :back_url, edit_account_path
           .row
-            .span16
-              = f.text_field :name, class: 'span15', placeholder: "Name"
-            .span12
+            .span10
+              = f.text_field :name, class: 'span12', placeholder: "Name"
+          .row
+            .span8
               .input-append
-                = f.text_field :email, class: 'span19', placeholder: "Email"
+                = f.text_field :email, class: 'span12', placeholder: "Email"
                 = f.submit "Invite", class: 'btn btn-inverse'
       - else
         %p You have no more invitations
-    .span40
+    .span25
       #account_edit_invitations_list.panel.dark.kill_all
         - if @invitations.count > 0
           - @invitations.each do |invitation|
             %div
               - if invitation.invited
-                .span25
+                .span10
                   = "#{invitation.email} accepted your invitation and created his profile: "
-                .span15.pull-right
+                .span5.pull-right
                   = link_to(invitation.invited, member_path(invitation.invited))
               - else
-                .span25
+                .span10
                   = "#{invitation.email} was invited"
-                .span15.pull-right
+                .span5.pull-right
                   = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
         - else
           %p You have no pending/accepted invitations
