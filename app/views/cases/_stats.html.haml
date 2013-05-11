@@ -1,52 +1,48 @@
-.panel.dark.font-small
-  .row
-    .cases_analysis_block_title
-      Basic Stats
-  .row
-    .span7.cases_analysis_stats_name
-      First Case
-    .span10
-      = Case.cases_analysis_stats_casedate(current_user, "first")
-  .row
-    .span7.cases_analysis_stats_name
-      Last Case
-    .span10
-      = Case.cases_analysis_stats_casedate(current_user, "last")
+.row
+  .span7.cases_analysis_stats_name
+    First Case
+  .span10
+    = Case.cases_analysis_stats_casedate(current_user, "first")
+.row
+  .span7.cases_analysis_stats_name
+    Last Case
+  .span10
+    = Case.cases_analysis_stats_casedate(current_user, "last")
 
-  .spacer10
-  .row.cases_analysis_stats_sub
-    .span7.cases_analysis_stats_name
-      Avg Score
-    .span5
-      You
-    .span5
-      All users
-  .row
-    .span7.cases_analysis_stats_name
-      Total
-    .span5
-      = Case.cases_analysis_stats_global("totalscore")
-    .span5
-      = Case.cases_analysis_stats_global("totalscore")
-  .spacer10
-  .row
-    .span7.cases_analysis_stats_name
-      Interpersonal
-    .span5
-      = Case.cases_analysis_stats_user(current_user, "interpersonal")
-    .span5
-      = Case.cases_analysis_stats_global("interpersonal")
-  .row
-    .span7.cases_analysis_stats_name
-      B. Analytics
-    .span5
-      = Case.cases_analysis_stats_user(current_user, "businessanalytics")
-    .span5
-      = Case.cases_analysis_stats_global("businessanalytics")
-  .row
-    .span7.cases_analysis_stats_name
-      Structure
-    .span5
-      = Case.cases_analysis_stats_user(current_user, "structure")
-    .span5
-      = Case.cases_analysis_stats_global("structure")
+  / .spacer10
+  / .row.cases_analysis_stats_sub
+  /   .span7.cases_analysis_stats_name
+  /     Avg Score
+  /   .span5
+  /     You
+  /   .span5
+  /     All users
+  / .row
+  /   .span7.cases_analysis_stats_name
+  /     Total
+  /   .span5
+  /     = Case.cases_analysis_stats_global("totalscore")
+  /   .span5
+  /     = Case.cases_analysis_stats_global("totalscore")
+  / .spacer10
+  / .row
+  /   .span7.cases_analysis_stats_name
+  /     Interpersonal
+  /   .span5
+  /     = Case.cases_analysis_stats_user(current_user, "interpersonal")
+  /   .span5
+  /     = Case.cases_analysis_stats_global("interpersonal")
+  / .row
+  /   .span7.cases_analysis_stats_name
+  /     B. Analytics
+  /   .span5
+  /     = Case.cases_analysis_stats_user(current_user, "businessanalytics")
+  /   .span5
+  /     = Case.cases_analysis_stats_global("businessanalytics")
+  / .row
+  /   .span7.cases_analysis_stats_name
+  /     Structure
+  /   .span5
+  /     = Case.cases_analysis_stats_user(current_user, "structure")
+  /   .span5
+  /     = Case.cases_analysis_stats_global("structure")

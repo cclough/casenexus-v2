@@ -144,7 +144,7 @@ window.cases_show_category_chart_radar_draw = (category) ->
   else chart_show_category_radar.write "cases_show_structure_chart_radar"  if category is "structure"
 
 
-cases_analysis_charts_draw = (case_count) ->
+window.cases_analysis_charts_draw = (case_count) ->
   
   #//////////////////////////////////////////
   # Progress chart javascript
@@ -342,7 +342,6 @@ cases_analysis_charts_draw = (case_count) ->
 
     ).complete ->
       cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
-      cases_analysis_chart_radar_draw "all", case_count
 
 
 
@@ -592,6 +591,20 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 #///////////////////////// ANALYSIS ////////////////////////////
 #///////////////////////////////////////////////////////////////
+
+  # Subnav Buttons
+
+  $(".cases_analysis_subnav_button").click ->
+    section = $(this).data("section")
+
+    $(".cases_analysis_section").addClass "hidden"
+    $("#cases_analysis_section_" + section).removeClass "hidden"
+
+    if section is "radar"
+      cases_analysis_chart_radar_draw "all", cases_analysis_chart_case_count
+
+    $(".cases_analysis_subnav_button").removeClass "active"
+    $(this).addClass "active"
 
   # RADAR BUTTONS
   $("#cases_analysis_chart_radar_button_all").click ->
