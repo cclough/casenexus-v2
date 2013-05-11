@@ -1,5 +1,20 @@
 if %w(production development).include?(Rails.env) && User.count == 0
   
+  puts "Creating countries"
+
+  file = "#{Rails.root}/db/countries.csv"
+
+  require 'csv'
+
+  CSV.foreach(file, headers: true) do |row|
+    Country.create!(
+        name: row[0],
+        code: row[1],
+        lat: row[2],
+        lng: row[3]
+    )
+  end
+
   puts "Creating universities"
 
   University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
@@ -193,20 +208,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 
 
-  puts "Creating countries"
-
-  file = "#{Rails.root}/db/countries.csv"
-
-  require 'csv'
-
-  CSV.foreach(file, headers: true) do |row|
-    Country.create!(
-        name: row[0],
-        code: row[1],
-        lat: row[2],
-        lng: row[3]
-    )
-  end
 
 
 end

@@ -18,7 +18,7 @@ Casenexus::Application.routes.draw do
 
   # Members
   resources :members, only: [:index, :show] do
-    get :tooltip, on: :member
+    get :mouseover, on: :member
     put :show_help, on: :member
     get :help_checkbox, on: :collection
     get :check_roulette, on: :collection

@@ -12,7 +12,7 @@
       var map_index_map_lat_start = "#{User.find(params[:user_id]).lat}";
       var map_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
       setTimeout(function() {
-        window.map_index_map_marker_click("#{params[:user_id]}");
+        //window.map_index_map_marker_click("#{params[:user_id]}");
       }), 1000
       
   - else
@@ -20,7 +20,7 @@
       var map_index_map_lat_start = "#{current_user.lat}";
       var map_index_map_lng_start = "#{current_user.lng}";
       setTimeout(function() {
-        window.map_index_map_marker_click("#{current_user.id}");
+        //window.map_index_map_marker_click("#{current_user.id}");
       }), 1000
 
   / - if current_user.help_2_checked
@@ -35,12 +35,6 @@
 
 / #map_index_map_footerspacer
 
-/ #map_index_mappanel_control.map_index_mappanel
-/   = render 'control'
-/ #map_index_mappanel_tooltip.map_index_mappanel
-/ #map_index_mappanel_footer.map_index_mappanel
-/   = render 'footer_map'
-
 
 #map_index_container
 
@@ -53,15 +47,20 @@
 
   #map_index_container_map.map
 
-    .row
-      .span.map_index_user_border.top
-    .row
-      .span.map_index_user_border.side
-      .span
-        #map_index_user
-        / content is rendered by on marker click (in users.js)
-      .span.map_index_user_border.side
-    .row
-      .span.map_index_user_border.bottom
-    
+
+
+  #map_index_map_subnav.map_index_subnav
+    = render 'chosen'
+    #map_index_map_subnav_mouseover
+      / template rendered by js
+
+  #map_index_map_footer.map_index_subnav
+    = render 'footer_map'
+
+
+
+  #map_index_container_user
+  / content is rendered by on marker click (in users.js)
+
+  
 

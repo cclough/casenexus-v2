@@ -7,10 +7,6 @@ window.map_index_map_pan = (latlng) ->
   window.map.panTo latlng
   window.map.setZoom 9
 
-window.map_index_user_border_height = ->
-  # set side height
-  $("#map_index_mapcontainer_user .side").css("height",0)
-  $("#map_index_mapcontainer_user .side").css("height",(parseInt($("#map_index_mapcontainer_user").css("height")) - 20))
 
 window.map_index_map_marker_click = (marker_id) ->
   # Show User Panel
@@ -19,8 +15,8 @@ window.map_index_map_marker_click = (marker_id) ->
 
     $.get "/members/" + marker_id, (data) ->
 
-      # # Insert ajax data!
-      # $("#map_index_user").html data
+      # Insert ajax data!
+      $("#map_index_container_user").html data
 
       # Code for 'close button'
       # $("#map_index_show_close").click ->
@@ -49,12 +45,10 @@ window.map_index_map_marker_click = (marker_id) ->
 
       $('#map_index_user_feedback_results_button').click ->
         if ($('#map_index_user_feedback_results_button').hasClass("slid"))
-          $('#map_index_user_feedback_chart_radar_container').slideUp "fast", ->
-            map_index_user_border_height()
+          $('#map_index_user_feedback_chart_radar_container').slideUp "fast"
           $('#map_index_user_feedback_results_button').removeClass "slid"
         else
-          $('#map_index_user_feedback_chart_radar_container').slideDown "fast", ->
-            map_index_user_border_height()
+          $('#map_index_user_feedback_chart_radar_container').slideDown "fast"
           $('#map_index_user_feedback_results_button').addClass "slid"
           map_index_user_feedback_chart_radar_draw "all", map_index_user_feedback_chart_radar_count;
         
@@ -73,14 +67,9 @@ window.map_index_map_marker_click = (marker_id) ->
         $("#map_index_user_feedback_chart_radar_button_combined").addClass "active"
 
 
-      # Fade out tooltip as no longer needed
-      $("#map_index_mappanel_tooltip").fadeOut "fast", ->
-
-        map_index_user_border_height()
-
-        # Fade panel back in
-        # $("#map_index_mapcontainer_user").fadeIn "fast"
-        # $('#map_index_mapcontainer_user').show "slide", { direction: "right" }, 200
+      #Fade panel back in
+      $("#map_index_container_user").fadeIn "fast"
+      $('#map_index_container_user').show "slide", { direction: "right" }, 200
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
@@ -272,8 +261,8 @@ $(document).ready ->
           shadow: shadow
           animation: google.maps.Animation.DROP
         )
-        # google.maps.event.addListener marker, "mouseover", ->
-        #   map_index_mappanel_tooltip(marker.id)
+        google.maps.event.addListener marker, "mouseover", ->
+          map_index_map_subnav_mouseover(marker.id)
 
         google.maps.event.addListener marker, "click", ->
           map_index_map_marker_locate(marker)
@@ -309,17 +298,15 @@ $(document).ready ->
       marker.setAnimation(null)
     ), 1440
 
-  # map_index_mappanel_tooltip = (marker_id) ->
-  #   $.get "/members/" + marker_id + "/tooltip", (data) ->
-  #     $("#map_index_mappanel_tooltip").html data
+  map_index_map_subnav_mouseover = (marker_id) ->
+    $.get "/members/" + marker_id + "/mouseover", (data) ->
+      $("#map_index_map_subnav_mouseover").html data
 
-  #     # Code for 'close button'
-  #     $("#map_index_mappanel_tooltip_close").click ->
-  #       $("#map_index_mappanel_tooltip").fadeOut "fast"
 
-  #     $("#map_index_mappanel_tooltip").fadeIn "fast"
 
-  $(".chzn-select").chosen().change ->
-    latlng_chosen = $(this).find("option:selected").val().split("_")
-    users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
-    map_index_map_pan(users_chosen_latlng)
+
+
+  # $(".chzn-select").chosen().change ->
+  #   latlng_chosen = $(this).find("option:selected").val().split("_")
+  #   users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
+  #   map_index_map_pan(users_chosen_latlng)

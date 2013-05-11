@@ -12,8 +12,8 @@ class Notification < ActiveRecord::Base
   validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
   validates :sender_id, presence: true, if: Proc.new { |n| n.sender.nil? }
   validates :sender, presence: true, if: Proc.new { |n| n.sender_id.nil? }
-  validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback' || 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_change' || 'event_remind'}
-  validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback' || 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_change' || 'event_remind' }
+  validates :notificable_id, presence: true, if: Proc.new { |n| n.ntype == 'feedback'} # || 'event_set_partner' || 'event_set_sender' || 'event_cancel' || 'event_change' || 'event_remind'
+  validates :notificable_type, presence: true, if: Proc.new { |n| n.ntype == 'feedback'}
   validates :content, length: { maximum: 500 }
 
   validate :no_notification_to_self
@@ -71,7 +71,7 @@ class Notification < ActiveRecord::Base
   def title
     case ntype
       when "welcome"
-        "Message"
+        "Welcome"
       when "message"
         "Message"
       when "feedback"

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
   belongs_to :university
+  belongs_to :country
 
   has_many :events
   has_many :comments
@@ -72,7 +73,10 @@ class User < ActiveRecord::Base
   reverse_geocoded_by :lat, :lng do |obj, results|
     if geo = results.first
       obj.city = geo.city
-      obj.country = geo.country
+      unless geo.country.blank?
+        int_country = Country.find_by_name(geo.country)
+        obj.country_id = int_country.id unless int_country == nil
+      end
     end
   end
 
@@ -86,6 +90,12 @@ class User < ActiveRecord::Base
 
   def self.markers
     User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+  end
+
+  def onlinenow?
+    unless last_online_at.blank?
+      true if last_online_at > DateTime.now - 5.minutes
+    end
   end
 
   def level
@@ -189,34 +199,17 @@ class User < ActiveRecord::Base
 
   def set_university
     domain = self.email.split("@")[1]
-    if University.where(domain: domain).exists?
-      self.university = University.where(domain: domain).first
-    end
+    # PENDING S-O ANSWER
+    # if University.all.none?{ |d| domain[d.domain] }
+    #   self.university = University.where(domain: domain).first
+    # end
   end
 
   def validate_university_email
     begin
-
-      # crap code - looking for better on: http://stackoverflow.com/questions/16269430/rails-help-to-re-factor-messy-solution-for-searching-variable-for-substrings-fr/16274935?noredirect=1#comment23316987_16274935
-      # domain = self.email.split("@")[1]
-
-      # domain_test = false
-
-      # University.all.each do |d|
-      #   if domain.include?(d.domain)
-      #     domain_test = true
-      #     break
-      #   end
-      # end
-
-      # if domain_test = false
-      #   errors.add(:email, "Sorry, no match found")
-      # end
-
-      #from SO, now need to integrate!
-      regular_expression = Regexp.new(University.all.join("$|") + "$")
-      regular_expression.match(domain)
-
+      # http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
+      domain = self.email.split("@")[1]
+      errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
     rescue Exception => e
       errors.add(:email, "Invalid Email")
     end

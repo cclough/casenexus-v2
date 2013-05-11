@@ -53,7 +53,7 @@ class MembersController < ApplicationController
     end
   end
 
-  def tooltip
+  def mouseover
     @user = User.find(params[:id])
     respond_to do |format|
       format.html { render layout: false }

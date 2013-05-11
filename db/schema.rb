@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510163546) do
+ActiveRecord::Schema.define(:version => 20130510214918) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -211,7 +211,6 @@ ActiveRecord::Schema.define(:version => 20130510163546) do
     t.boolean  "completed",              :default => false, :null => false
     t.string   "roulette_token",                            :null => false
     t.string   "city"
-    t.string   "country"
     t.integer  "university_id"
     t.datetime "last_online_at"
     t.boolean  "email_admin",            :default => true
@@ -226,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20130510163546) do
     t.integer  "firm_id"
     t.integer  "cases_external"
     t.boolean  "active",                 :default => true
+    t.integer  "country_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

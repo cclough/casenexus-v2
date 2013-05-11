@@ -41,6 +41,7 @@ $blue_pastel: #98cdff;
 
 /********************************************/
 
+
 #map_index_container {
   width:100%;
   height:100%;
@@ -60,14 +61,22 @@ $blue_pastel: #98cdff;
 
 
 #map_index_container_map {
-  //   z-index: 0;
+  z-index: 0;
   height:100%;
 }
 
 
 
 
-
+#map_index_container_user {
+  position:absolute;
+  display:none;
+  top:150px;
+  right:20px;
+  width:40%;
+  height:60%;
+  background-color:white;
+}
 
 
 /////////////////////////
@@ -81,7 +90,7 @@ $blue_pastel: #98cdff;
   // margin-top:10px;
 }
 
-#map_index_users_navbar{
+#map_index_users_subnav{
 
   text-align:center;
 
@@ -92,8 +101,14 @@ $blue_pastel: #98cdff;
   height: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  border: 1px solid #d4d4d4;
 
+}
+
+
+
+
+.map_index_subnav {
+  border: 1px solid #252525;
   background-color: #3D3D3D;
   background-image: -moz-linear-gradient(top, #383838, #1C1C1C);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#383838), to(#1C1C1C));
@@ -102,15 +117,15 @@ $blue_pastel: #98cdff;
   background-image: linear-gradient(to bottom, #383838, #1C1C1C);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff383838', endColorstr='#ff1C1C1C', GradientType=0);
-  border-color: #252525;
 }
+
 
 
 
 
 // Spacer that forces paginate to bottom of list
 #map_index_users_body {
-
+  height:600px;
 }
 
 
@@ -131,11 +146,7 @@ $blue_pastel: #98cdff;
   width:140px;
   padding-left:35px;
   padding-right:35px;
-  margin-top:30px;
 }
-
-
-
 
 
 
@@ -149,7 +160,7 @@ $blue_pastel: #98cdff;
   float:left;
   width: 120px;
   height: 120px;
-  margin:10px;
+  margin:13px;
 
   display: none;
 
@@ -169,6 +180,7 @@ $blue_pastel: #98cdff;
   width:100%;
 
   color:white;
+  text-align:center;
   // background: rgba(0, 0, 0, 0.7);
 
   border-radius: 5px;
@@ -252,13 +264,11 @@ $blue_pastel: #98cdff;
 }
 
 
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-//////////////////////////////////////////////
 
-.map_index_users_item_text {
-  text-align:left;
-  padding-left:8px;
+
+.map_index_users_item_name {
+  font-weight:bold;
+  text-align:center;
 }
 
 .map_index_users_item_lastonline {
@@ -275,6 +285,17 @@ $blue_pastel: #98cdff;
   text-align:right;
 }
 
+.map_index_users_item_casecounts {
+  font-size:12px;
+  float:right;
+}
+
+.map_index_users_item_country {
+}
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
 
 
 
@@ -282,11 +303,18 @@ $blue_pastel: #98cdff;
 
 
 
-
-
-
-.map_index_mappanel {
+#map_index_map_subnav {
   position:absolute;
+
+  padding:5px;
+
+  z-index:100;
+
+  height:55px;
+  width:400px;
+
+  right:0px;
+  top:42px;
 
   background-color: #2E2E2E;
 
@@ -297,9 +325,45 @@ $blue_pastel: #98cdff;
   -webkit-box-shadow: 0px 5px 28px #000000;
   box-shadow: 0px 5px 28px #000000;
 
+  border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+
 }
 
-.map_index_mappanel_list {
+
+#map_index_map_subnav_chosen {
+
+}
+
+#map_index_map_subnav_mouseover {
+
+}
+
+#map_index_map_subnav_mouseover_text {
+  font-size:11px;
+}
+
+
+
+
+#map_index_map_footer {
+  
+  position:absolute;
+
+  font-size:12px;
+
+  bottom: 0px;
+  right: 0px;
+
+  padding: 6px 3px 2px 3px;
+
+  height:25px;
+  width:317px;
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
 
   color: white;
 
@@ -322,106 +386,17 @@ $blue_pastel: #98cdff;
   }
 }
 
-#map_index_mappanel_control {
-
-  font-size:12px;
-
-  top: 40px;
-  right: 50%;
-
-  margin-right:-190px;
-
-  padding:6px 2px;
-
-  height:25px;
-  width:380px;
-
-  border-bottom-left-radius: 5px;
-  -moz-border-bottom-left-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-
-  border-bottom-right-radius: 5px;
-  -moz-border-bottom-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-
-}
-
-#map_index_mappanel_control_chosen {
-  margin-left:5px;
-}
 
 
-#map_index_mappanel_tooltip {
-  
-  color: white;
-
-  display:none;
-
-  bottom: 15%;
-  left: 50%;
-
-  margin-left: -175px;
-
-  height:47px;
-  width:350px;
-
-  padding: 10px;
-
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-
-}
-
-#map_index_mappanel_tooltip_close {
-  position:absolute;
-  top:21px;
-  right:10px;
-  border: 0;
-  color:white;
-}
-
-#map_index_mappanel_tooltip_text {
-  padding-right:5px;
-  padding-top:4px;
-}
-
-#map_index_mappanel_tooltip_text {
-  padding-right:5px;
-  padding-top:4px;
-}
-
-
-#map_index_mappanel_footer {
-  
-  font-size:12px;
-
-  bottom: 0px;
-  left: 65%;
-
-  padding-top:6px;
-  padding-bottom:2px;
-  padding-left: 3px;
-  padding-right:3px;
-
-  height:25px;
-  width:317px;
-
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-
-  border-top-right-radius: 5px;
-  -moz-border-top-right-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-
-}
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
 
 
 
-#map_index_user_user {
-  width:350px;
-}
+
+
+
 
 #map_index_user_close {
   border: 0;
