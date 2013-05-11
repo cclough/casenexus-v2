@@ -18,9 +18,9 @@ window.map_index_map_marker_click = (marker_id) ->
       # Insert ajax data!
       $("#map_index_container_user").html data
 
-      # Code for 'close button'
-      # $("#map_index_show_close").click ->
-      #   $("#map_index_mapcontainer_user").fadeOut "slow"
+      #Code for 'close button'
+      $("#map_index_show_close").click ->
+        $("#map_index_container_user").fadeOut "slow"
 
       # Modal Stuff!
       $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal
@@ -43,30 +43,6 @@ window.map_index_map_marker_click = (marker_id) ->
           $("#modal_feedback_req").modal("show")
           $("#modal_feedback_req_datepicker").datepicker(dateFormat: "dd/mm/yy")
 
-      $('#map_index_user_feedback_results_button').click ->
-        if ($('#map_index_user_feedback_results_button').hasClass("slid"))
-          $('#map_index_user_feedback_chart_radar_container').slideUp "fast"
-          $('#map_index_user_feedback_results_button').removeClass "slid"
-        else
-          $('#map_index_user_feedback_chart_radar_container').slideDown "fast"
-          $('#map_index_user_feedback_results_button').addClass "slid"
-          map_index_user_feedback_chart_radar_draw "all", map_index_user_feedback_chart_radar_count;
-        
-
-      # Radar Button
-      $("#map_index_user_feedback_chart_radar_button_all").click ->
-        $("#map_index_user_feedback_chart_radar").empty()
-        map_index_user_feedback_chart_radar_draw "all", map_index_user_feedback_chart_radar_count
-        $("#map_index_user_feedback_chart_radar_button_all").addClass "active"
-        $("#map_index_user_feedback_chart_radar_button_combined").removeClass "active"
-
-      $("#map_index_user_feedback_chart_radar_button_combined").click ->
-        $("#map_index_user_feedback_chart_radar").empty()
-        map_index_user_feedback_chart_radar_draw "combined", map_index_user_feedback_chart_radar_count
-        $("#map_index_user_feedback_chart_radar_button_all").removeClass "active"
-        $("#map_index_user_feedback_chart_radar_button_combined").addClass "active"
-
-
       #Fade panel back in
       $("#map_index_container_user").fadeIn "fast"
       $('#map_index_container_user').show "slide", { direction: "right" }, 200
@@ -76,125 +52,6 @@ window.map_index_users_updatelist = ->
   $.get("/members", $("#map_index_users_form").serialize(), null, "script")
   false
 
-
-map_index_user_feedback_chart_radar_draw = (radar_type, radar_count) ->
-  
-  if $("#map_index_user_feedback_chart_radar").size() > 0
-
-    if radar_count is 0
-      $("#map_index_user_feedback_chart_radar_empty").fadeIn "fast"
-    else
-      $("#map_index_user_feedback_chart_radar").fadeIn "fast"
-      $("#map_index_user_feedback_chart_radar_buttongroup").fadeIn "fast"
-
-    chart_show_radar = undefined
-
-    # RADAR CHART
-    chart_show_radar = new AmCharts.AmRadarChart()
-    if radar_type is "all"
-      chart_show_radar.dataProvider = map_index_user_feedback_chart_radar_data_all
-    else chart_show_radar.dataProvider = map_index_user_feedback_chart_radar_data_combined if radar_type is "combined"
-    chart_show_radar.categoryField = "criteria"
-    #chart_show_radar.startDuration = 0.3
-    #chart_show_radar.startEffect = ">"
-    #chart_show_radar.sequencedAnimation = true
-    chart_show_radar.color = "#000000"
-    chart_show_radar.colors = ["#000000", "#FF6600", "#CC0000"]
-    chart_show_radar.fontSize = 9
-
-    # GRAPH - ALL
-    graph = new AmCharts.AmGraph()
-    graph.title = "All"
-    graph.fillAlphas = 0.2
-    graph.bullet = "round"
-    graph.valueField = "all"
-    graph.balloonText = "[[category]]: [[value]]/10"
-    chart_show_radar.addGraph graph
-
-    # GRAPH - FIRST 5
-    graph = new AmCharts.AmGraph()
-    graph.title = "First " + radar_count
-    graph.fillAlphas = 0.2
-    graph.bullet = "round"
-    graph.valueField = "first"
-    graph.balloonText = "[[category]]: [[value]]/10"
-    chart_show_radar.addGraph graph
-
-    # GRAPH - LAST 5
-    graph = new AmCharts.AmGraph()
-    graph.title = "Last " + radar_count
-    graph.fillAlphas = 0.2
-    graph.bullet = "round"
-    graph.valueField = "last"
-    graph.balloonText = "[[category]]: [[value]]/10"
-    chart_show_radar.addGraph graph
-
-    # VALUE AXIS
-    valueAxis = new AmCharts.ValueAxis()
-    valueAxis.gridType = "circles"
-    valueAxis.fillAlpha = 0.02
-    valueAxis.fillColor = "#000000"
-    valueAxis.axisAlpha = 0.1
-    valueAxis.gridAlpha = 0.1
-    valueAxis.fontWeight = "bold"
-    valueAxis.minimum = 0
-    valueAxis.maximum = 10
-    chart_show_radar.addValueAxis valueAxis
-
-    # GUIDES
-    # Blue - Business Analytics
-    guide = new AmCharts.Guide()
-    guide.angle = 270
-    guide.toAngle = 390
-    guide.value = 3
-    guide.toValue = 2
-    guide.fillColor = "#0D8ECF"
-    guide.fillAlpha = 0.3
-    valueAxis.addGuide guide
-
-    # Green - Interpersonal
-    guide = new AmCharts.Guide()
-    guide.angle = 30
-    guide.toAngle = 150
-    guide.value = 3
-    guide.toValue = 2
-    guide.fillColor = "#B0DE09"
-    guide.fillAlpha = 0.3
-    valueAxis.addGuide guide
-
-    # Yellow - Structure
-    guide = new AmCharts.Guide()
-    guide.angle = 150
-    guide.toAngle = 270
-    guide.value = 3
-    guide.toValue = 2
-    guide.fillColor = "#FCD202"
-    guide.fillAlpha = 0.3
-    valueAxis.addGuide guide
-    
-    # Balloon Settings
-    balloon = chart_show_radar.balloon
-    balloon.adjustBorderColor = true
-    balloon.cornerRadius = 5
-    balloon.showBullet = false
-    balloon.fillColor = "#000000"
-    balloon.fillAlpha = 0.7
-    balloon.color = "#FFFFFF"
-
-    # Legend Settings
-    legend = new AmCharts.AmLegend()
-    legend.position = "bottom"
-    legend.align = "center"
-    legend.color = "#000000"
-    legend.markerType = "square"
-    legend.rollOverGraphAlpha = 0
-    legend.horizontalGap = 5
-    legend.valueWidth = 5
-    legend.switchable = true
-    chart_show_radar.addLegend legend
-
-    # WRITE
-    chart_show_radar.write "map_index_user_feedback_chart_radar"
 
 
 $(document).ready ->

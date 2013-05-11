@@ -4,105 +4,67 @@
   var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
-#map_index_user_user.panel.gradient.kill_half
+%button#map_index_show_close.close ×
 
-  %button#map_index_show_close.close ×
+= avatar_for(@user, 'chevron')
 
-  #map_index_user_casecount
-    = avatar_for(@user, 'chevron')
+= avatar_for(@user, 'icon_inert')
 
-  .row
-    .span5
-      .application_avatar
-        = avatar_for(@user, 'icon_inert')
-    .span20
-      #map_index_user_name
-        = @user.name
+= @user.name
+
+- if Friendship.friends?(current_user, @user)
+  = render '/shared/button_group_linkedin_skype'
+  = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
+
+- if @user.last_online_at
+  Last online
+  = time_ago_in_words(@user.last_online_at)
+  ago
+- if @user != current_user
 
   - if Friendship.friends?(current_user, @user)
-    #map_index_user_contact
-      .row.font-small
-        = render '/shared/button_group_linkedin_skype'
-        .span
-          .font-small
-            = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?", id: 'map_index_user_contact_button_removefriend')
 
 
-.panel.gradient.kill_half
-  .row
-    .pull-left
-      - if @user.last_online_at
-        .application_lastonline
-          Last online
-          = time_ago_in_words(@user.last_online_at)
-          ago
-  .row
-    - if @user != current_user
-      #map_index_user_partner_actions
-        .row
-          - if Friendship.friends?(current_user, @user)
+    - if Notification.history(current_user, @user).count > 0
+      .span12
+        = link_to "Show Message History", history_notifications_path(user_id: @user.id)
+      .span12
+        %a.btn.btn-inverse.btn-small
+          %i.icon-comment.icon-white
+          %span
+            Send Message
 
-            .pull-right
-              - if Notification.history(current_user, @user).count > 0
-                .span12
-                  = link_to "Show Message History", history_notifications_path(user_id: @user.id), id: 'map_index_user_partner_history'
-              .span12
-                %a#map_index_user_partner_button_message.btn.btn-inverse.btn-small
-                  %i.icon-comment.icon-white
-                  %span
-                    Send Message
+  - elsif Friendship.requested?(@user, current_user)
 
-          - elsif Friendship.requested?(@user, current_user)
+    Case Partner Request Pending
 
-            #map_index_user_partner_pending
-              Case Partner Request Pending
+  - elsif Friendship.pending?(@user, current_user)
 
-          - elsif Friendship.pending?(@user, current_user)
-
-            #map_index_user_partner_request
-              Pending case partner request
-              = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
-              = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
+    Pending case partner request
+    = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
+    = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
 
 
-          - elsif !Friendship.exist?(current_user, @user)
+  - elsif !Friendship.exist?(current_user, @user)
 
-            .pull-right
-              %a#map_index_user_partner_button_friend_req.btn.btn-inverse.btn-small
-                %i.icon-comment.icon-white
-                %span
-                  Send Case Partner Request
+    .pull-right
+      %a.btn.btn-inverse.btn-small
+        %i.icon-comment.icon-white
+        %span
+          Send Case Partner Request
 
 
 - if Friendship.friends?(current_user, @user)
   .panel.gradient.kill_half
     .row
-      #map_index_user_feedback
-        .row
-          .span
-            = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small application_button_feedback", id: "map_index_user_feedback_button_sendfeedback"
-          .span
-            %a#map_index_user_feedback_button_feedback_req.btn.btn-inverse.btn-small.application_button_feedback
-              %i.icon-refresh.icon-white
-              %span
-                Request Feedback
-          .span4
-            #map_index_user_feedback_results_button.btn.btn-small
-              Your Scores
+      .span
+        = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
+      .span
+        %a.btn.btn-inverse.btn-small
+          %i.icon-refresh.icon-white
+          %span
+            Request Feedback
 
-    .row
-      #map_index_user_feedback_chart_radar_container
-        #map_index_user_feedback_chart_radar
-        #map_index_user_feedback_chart_radar_buttongroup
-          .btn-group
-            %a#map_index_user_feedback_chart_radar_button_all.btn.btn-mini.active All
-            %a#map_index_user_feedback_chart_radar_button_combined.btn.btn-mini Combined
-
-        #map_index_user_feedback_chart_radar_empty
-          #map_index_user_feedback_chart_radar_empty_icon
-            %i.icon-tasks
-          %p You must do at least one case with #{@user.first_name}, 
-          %p before this chart will work
 
   #modal_message.modal.hide.fade
     = render '/shared/modal_message_form'
