@@ -6,20 +6,49 @@
 
 %button#map_index_show_close.close ×
 
+= image_tag "avatars/icon.png"
+
 = avatar_for(@user, 'chevron')
 
 = avatar_for(@user, 'icon_inert')
 
+= @user.cases.count.to_s + "+" + @user.cases_external.to_s
+
 = @user.name
 
+= @user.accepted_friends.count
+
 - if Friendship.friends?(current_user, @user)
-  = render '/shared/button_group_linkedin_skype'
+  - unless @user.skype.blank?
+    .span7
+      %a{href: "skype:#{@user.skype}?call"}
+        %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
+        Skype
   = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
+
+  = link_to
+- unless @user.country.blank?
+  = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
 
 - if @user.last_online_at
   Last online
   = time_ago_in_words(@user.last_online_at)
   ago
+
+/ pending stack overflow answer
+- unless @user.university.blank?
+  %span4
+    = image_tag "universities/" + @user.university.image
+  = @user.university.name
+
+/ - unless @user.languages.blank?
+/   - @user.languages.each do |users_item_language|
+/     %br
+/       = users_item_language.name
+
+
+
+
 - if @user != current_user
 
   - if Friendship.friends?(current_user, @user)
@@ -29,7 +58,7 @@
       .span12
         = link_to "Show Message History", history_notifications_path(user_id: @user.id)
       .span12
-        %a.btn.btn-inverse.btn-small
+        %a#map_index_user_button_message.btn.btn-inverse.btn-small
           %i.icon-comment.icon-white
           %span
             Send Message
@@ -48,22 +77,23 @@
   - elsif !Friendship.exist?(current_user, @user)
 
     .pull-right
-      %a.btn.btn-inverse.btn-small
+      %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
         %i.icon-comment.icon-white
         %span
           Send Case Partner Request
 
-
 - if Friendship.friends?(current_user, @user)
-  .panel.gradient.kill_half
-    .row
-      .span
-        = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
-      .span
-        %a.btn.btn-inverse.btn-small
-          %i.icon-refresh.icon-white
-          %span
-            Request Feedback
+  .span
+    = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
+  .span
+    %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
+      %i.icon-refresh.icon-white
+      %span
+        Request Feedback
+  .span
+    = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
+  .span
+    = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
 
 
   #modal_message.modal.hide.fade

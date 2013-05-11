@@ -1,9 +1,0 @@
-- unless !@user.linkedin.blank?
-  .span8
-    = link_to image_tag("icons/linkedin.png", alt: "View #{@user.linkedin}'s profile on LinkedIn", height: "15", width: "20", border:"0") + "LinkedIn", "http://uk.linkedin.com/in/#{@user.linkedin}"
-
-- unless @user.skype.blank?
-  .span7
-    %a{href: "skype:#{@user.skype}?call"}
-      %img#map_index_user_contact_button_skype{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
-      Skype
