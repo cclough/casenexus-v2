@@ -1,5 +1,6 @@
 class AccountController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :completed_user, except: "complete_profile"
 
   def show
     #@user = current_user

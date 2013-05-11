@@ -90,8 +90,29 @@
           .span8
             #account_completeedit_skype_link
               = link_to "Need to register?", "https://login.skype.com/account/signup-form"            
-
       #account_complete_step5.panel.darker.kill_bottom
+        .row
+          .span12
+            = f.label :language_id
+          .span25
+            = f.text_field :language_id, class: "span18"
+        .row
+          .span12
+            = f.label :firm_id
+          .span25
+            = f.text_field :language_id, class: "span18"
+        .row
+          .span12
+            = f.label :university_id
+          .span25
+            = f.text_field :university_id, class: "span18"
+        .row
+          .span12
+            = f.label :cases_external
+          .span25
+            = f.text_field :cases_external, class: "span18"
+            
+      #account_complete_step6.panel.darker.kill_bottom
         .spacer15
         .row
           = f.submit "Complete Sign up", class: "btn btn-large btn-inverse", id: "account_complete_button_submit"
