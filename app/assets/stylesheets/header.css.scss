@@ -33,6 +33,50 @@ $gray_Lightest: #f6f6f6;
   margin-right:15px;
 }
 
+
+
+
+#header_nav_panel_browse {
+
+  margin:0px;
+
+  height:30px;
+
+  padding:2px;
+
+  border-top-left-radius: 0px;
+  -moz-border-top-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+
+  border-top-right-radius: 0px;
+  -moz-border-top-right-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+#header_nav_button_container_browse {
+  margin-top:5px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
 #header_signin_form {
   position: absolute;
   top: 3px;

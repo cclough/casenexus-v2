@@ -10,18 +10,20 @@
           %ul#header_nav_links_left.nav.pull-left
 
             %li.divider-vertical
-
-            / MAP: pushpin or globe or picture or road or map-marker
             %li
-              = link_to raw("<i class='icon-pushpin icon-large icon-white'></i> Browse"), map_path
-            %li
-              = form_tag '#', method: 'get', id: "", onsubmit: 'return false' do
-                = text_field_tag :search, params[:search], placeholder: "Search...", id: "", class: 'search-query'
+              #header_nav_panel_browse.panel.gradient
+                %ul
+                  / MAP: pushpin or globe or picture or road or map-marker
+                  %li#header_nav_button_container_browse
+                    = link_to raw("<i class='icon-pushpin icon-large icon-white'></i> Browse"), map_path
+                  %li
+                    = form_tag '#', method: 'get', id: "", onsubmit: 'return false' do
+                      = text_field_tag :search, params[:search], placeholder: "Search...", id: "", class: 'search-query'
 
             %li
               = link_to raw("<i class='icon-random icon-large icon-white'></i> Library"), library_path
             %li
-              = link_to raw("<i class='icon-info-sign icon-large icon-white'></i> Help"), '#', id: 'header_link_help'
+              = link_to raw("<i class='icon-info-sign icon-large icon-white'></i>"), '#', id: 'header_link_help'
 
           %ul#header_nav_links_right.nav.pull-right
 
