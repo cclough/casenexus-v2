@@ -6,40 +6,18 @@
   var cases_show_interpersonal_chart_radar_data = #{@case.cases_show_interpersonal_chart_radar_data};
   var cases_show_structure_chart_radar_data = #{@case.cases_show_structure_chart_radar_data};
 
+  $(document).ready(function() {
+
+    window.cases_show_chart_radar_draw("all");
+    
+    window.cases_show_category_chart_radar_draw("businessanalytics");
+    window.cases_show_category_chart_radar_draw("interpersonal");
+    window.cases_show_category_chart_radar_draw("structure");
+
+  });
+
 .row
-  .span30
-    .row
-      #cases_show_block_interviewer.panel.gradient.kill_left.kill_right
-        .row
-          #cases_show_block_interviewer_avatar.span6
-            = avatar_for(@case.interviewer, 'icon')
-          #cases_show_block_interviewer_name.span15
-            .application_name
-              = @case.interviewer.name
-            .row.application_timestamp.font-small
-              %span
-                Date:
-              %span
-                = @case.date.strftime("%d %b '%y")
-          .span6
-            #cases_show_casecount
-              = avatar_for(current_user, 'chevron')
-
-  .span34
-
-    #cases_show_block_basics.panel.darker.font-small
-      .row
-        .span5.cases_show_block_basics_name
-          Source
-        .span23#cases_show_block_basics_source
-          = @case.source
-      .spacer5
-      .row
-        .span5.cases_show_block_basics_name
-          Subject
-        .span23#cases_show_block_basics_subject
-          = @case.subject
-
+  = render 'subnav'
 .row
   .span21
     .panel.darker.kill_left.kill_top.cases_show_recommendation

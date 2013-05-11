@@ -3,52 +3,5 @@ $("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>")
 // Tooltips on Avatars
 $(".application_avatar_icon").tooltip()
 
-$(".cases_index_cases_item").click(function() {
-
-  var case_id = $(this).attr('data-id');
-
-  $.get("/cases/" + case_id, function(data) {
-
-    // Slide out
-    $('#cases_index_case').hide("slide", { direction: "left" }, 300, function() {
-
-      // Load the DATA
-      $("#cases_index_case").html(data);
-
-      // RADAR BUTTONS
-      $('#cases_show_chart_radar_button_all').click(function() {
-        $('#cases_show_chart_radar').empty();
-        cases_show_chart_radar_draw("all");
-        $('#cases_show_chart_radar_button_all').addClass('active');
-        $('#cases_show_chart_radar_button_combined').removeClass('active');
-      });
-
-      $('#cases_show_chart_radar_button_combined').click(function() {
-        $('#cases_show_chart_radar').empty();
-        cases_show_chart_radar_draw("combined");
-        $('#cases_show_chart_radar_button_all').removeClass('active');
-        $('#cases_show_chart_radar_button_combined').addClass('active');
-      });
-
-      // Tooltips on Avatars
-      $(".application_avatar_icon").tooltip();
-
-      // Slide in
-      $('#cases_index_case').show("slide", { direction: "right" }, 300, function() {
-
-        cases_show_chart_radar_draw("all");
-        
-        cases_show_category_chart_radar_draw("businessanalytics");
-        cases_show_category_chart_radar_draw("interpersonal");
-        cases_show_category_chart_radar_draw("structure");
-
-      });
-
-    });
-
-  });
-
-});
-
 
 

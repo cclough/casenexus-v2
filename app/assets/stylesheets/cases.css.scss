@@ -12,9 +12,6 @@ $blue_pastel: #98cdff;
 
 .cases_avatar {
   text-align:center;
-  &.index{
-    padding-left:10px;
-  }
 }
 
 .cases_score {
@@ -24,24 +21,18 @@ $blue_pastel: #98cdff;
   color: $blue_pastel;
 }
 
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// INDEX ///////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+
 #cases_index_cases {
   padding:4px;
 }
 
-#cases_show_block_interviewer_avatar {
-  margin-top:9px;
-}
 
-#cases_show_block_interviewer_name {
-  margin-top:11px;
-}
-
-#cases_index_case_filler {
-  height:788px;
-  width:603px;
-  text-align:center;
-  line-height:700px;
-}
 
 #cases_index_cases_form_body {
   height: 697px;
@@ -83,25 +74,10 @@ $blue_pastel: #98cdff;
 
 
 
-.cases_index_name {
-  font-weight:bold;
-  font-size:13px;
-  color:white;
-}
 
-.cases_index_timestamp {
-  color: $gray_Light;
-  font-size:10px;
-}
-
-.cases_index_item_scoreandtime { 
-  text-align:center;
-  padding-right:7px;
-  padding-top:3px;
-}
 
 .cases_index_cases_item {
-  // display:none;
+
   height:55px;
   padding-top:12px;
   text-decoration:none;
@@ -124,29 +100,10 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_show_block_interviewer {
-  height:65px;
-}
 
-#cases_show_block_basics {
-  height:65px;
-}
-
-.cases_show_block_basics_name {
-  font-weight:bold;
-  margin-right:5px;
-}
-
-
-#cases_show_block_basics_source {
-  overflow-y: auto;
-  height:20px;
-}
-
-#cases_show_block_basics_subject {
-  overflow-y: auto;
-  height:40px;
-}
+/////////////////////////////////////////////////////////////////
+//////////////////////////// SHOW ///////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
 
@@ -171,11 +128,6 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_show_casecount {
-  margin-left: 4px;
-  margin-top:-13px;
-  font-size: 1.1em !important;
-}
 
 #cases_show_businessanalytics_chart_radar, #cases_show_interpersonal_chart_radar, #cases_show_structure_chart_radar {
   height:200px;
@@ -232,7 +184,12 @@ $blue_pastel: #98cdff;
 }
 
 
-/* case form */
+
+/////////////////////////////////////////////////////////////////
+//////////////////////////// NEW ////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
 
 #cases_new_form {
   input, textarea {
@@ -366,6 +323,12 @@ $blue_pastel: #98cdff;
   height:50px !important;
   margin-left:12px;
 }
+
+
+/////////////////////////////////////////////////////////////////
+////////////////////////// ANALYSIS /////////////////////////////
+/////////////////////////////////////////////////////////////////
+
 
 
 

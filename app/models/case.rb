@@ -79,6 +79,11 @@ class Case < ActiveRecord::Base
 
   ## Micro
 
+  # for Cases options_from_collection_for_select helper
+  def interviewer_name
+    interviewer.name
+  end
+
   def interpersonal_combined
     ((rapport + articulation + concision + askingforinformation).to_f / 4).round(1)
   end

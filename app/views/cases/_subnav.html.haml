@@ -1,0 +1,21 @@
+.panel.darker.kill_left.kill_right
+  .row
+    .pull-left
+      = avatar_for(@case.interviewer, 'icon')
+
+      = @case.interviewer.name
+      = @case.date.strftime("%d %b '%y")
+      = avatar_for(current_user, 'chevron')
+      %span
+        Source
+      %span
+        = @case.source
+      %br
+      %span
+        Subject
+      %span
+        = @case.subject
+    .pull-right
+      %select#cases_index_subnav_cases.chzn-select.span20{"data-placeholder" => "Jump to Case...", value: @case.id }
+        %option
+        = options_from_collection_for_select @cases, :id, :interviewer_name, @case.id

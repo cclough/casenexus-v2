@@ -8,14 +8,11 @@
   - if current_user.help_5_checked
     :javascript
       $(document).ready(function() {
-        window.setTimeout("window.application_show_help(5)", 1000);
+        //window.setTimeout("window.application_show_help(5)", 1000);
+        window.cases_index_cases_updatelist();
       });
 
+      
 
-/ NB cas is used instead of 'case' as it's apparently used for something else in rails and fails!
-.span30
+.row
   = render 'cases_form'
-.span64
-  #cases_index_case
-    #cases_index_case_filler.panel.dark.kill_bottom.span60
-      Select a case

@@ -12,6 +12,8 @@
     = javascript_include_tag "application"
 
     = javascript_include_tag "events"
+    = javascript_include_tag "cases"
+    = javascript_include_tag "lib/amcharts"
 
     = yield :javascript_includes
 
@@ -34,21 +36,21 @@
       .row
         .span25
           .panel.dark.kill_bottom
-            .row
+            #profile_nav_item_over
+            .row.profile_nav_item
               = link_to "Summary", summary_path
-            .row
+            .row.profile_nav_item
               = link_to "Cases", cases_path
-            .row
+            .row.profile_nav_item
               = link_to "Notifiations", notifications_path
-            .row
+            .row.profile_nav_item
               = link_to "Progress", analysis_cases_path
-            .row
+            .row.profile_nav_item
               = link_to "Settings", edit_account_path
-            .row
+            .row.profile_nav_item
               = link_to "Calendar", events_path
-        .span70
-          .panel.kill_left.kill_right.kill_bottom
-            = yield
+        .span73
+          = yield
 
 
 

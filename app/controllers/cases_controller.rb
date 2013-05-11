@@ -4,22 +4,23 @@ class CasesController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
+  layout "profile"
+
   def index
     @cases = current_user.cases.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 
     respond_to do |format|
-      format.html { render layout: 'profile' }
+      format.html
       format.js
     end
 
   end
 
   def show
-    @case = current_user.cases.find(params[:id])
 
-    respond_to do |format|
-      format.html { render layout: false }
-    end
+    @case = current_user.cases.find(params[:id])
+    @cases = current_user.cases.order("created_at desc")
+
   end
 
   def new

@@ -1,0 +1,22 @@
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+
+
+.profile_nav_item {
+	padding: 10px;
+}
+
+#profile_nav_item_over {
+  position:relative;
+  top:0px;
+  left:-20px;
+  width: 235px;
+  height:30px;
+  background: rgba(254,255,255,0.3);
+  border: 1px solid $gray_Light;
+}
