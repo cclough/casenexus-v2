@@ -197,7 +197,25 @@ a:hover {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 1000px;
+}
+.span100 {
+  width: 1000px;
+}
+.span99 {
+  width: 990px;
+}
+.span98 {
+  width: 980px;
+}
+.span97 {
+  width: 970px;
+}
+.span96 {
+  width: 960px;
+}
+.span95 {
+  width: 950px;
 }
 .span94 {
   width: 940px;
@@ -4688,7 +4706,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 1000px;
 }
 .navbar-fixed-top {
   top: 0;
