@@ -1,21 +1,20 @@
 = form_tag cases_path, method: 'get', id: "cases_index_cases_form", onsubmit: 'return false' do
   .panel.darker
-    / search field
+
     = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span23'
 
-    / BUGGY SO COMMENTED FOR LAUNCH
-    / .span5
-    / #cases_index_cases_form_sort
-    /   / sort/filter pulldown menu
-    /   .btn-group
-    /     %a#cases_index_cases_button_filter.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-    /       Sort
-    /       %span.caret
-    /     %ul.dropdown-menu
-    /       %li
-    /         = sortable "subject", "By Subject"
-    /         = sortable "date", "By Date"
+    #cases_index_cases_form_sort.pull-right
+      / sort/filter pulldown menu
 
+      .btn-group
+        %button.btn.btn-small.btn-inverse Sort by
+        %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            = sortable "subject", "By Subject"
+          %li
+            = sortable "date", "By Date"
 
   #cases_index_cases.panel.dark.kill_bottom
   / content is rendered by index.js.erb
