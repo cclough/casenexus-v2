@@ -300,7 +300,7 @@ window.cases_analysis_charts_draw = (case_count) ->
       valueAxis.axisAlpha = 0
       
       # change to 50?
-      valueAxis.maximum = 30
+      valueAxis.maximum = 15
       valueAxis.labelsEnabled = true
       chart_analysis_progress.addValueAxis valueAxis
       
