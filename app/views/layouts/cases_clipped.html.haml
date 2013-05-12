@@ -13,5 +13,5 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-  %body
+  %body{style:"padding-top:0px !important;"}
     = yield
