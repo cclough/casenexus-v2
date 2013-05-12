@@ -1,24 +1,27 @@
 
-#events {
-  h2 {
-    font-size: 18px;
-    margin-top: 20px;
-    margin-bottom: 5px;
-  }
+#events_calendar {
   p { margin: 5px 0; }
   .info {
     font-style: italic;
   }
 }
 
-#events .calendar {
+#events_new_input_hour {
+  width:200px;
+}
+
+#events_calendar_month{
+  width:300px;
+}
+
+#events_calendar .calendar {
   border-collapse: collapse;
-  width: 100%;
+  width: 300px;
 
   td, th {
     font-family: "Lucida Grande", arial, helvetica, sans-serif;
     font-size: 10px;
-    padding: 6px;
+    padding: 3px;
     border: 1px solid #999;
   }
 
@@ -32,16 +35,16 @@
   td {
     background: #FFF;
     color: #777;
-    height: 80px;
+    height: 40px;
     vertical-align: top;
-    font-size: 16px;
+    font-size: 10px;
   }
 
   .notmonth, .notmonth a { color: #CCC; }
   .today { background-color: #D7F2FF; }
 }
 
-#events #month {
+#events_calendar #events_calendar_month {
   margin: 0;
   padding-bottom: 10px;
   text-align: center;
@@ -53,7 +56,7 @@
   }
 }
 
-#events ul {
+#events_calendar ul {
   font-size: 11px;
   padding-left: 20px;
 }

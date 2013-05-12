@@ -1,8 +1,5 @@
-- provide(:title, 'Calendar')
-- provide(:sub_title, 'Your appointments')
-
-#events
-  %h2#month
+#events_calendar
+  #events_calendar_month
     = link_to "<", date: @date.prev_month
     = @date.strftime("%B %Y")
     = link_to ">", date: @date.next_month
@@ -12,5 +9,5 @@
       %ul
         - @events_by_date[date].each do |event|
           %li= link_to event.partner.name, event
-%p= link_to "New event", new_event_path
-%p= link_to "Subscribe to your calendar", "webcal://localhost:3000/events/ics"
+%span= link_to "New Appt.", new_event_path
+%span= link_to "Subscribe", "webcal://localhost:3000/events/ics"

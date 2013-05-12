@@ -10,22 +10,43 @@
   .field
     Date & time
     %br/
-    #event_datetimepicker.input-append.date
+    #events_datetimepicker.input-append.date
       = f.text_field :datetime, "data-format" => "dd/MM/yyyy hh:mm:ss"
       %span.add-on
         %i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-    
+  .field
+    .row
+      .span20
+        #events_new_input_hour
+          - (1..12).each do |i|
+            .btn.btn-inverse
+              = i
+      .span20
+        #events_new_input_time
+          .btn.btn-inverse
+            15
+          .btn.btn-inverse
+            30
+          .btn.btn-inverse
+            45
+          .btn.btn-inverse
+            00
+      .span5.offset2
+        #events_new_input_ampm
+          .btn.btn-inverse
+            AM
+          .btn.btn-inverse
+            PM
+
+
   .field
     Friend
     %br/
     = f.select :partner_id, options_from_collection_for_select(@friends, "id", "name")
   .field
-    Book for your interview
+    Which case would you like your friend to prepare?
     %br/
     = f.select :book_id_user, options_from_collection_for_select(@books, "id", "title")
-  .field
-    Book for their interview
-    %br/
-    = f.select :book_id_partner, options_from_collection_for_select(@books, "id", "title")
+
   .actions
-    = f.submit
+    = f.submit "Book Appointment", class: "btn btn-inverse"

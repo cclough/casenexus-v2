@@ -1,5 +1,5 @@
 
 $(document).ready ->
 	
-  $("#event_datetimepicker").datetimepicker
+  $("#events_datetimepicker").datetimepicker
   	pickSeconds: false
