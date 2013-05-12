@@ -5,6 +5,147 @@ window.cases_index_cases_updatelist = ->
   false
 
 
+#////////////////////////////////////////////////////
+#////////////////////  SHOW   ///////////////////////
+#////////////////////////////////////////////////////
+
+window.cases_show_chart_bar_draw = ->
+  chart = undefined
+  
+  # SERIAL CHART
+  chart = new AmCharts.AmSerialChart()
+  chart.dataProvider = cases_show_chart_bar_data
+  chart.autoMarginOffset = 0
+  chart.marginRight = 0
+  chart.categoryField = "criteria"
+  
+  # this single line makes the chart a bar chart,              
+  chart.rotate = true
+  chart.depth3D = 20
+  chart.angle = 30
+  
+  # AXES
+  # Category
+  categoryAxis = chart.categoryAxis
+  categoryAxis.gridPosition = "start"
+  categoryAxis.axisColor = "#DADADA"
+  categoryAxis.fillAlpha = 0
+  categoryAxis.gridAlpha = 0
+  categoryAxis.fillColor = "#FAFAFA"
+  categoryAxis.labelsEnabled = false
+  
+  # value
+  valueAxis = new AmCharts.ValueAxis()
+  valueAxis.gridAlpha = 0
+  valueAxis.dashLength = 1
+  
+  # valueAxis.minimum = 1;
+  valueAxis.integersOnly = true
+  valueAxis.labelsEnabled = false
+  valueAxis.maximum = 5
+  chart.addValueAxis valueAxis
+  
+  # GRAPH
+  graph = new AmCharts.AmGraph()
+  graph.title = "Score"
+  graph.valueField = "score"
+  graph.type = "column"
+  graph.labelPosition = "bottom"
+  graph.color = "#ffffff"
+  graph.fontSize = 10
+  graph.labelText = "[[category]]"
+  graph.balloonText = "[[category]]: [[value]]"
+  graph.lineAlpha = 0
+  
+  # Balloon Settings
+  balloon = chart.balloon
+  balloon.adjustBorderColor = true
+  balloon.cornerRadius = 5
+  balloon.showBullet = false
+  balloon.fillColor = "#000000"
+  balloon.fillAlpha = 0.7
+  balloon.color = "#FFFFFF"
+  graph.fillColors = "#98cdff"
+  graph.fillAlphas = 0.4
+  chart.addGraph graph
+  chart.write "cases_show_chart_bar"
+
+
+window.cases_show_category_chart_bar_draw = (category) ->
+  chart = undefined
+  
+  # SERIAL CHART
+  chart = new AmCharts.AmSerialChart()
+  if category is "businessanalytics"
+    chart.dataProvider = cases_show_businessanalytics_chart_bar_data
+  else if category is "interpersonal"
+    chart.dataProvider = cases_show_interpersonal_chart_bar_data
+  else chart.dataProvider = cases_show_structure_chart_bar_data  if category is "structure"
+  chart.autoMarginOffset = 0
+  chart.marginRight = 0
+  chart.categoryField = "criteria"
+  
+  # this single line makes the chart a bar chart,              
+  chart.rotate = true
+  chart.depth3D = 20
+  chart.angle = 30
+  
+  # AXES
+  # Category
+  categoryAxis = chart.categoryAxis
+  categoryAxis.gridPosition = "start"
+  categoryAxis.axisColor = "#DADADA"
+  categoryAxis.fillAlpha = 0
+  categoryAxis.gridAlpha = 0
+  categoryAxis.fillColor = "#FAFAFA"
+  categoryAxis.labelsEnabled = false
+  
+  # value
+  valueAxis = new AmCharts.ValueAxis()
+  valueAxis.gridAlpha = 0
+  valueAxis.dashLength = 1
+  
+  # valueAxis.minimum = 1;
+  valueAxis.integersOnly = true
+  valueAxis.labelsEnabled = false
+  valueAxis.maximum = 5
+  chart.addValueAxis valueAxis
+  
+  # GRAPH
+  graph = new AmCharts.AmGraph()
+  graph.title = "Score"
+  graph.valueField = "score"
+  graph.type = "column"
+  graph.labelPosition = "bottom"
+  graph.color = "#ffffff"
+  graph.fontSize = 10
+  graph.labelText = "[[category]]"
+  graph.balloonText = "[[category]]: [[value]]"
+  graph.lineAlpha = 0
+  
+  # Balloon Settings
+  balloon = chart.balloon
+  balloon.adjustBorderColor = true
+  balloon.cornerRadius = 5
+  balloon.showBullet = false
+  balloon.fillColor = "#000000"
+  balloon.fillAlpha = 0.7
+  balloon.color = "#FFFFFF"
+  if category is "analytics"
+    graph.fillColors = "#0D8ECF"
+  else if category is "interpersonal"
+    graph.fillColors = "#B0DE09"
+  else graph.fillColors = "#FCD202"  if category is "structure"
+  graph.fillAlphas = 0.4
+  chart.addGraph graph
+  
+  # WRITE
+  if category is "businessanalytics"
+    chart.write "cases_show_businessanalytics_chart_bar"
+  else if category is "interpersonal"
+    chart.write "cases_show_interpersonal_chart_bar"
+  else chart.write "cases_show_structure_chart_bar" if category is "structure"
+
 window.cases_show_chart_radar_draw = (radar_type) ->
   chart_show_radar = undefined
   
@@ -30,7 +171,7 @@ window.cases_show_chart_radar_draw = (radar_type) ->
   valueAxis.gridAlpha = 0.1
   valueAxis.fontWeight = "bold"
   valueAxis.minimum = 0
-  valueAxis.maximum = 10
+  valueAxis.maximum = 5
   chart_show_radar.addValueAxis valueAxis
   
   # GUIDES
@@ -70,7 +211,7 @@ window.cases_show_chart_radar_draw = (radar_type) ->
   graph.fillAlphas = 0.4
   graph.bullet = "round"
   graph.valueField = "score"
-  graph.balloonText = "[[category]]: [[value]]/10"
+  graph.balloonText = "[[category]]: [[value]]/5"
   graph.labelPosition = "right"
   chart_show_radar.addGraph graph
   
@@ -87,61 +228,9 @@ window.cases_show_chart_radar_draw = (radar_type) ->
   chart_show_radar.write "cases_show_chart_radar"
 
 
-window.cases_show_category_chart_radar_draw = (category) ->
-  chart_show_category_radar = undefined
-  
-  # RADAR CHART
-  chart_show_category_radar = new AmCharts.AmRadarChart()
-  if category is "businessanalytics"
-    chart_show_category_radar.dataProvider = cases_show_businessanalytics_chart_radar_data
-  else if category is "interpersonal"
-    chart_show_category_radar.dataProvider = cases_show_interpersonal_chart_radar_data
-  else chart_show_category_radar.dataProvider = cases_show_structure_chart_radar_data  if category is "structure"
-  chart_show_category_radar.categoryField = "criteria"
-  
-  # chart_show_category_radar.startDuration = 1;
-  # chart_show_category_radar.startEffect = ">";
-  # chart_show_category_radar.sequencedAnimation = true;
-  chart_show_category_radar.color = "#FFFFFF"
-  chart_show_category_radar.fontSize = 9
-  
-  # VALUE AXIS
-  valueAxis = new AmCharts.ValueAxis()
-  valueAxis.gridType = "circles"
-  valueAxis.fillAlpha = 0.02
-  valueAxis.fillColor = "#000000"
-  valueAxis.axisAlpha = 0.1
-  valueAxis.gridAlpha = 0.1
-  valueAxis.fontWeight = "bold"
-  valueAxis.minimum = 0
-  valueAxis.maximum = 10
-  valueAxis.radarCategoriesEnabled = false
-  chart_show_category_radar.addValueAxis valueAxis
-  
-  # GRAPH
-  graph = new AmCharts.AmGraph()
-  graph.lineColor = "#98cdff"
-  graph.fillAlphas = 0.4
-  graph.bullet = "round"
-  graph.valueField = "score"
-  graph.balloonText = "[[category]]: [[value]]/10"
-  chart_show_category_radar.addGraph graph
-  
-  # Balloon Settings
-  balloon = chart_show_category_radar.balloon
-  balloon.adjustBorderColor = true
-  balloon.color = "#000000"
-  balloon.cornerRadius = 5
-  balloon.fillColor = "#000000"
-  balloon.fillAlpha = 0.7
-  balloon.color = "#FFFFFF"
-  
-  # WRITE
-  if category is "businessanalytics"
-    chart_show_category_radar.write "cases_show_businessanalytics_chart_radar"
-  else if category is "interpersonal"
-    chart_show_category_radar.write "cases_show_interpersonal_chart_radar"
-  else chart_show_category_radar.write "cases_show_structure_chart_radar"  if category is "structure"
+#////////////////////////////////////////////////////
+#///////////////////  ANALYSIS  /////////////////////
+#////////////////////////////////////////////////////
 
 
 window.cases_analysis_charts_draw = (case_count) ->
@@ -371,7 +460,7 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   graph.fillAlphas = 0.2
   graph.bullet = "round"
   graph.valueField = "all"
-  graph.balloonText = "[[category]]: [[value]]/10"
+  graph.balloonText = "[[category]]: [[value]]/5"
   chart_analysis_radar.addGraph graph
   
   # GRAPH - FIRST 5
@@ -380,7 +469,7 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   graph.fillAlphas = 0.2
   graph.bullet = "round"
   graph.valueField = "first"
-  graph.balloonText = "[[category]]: [[value]]/10"
+  graph.balloonText = "[[category]]: [[value]]/5"
   chart_analysis_radar.addGraph graph
   
   # GRAPH - LAST 5
@@ -389,7 +478,7 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   graph.fillAlphas = 0.2
   graph.bullet = "round"
   graph.valueField = "last"
-  graph.balloonText = "[[category]]: [[value]]/10"
+  graph.balloonText = "[[category]]: [[value]]/5"
   chart_analysis_radar.addGraph graph
   
   # VALUE AXIS
@@ -401,7 +490,7 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   valueAxis.gridAlpha = 0.1
   valueAxis.fontWeight = "bold"
   valueAxis.minimum = 0
-  valueAxis.maximum = 10
+  valueAxis.maximum = 5
   chart_analysis_radar.addValueAxis valueAxis
   
   # GUIDES
@@ -488,7 +577,7 @@ $(document).ready ->
     range: "min"
     step: 1
     min: 1
-    max: 10
+    max: 5
     value: 1
     slide: (event, ui) ->
       cases_new_slider_name = $(this).attr("id").split("_")

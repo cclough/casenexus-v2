@@ -109,6 +109,12 @@ $blue_pastel: #98cdff;
 /////////////////////////////////////////////////////////////////
 
 
+#cases_show_chart_bar {
+  margin-left:15px;
+  width:200px;
+  height:250px;
+}
+
 
 .cases_show_title {
   text-align:center;
@@ -132,7 +138,7 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_show_businessanalytics_chart_radar, #cases_show_interpersonal_chart_radar, #cases_show_structure_chart_radar {
+#cases_show_businessanalytics_chart_bar, #cases_show_interpersonal_chart_bar, #cases_show_structure_chart_bar {
   height:200px;
   width:200px;
 }
@@ -176,9 +182,6 @@ $blue_pastel: #98cdff;
 }
 
 
-.cases_show_recommendation {
-  width:187px;
-}
 
 .cases_show_recommendation_content {
   overflow-y:auto;

@@ -1,40 +1,32 @@
 :javascript
+
+  var cases_show_chart_bar_data = #{@case.cases_show_chart_bar_data}; 
+
   var cases_show_chart_radar_data_all = #{@case.cases_show_chart_radar_data_all};
   var cases_show_chart_radar_data_combined = #{@case.cases_show_chart_radar_data_combined};
 
-  var cases_show_businessanalytics_chart_radar_data = #{@case.cases_show_businessanalytics_chart_radar_data};
-  var cases_show_interpersonal_chart_radar_data = #{@case.cases_show_interpersonal_chart_radar_data};
-  var cases_show_structure_chart_radar_data = #{@case.cases_show_structure_chart_radar_data};
+  var cases_show_businessanalytics_chart_bar_data = #{@case.cases_show_businessanalytics_chart_bar_data};
+  var cases_show_interpersonal_chart_bar_data = #{@case.cases_show_interpersonal_chart_bar_data};
+  var cases_show_structure_chart_bar_data = #{@case.cases_show_structure_chart_bar_data};
 
   $(document).ready(function() {
 
+    window.cases_show_chart_bar_draw("all");
     window.cases_show_chart_radar_draw("all");
     
-    window.cases_show_category_chart_radar_draw("businessanalytics");
-    window.cases_show_category_chart_radar_draw("interpersonal");
-    window.cases_show_category_chart_radar_draw("structure");
+    window.cases_show_category_chart_bar_draw("businessanalytics");
+    window.cases_show_category_chart_bar_draw("interpersonal");
+    window.cases_show_category_chart_bar_draw("structure");
 
   });
 
 .row
   = render 'subnav'
 .row
-  .span21
-    .panel.darker.kill_left.kill_top.cases_show_recommendation
-      .cases_show_title.recommendation
-        1st Recommendation
-      .cases_show_recommendation_content
-        = @case.recommendation1
-      .spacer10
-      .cases_show_title.recommendation
-        2nd Recommendation
-      .cases_show_recommendation_content
-        = @case.recommendation2
-      .spacer10
-      .cases_show_title.recommendation
-        3rd Recommendation
-      .cases_show_recommendation_content
-        = @case.recommendation3
+
+  .span20
+    #cases_show_chart_bar
+
   .span40
 
     #cases_show_chart_radar
@@ -43,6 +35,26 @@
         %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
         %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
 
+.spacer20
+.row
+  .panel.darker.kill_left.kill_top
+    .row
+      .span20
+        .cases_show_title.recommendation
+          1st Recommendation
+        .cases_show_recommendation_content
+          = @case.recommendation1
+      .span20.offset1
+        .cases_show_title.recommendation
+          2nd Recommendation
+        .cases_show_recommendation_content
+          = @case.recommendation2
+      .span20.offset1
+        .cases_show_title.recommendation
+          3rd Recommendation
+        .cases_show_recommendation_content
+          = @case.recommendation3
+
 .row
   .span63
     .panel.darker.kill_left.kill_right.kill_top
@@ -50,7 +62,7 @@
         Business Analytics
       .row
         .span17
-          #cases_show_businessanalytics_chart_radar
+          #cases_show_businessanalytics_chart_bar
         .span9.offset2
           .cases_show_block_circle_outer.panel.dark
             .cases_show_block_circle.panel.darker
@@ -65,7 +77,7 @@
         Interpersonal
       .row
         .span17
-          #cases_show_interpersonal_chart_radar
+          #cases_show_interpersonal_chart_bar
         .span9.offset2
           .cases_show_block_circle_outer.panel.dark
             .cases_show_block_circle.panel.darker
@@ -80,7 +92,7 @@
         Structure
       .row
         .span17
-          #cases_show_structure_chart_radar
+          #cases_show_structure_chart_bar
         .span9.offset2
           .cases_show_block_circle_outer.panel.dark
             .cases_show_block_circle.panel.darker

@@ -261,8 +261,8 @@ if Rails.env == 'development'
 
   User.all.each do |user|
 
-    rand(51).times do
-      interviewer_id = 1 + rand(15)
+    rand(20).times do
+      interviewer_id = 1 + rand(2)
       next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(
           interviewer_id: interviewer_id,
@@ -278,20 +278,20 @@ if Rails.env == 'development'
           businessanalytics_comment: Faker::Lorem.sentence(30),
           interpersonal_comment: Faker::Lorem.sentence(30),
 
-          quantitativebasics: 1 + rand(9),
-          problemsolving: 1 + rand(9),
-          prioritisation: 1 + rand(9),
-          sanitychecking: 1 + rand(9),
+          quantitativebasics: 1 + rand(4),
+          problemsolving: 1 + rand(4),
+          prioritisation: 1 + rand(4),
+          sanitychecking: 1 + rand(4),
 
-          rapport: 1 + rand(9),
-          articulation: 1 + rand(9),
-          concision: 1 + rand(9),
-          askingforinformation: 1 + rand(9),
+          rapport: 1 + rand(4),
+          articulation: 1 + rand(4),
+          concision: 1 + rand(4),
+          askingforinformation: 1 + rand(4),
 
-          approachupfront: 1 + rand(9),
-          stickingtostructure: 1 + rand(9),
-          announceschangedstructure: 1 + rand(9),
-          pushingtoconclusion: 1 + rand(9)
+          approachupfront: 1 + rand(4),
+          stickingtostructure: 1 + rand(4),
+          announceschangedstructure: 1 + rand(4),
+          pushingtoconclusion: 1 + rand(4)
       )
       puts "Case created for user #{user.name}"
     end

@@ -27,31 +27,31 @@ class Case < ActiveRecord::Base
   validates :source, length: { maximum: 100 }
 
   validates :quantitativebasics, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :problemsolving, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :prioritisation, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :sanitychecking, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   validates :rapport, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :articulation, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :concision, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :askingforinformation, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   validates :approachupfront, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :stickingtostructure, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :announceschangedstructure, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :pushingtoconclusion, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 10 }
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   validates :interpersonal_comment, length: { maximum: 500 }
   validates :businessanalytics_comment, length: { maximum: 500 }
@@ -109,6 +109,23 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
+  def cases_show_chart_bar_data
+    "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
+     {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
+     {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
+     {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"},
+
+     {criteria: \"Rapport\", score: "+rapport.to_s+"},
+     {criteria: \"Articulation\", score: "+articulation.to_s+"},
+     {criteria: \"Concision\", score: "+concision.to_s+"},
+     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
+
+     {criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
+     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
+     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
+     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
+  end
+
   def cases_show_chart_radar_data_all
     "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
      {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
@@ -133,26 +150,27 @@ class Case < ActiveRecord::Base
   end
 
   # case categories
-  def cases_show_businessanalytics_chart_radar_data
+  def cases_show_businessanalytics_chart_bar_data
     "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
      {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
      {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
      {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"}]"
   end
 
-  def cases_show_interpersonal_chart_radar_data
+  def cases_show_structure_chart_bar_data
+    "[{criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
+     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
+     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
+     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
+  end
+
+  def cases_show_interpersonal_chart_bar_data
     "[{criteria: \"Rapport\", score: "+rapport.to_s+"},
      {criteria: \"Articulation\", score: "+articulation.to_s+"},
      {criteria: \"Concision\", score: "+concision.to_s+"},
      {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"}]"
   end
 
-  def cases_show_structure_chart_radar_data
-    "[{criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
-     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
-     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
-     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
-  end
 
 
   def self.cases_analysis_chart_radar_data_all(user, count)
@@ -406,7 +424,7 @@ class Case < ActiveRecord::Base
     user = User.find(self.user_id)
     interviewer = User.find(self.interviewer_id)
     if !Friendship.friendship(user, interviewer)
-      errors.add(:base, "You need to be case partner to send case feedback")
+      errors.add(:base, "You need to be case partners to send case feedback")
     end
   end
 
