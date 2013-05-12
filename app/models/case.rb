@@ -5,10 +5,7 @@ class Case < ActiveRecord::Base
                   :recommendation1, :recommendation2, :recommendation3,
                   :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
                   :rapport, :articulation, :concision, :askingforinformation,
-                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion,
-                  :roulette_token
-
-  attr_accessor :roulette_token
+                  :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
 
   ### Relationships
   belongs_to :user
@@ -64,7 +61,7 @@ class Case < ActiveRecord::Base
   validates :recommendation2, length: { maximum: 200 }
   validates :recommendation3, length: { maximum: 200 }
 
-  validate :friend_or_roulette_token
+  validate :is_a_friend
   validate :no_case_to_self
 
   ### Scopes
@@ -405,19 +402,17 @@ class Case < ActiveRecord::Base
 
   private
 
-  def friend_or_roulette_token
+  def is_a_friend
     user = User.find(self.user_id)
     interviewer = User.find(self.interviewer_id)
     if !Friendship.friendship(user, interviewer)
-      if !self.roulette_token.blank? && self.roulette_token != user.roulette_token
-        errors.add(:base, "You need to be case partner to send case feedback")
-      end
+      errors.add(:base, "You need to be case partner to send case feedback")
     end
   end
 
   def no_case_to_self
     unless self.user_id.blank?
-      errors.add(:base, "You cannot send feedback to yourself") if self.user_id == self.interviewer_id || self.roulette_token == self.interviewer.roulette_token
+      errors.add(:base, "You cannot send feedback to yourself") if self.user_id == self.interviewer_id
     end
   end
 

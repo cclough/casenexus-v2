@@ -78,13 +78,4 @@ class MembersController < ApplicationController
     end
   end
 
-  def check_roulette
-    if !params[:roulette_token].blank? && User.where(roulette_token: params[:roulette_token]).where("id != ?", current_user.id).exists?
-      @user = User.where(roulette_token: params[:roulette_token]).first
-      render text: @user.id
-    else
-      render text: "-1"
-    end
-  end
-
 end

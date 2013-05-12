@@ -21,7 +21,6 @@ Casenexus::Application.routes.draw do
     get :mouseover, on: :member
     put :show_help, on: :member
     get :help_checkbox, on: :collection
-    get :check_roulette, on: :collection
   end
 
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
@@ -46,7 +45,7 @@ Casenexus::Application.routes.draw do
 
 
   # Cases
-  resources :cases, only: [:index, :show, :new, :create, :update] do
+  resources :cases, only: [:index, :show, :new, :create] do
     get :analysis, on: :collection
   end
 
@@ -80,11 +79,6 @@ Casenexus::Application.routes.draw do
 
   # Site contacts
   match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact
-
-  # Roulette
-  match '/roulette', to: 'roulette#index', as: :roulette
-  match '/get_item', to: 'roulette#get_item', as: :item_roulette
-  match '/get_request', to: 'roulette#get_request', as: :request_roulette
 
   # Events
   resources :events do

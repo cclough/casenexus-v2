@@ -85,12 +85,6 @@
                   = link_to "Need to register?", "https://login.skype.com/account/signup-form"
               .span22
                 = f.text_field :skype, placeholder: "Skype username"
-                .font-small
-                  %ul.application_bullets
-                    %li 
-                      %span.account_completeedit_condition
-                        (required)
-                      for the Roulette
 
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"

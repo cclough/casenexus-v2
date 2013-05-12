@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511092105) do
+ActiveRecord::Schema.define(:version => 20130512002536) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -158,6 +158,14 @@ ActiveRecord::Schema.define(:version => 20130511092105) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "site_bugs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "site_contacts", :force => true do |t|
     t.integer  "user_id"
     t.string   "email"
@@ -201,7 +209,6 @@ ActiveRecord::Schema.define(:version => 20130511092105) do
     t.float    "lng"
     t.string   "skype"
     t.boolean  "completed",              :default => false, :null => false
-    t.string   "roulette_token",                            :null => false
     t.string   "city"
     t.integer  "university_id"
     t.datetime "last_online_at"
@@ -225,7 +232,6 @@ ActiveRecord::Schema.define(:version => 20130511092105) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["linkedin_uid"], :name => "index_users_on_linkedin_uid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["roulette_token"], :name => "index_users_on_roulette_token", :unique => true
   add_index "users", ["university_id"], :name => "index_users_on_university_id"
 
 end

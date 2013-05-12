@@ -24,22 +24,17 @@ class CasesController < ApplicationController
   end
 
   def new
-    if params[:roulette_token]
-      @user = User.find_by_roulette_token(params[:roulette_token])
-    else
-      @user = User.find(params[:user_id])
-      unless Friendship.friendship(current_user, @user)
-        flash[:error] = "You are not friend with #{@user.name}"
-        redirect_to map_path and return
-      end
-      if params[:subject] then
-        @subject = params[:subject]
-      end
+    @user = User.find(params[:user_id])
+    unless Friendship.friendship(current_user, @user)
+      flash[:error] = "You are not friend with #{@user.name}"
+      redirect_to map_path and return
+    end
+    if params[:subject] then
+      @subject = params[:subject]
     end
 
     @case = @user.cases.build
-    @case.roulette_token = params[:roulette_token] if params[:roulette_token]
-  
+
     render layout: "cases_clipped"
 
   end
@@ -57,22 +52,6 @@ class CasesController < ApplicationController
       @user = @case.user
       render 'new'
     end
-  end
-
-
-  def update
-    @case = Case.find(params[:case][:id])
-
-    respond_to do |format|
-      if @case.update_attributes(params[:case])
-        format.js
-        flash.now[:success] = 'Notes Saved'
-      else
-        format.js
-        flash.now[:notice] = 'Error - notes not saved'
-      end
-    end
-
   end
 
   def analysis

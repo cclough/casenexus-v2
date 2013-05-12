@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   has_one :invitation, foreign_key: 'invited_id'
 
   # Callbacks
-  before_create :generate_roulette_token
   before_create :set_university
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
@@ -154,13 +153,6 @@ class User < ActiveRecord::Base
 
   def to_s
     self.name
-  end
-
-  def generate_roulette_token
-    begin
-      self.roulette_token = ('a'..'z').to_a.shuffle[0,8].join
-    end while User.where(roulette_token: self.roulette_token).exists?
-    self.roulette_token
   end
 
 
