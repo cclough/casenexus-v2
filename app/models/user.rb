@@ -190,10 +190,13 @@ class User < ActiveRecord::Base
 
   def set_university
     domain = self.email.split("@")[1]
-    # PENDING S-O ANSWER
-    # if University.all.none?{ |d| domain[d.domain] }
-    #   self.university = University.where(domain: domain).first
-    # end
+    # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
+    if found = University.all.find{ |d| domain[d.domain] }
+      self.university = found
+    else
+      errors.add(:email, "Sorry, no match found")
+    end
+
   end
 
   def validate_university_email
