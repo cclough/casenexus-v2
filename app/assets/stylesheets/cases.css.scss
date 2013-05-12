@@ -215,6 +215,15 @@ $blue_pastel: #98cdff;
 }
 
 
+#cases_new_guide {
+  text-align:center;
+}
+
+.cases_new_guide_num {
+  font-size:12px;
+  color:$blue_pastel;
+}
+
 .cases_new_block {
   padding:3px;
   padding-bottom:0px;
@@ -247,7 +256,21 @@ $blue_pastel: #98cdff;
   color: $gray_Lighter;
   margin:0px;
   margin-bottom:2px;
+  border:0 !important;
 }
+
+
+.cases_new_criteria_popover {
+  width:3px;
+  padding-left:6px;
+  margin-right:5px;
+}
+
+.cases_new_scoreselector_button {
+  width:3px;
+  padding-left:10px;
+}
+
 
 .cases_new_block_circle {
     background: #f00;
@@ -276,28 +299,10 @@ $blue_pastel: #98cdff;
     text-align: center;
     font-weight:bold;
     font-size:25px;
-    color:#b9b9b9;
+    color:$blue_pastel;
 }
 
-.cases_new_slider {
-  width: 140px;
-  float: left;
-  margin-top:15px;
-  margin-right:20px;
-  margin-left:20px;
-  z-index:0;
-}
 
-.cases_new_slider_input {
-  border:0;
-  height:30px !important; 
-  width:30px;
-  font-size:15px !important;
-  color:#6db9ff !important;
-  font-weight:bold;
-  text-align:center;
-  margin:0px;
-}
 
 #cases_new_subject {
   height: 59px;
@@ -312,18 +317,136 @@ $blue_pastel: #98cdff;
 }
 
 
-.cases_new_comment {
-  width:307px !important;
-  height:100px !important;
-  margin-left:3px;
-  margin-bottom:0px;
-}
 
 .cases_new_recommendation {
   width:265px !important;
   height:50px !important;
-  margin-left:12px;
+  margin-left:5px;
 }
+
+
+
+
+
+
+
+
+
+
+// .cases_new_comment_recommendation_container {
+//   margin-left:35px;
+//   border-left: 1px solid #ffd4d4 !important;
+//   padding-left:10px;
+//   padding-top:20px;
+//   padding-bottom:60px;
+// }
+
+// .cases_new_comment_recommendation {
+
+//   background-color: rgb(255, 255, 204) !important;
+//   border:0px solid transparent !important;
+
+//   font-size:18px;
+//   font-weight:bold;
+
+//   -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 0px rgba(0, 0, 0, 0) !important;
+//   -moz-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 8px rgba(0, 0, 0, 0) !important;
+//   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 8px rgba(0, 0, 0, 0) !important;
+
+// }
+
+// .cases_new_comment_recommendation::-webkit-input-placeholder {
+//   color: #d6cb82;
+//   font-style:italic;
+//   font-weight:normal;
+// }
+// .cases_new_comment_recommendation:-moz-placeholder {
+//   color: #d6cb82;
+//   font-weight:normal;
+// }
+// .cases_new_comment_recommendation:-ms-input-placeholder {
+//   color: #d6cb82;
+//   font-weight:normal;
+// }
+
+
+.cases_new_comment {
+  margin:0 0 0 15px;
+
+  background-color: rgb(255, 255, 204);
+
+  height:205px;
+  width:360px;
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  -moz-box-shadow: 1px 4px 52px #2c2c2c;
+  -webkit-box-shadow: 1px 4px 52px #2c2c2c;
+  box-shadow: 1px 4px 52px #2c2c2c;
+
+  .wysihtml5-toolbar {
+    position:relative;
+    top:-30px;
+    left:5px;
+    .btn {
+      padding:1px 8px;
+      font-size:11px !important;
+    }
+  }
+
+}
+
+.cases_new_comment_content_container {
+  margin-left:35px;
+
+  width:320px; // defines length of lines
+  height:169px;
+  position:relative;
+  top:35px;
+
+  border-left: 1px solid #ffd4d4 !important;
+
+  background:rgb(255, 255, 204) url(app/note_line.gif) repeat-y left top !important;
+
+}
+
+
+.cases_new_comment_content {
+
+  margin-top:-37px;
+
+  height:160px;
+  width:290px; // imporant to check this is right (text runs out of yellow)
+
+  line-height:20px;
+  padding-left:10px;
+
+  border:0px solid transparent !important;
+  
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 0px rgba(0, 0, 0, 0) !important;
+  -moz-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 8px rgba(0, 0, 0, 0) !important;
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 8px rgba(0, 0, 0, 0) !important;
+
+  background:transparent;
+
+}
+
+.cases_new_comment_content::-webkit-input-placeholder {
+  color: #d6cb82;
+  font-style:italic;
+  font-weight:normal;
+}
+.cases_new_comment_content:-moz-placeholder {
+  color: #d6cb82;
+  font-weight:normal;
+}
+.cases_new_comment_content:-ms-input-placeholder {
+  color: #d6cb82;
+  font-weight:normal;
+}
+
 
 
 /////////////////////////////////////////////////////////////////

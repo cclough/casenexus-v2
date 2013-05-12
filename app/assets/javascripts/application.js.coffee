@@ -1,7 +1,6 @@
 #= require jquery
 #= require jquery_ujs
 
-#= require jquery.ui.slider
 #= require jquery.ui.effect-slide
 #= require jquery.ui.effect
 #= require jquery.ui.widget

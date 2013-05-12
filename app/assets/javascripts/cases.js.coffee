@@ -4,7 +4,6 @@ window.cases_index_cases_updatelist = ->
   $.get $("#cases_index_cases_form").attr("action"), $("#cases_index_cases_form").serialize(), null, "script"
   false
 
-
 #////////////////////////////////////////////////////
 #////////////////////  SHOW   ///////////////////////
 #////////////////////////////////////////////////////
@@ -548,8 +547,6 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   # WRITE
   chart_analysis_radar.write "cases_analysis_chart_radar"
 
-
-
 #///////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////
@@ -573,17 +570,6 @@ $(document).ready ->
 #/////////////////////////// NEW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
 
-  $(".cases_new_slider").slider
-    range: "min"
-    step: 1
-    min: 1
-    max: 5
-    value: 1
-    slide: (event, ui) ->
-      cases_new_slider_name = $(this).attr("id").split("_")
-      $("#cases_new_slider_input_" + cases_new_slider_name[3]).val ui.value
-      cases_new_calculatescore $(this).attr("data-category")
-
 
   # $("#cases_new_datepicker").datetimepicker({ "pickSeconds": false });
   # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
@@ -605,72 +591,83 @@ $(document).ready ->
     link: false #Button to insert a link. Default true
     image: false #Button to insert an image. Default true
 
-  $(".cases_new_popover").hover (->
+  # Score selectors!
+  $(".cases_new_scoreselector_button").click ->
+    score = $(this).data("score")
+    criteria = $(this).data("criteria")
+
+    # change value of input
+    $("#cases_new_score_input_" + criteria).val(score)
+
+    # update category score
+    cases_new_calculatecategoryscore($(this).attr("data-category"));
+
+    # make active
+    $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
+    $(this).addClass("active")
+
+
+  # Popovers
+  $(".cases_new_criteria_popover").hover (->
     $(this).popover "show"
   ), ->
     $(this).popover "hide"
 
-  $("#cases_new_popover").click ->
-    $("#cases_new_popover").popover "show"
 
-  $(".cases_new_slider_input").change ->
-    cases_new_calculatescore this
-
-
-  cases_new_calculatescore = (category) ->
+  cases_new_calculatecategoryscore = (category) ->
     if category is "businessanalytics"
-      if $("#cases_new_slider_input_quantitativebasics").val()
-        category_score_1 = parseInt($("#cases_new_slider_input_quantitativebasics").val())
+      if $("#cases_new_score_input_quantitativebasics").val()
+        category_score_1 = parseInt($("#cases_new_score_input_quantitativebasics").val())
       else
         category_score_1 = 0
-      if $("#cases_new_slider_input_problemsolving").val()
-        category_score_2 = parseInt($("#cases_new_slider_input_problemsolving").val())
+      if $("#cases_new_score_input_problemsolving").val()
+        category_score_2 = parseInt($("#cases_new_score_input_problemsolving").val())
       else
         category_score_2 = 0
-      if $("#cases_new_slider_input_prioritisation").val()
-        category_score_3 = parseInt($("#cases_new_slider_input_prioritisation").val())
+      if $("#cases_new_score_input_prioritisation").val()
+        category_score_3 = parseInt($("#cases_new_score_input_prioritisation").val())
       else
         category_score_3 = 0
-      if $("#cases_new_slider_input_sanitychecking").val()
-        category_score_4 = parseInt($("#cases_new_slider_input_sanitychecking").val())
+      if $("#cases_new_score_input_sanitychecking").val()
+        category_score_4 = parseInt($("#cases_new_score_input_sanitychecking").val())
       else
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
       $("#cases_new_block_circle_text_businessanalytics").html category_score
     else if category is "interpersonal"
-      if $("#cases_new_slider_input_rapport").val()
-        category_score_1 = parseInt($("#cases_new_slider_input_rapport").val())
+      if $("#cases_new_score_input_rapport").val()
+        category_score_1 = parseInt($("#cases_new_score_input_rapport").val())
       else
         category_score_1 = 0
-      if $("#cases_new_slider_input_articulation").val()
-        category_score_2 = parseInt($("#cases_new_slider_input_articulation").val())
+      if $("#cases_new_score_input_articulation").val()
+        category_score_2 = parseInt($("#cases_new_score_input_articulation").val())
       else
         category_score_2 = 0
-      if $("#cases_new_slider_input_concision").val()
-        category_score_3 = parseInt($("#cases_new_slider_input_concision").val())
+      if $("#cases_new_score_input_concision").val()
+        category_score_3 = parseInt($("#cases_new_score_input_concision").val())
       else
         category_score_3 = 0
-      if $("#cases_new_slider_input_askingforinformation").val()
-        category_score_4 = parseInt($("#cases_new_slider_input_askingforinformation").val())
+      if $("#cases_new_score_input_askingforinformation").val()
+        category_score_4 = parseInt($("#cases_new_score_input_askingforinformation").val())
       else
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
       $("#cases_new_block_circle_text_interpersonal").html category_score
     else if category is "structure"
-      if $("#cases_new_slider_input_approachupfront").val()
-        category_score_1 = parseInt($("#cases_new_slider_input_approachupfront").val())
+      if $("#cases_new_score_input_approachupfront").val()
+        category_score_1 = parseInt($("#cases_new_score_input_approachupfront").val())
       else
         category_score_1 = 0
-      if $("#cases_new_slider_input_stickingtostructure").val()
-        category_score_2 = parseInt($("#cases_new_slider_input_stickingtostructure").val())
+      if $("#cases_new_score_input_stickingtostructure").val()
+        category_score_2 = parseInt($("#cases_new_score_input_stickingtostructure").val())
       else
         category_score_2 = 0
-      if $("#cases_new_slider_input_announceschangedstructure").val()
-        category_score_3 = parseInt($("#cases_new_slider_input_announceschangedstructure").val())
+      if $("#cases_new_score_input_announceschangedstructure").val()
+        category_score_3 = parseInt($("#cases_new_score_input_announceschangedstructure").val())
       else
         category_score_3 = 0
-      if $("#cases_new_slider_input_pushingtoconclusion").val()
-        category_score_4 = parseInt($("#cases_new_slider_input_pushingtoconclusion").val())
+      if $("#cases_new_score_input_pushingtoconclusion").val()
+        category_score_4 = parseInt($("#cases_new_score_input_pushingtoconclusion").val())
       else
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4

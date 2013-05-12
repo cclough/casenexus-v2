@@ -1,0 +1,3 @@
+%div{id: "cases_new_scoreselector_" + criteria }
+  - (1..5).each do |i|
+    = content_tag :div, i, class: "cases_new_scoreselector_button btn btn-inverse", "data-score" => i, "data-criteria" => criteria, "data-category" => category
