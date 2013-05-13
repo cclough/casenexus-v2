@@ -57,14 +57,16 @@
           .panel.dark.kill_left
             .row
               .span12
-                = f.label :language_id
+                Languages
               .span25
-                = f.text_field :language_id, class: "span18"
+                %select.chzn-select.span30{"data-placeholder" => "Select languages you speak", "multiple"=>"multiple"}
+                  = options_from_collection_for_select Language.all, :id, :name
             .row
               .span12
-                = f.label :firm_id
+                Firms
               .span25
-                = f.text_field :language_id, class: "span18"
+                %select.chzn-select.span30{"data-placeholder" => "Select firms you're applying to", "multiple"=>"multiple"}
+                  = options_from_collection_for_select Firm.all, :id, :name
             .row
               .span12
                 = f.label :university_id

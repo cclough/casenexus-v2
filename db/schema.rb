@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513223647) do
+ActiveRecord::Schema.define(:version => 20130513230611) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -249,8 +249,6 @@ ActiveRecord::Schema.define(:version => 20130513223647) do
     t.boolean  "help_4_checked",         :default => true,  :null => false
     t.boolean  "help_5_checked",         :default => true,  :null => false
     t.boolean  "help_6_checked",         :default => true,  :null => false
-    t.integer  "language_id"
-    t.integer  "firm_id"
     t.integer  "cases_external"
     t.boolean  "active",                 :default => true
     t.integer  "country_id"

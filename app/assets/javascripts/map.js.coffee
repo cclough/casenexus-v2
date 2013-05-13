@@ -167,7 +167,7 @@ $(document).ready ->
 
 
 
-  # $(".chzn-select").chosen().change ->
-  #   latlng_chosen = $(this).find("option:selected").val().split("_")
-  #   users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
-  #   map_index_map_pan(users_chosen_latlng)
+  $(".chzn-select").chosen().change ->
+    latlng_chosen = $(this).find("option:selected").val().split("_")
+    users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
+    map_index_map_pan(users_chosen_latlng)

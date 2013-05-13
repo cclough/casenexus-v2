@@ -4,109 +4,110 @@
   var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
-%button#map_index_show_close.close ×
+.panel.gradient
+  %button#map_index_show_close.close ×
 
-= image_tag "avatars/icon.png"
+  = image_tag "avatars/icon.png"
 
-= avatar_for(@user, 'icon_inert')
+  = avatar_for(@user, 'icon_inert')
 
-= @user.cases.count.to_s + "+" + @user.cases_external.to_s
+  = @user.cases.count.to_s + "+" + @user.cases_external.to_s
 
-= @user.name
+  = @user.name
 
-= @user.accepted_friends.count
-
-- if Friendship.friends?(current_user, @user)
-  - unless @user.skype.blank?
-    .span7
-      %a{href: "skype:#{@user.skype}?call"}
-        %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
-        Skype
-  = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
-
-  = link_to
-- unless @user.country.blank?
-  = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
-
-- if @user.last_online_at
-  Last online
-  = time_ago_in_words(@user.last_online_at)
-  ago
-
-/ pending stack overflow answer
-- unless @user.university.blank?
-  %span4
-    = image_tag "universities/" + @user.university.image
-  = @user.university.name
-
-/ - unless @user.languages.blank?
-/   - @user.languages.each do |users_item_language|
-/     %br
-/       = users_item_language.name
-
-
-
-
-- if @user != current_user
+  = @user.accepted_friends.count
 
   - if Friendship.friends?(current_user, @user)
+    - unless @user.skype.blank?
+      .span7
+        %a{href: "skype:#{@user.skype}?call"}
+          %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
+          Skype
+    = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
+
+    = link_to
+  - unless @user.country.blank?
+    = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
+
+  - if @user.last_online_at
+    Last online
+    = time_ago_in_words(@user.last_online_at)
+    ago
+
+  / pending stack overflow answer
+  - unless @user.university.blank?
+    %span4
+      = image_tag "universities/" + @user.university.image
+    = @user.university.name
+
+  / - unless @user.languages.blank?
+  /   - @user.languages.each do |users_item_language|
+  /     %br
+  /       = users_item_language.name
 
 
-    - if Notification.history(current_user, @user).count > 0
-      .span12
-        = link_to "Show Message History", history_notifications_path(user_id: @user.id)
-      .span12
-        %a#map_index_user_button_message.btn.btn-inverse.btn-small
+
+
+  - if @user != current_user
+
+    - if Friendship.friends?(current_user, @user)
+
+
+      - if Notification.history(current_user, @user).count > 0
+        .span12
+          = link_to "Show Message History", history_notifications_path(user_id: @user.id)
+        .span12
+          %a#map_index_user_button_message.btn.btn-inverse.btn-small
+            %i.icon-comment.icon-white
+            %span
+              Send Message
+
+    - elsif Friendship.requested?(@user, current_user)
+
+      Case Partner Request Pending
+
+    - elsif Friendship.pending?(@user, current_user)
+
+      Pending case partner request
+      = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
+      = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
+
+
+    - elsif !Friendship.exist?(current_user, @user)
+
+      .pull-right
+        %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
           %i.icon-comment.icon-white
           %span
-            Send Message
+            Send Case Partner Request
 
-  - elsif Friendship.requested?(@user, current_user)
-
-    Case Partner Request Pending
-
-  - elsif Friendship.pending?(@user, current_user)
-
-    Pending case partner request
-    = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
-    = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
-
-
-  - elsif !Friendship.exist?(current_user, @user)
-
-    .pull-right
-      %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
-        %i.icon-comment.icon-white
+  - if Friendship.friends?(current_user, @user)
+    .row
+      = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
+    .row
+      %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
+        %i.icon-refresh.icon-white
         %span
-          Send Case Partner Request
-
-- if Friendship.friends?(current_user, @user)
-  .row
-    = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
-  .row
-    %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
-      %i.icon-refresh.icon-white
-      %span
-        Request Feedback
-  .row
-    = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
-  .row
-    = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
-  .row
-    - @user.firms.each do |firm|
-      .row
-        = firm.name
-  .row
-    - @user.languages.each do |language|
-      .row
-        = language.name
+          Request Feedback
+    .row
+      = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
+    .row
+      = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
+    .row
+      - @user.firms.each do |firm|
+        .row
+          = firm.name
+    .row
+      - @user.languages.each do |language|
+        .row
+          = language.name
 
 
-  #modal_message.modal.hide.fade
-    = render '/shared/modal_message_form'
-  #modal_feedback_req.modal.hide.fade
-    = render '/shared/modal_feedback_req_form'
+    #modal_message.modal.hide.fade
+      = render '/shared/modal_message_form'
+    #modal_feedback_req.modal.hide.fade
+      = render '/shared/modal_feedback_req_form'
 
-- if @friendship
-  #modal_friendship_req.modal.hide.fade
-    = render '/friendships/request_form'
+  - if @friendship
+    #modal_friendship_req.modal.hide.fade
+      = render '/friendships/request_form'
