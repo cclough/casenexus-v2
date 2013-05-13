@@ -15,6 +15,23 @@ if %w(production development).include?(Rails.env) && User.count == 0
     )
   end
 
+  puts "Creating Languages"
+
+  Language.create!(name: "English - UK", country_code: "GB")
+  Language.create!(name: "English - US", country_code: "US")
+  Language.create!(name: "French", country_code: "FR")
+
+
+  puts "Creating Firms"
+
+  Firm.create!(name: "Candesic")
+  Firm.create!(name: "McKinsey & Company")
+  Firm.create!(name: "BCG")
+  Firm.create!(name: "Bain & Company")
+  Firm.create!(name: "Roland Berger")
+  Firm.create!(name: "OC&C")
+
+
   puts "Creating universities"
 
   University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
@@ -207,7 +224,50 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Friendship.connect(User.find(1), User.find(3))
 
 
+  puts "Creating Christian's Languages"
 
+  user = User.find(1)
+
+  language_one = Language.where("name = ?", "English - UK")
+  language_two = Language.where("name = ?", "French")
+
+  user.languages << language_one
+  user.languages << language_two
+
+
+  puts "Creating Robin's Languages"
+
+  user = User.find(3)
+
+  language_one = Language.where("name = ?", "English - UK")
+
+  user.languages << language_one
+
+
+  puts "Creating Christian's Firm's"
+
+  user = User.find(1)
+
+  firm_one = Firm.where("name = ?", "McKinsey & Company")
+  firm_two = Firm.where("name = ?", "Bain & Company")
+  firm_three = Firm.where("name = ?", "BCG")
+  firm_four = Firm.where("name = ?", "OC&C")
+
+  user.firms << firm_one
+  user.firms << firm_two
+  user.firms << firm_three
+  user.firms << firm_four
+
+
+  puts "Creating Robin's Firm's"
+
+  user = User.find(3)
+
+  firm_one = Firm.where("name = ?", "McKinsey & Company")
+  firm_two = Firm.where("name = ?", "Bain & Company")
+
+  user.firms << firm_one
+  user.firms << firm_two
 
 
 end
@@ -230,7 +290,7 @@ if Rails.env == 'development'
     date
   end
 
-  15.times do |n|
+  2.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     email = "example#{n+1}@cam.ac.uk"
@@ -259,7 +319,8 @@ if Rails.env == 'development'
     puts "User #{user.name} created"
   end
 
-  User.all.each do |user|
+  #User.all.each do |user|
+    user = User.find(1)
 
     rand(20).times do
       interviewer_id = 1 + rand(2)
@@ -296,7 +357,7 @@ if Rails.env == 'development'
       puts "Case created for user #{user.name}"
     end
 
-  end
+  #end
 
   User.all.each do |user|
 

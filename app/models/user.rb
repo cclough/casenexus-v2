@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   belongs_to :university
   belongs_to :country
 
+  has_and_belongs_to_many :firms
+  has_and_belongs_to_many :languages
+
   has_many :events
   has_many :comments
   has_many :cases, dependent: :destroy

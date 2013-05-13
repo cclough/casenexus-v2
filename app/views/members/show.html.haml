@@ -81,17 +81,25 @@
           Send Case Partner Request
 
 - if Friendship.friends?(current_user, @user)
-  .span
+  .row
     = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
-  .span
+  .row
     %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
       %i.icon-refresh.icon-white
       %span
         Request Feedback
-  .span
+  .row
     = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
-  .span
+  .row
     = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
+  .row
+    - @user.firms.each do |firm|
+      .row
+        = firm.name
+  .row
+    - @user.languages.each do |language|
+      .row
+        = language.name
 
 
   #modal_message.modal.hide.fade

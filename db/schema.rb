@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512002536) do
+ActiveRecord::Schema.define(:version => 20130513223647) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -101,6 +101,20 @@ ActiveRecord::Schema.define(:version => 20130512002536) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "firms", :force => true do |t|
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "firms_users", :id => false, :force => true do |t|
+    t.integer "firm_id"
+    t.integer "user_id"
+  end
+
+  add_index "firms_users", ["firm_id", "user_id"], :name => "index_firms_users_on_firm_id_and_user_id"
+  add_index "firms_users", ["user_id", "firm_id"], :name => "index_firms_users_on_user_id_and_firm_id"
+
   create_table "friendships", :force => true do |t|
     t.integer  "user_id",                           :null => false
     t.integer  "friend_id",                         :null => false
@@ -129,6 +143,21 @@ ActiveRecord::Schema.define(:version => 20130512002536) do
 
   add_index "invitations", ["invited_id"], :name => "index_invitations_on_invited_id"
   add_index "invitations", ["user_id"], :name => "index_invitations_on_user_id"
+
+  create_table "languages", :force => true do |t|
+    t.text     "name"
+    t.text     "country_code"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "languages_users", :id => false, :force => true do |t|
+    t.integer "language_id"
+    t.integer "user_id"
+  end
+
+  add_index "languages_users", ["language_id", "user_id"], :name => "index_languages_users_on_language_id_and_user_id"
+  add_index "languages_users", ["user_id", "language_id"], :name => "index_languages_users_on_user_id_and_language_id"
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id",                             :null => false
