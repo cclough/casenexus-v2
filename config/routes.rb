@@ -1,8 +1,18 @@
 Casenexus::Application.routes.draw do
+
+  root to: 'static_pages#home'
+
   ActiveAdmin.routes(self)
 
   devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
+
+  # Static Pages
+  match '/about', to: 'static_pages#about'
+  match '/terms', to: 'static_pages#terms'
+
+  match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
+
 
   # Map
   match '/map', to: 'map#index', as: :map
@@ -85,11 +95,5 @@ Casenexus::Application.routes.draw do
     get :ics, on: :collection
   end
 
-  # Static Pages
-  match '/about', to: 'static_pages#about'
-  match '/terms', to: 'static_pages#terms'
 
-  match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
-
-  root to: 'static_pages#home'
 end
