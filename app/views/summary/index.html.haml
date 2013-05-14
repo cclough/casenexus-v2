@@ -1,3 +1,7 @@
+- provide(:title, 'Summary')
+- provide(:sub_title, 'Overview of all your stuff')
+
+
 .row
   .panel.darker.kill_left.span32
     .summary_block_title
@@ -6,8 +10,8 @@
       .row.summary_item
         .span2
           = avatar_for(summary_item_event.partner, 'icon')
-        .span7.offset1.font-small
-          = summary_item_event.datetime.strftime("%Y-%m-%d %I:%M%p")
+        .span11.offset1.summary_item_title_date
+          = summary_item_event.datetime.strftime("%a %d %b %Y %I:%M%p")
         .span.offset1
           = summary_item_event.partner.name
     = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
