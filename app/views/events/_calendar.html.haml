@@ -7,15 +7,17 @@
     = link_to "webcal://localhost:3000/events/ics" do
       .btn.btn-inverse
         Sub
-  .span.offset1
+  .span.offset1.pull-right
+
     #events_calendar_month
       = link_to date: @date.prev_month do
-        .btn.btn-inverse
+        .btn.btn-inverse.btn-small
           %i.icon-chevron-left.icon-white
       = @date.strftime("%B %Y")
       = link_to date: @date.next_month do
-        .btn.btn-inverse
+        .btn.btn-inverse.btn-small
           %i.icon-chevron-right.icon-white
+  
   .row
     = calendar @date do |date|
       = date.day
