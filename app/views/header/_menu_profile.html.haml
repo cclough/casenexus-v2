@@ -7,8 +7,10 @@
     %span.caret
 
   %ul.dropdown-menu
-    %li= link_to raw("<i class=icon-book></i> Case index"), cases_path
-    %li= link_to raw("<i class=icon-search></i> Progress analysis"), cases_path + '/analysis'
+
+    %li= link_to raw("<i class=icon-eye-open></i> Summary"), summary_path
+    %li= link_to raw("<i class=icon-book></i> Cases"), cases_path
+    %li= link_to raw("<i class=icon-search></i> Analysis"), analysis_cases_url
     %li.divider
     %li= link_to raw("<i class=icon-cogs></i> Settings"), edit_account_path
     %li.divider

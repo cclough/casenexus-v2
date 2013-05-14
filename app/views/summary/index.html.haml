@@ -3,6 +3,8 @@
 
 
 .row
+
+
   .panel.darker.kill_left.kill_bottom.span32
     .summary_block_title
       Events
@@ -20,10 +22,18 @@
           .btn.btn-inverse.btn-mini
             ?
     = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
+
+
+
   .panel.darker.kill_left.kill_bottom.span33
     = render "events/calendar"
 
+
+
 .row
+
+
+
   .panel.darker.kill_left.span32
     .summary_block_title
       Friends
@@ -38,6 +48,11 @@
             Msg
           .btn.btn-inverse.btn-mini
             Start Case
+          .btn.btn-inverse.btn-mini
+            %a{href: "skype:#{summary_item_friend.skype}?call"}
+              %img{src: "http://mystatus.skype.com/smallicon/#{summary_item_friend.skype}" }
+
+
   .panel.darker.kill_left.span33
     .summary_block_title
       Recent Cases

@@ -245,6 +245,77 @@ class Case < ActiveRecord::Base
       ]"
   end
 
+  def self.cases_analysis_chart_bar_data_all(user, count)
+    # LAST 5: load scores into json for radar chart
+    "[
+      {criteria: \"Quantitative basics\", 
+      all: " + (user.cases.order('id desc').collect(&:quantitativebasics).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:quantitativebasics).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:quantitativebasics).sum.to_f/count).to_s + "},
+      {criteria: \"Problem-Solving\", 
+      all: " + (user.cases.order('id desc').collect(&:problemsolving).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:problemsolving).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:problemsolving).sum.to_f/count).to_s + "},
+      {criteria: \"Prioritisation\", 
+      all: " + (user.cases.order('id desc').collect(&:prioritisation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:prioritisation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:prioritisation).sum.to_f/count).to_s + "},
+      {criteria: \"Sanity-checking\", 
+      all: " + (user.cases.order('id desc').collect(&:sanitychecking).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:sanitychecking).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:sanitychecking).sum.to_f/count).to_s + "},
+      {criteria: \"Rapport\", 
+      all: " + (user.cases.order('id desc').collect(&:rapport).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:rapport).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:rapport).sum.to_f/count).to_s + "},
+      {criteria: \"Articulation\", 
+      all: " + (user.cases.order('id desc').collect(&:articulation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:articulation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:articulation).sum.to_f/count).to_s + "},
+      {criteria: \"Concision\", 
+      all: " + (user.cases.order('id desc').collect(&:concision).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:concision).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:concision).sum.to_f/count).to_s + "},
+      {criteria: \"Asking for information\", 
+      all: " + (user.cases.order('id desc').collect(&:askingforinformation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:askingforinformation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:askingforinformation).sum.to_f/count).to_s + "},
+      {criteria: \"Approach up front\", 
+      all: " + (user.cases.order('id desc').collect(&:approachupfront).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:approachupfront).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:approachupfront).sum.to_f/count).to_s + "},
+      {criteria: \"Sticking to structure\", 
+      all: " + (user.cases.order('id desc').collect(&:stickingtostructure).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:stickingtostructure).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:stickingtostructure).sum.to_f/count).to_s + "},
+      {criteria: \"Announces structure change\", 
+      all: " + (user.cases.order('id desc').collect(&:announceschangedstructure).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:announceschangedstructure).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:announceschangedstructure).sum.to_f/count).to_s + "},
+      {criteria: \"Pusing to conclusion\", 
+      all: " + (user.cases.order('id desc').collect(&:pushingtoconclusion).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + "}
+      ]"
+  end
+
+  def self.cases_analysis_chart_bar_data_combined(user, count)
+    # LAST count: load scores into json for radar chart
+    "[
+      {criteria: \"Business Analytics\", 
+      all: " + (user.cases.order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + "},
+      {criteria: \"Interpersonal\", 
+      all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
+      {criteria: \"Structure\", 
+      all: " + (user.cases.order('id desc').collect(&:structure_combined).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:structure_combined).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "}
+      ]"
+  end
   def self.cases_analysis_chart_progress_data(user)
     cases_analysis_chart_progress_data = user.cases.order('date asc').map { |c|
       { id: c.id,

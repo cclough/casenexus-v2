@@ -8,9 +8,16 @@
 
     var cases_analysis_chart_case_count = #{@case_count};
 
+
     var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count)};
 
     var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count)};
+
+
+    var cases_analysis_chart_bar_data_all = #{Case.cases_analysis_chart_bar_data_all(current_user, @case_count)};
+
+    var cases_analysis_chart_bar_data_combined = #{Case.cases_analysis_chart_bar_data_combined(current_user, @case_count)};
+
 
     $(document).ready(function(){    
       window.cases_analysis_charts_draw(cases_analysis_chart_case_count);
@@ -30,7 +37,7 @@
       .pull-right
         .btn-group
           %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "area"} Area
-          %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "radar"} Radar
+          %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "radar"} Bar & Radar
           %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "comments"} Comments
 .row
   #cases_analysis_section_area.cases_analysis_section
@@ -49,12 +56,13 @@
           %p before this chart will work
 
   #cases_analysis_section_radar.cases_analysis_section.hidden
-    .panel.dark.kill_all
+
+    .panel.dark.kill_all.span33
       .row
         .cases_analysis_block_title
           Radar
       .row
-        #cases_analysis_chart_radar_buttongroup.offset32
+        #cases_analysis_chart_radar_buttongroup.offset25
           .btn-group
             %a#cases_analysis_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
             %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
@@ -64,6 +72,20 @@
         #cases_analysis_chart_radar_empty
           #cases_analysis_chart_radar_empty_icon
             %i.icon-tasks
+          %p You must do at least one case, 
+          %p before this chart will work
+
+    .panel.dark.kill_right.kill_bottom.kill_top.span33
+      .row
+        .cases_analysis_block_title
+          Bar
+      .row
+        #cases_analysis_chart_bar
+          .cases_analysis_loading.progress.progress-striped.active 
+            .bar
+        #cases_analysis_chart_bar_empty
+          #cases_analysis_chart_bar_empty_icon
+            %i.icon-bar-chart
           %p You must do at least one case, 
           %p before this chart will work
 

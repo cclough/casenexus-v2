@@ -240,6 +240,7 @@ window.cases_analysis_charts_draw = (case_count) ->
   if case_count is 0
     $("#cases_analysis_chart_radar_empty").fadeIn "fast"
     $("#cases_analysis_chart_progress_empty").fadeIn "fast"
+    $("#cases_analysis_chart_bar_empty").fadeIn "fast"
   else
     
     # loop through model json, construct AM compatabile array + run parseDate
@@ -412,9 +413,12 @@ window.cases_analysis_charts_draw = (case_count) ->
       graph.addListener "clickGraphItem", (event) ->
         window.location = "/cases?id=" + event.item.dataContext.id
 
-    $("#cases_analysis_chart_radar").fadeIn "fast"
     $("#cases_analysis_chart_progress").fadeIn "fast"
+
+    # really need the two liens below?
+    $("#cases_analysis_chart_radar").fadeIn "fast"
     $("#cases_analysis_chart_radar_buttongroup").fadeIn "fast"
+
     cases_analysis_chart_progress_data = []
     $.getJSON("/cases/analysis", (json) ->
       $.each json, (i, item) ->
@@ -436,6 +440,7 @@ window.cases_analysis_charts_draw = (case_count) ->
 #////////////////////////////////////////////////////////
 # Radar // Has to be global function for buttons to work
 #////////////////////////////////////////////////////////
+
 
 cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   chart_analysis_radar = undefined
@@ -546,6 +551,80 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   
   # WRITE
   chart_analysis_radar.write "cases_analysis_chart_radar"
+
+
+#////////////////////////////////////////////////////////
+# Bar // Has to be global function for buttons to work
+#////////////////////////////////////////////////////////
+
+
+cases_analysis_chart_bar_draw = (bar_type, case_count) ->
+  chart = undefined
+  
+  # SERIAL CHART
+  chart = new AmCharts.AmSerialChart()
+  if bar_type is "all"
+    chart.dataProvider = cases_analysis_chart_bar_data_all
+  else chart.dataProvider = cases_analysis_chart_bar_data_combined  if bar_type is "combined"
+
+  chart.autoMarginOffset = 0
+  chart.marginRight = 0
+  chart.categoryField = "criteria"
+  
+  # this single line makes the chart a bar chart,              
+  chart.rotate = true
+  chart.depth3D = 20
+  chart.angle = 30
+  
+  # AXES
+  # Category
+  categoryAxis = chart.categoryAxis
+  categoryAxis.gridPosition = "start"
+  categoryAxis.axisColor = "#DADADA"
+  categoryAxis.fillAlpha = 0
+  categoryAxis.gridAlpha = 0
+  categoryAxis.fillColor = "#FAFAFA"
+  categoryAxis.labelsEnabled = false
+  
+  # value
+  valueAxis = new AmCharts.ValueAxis()
+  valueAxis.gridAlpha = 0
+  valueAxis.dashLength = 1
+  
+  # valueAxis.minimum = 1;
+  valueAxis.integersOnly = true
+  valueAxis.labelsEnabled = false
+  valueAxis.maximum = 5
+  chart.addValueAxis valueAxis
+  
+  # GRAPH
+  graph = new AmCharts.AmGraph()
+  graph.title = "Score"
+  graph.valueField = "score"
+  graph.type = "column"
+  graph.labelPosition = "bottom"
+  graph.color = "#ffffff"
+  graph.fontSize = 10
+  graph.labelText = "[[category]]"
+  graph.balloonText = "[[category]]: [[value]]/5"
+  graph.lineAlpha = 0
+  
+  # Balloon Settings
+  balloon = chart.balloon
+  balloon.adjustBorderColor = true
+  balloon.cornerRadius = 5
+  balloon.showBullet = false
+  balloon.fillColor = "#000000"
+  balloon.fillAlpha = 0.7
+  balloon.color = "#FFFFFF"
+  graph.fillColors = "#98cdff"
+  graph.fillAlphas = 0.4
+  chart.addGraph graph
+  chart.write "cases_show_chart_bar"
+
+
+
+
 
 #///////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////
@@ -688,6 +767,7 @@ $(document).ready ->
 
     if section is "radar"
       cases_analysis_chart_radar_draw "all", cases_analysis_chart_case_count
+      cases_analysis_chart_bar_draw "all", cases_analysis_chart_case_count
 
     $(".cases_analysis_subnav_button").removeClass "active"
     $(this).addClass "active"
