@@ -1,24 +1,25 @@
 #events_calendar
-  #events_calendar_month
-    = link_to date: @date.prev_month do
+  .span
+    = link_to new_event_path do
       .btn.btn-inverse
-        %i.icon-chevron-left.icon-white
-    = @date.strftime("%B %Y")
-    = link_to date: @date.next_month do
+        New
+  .span.offset1
+    = link_to "webcal://localhost:3000/events/ics" do
       .btn.btn-inverse
-        %i.icon-chevron-right.icon-white
-  = calendar @date do |date|
-    = date.day
-    - if @events_by_date[date]
-      %ul
-        - @events_by_date[date].each do |event|
-          %li= link_to event.partner.name, event
-%span
-  = link_to new_event_path do
-    .btn.btn-inverse
-      New Appt.
-
-%span
-  = link_to "webcal://localhost:3000/events/ics" do
-    .btn.btn-inverse
-      Subscribe
+        Sub
+  .span.offset1
+    #events_calendar_month
+      = link_to date: @date.prev_month do
+        .btn.btn-inverse
+          %i.icon-chevron-left.icon-white
+      = @date.strftime("%B %Y")
+      = link_to date: @date.next_month do
+        .btn.btn-inverse
+          %i.icon-chevron-right.icon-white
+  .row
+    = calendar @date do |date|
+      = date.day
+      - if @events_by_date[date]
+        %ul
+          - @events_by_date[date].each do |event|
+            %li= link_to event.partner.name, event
