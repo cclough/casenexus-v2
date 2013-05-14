@@ -290,39 +290,39 @@ if Rails.env == 'development'
     date
   end
 
-  2.times do |n|
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    email = "example#{n+1}@cam.ac.uk"
-    password = "password"
-    lat = -90 + rand(180)
-    lng = -180 + rand(360)
-    skype = "skpye"
+  # 2.times do |n|
+  #   first_name = Faker::Name.first_name
+  #   last_name = Faker::Name.last_name
+  #   email = "example#{n+1}@cam.ac.uk"
+  #   password = "password"
+  #   lat = -90 + rand(180)
+  #   lng = -180 + rand(360)
+  #   skype = "skpye"
 
-    confirm_tac = true
+  #   confirm_tac = true
 
-    ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
+  #   ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 
-    user = User.new(first_name: first_name, last_name: last_name,
-                    email: email, password: password,
-                    password_confirmation: password,
-                    lat: lat, lng: lng,
-                    skype: skype,
-                    confirm_tac: confirm_tac,
-                    ip_address: ip_address,
-                    invitation_code: 'BYPASS_CASENEXUS_INV')
+  #   user = User.new(first_name: first_name, last_name: last_name,
+  #                   email: email, password: password,
+  #                   password_confirmation: password,
+  #                   lat: lat, lng: lng,
+  #                   skype: skype,
+  #                   confirm_tac: confirm_tac,
+  #                   ip_address: ip_address,
+  #                   invitation_code: 'BYPASS_CASENEXUS_INV')
 
-    user.completed = true
-    user.save!
-    user.confirm!
+  #   user.completed = true
+  #   user.save!
+  #   user.confirm!
 
-    puts "User #{user.name} created"
-  end
+  #   puts "User #{user.name} created"
+  # end
 
   #User.all.each do |user|
     user = User.find(1)
 
-    rand(20).times do
+    11.times do
       interviewer_id = 1 + rand(2)
       next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(
@@ -359,10 +359,12 @@ if Rails.env == 'development'
 
   #end
 
-  User.all.each do |user|
+  
+  #User.all.each do |user|
+  user = User.find(1)
 
     2.times do
-      sender_id = rand(15) + 1
+      sender_id = rand(2) + 1
       next if user.id.to_s == sender_id.to_s
       user.notifications.create!(ntype: "message",
                                  sender_id: sender_id,
@@ -370,7 +372,9 @@ if Rails.env == 'development'
 
       puts "Message Notifications created for user #{user.name}"
     end
-  end
+
+  #end
+
 
   Notification.all.each do |notification|
     if rand(2) == 1
@@ -378,6 +382,21 @@ if Rails.env == 'development'
       puts "Notification marked as read"
     end
   end
+
+
+
+
+  user = User.find(1)
+
+    5.times do
+      partner_id = rand(2) + 1
+      user.events.create!(partner_id: partner_id,
+                          book_id_user: 1,
+                          book_id_partner: 1,
+                          datetime: random_date(year_range: 2, year_latest: 0.5))
+
+      puts "Events created for user #{user.name}"
+    end
 
 end
 

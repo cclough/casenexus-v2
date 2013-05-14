@@ -1,23 +1,35 @@
 .row
-  .panel.darker.kill_left.span30
+  .panel.darker.kill_left.span32
     .summary_block_title
       Events
     - @events.each do |summary_item_event|
       .row.summary_item
-        = summary_item_event.partner.name
-  .panel.darker.kill_left.span30
+        .span2
+          = avatar_for(summary_item_event.partner, 'icon')
+        .span7.offset1.font-small
+          = summary_item_event.datetime.strftime("%Y-%m-%d %I:%M%p")
+        .span.offset1
+          = summary_item_event.partner.name
+    = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
+  .panel.darker.kill_left.span33
     = render "events/calendar"
 
 .row
-  .panel.darker.kill_left.span30
+  .panel.darker.kill_left.span32
     .summary_block_title
       Friends
     - @friends.each do |summary_item_friend|
       .row.summary_item
-        = summary_item_friend.name
-  .panel.darker.kill_left.span30
+        .span2
+          = avatar_for(summary_item_friend, 'icon')
+        .span.offset1.font-small
+          = summary_item_friend.name
+  .panel.darker.kill_left.span33
     .summary_block_title
       Recent Cases
     - @cases.each do |summary_item_case|
       .row.summary_item
-        = summary_item_case.interviewer.name
+        .span2
+          = avatar_for(summary_item_case.interviewer, 'icon')
+        .span.offset1
+          = summary_item_case.interviewer.name

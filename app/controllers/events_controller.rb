@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     #if @event.save
     if Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
       flash[:success] = "Appointment booked."
-      redirect_to @event
+      redirect_to summary_path
     else
       render :new
     end
@@ -60,22 +60,12 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
-    if @event.update_attributes(params[:event])
-      flash[:success] = "Appointment updated."
-      redirect_to @event
-    else
-      render :edit
-    end
-  end
-
-  def update
     @event = current_user.events.find(params[:id])
     if Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
       flash[:success] = "Appointment updated. " + @event.partner.first_name + " has been notified."
       redirect_to @event
     else
-      redirect_to events_path
+      redirect_to summary_path
     end
   end
 
@@ -86,7 +76,7 @@ class EventsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      redirect_to events_path
+      redirect_to summary_path
     end
   end
     

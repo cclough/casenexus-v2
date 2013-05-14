@@ -11,7 +11,7 @@ class SummaryController < ApplicationController
     	@date = params[:date] ? Date.parse(params[:date]) : Date.today
 
     	@cases = current_user.cases.first(10)
-    	@events = current_user.events.first(10)
+    	@events = current_user.events.paginate(per_page: 5, page: params[:page])
     	@friends = current_user.accepted_friends.first(10)
 	end
 
