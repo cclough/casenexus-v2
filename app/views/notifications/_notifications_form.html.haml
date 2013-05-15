@@ -2,7 +2,7 @@
   .panel.darker.kill_left.kill_right
     = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span23'
 
-    .pull-right#notifications_index_notifications_form_sort
+    .pull-right.offset3#notifications_index_notifications_form_sort
       .btn-group
         %button.btn.btn-small.btn-inverse Sort by
         %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -19,6 +19,6 @@
       .btn-group
         = filterable('all', 'All')
         = filterable('message', 'Messages')
-        = filterable('feedback_req', 'Feedback')
+        = filterable('feedback_req', 'Feedback Req')
         = filterable('feedback', 'Feedback')
         = filterable('friendship_req', 'Friends')

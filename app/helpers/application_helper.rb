@@ -19,7 +19,11 @@ module ApplicationHelper
 
 
   def filterable(ntype, title)
-    link_to title, params.merge(ntype: ntype), class: "btn btn-mini"
+    if ntype == params[:ntype]
+      link_to title, params.merge(ntype: ntype), class: "btn btn-mini active"
+    else
+      link_to title, params.merge(ntype: ntype), class: "btn btn-mini"
+    end
   end
 
 

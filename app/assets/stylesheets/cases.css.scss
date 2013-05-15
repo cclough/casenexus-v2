@@ -39,11 +39,15 @@ $blue_pastel: #98cdff;
 }
 
 
+#cases_index_cases_form_sort {
+  margin-top:-60px;
+}
 
 #cases_index_cases_form_sort .current {
   padding-right: 12px;
   background-repeat: no-repeat;
   background-position: right center;
+  text-decoration:none;
 }
 
 #cases_index_cases_form_sort .asc {

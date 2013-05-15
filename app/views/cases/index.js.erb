@@ -1,7 +1,12 @@
-$("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>")
+$("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>");
+
+// Sort pull down text
+$("#cases_index_cases_form_button_sort").html("<%= escape_javascript(params[:sort] ? params[:sort].titleize : nil) %>");
+
+$("#cases_index_cases .application_pagination a, #cases_index_cases_form_sort a").on("click", function() {
+  $.getScript(this.href);
+  return false;
+});
 
 // Tooltips on Avatars
-$(".application_avatar_icon").tooltip()
-
-
-
+$(".application_avatar_icon").tooltip();

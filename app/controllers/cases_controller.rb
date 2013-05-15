@@ -79,10 +79,10 @@ class CasesController < ApplicationController
 
   # For Index case sorting
   def sort_column
-    current_user.cases.column_names.include?(params[:sort]) ? params[:sort] : "date"
+    current_user.cases.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end
