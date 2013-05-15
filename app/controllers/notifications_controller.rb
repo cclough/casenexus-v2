@@ -12,7 +12,7 @@ class NotificationsController < ApplicationController
       notification_scope = notification_scope.where(ntype: params[:ntype])
     end
 
-    @notifications = notification_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    @notifications = notification_scope.search_for(params[:search]).order("notifications."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
     @notifications.all
   end
 
@@ -68,7 +68,7 @@ class NotificationsController < ApplicationController
   private
 
   def sort_column
-    current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "notifications.created_at"
+    current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
   end
 
   def sort_direction

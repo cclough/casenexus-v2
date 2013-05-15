@@ -1,24 +1,13 @@
 = form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form" do
   .panel.darker.kill_left.kill_right
-    = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span23'
+    .row
+      .span
+        = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span20'
+      .span.offset3
+        .btn-group
+          = filterable('all', 'All')
+          = filterable('message', 'Messages')
+          = filterable('feedback_req', 'Feedback Req')
+          = filterable('feedback', 'Feedback')
+          = filterable('friendship_req', 'Friends')
 
-    .pull-right.offset3#notifications_index_notifications_form_sort
-      .btn-group
-        %button.btn.btn-small.btn-inverse Sort by
-        %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-          %span.caret
-        %ul.dropdown-menu
-          %li
-            = sortable "notifications.content", "By Subject"
-          %li
-            = sortable "user.name", "By Name"
-          %li
-            = sortable "notifications.created_at", "By Date"
-
-    .pull-right
-      .btn-group
-        = filterable('all', 'All')
-        = filterable('message', 'Messages')
-        = filterable('feedback_req', 'Feedback Req')
-        = filterable('feedback', 'Feedback')
-        = filterable('friendship_req', 'Friends')

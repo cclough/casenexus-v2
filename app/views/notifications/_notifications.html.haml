@@ -1,3 +1,22 @@
+.pull-right.offset3#notifications_index_notifications_form_sort
+  .btn-group
+    %button.btn.btn-small.btn-inverse
+      - if params[:sort] == "content"
+        Message
+      - elsif params[:sort] == "created_at"
+        Date
+      - else
+        Sory by
+    %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+      %span.caret
+    %ul.dropdown-menu
+      %li
+        = sortable "content", "By Message"
+      / %li
+      /   = sortable "user.name", "By Name"
+      %li
+        = sortable "created_at", "By Date"
+
 - if @notifications.count > 0
   - @notifications.each do |notifications_item|
     = render partial: 'notifications/notifications_item' , locals: { notifications_item: notifications_item }

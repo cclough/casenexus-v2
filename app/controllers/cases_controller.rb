@@ -7,7 +7,7 @@ class CasesController < ApplicationController
   layout "profile"
 
   def index
-    @cases = current_user.cases.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    @cases = current_user.cases.search_for(params[:search]).order("cases."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 
     respond_to do |format|
       format.html

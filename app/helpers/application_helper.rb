@@ -20,9 +20,9 @@ module ApplicationHelper
 
   def filterable(ntype, title)
     if ntype == params[:ntype]
-      link_to title, params.merge(ntype: ntype), class: "btn btn-mini active"
+      link_to title, params.merge(ntype: ntype), class: "btn btn-small btn-inverse active"
     else
-      link_to title, params.merge(ntype: ntype), class: "btn btn-mini"
+      link_to title, params.merge(ntype: ntype), class: "btn btn-small btn-inverse"
     end
   end
 
