@@ -93,12 +93,6 @@ class User < ActiveRecord::Base
     User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
   end
 
-  def onlinenow?
-    unless last_online_at.blank?
-      true if last_online_at > DateTime.now - 5.minutes
-    end
-  end
-
   def level
     case case_count
       when 0..9 then 0
@@ -110,6 +104,15 @@ class User < ActiveRecord::Base
     end.to_s
   end
 
+  def online_now?
+    unless last_online_at.blank?
+      true if last_online_at > DateTime.now - 5.minutes
+    end
+  end
+
+
+
+
   # Filters
   class << self
     def active
@@ -120,20 +123,48 @@ class User < ActiveRecord::Base
       where(active: false)
     end
 
+
+
+    def list_global
+      User.completed.not_admin
+    end
+
+
     def list_local(user)
       user.nearbys(50).completed.not_admin.order('created_at desc')
     end
 
-    def list_global
+    def list_online_today
+      completed.not_admin.online_today.order('last_online_at desc')
+    end
+
+
+
+    def list_country
       completed.not_admin.order('created_at desc')
     end
 
-    def list_online
-      completed.not_admin.order('last_online_at desc')
+    def list_language
+      completed.not_admin.order('created_at desc')
     end
 
-    def list_contacts(user)
-      user.accepted_friends
+    def list_firm
+      completed.not_admin.order('created_at desc')
+    end
+
+
+    def speak_language(language)
+      User.all.languages.includes language
+      User.joins(:language_users).merge(Language.where(:name => language))
+      #above is close, but likely as it's a many to many!
+    end
+
+
+    def online_today
+      where("last_online_at > ?", DateTime.now - 1.day)
+      # unless last_online_at.blank?
+      #   true if last_online_at > 
+      # end
     end
 
     def confirmed

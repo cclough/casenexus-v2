@@ -9,33 +9,45 @@
       .btn-toolbar
         .btn-group
           %a#map_index_users_form_button_0.btn.btn-small.btn-inverse < 50mi
-          %a#map_index_users_form_button_2.btn.btn-small.btn-inverse Recently Online
-          %a#map_index_users_form_button_3.btn.btn-small.btn-inverse Partners
-          %a#map_index_users_form_button_4.btn.btn-small.btn-inverse Country
-          %a#map_index_users_form_button_6.btn.btn-small.btn-inverse Case count
+          %a#map_index_users_form_button_1.btn.btn-small.btn-inverse Online Today
+          / %a#map_index_users_form_button_6.btn.btn-small.btn-inverse Case count
+          / .btn-group
+          /   %button.btn.btn-small.btn-inverse Country
+          /   %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+          /     %span.caret
+          /   %ul.dropdown-menu
+          /     / - Country.in_use.each do |country_item|
+          /     /   %li
+          /     /     %a
+          /     /       = country_item.country
+        .btn-group.map_index_users_form_pulldown
+          %button#map_index_users_form_pulldown_language_button.btn.btn-small.btn-inverse Language
+          %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+            %span.caret
+          %ul.dropdown-menu
+            - Language.all.each do |language_item|
+              %li
+                %a{"data-category" => "language", "data-name" => language_item.name}
+                  = language_item.name
+        / .btn-group
+        /   %button.btn.btn-small.btn-inverse Firm applied for
+        /   %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+        /     %span.caret
+        /   %ul.dropdown-menu
+        /     - Firm.all.each do |firm_item|
+        /       %li
+        /         %a
+        /           = firm_item.name
 
-        .btn-group
-          %button.btn.btn-small.btn-inverse Language
-          %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a English
-            %li
-              %a Spanish
-        .btn-group
-          %button.btn.btn-small.btn-inverse Firm applied for
-          %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a McKinsey
-            %li
-              %a Bain
-            %li
-              %a BCG
+        %a#map_index_users_form_button_3.btn.btn-small.btn-inverse Partners
+
   #map_index_users_form_radiogroup
     = radio_button_tag :users_listtype, 'local'
+    = radio_button_tag :users_listtype, 'online_today'
+
     = radio_button_tag :users_listtype, 'global', checked: true
-    = radio_button_tag :users_listtype, 'online'
+
     = radio_button_tag :users_listtype, 'contacts'
+    = radio_button_tag :users_listtype, 'language'
+
+    = hidden_field_tag :users_filter_language

@@ -66,14 +66,29 @@ $(document).ready ->
   $("#map_index_users_form input").keypress (e) ->
     map_index_users_updatelist()  if e.which is 13
 
+
+
+  $(".map_index_users_form_pulldown a").click ->
+
+    category = $(this).data("category")
+    selection = $(this).data("name")
+
+    # $("#users_filter_"+category).val(selection)
+    $("#users_filter_language").val(selection)
+    $("#map_index_users_form_pulldown_"+category+"_button").html(selection)
+    
+    map_index_users_updatelist()
+
   # List type Button-Radio link
   $("#map_index_users_form_button_0, #map_index_users_form_button_1, #map_index_users_form_button_2, #map_index_users_form_button_3").click ->
     # Break up id string, so can get id off the end
     listtype = @id.split("_")
     $("input[name=users_listtype]:eq(" + listtype[5] + ")").attr "checked", "checked"
-    $("#map_index_users_form_button_0,#map_index_users_form_button_1,#map_index_users_form_button_2,#map_index_users_form_button_3").removeClass "active"
+    $("#map_index_users_form_button_0,#map_index_users_form_button_1,#map_index_users_form_button_2,#map_index_users_form_button_3, #map_index_users_form_pulldown_language a").removeClass "active"
     $(this).addClass "active"
     map_index_users_updatelist()
+
+
 
   # Ajax pagination
   $("#map_index_users .application_pagination a").on "click", ->

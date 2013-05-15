@@ -9,12 +9,27 @@ class MembersController < ApplicationController
     case params[:users_listtype]
       when "local"
         users_scope = User.includes(:cases).list_local(current_user)
+
+
       when "global"
         users_scope = User.includes(:cases).list_global
-      when "online"
-        users_scope = User.includes(:cases).list_online
+
+
       when "contacts"
         users_scope = current_user.accepted_friends.includes(:cases)
+      when "online_today"
+        users_scope = User.includes(:cases).list_online_today
+      
+
+      when "language"
+        users_scope = User.includes(:cases).list_language(params[:users_filter_language])
+
+
+      when "country"
+        users_scope = User.includes(:cases).list_country(params[:country])
+      when "firm"
+        users_scope = User.includes(:cases).list_firm(params[:firm])
+
     end
 
     # Using scoped_search gem

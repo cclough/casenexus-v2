@@ -290,34 +290,34 @@ if Rails.env == 'development'
     date
   end
 
-  # 2.times do |n|
-  #   first_name = Faker::Name.first_name
-  #   last_name = Faker::Name.last_name
-  #   email = "example#{n+1}@cam.ac.uk"
-  #   password = "password"
-  #   lat = -90 + rand(180)
-  #   lng = -180 + rand(360)
-  #   skype = "skpye"
+  8.times do |n|
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    email = "example#{n+1}@cam.ac.uk"
+    password = "password"
+    lat = -90 + rand(180)
+    lng = -180 + rand(360)
+    skype = "skpye"
 
-  #   confirm_tac = true
+    confirm_tac = true
 
-  #   ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
+    ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 
-  #   user = User.new(first_name: first_name, last_name: last_name,
-  #                   email: email, password: password,
-  #                   password_confirmation: password,
-  #                   lat: lat, lng: lng,
-  #                   skype: skype,
-  #                   confirm_tac: confirm_tac,
-  #                   ip_address: ip_address,
-  #                   invitation_code: 'BYPASS_CASENEXUS_INV')
+    user = User.new(first_name: first_name, last_name: last_name,
+                    email: email, password: password,
+                    password_confirmation: password,
+                    lat: lat, lng: lng,
+                    skype: skype,
+                    confirm_tac: confirm_tac,
+                    ip_address: ip_address,
+                    invitation_code: 'BYPASS_CASENEXUS_INV')
 
-  #   user.completed = true
-  #   user.save!
-  #   user.confirm!
+    user.completed = true
+    user.save!
+    user.confirm!
 
-  #   puts "User #{user.name} created"
-  # end
+    puts "User #{user.name} created"
+  end
 
   #User.all.each do |user|
     user = User.find(1)
