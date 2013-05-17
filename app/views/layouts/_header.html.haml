@@ -17,8 +17,8 @@
                   %li#header_nav_button_container_browse
                     = link_to raw("<i class='icon-pushpin icon-large icon-white'></i> Browse"), map_path
                   %li
-                    = form_tag '#', method: 'get', id: "", onsubmit: 'return false' do
-                      = text_field_tag :search, params[:search], placeholder: "Search...", id: "", class: 'search-query'
+                    = form_tag '#', method: 'get', id: "header_nav_panel_browse_search_form", onsubmit: 'return false' do
+                      = text_field_tag :search, params[:search], placeholder: "Search for users...", id: "header_nav_panel_browse_search_field", class: 'search-query'
 
             %li
               = link_to raw("<i class='icon-random icon-large icon-white'></i> Library"), library_path

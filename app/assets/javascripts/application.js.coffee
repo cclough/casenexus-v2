@@ -62,6 +62,11 @@ $(document).ready ->
   # Placeholders
   $("input, textarea").placeholder()
 
+  # Header search - only if not on map page
+  if typeof map_index_map_lat_start is "undefined"
+    $("#header_nav_panel_browse_search_form").on "submit", ->
+      window.location.href = "/map?search=" + $("#header_nav_panel_browse_search_field").val()
+
   # Modal help
   $("#modal_help").modal
     backdrop: false

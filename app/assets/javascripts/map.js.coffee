@@ -56,11 +56,16 @@ window.map_index_users_updatelist = ->
   $.get("/members", $("#map_index_users_form").serialize(), null, "script")
   false
 
-
+window.map_index_users_search = ->
+    $("#map_index_users_form_search_field").val($("#header_nav_panel_browse_search_field").val())
+    map_index_users_updatelist()
 
 $(document).ready ->
   # Update the list of users
   map_index_users_updatelist()
+
+  $("#header_nav_panel_browse_search_form").on "submit", ->
+    window.map_index_users_search()
 
   # Update list of user when enter is pressed
   $("#map_index_users_form input").keypress (e) ->
