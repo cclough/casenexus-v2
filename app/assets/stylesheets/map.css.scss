@@ -158,8 +158,8 @@ $blue_pastel: #98cdff;
 
 .map_index_users_item {
   float:left;
-  width: 120px;
-  height: 120px;
+  width: 129px;
+  height: 125px;
   margin:13px;
 
   display: none;
@@ -176,8 +176,10 @@ $blue_pastel: #98cdff;
 
   padding: 4px;
 
-  height:100%;
-  width:100%;
+  height:120px;
+  width:120px;
+
+  margin-top:-2px;
 
   color:white;
   text-align:center;
@@ -273,7 +275,7 @@ $blue_pastel: #98cdff;
 
 .map_index_users_item_lastonline {
   position:absolute;
-  z-index:99999;
+  z-inde:99999;
   top:-6px;
   right:6px;
   font-size:9px;
