@@ -5,27 +5,13 @@ class BooksController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 	def index
-
-    # Set scope of users list depending on params from filter menu
-    case params[:books_list_type]
-      when "cases"
-        books_scope = Book.list_cases
-      when "guides"
-        books_scope = Book.list_guides
-      else
-        books_scope = Book.list_cases
+    books_scope = Book
+    if !params[:btype].blank? && params[:btype] != "all"
+      books_scope = Book.where(btype: params[:btype])
     end
 
-    # Using scoped_search gem
-    if books_scope
-      @books = books_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
-    end
-
-    respond_to do |format|
-      format.html
-      #format.js
-    end
-
+    @books = books_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    @books.all
 	end
 
   def show
@@ -33,7 +19,6 @@ class BooksController < ApplicationController
     @commentable = @book
     @comments = @commentable.comments
     @comment = Comment.new
-
   end
 
   private
