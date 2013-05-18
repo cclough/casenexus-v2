@@ -57,6 +57,11 @@ class User < ActiveRecord::Base
   validate :validate_university_email, on: :create
   validate :validate_invitation, on: :create
 
+
+  validate :validate_has_languages?
+
+
+
   ## ON UPDATE
   validates :lat, presence: true, on: :update
   validates :lng, presence: true, on: :update
@@ -207,19 +212,35 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_newuser_email_to_admin
-    UserMailer.newuser_to_admin(self).deliver
+  def validate_has_languages?
+    self.errors.add :base, "You must choose at least one language." if self.languages.blank?
   end
 
-  def update_invitation
-    return if self.invitation_code == "BYPASS_CASENEXUS_INV"
-    Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)
+  def validate_university_email
+    begin
+      # http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
+      domain = self.email.split("@")[1]
+      errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
+    rescue Exception => e
+      errors.add(:email, "Invalid Email")
+    end
+  end
+
+
+  def send_newuser_email_to_admin
+    UserMailer.newuser_to_admin(self).deliver
   end
 
   def send_welcome
     if completed_was == false and completed == true
       Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
     end
+  end
+
+
+  def update_invitation
+    return if self.invitation_code == "BYPASS_CASENEXUS_INV"
+    Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)
   end
 
   def set_university
@@ -233,15 +254,6 @@ class User < ActiveRecord::Base
 
   end
 
-  def validate_university_email
-    begin
-      # http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
-      domain = self.email.split("@")[1]
-      errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
-    rescue Exception => e
-      errors.add(:email, "Invalid Email")
-    end
 
-  end
 
 end
