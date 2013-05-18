@@ -69,8 +69,8 @@
               .span12
                 = f.label :university_id
               .span25
-                = User.university.name
-                = image_tag "/universities/"+ User.university.image
+                = @user.university.name
+                = image_tag "universities/"+ @user.university.image
             .spacer10
             .row
               .span12
