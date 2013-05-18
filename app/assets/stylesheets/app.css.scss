@@ -182,6 +182,26 @@ textarea {
 }
 
 
+
+.application_menu_sort {
+  .current {
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    text-decoration:none;
+  }
+  .asc {
+    background-image: url(app/sort_up_arrow.png);
+  }
+
+  .desc {
+    background-image: url(app/sort_down_arrow.png);
+  }
+}
+
+
+
+
 .panel {
 
   background: white;

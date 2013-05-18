@@ -21,14 +21,14 @@
             = radio_button_tag :books_list_type, 'cases', checked: true
 
 
-        .pull-right.offset3#books_index_books_form_sort
+        .pull-right.offset3#books_index_books_form_sort.application_menu_sort
           .btn-group
             %button.btn.btn-small.btn-inverse
               - if params[:sort] == "average_rating"
                 Rating
               - elsif params[:sort] == "title"
                 Title
-              - elsif params[:sort] == "source"
+              - elsif params[:sort] == "author"
                 Source
               - else
                 Sory by
@@ -40,7 +40,7 @@
               %li
                 = sortable "title", "By Title"
               %li
-                = sortable "source", "By Source"
+                = sortable "author", "By Author"
     .spacer10
     .row
       #books_index_books
