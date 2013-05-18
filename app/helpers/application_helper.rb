@@ -17,8 +17,7 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), { :class => css_class }
   end
 
-
-  def filterable(ntype, title)
+  def filterable_notifications(ntype, title)
     if ntype == params[:ntype]
       link_to title, params.merge(ntype: ntype), class: "btn btn-small btn-inverse active"
     else
@@ -26,6 +25,13 @@ module ApplicationHelper
     end
   end
 
+  def filterable_books(btype, title)
+    if btype == params[:btype]
+      link_to title, params.merge(btype: btype), class: "btn btn-small btn-inverse active"
+    else
+      link_to title, params.merge(btype: btype), class: "btn btn-small btn-inverse"
+    end
+  end
 
   def avatar_for(user, type)
 

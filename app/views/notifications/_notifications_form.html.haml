@@ -5,9 +5,9 @@
         = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span20'
       .span.offset3
         .btn-group
-          = filterable('all', 'All')
-          = filterable('message', 'Messages')
-          = filterable('feedback_req', 'Feedback Req')
-          = filterable('feedback', 'Feedback')
-          = filterable('friendship_req', 'Friends')
+          = filterable_notifications('all', 'All')
+          = filterable_notifications('message', 'Messages')
+          = filterable_notifications('feedback_req', 'Feedback Req')
+          = filterable_notifications('feedback', 'Feedback')
+          = filterable_notifications('friendship_req', 'Friends')
 

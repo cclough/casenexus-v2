@@ -32,7 +32,7 @@ $(document).ready ->
 	  false
 
 	# List action Button->Radio link
-	$(".books_index_books_form_button_type, .books_index_books_form_button_sort").click ->
+	$(".books_index_books_form_button_type").click ->
 
 	  action = $(this).data("action")
 	  id = $(this).data("id")
@@ -42,10 +42,12 @@ $(document).ready ->
 	  $(".books_index_books_form_button_" + action).removeClass "active"
 	  $(this).addClass "active"
 	  
-	  window.books_index_books_updatelist()
+	  #window.books_index_books_updatelist()
 
-	# Update list of user when enter is pressed
-	$("#books_index_books_form input").keypress (e) ->
-	  window.books_index_books_updatelist() if e.which is 13
+	  $("#books_index_books_form").submit()
+
+	# # Update list of user when enter is pressed
+	# $("#books_index_books_form input").keypress (e) ->
+	#   window.books_index_books_updatelist() if e.which is 13
 
 

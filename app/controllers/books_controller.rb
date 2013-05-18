@@ -21,7 +21,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      #format.js
     end
 
 	end
@@ -36,12 +36,12 @@ class BooksController < ApplicationController
 
   private
 
-  # For Index case sorting
+  # For index book sorting
   def sort_column
-    params[:books_list_sort] ? params[:books_list_sort] : "title"
+    Book.column_names.include?(params[:sort]) ? params[:sort] : "title"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

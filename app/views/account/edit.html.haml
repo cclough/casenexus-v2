@@ -58,20 +58,20 @@
             .row
               .span12
                 Languages
-              .span25
-                %select.chzn-select.span30{"data-placeholder" => "Select languages you speak", "multiple"=>"multiple"}
-                  = options_from_collection_for_select Language.all, :id, :name
+              .span
+                = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30"}
             .row
               .span12
                 Firms
               .span25
-                %select.chzn-select.span30{"data-placeholder" => "Select firms you're applying to", "multiple"=>"multiple"}
-                  = options_from_collection_for_select Firm.all, :id, :name
+                = f.collection_select :firm_ids, Firm.all, :id, :name, {:selected => @user.firm_ids}, {multiple: true, class: "chzn-select span30"}
             .row
               .span12
                 = f.label :university_id
               .span25
-                = f.text_field :university_id, class: "span18"
+                = User.university.name
+                = image_tag "/universities/"+ User.university.image
+            .spacer10
             .row
               .span12
                 = f.label :cases_external

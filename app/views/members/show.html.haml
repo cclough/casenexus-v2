@@ -40,11 +40,15 @@
       = image_tag "universities/" + @user.university.image
     = @user.university.name
 
-  / - unless @user.languages.blank?
-  /   - @user.languages.each do |users_item_language|
-  /     %br
-  /       = users_item_language.name
+  - unless @user.languages.empty?
+    - @user.languages.each do |users_item_language|
+      %br
+        = users_item_language.name
 
+  - unless @user.firms.blank?
+    - @user.firms.each do |users_item_firm|
+      %br
+        = users_item_firm.name
 
 
 
