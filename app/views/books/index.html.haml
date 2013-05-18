@@ -24,7 +24,7 @@
 
         .pull-right.offset3#books_index_books_form_sort.application_menu_sort
           .btn-group
-            %button.btn.btn-small.btn-inverse
+            %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
               - if params[:sort] == "average_rating"
                 Rating
               - elsif params[:sort] == "title"
@@ -33,7 +33,6 @@
                 Source
               - else
                 Sory by
-            %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
               %span.caret
             %ul.dropdown-menu
               %li

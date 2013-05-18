@@ -76,10 +76,10 @@ $(document).ready ->
   $(".map_index_users_form_pulldown a").click ->
 
     category = $(this).data("category")
-    selection = $(this).data("name")
+    selection = $(this).data("name") + "  <span class=caret></span>"
 
     # $("#users_filter_"+category).val(selection)
-    $("#users_filter_language").val(selection)
+    $("#users_filter_"+category).val(selection)
     $("#map_index_users_form_pulldown_"+category+"_button").html(selection)
     
     map_index_users_updatelist()

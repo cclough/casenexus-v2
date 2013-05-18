@@ -11,3 +11,20 @@
           = filterable_notifications('feedback', 'Feedback')
           = filterable_notifications('friendship_req', 'Friends')
 
+      .pull-right#notifications_index_notifications_form_sort.application_menu_sort
+        .btn-group
+          %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+            - if params[:sort] == "content"
+              Message
+            - elsif params[:sort] == "created_at"
+              Date
+            - else
+              Sory by
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = sortable "content", "By Message"
+            / %li
+            /   = sortable "user.name", "By Name"
+            %li
+              = sortable "created_at", "By Date"

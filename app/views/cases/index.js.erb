@@ -2,9 +2,9 @@ $("#cases_index_cases").html("<%= escape_javascript(render("cases")) %>");
 
 // Sort pull down text
 <%- if params[:sort] == "subject" %>
-$("#cases_index_cases_form_button_sort").html("Subject");
+$("#cases_index_cases_form_button_sort").html("Subject <span class=caret></span>");
 <%- elsif params[:sort] == "date" %>
-$("#cases_index_cases_form_button_sort").html("Date");
+$("#cases_index_cases_form_button_sort").html("Date <span class=caret></span>");
 <%- end %>
 
 
