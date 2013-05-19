@@ -72,26 +72,45 @@ $(document).ready ->
     map_index_users_updatelist()  if e.which is 13
 
 
-
+  # For Pull Downs
   $(".map_index_users_form_pulldown a").click ->
 
     category = $(this).data("category")
-    selection = $(this).data("name") + "  <span class=caret></span>"
 
-    # $("#users_filter_"+category).val(selection)
-    $("#users_filter_"+category).val(selection)
-    $("#map_index_users_form_pulldown_"+category+"_button").html(selection)
+    # Change filter button caption
+    selection = $(this).data("name")
+    $("#map_index_users_form_pulldown_"+category+"_button").html(selection + "  <span class=caret></span>")
+
+    # Change text field to language name
+    selection_id = $(this).data("id")
+    $("#users_filter_"+category).val(selection_id)
+
+    # Change radio
+    radio = $(this).data("radio")
+
+    $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
+    
+    # Remove and add active class to buttons
+    $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
+    $("#map_index_users_form_pulldown_"+category+"_button").addClass "active"
+
+    map_index_users_updatelist()
+
+
+  # List type Button-Radio link
+  $(".map_index_users_form_button").click ->
+
+    radio = $(this).data("radio")
+
+    # Change radio
+    $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
+    
+    # Remove and add active class to buttons
+    $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
+    $(this).addClass "active"
     
     map_index_users_updatelist()
 
-  # List type Button-Radio link
-  $("#map_index_users_form_button_0, #map_index_users_form_button_1, #map_index_users_form_button_2, #map_index_users_form_button_3").click ->
-    # Break up id string, so can get id off the end
-    listtype = @id.split("_")
-    $("input[name=users_listtype]:eq(" + listtype[5] + ")").attr "checked", "checked"
-    $("#map_index_users_form_button_0,#map_index_users_form_button_1,#map_index_users_form_button_2,#map_index_users_form_button_3, #map_index_users_form_pulldown_language a").removeClass "active"
-    $(this).addClass "active"
-    map_index_users_updatelist()
 
 
 

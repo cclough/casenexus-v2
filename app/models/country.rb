@@ -8,11 +8,15 @@ class Country < ActiveRecord::Base
   end
 
   class << self
-    def in_use
+    def in_use_chosen
       users = User.where("length(country_id) > 0").order('country asc').select("country, city, lat, lng")
       records = {}
       users.each { |user| records["#{user.country}#{user.city}"] = user unless records["#{user.country}#{user.city}"] }
       records.collect { |k, u| { country: u.country, city: u.city, lat: u.lat, lng: u.lng } }
+    end
+
+    def in_use
+      User.where("length(country_id) > 0").order('country asc').collect(&:country)
     end
   end
 end

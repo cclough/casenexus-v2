@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
       where(active: false)
     end
 
-
+    # Lists for filters
 
     def list_global
       User.completed.not_admin
@@ -140,38 +140,41 @@ class User < ActiveRecord::Base
       user.nearbys(50).completed.not_admin.order('created_at desc')
     end
 
+    def list_contacts(user)
+      user.accepted_friends.completed
+    end
+
     def list_online_today
       completed.not_admin.online_today.order('last_online_at desc')
     end
 
 
 
-    def list_country
-      completed.not_admin.order('created_at desc')
+    def list_language(language_id)
+      if !language_id.blank?
+        completed.not_admin.order('created_at desc').joins(:languages_users).where(languages_users: {language_id: language_id})
+      else
+        completed.not_admin.order('created_at desc')
+      end
     end
 
-    def list_language
-      completed.not_admin.order('created_at desc')
+    def list_firm(firm_id)
+      if !firm_id.blank?
+        completed.not_admin.order('created_at desc').joins(:firms_users).where(firms_users: {firm_id: firm_id})
+      else
+        completed.not_admin.order('created_at desc')
+      end
     end
 
-    def list_firm
-      completed.not_admin.order('created_at desc')
+    def list_university(university_id)
+      completed.not_admin.order('created_at desc').where(university_id: university_id)
+    end
+
+    def list_country(country_id)
+      completed.not_admin.order('created_at desc').where(country_id: country_id)
     end
 
 
-    def speak_language(language)
-      User.all.languages.includes language
-      User.joins(:language_users).merge(Language.where(:name => language))
-      #above is close, but likely as it's a many to many!
-    end
-
-
-    def online_today
-      where("last_online_at > ?", DateTime.now - 1.day)
-      # unless last_online_at.blank?
-      #   true if last_online_at > 
-      # end
-    end
 
     def confirmed
       where("confirmed_at is not null")
@@ -187,6 +190,11 @@ class User < ActiveRecord::Base
 
     def not_admin
       where("admin = false")
+    end
+
+    # used by list_online_today above
+    def online_today
+      where("last_online_at > ?", DateTime.now - 1.day)
     end
 
   end
