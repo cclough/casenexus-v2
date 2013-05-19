@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513230611) do
+ActiveRecord::Schema.define(:version => 20130519091230) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -108,12 +108,11 @@ ActiveRecord::Schema.define(:version => 20130513230611) do
   end
 
   create_table "firms_users", :id => false, :force => true do |t|
-    t.integer "firm_id"
     t.integer "user_id"
+    t.integer "firm_id"
   end
 
-  add_index "firms_users", ["firm_id", "user_id"], :name => "index_firms_users_on_firm_id_and_user_id"
-  add_index "firms_users", ["user_id", "firm_id"], :name => "index_firms_users_on_user_id_and_firm_id"
+  add_index "firms_users", ["user_id", "firm_id"], :name => "index_firms_users_on_user_id_and_firm_id", :unique => true
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id",                           :null => false
@@ -155,9 +154,6 @@ ActiveRecord::Schema.define(:version => 20130513230611) do
     t.integer "language_id"
     t.integer "user_id"
   end
-
-  add_index "languages_users", ["language_id", "user_id"], :name => "index_languages_users_on_language_id_and_user_id"
-  add_index "languages_users", ["user_id", "language_id"], :name => "index_languages_users_on_user_id_and_language_id"
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id",                             :null => false

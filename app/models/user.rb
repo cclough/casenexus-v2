@@ -8,21 +8,24 @@ class User < ActiveRecord::Base
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
+  # Belongs to
   belongs_to :university
   belongs_to :country
 
-  has_and_belongs_to_many :firms
-  has_and_belongs_to_many :languages, :before_add => :validate_language_unique
-
-  has_many :events
-  has_many :comments
+  # Has
   has_many :cases, dependent: :destroy
   has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
+  has_many :events
+  has_many :comments
   has_many :site_contacts, dependent: :nullify
 
-  # Friends
+  has_many :firms_users, dependent: :destroy
+  has_many :firms, :through => :firms_users
+  has_many :languages_users, dependent: :destroy
+  has_many :languages, :through => :languages_users
+
   has_many :friendships, dependent: :destroy
   has_many :accepted_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::ACCEPTED}", dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendships, source: :friend
@@ -212,10 +215,6 @@ class User < ActiveRecord::Base
 
   def validate_has_languages?
     self.errors.add :base, "You must choose at least one language." if self.languages.blank?
-  end
-
-  def validate_language_unique(language)
-    raise ActiveRecord::Rollback if self.languages.include? language
   end
 
   def validate_university_email

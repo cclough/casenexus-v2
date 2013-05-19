@@ -281,6 +281,57 @@ if Rails.env == 'development'
     puts "User #{user.name} created"
   end
 
+
+
+
+
+  # Languages
+  #User.all.each do |user|
+
+    5.times do
+
+      user = User.find(rand(9) + 1)
+
+      language_id = 3
+      lang = Language.find(language_id)
+      
+      # check if exists already though!
+      if !user.languages.include? lang
+        user.languages << lang
+        puts "Language association created for user #{user.name}"
+      end
+
+    end
+
+  #end
+
+
+
+
+  # Firms
+  User.all.each do |user|
+    7.times do
+
+      firm_id = rand(5) + 1
+      firm = Firm.find(firm_id)
+      
+      # check if exists already though!
+      if !user.firms.include? firm
+        user.firms << firm
+        puts "Firm association created for user #{user.name}"
+      end
+
+    end
+  end
+
+
+
+
+
+
+
+
+
   #User.all.each do |user|
     user = User.find(1)
 
@@ -360,20 +411,7 @@ if Rails.env == 'development'
       puts "Events created for user #{user.name}"
     end
 
-  # Languages
-  User.all.each do |user|
-    3.times do
 
-      language_id = rand(1) + 1
-      lang = Language.find(language_id)
-
-      # check if exists already though!
-      next if user.languages.include? lang
-      user.languages << lang
-
-      puts "Language association created for user #{user.name}"
-    end
-  end
 
 end
 
