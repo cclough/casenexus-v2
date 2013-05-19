@@ -6,16 +6,35 @@
 
 .panel.gradient
   %button#map_index_show_close.close ×
-
-  = image_tag "avatars/icon.png"
-
-  = avatar_for(@user, 'icon_inert')
-
-  = @user.cases.count.to_s + "+" + @user.cases_external.to_s
-
-  = @user.name
-
-  = @user.accepted_friends.count
+  .row
+    .span10
+      = image_tag "avatars/icon.png"
+      /= avatar_for(@user, 'icon_inert')
+      .row
+        = @user.name
+      .row
+        .pull-left
+          = @user.accepted_friends.count
+        .pull-right
+          = @user.cases.count.to_s + "+" + @user.cases_external.to_s
+    .span
+      .row
+        - unless @user.country.blank?
+          .span3
+            = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
+          = @user.country.name
+      .row
+        / pending stack overflow answer
+        - unless @user.university.blank?
+          .span3
+            = image_tag "universities/" + @user.university.image
+          = @user.university.name
+      .row
+        - if @user.last_online_at
+          Last online
+          = time_ago_in_words(@user.last_online_at)
+          ago
+  
 
   - if Friendship.friends?(current_user, @user)
     - unless @user.skype.blank?
@@ -25,86 +44,76 @@
           Skype
     = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
 
-    = link_to
-  - unless @user.country.blank?
-    = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
 
-  - if @user.last_online_at
-    Last online
-    = time_ago_in_words(@user.last_online_at)
-    ago
-
-  / pending stack overflow answer
-  - unless @user.university.blank?
-    %span4
-      = image_tag "universities/" + @user.university.image
-    = @user.university.name
-
-  - unless @user.languages.empty?
-    - @user.languages.each do |users_item_language|
-      %br
-        = users_item_language.name
-
-  - unless @user.firms.blank?
-    - @user.firms.each do |users_item_firm|
-      %br
-        = users_item_firm.name
+  .row
+    .span
+      - unless @user.languages.empty?
+        %ul
+          - @user.languages.each do |users_item_language|
+            %li
+              = users_item_language.name
+    .span
+      - unless @user.firms.blank?
+        %ul
+          - @user.firms.each do |users_item_firm|
+            %li
+              = users_item_firm.name
 
 
 
-  - if @user != current_user
 
-    - if Friendship.friends?(current_user, @user)
+  .row
+    - if @user != current_user
+
+      - if Friendship.friends?(current_user, @user)
 
 
-      - if Notification.history(current_user, @user).count > 0
-        .span12
-          = link_to "Show Message History", history_notifications_path(user_id: @user.id)
-        .span12
-          %a#map_index_user_button_message.btn.btn-inverse.btn-small
+        - if Notification.history(current_user, @user).count > 0
+          .span12
+            = link_to "Show Message History", history_notifications_path(user_id: @user.id)
+          .span12
+            %a#map_index_user_button_message.btn.btn-inverse.btn-small
+              %i.icon-comment.icon-white
+              %span
+                Send Message
+
+      - elsif Friendship.requested?(@user, current_user)
+
+        Case Partner Request Pending
+
+      - elsif Friendship.pending?(@user, current_user)
+
+        Pending case partner request
+        = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
+        = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
+
+
+      - elsif !Friendship.exist?(current_user, @user)
+
+        .pull-right
+          %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
             %i.icon-comment.icon-white
             %span
-              Send Message
+              Send Case Partner Request
 
-    - elsif Friendship.requested?(@user, current_user)
-
-      Case Partner Request Pending
-
-    - elsif Friendship.pending?(@user, current_user)
-
-      Pending case partner request
-      = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
-      = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
-
-
-    - elsif !Friendship.exist?(current_user, @user)
-
-      .pull-right
-        %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
-          %i.icon-comment.icon-white
+    - if Friendship.friends?(current_user, @user)
+      .row
+        = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
+      .row
+        %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
+          %i.icon-refresh.icon-white
           %span
-            Send Case Partner Request
+            Request Feedback
+      .row
+        = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
+      .row
+        = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
 
-  - if Friendship.friends?(current_user, @user)
-    .row
-      = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
-    .row
-      %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
-        %i.icon-refresh.icon-white
-        %span
-          Request Feedback
-    .row
-      = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
-    .row
-      = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
-    .row
-      - @user.firms.each do |firm|
-        .row
-          = firm.name
-    .row
-      - @user.languages.each do |language|
-        .row
-          = language.name
+
+
+
+
+
 
 
     #modal_message.modal.hide.fade
