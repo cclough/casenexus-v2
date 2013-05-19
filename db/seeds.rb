@@ -234,6 +234,8 @@ end
 
 if Rails.env == 'development'
 
+  ####### PRIVATE FUNCTIONS #######
+
   def random_date(params={ })
     years_back = params[:year_range] || 5
     latest_year = params [:year_latest] || 0
@@ -250,6 +252,18 @@ if Rails.env == 'development'
     date
   end
 
+  def rand_time(from, to=Time.now)
+    Time.at(rand_in_range(from.to_f, to.to_f))
+  end
+
+  def rand_in_range(from, to)
+    rand * (to - from) + from
+  end
+
+  ################################
+
+
+
   8.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
@@ -260,6 +274,7 @@ if Rails.env == 'development'
     skype = "skpye"
     language_ids = 1
 
+    last_online_at = rand_time(2.days.ago)
     confirm_tac = true
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
@@ -270,6 +285,7 @@ if Rails.env == 'development'
                     lat: lat, lng: lng,
                     language_ids: language_ids,
                     skype: skype,
+                    last_online_at: last_online_at,
                     confirm_tac: confirm_tac,
                     ip_address: ip_address,
                     invitation_code: 'BYPASS_CASENEXUS_INV')
@@ -332,8 +348,8 @@ if Rails.env == 'development'
 
 
 
-  #User.all.each do |user|
-    user = User.find(1)
+  User.all.each do |user|
+    #user = User.find(1)
 
     11.times do
       interviewer_id = 1 + rand(2)
@@ -370,7 +386,7 @@ if Rails.env == 'development'
       puts "Case created for user #{user.name}"
     end
 
-  #end
+  end
 
   
   #User.all.each do |user|

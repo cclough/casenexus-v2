@@ -5,19 +5,21 @@
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
 .panel.gradient
-  %button#map_index_show_close.close ×
+  %button#map_index_user_close.close ×
   .row
     .span10
-      = image_tag "avatars/icon.png"
-      /= avatar_for(@user, 'icon_inert')
+      #map_index_user_panel_avatar.panel.gradient.kill_all
+        = image_tag "avatars/icon.png"
+        /= avatar_for(@user, 'icon_inert')
+        .row
+          .pull-left
+            = @user.accepted_friends.count
+          .pull-right
+            = @user.cases.count.to_s + "+" + @user.cases_external.to_s
+    .span.offset1
       .row
-        = @user.name
-      .row
-        .pull-left
-          = @user.accepted_friends.count
-        .pull-right
-          = @user.cases.count.to_s + "+" + @user.cases_external.to_s
-    .span
+        #map_index_user_name
+          = @user.name
       .row
         - unless @user.country.blank?
           .span3
@@ -50,13 +52,13 @@
       - unless @user.languages.empty?
         %ul
           - @user.languages.each do |users_item_language|
-            %li
+            %li.panel.dark.kill_all
               = users_item_language.name
     .span
       - unless @user.firms.blank?
         %ul
           - @user.firms.each do |users_item_firm|
-            %li
+            %li.panel.dark.kill_all
               = users_item_firm.name
 
 

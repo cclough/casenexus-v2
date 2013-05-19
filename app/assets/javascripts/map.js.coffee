@@ -19,7 +19,7 @@ window.map_index_map_marker_click = (marker_id) ->
       $("#map_index_container_user").html data
 
       #Code for 'close button'
-      $("#map_index_show_close").click ->
+      $("#map_index_user_close").click ->
         $("#map_index_container_user").fadeOut "slow"
 
       # Modal Stuff!
@@ -110,8 +110,6 @@ $(document).ready ->
     $(this).addClass "active"
     
     map_index_users_updatelist()
-
-
 
 
   # Ajax pagination
