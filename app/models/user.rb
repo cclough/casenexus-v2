@@ -119,22 +119,14 @@ class User < ActiveRecord::Base
 
 
 
-  # Filters
   class << self
-    def active
-      where(active: true)
-    end
 
-    def inactive
-      where(active: false)
-    end
+    ### Lists for filters
 
-    # Lists for filters
-
+    # Simple Filters
     def list_global
       User.completed.not_admin
     end
-
 
     def list_local(user)
       user.nearbys(50).completed.not_admin.order('created_at desc')
@@ -149,7 +141,7 @@ class User < ActiveRecord::Base
     end
 
 
-
+    # Pulldown Filters
     def list_language(language_id)
       if !language_id.blank?
         completed.not_admin.order('created_at desc').joins(:languages_users).where(languages_users: {language_id: language_id})
@@ -175,6 +167,13 @@ class User < ActiveRecord::Base
     end
 
 
+    # def active
+    #   where(active: true)
+    # end
+
+    # def inactive
+    #   where(active: false)
+    # end
 
     def confirmed
       where("confirmed_at is not null")
@@ -199,10 +198,9 @@ class User < ActiveRecord::Base
 
   end
 
-  def to_s
-    self.name
-  end
-
+  # def to_s
+  #   self.name
+  # end
 
   private
 

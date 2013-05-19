@@ -28,7 +28,7 @@ class MembersController < ApplicationController
         users_scope = User.includes(:cases).list_firm(params[:users_filter_firm])
       when "university"
         users_scope = User.includes(:cases).list_university(params[:users_filter_university])
-      
+        
       when "country"
         users_scope = User.includes(:cases).list_country(params[:users_filter_country])
 

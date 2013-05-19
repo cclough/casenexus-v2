@@ -16,7 +16,7 @@ class Country < ActiveRecord::Base
     end
 
     def in_use
-      User.where("length(country_id) > 0").order('country asc').collect(&:country)
+      Country.order("name asc").joins(:users).where("admin = false").where("completed = true").where("country_id > 0").uniq
     end
   end
 end
