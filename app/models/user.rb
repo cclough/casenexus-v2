@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   belongs_to :country
 
   has_and_belongs_to_many :firms
-  has_and_belongs_to_many :languages
+  has_and_belongs_to_many :languages, :before_add => :validate_language_unique
 
   has_many :events
   has_many :comments
@@ -56,8 +56,6 @@ class User < ActiveRecord::Base
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
   validate :validate_university_email, on: :create
   validate :validate_invitation, on: :create
-
-
   validate :validate_has_languages?
 
 
@@ -214,6 +212,10 @@ class User < ActiveRecord::Base
 
   def validate_has_languages?
     self.errors.add :base, "You must choose at least one language." if self.languages.blank?
+  end
+
+  def validate_language_unique(language)
+    raise ActiveRecord::Rollback if self.languages.include? language
   end
 
   def validate_university_email

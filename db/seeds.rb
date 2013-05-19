@@ -162,6 +162,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lng: -0.1344,
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
+      language_ids: 1,
+
       skype: "christianclough",
 
       confirm_tac: true,
@@ -183,6 +185,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lat: 51.90128232665856,
       lng: -0.5421188764572144,
       invitation_code: 'BYPASS_CASENEXUS_INV',
+
+      language_ids: 1,
 
       skype: "",
 
@@ -206,6 +210,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lng: -117.221015,
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
+      language_ids: 1,
+
       skype: "cloughrobin",
 
       confirm_tac: true,
@@ -222,52 +228,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   Friendship.connect(User.find(1), User.find(2))
   Friendship.connect(User.find(1), User.find(3))
-
-
-  puts "Creating Christian's Languages"
-
-  user = User.find(1)
-
-  language_one = Language.where("name = ?", "English - UK")
-  language_two = Language.where("name = ?", "French")
-
-  user.languages << language_one
-  user.languages << language_two
-
-
-  puts "Creating Robin's Languages"
-
-  user = User.find(3)
-
-  language_one = Language.where("name = ?", "English - UK")
-
-  user.languages << language_one
-
-
-  puts "Creating Christian's Firm's"
-
-  user = User.find(1)
-
-  firm_one = Firm.where("name = ?", "McKinsey & Company")
-  firm_two = Firm.where("name = ?", "Bain & Company")
-  firm_three = Firm.where("name = ?", "BCG")
-  firm_four = Firm.where("name = ?", "OC&C")
-
-  user.firms << firm_one
-  user.firms << firm_two
-  user.firms << firm_three
-  user.firms << firm_four
-
-
-  puts "Creating Robin's Firm's"
-
-  user = User.find(3)
-
-  firm_one = Firm.where("name = ?", "McKinsey & Company")
-  firm_two = Firm.where("name = ?", "Bain & Company")
-
-  user.firms << firm_one
-  user.firms << firm_two
 
 
 end
@@ -298,6 +258,7 @@ if Rails.env == 'development'
     lat = -90 + rand(180)
     lng = -180 + rand(360)
     skype = "skpye"
+    language_ids = 1
 
     confirm_tac = true
 
@@ -307,6 +268,7 @@ if Rails.env == 'development'
                     email: email, password: password,
                     password_confirmation: password,
                     lat: lat, lng: lng,
+                    language_ids: language_ids,
                     skype: skype,
                     confirm_tac: confirm_tac,
                     ip_address: ip_address,
@@ -397,6 +359,21 @@ if Rails.env == 'development'
 
       puts "Events created for user #{user.name}"
     end
+
+  # Languages
+  User.all.each do |user|
+    3.times do
+
+      language_id = rand(1) + 1
+      lang = Language.find(language_id)
+
+      # check if exists already though!
+      next if user.languages.include? lang
+      user.languages << lang
+
+      puts "Language association created for user #{user.name}"
+    end
+  end
 
 end
 

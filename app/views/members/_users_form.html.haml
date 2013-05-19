@@ -25,6 +25,9 @@
             Language
             %span.caret
           %ul.dropdown-menu
+            %li
+              %a{"data-category" => "language", "data-name" => "All"}
+                All
             - Language.all.each do |language_item|
               %li
                 %a{"data-category" => "language", "data-name" => language_item.name}
