@@ -21,16 +21,16 @@
       .row
         #map_index_user_name
           = @user.name
-      .spacer10
+      .spacer5
       .row
-        - unless @user.country.blank?
-          .span3
-            = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
-          = @user.country.name
-      .row
-        / pending stack overflow answer
-        - unless @user.university.blank?
-          .spacer5
+        .application_lastonline
+          - if @user.last_online_at
+            Last online
+            = time_ago_in_words(@user.last_online_at)
+            ago
+      - unless @user.university.blank?
+        .spacer5
+        .row
           .span
             #map_index_user_university_image
               = image_tag "universities/" + @user.university.image
@@ -38,35 +38,33 @@
             = @user.university.name
       .spacer5
       .row
-        - if @user.last_online_at
-          Last online
-          = time_ago_in_words(@user.last_online_at)
-          ago
-  
+        - unless @user.country.blank?
+          .span3
+            = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
+          = @user.country.name
 
 
     - if Friendship.friends?(current_user, @user)
 
       - if @user != current_user
 
-        .span13
+        .span13#map_index_user_panel_stuff.panel.gradient.kill_all
           - if Friendship.friends?(current_user, @user)
-
-            - if Notification.history(current_user, @user).count > 0
-              .row
-                .span
-                  = link_to "Show Message History", history_notifications_path(user_id: @user.id)
             .row
               .span
                 %a#map_index_user_button_message.btn.btn-inverse.btn-small
                   %i.icon-comment.icon-white
                   %span
                     Send Message
-
+            - if Notification.history(current_user, @user).count > 0
+              .row
+                .span
+                  = link_to "Show Message History", history_notifications_path(user_id: @user.id)
+                  
 
             - unless @user.skype.blank?
+              .spacer10
               .row
-                .spacer10
                 .span
                   %a{href: "skype:#{@user.skype}?call"}
                     %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
@@ -110,7 +108,7 @@
 
 
 
-
+  .spacer10
   .row
     .span
       - unless @user.languages.empty?

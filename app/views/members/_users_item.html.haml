@@ -4,16 +4,18 @@
       .application_avatar
         / = avatar_for(users_item, 'icon_inert')
         = image_tag "avatars/icon.png"
+    .spacer5
     .row
       .map_index_users_item_name
         = users_item.name
+      .map_index_users_item_lastonline
+        - unless users_item.last_online_at.blank?
+          = time_ago_in_words(users_item.last_online_at)
+          ago
     .row
       - unless users_item.country.blank?
         .map_index_users_item_country.pull-left
           = image_tag "countries/"+users_item.country.code.to_s+".png", alt: users_item.country.name
-      .map_index_users_item_lastonline.pull_left
-        - unless users_item.last_online_at.blank?
-          = time_ago_in_words(users_item.last_online_at)
-          ago
+
       .map_index_users_item_casecounts.pull_right
         = users_item.cases.count.to_s + "+" + users_item.cases_external.to_s

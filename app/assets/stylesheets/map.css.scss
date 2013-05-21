@@ -286,17 +286,12 @@ $blue_pastel: #98cdff;
 }
 
 .map_index_users_item_lastonline {
-  position:absolute;
-  z-inde:99999;
-  top:-6px;
-  right:6px;
   font-size:9px;
   font-color:$gray_Mid !important;
-  width:100px;
+  width:100%;
   line-height:10px;
-  padding-top:10px;
   font-style:italic;
-  text-align:right;
+  text-align:center;
 }
 
 .map_index_users_item_casecounts {
@@ -427,6 +422,24 @@ $blue_pastel: #98cdff;
   width:20px;
   text-align:center;
 }
+
+
+
+
+#map_index_user_panel_stuff {
+  font-size:12px;
+  a {
+    text-decoration:none;
+    text-align:right !important;
+    color: $gray_Mid;
+    &:hover {
+      text-decoration:underline;
+    }
+  }
+
+}
+
+
 
 .map_index_user_association_item {
   border-radius: 7px;
