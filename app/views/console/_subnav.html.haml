@@ -7,7 +7,7 @@
           = book.author.split(' ')[0] + " - " + book.title
 
   .span17.offset1
-    = button_tag raw("<i class=\"icon-envelope icon-white\"/></i> Email case to your friend"), { class: "btn btn-inverse btn-small disabled", :disabled => true, id: "console_index_subnav_button_sendpdf" }
+    = button_tag raw("<i class=\"icon-envelope icon-white\"/></i> Email case to your friend"), { class: "btn btn-inverse btn-small", id: "console_index_subnav_button_sendpdf" }
 
   .span21.pull-right
     %select#console_index_subnav_select_friends.chzn-select.span20{name: "target_id", "data-placeholder" => "Select Friend" }
