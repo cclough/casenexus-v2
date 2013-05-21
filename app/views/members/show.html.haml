@@ -16,7 +16,7 @@
             = @user.accepted_friends.count
           .pull-right
             = @user.cases.count.to_s + "+" + @user.cases_external.to_s
-    .span.offset1
+    .span20.offset1
       .row
         #map_index_user_name
           = @user.name
@@ -52,13 +52,13 @@
       - unless @user.languages.empty?
         %ul
           - @user.languages.each do |users_item_language|
-            %li.panel.dark.kill_all
+            %li.map_index_user_association_item
               = users_item_language.name
     .span
       - unless @user.firms.blank?
         %ul
           - @user.firms.each do |users_item_firm|
-            %li.panel.dark.kill_all
+            %li.map_index_user_association_item
               = users_item_firm.name
 
 

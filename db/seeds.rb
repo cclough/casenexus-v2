@@ -275,6 +275,8 @@ if Rails.env == 'development'
     language_ids = 1
 
     last_online_at = rand_time(2.days.ago)
+    cases_external = 10
+
     confirm_tac = true
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
@@ -286,6 +288,7 @@ if Rails.env == 'development'
                     language_ids: language_ids,
                     skype: skype,
                     last_online_at: last_online_at,
+                    cases_external: cases_external,
                     confirm_tac: confirm_tac,
                     ip_address: ip_address,
                     invitation_code: 'BYPASS_CASENEXUS_INV')
@@ -295,6 +298,13 @@ if Rails.env == 'development'
     user.confirm!
 
     puts "User #{user.name} created"
+
+    puts "Creating #{user.name}'s Friendships"
+
+    Friendship.connect(user, User.find(1))
+    Friendship.connect(user, User.find(2))
+    Friendship.connect(user, User.find(3))
+
   end
 
 
@@ -352,7 +362,7 @@ if Rails.env == 'development'
     #user = User.find(1)
 
     11.times do
-      interviewer_id = 1 + rand(2)
+      interviewer_id = 1 + rand(1)
       next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(
           interviewer_id: interviewer_id,

@@ -421,6 +421,25 @@ $blue_pastel: #98cdff;
   text-align:center;
 }
 
+
+.map_index_user_association_item {
+  border-top-radius: 5px;
+  -moz-border-top-radius: 5px;
+  -webkit-border-top-radius: 5px;
+
+  border:1px solid $gray_Dark;
+
+  background: $gray_Light;
+
+  list-style:none;
+}
+
+
+
+
+
+
+
 #map_index_user_button_friendrequest{
 
 }
