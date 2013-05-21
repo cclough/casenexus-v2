@@ -15,8 +15,4 @@ class ConsoleController < ApplicationController
 		render layout: "pdfjs"
 	end
 
-	def select
-		@friends = current_user.accepted_friends
-		render layout: "console_clipped"
-	end
 end

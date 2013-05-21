@@ -77,7 +77,6 @@ Casenexus::Application.routes.draw do
 
   resources :console, only: [:index] do
     get :pdfjs, on: :collection
-    get :select, on: :collection
   end
 
   # Map

@@ -1,11 +1,11 @@
-.pull-right
+.span15.offset1
   = link_to "Email PDF to Friend"
 .divider-vertical
-.pull-right
-  %select#cases_index_subnav_cases.chzn-select.span20{"data-placeholder" => "Select Case", value: @book.id }
+.span21
+  %select#console_index_subnav_select_books.chzn-select.span20{"data-placeholder" => "Select Case", value: @book.id }
     %option
     = options_from_collection_for_select @books, :id, :title #, @case.id
-.pull-right
-  %select#cases_index_subnav_cases.chzn-select.span20{"data-placeholder" => "Select Friend", value: @book.id }
+.span21
+  %select#console_index_subnav_select_friends.chzn-select.span20{"data-placeholder" => "Select Friend", value: @book.id }
     %option
     = options_from_collection_for_select @friends, :id, :name #, @case.id
