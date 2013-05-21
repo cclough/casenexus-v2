@@ -50,7 +50,7 @@ class CasesController < ApplicationController
       redirect_to map_path
     else
       @user = @case.user
-      render 'new'
+      render 'new', layout: "cases_clipped"
     end
   end
 

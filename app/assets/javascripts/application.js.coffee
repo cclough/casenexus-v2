@@ -12,7 +12,7 @@
 #= require lib/jquery.raty
 
 #= require lib/bootstrap.min
-#= require lib/bootstrap-datetimepicker.min
+#= require lib/bootstrap-datepicker
 #= require bootstrap-wysihtml5
 
 # Get query params, global function

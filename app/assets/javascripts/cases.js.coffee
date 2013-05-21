@@ -650,8 +650,9 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 
 
-  # $("#cases_new_datepicker").datetimepicker({ "pickSeconds": false });
-  # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
+  $("#cases_new_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+   # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
+
   $("[name=\"case[businessanalytics_comment]\"]").wysihtml5
     emphasis: false #Italics, bold, etc. Default true
     "font-styles": false #Font styling, e.g. h1, h2, etc. Default true

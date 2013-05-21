@@ -19,7 +19,7 @@
 #console_index_feedback {
   height:100%;
   // width:50%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
@@ -38,9 +38,10 @@
 
 }
 
-#console_index_feedback_iframe {
+#console_index_feedback_frame {
   height:100%;
-  width:100%;  
+  width:100%;
+  overflow-y:scroll;
 }
 
 // #clear { clear: both; height: 1px; overflow: hidden; font-size:0pt; margin-top: -1px; }

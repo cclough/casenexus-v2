@@ -74,10 +74,11 @@ Casenexus::Application.routes.draw do
   # get "comments/new"
 
   # Viewer
-
   resources :console, only: [:index] do
     get :pdfjs, on: :collection
   end
+  match 'console/sendpdf' => 'console#sendpdf', :as => :sendpdf
+
 
   # Map
   match '/library', to: 'books#index', as: :library

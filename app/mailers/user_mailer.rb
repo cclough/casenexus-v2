@@ -152,4 +152,20 @@ class UserMailer < ActionMailer::Base
     mail(to: "info@casenexus.com", subject: "New User")
   end
 
+  def case_pdf(user_from, user_target, book)
+    
+    @user_from = user_from
+    @user_target = user_target
+    @book = book
+
+    host = Rails.env == 'production' ? 'www.casenexus.com' : 'localhost:3000'
+    @url = Rails.application.routes.url_helpers.root_url(host: host)
+
+    attachments['case.pdf'] = File.read(File.join(Rails.root, 'app','assets','images','library',@book.url))
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: "casenexus.com: You've been sent a case PDF") 
+
+  end
+
 end

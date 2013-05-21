@@ -1,11 +1,15 @@
-.span15.offset1
-  = link_to "Email PDF to Friend"
-.divider-vertical
-.span21
-  %select#console_index_subnav_select_books.chzn-select.span20{"data-placeholder" => "Select Case", value: @book.id }
-    %option
-    = options_from_collection_for_select @books, :id, :title #, @case.id
-.span21
-  %select#console_index_subnav_select_friends.chzn-select.span20{"data-placeholder" => "Select Friend", value: @book.id }
-    %option
-    = options_from_collection_for_select @friends, :id, :name #, @case.id
+= form_tag 'console/sendpdf', remote: true do |f|
+  .span26.offset1
+    %select#console_index_subnav_select_books.chzn-select.span27{name: "book_id", "data-placeholder" => "Select Case" }
+      %option
+      - @books.each do |book|
+        %option{value: book.id}
+          = book.author.split(' ')[0] + " - " + book.title
+
+  .span17.offset1
+    = button_tag raw("<i class=\"icon-envelope icon-white\"/></i> Email case to your friend"), { class: "btn btn-inverse btn-small disabled", :disabled => true, id: "console_index_subnav_button_sendpdf" }
+
+  .span21.pull-right
+    %select#console_index_subnav_select_friends.chzn-select.span20{name: "target_id", "data-placeholder" => "Select Friend" }
+      %option
+      = options_from_collection_for_select @friends, :id, :name #, @case.id
