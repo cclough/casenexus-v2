@@ -76,7 +76,7 @@ $blue_pastel: #98cdff;
   top:50%;
 
   left:50%;
-  width:500px;
+  width:600px;
   height:500px;
 
   background: rgba(0, 0, 0, 0.6);
@@ -422,19 +422,25 @@ $blue_pastel: #98cdff;
 }
 
 
+
+#map_index_user_university_image {
+  width:20px;
+  text-align:center;
+}
+
 .map_index_user_association_item {
-  border-top-radius: 5px;
-  -moz-border-top-radius: 5px;
-  -webkit-border-top-radius: 5px;
+  border-radius: 7px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
 
-  border:1px solid $gray_Dark;
+  border:2px solid $gray_Light;
 
-  background: $gray_Light;
+  background: $gray_Lightest;
+
+  padding:3px;
 
   list-style:none;
 }
-
-
 
 
 
