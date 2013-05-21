@@ -199,12 +199,3 @@ $(document).ready ->
   map_index_map_subnav_mouseover = (marker_id) ->
     $.get "/members/" + marker_id + "/mouseover", (data) ->
       $("#map_index_map_subnav_mouseover").html data
-
-
-
-
-
-  $(".chzn-select").chosen().change ->
-    latlng_chosen = $(this).find("option:selected").val().split("_")
-    users_chosen_latlng = new google.maps.LatLng(latlng_chosen[0], latlng_chosen[1])
-    map_index_map_pan(users_chosen_latlng)
