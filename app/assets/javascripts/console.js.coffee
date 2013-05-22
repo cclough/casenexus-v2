@@ -3,6 +3,13 @@
 #   $("#console_index_subnav_button_sendpdf").removeClass "disabled"
 #   $("#console_index_subnav_button_sendpdf").attr "disabled", "false"
 
+
+console_index_subnab_skype_change = ->
+	$("#console_index_subnab_icon_skype a").attr("href","xxxx")
+	$("#console_index_subnab_icon_skype img").attr("src","xxxx")
+	$("#console_index_subnab_icon_skype a").html("Call xxxx")
+
+
 $(document).ready ->
 
   $(".chzn-select").chosen()
