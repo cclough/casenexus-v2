@@ -1,0 +1,7 @@
+- if !@friend.blank?
+  = link_to "skype:#{@friend.skype}?call", id: "console_index_subnav_button_skype", class:"btn btn-inverse btn-small" do
+    = image_tag "icons/skype_button.png"
+    %span
+      Call
+      = @friend.first_name
+    / %img{src: "http://mystatus.skype.com/smallicon/xxxx" }

@@ -1,20 +1,18 @@
 = form_tag 'console/sendpdf', remote: true do |f|
   .span21.offset1
-    %select#console_index_subnav_select_books.chzn-select.span21{name: "book_id", value: @book.id, "data-placeholder" => "Select Case" }
+    %select#console_index_subnav_select_books.chzn-select.span21{name: "book_id", "data-placeholder" => "Select Case" }
       %option
       - @books.each do |book|
-        %option{value: book.id}
+        %option{value: book.id, "selected" => ("selected" if (book.id == @book.id) unless @book.blank?) }
           = book.author.split(' ')[0] + " - " + book.title
 
   .span17.offset1
-    = button_tag raw("<i class=\"icon-envelope icon-white\"/></i> Email case to your friend"), { class: "btn btn-inverse btn-small", id: "console_index_subnav_button_sendpdf" }
+    = button_tag raw("<i class=\"icon-envelope icon-white\"/></i> Email case to your friend"), { class: "btn btn-inverse btn-small", id: "console_index_subnav_button_sendpdf", style: ("display:inline" if !@friend.blank? && !@book.blank?)}
 
   .span16.pull-right
     %select#console_index_subnav_select_friends.chzn-select.span16{name: "target_id", "data-placeholder" => "Select Friend" }
       %option
-      = options_from_collection_for_select @friends, :id, :name #, @case.id
-  .span11
-    %button#console_index_subnab_icon_skype.btn.btn-inverse.btn-small
-      %a{href: "skype:xxxx?call"}
-        %img{src: "http://mystatus.skype.com/smallicon/xxxx" }
-        Call xxxx
+      = options_from_collection_for_select @friends, :id, :name, (@friend.id unless @friend.blank?)
+  .span11#console_index_subnav_button_skype_container
+    = render 'console/skypebutton', layout: false
+        

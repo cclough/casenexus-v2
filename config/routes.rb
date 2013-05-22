@@ -78,7 +78,7 @@ Casenexus::Application.routes.draw do
     get :pdfjs, on: :collection
   end
   match 'console/sendpdf' => 'console#sendpdf', :as => :sendpdf
-
+  match 'console/skypebutton' => 'console#skypebutton', :as => :skypebutton
 
   # Map
   match '/library', to: 'books#index', as: :library

@@ -1,9 +1,8 @@
 class ConsoleController < ApplicationController
 
 	def index
-		@book = Book.find_by_id(params[:book_id])
-		
-		#@friend = User.find_by_id(params[:friend_id])
+		@book = Book.find_by_id(params[:book_id]) unless params[:book_id].blank?
+		@friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
 		
 		@friends = current_user.accepted_friends
     	@books = Book.where(btype: "case")
@@ -26,5 +25,11 @@ class ConsoleController < ApplicationController
 
 		# redirect_to user_path(@user)  
 		flash[:notice] = 'Email has been sent!'  
-	end  
+	end
+
+	def skypebutton
+		@friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
+		
+		render partial: "skypebutton", layout: false
+	end
 end
