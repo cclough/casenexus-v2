@@ -44,7 +44,7 @@ window.map_index_map_marker_click = (marker_id) ->
         if !($("#modal_feedback_req").hasClass("in"))
           $(".modal").modal("hide")
           $("#modal_feedback_req").modal("show")
-          $("#modal_feedback_req_datetimepicker").datepicker()
+          $("#modal_feedback_req_datepicker").datepicker()
 
 
       #Fade panel back in
