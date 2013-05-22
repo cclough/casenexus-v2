@@ -2,8 +2,6 @@ Casenexus::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  ActiveAdmin.routes(self)
-
   devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
 
@@ -94,6 +92,5 @@ Casenexus::Application.routes.draw do
   resources :events do
     get :ics, on: :collection
   end
-
 
 end

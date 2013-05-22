@@ -1,8 +1,6 @@
 class CreateLanguagesUsers < ActiveRecord::Migration
   def change
 
-  	drop_table :languages_users
-
     create_table :languages_users, :id => false do |t|
     	t.column :user_id, :integer
     	t.column :language_id, :integer

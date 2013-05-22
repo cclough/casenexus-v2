@@ -13,21 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130519091230) do
 
-  create_table "active_admin_comments", :force => true do |t|
-    t.string   "resource_id",   :null => false
-    t.string   "resource_type", :null => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.text     "body"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "namespace"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
-
   create_table "books", :force => true do |t|
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
@@ -151,9 +136,11 @@ ActiveRecord::Schema.define(:version => 20130519091230) do
   end
 
   create_table "languages_users", :id => false, :force => true do |t|
-    t.integer "language_id"
     t.integer "user_id"
+    t.integer "language_id"
   end
+
+  add_index "languages_users", ["user_id", "language_id"], :name => "index_languages_users_on_user_id_and_language_id", :unique => true
 
   create_table "notifications", :force => true do |t|
     t.integer  "user_id",                             :null => false
@@ -169,27 +156,6 @@ ActiveRecord::Schema.define(:version => 20130519091230) do
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
-
-  create_table "rails_admin_histories", :force => true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
-
-  create_table "site_bugs", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "subject"
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "site_contacts", :force => true do |t|
     t.integer  "user_id"
