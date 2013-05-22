@@ -1,15 +1,22 @@
 #books_show_form
-  = form_for [@commentable, @comment] do |f|
-    - if @comment.errors.any?
-      %h2 Please correct the following errors.
-      %ul
-        - @comment.errors.full_messages.each do |msg|
-          %li= msg
-    
-    = f.text_area :content, rows: 4
-    .spacer10
-    .books_rating_set
-    .spacer10
-    = f.hidden_field :user_id, value: current_user.id
-    = f.hidden_field :rating, id: "books_rating_set_field"
-    = f.submit
+  .row
+    .span25
+    .span40.panel.darker
+      = form_for [@commentable, @comment] do |f|
+        - if @comment.errors.any?
+          %h2 Please correct the following errors.
+          %ul
+            - @comment.errors.full_messages.each do |msg|
+              %li= msg
+        
+        = f.text_area :content, rows: 4, class: "span40"
+        .spacer10
+        .row
+          .span20
+            #books_show_form_rating_panel.panel.dark.kill_all
+              .books_rating_set
+              Rate this book
+          .span20
+            = f.hidden_field :user_id, value: current_user.id
+            = f.hidden_field :rating, id: "books_rating_set_field"
+            = f.submit "Submit comment", class: "btn btn-inverse btn-large"

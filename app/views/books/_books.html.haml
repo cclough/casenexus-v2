@@ -7,4 +7,4 @@
     = render partial: 'books_item' , locals: { books_item: books_item }
 
 
-= paginate @books, inner_window: 1, outer_window: 0
+= will_paginate @books, inner_window: 2, outer_window: 2, class: "application_pagination"

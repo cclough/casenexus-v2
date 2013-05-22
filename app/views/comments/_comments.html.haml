@@ -1,20 +1,19 @@
 #books_show_comments
   - @comments.each do |comment|
-    .books_show_comments_item.panel.item.kill_all
+    .books_show_comments_item.panel.darker.kill_all
       .row
-        .span
+        .span4
+          .application_avatar
+            = avatar_for(comment.user, 'icon')
+        .span10.offset1
           .row
-            .span4
-              .application_avatar
-                = avatar_for(comment.user, 'icon')
-            .span.offset1
-              .row
-                %strong
-                  = comment.user.name
-            .span.pull-right
-              .span.panel.darker.kill_all
-                .span.books_rating_read{"data-rating" => comment.rating}
-                .span.offset1.books_rating_read_num
-                  = comment.rating.to_s + "/5"
-          .row.p
-            = comment.content
+            %strong
+              = comment.user.name
+        .span.offset1
+          = comment.content
+        .span21.pull-right
+          .span.panel.darker.kill_all
+            .span.books_rating_read{"data-rating" => comment.rating}
+            .span.offset1.books_rating_read_num
+              = comment.rating.to_s
+

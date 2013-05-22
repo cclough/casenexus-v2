@@ -51,6 +51,10 @@ $blue_pastel: #98cdff;
   position:relative;
 }
 
+.books_rating_set {
+  width:150px !important;
+}
+
 .books_rating_read_container {
   padding:2px;
 }
@@ -65,3 +69,21 @@ $blue_pastel: #98cdff;
   text-align:center;
   margin-top:2px;
 }
+
+.books_rating_read_num {
+  font-size:14px;
+}
+
+
+#books_show_form {
+  text-align:center !important;
+}
+
+#books_show_form_rating_panel {
+  text-align:center;
+  font-size:11px;
+  width:150px !important;
+  padding:2px;
+}
+
+
