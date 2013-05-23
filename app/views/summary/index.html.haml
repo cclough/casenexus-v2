@@ -8,22 +8,25 @@
   .panel.darker.kill_left.kill_bottom.span32
     .summary_block_title
       Events
-    - @events.each do |summary_item_event|
-      .row.summary_item
-        .span2
-          = avatar_for(summary_item_event.partner, 'icon')
-        .span9.offset1.summary_item_event_date
-          = summary_item_event.datetime.strftime("%a %d %b %Y %I:%M%p")
-        .span.offset1
-          = summary_item_event.partner.name
-        .span.pull-right
-          .btn.btn-inverse.btn-mini
-            Show
-          .btn.btn-inverse.btn-mini
-            ?
+
+    .row
+      #summary_index_events_index
+        - @events.each do |summary_item_event|
+          .row.summary_item
+            .span2
+              = avatar_for(summary_item_event.partner, 'icon')
+            .span9.offset1.summary_item_event_date
+              = summary_item_event.datetime.strftime("%a %d %b %Y %I:%M%p")
+            .span.offset1
+              = summary_item_event.partner.name
+            .span.pull-right
+              .btn.btn-inverse.btn-mini
+                Show
+              .btn.btn-inverse.btn-mini
+                ?
+
+
     = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
-
-
 
   .panel.darker.kill_left.kill_bottom.span33
     = render "events/calendar"

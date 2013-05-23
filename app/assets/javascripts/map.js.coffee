@@ -23,7 +23,7 @@ window.map_index_map_marker_click = (marker_id) ->
         $("#map_index_container_user").fadeOut "slow"
 
       # Modal Stuff!
-      $("#modal_message, #modal_feedback_req, #modal_friendship_req").modal
+      $("#modal_message, #modal_feedback_req, #modal_friendship_req #modal_event").modal
         backdrop: false
         show: false
 

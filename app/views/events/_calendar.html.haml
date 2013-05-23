@@ -1,8 +1,7 @@
 #events_calendar
   .span
-    = link_to new_event_path do
-      .btn.btn-inverse
-        New
+    #events_calendar_button_new.btn.btn-inverse
+      New
   .span.offset1
     = link_to "webcal://localhost:3000/events/ics" do
       .btn.btn-inverse

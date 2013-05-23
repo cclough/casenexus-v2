@@ -11,10 +11,12 @@
 
     = javascript_include_tag "application"
 
+    = javascript_include_tag "lib/amcharts"
+    
     = javascript_include_tag "events"
     = javascript_include_tag "cases"
-    = javascript_include_tag "lib/amcharts"
     = javascript_include_tag "account"
+    = javascript_include_tag "summary"
 
     = yield :javascript_includes
 
@@ -57,5 +59,6 @@
       / footer
       = render 'layouts/footer'
 
-  = render 'shared/modal_help'
+  = render 'shared/modal_help' if signed_in?
   = render 'shared/modal_contact'
+  = render 'shared/modal_event' if signed_in?
