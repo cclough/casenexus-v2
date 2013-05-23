@@ -34,12 +34,14 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    render layout: false
   end
 
   def new
     @event = current_user.events.new
     @friends = current_user.accepted_friends
     @books = Book.all
+    render layout: false
   end
 
   def create
@@ -57,13 +59,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @friends = current_user.accepted_friends
     @books = Book.all
+    render layout: false
   end
 
   def update
     @event = current_user.events.find(params[:id])
     if Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
       flash[:success] = "Appointment updated. " + @event.partner.first_name + " has been notified."
-      redirect_to @event
+      redirect_to summary_path
     else
       redirect_to summary_path
     end

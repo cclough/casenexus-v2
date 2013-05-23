@@ -47,6 +47,15 @@ window.map_index_map_marker_click = (marker_id) ->
           $("#modal_feedback_req_datepicker").datepicker()
 
 
+      $("#map_index_user_button_event").click ->
+        if !($("#modal_event").hasClass("in"))
+          $(".modal").modal("hide")
+          $.get "/events/new", (data) ->
+            $("#modal_event").html data
+          $("#modal_event").modal("show")
+          $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
+          $(".chzn-select").chosen()
+
       #Fade panel back in
       $("#map_index_container_user").fadeIn "fast"
       $('#map_index_container_user').show "slide", { direction: "right" }, 200

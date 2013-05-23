@@ -23,4 +23,5 @@
       - if @events_by_date[date]
         %ul
           - @events_by_date[date].each do |event|
-            %li= link_to event.partner.name, event
+            %li.events_calendar_event{"data-id" => event.id}
+              = event.partner.name

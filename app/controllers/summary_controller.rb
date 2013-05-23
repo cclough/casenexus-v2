@@ -14,8 +14,6 @@ class SummaryController < ApplicationController
     	@events = current_user.events.paginate(per_page: 5, page: params[:page])
     	@friends = current_user.accepted_friends.first(10)
 	
-  
-      @event = current_user.events.new
       # @friends = current_user.accepted_friends
       @books = Book.all 
   end

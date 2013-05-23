@@ -65,7 +65,6 @@ class MembersController < ApplicationController
     respond_to do |format|
       @notification = @user.notifications.build
       @friendship = @user.friendships.build unless Friendship.exist?(current_user, @user)
-      @event = current_user.events.new
       
       format.html { render layout: false }
     end

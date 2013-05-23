@@ -137,7 +137,7 @@
           %span
             Request Feedback
       .row
-        = link_to("Schedule a Case", new_event_path, class: "btn btn-inverse btn-small")
+        = link_to("Schedule a Case", "#", id: "map_index_user_button_event",class: "btn btn-inverse btn-small")
       .row
         = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
 
@@ -149,8 +149,10 @@
     #modal_feedback_req.modal.hide.fade
       = render '/shared/modal_feedback_req_form'
 
+    = render '/shared/modal_event'
+    
   - if @friendship
     #modal_friendship_req.modal.hide.fade
       = render '/friendships/request_form'
 
-    = render 'shared/modal_event'
+    
