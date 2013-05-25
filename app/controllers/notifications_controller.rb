@@ -49,6 +49,10 @@ class NotificationsController < ApplicationController
             flash.now[:success] = 'Case Partner request sent'
             format.js
         end
+
+        # Send a Pusher notification
+        Pusher['private-'+params[:notification][:user_id]].trigger('new_message', {:from => current_user.name, :subject => "hello"})
+      
       else
         case params[:notification][:ntype]
           when "message", "feedback_req", "friendship_req"

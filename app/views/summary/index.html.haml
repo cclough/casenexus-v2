@@ -4,69 +4,78 @@
 
 .row
 
+  .span32
 
-  .panel.darker.kill_left.kill_bottom.span32
-    .summary_block_title
-      Events
 
+
+    .panel.darker.kill_left
+      .summary_block_title
+        Friends
+      - @friends.each do |summary_item_friend|
+        .row.summary_item
+          .span2
+            = avatar_for(summary_item_friend, 'icon')
+          .span.offset1.font-small
+            = summary_item_friend.name
+          .span.pull-right
+            .btn.btn-inverse.btn-mini
+              Msg
+            .btn.btn-inverse.btn-mini
+              Start Case
+            .btn.btn-inverse.btn-mini
+              / %a{href: "skype:#{summary_item_friend.skype}?call"}
+              /   %img{src: "http://mystatus.skype.com/smallicon/#{summary_item_friend.skype}" }
+
+
+    .panel.darker.kill_left
+      .summary_block_title
+        Recent Cases
+      - @cases.each do |summary_item_case|
+        .row.summary_item
+          .span2
+            = avatar_for(summary_item_case.interviewer, 'icon')
+          .span.offset1
+            = summary_item_case.interviewer.name
+          .span.pull-right
+            .btn.btn-inverse.btn-mini
+              Show
+            .btn.btn-inverse.btn-mini
+              ?
+
+
+  .span39
     .row
-      #summary_index_events_index
-        - @events.each do |summary_item_event|
-          .row.summary_item
-            .span2
-              = avatar_for(summary_item_event.partner, 'icon')
-            .span9.offset1.summary_item_event_date
-              = summary_item_event.datetime.strftime("%a %d %b %Y %I:%M%p")
-            .span.offset1
-              = summary_item_event.partner.name
-            .span.pull-right
-              .btn.btn-inverse.btn-mini
-                Show
-              .btn.btn-inverse.btn-mini
-                ?
+      .panel.darker.kill_left.kill_bottom.span39
+        .row
+          = render "events/calendar"
+        .spacer20
+        .row
+          %div
+            .summary_block_title
+              Events
+
+            .row
+              #summary_index_events_index
+                - @events.each do |summary_item_event|
+                  .row.summary_item
+                    .span2
+                      = avatar_for(summary_item_event.partner, 'icon')
+                    .span9.offset1.summary_item_event_date
+                      = summary_item_event.datetime.strftime("%a %d %b %I:%M%p")
+                    .span.offset1
+                      = summary_item_event.partner.name
+                    .span.pull-right
+                      .btn.btn-inverse.btn-mini
+                        Show
+                      .btn.btn-inverse.btn-mini
+                        ?
 
 
-    = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
+            = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
 
-  .panel.darker.kill_left.kill_bottom.span33
-    = render "events/calendar"
+
 
 
 
 .row
 
-
-
-  .panel.darker.kill_left.span32
-    .summary_block_title
-      Friends
-    - @friends.each do |summary_item_friend|
-      .row.summary_item
-        .span2
-          = avatar_for(summary_item_friend, 'icon')
-        .span.offset1.font-small
-          = summary_item_friend.name
-        .span.pull-right
-          .btn.btn-inverse.btn-mini
-            Msg
-          .btn.btn-inverse.btn-mini
-            Start Case
-          .btn.btn-inverse.btn-mini
-            %a{href: "skype:#{summary_item_friend.skype}?call"}
-              %img{src: "http://mystatus.skype.com/smallicon/#{summary_item_friend.skype}" }
-
-
-  .panel.darker.kill_left.span33
-    .summary_block_title
-      Recent Cases
-    - @cases.each do |summary_item_case|
-      .row.summary_item
-        .span2
-          = avatar_for(summary_item_case.interviewer, 'icon')
-        .span.offset1
-          = summary_item_case.interviewer.name
-        .span.pull-right
-          .btn.btn-inverse.btn-mini
-            Show
-          .btn.btn-inverse.btn-mini
-            ?

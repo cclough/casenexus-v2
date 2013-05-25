@@ -10,6 +10,7 @@
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
 #= require lib/jquery.raty
+#= require lib/jquery.titlealert
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-datepicker

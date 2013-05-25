@@ -1,27 +1,28 @@
 #events_calendar
-  .span
-    #events_calendar_button_new.btn.btn-inverse
-      New
-  .span.offset1
-    = link_to "webcal://localhost:3000/events/ics" do
-      .btn.btn-inverse
-        Sub
-  .span.offset1.pull-right
+  .row
+    .span
 
-    #events_calendar_month
-      = link_to date: @date.prev_month do
-        .btn.btn-inverse.btn-small
-          %i.icon-chevron-left.icon-white
-      = @date.strftime("%B %Y")
-      = link_to date: @date.next_month do
-        .btn.btn-inverse.btn-small
-          %i.icon-chevron-right.icon-white
-  
+      #events_calendar_month
+        = link_to date: @date.prev_month do
+          .btn.btn-inverse.btn-small
+            %i.icon-chevron-left.icon-white
+        = @date.strftime("%B %Y")
+        = link_to date: @date.next_month do
+          .btn.btn-inverse.btn-small
+            %i.icon-chevron-right.icon-white
+    .pull-right
+      .span
+        #events_calendar_button_new.btn.btn-inverse
+          New
+      .span.offset1
+        = link_to "webcal://localhost:3000/events/ics" do
+          .btn.btn-inverse
+            Sub
+  .spacer5
   .row
     = calendar @date do |date|
       = date.day
       - if @events_by_date[date]
-        %ul
-          - @events_by_date[date].each do |event|
-            %li.events_calendar_event{"data-id" => event.id}
-              = event.partner.name
+        - @events_by_date[date].each do |event|
+          %span.events_calendar_event{"data-id" => event.id}
+            / = event.partner.name

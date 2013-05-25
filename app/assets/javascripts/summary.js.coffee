@@ -2,7 +2,17 @@ window.summary_index_events_modal_rebless = ->
   $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
   $(".chzn-select").chosen()
 
+  $(".events_new_input_hour_button").click ->
+    $(".events_new_input_hour_button").removeClass "active"
+    $(this).addClass "active"
 
+  $(".events_new_input_minute_button").click ->
+    $(".events_new_input_minute_button").removeClass "active"
+    $(this).addClass "active"
+
+  $(".events_new_input_ampm_button").click ->
+    $(".events_new_input_ampm_button").removeClass "active"
+    $(this).addClass "active"
 
 $(document).ready ->
   # Modal Stuff!

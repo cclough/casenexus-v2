@@ -5,6 +5,9 @@ Casenexus::Application.routes.draw do
   devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
 
+  # Pusher
+  post 'pusher/auth'
+
   # Static Pages
   match '/about', to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'

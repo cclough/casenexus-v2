@@ -1,4 +1,5 @@
 Casenexus::Application.configure do
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -36,4 +37,13 @@ Casenexus::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  # Pusher
+  require 'pusher'
+
+  Pusher.app_id = '44878'
+  Pusher.key    = '937cfc180861aebef0e8'
+  Pusher.secret = 'e54b98a1511e67629ee1'
+
+  Pusher.logger = Rails.logger
 end

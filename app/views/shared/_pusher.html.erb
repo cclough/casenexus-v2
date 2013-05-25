@@ -1,0 +1,75 @@
+
+<script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+
+      // Enable pusher logging - don't include this in production
+      Pusher.log = function(message) {
+        if (window.console && window.console.log) window.console.log(message);
+      };
+      
+      Pusher.host = 'ws-eu.pusher.com';
+      Pusher.sockjs_host = 'sockjs-eu.pusher.com';
+      
+      var pusher = new Pusher('937cfc180861aebef0e8'); // Replace with your app key
+      var channel = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
+      
+      channel.bind('new_message', function(data) {
+        msg = data.from + ' has sent you a message: ' + data.subject;
+        dom_notify(msg);
+        title_notify(msg);
+        if (window.webkitNotifications) { webkit_notify(msg); }
+      });
+      
+      // In DOM alert
+      function dom_notify(msg) {
+        $('#status').text(msg);
+        // $('#notify').fadeIn();
+        // setTimeout(function() {
+        //   $('#notify').fadeOut
+        //   ();
+        // }, 2000);
+      }
+      
+      // <title> msg
+      function title_notify(msg) {
+        $.titleAlert(msg);
+      }
+      
+      // Webkit Notifications API
+      // http://www.html5rocks.com/en/tutorials/notifications/quick/
+      
+      // Setup permissions
+      if (window.webkitNotifications) {
+        console.log("Notifications are supported!");
+        $('#notify_api').show();
+      }
+      else {
+        console.log("Notifications are not supported for this Browser/OS version yet.");
+      }
+      
+      $('#ask_notify_permission').click(function() {
+        window.webkitNotifications.requestPermission();
+      });
+      
+      // Notify function
+      function webkit_notify(msg) {
+        notify = window.webkitNotifications.createNotification('http://pusher.com/stylesheets/images/feature_scalable.png', msg, '');
+        notify.show();
+      }
+      
+      // Some useful Pusher debug msgs
+      pusher.connection.bind('connecting', function() {
+        $('#header_nav_panel_browse_search_field').val('Connecting to Pusher...');
+      });
+      pusher.connection.bind('connected', function() {
+        $('#header_nav_panel_browse_search_field').val('Connected to Pusher!');
+      });
+      pusher.connection.bind('failed', function() {
+        $('#header_nav_panel_browse_search_field').val('Connection to Pusher failed :(');
+      });
+      channel.bind('subscription_error', function(status) {
+        $('#header_nav_panel_browse_search_field').val('Pusher subscription_error');
+      });
+    });
+</script>
