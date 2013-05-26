@@ -16,6 +16,11 @@ class SummaryController < ApplicationController
 	
       # @friends = current_user.accepted_friends
       @books = Book.all 
+
+      # Send a Pusher notification
+
+      # Pusher.trigger('private-4', 'new_message', {:from => "christian", :subject => "hello"})
+
   end
 
 end

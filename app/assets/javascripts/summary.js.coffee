@@ -23,8 +23,6 @@ $(document).ready ->
   	show: false
 
 
-
-
   $("#events_calendar_button_new").click ->
     if !($("#modal_event").hasClass("in"))
       $(".modal").modal("hide")

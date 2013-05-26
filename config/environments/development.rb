@@ -40,10 +40,10 @@ Casenexus::Application.configure do
 
   # Pusher
   require 'pusher'
-
-  Pusher.app_id = '44878'
-  Pusher.key    = '937cfc180861aebef0e8'
-  Pusher.secret = 'e54b98a1511e67629ee1'
+  
+  Pusher.app_id = '44896'
+  Pusher.key    = '819414d582ac4a755ad6'
+  Pusher.secret = '403c863581315657e4fa'
 
   Pusher.logger = Rails.logger
 end

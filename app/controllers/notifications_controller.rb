@@ -42,6 +42,7 @@ class NotificationsController < ApplicationController
           when "message"
             format.js
             flash.now[:success] = 'Message sent'
+
           when "feedback_req"
             format.js
             flash.now[:success] = 'Feedback request sent'
@@ -51,8 +52,14 @@ class NotificationsController < ApplicationController
         end
 
         # Send a Pusher notification
-        Pusher['private-'+params[:notification][:user_id]].trigger('new_message', {:from => current_user.name, :subject => "hello"})
-      
+
+        #begin
+          Pusher.trigger('private-4','new_message', {:from => "christian", :subject => "hello"})
+          #Pusher['private-4'].trigger('new_message', {:from => "christian", :subject => "hello"})
+        #rescue Pusher::Error => e
+          #Pusher::AuthenticationError
+        #end
+
       else
         case params[:notification][:ntype]
           when "message", "feedback_req", "friendship_req"

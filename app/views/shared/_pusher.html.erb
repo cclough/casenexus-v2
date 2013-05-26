@@ -11,7 +11,7 @@ $(function() {
       Pusher.host = 'ws-eu.pusher.com';
       Pusher.sockjs_host = 'sockjs-eu.pusher.com';
       
-      var pusher = new Pusher('937cfc180861aebef0e8'); // Replace with your app key
+      var pusher = new Pusher('819414d582ac4a755ad6'); // Replace with your app key
       var channel = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
       
       channel.bind('new_message', function(data) {
@@ -23,7 +23,7 @@ $(function() {
       
       // In DOM alert
       function dom_notify(msg) {
-        $('#status').text(msg);
+        $('#header_nav_panel_browse_search_field').val(msg);
         // $('#notify').fadeIn();
         // setTimeout(function() {
         //   $('#notify').fadeOut
@@ -36,6 +36,10 @@ $(function() {
         $.titleAlert(msg);
       }
       
+
+
+
+
       // Webkit Notifications API
       // http://www.html5rocks.com/en/tutorials/notifications/quick/
       
@@ -57,6 +61,10 @@ $(function() {
         notify = window.webkitNotifications.createNotification('http://pusher.com/stylesheets/images/feature_scalable.png', msg, '');
         notify.show();
       }
+      
+
+
+
       
       // Some useful Pusher debug msgs
       pusher.connection.bind('connecting', function() {
