@@ -57,9 +57,10 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, on: :update
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
+  validates_acceptance_of :confirm_tac
+
   validate :validate_university_email, on: :create
   validate :validate_invitation, on: :create
-  validate :validate_has_languages?
 
 
 
@@ -72,6 +73,8 @@ class User < ActiveRecord::Base
             allow_blank: true,
             on: :update
 
+  validate :validate_has_languages?, on: :update
+  
   # Scoped_search Gem
   scoped_search on: [:first_name, :last_name]
 
@@ -229,7 +232,7 @@ class User < ActiveRecord::Base
       domain = self.email.split("@")[1]
       errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
     rescue Exception => e
-      errors.add(:email, "Invalid Email")
+      errors.add(:email, "not from a listed University")
     end
   end
 

@@ -2,10 +2,13 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  # errors:
+  #   format: "%{message}"
   activerecord:
     attributes:
       user:
         password_digest: "Password"
+        confirm_tac: "Terms & Conditions"
     errors:
       models:
         user:

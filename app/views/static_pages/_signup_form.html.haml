@@ -14,22 +14,21 @@
             = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6", id: "static_home_signup_invitation_code"
 
           .spacer10
-          #static_home_signup_option_university
+          
+          = render 'shared/error_messages', object: f.object
 
-            = render 'shared/error_messages', object: f.object
+          = render 'static_pages/universities_select'
 
-            = render 'static_pages/universities_select'
-
-            #static_home_signup_notlisted
-              Your university not listed?
-              = link_to "Contact us", "#", id: "static_home_signup_notlisted_button"
+          #static_home_signup_notlisted
+            Your university not listed?
+            = link_to "Contact us", "#", id: "static_home_signup_notlisted_button"
 
             .spacer5
             = f.text_field :email, placeholder: 'University email address', tabindex: "10"
             .spacer5
             = f.password_field :password, placeholder: 'New Password', tabindex: "11"
             = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12"
-          .spacer5
+          / .spacer5
           .row
             .span21.font-small
               .static_home_signup_checkbox_label
@@ -37,6 +36,7 @@
                 = link_to "Terms & Conditions", terms_path, tabindex: "13"
             .span2
               = f.check_box :confirm_tac, tabindex: "14"
+          .spacer10
           .row
             = f.hidden_field :ip_address, value: request.remote_ip
             
