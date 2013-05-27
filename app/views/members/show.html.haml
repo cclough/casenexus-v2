@@ -56,10 +56,10 @@
                   %i.icon-comment.icon-white
                   %span
                     Send Message
-            - if Notification.history(current_user, @user).count > 0
-              .row
-                .span
-                  = link_to "Show Message History", history_notifications_path(user_id: @user.id)
+            / - if Notification.history(current_user, @user).count > 0
+            /   .row
+            /     .span
+            /       = link_to "Show Message History", history_notifications_path(user_id: @user.id)
                   
 
             - unless @user.skype.blank?

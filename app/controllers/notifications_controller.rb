@@ -43,7 +43,7 @@ class NotificationsController < ApplicationController
         case params[:notification][:ntype]
           when "message"
             format.js
-            format.html { redirect_to(@notification) }
+            format.html { redirect_to (@notification) }
             flash.now[:success] = 'Message sent'
           when "feedback_req"
             format.js
@@ -57,7 +57,7 @@ class NotificationsController < ApplicationController
 
         #begin
           #Pusher.trigger('private-4','new_message', {:from => "christian", :subject => "hello"})
-          #Pusher['private-4'].trigger('new_message', {:from => "christian", :subject => "hello"})
+          Pusher['private-4'].trigger('new_message', {:from => "christian", :subject => "hello"})
         #rescue Pusher::Error => e
           #Pusher::AuthenticationError
         #end

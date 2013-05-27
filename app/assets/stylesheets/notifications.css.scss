@@ -37,18 +37,24 @@ $blue_linkedin: #006699;
 
 
 .notifications_index_notifications_item {
-  padding:5px;
+  padding:8px !important;
   text-decoration:none !important;
   color: black;
 
-  &:hover {
-    background-color: $gray_Lightest;
-  }
   &.read {
     -moz-opacity: 0.50;
     opacity: 0.50;
   }
 }
+
+.notifications_index_notifications_item_container {
+  padding:5px !important;
+  &:hover {
+    background-color: $gray_Lightest;
+  }
+}
+
+
 
 .notifications_index_notifications_item_content_trunc {
   padding-top:0px;
