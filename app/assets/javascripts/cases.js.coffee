@@ -232,7 +232,7 @@ window.cases_show_chart_radar_draw = (radar_type) ->
 #////////////////////////////////////////////////////
 
 
-window.cases_analysis_charts_draw = (case_count) ->
+window.cases_analysis_charts_draw = (case_count, site_average, top_quart, bottom_quart) ->
   
   #//////////////////////////////////////////
   # Progress chart javascript
@@ -303,9 +303,28 @@ window.cases_analysis_charts_draw = (case_count) ->
       # change to 50?
       valueAxis.maximum = 15
       valueAxis.labelsEnabled = true
+
+      # HORIZONTAL Guide Quartiles
+      guide = new AmCharts.Guide()
+      guide.value = bottom_quart
+      guide.toValue = top_quart
+      guide.fillColor = "#000"
+      guide.inside = true
+      guide.fillAlpha = 0.3
+      guide.lineAlpha = 0
+      valueAxis.addGuide guide
+
+      # GUIDE for average
+      guide = new AmCharts.Guide()
+      guide.value = site_average
+      guide.lineColor = "#CC0000"
+      guide.dashLength = 4
+      guide.label = "average for all users"
+      guide.inside = true
+      guide.lineAlpha = 1
+      valueAxis.addGuide guide
+
       chart_analysis_progress.addValueAxis valueAxis
-      
-      # DONT FORGET YOU CAN USE 'GUIDES'
       
       # GRAPHS
       # first graph - Business Analytics
@@ -373,9 +392,11 @@ window.cases_analysis_charts_draw = (case_count) ->
       # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
       chartCursor = new AmCharts.ChartCursor()
       chartCursor.cursorPosition = "mouse"
-      chartCursor.pan = true
+      chartCursor.pan = false
       chartCursor.bulletsEnabled = false
+      chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
       chartCursor.zoomable = false
+
       chart_analysis_progress.addChartCursor chartCursor
       
       # Balloon Settings
@@ -386,7 +407,8 @@ window.cases_analysis_charts_draw = (case_count) ->
       balloon.fillColor = "#000000"
       balloon.fillAlpha = 0.7
       balloon.color = "#FFFFFF"
-      
+
+
       # SCROLLBAR
       # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
       chartScrollbar = new AmCharts.ChartScrollbar()
@@ -411,13 +433,17 @@ window.cases_analysis_charts_draw = (case_count) ->
       date
     addclicklistener = (graph) ->
       graph.addListener "clickGraphItem", (event) ->
-        window.location = "/cases?id=" + event.item.dataContext.id
+        window.location = "/cases/" + event.item.dataContext.id
 
     $("#cases_analysis_chart_progress").fadeIn "fast"
 
     # really need the two liens below?
     $("#cases_analysis_chart_radar").fadeIn "fast"
     $("#cases_analysis_chart_radar_buttongroup").fadeIn "fast"
+
+    # really need the two liens below?
+    $("#cases_analysis_chart_bar").fadeIn "fast"
+    $("#cases_analysis_chart_bar_buttongroup").fadeIn "fast"
 
     cases_analysis_chart_progress_data = []
     $.getJSON("/cases/analysis", (json) ->
@@ -597,10 +623,11 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   valueAxis.maximum = 5
   chart.addValueAxis valueAxis
   
-  # GRAPH
+
+  # GRAPH - All
   graph = new AmCharts.AmGraph()
-  graph.title = "Score"
-  graph.valueField = "score"
+  graph.title = "All"
+  graph.valueField = "all"
   graph.type = "column"
   graph.labelPosition = "bottom"
   graph.color = "#ffffff"
@@ -608,7 +635,40 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   graph.labelText = "[[category]]"
   graph.balloonText = "[[category]]: [[value]]/5"
   graph.lineAlpha = 0
-  
+  graph.fillColors = "#ff00ff"
+  graph.fillAlphas = 0.4
+  chart.addGraph graph
+
+  # GRAPH - First
+  graph = new AmCharts.AmGraph()
+  graph.title = "First"
+  graph.valueField = "first"
+  graph.type = "column"
+  graph.labelPosition = "bottom"
+  graph.color = "#ffffff"
+  graph.fontSize = 10
+  # graph.labelText = "[[category]]"
+  graph.balloonText = "[[category]]: [[value]]/5"
+  graph.lineAlpha = 0
+  graph.fillColors = "#ff7300"
+  graph.fillAlphas = 0.4
+  chart.addGraph graph
+
+  # GRAPH - Last
+  graph = new AmCharts.AmGraph()
+  graph.title = "Last"
+  graph.valueField = "last"
+  graph.type = "column"
+  graph.labelPosition = "bottom"
+  graph.color = "#ffffff"
+  graph.fontSize = 10
+  # graph.labelText = "[[category]]"
+  graph.balloonText = "[[category]]: [[value]]/5"
+  graph.lineAlpha = 0
+  graph.fillColors = "#ff0000"
+  graph.fillAlphas = 0.4
+  chart.addGraph graph
+
   # Balloon Settings
   balloon = chart.balloon
   balloon.adjustBorderColor = true
@@ -617,10 +677,20 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   balloon.fillColor = "#000000"
   balloon.fillAlpha = 0.7
   balloon.color = "#FFFFFF"
-  graph.fillColors = "#98cdff"
-  graph.fillAlphas = 0.4
-  chart.addGraph graph
-  chart.write "cases_show_chart_bar"
+
+  # Legend Settings
+  legend = new AmCharts.AmLegend()
+  legend.position = "bottom"
+  legend.align = "center"
+  legend.color = "#f6f6f6"
+  legend.markerType = "square"
+  legend.rollOverGraphAlpha = 0
+  legend.horizontalGap = 5
+  legend.valueWidth = 5
+  legend.switchable = true
+  chart.addLegend legend
+
+  chart.write "cases_analysis_chart_bar"
 
 
 
@@ -785,6 +855,21 @@ $(document).ready ->
     cases_analysis_chart_radar_draw "combined", cases_analysis_chart_case_count
     $("#cases_analysis_chart_radar_button_all").removeClass "active"
     $("#cases_analysis_chart_radar_button_combined").addClass "active"
+
+  # BAR BUTTONS
+  $("#cases_analysis_chart_bar_button_all").click ->
+    $("#cases_analysis_chart_bar").empty()
+    cases_analysis_chart_bar_draw "all", cases_analysis_chart_case_count
+    $("#cases_analysis_chart_bar_button_all").addClass "active"
+    $("#cases_analysis_chart_bar_button_combined").removeClass "active"
+
+  $("#cases_analysis_chart_bar_button_combined").click ->
+    $("#cases_analysis_chart_bar").empty()
+    cases_analysis_chart_bar_draw "combined", cases_analysis_chart_case_count
+    $("#cases_analysis_chart_bar_button_all").removeClass "active"
+    $("#cases_analysis_chart_bar_button_combined").addClass "active"
+
+
 
 
 #///////////////////////////////////////////////////////////////

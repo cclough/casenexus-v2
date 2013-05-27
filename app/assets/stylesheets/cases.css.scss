@@ -626,12 +626,14 @@ $blue_pastel: #98cdff;
 
 
 #cases_analysis_comments_tabs {
-  padding-left:60px;
+  padding-left:150px;
   text-decoration:none;
   
   a {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
     margin: 0px 3px;
+    padding-left:30px;
+    padding-right:30px;
     color: $gray_Light;
     &:hover {
       background: rgba(0, 0, 0, 0.5);
@@ -664,13 +666,13 @@ $blue_pastel: #98cdff;
   margin-top: 5px;
   padding: 5px;
 
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   
   &:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     color:white;
     text-decoration:none !important;
   }

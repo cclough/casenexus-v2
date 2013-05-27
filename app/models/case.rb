@@ -250,7 +250,7 @@ class Case < ActiveRecord::Base
   end
 
   def self.cases_analysis_chart_bar_data_all(user, count)
-    # LAST 5: load scores into json for radar chart
+    # LAST 5: load scores into json for bar chart
     "[
       {criteria: \"Quantitative basics\", 
       all: " + (user.cases.order('id desc').collect(&:quantitativebasics).sum.to_f/user.cases.all.count).to_s + ", 
@@ -304,7 +304,7 @@ class Case < ActiveRecord::Base
   end
 
   def self.cases_analysis_chart_bar_data_combined(user, count)
-    # LAST count: load scores into json for radar chart
+    # LAST count: load scores into json for bar chart
     "[
       {criteria: \"Business Analytics\", 
       all: " + (user.cases.order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.all.count).to_s + ", 
@@ -320,6 +320,7 @@ class Case < ActiveRecord::Base
       first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "}
       ]"
   end
+
   def self.cases_analysis_chart_progress_data(user)
     cases_analysis_chart_progress_data = user.cases.order('date asc').map { |c|
       { id: c.id,
@@ -464,11 +465,22 @@ class Case < ActiveRecord::Base
             (Case.all.map { |a| a.businessanalytics_combined }.sum/Case.all.count).round(1)
           when "structure"
             (Case.all.map { |a| a.structure_combined }.sum/Case.all.count).round(1)
+          when "totalscore_top_quart"
+            array = Case.all.map { |a| a.totalscore }
+            percentile = 0.75
+            array ? array.sort[((array.length * percentile).ceil)-1] : nil
+          when "totalscore_bottom_quart"
+            array = Case.all.map { |a| a.totalscore }
+            percentile = 0.25
+            array ? array.sort[((array.length * percentile).ceil)-1] : nil
         end
       else
         "-"
       end
     end
+
+
+
 
     def cases_analysis_stats_user(user, type)
       if Case.all.count > 0

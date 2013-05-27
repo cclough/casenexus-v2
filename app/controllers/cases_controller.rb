@@ -67,6 +67,10 @@ class CasesController < ApplicationController
       @case_count = 5
     end
 
+    @site_average = Case.cases_analysis_stats_global("totalscore")
+    @top_quart = Case.cases_analysis_stats_global("totalscore_top_quart")
+    @bottom_quart = Case.cases_analysis_stats_global("totalscore_bottom_quart")
+
     respond_to do |format|
       format.html { render layout: 'profile' }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
