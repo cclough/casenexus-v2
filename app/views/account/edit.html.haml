@@ -103,11 +103,11 @@
                 .account_completeedit_map_location_title.span6
                   Country
                 .span10
-                  = @user.country.name
+                  = @user.country.name unless @user.country.blank?
                 .account_completeedit_map_location_title.span4
                   City
                 .span10
-                  = @user.city
+                  = @user.city unless @user.city.blank?
           .panel.dark.kill_top.kill_left
             .row
               .span10.offset4

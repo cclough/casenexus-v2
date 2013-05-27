@@ -1,6 +1,9 @@
 - provide(:title, 'Notification History')
 - provide(:sub_title, 'with ' + @user.name)
 
+:javascript
+  document.location.hash="#notification-#{@id}";
+
 .panel.darker.kill_left.kill_right.kill_bottom
   .row#notifications_show_header
     .span
@@ -13,7 +16,7 @@
               .span15
                 Back to Notifications
         .span3
-          = avatar_for(@user, 'icon')
+          = image_tag "avatars/icon.png"
         .span
           .row
             .span.offset1
@@ -26,12 +29,12 @@
               = image_tag "universities/" + @user.university.image
             .span.offset1
               = @user.university.name
-  .row
+  .row#notifications_show_body
 
     - if @notifications.count > 0
-      - @notifications.each do |notifications_history_item|
+      - @notifications.each do |notifications_show_item|
 
-        = render partial: 'notifications/notifications_history_item' , locals: { notifications_history_item: notifications_history_item }
+        = render partial: 'notifications/notifications_show_item' , locals: { notifications_show_item: notifications_show_item }
 
     - else
       %p No notifications found
@@ -49,10 +52,21 @@
                 = time_ago_in_words(@user.last_online_at)
                 ago
 
-          %a#notifications_show_footer_button_message.btn.btn-inverse.btn-small.pull-right
-            %i.icon-comment.icon-white
-            %span
-              Send Message
+  .row
+    / - notification = notification || @notification
+    = form_for(@notification) do |f|
 
-  #modal_message.modal.hide.fade
-    = render partial: "/shared/modal_message_form", locals: { notification: Notification.new(user: @user), page_reload: true }
+      #flash_notifications
+        = render 'shared/error_messages', object: @notification
+
+      %div
+        = f.text_area :content, placeholder: "Send message...", tabindex: "101", id: "notifications_show_newmessage_textarea"
+
+        = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
+        = f.hidden_field :user_id, value: @user.id
+        = f.hidden_field :sender_id, value: current_user.id
+        = f.hidden_field :ntype, value: "message"
+      %div
+        %button.btn.btn-inverse.pull-right{href: "#", type: "submit", tabindex: "102"}
+          %i.icon-arrow-right.icon-white
+          Send Message

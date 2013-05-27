@@ -5,7 +5,8 @@
         .panel.gradient.kill_all
           .row
             .span5
-              = avatar_for(@case.interviewer, 'icon')
+              / = avatar_for(@case.interviewer, 'icon')
+              = image_tag "avatars/icon.png"
             .span32
               .row
                 .span.offset1#cases_show_subnav_name

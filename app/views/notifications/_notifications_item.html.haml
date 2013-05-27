@@ -1,9 +1,10 @@
 = link_to notification_path(notifications_item) do
   .notifications_index_notifications_item
     .row
-      .span7
+      .span5
         / = avatar_for(notifications_item.sender, 'icon')
-
+        .span3.notifications_index_notifications_item_avatar
+          = image_tag "avatars/icon.png"
       .span13
         .row
           %strong

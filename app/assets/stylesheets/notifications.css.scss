@@ -9,7 +9,14 @@ $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
 
+
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
 #notifications_index_notifications_empty {
   height:250px;
@@ -26,6 +33,7 @@ $gray_Dark: #555555;
 }
 
 
+////////////////////// ITEM /////////////////////////
 
 
 .notifications_index_notifications_item {
@@ -53,19 +61,38 @@ $gray_Dark: #555555;
   text-align:center;
 }
 
-.notifications_index_notifications_history_item {
-  padding:5px;
-  text-decoration:none;
-  color: black;
-  &:hover {
-    background-color: $gray_Lightest;
-  }
-}
 
 .notifications_index_notifications_item_title {
   font-weight:bold;
 }
 
+.notifications_index_notifications_item_avatar {
+  padding-left:3px;
+}
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+
+.notifications_show_item {
+  padding:5px;
+  text-decoration:none;
+  color: black;
+  background-color: #fff;
+  &:hover {
+    background-color: $gray_Lightest;
+  }
+
+  &.select {
+    background-color:$blue_pastel;
+  }
+}
+
+#notifications_show_body {
+  overflow-y:scroll;
+  height:500px;
+}
 
 #notifications_show_footer {
   padding:5px;
@@ -84,3 +111,7 @@ $gray_Dark: #555555;
   padding:5px;
 }
 
+#notifications_show_newmessage_textarea {
+  width:693px;
+  height:50px;
+}

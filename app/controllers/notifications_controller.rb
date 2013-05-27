@@ -17,18 +17,20 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = current_user.notifications.for_display.find(params[:id])
-    @notifications = Notification.history(@notification.user_id, @notification.sender_id)
+    #@notification = current_user.notifications.for_display.find(params[:id])
+    @notification_for_display = current_user.notifications.find(params[:id])
+    @notifications = Notification.history(@notification_for_display.user_id, @notification_for_display.sender_id)
+    
     @notifications.each { |n| n.read! }
 
-    @user = User.find(@notification.sender_id)
-  end
+    @user = User.find(@notification_for_display.sender_id)
 
-  def history
-    @user = User.find(params[:user_id])
+    # for jump to
+    @id = params[:id]
 
-    @notifications = Notification.history(current_user, @user.id)
-    @notifications.each { |n| n.read! }
+    # for new message
+    @notification = Notification.new
+
   end
 
   def create
@@ -41,8 +43,8 @@ class NotificationsController < ApplicationController
         case params[:notification][:ntype]
           when "message"
             format.js
+            format.html { redirect_to(@notification) }
             flash.now[:success] = 'Message sent'
-
           when "feedback_req"
             format.js
             flash.now[:success] = 'Feedback request sent'
@@ -54,7 +56,7 @@ class NotificationsController < ApplicationController
         # Send a Pusher notification
 
         #begin
-          Pusher.trigger('private-4','new_message', {:from => "christian", :subject => "hello"})
+          #Pusher.trigger('private-4','new_message', {:from => "christian", :subject => "hello"})
           #Pusher['private-4'].trigger('new_message', {:from => "christian", :subject => "hello"})
         #rescue Pusher::Error => e
           #Pusher::AuthenticationError
