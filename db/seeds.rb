@@ -34,7 +34,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   puts "Creating universities"
 
-  University.create!(name: "University of Cambridge", image: "cambridge.gif", domain: "cam.ac.uk")
+  University.create!(name: "University of Cambridge", image: "cambridge.png", domain: "cam.ac.uk")
   University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
   University.create!(name: "Harvard University", image: "harvard.gif", domain: "harvard.edu")
   University.create!(name: "UC San Diego", image: "harvard.gif", domain: "ucsd.edu")
@@ -166,7 +166,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       skype: "christianclough",
 
-      confirm_tac: true,
+      confirm_tac: "1",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
   admin.completed = true
@@ -188,9 +188,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       language_ids: 1,
 
-      skype: "",
+      skype: "cloughrobin",
 
-      confirm_tac: true,
+      confirm_tac: "1",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
   admin.completed = true
@@ -214,7 +214,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       skype: "cloughrobin",
 
-      confirm_tac: true,
+      confirm_tac: "1",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
@@ -277,7 +277,7 @@ if Rails.env == 'development'
     last_online_at = rand_time(2.days.ago)
     cases_external = 10
 
-    confirm_tac = true
+    confirm_tac = "1"
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 

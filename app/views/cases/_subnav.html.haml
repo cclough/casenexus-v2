@@ -1,21 +1,53 @@
-.panel.darker.kill_left.kill_right
-  .row
-    .pull-left
-      = avatar_for(@case.interviewer, 'icon')
+.span73
+  .panel.darker.kill_left.kill_right
+    .row
+      .span40
+        .panel.gradient.kill_all
+          .row
+            .span5
+              = avatar_for(@case.interviewer, 'icon')
+            .span32
+              .row
+                .span.offset1#cases_show_subnav_name
+                  = @case.interviewer.name
+                .span.offset1
+                  - unless @case.interviewer.country.blank?
+                    .span3
+                      = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.name
+              .row
+                .span2.offset1
+                  = image_tag "universities/" + @case.interviewer.university.image
+                .span.offset1#cases_show_subnav_university
+                  = @case.interviewer.university.name
 
-      = @case.interviewer.name
-      = @case.date.strftime("%d %b '%y")
 
-      %span
-        Source
-      %span
-        = @case.source
-      %br
-      %span
-        Subject
-      %span
-        = @case.subject
-    .pull-right
-      %select#cases_index_subnav_cases.chzn-select.span20{"data-placeholder" => "Jump to Case...", value: @case.id }
-        %option
-        = options_from_collection_for_select @cases, :id, :interviewer_name, @case.id
+
+      .span29.pull-right
+        %select#cases_show_subnav_select.chzn-select.span29{"data-placeholder" => "Jump to Case...", value: @case.id }
+          %option
+            - @cases.each do |cases_select_item|
+              %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
+                = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
+        .row
+          .span
+            #cases_show_subnav_date
+              = @case.date.strftime("%a %d %b %Y %I:%M%p")
+
+    .spacer10
+    .row
+      .panel.darker.kill_all
+        .row
+          .span62
+            .row
+              .span7
+                Source:
+              %span
+                = @case.source
+            .row
+              .span7
+                Subject:
+              %span
+                = @case.subject
+          .span6
+            #cases_show_subnav_score.panel.darker.kill_all
+              = @case.totalscore.to_f.round(1)

@@ -792,7 +792,7 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 
   # Select Case Pull Down
-  $("#cases_index_subnav_cases").change ->
+  $("#cases_show_subnav_select").change ->
     window.location = "/cases/" + $(this).val()
 
   # RADAR BUTTONS

@@ -1,9 +1,4 @@
 #cases_index_cases_form_sort.application_menu_sort.pull-right
-  /   = sortable "subject", "By Subject"
-  /   = sortable "date", "By Date"
-
-  /   = sort_column
-  /   = sort_direction
 
   .btn-group
     %button#cases_index_cases_form_button_sort.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -13,13 +8,11 @@
       %li
         = sortable "subject", "By Subject"
       %li
-        = sortable "date", "By Date"
+        = sortable "created_at", "By Date"
 
 - if @cases.count > 0
-  #cases_index_cases_form_body
-
-    - @cases.each do |cases_item|
-      = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
+  - @cases.each do |cases_item|
+    = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
 
 - else
   #cases_index_cases_form_body_empty

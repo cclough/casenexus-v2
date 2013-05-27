@@ -1,7 +1,14 @@
-.cases_index_cases_item
-  = avatar_for(cases_item.interviewer, 'icon')
-  = cases_item.totalscore.to_f.round(1)
-  = cases_item.date.strftime("%d %b '%y")
-  = link_to case_path(cases_item) do 
-    = cases_item.interviewer.name
-  = cases_item.subject_trunc
+= link_to case_path(cases_item), class: "cases_index_cases_item btn btn-inverse" do
+  .span5
+    / ruins anchor!
+    / = avatar_for(cases_item.interviewer, 'icon')
+  .span12.offset1
+    .cases_index_cases_item_date
+      = cases_item.created_at.strftime("%a %d %b %Y %I:%M%p")
+  .span35
+    .row.cases_index_cases_item_name
+      = cases_item.interviewer.name
+    .row.cases_index_cases_item_subject
+      = cases_item.subject_trunc
+  .span5.panel.dark.kill_all.cases_index_cases_item_score.pull-right
+    = cases_item.totalscore.to_f.round(1)

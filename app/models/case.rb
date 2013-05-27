@@ -98,7 +98,11 @@ class Case < ActiveRecord::Base
   end
 
   def subject_trunc
-    subject.truncate(18, separator: ' ')
+    subject.truncate(40, separator: ' ')
+  end
+
+  def subject_trunc_menu
+    subject.truncate(25, separator: ' ')
   end
 
   def to_s

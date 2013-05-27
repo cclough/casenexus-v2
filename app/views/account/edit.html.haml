@@ -14,45 +14,53 @@
       .span75
         = render 'shared/error_messages', object: @user
         .span35
-          .panel.dark.kill_left
+          .row
+            #account_completeedit_university_panel.panel.gradient.kill_left
+              .row
+                .span4
+                  = image_tag "universities/"+ @user.university.image
+                .span20.offset1
+                  .row
+                    = @user.university.name
+                  .spacer5
+                  .row
+                    = f.label :email, @user.email, class: "span21"
+
+              .panel.darker.kill_all
+                = link_to(raw("<i class=icon-eraser></i> I want to delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+
+
+          .panel.dark.kill_left.kill_top
             .row
-              .span12
+              .span10
                 = f.label :first_name
-              .span25
+              .span20
                 = f.text_field :first_name, class: "span18"
             .row
-              .span12
+              .span10
                 = f.label :last_name
-              .span25
+              .span20
                 = f.text_field :last_name, class: "span18"
             .spacer5
             .row
-              .span12
-                = f.label :email
-              .span25
-                = f.text_field :email, class: "span21"
-            .row
-              .span25.offset12
+              .span25.offset10
                 %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
+                  %i.icon-pencil
                   I want to edit my password
                 .spacer5
             .spacer5
             .row.font-small
-              .span3
-                = f.check_box :email_admin
-              .span15
+              .span23.offset2
                 .spacer5
                 Receive site news and consulting advice
-            .row.font-small
               .span3
-                = f.check_box :email_users
-              .span15
+                = f.check_box :email_admin
+            .row.font-small
+              .span23.offset2
                 .spacer5
                 Receive notiffications via email
-            .row
-              .span25.offset12
-                .spacer10
-                = link_to("I want to delete my account", delete_account_path, class: "btn btn-inverse btn-small")
+              .span3
+                = f.check_box :email_users
 
           .panel.dark.kill_left
             .row
@@ -60,26 +68,23 @@
                 Languages
               .span
                 = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30"}
-            .row
-              .span12
-                Firms
-              .span25
-                = f.collection_select :firm_ids, Firm.all, :id, :name, {:selected => @user.firm_ids}, {multiple: true, class: "chzn-select span30"}
-            .row
-              .span12
-                = f.label :university_id
-              .span25
-                = @user.university.name
-                = image_tag "universities/"+ @user.university.image
-            .spacer10
-            .row
-              .span12
-                = f.label :cases_external
-              .span25
-                = f.text_field :cases_external, class: "span18"
+
         .span40
           .panel.dark.kill_left.kill_bottom
-            .spacer5
+            .row
+              .span
+                How many cases have you done outside of casenexus?
+            .row
+              .span
+                = f.text_field :cases_external, class: "span5"
+            .row
+              .span
+                Which firms are you applying for?
+            .row
+              .span
+                = f.collection_select :firm_ids, Firm.all, :id, :name, {:selected => @user.firm_ids}, {multiple: true, class: "chzn-select span36"}
+
+            .spacer10
             .row
               .span12
                 = image_tag 'icons/skype_large.png'
@@ -97,11 +102,11 @@
               .row
                 .account_completeedit_map_location_title.span6
                   Country
-                .span15
-                  = @user.country
+                .span10
+                  = @user.country.name
                 .account_completeedit_map_location_title.span4
                   City
-                .span12
+                .span10
                   = @user.city
           .panel.dark.kill_top.kill_left
             .row

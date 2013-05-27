@@ -13,6 +13,12 @@ $blue_linkedin: #86c7fe;
   height:300px;
   text-align:center;
   padding-top:100px;
+
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+
+  border: 1px solid $gray_Light;
 }
 
 #static_home_footer {
@@ -79,7 +85,7 @@ $blue_linkedin: #86c7fe;
 }
 
 #static_home_signup_university_select {
-  width:247px;
+  width:232px;
 
 }
 

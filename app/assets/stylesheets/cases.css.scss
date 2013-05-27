@@ -14,13 +14,6 @@ $blue_pastel: #98cdff;
   text-align:center;
 }
 
-.cases_score {
-  font-size: 21px;
-  font-weight: bold;
-  text-align:center;
-  color: $blue_pastel;
-}
-
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// INDEX ///////////////////////////////
@@ -34,17 +27,10 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_index_cases_form_body {
-  height: 697px;
-}
-
 
 #cases_index_cases_form_sort {
   margin-top:-60px;
 }
-
-
-
 
 
 ////////// definitely need? /////////
@@ -66,34 +52,56 @@ $blue_pastel: #98cdff;
   font-size:100px;
   margin-bottom:40px; 
 }
-////////////////////////////////////
 
+
+
+////////////////////////////////////
 
 
 
 .cases_index_cases_item {
 
   height:55px;
+  width:699px;
+
   padding-top:12px;
-  text-decoration:none;
-  background: rgba(0, 0, 0, 0.2);
-  margin-bottom:3px;
   padding-left:5px;
+  margin-bottom:3px;
+
+  text-align:left;
+
+  color:$gray_Lighter;
 
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
 
-  color:$gray_Lighter;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.5);
-    cursor:pointer;cursor:hand;
-  }
 }
 
 
+.cases_index_cases_item_score {
+  font-size: 26px;
+  font-weight: bold;
+  text-align:center;
+  color: $blue_pastel !important;
+}
 
+.cases_index_cases_item_subject {
+  font-style:italic;
+  color:$gray_Light;
+}
+
+.cases_index_cases_item_date {
+  padding-top:2px;
+  // line-height:40px;
+  font-size:11px;
+  color: $gray_Light;
+}
+
+.cases_index_cases_item_name {
+  font-size: 15px;
+  font-weight: bold;
+}
 
 /////////////////////////////////////////////////////////////////
 //////////////////////////// SHOW ///////////////////////////////
@@ -102,7 +110,7 @@ $blue_pastel: #98cdff;
 
 #cases_show_chart_bar {
   margin-left:15px;
-  width:200px;
+  width:270px;
   height:250px;
 }
 
@@ -122,7 +130,7 @@ $blue_pastel: #98cdff;
 .cases_show_comment {
   // overflow-y: auto;
   min-height:182px;
-  width:305px;
+  width:405px;
   border:0px !important;
 }
 
@@ -130,7 +138,8 @@ $blue_pastel: #98cdff;
 
 
 #cases_show_businessanalytics_chart_bar, #cases_show_interpersonal_chart_bar, #cases_show_structure_chart_bar {
-  height:200px;
+  margin-top:-20px;
+  height:220px;
   width:200px;
 }
 
@@ -180,6 +189,31 @@ $blue_pastel: #98cdff;
   font-size:11px;
 }
 
+#cases_show_subnav_name {
+  font-size:17px;
+  line-height:30px;
+  color: $gray_Dark;
+}
+
+
+#cases_show_subnav_university {
+  color: $gray_Mid;
+}
+
+
+#cases_show_subnav_score {
+  font-size: 26px;
+  font-weight: bold;
+  text-align:center;
+  color: $blue_pastel !important;
+}
+
+#cases_show_subnav_date {
+  font-style:italic;
+  font-size:12px;
+  line-height:30px;
+  color: $gray_Light;
+}
 
 
 /////////////////////////////////////////////////////////////////

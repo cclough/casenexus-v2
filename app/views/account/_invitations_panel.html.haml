@@ -1,22 +1,23 @@
 .panel.dark.font-small.kill_bottom.kill_left.kill_right
   .row
-    .span25
+    .span
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
-        %p Invite a friend to casenexus (#{current_user.invitations.count}/5 Invitations Used)
 
         = simple_form_for @invitation, html: { id: "account_edit_invitations_form" } do |f|
-          = hidden_field_tag :back_url, edit_account_path
           .row
-            .span10
-              = f.text_field :name, class: 'span12', placeholder: "Name"
-          .row
-            .span8
+            .span20
+              %p Invite Friends (#{current_user.invitations.count}/5 Invitations Used)
+              = hidden_field_tag :back_url, edit_account_path
+            .span19
+              = f.text_field :name, class: 'span18', placeholder: "Name"
+            .span25
               .input-append
-                = f.text_field :email, class: 'span12', placeholder: "Email"
+                = f.text_field :email, class: 'span25', placeholder: "Email"
                 = f.submit "Invite", class: 'btn btn-inverse'
       - else
         %p You have no more invitations
-    .span25
+  .row
+    .span70
       #account_edit_invitations_list.panel.dark.kill_all
         - if @invitations.count > 0
           - @invitations.each do |invitation|
