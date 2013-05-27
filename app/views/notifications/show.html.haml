@@ -12,20 +12,19 @@
                 %i.icon-arrow-left.icon-large
               .span15
                 Back to Notifications
-        .span5
+        .span3
           = avatar_for(@user, 'icon')
-        .span32
+        .span
           .row
-            .span.offset1#cases_show_subnav_name
+            .span.offset1
               = @user.name
             .span.offset1
               - unless @user.country.blank?
                 .span3
                   = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.name
-          .row
             .span2.offset1
               = image_tag "universities/" + @user.university.image
-            .span.offset1#cases_show_subnav_university
+            .span.offset1
               = @user.university.name
   .row
 
