@@ -7,11 +7,8 @@ gem 'jquery-ui-rails'                            # jQuery UI
 
 gem 'haml'                                       # HAML Views
 gem 'devise'                                     # User Auth / Registration
-#gem 'kaminari'                                   # Pagination
 gem 'will_paginate'                              # Pagination
 gem 'simple_form'                                # Rails form builder
-gem 'activeadmin'                                # Admin
-gem 'meta_search'                                # Admin search
 gem 'scoped_search'                              # Active Record Easy Search
 gem 'geocoder'                                   # Geocoding solution for rails
 gem 'omniauth'                                   # Authentication with Rack

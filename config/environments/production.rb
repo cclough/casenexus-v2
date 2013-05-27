@@ -75,6 +75,6 @@ Casenexus::Application.configure do
   config.middleware.use ExceptionNotifier,
                         email_prefix: "[Casenexus Exception] ",
                         sender_address: %{"Casenexus Notifier" <mailer@casenexus.com>},
-                        exception_recipients: %w{christian.clough@gmail.com mails@rorra.com.ar}
+                        exception_recipients: %w{christian.clough@gmail.com}
 
 end
