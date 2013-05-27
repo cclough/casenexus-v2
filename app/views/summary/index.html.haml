@@ -19,9 +19,9 @@
               .span.offset1.font-small
                 = summary_item_friend.name
               .span.pull-right
-                = link_to
-                .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + summary_item_friend.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
-                  %i.icon-envelope
+                = link_to "notifications/1" do
+                  .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + summary_item_friend.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
+                    %i.icon-envelope
 
                 = link_to "/console?friend_id=" + summary_item_friend.id.to_s do
                   .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + summary_item_friend.first_name, rel: "tooltip", "data-placement"=>"bottom"}
@@ -65,18 +65,19 @@
             .row
               #summary_index_events_index
                 - @events.each do |summary_item_event|
-                  .row.summary_item
+                  .row.summary_item_events{"data-id"=>summary_item_event.id.to_s}
                     .span2
-                      = avatar_for(summary_item_event.partner, 'icon')
-                    .span9.offset1.summary_item_event_date
+                      = image_tag "avatars/icon.png"
+                    .span9.offset1.summary_item_events_date
                       = summary_item_event.datetime.strftime("%a %d %b %I:%M%p")
                     .span.offset1
-                      = summary_item_event.partner.name
+                      .row
+                        = summary_item_event.partner.name
+                      .row
+                        = Book.find(summary_item_event.book_id_user).title unless summary_item_event.book_id_user.blank? 
                     .span.pull-right
                       .btn.btn-inverse.btn-mini
-                        Show
-                      .btn.btn-inverse.btn-mini
-                        ?
+                        %i.icon-pencil
 
 
             = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0

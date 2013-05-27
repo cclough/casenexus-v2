@@ -40,3 +40,12 @@ $(document).ready ->
         $("#modal_event").html data
         window.summary_index_events_modal_rebless()
       $("#modal_event").modal("show")
+
+  $(".summary_item_events").click ->
+    if !($("#modal_event").hasClass("in"))
+      $(".modal").modal("hide")
+      event_id = $(this).data("id")
+      $.get "/events/" + event_id + "/edit", (data) ->
+        $("#modal_event").html data
+        window.summary_index_events_modal_rebless()
+      $("#modal_event").modal("show")

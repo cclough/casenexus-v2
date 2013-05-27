@@ -30,7 +30,7 @@ $blue_pastel: #98cdff;
   -webkit-border-top-right-radius: 5px;
 }
 
-.summary_item {
+.summary_item_friends, .summary_item_events {
 
   text-decoration:none;
   background: rgba(0, 0, 0, 0.2);
@@ -94,7 +94,7 @@ $blue_pastel: #98cdff;
 
 
 
-.summary_item_event_date {
+.summary_item_events_date {
   font-size:12px !important;
 }
 
