@@ -1,41 +1,59 @@
 - provide(:title, 'Notification History')
 - provide(:sub_title, 'with ' + @user.name)
 
+.panel.darker.kill_left.kill_right.kill_bottom
+  .row#notifications_show_header
+    .span
+      %a#notifications_show_header_back
+        .span20
+          = link_to notifications_path do
+            .row
+              .span2
+                %i.icon-arrow-left.icon-large
+              .span15
+                Back to Notifications
+        .span5
+          = avatar_for(@user, 'icon')
+        .span32
+          .row
+            .span.offset1#cases_show_subnav_name
+              = @user.name
+            .span.offset1
+              - unless @user.country.blank?
+                .span3
+                  = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.name
+          .row
+            .span2.offset1
+              = image_tag "universities/" + @user.university.image
+            .span.offset1#cases_show_subnav_university
+              = @user.university.name
+  .row
 
-#notifications_show_header
-  %a#notifications_show_header_back
-    .row
-      .span2
-        %i.icon-arrow-left.icon-large
-      #notifications_show_header_back_text.span20
-        Go back to where you were
+    - if @notifications.count > 0
+      - @notifications.each do |notifications_history_item|
 
+        = render partial: 'notifications/notifications_history_item' , locals: { notifications_history_item: notifications_history_item }
 
-- if @notifications.count > 0
-  - @notifications.each do |notifications_history_item|
+    - else
+      %p No notifications found
 
-    = render partial: 'notifications/notifications_history_item' , locals: { notifications_history_item: notifications_history_item }
+  .row
+    / repeated from member#show - should we put this in a helper?
+    - if Friendship.friends?(current_user, @user)
+      #notifications_show_footer
+        .row
 
-- else
-  %p No notifications found
+          - if @user.last_online_at
+            .pull-left
+              .application_lastonline
+                Last online:
+                = time_ago_in_words(@user.last_online_at)
+                ago
 
+          %a#notifications_show_footer_button_message.btn.btn-inverse.btn-small.pull-right
+            %i.icon-comment.icon-white
+            %span
+              Send Message
 
-/ repeated from member#show - should we put this in a helper?
-- if Friendship.friends?(current_user, @user)
-  #notifications_show_footer
-    .row
-
-      - if @user.last_online_at
-        .pull-left
-          .application_lastonline
-            Last online:
-            = time_ago_in_words(@user.last_online_at)
-            ago
-
-      %a#notifications_show_footer_button_message.btn.btn-inverse.btn-small.pull-right
-        %i.icon-comment.icon-white
-        %span
-          Send Message
-
-#modal_message.modal.hide.fade
-  = render partial: "/shared/modal_message_form", locals: { notification: Notification.new(user: @user), page_reload: true }
+  #modal_message.modal.hide.fade
+    = render partial: "/shared/modal_message_form", locals: { notification: Notification.new(user: @user), page_reload: true }

@@ -46,10 +46,11 @@
               = link_to "Summary", summary_path
             .row.profile_nav_item{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
               = link_to "Cases", cases_path
-            .row.profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
-              = link_to "Notifiations", notifications_path
             .row.profile_nav_item{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
               = link_to "Analysis", analysis_cases_path
+            %br
+            .row.profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
+              = link_to "Notifications", notifications_path
             %br
             .row.profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
               = link_to "Settings", edit_account_path

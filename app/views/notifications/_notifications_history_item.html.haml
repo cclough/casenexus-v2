@@ -1,11 +1,9 @@
 .notifications_index_notifications_history_item{'data-id' => notifications_history_item.id.to_s, 'data-ntype' => 'message', :class => ("read" if notifications_history_item.read?)}
   .row
-    .span7
-      = avatar_for(notifications_history_item.sender, 'icon')
     .span15
       .row
         %strong 
-          = notifications_history_item.sender.name
+          = notifications_history_item.title
       .row.application_timestamp
         #{time_ago_in_words(notifications_history_item.created_at)} ago.
     .span35
