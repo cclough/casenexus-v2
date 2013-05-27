@@ -51,6 +51,9 @@ $(document).ready ->
   # Tooltips on Avatars
   $(".application_avatar_icon").tooltip()
 
+  # Tooltips throughout app
+  $(".application_tooltip").tooltip()
+
   # Modal help checkbox
   $("#modal_help_checkbox").on 'change', ->
     page_id = $(this).attr("data-page_id")
@@ -84,8 +87,6 @@ $(document).ready ->
   $("#modal_contact").modal
     backdrop: false
     show: false
-
-  $(".application_tooltip").tooltip()
 
   # Modal contact link
   $("#header_link_contact").click ->

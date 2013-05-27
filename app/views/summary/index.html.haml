@@ -6,42 +6,49 @@
 
   .span32
 
-
-
     .panel.darker.kill_left
-      #testing123 TESTING123
-      .summary_block_title
-        Friends
-      - @friends.each do |summary_item_friend|
-        .row.summary_item
-          .span2
-            = avatar_for(summary_item_friend, 'icon')
-          .span.offset1.font-small
-            = summary_item_friend.name
-          .span.pull-right
-            .btn.btn-inverse.btn-mini
-              Msg
-            .btn.btn-inverse.btn-mini
-              Start Case
-            .btn.btn-inverse.btn-mini
-              / %a{href: "skype:#{summary_item_friend.skype}?call"}
-              /   %img{src: "http://mystatus.skype.com/smallicon/#{summary_item_friend.skype}" }
+      .row
+        .summary_block_title
+          Friends
+      .row
+        - @friends.each do |summary_item_friend|
+          = link_to "map?user_id=" + summary_item_friend.id.to_s do
+            .row.summary_item
+              .span2
+                = image_tag "avatars/icon.png"
+              .span.offset1.font-small
+                = summary_item_friend.name
+              .span.pull-right
+                = link_to
+                .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + summary_item_friend.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
+                  %i.icon-envelope
+
+                = link_to "/console?friend_id=" + summary_item_friend.id.to_s do
+                  .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + summary_item_friend.first_name, rel: "tooltip", "data-placement"=>"bottom"}
+                    %i.icon-pencil
+
+                - if !summary_item_friend.skype.blank?
+                  = link_to "skype:#{summary_item_friend.skype}?call", class: "btn btn-inverse btn-small application_tooltip", "data-original-title"=>"Call " + summary_item_friend.first_name + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
+                    = image_tag "icons/skype_button.png"
 
 
     .panel.darker.kill_left
       .summary_block_title
         Recent Cases
       - @cases.each do |summary_item_case|
-        .row.summary_item
-          .span2
-            = avatar_for(summary_item_case.interviewer, 'icon')
-          .span.offset1
-            = summary_item_case.interviewer.name
-          .span.pull-right
-            .btn.btn-inverse.btn-mini
-              Show
-            .btn.btn-inverse.btn-mini
-              ?
+        = link_to case_path(summary_item_case) do
+          .row.summary_item_cases.btn.btn-inverse
+            .span2
+              = image_tag "avatars/icon.png"
+            .span.offset1
+              .row
+                = summary_item_case.interviewer.name
+              .row.summary_item_cases_subject
+                = summary_item_case.subject_trunc
+            .span.pull-right
+              .panel.darker.kill_all.summary_item_cases_score
+                = summary_item_case.totalscore
+      = will_paginate @cases, class: "application_pagination", inner_window: 1, outer_window: 0
 
 
   .span39

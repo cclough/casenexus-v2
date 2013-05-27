@@ -54,15 +54,15 @@
       .field
         Friend
         %br/
-        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_user]"}
+        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[partner_id]"}
           %option
-            = options_from_collection_for_select(@books, "id", "title", @event.book_id_user)
+            = options_from_collection_for_select(@friends, "id", "first_name")
       .field
         Which case would you like your friend to prepare?
         %br/
         %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_partner]"}
           %option
-            = options_from_collection_for_select(@books, "id", "title", @event.book_id_partner)
+            = options_from_collection_for_select(@books, "id", "title")
 
 
   .modal-footer
