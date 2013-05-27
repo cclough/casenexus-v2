@@ -621,6 +621,17 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   valueAxis.integersOnly = true
   valueAxis.labelsEnabled = false
   valueAxis.maximum = 5
+
+  # GUIDE for average
+  # guide = new AmCharts.Guide()
+  # guide.value = site_average
+  # guide.lineColor = "#CC0000"
+  # guide.dashLength = 4
+  # guide.label = "average for all users"
+  # guide.inside = true
+  # guide.lineAlpha = 1
+  # valueAxis.addGuide guide
+
   chart.addValueAxis valueAxis
   
 
@@ -639,35 +650,35 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   graph.fillAlphas = 0.4
   chart.addGraph graph
 
-  # GRAPH - First
-  graph = new AmCharts.AmGraph()
-  graph.title = "First"
-  graph.valueField = "first"
-  graph.type = "column"
-  graph.labelPosition = "bottom"
-  graph.color = "#ffffff"
-  graph.fontSize = 10
-  # graph.labelText = "[[category]]"
-  graph.balloonText = "[[category]]: [[value]]/5"
-  graph.lineAlpha = 0
-  graph.fillColors = "#ff7300"
-  graph.fillAlphas = 0.4
-  chart.addGraph graph
+  # # GRAPH - First
+  # graph = new AmCharts.AmGraph()
+  # graph.title = "First"
+  # graph.valueField = "first"
+  # graph.type = "column"
+  # graph.labelPosition = "bottom"
+  # graph.color = "#ffffff"
+  # graph.fontSize = 10
+  # # graph.labelText = "[[category]]"
+  # graph.balloonText = "[[category]]: [[value]]/5"
+  # graph.lineAlpha = 0
+  # graph.fillColors = "#ff7300"
+  # graph.fillAlphas = 0.4
+  # chart.addGraph graph
 
-  # GRAPH - Last
-  graph = new AmCharts.AmGraph()
-  graph.title = "Last"
-  graph.valueField = "last"
-  graph.type = "column"
-  graph.labelPosition = "bottom"
-  graph.color = "#ffffff"
-  graph.fontSize = 10
-  # graph.labelText = "[[category]]"
-  graph.balloonText = "[[category]]: [[value]]/5"
-  graph.lineAlpha = 0
-  graph.fillColors = "#ff0000"
-  graph.fillAlphas = 0.4
-  chart.addGraph graph
+  # # GRAPH - Last
+  # graph = new AmCharts.AmGraph()
+  # graph.title = "Last"
+  # graph.valueField = "last"
+  # graph.type = "column"
+  # graph.labelPosition = "bottom"
+  # graph.color = "#ffffff"
+  # graph.fontSize = 10
+  # # graph.labelText = "[[category]]"
+  # graph.balloonText = "[[category]]: [[value]]/5"
+  # graph.lineAlpha = 0
+  # graph.fillColors = "#ff0000"
+  # graph.fillAlphas = 0.4
+  # chart.addGraph graph
 
   # Balloon Settings
   balloon = chart.balloon
@@ -838,7 +849,7 @@ $(document).ready ->
 
     if section is "radar"
       cases_analysis_chart_radar_draw "all", cases_analysis_chart_case_count
-      cases_analysis_chart_bar_draw "all", cases_analysis_chart_case_count
+      cases_analysis_chart_bar_draw "all", cases_analysis_chart_case_count#, cases_analysis_chart_site_average
 
     $(".cases_analysis_subnav_button").removeClass "active"
     $(this).addClass "active"
