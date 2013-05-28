@@ -13,7 +13,7 @@
       .row
         - @friends.each do |summary_item_friend|
           = link_to "map?user_id=" + summary_item_friend.id.to_s do
-            .row.summary_item
+            .row.summary_item_friends
               .span2
                 = image_tag "avatars/icon.png"
               .span.offset1.font-small
