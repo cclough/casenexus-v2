@@ -15,7 +15,7 @@ $(function() {
       var channel = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
       
       channel.bind('new_message', function(data) {
-        msg = data.from + ' has sent you a message: ' + data.subject;
+        msg = data.from + ': ' + data.subject;
         dom_notify(msg);
         title_notify(msg);
         if (window.webkitNotifications) { webkit_notify(msg); }
@@ -24,11 +24,16 @@ $(function() {
       // In DOM alert
       function dom_notify(msg) {
         $('#header_nav_panel_browse_search_field').val(msg);
-        // $('#notify').fadeIn();
-        // setTimeout(function() {
-        //   $('#notify').fadeOut
-        //   ();
-        // }, 2000);
+
+        // $('#header_menu_notifications_unreadcount').css("box-shadow","1px 1px 1px blue")
+
+        $('#application_notify').html(msg)
+
+        $('#application_notify').fadeIn();
+        setTimeout(function() {
+          $('#application_notify').fadeOut
+          ();
+        }, 3000);
       }
       
       // <title> msg

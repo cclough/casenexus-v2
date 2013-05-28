@@ -54,13 +54,7 @@ class NotificationsController < ApplicationController
         end
 
         # Send a Pusher notification
-
-        #begin
-          #Pusher.trigger('private-4','new_message', {:from => "christian", :subject => "hello"})
-          Pusher['private-4'].trigger('new_message', {:from => "christian", :subject => "hello"})
-        #rescue Pusher::Error => e
-          #Pusher::AuthenticationError
-        #end
+        Pusher['private-' + @notification.user_id.to_s].trigger('new_message', {:from => @notification.sender.name, :subject => @notification.content_trunc})
 
       else
         case params[:notification][:ntype]
