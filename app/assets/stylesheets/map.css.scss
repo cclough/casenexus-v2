@@ -427,15 +427,15 @@ $blue_pastel: #98cdff;
 
 
 
-#map_index_user_panel_stuff {
+#map_index_user_panel_contact {
   font-size:12px;
   a {
-    text-decoration:none;
+    // text-decoration:none;
     text-align:right !important;
-    color: $gray_Mid;
-    &:hover {
-      text-decoration:underline;
-    }
+    // color: $gray_Mid;
+  //   &:hover {
+  //     text-decoration:underline;
+  //   }
   }
 
 }

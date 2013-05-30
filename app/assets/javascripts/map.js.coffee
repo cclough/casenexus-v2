@@ -63,6 +63,10 @@ window.map_index_map_marker_click = (marker_id) ->
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   $.get("/members", $("#map_index_users_form").serialize(), null, "script")
+
+
+
+
   false
 
 window.map_index_users_search = ->
@@ -102,6 +106,10 @@ $(document).ready ->
     # Remove and add active class to buttons
     $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
     $("#map_index_users_form_pulldown_"+category+"_button").addClass "active"
+
+
+    # $(".map_index_users_form_pulldown").dropdown 'close'
+    # $(".map_index_users_form_pulldown").dropdown
 
     map_index_users_updatelist()
 

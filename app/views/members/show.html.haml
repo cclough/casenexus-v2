@@ -48,14 +48,17 @@
 
       - if @user != current_user
 
-        .span13#map_index_user_panel_stuff.panel.gradient.kill_all
+        .span13#map_index_user_panel_contact.panel.gradient.kill_all
           - if Friendship.friends?(current_user, @user)
             .row
               .span
-                %a#map_index_user_button_message.btn.btn-inverse.btn-small
-                  %i.icon-comment.icon-white
-                  %span
-                    Send Message
+                = link_to raw("<i class=icon-comment icon-white></i> Send Message"),"#", id: "map_index_user_button_message", class: "btn btn-inverse btn-small"
+                / %a.btn.btn-inverse.btn-small
+                /   %i.icon-comment.icon-white
+                /   %span
+                /     Send Message
+
+
             / - if Notification.history(current_user, @user).count > 0
             /   .row
             /     .span

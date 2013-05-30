@@ -1,4 +1,4 @@
-.row.books_index_books_item.panel.dark.kill_all
+.row.books_index_books_item.panel.darker.kill_all
   .row
     .span11
       .books_index_books_item_image.panel.kill_all
@@ -18,7 +18,7 @@
             .books_rating_read_text
               User rating:
               = books_item.average_rating
-      .row
+      .row.books_index_books_item_description
         .font-small
           %span
             = books_item.desc_trunc
@@ -28,8 +28,7 @@
       .row
         .pull-right
           .span
-            .btn.btn-inverse.btn-small
-              =link_to "Do this case with a Contact", "/console?book_id=" + books_item.id.to_s
+            = link_to raw("<i class=icon-envelope></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-inverse"
           .span.offset1
             .books_index_books_item_comments{"data-id"=>books_item.id}
-              = link_to "Rate & Comment (#{books_item.comments.count})", book_path(books_item)
+              = link_to "Rate & Comment (#{books_item.comments.count})", book_path(books_item), class: "btn btn-inverse"
