@@ -7,14 +7,6 @@ class ApplicationController < ActionController::Base
     redirect_to complete_profile_account_path, notice: flash[:notice] unless current_user.completed?
   end
 
-  # Authenticate for active admin
-  def authenticate_admin_user!
-    if !user_signed_in? || current_user.admin == false
-      flash[:alert] = "Unauthorized Access!"
-      redirect_to root_path
-    end
-  end
-
   # Redirection after sign in with devise
   def after_sign_in_path_for(resource_or_scope)
     if session[:user_return_to].blank?

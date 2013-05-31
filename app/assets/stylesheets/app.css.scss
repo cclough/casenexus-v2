@@ -114,11 +114,19 @@ textarea {
 .container {
   &.main{
     min-height: 100%;
+    width:100% !important;
     background: url('app/white-wash.png');
   }
   &.home {
     min-height: 100%;   
   }
+}
+
+#container_main {
+  width:90%;
+}
+#container_online {
+  width:10%;
 }
 
 .application_bullets {
