@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
     redirect_to complete_profile_account_path, notice: flash[:notice] unless current_user.completed?
   end
 
+  def online_user_item
+    @online_user = User.find(params[:user_id])
+    @online_user_type = params[:online_user_type]
+
+    render partial: "shared/online_user_item"
+  end
+
   # Redirection after sign in with devise
   def after_sign_in_path_for(resource_or_scope)
     if session[:user_return_to].blank?
@@ -26,4 +33,5 @@ class ApplicationController < ActionController::Base
       current_user.update_column(:last_online_at, Time.now())
     end
   end
+
 end

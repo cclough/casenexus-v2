@@ -57,15 +57,24 @@
           .span73
             = yield
     #container_online
+
+      #container_online_title
+        Your friends
+      #container_online_friends
+        - for online_friend_item in current_user.accepted_friends
+          .application_online_item
+
+            - @online_user_type = "friend"
+            - @online_user = User.find(online_friend_item.id)
+
+            = render partial: 'shared/online_user_item'
+
+
+
       #container_online_title
         Who's online
-      #container_online_list
-        / - User.all.each do |user|
-        /   .application_online_item
-        /     .span2
-        /       = image_tag "avatars/icon.png"
-        /     .span.offset1
-        /       = user.name
+      #container_online_nonfriends
+
 
 
     / footer

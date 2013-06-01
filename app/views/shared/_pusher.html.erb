@@ -37,7 +37,7 @@ $(function() {
       channel_pres = pusher.subscribe('presence-all');
 
       channel_pres.bind('pusher:subscription_succeeded', function(members){
-        $('#container_online_list').empty()
+        $('#container_online_nonfriends').empty()
 
         members.each(add_member);
 
@@ -45,8 +45,14 @@ $(function() {
       })
 
       channel_pres.bind('pusher:member_removed', function(member){
-        $('#presence_' + member.id).remove();
-        console.log("Count", channel_pres.members.count)
+        $('#application_online_item_' + member.id).fadeOut(500, function(){
+
+          $('#application_online_item_' + member.id).remove();
+          console.log("Count", channel_pres.members.count)
+
+        });
+
+
       })
 
       channel_pres.bind('pusher:member_added', function(member){
@@ -87,45 +93,25 @@ $(function() {
 
 
       function add_member(member) {
-        var content
-        var rand = rand = (Math.random() * 20) - 10
+
         var container = $("<div>", {
-          "class": "application_online_item",
-          id: "presence_" + member.id
+          "class": "application_online_item nonfriend",
+          id: "application_online_item_" + member.id
         })
+    
+        $.get("/online_user_item?user_id=" + member.id, function(data) {
 
-        // if (member.info.gravatar) {
-        //   content = $("<img>", {
-        //     src: member.info.gravatar,
-        //     valign: "middle"
-        //   })
-        // } else 
+          $('#container_online_nonfriends').append(container.html(data))
 
-        if (member.id == channel_pres.members.me.id) {
-          // container.addClass("no-gravatar")
-          content = 'you are here'
-        } else {
-          content = member.id
-        }
+          $('#application_online_item_' + member.id).fadeIn(500)
 
-        if (member.id == channel_pres.members.me.id) {
-          container.addClass("me")
-        }
+        });
 
-        // if (member.id != channel.members.me.id) {
-        //   member.info.typer = new Typer({
-        //     onStart: function() { showTyping(member.id) },
-        //     onEnd: function() { hideTyping(member.id) }
-        //   })
+        // if (member.id == channel_pres.members.me.id) {
+        //   container.addClass("me")
         // }
 
-        $('#container_online_list').append(container.html(content))
       }
-
-
-
-
-
 
 
 

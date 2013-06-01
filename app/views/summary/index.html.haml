@@ -7,32 +7,6 @@
   .span32
 
     .panel.darker.kill_left
-      .row
-        .summary_block_title
-          Friends
-      .row
-        - @friends.each do |summary_item_friend|
-          = link_to "map?user_id=" + summary_item_friend.id.to_s do
-            .row.summary_item_friends
-              .span2
-                = image_tag "avatars/icon.png"
-              .span.offset1.font-small
-                = summary_item_friend.name
-              .span.pull-right
-                = link_to "notifications/1" do
-                  .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + summary_item_friend.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
-                    %i.icon-envelope
-
-                = link_to "/console?friend_id=" + summary_item_friend.id.to_s do
-                  .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + summary_item_friend.first_name, rel: "tooltip", "data-placement"=>"bottom"}
-                    %i.icon-pencil
-
-                - if !summary_item_friend.skype.blank?
-                  = link_to "skype:#{summary_item_friend.skype}?call", class: "btn btn-inverse btn-small application_tooltip", "data-original-title"=>"Call " + summary_item_friend.first_name + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
-                    = image_tag "icons/skype_button.png"
-
-
-    .panel.darker.kill_left
       .summary_block_title
         Recent Cases
       - @cases.each do |summary_item_case|

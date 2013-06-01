@@ -7,7 +7,7 @@ class PusherController < ApplicationController
       if params[:channel_name] == "presence-all"
         response = Pusher[params[:channel_name]].authenticate(params[:socket_id], {
           :user_id => current_user.id,
-          :user_info => {}
+          :user_info => { name: current_user.name }
         })
   	  else
   	  	response = Pusher[params[:channel_name]].authenticate(params[:socket_id])

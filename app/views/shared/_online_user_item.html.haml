@@ -1,0 +1,23 @@
+.span2
+  = image_tag "avatars/icon.png"
+.span.offset1
+  = @online_user.name_trunc
+
+- if @online_user_type == "friend"
+  .pull-right
+    = link_to "notifications/1" do
+      .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
+        %i.icon-envelope
+
+    = link_to "/console?friend_id=" + @online_user.id.to_s do
+      .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.first_name, rel: "tooltip", "data-placement"=>"bottom"}
+        %i.icon-pencil
+
+    - if !@online_user.skype.blank?
+      = link_to "skype:#{@online_user.skype}?call", class: "btn btn-inverse btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.first_name + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
+        = image_tag "icons/skype_button.png", class: "application_icon_skype"
+- else
+  .pull-right
+    = link_to "notifications/1" do
+      .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + "as a contact", rel: "tooltip", "data-placement"=>"bottom"}
+        %i.icon-envelope

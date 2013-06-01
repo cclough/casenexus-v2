@@ -8,6 +8,8 @@ Casenexus::Application.routes.draw do
   # Pusher
   post 'pusher/auth'
 
+  match '/online_user_item', to: 'application#online_user_item'
+
   # Static Pages
   match '/about', to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'

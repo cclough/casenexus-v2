@@ -94,6 +94,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def name_trunc
+    ("#{first_name} #{last_name}").truncate(17, separator: ' ')
+  end
+
   def case_count
     cases.count
   end
