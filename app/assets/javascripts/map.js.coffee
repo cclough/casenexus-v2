@@ -63,15 +63,32 @@ window.map_index_map_marker_click = (marker_id) ->
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   $.get("/members", $("#map_index_users_form").serialize(), null, "script")
-
-
-
-
   false
+
+window.map_index_users_resetfilters = (filter_excep) ->
+
+  if (filter_excep != "country")
+    $("#map_index_users_form_pulldown_country_button").html "All Countries <span class=caret></span>"
+    $("#users_filter_country").val ""
+  
+  if (filter_excep != "university")
+    $("#map_index_users_form_pulldown_university_button").html "All Universities <span class=caret></span>"
+    $("#users_filter_university").val ""
+  
+  if (filter_excep != "firm")
+    $("#map_index_users_form_pulldown_firm_button").html "All Firms <span class=caret></span>"
+    $("#users_filter_firm").val "" 
+  
+  if (filter_excep != "language")
+    $("#map_index_users_form_pulldown_language_button").html "All Languages <span class=caret></span>"
+    $("#users_filter_language").val ""
 
 window.map_index_users_search = ->
     $("#map_index_users_form_search_field").val($("#header_nav_panel_browse_search_field").val())
     map_index_users_updatelist()
+
+
+
 
 $(document).ready ->
   # Update the list of users
@@ -90,27 +107,34 @@ $(document).ready ->
 
     category = $(this).data("category")
 
-    # Change filter button caption
-    selection = $(this).data("name")
-    $("#map_index_users_form_pulldown_"+category+"_button").html(selection + "  <span class=caret></span>")
-
+    # Change radio
+    radio = $(this).data("radio")
+    $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
+       
     # Change text field to language name
     selection_id = $(this).data("id")
     $("#users_filter_"+category).val(selection_id)
 
-    # Change radio
-    radio = $(this).data("radio")
+    map_index_users_updatelist()
 
-    $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
-    
+
+
+
+    # Change filter button caption
+    selection = $(this).data("name")
+    $("#map_index_users_form_pulldown_"+category+"_button").html(selection + "  <span class=caret></span>")
+
     # Remove and add active class to buttons
     $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
     $("#map_index_users_form_pulldown_"+category+"_button").addClass "active"
 
-
+    # Menu item select and remove others
+    $(".map_index_users_form_pulldown a").removeClass "hovered"
+    $(this).addClass "hovered"
     $(this).parent().parent().parent().removeClass 'open'
 
-    map_index_users_updatelist()
+    # Reset all other menues to 'all'
+    map_index_users_resetfilters category
 
 
   # List type Button-Radio link
