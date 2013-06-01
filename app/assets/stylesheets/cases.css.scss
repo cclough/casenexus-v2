@@ -83,12 +83,17 @@ $blue_pastel: #98cdff;
   font-size: 26px;
   font-weight: bold;
   text-align:center;
+  height:30px;
+  width:40px;
+  margin-top:-3px !important;
+  line-height:27px;
   color: $blue_pastel !important;
 }
 
 .cases_index_cases_item_subject {
   font-style:italic;
-  color:$gray_Light;
+  font-size:13px;
+  color:$gray_Mid;
 }
 
 .cases_index_cases_item_date {

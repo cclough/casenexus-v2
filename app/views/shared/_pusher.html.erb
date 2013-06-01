@@ -28,7 +28,6 @@ $(function() {
         msg = data.from + ': ' + data.subject;
         dom_notify(msg);
         title_notify(msg);
-        if (window.webkitNotifications) { webkit_notify(msg); }
       });
       
 
@@ -37,7 +36,7 @@ $(function() {
       channel_pres = pusher.subscribe('presence-all');
 
       channel_pres.bind('pusher:subscription_succeeded', function(members){
-        $('#container_online_nonfriends').empty()
+        $('#application_container_online_item_nonfriends').empty()
 
         members.each(add_member);
 
@@ -45,9 +44,9 @@ $(function() {
       })
 
       channel_pres.bind('pusher:member_removed', function(member){
-        $('#application_online_item_' + member.id).fadeOut(500, function(){
+        $('#application_container_online_item_' + member.id).fadeOut(500, function(){
 
-          $('#application_online_item_' + member.id).remove();
+          $('#application_container_online_item_' + member.id).remove();
           console.log("Count", channel_pres.members.count)
 
         });
@@ -95,15 +94,15 @@ $(function() {
       function add_member(member) {
 
         var container = $("<div>", {
-          "class": "application_online_item nonfriend",
-          id: "application_online_item_" + member.id
+          "class": "application_container_online_item nonfriend",
+          id: "application_container_online_item_" + member.id
         })
     
         $.get("/online_user_item?user_id=" + member.id, function(data) {
 
-          $('#container_online_nonfriends').append(container.html(data))
+          $('#application_container_online_nonfriends').append(container.html(data))
 
-          $('#application_online_item_' + member.id).fadeIn(500)
+          $('#application_container_online_item_' + member.id).fadeIn(500)
 
         });
 
@@ -112,36 +111,6 @@ $(function() {
         // }
 
       }
-
-
-
-
-
-
-
-      // Webkit Notifications API
-      // http://www.html5rocks.com/en/tutorials/notifications/quick/
-      
-      // Setup permissions
-      if (window.webkitNotifications) {
-        console.log("Notifications are supported!");
-        $('#notify_api').show();
-      }
-      else {
-        console.log("Notifications are not supported for this Browser/OS version yet.");
-      }
-      
-      $('#ask_notify_permission').click(function() {
-        window.webkitNotifications.requestPermission();
-      });
-      
-      // Notify function
-      function webkit_notify(msg) {
-        notify = window.webkitNotifications.createNotification('http://pusher.com/stylesheets/images/feature_scalable.png', msg, '');
-        notify.show();
-      }
-      
-
 
 
 

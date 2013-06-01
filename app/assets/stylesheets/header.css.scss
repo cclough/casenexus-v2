@@ -52,6 +52,14 @@ $gray_Lightest: #f6f6f6;
   -moz-border-top-right-radius: 0px;
   -webkit-border-top-right-radius: 0px;
 
+  border-bottom-right-radius: 5px;
+  -moz-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+
+  border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+
   ul {
     list-style: none;
     padding: 0px;
@@ -61,6 +69,19 @@ $gray_Lightest: #f6f6f6;
       margin-left: 10px;
     }
   }
+
+  // Made using http://www.colorzilla.com/gradient-editor/
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(219,219,219,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(219,219,219,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+
+
+
 }
 
 #header_nav_button_container_browse {
@@ -111,16 +132,17 @@ $gray_Lightest: #f6f6f6;
 #header_menu_notifications_empty {
   height:150px;
   width:300px;
-  padding-top:60px;
+  padding-top:10px;
   padding-left:0px;
   padding-right:0px;
+
   font-weight:bold;
   text-align:center;
 }
 
 #header_menu_notifications_empty_icon {
   font-size:100px;
-  margin-bottom:40px; 
+  margin-bottom:10px; 
 }
 
 
@@ -137,16 +159,38 @@ $gray_Lightest: #f6f6f6;
 
 
 
-#header_menu_profile_name {
-
+#header_nav_icon_notifications {
+  &.unread {
+    color:red;
+  }
 }
 
 #header_menu_notifications_unreadcount {
-  font-size: 1.1em;
+
+  position:absolute;
+  top:11px;
+  right:40px;
+
+  height:15px;
+
+  padding:2px 5px;
+
+  font-size: 13px;
   font-weight:bold;
-  margin-left: 4px;
   letter-spacing: 1px;
+  line-height:13px;
+
+  background-color:red;
+  color:white;
+
+  -moz-border-radius:    15px;
+  -webkit-border-radius: 15px;
+  border-radius:         15px;
+
 }
+
+
+
 
 .header_menu_notifications_item {
   height:45px;
@@ -160,5 +204,7 @@ $gray_Lightest: #f6f6f6;
 
 
 .header_nav_icon_narrow {
-  width:30px;
+  padding: 10px 2px !important;
 }
+
+

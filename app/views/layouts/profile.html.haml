@@ -35,7 +35,7 @@
 
     = render 'layouts/flash', flash: flash
 
-    #container_main
+    #application_container_main
       .container.main
         = render 'shared/title'
         .row
@@ -56,29 +56,28 @@
                 = link_to "Settings", edit_account_path
           .span73
             = yield
-    #container_online
 
-      #container_online_title
+        / footer
+        = render 'layouts/footer'
+
+    #application_container_online
+
+      #application_container_online_title
         Your friends
-      #container_online_friends
+      #application_container_online_friends
         - for online_friend_item in current_user.accepted_friends
-          .application_online_item
+          .application_container_online_item
 
             - @online_user_type = "friend"
             - @online_user = User.find(online_friend_item.id)
 
             = render partial: 'shared/online_user_item'
 
-
-
-      #container_online_title
+      #application_container_online_title
         Who's online
-      #container_online_nonfriends
+      #application_container_online_nonfriends
 
 
-
-    / footer
-    = render 'layouts/footer'
 
   = render 'shared/modal_help' if signed_in?
   = render 'shared/modal_contact'
