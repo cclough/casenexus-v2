@@ -111,10 +111,14 @@ textarea {
   z-index: 20000 !important;
 }
 
+
+
+
+
 .container {
   &.main{
     min-height: 100%;
-    width:100% !important;
+    // width:1% !important;
     background: url('app/white-wash.png');
   }
   &.home {
@@ -122,12 +126,52 @@ textarea {
   }
 }
 
+#container_container {
+  overflow-y:hidden;
+}
+
 #container_main {
-  width:90%;
+  width:85%;
+  height:100%;
+  float:left;
+  overflow-y: scroll;
+  box-shadow: inset -10px 0px 15px -1px #000 ;
+  -moz-box-shadow: inset -10px 0px 15px -1px #000 ;
+  -webkit-box-shadow: inset -10px 0px 15px -1px #000 ; 
 }
+
 #container_online {
-  width:10%;
+  width:15%;
+  height:100%;
+  float:left;
+  background: url('app/linen.jpg') repeat top left;
+  overflow-y: scroll;
 }
+
+#container_online_title {
+  background: url('app/dark-bg.png') repeat top left;
+  height:25px;
+  padding:5px;
+  text-align:center;
+  font-weight: bold;
+  font-size:14px;
+  color: $gray_Lighter;
+}
+
+.application_online_item {
+
+  height:30px;
+  padding:5px;
+  color:white;
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color:white;
+  }
+}
+
+
+
+
 
 .application_bullets {
   li {

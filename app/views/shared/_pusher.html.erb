@@ -3,6 +3,9 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
 
+
+
+
       // Enable pusher logging - don't include this in production
       Pusher.log = function(message) {
         if (window.console && window.console.log) window.console.log(message);
@@ -12,15 +15,52 @@ $(function() {
       Pusher.sockjs_host = 'sockjs-eu.pusher.com';
       
       var pusher = new Pusher('819414d582ac4a755ad6'); // Replace with your app key
-      var channel = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
       
-      channel.bind('new_message', function(data) {
+
+
+
+
+      // PRIVATE MESSAGING CHANNEL
+
+      var channel_priv = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
+      
+      channel_priv.bind('new_message', function(data) {
         msg = data.from + ': ' + data.subject;
         dom_notify(msg);
         title_notify(msg);
         if (window.webkitNotifications) { webkit_notify(msg); }
       });
       
+
+      // PRESENCE CHANNEL
+
+      channel_pres = pusher.subscribe('presence-all');
+
+      channel_pres.bind('pusher:subscription_succeeded', function(members){
+        $('#container_online_list').empty()
+
+        members.each(add_member);
+
+        console.log("Count", members.count)
+      })
+
+      channel_pres.bind('pusher:member_removed', function(member){
+        $('#presence_' + member.id).remove();
+        console.log("Count", channel_pres.members.count)
+      })
+
+      channel_pres.bind('pusher:member_added', function(member){
+        add_member(member)
+        console.log("Count", channel_pres.members.count)
+      })
+
+
+
+
+      /////////////////////////////////////////
+      ////////// MESSAGING FUNCTIONS //////////
+      /////////////////////////////////////////
+
       // In DOM alert
       function dom_notify(msg) {
         $('#header_nav_panel_browse_search_field').val(msg);
@@ -41,6 +81,54 @@ $(function() {
         $.titleAlert(msg);
       }
       
+      /////////////////////////////////////////
+      ////////// PRESENCE FUNCTIONS ///////////
+      /////////////////////////////////////////
+
+
+      function add_member(member) {
+        var content
+        var rand = rand = (Math.random() * 20) - 10
+        var container = $("<div>", {
+          "class": "application_online_item",
+          id: "presence_" + member.id
+        })
+
+        // if (member.info.gravatar) {
+        //   content = $("<img>", {
+        //     src: member.info.gravatar,
+        //     valign: "middle"
+        //   })
+        // } else 
+
+        if (member.id == channel_pres.members.me.id) {
+          // container.addClass("no-gravatar")
+          content = 'you are here'
+        } else {
+          content = member.id
+        }
+
+        if (member.id == channel_pres.members.me.id) {
+          container.addClass("me")
+        }
+
+        // if (member.id != channel.members.me.id) {
+        //   member.info.typer = new Typer({
+        //     onStart: function() { showTyping(member.id) },
+        //     onEnd: function() { hideTyping(member.id) }
+        //   })
+        // }
+
+        $('#container_online_list').append(container.html(content))
+      }
+
+
+
+
+
+
+
+
 
 
 
@@ -70,6 +158,10 @@ $(function() {
 
 
 
+
+
+
+
       
       // Some useful Pusher debug msgs
       pusher.connection.bind('connecting', function() {
@@ -81,8 +173,15 @@ $(function() {
       pusher.connection.bind('failed', function() {
         $('#header_nav_panel_browse_search_field').val('Connection to Pusher failed :(');
       });
-      channel.bind('subscription_error', function(status) {
+
+      channel_priv.bind('subscription_error', function(status) {
         $('#header_nav_panel_browse_search_field').val('Pusher subscription_error');
       });
+
+
+
+
+
+
     });
 </script>
