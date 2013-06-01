@@ -20,13 +20,6 @@ $blue_pastel: #98cdff;
 
 
 
-
-// Pushes footer to bottom of page on map
-#map_index_map_footerspacer {
-  height:96.7%;
-  width:0px;
-}
-
 /***** for custom control position hack *****/
 
 #map_index_map_zoomcontrol {
@@ -118,7 +111,6 @@ $blue_pastel: #98cdff;
 
 
 
-
 .map_index_subnav {
   border: 1px solid #252525;
   background-color: #3D3D3D;
@@ -141,10 +133,6 @@ $blue_pastel: #98cdff;
 }
 
 
-#map_index_users_form_searchfield {
-  width:280px;
-  margin-left:10px;
-}
 
 #map_index_users_form_radiogroup {
   display:none;
@@ -152,9 +140,14 @@ $blue_pastel: #98cdff;
 
 
 
-
 #map_index_users_empty {
   text-align: center;
+
+  position:absolute;
+  left:25%;
+  margin-left:-100px;
+  top: 200px;
+
   width:140px;
   padding-left:35px;
   padding-right:35px;

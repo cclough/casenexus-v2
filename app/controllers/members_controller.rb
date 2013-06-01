@@ -10,16 +10,10 @@ class MembersController < ApplicationController
 
       when "local"
         users_scope = User.includes(:cases).list_local(current_user)
-      when "contacts"
-        users_scope = User.includes(:cases).list_contacts(current_user)
       when "online_today"
         users_scope = User.includes(:cases).list_online_today
-
-
-
       when "global"
         users_scope = User.includes(:cases).list_global
-
 
 
       when "language"

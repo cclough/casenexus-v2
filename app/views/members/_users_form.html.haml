@@ -10,18 +10,7 @@
         .btn-group
           %a.map_index_users_form_button.btn.btn-small.btn-inverse{"data-radio"=>0} < 50mi
           %a.map_index_users_form_button.btn.btn-small.btn-inverse{"data-radio"=>1} Online Today
-          %a.map_index_users_form_button.btn.btn-small.btn-inverse{"data-radio"=>2} Partners
-
-          / %a#map_index_users_form_button_6.btn.btn-small.btn-inverse Case count
-          / .btn-group
-          /   %button.btn.btn-small.btn-inverse Country
-          /   %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-          /     %span.caret
-          /   %ul.dropdown-menu
-          /     / - Country.in_use.each do |country_item|
-          /     /   %li
-          /     /     %a
-          /     /       = country_item.country
+          %a.map_index_users_form_button.btn.btn-small.btn-inverse.active{"data-radio"=>2} Global
 
 
         .btn-group.map_index_users_form_pulldown
@@ -31,11 +20,11 @@
           %ul.dropdown-menu
             %li
               / data-id is blank
-              %a{"data-category" => "language", "data-radio" => 4, "data-name" => "All Languages"}
+              %a{"data-category" => "language", "data-radio" => 3, "data-name" => "All Languages"}
                 All Languages
             - Language.all.each do |language_item|
               %li
-                %a{"data-category" => "language", "data-radio" => 4, "data-name" => language_item.name, "data-id" => language_item.id}
+                %a{"data-category" => "language", "data-radio" => 3, "data-name" => language_item.name, "data-id" => language_item.id}
                   = language_item.name
         .btn-group.map_index_users_form_pulldown
           %button#map_index_users_form_pulldown_firm_button.map_index_users_form_pulldown_button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -44,11 +33,11 @@
           %ul.dropdown-menu
             %li
               / data-id is blank
-              %a{"data-category" => "firm", "data-radio" => 5, "data-name" => "All Firms"}
+              %a{"data-category" => "firm", "data-radio" => 4, "data-name" => "All Firms"}
                 All Firms
             - Firm.all.each do |firm_item|
               %li
-                %a{"data-category" => "firm", "data-radio" => 5, "data-name" => firm_item.name, "data-id" => firm_item.id}
+                %a{"data-category" => "firm", "data-radio" => 4, "data-name" => firm_item.name, "data-id" => firm_item.id}
                   = firm_item.name
 
         .btn-group.map_index_users_form_pulldown
@@ -58,11 +47,11 @@
           %ul.dropdown-menu
             %li
               / data-id is blank
-              %a{"data-category" => "university", "data-radio" => 6, "data-name" => "All Univerities"}
+              %a{"data-category" => "university", "data-radio" => 5, "data-name" => "All Univerities"}
                 All Universities
             - University.all.each do |university_item|
               %li
-                %a{"data-category" => "university", "data-radio" => 6, "data-name" => university_item.name, "data-id" => university_item.id}
+                %a{"data-category" => "university", "data-radio" => 5, "data-name" => university_item.name, "data-id" => university_item.id}
                   = university_item.name
 
         .btn-group.map_index_users_form_pulldown
@@ -72,18 +61,16 @@
           %ul.dropdown-menu
             %li
               / data-id is blank
-              %a{"data-category" => "country", "data-radio" => 7, "data-name" => "All Countries"}
+              %a{"data-category" => "country", "data-radio" => 6, "data-name" => "All Countries"}
                 All Countries
             - Country.in_use.each do |country_item|
               %li
-                %a{"data-category" => "country", "data-radio" => 7, "data-name" => country_item.name, "data-id" => country_item.id}
+                %a{"data-category" => "country", "data-radio" => 6, "data-name" => country_item.name, "data-id" => country_item.id}
                   = country_item.name
 
   #map_index_users_form_radiogroup
     = radio_button_tag :users_listtype, 'local'
     = radio_button_tag :users_listtype, 'online_today'
-    = radio_button_tag :users_listtype, 'contacts'
-
     = radio_button_tag :users_listtype, 'global', checked: true
 
     = radio_button_tag :users_listtype, 'language'

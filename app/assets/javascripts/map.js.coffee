@@ -108,8 +108,7 @@ $(document).ready ->
     $("#map_index_users_form_pulldown_"+category+"_button").addClass "active"
 
 
-    # $(".map_index_users_form_pulldown").dropdown 'close'
-    # $(".map_index_users_form_pulldown").dropdown
+    $(this).parent().parent().parent().removeClass 'open'
 
     map_index_users_updatelist()
 

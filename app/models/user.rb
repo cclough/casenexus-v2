@@ -139,10 +139,6 @@ class User < ActiveRecord::Base
       user.nearbys(50).completed.not_admin.order('created_at desc')
     end
 
-    def list_contacts(user)
-      user.accepted_friends.completed
-    end
-
     def list_online_today
       completed.not_admin.online_today.order('last_online_at desc')
     end
