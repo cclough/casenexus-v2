@@ -49,9 +49,9 @@ $blue_pastel: #98cdff;
   margin-top:-250px;
   top:50%;
 
-  left:50%;
-  width:600px;
-  height:500px;
+  left:70%;
+  width:400px;
+  // height:500px;
 
   background: rgba(0, 0, 0, 0.6);
 
@@ -476,7 +476,6 @@ $blue_pastel: #98cdff;
 
 #map_index_user_close {
   border: 0;
-  background-color: white;
 }
 
 #map_index_user_name {
@@ -485,45 +484,74 @@ $blue_pastel: #98cdff;
 
 #map_index_user_panel_avatar {
   text-align:center;
+  max-width:40px;
 }
 
 
 
-#map_index_user_university_image {
-  width:20px;
+#map_index_user_university, #map_index_user_country {
+  font-size:11px;
   text-align:center;
+
+  img {
+    max-height:18px !important;    
+  }
 }
 
 
 
 
-#map_index_user_panel_contact {
-  font-size:12px;
+#map_index_user_panel_actions_panel, #map_index_user_panel_associations_panel {
+  width:150px;
+
+  font-size:12px !important;    
   a {
-    // text-decoration:none;
-    text-align:right !important;
-    // color: $gray_Mid;
-  //   &:hover {
-  //     text-decoration:underline;
-  //   }
+    font-size:12px !important;    
+  }
+  .btn {
+    max-height:20px;
+    padding:7px;
+    margin:0px 2px;
+    line-height:12px;
+  }
+}
+
+
+#map_index_user_panel_subtitle {
+  background: url('app/dark-bg.png') repeat top left;
+  height:25px;
+  padding:2px;
+  text-align:center;
+  font-weight: bold;
+  font-size:12px;
+  line-height:24px;
+  margin:-10px -10px 0px -10px;
+  color: $gray_Lighter;
+}
+
+
+
+#map_index_user_panel_skype {
+  img {
+    max-height:10px;
+
   }
 
 }
 
 
-
 .map_index_user_association_item {
-  border-radius: 7px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
 
-  border:2px solid $gray_Light;
 
-  background: $gray_Lightest;
+  color: $gray_Lighter;
 
   padding:3px;
 
+  // background: url('app/dark-bg.png') repeat top left;
+
   list-style:none;
+
+
 }
 
 
@@ -537,8 +565,3 @@ $blue_pastel: #98cdff;
 #map_index_user_button_feedbackrequest {
 
 }
-
-#map_index_user_button_message {
-  
-}
-

@@ -4,158 +4,146 @@
   var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
-.panel.gradient
+.panel.darker
   %button#map_index_user_close.close ×
   .row
-    .span10
-      #map_index_user_panel_avatar.panel.gradient.kill_all
+    .span
+      #map_index_user_panel_avatar
         = image_tag "avatars/icon.png"
         /= avatar_for(@user, 'icon_inert')
         .row
-          .pull-left
-            = @user.accepted_friends.count
           .pull-right
             = @user.cases.count.to_s + "+" + @user.cases_external.to_s
-    .span28.offset1
+    .span.offset1
       .spacer5
       .row
-        #map_index_user_name
-          = @user.name
-      .spacer5
+        .span
+          #map_index_user_name
+            = @user.name
       .row
-        .application_lastonline
-          - if @user.last_online_at
-            Last online
-            = time_ago_in_words(@user.last_online_at)
-            ago
-      - unless @user.university.blank?
-        .spacer5
+        .span
+          .application_lastonline
+            - if @user.last_online_at
+              Last online
+              = time_ago_in_words(@user.last_online_at)
+              ago
+      .row
+        .span#map_index_user_university
+          - unless @user.university.blank?
+            .span
+              = image_tag "universities/" + @user.university.image
+            .span.offset1
+              = @user.university.name
+        .span.offset1#map_index_user_country
+          - unless @user.country.blank?
+            .span
+              = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
+            .span.offset1
+              = @user.country.name
+
+
+.span
+  .panel.darker.kill_top#map_index_user_panel_associations_panel
+
+    #map_index_user_panel_subtitle
+      Languages
+    .row
+      - unless @user.languages.empty?
+        - @user.languages.each do |users_item_language|
+          .map_index_user_association_item
+            = users_item_language.name
+
+    .spacer10
+    #map_index_user_panel_subtitle
+      Firms
+    .row
+      - unless @user.firms.blank?
+        - @user.firms.each do |users_item_firm|
+          .map_index_user_association_item
+            = users_item_firm.name
+
+.span
+
+
+  - if @user != current_user
+
+    .panel.darker.kill_all#map_index_user_panel_actions_panel
+
+      - if Friendship.friends?(current_user, @user)
         .row
           .span
-            #map_index_user_university_image
-              = image_tag "universities/" + @user.university.image
-          .span.offset1
-            = @user.university.name
-      .spacer5
-      .row
-        - unless @user.country.blank?
-          .span3
-            = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
-          = @user.country.name
+            = link_to raw("<i class=icon-comment icon-white></i>Message"),"#", id: "map_index_user_button_message", class: "btn btn-inverse btn-small"
 
-
-    - if Friendship.friends?(current_user, @user)
-
-      - if @user != current_user
-
-        .span13#map_index_user_panel_contact.panel.gradient.kill_all
-          - if Friendship.friends?(current_user, @user)
-            .row
-              .span
-                = link_to raw("<i class=icon-comment icon-white></i> Send Message"),"#", id: "map_index_user_button_message", class: "btn btn-inverse btn-small"
-                / %a.btn.btn-inverse.btn-small
-                /   %i.icon-comment.icon-white
-                /   %span
-                /     Send Message
-
-
-            / - if Notification.history(current_user, @user).count > 0
-            /   .row
-            /     .span
-            /       = link_to "Show Message History", history_notifications_path(user_id: @user.id)
+          / - if Notification.history(current_user, @user).count > 0
+          /   .row
+          /     .span
+          /       = link_to "Show Message History", history_notifications_path(user_id: @user.id)
                   
+          - unless @user.skype.blank?
+            .span#map_index_user_panel_skype
+              %a.btn.btm-small.btn-inverse{href: "skype:#{@user.skype}?call"}
+                %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
+                Skype
 
-            - unless @user.skype.blank?
-              .spacer10
-              .row
-                .span
-                  %a{href: "skype:#{@user.skype}?call"}
-                    %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
-                    Skype
-            .spacer10
-            .row
-              = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
+        .row
+          = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
 
+        .row
+          .span
+            = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
+          .span
+            %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
+              %i.icon-refresh.icon-white
+              %span
+                Request
 
-          - elsif Friendship.requested?(@user, current_user)
-
-            Case Partner Request Pending
-
-          - elsif Friendship.pending?(@user, current_user)
-
-            Pending case partner request
-            = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
-            = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
-
-
-          - elsif !Friendship.exist?(current_user, @user)
-
-            .pull-right
-              %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
-                %i.icon-comment.icon-white
-                %span
-                  Send Case Partner Request
+        .row
+          .span
+            = link_to("Schedule", "#", id: "map_index_user_button_event",class: "btn btn-inverse btn-small")
+          .span
+            = link_to("Start", "#", class: "btn btn-inverse btn-small")
 
 
+      - elsif Friendship.requested?(@user, current_user)
+
+        Case Partner Request Pending
+
+      - elsif Friendship.pending?(@user, current_user)
+
+        Pending case partner request
+        = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
+        = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
 
 
+      - elsif !Friendship.exist?(current_user, @user)
 
-
-
-
-
-
-
-
-
-
-
-
-  .spacer10
-  .row
-    .span
-      - unless @user.languages.empty?
-        %ul
-          - @user.languages.each do |users_item_language|
-            %li.map_index_user_association_item
-              = users_item_language.name
-    .span
-      - unless @user.firms.blank?
-        %ul
-          - @user.firms.each do |users_item_firm|
-            %li.map_index_user_association_item
-              = users_item_firm.name
-
-
-
-
-  .row
-
-    - if Friendship.friends?(current_user, @user)
-      .row
-        = link_to raw("<i class=\"icon-edit icon-white\"/> Send Feedback"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
-      .row
-        %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
-          %i.icon-refresh.icon-white
+        %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
+          %i.icon-comment.icon-white
           %span
-            Request Feedback
-      .row
-        = link_to("Schedule a Case", "#", id: "map_index_user_button_event",class: "btn btn-inverse btn-small")
-      .row
-        = link_to("Start a Case", "#", class: "btn btn-inverse btn-small")
+            Send Case Partner Request
 
 
 
 
-    #modal_message.modal.hide.fade
-      = render '/shared/modal_message_form'
-    #modal_feedback_req.modal.hide.fade
-      = render '/shared/modal_feedback_req_form'
 
-    = render '/shared/modal_event'
-    
-  - if @friendship
-    #modal_friendship_req.modal.hide.fade
-      = render '/friendships/request_form'
+
+
+
+
+
+
+
+
+
+#modal_message.modal.hide.fade
+  = render '/shared/modal_message_form'
+#modal_feedback_req.modal.hide.fade
+  = render '/shared/modal_feedback_req_form'
+
+= render '/shared/modal_event'
+
+- if @friendship
+  #modal_friendship_req.modal.hide.fade
+    = render '/friendships/request_form'
 
     
