@@ -1,17 +1,5 @@
-.map_index_users_item{ :class => ("application_onlinenow" if users_item.online_now?) }
-  .map_index_users_item_button{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s }
-    .row
-      .application_avatar
-        / = avatar_for(users_item, 'icon_inert')
-        = image_tag "avatars/icon.png"
-    .spacer5
-    .row
-      .map_index_users_item_name
-        = users_item.name
-      .map_index_users_item_lastonline
-        - unless users_item.last_online_at.blank?
-          = time_ago_in_words(users_item.last_online_at)
-          ago
+.map_index_users_item{  }
+  .map_index_users_item_button{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
     .row
       - unless users_item.country.blank?
         .map_index_users_item_country.pull-left
@@ -19,3 +7,15 @@
 
       .map_index_users_item_casecounts.pull_right
         = users_item.cases.count.to_s + "+" + users_item.cases_external.to_s
+
+    .row
+      .map_index_users_item_avatar
+        = image_tag "avatars/icon.png"
+    .spacer5
+    .row
+      .map_index_users_item_name
+        = users_item.name
+      .map_index_users_item_lastonline{ class: ("onlinenow" if users_item.online_now?) }
+        - unless users_item.last_online_at.blank?
+          = time_ago_in_words(users_item.last_online_at)
+          ago
