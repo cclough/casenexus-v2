@@ -42,27 +42,6 @@ $blue_pastel: #98cdff;
 
 
 
-#map_index_container_user {
-  position:absolute;
-  display:none;
-
-  margin-top:-250px;
-  top:50%;
-
-  left:70%;
-  width:400px;
-  // height:500px;
-
-  background: rgba(0, 0, 0, 0.6);
-
-  -webkit-box-shadow: 0px 16px 26px rgba(0, 0, 0, 0.9);
-  -moz-box-shadow:    0px 16px 26px rgba(0, 0, 0, 0.9);
-  box-shadow:         0px 16px 26px rgba(0, 0, 0, 0.9);
-
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
 
 
 
@@ -383,6 +362,9 @@ $blue_pastel: #98cdff;
 
 
 #map_index_map_subnav {
+
+  display:none;
+
   position:absolute;
 
   padding:5px;
@@ -473,6 +455,33 @@ $blue_pastel: #98cdff;
 //////////////////////////////////////////////
 
 
+#map_index_container_user {
+  position:absolute;
+  display:none;
+
+  margin-top:-250px;
+  top:50%;
+
+  left:70%;
+  width:400px;
+
+  // height:500px;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  -webkit-box-shadow: 0px 16px 26px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow:    0px 16px 26px rgba(0, 0, 0, 0.9);
+  box-shadow:         0px 16px 26px rgba(0, 0, 0, 0.9);
+
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  .panel {
+    border:0px;
+  }
+}
+
 
 #map_index_user_close {
   border: 0;
@@ -482,7 +491,7 @@ $blue_pastel: #98cdff;
   font-size:24px;
 }
 
-#map_index_user_panel_avatar {
+#map_index_user_avatar {
   text-align:center;
   max-width:40px;
 }
@@ -499,12 +508,21 @@ $blue_pastel: #98cdff;
 }
 
 
+#map_index_user_panel_info {
+  margin:2px;
+}
 
+#map_index_user_panel_actions, #map_index_user_panel_associations {
+  width:177px;
 
-#map_index_user_panel_actions_panel, #map_index_user_panel_associations_panel {
-  width:150px;
+  margin: 0px 2px 2px 2px;
 
-  font-size:12px !important;    
+  font-size:12px !important;   
+
+  text-align:center;
+
+  height: 202px;
+
   a {
     font-size:12px !important;    
   }
@@ -513,7 +531,12 @@ $blue_pastel: #98cdff;
     padding:7px;
     margin:0px 2px;
     line-height:12px;
+    width:68px
   }
+}
+
+#map_index_user_panel_actions {
+  margin-left:0;
 }
 
 
@@ -525,7 +548,10 @@ $blue_pastel: #98cdff;
   font-weight: bold;
   font-size:12px;
   line-height:24px;
-  margin:-10px -10px 0px -10px;
+  margin:5px -10px 5px -10px;  
+  &.top {
+    margin:-10px -10px 5px -10px;
+  }
   color: $gray_Lighter;
 }
 

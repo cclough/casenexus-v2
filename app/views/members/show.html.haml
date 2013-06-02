@@ -4,11 +4,11 @@
   var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
 
-.panel.darker
+.panel.darker#map_index_user_panel_info
   %button#map_index_user_close.close ×
   .row
     .span
-      #map_index_user_panel_avatar
+      #map_index_user_avatar
         = image_tag "avatars/icon.png"
         /= avatar_for(@user, 'icon_inert')
         .row
@@ -43,9 +43,9 @@
 
 
 .span
-  .panel.darker.kill_top#map_index_user_panel_associations_panel
+  .panel.darker#map_index_user_panel_associations
 
-    #map_index_user_panel_subtitle
+    #map_index_user_panel_subtitle.top
       Languages
     .row
       - unless @user.languages.empty?
@@ -53,7 +53,7 @@
           .map_index_user_association_item
             = users_item_language.name
 
-    .spacer10
+
     #map_index_user_panel_subtitle
       Firms
     .row
@@ -67,12 +67,14 @@
 
   - if @user != current_user
 
-    .panel.darker.kill_all#map_index_user_panel_actions_panel
+    .panel.darker#map_index_user_panel_actions
 
       - if Friendship.friends?(current_user, @user)
+        #map_index_user_panel_subtitle.top
+          Contact
         .row
           .span
-            = link_to raw("<i class=icon-comment icon-white></i>Message"),"#", id: "map_index_user_button_message", class: "btn btn-inverse btn-small"
+            = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_button_message", class: "btn btn-inverse btn-small"
 
           / - if Notification.history(current_user, @user).count > 0
           /   .row
@@ -86,8 +88,10 @@
                 Skype
 
         .row
-          = link_to("Remove as Case Partner", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure?")
+          = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.first_name + " as a contact?")
 
+        #map_index_user_panel_subtitle
+          Feedback
         .row
           .span
             = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
@@ -97,11 +101,13 @@
               %span
                 Request
 
+        #map_index_user_panel_subtitle
+          Case
         .row
           .span
-            = link_to("Schedule", "#", id: "map_index_user_button_event",class: "btn btn-inverse btn-small")
+            = link_to raw("<i class=\"icon-calendar icon-white\"/> Schedule"), "#", id: "map_index_user_button_event",class: "btn btn-inverse btn-small"
           .span
-            = link_to("Start", "#", class: "btn btn-inverse btn-small")
+            = link_to raw("<i class=\"icon-arrow-right icon-white\"/> Start"), "#", class: "btn btn-inverse btn-small"
 
 
       - elsif Friendship.requested?(@user, current_user)
