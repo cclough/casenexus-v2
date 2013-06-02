@@ -7,14 +7,14 @@
 .panel.darker#map_index_user_panel_info
   %button#map_index_user_close.close ×
   .row
-    .span
+    .span.offset1
       #map_index_user_avatar
         = image_tag "avatars/icon.png"
         /= avatar_for(@user, 'icon_inert')
         .row
           .pull-right
             = @user.cases.count.to_s + "+" + @user.cases_external.to_s
-    .span.offset1
+    .span.offset2
       .spacer5
       .row
         .span
@@ -27,6 +27,10 @@
               Last online
               = time_ago_in_words(@user.last_online_at)
               ago
+            %span#map_index_user_removefriend
+              - if Friendship.friends?(current_user, @user)
+                &#8226; 
+                = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.first_name + " as a contact?")
       .row
         .span#map_index_user_university
           - unless @user.university.blank?
@@ -47,7 +51,7 @@
 
     #map_index_user_panel_subtitle.top
       Languages
-    .row
+    .row#map_index_user_panel_associations_subpanel_languages
       - unless @user.languages.empty?
         - @user.languages.each do |users_item_language|
           .map_index_user_association_item
@@ -56,7 +60,7 @@
 
     #map_index_user_panel_subtitle
       Firms
-    .row
+    .row#map_index_user_panel_associations_subpanel_firms
       - unless @user.firms.blank?
         - @user.firms.each do |users_item_firm|
           .map_index_user_association_item
@@ -86,9 +90,6 @@
               %a.btn.btm-small.btn-inverse{href: "skype:#{@user.skype}?call"}
                 %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
                 Skype
-
-        .row
-          = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.first_name + " as a contact?")
 
         #map_index_user_panel_subtitle
           Feedback

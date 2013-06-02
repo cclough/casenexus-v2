@@ -4,8 +4,25 @@ window.map = null
 
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
-  window.map.panTo latlng
+  #window.map.panTo latlng
+  window.map.panToWithOffset latlng, 150, 0
   window.map.setZoom 9
+
+
+# From http://stackoverflow.com/questions/8146676/google-maps-api-v3-offset-panto-by-x-pixels
+google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
+  map = this
+  ov = new google.maps.OverlayView()
+  ov.onAdd = ->
+    proj = @getProjection()
+    aPoint = proj.fromLatLngToContainerPixel(latlng)
+    aPoint.x = aPoint.x + offsetX
+    aPoint.y = aPoint.y + offsetY
+    map.panTo proj.fromContainerPixelToLatLng(aPoint)
+
+  ov.draw = ->
+
+  ov.setMap this
 
 
 window.map_index_map_marker_click = (marker_id) ->
@@ -58,7 +75,7 @@ window.map_index_map_marker_click = (marker_id) ->
 
       #Fade panel back in
       $("#map_index_container_user").fadeIn "fast"
-      $('#map_index_container_user').show "slide", { direction: "right" }, 200
+      #$('#map_index_container_user').show "slide", { direction: "right" }, 200
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
@@ -174,12 +191,20 @@ $(document).ready ->
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_container_map"), mapOptions)
 
+
+
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
       # We only want to wrap once!
       if $("#map_index_map_zoomcontrol").length is 0
         $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
         $("div.gmnoprint").fadeIn 500
+
+    # Fade out user callout when moving away
+    google.maps.event.addDomListener map, "bounds_changed", ->
+      $("#map_index_container_user").fadeOut "fast"
+
+
 
     # Marker
     shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
@@ -206,7 +231,7 @@ $(document).ready ->
           map_index_map_marker_locate(marker)
           setTimeout (->
             map_index_map_marker_click(marker.id)
-          ), 300
+          ), 200
 
         # Load marker array for MarkerCluster (& User list trigger click)
         map_index_map_markers.push(marker)
@@ -230,7 +255,8 @@ $(document).ready ->
 
   map_index_map_marker_locate = (marker) ->
     newlatlng = marker.getPosition()
-    window.map.setCenter newlatlng
+    #window.map.setCenter newlatlng
+    window.map.panToWithOffset newlatlng, 150, 0
     marker.setAnimation(google.maps.Animation.BOUNCE)
     setTimeout (->
       marker.setAnimation(null)

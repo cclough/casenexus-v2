@@ -11,6 +11,7 @@ $gray_Mid: #767676;
 $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -459,7 +460,7 @@ $blue_pastel: #98cdff;
   position:absolute;
   display:none;
 
-  margin-top:-250px;
+  margin-top:-150px;
   top:50%;
 
   left:70%;
@@ -480,7 +481,34 @@ $blue_pastel: #98cdff;
   .panel {
     border:0px;
   }
+
 }
+
+
+#map_index_container_user:after {
+   content:"";
+   position: absolute;
+   right: 100%;
+   top: 50%;
+   margin-top:-18px;
+   width: 0;
+   height: 0;
+   border-top: 18px solid transparent;
+   border-right: 36px solid rgba(0, 0, 0, 0.6);;
+   border-bottom: 18px solid transparent;
+}
+
+
+#map_index_user_removefriend {
+  a:hover {
+    color: $gray_Light !important;
+    transition: color .1s ease-in !important;
+    -moz-transition: color .1s ease-in !important;
+    -webkit-transition: color .1s ease-in !important;
+    -o-transition: color .1s ease-in !important;
+  }
+}
+
 
 
 #map_index_user_close {
@@ -494,6 +522,9 @@ $blue_pastel: #98cdff;
 #map_index_user_avatar {
   text-align:center;
   max-width:40px;
+
+  // ADJUST THIS TO STOP TWITCH ON LOAD
+  height:69px;
 }
 
 
@@ -521,11 +552,10 @@ $blue_pastel: #98cdff;
 
   text-align:center;
 
-  height: 202px;
+  height: 161px;
 
-  a {
-    font-size:12px !important;    
-  }
+
+
   .btn {
     max-height:20px;
     padding:7px;
@@ -535,19 +565,36 @@ $blue_pastel: #98cdff;
   }
 }
 
+#map_index_user_panel_associations_subpanel_languages {
+  height:50px;
+  line-height:17px;
+  overflow-y:auto;
+}
+
+
+#map_index_user_panel_associations_subpanel_firms {
+  height:70px;
+  line-height:17px;
+  overflow-y:auto;
+}
+
+
+
+
 #map_index_user_panel_actions {
   margin-left:0;
 }
 
 
+
 #map_index_user_panel_subtitle {
   background: url('app/dark-bg.png') repeat top left;
-  height:25px;
+  height:18px;
   padding:2px;
   text-align:center;
   font-weight: bold;
   font-size:12px;
-  line-height:24px;
+  line-height:19px;
   margin:5px -10px 5px -10px;  
   &.top {
     margin:-10px -10px 5px -10px;
