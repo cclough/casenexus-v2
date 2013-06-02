@@ -29,7 +29,7 @@ class MembersController < ApplicationController
 
     # Using scoped_search gem
     if users_scope
-      @users = users_scope.search_for(params[:search]).paginate(per_page: 10, page: params[:page])
+      @users = users_scope.search_for(params[:search]).paginate(per_page: 16, page: params[:page])
     end
 
     respond_to do |format|

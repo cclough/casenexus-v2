@@ -264,7 +264,7 @@ if Rails.env == 'development'
 
 
 
-  8.times do |n|
+  30.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     email = "example#{n+1}@cam.ac.uk"

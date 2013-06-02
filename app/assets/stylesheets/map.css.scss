@@ -40,25 +40,6 @@ $blue_pastel: #98cdff;
   height:100%;
 }
 
-#map_index_container_users {
-  // background: rgba(0, 0, 0, 0.6);
-  background: url('app/bg-texture4.jpg') repeat top left;
-  float: left;
-  width:50%;
-  height:100%;
-  box-shadow: inset -10px 0px 15px -1px #000 ;
-  -moz-box-shadow: inset -10px 0px 15px -1px #000 ;
-  -webkit-box-shadow: inset -10px 0px 15px -1px #000 ; 
-}
-
-
-
-#map_index_container_map {
-  z-index: 0;
-  height:100%;
-}
-
-
 
 
 #map_index_container_user {
@@ -84,12 +65,21 @@ $blue_pastel: #98cdff;
 }
 
 
+
+#map_index_container_map {
+  z-index: 0;
+  height:100%;
+}
+
+
+
+
+
+
 /////////////////////////
 
 
-#map_index_users {
 
-}
 
 #map_index_users_form {
   // margin-top:10px;
@@ -144,12 +134,55 @@ $blue_pastel: #98cdff;
 
 
 
-// Spacer that forces paginate to bottom of list
-#map_index_users_body {
-  height:600px;
+
+
+//////////////////////////////////////////////////////////
+////////// NEED TO SOLVE THIS SCROLL BUG WITH THESE //////
+//////////////////////////////////////////////////////////
+
+#map_index_container_users {
+  // background: rgba(0, 0, 0, 0.6);
+  background: url('app/bg-texture4.jpg') repeat top left;
+  float: left;
+  width:50%;
+  height:100%;
+
+  box-shadow: inset -10px 0px 15px -1px #000;
+  -moz-box-shadow: inset -10px 0px 15px -1px #000;
+  -webkit-box-shadow: inset -10px 0px 15px -1px #000;
+
+  overflow-y:auto;
+
+  .application_pagination {
+    display:none;
+  }
 }
 
 
+
+
+#map_index_users {
+
+}
+
+
+
+//////////////////////////////////
+
+
+
+
+
+
+
+
+
+#map_index_users_form_paginate {
+  clear:both;
+  .application_pagination {
+    background:0;
+  }
+}
 
 #map_index_users_form_radiogroup {
   display:none;
@@ -214,9 +247,7 @@ $blue_pastel: #98cdff;
   text-align:center;
   // background: rgba(0, 0, 0, 0.7);
 
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+
 
   &:hover {
     // background: rgba(0, 0, 0, 0.7);
@@ -245,9 +276,9 @@ $blue_pastel: #98cdff;
   border: 1px solid #bbbbbb;
   *border: 0;
   border-bottom-color: #a2a2a2;
-  // -webkit-border-radius: 4px;
-  // -moz-border-radius: 4px;
-  // border-radius: 4px;
+
+
+
   *margin-left: .3em;
 
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);//, 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -290,8 +321,15 @@ $blue_pastel: #98cdff;
 }
 
 .map_index_users_item_button {
+
+  // why is this not in the primary class above?
   border-color: #c5c5c5;
   border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
 }
 
 
@@ -308,6 +346,9 @@ $blue_pastel: #98cdff;
 .map_index_users_item_name {
   font-weight:bold;
   text-align:center;
+  &.name_long {
+    font-size:10px;
+  }
 }
 
 .map_index_users_item_lastonline {

@@ -19,5 +19,22 @@ $('.map_index_users_item_button').click(function () {
 
 // Users Item Cascade Fade
 $(".map_index_users_item").each(function (i) {
-  $(this).delay((i + 1) * 50).fadeIn();
+
+  if ((i+1) == $(".map_index_users_item").length) {
+    $(this).delay((i + 1) * 50).fadeIn(function(){
+      $("#map_index_users .application_pagination").fadeIn(500); 
+    });
+  } else {
+    $(this).delay((i + 1) * 50).fadeIn();
+  }
+
+})
+
+$("#map_index_users .application_pagination a").on("click", function() {
+  $.getScript(this.href);
+  return false;
 });
+
+
+
+

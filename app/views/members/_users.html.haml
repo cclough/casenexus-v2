@@ -1,10 +1,9 @@
-#map_index_users_body
-  - if @users.count > 0
-    - for users_item in @users
-      = render partial: 'users_item' , locals: { users_item: users_item }
-  - else
-    #map_index_users_empty.panel.dark.center
-      No candidates found
+- if @users.count > 0
+  - for users_item in @users
+    = render partial: 'users_item' , locals: { users_item: users_item }
+- else
+  #map_index_users_empty.panel.dark.center
+    No candidates found
 
 #map_index_users_form_paginate
   = will_paginate @users, class: "application_pagination", inner_window: 1, outer_window: 0

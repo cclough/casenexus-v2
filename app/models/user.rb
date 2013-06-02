@@ -94,6 +94,11 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def name_long?
+    true if name.length > 15
+  end
+
+
   def name_trunc
     ("#{first_name} #{last_name}").truncate(17, separator: ' ')
   end

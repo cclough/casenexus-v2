@@ -13,7 +13,7 @@
         = image_tag "avatars/icon.png"
     .spacer5
     .row
-      .map_index_users_item_name
+      .map_index_users_item_name{ class: ("name_long" if users_item.name_long?) }
         = users_item.name
       .map_index_users_item_lastonline{ class: ("onlinenow" if users_item.online_now?) }
         - unless users_item.last_online_at.blank?
