@@ -113,7 +113,8 @@
 
       - elsif Friendship.requested?(@user, current_user)
 
-        Case Partner Request Pending
+        .panel.darker#map_index_user_friendpending
+          Request Pending
 
       - elsif Friendship.pending?(@user, current_user)
 
@@ -121,13 +122,14 @@
         = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-inverse btn-mini")
         = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
 
-
       - elsif !Friendship.exist?(current_user, @user)
-
+        .spacer20
+        .spacer5
         %a#map_index_user_button_friendrequest.btn.btn-inverse.btn-small
-          %i.icon-comment.icon-white
+          %div
+            %i.icon-comment.icon-white.icon-4x
           %span
-            Send Case Partner Request
+            Send Friend Request
 
 
 

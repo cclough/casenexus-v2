@@ -629,11 +629,21 @@ $blue_pastel: #98cdff;
 
 
 
-
-
 #map_index_user_button_friendrequest{
+  width:100px !important;
+  min-height:95px !important;
+  line-height:17px !important;
 
+  div {
+    margin-bottom:7px;
+  }
 }
+
+#map_index_user_friendpending {
+  margin-top:54px;
+  color:#fffa6f;
+}
+
 
 #map_index_user_button_feedbackrequest {
 
