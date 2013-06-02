@@ -6,7 +6,7 @@
           = image_tag "countries/"+users_item.country.code.to_s+".png", alt: users_item.country.name
 
       .map_index_users_item_casecounts.pull_right
-        = users_item.cases.count.to_s + "+" + users_item.cases_external.to_s
+        = casecounts(users_item)
 
     .row
       .map_index_users_item_avatar

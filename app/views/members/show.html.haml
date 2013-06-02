@@ -13,7 +13,7 @@
         /= avatar_for(@user, 'icon_inert')
         .row
           .pull-right
-            = @user.cases.count.to_s + "+" + @user.cases_external.to_s
+            = casecounts(@user)
     .span.offset2
       .spacer5
       .row

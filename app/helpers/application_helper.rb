@@ -10,6 +10,11 @@ module ApplicationHelper
     end
   end
 
+  def casecounts(user)
+    count_int = content_tag :span, user.cases.count.to_s, style: "font-weight:bolder;"
+    count_ext = content_tag :span, "+" + user.cases_external.to_s, style: "font-weight:lighter;"
+    count_int + count_ext
+  end
 
   def sortable(column, title)
     css_class = column == sort_column ? "current #{sort_direction}" : nil
