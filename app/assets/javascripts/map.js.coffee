@@ -1,11 +1,12 @@
 window.map_index_map_markers = []
 window.markerClusterer = null
 window.map = null
+window.infobox = null
 
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   #window.map.panTo latlng
-  window.map.panToWithOffset latlng, 150, 0
+  window.map.panToWithOffset latlng, 0, -100
   window.map.setZoom 9
 
 
@@ -25,57 +26,78 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
   ov.setMap this
 
 
-window.map_index_map_marker_click = (marker_id) ->
-  # Show User Panel
-  # $('#map_index_mapcontainer_user').hide "slide", { direction: "right" }, 200, ->
-  # #$("#map_index_mapcontainer_user").fadeOut "fast", ->
-
-    $.get "/members/" + marker_id, (data) ->
-
-      # Insert ajax data!
-      $("#map_index_container_user").html data
-
-      #Code for 'close button'
-      $("#map_index_user_close").click ->
-        $("#map_index_container_user").fadeOut "slow"
-
-      # Modal Stuff!
-      $("#modal_message, #modal_feedback_req, #modal_friendship_req #modal_event").modal
-        backdrop: false
-        show: false
 
 
-      $("#map_index_user_button_message").click ->
-        if !($("#modal_message").hasClass("in"))
-          $(".modal").modal("hide")
-          $("#modal_message").modal("show")
 
 
-      $("#map_index_user_button_friendrequest").click ->
-        if !($("#modal_friendship_req").hasClass("in"))
-          $(".modal").modal("hide")
-          $("#modal_friendship_req").modal("show")
+window.map_index_map_marker_click = (marker) ->
+  # # Show User Panel
+
+  # # #window.infowindow.close()
+
+  $.ajax
+    url: "/members/" + marker.id
+    success: (data) ->
+
+      # #window.ib.close()
+
+      boxcontent = document.createElement "div"
+      boxcontent.innerHTML = data
+
+      window.infobox.setContent boxcontent
+      window.infobox.open map, marker
+
+  #     #$.get "/members/" + marker_id, (data) ->
+
+  #       # # Insert ajax data!
+  #       # $("#map_index_container_user").html data
+
+  #     # # Code for 'close button'
+  #     # $("#map_index_user_close").click ->
+  #     #   $("#map_index_container_user").fadeOut "slow"
+
+  #     # # Modal Stuff!
+  #     # $("#modal_message, #modal_feedback_req, #modal_friendship_req #modal_event").modal
+  #     #   backdrop: false
+  #     #   show: false
 
 
-      $("#map_index_user_button_feedbackrequest").click ->
-        if !($("#modal_feedback_req").hasClass("in"))
-          $(".modal").modal("hide")
-          $("#modal_feedback_req").modal("show")
-          $("#modal_feedback_req_datepicker").datepicker()
+  #     # $("#map_index_user_button_message").click ->
+  #     #   if !($("#modal_message").hasClass("in"))
+  #     #     $(".modal").modal("hide")
+  #     #     $("#modal_message").modal("show")
 
 
-      $("#map_index_user_button_event").click ->
-        if !($("#modal_event").hasClass("in"))
-          $(".modal").modal("hide")
-          $.get "/events/new", (data) ->
-            $("#modal_event").html data
-          $("#modal_event").modal("show")
-          $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
-          $(".chzn-select").chosen()
+  #     # $("#map_index_user_button_friendrequest").click ->
+  #     #   if !($("#modal_friendship_req").hasClass("in"))
+  #     #     $(".modal").modal("hide")
+  #     #     $("#modal_friendship_req").modal("show")
 
-      #Fade panel back in
-      $("#map_index_container_user").fadeIn "fast"
-      #$('#map_index_container_user').show "slide", { direction: "right" }, 200
+
+  #     # $("#map_index_user_button_feedbackrequest").click ->
+  #     #   if !($("#modal_feedback_req").hasClass("in"))
+  #     #     $(".modal").modal("hide")
+  #     #     $("#modal_feedback_req").modal("show")
+  #     #     $("#modal_feedback_req_datepicker").datepicker()
+
+
+  #     # $("#map_index_user_button_event").click ->
+  #     #   if !($("#modal_event").hasClass("in"))
+  #     #     $(".modal").modal("hide")
+  #     #     $.get "/events/new", (data) ->
+  #     #       $("#modal_event").html data
+  #     #     $("#modal_event").modal("show")
+  #     #     $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
+  #     #     $(".chzn-select").chosen()
+
+  #     #Fade panel back in
+      
+  #     $("#map_index_container_user").fadeIn "fast"
+
+  #     #$('#map_index_container_user').show "slide", { direction: "right" }, 200
+
+
+
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
@@ -193,6 +215,34 @@ $(document).ready ->
 
 
 
+    #window.infowindow = new google.maps.InfoWindow(content: "<p id=\"hook\">Hello World!</p>")
+    #window.infowindow = new google.maps.InfoWindow()
+  
+    # Initiate InfoBox with options
+    myOptions =
+      # content: boxText
+      # disableAutoPan: false
+      # maxWidth: 0
+      pixelOffset: new google.maps.Size(-200, -365)
+      # zIndex: null
+      # boxStyle:
+      #   background: "url('tipbox.gif') no-repeat"
+      #   opacity: 0.75
+      #   width: "280px"
+
+      # closeBoxMargin: "10px 2px 2px 2px"
+      # closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+      # infoBoxClearance: new google.maps.Size(1, 1)
+      # isHidden: false
+      # pane: "floatPane"
+      # enableEventPropagation: false
+
+    window.infobox = new InfoBox(myOptions)
+
+
+
+
+
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
       # We only want to wrap once!
@@ -201,8 +251,8 @@ $(document).ready ->
         $("div.gmnoprint").fadeIn 500
 
     # Fade out user callout when moving away
-    google.maps.event.addDomListener map, "bounds_changed", ->
-      $("#map_index_container_user").fadeOut "fast"
+    # google.maps.event.addDomListener map, "bounds_changed", ->
+    #   $("#map_index_container_user").fadeOut "fast"
 
 
 
@@ -225,32 +275,54 @@ $(document).ready ->
           animation: google.maps.Animation.DROP
         )
         google.maps.event.addListener marker, "mouseover", ->
-          map_index_map_subnav_mouseover(marker.id)
+          # map_index_map_subnav_mouseover(marker.id)
+
+
+
+
+
+
+
+
+
+
 
         google.maps.event.addListener marker, "click", ->
-          map_index_map_marker_locate(marker)
-          setTimeout (->
-            map_index_map_marker_click(marker.id)
-          ), 200
+
+          #map_index_map_marker_locate(marker)
+
+              #$("#map_index_container_user").fadeIn "fast"
+
+          map_index_map_marker_click(marker)
+
+          # setTimeout (->
+          #   map_index_map_marker_click(marker)
+          # ), 200
 
         # Load marker array for MarkerCluster (& User list trigger click)
         map_index_map_markers.push(marker)
 
 
+
+
+
+
+
+
       # Marker Clusterer
-      styles = [
-        url: "/assets/clusters/cluster_1.png"
-        height: 67
-        width: 67
-        anchor: [24, 0]
-        textColor: "#ffffff"
-        textSize: 20
-      ]
-      markerClusterer = new MarkerClusterer(map, map_index_map_markers,
-        minimumClusterSize: 2
-        gridSize: 100 # 60 is default
-        styles: styles
-      )
+      # styles = [
+      #   url: "/assets/clusters/cluster_1.png"
+      #   height: 67
+      #   width: 67
+      #   anchor: [24, 0]
+      #   textColor: "#ffffff"
+      #   textSize: 20
+      # ]
+      # markerClusterer = new MarkerClusterer(map, map_index_map_markers,
+      #   minimumClusterSize: 2
+      #   gridSize: 100 # 60 is default
+      #   styles: styles
+      # )
 
 
   map_index_map_marker_locate = (marker) ->
@@ -263,5 +335,5 @@ $(document).ready ->
     ), 1440
 
   map_index_map_subnav_mouseover = (marker_id) ->
-    $.get "/members/" + marker_id + "/mouseover", (data) ->
-      $("#map_index_map_subnav_mouseover").html data
+    # $.get "/members/" + marker_id + "/mouseover", (data) ->
+    #   $("#map_index_map_subnav_mouseover").html data

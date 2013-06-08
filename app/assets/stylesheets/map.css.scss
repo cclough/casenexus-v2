@@ -457,16 +457,10 @@ $blue_pastel: #98cdff;
 
 
 #map_index_container_user {
-  position:absolute;
-  display:none;
 
-  margin-top:-150px;
-  top:50%;
+  // display:none;
 
-  left:70%;
   width:400px;
-
-  // height:500px;
 
   background: rgba(0, 0, 0, 0.6);
 
@@ -488,14 +482,14 @@ $blue_pastel: #98cdff;
 #map_index_container_user:after {
    content:"";
    position: absolute;
-   right: 100%;
-   top: 50%;
-   margin-top:-18px;
+   left: 50%;
+   top: 100%;
+   margin-left:-18px;
    width: 0;
    height: 0;
-   border-top: 18px solid transparent;
-   border-right: 36px solid rgba(0, 0, 0, 0.6);;
-   border-bottom: 18px solid transparent;
+   border-left: 18px solid transparent;
+   border-top: 36px solid rgba(0, 0, 0, 0.6);;
+   border-right: 18px solid transparent;
 }
 
 
@@ -521,7 +515,9 @@ $blue_pastel: #98cdff;
 
 #map_index_user_avatar {
   text-align:center;
-  max-width:40px;
+  img{
+    max-width:40px;    
+  }
 
   // ADJUST THIS TO STOP TWITCH ON LOAD
   height:69px;
