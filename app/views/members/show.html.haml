@@ -101,7 +101,9 @@
               Feedback
             .row
               .span
-                = link_to raw("<i class=\"icon-edit icon-white\"/> Send"), { controller: "cases", action: "new", user_id: @user.id }, class: "btn btn-inverse btn-small"
+                %a#map_index_user_button_event.btn.btn-inverse.btn-small{ href:"/cases/new?user_id=" + @user.id.to_s}
+                  %i.icon-edit.icon-white
+                  Send
               .span
                 %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
                   %i.icon-refresh.icon-white
@@ -112,10 +114,13 @@
               Case
             .row
               .span
-                = link_to raw("<i class=\"icon-calendar icon-white\"/> Schedule"), "#", id: "map_index_user_button_event",class: "btn btn-inverse btn-small"
+                %a#map_index_user_button_event.btn.btn-inverse.btn-small
+                  %i.icon-calendar.icon-white
+                  Schedule
               .span
-                = link_to raw("<i class=\"icon-arrow-right icon-white\"/> Start"), "#", class: "btn btn-inverse btn-small"
-
+                %a.btn.btn-inverse.btn-small
+                  %i.icon-arrow-right.icon-white
+                  Start
 
           - elsif Friendship.requested?(@user, current_user)
 
@@ -147,18 +152,15 @@
 
 
 
+#modal_message.modal.hide.fade
+  = render '/shared/modal_message_form'
+#modal_feedback_req.modal.hide.fade
+  = render '/shared/modal_feedback_req_form'
 
+= render '/shared/modal_event'
 
-
-  #modal_message.modal.hide.fade
-    = render '/shared/modal_message_form'
-  #modal_feedback_req.modal.hide.fade
-    = render '/shared/modal_feedback_req_form'
-
-  = render '/shared/modal_event'
-
-  - if @friendship
-    #modal_friendship_req.modal.hide.fade
-      = render '/friendships/request_form'
+- if @friendship
+  #modal_friendship_req.modal.hide.fade
+    = render '/friendships/request_form'
 
       

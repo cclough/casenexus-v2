@@ -1,5 +1,4 @@
 window.map_index_map_markers = []
-window.markerClusterer = null
 window.map = null
 window.infobox = null
 
@@ -30,10 +29,12 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 
-window.map_index_map_marker_click = (marker) ->
+window.map_index_map_marker_click = (marker_id) ->
   # # Show User Panel
 
   # # #window.infowindow.close()
+
+  marker = map_index_map_markers[marker_id]
 
   $.ajax
     url: "/members/" + marker.id
@@ -47,56 +48,45 @@ window.map_index_map_marker_click = (marker) ->
       window.infobox.setContent boxcontent
       window.infobox.open map, marker
 
-  #     #$.get "/members/" + marker_id, (data) ->
+      setTimeout (->
 
-  #       # # Insert ajax data!
-  #       # $("#map_index_container_user").html data
+        # Code for 'close button'
+        $("#map_index_user_close").click ->
+          $("#map_index_container_user").fadeOut "slow"
 
-  #     # # Code for 'close button'
-  #     # $("#map_index_user_close").click ->
-  #     #   $("#map_index_container_user").fadeOut "slow"
+        # Modal Stuff!
+        $("#modal_message, #modal_feedback_req, #modal_friendship_req #modal_event").modal
+          backdrop: false
+          show: false
 
-  #     # # Modal Stuff!
-  #     # $("#modal_message, #modal_feedback_req, #modal_friendship_req #modal_event").modal
-  #     #   backdrop: false
-  #     #   show: false
+        $("#map_index_user_button_message").click ->
+          if !($("#modal_message").hasClass("in"))
+            $(".modal").modal("hide")
+            $("#modal_message").modal("show")
 
+        $("#map_index_user_button_friendrequest").click ->
+          if !($("#modal_friendship_req").hasClass("in"))
+            $(".modal").modal("hide")
+            $("#modal_friendship_req").modal("show")
 
-  #     # $("#map_index_user_button_message").click ->
-  #     #   if !($("#modal_message").hasClass("in"))
-  #     #     $(".modal").modal("hide")
-  #     #     $("#modal_message").modal("show")
+        $("#map_index_user_button_feedbackrequest").click ->
+          if !($("#modal_feedback_req").hasClass("in"))
+            $(".modal").modal("hide")
+            $("#modal_feedback_req").modal("show")
+            $("#modal_feedback_req_datepicker").datepicker()
 
+        $("#map_index_user_button_event").click ->
+          if !($("#modal_event").hasClass("in"))
+            $(".modal").modal("hide")
+            $.get "/events/new", (data) ->
+              $("#modal_event").html data
+            $("#modal_event").modal("show")
+            $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
+            $(".chzn-select").chosen()
 
-  #     # $("#map_index_user_button_friendrequest").click ->
-  #     #   if !($("#modal_friendship_req").hasClass("in"))
-  #     #     $(".modal").modal("hide")
-  #     #     $("#modal_friendship_req").modal("show")
-
-
-  #     # $("#map_index_user_button_feedbackrequest").click ->
-  #     #   if !($("#modal_feedback_req").hasClass("in"))
-  #     #     $(".modal").modal("hide")
-  #     #     $("#modal_feedback_req").modal("show")
-  #     #     $("#modal_feedback_req_datepicker").datepicker()
-
-
-  #     # $("#map_index_user_button_event").click ->
-  #     #   if !($("#modal_event").hasClass("in"))
-  #     #     $(".modal").modal("hide")
-  #     #     $.get "/events/new", (data) ->
-  #     #       $("#modal_event").html data
-  #     #     $("#modal_event").modal("show")
-  #     #     $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
-  #     #     $(".chzn-select").chosen()
-
-  #     #Fade panel back in
-      
-  #     $("#map_index_container_user").fadeIn "fast"
-
-  #     #$('#map_index_container_user').show "slide", { direction: "right" }, 200
-
-
+      ), 200
+      #Fade panel back in
+      # $("#map_index_container_user").fadeIn "fast"
 
 
 # Update the User List - submits form...
@@ -277,52 +267,22 @@ $(document).ready ->
         google.maps.event.addListener marker, "mouseover", ->
           # map_index_map_subnav_mouseover(marker.id)
 
-
-
-
-
-
-
-
-
-
-
         google.maps.event.addListener marker, "click", ->
+          map_index_map_marker_click(marker.id)
 
-          #map_index_map_marker_locate(marker)
 
-              #$("#map_index_container_user").fadeIn "fast"
-
-          map_index_map_marker_click(marker)
-
-          # setTimeout (->
-          #   map_index_map_marker_click(marker)
-          # ), 200
-
-        # Load marker array for MarkerCluster (& User list trigger click)
-        map_index_map_markers.push(marker)
+        map_index_map_markers[marker.id] = marker
 
 
 
+      ######## PAGE LOAD:
 
-
-
-
-
-      # Marker Clusterer
-      # styles = [
-      #   url: "/assets/clusters/cluster_1.png"
-      #   height: 67
-      #   width: 67
-      #   anchor: [24, 0]
-      #   textColor: "#ffffff"
-      #   textSize: 20
-      # ]
-      # markerClusterer = new MarkerClusterer(map, map_index_map_markers,
-      #   minimumClusterSize: 2
-      #   gridSize: 100 # 60 is default
-      #   styles: styles
-      # )
+      #Pan
+      map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
+      window.map_index_map_pan map_index_map_latlng_start
+      
+      #Infowindow
+      window.map_index_map_marker_click map_index_map_marker_id_start
 
 
   map_index_map_marker_locate = (marker) ->
