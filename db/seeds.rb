@@ -285,7 +285,7 @@ if Rails.env == 'development'
 
     confirm_tac = "1"
 
-    time_zone = rand("Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic")
+    time_zone = ["Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic"].sample
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 
@@ -299,6 +299,7 @@ if Rails.env == 'development'
                     cases_external: cases_external,
                     confirm_tac: confirm_tac,
                     ip_address: ip_address,
+                    time_zone: time_zone,
                     invitation_code: 'BYPASS_CASENEXUS_INV')
 
     user.completed = true
