@@ -82,7 +82,7 @@ window.map_index_map_marker_click = (marker_id) ->
             $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
             $(".chzn-select").chosen()
 
-      #Fade panel back in
+      # Doesn't work!
       # $("#map_index_container_user").fadeIn "fast"
 
 
@@ -145,7 +145,6 @@ $(document).ready ->
 
 
 
-
     # Change filter button caption
     selection = $(this).data("name")
     $("#map_index_users_form_pulldown_"+category+"_button").html(selection + "  <span class=caret></span>")
@@ -200,38 +199,9 @@ $(document).ready ->
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_container_map"), mapOptions)
 
-
-
-
-
-
-    #window.infowindow = new google.maps.InfoWindow(content: "<p id=\"hook\">Hello World!</p>")
-    #window.infowindow = new google.maps.InfoWindow()
-  
-    # Initiate InfoBox with options
-    myOptions =
-      # content: boxText
-      # disableAutoPan: false
-      # maxWidth: 0
-      pixelOffset: new google.maps.Size(-200, -365)
-      # zIndex: null
-      # boxStyle:
-      #   background: "url('tipbox.gif') no-repeat"
-      #   opacity: 0.75
-      #   width: "280px"
-
-      closeBoxMargin: "10px 2px 2px 2px"
-      # closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-      # infoBoxClearance: new google.maps.Size(1, 1)
-      # isHidden: false
-      # pane: "floatPane"
-      # enableEventPropagation: false
-
-    window.infobox = new InfoBox(myOptions)
-
-
-
-
+    # New infobox with offset
+    window.infobox = new InfoBox
+      pixelOffset: new google.maps.Size(-200, -419)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
@@ -242,6 +212,7 @@ $(document).ready ->
 
 
     # Commented as now use infobox, do i still want possibly?
+
     # Fade out user callout when moving away
     # google.maps.event.addDomListener map, "bounds_changed", ->
     #   $("#map_index_container_user").fadeOut "fast"
@@ -268,6 +239,7 @@ $(document).ready ->
         )
         google.maps.event.addListener marker, "mouseover", ->
           # map_index_map_subnav_mouseover(marker.id)
+          map_index_map_marker_click(marker.id)
 
         google.maps.event.addListener marker, "click", ->
           map_index_map_marker_click(marker.id)

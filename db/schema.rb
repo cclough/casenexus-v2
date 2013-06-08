@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519091230) do
+ActiveRecord::Schema.define(:version => 20130608211705) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at",                       :null => false
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(:version => 20130519091230) do
     t.integer  "cases_external"
     t.boolean  "active",                 :default => true
     t.integer  "country_id"
+    t.string   "time_zone",              :default => "UTC"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

@@ -419,9 +419,9 @@ $blue_pastel: #98cdff;
   bottom: 0px;
   right: 0px;
 
-  padding: 6px 3px 2px 3px;
+  padding: 1px 3px 2px 3px;
 
-  height:25px;
+  height:20px;
   width:260px;
 
   border-top-left-radius: 5px;
@@ -458,6 +458,7 @@ $blue_pastel: #98cdff;
 
 #map_index_container_user {
 
+  // Fade in wont work!
   // display:none;
 
   width:400px;
@@ -539,6 +540,31 @@ $blue_pastel: #98cdff;
   margin:2px;
 }
 
+#map_index_user_panel_counts {
+
+  margin: 0px 0px -2px 90px;
+  width:198px;
+  text-align:center;
+
+  color:$gray_Light;
+
+  padding:10px 10px 3px 10px;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  border: 1px solid $gray_Light;
+  border-bottom:0;
+
+  border-top-left-radius: 7px;
+  -moz-border-top-left-radius: 7px;
+  -webkit-border-top-left-radius: 7px;
+
+  border-top-right-radius: 7px;
+  -moz-border-top-right-radius: 7px;
+  -webkit-border-top-right-radius: 7px;
+
+}
+
 #map_index_user_panel_actions, #map_index_user_panel_associations {
   width:177px;
 
@@ -609,8 +635,30 @@ $blue_pastel: #98cdff;
 }
 
 
-.map_index_user_association_item {
 
+#map_index_user_panel_counts_int_num {
+  font-size:30px;
+  font-weight:bolder;
+}
+
+#map_index_user_panel_counts_plus {
+  font-size:30px;
+
+}
+
+#map_index_user_panel_counts_ext_num {
+  font-size:30px;
+  font-weight:lighter;
+}
+
+.map_index_user_panel_counts_desc {
+  font-size:10px !important;
+  width:80px;
+}
+
+
+
+.map_index_user_association_item {
 
   color: $gray_Lighter;
 
@@ -619,7 +667,6 @@ $blue_pastel: #98cdff;
   // background: url('app/dark-bg.png') repeat top left;
 
   list-style:none;
-
 
 }
 
@@ -645,6 +692,3 @@ $blue_pastel: #98cdff;
 
 }
 
-.mapp-ib-close {
-  display:none;
-}

@@ -168,6 +168,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       confirm_tac: "1",
 
+      time_zone: "UTC",
+
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
   admin.completed = true
   admin.admin = true
@@ -192,6 +194,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       confirm_tac: "1",
 
+      time_zone: "Lisbon",
+
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
   admin.completed = true
   admin.admin = true
@@ -215,6 +219,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
       skype: "cloughrobin",
 
       confirm_tac: "1",
+
+      time_zone: "Brasilia",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
@@ -278,6 +284,8 @@ if Rails.env == 'development'
     cases_external = 10
 
     confirm_tac = "1"
+
+    time_zone = rand("Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic")
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 

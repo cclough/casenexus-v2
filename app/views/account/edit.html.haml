@@ -64,11 +64,16 @@
 
           .panel.dark.kill_left
             .row
-              .span12
+              .span
                 Languages
               .span
-                = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30"}
-
+                = f.collection_select :language_ids, Language.all, :id, :name, {selected: @user.language_ids}, {multiple: true, class: "chzn-select span30"}
+            .spacer10
+            .row
+              .span
+                Time Zone
+              .span.offset1
+                = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select" }
         .span40
           .panel.dark.kill_left.kill_bottom
             .row
@@ -82,7 +87,7 @@
                 Which firms are you applying for?
             .row
               .span
-                = f.collection_select :firm_ids, Firm.all, :id, :name, {:selected => @user.firm_ids}, {multiple: true, class: "chzn-select span36"}
+                = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span36"}
 
             .spacer10
             .row
