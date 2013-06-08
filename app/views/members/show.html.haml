@@ -108,11 +108,12 @@
               Case
             .row
               .span
-                %a#map_index_user_button_event.btn.btn-inverse.btn-small
+                %a#map_index_user_button_event.btn.btn-inverse.btn-small{href:"#"}
                   %i.icon-calendar.icon-white
                   Schedule
+
               .span
-                %a.btn.btn-inverse.btn-small
+                %a.btn.btn-inverse.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
                   %i.icon-arrow-right.icon-white
                   Start
 

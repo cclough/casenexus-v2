@@ -26,13 +26,10 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 
-
-
-
 window.map_index_map_marker_click = (marker_id) ->
-  # # Show User Panel
+  # Show User Panel
 
-  # # #window.infowindow.close()
+  # window.infowindow.close()
 
   marker = map_index_map_markers[marker_id]
 
@@ -40,22 +37,23 @@ window.map_index_map_marker_click = (marker_id) ->
     url: "/members/" + marker.id
     success: (data) ->
 
-      # #window.ib.close()
-
       boxcontent = document.createElement "div"
       boxcontent.innerHTML = data
 
       window.infobox.setContent boxcontent
       window.infobox.open map, marker
 
-      setTimeout (->
+      # Load in modals to div then prime buttons
+      $.get "/members/" + marker.id + "/show_modals", (data) ->
+        $("#map_index_container_user_modals").html data
 
         # Code for 'close button'
         $("#map_index_user_close").click ->
-          $("#map_index_container_user").fadeOut "slow"
+          $("#map_index_container_user").fadeOut "fast", ->
+            window.infobox.close()
 
         # Modal Stuff!
-        $("#modal_message, #modal_feedback_req, #modal_friendship_req #modal_event").modal
+        $("#modal_message, #modal_feedback_req, #modal_friendship_req, #modal_event").modal
           backdrop: false
           show: false
 
@@ -84,7 +82,6 @@ window.map_index_map_marker_click = (marker_id) ->
             $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
             $(".chzn-select").chosen()
 
-      ), 200
       #Fade panel back in
       # $("#map_index_container_user").fadeIn "fast"
 
@@ -205,6 +202,9 @@ $(document).ready ->
 
 
 
+
+
+
     #window.infowindow = new google.maps.InfoWindow(content: "<p id=\"hook\">Hello World!</p>")
     #window.infowindow = new google.maps.InfoWindow()
   
@@ -220,7 +220,7 @@ $(document).ready ->
       #   opacity: 0.75
       #   width: "280px"
 
-      # closeBoxMargin: "10px 2px 2px 2px"
+      closeBoxMargin: "10px 2px 2px 2px"
       # closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
       # infoBoxClearance: new google.maps.Size(1, 1)
       # isHidden: false
@@ -240,6 +240,8 @@ $(document).ready ->
         $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
         $("div.gmnoprint").fadeIn 500
 
+
+    # Commented as now use infobox, do i still want possibly?
     # Fade out user callout when moving away
     # google.maps.event.addDomListener map, "bounds_changed", ->
     #   $("#map_index_container_user").fadeOut "fast"
