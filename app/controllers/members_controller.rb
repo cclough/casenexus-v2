@@ -56,9 +56,17 @@ class MembersController < ApplicationController
     end
 
     respond_to do |format|
-      @notification = @user.notifications.build
-      @friendship = @user.friendships.build unless Friendship.exist?(current_user, @user)
-      
+      format.html { render layout: false }
+    end
+  end
+
+  def show_modals
+    @user = User.find(params[:id])
+    
+    @notification = @user.notifications.build
+    @friendship = @user.friendships.build unless Friendship.exist?(current_user, @user)
+    
+    respond_to do |format|
       format.html { render layout: false }
     end
   end

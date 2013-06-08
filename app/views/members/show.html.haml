@@ -1,9 +1,3 @@
-/ :javascript
-/   var map_index_user_feedback_chart_radar_count = #{@case_count};
-
-/   var map_index_user_feedback_chart_radar_data_all = #{Case.map_index_user_feedback_chart_radar_data_all(current_user, @user.id, @case_count)};
-/   var map_index_user_feedback_chart_radar_data_combined = #{Case.map_index_user_feedback_chart_radar_data_combined(current_user, @user.id, @case_count)};
-
 
 #map_index_container_user
   .panel.darker#map_index_user_panel_info
@@ -140,27 +134,4 @@
               %div
                 %i.icon-comment.icon-white.icon-4x
               %span
-                Send Friend Request
-
-
-
-
-
-
-
-
-
-
-
-#modal_message.modal.hide.fade
-  = render '/shared/modal_message_form'
-#modal_feedback_req.modal.hide.fade
-  = render '/shared/modal_feedback_req_form'
-
-= render '/shared/modal_event'
-
-- if @friendship
-  #modal_friendship_req.modal.hide.fade
-    = render '/friendships/request_form'
-
-      
+                Send Friend Request      

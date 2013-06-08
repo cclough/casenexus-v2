@@ -32,6 +32,7 @@ Casenexus::Application.routes.draw do
   # Members
   resources :members, only: [:index, :show] do
     get :mouseover, on: :member
+    get :show_modals, on: :member
     put :show_help, on: :member
     get :help_checkbox, on: :collection
   end
