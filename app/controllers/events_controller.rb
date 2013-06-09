@@ -84,6 +84,11 @@ class EventsController < ApplicationController
   end
 
   def user_timezone
+    
+    if params[:datetime]
+      @datetime = Time.parse(params[:datetime])
+    end
+
     @user = User.find(params[:user_id])
     render layout: false
   end

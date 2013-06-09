@@ -73,36 +73,24 @@ $blue_linkedin: #006699;
 }
 
 
-
-
-
-
-
-
-#events_new_time_hour {
-  text-align:center;
-  font-size:11px;
-  .btn {
-    width:10px;
-    padding:3px;
-    height:20px;
-    margin:2px;
-  }
+#events_new_datetime_input {
+  height:30px;
+  font-size:20px;
+  border:0;
 }
 
-#events_new_time_minute {
-  text-align:center;
-  font-size:11px;
-  .btn {
-    width:20px;
-    height:20px;
-    margin:2px;
-  }
+#events_new_datetime_friend {
+  height:30px;
+  font-size:20px;
+  border:0;
 }
 
-#events_new_time_ampm {
-  padding:5px;
-}
+
+
+
+
+
+
 
 
 // .bootstrap-datetimepicker-widget {

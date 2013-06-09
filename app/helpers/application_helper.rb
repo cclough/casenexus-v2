@@ -54,4 +54,22 @@ module ApplicationHelper
     end
   end
 
+  def timezone_difference(user1, user2)
+    
+    time1 = Time.zone.now.in_time_zone(user1.time_zone)
+    time2 = Time.zone.now.in_time_zone(user2.time_zone)
+
+    time_difference = (time2.utc_offset - time1.utc_offset) / 1.hour
+    
+    if time_difference < 0
+      #remove minus! #[1..-1]
+      pluralize(time_difference.abs, "hour") + " behind"
+    elsif time_difference > 0
+      pluralize(time_difference, "hour") + " ahead"
+    elsif time_difference = 0
+      "Same Time Zone"
+    end
+
+  end
+
 end

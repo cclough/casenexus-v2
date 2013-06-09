@@ -1,5 +1,5 @@
 window.summary_index_events_modal_rebless = ->
-  $("#events_datetimepicker").datetimepicker
+  $("#events_new_datetime_picker").datetimepicker
     format: "dd MM yyyy - hh:ii"
 
   # $(".chzn-select").chosen()
@@ -7,6 +7,13 @@ window.summary_index_events_modal_rebless = ->
   $("#events_new_friend_select").change ->
     $.get "/events/user_timezone?user_id=" + $(this).val(), (data) ->
       $("#events_new_friend_timezone").html data
+
+
+  $("#events_new_datetime_input").change ->
+
+    $.get "/events/user_timezone?user_id=" + $("#events_new_friend_select").val()+"&datetime="+$(this).val(), (data) ->
+      $("#events_new_datetime_friend").html data
+
 
   $(".events_new_time_hour_button").click ->
     $(".events_new_input_hour_button").removeClass "active"

@@ -220,7 +220,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       confirm_tac: "1",
 
-      time_zone: "Brasilia",
+      time_zone: "Fiji",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
@@ -285,7 +285,7 @@ if Rails.env == 'development'
 
     confirm_tac = "1"
 
-    time_zone = ["Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic"].sample
+    time_zone = ["Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic", "Fiji"].sample
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 

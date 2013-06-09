@@ -16,39 +16,38 @@
     %div
 
       .row
-        .span6
-          Friend
+        .span13
+          Choose a Friend
         .span20
           %select#events_new_friend_select.chzn-select.span20{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
             %option
-              = options_from_collection_for_select(@friends, "id", "first_name")
-        .span20
+              = options_from_collection_for_select(@friends, "id", "name")
+        .span18.offset1
           #events_new_friend_timezone
       .row
         .span
-          Date & time
-        .span
-        
-        / = f.text_field :datetime
-        / #events_datetimepicker.input-append.date
-        /   %input{:type => "text"}/
-        /   %span.add-on
-        /     %i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+          .panel.darker.kill
 
-        #events_datetimepicker.input-append.date
-          %input{:readonly => "", :size => "16", :type => "text", :value => ""}/
-          %span.add-on
-            %i.icon-calendar
-
-      .field
+            .row
+              .span
+                Date & time
+            .row
+              .span26
+                #events_new_datetime_picker.input-append.date
+                  = f.text_field :datetime, id: "events_new_datetime_input"
+                  %span.add-on
+                    %i.icon-calendar
+              .span26
+                #events_new_datetime_friend
 
 
-      .field
+      .row
         Which case would you like your friend to prepare?
-        %br/
-        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_partner]"}
-          %option
-            = options_from_collection_for_select(@books, "id", "title")
+      .row
+        .offset13
+          %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_partner]"}
+            %option
+              = options_from_collection_for_select(@books, "id", "title")
 
 
   .modal-footer
