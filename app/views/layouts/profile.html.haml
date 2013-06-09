@@ -64,20 +64,7 @@
 
     #application_container_online
 
-      #application_container_online_title
-        Your friends
-      #application_container_online_friends
-        - for online_friend_item in current_user.accepted_friends
-          .application_container_online_item
-
-            - @online_user_type = "friend"
-            - @online_user = User.find(online_friend_item.id)
-
-            = render partial: 'shared/online_user_item'
-
-      #application_container_online_title
-        Who's online
-      #application_container_online_nonfriends
+      = render 'shared/online'
 
 
 

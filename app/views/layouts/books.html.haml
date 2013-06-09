@@ -15,20 +15,25 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-  %body{:class => ("signedout" if !current_user.completed?)}
+  %body{style:"overflow-y:hidden;"}
 
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
 
-    .container.main
-      = render 'shared/title'
-      .row
-        .span100
-          = yield
+    #application_container_main
+      .container.main
+        = render 'shared/title'
+        .row
+          .span100
+            = yield
 
-      / footer
-      = render 'layouts/footer'
+        / footer
+        = render 'layouts/footer'
+
+    #application_container_online
+
+      = render 'shared/online'
 
   = render 'shared/modal_help' if signed_in?
   = render 'shared/modal_contact'
