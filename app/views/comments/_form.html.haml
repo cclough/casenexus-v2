@@ -3,11 +3,9 @@
     .span25
     .span40.panel.darker
       = form_for [@commentable, @comment] do |f|
-        - if @comment.errors.any?
-          %h2 Please correct the following errors.
-          %ul
-            - @comment.errors.full_messages.each do |msg|
-              %li= msg
+        #flash_notifications
+          = render 'shared/error_messages', object: @comment
+
         
         = f.text_area :content, rows: 4, class: "span40"
         .spacer10
