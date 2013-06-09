@@ -164,6 +164,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       language_ids: 1,
 
+      cases_external: 24,
+
       skype: "christianclough",
 
       confirm_tac: "1",
@@ -190,6 +192,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       language_ids: 1,
 
+      cases_external: 12,
+
       skype: "cloughrobin",
 
       confirm_tac: "1",
@@ -215,6 +219,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       language_ids: 1,
+
+      cases_external: 14,
 
       skype: "cloughrobin",
 

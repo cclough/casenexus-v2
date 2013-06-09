@@ -195,6 +195,8 @@ $blue_pastel: #98cdff;
   font-size:11px;
 }
 
+
+
 #cases_show_subnav_name {
   font-size:17px;
   line-height:30px;
@@ -207,8 +209,14 @@ $blue_pastel: #98cdff;
 }
 
 
+#cases_show_subnav_browse {
+  margin-top:-50px;
+}
+
 #cases_show_subnav_score {
-  font-size: 26px;
+  font-size: 40px;
+  height:40px;
+  line-height:40px;
   font-weight: bold;
   text-align:center;
   color: $blue_pastel !important;

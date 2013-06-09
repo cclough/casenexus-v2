@@ -1,54 +1,54 @@
-.span73
-  .panel.darker.kill_left.kill_right
+.row
+  .span40
+    / .panel.gradient.kill_bottom.kill_left.kill_right
+    /   .row
+    /     .span5
+    /       / = avatar_for(@case.interviewer, 'icon')
+    /       .row
+    /         = image_tag "avatars/icon.png"
+    /       .row
+    /         = casecounts(@case.interviewer)
+    /     .span32
+    /       .row
+    /         .span.offset1#cases_show_subnav_name
+    /           = @case.interviewer.name
+    /         .span.offset1
+    /           - unless @case.interviewer.country.blank?
+    /             .span3
+    /               = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.name
+    /       .row
+    /         .span2.offset1
+    /           = image_tag "universities/" + @case.interviewer.university.image
+    /         .span.offset1#cases_show_subnav_university
+    /           = @case.interviewer.university.name
+
+
+  .span29.pull-right#cases_show_subnav_browse
+    %select#cases_show_subnav_select.chzn-select.span29{"data-placeholder" => "Jump to Case...", value: @case.id }
+      %option
+        - @cases.each do |cases_select_item|
+          %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
+            = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
     .row
-      .span40
-        .panel.gradient.kill_all
-          .row
-            .span5
-              / = avatar_for(@case.interviewer, 'icon')
-              = image_tag "avatars/icon.png"
-            .span32
-              .row
-                .span.offset1#cases_show_subnav_name
-                  = @case.interviewer.name
-                .span.offset1
-                  - unless @case.interviewer.country.blank?
-                    .span3
-                      = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.name
-              .row
-                .span2.offset1
-                  = image_tag "universities/" + @case.interviewer.university.image
-                .span.offset1#cases_show_subnav_university
-                  = @case.interviewer.university.name
+      .span
+        #cases_show_subnav_date
+          = @case.date.strftime("%a %d %b %Y %I:%M%p")
 
-
-
-      .span29.pull-right
-        %select#cases_show_subnav_select.chzn-select.span29{"data-placeholder" => "Jump to Case...", value: @case.id }
-          %option
-            - @cases.each do |cases_select_item|
-              %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
-                = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
-        .row
-          .span
-            #cases_show_subnav_date
-              = @case.date.strftime("%a %d %b %Y %I:%M%p")
-
-    .spacer10
+.spacer10
+.row
+  .panel.darker.kill_all
     .row
-      .panel.darker.kill_all
+      .span62
         .row
-          .span62
-            .row
-              .span7
-                Source:
-              %span
-                = @case.source
-            .row
-              .span7
-                Subject:
-              %span
-                = @case.subject
-          .span6
-            #cases_show_subnav_score.panel.darker.kill_all
-              = @case.totalscore.to_f.round(1)
+          .span7
+            Source:
+          %span
+            = @case.source
+        .row
+          .span7
+            Subject:
+          %span
+            = @case.subject
+      .span8.pull-right
+        #cases_show_subnav_score.panel.darker.kill_all
+          = @case.totalscore.to_f.round(1)

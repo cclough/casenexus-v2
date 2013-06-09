@@ -1,21 +1,25 @@
 .span2
   = image_tag "avatars/icon.png"
 .span.offset1
-  = @online_user.name_trunc
+  = link_to @online_user.name_trunc, "/map?user_id=" + @online_user.id.to_s
 
 - if @online_user_type == "friend"
   .pull-right
-    = link_to "notifications/1" do
-      .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
-        %i.icon-envelope
+    .btn-group.application_container_online_item_button
+      %a.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %i.icon-ellipsis-horizontal
+      %ul.dropdown-menu.pull-right
+        = link_to "notifications/1" do
+          .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom"}
+            %i.icon-envelope
 
-    = link_to "/console?friend_id=" + @online_user.id.to_s do
-      .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.first_name, rel: "tooltip", "data-placement"=>"bottom"}
-        %i.icon-pencil
+        = link_to "/console?friend_id=" + @online_user.id.to_s do
+          .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.first_name, rel: "tooltip", "data-placement"=>"bottom"}
+            %i.icon-pencil
 
-    - if !@online_user.skype.blank?
-      = link_to "skype:#{@online_user.skype}?call", class: "btn btn-inverse btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.first_name + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
-        = image_tag "icons/skype_button.png", class: "application_icon_skype"
+        - if !@online_user.skype.blank?
+          = link_to "skype:#{@online_user.skype}?call", class: "btn btn-inverse btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.first_name + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
+            = image_tag "icons/skype_button.png", class: "application_icon_skype"
 - else
   .pull-right
     = link_to "notifications/1" do

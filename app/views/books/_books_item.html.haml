@@ -28,7 +28,9 @@
       .row
         .pull-right
           .span
-            = link_to raw("<i class=icon-envelope></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-inverse"
+            = link_to raw("<i class=icon-calendar></i> Schedule this case with a friend"), "#", class: "btn btn-inverse"
+          .span.offset1
+            = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-inverse"
           .span.offset1
             .books_index_books_item_comments{"data-id"=>books_item.id}
               = link_to "Rate & Comment (#{books_item.comments.count})", book_path(books_item), class: "btn btn-inverse"

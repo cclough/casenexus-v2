@@ -176,10 +176,11 @@ a:hover {
   width:17%;
   height:100%;
   float:left;
-  background: url('app/bg-texture.jpg') repeat top left;
+  background: url('app/bg-texture4.jpg') repeat top left;
   overflow-y: auto;
   // border-left: 3px solid black;
 }
+
 
 
 
@@ -194,6 +195,10 @@ a:hover {
 }
 
 
+#application_container_online_friends {
+  height:312px;
+  overflow-y:scroll;
+}
 
 .application_container_online_item {
 
@@ -203,6 +208,11 @@ a:hover {
   font-size:12px;
   line-height:25px;
 
+  a {
+    color:white;
+
+  }
+  
   &:hover {
     background: rgba(0, 0, 0, 0.5);
     color:white;
@@ -222,6 +232,19 @@ a:hover {
     }
   }
 }
+
+
+.application_container_online_item_button {
+  .dropdown-menu {
+    max-width:30px !important;
+  }
+
+  .btn {
+    width:5px !important;
+    height:15px;
+  }
+}
+
 
 // .application_container_online_item_avatar {
 //   max-width: 20px
