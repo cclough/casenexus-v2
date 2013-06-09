@@ -1,16 +1,22 @@
 window.summary_index_events_modal_rebless = ->
-  $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
-  $(".chzn-select").chosen()
+  $("#events_datetimepicker").datetimepicker
+    format: "dd MM yyyy - hh:ii"
 
-  $(".events_new_input_hour_button").click ->
+  # $(".chzn-select").chosen()
+
+  $("#events_new_friend_select").change ->
+    $.get "/events/user_timezone?user_id=" + $(this).val(), (data) ->
+      $("#events_new_friend_timezone").html data
+
+  $(".events_new_time_hour_button").click ->
     $(".events_new_input_hour_button").removeClass "active"
     $(this).addClass "active"
 
-  $(".events_new_input_minute_button").click ->
+  $(".events_new_time_minute_button").click ->
     $(".events_new_input_minute_button").removeClass "active"
     $(this).addClass "active"
 
-  $(".events_new_input_ampm_button").click ->
+  $(".events_new_time_ampm_button").click ->
     $(".events_new_input_ampm_button").removeClass "active"
     $(this).addClass "active"
 
@@ -23,7 +29,7 @@ $(document).ready ->
   	show: false
 
 
-  $("#events_calendar_button_new").click ->
+  $("#events_calendar_new_button").click ->
     if !($("#modal_event").hasClass("in"))
       $(".modal").modal("hide")
       $.get "/events/new", (data) ->

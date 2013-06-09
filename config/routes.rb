@@ -8,6 +8,7 @@ Casenexus::Application.routes.draw do
   # Pusher
   post 'pusher/auth'
 
+  # Online user panel
   match '/online_user_item', to: 'application#online_user_item'
 
   # Static Pages
@@ -96,6 +97,7 @@ Casenexus::Application.routes.draw do
   # Events
   resources :events do
     get :ics, on: :collection
+    get :user_timezone, on: :collection
   end
 
 end

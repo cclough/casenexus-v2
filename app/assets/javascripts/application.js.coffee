@@ -9,11 +9,12 @@
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
+
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
 
 #= require lib/bootstrap.min
-#= require lib/bootstrap-datepicker
+#= require lib/bootstrap-datetimepicker
 #= require bootstrap-wysihtml5
 
 # Get query params, global function

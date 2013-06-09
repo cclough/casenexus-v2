@@ -79,7 +79,18 @@ $blue_linkedin: #006699;
 
 
 
-#events_new_input_hour {
+#events_new_time_hour {
+  text-align:center;
+  font-size:11px;
+  .btn {
+    width:10px;
+    padding:3px;
+    height:20px;
+    margin:2px;
+  }
+}
+
+#events_new_time_minute {
   text-align:center;
   font-size:11px;
   .btn {
@@ -89,22 +100,21 @@ $blue_linkedin: #006699;
   }
 }
 
-#events_new_input_minute {
-  text-align:center;
-  font-size:11px;
-  .btn {
-    width:20px;
-    height:20px;
-    margin:2px;
-  }
-}
-
-#events_new_input_ampm {
+#events_new_time_ampm {
   padding:5px;
 }
 
 
+// .bootstrap-datetimepicker-widget {
+//   position: relative;
+//   z-index: 99999;
+// }
 
+// .chzn-drop, .chzn-single, .chzn-container {
+//   position: relative !important;
+//   z-index: 99999 !important; 
+// }
 
-
-
+// .modal-body, #modal_event, .modal-footer {
+//     overflow-y:visible;
+// }

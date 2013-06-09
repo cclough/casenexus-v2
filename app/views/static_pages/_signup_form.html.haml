@@ -6,7 +6,7 @@
     .row
       .span23
 
-        = simple_form_for(@user, url: user_registration_path(@user)) do |f|
+        = simple_form_for @user, url: user_registration_path(@user), :html => { "autocomplete"=>"off" } do |f|
 
           .row#static_home_signup_invitation_code_panel.panel.darker.kill_all
             #static_home_signup_invitation_code_text

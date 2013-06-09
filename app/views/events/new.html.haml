@@ -14,49 +14,35 @@
           - @event.errors.full_messages.each do |msg|
             %li= msg
     %div
-      .field
-        Date & time
-        %br/
-        = f.text_field :datetime, 'data-date-format' => "dd/mm/yyyy", id:"events_datepicker"
-      .field
-        .row
-          .span20
-            #events_new_input_hour.panel.dark.kill_all
-              .row
-                Hour
-              .row
-                - (1..12).each do |i|
-                  .events_new_input_hour_button.btn.btn-inverse{ "data-num" => i }
-                    = i
-                #events_new_input_ampm.panel.dark.kill_all
-                  .events_new_input_ampm_button.btn.btn-inverse
-                    AM
-                  .events_new_input_ampm_button.btn.btn-inverse
-                    PM
 
-          .span11
-            #events_new_input_minute.panel.dark.kill_top.kill_bottom
-              .row
-                Minute
-              .row
-                .events_new_input_minute_button.btn.btn-inverse
-                  15
-              .row
-                .events_new_input_minute_button.btn.btn-inverse
-                  30
-              .row
-                .events_new_input_minute_button.btn.btn-inverse
-                  45
-              .row
-                .events_new_input_minute_button.btn.btn-inverse
-                  00
+      .row
+        .span6
+          Friend
+        .span20
+          %select#events_new_friend_select.chzn-select.span20{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
+            %option
+              = options_from_collection_for_select(@friends, "id", "first_name")
+        .span20
+          #events_new_friend_timezone
+      .row
+        .span
+          Date & time
+        .span
+        
+        / = f.text_field :datetime
+        / #events_datetimepicker.input-append.date
+        /   %input{:type => "text"}/
+        /   %span.add-on
+        /     %i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+
+        #events_datetimepicker.input-append.date
+          %input{:readonly => "", :size => "16", :type => "text", :value => ""}/
+          %span.add-on
+            %i.icon-calendar
 
       .field
-        Friend
-        %br/
-        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[partner_id]"}
-          %option
-            = options_from_collection_for_select(@friends, "id", "first_name")
+
+
       .field
         Which case would you like your friend to prepare?
         %br/

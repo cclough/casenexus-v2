@@ -82,5 +82,10 @@ class EventsController < ApplicationController
       redirect_to summary_path
     end
   end
+
+  def user_timezone
+    @user = User.find(params[:user_id])
+    render layout: false
+  end
     
 end
