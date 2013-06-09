@@ -1,0 +1,57 @@
+= form_for @event, remote: true do |f|
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+    %h3 Ammend Case Appointment
+
+  .modal-body  
+    #flash_notifications
+      = render 'shared/error_messages', object: @event
+
+    .row
+      .span12
+        With:
+      .span.offset1
+        %strong
+          = @event.partner.name
+    .spacer10
+    .row
+      .offset13
+        #events_new_friend_timezone
+          / = render "events/user_timezone", user_id: @event.partner.id
+
+    .spacer10
+    .row
+      .span12
+        Date & Time:
+      .span.offset1
+        #events_new_datetime_picker.input-append.date
+          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "..."
+          %span.add-on
+            %i.icon-calendar
+    .row
+      .offset13
+        #events_new_datetime_friend
+          = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime
+
+    .spacer10
+    .row
+      .span12
+        Case you want them to prepare:
+      .span.offset1
+        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_user]"}
+          %option
+            = options_from_collection_for_select(Book.all, "id", "title", @event.book_id_user)
+
+    .spacer10
+    .row
+      .span12
+        Case they want you to prepare:
+      .span.offset1
+        = Book.find(@event.book_id_partner).title
+
+  .modal-footer
+    .pull-left
+      = link_to("Cancel Appointment", event_path(@event), method: :delete, class: "btn btn-inverse", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    = f.submit "Edit Appointment", class: "btn btn-inverse"

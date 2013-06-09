@@ -1,0 +1,19 @@
+
+/ - @datetime = date_and_time if date_and_time?
+- @user = User.find(user_id) if !@user
+
+
+- if @datetime
+  .span
+    %strong
+      For #{@user.first_name}:
+  .span.offset1
+    = @datetime.in_time_zone(@user.time_zone).strftime("%d %B %Y - %H:%M")
+
+- else
+
+  .span
+    %strong
+      #{@user.first_name}'s Timezone:
+  .span.offset1
+    = @user.time_zone + " - " + timezone_difference(current_user,@user)

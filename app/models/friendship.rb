@@ -148,7 +148,6 @@ class Friendship < ActiveRecord::Base
 
   class << self
 
-    
     # Update the db with one side of an accepted connection request.
     def accept_one_side(user, friend, accepted_at)
       fs = friendship(user, friend)

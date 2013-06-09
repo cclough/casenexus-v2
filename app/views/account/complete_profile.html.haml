@@ -55,6 +55,13 @@
               .spacer5
               Receive notifications via email
 
+        .spacer10
+        .row
+          .span
+            Time Zone
+          .span.offset1
+            = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {}, { class: "chzn-select" }
+
       #account_complete_step3.panel.darker.kill_right.kill_bottom
         .font-small
           %ul.application_bullets

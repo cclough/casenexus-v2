@@ -62,7 +62,7 @@ module ApplicationHelper
     time_difference = (time2.utc_offset - time1.utc_offset) / 1.hour
     
     if time_difference < 0
-      #remove minus! #[1..-1]
+      # .abs makes it positive
       pluralize(time_difference.abs, "hour") + " behind"
     elsif time_difference > 0
       pluralize(time_difference, "hour") + " ahead"

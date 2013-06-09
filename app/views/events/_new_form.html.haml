@@ -1,0 +1,50 @@
+= form_for @event, remote: true do |f|
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+    %h3 New Case Appointment
+
+  .modal-body  
+
+    #flash_notifications
+      = render 'shared/error_messages', object: @event
+
+    .row
+      .span13
+        Choose a Friend
+      .span20
+        %select#events_new_friend_select.chzn-select.span20{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
+          %option
+            = options_from_collection_for_select(current_user.accepted_friends, "id", "name")
+    .row
+      .offset13
+        #events_new_friend_timezone
+    .spacer10
+    .row
+      .span13
+        Chose Date & Time
+      .span20
+        #events_new_datetime_picker.input-append.date
+          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "..."
+          %span.add-on
+            %i.icon-calendar
+
+    .row
+      .offset13
+        #events_new_datetime_friend
+
+    .spacer10
+    .row
+      .span13
+        Which case should they prepare?
+      .span20
+        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_partner]"}
+          %option
+            = options_from_collection_for_select(Book.all, "id", "title")
+
+
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    = f.submit "Book Appointment", class: "btn btn-inverse"
+
+    

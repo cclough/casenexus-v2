@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   validates :partner_id, presence: true, if: Proc.new { |n| n.partner.nil? }
   validates :partner, presence: true, if: Proc.new { |n| n.partner_id.nil? }
 
-
+  validates :datetime, presence: true, if: Proc.new { |n| n.datetime.nil? }
 
 
   def send_reminders
@@ -32,6 +32,9 @@ class Event < ActiveRecord::Base
         notificable = create!(user: partner, partner: user, datetime: datetime, book_id_user: book_id_partner, book_id_partner: book_id_user)
         create_notification_for_create(partner, user, notificable, "event_set_partner")
       end
+
+      rescue ActiveRecord::RecordInvalid => invalid
+        false
     end
 
     def cancel(user, partner)
@@ -59,6 +62,9 @@ class Event < ActiveRecord::Base
         event
         create_notification_for_change(partner, user, event, "event_change")
       end
+
+      rescue ActiveRecord::RecordInvalid => invalid
+        false
     end
 
     # Return a event based on the user and partner (used in e.g. cancel method)

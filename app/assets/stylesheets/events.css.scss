@@ -6,6 +6,16 @@ $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
+
+
+
+
+
+
+///////////////////////////////////////////////
+////////////////// CALENDAR ///////////////////
+///////////////////////////////////////////////
+
 #events_calendar {
   p { margin: 5px 0; }
   .info {
@@ -73,6 +83,88 @@ $blue_linkedin: #006699;
 }
 
 
+
+
+///////////////////////////////////////////////
+/////////////////// INDEX /////////////////////
+///////////////////////////////////////////////
+
+
+
+
+.events_index_block_title {
+
+  margin:-10px -10px 5px -10px;
+
+  line-height:25px;
+  font-weight: bold;
+  text-align:center;
+  color:$gray_Lighter;
+  font-size:12px;
+
+  background: url('app/dark-bg.png') repeat top left;
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+  border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+
+.events_index_events_item {
+
+  text-decoration:none;
+  background: rgba(0, 0, 0, 0.2);
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  color:$gray_Lighter;
+
+  padding:6px;
+  margin:3px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+    cursor:pointer;cursor:hand;
+  }
+
+  .btn {
+    height:18px;
+    width:12px;
+  }
+}
+
+
+.events_index_events_item_date {
+  font-size:12px !important;
+}
+
+
+
+
+
+
+///////////////////////////////////////////////
+///////////////////// NEW /////////////////////
+///////////////////////////////////////////////
+
+
+
+#events_new_friend_timezone {
+  height:18px;
+
+  color: #C09853;
+  background-color: #FCF8E3;
+  border: 1px solid #FBEED5;
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 35px 8px 14px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
 #events_new_datetime_input {
   height:30px;
   font-size:20px;
@@ -80,29 +172,14 @@ $blue_linkedin: #006699;
 }
 
 #events_new_datetime_friend {
-  height:30px;
-  font-size:20px;
+  height:18px;
+  // font-size:20px;
   border:0;
+
+  background-color: #D9EDF7;
+  border: 1px solid #BCE8F1;
+  color: #3A87AD;
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 35px 8px 14px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
-
-
-
-
-
-
-
-
-
-// .bootstrap-datetimepicker-widget {
-//   position: relative;
-//   z-index: 99999;
-// }
-
-// .chzn-drop, .chzn-single, .chzn-container {
-//   position: relative !important;
-//   z-index: 99999 !important; 
-// }
-
-// .modal-body, #modal_event, .modal-footer {
-//     overflow-y:visible;
-// }

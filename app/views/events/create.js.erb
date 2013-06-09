@@ -1,0 +1,23 @@
+<%- if @event.errors.any? %>
+
+  $('#modal_event').html("<%= escape_javascript(render('new_form')) %>");
+
+  summary_index_events_modal_rebless();
+
+<%- else %>
+
+	$('#modal_event').modal('hide');
+
+  $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
+	
+	$("div[id=application_flash]:last").fadeIn("fast", function () {
+
+    setTimeout(function() {
+      $("div[id=application_flash]:last").fadeOut('fast', function() {
+        $("div[id=application_flash]:last").remove();
+      });
+    }, 4000);
+
+	});
+
+<%- end %>

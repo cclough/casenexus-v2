@@ -43,7 +43,9 @@
             .panel.dark.kill_bottom
 
               .row.profile_nav_item{:class => ("active" if params[:controller] == "summary") }
-                = link_to "Summary", summary_path
+                = link_to "Home", summary_path
+              .row.profile_nav_item{:class => ("active" if params[:controller] == "events") }
+                = link_to "Calendar", events_path
               .row.profile_nav_item{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
                 = link_to "Cases", cases_path
               .row.profile_nav_item{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
