@@ -1,8 +1,4 @@
 
-# Update the User List - submits form...
-window.cases_index_cases_updatelist = ->
-  $.get $("#cases_index_cases_form").attr("action"), $("#cases_index_cases_form").serialize(), null, "script"
-  false
 
 #////////////////////////////////////////////////////
 #////////////////////  SHOW   ///////////////////////
@@ -717,14 +713,6 @@ $(document).ready ->
 #////////////////////////// INDEX //////////////////////////////
 #///////////////////////////////////////////////////////////////
   
-  $("#cases_index_cases_form input").keypress (e) ->
-    window.cases_index_cases_updatelist()  if e.which is 13
-
-
-  # Ajax pagination
-  $("#cases_index_cases .application_pagination a, #cases_index_cases_form_sort a").on "click", ->
-    $.getScript @href
-    false
 
 #///////////////////////////////////////////////////////////////
 #/////////////////////////// NEW ///////////////////////////////

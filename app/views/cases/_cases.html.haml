@@ -1,15 +1,3 @@
-#cases_index_cases_form_sort.application_menu_sort.pull-right
-
-  .btn-group
-    %button#cases_index_cases_form_button_sort.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-      Sort by
-      %span.caret
-    %ul.dropdown-menu
-      %li
-        = sortable "subject", "By Subject"
-      %li
-        = sortable "created_at", "By Date"
-
 - if @cases.count > 0
   - @cases.each do |cases_item|
     = render partial: 'cases/cases_item' , locals: { cases_item: cases_item }
