@@ -5,13 +5,15 @@ class BooksController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 	def index
-    books_scope = Book
+
     if !params[:btype].blank? && params[:btype] != "all"
       books_scope = Book.where(btype: params[:btype])
+    else
+      books_scope = Book   
     end
 
     @books = books_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
-    @books.all
+
 	end
 
   def show

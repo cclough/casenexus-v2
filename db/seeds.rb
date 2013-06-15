@@ -36,20 +36,20 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   University.create!(name: "University of Cambridge", image: "cambridge.png", domain: "cam.ac.uk")
   University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
-  University.create!(name: "Harvard University", image: "harvard.gif", domain: "harvard.edu")
-  University.create!(name: "UC San Diego", image: "harvard.gif", domain: "ucsd.edu")
-  University.create!(name: "Northerwestern University", image: "harvard.gif", domain: "northwestern.edu")
-  University.create!(name: "UC Berkeley", image: "harvard.gif", domain: "berkeley.edu")
-  University.create!(name: "UPenn", image: "harvard.gif", domain: "upenn.edu")
-  University.create!(name: "Duke", image: "harvard.gif", domain: "duke.edu")
-  University.create!(name: "London School of Economics", image: "harvard.gif", domain: "lse.ac.uk")
-  University.create!(name: "Imperial College London", image: "harvard.gif", domain: "imperial.ac.uk")
-  University.create!(name: "Stanford University", image: "harvard.gif", domain: "stanford.edu")
-  University.create!(name: "Columbia University", image: "harvard.gif", domain: "columbia.edu")
-  University.create!(name: "Cornell University", image: "harvard.gif", domain: "cornell.edu")
-  University.create!(name: "Brown University", image: "harvard.gif", domain: "brown.edu")
-  University.create!(name: "Dartmouth College", image: "harvard.gif", domain: "dartmouth.edu")
-  University.create!(name: "Princeton University", image: "harvard.gif", domain: "princeton.edu")
+  University.create!(name: "Harvard University", image: "harvard.png", domain: "harvard.edu")
+  University.create!(name: "UC San Diego", image: "harvard.png", domain: "ucsd.edu")
+  University.create!(name: "Northerwestern University", image: "harvard.png", domain: "northwestern.edu")
+  University.create!(name: "UC Berkeley", image: "harvard.png", domain: "berkeley.edu")
+  University.create!(name: "UPenn", image: "harvard.png", domain: "upenn.edu")
+  University.create!(name: "Duke", image: "harvard.png", domain: "duke.edu")
+  University.create!(name: "London School of Economics", image: "harvard.png", domain: "lse.ac.uk")
+  University.create!(name: "Imperial College London", image: "harvard.png", domain: "imperial.ac.uk")
+  University.create!(name: "Stanford University", image: "harvard.png", domain: "stanford.edu")
+  University.create!(name: "Columbia University", image: "harvard.png", domain: "columbia.edu")
+  University.create!(name: "Cornell University", image: "harvard.png", domain: "cornell.edu")
+  University.create!(name: "Brown University", image: "harvard.png", domain: "brown.edu")
+  University.create!(name: "Dartmouth College", image: "harvard.png", domain: "dartmouth.edu")
+  University.create!(name: "Princeton University", image: "harvard.png", domain: "princeton.edu")
 
 
 
@@ -138,8 +138,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
   
   # Links
 
-  Book.create!(btype: "link", title: "Introduction to Case Interviews", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "", desc: "The best introduction out there to case interviews. 6 hours of Videos of a presentation at Harvard Business School - 12 videos", url: "http://www.youtube.com/watch?v=fBwUxnTpTBo&list=UU-YKX7L2GNNA-IHrhMpwzWA&index=13", thumb: "caseinterview.jpg")
-  Book.create!(btype: "link", title: "CaseInterview.com: Look Over My Shoulder Programme", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "", desc: "Series of Audio Tapes", url: "http://www.caseinterview.com/look-over-my-shoulder", thumb: "caseinterview.jpg")
+  Book.create!(btype: "link", title: "Introduction to Case Interviews", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "", desc: "The best introduction out there to case interviews. 6 hours of Videos of a presentation at Harvard Business School - 12 videos", url: "http://www.youtube.com/watch?v=fBwUxnTpTBo&list=UU-YKX7L2GNNA-IHrhMpwzWA&index=13", thumb: "caseinterview.png")
+  Book.create!(btype: "link", title: "CaseInterview.com: Look Over My Shoulder Programme", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "", desc: "Series of Audio Tapes", url: "http://www.caseinterview.com/look-over-my-shoulder", thumb: "caseinterview.png")
 
 
 

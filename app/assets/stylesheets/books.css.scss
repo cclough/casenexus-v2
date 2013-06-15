@@ -52,11 +52,23 @@ $blue_pastel: #98cdff;
 }
 
 .books_index_books_item_image {
-	text-align:center;
-  height:100px;
-  width:85px;
-  display:inline-block;
   position:relative;
+  height:100px;
+  width:95px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  img {
+    max-width:90px;
+  
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
 }
 
 .books_rating_set {

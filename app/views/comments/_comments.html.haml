@@ -11,9 +11,10 @@
               = comment.user.name
         .span.offset1
           = comment.content
-        .span21.pull-right
-          .span.panel.darker.kill_all
-            .span.books_rating_read{"data-rating" => comment.rating}
-            .span.offset1.books_rating_read_num
-              = comment.rating.to_s
+        .span.pull-right
+          .span.books_rating_read_container.panel.darker.kill_all
+            .books_rating_read{"data-rating" => comment.rating}
+            .books_rating_read_text
+              User rating:
+              = pluralize(comment.rating.round(0),"Star")
 

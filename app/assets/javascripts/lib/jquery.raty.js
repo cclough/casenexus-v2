@@ -268,10 +268,10 @@
       var score = parseInt(this.score.val(), 10), // TODO: 3.1 >> [['1'], ['2'], ['3', '.1', '.2']]
           hint  = score ? methods._getHint.call(this, score) : this.opt.noRatedMsg;
 
-      $(this).data('readonly', true).css('cursor', '').attr('title', hint);
+      $(this).data('readonly', true).css('cursor', '')//.attr('title', hint);
 
       this.score.attr('readonly', 'readonly');
-      this.stars.attr('title', hint);
+      //this.stars.attr('title', hint);
 
       if (this.cancel) {
         this.cancel.hide();
@@ -444,7 +444,7 @@
     click         : undefined,
     half          : false,
     halfShow      : true,
-    hints         : ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+    hints         : ['Very Poor', 'Poor', 'OK', 'Good', 'Excellent'],
     iconRange     : undefined,
     mouseout      : undefined,
     mouseover     : undefined,
@@ -460,9 +460,9 @@
     single        : false,
     size          : 16,
     space         : true,
-    starHalf      : 'star-half.png',
-    starOff       : 'star-off.png',
-    starOn        : 'star-on.png',
+    starHalf      : '/assets/raty/star-half.png',
+    starOff       : '/assets/raty/star-off.png',
+    starOn        : '/assets/raty/star-on.png',
     target        : undefined,
     targetFormat  : '{score}',
     targetKeep    : false,

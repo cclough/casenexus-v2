@@ -1,3 +1,6 @@
+- provide(:title, 'Library: ' + @book.title)
+- provide(:sub_title, @book.author)
+
 .panel.darker
   = render partial: 'books/books_item' , locals: { books_item: @book}
 

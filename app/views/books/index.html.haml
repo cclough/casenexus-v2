@@ -15,10 +15,12 @@
             .btn-group
               = filterable_books('all', 'All')
               = filterable_books('guide', 'Guides')
+              = filterable_books('link', 'Web')
               = filterable_books('case', 'Cases')
 
           #books_index_books_form_radios_type
             = radio_button_tag :books_list_type, 'guides'
+            = radio_button_tag :books_list_type, 'web'
             = radio_button_tag :books_list_type, 'cases', checked: true
 
 
