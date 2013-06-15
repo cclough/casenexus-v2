@@ -1,10 +1,12 @@
 - provide(:title, 'Library: ' + @book.title)
 - provide(:sub_title, @book.author)
 
-.panel.darker
-  = render partial: 'books/books_item' , locals: { books_item: @book}
+.spacer10
+.spacer5
 
-  .spacer10
-  = render "comments/comments"
-  .spacer10
-  = render "comments/form"
+= render partial: 'books/books_item' , locals: { books_item: @book}
+
+.spacer10
+= render "comments/comments"
+.spacer10
+= render "comments/form"

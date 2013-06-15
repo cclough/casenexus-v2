@@ -1,39 +1,74 @@
+.row
+  .books_index_books_item.panel.darker.kill_top
+    .row
 
-.row.books_index_books_item.panel.darker.kill_all
-  .row
-    .span12
-      .books_index_books_item_image.panel.kill_all
-        - if books_item.btype == "case"
-          = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
-        - else
-          = image_tag 'library/thumbs/' + books_item.thumb.to_s unless !books_item.thumb
-    .span79.offset1
-      .row
-        .span
-          .row
-            = books_item.title
-          .row.books_index_books_item_author
-            = books_item.author
-          .row.books_index_books_item_source_title
-            = books_item.source_title
-        .span.pull-right
-          .books_rating_read_container.panel.darker.kill_all
-            .books_rating_read{"data-rating" => books_item.average_rating.round(1)}
-            .books_rating_read_text
-              User rating:
-              = pluralize(books_item.average_rating.round(1),"Star")
-      .row.books_index_books_item_description
-        .font-small
-          %span
-            = books_item.desc_trunc
-      .row
-        .pull-right
-          .span
-            = link_to raw("<i class=icon-calendar></i> Schedule this case with a friend"), "#", class: "btn btn-small btn-inverse"
+
+
+
+      .span12
+        .books_index_books_item_image.panel.kill_all
+          - if books_item.btype == "case"
+            = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
+          - else
+            = image_tag 'library/thumbs/' + books_item.thumb.to_s unless !books_item.thumb
+
+
+
+
+
+
+      .span.offset1
+
+
+        .row
+
+          .span.books_index_books_item_body
+            .row.books_index_books_item_titles
+              .span.books_index_books_item_source_title
+                = "#{books_item.source_title}:&nbsp;".html_safe
+              .span.books_index_books_item_title
+                = books_item.title
+
+            .spacer5
+
+            .row
+              .span.books_index_books_item_author
+                = books_item.author
+              .span.offset1.books_index_books_item_university_image
+                - unless books_item.university.blank?
+                  .span
+                    = image_tag "universities/" + books_item.university.image
+                  .span.offset1
+                    = books_item.university.name
+
+
+            .spacer5
+
+            .row.books_index_books_item_description
+              .span
+                = books_item.desc_trunc
+
+
+
           .span.offset1
-            = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
-          .span.offset1
-            .books_index_books_item_comments{"data-id"=>books_item.id}
-              = link_to book_path(books_item), class: "btn btn-small btn-inverse" do
-                Rate & Comment
-                %strong (#{books_item.comments.count})
+            .books_rating_read_container.panel.darker.kill_all
+              .books_rating_read{"data-rating" => books_item.average_rating.round(1)}
+              .books_rating_read_text
+                User rating:
+                = pluralize(books_item.average_rating.round(1),"Star")
+
+
+
+
+
+        .row
+          .pull-right
+            .span
+              = link_to raw("<i class=icon-calendar></i> Schedule this case with a friend"), "#", class: "btn btn-small btn-inverse"
+            .span.offset1
+              = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
+            .span.offset1
+              .books_index_books_item_comments{"data-id"=>books_item.id}
+                = link_to book_path(books_item), class: "btn btn-small btn-inverse" do
+                  Rate & Comment
+                  %strong (#{books_item.comments.count})

@@ -9,6 +9,12 @@ $gray_Mid: #767676;
 $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// INDEX ///////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
 ////////////// FORM
 
 
@@ -62,26 +68,52 @@ $blue_pastel: #98cdff;
 
 .books_index_books_item, .books_show_comments_item {
 
-  margin-bottom: 4px !important;
+  margin-bottom: 5px !important;
   padding:10px;
-
+  // width:100%;
 }
 
-.books_index_books_item_author {
-  font-size:11px;
+.books_index_books_item_body {
+  width:652px;
 }
+
+
+.books_index_books_item_titles {
+  font-size:16px;
+  border-bottom:1px solid $gray_Mid;
+  padding-bottom:5px;
+}
+
 
 .books_index_books_item_source_title {
-  font-size:11px;
+  font-weight:lighter;
 }
 
-.books_index_books_item_source {
-  font-size:11px;
+
+.books_index_books_item_title {
+  font-weight:bolder;
+}
+
+
+.books_index_books_item_author {
+
 }
 
 .books_index_books_item_description{
-  height:60px;
+  height:45px;
+  font-size:11px;
 }
+
+
+
+
+.books_index_books_item_university_image {
+  img {
+    max-height:18px !important;    
+  }
+}
+
+
 
 .books_index_books_item_image {
   position:relative;
@@ -125,6 +157,13 @@ $blue_pastel: #98cdff;
 .books_rating_read_num {
   font-size:14px;
 }
+
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// SHOW ////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
 #books_show_form {

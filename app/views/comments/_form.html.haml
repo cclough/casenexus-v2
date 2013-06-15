@@ -7,13 +7,13 @@
           = render 'shared/error_messages', object: @comment
 
         
-        = f.text_area :content, rows: 4, class: "span40"
+        = f.text_area :content, rows: 4, class: "span40", placeholder: "Make a comment..."
         .spacer10
         .row
           .span20
             #books_show_form_rating_panel.panel.dark.kill_all
               .books_rating_set
-              Rate this book
+              How do you rate it?
           .span20
             = f.hidden_field :user_id, value: current_user.id
             = f.hidden_field :rating, id: "books_rating_set_field"

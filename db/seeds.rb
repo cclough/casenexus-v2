@@ -132,9 +132,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   # Guides
 
-  Book.create!(btype: "guide", url: "guide_wharton_2009-2010.pdf", university_id: "7", title: "", source_title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "", desc: "")
+  Book.create!(btype: "guide", url: "guide_wharton_2009-2010.pdf", university_id: "7", title: "", title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "", desc: "")
 
-  Book.create!(btype: "guide", url: "guide_fuqua_2010-2011.pdf", university_id: "8", title: "", source_title: "Fuqua Casebook 2010-2011", author: "The Fuqua School of Business, Duke", author_url: "", desc: "")
+  Book.create!(btype: "guide", url: "guide_fuqua_2010-2011.pdf", university_id: "8", title: "", title: "Fuqua Casebook 2010-2011", author: "The Fuqua School of Business, Duke", author_url: "", desc: "")
   
   # Links
 

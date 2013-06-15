@@ -22,7 +22,7 @@ class Book < ActiveRecord::Base
 	end
 
   def desc_trunc
-    desc.to_s.truncate(200, separator: ' ')
+    desc.to_s.truncate(180, separator: ' ')
   end
 
   def update_average_rating(book=nil) #http://stackoverflow.com/questions/6008015/how-can-i-sort-my-records-by-average-rating
