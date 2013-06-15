@@ -13,7 +13,7 @@
 
       .pull-right#notifications_index_notifications_form_sort.application_menu_sort
         .btn-group
-          %button.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+          %a.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
             - if params[:sort] == "content"
               Message
             - elsif params[:sort] == "created_at"

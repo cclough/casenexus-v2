@@ -26,3 +26,6 @@ $(document).ready ->
 	  $("#books_index_books_form").submit()
 
 
+	# # Search submit
+	# $("#books_index_books_form_searchfield").keypress (e) ->
+ #  		@form.submit()  if e.which is 10 or e.which is 13
