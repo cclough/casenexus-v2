@@ -141,6 +141,14 @@ $blue_pastel: #98cdff;
 
 .books_rating_read_container {
   padding:2px;
+
+  border-bottom-left-radius: 0px;
+  -moz-border-bottom-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+
+  border-bottom-right-radius: 0px;
+  -moz-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
 }
 
 .books_rating_read {
@@ -159,6 +167,25 @@ $blue_pastel: #98cdff;
 }
 
 
+.books_index_books_item_info_container {
+  padding:2px;
+  font-size:11px;
+  
+  color:$gray_Mid;
+  text-align:center;
+
+  border-top-left-radius: 0px;
+  -moz-border-top-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+
+  border-top-right-radius: 0px;
+  -moz-border-top-right-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+}
+
+.books_index_books_item_difficulty {
+  border-top: 1px solid $gray_Light;
+}
 
 
 /////////////////////////////////////////////////////////////////

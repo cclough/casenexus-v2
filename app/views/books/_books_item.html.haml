@@ -7,10 +7,10 @@
 
       .span12
         .books_index_books_item_image.panel.kill_all
-          - if books_item.btype == "case"
+          - if books_item.thumb.blank?
             = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
           - else
-            = image_tag 'library/thumbs/' + books_item.thumb.to_s unless !books_item.thumb
+            = image_tag 'library/thumbs/' + books_item.thumb.to_s
 
 
 
@@ -60,6 +60,11 @@
               .books_rating_read_text
                 User rating:
                 = pluralize(books_item.average_rating.round(1),"Star")
+            .books_index_books_item_info_container.panel.gradient.kill_all
+              %div
+                Number of Charts: #{books_item.chart_num.to_s}
+              .books_index_books_item_difficulty
+                = book_difficulty_in_words(books_item.difficulty)
 
 
 

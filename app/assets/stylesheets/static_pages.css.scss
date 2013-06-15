@@ -12,18 +12,56 @@ $blue_linkedin: #86c7fe;
   background-color: #fff;
   height:300px;
   text-align:center;
-  padding-top:100px;
+  padding-top:90px;
 
   -moz-border-radius:    5px;
   -webkit-border-radius: 5px;
   border-radius:         5px;
 
   border: 1px solid $gray_Light;
+
 }
 
 #static_home_footer {
   padding-left:283px;
 }
+
+
+
+.static_home_bullet_outest {
+    background: rgba(0, 0, 0, 0.0);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:1px solid $gray_Light;
+    margin:0px;
+}
+
+.static_home_bullet_outer {
+    background: rgba(0, 0, 0, 0.1);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin:0px;
+    padding:11px;
+}
+
+.static_home_bullet_inner {
+    background: rgba(50, 50, 50, 0.75);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border:0px !important;
+    margin:2px;
+}
+
+.static_home_bullet_text {
+  line-height:35px;
+}
+
+
+
+
 
 
 #static_home_signup {

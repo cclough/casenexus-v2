@@ -5,7 +5,48 @@
 .row
   .span58
     #static_home_panel
-      = image_tag "home/logo.png"
+      .row
+
+        .span.offset3
+
+          .spacer20
+
+          = image_tag "home/logo.png"
+
+        .span.offset2
+
+          .row
+            .span
+              .static_home_bullet_outest
+                .static_home_bullet_outer
+                  .static_home_bullet_inner 
+            .span.offset2.static_home_bullet_text
+              Find people to practice with
+          .spacer20
+          .row
+            .span
+              .static_home_bullet_outest
+                .static_home_bullet_outer
+                  .static_home_bullet_inner 
+            .span.offset2.static_home_bullet_text
+              Schedule cases with friends
+          .spacer20
+          .row
+            .span
+              .static_home_bullet_outest
+                .static_home_bullet_outer
+                  .static_home_bullet_inner 
+            .span.offset2.static_home_bullet_text
+              Library of cases
+          .spacer20
+          .row
+            .span
+              .static_home_bullet_outest
+                .static_home_bullet_outer
+                  .static_home_bullet_inner 
+            .span.offset2.static_home_bullet_text
+              Feedback on your cases
+
   .span
     = render 'static_pages/signup_form'
 .row

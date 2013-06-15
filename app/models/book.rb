@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
 
-  attr_accessible :btype, :title, :source_title, :desc, :university_id, :university, :author, :author_url, :url, :thumb, :average_rating
+  attr_accessible :btype, :title, :source_title, :desc, :university_id, :university, :author, :author_url, :url, :thumb, :chart_num, :difficulty, :average_rating
 
   has_many :comments, as: :commentable, :after_add => :update_average_rating, :after_remove => :update_average_rating
   
@@ -20,6 +20,17 @@ class Book < ActiveRecord::Base
 	  	where("btype = 'guide' OR btype = 'link'")
 	  end
 	end
+
+  def difficulty_in_words
+    case difficulty
+    when 1
+      "Novice"
+    when 2
+      "Intermediate"
+    when 3
+      "Advanced"
+    end
+  end
 
   def desc_trunc
     desc.to_s.truncate(180, separator: ' ')

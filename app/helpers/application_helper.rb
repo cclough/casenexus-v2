@@ -24,21 +24,21 @@ module ApplicationHelper
 
   def filterable_notifications(ntype, title)
     if ntype == params[:ntype]
-      link_to title, params.merge(ntype: ntype), class: "btn btn-inverse active"
+      link_to title, params.merge(ntype: ntype, page: 1), class: "btn btn-inverse active"
     elsif !params[:ntype] && (title == "All")
-      link_to title, params.merge(ntype: ntype), class: "btn btn-inverse active"
+      link_to title, params.merge(ntype: ntype, page: 1), class: "btn btn-inverse active"
     else
-      link_to title, params.merge(ntype: ntype), class: "btn btn-inverse"
+      link_to title, params.merge(ntype: ntype, page: 1), class: "btn btn-inverse"
     end
   end
 
   def filterable_books(btype, title)
     if btype == params[:btype]
-      link_to title, params.merge(btype: btype), class: "btn btn-inverse active"
+      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-inverse active"
     elsif !params[:btype] && (title == "All")
-      link_to title, params.merge(btype: btype), class: "btn btn-inverse active"
+      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-inverse active"
     else
-      link_to title, params.merge(btype: btype), class: "btn btn-inverse"
+      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-inverse"
     end
   end
 
@@ -74,6 +74,17 @@ module ApplicationHelper
       "Same Time Zone"
     end
 
+  end
+
+  def book_difficulty_in_words(num)
+    case num
+    when 1
+      content_tag :span, "Novice", style: "color:green;"
+    when 2
+      content_tag :span, "Intermediate", style: "color:yellow;"
+    when 3
+      content_tag :span, "Advanced", style: "color:red;"
+    end
   end
 
 end

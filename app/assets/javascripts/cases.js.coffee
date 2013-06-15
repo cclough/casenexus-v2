@@ -51,7 +51,9 @@ window.cases_show_chart_bar_draw = ->
   graph.labelText = "[[category]]"
   graph.balloonText = "[[category]]: [[value]]"
   graph.lineAlpha = 0
-  
+  graph.fillColors = "#98cdff"
+  graph.fillAlphas = 0.4
+
   # Balloon Settings
   balloon = chart.balloon
   balloon.adjustBorderColor = true
@@ -60,8 +62,7 @@ window.cases_show_chart_bar_draw = ->
   balloon.fillColor = "#000000"
   balloon.fillAlpha = 0.7
   balloon.color = "#FFFFFF"
-  graph.fillColors = "#98cdff"
-  graph.fillAlphas = 0.4
+
   chart.addGraph graph
   chart.write "cases_show_chart_bar"
 
@@ -642,7 +643,7 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   graph.labelText = "[[category]]"
   graph.balloonText = "[[category]]: [[value]]/5"
   graph.lineAlpha = 0
-  graph.fillColors = "#ff00ff"
+  graph.fillColors = "#98cdff"
   graph.fillAlphas = 0.4
   chart.addGraph graph
 
