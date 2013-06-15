@@ -543,6 +543,10 @@ a:hover {
   cursor: default;
 
   background: url('app/dark-bg.png') repeat top left;
+
+  &.application_pagination_books {
+    margin:15px;
+  }
 }
 
 .application_pagination .disabled {

@@ -63,8 +63,9 @@
             .books_index_books_item_info_container.panel.gradient.kill_all
               %div
                 = books_item.chart_num_in_words
-              .books_index_books_item_difficulty
-                = book_difficulty_in_words(books_item.difficulty)
+              - unless books_item.difficulty.blank?
+                .books_index_books_item_difficulty
+                  = book_difficulty_in_words(books_item.difficulty)
 
 
 
