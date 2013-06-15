@@ -25,9 +25,13 @@
           .span.books_index_books_item_body
             .row.books_index_books_item_titles
               .span.books_index_books_item_source_title
-                = "#{books_item.source_title}:&nbsp;".html_safe
-              .span.books_index_books_item_title
-                = books_item.title
+                - if books_item.title.blank?
+                  = books_item.source_title
+                - else
+                  = "#{books_item.source_title}:&nbsp;".html_safe
+              - unless books_item.title.blank?
+                .span.books_index_books_item_title
+                  = books_item.title
 
             .spacer5
 
