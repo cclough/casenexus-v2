@@ -1,6 +1,18 @@
+- breadcrumb = yield(:breadcrumb)
+
 .row
   .panel.title
-    .row#application_title_title
-      = yield(:title)
-    .row#application_title_sub_title
-      = yield(:sub_title)
+    .row
+      - if !breadcrumb.blank?
+        = link_to yield(:breadcrumb_url) do
+          .span10#application_title_breadcrumb
+            .row
+              .span1.offset2
+                %i.icon-caret-left
+              .span6.offset1
+                #{breadcrumb}
+      .span
+        .row#application_title_title
+          = yield(:title)
+        .row#application_title_sub_title
+          = yield(:sub_title)

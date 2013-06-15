@@ -507,6 +507,28 @@ a:hover {
   color: $gray_Light;
 }
 
+#application_title_breadcrumb {
+  border-right:1px solid $gray_Light;
+  
+  margin: -10px 10px -10px -10px;
+  padding-right:10px;
+
+  height:39px;
+  padding-top:18px;
+
+  border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+
+  i {
+    font-size:30px;
+    line-height:20px;
+  }
+
+  &:hover {
+    background-color: $gray_Lightest;
+  }
+}
 
 .application_pagination {
   border-radius: 5px;
@@ -746,4 +768,35 @@ a:hover {
 
 
 
+
+
+
+
+.application_bootstrap_green {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.application_bootstrap_yellow {
+  color: #C09853;
+  background-color: #FCF8E3;
+  border: 1px solid #FBEED5;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.application_bootstrap_blue {
+  background-color: #D9EDF7;
+  border: 1px solid #BCE8F1;
+  color: #3A87AD;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); 
+}
+
+.application_bootstrap_red {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
 

@@ -79,11 +79,11 @@ module ApplicationHelper
   def book_difficulty_in_words(num)
     case num
     when 1
-      content_tag :span, "Novice", style: "color:green;"
+      content_tag :span, "Novice", class: "application_bootstrap_green"
     when 2
-      content_tag :span, "Intermediate", style: "color:yellow;"
+      content_tag :span, "Intermediate", class: "application_bootstrap_yellow"
     when 3
-      content_tag :span, "Advanced", style: "color:red;"
+      content_tag :span, "Advanced", class: "application_bootstrap_red"
     end
   end
 

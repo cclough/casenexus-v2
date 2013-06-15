@@ -62,7 +62,7 @@
                 = pluralize(books_item.average_rating.round(1),"Star")
             .books_index_books_item_info_container.panel.gradient.kill_all
               %div
-                Number of Charts: #{books_item.chart_num.to_s}
+                = books_item.chart_num_in_words
               .books_index_books_item_difficulty
                 = book_difficulty_in_words(books_item.difficulty)
 
@@ -73,7 +73,7 @@
         .row
           .pull-right
             .span
-              = link_to raw("<i class=icon-calendar></i> Schedule this case with a friend"), "#", class: "btn btn-small btn-inverse"
+              = link_to raw("<i class=icon-calendar></i> Schedule with a friend"), "#", class: "btn btn-small btn-inverse"
             .span.offset1
               = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
             .span.offset1

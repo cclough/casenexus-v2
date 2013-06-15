@@ -1,20 +1,21 @@
 #books_show_form
   .row
-    .span25
-    .span40.panel.darker
+    .span27
+    .span45.panel.darker
       = form_for [@commentable, @comment] do |f|
         #flash_notifications
           = render 'shared/error_messages', object: @comment
 
         
-        = f.text_area :content, rows: 4, class: "span40", placeholder: "Make a comment..."
-        .spacer10
+        = f.text_area :content, rows: 4, class: "span45", placeholder: "Make a comment..."
+        .spacer5
         .row
-          .span20
+          .span22
             #books_show_form_rating_panel.panel.dark.kill_all
               .books_rating_set
               How do you rate it?
           .span20
+            .spacer5
             = f.hidden_field :user_id, value: current_user.id
             = f.hidden_field :rating, id: "books_rating_set_field"
             = f.submit "Submit comment", class: "btn btn-inverse btn-large"

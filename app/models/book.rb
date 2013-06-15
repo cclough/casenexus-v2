@@ -3,7 +3,7 @@ class Book < ActiveRecord::Base
   attr_accessible :btype, :title, :source_title, :desc, :university_id, :university, :author, :author_url, :url, :thumb, :chart_num, :difficulty, :average_rating
 
   has_many :comments, as: :commentable, :after_add => :update_average_rating, :after_remove => :update_average_rating
-  
+
   belongs_to :university
 
   # Scoped_search Gem
@@ -21,19 +21,16 @@ class Book < ActiveRecord::Base
 	  end
 	end
 
-  def difficulty_in_words
-    case difficulty
-    when 1
-      "Novice"
-    when 2
-      "Intermediate"
-    when 3
-      "Advanced"
-    end
-  end
-
   def desc_trunc
     desc.to_s.truncate(180, separator: ' ')
+  end
+
+  def chart_num_in_words
+    if chart_num == 0
+      "No charts"
+    else
+      "Number of Charts: " + chart_num.to_s
+    end
   end
 
   def update_average_rating(book=nil) #http://stackoverflow.com/questions/6008015/how-can-i-sort-my-records-by-average-rating

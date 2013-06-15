@@ -78,30 +78,32 @@ $blue_pastel: #98cdff;
 }
 
 
+
+
+////// first line
 .books_index_books_item_titles {
   font-size:16px;
   border-bottom:1px solid $gray_Mid;
   padding-bottom:5px;
+  color:white !important;
 }
-
-
 .books_index_books_item_source_title {
   font-weight:lighter;
 }
-
-
 .books_index_books_item_title {
   font-weight:bolder;
 }
 
-
+/////// second line
 .books_index_books_item_author {
 
 }
 
+
+///////
 .books_index_books_item_description{
-  height:45px;
-  font-size:11px;
+  height:85px;
+  // font-size:11px;
 }
 
 
@@ -170,9 +172,11 @@ $blue_pastel: #98cdff;
 .books_index_books_item_info_container {
   padding:2px;
   font-size:11px;
-  
+
   color:$gray_Mid;
   text-align:center;
+
+  border-top:0;
 
   border-top-left-radius: 0px;
   -moz-border-top-left-radius: 0px;
