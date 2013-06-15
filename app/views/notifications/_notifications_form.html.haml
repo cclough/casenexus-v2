@@ -3,28 +3,33 @@
     .row
       .span
         = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span20'
-      .span.offset3
-        .btn-group
-          = filterable_notifications('all', 'All')
-          = filterable_notifications('message', 'Messages')
-          = filterable_notifications('feedback_req', 'Feedback Req')
-          = filterable_notifications('feedback', 'Feedback')
-          = filterable_notifications('friendship_req', 'Friends')
+      .pull-right
+        .span#books_index_books_form_label
+          Filter
+          %i.icon-caret-right.offset1
+        .span.offset1
+          .btn-group
+            = filterable_notifications('all', 'All')
+            = filterable_notifications('message', 'Messages')
+            = filterable_notifications('feedback', 'Feedback')
 
-      .pull-right#notifications_index_notifications_form_sort.application_menu_sort
-        .btn-group
-          %a.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-            - if params[:sort] == "content"
-              Message
-            - elsif params[:sort] == "created_at"
-              Date
-            - else
-              Sory by
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              = sortable "content", "By Message"
-            / %li
-            /   = sortable "user.name", "By Name"
-            %li
-              = sortable "created_at", "By Date"
+        .span.offset2#books_index_books_form_label
+          Sort by
+          %i.icon-caret-right.offset1
+        .span.offset1#notifications_index_notifications_form_sort.application_menu_sort
+          .btn-group
+            %a.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+              - if params[:sort] == "content"
+                Content
+              - elsif params[:sort] == "created_at"
+                Date
+              - else
+                Date
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                = sortable "content", "By Content"
+              / %li
+              /   = sortable "user.name", "By Name"
+              %li
+                = sortable "created_at", "By Date"

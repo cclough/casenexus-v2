@@ -26,17 +26,14 @@
         .font-small
           %span
             = books_item.desc_trunc
-
-          %span.books_index_books_item_full_desc{"data-id"=>books_item.id}
-            = link_to "full description", "#"
       .row
         .pull-right
           .span
-            = link_to raw("<i class=icon-calendar></i> Schedule this case with a friend"), "#", class: "btn btn-inverse"
+            = link_to raw("<i class=icon-calendar></i> Schedule this case with a friend"), "#", class: "btn btn-small btn-inverse"
           .span.offset1
-            = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-inverse"
+            = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
           .span.offset1
             .books_index_books_item_comments{"data-id"=>books_item.id}
-              = link_to book_path(books_item), class: "btn btn-inverse" do
+              = link_to book_path(books_item), class: "btn btn-small btn-inverse" do
                 Rate & Comment
                 %strong (#{books_item.comments.count})

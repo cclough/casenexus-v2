@@ -1,50 +1,10 @@
 - provide(:title, 'Library')
 - provide(:sub_title, 'Library of cases, guides and web resources')
 
-.panel.darker.kill_bottom
+.row.panel.darker.kill_bottom
+  = render 'books_form'
 
-  = form_tag books_path, method: 'get', id: "books_index_books_form" do
-    .row
-      .span
-        = text_field_tag :search, params[:search], placeholder: "Search the library", id: "books_index_books_form_searchfield", class: 'search-query span23'
-      
-      .pull-right
-        / Type Buttons
-        .span
-          #books_index_books_form_buttons_type
-            .btn-group
-              = filterable_books('all', 'All')
-              = filterable_books('guide', 'Guides')
-              = filterable_books('link', 'Web')
-              = filterable_books('case', 'Cases')
+.row.panel.dark.kill_bottom
 
-          #books_index_books_form_radios_type
-            = radio_button_tag :books_list_type, 'guides'
-            = radio_button_tag :books_list_type, 'web'
-            = radio_button_tag :books_list_type, 'cases', checked: true
-
-
-        .pull-right.offset3#books_index_books_form_sort.application_menu_sort
-          .btn-group
-            %a.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-              - if params[:sort] == "average_rating"
-                Rating
-              - elsif params[:sort] == "title"
-                Title
-              - elsif params[:sort] == "author"
-                Source
-              - else
-                Sory by
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                = sortable "average_rating", "By Rating"
-              %li
-                = sortable "title", "By Title"
-              %li
-                = sortable "author", "By Author"
-    .spacer10
-    .row
-      #books_index_books
-
-        = render 'books'
+  #books_index_books
+    = render 'books'

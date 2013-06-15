@@ -6,5 +6,11 @@
   - @books.each do |books_item|
     = render partial: 'books_item' , locals: { books_item: books_item }
 
+- else
+  #books_index_books_form_body_empty
+    #books_index_books_form_empty
+      #books_index_books_form_empty_icon
+        %i.icon-book
+      %p Nothing found!
 
 = will_paginate @books, inner_window: 2, outer_window: 2, class: "application_pagination"

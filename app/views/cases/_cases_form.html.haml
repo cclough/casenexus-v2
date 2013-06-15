@@ -1,21 +1,20 @@
 = form_tag cases_path, method: 'get', id: "cases_index_cases_form" do
-  .panel.darker.kill_left.kill_right
 
-    = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span23'
+  = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span23'
 
-    #cases_index_cases_form_sort.application_menu_sort.pull-right
+  #cases_index_cases_form_sort.application_menu_sort.pull-right
 
-      .btn-group
-        %a#cases_index_cases_form_button_sort.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-          - if params[:sort] == "subject"
-            By Subject
-          - elsif params[:sort] == "created_at"
-            By Date
-          - else
-            Sory by
-          %span.caret
-        %ul.dropdown-menu
-          %li
-            = sortable "subject", "By Subject"
-          %li
-            = sortable "created_at", "By Date"
+    .btn-group
+      %a#cases_index_cases_form_button_sort.btn.btn-small.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
+        - if params[:sort] == "subject"
+          By Subject
+        - elsif params[:sort] == "created_at"
+          By Date
+        - else
+          Sory by
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          = sortable "subject", "By Subject"
+        %li
+          = sortable "created_at", "By Date"
