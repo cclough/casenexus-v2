@@ -161,10 +161,10 @@ class UserMailer < ActionMailer::Base
     host = Rails.env == 'production' ? 'www.casenexus.com' : 'localhost:3000'
     @url = Rails.application.routes.url_helpers.root_url(host: host)
 
-    attachments['case.pdf'] = File.read(File.join(Rails.root, 'app','assets','images','library',@book.url))
+    attachments["charts.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library','charts',book.charts_file_name))
 
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: You've been sent a case PDF") 
+    mail(to: email_with_name, subject: "casenexus.com: Charts for a Case") 
 
   end
 

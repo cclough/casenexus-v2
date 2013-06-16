@@ -1,6 +1,8 @@
 %h3
-  You have been sent a case PDF file by #{@user_from.name}
+  You have been sent charts for a case by #{@user_from.name}
 %p
-  = @book.title
+  A PDF file containing charts for the case '#{@book.title}' is attached.
+%p
+  Please wait for your interviewer to instruct you before you review them.
 %p
   = link_to "Sign in to casenexus.com", @url

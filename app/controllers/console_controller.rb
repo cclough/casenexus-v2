@@ -1,5 +1,8 @@
 class ConsoleController < ApplicationController
 
+  before_filter :authenticate_user!
+  before_filter :completed_user
+
 	def index
 		@book = Book.find_by_id(params[:book_id]) unless params[:book_id].blank?
 		@friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
@@ -15,16 +18,20 @@ class ConsoleController < ApplicationController
 	end
 
 	def sendpdf
-
 		@user_target = User.find(params[:target_id])
 		book = Book.find(params[:book_id])
 
         UserMailer.case_pdf(current_user,
                             @user_target,
                             book).deliver
+	end
 
-		# redirect_to user_path(@user)  
-		flash[:notice] = 'Email has been sent!'  
+
+	def sendpdfbutton
+		@friend = User.find(params[:friend_id])
+		@book = Book.find(params[:book_id])
+
+		render partial: "sendpdfbutton", layout: false
 	end
 
 	def skypebutton

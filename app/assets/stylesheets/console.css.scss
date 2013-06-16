@@ -32,7 +32,7 @@ $blue_linkedin: #006699;
 }
 
 #console_index_feedback_subnav {
-  height:60px;
+  min-height:34px;
 
   border: 1px solid #252525;
   background-color: #3D3D3D;
@@ -52,15 +52,98 @@ $blue_linkedin: #006699;
   overflow-y:scroll;
 }
 
-#console_index_subnav_button_sendpdf {
-  display:none;
+// #console_index_subnav_button_sendpdf {
+//   // display:none;
+// }
+
+
+// #console_index_subnav_button_sendpdf_nocharts {
+
+// }
+
+
+
+
+//////////////// Send PDF Button States
+
+
+.console_index_subnav_button_sendpdf_state {
+  width: 93px;
+}
+
+/////////////// Component Height Adjustments ////////////////
+#console_index_subnav_button_sendpdf, #console_index_subnav_button_skype_container {
+  margin-top:-2px!important;
+}
+
+#console_index_subnav_select_friends_container, #console_index_subnav_select_books_container {
+  margin-top:-2px!important; 
+}
+
+
+
+
+
+////////////// TIMER ///////////////
+#console_index_subnav_timer_panel {
+  border-bottom-left-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;  
+
+  border-bottom-right-radius: 5px;
+  -moz-border-bottom-rightradius: 5px;
+  -webkit-border-bottom-right-radius: 5px;  
+
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1px 10px 3px 10px;
+
+  margin: -5px 3px 0px 3px;
+
+
 }
 
 #console_index_subnav_timer {
-  color:$gray_Lighter;
+  font-size:23px;
+  line-height:26px;
+  color:white;
+
 }
 
-#console_index_subnav_radiogroup_timer {
+.console_index_subnav_button_timer_set {
+  width:12px !important;
+
+  padding-left:1px;
+  padding-right:2px;
+  height:11px;
+  line-height:13px;
+  text-align:center;
+}
+
+#console_index_timer_restartreset_container {
+  .btn {
+    width:25px;
+    font-size:10px;
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+
+#console_index_subnav_button_timer_pause {
+  width:40px;
+}
+
+#console_index_timer_restartreset_container, #console_index_timer_pause_container, #console_index_subnav_timer_timeset_container {
+  width:59px;
+}
+
+#console_index_timer_pause_container, #console_index_timer_restartreset_container {
   display:none;
 }
+
+
+////////////////////////////////////
+
+
+
+
 // #clear { clear: both; height: 1px; overflow: hidden; font-size:0pt; margin-top: -1px; }
