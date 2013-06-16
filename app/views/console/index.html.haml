@@ -5,5 +5,5 @@
     #console_index_feedback_subnav
       .spacer5
       = render 'subnav'
-    #console_index_feedback_frame
+    %iframe#console_index_feedback_iframe{ src: ("/cases/new?user_id=#{@friend.id}" unless @friend.blank?) }
       / = render template: "cases/new", locals: { params[:user_id] = @friend.id }

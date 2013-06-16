@@ -253,7 +253,7 @@ $blue_pastel: #98cdff;
 
 #cases_new_form {
   input, textarea {
-    margin-bottom:0px !important;
+    margin:0px !important;
   }
   text-align:center;
 }
@@ -437,10 +437,6 @@ $blue_pastel: #98cdff;
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-
-  -moz-box-shadow: 1px 4px 52px #2c2c2c;
-  -webkit-box-shadow: 1px 4px 52px #2c2c2c;
-  box-shadow: 1px 4px 52px #2c2c2c;
 
   .wysihtml5-toolbar {
     position:relative;

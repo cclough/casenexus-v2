@@ -27,7 +27,11 @@ html {
   background-size: cover;
 
   &.console {
-    background: url('app/bg-texture4.jpg') repeat top left !important;
+    background: url('app/bg-texture4.jpg') repeat top left;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
     overflow:hidden;
   }
 }

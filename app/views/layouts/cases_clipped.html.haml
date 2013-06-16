@@ -1,5 +1,5 @@
 !!!
-%html
+%html{style: "background:0 !important;"}
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
@@ -13,5 +13,5 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-  %body{style:"padding-top:0px !important;"}
+  %body{style:"padding-top:0px !important;overflow-y:auto;"}
     = yield

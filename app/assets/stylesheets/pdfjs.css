@@ -25,7 +25,7 @@ html {
 body {
   height: 100%;
   background-color: #404040;
-  background-image: url(app/bg-texture4.jpg);
+/*  background-image: url(app/bg-texture4.jpg);*/
 }
 
 body,
@@ -45,8 +45,8 @@ select {
 #viewerContainer:-webkit-full-screen {
   top: 0px;
   border-top: 2px solid transparent;
-  background-color: #404040;
-  background-image: url(pdfjs/texture.png);
+/*  background-color: #404040;
+  background-image: url(pdfjs/texture.png);*/
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -56,8 +56,8 @@ select {
 #viewerContainer:-moz-full-screen {
   top: 0px;
   border-top: 2px solid transparent;
-  background-color: #404040;
-  background-image: url(pdfjs/texture.png);
+/*  background-color: #404040;
+  background-image: url(pdfjs/texture.png);*/
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -67,8 +67,8 @@ select {
 #viewerContainer:fullscreen {
   top: 0px;
   border-top: 2px solid transparent;
-  background-color: #404040;
-  background-image: url(pdfjs/texture.png);
+/*  background-color: #404040;
+  background-image: url(pdfjs/texture.png);*/
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -906,14 +906,18 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   left: 6px;
 }
 
-.toolbarButton.openFile::before {
-  display: inline-block;
-  content: url(pdfjs/toolbarButton-openFile.png);
+.toolbarButton.openFile {
+  display: none;
 }
 
-.toolbarButton.download::before {
+/*.toolbarButton.download::before {
   display: inline-block;
   content: url(pdfjs/toolbarButton-download.png);
+}
+*/
+
+.toolbarButton.download {
+  display:none;
 }
 
 .toolbarButton.bookmark {
@@ -922,6 +926,7 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   box-sizing: border-box;
   margin-top: 3px;
   padding-top: 4px;
+  display: none;
 }
 
 #viewBookmark[href='#'] {

@@ -103,22 +103,21 @@ countdown = (element, minutes, seconds) ->
 
 $(document).ready ->
 
-	query = getQueryParams(document.location.search)
-
-	if query.id != ""
-		$.get "/cases/new?user_id=" + query.friend_id, (data) ->
-
-			$("#console_index_feedback_frame").html data
 
 
+	# query = getQueryParams(document.location.search)
 
+	# if query.id != ""
+ #    book = "/console/pdfjs?id=" + query.id
+ #    $("#console_index_pdfjs_iframe").attr "src", book
+
+ #    console_index_subnav_sendpdf_check()
 
 
   $("#console_index_subnav_select_books").change ->
 
     if $(this).val()
       book = "/console/pdfjs?id=" + $(this).val()
-
       $("#console_index_pdfjs_iframe").attr "src", book
 
       console_index_subnav_sendpdf_check()
@@ -128,9 +127,10 @@ $(document).ready ->
 
     if $(this).val()
     	# change feedback form
-      $.get "/cases/new?user_id=" + $(this).val(), (data) ->
+      form_for_friend = "/cases/new?user_id=" + $(this).val()
+      $("#console_index_feedback_iframe").attr "src", form_for_friend
 
-      	$("#console_index_feedback_frame").html data
+
 
       # change skypebutton
       $.get ("/console/skypebutton?friend_id=" + $(this).val()), (data) ->
