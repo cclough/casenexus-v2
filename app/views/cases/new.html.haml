@@ -10,240 +10,239 @@
   /       window.setTimeout("window.application_show_help(4)", 1000);
   /     });
 
-= form_for @case, url: { action: :create } do |f|
+= form_for @case, id: "#cases_new_form", url: { action: :create } do |f|
   = f.hidden_field :user_id
 
-  #cases_new_form
-    = render 'shared/error_messages', object: @case
-    .row
-      .span31
-        .panel.gradient.kill_right.kill_bottom
-          .row
-            .span20
-              .row
-                .span5#cases_new_target_avatar
-                  = avatar_for(@user,'icon')
-                .span14
-                  #cases_new_target_name
-                    = @user.name
+  = render 'shared/error_messages', object: @case
+  .row
+    .span{style: "width:100%"}
+      .panel.dark
+        .row
+          .span16
+            .span5#cases_new_target_avatar
+              = image_tag "avatars/icon.png"
+            .span10#cases_new_target_name
+              = @user.name
 
-      .span63
-        .panel.dark
-          .row
-            .span16
-              = f.text_field :date, value: params[:date], placeholder: "Date", id: "cases_new_datepicker", 'data-date-format' => "dd/mm/yyyy", tabindex: "1", class: "span15"
-              .spacer10
-              = f.text_field :source, placeholder: "Source", tabindex: "2", class: "span15"
-            .span36
-              = f.text_area :subject, value: params[:subject], placeholder: "Subject", tabindex: "3", id: "cases_new_subject"
-            .span5
-              = f.submit "Submit Feedback", class: "btn btn-large btn-inverse pull-right", tabindex: "10", id: "cases_new_button_submit"
-    .row
-      .span45
-        .cases_new_block_title
-          Top Recommendations
-        .panel.dark.kill_top
-          .row
-            .span
-              = f.text_area :recommendation1, placeholder: "1st Recommendation", class: "cases_new_recommendation", tabindex: "4"
-          .spacer10
-          .row
-            .span
-              = f.text_area :recommendation2, placeholder: "2nd Recommendation", class: "cases_new_recommendation", tabindex: "5"
-          .spacer10
-          .row
-            .span
-              = f.text_area :recommendation3, placeholder: "3rd Recommendation", class: "cases_new_recommendation", tabindex: "6"
+          .span16
+            = f.text_field :date, value: params[:date], placeholder: "Date of the case...", id: "cases_new_datepicker", 'data-date-format' => "dd/mm/yyyy", tabindex: "1", class: "span15"
+            = f.text_field :source, placeholder: "Source...", tabindex: "2", class: "span15"
+          .span
+            = f.text_area :subject, value: params[:subject], placeholder: "Subject of the case...", tabindex: "3", id: "cases_new_subject", style: "width:100%"
 
-    .row
-      .span60
-        #cases_new_guide.panel.darker.kill_top.kill_right.font-small
-          .row
-            .span11
-              %span.cases_new_guide_num 1
-              &#61; Low
-            .span11
-              %span.cases_new_guide_num 2
-              &#61; Below Average
-            .span11
-              %span.cases_new_guide_num 3
-              &#61; Average
-            .span11
-              %span.cases_new_guide_num 4
-              &#61; Above Average
-            .span11
-              %span.cases_new_guide_num 5
-              &#61; Exceptional
-    .row    
-      .span53
-        .cases_new_block_title
-          Business Analytics
-        .panel.dark.cases_new_block.kill_top
-          .row
-            .span38
-              .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Addition, subtraction, multiplication, division and percentages at back-of-envelope level", "data-original-title" => "Arithmetic" }
-                        %i.icon-info-sign.icon-white
-                      Quantitative basics
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "quantitativebasics", category: "businessanalytics" }
-                      = f.hidden_field :quantitativebasics, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_quantitativebasics'
-              .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Identifies key issue in case and problem-solving steps needed to solve it", "data-original-title" => "Problem Solution" }
-                        %i.icon-info-sign.icon-white
-                      Problem-Solving
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "problemsolving", category: "businessanalytics" }
-                      = f.hidden_field :problemsolving, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_problemsolving'
-              .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Prioritising", "data-original-title" => "Prioritising" }
-                        %i.icon-info-sign.icon-white
-                      Prioritisation
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "prioritisation", category: "businessanalytics" }
-                      = f.hidden_field :prioritisation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_prioritisation'
-              .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Reality Checks Assumptions", "data-original-title" => "Sense-checking" }
-                        %i.icon-info-sign.icon-white
-                      Sanity-checking
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "sanitychecking", category: "businessanalytics" }
-                      = f.hidden_field :sanitychecking, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_sanitychecking'
-            .span1
-              .cases_new_block_circle_outer.panel.dark
-                .cases_new_block_circle.panel.darker
-                  #cases_new_block_circle_text_businessanalytics.cases_new_block_circle_text
-                        
-          .row       
-            .span35
-              .cases_new_comment
-                .cases_new_comment_content_container
-                  = f.text_area :businessanalytics_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+  .row#cases_new_guide.panel.darker.kill_top
+    .span11
+      %span.cases_new_guide_num 1
+      &#61; Low
+    .span11
+      %span.cases_new_guide_num 2
+      &#61; Below Average
+    .span11
+      %span.cases_new_guide_num 3
+      &#61; Average
+    .span11
+      %span.cases_new_guide_num 4
+      &#61; Above Average
+    .span11
+      %span.cases_new_guide_num 5
+      &#61; Exceptional
 
-    .row    
-      .span53
-        .cases_new_block_title
-          Interpersonal
-        .panel.dark.cases_new_block.kill_top
-          .row
+  .row    
+    .span{style: "width:100%"}
+      .cases_new_block_title
+        Business Analytics
+      .panel.dark.cases_new_block.kill_top
 
-            .span38
+        .row
+          .span
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Establishes a rapport with interviewer", "data-original-title" => "Rapport" }
-                        %i.icon-info-sign.icon-white
-                      Rapport
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "rapport", category: "interpersonal" }
-                      = f.hidden_field :rapport, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_rapport'
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Addition, subtraction, multiplication, division and percentages at back-of-envelope level", "data-original-title" => "Arithmetic" }
+                    %i.icon-info-sign.icon-white
+                  Quantitative basics
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "quantitativebasics", category: "businessanalytics" }
+                  = f.hidden_field :quantitativebasics, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_quantitativebasics'
+
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Articulates clearly", "data-original-title" => "Articulation" }
-                        %i.icon-info-sign.icon-white
-                      Articulation
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "articulation", category: "interpersonal" }
-                      = f.hidden_field :articulation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_articulation'
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Identifies key issue in case and problem-solving steps needed to solve it", "data-original-title" => "Problem Solution" }
+                    %i.icon-info-sign.icon-white
+                  Problem-Solving
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "problemsolving", category: "businessanalytics" }
+                  = f.hidden_field :problemsolving, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_problemsolving'
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Is Concise", "data-original-title" => "Concise" }
-                        %i.icon-info-sign.icon-white
-                      Concision
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "concision", category: "interpersonal" }
-                      = f.hidden_field :concision, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_concision'
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Prioritising", "data-original-title" => "Prioritising" }
+                    %i.icon-info-sign.icon-white
+                  Prioritisation
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "prioritisation", category: "businessanalytics" }
+                  = f.hidden_field :prioritisation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_prioritisation'
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Asks for more information when neccessary", "data-original-title" => "Requests Information" }
-                        %i.icon-info-sign.icon-white
-                      Asks for Information
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal" }
-                      = f.hidden_field :askingforinformation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_askingforinformation'
-            .span1
-              .cases_new_block_circle_outer.panel.dark
-                .cases_new_block_circle.panel.darker
-                  #cases_new_block_circle_text_interpersonal.cases_new_block_circle_text
-                    
-          .row       
-            .span35
-              .cases_new_comment
-                .cases_new_comment_content_container
-                  = f.text_area :interpersonal_comment, placeholder: "Comment...", class: "cases_new_comment_content"
-    .row    
-      .span53
-        .cases_new_block_title
-          Structure
-        .panel.dark.cases_new_block.kill_top
-          .row
-            .span38
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Reality Checks Assumptions", "data-original-title" => "Sense-checking" }
+                    %i.icon-info-sign.icon-white
+                  Sanity-checking
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "sanitychecking", category: "businessanalytics" }
+                  = f.hidden_field :sanitychecking, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_sanitychecking'
+
+          .span1
+            .cases_new_block_circle_outer.panel.dark
+              .cases_new_block_circle.panel.darker
+                #cases_new_block_circle_text_businessanalytics.cases_new_block_circle_text
+                      
+        .row       
+          .cases_new_comment
+            .cases_new_comment_content_container
+              = f.text_area :businessanalytics_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+
+  .row    
+    .span{style: "width:100%"}
+      .cases_new_block_title
+        Interpersonal
+      .panel.dark.cases_new_block.kill_top
+        
+        .row
+          .span
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Makes intended approach to problem clear to interviewer up front", "data-original-title" => "Approach up front" }
-                        %i.icon-info-sign.icon-white
-                      Approach upfront
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "approachupfront", category: "structure" }
-                      = f.hidden_field :approachupfront, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_approachupfront'
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Establishes a rapport with interviewer", "data-original-title" => "Rapport" }
+                    %i.icon-info-sign.icon-white
+                  Rapport
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "rapport", category: "interpersonal" }
+                  = f.hidden_field :rapport, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_rapport'
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Sticks to announced structure unless indicates otherwise", "data-original-title" => "Sticks to structure" }
-                        %i.icon-info-sign.icon-white
-                      Sticking to structure
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "stickingtostructure", category: "structure" }
-                      = f.hidden_field :stickingtostructure, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_stickingtostructure'
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Articulates clearly", "data-original-title" => "Articulation" }
+                    %i.icon-info-sign.icon-white
+                  Articulation
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "articulation", category: "interpersonal" }
+                  = f.hidden_field :articulation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_articulation'
+
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Explicitly announces any deivation from initially announced structure", "data-original-title" => "Announces Deviation" }
-                        %i.icon-info-sign.icon-white
-                      Announces deviations
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "announceschangedstructure", category: "structure" }
-                      = f.hidden_field :announceschangedstructure, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_announceschangedstructure'
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Is Concise", "data-original-title" => "Concise" }
+                    %i.icon-info-sign.icon-white
+                  Concision
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "concision", category: "interpersonal" }
+                  = f.hidden_field :concision, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_concision'
+
+            .cases_new_block_desc.panel.dark
               .row
-                .cases_new_block_desc.panel.dark
-                  .row
-                    .span19
-                      .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Pushes to a conclusion", "data-original-title" => "Push to Ccnclusion" }
-                        %i.icon-info-sign.icon-white
-                      Pushing to conclusion
-                    .span
-                      = render partial: 'scoreselector' , locals: { criteria: "pushingtoconclusion", category: "structure" }
-                      = f.hidden_field :pushingtoconclusion, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_pushingtoconclusion'
-            .span1
-              .cases_new_block_circle_outer.panel.dark
-                .cases_new_block_circle.panel.darker
-                  #cases_new_block_circle_text_structure.cases_new_block_circle_text
-                    
-          .row       
-            .span35
-              .cases_new_comment
-                .cases_new_comment_content_container
-                  = f.text_area :structure_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Asks for more information when neccessary", "data-original-title" => "Requests Information" }
+                    %i.icon-info-sign.icon-white
+                  Asks for Information
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal" }
+                  = f.hidden_field :askingforinformation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_askingforinformation'
+          .span1
+            .cases_new_block_circle_outer.panel.dark
+              .cases_new_block_circle.panel.darker
+                #cases_new_block_circle_text_interpersonal.cases_new_block_circle_text
+                  
+        .row       
+          .cases_new_comment
+            .cases_new_comment_content_container
+              = f.text_area :interpersonal_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+
+
+  .row    
+    .span{style: "width:100%"}
+      .cases_new_block_title
+        Structure
+      .panel.dark.cases_new_block.kill_top
+        
+        .row
+          .span
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Makes intended approach to problem clear to interviewer up front", "data-original-title" => "Approach up front" }
+                    %i.icon-info-sign.icon-white
+                  Approach upfront
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "approachupfront", category: "structure" }
+                  = f.hidden_field :approachupfront, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_approachupfront'
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Sticks to announced structure unless indicates otherwise", "data-original-title" => "Sticks to structure" }
+                    %i.icon-info-sign.icon-white
+                  Sticking to structure
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "stickingtostructure", category: "structure" }
+                  = f.hidden_field :stickingtostructure, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_stickingtostructure'
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Explicitly announces any deivation from initially announced structure", "data-original-title" => "Announces Deviation" }
+                    %i.icon-info-sign.icon-white
+                  Announces deviations
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "announceschangedstructure", category: "structure" }
+                  = f.hidden_field :announceschangedstructure, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_announceschangedstructure'
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Pushes to a conclusion", "data-original-title" => "Push to Ccnclusion" }
+                    %i.icon-info-sign.icon-white
+                  Pushing to conclusion
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "pushingtoconclusion", category: "structure" }
+                  = f.hidden_field :pushingtoconclusion, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_pushingtoconclusion'
+
+          .span1
+            .cases_new_block_circle_outer.panel.dark
+              .cases_new_block_circle.panel.darker
+                #cases_new_block_circle_text_structure.cases_new_block_circle_text
+                  
+        .row       
+          .cases_new_comment
+            .cases_new_comment_content_container
+              = f.text_area :structure_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+
+
+
+  .row
+    .cases_new_block_title
+      Top Recommendations for #{@case.user.first_name}
+    #cases_new_recommendations_panel.panel.dark.kill_top
+      .row
+        = f.text_area :recommendation1, placeholder: "1st Recommendation...", class: "cases_new_recommendation", tabindex: "4"
+      .spacer5
+      .row
+        = f.text_area :recommendation2, placeholder: "2nd Recommendation...", class: "cases_new_recommendation", tabindex: "5"
+      .spacer5
+      .row
+        = f.text_area :recommendation3, placeholder: "3rd Recommendation...", class: "cases_new_recommendation", tabindex: "6"
+
+
+
+  .row#cases_new_submit_panel
+    = f.submit "Submit Feedback", class: "btn btn-large btn-inverse", tabindex: "10", id: "cases_new_submit_button"
+

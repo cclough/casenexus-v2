@@ -25,6 +25,11 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+  &.console {
+    background: url('app/bg-texture4.jpg') repeat top left !important;
+    overflow:hidden;
+  }
 }
 
 body {
@@ -43,7 +48,9 @@ body {
   &.signedout {
     padding-top: 70px;
   }
+
   @include box_sizing; // references above, gets rid of margin at bottom of page without gradient - still not perfect
+
 }
 
 header {

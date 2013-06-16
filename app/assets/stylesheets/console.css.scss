@@ -17,13 +17,12 @@ $blue_linkedin: #006699;
   float: left;
   height: 100%;
   width: 50%;
-
-  background: url('app/bg-texture4.jpg') repeat top left;
 }
 
 #console_index_pdfjs_iframe {
   height:100%;
-  width:100%;  
+  width:100%; 
+  border:0; 
 }
 
 #console_index_feedback {
@@ -31,32 +30,31 @@ $blue_linkedin: #006699;
   // width:50%;
   overflow-y: hidden;
   overflow-x: hidden;
-
-  background: url('app/bg-texture4.jpg') repeat top left;
 }
 
 #console_index_feedback_subnav {
   // min-height:34px;
 
-  // border: 1px solid #252525;
-  // background-color: #3D3D3D;
-  // background-image: -moz-linear-gradient(top, #383838, #1C1C1C);
-  // background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#383838), to(#1C1C1C));
-  // background-image: -webkit-linear-gradient(top, #383838, #1C1C1C);
-  // background-image: -o-linear-gradient(top, #383838, #1C1C1C);
-  // background-image: linear-gradient(to bottom, #383838, #1C1C1C);
-  // background-repeat: repeat-x;
-  // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff383838', endColorstr='#ff1C1C1C', GradientType=0);
+  border-bottom: 1px solid #252525;
+  background-color: #3D3D3D;
+  background-image: -moz-linear-gradient(top, #383838, #1C1C1C);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#383838), to(#1C1C1C));
+  background-image: -webkit-linear-gradient(top, #383838, #1C1C1C);
+  background-image: -o-linear-gradient(top, #383838, #1C1C1C);
+  background-image: linear-gradient(to bottom, #383838, #1C1C1C);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff383838', endColorstr='#ff1C1C1C', GradientType=0);
 
-  height: 34px;
-  background-color: #474747; /* fallback */
-  background-image: url(pdfjs/texture.png),
-                    linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
-  box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
-              inset 0 1px 1px hsla(0,0%,0%,.15),
-              inset 0 -1px 0 hsla(0,0%,100%,.05),
-              0 1px 0 hsla(0,0%,0%,.15),
-              0 1px 1px hsla(0,0%,0%,.1);
+
+  min-height: 32px;
+  // background-color: #474747; /* fallback */
+  // background-image: url(pdfjs/texture.png),
+  //                   linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
+  // box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
+  //             inset 0 1px 1px hsla(0,0%,0%,.15),
+  //             inset 0 -1px 0 hsla(0,0%,100%,.05),
+  //             0 1px 0 hsla(0,0%,0%,.15),
+  //             0 1px 1px hsla(0,0%,0%,.1);
 
 
 

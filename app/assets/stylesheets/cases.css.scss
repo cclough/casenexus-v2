@@ -255,7 +255,11 @@ $blue_pastel: #98cdff;
   input, textarea {
     margin-bottom:0px !important;
   }
+  text-align:center;
 }
+
+
+
 
 #cases_new_target_avatar {
   margin-right:7px;
@@ -269,21 +273,53 @@ $blue_pastel: #98cdff;
 }
 
 
-#cases_new_guide {
-  text-align:center;
-}
 
-.cases_new_guide_num {
-  font-size:12px;
-  color:$blue_pastel;
-}
 
 .cases_new_block {
   padding:3px;
   padding-bottom:0px;
 }
 
+
+
+
+#cases_new_subject {
+  height: 59px;
+  margin-bottom: 0px !important;
+  width:220px;
+}
+
+
+
+.cases_new_recommendation {
+  width: 90% !important;
+  height:50px !important;
+  margin-left:5px;
+}
+
+
+#cases_new_recommendations_panel {
+  text-align:center;
+}
+
+
+
+
 .cases_new_block_title {
+
+  width:400px;
+  position:relative;
+  left:50%;
+  margin-left:-200px;
+  margin-bottom:0px;
+
+  line-height:25px;
+  height:25px;
+  text-align:center;
+  font-weight: bold;
+  font-size:14px;
+  color: $gray_Lighter;
+
   background: url('app/dark-bg.png') repeat top left;
 
   border-top-left-radius: 5px;
@@ -294,17 +330,26 @@ $blue_pastel: #98cdff;
   -moz-border-top-right-radius: 5px;
   -webkit-border-top-right-radius: 5px;
 
-  line-height:25px;
-  height:25px;
-  text-align:center;
-  font-weight: bold;
-  font-size:14px;
-  color: $gray_Lighter;
-  margin-left:15px;
-  margin-right:15px;
-  margin-bottom:0px;
-  width:400px;
+
+
+
 }
+
+
+
+
+#cases_new_guide {
+  text-align:center !important;
+  font-size:11px;
+}
+
+.cases_new_guide_num {
+  font-size:12px;
+  color:$blue_pastel;
+}
+
+
+
 
 .cases_new_block_desc {
   color: $gray_Lighter;
@@ -312,6 +357,12 @@ $blue_pastel: #98cdff;
   margin-bottom:2px;
   border:0 !important;
 }
+
+
+
+
+
+
 
 
 .cases_new_criteria_popover {
@@ -358,79 +409,30 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_new_subject {
-  height: 59px;
-  margin-bottom: 0px !important;
-  width:220px;
+
+
+#cases_new_submit_panel {
+  text-align:center;
+  margin-bottom:70px;
 }
 
 
-#cases_new_button_submit {
-  margin-top:13px;
+#cases_new_submit_button {
+
+  width:300px;
   height:45px;
+
 }
 
 
-
-.cases_new_recommendation {
-  width:265px !important;
-  height:50px !important;
-  margin-left:5px;
-}
-
-
-
-
-
-
-
-
-
-
-// .cases_new_comment_recommendation_container {
-//   margin-left:35px;
-//   border-left: 1px solid #ffd4d4 !important;
-//   padding-left:10px;
-//   padding-top:20px;
-//   padding-bottom:60px;
-// }
-
-// .cases_new_comment_recommendation {
-
-//   background-color: rgb(255, 255, 204) !important;
-//   border:0px solid transparent !important;
-
-//   font-size:18px;
-//   font-weight:bold;
-
-//   -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 0px rgba(0, 0, 0, 0) !important;
-//   -moz-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 8px rgba(0, 0, 0, 0) !important;
-//   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 0 8px rgba(0, 0, 0, 0) !important;
-
-// }
-
-// .cases_new_comment_recommendation::-webkit-input-placeholder {
-//   color: #d6cb82;
-//   font-style:italic;
-//   font-weight:normal;
-// }
-// .cases_new_comment_recommendation:-moz-placeholder {
-//   color: #d6cb82;
-//   font-weight:normal;
-// }
-// .cases_new_comment_recommendation:-ms-input-placeholder {
-//   color: #d6cb82;
-//   font-weight:normal;
-// }
 
 
 .cases_new_comment {
-  margin:0 0 0 15px;
+  margin:5px;
 
   background-color: rgb(255, 255, 204);
 
   height:205px;
-  width:360px;
 
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -455,7 +457,7 @@ $blue_pastel: #98cdff;
 .cases_new_comment_content_container {
   margin-left:35px;
 
-  width:320px; // defines length of lines
+  // width here defines length of lines
   height:169px;
   position:relative;
   top:35px;
@@ -470,9 +472,13 @@ $blue_pastel: #98cdff;
 .cases_new_comment_content {
 
   margin-top:-37px;
-
   height:160px;
-  width:290px; // imporant to check this is right (text runs out of yellow)
+
+  // width for text box - it'll runs out of yellow if not careful
+  // better solution needed here!
+  width:80%;
+
+  border:1px solid black;
 
   line-height:20px;
   padding-left:10px;
@@ -487,6 +493,7 @@ $blue_pastel: #98cdff;
 
 }
 
+
 .cases_new_comment_content::-webkit-input-placeholder {
   color: #d6cb82;
   font-style:italic;
@@ -500,7 +507,6 @@ $blue_pastel: #98cdff;
   color: #d6cb82;
   font-weight:normal;
 }
-
 
 
 /////////////////////////////////////////////////////////////////
