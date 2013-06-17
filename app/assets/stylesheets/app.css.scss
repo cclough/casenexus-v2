@@ -26,13 +26,20 @@ html {
   -o-background-size: cover;
   background-size: cover;
 
-  &.console {
+  &.application_html_console {
     background: url('app/bg-texture4.jpg') repeat top left;
     -webkit-background-size: auto;
     -moz-background-size: auto;
     -o-background-size: auto;
     background-size: auto;
     overflow:hidden;
+  }
+  &.application_html_map {
+    background: url('app/bg-texture4.jpg') repeat top left;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
   }
 }
 
