@@ -8,21 +8,24 @@ $blue_linkedin: #006699;
 
 #console_index_container {
   width:100%;
-  height:100%;
+  height:100% !important;
 }
 
 #console_index_pdfjs {
   height:100%;
   // width:49%;
   float: left;
-  height: 100%;
+  height: 100% !important;
   width: 50%;
 }
 
 #console_index_pdfjs_iframe {
   height:100%;
-  width:100%; 
-  border:0; 
+  // width:49%;
+  float: left;
+  height: 100% !important;
+  width: 50%;
+  border:0;
 }
 
 #console_index_feedback {
@@ -47,16 +50,6 @@ $blue_linkedin: #006699;
 
 
   min-height: 32px;
-  // background-color: #474747; /* fallback */
-  // background-image: url(pdfjs/texture.png),
-  //                   linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
-  // box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
-  //             inset 0 1px 1px hsla(0,0%,0%,.15),
-  //             inset 0 -1px 0 hsla(0,0%,100%,.05),
-  //             0 1px 0 hsla(0,0%,0%,.15),
-  //             0 1px 1px hsla(0,0%,0%,.1);
-
-
 
 }
 
@@ -67,15 +60,6 @@ $blue_linkedin: #006699;
   border:0;
 }
 
-// #console_index_subnav_button_sendpdf {
-//   // display:none;
-// }
-
-
-// #console_index_subnav_button_sendpdf_nocharts {
-
-// }
-
 
 
 
@@ -83,7 +67,7 @@ $blue_linkedin: #006699;
 
 
 .console_index_subnav_button_sendpdf_state {
-  width: 93px;
+  width: 100px;
 }
 
 /////////////// Component Height Adjustments ////////////////
@@ -225,5 +209,3 @@ $blue_linkedin: #006699;
   width: 105px;
   z-index: auto;
 }
-
-// #clear { clear: both; height: 1px; overflow: hidden; font-size:0pt; margin-top: -1px; }

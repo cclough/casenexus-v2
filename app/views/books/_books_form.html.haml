@@ -1,10 +1,19 @@
 = form_tag books_path, method: 'get', id: "books_index_books_form" do
   .row
     .span
-      = text_field_tag :search, params[:search], placeholder: "Search the Library", id: "books_index_books_form_searchfield", class: 'search-query span23'
+      = text_field_tag :search, params[:search], placeholder: "Search the Library", id: "books_index_books_form_searchfield", class: 'search-query'
     
     .pull-right
-      .span#books_index_books_form_label
+      .span.offset1#books_index_books_form_label
+        Per Page
+        %i.icon-caret-right.offset1
+      .span.offset1
+        #books_index_books_form_buttons_type
+          .btn-group
+            = pageable_books("10")
+            = pageable_books("20")
+            = pageable_books("50") 
+      .span.offset1#books_index_books_form_label
         Filter
         %i.icon-caret-right.offset1
       / Type Buttons

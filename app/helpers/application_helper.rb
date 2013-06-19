@@ -42,6 +42,14 @@ module ApplicationHelper
     end
   end
 
+  def pageable_books(number)
+    if number == params[:per_page]
+      link_to number, params.merge(per_page: number), class: "btn btn-inverse active"
+    else
+      link_to number, params.merge(per_page: number), class: "btn btn-inverse"
+    end   
+  end
+
   def avatar_for(user, type)
 
     case type
