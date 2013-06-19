@@ -8,27 +8,20 @@
         Per Page
         %i.icon-caret-right.offset1
       .span.offset1
-        #books_index_books_form_buttons_type
-          .btn-group
-            = pageable_books("10")
-            = pageable_books("20")
-            = pageable_books("50") 
+        .btn-group
+          = pageable_books("10")
+          = pageable_books("20")
+          = pageable_books("50") 
       .span.offset1#books_index_books_form_label
         Filter
         %i.icon-caret-right.offset1
       / Type Buttons
       .span.offset1
-        #books_index_books_form_buttons_type
-          .btn-group
-            = filterable_books('all', 'All')
-            = filterable_books('guide', 'Guides')
-            = filterable_books('link', 'Web')
-            = filterable_books('case', 'Cases')
-
-        #books_index_books_form_radios_type
-          = radio_button_tag :books_list_type, 'guides'
-          = radio_button_tag :books_list_type, 'web'
-          = radio_button_tag :books_list_type, 'cases', checked: true
+        .btn-group
+          = filterable_books('all', 'All')
+          = filterable_books('guide', 'Guides')
+          = filterable_books('link', 'Web')
+          = filterable_books('case', 'Cases')
 
       .span.offset2#books_index_books_form_label
         Sort by

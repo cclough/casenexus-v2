@@ -44,9 +44,9 @@ module ApplicationHelper
 
   def pageable_books(number)
     if number == params[:per_page]
-      link_to number, params.merge(per_page: number), class: "btn btn-inverse active"
+      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-inverse active"
     else
-      link_to number, params.merge(per_page: number), class: "btn btn-inverse"
+      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-inverse"
     end   
   end
 

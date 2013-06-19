@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(params[:comment])
     if @comment.save
       @commentable.update_average_rating #manually done, as opposed to triggering the call back
-      redirect_to @commentable, notice: "Comment created."
+      redirect_to @commentable, notice: "Review posted."
     else
-      flash[:error] = "You have not completed the comment form correctly"
+      flash[:error] = "You have not completed the review form correctly"
       redirect_to @commentable
     end
   end
