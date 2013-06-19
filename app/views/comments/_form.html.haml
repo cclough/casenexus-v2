@@ -7,7 +7,7 @@
           = render 'shared/error_messages', object: @comment
 
         
-        = f.text_area :content, rows: 4, class: "span45", placeholder: "Make a comment..."
+        = f.text_area :content, rows: 4, class: "span45", placeholder: "Write a review..."
         .spacer5
         .row
           .span22
@@ -18,4 +18,4 @@
             .spacer5
             = f.hidden_field :user_id, value: current_user.id
             = f.hidden_field :rating, id: "books_rating_set_field"
-            = f.submit "Submit comment", class: "btn btn-inverse btn-large"
+            = f.submit "Submit Review", class: "btn btn-inverse btn-large"
