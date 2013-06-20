@@ -23,17 +23,15 @@
     /           = @case.interviewer.university.name
 
 
-  .span29.pull-right#cases_show_subnav_browse
-    %select#cases_show_subnav_select.chzn-select.span29{"data-placeholder" => "Jump to Case...", value: @case.id }
+  .span41.pull-right#cases_show_subnav_browse
+    .span10.offset1#cases_show_subnav_label
+      Select case
+      %i.icon-caret-right.offset1
+    %select#cases_show_subnav_select.chzn-select.span29.offset1{"data-placeholder" => "Jump to Case...", value: @case.id }
       %option
         - @cases.each do |cases_select_item|
           %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
             = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
-    .row
-      .span
-        #cases_show_subnav_date
-          = @case.date.strftime("%a %d %b %Y %I:%M%p")
-
 .spacer10
 .row
   .panel.darker.kill_all
@@ -49,6 +47,11 @@
             Subject:
           %span
             = @case.subject
+        .row
+          .span7
+            Date:
+          %span#cases_show_subnav_date
+            = @case.date.strftime("%a %d %b %Y %I:%M%p")
       .span8.pull-right
         #cases_show_subnav_score.panel.darker.kill_all
           = @case.totalscore.to_f.round(1)

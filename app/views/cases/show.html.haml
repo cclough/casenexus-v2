@@ -1,6 +1,9 @@
 - provide(:title, "Case with " + @case.interviewer.name)
 - provide(:sub_title, @case.subject_trunc)
 
+- provide(:breadcrumb, "Cases")
+- provide(:breadcrumb_url, "/cases")
+
 :javascript
 
   var cases_show_chart_bar_data = #{@case.cases_show_chart_bar_data}; 

@@ -12,10 +12,6 @@ class EventsController < ApplicationController
     @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
 
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-
-    # @cases = current_user.cases.paginate(per_page: 5, page: params[:page])
-    @events = current_user.events.paginate(per_page: 5, page: params[:page])
-
   end
 
   def show

@@ -1,35 +1,32 @@
 - provide(:title, 'Calendar')
 - provide(:sub_title, 'Your case appointments')
 
-.row.panel.darker.kill_left.kill_right
+.row.panel.darker.kill_left.kill_right#events_calendar_container
 
-  .span25
+  / .span25
 
-    .spacer20
-    .row
-      %div
-        .events_index_block_title
-          Events
+  /   .spacer20
+  /   .row
+  /     %div
+  /       .events_index_block_title
+  /         Events
 
-        .row
-          #events_index_events
-            - @events.each do |events_index_events_item|
-              .row.events_index_events_item{"data-id"=>events_index_events_item.id.to_s}
-                .span2
-                  = image_tag "avatars/icon.png"
-                .span7.offset1.events_index_events_item_date
-                  = events_index_events_item.datetime.strftime("%a %d %b %I:%M%p")
-                .span.offset1
-                  .row
-                    = events_index_events_item.partner.name
+  /       .row
+  /         #events_index_events
+  /           - @events.each do |events_index_events_item|
+  /             .row.events_index_events_item{"data-id"=>events_index_events_item.id.to_s}
+  /               .span2
+  /                 = image_tag "avatars/icon.png"
+  /               .span7.offset1.events_index_events_item_date
+  /                 = events_index_events_item.datetime.strftime("%a %d %b %I:%M%p")
+  /               .span.offset1
+  /                 .row
+  /                   = events_index_events_item.partner.name
 
-            = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
+  /           = will_paginate @events, class: "application_pagination", inner_window: 1, outer_window: 0
 
 
-  .span43.offset2
-    .row
-      .panel.darker.kill_left.kill_bottom.span42
-        .row
-          = render "events/calendar"
+
+  = render "events/calendar"
 
 

@@ -223,9 +223,13 @@ $blue_pastel: #98cdff;
   color: $gray_Mid;
 }
 
+#cases_show_subnav_label {
+  margin-top:3px;
+}
 
 #cases_show_subnav_browse {
-  margin-top:-50px;
+  margin-top:-42px;
+  color:$gray_Light;
 }
 
 #cases_show_subnav_score {
@@ -240,7 +244,6 @@ $blue_pastel: #98cdff;
 #cases_show_subnav_date {
   font-style:italic;
   font-size:12px;
-  line-height:30px;
   color: $gray_Light;
 }
 

@@ -29,7 +29,7 @@
 
     = render partial: 'shared/pusher'
 
-  %body{style:"overflow-y:hidden;"}
+  %body
     / header
     = render 'layouts/header'
 
@@ -56,7 +56,7 @@
               %br
               .row.profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
                 = link_to "Settings", edit_account_path
-          .span73
+          .span.profile_container_Width
             = yield
 
         / footer

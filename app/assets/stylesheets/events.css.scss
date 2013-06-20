@@ -21,54 +21,76 @@ $blue_linkedin: #006699;
   .info {
     font-style: italic;
   }
+
 }
 
 
 
+.events_calendar_event_container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width:99px;
+  height:46px;
+}
+
+.events_calendar_event_count {
+  color:#00b4ff;
+}
+
 
 .events_calendar_event {
   display:block;
-  width:20px;
+  width:90;
   height:20px;
-  border:1px solid red;
-  background-color:pink;
+  margin-bottom:2px;
 
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
+  border: 1px solid #00b4ff;
+  background-color:rgba(0,180,255,0.2);
+  // border:1px solid red;
+  // background-color:rgba(255,0,0,0.2);
+
+  color:white;
+
+  -moz-border-radius:    2px;
+  -webkit-border-radius: 2px;
+  border-radius:         2px;
+
+  &:hover {
+    background-color:rgba(0,180,255,0.6);
+    cursor:pointer;
+  }
 
 }
 
 #events_calendar .calendar {
   // border-collapse: collapse;
-  width: 420px;
+  width: 100%;
 
   td, th {
     font-family: "Lucida Grande", arial, helvetica, sans-serif;
     font-size: 10px;
     padding: 3px;
-    border: 1px solid #999;
+    border: 1px solid $gray_Dark;
   }
 
   th {
-    background: url('app/dark-bg.png') repeat top left;
+    background:rgba(0,0,0,0.6);
     color: #666;
     text-align: center;
     width: 14.2857142857143%;
   }
 
   td {
-    background: url('app/darker-bg.png') repeat top left;
+    background:rgba(0,0,0,0.6);
     color: $gray_Lightest;
-    height: 60px !important;
-    width:60px !important;
+    height: 65px !important;
+    width: 60px !important;
     vertical-align: top;
     font-size: 10px;
-    overflow:scroll;
   }
 
-  .notmonth, .notmonth a { color: #777; }
-  .today { background-color: #D7F2FF; }
+  .notmonth, .notmonth a { color: #777; background:rgba(0,0,0,0.9); }
+  .today { background:rgba(0,0,0,0.2); }
 }
 
 #events_calendar #events_calendar_month {
@@ -81,7 +103,6 @@ $blue_linkedin: #006699;
     color: #999;
   }
 }
-
 
 
 
@@ -171,4 +192,13 @@ $blue_linkedin: #006699;
   border:0;
   border-radius: 4px 4px 4px 4px;
   padding: 8px 35px 8px 14px;
+}
+
+
+///////////////////////////////////////////////
+///////////////////// EDIT ////////////////////
+///////////////////////////////////////////////
+
+#events_edit_avatar {
+  max-width:30px;
 }

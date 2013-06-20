@@ -6,23 +6,39 @@
         = link_to date: @date.prev_month do
           .btn.btn-inverse.btn-small
             %i.icon-chevron-left.icon-white
+        
         = @date.strftime("%B %Y")
+
+         
+
         = link_to date: @date.next_month do
           .btn.btn-inverse.btn-small
             %i.icon-chevron-right.icon-white
     .pull-right
       .span
         #events_calendar_new_button.btn.btn-inverse
+          %i.icon-plus
           New
       .span.offset1
         = link_to "webcal://localhost:3000/events/ics" do
           .btn.btn-inverse
-            Sub
+            %i.icon-external-link
+            Subscribe
   .spacer5
   .row
     = calendar @date do |date|
       = date.day
       - if @events_by_date[date]
-        - @events_by_date[date].each do |event|
-          %span.events_calendar_event{"data-id" => event.id}
-            / = event.partner.name
+
+
+        .span.pull-right.events_calendar_event_count
+          = "x" + @events_by_date[date].count.to_s
+
+
+        .events_calendar_event_container
+          - @events_by_date[date].each do |event|
+            .events_calendar_event{"data-id" => event.id}
+              .span4
+                = event.datetime.strftime("%H:%M")
+              .span
+                = event.partner.first_name
