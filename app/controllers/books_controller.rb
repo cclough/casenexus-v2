@@ -12,7 +12,13 @@ class BooksController < ApplicationController
       books_scope = Book   
     end
 
-    @books = books_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: params[:per_page], page: params[:page])
+    if !params[:per_page].blank?
+      books_per_page = params[:per_page]
+    else
+      books_per_page = 10
+    end
+
+    @books = books_scope.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: books_per_page, page: params[:page])
 
 	end
 
