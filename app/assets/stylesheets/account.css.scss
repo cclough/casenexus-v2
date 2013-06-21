@@ -12,10 +12,32 @@ $blue_pastel: #98cdff;
 
 
 
-label { // why the hell won't this work in app.css?
+label, .account_form_label { // why the hell won't this work in app.css?
   font-size:12px !important;
 }
 
+.account_field {
+  color:white !important;
+
+  background:0 !important;
+  border-top:0 !important;
+  border-left:0 !important;
+  border-right:0 !important;
+  border-bottom:1px solid white;
+
+  -moz-border-radius:    0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius:         0px !important;
+
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -moz-transition: none !important;
+  -webkit-transition: none !important;
+
+  padding-bottom:0px !important;
+}
 
 
 /////////////////////////////////////////////////////////////////
@@ -111,6 +133,13 @@ label { // why the hell won't this work in app.css?
 #account_completeedit_university_panel {
   color:$gray_Mid !important;
 }
+
+#account_completedit_casesexternal_field {
+  font-size:25px;
+  height:30px;
+}
+
+
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// DELETE //////////////////////////////

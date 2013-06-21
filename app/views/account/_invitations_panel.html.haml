@@ -9,10 +9,10 @@
               %p Invite Friends (#{current_user.invitations.count}/5 Invitations Used)
               = hidden_field_tag :back_url, edit_account_path
             .span19
-              = f.text_field :name, class: 'span18', placeholder: "Name"
+              = f.text_field :name, class: 'span18 account_field', placeholder: "Name"
             .span25
               .input-append
-                = f.text_field :email, class: 'span25', placeholder: "Email"
+                = f.text_field :email, class: 'span25 account_field', placeholder: "Email"
                 = f.submit "Invite", class: 'btn btn-inverse'
       - else
         %p You have no more invitations

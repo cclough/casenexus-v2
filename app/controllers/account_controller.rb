@@ -50,6 +50,8 @@ class AccountController < ApplicationController
 
   def edit_password
     @user = current_user
+    
+    render layout: 'profile'
   end
 
   def delete

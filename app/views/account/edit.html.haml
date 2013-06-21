@@ -21,13 +21,13 @@
                   = image_tag "universities/"+ @user.university.image
                 .span20.offset1
                   .row
+                    %strong
+                      = @user.email
+                  .row.account_form_label
                     = @user.university.name
                   .spacer5
                   .row
-                    = f.label :email, @user.email, class: "span21"
-
-              .panel.darker.kill_all
-                = link_to(raw("<i class=icon-eraser></i> I want to delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+                    = link_to(raw("<i class=icon-eraser></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
 
 
           .panel.dark.kill_left.kill_top
@@ -35,18 +35,18 @@
               .span10
                 = f.label :first_name
               .span20
-                = f.text_field :first_name, class: "span18"
+                = f.text_field :first_name, class: "span21 account_field"
             .row
               .span10
                 = f.label :last_name
               .span20
-                = f.text_field :last_name, class: "span18"
+                = f.text_field :last_name, class: "span21 account_field"
             .spacer5
             .row
               .span25.offset10
                 %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
                   %i.icon-pencil
-                  I want to edit my password
+                  Edit my password
                 .spacer5
             .spacer5
             .row.font-small
@@ -64,39 +64,39 @@
 
           .panel.dark.kill_left
             .row
-              .span
+              .span10.account_form_label
                 Languages
-              .span
-                = f.collection_select :language_ids, Language.all, :id, :name, {selected: @user.language_ids}, {multiple: true, class: "chzn-select span30"}
+              .span20
+                = f.collection_select :language_ids, Language.all, :id, :name, {selected: @user.language_ids}, {multiple: true, class: "chzn-select span21"}
             .spacer10
             .row
-              .span
+              .span10.account_form_label
                 Time Zone
-              .span.offset1
-                = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select" }
+              .span20
+                = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select span21" }
+            .spacer10
+            .row
+              .span10
+                = image_tag 'icons/skype_large.png'
+                #account_completeedit_skype_link
+                  = link_to "Need to register?", "https://login.skype.com/account/signup-form"
+              .span20
+                = f.text_field :skype, placeholder: "Skype username", class: "span21 account_field"
+
         .span40
           .panel.dark.kill_left.kill_bottom
             .row
-              .span
+              .span25.account_form_label
                 How many cases have you done outside of casenexus?
-            .row
               .span
-                = f.text_field :cases_external, class: "span5"
+                = f.text_field :cases_external, class: "span5", id: "account_completedit_casesexternal_field"
+            .spacer5
             .row
-              .span
+              .span.account_form_label
                 Which firms are you applying for?
             .row
               .span
                 = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span36"}
-
-            .spacer10
-            .row
-              .span12
-                = image_tag 'icons/skype_large.png'
-                #account_completeedit_skype_link
-                  = link_to "Need to register?", "https://login.skype.com/account/signup-form"
-              .span22
-                = f.text_field :skype, placeholder: "Skype username"
 
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
