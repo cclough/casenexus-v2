@@ -1,4 +1,4 @@
-.panel.dark.font-small.kill_bottom.kill_left.kill_right.profile_container_Width
+.panel.dark.font-small.kill_bottom.kill_left.kill_right
   .row
     .span
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
@@ -16,21 +16,19 @@
                 = f.submit "Invite", class: 'btn btn-inverse'
       - else
         %p You have no more invitations
-  .row
-    .span
-      #account_edit_invitations_list.panel.dark.kill_all
-        - if @invitations.count > 0
-          - @invitations.each do |invitation|
-            %div
-              - if invitation.invited
-                .span10
-                  = "#{invitation.email} accepted your invitation and created his profile: "
-                .span5.pull-right
-                  = link_to(invitation.invited, member_path(invitation.invited))
-              - else
-                .span10
-                  = "#{invitation.email} was invited"
-                .span5.pull-right
-                  = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
-        - else
-          %p You have no pending/accepted invitations
+  .row#account_edit_invitations_list.panel.dark.kill_all
+    - if @invitations.count > 0
+      - @invitations.each do |invitation|
+        %div
+          - if invitation.invited
+            .span10
+              = "#{invitation.email} accepted your invitation and created his profile: "
+            .span5.pull-right
+              = link_to(invitation.invited, member_path(invitation.invited))
+          - else
+            .span10
+              = "#{invitation.email} was invited"
+            .span5.pull-right
+              = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
+    - else
+      %p You have no pending/accepted invitations
