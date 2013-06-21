@@ -10,12 +10,23 @@
       = render 'shared/error_messages', object: @event
 
     .row
-      .span13
-        Choose a Friend
-      .span20
-        %select#events_new_friend_select.chzn-select.span20{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
-          %option
-            = options_from_collection_for_select(current_user.accepted_friends, "id", "name")
+      - if @friend.blank?
+        .span13
+          Choose a Friend
+        .span20
+          %select#events_new_friend_select.chzn-select.span20{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
+            %option
+              = options_from_collection_for_select(current_user.accepted_friends, "id", "name")
+      - else
+        .span13
+          With:
+        .span.offset1#events_edit_avatar
+          = image_tag "avatars/icon.png"
+        .span.offset1
+          %strong
+            = @friend.name
+            = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_new_friend_select"
+    .spacer5
     .row
       .offset13
         #events_new_friend_timezone.application_bootstrap_yellow

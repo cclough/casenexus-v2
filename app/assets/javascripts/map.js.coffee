@@ -68,19 +68,30 @@ window.map_index_map_marker_click = (marker_id) ->
             $("#modal_friendship_req").modal("show")
 
         $("#map_index_user_button_feedbackrequest").click ->
+
+          $("#header_nav_panel_browse_search_field").val "hello"
+
           if !($("#modal_feedback_req").hasClass("in"))
             $(".modal").modal("hide")
             $("#modal_feedback_req").modal("show")
-            $("#modal_feedback_req_datepicker").datepicker()
+            $("#modal_feedback_req_datepicker").datetimepicker
+              format: "dd MM yyyy"
+              showMeridian: true
+              pickerPosition: 'bottom-left'
 
         $("#map_index_user_button_event").click ->
+
           if !($("#modal_event").hasClass("in"))
             $(".modal").modal("hide")
-            $.get "/events/new", (data) ->
+
+            friend_id = $(this).data("friend_id")
+
+            $.get "/events/new?friend_id=" + friend_id, (data) ->
               $("#modal_event").html data
-            $("#modal_event").modal("show")
-            $("#events_datepicker").datepicker dateFormat: "dd/mm/yy"
-            $(".chzn-select").chosen()
+              window.events_modal_rebless()
+              $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+                $("#events_new_friend_timezone").html data
+                $("#modal_event").modal("show")
 
       # Doesn't work!
       # $("#map_index_container_user").fadeIn "fast"
@@ -128,6 +139,8 @@ $(document).ready ->
     map_index_users_updatelist()  if e.which is 13
 
 
+
+
   # For Pull Downs
   $(".map_index_users_form_pulldown a").click ->
 
@@ -137,6 +150,7 @@ $(document).ready ->
     radio = $(this).data("radio")
     $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
        
+
     # Change text field to language name
     selection_id = $(this).data("id")
     $("#users_filter_"+category).val(selection_id)

@@ -21,6 +21,15 @@ class Event < ActiveRecord::Base
   end
 
 
+  # Micro
+  def book_partner
+    Book.find(book_id_partner)
+  end
+
+  def book_user
+    Book.find(book_id_user)
+  end
+
   class << self
 
     def set(user, partner, datetime, book_id_user, book_id_partner)

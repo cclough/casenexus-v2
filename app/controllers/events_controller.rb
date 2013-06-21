@@ -16,12 +16,13 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    render layout: false
+  render layout: false
   end
 
   def new
     @event = current_user.events.new
-    @book_user = Book.find(params[:book_id_user])
+    @book_user = Book.find(params[:book_id_user]) if params[:book_id_user]
+    @friend = User.find(params[:friend_id]) if params[:friend_id]
     render layout: false
   end
 

@@ -109,7 +109,7 @@
               Feedback
             .row
               .span
-                %a#map_index_user_button_event.btn.btn-inverse.btn-small{ href:"/cases/new?user_id=" + @user.id.to_s}
+                %a.btn.btn-inverse.btn-small{ href:"/cases/new?user_id=" + @user.id.to_s}
                   %i.icon-edit.icon-white
                   Send
               .span
@@ -122,9 +122,10 @@
               Case
             .row
               .span
-                %a#map_index_user_button_event.btn.btn-inverse.btn-small{href:"#"}
+                %a#map_index_user_button_event.btn.btn-inverse.btn-small{"data-friend_id" => @user.id.to_s}
                   %i.icon-calendar.icon-white
-                  Schedule
+                  %span
+                    Schedule
 
               .span
                 %a.btn.btn-inverse.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
