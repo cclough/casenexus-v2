@@ -12,13 +12,6 @@
   .row#notifications_show_header
     .span
       %a#notifications_show_header_back
-        .span20
-          = link_to notifications_path do
-            .row
-              .span2
-                %i.icon-arrow-left.icon-large
-              .span15
-                Back to Notifications
         .span3
           = image_tag "avatars/icon.png"
         .span
@@ -29,10 +22,12 @@
               - unless @sender.country.blank?
                 .span3
                   = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.name
+          .row
             .span2.offset1
               = image_tag "universities/" + @sender.university.image
             .span.offset1
               = @sender.university.name
+  .spacer5
   .row#notifications_show_body
 
     - if @notifications.count > 0
