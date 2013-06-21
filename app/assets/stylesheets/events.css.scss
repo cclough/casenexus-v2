@@ -29,19 +29,20 @@ $blue_linkedin: #006699;
 .events_calendar_event_container {
   overflow-y: scroll;
   overflow-x: hidden;
-  width:99px;
-  height:46px;
-}
 
-.events_calendar_event_count {
-  color:#00b4ff;
+  width:95px; // important for column width
+
+  height:46px;
 }
 
 
 .events_calendar_event {
   display:block;
-  width:90;
+
+  width:93px; // important for column width
+
   height:20px;
+
   margin-bottom:2px;
 
   border: 1px solid #00b4ff;
@@ -61,6 +62,11 @@ $blue_linkedin: #006699;
   }
 
 }
+
+.events_calendar_event_count {
+  color:#00b4ff;
+}
+
 
 #events_calendar .calendar {
   // border-collapse: collapse;
@@ -84,7 +90,9 @@ $blue_linkedin: #006699;
     background:rgba(0,0,0,0.6);
     color: $gray_Lightest;
     height: 65px !important;
+
     width: 60px !important;
+
     vertical-align: top;
     font-size: 10px;
   }
