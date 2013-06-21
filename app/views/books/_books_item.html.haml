@@ -66,7 +66,7 @@
               - unless books_item.difficulty.blank?
                 .books_index_books_item_difficulty
                   = book_difficulty_in_words(books_item.difficulty)
-            .books_index_books_item_actions_container.panel.dark.kill_all
+            .books_index_books_item_actions_container.panel.darker.kill_all
               .row
                 = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-inverse books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
               .row

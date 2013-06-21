@@ -16,7 +16,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
   font-size:12px !important;
 }
 
-.account_field {
+.account_form_field {
   color:white !important;
 
   background:0 !important;
@@ -149,4 +149,19 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 #account_delete_panel {
   text-align:center;
+}
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// DELETE //////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+
+
+#account_editpassword_panel {
+  text-align:center;
+  input {
+    width:209px;
+  }
 }

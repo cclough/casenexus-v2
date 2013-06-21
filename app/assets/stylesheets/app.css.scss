@@ -546,6 +546,10 @@ a:hover {
   &:hover {
     background-color: $gray_Lightest;
   }
+
+  &.application_title_breadcrumb_smallfont {
+    font-size:11px;
+  }
 }
 
 .application_pagination {

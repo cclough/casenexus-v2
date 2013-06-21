@@ -1,4 +1,4 @@
-.panel.dark.font-small.kill_bottom.kill_left.kill_right
+.panel.dark.font-small.kill_bottom.kill_left.kill_right.profile_container_Width
   .row
     .span
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
@@ -10,14 +10,14 @@
               = hidden_field_tag :back_url, edit_account_path
             .span19
               = f.text_field :name, class: 'span18 account_field', placeholder: "Name"
-            .span25
+            .span20
               .input-append
                 = f.text_field :email, class: 'span25 account_field', placeholder: "Email"
                 = f.submit "Invite", class: 'btn btn-inverse'
       - else
         %p You have no more invitations
   .row
-    .span70
+    .span
       #account_edit_invitations_list.panel.dark.kill_all
         - if @invitations.count > 0
           - @invitations.each do |invitation|

@@ -1,11 +1,12 @@
 - breadcrumb = yield(:breadcrumb)
+- breadcrumb_smallfont = yield(:breadcrumb_smallfont)
 
 .row
   .panel.title
     .row
       - if !breadcrumb.blank?
         = link_to yield(:breadcrumb_url) do
-          .span10#application_title_breadcrumb
+          .span10#application_title_breadcrumb{class: ("application_title_breadcrumb_smallfont" if !breadcrumb_smallfont.blank?) }
             .row
               .span1.offset2
                 %i.icon-caret-left

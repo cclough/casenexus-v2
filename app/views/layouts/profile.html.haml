@@ -54,7 +54,7 @@
               .row.profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
                 = link_to "Notifications", notifications_path
               %br
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
+              .row.profile_nav_item{:class => ("active" if params[:controller] == "account") }
                 = link_to "Edit Profile", edit_account_path
           .span.profile_container_Width
             = yield

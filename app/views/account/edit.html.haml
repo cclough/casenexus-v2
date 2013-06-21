@@ -27,7 +27,7 @@
                     = @user.university.name
                   .spacer5
                   .row
-                    = link_to(raw("<i class=icon-eraser></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+                    = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
 
 
           .panel.dark.kill_left.kill_top
@@ -35,12 +35,12 @@
               .span10
                 = f.label :first_name
               .span20
-                = f.text_field :first_name, class: "span21 account_field"
+                = f.text_field :first_name, class: "span21 account_form_field"
             .row
               .span10
                 = f.label :last_name
               .span20
-                = f.text_field :last_name, class: "span21 account_field"
+                = f.text_field :last_name, class: "span21 account_form_field"
             .spacer5
             .row
               .span25.offset10
@@ -81,22 +81,21 @@
                 #account_completeedit_skype_link
                   = link_to "Need to register?", "https://login.skype.com/account/signup-form"
               .span20
-                = f.text_field :skype, placeholder: "Skype username", class: "span21 account_field"
+                = f.text_field :skype, placeholder: "Skype username", class: "span21 account_form_field"
 
         .span40
           .panel.dark.kill_left.kill_bottom
             .row
-              .span25.account_form_label
-                How many cases have you done outside of casenexus?
-              .span
-                = f.text_field :cases_external, class: "span5", id: "account_completedit_casesexternal_field"
+              .span12.account_form_label
+                Cases outside of casenexus
+              .span23.offset1
+                = f.text_field :cases_external, class: "span5 account_form_field", id: "account_completedit_casesexternal_field"
             .spacer5
             .row
-              .span.account_form_label
-                Which firms are you applying for?
-            .row
-              .span
-                = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span36"}
+              .span12.account_form_label
+                Firms you are applying for
+              .span23.offset1
+                = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span23"}
 
           .panel.darker.kill_left
             = f.hidden_field :lat, id: "account_completeedit_lat"
@@ -119,8 +118,7 @@
                 .row
                   .spacer5
                   = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
-    - if current_user.completed?
-      .row
-        .span73
-          = render 'invitations_panel'
+  - if current_user.completed?
+    .row
+      = render 'invitations_panel'
 
