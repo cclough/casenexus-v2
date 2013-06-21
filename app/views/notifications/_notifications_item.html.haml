@@ -1,24 +1,33 @@
-.row.notifications_index_notifications_item_container
-  = link_to notification_path(notifications_item), class: "notifications_index_notifications_item" do
+
+.notifications_index_notifications_item{"data-user_id"=>notifications_item.sender.id.to_s}
+  .row
     .span5
-      / = avatar_for(notifications_item.sender, 'icon')
       .span3.notifications_index_notifications_item_avatar
         = image_tag "avatars/icon.png"
-    .span13
+    .span15
       .row
         %strong
           - unless notifications_item.sender == nil 
-            = notifications_item.sender.name
+            = notifications_item.sender.name_trunc
 
       .row.application_timestamp
-        = notifications_item.created_at.strftime("%d %b '%y")
+        - if notifications_item.content_trunc.blank?
+          = notifications_item.title
+        - else
+          notifications_item.content_trunc
 
-    .span21
-      .notifications_index_notifications_item_title
-        = notifications_item.title
-      .notifications_index_notifications_item_content_trunc.font-small{ id: 'notifications_index_notifications_item_content_trunc_' + notifications_item.id.to_s }
-        = notifications_item.content_trunc
+    .span5
+      = notifications_item.created_at.strftime("%d %b '%y")
 
 
-    .span15.notifications_index_notifications_item_action.font-small.pull-right
-      = render partial: 'notifications_item_actions' , locals: { notifications_item: notifications_item }
+
+
+    / .span21
+    /   .notifications_index_notifications_item_title
+    /     = notifications_item.title
+    /   .notifications_index_notifications_item_content_trunc.font-small{ id: 'notifications_index_notifications_item_content_trunc_' + notifications_item.id.to_s }
+    /     = notifications_item.content_trunc
+
+
+    / .span15.notifications_index_notifications_item_action.font-small.pull-right
+    /   = render partial: 'notifications_item_actions' , locals: { notifications_item: notifications_item }

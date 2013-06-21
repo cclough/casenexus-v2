@@ -54,20 +54,26 @@ $blue_linkedin: #006699;
 
 .notifications_index_notifications_item {
   padding:8px !important;
-  text-decoration:none !important;
-  color: black;
+  margin-bottom:2px;
+
+  color:white;
+
+  background:rgba(0,0,0,0.5);
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  
+  &:hover {
+    background:rgba(0,0,0,0.7);
+    cursor:pointer;
+  }
 
   &.read {
     -moz-opacity: 0.50;
     opacity: 0.50;
   }
-}
 
-.notifications_index_notifications_item_container {
-  padding:5px !important;
-  &:hover {
-    background-color: $gray_Lightest;
-  }
 }
 
 
@@ -100,10 +106,11 @@ $blue_linkedin: #006699;
 .notifications_show_item {
   padding:5px;
   text-decoration:none;
-  color: black;
-  background-color: #fff;
+
+  background:rgba(0,0,0,0.5)
+
   &:hover {
-    background-color: $gray_Lightest;
+    background:rgba(0,0,0,0.9)
   }
 
   &.select {

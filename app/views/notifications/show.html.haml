@@ -1,14 +1,14 @@
 - provide(:title, 'Notification History')
-- provide(:sub_title, 'with ' + @user.name)
+- provide(:sub_title, 'with ' + @sender.name)
 
-:javascript
-  //document.location.hash="#notification-#{@id}";
-  $(document).ready(function() {
-    $('#notifications_show_body').animate({scrollTop: $("#notification-"+#{@id}).offset().top - 160},'slow');
-  });
+/ :javascript
+/   //document.location.hash="#notification-#{@id}";
+/   $(document).ready(function() {
+/     $('#notifications_show_body').animate({scrollTop: $("#notification-"+#{@id}).offset().top - 160},'slow');
+/   });
 
 
-.panel.darker.kill_left.kill_right.kill_bottom
+.panel.darker.kill_right.kill_bottom
   .row#notifications_show_header
     .span
       %a#notifications_show_header_back
@@ -24,15 +24,15 @@
         .span
           .row
             .span.offset1
-              = @user.name
+              = @sender.name
             .span.offset1
-              - unless @user.country.blank?
+              - unless @sender.country.blank?
                 .span3
-                  = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.name
+                  = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.name
             .span2.offset1
-              = image_tag "universities/" + @user.university.image
+              = image_tag "universities/" + @sender.university.image
             .span.offset1
-              = @user.university.name
+              = @sender.university.name
   .row#notifications_show_body
 
     - if @notifications.count > 0
@@ -45,15 +45,15 @@
 
   .row
     / repeated from member#show - should we put this in a helper?
-    - if Friendship.friends?(current_user, @user)
+    - if Friendship.friends?(current_user, @sender)
       #notifications_show_footer
         .row
 
-          - if @user.last_online_at
+          - if @sender.last_online_at
             .pull-left
               .application_lastonline
                 Last online:
-                = time_ago_in_words(@user.last_online_at)
+                = time_ago_in_words(@sender.last_online_at)
                 ago
 
   .row
@@ -67,7 +67,7 @@
         = f.text_area :content, placeholder: "Send message...", tabindex: "101", id: "notifications_show_newmessage_textarea"
 
         = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
-        = f.hidden_field :user_id, value: @user.id
+        = f.hidden_field :user_id, value: @sender.id
         = f.hidden_field :sender_id, value: current_user.id
         = f.hidden_field :ntype, value: "message"
       %div

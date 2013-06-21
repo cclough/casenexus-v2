@@ -1,8 +1,10 @@
 - provide(:title, 'Your Notifications')
 - provide(:sub_title, 'Browse through all of your notifications')
 
-= render 'notifications_form'
 
-.panel.gradient.kill_all
+.span20
+  = render 'notifications_form'
   #notifications_index_notifications
     = render 'notifications'
+.span53#notifications_index_conversation
+  .row.panel.darker.kill_right

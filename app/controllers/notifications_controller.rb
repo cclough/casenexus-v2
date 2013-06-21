@@ -18,18 +18,21 @@ class NotificationsController < ApplicationController
 
   def show
     #@notification = current_user.notifications.for_display.find(params[:id])
-    @notification_for_display = current_user.notifications.find(params[:id])
-    @notifications = Notification.history(@notification_for_display.user_id, @notification_for_display.sender_id)
-    
-    @notifications.each { |n| n.read! }
-
-    @user = User.find(@notification_for_display.sender_id)
+    # @notification_for_display = current_user.notifications.find(params[:id])
 
     # for jump to
     @id = params[:id]
 
+    @sender = User.find(@id)
+
+    @notifications = Notification.history(current_user, @sender)
+    
+    @notifications.each { |n| n.read! }
+
     # for new message
     @notification = Notification.new
+
+    render layout:false
 
   end
 

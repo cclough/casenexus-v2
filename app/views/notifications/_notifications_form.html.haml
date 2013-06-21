@@ -4,14 +4,14 @@
       .span
         = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query span20'
       .pull-right
-        .span#books_index_books_form_label
-          Filter
-          %i.icon-caret-right.offset1
-        .span.offset1
-          .btn-group
-            = filterable_notifications('all', 'All')
-            = filterable_notifications('message', 'Messages')
-            = filterable_notifications('feedback', 'Feedback')
+        / .span#books_index_books_form_label
+        /   Filter
+        /   %i.icon-caret-right.offset1
+        / .span.offset1
+        /   .btn-group
+        /     = filterable_notifications('all', 'All')
+        /     = filterable_notifications('message', 'Messages')
+        /     = filterable_notifications('feedback', 'Feedback')
 
         .span.offset2#notifications_index_notifications_form_label
           Sort by
