@@ -113,62 +113,6 @@ $blue_linkedin: #006699;
 
 
 
-.events_index_block_title {
-
-  margin:-10px -10px 5px -10px;
-
-  line-height:25px;
-  font-weight: bold;
-  text-align:center;
-  color:$gray_Lighter;
-  font-size:12px;
-
-  background: url('app/dark-bg.png') repeat top left;
-
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-
-  border-top-right-radius: 5px;
-  -moz-border-top-right-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-}
-
-.events_index_events_item {
-
-  text-decoration:none;
-  background: rgba(0, 0, 0, 0.2);
-
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-
-  color:$gray_Lighter;
-
-  padding:6px;
-  margin:3px;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.5);
-    cursor:pointer;cursor:hand;
-  }
-
-  .btn {
-    height:18px;
-    width:12px;
-  }
-}
-
-
-.events_index_events_item_date {
-  font-size:12px !important;
-}
-
-
-
-
-
-
 ///////////////////////////////////////////////
 ///////////////////// NEW /////////////////////
 ///////////////////////////////////////////////

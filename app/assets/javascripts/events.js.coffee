@@ -55,15 +55,14 @@ $(document).ready ->
         window.events_modal_rebless()
       $("#modal_event").modal("show")
 
-
-  $(".events_calendar_event").click ->
-    if !($("#modal_event").hasClass("in"))
-      $(".modal").modal("hide")
-      event_id = $(this).data("id")
-      $.get "/events/" + event_id + "/edit", (data) ->
-        $("#modal_event").html data
-        window.events_modal_rebless()
-      $("#modal_event").modal("show")
+  # $(".events_calendar_event").click ->
+  #   if !($("#modal_event").hasClass("in"))
+  #     $(".modal").modal("hide")
+  #     event_id = $(this).data("id")
+  #     $.get "/events/" + event_id + "/edit", (data) ->
+  #       $("#modal_event").html data
+  #       window.events_modal_rebless()
+  #     $("#modal_event").modal("show")
 
   $(".events_index_events_item").click ->
     if !($("#modal_event").hasClass("in"))

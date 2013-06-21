@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   def new
     @event = current_user.events.new
+    @book_user = Book.find(params[:book_id_user])
     render layout: false
   end
 

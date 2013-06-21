@@ -74,7 +74,7 @@
         .row
           .pull-right
             .span
-              = link_to raw("<i class=icon-calendar></i> Schedule with a friend"), "#", class: "btn btn-small btn-inverse"
+              = link_to raw("<i class=icon-calendar></i> Schedule with a friend"), "#", class: "btn btn-small btn-inverse books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
             .span.offset1
               = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
             .span.offset1

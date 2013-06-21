@@ -35,13 +35,22 @@
 
     .spacer10
     .row
-      .span13
-        Which case should they prepare?
-      .span20
-        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_partner]"}
-          %option
-            = options_from_collection_for_select(Book.all, "id", "title")
-
+      - if @book_user.blank?
+        .span13
+          Which case should they prepare?
+        .span20
+          %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_partner]"}
+            %option
+              / = options_from_collection_for_select(Book.all, "id", "title")
+              - Book.all.each do |books_select_item|
+                %option{value: books_select_item.id }
+                  = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+      - else
+        .span13
+          They will prepare
+        .span20
+          = @book_user.author.split(' ')[0] + " - " + @book_user.title
+          = f.hidden_field :book_id_partner, value: @book_user.id
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close

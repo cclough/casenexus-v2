@@ -349,6 +349,7 @@ $blue_pastel: #98cdff;
   max-width:19px;
 }
 
+
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -528,7 +529,8 @@ $blue_pastel: #98cdff;
   text-align:center;
 
   img {
-    max-height:18px !important;    
+    max-height:18px !important; 
+    min-width:18px !important; 
   }
 }
 
@@ -626,9 +628,8 @@ $blue_pastel: #98cdff;
 #map_index_user_panel_skype {
   img {
     max-height:10px;
-
+    min-width:10px;
   }
-
 }
 
 
