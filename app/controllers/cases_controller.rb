@@ -73,11 +73,12 @@ class CasesController < ApplicationController
 
 
 
+    # make table data hash
     @myhash = Hash.new
     12.times do |criteria_num|
       @myhash[criteria_num] = (current_user.cases.last(5).collect{|i| i.criteria(criteria_num) }.sum.to_f/5).round(1)
     end
-    @myhash.values.sort
+    @myhash_sorted = Hash[@myhash.sort_by{|k, v| v}.reverse]
 
 
 

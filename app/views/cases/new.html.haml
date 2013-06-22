@@ -107,64 +107,12 @@
             .cases_new_comment_content_container
               = f.text_area :businessanalytics_comment, placeholder: "Comment...", class: "cases_new_comment_content"
 
-  .row    
-    .span{style: "width:100%"}
-      .cases_new_block_title
-        Interpersonal
-      .panel.dark.cases_new_block.kill_top
-        
-        .row
-          .span
-
-            .cases_new_block_desc.panel.dark
-              .row
-                .span19
-                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Establishes a rapport with interviewer", "data-original-title" => "Rapport" }
-                    %i.icon-info-sign.icon-white
-                  Rapport
-                .span
-                  = render partial: 'scoreselector' , locals: { criteria: "rapport", category: "interpersonal" }
-                  = f.hidden_field :rapport, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_rapport'
-
-            .cases_new_block_desc.panel.dark
-              .row
-                .span19
-                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Articulates clearly", "data-original-title" => "Articulation" }
-                    %i.icon-info-sign.icon-white
-                  Articulation
-                .span
-                  = render partial: 'scoreselector' , locals: { criteria: "articulation", category: "interpersonal" }
-                  = f.hidden_field :articulation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_articulation'
 
 
-            .cases_new_block_desc.panel.dark
-              .row
-                .span19
-                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Is Concise", "data-original-title" => "Concise" }
-                    %i.icon-info-sign.icon-white
-                  Concision
-                .span
-                  = render partial: 'scoreselector' , locals: { criteria: "concision", category: "interpersonal" }
-                  = f.hidden_field :concision, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_concision'
 
-            .cases_new_block_desc.panel.dark
-              .row
-                .span19
-                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Asks for more information when neccessary", "data-original-title" => "Requests Information" }
-                    %i.icon-info-sign.icon-white
-                  Asks for Information
-                .span
-                  = render partial: 'scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal" }
-                  = f.hidden_field :askingforinformation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_askingforinformation'
-          .span1
-            .cases_new_block_circle_outer.panel.dark
-              .cases_new_block_circle.panel.darker
-                #cases_new_block_circle_text_interpersonal.cases_new_block_circle_text
-                  
-        .row       
-          .cases_new_comment
-            .cases_new_comment_content_container
-              = f.text_area :interpersonal_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+
+
+
 
 
   .row    
@@ -225,6 +173,77 @@
           .cases_new_comment
             .cases_new_comment_content_container
               = f.text_area :structure_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .row    
+    .span{style: "width:100%"}
+      .cases_new_block_title
+        Interpersonal
+      .panel.dark.cases_new_block.kill_top
+        
+        .row
+          .span
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Establishes a rapport with interviewer", "data-original-title" => "Rapport" }
+                    %i.icon-info-sign.icon-white
+                  Rapport
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "rapport", category: "interpersonal" }
+                  = f.hidden_field :rapport, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_rapport'
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Articulates clearly", "data-original-title" => "Articulation" }
+                    %i.icon-info-sign.icon-white
+                  Articulation
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "articulation", category: "interpersonal" }
+                  = f.hidden_field :articulation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_articulation'
+
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Is Concise", "data-original-title" => "Concise" }
+                    %i.icon-info-sign.icon-white
+                  Concision
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "concision", category: "interpersonal" }
+                  = f.hidden_field :concision, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_concision'
+
+            .cases_new_block_desc.panel.dark
+              .row
+                .span19
+                  .cases_new_criteria_popover.btn{ "rel" => "popover", "data-content" => "Asks for more information when neccessary", "data-original-title" => "Requests Information" }
+                    %i.icon-info-sign.icon-white
+                  Asks for Information
+                .span
+                  = render partial: 'scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal" }
+                  = f.hidden_field :askingforinformation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_askingforinformation'
+          .span1
+            .cases_new_block_circle_outer.panel.dark
+              .cases_new_block_circle.panel.darker
+                #cases_new_block_circle_text_interpersonal.cases_new_block_circle_text
+                  
+        .row       
+          .cases_new_comment
+            .cases_new_comment_content_container
+              = f.text_area :interpersonal_comment, placeholder: "Comment...", class: "cases_new_comment_content"
 
 
 

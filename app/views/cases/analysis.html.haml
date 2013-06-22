@@ -93,6 +93,7 @@
         .cases_analysis_block_title
           Table of Comparisons
       .row
+        = @myhash_sorted
         %table#cases_analysis_section_table_table
           %th
             Name
@@ -110,17 +111,18 @@
             Bottom Q Av
           %th
             Recommendation
-          - 12.times do |row|
+            - row = 0
+          - @myhash_sorted.each do |key,value|
+
             %tr
               %td
                 / Quantitative Basics
-                = @myhash.keys[row]
-                = row
+                = key
               %td
-                = @myhash.values[row]
+                = value
               %td
-                %div.cases_analysis_section_table_chart_bar{"data-score" => @myhash.values[row], id: "cases_analysis_section_table_chart_bar_"+row.to_s }
-
+                %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+row.to_s }
+                - row = row + 1
               %td
                 / growth from one case to another
                 / - growth = ((current_user.cases.offset(5).first.quantitativebasics.to_f)/(current_user.cases.offset(0).first.quantitativebasics)) * 100
