@@ -721,8 +721,7 @@ window.cases_analysis_chart_country_draw = () ->
     chart.dataProvider = cases_analysis_chart_country_data
     chart.titleField = "country"
     chart.valueField = "count"
-    chart.outlineColor = "#FFFFFF"
-    chart.outlineAlpha = 0.8
+    chart.outlineThickness = 0
     chart.innerRadius = "50%"
     chart.pieAlpha = 1
     chart.radius = 100
@@ -742,8 +741,7 @@ window.cases_analysis_chart_university_draw = () ->
     chart.dataProvider = cases_analysis_chart_university_data
     chart.titleField = "university"
     chart.valueField = "count"
-    chart.outlineColor = "#FFFFFF"
-    chart.outlineAlpha = 0.8
+    chart.outlineThickness = 0
     chart.innerRadius = "50%"
     chart.pieAlpha = 1
     chart.radius = 100
@@ -764,48 +762,58 @@ window.cases_analysis_chart_university_draw = () ->
 
 window.cases_analysis_chart_table_bars_draw = () ->
 
-  Data = [{ name: "qb", score: 5 }]
+  i = 0
 
-  chart = new AmCharts.AmSerialChart()
-  chart.autoMarginOffset = 0
-  chart.marginRight = 0  
-  chart.marginTop = 0  
-  chart.dataProvider = Data
-  chart.categoryField = "name"         
-  chart.rotate = true
-  chart.depth3D = 3
-  chart.angle = 10
+  while i < 12
 
-  # AXES
-  # Category
-  categoryAxis = chart.categoryAxis
-  categoryAxis.gridPosition = "start"
-  categoryAxis.axisColor = "#DADADA"
-  categoryAxis.fillAlpha = 0
-  categoryAxis.gridAlpha = 0
-  categoryAxis.labelsEnabled = false
+    score = $("#cases_analysis_section_table_chart_bar_" + i).data "score"
 
-  # value
-  valueAxis = new AmCharts.ValueAxis()
-  valueAxis.gridAlpha = 0
-  valueAxis.axisAlpha = 0
-  valueAxis.labelsEnabled = false
-  chart.addValueAxis valueAxis
+    Data = [{ name: i, score: parseFloat(score) }]
 
-  # GRAPH
-  graph = new AmCharts.AmGraph()
-  graph.valueField = "score"
-  graph.type = "column"
-  graph.lineAlpha = 0
-  graph.showBalloon = false
-  graph.fillColors = "#bf1c25"
-  graph.fillAlphas = 1
-  chart.addGraph graph
+    chart = new AmCharts.AmSerialChart()
+    chart.autoMarginOffset = 0
+    chart.marginRight = 0  
+    chart.marginTop = 0  
+    chart.dataProvider = Data
+    chart.categoryField = "name"         
+    chart.rotate = true
+    chart.depth3D = 3
+    chart.angle = 10
+    chart.startDuration = 1
 
-  # WRITE
-  chart.write("cases_analysis_section_table_bar_1")
+    # AXES
+    # Category
+    categoryAxis = chart.categoryAxis
+    categoryAxis.gridPosition = "start"
+    categoryAxis.axisColor = "#DADADA"
+    categoryAxis.fillAlpha = 0
+    categoryAxis.gridAlpha = 0
+    categoryAxis.labelsEnabled = false
 
+    # value
+    valueAxis = new AmCharts.ValueAxis()
+    valueAxis.gridAlpha = 0
+    valueAxis.axisAlpha = 0
+    valueAxis.minimum = 0
+    valueAxis.maximum = 5
+    valueAxis.precsion = 3
+    valueAxis.labelsEnabled = false
+    chart.addValueAxis valueAxis
 
+    # GRAPH
+    graph = new AmCharts.AmGraph()
+    graph.valueField = "score"
+    graph.type = "column"
+    graph.lineAlpha = 0
+    graph.showBalloon = false
+    graph.fillColors = "#bf1c25"
+    graph.fillAlphas = 1
+    chart.addGraph graph
+
+    # WRITE
+    chart.write("cases_analysis_section_table_chart_bar_" + i)
+
+    i++
 
 
 #///////////////////////////////////////////////////////////////

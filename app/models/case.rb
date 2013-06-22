@@ -111,6 +111,35 @@ class Case < ActiveRecord::Base
 
   ## Macro
 
+  def criteria(num)
+    case num
+      when 0
+        quantitativebasics
+      when 1
+        problemsolving
+      when 2
+        prioritisation
+      when 3
+        sanitychecking
+      when 4
+        rapport
+      when 5
+        articulation
+      when 6
+        concision
+      when 7
+        askingforinformation
+      when 8
+        approachupfront
+      when 9
+        stickingtostructure
+      when 10
+        announceschangedstructure
+      when 11
+        pushingtoconclusion
+    end
+  end
+
   ### Charts
 
   def cases_show_chart_bar_data
@@ -336,8 +365,9 @@ class Case < ActiveRecord::Base
 
 
   def self.cases_analysis_chart_country_data(user)
-
-    interviewer_ids = user.cases.collect(&:interviewer_id)
+    # Replace with SQL call as this will be expensive!
+    # http://stackoverflow.com/questions/17243585/rails-pie-chart-for-countries-that-senders-of-a-users-messages-are-from
+    interviewer_ids = user.notifications.collect(&:sender_id)
 
     country_count_hash = {}
     interviewer_ids.each do |interviewer_id|
@@ -358,8 +388,9 @@ class Case < ActiveRecord::Base
 
 
   def self.cases_analysis_chart_university_data(user)
-
-    interviewer_ids = user.cases.collect(&:interviewer_id)
+    # Replace with SQL call as this will be expensive!
+    # http://stackoverflow.com/questions/17243585/rails-pie-chart-for-countries-that-senders-of-a-users-messages-are-from
+    interviewer_ids = user.notifications.collect(&:sender_id)
 
     university_count_hash = {}
     interviewer_ids.each do |interviewer_id|

@@ -71,6 +71,17 @@ class CasesController < ApplicationController
     @top_quart = Case.cases_analysis_stats_global("totalscore_top_quart")
     @bottom_quart = Case.cases_analysis_stats_global("totalscore_bottom_quart")
 
+
+
+    @myhash = Hash.new
+    12.times do |criteria_num|
+      @myhash[criteria_num] = (current_user.cases.last(5).collect{|i| i.criteria(criteria_num) }.sum.to_f/5).round(1)
+    end
+    @myhash.values.sort
+
+
+
+
     respond_to do |format|
       format.html { render layout: 'profile' }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }

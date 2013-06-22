@@ -105,34 +105,51 @@
           %th
             Site Av
           %th
-            Top Q
+            Top Q Av
           %th
-            Bottom Q
+            Bottom Q Av
           %th
             Recommendation
-          %tr
-            %td
-              Quantitative Basics
-            %td
-              - qb = (current_user.cases.last(5).collect(&:quantitativebasics).sum.to_f/5).round(1)
-              = qb
-            %td
-              #cases_analysis_section_table_bar_1{"data-score" => qb }
-            %td
-              - growth = ((current_user.cases.offset(5).first.quantitativebasics.to_f)/(current_user.cases.offset(0).first.quantitativebasics)) * 100
-              = number_to_percentage(growth, precision: 0)
-            %td
-              = (Case.all.map { |a| a.quantitativebasics }.sum/Case.all.count).round(1)
-            %td
-              - array = Case.all.map { |a| a.quantitativebasics }
-              - percentile = 0.75
-              = array ? array.sort[((array.length * percentile).ceil)-1] : nil
-              / this just gives the score that the person has - we need their last 5 average?
-            %td
-              - array = Case.all.map { |a| a.quantitativebasics }
-              - percentile = 0.25
-              = array ? array.sort[((array.length * percentile).ceil)-1] : nil
-            %td
+          - 12.times do |row|
+            %tr
+              %td
+                / Quantitative Basics
+                = @myhash.keys[row]
+                = row
+              %td
+                = @myhash.values[row]
+              %td
+                %div.cases_analysis_section_table_chart_bar{"data-score" => @myhash.values[row], id: "cases_analysis_section_table_chart_bar_"+row.to_s }
+
+              %td
+                / growth from one case to another
+                / - growth = ((current_user.cases.offset(5).first.quantitativebasics.to_f)/(current_user.cases.offset(0).first.quantitativebasics)) * 100
+                / = number_to_percentage(growth, precision: 0)
+
+                / we want rolling average growth
+                - prev_5 = current_user.cases.offset(5).last(5).map { |a| a.quantitativebasics }
+                - prev_av = (prev_5.inject(0.0) { |sum, el| sum + el } / prev_5.size)
+
+                - curr_5 = current_user.cases.offset(0).last(5).map { |a| a.quantitativebasics }
+                - curr_av = (curr_5.inject(0.0) { |sum, el| sum + el } / curr_5.size)          
+
+                
+                = number_to_percentage((((curr_av/prev_av)-1)*100), precision: 0)
+              %td
+                = (Case.all.map { |a| a.quantitativebasics }.sum/Case.all.count).round(1)
+              %td
+                / average of top quartile
+                - array = Case.all.map { |a| a.quantitativebasics }
+                - percentile = 0.75
+                - topquart = array.sort[(array.length * percentile)..(array.length)]
+                = (topquart.inject(0.0) { |sum, el| sum + el } / topquart.size).round(1)
+              %td
+                - array = Case.all.map { |a| a.quantitativebasics }
+                - percentile = 0.25
+                - bottomquart = array.sort[0..(array.length * percentile)]
+                = (bottomquart.inject(0.0) { |sum, el| sum + el } / bottomquart.size).round(1)
+
+              %td
 
 
 
