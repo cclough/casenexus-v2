@@ -278,7 +278,10 @@ if Rails.env == 'development'
   30.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    email = "example#{n+1}@cam.ac.uk"
+
+    university_rand = 1 + rand(10)
+    email = "example#{n+1}@" + University.find(university_rand).domain
+
     password = "password"
     lat = -90 + rand(180)
     lng = -180 + rand(360)
