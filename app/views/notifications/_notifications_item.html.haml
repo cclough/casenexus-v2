@@ -1,6 +1,5 @@
 
-.notifications_index_notifications_item 
-  / {"data-user_id"=>notifications_item.sender.id.to_s}
+.notifications_index_notifications_item{"data-user_id"=>notifications_item.sender.id.to_s}
   .row
     .span5
       .span3.notifications_index_notifications_item_avatar
@@ -10,18 +9,16 @@
         %strong
           / - unless notifications_item.sender == nil 
           /   = notifications_item.sender.name_trunc
-          = notifications_item.name
+          = notifications_item.sender.name
 
       .row.application_timestamp
-        / - if notifications_item.content_trunc.blank?
-        /   = notifications_item.title
-        / - else
-        /   notifications_item.content_trunc
+        - if notifications_item.content_trunc.blank?
+          = notifications_item.title
+        - else
+          = notifications_item.content_trunc
 
     .span3
       / = notifications_item.created_at.strftime("%d %b '%y")
-
-
 
 
     / .span21

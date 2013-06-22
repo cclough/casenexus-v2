@@ -1,5 +1,5 @@
-- if @notifications.count > 0
-  - @notifications.each do |notifications_item|
+- if notifications.count > 0
+  - notifications.each do |notifications_item|
     = render partial: 'notifications/notifications_item' , locals: { notifications_item: notifications_item }
 - else
   #notifications_index_notifications_empty

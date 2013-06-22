@@ -7,18 +7,47 @@ class NotificationsController < ApplicationController
   layout 'profile'
 
   def index
-    notification_scope = current_user.notifications.for_display
-    if !params[:ntype].blank? && params[:ntype] != "all"
-      notification_scope = notification_scope.where(ntype: params[:ntype])
-    end
+    # notification_scope = current_user.notifications.for_display
+    # if !params[:ntype].blank? && params[:ntype] != "all"
+    #   notification_scope = notification_scope.where(ntype: params[:ntype])
+    # end
 
-    # @notifications = notification_scope.search_for(params[:search]).order("notifications."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    @notifications = #notification_scope.search_for(params[:search]).order("notifications."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 
-    @notifications = User.where(id: current_user.id).joins(:notifications).order('notifications.created_at DESC')
-
+    @notifications = Notification.paginate(page: params[:page])
+    #@notifications = User.where(id: current_user.id).joins(:notifications).order('notifications.created_at DESC')
 
     # @notifications.all
 
+
+
+    #@notifications = Notification.most_recent_for(current_user.id)
+
+
+
+
+    # 12.times do |criteria_num|
+
+    #   # Notification.history(current_user.id,5).last
+    #   Notification.collect{|i| i.history(current_user.id,5).last)
+      
+
+    # end
+
+
+
+
+    # @notifications = Notification.all(:conditions => {:user_id => current_user.id || :sender_id => current_user.id},
+    #                                   :include => :users,
+    #                                   :order => 'messages.created_at DESC')
+
+    # last_messages_of_a_users_conversations = @notifications.first.notifications.first
+    
+
+    respond_to do |format|
+      format.html
+      format.js # for infinite scroll
+    end
 
   end
 
