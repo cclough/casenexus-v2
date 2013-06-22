@@ -22,6 +22,13 @@
               - unless @sender.country.blank?
                 .span3
                   = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.name
+
+                - if @sender.last_online_at
+                  .span.application_lastonline
+                    Last online:
+                    = time_ago_in_words(@sender.last_online_at)
+                    ago
+
           .row
             .span2.offset1
               = image_tag "universities/" + @sender.university.image
@@ -37,19 +44,6 @@
 
     - else
       %p No notifications found
-
-  .row
-    / repeated from member#show - should we put this in a helper?
-    - if Friendship.friends?(current_user, @sender)
-      #notifications_show_footer
-        .row
-
-          - if @sender.last_online_at
-            .pull-left
-              .application_lastonline
-                Last online:
-                = time_ago_in_words(@sender.last_online_at)
-                ago
 
   .row
     / - notification = notification || @notification

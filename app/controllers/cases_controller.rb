@@ -64,7 +64,7 @@ class CasesController < ApplicationController
     when 1..5
       @case_count = 1
     when 6..1000
-      @case_count = 5
+    @case_count = 5
     end
 
     @site_average = Case.cases_analysis_stats_global("totalscore")

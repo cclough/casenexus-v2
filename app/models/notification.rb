@@ -42,7 +42,6 @@ class Notification < ActiveRecord::Base
       where("ntype != 'welcome'")
     end
 
-
     # these were below before in a separate 'self' - can they stay here?
     def header(user)
       user.notifications.for_display.where(read: false).limit(5).order('created_at desc').reverse

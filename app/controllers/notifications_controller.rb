@@ -12,13 +12,21 @@ class NotificationsController < ApplicationController
       notification_scope = notification_scope.where(ntype: params[:ntype])
     end
 
-    @notifications = notification_scope.search_for(params[:search]).order("notifications."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
-    @notifications.all
+    # @notifications = notification_scope.search_for(params[:search]).order("notifications."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+
+    @notifications = User.where(id: current_user.id).joins(:notifications).order('notifications.created_at DESC')
+
+
+    # @notifications.all
+
+
   end
 
   def show
     #@notification = current_user.notifications.for_display.find(params[:id])
     # @notification_for_display = current_user.notifications.find(params[:id])
+
+
 
     # for jump to
     @id = params[:id]

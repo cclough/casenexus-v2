@@ -12,6 +12,7 @@
 
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
+#= require lib/jquery.infinitescroll
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-datetimepicker

@@ -333,6 +333,56 @@ class Case < ActiveRecord::Base
 
 
 
+
+
+  def self.cases_analysis_chart_country_data(user)
+
+    interviewer_ids = user.cases.collect(&:interviewer_id)
+
+    country_count_hash = {}
+    interviewer_ids.each do |interviewer_id|
+      country = User.find(interviewer_id).country
+      next unless country
+      country_count_hash[country.name] ||= 0
+      country_count_hash[country.name] += 1 
+    end
+
+    count_array = []
+    country_count_hash.each do |key, value|
+      count_array << {:country => key, :count => value}
+    end
+
+    count_array.to_json
+
+  end
+
+
+  def self.cases_analysis_chart_university_data(user)
+
+    interviewer_ids = user.cases.collect(&:interviewer_id)
+
+    university_count_hash = {}
+    interviewer_ids.each do |interviewer_id|
+      university = User.find(interviewer_id).university
+      next unless university
+      university_count_hash[university.name] ||= 0
+      university_count_hash[university.name] += 1 
+    end
+
+    count_array = []
+    university_count_hash.each do |key, value|
+      count_array << {:university => key, :count => value}
+    end
+
+    count_array.to_json
+
+  end
+
+
+
+
+
+
   ## Comments
 
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho

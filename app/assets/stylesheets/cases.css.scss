@@ -595,6 +595,33 @@ $blue_pastel: #98cdff;
 
 
 
+#cases_analysis_section_table_table {
+  td {
+    padding-left:3px;
+    padding-right:3px;
+  }
+}
+
+
+
+#cases_analysis_section_table_bar_1 {
+  width:100px;
+  height:20px;
+  border:0px solid white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #cases_analysis_chart_progress {
   width:100%;
@@ -622,6 +649,61 @@ $blue_pastel: #98cdff;
 
 
 
+#cases_analysis_chart_country {
+  width:300px;
+  height:300px;
+}
+
+
+#cases_analysis_chart_country_empty {
+  height:222px;
+  width:410px;
+  display:none;
+  padding-top:80px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#cases_analysis_chart_country_empty_icon {
+  font-size:100px;
+  margin-bottom:40px; 
+}
+
+
+
+
+#cases_analysis_chart_university {
+  width:300px;
+  height:300px;
+}
+
+
+#cases_analysis_chart_university_empty {
+  height:222px;
+  width:410px;
+  display:none;
+  padding-top:80px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#cases_analysis_chart_university_empty_icon {
+  font-size:100px;
+  margin-bottom:40px; 
+}
+
+
+
+
+
+
+
+
+
 .cases_analysis_block_title {
   background: url('app/dark-bg.png') repeat top left;
 
@@ -643,6 +725,34 @@ $blue_pastel: #98cdff;
   margin-bottom: 5px;
   color: $gray_Lighter;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#cases_analysis_section_table_table {
+  font-size:11px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .cases_analysis_stats_name {
   font-style:italic;

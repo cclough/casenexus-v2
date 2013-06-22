@@ -142,6 +142,9 @@ window.cases_show_category_chart_bar_draw = (category) ->
     chart.write "cases_show_interpersonal_chart_bar"
   else chart.write "cases_show_structure_chart_bar" if category is "structure"
 
+
+
+
 window.cases_show_chart_radar_draw = (radar_type) ->
   chart_show_radar = undefined
   
@@ -238,6 +241,7 @@ window.cases_analysis_charts_draw = (case_count, site_average, top_quart, bottom
     $("#cases_analysis_chart_radar_empty").fadeIn "fast"
     $("#cases_analysis_chart_progress_empty").fadeIn "fast"
     $("#cases_analysis_chart_bar_empty").fadeIn "fast"
+    $("#cases_analysis_chart_country_empty").fadeIn "fast"
   else
     
     # loop through model json, construct AM compatabile array + run parseDate
@@ -457,6 +461,7 @@ window.cases_analysis_charts_draw = (case_count, site_average, top_quart, bottom
 
     ).complete ->
       cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
+      # used to call other chart draw functions here, but now in navigation button click
 
 
 
@@ -577,7 +582,7 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
 
 
 #////////////////////////////////////////////////////////
-# Bar // Has to be global function for buttons to work
+# Bar ///////////////////////////////////////////////////
 #////////////////////////////////////////////////////////
 
 
@@ -704,6 +709,105 @@ cases_analysis_chart_bar_draw = (bar_type, case_count) ->
 
 
 
+#////////////////////////////////////////////////////////
+# Country & University //////////////////////////////////
+#////////////////////////////////////////////////////////
+
+
+
+window.cases_analysis_chart_country_draw = () ->
+
+    chart = new AmCharts.AmPieChart()
+    chart.dataProvider = cases_analysis_chart_country_data
+    chart.titleField = "country"
+    chart.valueField = "count"
+    chart.outlineColor = "#FFFFFF"
+    chart.outlineAlpha = 0.8
+    chart.innerRadius = "50%"
+    chart.pieAlpha = 1
+    chart.radius = 100
+    chart.labelRadius = 10
+    chart.color = "#ffffff"
+    chart.outlineThickness = 1
+    chart.pullOutRadius = 0
+
+    chart.write "cases_analysis_chart_country"
+
+
+
+
+window.cases_analysis_chart_university_draw = () ->
+
+    chart = new AmCharts.AmPieChart()
+    chart.dataProvider = cases_analysis_chart_university_data
+    chart.titleField = "university"
+    chart.valueField = "count"
+    chart.outlineColor = "#FFFFFF"
+    chart.outlineAlpha = 0.8
+    chart.innerRadius = "50%"
+    chart.pieAlpha = 1
+    chart.radius = 100
+    chart.labelRadius = 10
+    chart.color = "#ffffff"
+    chart.outlineThickness = 1
+    chart.pullOutRadius = 0
+
+    chart.write "cases_analysis_chart_university"
+
+
+
+#////////////////////////////////////////////////////////
+# Table - Bars //////////////////////////////////////////
+#////////////////////////////////////////////////////////
+
+
+
+window.cases_analysis_chart_table_bars_draw = () ->
+
+  Data = [{ name: "qb", score: 5 }]
+
+  chart = new AmCharts.AmSerialChart()
+  chart.autoMarginOffset = 0
+  chart.marginRight = 0  
+  chart.marginTop = 0  
+  chart.dataProvider = Data
+  chart.categoryField = "name"         
+  chart.rotate = true
+  chart.depth3D = 3
+  chart.angle = 10
+
+  # AXES
+  # Category
+  categoryAxis = chart.categoryAxis
+  categoryAxis.gridPosition = "start"
+  categoryAxis.axisColor = "#DADADA"
+  categoryAxis.fillAlpha = 0
+  categoryAxis.gridAlpha = 0
+  categoryAxis.labelsEnabled = false
+
+  # value
+  valueAxis = new AmCharts.ValueAxis()
+  valueAxis.gridAlpha = 0
+  valueAxis.axisAlpha = 0
+  valueAxis.labelsEnabled = false
+  chart.addValueAxis valueAxis
+
+  # GRAPH
+  graph = new AmCharts.AmGraph()
+  graph.valueField = "score"
+  graph.type = "column"
+  graph.lineAlpha = 0
+  graph.showBalloon = false
+  graph.fillColors = "#bf1c25"
+  graph.fillAlphas = 1
+  chart.addGraph graph
+
+  # WRITE
+  chart.write("cases_analysis_section_table_bar_1")
+
+
+
+
 #///////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////
@@ -720,6 +824,11 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 
 
+  $("#cases_new_datepicker").datetimepicker
+    format: "dd MM yyyy - hh:ii"
+    showMeridian: true
+    pickerPosition: 'bottom-left'
+    minuteStep: 15
   # $("#cases_new_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
    # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
 
@@ -839,6 +948,10 @@ $(document).ready ->
     if section is "radar"
       cases_analysis_chart_radar_draw "all", cases_analysis_chart_case_count
       cases_analysis_chart_bar_draw "all", cases_analysis_chart_case_count#, cases_analysis_chart_site_average
+
+    if section is "users"
+      window.cases_analysis_chart_country_draw()
+      window.cases_analysis_chart_university_draw()
 
     $(".cases_analysis_subnav_button").removeClass "active"
     $(this).addClass "active"

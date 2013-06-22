@@ -75,7 +75,8 @@ window.map_index_map_marker_click = (marker_id) ->
             $(".modal").modal("hide")
             $("#modal_feedback_req").modal("show")
             $("#modal_feedback_req_datepicker").datetimepicker
-              format: "dd MM yyyy"
+              format: "dd MM yyyy - hh:ii"
+              minuteStep: 15
               showMeridian: true
               pickerPosition: 'bottom-left'
 

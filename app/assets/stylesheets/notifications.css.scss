@@ -120,12 +120,7 @@ $blue_linkedin: #006699;
 
 #notifications_show_body {
   overflow-y:scroll;
-  height:500px;
-}
-
-#notifications_show_footer {
-  padding:5px;
-  border-top: 1px solid $gray_Light;
+  height:450px;
 }
 
 #notifications_show_header_back {
@@ -143,4 +138,9 @@ $blue_linkedin: #006699;
 #notifications_show_newmessage_textarea {
   width:500px;
   height:50px;
+}
+
+#notifications_index_notifications {
+  overflow-y:scroll;
+  height:500px;
 }
