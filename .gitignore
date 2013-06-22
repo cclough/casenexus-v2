@@ -17,4 +17,4 @@ pickle-email-*.html
 .DS_Store
 /**/.DS_Store
 .idea
-/config/database.yml
+config/database.yml
