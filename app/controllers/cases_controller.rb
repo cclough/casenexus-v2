@@ -56,38 +56,16 @@ class CasesController < ApplicationController
 
   def analysis
 
-    # defines radar chart last 5 count
-    case current_user.case_count
-    when 0
-      #signals to show 'you must do at least one case'
-      @case_count = 0
-    when 1..5
-      @case_count = 1
-    when 6..1000
-    @case_count = 5
-    end
+    @case_count_bracket = current_user.case_count_bracket
+    @table_hash = Hash[Case.cases_analysis_table(current_user).sort_by{|k, v| v}.reverse]
 
-    @site_average = Case.cases_analysis_stats_global("totalscore")
-    @top_quart = Case.cases_analysis_stats_global("totalscore_top_quart")
-    @bottom_quart = Case.cases_analysis_stats_global("totalscore_bottom_quart")
-
-
-
-    # make table data hash
-    @myhash = Hash.new
-    12.times do |criteria_num|
-      @myhash[criteria_num] = (current_user.cases.last(5).collect{|i| i.criteria(criteria_num) }.sum.to_f/5).round(1)
-    end
-    @myhash_sorted = Hash[@myhash.sort_by{|k, v| v}.reverse]
-
-
-
+    # which view to show?
+    if params[:view] then @view = params[:view] else @view = "table" end
 
     respond_to do |format|
       format.html { render layout: 'profile' }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
     end
-
 
   end
 

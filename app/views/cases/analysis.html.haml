@@ -4,40 +4,20 @@
 - content_for :javascript_includes do
   = javascript_include_tag "cases"
   = javascript_include_tag "lib/amcharts"
+
   :javascript
 
-    var cases_analysis_chart_case_count = #{@case_count};
+    var cases_analysis_chart_case_count = #{@case_count_bracket};
 
-    var cases_analysis_chart_site_average = #{@site_average};
-    var cases_analysis_chart_top_quart = #{@top_quart};
-    var cases_analysis_chart_bottom_quart = #{@bottom_quart};
-
-    // Radar
-    var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count)};
-    var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count)};
-
-    // Bar
-    var cases_analysis_chart_bar_data_all = #{Case.cases_analysis_chart_bar_data_all(current_user, @case_count)};
-    var cases_analysis_chart_bar_data_combined = #{Case.cases_analysis_chart_bar_data_combined(current_user, @case_count)};
-
-    // Country
-    var cases_analysis_chart_country_data = #{Case.cases_analysis_chart_country_data(current_user)};
-
-    // University
-    var cases_analysis_chart_university_data = #{Case.cases_analysis_chart_university_data(current_user)};
-
-    $(document).ready(function(){    
-      window.cases_analysis_charts_draw(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
-
-      window.cases_analysis_chart_table_bars_draw();
-
-    });
 
   / - if current_user.help_6_checked
   /   :javascript
   /     $(document).ready(function() {
   /       window.setTimeout("window.application_show_help(6)", 1000);
   /     });
+
+
+
 
 .row
   .panel.darker.kill_left.kill_right
@@ -46,13 +26,11 @@
         = render 'stats'
       .pull-right
         .btn-group
-          %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "area"} Area
-          %a.cases_analysis_subnav_button.btn.btn-inverse.active{"data-section" => "table"} Table
-          %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "radar"} Bar & Radar
-          %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "users"} Users
-          %a.cases_analysis_subnav_button.btn.btn-inverse{"data-section" => "comments"} Comments
-
-
+          = filterable_analysis("progress", "Over Time")
+          = filterable_analysis("table", "Table")
+          = filterable_analysis("radar", "Bar & Radar")
+          = filterable_analysis("users", "Users")
+          = filterable_analysis("comments", "Comments")
 
 
 
@@ -60,216 +38,192 @@
 .row
 
 
+  - case @view
+
+  - when "progress"
+
+    - content_for :javascript_includes do
+
+      :javascript
+
+        var cases_analysis_chart_site_average = #{Case.cases_analysis_stats_global("totalscore")};
+        var cases_analysis_chart_top_quart = #{Case.cases_analysis_stats_global("totalscore_top_quart")};
+        var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
+
+        $(document).ready(function(){    
+          window.cases_analysis_charts_draw(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
+        });
 
 
-
-
-
-
-
-  #cases_analysis_section_area.cases_analysis_section.hidden
-    .panel.dark.kill_all
-      .row
-        .cases_analysis_block_title
-          Progress
-      .row
-        #cases_analysis_chart_progress
-          .cases_analysis_loading.progress.progress-striped.active 
-            .bar
-        #cases_analysis_chart_progress_empty
-          #cases_analysis_chart_progress_empty_icon
-            %i.icon-bar-chart
-          %p You must do at least one case, 
-          %p before this chart will work
-
-
-
-
-
-
-  #cases_analysis_section_table.cases_analysis_section
-    .panel.dark.kill_all
-      .row
-        .cases_analysis_block_title
-          Table of Comparisons
-      .row
-        = @myhash_sorted
-        %table#cases_analysis_section_table_table
-          %th
-            Name
-          %th
-            Score
-          %th
-            Bar
-          %th
-            Growth
-          %th
-            Site Av
-          %th
-            Top Q Av
-          %th
-            Bottom Q Av
-          %th
-            Recommendation
-            - row = 0
-          - @myhash_sorted.each do |key,value|
-
-            %tr
-              %td
-                / Quantitative Basics
-                = key
-              %td
-                = value
-              %td
-                %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+row.to_s }
-                - row = row + 1
-              %td
-                / growth from one case to another
-                / - growth = ((current_user.cases.offset(5).first.quantitativebasics.to_f)/(current_user.cases.offset(0).first.quantitativebasics)) * 100
-                / = number_to_percentage(growth, precision: 0)
-
-                / we want rolling average growth
-                - prev_5 = current_user.cases.offset(5).last(5).map { |a| a.quantitativebasics }
-                - prev_av = (prev_5.inject(0.0) { |sum, el| sum + el } / prev_5.size)
-
-                - curr_5 = current_user.cases.offset(0).last(5).map { |a| a.quantitativebasics }
-                - curr_av = (curr_5.inject(0.0) { |sum, el| sum + el } / curr_5.size)          
-
-                
-                = number_to_percentage((((curr_av/prev_av)-1)*100), precision: 0)
-              %td
-                = (Case.all.map { |a| a.quantitativebasics }.sum/Case.all.count).round(1)
-              %td
-                / average of top quartile
-                - array = Case.all.map { |a| a.quantitativebasics }
-                - percentile = 0.75
-                - topquart = array.sort[(array.length * percentile)..(array.length)]
-                = (topquart.inject(0.0) { |sum, el| sum + el } / topquart.size).round(1)
-              %td
-                - array = Case.all.map { |a| a.quantitativebasics }
-                - percentile = 0.25
-                - bottomquart = array.sort[0..(array.length * percentile)]
-                = (bottomquart.inject(0.0) { |sum, el| sum + el } / bottomquart.size).round(1)
-
-              %td
-
-
-
-
-
-
-
-
-
-
-
-  #cases_analysis_section_radar.cases_analysis_section.hidden
-
-    .row
-
-
-
-      .panel.dark.kill_all.span33
+    #cases_analysis_section_area.cases_analysis_section
+      .panel.dark.kill_all
         .row
           .cases_analysis_block_title
-            Radar
+            Progress
         .row
-          #cases_analysis_chart_radar_buttongroup.offset25
-            .btn-group
-              %a#cases_analysis_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-              %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
-          #cases_analysis_chart_radar
+          #cases_analysis_chart_progress
             .cases_analysis_loading.progress.progress-striped.active 
               .bar
-          #cases_analysis_chart_radar_empty
-            #cases_analysis_chart_radar_empty_icon
-              %i.icon-tasks
+          #cases_analysis_chart_progress_empty
+            #cases_analysis_chart_progress_empty_icon
+              %i.icon-bar-chart
             %p You must do at least one case, 
             %p before this chart will work
 
-      .panel.dark.kill_right.kill_top.span33
+
+
+  - when "table"
+
+    :javascript
+      $(document).ready(function(){
+        window.cases_analysis_chart_table_bars_draw();
+      });
+
+
+    #cases_analysis_section_table.cases_analysis_section
+      .panel.dark.kill_all
         .row
           .cases_analysis_block_title
-            Bar
+            Table of Comparisons
         .row
-          #cases_analysis_chart_bar_buttongroup.offset25
-            .btn-group
-              %a#cases_analysis_chart_bar_button_all.btn.btn-mini.btn-inverse.active All
-              %a#cases_analysis_chart_bar_button_combined.btn.btn-mini.btn-inverse Combined
-          #cases_analysis_chart_bar
-            .cases_analysis_loading.progress.progress-striped.active 
-              .bar
-          #cases_analysis_chart_bar_empty
-            #cases_analysis_chart_bar_empty_icon
-              %i.icon-tasks
-            %p You must do at least one case, 
-            %p before this chart will work
-    / .row
-    /   .panel.dark.kill_all
-    /     .row
-    /       .cases_analysis_block_title
-    /         Stats
+          = render "analysis_table"
 
 
 
+  - when "radar"
+
+    :javascript
+
+      // Radar
+      var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count_bracket)};
+      var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count_bracket)};
+
+      // Bar
+      var cases_analysis_chart_bar_data_all = #{Case.cases_analysis_chart_bar_data_all(current_user, @case_count_bracket)};
+      var cases_analysis_chart_bar_data_combined = #{Case.cases_analysis_chart_bar_data_combined(current_user, @case_count_bracket)};
 
 
 
-
-
-
-
-
-
-
-
-  #cases_analysis_section_users.cases_analysis_section.hidden
-    .panel.dark.kill_all
-      .row
-        .cases_analysis_block_title
-          Country
-      .row
-        #cases_analysis_chart_country
-          .cases_analysis_loading.country.progress-striped.active 
-            .bar
-        #cases_analysis_chart_country_empty
-          #cases_analysis_chart_country_empty_icon
-            %i.icon-bar-chart
-          %p You must do at least one case, 
-          %p before this chart will work
-
-
-
-    .panel.dark.kill_left.kill_right.kill_bottom
-      .row
-        .cases_analysis_block_title
-          University
-      .row
-        #cases_analysis_chart_university
-          .cases_analysis_loading.university.progress-striped.active 
-            .bar
-        #cases_analysis_chart_university_empty
-          #cases_analysis_chart_university_empty_icon
-            %i.icon-bar-chart
-          %p You must do at least one case, 
-          %p before this chart will work
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #cases_analysis_section_comments.cases_analysis_section.hidden
-    = render 'comments'
+      $(document).ready(function(){
+        window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
+        window.cases_analysis_chart_bar_draw("all", cases_analysis_chart_case_count);
+      });
       
+
+
+
+    #cases_analysis_section_radar.cases_analysis_section
+
+      .row
+
+
+
+        .panel.dark.kill_all.span33
+          .row
+            .cases_analysis_block_title
+              Radar
+          .row
+            #cases_analysis_chart_radar_buttongroup.offset25
+              .btn-group
+                %a#cases_analysis_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
+                %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+            #cases_analysis_chart_radar
+              .cases_analysis_loading.progress.progress-striped.active 
+                .bar
+            #cases_analysis_chart_radar_empty
+              #cases_analysis_chart_radar_empty_icon
+                %i.icon-tasks
+              %p You must do at least one case, 
+              %p before this chart will work
+
+
+
+        .panel.dark.kill_right.kill_top.span33
+          .row
+            .cases_analysis_block_title
+              Bar
+          .row
+            #cases_analysis_chart_bar_buttongroup.offset25
+              .btn-group
+                %a#cases_analysis_chart_bar_button_all.btn.btn-mini.btn-inverse.active All
+                %a#cases_analysis_chart_bar_button_combined.btn.btn-mini.btn-inverse Combined
+            #cases_analysis_chart_bar
+              .cases_analysis_loading.progress.progress-striped.active 
+                .bar
+            #cases_analysis_chart_bar_empty
+              #cases_analysis_chart_bar_empty_icon
+                %i.icon-tasks
+              %p You must do at least one case, 
+              %p before this chart will work
+
+
+
+
+
+  - when "users"
+
+
+
+    :javascript
+
+      // Country
+      var cases_analysis_chart_country_data = #{Case.cases_analysis_chart_country_data(current_user)};
+
+      // University
+      var cases_analysis_chart_university_data = #{Case.cases_analysis_chart_university_data(current_user)};
+
+
+      $(document).ready(function(){
+        window.cases_analysis_chart_country_draw();
+        window.cases_analysis_chart_university_draw();
+      });
+
+
+
+
+
+    #cases_analysis_section_users.cases_analysis_section
+      .panel.dark.kill_all
+        .row
+          .cases_analysis_block_title
+            Country
+        .row
+          #cases_analysis_chart_country
+            .cases_analysis_loading.country.progress-striped.active 
+              .bar
+          #cases_analysis_chart_country_empty
+            #cases_analysis_chart_country_empty_icon
+              %i.icon-bar-chart
+            %p You must do at least one case, 
+            %p before this chart will work
+
+
+
+      .panel.dark.kill_left.kill_right.kill_bottom
+        .row
+          .cases_analysis_block_title
+            University
+        .row
+          #cases_analysis_chart_university
+            .cases_analysis_loading.university.progress-striped.active 
+              .bar
+          #cases_analysis_chart_university_empty
+            #cases_analysis_chart_university_empty_icon
+              %i.icon-bar-chart
+            %p You must do at least one case, 
+            %p before this chart will work
+
+
+
+
+
+  - when "comments"
+
+
+
+    #cases_analysis_section_comments.cases_analysis_section
+      = render 'comments'
+        
 
 
 

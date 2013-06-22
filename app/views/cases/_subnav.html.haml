@@ -1,26 +1,26 @@
 .row
-  .span40
-    / .panel.gradient.kill_bottom.kill_left.kill_right
-    /   .row
-    /     .span5
-    /       / = avatar_for(@case.interviewer, 'icon')
-    /       .row
-    /         = image_tag "avatars/icon.png"
-    /       .row
-    /         = casecounts(@case.interviewer)
-    /     .span32
-    /       .row
-    /         .span.offset1#cases_show_subnav_name
-    /           = @case.interviewer.name
-    /         .span.offset1
-    /           - unless @case.interviewer.country.blank?
-    /             .span3
-    /               = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.name
-    /       .row
-    /         .span2.offset1
-    /           = image_tag "universities/" + @case.interviewer.university.image
-    /         .span.offset1#cases_show_subnav_university
-    /           = @case.interviewer.university.name
+  / .span40
+  /   .panel.gradient.kill_bottom.kill_left.kill_right
+  /     .row
+  /       .span5
+  /         / = avatar_for(@case.interviewer, 'icon')
+  /         .row
+  /           = image_tag "avatars/icon.png"
+  /         .row
+  /           = casecounts(@case.interviewer)
+  /       .span32
+  /         .row
+  /           .span.offset1#cases_show_subnav_name
+  /             = @case.interviewer.name
+  /           .span.offset1
+  /             - unless @case.interviewer.country.blank?
+  /               .span3
+  /                 = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.name
+  /         .row
+  /           .span2.offset1
+  /             = image_tag "universities/" + @case.interviewer.university.image
+  /           .span.offset1#cases_show_subnav_university
+  /             = @case.interviewer.university.name
 
 
   .span41.pull-right#cases_show_subnav_browse

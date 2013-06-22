@@ -22,6 +22,14 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), { :class => css_class }
   end
 
+  def filterable_analysis(view,title)
+    if view == params[:view]
+      link_to title, params.merge(view: view), class: "btn btn-inverse active"
+    else
+      link_to title, params.merge(view: view), class: "btn btn-inverse"
+    end
+  end
+
   def filterable_books(btype, title)
     if btype == params[:btype]
       link_to title, params.merge(btype: btype, page: 1), class: "btn btn-inverse active"

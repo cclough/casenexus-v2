@@ -140,6 +140,36 @@ class Case < ActiveRecord::Base
     end
   end
 
+  def self.criteria_name(num)
+    case num
+      when 0
+        "Quantitative basics"
+      when 1
+        "Problem solving"
+      when 2
+        "Prioritisation"
+      when 3
+        "Sanity Checking"
+      when 4
+        "Rapport"
+      when 5
+        "Articulation"
+      when 6
+        "Concision"
+      when 7
+        "Asking for information"
+      when 8
+        "Approach up front"
+      when 9
+        "Sticking to structure"
+      when 10
+        "Announces changed structure"
+      when 11
+        "Pushing to conclusion"
+    end
+  end
+
+
   ### Charts
 
   def cases_show_chart_bar_data
@@ -349,6 +379,20 @@ class Case < ActiveRecord::Base
       first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "}
       ]"
   end
+
+  
+  def self.cases_analysis_table(user)
+
+    # make hash
+    hash = Hash.new
+    12.times do |criteria_num|
+      hash[criteria_num] = (user.cases.last(5).collect{|i| i.criteria(criteria_num) }.sum.to_f/5).round(1)
+    end
+
+    hash
+
+  end
+
 
   def self.cases_analysis_chart_progress_data(user)
     cases_analysis_chart_progress_data = user.cases.order('date asc').map { |c|

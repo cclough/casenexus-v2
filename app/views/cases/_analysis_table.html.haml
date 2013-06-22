@@ -1,0 +1,60 @@
+/ = @myhash_sorted
+%table#cases_analysis_section_table_table
+
+  %th
+    Name
+  %th
+    Score
+  %th
+    Bar
+  %th
+    Growth
+  %th
+    Site Av
+  %th
+    Bottom Q Av
+  %th
+    Top Q Av
+  %th
+    Recommendation
+    
+
+  - row = 0
+  - @table_hash.each do |key,value|
+
+    %tr
+      %td
+        = Case.criteria_name(key)
+      %td
+        = value
+      %td
+        %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+row.to_s }
+        - row = row + 1
+      %td
+        / we want rolling average growth
+        - prev_5 = current_user.cases.offset(5).last(5).map { |a| a.quantitativebasics }
+        - prev_av = (prev_5.inject(0.0) { |sum, el| sum + el } / prev_5.size)
+
+        - curr_5 = current_user.cases.offset(0).last(5).map { |a| a.quantitativebasics }
+        - curr_av = (curr_5.inject(0.0) { |sum, el| sum + el } / curr_5.size)          
+
+        
+        = number_to_percentage((((curr_av/prev_av)-1)*100), precision: 0)
+      %td
+        = (Case.all.map { |a| a.quantitativebasics }.sum/Case.all.count).round(1)
+      %td
+        / average of top quartile
+        - array = Case.all.map { |a| a.quantitativebasics }
+        - percentile = 0.75
+        - topquart = array.sort[(array.length * percentile)..(array.length)]
+        = (topquart.inject(0.0) { |sum, el| sum + el } / topquart.size).round(1)
+      %td
+        - array = Case.all.map { |a| a.quantitativebasics }
+        - percentile = 0.25
+        - bottomquart = array.sort[0..(array.length * percentile)]
+        = (bottomquart.inject(0.0) { |sum, el| sum + el } / bottomquart.size).round(1)
+
+      %td
+        Improve/focus elsewhere
+
+

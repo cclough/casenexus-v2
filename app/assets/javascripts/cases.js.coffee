@@ -470,7 +470,7 @@ window.cases_analysis_charts_draw = (case_count, site_average, top_quart, bottom
 #////////////////////////////////////////////////////////
 
 
-cases_analysis_chart_radar_draw = (radar_type, case_count) ->
+window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   chart_analysis_radar = undefined
   
   # RADAR CHART
@@ -586,7 +586,7 @@ cases_analysis_chart_radar_draw = (radar_type, case_count) ->
 #////////////////////////////////////////////////////////
 
 
-cases_analysis_chart_bar_draw = (bar_type, case_count) ->
+window.cases_analysis_chart_bar_draw = (bar_type, case_count) ->
   chart = undefined
   
   # SERIAL CHART
@@ -945,24 +945,6 @@ $(document).ready ->
 #///////////////////////// ANALYSIS ////////////////////////////
 #///////////////////////////////////////////////////////////////
 
-  # Subnav Buttons
-
-  $(".cases_analysis_subnav_button").click ->
-    section = $(this).data("section")
-
-    $(".cases_analysis_section").addClass "hidden"
-    $("#cases_analysis_section_" + section).removeClass "hidden"
-
-    if section is "radar"
-      cases_analysis_chart_radar_draw "all", cases_analysis_chart_case_count
-      cases_analysis_chart_bar_draw "all", cases_analysis_chart_case_count#, cases_analysis_chart_site_average
-
-    if section is "users"
-      window.cases_analysis_chart_country_draw()
-      window.cases_analysis_chart_university_draw()
-
-    $(".cases_analysis_subnav_button").removeClass "active"
-    $(this).addClass "active"
 
   # RADAR BUTTONS
   $("#cases_analysis_chart_radar_button_all").click ->

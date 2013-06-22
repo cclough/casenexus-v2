@@ -109,6 +109,21 @@ class User < ActiveRecord::Base
     cases.count
   end
 
+
+  def case_count_bracket
+    # defines radar chart last 5 count
+    case case_count
+    when 0
+      #signals to show 'you must do at least one case'
+      0
+    when 1..5
+      1
+    when 6..1000
+      5
+    end
+  end
+
+
   def self.markers
     User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
   end
