@@ -13,6 +13,7 @@
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
 #= require lib/jquery.inview
+#= require lib/jquery.truncate
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-datetimepicker
@@ -45,8 +46,19 @@ window.application_show_help = (help_page) ->
 
   window.application_help_checkbox help_page
 
+window.application_truncatables = () ->
+  $('.application_truncatable').truncate
+    width: 'auto'
+    token: '&hellip;'
+    side: 'right'
+    multiline: false
+
 
 $(document).ready ->
+
+  # Jquery truncate
+  window.application_truncatables()
+
   # Style for the checkboxes
   $("input:checkbox").uniform()
 

@@ -5,6 +5,8 @@ $('#notifications_index_notifications').append("<%= escape_javascript(render par
 
 $('a.load-more-posts').attr('href', '<%= notifications_path page: @notifications.next_page %>');
  
+window.application_truncatables()
+
 <%- unless @notifications.next_page %>
   $('a.load-more-posts').remove();
 <% end %>

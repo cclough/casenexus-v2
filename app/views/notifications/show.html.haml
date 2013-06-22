@@ -10,30 +10,21 @@
 
 .panel.darker.kill_right.kill_bottom
   .row#notifications_show_header
-    .span
-      %a#notifications_show_header_back
+    .span.offset1
+      = @sender.name
+      .row
+        - if @sender.last_online_at
+          .span.application_lastonline
+            Last online:
+            = time_ago_in_words(@sender.last_online_at)
+            ago
+
+    .span.offset1
+      - unless @sender.country.blank?
         .span3
-          = image_tag "avatars/icon.png"
-        .span
-          .row
-            .span.offset1
-              = @sender.name
-            .span.offset1
-              - unless @sender.country.blank?
-                .span3
-                  = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.name
+          = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.name
 
-                - if @sender.last_online_at
-                  .span.application_lastonline
-                    Last online:
-                    = time_ago_in_words(@sender.last_online_at)
-                    ago
 
-          .row
-            .span2.offset1
-              = image_tag "universities/" + @sender.university.image
-            .span.offset1
-              = @sender.university.name
   .spacer5
   .row#notifications_show_body
 

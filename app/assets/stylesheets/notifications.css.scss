@@ -20,6 +20,9 @@ $blue_linkedin: #006699;
   height:500px;
 }
 
+#notifications_index_conversation {
+  width:504px;
+}
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -72,29 +75,21 @@ $blue_linkedin: #006699;
     cursor:pointer;
   }
 
+  &.select {
+    background:rgba(0,0,0,0.8);
+  }
+
   &.read {
     -moz-opacity: 0.50;
     opacity: 0.50;
   }
-
 }
 
 
 
-.notifications_index_notifications_item_content_trunc {
-  padding-top:0px;
-}
-
-
-
-.notifications_index_notifications_item_action {
-  padding-top:10px;
-  text-align:center;
-}
-
-
-.notifications_index_notifications_item_title {
-  font-weight:bold;
+.notifications_index_notifications_item_caption {
+  color: $gray_Mid;
+  font-size:12px;
 }
 
 .notifications_index_notifications_item_avatar {
@@ -119,6 +114,11 @@ $blue_linkedin: #006699;
   &.select {
     background-color:$blue_pastel;
   }
+
+  &.read {
+    -moz-opacity: 0.50;
+    opacity: 0.50;
+  }
 }
 
 #notifications_show_body {
@@ -128,16 +128,14 @@ $blue_linkedin: #006699;
   border-bottom:1px solid $gray_Light;
 }
 
-#notifications_show_header_back {
-  text-decoration:none;
-  &:hover {
-    cursor:pointer;cursor:hand;
-  }
-}
+
 
 #notifications_show_header {
   border-bottom: 1px solid $gray_Light;
   padding:5px;
+  img {
+    max-width:25px;
+  }
 }
 
 #notifications_show_newmessage_textarea {

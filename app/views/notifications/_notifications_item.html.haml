@@ -1,4 +1,3 @@
-
 .notifications_index_notifications_item{"data-user_id"=>notifications_item.sender.id.to_s}
   .row
     .span5
@@ -6,18 +5,20 @@
         = image_tag "avatars/icon.png"
     .span12
       .row
-        %strong
+        .notifications_index_notifications_item_name.application_truncatable
           / - unless notifications_item.sender == nil 
           /   = notifications_item.sender.name_trunc
           = notifications_item.sender.name
 
-      .row.application_timestamp
-        - if notifications_item.content_trunc.blank?
-          = notifications_item.title
-        - else
-          = notifications_item.content_trunc
+      .row
+        .notifications_index_notifications_item_caption.application_truncatable
+          - if notifications_item.content_trunc.blank?
+            = notifications_item.title
+          - else
+            = notifications_item.content_trunc
 
-    .span3
+    .span1.application_timestamp
+      Wed
       / = notifications_item.created_at.strftime("%d %b '%y")
 
 
