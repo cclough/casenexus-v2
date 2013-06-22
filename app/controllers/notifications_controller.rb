@@ -7,42 +7,7 @@ class NotificationsController < ApplicationController
   layout 'profile'
 
   def index
-    # notification_scope = current_user.notifications.for_display
-    # if !params[:ntype].blank? && params[:ntype] != "all"
-    #   notification_scope = notification_scope.where(ntype: params[:ntype])
-    # end
-
-    @notifications = #notification_scope.search_for(params[:search]).order("notifications."+sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
-
-    @notifications = Notification.paginate(page: params[:page])
-    #@notifications = User.where(id: current_user.id).joins(:notifications).order('notifications.created_at DESC')
-
-    # @notifications.all
-
-
-
-    #@notifications = Notification.most_recent_for(current_user.id)
-
-
-
-
-    # 12.times do |criteria_num|
-
-    #   # Notification.history(current_user.id,5).last
-    #   Notification.collect{|i| i.history(current_user.id,5).last)
-      
-
-    # end
-
-
-
-
-    # @notifications = Notification.all(:conditions => {:user_id => current_user.id || :sender_id => current_user.id},
-    #                                   :include => :users,
-    #                                   :order => 'messages.created_at DESC')
-
-    # last_messages_of_a_users_conversations = @notifications.first.notifications.first
-    
+    @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 20, page: params[:page])
 
     respond_to do |format|
       format.html
@@ -52,10 +17,6 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    #@notification = current_user.notifications.for_display.find(params[:id])
-    # @notification_for_display = current_user.notifications.find(params[:id])
-
-
 
     # for jump to
     @id = params[:id]
@@ -110,16 +71,6 @@ class NotificationsController < ApplicationController
     @notification = current_user.notifications.find(params[:id])
     @notification.read!
     render text: "OK"
-  end
-
-  private
-
-  def sort_column
-    current_user.notifications.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
 end

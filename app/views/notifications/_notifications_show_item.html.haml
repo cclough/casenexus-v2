@@ -1,10 +1,14 @@
-.notifications_show_item{id: "notification-"+notifications_show_item.id.to_s, 'data-id' => notifications_show_item.id.to_s, 'data-ntype' => 'message', :class => (("read " if notifications_show_item.read?) && ("select" if (notifications_show_item.id.to_s == @id)))}
+.notifications_show_item{id: "notification-"+notifications_show_item.id.to_s, 'data-id' => notifications_show_item.id.to_s, :class => (("read " if notifications_show_item.read?) && ("select" if (notifications_show_item.id.to_s == @id)))}
   .row
-    .span20.offset1
+    .span10
+      .row#notifications_show_item_avatar
+        = image_tag "avatars/icon.png"
       .row
-        %strong 
-          = notifications_show_item.title
+        = notifications_show_item.sender.first_name
       .row.application_timestamp
         #{time_ago_in_words(notifications_show_item.created_at)} ago.
-    .span35
-      = notifications_show_item.content
+    .row
+      %strong
+        = notifications_show_item.title
+      .row
+        = notifications_show_item.content

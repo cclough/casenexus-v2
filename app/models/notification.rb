@@ -27,8 +27,6 @@ class Notification < ActiveRecord::Base
 
   scoped_search in: :sender, on: [:first_name, :last_name]
   scoped_search on: [:content]
-
-  self.per_page = 10
   
   class << self
 
@@ -207,8 +205,16 @@ class Notification < ActiveRecord::Base
     end
   end
 
+
+
+
+
+
+  # Still not correct yet
   def self.most_recent_for(user_id)
     select('DISTINCT ON (sender_id) *').where(user_id: user_id).order("sender_id, created_at DESC")
   end
+
+
 
 end
