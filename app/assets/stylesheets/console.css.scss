@@ -35,6 +35,16 @@ $blue_linkedin: #006699;
   overflow-x: hidden;
 }
 
+
+#console_index_feedback_iframe {
+  height:100%;
+  width:100%;
+  overflow-y:hidden;
+  border:0;
+}
+
+
+
 #console_index_feedback_subnav {
   // min-height:34px;
 
@@ -52,14 +62,6 @@ $blue_linkedin: #006699;
   min-height: 32px;
 
 }
-
-#console_index_feedback_iframe {
-  height:100%;
-  width:100%;
-  overflow-y:hidden;
-  border:0;
-}
-
 
 
 

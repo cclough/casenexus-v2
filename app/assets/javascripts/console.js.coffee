@@ -45,7 +45,7 @@ window.console_index_subnav_timer_prime = ->
     clearInterval window.interval
     $("#console_index_subnav_timer").html "00:00"
 
-    switch_to("timerset")
+    switch_to("timeset")
 
   # Prime Restart Button
   $("#console_index_subnav_button_timer_restart").click ->
