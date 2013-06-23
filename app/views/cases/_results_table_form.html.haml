@@ -24,4 +24,4 @@
     = radio_button_tag :resultstable_period, 5
     = radio_button_tag :resultstable_period, 10
 
-    = hidden_field_tag :id, @case.id, id: "cases_resultstable_caseid"
+    = hidden_field_tag :id, @case.id, id: "cases_resultstable_caseid" if @case

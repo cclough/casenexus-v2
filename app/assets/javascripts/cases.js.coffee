@@ -784,7 +784,7 @@ $(document).ready ->
     type = $(this).data("type")
 
     # Change radio
-    $("input[name=cases_resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+    $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
     # Remove and add active class to buttons
     $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
