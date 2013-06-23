@@ -7,6 +7,14 @@ $gray_Darker: #333333;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -404,7 +412,7 @@ a:hover {
 
   background: white;
   margin: 15px;
-  border: 1px solid $gray_Light;
+  border: 0px solid $gray_Light;
   padding: 10px;
   // overflow:scroll;
 
@@ -440,20 +448,22 @@ a:hover {
 
     color: $gray_Lighter;
 
-    border: 1px solid $gray_Mid;
+    // border: 1px solid $gray_Mid;
 
-    background: url('app/dark-bg.png') repeat top left;
+    // background: url('app/dark-bg.png') repeat top left;
 
+    background: rgba(0, 0, 0, 0.4);
   }
 
   &.darker {
     
     color: $gray_Lighter;
 
-    border: 1px solid $gray_Mid;
+    // border: 1px solid $gray_Mid;
 
-    background: url('app/darker-bg.png') repeat top left;
+    // background: url('app/darker-bg.png') repeat top left;
 
+    background: rgba(0, 0, 0, 0.5);
   }
 
   &.title {
@@ -826,3 +836,12 @@ a:hover {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
+
+
+.application_colorcode_green {
+  color: $alert-green;
+}
+
+.application_colorcode_red {
+  color: $alert-red;
+}

@@ -1,0 +1,69 @@
+/ = @myhash_sorted
+%table#cases_analysis_section_table_table
+
+  %th
+    Name
+  %th
+    Bar
+  %th
+    Prev #{@period.to_s}
+  %th
+    Last #{@period.to_s}
+  %th
+    Growth
+  %th
+    Site Av
+  %th
+    Recommendation
+    
+
+  - row = 0
+  - @table_hash.each do |key,value|
+
+    %tr
+      %td
+        = Case.criteria_name(key)
+      %td
+        %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+row.to_s, "data-category" => Case.criteria_category(key)}
+        - row = row + 1
+      %td
+        - prev_5 = current_user.cases.offset(@period).last(@period).map { |a| a.criteria(key) }
+        - prev_av = (prev_5.inject(0.0) { |sum, el| sum + el } / prev_5.size)
+
+        = prev_av
+      %td.cases_analysis_section_table_cell_last5
+        = value
+
+      - curr_av = value
+      - growth = ((curr_av/prev_av)-1)*100
+
+      / Growth cell
+      = colorcoded_cell(growth,number_to_percentage(growth, precision: 0))
+
+      - site_av = (Case.all.map { |a| a.criteria(key) }.sum/Case.all.count).round(2)
+      - diff = value - site_av
+
+      / Diff from avareage cell
+      = colorcoded_cell(diff, site_av)
+      
+      / Recommednation cell
+      = recommendation_cell(growth, diff)
+
+
+
+  / %th
+  /   Bottom Q Av
+  / %th
+  /   Top Q Av
+
+  /     %td
+  /       / average of top quartile
+  /       - array = Case.all.map { |a| a.criteria(key) }
+  /       - percentile = 0.75
+  /       - topquart = array.sort[(array.length * percentile)..(array.length)]
+  /       = (topquart.inject(0.0) { |sum, el| sum + el } / topquart.size).round(1)
+  /     %td
+  /       - array = Case.all.map { |a| a.criteria(key) }
+  /       - percentile = 0.25
+  /       - bottomquart = array.sort[0..(array.length * percentile)]
+  /       = (bottomquart.inject(0.0) { |sum, el| sum + el } / bottomquart.size).round(1)

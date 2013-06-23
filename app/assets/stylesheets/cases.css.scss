@@ -38,6 +38,10 @@ $blue_pastel: #98cdff;
 
 #cases_index_cases_form_label {
   margin-top:5px;
+  font-size:12px;
+  i {
+    margin-left:5px;
+  }
 }
 
 
@@ -96,7 +100,7 @@ $blue_pastel: #98cdff;
   text-align:center;
   height:30px;
   width:40px;
-  margin-top:-3px !important;
+  margin-top:-1px !important;
   line-height:27px;
   color: $blue_pastel !important;
 }
@@ -151,7 +155,7 @@ $blue_pastel: #98cdff;
 .cases_show_comment {
   // overflow-y: auto;
   min-height:182px;
-  width:405px;
+  width:415px;
   border:0px !important;
 }
 
@@ -225,6 +229,10 @@ $blue_pastel: #98cdff;
 
 #cases_show_subnav_label {
   margin-top:3px;
+  font-size:12px;
+  i {
+    margin-left:5px;
+  }
 }
 
 #cases_show_subnav_browse {
@@ -526,7 +534,11 @@ $blue_pastel: #98cdff;
 }
 
 #cases_analysis_subnav_label {
-  margin-top:3px;
+  margin-top:5px;
+  font-size:12px;
+  i {
+    margin-left:5px;
+  }
 }
 
 #cases_analysis_chart_radar_buttongroup {
@@ -600,9 +612,10 @@ $blue_pastel: #98cdff;
 
 
 #cases_analysis_section_table_table {
+  width:100%;
   td {
-    padding-left:3px;
-    padding-right:3px;
+    padding-left:5px;
+    padding-right:5px;
   }
 }
 
@@ -615,8 +628,10 @@ $blue_pastel: #98cdff;
 }
 
 
-
-
+.cases_analysis_section_table_cell_last5 {
+  color: $blue_pastel;
+  font-size:12px !important;
+}
 
 
 

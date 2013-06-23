@@ -11,9 +11,12 @@
   var cases_show_chart_radar_data_all = #{@case.cases_show_chart_radar_data_all};
   var cases_show_chart_radar_data_combined = #{@case.cases_show_chart_radar_data_combined};
 
-  var cases_show_businessanalytics_chart_bar_data = #{@case.cases_show_businessanalytics_chart_bar_data};
-  var cases_show_interpersonal_chart_bar_data = #{@case.cases_show_interpersonal_chart_bar_data};
-  var cases_show_structure_chart_bar_data = #{@case.cases_show_structure_chart_bar_data};
+  var cases_show_businessanalytics_chart_bar_data = #{@case.cases_show_category_chart_bar_data("businessanalytics")};
+
+  var cases_show_structure_chart_bar_data = #{@case.cases_show_category_chart_bar_data("structure")};
+
+  var cases_show_interpersonal_chart_bar_data = #{@case.cases_show_category_chart_bar_data("interpersonal")};
+
 
   $(document).ready(function() {
 
@@ -21,8 +24,8 @@
     window.cases_show_chart_radar_draw("all");
     
     window.cases_show_category_chart_bar_draw("businessanalytics");
-    window.cases_show_category_chart_bar_draw("interpersonal");
     window.cases_show_category_chart_bar_draw("structure");
+    window.cases_show_category_chart_bar_draw("interpersonal");
 
   });
 
@@ -45,7 +48,7 @@
 
 .spacer20
 .row
-  .span71.panel.darker.kill_left.kill_top
+  .panel.dark.kill_left.kill_right.kill_top
     .row
       .span23
         .cases_show_title.recommendation
@@ -64,50 +67,49 @@
           = @case.recommendation3
 
 .row
-  .span73
-    .panel.darker.kill_left.kill_right.kill_top
-      .cases_show_title
-        Business Analytics
-      .row
-        .span17
-          #cases_show_businessanalytics_chart_bar
-        .span9.offset2
-          .cases_show_block_circle_outer.panel.dark
-            .cases_show_block_circle.panel.darker
-              .cases_show_block_circle_text
-                = @case.businessanalytics_combined
-        .span
-          .cases_show_comment.panel.dark.kill_all
-            = @case.businessanalytics_comment.html_safe
+  .panel.dark.kill_left.kill_right.kill_top
+    .cases_show_title
+      Business Analytics
+    .row
+      .span17
+        #cases_show_businessanalytics_chart_bar
+      .span9.offset2
+        .cases_show_block_circle_outer.panel.dark
+          .cases_show_block_circle.panel.darker
+            .cases_show_block_circle_text
+              = @case.businessanalytics_combined
+      .span
+        .cases_show_comment.panel.dark.kill_all
+          = @case.businessanalytics_comment.html_safe
+
 .row
-  .span73
-    .panel.darker.kill_left.kill_right.kill_top
-      .cases_show_title
-        Interpersonal
-      .row
-        .span17
-          #cases_show_interpersonal_chart_bar
-        .span9.offset2
-          .cases_show_block_circle_outer.panel.dark
-            .cases_show_block_circle.panel.darker
-              .cases_show_block_circle_text
-                = @case.interpersonal_combined
-        .span
-          .cases_show_comment.panel.dark.kill_all
-            = @case.interpersonal_comment.html_safe
+  .panel.dark.kill_left.kill_right.kill_top
+    .cases_show_title
+      Interpersonal
+    .row
+      .span17
+        #cases_show_interpersonal_chart_bar
+      .span9.offset2
+        .cases_show_block_circle_outer.panel.dark
+          .cases_show_block_circle.panel.darker
+            .cases_show_block_circle_text
+              = @case.interpersonal_combined
+      .span
+        .cases_show_comment.panel.dark.kill_all
+          = @case.interpersonal_comment.html_safe
+
 .row
-  .span73
-    .panel.darker.kill_left.kill_right.kill_top
-      .cases_show_title
-        Structure
-      .row
-        .span17
-          #cases_show_structure_chart_bar
-        .span9.offset2
-          .cases_show_block_circle_outer.panel.dark
-            .cases_show_block_circle.panel.darker
-              .cases_show_block_circle_text
-                = @case.structure_combined
-        .span
-          .cases_show_comment.panel.dark.kill_all
-            = @case.structure_comment.html_safe
+  .panel.dark.kill_left.kill_right.kill_top
+    .cases_show_title
+      Structure
+    .row
+      .span17
+        #cases_show_structure_chart_bar
+      .span9.offset2
+        .cases_show_block_circle_outer.panel.dark
+          .cases_show_block_circle.panel.darker
+            .cases_show_block_circle_text
+              = @case.structure_combined
+      .span
+        .cases_show_comment.panel.dark.kill_all
+          = @case.structure_comment.html_safe

@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def filterable_analysis(view,title)
-    if view == params[:view]
+    if view == @view
       link_to title, params.merge(view: view), class: "btn btn-inverse active"
     else
       link_to title, params.merge(view: view), class: "btn btn-inverse"
@@ -43,12 +43,31 @@ module ApplicationHelper
   def pageable_books(number)
     if number == params[:per_page]
       link_to number, params.merge(per_page: number, page: 1), class: "btn btn-inverse active"
-    elsif !params[:per_page] && (number == 10)
+    elsif !params[:per_page] && (number == "10")
       link_to number, params.merge(per_page: number, page: 1), class: "btn btn-inverse active"
     else
       link_to number, params.merge(per_page: number, page: 1), class: "btn btn-inverse"
     end   
   end
+
+
+  def colorcoded_cell(num_to_code, value)
+    if (num_to_code > 0)
+      content_tag :td, value, class: "application_colorcode_green"
+    else
+      content_tag :td, value, class: "application_colorcode_red"
+    end      
+  end
+
+  def recommendation_cell(growth, diff_from_av)
+
+    if (growth < 0) && (diff_from_av < 0)
+      content_tag :td, "This needs attention", class: "application_colorcode_red"
+    else
+      content_tag :td, "-", class: "application_colorcode_green"
+    end
+  end
+  
 
   def avatar_for(user, type)
 

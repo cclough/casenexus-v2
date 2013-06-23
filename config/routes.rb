@@ -62,7 +62,6 @@ Casenexus::Application.routes.draw do
   # Cases
   resources :cases, only: [:index, :show, :new, :create] do
     get :analysis, on: :collection
-    get :table, on: :collection
   end
 
   # Notifications

@@ -6,7 +6,7 @@
     .pull-right
       .span.offset1#books_index_books_form_label
         Per Page
-        %i.icon-caret-right.offset1
+        %i.icon-caret-right
       .span.offset1
         .btn-group
           = pageable_books("10")
@@ -14,7 +14,7 @@
           = pageable_books("50") 
       .span.offset1#books_index_books_form_label
         Filter
-        %i.icon-caret-right.offset1
+        %i.icon-caret-right
       / Type Buttons
       .span.offset1
         .btn-group
@@ -23,9 +23,9 @@
           = filterable_books('link', 'Web')
           = filterable_books('case', 'Cases')
 
-      .span.offset2#books_index_books_form_label
+      .span.offset1#books_index_books_form_label
         Sort by
-        %i.icon-caret-right.offset1
+        %i.icon-caret-right
 
       .span.offset1#books_index_books_form_sort.application_menu_sort
         .btn-group

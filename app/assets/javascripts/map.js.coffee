@@ -149,8 +149,7 @@ $(document).ready ->
 
     # Change radio
     radio = $(this).data("radio")
-    $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
-       
+    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
 
     # Change text field to language name
     selection_id = $(this).data("id")

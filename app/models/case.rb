@@ -35,14 +35,6 @@ class Case < ActiveRecord::Base
   validates :sanitychecking, presence: true,
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
-  validates :rapport, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
-  validates :articulation, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
-  validates :concision, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
-  validates :askingforinformation, presence: true,
-            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   validates :approachupfront, presence: true,
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
@@ -51,6 +43,15 @@ class Case < ActiveRecord::Base
   validates :announceschangedstructure, presence: true,
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates :pushingtoconclusion, presence: true,
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
+
+  validates :rapport, presence: true,
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
+  validates :articulation, presence: true,
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
+  validates :concision, presence: true,
+            numericality: { greater_than: 0, less_than_or_equal_to: 5 }
+  validates :askingforinformation, presence: true,
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   validates :interpersonal_comment, length: { maximum: 500 }
@@ -81,16 +82,16 @@ class Case < ActiveRecord::Base
     interviewer.name
   end
 
-  def interpersonal_combined
-    ((rapport + articulation + concision + askingforinformation).to_f / 4).round(1)
-  end
-
   def businessanalytics_combined
     ((quantitativebasics + problemsolving + prioritisation + sanitychecking).to_f / 4).round(1)
   end
 
   def structure_combined
     ((approachupfront + stickingtostructure + announceschangedstructure + pushingtoconclusion).to_f / 4).round(1)
+  end
+
+  def interpersonal_combined
+    ((askingforinformation + articulation + concision + rapport).to_f / 4).round(1)
   end
 
   def totalscore
@@ -122,21 +123,21 @@ class Case < ActiveRecord::Base
       when 3
         sanitychecking
       when 4
-        rapport
-      when 5
-        articulation
-      when 6
-        concision
-      when 7
-        askingforinformation
-      when 8
         approachupfront
-      when 9
+      when 5
         stickingtostructure
-      when 10
+      when 6
         announceschangedstructure
-      when 11
+      when 7
         pushingtoconclusion
+      when 8
+        askingforinformation
+      when 9
+        articulation
+      when 10
+        concision
+      when 11
+        rapport
     end
   end
 
@@ -151,21 +152,21 @@ class Case < ActiveRecord::Base
       when 3
         "Sanity Checking"
       when 4
-        "Rapport"
-      when 5
-        "Articulation"
-      when 6
-        "Concision"
-      when 7
-        "Asking for information"
-      when 8
         "Approach up front"
-      when 9
+      when 5
         "Sticking to structure"
-      when 10
+      when 6
         "Announces changed structure"
-      when 11
+      when 7
         "Pushing to conclusion"
+      when 8
+        "Asking for information"
+      when 9
+        "Articulation"
+      when 10
+        "Concision"
+      when 11
+        "Rapport"
     end
   end
 
@@ -188,15 +189,16 @@ class Case < ActiveRecord::Base
      {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
      {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"},
 
-     {criteria: \"Rapport\", score: "+rapport.to_s+"},
-     {criteria: \"Articulation\", score: "+articulation.to_s+"},
-     {criteria: \"Concision\", score: "+concision.to_s+"},
-     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
-
      {criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
      {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
      {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
-     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
+     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"},
+
+     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
+     {criteria: \"Articulation\", score: "+articulation.to_s+"},
+     {criteria: \"Concision\", score: "+concision.to_s+"},
+     {criteria: \"Rapport\", score: "+rapport.to_s+"}]"
+ 
   end
 
   def cases_show_chart_radar_data_all
@@ -205,45 +207,43 @@ class Case < ActiveRecord::Base
      {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
      {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"},
 
-     {criteria: \"Rapport\", score: "+rapport.to_s+"},
-     {criteria: \"Articulation\", score: "+articulation.to_s+"},
-     {criteria: \"Concision\", score: "+concision.to_s+"},
-     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
-
      {criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
      {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
      {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
-     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
+     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"},
+
+     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
+     {criteria: \"Articulation\", score: "+articulation.to_s+"},
+     {criteria: \"Concision\", score: "+concision.to_s+"},
+     {criteria: \"Rapport\", score: "+rapport.to_s+"}]"
   end
 
   def cases_show_chart_radar_data_combined
      "[{criteria: \"Business Analytics\", score: "+businessanalytics_combined.to_s+"},
-     {criteria: \"Interpersonal\", score: "+interpersonal_combined.to_s+"},
-     {criteria: \"Structure\", score: "+structure_combined.to_s+"}]"
+     {criteria: \"Structure\", score: "+structure_combined.to_s+"},
+     {criteria: \"Interpersonal\", score: "+interpersonal_combined.to_s+"}]"
   end
 
-  # case categories
-  def cases_show_businessanalytics_chart_bar_data
-    "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
-     {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
-     {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
-     {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"}]"
-  end
 
-  def cases_show_structure_chart_bar_data
-    "[{criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
-     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
-     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
-     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"}]"
-  end
+  def cases_show_category_chart_bar_data(category)
 
-  def cases_show_interpersonal_chart_bar_data
-    "[{criteria: \"Rapport\", score: "+rapport.to_s+"},
-     {criteria: \"Articulation\", score: "+articulation.to_s+"},
-     {criteria: \"Concision\", score: "+concision.to_s+"},
-     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"}]"
-  end
+    case category
+    when "businessanalytics"
+      range = 0..3
+    when "structure"
+      range = 4..7
+    when "interpersonal"
+      range = 8..11
+    end
 
+    array = []
+    range.each do |n|
+      array << {:criteria => Case.criteria_name(n), :score => criteria(n)}
+    end
+
+    array.to_json
+
+  end
 
 
   def self.cases_analysis_chart_radar_data_all(user, count)
@@ -265,22 +265,6 @@ class Case < ActiveRecord::Base
       all: " + (user.cases.order('id desc').collect(&:sanitychecking).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:sanitychecking).sum.to_f/count).to_s + ", 
       first: " + (user.cases.limit(count).order('id asc').collect(&:sanitychecking).sum.to_f/count).to_s + "},
-      {criteria: \"Rapport\", 
-      all: " + (user.cases.order('id desc').collect(&:rapport).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:rapport).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:rapport).sum.to_f/count).to_s + "},
-      {criteria: \"Articulation\", 
-      all: " + (user.cases.order('id desc').collect(&:articulation).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:articulation).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:articulation).sum.to_f/count).to_s + "},
-      {criteria: \"Concision\", 
-      all: " + (user.cases.order('id desc').collect(&:concision).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:concision).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:concision).sum.to_f/count).to_s + "},
-      {criteria: \"Asking for information\", 
-      all: " + (user.cases.order('id desc').collect(&:askingforinformation).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:askingforinformation).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:askingforinformation).sum.to_f/count).to_s + "},
       {criteria: \"Approach up front\", 
       all: " + (user.cases.order('id desc').collect(&:approachupfront).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:approachupfront).sum.to_f/count).to_s + ", 
@@ -296,7 +280,23 @@ class Case < ActiveRecord::Base
       {criteria: \"Pusing to conclusion\", 
       all: " + (user.cases.order('id desc').collect(&:pushingtoconclusion).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + "}
+      first: " + (user.cases.limit(count).order('id asc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + "},
+      {criteria: \"Asking for information\", 
+      all: " + (user.cases.order('id desc').collect(&:askingforinformation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:askingforinformation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:askingforinformation).sum.to_f/count).to_s + "},
+      {criteria: \"Articulation\", 
+      all: " + (user.cases.order('id desc').collect(&:articulation).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:articulation).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:articulation).sum.to_f/count).to_s + "},
+      {criteria: \"Concision\", 
+      all: " + (user.cases.order('id desc').collect(&:concision).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:concision).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:concision).sum.to_f/count).to_s + "},
+      {criteria: \"Rapport\", 
+      all: " + (user.cases.order('id desc').collect(&:rapport).sum.to_f/user.cases.all.count).to_s + ", 
+      last: " + (user.cases.limit(count).order('id desc').collect(&:rapport).sum.to_f/count).to_s + ", 
+      first: " + (user.cases.limit(count).order('id asc').collect(&:rapport).sum.to_f/count).to_s + "}
       ]"
   end
 
@@ -307,96 +307,24 @@ class Case < ActiveRecord::Base
       all: " + (user.cases.order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + ", 
       first: " + (user.cases.limit(count).order('id asc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + "},
-      {criteria: \"Interpersonal\", 
-      all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
       {criteria: \"Structure\", 
       all: " + (user.cases.order('id desc').collect(&:structure_combined).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:structure_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "}
-      ]"
-  end
-
-  def self.cases_analysis_chart_bar_data_all(user, count)
-    # LAST 5: load scores into json for bar chart
-    "[
-      {criteria: \"Quantitative basics\", 
-      all: " + (user.cases.order('id desc').collect(&:quantitativebasics).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:quantitativebasics).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:quantitativebasics).sum.to_f/count).to_s + "},
-      {criteria: \"Problem-Solving\", 
-      all: " + (user.cases.order('id desc').collect(&:problemsolving).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:problemsolving).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:problemsolving).sum.to_f/count).to_s + "},
-      {criteria: \"Prioritisation\", 
-      all: " + (user.cases.order('id desc').collect(&:prioritisation).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:prioritisation).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:prioritisation).sum.to_f/count).to_s + "},
-      {criteria: \"Sanity-checking\", 
-      all: " + (user.cases.order('id desc').collect(&:sanitychecking).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:sanitychecking).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:sanitychecking).sum.to_f/count).to_s + "},
-      {criteria: \"Rapport\", 
-      all: " + (user.cases.order('id desc').collect(&:rapport).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:rapport).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:rapport).sum.to_f/count).to_s + "},
-      {criteria: \"Articulation\", 
-      all: " + (user.cases.order('id desc').collect(&:articulation).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:articulation).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:articulation).sum.to_f/count).to_s + "},
-      {criteria: \"Concision\", 
-      all: " + (user.cases.order('id desc').collect(&:concision).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:concision).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:concision).sum.to_f/count).to_s + "},
-      {criteria: \"Asking for information\", 
-      all: " + (user.cases.order('id desc').collect(&:askingforinformation).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:askingforinformation).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:askingforinformation).sum.to_f/count).to_s + "},
-      {criteria: \"Approach up front\", 
-      all: " + (user.cases.order('id desc').collect(&:approachupfront).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:approachupfront).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:approachupfront).sum.to_f/count).to_s + "},
-      {criteria: \"Sticking to structure\", 
-      all: " + (user.cases.order('id desc').collect(&:stickingtostructure).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:stickingtostructure).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:stickingtostructure).sum.to_f/count).to_s + "},
-      {criteria: \"Announces structure change\", 
-      all: " + (user.cases.order('id desc').collect(&:announceschangedstructure).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:announceschangedstructure).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:announceschangedstructure).sum.to_f/count).to_s + "},
-      {criteria: \"Pusing to conclusion\", 
-      all: " + (user.cases.order('id desc').collect(&:pushingtoconclusion).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:pushingtoconclusion).sum.to_f/count).to_s + "}
-      ]"
-  end
-
-  def self.cases_analysis_chart_bar_data_combined(user, count)
-    # LAST count: load scores into json for bar chart
-    "[
-      {criteria: \"Business Analytics\", 
-      all: " + (user.cases.order('id desc').collect(&:businessanalytics_combined).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:businessanalytics_combined).sum.to_f/count).to_s + "},
+      first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "},
       {criteria: \"Interpersonal\", 
       all: " + (user.cases.order('id desc').collect(&:interpersonal_combined).sum.to_f/user.cases.all.count).to_s + ", 
       last: " + (user.cases.limit(count).order('id desc').collect(&:interpersonal_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "},
-      {criteria: \"Structure\", 
-      all: " + (user.cases.order('id desc').collect(&:structure_combined).sum.to_f/user.cases.all.count).to_s + ", 
-      last: " + (user.cases.limit(count).order('id desc').collect(&:structure_combined).sum.to_f/count).to_s + ", 
-      first: " + (user.cases.limit(count).order('id asc').collect(&:structure_combined).sum.to_f/count).to_s + "}
+      first: " + (user.cases.limit(count).order('id asc').collect(&:interpersonal_combined).sum.to_f/count).to_s + "}
       ]"
   end
 
   
-  def self.cases_analysis_table(user)
+  def self.cases_analysis_table(user, period)
 
     # make hash
     hash = Hash.new
     12.times do |criteria_num|
-      hash[criteria_num] = (user.cases.last(5).collect{|i| i.criteria(criteria_num) }.sum.to_f/5).round(1)
+      hash[criteria_num] = (user.cases.last(period.to_i).collect{|i| i.criteria(criteria_num) }.sum.to_f/period.to_i).round(1)
     end
 
     hash
@@ -404,13 +332,14 @@ class Case < ActiveRecord::Base
   end
 
 
+
   def self.cases_analysis_chart_progress_data(user)
     cases_analysis_chart_progress_data = user.cases.order('date asc').map { |c|
       { id: c.id,
         date: c.date.strftime("%Y-%m-%d"),
-        interpersonal: c.interpersonal_combined,
         businessanalytics: c.businessanalytics_combined,
         structure: c.structure_combined,
+        interpersonal: c.interpersonal_combined,
         totalscore: c.totalscore } }
   end
 
@@ -472,12 +401,6 @@ class Case < ActiveRecord::Base
 
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
   class << self
-    def cases_analysis_comments_interpersonal(user)
-      user.cases.where("interpersonal_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                                  created_at: m.created_at,
-                                                                  interpersonal_comment: m.interpersonal_comment } }
-    end
-
     def cases_analysis_comments_businessanalytics(user)
       user.cases.where("businessanalytics_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
                                                                       created_at: m.created_at,
@@ -488,6 +411,12 @@ class Case < ActiveRecord::Base
       user.cases.where("structure_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
                                                               created_at: m.created_at,
                                                               structure_comment: m.structure_comment } }
+    end
+
+    def cases_analysis_comments_interpersonal(user)
+      user.cases.where("interpersonal_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                                  created_at: m.created_at,
+                                                                  interpersonal_comment: m.interpersonal_comment } }
     end
   end
 
@@ -521,12 +450,12 @@ class Case < ActiveRecord::Base
         case type
           when "totalscore"
             (Case.all.map { |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
-          when "interpersonal"
-            (Case.all.map { |a| a.interpersonal_combined }.sum/Case.all.count).round(1)
           when "businessanalytics"
             (Case.all.map { |a| a.businessanalytics_combined }.sum/Case.all.count).round(1)
           when "structure"
             (Case.all.map { |a| a.structure_combined }.sum/Case.all.count).round(1)
+          when "interpersonal"
+            (Case.all.map { |a| a.interpersonal_combined }.sum/Case.all.count).round(1)
           when "totalscore_top_quart"
             array = Case.all.map { |a| a.totalscore }
             percentile = 0.75
@@ -550,12 +479,12 @@ class Case < ActiveRecord::Base
           case type
             when "totalscore"
               (user.cases.map { |a| a.totalscore }.sum/user.cases.count).round(1) if Case.all.count > 0
-            when "interpersonal"
-              (user.cases.map { |a| a.interpersonal_combined }.sum/user.cases.count).round(1)
             when "businessanalytics"
               (user.cases.map { |a| a.businessanalytics_combined }.sum/user.cases.count).round(1)
             when "structure"
               (user.cases.map { |a| a.structure_combined }.sum/user.cases.count).round(1)
+            when "interpersonal"
+              (user.cases.map { |a| a.interpersonal_combined }.sum/user.cases.count).round(1)
           end
         rescue
           0

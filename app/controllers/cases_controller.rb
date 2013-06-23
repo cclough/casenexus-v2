@@ -57,7 +57,19 @@ class CasesController < ApplicationController
   def analysis
 
     @case_count_bracket = current_user.case_count_bracket
-    @table_hash = Hash[Case.cases_analysis_table(current_user).sort_by{|k, v| v}.reverse]
+
+    if params[:cases_analysis_period] then @period = params[:cases_analysis_period].to_i else @period = 1 end
+
+
+    hash = Hash[Case.cases_analysis_table(current_user, @period)]
+
+    if (params[:cases_analysis_order_by] == "order")
+      @table_hash = hash.sort_by{|k, v| v}.reverse
+    elsif (params[:cases_analysis_order_by] == "group")
+      @table_hash = hash.sort_by{|k, v| k}
+    else
+      @table_hash = hash.sort_by{|k, v| v}.reverse      
+    end
 
     # which view to show?
     if params[:view] then @view = params[:view] else @view = "table" end
@@ -65,20 +77,9 @@ class CasesController < ApplicationController
     respond_to do |format|
       format.html { render layout: 'profile' }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
+      format.js #for table form
     end
 
-  end
-
-  def table
-    hash = Hash[Case.cases_analysis_table(current_user)]
-
-    if (params[:table_order] == "order")
-      @table_hash = hash.sort_by{|k, v| v}.reverse
-    elsif (params[:table_order] == "group")
-      @table_hash = hash.sort_by{|k, v| k}
-    end
-
-    render partial: "analysis_table", layout: false
   end
 
   private

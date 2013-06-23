@@ -232,241 +232,230 @@ window.cases_show_chart_radar_draw = (radar_type) ->
 #////////////////////////////////////////////////////
 
 
-window.cases_analysis_charts_draw = (case_count, site_average, top_quart, bottom_quart) ->
+#//////////////////////////////////////////
+# Progress chart //////////////////////////
+#//////////////////////////////////////////
+
+window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart, bottom_quart) ->
   
-  #//////////////////////////////////////////
-  # Progress chart javascript
-  #//////////////////////////////////////////
-  if case_count is 0
-    $("#cases_analysis_chart_radar_empty").fadeIn "fast"
-    $("#cases_analysis_chart_progress_empty").fadeIn "fast"
-    $("#cases_analysis_chart_bar_empty").fadeIn "fast"
-    $("#cases_analysis_chart_country_empty").fadeIn "fast"
-  else
+  # loop through model json, construct AM compatabile array + run parseDate
+  
+  # load array for chart
+  
+  # DRAW BOTH CHARTS
+  cases_analysis_chart_progress_draw = (data) ->
     
-    # loop through model json, construct AM compatabile array + run parseDate
+    # Fade out loading bars
+    $(".cases_analysis_loading").fadeOut "slow", ->
+      $(".cases_analysis_loading").remove()
+
+    chart_analysis_progress = undefined
     
-    # load array for chart
+    # SERIAL CHART
+    chart_analysis_progress = new AmCharts.AmSerialChart()
+    chart_analysis_progress.pathToImages = "/assets/amcharts/"
     
-    # DRAW BOTH CHARTS
-    cases_analysis_chart_progress_draw = (data) ->
-      
-      # Fade out loading bars
-      $(".cases_analysis_loading").fadeOut "slow", ->
-        $(".cases_analysis_loading").remove()
+    # below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
+    chart_analysis_progress.panEventsEnabled = true
+    chart_analysis_progress.zoomOutButton =
+      backgroundColor: "#000000"
+      backgroundAlpha: 0.15
 
-      chart_analysis_progress = undefined
-      
-      # SERIAL CHART
-      chart_analysis_progress = new AmCharts.AmSerialChart()
-      chart_analysis_progress.pathToImages = "/assets/amcharts/"
-      
-      # below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-      chart_analysis_progress.panEventsEnabled = true
-      chart_analysis_progress.zoomOutButton =
-        backgroundColor: "#000000"
-        backgroundAlpha: 0.15
-
-      chart_analysis_progress.colors = ["#0D8ECF", "#B0DE09", "#FCD202"]
-      chart_analysis_progress.dataProvider = data
-      chart_analysis_progress.categoryField = "date"
-      
-      # neccessary ?
-      chart_analysis_progress.autoMargins = false
-      chart_analysis_progress.marginRight = 15
-      chart_analysis_progress.marginLeft = 25
-      chart_analysis_progress.marginBottom = 35
-      chart_analysis_progress.marginTop = 10
-      
-      # animations
-      chart_analysis_progress.startDuration = 0.3
-      chart_analysis_progress.startEffect = ">"
-      chart_analysis_progress.sequencedAnimation = true
-      
-      # AXES
-      # Category
-      categoryAxis = chart_analysis_progress.categoryAxis
-      categoryAxis.gridAlpha = 0.07
-      categoryAxis.axisColor = "#DADADA"
-      categoryAxis.startOnAxis = true
-      categoryAxis.labelRotation = 45
-      categoryAxis.parseDates = true
-      
-      #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-      categoryAxis.minPeriod = "DD" # our data is daily, so we set minPeriod to DD
-      
-      # Value
-      valueAxis = new AmCharts.ValueAxis()
-      valueAxis.stackType = "regular" # this line makes the chart "stacked"
-      valueAxis.gridAlpha = 0.07
-      valueAxis.axisAlpha = 0
-      
-      # change to 50?
-      valueAxis.maximum = 15
-      valueAxis.labelsEnabled = true
-
-      # HORIZONTAL Guide Quartiles
-      guide = new AmCharts.Guide()
-      guide.value = bottom_quart
-      guide.toValue = top_quart
-      guide.fillColor = "#000"
-      guide.inside = true
-      guide.fillAlpha = 0.3
-      guide.lineAlpha = 0
-      valueAxis.addGuide guide
-
-      # GUIDE for average
-      guide = new AmCharts.Guide()
-      guide.value = site_average
-      guide.lineColor = "#CC0000"
-      guide.dashLength = 4
-      guide.label = "average for all users"
-      guide.inside = true
-      guide.lineAlpha = 1
-      valueAxis.addGuide guide
-
-      chart_analysis_progress.addValueAxis valueAxis
-      
-      # GRAPHS
-      # first graph - Business Analytics
-      graph = new AmCharts.AmGraph()
-      graph.type = "line"
-      graph.title = "Business Analytics"
-      graph.valueField = "businessanalytics"
-      graph.lineAlpha = 1
-      graph.fillAlphas = 0.7 # setting fillAlphas to > 0 value makes it area graph
-      graph.bullet = "round"
-      addclicklistener graph
-      chart_analysis_progress.addGraph graph
-      
-      # second graph - Interpersonal
-      graph = new AmCharts.AmGraph()
-      graph.type = "line"
-      graph.title = "Interpersonal"
-      graph.valueField = "interpersonal"
-      graph.lineAlpha = 1
-      graph.fillAlphas = 0.7
-      graph.bullet = "round"
-      addclicklistener graph
-      chart_analysis_progress.addGraph graph
-      
-      # third graph - Structure
-      graph = new AmCharts.AmGraph()
-      graph.type = "line"
-      graph.title = "Structure"
-      graph.valueField = "structure"
-      graph.lineAlpha = 1
-      graph.fillAlphas = 0.7
-      graph.bullet = "round"
-      addclicklistener graph
-      chart_analysis_progress.addGraph graph
-      
-      # Fourth graph - FOR ZOOMER - NOT DRAWN
-      graph = new AmCharts.AmGraph()
-      graph.type = "line"
-      graph.title = "Total Score"
-      graph.valueField = "totalscore"
-      graph.lineAlpha = 1
-      graph.fillAlphas = 0.6
-      graph.bullet = "none"
-      
-      #graph.hidden = true;
-      graph.showBalloon = false
-      graph.visibleInLegend = false
-      graph.fillAlphas = [0]
-      graph.lineAlpha = 0
-      graph.includeInMinMax = false
-      chart_analysis_progress.addGraph graph
-      
-      # LEGEND
-      legend = new AmCharts.AmLegend()
-      legend.position = "bottom"
-      legend.align = "center"
-      legend.rollOverGraphAlpha = "0.15"
-      legend.color = "#f6f6f6"
-      legend.horizontalGap = 5
-      legend.switchable = true
-      legend.valueWidth = 25
-      chart_analysis_progress.addLegend legend
-      
-      # CURSOR //////////
-      # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-      chartCursor = new AmCharts.ChartCursor()
-      chartCursor.cursorPosition = "mouse"
-      chartCursor.pan = false
-      chartCursor.bulletsEnabled = false
-      chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
-      chartCursor.zoomable = false
-
-      chart_analysis_progress.addChartCursor chartCursor
-      
-      # Balloon Settings
-      balloon = chart_analysis_progress.balloon
-      balloon.adjustBorderColor = true
-      balloon.cornerRadius = 5
-      balloon.showBullet = false
-      balloon.fillColor = "#000000"
-      balloon.fillAlpha = 0.7
-      balloon.color = "#FFFFFF"
-
-
-      # SCROLLBAR
-      # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-      chartScrollbar = new AmCharts.ChartScrollbar()
-      chartScrollbar.graph = graph # uses 'fifth graph' above - last to use graph variable
-      chartScrollbar.autoGridCount = true
-      chartScrollbar.scrollbarHeight = 25
-      chartScrollbar.color = "#000000"
-      chart_analysis_progress.addChartScrollbar chartScrollbar
-      
-      # WRITE
-      chart_analysis_progress.write "cases_analysis_chart_progress"
+    chart_analysis_progress.colors = ["#0D8ECF", "#B0DE09", "#FCD202"]
+    chart_analysis_progress.dataProvider = data
+    chart_analysis_progress.categoryField = "date"
     
-    # method to parse sql date string into AM compataible Date Object
-    parseDate = (dateString) ->
-      
-      # split the string get each field
-      dateArray = dateString.split("-")
-      
-      # now lets create a new Date instance, using year, month and day as parameters
-      # month count starts with 0, so we have to convert the month number
-      date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]))
-      date
-    addclicklistener = (graph) ->
-      graph.addListener "clickGraphItem", (event) ->
-        window.location = "/cases/" + event.item.dataContext.id
+    # neccessary ?
+    chart_analysis_progress.autoMargins = false
+    chart_analysis_progress.marginRight = 15
+    chart_analysis_progress.marginLeft = 25
+    chart_analysis_progress.marginBottom = 35
+    chart_analysis_progress.marginTop = 10
+    
+    # animations
+    chart_analysis_progress.startDuration = 0.3
+    chart_analysis_progress.startEffect = ">"
+    chart_analysis_progress.sequencedAnimation = true
+    
+    # AXES
+    # Category
+    categoryAxis = chart_analysis_progress.categoryAxis
+    categoryAxis.gridAlpha = 0.07
+    categoryAxis.axisColor = "#DADADA"
+    categoryAxis.startOnAxis = true
+    categoryAxis.labelRotation = 45
+    categoryAxis.parseDates = true
+    
+    #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
+    categoryAxis.minPeriod = "DD" # our data is daily, so we set minPeriod to DD
+    
+    # Value
+    valueAxis = new AmCharts.ValueAxis()
+    valueAxis.stackType = "regular" # this line makes the chart "stacked"
+    valueAxis.gridAlpha = 0.07
+    valueAxis.axisAlpha = 0
+    
+    # change to 50?
+    valueAxis.maximum = 15
+    valueAxis.labelsEnabled = true
 
-    $("#cases_analysis_chart_progress").fadeIn "fast"
+    # HORIZONTAL Guide Quartiles
+    guide = new AmCharts.Guide()
+    guide.value = bottom_quart
+    guide.toValue = top_quart
+    guide.fillColor = "#000"
+    guide.inside = true
+    guide.fillAlpha = 0.3
+    guide.lineAlpha = 0
+    valueAxis.addGuide guide
 
-    # really need the two liens below?
-    $("#cases_analysis_chart_radar").fadeIn "fast"
-    $("#cases_analysis_chart_radar_buttongroup").fadeIn "fast"
+    # GUIDE for average
+    guide = new AmCharts.Guide()
+    guide.value = site_average
+    guide.lineColor = "#CC0000"
+    guide.dashLength = 4
+    guide.label = "average for all users"
+    guide.inside = true
+    guide.lineAlpha = 1
+    valueAxis.addGuide guide
 
-    # really need the two liens below?
-    $("#cases_analysis_chart_bar").fadeIn "fast"
-    $("#cases_analysis_chart_bar_buttongroup").fadeIn "fast"
+    chart_analysis_progress.addValueAxis valueAxis
+    
+    # GRAPHS
+    # first graph - Business Analytics
+    graph = new AmCharts.AmGraph()
+    graph.type = "line"
+    graph.title = "Business Analytics"
+    graph.valueField = "businessanalytics"
+    graph.lineAlpha = 1
+    graph.fillAlphas = 0.7 # setting fillAlphas to > 0 value makes it area graph
+    graph.bullet = "round"
+    addclicklistener graph
+    chart_analysis_progress.addGraph graph
 
-    cases_analysis_chart_progress_data = []
-    $.getJSON("/cases/analysis", (json) ->
-      $.each json, (i, item) ->
-        dataObject =
-          id: json[i].id
-          date: parseDate(json[i].date)
-          interpersonal: json[i].interpersonal
-          businessanalytics: json[i].businessanalytics
-          structure: json[i].structure
-          totalscore: json[i].totalscore
+    
+    # second graph - Structure
+    graph = new AmCharts.AmGraph()
+    graph.type = "line"
+    graph.title = "Structure"
+    graph.valueField = "structure"
+    graph.lineAlpha = 1
+    graph.fillAlphas = 0.7
+    graph.bullet = "round"
+    addclicklistener graph
+    chart_analysis_progress.addGraph graph
 
-        cases_analysis_chart_progress_data.push dataObject
+    # third graph - Interpersonal
+    graph = new AmCharts.AmGraph()
+    graph.type = "line"
+    graph.title = "Interpersonal"
+    graph.valueField = "interpersonal"
+    graph.lineAlpha = 1
+    graph.fillAlphas = 0.7
+    graph.bullet = "round"
+    addclicklistener graph
+    chart_analysis_progress.addGraph graph
+    
+    # Fourth graph - FOR ZOOMER - NOT DRAWN
+    graph = new AmCharts.AmGraph()
+    graph.type = "line"
+    graph.title = "Total Score"
+    graph.valueField = "totalscore"
+    graph.lineAlpha = 1
+    graph.fillAlphas = 0.6
+    graph.bullet = "none"
+    
+    #graph.hidden = true;
+    graph.showBalloon = false
+    graph.visibleInLegend = false
+    graph.fillAlphas = [0]
+    graph.lineAlpha = 0
+    graph.includeInMinMax = false
+    chart_analysis_progress.addGraph graph
+    
+    # LEGEND
+    legend = new AmCharts.AmLegend()
+    legend.position = "bottom"
+    legend.align = "center"
+    legend.rollOverGraphAlpha = "0.15"
+    legend.color = "#f6f6f6"
+    legend.horizontalGap = 5
+    legend.switchable = true
+    legend.valueWidth = 25
+    chart_analysis_progress.addLegend legend
+    
+    # CURSOR //////////
+    # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
+    chartCursor = new AmCharts.ChartCursor()
+    chartCursor.cursorPosition = "mouse"
+    chartCursor.pan = false
+    chartCursor.bulletsEnabled = false
+    chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
+    chartCursor.zoomable = false
 
-    ).complete ->
-      cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
-      # used to call other chart draw functions here, but now in navigation button click
+    chart_analysis_progress.addChartCursor chartCursor
+    
+    # Balloon Settings
+    balloon = chart_analysis_progress.balloon
+    balloon.adjustBorderColor = true
+    balloon.cornerRadius = 5
+    balloon.showBullet = false
+    balloon.fillColor = "#000000"
+    balloon.fillAlpha = 0.7
+    balloon.color = "#FFFFFF"
+
+
+    # SCROLLBAR
+    # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
+    chartScrollbar = new AmCharts.ChartScrollbar()
+    chartScrollbar.graph = graph # uses 'fifth graph' above - last to use graph variable
+    chartScrollbar.autoGridCount = true
+    chartScrollbar.scrollbarHeight = 25
+    chartScrollbar.color = "#000000"
+    chart_analysis_progress.addChartScrollbar chartScrollbar
+    
+    # WRITE
+    chart_analysis_progress.write "cases_analysis_chart_progress"
+  
+  # method to parse sql date string into AM compataible Date Object
+  parseDate = (dateString) ->
+    
+    # split the string get each field
+    dateArray = dateString.split("-")
+    
+    # now lets create a new Date instance, using year, month and day as parameters
+    # month count starts with 0, so we have to convert the month number
+    date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]))
+    date
+  addclicklistener = (graph) ->
+    graph.addListener "clickGraphItem", (event) ->
+      window.location = "/cases/" + event.item.dataContext.id
+
+
+  # DRAW THE CHART
+  $("#cases_analysis_chart_progress").fadeIn "fast"
+
+  cases_analysis_chart_progress_data = []
+  $.getJSON("/cases/analysis", (json) ->
+    $.each json, (i, item) ->
+      dataObject =
+        id: json[i].id
+        date: parseDate(json[i].date)
+        interpersonal: json[i].interpersonal
+        businessanalytics: json[i].businessanalytics
+        structure: json[i].structure
+        totalscore: json[i].totalscore
+
+      cases_analysis_chart_progress_data.push dataObject
+
+  ).complete ->
+    cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
+    # used to call other chart draw functions here, but now in navigation button click
 
 
 
 #////////////////////////////////////////////////////////
-# Radar // Has to be global function for buttons to work
+# Radar /////////////////////////////////////////////////
 #////////////////////////////////////////////////////////
 
 
@@ -579,132 +568,6 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   
   # WRITE
   chart_analysis_radar.write "cases_analysis_chart_radar"
-
-
-#////////////////////////////////////////////////////////
-# Bar ///////////////////////////////////////////////////
-#////////////////////////////////////////////////////////
-
-
-window.cases_analysis_chart_bar_draw = (bar_type, case_count) ->
-  chart = undefined
-  
-  # SERIAL CHART
-  chart = new AmCharts.AmSerialChart()
-  if bar_type is "all"
-    chart.dataProvider = cases_analysis_chart_bar_data_all
-  else chart.dataProvider = cases_analysis_chart_bar_data_combined  if bar_type is "combined"
-
-  chart.autoMarginOffset = 0
-  chart.marginRight = 0
-  chart.categoryField = "criteria"
-  
-  # this single line makes the chart a bar chart,              
-  chart.rotate = true
-  chart.depth3D = 20
-  chart.angle = 30
-  
-  # AXES
-  # Category
-  categoryAxis = chart.categoryAxis
-  categoryAxis.gridPosition = "start"
-  categoryAxis.axisColor = "#DADADA"
-  categoryAxis.fillAlpha = 0
-  categoryAxis.gridAlpha = 0
-  categoryAxis.fillColor = "#FAFAFA"
-  categoryAxis.labelsEnabled = false
-  
-  # value
-  valueAxis = new AmCharts.ValueAxis()
-  valueAxis.gridAlpha = 0
-  valueAxis.dashLength = 1
-  
-  # valueAxis.minimum = 1;
-  valueAxis.integersOnly = true
-  valueAxis.labelsEnabled = false
-  valueAxis.maximum = 5
-
-  # GUIDE for average
-  # guide = new AmCharts.Guide()
-  # guide.value = site_average
-  # guide.lineColor = "#CC0000"
-  # guide.dashLength = 4
-  # guide.label = "average for all users"
-  # guide.inside = true
-  # guide.lineAlpha = 1
-  # valueAxis.addGuide guide
-
-  chart.addValueAxis valueAxis
-  
-
-  # GRAPH - All
-  graph = new AmCharts.AmGraph()
-  graph.title = "All"
-  graph.valueField = "all"
-  graph.type = "column"
-  graph.labelPosition = "bottom"
-  graph.color = "#ffffff"
-  graph.fontSize = 10
-  graph.labelText = "[[category]]"
-  graph.balloonText = "[[category]]: [[value]]/5"
-  graph.lineAlpha = 0
-  graph.fillColors = "#98cdff"
-  graph.fillAlphas = 0.4
-  chart.addGraph graph
-
-  # # GRAPH - First
-  # graph = new AmCharts.AmGraph()
-  # graph.title = "First"
-  # graph.valueField = "first"
-  # graph.type = "column"
-  # graph.labelPosition = "bottom"
-  # graph.color = "#ffffff"
-  # graph.fontSize = 10
-  # # graph.labelText = "[[category]]"
-  # graph.balloonText = "[[category]]: [[value]]/5"
-  # graph.lineAlpha = 0
-  # graph.fillColors = "#ff7300"
-  # graph.fillAlphas = 0.4
-  # chart.addGraph graph
-
-  # # GRAPH - Last
-  # graph = new AmCharts.AmGraph()
-  # graph.title = "Last"
-  # graph.valueField = "last"
-  # graph.type = "column"
-  # graph.labelPosition = "bottom"
-  # graph.color = "#ffffff"
-  # graph.fontSize = 10
-  # # graph.labelText = "[[category]]"
-  # graph.balloonText = "[[category]]: [[value]]/5"
-  # graph.lineAlpha = 0
-  # graph.fillColors = "#ff0000"
-  # graph.fillAlphas = 0.4
-  # chart.addGraph graph
-
-  # Balloon Settings
-  balloon = chart.balloon
-  balloon.adjustBorderColor = true
-  balloon.cornerRadius = 5
-  balloon.showBullet = false
-  balloon.fillColor = "#000000"
-  balloon.fillAlpha = 0.7
-  balloon.color = "#FFFFFF"
-
-  # Legend Settings
-  legend = new AmCharts.AmLegend()
-  legend.position = "bottom"
-  legend.align = "center"
-  legend.color = "#f6f6f6"
-  legend.markerType = "square"
-  legend.rollOverGraphAlpha = 0
-  legend.horizontalGap = 5
-  legend.valueWidth = 5
-  legend.switchable = true
-  chart.addLegend legend
-
-  chart.write "cases_analysis_chart_bar"
-
 
 
 
@@ -854,13 +717,13 @@ $(document).ready ->
     link: false #Button to insert a link. Default true
     image: false #Button to insert an image. Default true
 
-  $("[name=\"case[interpersonal_comment]\"]").wysihtml5
+  $("[name=\"case[structure_comment]\"]").wysihtml5
     emphasis: false #Italics, bold, etc. Default true
     "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
     link: false #Button to insert a link. Default true
     image: false #Button to insert an image. Default true
 
-  $("[name=\"case[structure_comment]\"]").wysihtml5
+  $("[name=\"case[interpersonal_comment]\"]").wysihtml5
     emphasis: false #Italics, bold, etc. Default true
     "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
     link: false #Button to insert a link. Default true
@@ -909,25 +772,7 @@ $(document).ready ->
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
       $("#cases_new_block_circle_text_businessanalytics").html category_score
-    else if category is "interpersonal"
-      if $("#cases_new_score_input_rapport").val()
-        category_score_1 = parseInt($("#cases_new_score_input_rapport").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_articulation").val()
-        category_score_2 = parseInt($("#cases_new_score_input_articulation").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_concision").val()
-        category_score_3 = parseInt($("#cases_new_score_input_concision").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_askingforinformation").val()
-        category_score_4 = parseInt($("#cases_new_score_input_askingforinformation").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_interpersonal").html category_score
+
     else if category is "structure"
       if $("#cases_new_score_input_approachupfront").val()
         category_score_1 = parseInt($("#cases_new_score_input_approachupfront").val())
@@ -948,21 +793,53 @@ $(document).ready ->
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
       $("#cases_new_block_circle_text_structure").html category_score
 
+    else if category is "interpersonal"
+      if $("#cases_new_score_input_rapport").val()
+        category_score_1 = parseInt($("#cases_new_score_input_rapport").val())
+      else
+        category_score_1 = 0
+      if $("#cases_new_score_input_articulation").val()
+        category_score_2 = parseInt($("#cases_new_score_input_articulation").val())
+      else
+        category_score_2 = 0
+      if $("#cases_new_score_input_concision").val()
+        category_score_3 = parseInt($("#cases_new_score_input_concision").val())
+      else
+        category_score_3 = 0
+      if $("#cases_new_score_input_askingforinformation").val()
+        category_score_4 = parseInt($("#cases_new_score_input_askingforinformation").val())
+      else
+        category_score_4 = 0
+      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
+      $("#cases_new_block_circle_text_interpersonal").html category_score
+
+
 
 #///////////////////////////////////////////////////////////////
 #///////////////////////// ANALYSIS ////////////////////////////
 #///////////////////////////////////////////////////////////////
 
 
-  $(".cases_analysis_section_table_orderby_button").click ->
+  # Order and Period buttons
+  $("#cases_analysis_section_table .btn").click ->
 
-    order_by = $(this).data "order_by"
-    $.get "/cases/table?table_order=" + order_by, (data) ->
-      $("#cases_analysis_section_table_table_container").html data
-      window.cases_analysis_chart_table_bars_draw()
+    radio = $(this).data("radio")
+    type = $(this).data("type")
 
-    $(".cases_analysis_section_table_orderby_button").removeClass "active"
+    # Change radio
+    $("input[name=cases_analysis_"+type+"]:eq(" + radio + ")").prop "checked", true
+    
+    # Remove and add active class to buttons
+    $("#cases_analysis_section_table_"+type+"_container .btn").removeClass "active"
     $(this).addClass "active"
+    
+    # Submit form
+    $.get("/cases/analysis", $("#cases_analysis_section_table_form").serialize(), null, "script")
+    false
+
+
+
+
 
   # RADAR BUTTONS
   $("#cases_analysis_chart_radar_button_all").click ->

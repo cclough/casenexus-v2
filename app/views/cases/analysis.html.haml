@@ -10,6 +10,8 @@
     var cases_analysis_chart_case_count = #{@case_count_bracket};
 
 
+
+    
   / - if current_user.help_6_checked
   /   :javascript
   /     $(document).ready(function() {
@@ -25,14 +27,14 @@
       / .pull-left
       /   = render 'stats'
       .pull-right
-        .span7.offset1#cases_analysis_subnav_label
+        .span6#cases_analysis_subnav_label
           Views
-          %i.icon-caret-right.offset1
-        .span44
+          %i.icon-caret-right
+        .span40
           .btn-group
             = filterable_analysis("progress", "Over Time")
             = filterable_analysis("table", "Table")
-            = filterable_analysis("radar", "Bar & Radar")
+            = filterable_analysis("radar", "Radar")
             = filterable_analysis("users", "Users")
             = filterable_analysis("comments", "Comments")
 
@@ -54,8 +56,12 @@
         var cases_analysis_chart_top_quart = #{Case.cases_analysis_stats_global("totalscore_top_quart")};
         var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
 
-        $(document).ready(function(){    
-          window.cases_analysis_charts_draw(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
+        $(document).ready(function(){  
+          if (cases_analysis_chart_case_count == 0) {
+            $("#cases_analysis_chart_progress_empty").fadeIn("fast");
+          } else {
+            window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
+          }
         });
 
 
@@ -80,7 +86,11 @@
 
     :javascript
       $(document).ready(function(){
-        window.cases_analysis_chart_table_bars_draw();
+        if (cases_analysis_chart_case_count == 0) {
+          $("#cases_analysis_chart_table_empty").fadeIn("fast");
+        } else {
+          window.cases_analysis_chart_table_bars_draw();
+        }
       });
 
 
@@ -88,17 +98,13 @@
       .panel.dark.kill_all
         .row
           .cases_analysis_block_title
-            Table of Comparisons
+            Results Table
         .row
-          .btn-group
-            .btn.btn-inverse.cases_analysis_section_table_orderby_button{"data-order_by"=>"order"}
-              Order
-            .btn.btn-inverse.cases_analysis_section_table_orderby_button{"data-order_by"=>"group"}
-              Group
+
+          = render "results_table_form"
+
           #cases_analysis_section_table_table_container
-            = render "analysis_table"
-
-
+            = render "results_table"
 
   - when "radar"
 
@@ -108,15 +114,15 @@
       var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count_bracket)};
       var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count_bracket)};
 
-      // Bar
-      var cases_analysis_chart_bar_data_all = #{Case.cases_analysis_chart_bar_data_all(current_user, @case_count_bracket)};
-      var cases_analysis_chart_bar_data_combined = #{Case.cases_analysis_chart_bar_data_combined(current_user, @case_count_bracket)};
-
 
 
       $(document).ready(function(){
-        window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
-        window.cases_analysis_chart_bar_draw("all", cases_analysis_chart_case_count);
+        if (cases_analysis_chart_case_count == 0) {
+          $("#cases_analysis_chart_radar_empty").fadeIn("fast");
+        } else {
+          window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
+        }
+
       });
       
 
@@ -148,27 +154,6 @@
 
 
 
-        .panel.dark.kill_right.kill_top.span33
-          .row
-            .cases_analysis_block_title
-              Bar
-          .row
-            #cases_analysis_chart_bar_buttongroup.offset25
-              .btn-group
-                %a#cases_analysis_chart_bar_button_all.btn.btn-mini.btn-inverse.active All
-                %a#cases_analysis_chart_bar_button_combined.btn.btn-mini.btn-inverse Combined
-            #cases_analysis_chart_bar
-              .cases_analysis_loading.progress.progress-striped.active 
-                .bar
-            #cases_analysis_chart_bar_empty
-              #cases_analysis_chart_bar_empty_icon
-                %i.icon-tasks
-              %p You must do at least one case, 
-              %p before this chart will work
-
-
-
-
 
   - when "users"
 
@@ -184,8 +169,13 @@
 
 
       $(document).ready(function(){
-        window.cases_analysis_chart_country_draw();
-        window.cases_analysis_chart_university_draw();
+        if (cases_analysis_chart_case_count == 0) {
+          $("#cases_analysis_chart_country_empty").fadeIn("fast");
+          $("#cases_analysis_chart_university_empty").fadeIn("fast");
+        } else {
+          window.cases_analysis_chart_country_draw();
+          window.cases_analysis_chart_university_draw();
+        }
       });
 
 

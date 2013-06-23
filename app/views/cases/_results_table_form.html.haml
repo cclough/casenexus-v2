@@ -1,0 +1,25 @@
+= form_tag '#', method: 'get', id: "cases_analysis_section_table_form", remote:true do
+  #cases_analysis_section_table_order_by_container.btn-group.pull-left
+    .btn.btn-inverse.cases_analysis_section_table_orderby_button.active{"data-radio"=>0, "data-type"=>"order_by"}
+      Order
+    .btn.btn-inverse.cases_analysis_section_table_orderby_button{"data-radio"=>1, "data-type"=>"order_by"}
+      Group
+
+  #cases_analysis_section_table_period_container.btn-group.pull-right
+    .btn.btn-inverse.cases_analysis_section_table_period_button.active{"data-radio"=>0, "data-type"=>"period"}
+      1
+    .btn.btn-inverse.cases_analysis_section_table_period_button{"data-radio"=>1, "data-type"=>"period"}
+      2
+    .btn.btn-inverse.cases_analysis_section_table_period_button{"data-radio"=>2, "data-type"=>"period"}
+      5
+    .btn.btn-inverse.cases_analysis_section_table_period_button{"data-radio"=>3, "data-type"=>"period"}
+      10
+
+  #cases_analysis_section_table_form_radiogroup.hidden
+    = radio_button_tag :cases_analysis_order_by, 'order', checked: true
+    = radio_button_tag :cases_analysis_order_by, 'group'
+
+    = radio_button_tag :cases_analysis_period, 1, checked: true
+    = radio_button_tag :cases_analysis_period, 2
+    = radio_button_tag :cases_analysis_period, 5
+    = radio_button_tag :cases_analysis_period, 10

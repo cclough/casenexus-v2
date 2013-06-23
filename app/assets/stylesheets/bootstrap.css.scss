@@ -1,12 +1,12 @@
-/*!
- * Bootstrap v2.1.1
- *
- * Copyright 2012 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
+
+
 .clearfix {
   *zoom: 1;
 }
@@ -154,7 +154,7 @@ body {
 }
 a:hover {
   color: #158acb;
-/*  text-decoration: underline;*/
+// text-decoration: underline;
 }*/
 .img-rounded {
   -webkit-border-radius: 6px;
@@ -5030,7 +5030,7 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
-  color: #FFFF7E;
+  color: $alert-yellow;
 
   -moz-box-shadow: 2px 3px 14px #4a494a;
   -webkit-box-shadow: 2px 3px 14px #4a494a;
@@ -5052,7 +5052,8 @@ input[type="submit"].btn.btn-mini {
   /*background-color: #dff0d8;*/
   /*border-color: #d6e9c6;*/
   /*  color: #468847;*/
-  color: #88ff8e;
+  color: $alert-green;
+
 /*  border-color: #00FF66;*/
 
 }
@@ -5061,14 +5062,15 @@ input[type="submit"].btn.btn-mini {
   /*background-color: #f2dede;*/
   /*border-color: #eed3d7;*/
   /*  color: #b94a48;*/
-  color: #FF3030;
+  color: $alert-red;
 /*  border-color: #FF3030;*/
 }
 .alert-info {
   /*background-color: #d9edf7;*/
   /*border-color: #bce8f1;*/
   /*  color: #3a87ad;*/
-  color: #7EB6FF;
+  color: $alert-blue;
+
 /*  border-color: #7EB6FF;*/
 }
 .alert-block {
