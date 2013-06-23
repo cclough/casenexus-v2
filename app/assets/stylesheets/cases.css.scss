@@ -133,12 +133,6 @@ $blue_pastel: #98cdff;
 /////////////////////////////////////////////////////////////////
 
 
-#cases_show_chart_bar {
-  margin-left:15px;
-  width:270px;
-  height:250px;
-}
-
 
 .cases_show_title {
   text-align:center;
@@ -162,6 +156,31 @@ $blue_pastel: #98cdff;
 
 
 
+
+
+
+#cases_show_charts_panel {
+  height:350px;
+}
+
+#cases_show_charts_view_buttongroup {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #cases_show_businessanalytics_chart_bar, #cases_show_interpersonal_chart_bar, #cases_show_structure_chart_bar {
   margin-top:-20px;
   height:220px;
@@ -171,12 +190,12 @@ $blue_pastel: #98cdff;
 
 #cases_show_chart_radar {
   padding-top:10px;
-  height:250px;
-  width:460px;
+  height:300px;
 }
 
+
 #cases_show_chart_radar_buttongroup {
-  margin-top:-260px;
+  margin:-300px;
 }
 
 .cases_show_block_circle_outer {
@@ -272,6 +291,7 @@ $blue_pastel: #98cdff;
 
 
 
+
 #cases_new_target_avatar {
   margin-right:7px;
   margin-top:6px;
@@ -299,6 +319,9 @@ $blue_pastel: #98cdff;
   margin-bottom: 0px !important;
   width:220px;
 }
+
+
+
 
 
 
@@ -578,43 +601,12 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_analysis_chart_bar_buttongroup {
-  display:none;
-  margin-top:-28px;
-}
-
-
-#cases_analysis_chart_bar {
-  padding-left:2px;
-  height:302px;
-  width:450px;
-  display:none;
-}
-
-#cases_analysis_chart_bar_empty {
-  height:222px;
-  width:410px;
-  display:none;
-  padding-top:80px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  text-align:center;
-}
-
-#cases_analysis_chart_bar_empty_icon {
-  font-size:100px;
-  margin-bottom:40px; 
-}
 
 
 
 
 
-
-
-
-#cases_analysis_section_table_table {
+#cases_resultstable_table {
   width:100%;
   td {
     padding-left:5px;
@@ -624,14 +616,14 @@ $blue_pastel: #98cdff;
 
 
 
-.cases_analysis_section_table_chart_bar {
+.cases_resultstable_chart_bar {
   width:150px;
   height:20px;
   border:0px solid white;
 }
 
 
-.cases_analysis_section_table_cell_last5 {
+.cases_resultstable_cell_last5 {
   color: $blue_pastel;
   font-size:12px !important;
 }
@@ -757,7 +749,7 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_analysis_section_table_table {
+#cases_resultstable_table {
   font-size:11px;
 }
 

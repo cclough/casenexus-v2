@@ -21,6 +21,28 @@ class CasesController < ApplicationController
     @case = current_user.cases.find(params[:id])
     @cases = current_user.cases.order("created_at desc")
 
+
+
+    # Period
+    if params[:resultstable_period] then @period = params[:resultstable_period].to_i else @period = 1 end
+
+    # For table
+    hash = Hash[@case.cases_show_table]
+    if (params[:resultstable_order_by] == "order")
+      @table_hash = hash.sort_by{|k, v| v}.reverse
+    elsif (params[:resultstable_order_by] == "group")
+      @table_hash = hash.sort_by{|k, v| k}
+    else
+      @table_hash = hash.sort_by{|k, v| v}.reverse      
+    end
+
+
+    respond_to do |format|
+      format.html
+      format.js #for table form
+    end
+
+
   end
 
   def new
@@ -56,16 +78,17 @@ class CasesController < ApplicationController
 
   def analysis
 
+    # CHAGNE? Same as period
     @case_count_bracket = current_user.case_count_bracket
 
     # Period
-    if params[:cases_analysis_period] then @period = params[:cases_analysis_period].to_i else @period = 1 end
+    if params[:resultstable_period] then @period = params[:resultstable_period].to_i else @period = 1 end
 
     # For table
     hash = Hash[Case.cases_analysis_table(current_user, @period)]
-    if (params[:cases_analysis_order_by] == "order")
+    if (params[:resultstable_order_by] == "order")
       @table_hash = hash.sort_by{|k, v| v}.reverse
-    elsif (params[:cases_analysis_order_by] == "group")
+    elsif (params[:resultstable_order_by] == "group")
       @table_hash = hash.sort_by{|k, v| k}
     else
       @table_hash = hash.sort_by{|k, v| v}.reverse      
@@ -75,7 +98,7 @@ class CasesController < ApplicationController
     if params[:view] then @view = params[:view] else @view = "table" end
 
     respond_to do |format|
-      format.html { render layout: 'profile' }
+      format.html
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
       format.js #for table form
     end

@@ -1,4 +1,4 @@
-%table#cases_analysis_section_table_table
+%table#cases_resultstable_table
 
   %th
     Name
@@ -24,13 +24,13 @@
         = Case.criteria_name(key)
       %td
         / Chart
-        %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
+        %div.cases_resultstable_chart_bar{"data-score" => value, id: "cases_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
       %td
         / Previous 5 to Last 5 Average
         - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
         = prev_av
 
-      %td.cases_analysis_section_table_cell_last5
+      %td.cases_resultstable_cell_last5
         / Last 5 Average
         = value
 

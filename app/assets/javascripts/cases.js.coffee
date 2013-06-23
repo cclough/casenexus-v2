@@ -4,67 +4,6 @@
 #////////////////////  SHOW   ///////////////////////
 #////////////////////////////////////////////////////
 
-window.cases_show_chart_bar_draw = ->
-  chart = undefined
-  
-  # SERIAL CHART
-  chart = new AmCharts.AmSerialChart()
-  chart.dataProvider = cases_show_chart_bar_data
-  chart.autoMarginOffset = 0
-  chart.marginRight = 0
-  chart.categoryField = "criteria"
-  
-  # this single line makes the chart a bar chart,              
-  chart.rotate = true
-  chart.depth3D = 20
-  chart.angle = 30
-  
-  # AXES
-  # Category
-  categoryAxis = chart.categoryAxis
-  categoryAxis.gridPosition = "start"
-  categoryAxis.axisColor = "#DADADA"
-  categoryAxis.fillAlpha = 0
-  categoryAxis.gridAlpha = 0
-  categoryAxis.fillColor = "#FAFAFA"
-  categoryAxis.labelsEnabled = false
-  
-  # value
-  valueAxis = new AmCharts.ValueAxis()
-  valueAxis.gridAlpha = 0
-  valueAxis.dashLength = 1
-  
-  # valueAxis.minimum = 1;
-  valueAxis.integersOnly = true
-  valueAxis.labelsEnabled = false
-  valueAxis.maximum = 5
-  chart.addValueAxis valueAxis
-  
-  # GRAPH
-  graph = new AmCharts.AmGraph()
-  graph.title = "Score"
-  graph.valueField = "score"
-  graph.type = "column"
-  graph.labelPosition = "bottom"
-  graph.color = "#ffffff"
-  graph.fontSize = 10
-  graph.labelText = "[[category]]"
-  graph.balloonText = "[[category]]: [[value]]"
-  graph.lineAlpha = 0
-  graph.fillColors = "#98cdff"
-  graph.fillAlphas = 0.4
-
-  # Balloon Settings
-  balloon = chart.balloon
-  balloon.adjustBorderColor = true
-  balloon.cornerRadius = 5
-  balloon.showBullet = false
-  balloon.fillColor = "#000000"
-  balloon.fillAlpha = 0.7
-  balloon.color = "#FFFFFF"
-
-  chart.addGraph graph
-  chart.write "cases_show_chart_bar"
 
 
 window.cases_show_category_chart_bar_draw = (category) ->
@@ -127,14 +66,17 @@ window.cases_show_category_chart_bar_draw = (category) ->
   balloon.fillColor = "#000000"
   balloon.fillAlpha = 0.7
   balloon.color = "#FFFFFF"
-  if category is "analytics"
+
+  if category is "businessanalytics"
     graph.fillColors = "#0D8ECF"
   else if category is "interpersonal"
     graph.fillColors = "#B0DE09"
   else graph.fillColors = "#FCD202"  if category is "structure"
-  graph.fillAlphas = 0.4
+
+  graph.fillAlphas = 0.5
   chart.addGraph graph
-  
+
+
   # WRITE
   if category is "businessanalytics"
     chart.write "cases_show_businessanalytics_chart_bar"
@@ -159,7 +101,8 @@ window.cases_show_chart_radar_draw = (radar_type) ->
   # chart_show_radar.startEffect = ">";
   # chart_show_radar.sequencedAnimation = true;
   chart_show_radar.color = "#FFFFFF"
-  chart_show_radar.fontSize = 9
+  chart_show_radar.fontSize = 11
+  chart_show_radar.marginTop = 0
   
   # VALUE AXIS
   valueAxis = new AmCharts.ValueAxis()
@@ -636,14 +579,14 @@ window.cases_analysis_chart_university_draw = () ->
 
 
 
-window.cases_analysis_chart_table_bars_draw = () ->
+window.cases_resultstable_bars_draw = () ->
 
   i = 0
 
   while i < 12
 
-    score = $("#cases_analysis_section_table_chart_bar_" + i).data "score"
-    category = $("#cases_analysis_section_table_chart_bar_" + i).data "category"
+    score = $("#cases_resultstable_chart_bar_" + i).data "score"
+    category = $("#cases_resultstable_chart_bar_" + i).data "category"
 
     Data = [{ name: i, score: parseFloat(score), category: category }]
 
@@ -695,7 +638,7 @@ window.cases_analysis_chart_table_bars_draw = () ->
     chart.addGraph graph
 
     # WRITE
-    chart.write("cases_analysis_section_table_chart_bar_" + i)
+    chart.write("cases_resultstable_chart_bar_" + i)
 
     i++
 
@@ -841,14 +784,14 @@ $(document).ready ->
     type = $(this).data("type")
 
     # Change radio
-    $("input[name=cases_analysis_"+type+"]:eq(" + radio + ")").prop "checked", true
+    $("input[name=cases_resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
     # Remove and add active class to buttons
-    $("#cases_analysis_section_table_"+type+"_container .btn").removeClass "active"
+    $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
     $(this).addClass "active"
     
     # Submit form
-    $.get("/cases/analysis", $("#cases_analysis_section_table_form").serialize(), null, "script")
+    $.get("/cases/analysis", $("#cases_resultstable_form").serialize(), null, "script")
     false
 
 
@@ -887,6 +830,46 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 #////////////////////////// SHOW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
+
+
+
+  # Order and Period buttons
+  $("#cases_show_charts_view_table .btn").click ->
+
+    radio = $(this).data("radio")
+    type = $(this).data("type")
+
+    # Change radio
+    $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+    
+    # Remove and add active class to buttons
+    $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
+    $(this).addClass "active"
+    
+    case_id = $("#cases_resultstable_caseid").val()
+    # Submit form
+    $.get("/cases/"+case_id, $("#cases_resultstable_form").serialize(), null, "script")
+    false
+
+
+
+
+  $("#cases_show_charts_view_buttongroup .btn").click ->
+
+    view = $(this).data("view")
+
+    # Change view
+    $(".cases_show_charts_view").addClass "hidden"
+    $("#cases_show_charts_view_"+view).removeClass "hidden"
+
+    # Run radar draw if needed
+    if view == "radar"
+      window.cases_show_chart_radar_draw("all");
+
+    # Remove and add active class to buttons
+    $("#cases_show_charts_view_buttongroup .btn").removeClass "active"
+    $(this).addClass "active"
+
 
   # Select Case Pull Down
   $("#cases_show_subnav_select").change ->

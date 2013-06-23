@@ -1,0 +1,7 @@
+$("#cases_show_charts_view_table_table_container").html("<%= escape_javascript(render("results_table")) %>")
+
+// if (cases_analysis_chart_case_count == 0) {
+//   $("#cases_analysis_chart_table_empty").fadeIn("fast");
+// } else {
+  window.cases_resultstable_bars_draw();
+// }

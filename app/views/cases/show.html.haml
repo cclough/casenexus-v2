@@ -4,49 +4,76 @@
 - provide(:breadcrumb, "Cases")
 - provide(:breadcrumb_url, "/cases")
 
-:javascript
+- content_for :javascript_includes do
 
-  var cases_show_chart_bar_data = #{@case.cases_show_chart_bar_data}; 
-
-  var cases_show_chart_radar_data_all = #{@case.cases_show_chart_radar_data_all};
-  var cases_show_chart_radar_data_combined = #{@case.cases_show_chart_radar_data_combined};
-
-  var cases_show_businessanalytics_chart_bar_data = #{@case.cases_show_category_chart_bar_data("businessanalytics")};
-
-  var cases_show_structure_chart_bar_data = #{@case.cases_show_category_chart_bar_data("structure")};
-
-  var cases_show_interpersonal_chart_bar_data = #{@case.cases_show_category_chart_bar_data("interpersonal")};
+  :javascript
 
 
-  $(document).ready(function() {
+    var cases_show_chart_radar_data_all = #{@case.cases_show_chart_radar_data_all};
+    var cases_show_chart_radar_data_combined = #{@case.cases_show_chart_radar_data_combined};
 
-    window.cases_show_chart_bar_draw("all");
-    window.cases_show_chart_radar_draw("all");
-    
-    window.cases_show_category_chart_bar_draw("businessanalytics");
-    window.cases_show_category_chart_bar_draw("structure");
-    window.cases_show_category_chart_bar_draw("interpersonal");
+    var cases_show_businessanalytics_chart_bar_data = #{@case.cases_show_category_chart_bar_data("businessanalytics")};
 
-  });
+    var cases_show_structure_chart_bar_data = #{@case.cases_show_category_chart_bar_data("structure")};
+
+    var cases_show_interpersonal_chart_bar_data = #{@case.cases_show_category_chart_bar_data("interpersonal")};
+
+
+    $(document).ready(function() {
+
+      window.cases_resultstable_bars_draw();
+
+      // window.cases_show_chart_radar_draw("all");
+      
+      window.cases_show_category_chart_bar_draw("businessanalytics");
+      window.cases_show_category_chart_bar_draw("structure");
+      window.cases_show_category_chart_bar_draw("interpersonal");
+
+    });
 
 .row
   = render 'subnav'
 
 
-.spacer10
 .row
-  .span32
-    #cases_show_chart_bar
 
-  .span40
+  #cases_show_charts_panel.panel.dark.kill_left.kill_right
 
-    #cases_show_chart_radar
-    #cases_show_chart_radar_buttongroup
-      .btn-group.offset32
-        %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-        %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+    .row
+      .btn-group#cases_show_charts_view_buttongroup
+        .btn.btn-inverse.active{"data-view"=>"table"}
+          Table
+        .btn.btn-inverse{"data-view"=>"radar"}
+          Radar
+    .row
 
-.spacer20
+
+
+
+
+      #cases_show_charts_view_table.cases_show_charts_view
+        .spacer5
+        = render "results_table_form"
+
+        #cases_show_charts_view_table_table_container
+          = render "results_table"
+
+
+
+
+
+
+
+
+      #cases_show_charts_view_radar.cases_show_charts_view.hidden
+
+        #cases_show_chart_radar
+
+        #cases_show_chart_radar_buttongroup.pull-right
+          .btn-group
+            %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
+            %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+
 .row
   .panel.dark.kill_left.kill_right.kill_top
     .row

@@ -296,6 +296,18 @@ class Case < ActiveRecord::Base
 
 
 
+  def cases_show_table
+
+    # make hash
+    hash = Hash.new
+    12.times do |criteria_num|
+      hash[criteria_num] = self.criteria(criteria_num)
+    end
+
+    hash
+
+  end
+
 
 
 
