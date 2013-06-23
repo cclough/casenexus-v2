@@ -24,16 +24,15 @@
 .row
   .panel.darker.kill_left.kill_right
     .row
-      / .pull-left
-      /   = render 'stats'
+
       .pull-right
         .span6#cases_analysis_subnav_label
           Views
           %i.icon-caret-right
         .span40
           .btn-group
-            = filterable_analysis("progress", "Over Time")
             = filterable_analysis("table", "Table")
+            = filterable_analysis("progress", "Over Time")
             = filterable_analysis("radar", "Radar")
             = filterable_analysis("users", "Users")
             = filterable_analysis("comments", "Comments")
@@ -84,14 +83,15 @@
 
   - when "table"
 
-    :javascript
-      $(document).ready(function(){
-        if (cases_analysis_chart_case_count == 0) {
-          $("#cases_analysis_chart_table_empty").fadeIn("fast");
-        } else {
-          window.cases_analysis_chart_table_bars_draw();
-        }
-      });
+    - content_for :javascript_includes do
+      :javascript
+        $(document).ready(function(){
+          if (cases_analysis_chart_case_count == 0) {
+            $("#cases_analysis_chart_table_empty").fadeIn("fast");
+          } else {
+            window.cases_analysis_chart_table_bars_draw();
+          }
+        });
 
 
     #cases_analysis_section_table.cases_analysis_section
@@ -106,25 +106,32 @@
           #cases_analysis_section_table_table_container
             = render "results_table"
 
+
+
+
+
+
   - when "radar"
 
-    :javascript
+    - content_for :javascript_includes do
 
-      // Radar
-      var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count_bracket)};
-      var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count_bracket)};
+      :javascript
+
+        // Radar
+        var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count_bracket)};
+
+        var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count_bracket)};
 
 
 
-      $(document).ready(function(){
-        if (cases_analysis_chart_case_count == 0) {
-          $("#cases_analysis_chart_radar_empty").fadeIn("fast");
-        } else {
-          window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
-        }
-
-      });
-      
+        $(document).ready(function(){
+          // if (cases_analysis_chart_case_count == 0) {
+          //   $("#cases_analysis_chart_radar_empty").fadeIn("fast");
+          // } else {
+            window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
+          //}
+        });
+        
 
 
 
@@ -134,18 +141,20 @@
 
 
 
-        .panel.dark.kill_all.span33
+        .panel.dark.kill_all
           .row
             .cases_analysis_block_title
               Radar
           .row
-            #cases_analysis_chart_radar_buttongroup.offset25
+            #cases_analysis_chart_radar_buttongroup.pull-right
               .btn-group
                 %a#cases_analysis_chart_radar_button_all.btn.btn-mini.btn-inverse.active All
-                %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-inverse Combined
+                %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-inverse Grouped
+
             #cases_analysis_chart_radar
               .cases_analysis_loading.progress.progress-striped.active 
                 .bar
+
             #cases_analysis_chart_radar_empty
               #cases_analysis_chart_radar_empty_icon
                 %i.icon-tasks
@@ -158,25 +167,25 @@
   - when "users"
 
 
+    - content_for :javascript_includes do
+      :javascript
 
-    :javascript
+        // Country
+        var cases_analysis_chart_country_data = #{Case.cases_analysis_chart_country_data(current_user)};
 
-      // Country
-      var cases_analysis_chart_country_data = #{Case.cases_analysis_chart_country_data(current_user)};
-
-      // University
-      var cases_analysis_chart_university_data = #{Case.cases_analysis_chart_university_data(current_user)};
+        // University
+        var cases_analysis_chart_university_data = #{Case.cases_analysis_chart_university_data(current_user)};
 
 
-      $(document).ready(function(){
-        if (cases_analysis_chart_case_count == 0) {
-          $("#cases_analysis_chart_country_empty").fadeIn("fast");
-          $("#cases_analysis_chart_university_empty").fadeIn("fast");
-        } else {
-          window.cases_analysis_chart_country_draw();
-          window.cases_analysis_chart_university_draw();
-        }
-      });
+        $(document).ready(function(){
+          if (cases_analysis_chart_case_count == 0) {
+            $("#cases_analysis_chart_country_empty").fadeIn("fast");
+            $("#cases_analysis_chart_university_empty").fadeIn("fast");
+          } else {
+            window.cases_analysis_chart_country_draw();
+            window.cases_analysis_chart_university_draw();
+          }
+        });
 
 
 

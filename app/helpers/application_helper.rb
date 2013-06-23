@@ -25,6 +25,8 @@ module ApplicationHelper
   def filterable_analysis(view,title)
     if view == @view
       link_to title, params.merge(view: view), class: "btn btn-inverse active"
+    elsif !params[:view] && (view == "table")
+      link_to title, params.merge(view: view), class: "btn btn-inverse active"
     else
       link_to title, params.merge(view: view), class: "btn btn-inverse"
     end

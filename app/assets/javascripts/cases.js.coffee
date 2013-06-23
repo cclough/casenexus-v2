@@ -460,25 +460,34 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
 
 
 window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
+
+  # Fade out loading bars
+  $(".cases_analysis_loading").fadeOut "slow", ->
+    $(".cases_analysis_loading").remove()
+
   chart_analysis_radar = undefined
   
   # RADAR CHART
   chart_analysis_radar = new AmCharts.AmRadarChart()
+  
   if radar_type is "all"
     chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_all
-  else chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_combined  if radar_type is "combined"
+  else if radar_type is "combined"
+    chart_analysis_radar.dataProvider = cases_analysis_chart_radar_data_combined
+  
   chart_analysis_radar.categoryField = "criteria"
   chart_analysis_radar.startDuration = 0.3
   chart_analysis_radar.startEffect = ">"
   chart_analysis_radar.sequencedAnimation = true
   chart_analysis_radar.color = "#f6f6f6"
-  chart_analysis_radar.colors = ["#ff00ff", "#ff7300", "#ff0000"]
-  chart_analysis_radar.fontSize = 9
+  chart_analysis_radar.colors = ["#979797", "#c7c7c7","#16b1ff"]
+  chart_analysis_radar.fontSize = 11
   
   # GRAPH - ALL
   graph = new AmCharts.AmGraph()
   graph.title = "All"
   graph.fillAlphas = 0.2
+  graph.lineAlpha = 0.5
   graph.bullet = "round"
   graph.valueField = "all"
   graph.balloonText = "[[category]]: [[value]]/5"
@@ -486,8 +495,9 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   
   # GRAPH - FIRST 5
   graph = new AmCharts.AmGraph()
-  graph.title = "First " + case_count
+  graph.title = "First " + String(case_count)
   graph.fillAlphas = 0.2
+  graph.lineAlpha = 0.5
   graph.bullet = "round"
   graph.valueField = "first"
   graph.balloonText = "[[category]]: [[value]]/5"
@@ -495,8 +505,11 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   
   # GRAPH - LAST 5
   graph = new AmCharts.AmGraph()
-  graph.title = "Last " + case_count
+  graph.title = "Last " + String(case_count)
   graph.fillAlphas = 0.2
+
+  graph.lineThickness = 3
+
   graph.bullet = "round"
   graph.valueField = "last"
   graph.balloonText = "[[category]]: [[value]]/5"
@@ -522,7 +535,7 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   guide.value = 3
   guide.toValue = 2
   guide.fillColor = "#0D8ECF"
-  guide.fillAlpha = 0.3
+  guide.fillAlpha = 0.1
   valueAxis.addGuide guide
   
   # Green - Interpersonal
@@ -532,7 +545,7 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   guide.value = 3
   guide.toValue = 2
   guide.fillColor = "#B0DE09"
-  guide.fillAlpha = 0.3
+  guide.fillAlpha = 0.1
   valueAxis.addGuide guide
   
   # Yellow - Structure
@@ -584,13 +597,13 @@ window.cases_analysis_chart_country_draw = () ->
     chart.dataProvider = cases_analysis_chart_country_data
     chart.titleField = "country"
     chart.valueField = "count"
+    chart.marginTop = 100
     chart.outlineThickness = 0
     chart.innerRadius = "50%"
     chart.pieAlpha = 1
     chart.radius = 100
     chart.labelRadius = 10
     chart.color = "#ffffff"
-    chart.outlineThickness = 1
     chart.pullOutRadius = 0
 
     chart.write "cases_analysis_chart_country"
@@ -605,12 +618,12 @@ window.cases_analysis_chart_university_draw = () ->
     chart.titleField = "university"
     chart.valueField = "count"
     chart.outlineThickness = 0
+    chart.marginTop = 100
     chart.innerRadius = "50%"
     chart.pieAlpha = 1
     chart.radius = 100
     chart.labelRadius = 10
     chart.color = "#ffffff"
-    chart.outlineThickness = 1
     chart.pullOutRadius = 0
 
     chart.write "cases_analysis_chart_university"
@@ -685,6 +698,7 @@ window.cases_analysis_chart_table_bars_draw = () ->
     chart.write("cases_analysis_section_table_chart_bar_" + i)
 
     i++
+
 
 
 #///////////////////////////////////////////////////////////////

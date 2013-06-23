@@ -58,11 +58,11 @@ class CasesController < ApplicationController
 
     @case_count_bracket = current_user.case_count_bracket
 
+    # Period
     if params[:cases_analysis_period] then @period = params[:cases_analysis_period].to_i else @period = 1 end
 
-
+    # For table
     hash = Hash[Case.cases_analysis_table(current_user, @period)]
-
     if (params[:cases_analysis_order_by] == "order")
       @table_hash = hash.sort_by{|k, v| v}.reverse
     elsif (params[:cases_analysis_order_by] == "group")

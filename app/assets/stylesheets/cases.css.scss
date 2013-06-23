@@ -541,17 +541,20 @@ $blue_pastel: #98cdff;
   }
 }
 
+
+
+
+#cases_analysis_section_radar {
+  text-align:center;
+}
 #cases_analysis_chart_radar_buttongroup {
-  display:none;
   margin-top:-28px;
 }
 
 
 #cases_analysis_chart_radar {
   padding-left:2px;
-  height:302px;
-  width:450px;
-  display:none;
+  height:450px;
 }
 
 #cases_analysis_chart_radar_empty {
@@ -669,7 +672,6 @@ $blue_pastel: #98cdff;
 
 
 #cases_analysis_chart_country {
-  width:300px;
   height:300px;
 }
 
@@ -694,7 +696,6 @@ $blue_pastel: #98cdff;
 
 
 #cases_analysis_chart_university {
-  width:300px;
   height:300px;
 }
 

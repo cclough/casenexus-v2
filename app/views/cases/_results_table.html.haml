@@ -1,4 +1,3 @@
-/ = @myhash_sorted
 %table#cases_analysis_section_table_table
 
   %th
@@ -17,33 +16,32 @@
     Recommendation
     
 
-  - row = 0
-  - @table_hash.each do |key,value|
+  - @table_hash.each_with_index do |(key, value), index|
 
     %tr
       %td
+        / Name
         = Case.criteria_name(key)
       %td
-        %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+row.to_s, "data-category" => Case.criteria_category(key)}
-        - row = row + 1
+        / Chart
+        %div.cases_analysis_section_table_chart_bar{"data-score" => value, id: "cases_analysis_section_table_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
       %td
-        - prev_5 = current_user.cases.offset(@period).last(@period).map { |a| a.criteria(key) }
-        - prev_av = (prev_5.inject(0.0) { |sum, el| sum + el } / prev_5.size)
-
+        / Previous 5 to Last 5 Average
+        - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
         = prev_av
+
       %td.cases_analysis_section_table_cell_last5
+        / Last 5 Average
         = value
 
+      / Growth cell
       - curr_av = value
       - growth = ((curr_av/prev_av)-1)*100
-
-      / Growth cell
       = colorcoded_cell(growth,number_to_percentage(growth, precision: 0))
 
-      - site_av = (Case.all.map { |a| a.criteria(key) }.sum/Case.all.count).round(2)
-      - diff = value - site_av
-
       / Diff from avareage cell
+      - site_av = Case.criteria_av_global(key)
+      - diff = value - site_av
       = colorcoded_cell(diff, site_av)
       
       / Recommednation cell
