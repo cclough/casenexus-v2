@@ -22,15 +22,19 @@
 .row
   .panel.darker.kill_left.kill_right
     .row
-      .pull-left
-        = render 'stats'
+      / .pull-left
+      /   = render 'stats'
       .pull-right
-        .btn-group
-          = filterable_analysis("progress", "Over Time")
-          = filterable_analysis("table", "Table")
-          = filterable_analysis("radar", "Bar & Radar")
-          = filterable_analysis("users", "Users")
-          = filterable_analysis("comments", "Comments")
+        .span7.offset1#cases_analysis_subnav_label
+          Views
+          %i.icon-caret-right.offset1
+        .span44
+          .btn-group
+            = filterable_analysis("progress", "Over Time")
+            = filterable_analysis("table", "Table")
+            = filterable_analysis("radar", "Bar & Radar")
+            = filterable_analysis("users", "Users")
+            = filterable_analysis("comments", "Comments")
 
 
 
@@ -86,7 +90,13 @@
           .cases_analysis_block_title
             Table of Comparisons
         .row
-          = render "analysis_table"
+          .btn-group
+            .btn.btn-inverse.cases_analysis_section_table_orderby_button{"data-order_by"=>"order"}
+              Order
+            .btn.btn-inverse.cases_analysis_section_table_orderby_button{"data-order_by"=>"group"}
+              Group
+          #cases_analysis_section_table_table_container
+            = render "analysis_table"
 
 
 

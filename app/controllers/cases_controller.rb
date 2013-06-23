@@ -69,6 +69,18 @@ class CasesController < ApplicationController
 
   end
 
+  def table
+    hash = Hash[Case.cases_analysis_table(current_user)]
+
+    if (params[:table_order] == "order")
+      @table_hash = hash.sort_by{|k, v| v}.reverse
+    elsif (params[:table_order] == "group")
+      @table_hash = hash.sort_by{|k, v| k}
+    end
+
+    render partial: "analysis_table", layout: false
+  end
+
   private
 
   # For Index case sorting

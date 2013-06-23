@@ -767,8 +767,9 @@ window.cases_analysis_chart_table_bars_draw = () ->
   while i < 12
 
     score = $("#cases_analysis_section_table_chart_bar_" + i).data "score"
+    category = $("#cases_analysis_section_table_chart_bar_" + i).data "category"
 
-    Data = [{ name: i, score: parseFloat(score) }]
+    Data = [{ name: i, score: parseFloat(score), category: category }]
 
     chart = new AmCharts.AmSerialChart()
     chart.autoMarginOffset = 0
@@ -806,7 +807,14 @@ window.cases_analysis_chart_table_bars_draw = () ->
     graph.type = "column"
     graph.lineAlpha = 0
     graph.showBalloon = false
-    graph.fillColors = "#bf1c25"
+
+    if (category == "businessanalytics")
+      graph.fillColors = "#0D8ECF"
+    else if (category == "structure")
+      graph.fillColors = "#B0DE09"
+    else if (category == "interpersonal")
+      graph.fillColors = "#FCD202"
+
     graph.fillAlphas = 1
     chart.addGraph graph
 
@@ -945,6 +953,16 @@ $(document).ready ->
 #///////////////////////// ANALYSIS ////////////////////////////
 #///////////////////////////////////////////////////////////////
 
+
+  $(".cases_analysis_section_table_orderby_button").click ->
+
+    order_by = $(this).data "order_by"
+    $.get "/cases/table?table_order=" + order_by, (data) ->
+      $("#cases_analysis_section_table_table_container").html data
+      window.cases_analysis_chart_table_bars_draw()
+
+    $(".cases_analysis_section_table_orderby_button").removeClass "active"
+    $(this).addClass "active"
 
   # RADAR BUTTONS
   $("#cases_analysis_chart_radar_button_all").click ->

@@ -169,6 +169,16 @@ class Case < ActiveRecord::Base
     end
   end
 
+  def self.criteria_category(num)
+    case num
+      when 0..3
+        "businessanalytics"
+      when 4..7
+        "structure"
+      when 8..11
+        "interpersonal"
+    end
+  end
 
   ### Charts
 
