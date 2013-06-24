@@ -97,7 +97,6 @@ countdown = (element, minutes, seconds) ->
     el.innerHTML = text
     time--
   , 1000)
-  console.log(window.interval)
 
 
 
