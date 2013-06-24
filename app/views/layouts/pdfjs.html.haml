@@ -5,21 +5,27 @@
 
     = stylesheet_link_tag    "pdfjs"
 
-    = javascript_include_tag "lib/pdfjs/pdf"
+    / = javascript_include_tag "lib/pdfjs/pdf"
+    %script{:src => "/javascripts/pdfjs/pdf.js"}
 
     :javascript
       var pdf_path = "/assets/library/#{@book.url}"
-      PDFJS.workerSrc = '/assets/lib/pdfjs/pdf.js';
+      PDFJS.workerSrc = '/javascripts/pdfjs/pdf.js';
+
+
+    / = javascript_include_tag "lib/pdfjs/compatibility"
+
+    / = javascript_include_tag "lib/pdfjs/debugger"
+    / = javascript_include_tag "lib/pdfjs/l10n"
 
     / #if !(FIREFOX || MOZCENTRAL || CHROME)
-    = javascript_include_tag "lib/pdfjs/compatibility"
+    %script{:src => "/javascripts/pdfjs/compatibility.js"}
     / #endif
-    = javascript_include_tag "lib/pdfjs/debugger"
-    = javascript_include_tag "lib/pdfjs/l10n"
-
-    / = javascript_include_tag "lib/pdfjs/viewer"
-
+    %script{:src => "/javascripts/pdfjs/debugger.js"}
+    %script{:src => "/javascripts/pdfjs/l10n.js"}
     %script{:src => "/javascripts/pdfjs/viewer.js"}
+
+
 
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
