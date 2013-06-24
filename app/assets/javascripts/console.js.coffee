@@ -69,7 +69,7 @@ window.console_index_subnav_timer_prime = ->
     # Show new buttons
     $("#console_index_timer_"+state+"_container").css("display","inline")
 
-    window.console_index_subnav_timer_prime()
+    # window.console_index_subnav_timer_prime()
 
 
 
