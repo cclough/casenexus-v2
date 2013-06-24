@@ -8,117 +8,160 @@
     var account_completeedit_map_lat_start = "#{current_user.lat}";
     var account_completeedit_map_lng_start = "#{current_user.lng}";
 
-#account_edit_form
+#account_edit_form.panel.dark.kill_left.kill_right.kill_bottom
   .row
     = form_for(@user, url: account_path, method: :put) do |f|
-      .span75
-        = render 'shared/error_messages', object: @user
-        .span35
+      = render 'shared/error_messages', object: @user
+
+      .account_edit_form_spacer
+
+
+      .row
+        .span25
+          = f.label :first_name
+        .span30
+          = f.text_field :first_name, class: "span26 account_form_field"
+      .row
+        .span25
+          = f.label :last_name
+        .span30
+          = f.text_field :last_name, class: "span26 account_form_field"
+
+
+
+      .account_edit_form_spacer
+
+
+
+      .row
+        .span25.account_form_label
+          Info
+        .span4
+          = image_tag "universities/"+ @user.university.image
+        .span20.offset1
           .row
-            #account_completeedit_university_panel.panel.gradient.kill_left
-              .row
-                .span4
-                  = image_tag "universities/"+ @user.university.image
-                .span20.offset1
-                  .row
-                    %strong
-                      = @user.email
-                  .row.account_form_label
-                    = @user.university.name
-                  .spacer5
-                  .row
-                    = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+            %strong
+              = @user.email
+          .row.account_form_label
+            = @user.university.name
+          .spacer5
+          .row
+            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+
+          .spacer5
+          .row
+            %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
+              %i.icon-pencil
+              Edit my password
 
 
-          .panel.dark.kill_left.kill_top
+
+      .account_edit_form_spacer
+
+
+      .row.font-small
+        .span3.offset25
+          = f.check_box :email_admin
+        .span23.offset1
+          .spacer5
+          Receive site news and consulting advice
+      .row.font-small
+        .span3.offset25
+          = f.check_box :email_users
+        .span23.offset1
+          .spacer5
+          Receive notiffications via email
+
+
+      .account_edit_form_spacer
+
+
+
+      .row
+        .span25.account_form_label
+          Languages
+        .span26
+          = f.collection_select :language_ids, Language.all, :id, :name, {selected: @user.language_ids}, {multiple: true, class: "chzn-select span26"}
+
+      .spacer20
+
+      .row
+        .span25.account_form_label
+          Time Zone
+        .span26
+          = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select span26" }
+
+
+
+      .spacer20
+
+
+
+      .row
+        .span25
+          = image_tag 'icons/skype_large.png'
+          #account_completeedit_skype_link
+            = link_to "Need to register?", "https://login.skype.com/account/signup-form"
+        .span26
+          = f.text_field :skype, placeholder: "Skype username", class: "span26 account_form_field"
+
+
+
+
+      .account_edit_form_spacer
+
+
+      .row
+        .span25.account_form_label
+          Cases outside of casenexus
+        .span23
+          = f.text_field :cases_external, class: "span5 account_form_field", id: "account_completedit_casesexternal_field"
+      .spacer5
+      .row
+        .span25.account_form_label
+          Firms you are applying for
+        .span26
+          = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span26"}
+
+
+      .account_edit_form_spacer
+
+
+      = f.hidden_field :lat, id: "account_completeedit_lat"
+      = f.hidden_field :lng, id: "account_completeedit_lng"
+      .row
+        .span25.account_form_label
+          Location
+        .span30
+          #account_completeedit_map.edit.map
+
+          #account_completeedit_map_location
             .row
+              .account_completeedit_map_location_title.span6
+                Country
               .span10
-                = f.label :first_name
-              .span20
-                = f.text_field :first_name, class: "span21 account_form_field"
-            .row
+                = @user.country.name unless @user.country.blank?
+              .account_completeedit_map_location_title.span4
+                City
               .span10
-                = f.label :last_name
-              .span20
-                = f.text_field :last_name, class: "span21 account_form_field"
-            .spacer5
-            .row
-              .span25.offset10
-                %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
-                  %i.icon-pencil
-                  Edit my password
-                .spacer5
-            .spacer5
-            .row.font-small
-              .span23.offset2
-                .spacer5
-                Receive site news and consulting advice
-              .span3
-                = f.check_box :email_admin
-            .row.font-small
-              .span23.offset2
-                .spacer5
-                Receive notiffications via email
-              .span3
-                = f.check_box :email_users
+                = @user.city unless @user.city.blank?
 
-          .panel.dark.kill_left
-            .row
-              .span10.account_form_label
-                Languages
-              .span20
-                = f.collection_select :language_ids, Language.all, :id, :name, {selected: @user.language_ids}, {multiple: true, class: "chzn-select span21"}
-            .spacer10
-            .row
-              .span10.account_form_label
-                Time Zone
-              .span20
-                = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select span21" }
-            .spacer10
-            .row
-              .span10
-                = image_tag 'icons/skype_large.png'
-                #account_completeedit_skype_link
-                  = link_to "Need to register?", "https://login.skype.com/account/signup-form"
-              .span20
-                = f.text_field :skype, placeholder: "Skype username", class: "span21 account_form_field"
 
-        .span40
-          .panel.dark.kill_left.kill_bottom
-            .row
-              .span12.account_form_label
-                Cases outside of casenexus
-              .span23.offset1
-                = f.text_field :cases_external, class: "span5 account_form_field", id: "account_completedit_casesexternal_field"
+
+
+      .account_edit_form_spacer
+
+
+
+      .row
+        .span10.offset21
+          .row
             .spacer5
-            .row
-              .span12.account_form_label
-                Firms you are applying for
-              .span23.offset1
-                = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span23"}
+            = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
 
-          .panel.darker.kill_left
-            = f.hidden_field :lat, id: "account_completeedit_lat"
-            = f.hidden_field :lng, id: "account_completeedit_lng"
-            #account_completeedit_map.edit.map
-            .spacer10
-            #account_completeedit_map_location
-              .row
-                .account_completeedit_map_location_title.span6
-                  Country
-                .span10
-                  = @user.country.name unless @user.country.blank?
-                .account_completeedit_map_location_title.span4
-                  City
-                .span10
-                  = @user.city unless @user.city.blank?
-          .panel.dark.kill_top.kill_left
-            .row
-              .span10.offset4
-                .row
-                  .spacer5
-                  = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
-  - if current_user.completed?
-    .row
-      = render 'invitations_panel'
+
+- if current_user.completed?
+
+  .row
+    = render 'invitations_panel'
 

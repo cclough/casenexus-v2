@@ -11,9 +11,21 @@ $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 
 
+.account_edit_form_spacer {
+
+  background-image: -webkit-linear-gradient(left, transparent,#cdcdcd 20%,#cdcdcd 80%,transparent);
+  height:1px;
+
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
+
+
 
 label, .account_form_label { // why the hell won't this work in app.css?
-  font-size:12px !important;
+  // font-size:12px !important;
+  color:white;
 }
 
 .account_form_field {
@@ -23,7 +35,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
   border-top:0 !important;
   border-left:0 !important;
   border-right:0 !important;
-  border-bottom:1px solid white;
+  border-bottom:1px dotted white !important;
 
   -moz-border-radius:    0px !important;
   -webkit-border-radius: 0px !important;
@@ -37,6 +49,16 @@ label, .account_form_label { // why the hell won't this work in app.css?
   -webkit-transition: none !important;
 
   padding-bottom:0px !important;
+
+  &:focus{
+
+
+  border-color: rgba(82, 168, 236, 0.8) !important;
+  outline: 0;
+  outline: thin dotted \9 !important;
+  /* IE6-9 */
+
+  }
 }
 
 
@@ -129,9 +151,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
 }
 
 
-#account_completeedit_university_panel {
-  color:$gray_Mid !important;
-}
+
 
 #account_completedit_casesexternal_field {
   font-size:25px;

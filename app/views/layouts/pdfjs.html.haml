@@ -16,7 +16,10 @@
     / #endif
     = javascript_include_tag "lib/pdfjs/debugger"
     = javascript_include_tag "lib/pdfjs/l10n"
-    = javascript_include_tag "lib/pdfjs/viewer"
+
+    / = javascript_include_tag "lib/pdfjs/viewer"
+
+    %script{:src => "/javascripts/pdfjs/viewer.js"}
 
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
