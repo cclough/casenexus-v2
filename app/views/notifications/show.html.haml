@@ -36,9 +36,9 @@
     - else
       %p No notifications found
 
-  .row
+  .row#notifications_show_form_container
     / - notification = notification || @notification
-    = form_for(@notification) do |f|
+    = form_for @notification, remote:true do |f|
 
       #flash_notifications
         = render 'shared/error_messages', object: @notification

@@ -11,4 +11,4 @@
       .row
         = notifications_show_item.content
     .span5.pull-right.application_timestamp
-      #{time_ago_in_words(notifications_show_item.created_at)} ago.
+      = notifications_show_item.date_fb

@@ -1,9 +1,15 @@
-<%- if params[:page_reload] == "true" %>
+	<%- if params[:page_reload] == "true" %>
     window.location = window.location;
 <%- else %>
     <%- if @notification.errors.any? %>
 
+        // For Map
         $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
+
+
+        // For Index
+        $.get "/notifications/<%= escape_javascript(@notification.id) %>", (data) ->
+        	$('#notifications_show_form_container%>').html(data);
 
     <%- else %>
 

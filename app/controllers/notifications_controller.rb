@@ -44,7 +44,7 @@ class NotificationsController < ApplicationController
         case params[:notification][:ntype]
           when "message"
             format.js
-            format.html { redirect_to (@notification) }
+            # format.html { redirect_to (notifications_path) }
             flash.now[:success] = 'Message sent'
           when "feedback_req"
             format.js
@@ -55,7 +55,7 @@ class NotificationsController < ApplicationController
         end
 
         # Send a Pusher notification
-        Pusher['private-' + @notification.user_id.to_s].trigger('new_message', {:from => @notification.sender.name, :subject => @notification.content_trunc})
+        # Pusher['private-' + @notification.user_id.to_s].trigger('new_message', {:from => @notification.sender.name, :subject => @notification.content_trunc})
 
       else
         case params[:notification][:ntype]
