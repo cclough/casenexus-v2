@@ -41,22 +41,53 @@
         = render 'shared/title'
         .row
           .span25
-            .panel.dark.kill_bottom
+            .panel.dark.kill_bottom#profile_nav
 
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "summary") }
-                = link_to "Home", summary_path
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "events") }
-                = link_to "Calendar", events_path
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
-                = link_to "Cases", cases_path
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
-                = link_to "Analysis", analysis_cases_path
+              .row
+                = link_to summary_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "summary") }
+                    %i.icon-home.icon-fixed-width
+                    %span.offset1
+                      Summary
+              .row
+                = link_to events_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "events") }
+                    %i.icon-calendar.icon-fixed-width
+                    %span.offset1
+                      Calendar
+              
+              .row
+                = link_to cases_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
+                    %i.icon-edit.icon-fixed-width
+                    %span.offset1
+                      Cases
+              .row
+                = link_to analysis_cases_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
+                    %i.icon-bar-chart.icon-fixed-width
+                    %span.offset1
+                      Analysis
+                
               %br
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
-                = link_to "Notifications", notifications_path
+
+              .row
+                = link_to notifications_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
+                    %i.icon-comments-alt.icon-fixed-width
+                    %span.offset1
+                      Notifications
+              
               %br
-              .row.profile_nav_item{:class => ("active" if params[:controller] == "account") }
-                = link_to "Edit Profile", edit_account_path
+
+              .row
+                = link_to edit_account_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "account") }
+                    %i.icon-cogs.icon-fixed-width
+                    %span.offset1
+                      Settings
+
+
           .span.profile_container_Width
             = yield
 

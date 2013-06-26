@@ -33,10 +33,16 @@
           Performance Analysis
     %li.divider          
     %li
+      = link_to notifications_path do
+        %i.icon-comments-alt.application_menu_icon.icon-fixed-width
+        %span.offset1
+          Notifications
+    %li.divider
+    %li
       = link_to edit_account_path do
         %i.icon-cogs.application_menu_icon.icon-fixed-width
         %span.offset1
-          Edit Profile
+          Settings
     %li.divider
     %li
       = link_to destroy_user_session_path, method: :delete do

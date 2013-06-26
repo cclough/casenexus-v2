@@ -51,6 +51,10 @@ class Notification < ActiveRecord::Base
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
                         from_id, to_id,
                         to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req","friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_change","event_remind"]])
+    
+
+
+
     end
 
   end
@@ -222,7 +226,8 @@ class Notification < ActiveRecord::Base
 
   # Still not correct yet
   def self.most_recent_for(user_id)
-    select('DISTINCT ON (sender_id) *').where(user_id: user_id).order("sender_id, created_at DESC")
+    select('DISTINCT ON (sender_id) *').where("(sender_id = ?) or (user_id = ?)",
+                        user_id, user_id).order("sender_id, created_at DESC")
   end
 
 

@@ -7,13 +7,20 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 
-.profile_nav_item {
-	padding: 10px;
+#profile_nav {
 
 	a {
 		color:$gray_Mid;
 		text-decoration: none;
+		width:100% !important;
+		&:hover {
+			color:white;
+		}
 	}
+
+}
+.profile_nav_item {
+	padding: 10px;
 
 	&.active {
 		border: 1px solid white;
@@ -22,10 +29,7 @@ $blue_linkedin: #006699;
 		margin: 0 -20px 0 -20px;
 		padding-left:30px;
 		font-weight:bold;
-		a {
-			color:white;
-		}
-		
+		color:white !important;
 	}
 }
 

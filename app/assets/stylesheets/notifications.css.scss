@@ -105,7 +105,9 @@ $blue_linkedin: #006699;
   padding:5px;
   text-decoration:none;
 
-  background:rgba(0,0,0,0.8)
+  background:rgba(0,0,0,0.8);
+
+  margin-bottom:3px !important;
 
   &:hover {
     background:rgba(0,0,0,0.9)
@@ -119,6 +121,11 @@ $blue_linkedin: #006699;
     -moz-opacity: 0.50;
     opacity: 0.50;
   }
+
+}
+
+.notifications_show_item_content {
+  font-size:12px;
 }
 
 #notifications_show_body {

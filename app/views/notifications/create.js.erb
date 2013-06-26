@@ -7,16 +7,20 @@
         $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
 
 
-        // For Index
-        $.get "/notifications/<%= escape_javascript(@notification.id) %>", (data) ->
-        	$('#notifications_show_form_container%>').html(data);
+
 
     <%- else %>
 
         $('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
 
 			  $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
-				
+
+
+        // Index - Update Message history
+
+        window.notifications_index_jump(<%= escape_javascript(@notification.user_id.to_s) %>);
+
+
 				$("div[id=application_flash]:last").fadeIn("fast", function () {
 
 			    setTimeout(function() {
