@@ -52,7 +52,7 @@ html {
 }
 
 body {
-  padding-top: 40px;
+  // padding-top: 40px;
   // height:100%;
   // min-height: 100%;
 
@@ -65,7 +65,7 @@ body {
   overflow-y:hidden;
 
   &.signedout {
-    padding-top: 70px;
+
   }
 
   @include box_sizing; // references above, gets rid of margin at bottom of page without gradient - still not perfect
@@ -74,10 +74,17 @@ body {
 
 header {
 
-  -webkit-box-shadow: 0px 3px 10px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 3px 10px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 3px 10px rgba(50, 50, 50, 0.75);
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
+  box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
 
+  margin-bottom:0px !important;
+
+  z-index:9999;
+  position:absolute;
+  top:0;
+  right:0;
+  left:0;
 }
 
 footer {
@@ -172,9 +179,21 @@ a:hover {
 
 
 #application_container_main {
-  width:83%;
+
+  position:absolute;
+  left:0;
+  bottom:0;
+
+  @media (min-width: 1201px) {
+    right:210px;
+  }
+  @media (max-width: 1200px) {
+    right:0px;
+  }
+
   height:100%;
   float:left;
+
   overflow-y: auto;
   box-shadow: inset -10px 0px 15px -1px #000 ;
   -moz-box-shadow: inset -10px 0px 15px -1px #000 ;
@@ -183,7 +202,6 @@ a:hover {
   .container {
     &.main{
       min-height: 100%;
-      // width:1% !important;
       background: url('app/white-wash.png');
     }
     &.home {
@@ -193,21 +211,27 @@ a:hover {
 
 }
 
-
-// #container_container {
-//   overflow-y:hidden;
-// }
-
-
 #application_container_online {
-  width:17%;
+ 
+  position:absolute;
+  right:0;
+  top:0;
+  bottom:0;
+
+  width:210px;
+
+  display:none;
+
+  @media (min-width: 1201px) {
+    display:block;
+  }
+
   height:100%;
   float:left;
   background: url('app/bg-texture4.jpg') repeat top left;
   overflow-y: auto;
   // border-left: 3px solid black;
 }
-
 
 
 
@@ -475,12 +499,14 @@ a:hover {
     -moz-border-top-right-radius: 0px;
     -webkit-border-top-right-radius: 0px;
 
-    margin-top: 0px;
+    margin-top: 40px;
     margin-bottom: 0px;
 
     background: url('app/title-bg.png') repeat top left;
 
     border: 1px solid gray;
+
+    border-top:0;
 
     padding:7px;
     padding-left:10px;

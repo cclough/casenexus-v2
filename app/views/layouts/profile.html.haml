@@ -31,12 +31,16 @@
     = render partial: 'shared/pusher'
 
   %body
-    / header
-    = render 'layouts/header'
 
-    = render 'layouts/flash', flash: flash
+
 
     #application_container_main
+
+      = render 'layouts/header'
+
+      = render 'layouts/flash', flash: flash
+
+
       .container.main
         = render 'shared/title'
         .row
@@ -78,14 +82,25 @@
                     %span.offset1
                       Notifications
               
-              %br
-
               .row
                 = link_to edit_account_path do
                   .profile_nav_item{:class => ("active" if params[:controller] == "account") }
                     %i.icon-cogs.icon-fixed-width
                     %span.offset1
                       Settings
+
+              %br
+
+
+              .row
+                = link_to destroy_user_session_path, method: :delete do
+                  .profile_nav_item
+                    %i.icon-bolt.icon-fixed-width
+                    %span.offset1
+                      %strong
+                        Sign out
+
+
 
 
           .span.profile_container_Width
@@ -94,10 +109,10 @@
         / footer
         = render 'layouts/footer'
 
+
     #application_container_online
 
       = render 'shared/online'
-
 
 
   = render 'shared/modal_help'

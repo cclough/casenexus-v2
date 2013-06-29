@@ -18,11 +18,12 @@
 
   %body
 
-    = render 'layouts/header'
-
-    = render 'layouts/flash', flash: flash
-
     #application_container_main
+    
+      = render 'layouts/header'
+
+      = render 'layouts/flash', flash: flash
+
       .container.main
         = render 'shared/title'
         .row
