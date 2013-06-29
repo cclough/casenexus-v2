@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       @commentable.update_average_rating #manually done, as opposed to triggering the call back
       redirect_to @commentable, notice: "Review posted."
     else
-      flash[:error] = @comment.errors.full_messages.map {|error| "<p>#{error}</p>"}.join
+      flash[:error] = @comment.errors.full_messages.map {|error| "#{error}<br>"}.join
       redirect_to @commentable
     end
   end

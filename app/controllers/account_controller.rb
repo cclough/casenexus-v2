@@ -27,7 +27,7 @@ class AccountController < ApplicationController
         @user.save
         flash[:success] = 'Welcome to casenexus.com'
       end
-      redirect_to summary_path
+      redirect_to edit_account_path
     else
       @invitations = current_user.invitations
       @invitation = current_user.invitations.build(params[:invitation])

@@ -14,6 +14,16 @@ class EventsController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
   end
 
+
+
+  # DOESNT SEEM TO BLOODY WORK!
+  def calendar
+    render partial: "calendar", layout: false
+  end
+
+
+
+
   def show
     @event = Event.find(params[:id])
   render layout: false

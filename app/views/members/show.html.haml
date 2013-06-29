@@ -1,18 +1,11 @@
-/ .row
-/   #map_index_user_panel_counts
-/     .row
-/       .span
-/         .row#map_index_user_panel_counts_int_num
-/           = @user.case_count
-/         .row.map_index_user_panel_counts_desc
-/           on casenexus
-/       .span.offset1#map_index_user_panel_counts_plus
-/         +
-/       .span.offset1
-/         .row#map_index_user_panel_counts_ext_num
-/           = @user.cases_external
-/         .row.map_index_user_panel_counts_desc
-/           externally
+.row
+  #map_index_user_panel_counts
+    .row
+      .span
+        = @user.degree_level_in_words
+    .row
+      .span
+        = @user.subject.name
 .spacer50
 #map_index_container_user
   .panel.darker#map_index_user_panel_info

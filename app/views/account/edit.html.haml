@@ -73,6 +73,22 @@
           Receive notiffications via email
 
 
+
+      .account_edit_form_spacer
+
+
+      .row
+        .span25.account_form_label
+          Degree Level
+        .span26
+          = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option><option>Experienced Professional</option>".html_safe, class: "chzn-select span26"
+
+      .row
+        .span25.account_form_label
+          Degree Subject
+        .span26
+          = f.collection_select :subject_id, Subject.all, :id, :name, {selected: @user.subject}, {class: "chzn-select span26"}
+
       .account_edit_form_spacer
 
 

@@ -69,9 +69,11 @@ window.cases_show_category_chart_bar_draw = (category) ->
 
   if category is "businessanalytics"
     graph.fillColors = "#0D8ECF"
-  else if category is "interpersonal"
+  else if category is "structure"
     graph.fillColors = "#B0DE09"
-  else graph.fillColors = "#FCD202"  if category is "structure"
+  else if category is "interpersonal"
+    graph.fillColors = "#FCD202"
+
 
   graph.fillAlphas = 0.5
   chart.addGraph graph

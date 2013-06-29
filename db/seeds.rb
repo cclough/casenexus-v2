@@ -15,6 +15,59 @@ if %w(production development).include?(Rails.env) && User.count == 0
     )
   end
 
+  puts "Creating Subjects"
+
+  Subject.create!(name: "Agriculture and forestry")
+  Subject.create!(name: "American studies")
+  Subject.create!(name: "Anatomy and physiology")
+  Subject.create!(name: "Anthropology")
+  Subject.create!(name: "Archaeology")
+  Subject.create!(name: "Architecture")
+  Subject.create!(name: "Art and design")
+  Subject.create!(name: "Biosciences")
+  Subject.create!(name: "Building and town and country planning")
+  Subject.create!(name: "Business and management studies")
+  Subject.create!(name: "Chemical engineering")
+  Subject.create!(name: "Chemistry")
+  Subject.create!(name: "Civil engineering")
+  Subject.create!(name: "Classics")
+  Subject.create!(name: "Computer science and IT")
+  Subject.create!(name: "Dentistry")
+  Subject.create!(name: "Drama and dance")
+  Subject.create!(name: "Earth and marine sciences")
+  Subject.create!(name: "Economics")
+  Subject.create!(name: "Education degree courses")
+  Subject.create!(name: "Electronics and electrical engineering")
+  Subject.create!(name: "Engineering general")
+  Subject.create!(name: "English")
+  Subject.create!(name: "Geography and environment studies")
+  Subject.create!(name: "History and history of art")
+  Subject.create!(name: "Law")
+  Subject.create!(name: "Materials and mineral engineering")
+  Subject.create!(name: "Mathematics")
+  Subject.create!(name: "Mechanical engineering")
+  Subject.create!(name: "Media studies, communications and librarianship")
+  Subject.create!(name: "Medicine")
+  Subject.create!(name: "Modern languages")
+  Subject.create!(name: "Music")
+  Subject.create!(name: "Nursing")
+  Subject.create!(name: "Pharmacy and pharmacology")
+  Subject.create!(name: "Philosophy")
+  Subject.create!(name: "Physics")
+  Subject.create!(name: "Politics")
+  Subject.create!(name: "Psychology")
+  Subject.create!(name: "Religious studies and theology")
+  Subject.create!(name: "Social policy and administration")
+  Subject.create!(name: "Social work")
+  Subject.create!(name: "Sociology")
+  Subject.create!(name: "Sports science")
+  Subject.create!(name: "Tourism, transport and travel")
+  Subject.create!(name: "Veterinary science")
+
+
+
+
+
   puts "Creating Languages"
 
   Language.create!(name: "English - UK", country_code: "GB")
@@ -163,6 +216,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       language_ids: 1,
 
+      subject_id: 5,
+      degree_level: 0,
+      
       cases_external: 24,
 
       skype: "christianclough",
@@ -191,6 +247,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
       language_ids: 1,
 
+      subject_id: 2,
+      degree_level: 2,
+
       cases_external: 12,
 
       skype: "cloughrobin",
@@ -218,6 +277,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       language_ids: 1,
+
+      subject_id: 8,
+      degree_level: 1,
 
       cases_external: 14,
 
@@ -288,6 +350,9 @@ if Rails.env == 'development'
     skype = "skpye"
     language_ids = 1
 
+    subject_id = rand(15)
+    degree_level = rand(2)
+
     last_online_at = rand_time(2.days.ago)
     cases_external = 10
 
@@ -303,6 +368,8 @@ if Rails.env == 'development'
                     lat: lat, lng: lng,
                     language_ids: language_ids,
                     skype: skype,
+                    subject_id: subject_id,
+                    degree_level: degree_level,
                     last_online_at: last_online_at,
                     cases_external: cases_external,
                     confirm_tac: confirm_tac,

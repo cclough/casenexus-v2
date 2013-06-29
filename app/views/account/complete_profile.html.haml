@@ -110,6 +110,22 @@
           .span25
             = f.collection_select :firm_ids, Firm.all, :id, :name, {:selected => @user.firm_ids}, {multiple: true, class: "chzn-select span30"}
         .spacer10
+
+        .row
+          .span12
+            Degree Level
+          .span25
+            = f.select_tag :degree_level, "<option>Undergraduate</option><option>MBA</option><option>Experienced Professional</option>".html_safe
+
+        .spacer10
+
+        .row
+          .span12
+            Degree Subject
+          .span25
+            = f.collection_select :subject_id, Subject.all, :id, :name, {class: "chzn-select span26"}
+
+        .spacer10
         .row
           .span12
             = f.label :university_id

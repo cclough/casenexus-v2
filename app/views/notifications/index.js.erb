@@ -1,6 +1,3 @@
-
-$("#header_nav_panel_browse_search_field").val("hello");
-
 $('#notifications_index_notifications').append("<%= escape_javascript(render partial: "notifications", :locals => { :notifications => @notifications })%>");
 
 $('a.load-more-posts').attr('href', '<%= notifications_path page: @notifications.next_page %>');

@@ -5,13 +5,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
                   :invitation_code, :ip_address, :language_ids, :firm_ids, :cases_external, :last_online_at, 
-                  :time_zone
+                  :time_zone, :subject_id, :degree_level
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
   # Belongs to
   belongs_to :university
   belongs_to :country
+  belongs_to :subject
 
   # Has
   has_many :cases, dependent: :destroy
@@ -120,6 +121,18 @@ class User < ActiveRecord::Base
       1
     when 6..1000
       5
+    end
+  end
+
+
+  def degree_level_in_words
+    case degree_level
+    when 0
+      "Undergraduate"
+    when 1
+      "MBA"
+    when 2
+      "Professional"
     end
   end
 

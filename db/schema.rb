@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615205149) do
+ActiveRecord::Schema.define(:version => 20130627230128) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at",                       :null => false
@@ -168,6 +168,10 @@ ActiveRecord::Schema.define(:version => 20130615205149) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "subjects", :force => true do |t|
+    t.string "name", :null => false
+  end
+
   create_table "universities", :force => true do |t|
     t.string "name"
     t.string "image"
@@ -217,6 +221,8 @@ ActiveRecord::Schema.define(:version => 20130615205149) do
     t.boolean  "active",                 :default => true
     t.integer  "country_id"
     t.string   "time_zone",              :default => "UTC"
+    t.integer  "degree_level"
+    t.integer  "subject_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

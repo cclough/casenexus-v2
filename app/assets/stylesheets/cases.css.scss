@@ -601,7 +601,21 @@ $blue_pastel: #98cdff;
 
 
 
+#cases_resultstable_form {
 
+  padding:10px;
+  margin:-10px -10px 5px -10px !important;
+
+  background: rgba(0, 0, 0, 0.5);
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+  border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
 
 
 
@@ -628,6 +642,14 @@ $blue_pastel: #98cdff;
   font-size:12px !important;
 }
 
+
+.cases_resultstable_label {
+  margin-top:3px;
+  font-size:12px;
+  i {
+    margin-left:5px;
+  } 
+}
 
 
 

@@ -36,15 +36,18 @@
 
 
 .row
+  #casaes_show_charts_nav.panel.darker.kill_all
+    .btn-group#cases_show_charts_view_buttongroup
+      .btn.btn-inverse.active{"data-view"=>"table"}
+        Table
+      .btn.btn-inverse{"data-view"=>"radar"}
+        Radar
+
+.row
 
   #cases_show_charts_panel.panel.dark.kill_left.kill_right
 
-    .row
-      .btn-group#cases_show_charts_view_buttongroup
-        .btn.btn-inverse.active{"data-view"=>"table"}
-          Table
-        .btn.btn-inverse{"data-view"=>"radar"}
-          Radar
+
     .row
 
 
@@ -52,7 +55,6 @@
 
 
       #cases_show_charts_view_table.cases_show_charts_view
-        .spacer5
         = render "results_table_form"
 
         #cases_show_charts_view_table_table_container
@@ -112,6 +114,22 @@
 .row
   .panel.dark.kill_left.kill_right.kill_top
     .cases_show_title
+      Structure
+    .row
+      .span17
+        #cases_show_structure_chart_bar
+      .span9.offset2
+        .cases_show_block_circle_outer.panel.dark
+          .cases_show_block_circle.panel.darker
+            .cases_show_block_circle_text
+              = @case.structure_combined
+      .span
+        .cases_show_comment.panel.dark.kill_all
+          = @case.structure_comment.html_safe
+
+.row
+  .panel.dark.kill_left.kill_right.kill_top
+    .cases_show_title
       Interpersonal
     .row
       .span17
@@ -125,18 +143,3 @@
         .cases_show_comment.panel.dark.kill_all
           = @case.interpersonal_comment.html_safe
 
-.row
-  .panel.dark.kill_left.kill_right.kill_top
-    .cases_show_title
-      Structure
-    .row
-      .span17
-        #cases_show_structure_chart_bar
-      .span9.offset2
-        .cases_show_block_circle_outer.panel.dark
-          .cases_show_block_circle.panel.darker
-            .cases_show_block_circle_text
-              = @case.structure_combined
-      .span
-        .cases_show_comment.panel.dark.kill_all
-          = @case.structure_comment.html_safe
