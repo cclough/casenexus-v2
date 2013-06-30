@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627230128) do
+ActiveRecord::Schema.define(:version => 20130629231946) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at",                       :null => false
@@ -158,6 +158,14 @@ ActiveRecord::Schema.define(:version => 20130627230128) do
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "site_contacts", :force => true do |t|
     t.integer  "user_id"

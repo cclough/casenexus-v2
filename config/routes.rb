@@ -64,6 +64,9 @@ Casenexus::Application.routes.draw do
     get :analysis, on: :collection
   end
 
+  # Posts
+  resources :posts, only: [:index, :create]
+
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
     put :read, on: :member

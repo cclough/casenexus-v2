@@ -48,6 +48,15 @@
             .panel.dark.kill_bottom#profile_nav
 
               .row
+                = link_to posts_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "posts") }
+                    %i.icon-home.icon-fixed-width
+                    %span.offset1
+                      Posts
+              
+              %br
+
+              .row
                 = link_to summary_path do
                   .profile_nav_item{:class => ("active" if params[:controller] == "summary") }
                     %i.icon-home.icon-fixed-width
