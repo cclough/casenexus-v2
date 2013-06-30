@@ -65,11 +65,12 @@ Casenexus::Application.routes.draw do
   end
 
   # Posts
-  resources :posts, only: [:index, :create]
+  resources :posts, only: [:index, :create, :show]
 
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
     put :read, on: :member
+    get :new_message_form, on: :collection
   end
 
   # Library

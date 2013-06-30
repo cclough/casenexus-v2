@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
 
 
+  layout "profile"
+
   def index
 
     @posts = Post.all
 
     @post = current_user.posts.build
-
-    render layout: "profile"
 
   end
 
@@ -22,5 +22,11 @@ class PostsController < ApplicationController
 
   end
 
+  def show
+    @post = Post.find(params[:id])
+    # @commentable = @post
+    # @comments = @commentable.comments.order("created_at desc").paginate(per_page: 20, page: params[:page])
+    # @comment = Comment.new
+  end
 
 end

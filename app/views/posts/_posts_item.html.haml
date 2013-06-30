@@ -1,6 +1,18 @@
-.panel.darker.kill_bottom
-  .span10
-    = @post.user.name
-  .span20
-    = @post.content
-    hello
+.panel.darker.kill_left.kill_right.kill_bottom
+  .row
+    .span5.posts_index_posts_item_vote
+      %div
+        %i.icon-caret-up
+      %div
+        0
+      %div
+        %i.icon-caret-down
+
+    .span2
+      = image_tag 'avatars/icon.png'
+    .span10.offset1
+      = posts_item.user
+    .span20
+      = posts_item.content
+  .row
+    = link_to "Comments", post_path(posts_item), class: "btn btn-inverse pull-right"

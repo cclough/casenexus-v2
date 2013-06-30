@@ -102,6 +102,12 @@ $(document).ready ->
     backdrop: false
     show: false
 
+  # Modal contact
+  $("#modal_message").modal
+    backdrop: false
+    show: false
+
+
   # Modal contact link
   $("#header_link_contact").click ->
     if !($("#modal_contact").hasClass("in"))
@@ -121,6 +127,22 @@ $(document).ready ->
   setTimeout ->
     $("#application_flash").fadeOut('fast');
   , 4000
+
+
+
+  $(".application_container_online_item_menu_button_message").click ->
+    if !($("#modal_message").hasClass("in"))
+      $(".modal").modal("hide")
+      friend_id = $(this).data "friend_id"
+      $.get "/notifications/new_message_form?id:" + friend_id, (data) ->
+        $("#modal_message").html data
+      $("#modal_message").modal("show")
+
+
+
+
+
+
 
   # Arrows for the home page and help
   if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0

@@ -437,6 +437,19 @@ if Rails.env == 'development'
 
 
 
+  User.all.each do |user|
+    #user = User.find(1)
+
+    1.times do
+      channel_id = 1 + rand(5)
+      user.posts.create!(
+          content: Faker::Lorem.sentence(40),
+          channel_id: channel_id
+      )
+      puts "Post created for user #{user.name}"
+    end
+
+  end
 
 
 
@@ -520,6 +533,9 @@ if Rails.env == 'development'
 
       puts "Events created for user #{user.name}"
     end
+
+
+
 
 
 

@@ -310,7 +310,26 @@ a:hover {
 // }
 
 
+.application_container_online_item_status {
 
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border:0px !important;
+  margin:7px 0 0 0;
+
+  background:transparent;
+
+  &.online_now {
+    background: $alert-green;   
+  }
+
+  &.online_earlier {
+    background: $alert-red;   
+  }
+
+}
 
 
 

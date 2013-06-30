@@ -102,7 +102,6 @@ class User < ActiveRecord::Base
     true if name.length > 15
   end
 
-
   def name_trunc
     ("#{first_name} #{last_name}").truncate(17, separator: ' ')
   end
@@ -110,7 +109,6 @@ class User < ActiveRecord::Base
   def case_count
     cases.count
   end
-
 
   def case_count_bracket
     # defines radar chart last 5 count
@@ -125,7 +123,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
   def degree_level_in_words
     case degree_level
     when 0
@@ -135,11 +132,6 @@ class User < ActiveRecord::Base
     when 2
       "Professional"
     end
-  end
-
-
-  def self.markers
-    User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
   end
 
   def level
@@ -159,7 +151,52 @@ class User < ActiveRecord::Base
     end
   end
 
+  def online_earlier?
+    unless last_online_at.blank?
+      true if last_online_at > DateTime.now - 1.hour
+    end
+  end
+
   class << self
+
+    # def active
+    #   where(active: true)
+    # end
+
+    # def inactive
+    #   where(active: false)
+    # end
+
+    def markers
+      User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+    end
+
+    def confirmed
+      where("confirmed_at is not null")
+    end
+
+    def completed
+      where("completed = true")
+    end
+
+    def admin?
+      admin == true
+    end
+
+    def not_admin
+      where("admin = false")
+    end
+
+    # used by list_online_today above
+    def online_today
+      where("last_online_at > ?", DateTime.now - 1.day)
+    end
+
+    def online_recently
+      where("last_online_at > ?", DateTime.now - 1.hour)
+    end
+
+
 
     ### Lists for filters
 
@@ -176,6 +213,9 @@ class User < ActiveRecord::Base
       completed.not_admin.online_today.order('last_online_at desc')
     end
 
+    def list_online_recently_notfriends
+      completed.not_admin.online_recently.order('last_online_at desc')
+    end
 
     # Pulldown Filters
     def list_language(language_id)
@@ -202,35 +242,6 @@ class User < ActiveRecord::Base
       completed.not_admin.order('created_at desc').where(country_id: country_id)
     end
 
-
-    # def active
-    #   where(active: true)
-    # end
-
-    # def inactive
-    #   where(active: false)
-    # end
-
-    def confirmed
-      where("confirmed_at is not null")
-    end
-
-    def completed
-      where("completed = true")
-    end
-
-    def admin?
-      admin == true
-    end
-
-    def not_admin
-      where("admin = false")
-    end
-
-    # used by list_online_today above
-    def online_today
-      where("last_online_at > ?", DateTime.now - 1.day)
-    end
 
   end
 

@@ -1,0 +1,13 @@
+- provide(:title, "Post by")
+- provide(:sub_title, @post.content_trunc)
+
+- provide(:breadcrumb, "Posts")
+- provide(:breadcrumb_url, "/posts")
+
+
+= render partial: 'posts_item' , locals: { posts_item: @post}
+
+/ .spacer10
+/ = render "comments/comments"
+/ .spacer10
+/ = render "comments/form"
