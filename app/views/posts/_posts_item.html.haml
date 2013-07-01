@@ -1,4 +1,4 @@
-.panel.darker.kill_bottom
+.posts_index_posts_item.panel.darker.kill_bottom
   .row
     .span5.posts_index_posts_item_vote
       %div
@@ -7,12 +7,11 @@
         0
       %div
         %i.icon-caret-down
-
     .span2
       = image_tag 'avatars/icon.png'
     .span10.offset1
-      = posts_item.user
-    .span20
+      = posts_item.user.name
+    .span45.offset1
       = posts_item.content
   .row
     = link_to "Comments", post_path(posts_item), class: "btn btn-inverse pull-right"

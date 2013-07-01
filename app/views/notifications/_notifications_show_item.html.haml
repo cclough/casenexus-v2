@@ -2,7 +2,7 @@
   .row
     .span5
       #notifications_show_item_avatar
-        = image_tag "universities/" + notifications_show_item.sender.university.image
+        = image_tag notifications_show_item.sender.university.image_file
     .span33
       %strong
         = notifications_show_item.sender.name

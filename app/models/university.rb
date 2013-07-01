@@ -5,4 +5,9 @@ class University < ActiveRecord::Base
   has_one :channel
 
   attr_accessible :name, :image, :domain
+
+  def image_file
+    "universities/" + self.image
+  end
+
 end

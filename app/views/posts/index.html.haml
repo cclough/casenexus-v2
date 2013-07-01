@@ -2,7 +2,7 @@
 - provide(:sub_title, 'People discussing stuff')
 
 
-.row
+#posts_index_panel_main
   - if @posts.count > 0
     - for posts_item in @posts
       = render partial: 'posts_item' , locals: { posts_item: posts_item }
@@ -13,16 +13,18 @@
 #posts_index_panel_new
   = form_for @post, id: "posts_index_form" do |f|
 
-    #flash_notifications
-      = render 'shared/error_messages', object: @post
+    .span20
+      = current_user.channels.each do |channel|
+        .posts_index_channels_item.btn.btn-inverse
+          = image_tag channel.image
+          = channel.name
 
-    .btn-group
+      = f.collection_select :channel_id, Channel.all, :id, :name, {class: "span15"}
 
-      .btn.btn-inverse Cambridge
-      .btn.btn-inverse UK
-
-    .spacer5
-
-    = f.text_area :content, id:"posts_index_form_textarea", placeholder: "Post..."
-
-    = f.submit "Submit", class: "btn btn-inverse"
+    .span.offset1
+      #flash_notifications
+        = render 'shared/error_messages', object: @post
+      .row
+        = f.text_area :content, id:"posts_index_form_textarea", placeholder: "Post..."
+      .row
+        = f.submit "Submit", class: "btn btn-inverse"

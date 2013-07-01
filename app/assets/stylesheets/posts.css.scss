@@ -4,15 +4,42 @@
 
 
 
-#posts_index_form {
+
+#posts_index_panel_main {
+  position:absolute;
+  right:0;
+  top:40px;
+  left:0;
+  bottom:150px;
+
+  overflow-y:auto;
+}
+
+#posts_index_panel_new {
+
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+
+  background:rgba(0,0,0,0.5);
+
+  height:150px;
 
 }
 
 
-#posts_index_form_textarea {
-  height:100px !important; 
-}
 
+/////////////////////////////////////////
+////////////// PANEL MAIN ///////////////
+/////////////////////////////////////////
+
+
+.posts_index_posts_item {
+  font-size:12px;
+  width:650px;
+  border:1px solid red;
+}
 
 .posts_index_posts_item_vote {
   i {
@@ -20,17 +47,31 @@
   }
   font-size:25px;
   text-align:center;
+
 }
 
-.posts_index_panel_new {
 
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  top:0;
-  
-  width:100%;
-  height:100px;
 
+/////////////////////////////////////////
+////////////// PANEL NEW ////////////////
+/////////////////////////////////////////
+
+
+#posts_index_form {
+
+}
+
+
+#posts_index_form_textarea {
+  height:75px !important; 
+  width:500px;
+}
+
+
+
+.posts_index_channels_item {
+  font-size:11px;
+  img {
+    max-width:40px;
+  }
 }
