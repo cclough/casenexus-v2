@@ -19,9 +19,9 @@
   /         = link_to "skype:#{@online_user.skype}?call", class: "btn btn-inverse btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.first_name + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
   /           = image_tag "icons/skype_button.png", class: "application_icon_skype"
 
-
-  .application_container_online_item_menu_message.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
-    %i.icon-envelope
+  .pull-right
+    .application_container_online_item_menu_message.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
+      %i.icon-envelope
           
 - else
   .pull-right

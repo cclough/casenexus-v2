@@ -71,6 +71,7 @@ Casenexus::Application.routes.draw do
   resources :notifications, only: [:index, :show, :create] do
     put :read, on: :member
     get :new_message_form, on: :collection
+    get :conversation, on: :collection
   end
 
   # Library

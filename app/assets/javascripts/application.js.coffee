@@ -130,13 +130,23 @@ $(document).ready ->
 
 
 
-  $(".application_container_online_item_menu_button_message").click ->
+  $(".application_container_online_item_menu_message").click ->
+
     if !($("#modal_message").hasClass("in"))
       $(".modal").modal("hide")
       friend_id = $(this).data "friend_id"
-      $.get "/notifications/new_message_form?id:" + friend_id, (data) ->
+      $.get "/notifications/new_message_form?id=" + friend_id, (data) ->
         $("#modal_message").html data
+
+      $.get "/notifications/conversation?id=" + friend_id, (data) ->
+        $("#modal_message_conversation").html data
+
       $("#modal_message").modal("show")
+
+
+
+
+      
 
 
 

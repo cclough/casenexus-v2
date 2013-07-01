@@ -35,3 +35,4 @@ $(document).ready ->
     return unless visible
     
     $.getScript $(this).attr('href')
+

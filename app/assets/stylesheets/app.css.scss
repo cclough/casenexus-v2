@@ -860,6 +860,16 @@ a:hover {
 
 
 
+#modal_message_conversation {
+  height:300px;
+  overflow-y:auto;
+}
+
+#modal_message_textarea {
+  height:60px;
+}
+
+
 
 .application_bootstrap_green {
   color: #468847;

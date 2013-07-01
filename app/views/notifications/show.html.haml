@@ -28,13 +28,7 @@
   .spacer5
   .row#notifications_show_body
 
-    - if @notifications.count > 0
-      - @notifications.each do |notifications_show_item|
-
-        = render partial: 'notifications/notifications_show_item' , locals: { notifications_show_item: notifications_show_item }
-
-    - else
-      %p No notifications found
+    render ""
 
   .row#notifications_show_form_container
     / - notification = notification || @notification

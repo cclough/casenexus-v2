@@ -30,15 +30,25 @@ class NotificationsController < ApplicationController
     # for new message
     @notification = Notification.new
 
-    render layout:false
+    render layout: false
 
+  end
+
+  def conversation
+    @id = params[:id]
+
+    @sender = User.find(@id)
+
+    @notifications = Notification.history(current_user, @sender)
+
+    render layout: false
   end
 
   def new_message_form
     @user = User.find(params[:id])
     @notification = @user.notifications.build
 
-    render layout: false    
+    render layout:false
   end
 
   def create

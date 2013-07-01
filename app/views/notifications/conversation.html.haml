@@ -1,0 +1,7 @@
+- if @notifications.count > 0
+  - @notifications.each do |notifications_show_item|
+
+    = render partial: 'notifications/notifications_show_item' , locals: { notifications_show_item: notifications_show_item }
+
+- else
+  %p No notifications found
