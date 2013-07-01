@@ -17,6 +17,9 @@
                 %ul
                   / MAP: pushpin or globe or picture or road or map-marker
                   %li#header_nav_button_container_browse
+                    = link_to raw("<i class='icon-globe icon-fixed-width'></i> Talk"), posts_path, "data-original-title"=>"Discussion", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+
+                  %li#header_nav_button_container_browse
                     = link_to raw("<i class='icon-circle-blank icon-fixed-width'></i> Browse"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
                   %li
                     = form_tag '#', method: 'get', id: "header_nav_panel_browse_search_form", onsubmit: 'return false' do

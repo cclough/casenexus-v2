@@ -1,23 +1,10 @@
 !!!
-%html.application_html_map
+%html
   %head
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
-
     = javascript_include_tag "application"
-
-    - if request.ssl?
-      = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
-    - else
-      = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
-
-    = javascript_include_tag "lib/infobox"
-
-    = javascript_include_tag "map"
-    = javascript_include_tag "events"
-
-    = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
-
+    
     = yield :javascript_includes
 
     = csrf_meta_tags
@@ -27,18 +14,22 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-    = render partial: 'shared/pusher'
-
-
   %body
 
+
+
     #application_container_main
+
       = render 'layouts/header'
 
       = render 'layouts/flash', flash: flash
 
-      = yield
 
+      .container
+        = yield
+
+      / footer
+      = render 'layouts/footer'
 
     #application_container_online
 

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
-                  :invitation_code, :ip_address, :language_ids, :firm_ids, :cases_external, :last_online_at, 
+                  :invitation_code, :ip_address, :language_ids, :firm_ids, :channel_ids, :cases_external, :last_online_at, 
                   :time_zone, :subject_id, :degree_level
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :site_contacts, dependent: :nullify
+
+  has_many :channels_users, dependent: :destroy
+  has_many :channels, :through => :channels_users
 
   has_many :firms_users, dependent: :destroy
   has_many :firms, :through => :firms_users
@@ -51,6 +54,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
   after_create :update_invitation
+  after_create :subscribe_to_channels
   after_save :send_welcome
 
   # Geocode
@@ -308,6 +312,10 @@ class User < ActiveRecord::Base
 
   end
 
+  def subscribe_to_channels
+    self.channels << Channel.find_by_university_id(self.university.id)
+    self.channels << Channel.find_by_country_id(self.country.id) unless self.country.blank?
+  end
 
 
 end

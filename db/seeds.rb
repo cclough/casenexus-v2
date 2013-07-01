@@ -195,6 +195,23 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 
 
+  # Channels
+
+  Country.all.each do |country|
+
+    Channel.create!(country_id: country.id)
+
+    puts "Channel created for country #{country.name}"
+
+  end
+
+  University.all.each do |university|
+
+    Channel.create!(university_id: university.id)
+
+    puts "Channel created for university #{university.name}"
+
+  end
 
 
 
@@ -437,6 +454,8 @@ if Rails.env == 'development'
 
 
 
+
+  # Posts
   User.all.each do |user|
     #user = User.find(1)
 

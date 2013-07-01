@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629231946) do
+ActiveRecord::Schema.define(:version => 20130701065815) do
 
   create_table "books", :force => true do |t|
     t.datetime "created_at",                       :null => false
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20130629231946) do
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"
+
+  create_table "channels", :force => true do |t|
+    t.integer "country_id"
+    t.integer "university_id"
+  end
+
+  create_table "channels_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "channel_id"
+  end
+
+  add_index "channels_users", ["user_id", "channel_id"], :name => "index_channels_users_on_user_id_and_channel_id", :unique => true
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"

@@ -7,5 +7,6 @@ class CreateLanguagesUsers < ActiveRecord::Migration
     end
 
     add_index :languages_users, [:user_id, :language_id], :unique => true
+    
   end
 end

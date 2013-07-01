@@ -10,20 +10,19 @@
     No posts found
 
 
-.row
-  .panel.dark.kill_left.kill_right
-    = form_for @post, id: "posts_index_form" do |f|
+#posts_index_panel_new
+  = form_for @post, id: "posts_index_form" do |f|
 
-      #flash_notifications
-        = render 'shared/error_messages', object: @post
+    #flash_notifications
+      = render 'shared/error_messages', object: @post
 
-      .btn-group
+    .btn-group
 
-        .btn.btn-inverse Cambridge
-        .btn.btn-inverse UK
+      .btn.btn-inverse Cambridge
+      .btn.btn-inverse UK
 
-      .spacer5
-      
-      = f.text_area :content, id:"posts_index_form_textarea", placeholder: "Post..."
+    .spacer5
 
-      = f.submit "Submit", class: "btn btn-inverse"
+    = f.text_area :content, id:"posts_index_form_textarea", placeholder: "Post..."
+
+    = f.submit "Submit", class: "btn btn-inverse"

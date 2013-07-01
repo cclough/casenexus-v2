@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
+  before_filter :authenticate_user!
+  before_filter :completed_user, except: [:show_help, :help_checkbox]
 
-  layout "profile"
 
   def index
 
