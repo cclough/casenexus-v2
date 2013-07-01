@@ -13,17 +13,17 @@
 #posts_index_panel_new
   = form_for @post, id: "posts_index_form" do |f|
 
-    .span20
+    .span30
       - current_user.channels.each_with_index do |channel,index|
         .posts_index_channels_item
           .btn-group
 
-            .btn.btn-inverse.application_truncatable
+            .btn.btn-inverse.posts_index_channels_item_filter_button.application_truncatable
               = image_tag channel.image
               = channel.name
 
-            .btn.btn-inverse.posts_index_channels_item_submit_button{ "data-radio" => index }
-              = f.radio_button :channel_id, channel.id, checked: true, class: ""
+            .btn.btn-inverse.posts_index_channels_item_submit_button{ "data-radio" => index, class: ("active" if (index==0)) }
+              = f.radio_button :channel_id, channel.id, checked: (true if (index == 0)), class: ""
               %i.icon-circle-blank
 
 

@@ -14,4 +14,6 @@
     .span45.offset1
       = posts_item.content
   .row
-    = link_to "Comments", post_path(posts_item), class: "btn btn-inverse pull-right"
+    = link_to post_path(posts_item), class: "btn btn-inverse pull-right" do
+      Comment
+      %strong (#{posts_item.comments.count})

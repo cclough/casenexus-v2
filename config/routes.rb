@@ -65,8 +65,10 @@ Casenexus::Application.routes.draw do
   end
 
   # Posts
-  resources :posts, only: [:index, :create, :show]
-
+  resources :posts, only: [:index, :create, :show] do
+    resources :comments, only: [:index, :new, :create]
+  end
+  
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
     put :read, on: :member

@@ -11,11 +11,14 @@
         .spacer5
         .row
           .span22
-            #books_show_form_rating_panel.panel.dark.kill_all
-              .books_rating_set
-              How do you rate it?
-          .span20
+
+            - if params[:controller] == "books"
+
+              #books_show_form_rating_panel.panel.dark.kill_all
+                .books_rating_set
+                How do you rate it?
+          .span20.pull-right
             .spacer5
             = f.hidden_field :user_id, value: current_user.id
             = f.hidden_field :rating, id: "books_rating_set_field"
-            = f.submit "Submit Review", class: "btn btn-inverse btn-large"
+            = f.submit "Submit", class: "btn btn-inverse btn-large"

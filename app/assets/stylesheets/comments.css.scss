@@ -1,0 +1,22 @@
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$blue_pastel: #98cdff;
+
+
+.comments_item {
+  margin-bottom: 5px !important;
+  padding:10px;
+}
+
+.comments_item_avatar {
+  text-align:center;
+  padding-left:5px;
+}
+
+.comments_item_date {
+  font-size:11px;
+  color:$gray_Mid;
+}

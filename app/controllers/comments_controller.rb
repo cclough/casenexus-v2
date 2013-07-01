@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(params[:comment])
     if @comment.save
-      @commentable.update_average_rating #manually done, as opposed to triggering the call back
-      redirect_to @commentable, notice: "Review posted."
+      @commentable.update_average_rating if params[:controller] == "books" #manually done, as opposed to triggering the call back
+      redirect_to @commentable, notice: "Comment posted."
     else
       flash[:error] = @comment.errors.full_messages.map {|error| "#{error}<br>"}.join
       redirect_to @commentable

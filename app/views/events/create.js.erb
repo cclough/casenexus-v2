@@ -1,6 +1,6 @@
 <%- if @event.errors.any? %>
 
-  $('#modal_event').html("<%= escape_javascript(render('new_form')) %>");
+  $('#modal_event').html("<%= escape_javascript(render('new_event_form')) %>");
 
   summary_index_events_modal_rebless();
 

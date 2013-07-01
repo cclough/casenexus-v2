@@ -16,3 +16,5 @@ $(document).ready ->
 
     $(".posts_index_channels_item_submit_button").removeClass "active"
     $(this).addClass "active"
+
+  $(".posts_index_channels_item_filter_button").click ->
