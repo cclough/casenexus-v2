@@ -42,7 +42,9 @@
             = render 'header/menu_notifications'
 
             %li
-              = link_to current_user.name, summary_path
+              = link_to summary_path do
+                = current_user.name
+                / = current_user.add_points(20)
 
         - else
 

@@ -67,13 +67,14 @@
                 .books_index_books_item_difficulty
                   = book_difficulty_in_words(books_item.difficulty)
             .books_index_books_item_actions_container.panel.dark.kill_all
-              .row
-                = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-inverse books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
 
-                
               - if books_item.btype == "case"
                 .row
+                  = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-inverse books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
+                .row
                   = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
+              
+
               
               .row
                 .books_index_books_item_comments{"data-id"=>books_item.id}
