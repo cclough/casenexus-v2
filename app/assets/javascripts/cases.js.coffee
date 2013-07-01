@@ -878,17 +878,17 @@ $(document).ready ->
     window.location = "/cases/" + $(this).val()
 
   # RADAR BUTTONS
-  $("#cases_show_chart_radar_button_all").click ->
-    $("#cases_show_chart_radar").empty()
-    cases_show_chart_radar_draw "all"
-    $("#cases_show_chart_radar_button_all").addClass "active"
-    $("#cases_show_chart_radar_button_combined").removeClass "active"
+  # $("#cases_show_chart_radar_button_all").click ->
+  #   $("#cases_show_chart_radar").empty()
+  #   cases_show_chart_radar_draw "all"
+  #   $("#cases_show_chart_radar_button_all").addClass "active"
+  #   $("#cases_show_chart_radar_button_combined").removeClass "active"
 
-  $("#cases_show_chart_radar_button_combined").click ->
-    $("#cases_show_chart_radar").empty()
-    cases_show_chart_radar_draw "combined"
-    $("#cases_show_chart_radar_button_all").removeClass "active"
-    $("#cases_show_chart_radar_button_combined").addClass "active"
+  # $("#cases_show_chart_radar_button_combined").click ->
+  #   $("#cases_show_chart_radar").empty()
+  #   cases_show_chart_radar_draw "combined"
+  #   $("#cases_show_chart_radar_button_all").removeClass "active"
+  #   $("#cases_show_chart_radar_button_combined").addClass "active"
 
 
 #///////////////////////////////////////////////////////////////
