@@ -14,12 +14,20 @@
   = form_for @post, id: "posts_index_form" do |f|
 
     .span20
-      = current_user.channels.each do |channel|
-        .posts_index_channels_item.btn.btn-inverse
-          = image_tag channel.image
-          = channel.name
+      - current_user.channels.each_with_index do |channel,index|
+        .posts_index_channels_item
+          .btn-group
 
-      = f.collection_select :channel_id, Channel.all, :id, :name, {class: "span15"}
+            .btn.btn-inverse.application_truncatable
+              = image_tag channel.image
+              = channel.name
+
+            .btn.btn-inverse.posts_index_channels_item_submit_button{ "data-radio" => index }
+              = f.radio_button :channel_id, channel.id, checked: true, class: ""
+              %i.icon-circle-blank
+
+
+      / = f.collection_select :channel_id, Channel.all, :id, :name, {class: "span15"}
 
     .span.offset1
       #flash_notifications
