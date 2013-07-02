@@ -4,19 +4,29 @@ class ApplicationController < ActionController::Base
   before_filter :update_last_online_at
   before_filter :set_timezone 
 
+
+  before_filter :authenticate_user!, only: [:online_panel, :online_user_item]
+  before_filter :completed_user, only: [:online_panel, :online_user_item]
+
+  def online_panel
+    render partial: "shared/online_panel", layout: false
+  end
+
+  def online_user_item
+    # @online_user = User.find(params[:user_id])
+    # @online_user_type = params[:online_user_type]
+
+    render partial: "shared/online_user_item"
+  end
+
+
+
   def set_timezone  
     Time.zone = current_user.time_zone if current_user
   end
   
   def completed_user
     redirect_to complete_profile_account_path, notice: flash[:notice] unless current_user.completed?
-  end
-
-  def online_user_item
-    @online_user = User.find(params[:user_id])
-    @online_user_type = params[:online_user_type]
-
-    render partial: "shared/online_user_item"
   end
 
   # Redirection after sign in with devise

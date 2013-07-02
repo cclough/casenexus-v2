@@ -10,6 +10,7 @@ Casenexus::Application.routes.draw do
 
   # Online user panel
   match '/online_user_item', to: 'application#online_user_item'
+  match '/online_panel', to: 'application#online_panel'
 
   # Static Pages
   match '/about', to: 'static_pages#about'

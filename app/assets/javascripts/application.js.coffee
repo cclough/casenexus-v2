@@ -134,6 +134,10 @@ $(document).ready ->
 
 
 
+
+
+  # ONLINE PANEL STUFF
+
   $(".application_container_online_item_menu_message").click ->
 
     if !($("#modal_message").hasClass("in"))
@@ -151,8 +155,11 @@ $(document).ready ->
           , "fast"
           $("#modal_message").modal("show")
 
-
-
+  # The Ping updater! Could be a lot smoother, but for now o-k
+  setInterval ->
+    $.get "/online_panel", (data) ->
+      $("#application_container_online").html data
+  , 30000
 
       
 
