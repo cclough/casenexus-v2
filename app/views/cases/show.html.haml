@@ -34,14 +34,11 @@
 .row
   = render 'subnav'
 
-
-.row
-  #casaes_show_charts_nav.panel.darker.kill_all
-    .btn-group#cases_show_charts_view_buttongroup
-      .btn.btn-inverse.active{"data-view"=>"table"}
-        Table
-      .btn.btn-inverse{"data-view"=>"radar"}
-        Radar
+.btn-group#cases_show_charts_view_buttongroup
+  .btn.btn-inverse.active{"data-view"=>"table"}
+    Table
+  .btn.btn-inverse{"data-view"=>"radar"}
+    Radar
 
 .row
 
@@ -59,7 +56,6 @@
 
         #cases_show_charts_view_table_table_container
           = render "results_table"
-
 
 
 

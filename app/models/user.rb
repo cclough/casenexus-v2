@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
   end
 
   def level
-    case case_count
+    case case_count_viewee
       when 0..9 then 0
       when 10..19 then 1
       when 20..29 then 2
