@@ -132,8 +132,12 @@ textarea {
 
 
 a {
-  color: $gray_Mid;
-  text-decoration: none;
+  color: white;
+  text-decoration:none;
+  &:hover {
+    color:white !important;
+    text-decoration:underline;
+  }
 }
 
 a:hover {
@@ -927,4 +931,10 @@ a:hover {
   li {
     color:black;
   }
+}
+
+
+.application_userimage_small {
+  max-height:18px !important; 
+  max-width:30px !important; 
 }

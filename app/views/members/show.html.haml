@@ -31,13 +31,13 @@
           .span#map_index_user_university
             - unless @user.university.blank?
               .span
-                = image_tag "universities/" + @user.university.image
+                = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
               .span.offset1
                 = @user.university.name
           .span.offset1#map_index_user_country
             - unless @user.country.blank?
               .span
-                = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
+                = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name, class: "application_userimage_small"
               .span.offset1
                 = @user.country.name
         .row
