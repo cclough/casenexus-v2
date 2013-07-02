@@ -15,18 +15,24 @@
             %li.offset1
               #header_nav_panel_browse
                 %ul
-                  / MAP: pushpin or globe or picture or road or map-marker
-                  %li#header_nav_button_container_browse
-                    = link_to raw("<i class='icon-globe icon-fixed-width'></i> Talk"), posts_path, "data-original-title"=>"Discussion", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
-                  %li#header_nav_button_container_browse
-                    = link_to raw("<i class='icon-circle-blank icon-fixed-width'></i> Browse"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
                   %li
                     = form_tag '#', method: 'get', id: "header_nav_panel_browse_search_form", onsubmit: 'return false' do
                       = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_panel_browse_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query application_tooltip'
 
             %li.offset1
+              / #header_nav_button_container_browse
+              = link_to raw("<i class='icon-circle-blank icon-fixed-width'></i> Browse"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+
+            %li
               = link_to raw("<i class='icon-book icon-white icon-fixed-width'></i> Library"), library_path, "data-original-title"=>"Library of Cases", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+
+            %li
+              / #header_nav_button_container_browse
+              = link_to raw("<i class='icon-globe icon-fixed-width'></i> Talk"), posts_path, "data-original-title"=>"Discussion", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+
+
+
 
             %li.divider-vertical
             %li
@@ -42,7 +48,7 @@
             = render 'header/menu_notifications'
 
             %li
-              = link_to summary_path do
+              = link_to summary_path, id: "header_nav_links_right_name", class: "application_truncatable" do
                 = current_user.name
                 %span#header_user_points
                   = current_user.points

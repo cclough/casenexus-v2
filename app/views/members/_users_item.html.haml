@@ -5,15 +5,15 @@
         .map_index_users_item_country.pull-left
           = image_tag "countries/"+users_item.country.code.to_s+".png", alt: users_item.country.name
 
-      .map_index_users_item_casecounts.pull_right
-        = casecounts(users_item)
+      .map_index_users_item_reputation.pull_right
+        = users_item.points
 
     .row
       .map_index_users_item_avatar
         = image_tag "avatars/icon.png"
     .spacer5
     .row
-      .map_index_users_item_name{ class: ("name_long" if users_item.name_long?) }
+      .map_index_users_item_name.application_truncatable
         = users_item.name
       .map_index_users_item_lastonline{ class: ("onlinenow" if users_item.online_now?) }
         - unless users_item.last_online_at.blank?

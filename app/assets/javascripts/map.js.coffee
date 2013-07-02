@@ -26,10 +26,15 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 
-window.map_index_map_marker_click = (marker_id) ->
-  # Show User Panel
 
-  # window.infowindow.close()
+      
+window.map_index_load_profile = (marker_id) ->
+
+
+  # Close the infobox
+  $("#map_index_container_user_infobox").fadeOut "fast", ->
+    window.infobox.close()
+
 
   marker = map_index_map_markers[marker_id]
 
@@ -37,41 +42,35 @@ window.map_index_map_marker_click = (marker_id) ->
     url: "/members/" + marker.id
     success: (data) ->
 
-      boxcontent = document.createElement "div"
-      boxcontent.innerHTML = data
+      $("#map_index_container_user_profile").html data
 
-      window.infobox.setContent boxcontent
-      window.infobox.open map, marker
+      $("#map_index_container_user_profile").show "fast"
 
       # Load in modals to div then prime buttons
       $.get "/members/" + marker.id + "/show_modals", (data) ->
         $("#map_index_container_user_modals").html data
 
         # Code for 'close button'
-        $("#map_index_user_close").click ->
-          $("#map_index_container_user").fadeOut "fast", ->
-            window.infobox.close()
+        $("#map_index_user_profile_close").click ->
+          $("#map_index_container_user_profile").fadeOut "fast", ->
 
         # Modal Stuff!
         $("#modal_message, #modal_friendship_req, #modal_event").modal
           backdrop: false
           show: false
 
-        $("#map_index_user_button_message").click ->
+        # Prime Button
+        $("#map_index_user_profile_button_message").click ->
           if !($("#modal_message").hasClass("in"))
             $(".modal").modal("hide")
             $("#modal_message").modal("show")
 
-        $("#map_index_user_button_friendrequest").click ->
+        $("#map_index_user_profile_button_friendrequest").click ->
           if !($("#modal_friendship_req").hasClass("in"))
             $(".modal").modal("hide")
             $("#modal_friendship_req").modal("show")
 
-        $("#map_index_user_button_feedbackrequest").click ->
-
-          $("#header_nav_panel_browse_search_field").val "hello"
-
-        $("#map_index_user_button_event").click ->
+        $("#map_index_user_profile_button_event").click ->
 
           if !($("#modal_event").hasClass("in"))
             $(".modal").modal("hide")
@@ -85,8 +84,68 @@ window.map_index_map_marker_click = (marker_id) ->
                 $("#events_new_friend_timezone").html data
                 $("#modal_event").modal("show")
 
-      # Doesn't work!
-      # $("#map_index_container_user").fadeIn "fast"
+
+
+window.map_index_load_infobox = (marker_id) ->
+  # Show User Panel
+
+  marker = map_index_map_markers[marker_id]
+
+  $.ajax
+    url: "/members/" + marker.id + "/show_infobox"
+    success: (data) ->
+
+      boxcontent = document.createElement "div"
+      boxcontent.innerHTML = data
+
+      window.infobox.setContent boxcontent
+      window.infobox.open map, marker
+
+
+      # Load in modals to div then prime buttons
+      $.get "/members/" + marker.id + "/show_modals", (data) ->
+        $("#map_index_container_user_modals").html data
+
+        # Code for 'close button'
+        $("#map_index_user_infobox_close").click ->
+          $("#map_index_container_user_infobox").fadeOut "fast", ->
+            window.infobox.close()
+
+        # Modal Stuff!
+        $("#modal_message, #modal_friendship_req, #modal_event").modal
+          backdrop: false
+          show: false
+
+        # Prime Button
+        $("#map_index_user_infobox_button_message").click ->
+          if !($("#modal_message").hasClass("in"))
+            $(".modal").modal("hide")
+            $("#modal_message").modal("show")
+
+        $("#map_index_user_infobox_button_friendrequest").click ->
+          if !($("#modal_friendship_req").hasClass("in"))
+            $(".modal").modal("hide")
+            $("#modal_friendship_req").modal("show")
+
+        $("#map_index_user_infobox_button_event").click ->
+
+          if !($("#modal_event").hasClass("in"))
+            $(".modal").modal("hide")
+
+            friend_id = $(this).data("friend_id")
+
+            $.get "/events/new?friend_id=" + friend_id, (data) ->
+              $("#modal_event").html data
+              window.events_modal_rebless()
+              $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+                $("#events_new_friend_timezone").html data
+                $("#modal_event").modal("show")
+
+
+
+
+
+
 
 
 # Update the User List - submits form...
@@ -244,10 +303,10 @@ $(document).ready ->
         )
         google.maps.event.addListener marker, "mouseover", ->
           # map_index_map_subnav_mouseover(marker.id)
-          map_index_map_marker_click(marker.id)
+          map_index_load_infobox(marker.id)
 
         google.maps.event.addListener marker, "click", ->
-          map_index_map_marker_click(marker.id)
+          map_index_load_profile(marker.id)
 
 
         map_index_map_markers[marker.id] = marker

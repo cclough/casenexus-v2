@@ -40,7 +40,6 @@ class MembersController < ApplicationController
   end
 
 
-  # used without layout on map page only
   def show
     @user = User.find(params[:id])
 
@@ -48,6 +47,15 @@ class MembersController < ApplicationController
       format.html { render layout: false }
     end
   end
+
+  def show_infobox
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html { render layout: false }
+    end
+  end
+
 
   def show_modals
     @user = User.find(params[:id])

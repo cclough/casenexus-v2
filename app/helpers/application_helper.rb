@@ -99,7 +99,7 @@ module ApplicationHelper
       pluralize(time_difference.abs, "hour") + " behind"
     elsif time_difference > 0
       pluralize(time_difference, "hour") + " ahead"
-    elsif time_difference = 0
+    elsif time_difference == 0
       "Same Time Zone"
     end
 

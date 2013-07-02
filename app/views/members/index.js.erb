@@ -15,7 +15,9 @@ $('.map_index_users_item_button').click(function () {
   window.map_index_map_pan(target_latlng);
   
   setTimeout((function() {
-    return window.map_index_map_marker_click(target_id);
+
+    return window.map_index_load_infobox(target_id);
+
   }), 300);
 
 });
@@ -31,7 +33,11 @@ $(".map_index_users_item").each(function (i) {
     $(this).delay((i + 1) * 50).fadeIn();
   }
 
-})
+});
+
+// Truncate user item names
+window.application_truncatables();
+
 
 $("#map_index_users .application_pagination a").on("click", function() {
   $.getScript(this.href);

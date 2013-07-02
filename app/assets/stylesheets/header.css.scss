@@ -18,6 +18,8 @@ $gray_Lightest: #f6f6f6;
 }
 
 .navbar-inner {
+  min-width:1100px;
+
   &.signedout {
     padding-top:15px;
     padding-bottom:15px;
@@ -88,7 +90,8 @@ $gray_Lightest: #f6f6f6;
     margin: 0px;
     li {
       float: left;
-      margin-left: 10px;
+      margin-left: 3px;
+      margin-right: 3px;
     }
   }
 
@@ -118,6 +121,16 @@ $gray_Lightest: #f6f6f6;
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
+
+#header_nav_links_right_name {
+  width:170px;
+}
+
+
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
 
 
 

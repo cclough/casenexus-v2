@@ -107,10 +107,6 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def name_long?
-    true if name.length > 15
-  end
-
   def name_trunc
     ("#{first_name} #{last_name}").truncate(17, separator: ' ')
   end
@@ -140,7 +136,7 @@ class User < ActiveRecord::Base
     case degree_level
     when 0
       "Undergraduate/Masters"
-    when 1
+    else
       "MBA"
     end
   end
