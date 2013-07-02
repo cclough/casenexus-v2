@@ -524,6 +524,20 @@ $blue_pastel: #98cdff;
 }
 
 
+#map_index_user_points {
+  font-size:18px;
+  border:2px solid white;
+  padding:5px;
+  text-align:center;
+  color:white;
+  font-weight:bold;
+
+
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+
+}
 
 #map_index_user_university, #map_index_user_country {
   font-size:11px;
@@ -540,30 +554,8 @@ $blue_pastel: #98cdff;
   margin:2px;
 }
 
-#map_index_user_panel_counts {
 
-  margin: 0px 0px -2px 90px;
-  width:198px;
-  text-align:center;
 
-  color:$gray_Light;
-
-  padding:10px 10px 3px 10px;
-
-  background: rgba(0, 0, 0, 0.8);
-
-  border: 1px solid $gray_Light;
-  border-bottom:0;
-
-  border-top-left-radius: 7px;
-  -moz-border-top-left-radius: 7px;
-  -webkit-border-top-left-radius: 7px;
-
-  border-top-right-radius: 7px;
-  -moz-border-top-right-radius: 7px;
-  -webkit-border-top-right-radius: 7px;
-
-}
 
 #map_index_user_panel_actions, #map_index_user_panel_associations {
   width:177px;
@@ -579,7 +571,6 @@ $blue_pastel: #98cdff;
 
 
   .btn {
-    max-height:20px;
     padding:7px;
     margin:0px 2px;
     line-height:12px;
@@ -647,6 +638,21 @@ $blue_pastel: #98cdff;
   list-style:none;
 
 }
+
+
+
+
+
+#map_index_user_button_startcase, #map_index_user_button_event {
+  height:50px;
+  line-height:50px !important;
+}
+
+
+
+
+
+
 
 
 

@@ -68,12 +68,6 @@ FactoryGirl.define do
       content Faker::Lorem.paragraph
     end
 
-    factory :feedback_request_notification do
-      ntype "feedback_req"
-      content Faker::Lorem.sentence
-      association :notificable, factory: :case
-    end
-
     factory :feedback_notification do
       ntype "feedback"
       content Faker::Lorem.sentence

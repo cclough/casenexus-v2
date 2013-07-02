@@ -11,21 +11,19 @@ $gray_Dark: #555555;
 $blue_pastel: #98cdff;
 
 
-.account_edit_form_spacer {
-
-  background-image: -webkit-linear-gradient(left, transparent,#cdcdcd 20%,#cdcdcd 80%,transparent);
-  height:1px;
-
-  margin-top:15px;
-  margin-bottom:15px;
-}
-
-
 
 
 label, .account_form_label { // why the hell won't this work in app.css?
   // font-size:12px !important;
   color:white;
+}
+
+.account_form_label_gray {
+  color:$gray_Mid;
+}
+
+.account_form_label_bold {
+  font-weight:bold;
 }
 
 .account_form_field {
@@ -60,6 +58,9 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
   }
 }
+
+
+
 
 
 /////////////////////////////////////////////////////////////////
@@ -99,6 +100,23 @@ label, .account_form_label { // why the hell won't this work in app.css?
   overflow-y:auto;
 }
 
+
+.account_edit_form_spacer {
+
+  background-image: -webkit-linear-gradient(left, transparent,#3c3c3c 20%,#3c3c3c 80%,transparent);
+  height:1px;
+
+  margin-top:30px;
+  margin-bottom:30px;
+}
+
+
+
+#account_edit_form_info {
+  .btn {
+    width:150px;
+  }
+}
 
 
 

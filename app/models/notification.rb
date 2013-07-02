@@ -17,7 +17,7 @@ class Notification < ActiveRecord::Base
   validates :content, length: { maximum: 500 }
 
   validate :no_notification_to_self
-  def self.valid_types;%w(welcome message feedback feedback_req friendship_req friendship_app event_set_partner event_set_sender event_cancel event_change event_remind); end
+  def self.valid_types;%w(welcome message feedback friendship_req friendship_app event_set_partner event_set_sender event_cancel event_change event_remind); end
   # The two validations below must be after the line above!
   validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
@@ -50,7 +50,7 @@ class Notification < ActiveRecord::Base
     def history(from_id, to_id)
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
                         from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "feedback_req","friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_change","event_remind"]])
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_change","event_remind"]])
     end
 
   end
@@ -75,8 +75,6 @@ class Notification < ActiveRecord::Base
         "Message"
       when "feedback"
         "New feedback"
-      when "feedback_req"
-        "Feedback request"
       when "friendship_req"
         "Case partner request"
       when "friendship_app"
@@ -114,8 +112,6 @@ class Notification < ActiveRecord::Base
         Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
       when "feedback"
         Rails.application.routes.url_helpers.cases_url(id: notificable_id, host: host)
-      when "feedback_req"
-        Rails.application.routes.url_helpers.new_case_url(host: host, user_id: sender_id, date: event_date, subject: content.truncate(100))
       when "friendship_req"
         Rails.application.routes.url_helpers.notifications_url(host: host)
       when "friendship_app"
@@ -159,13 +155,6 @@ class Notification < ActiveRecord::Base
                             self.event_date,
                             self.content,
                             self.title).deliver
-      when "feedback_req"
-        UserMailer.feedback_req(self.sender,
-                                self.user,
-                                self.url,
-                                self.event_date,
-                                self.content,
-                                self.title).deliver
       when "message"
         UserMailer.usermessage(self.sender,
                                self.user,

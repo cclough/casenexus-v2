@@ -59,6 +59,10 @@ $(document).ready ->
   # Jquery truncate
   window.application_truncatables()
 
+  # Chosen
+  $(".chzn-select").chosen()
+  $(".chzn-select-nosearch").chosen disable_search_threshold: 10
+
   # Style for the checkboxes
   $("input:checkbox").uniform()
 

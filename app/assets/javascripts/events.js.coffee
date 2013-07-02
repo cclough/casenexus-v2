@@ -23,8 +23,6 @@ window.events_modal_rebless = ->
     pickerPosition: 'bottom-left'    
     showMeridian: true
 
-  # $(".chzn-select").chosen()
-
   $("#events_new_friend_select").change ->
     window.events_new_timezone_calcs()
 

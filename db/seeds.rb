@@ -265,7 +265,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       language_ids: 1,
 
       subject_id: 2,
-      degree_level: 2,
+      degree_level: 1,
 
       cases_external: 12,
 
@@ -368,7 +368,7 @@ if Rails.env == 'development'
     language_ids = 1
 
     subject_id = rand(15)
-    degree_level = rand(2)
+    degree_level = rand(1)
 
     last_online_at = rand_time(2.days.ago)
     cases_external = 10

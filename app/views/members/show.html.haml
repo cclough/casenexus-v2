@@ -1,12 +1,3 @@
-.row
-  #map_index_user_panel_counts
-    .row
-      .span
-        = @user.degree_level_in_words
-    .row
-      .span
-        = @user.subject.name
-.spacer50
 #map_index_container_user
   .panel.darker#map_index_user_panel_info
     %button#map_index_user_close.close ×
@@ -16,8 +7,9 @@
           = image_tag "avatars/icon.png"
           /= avatar_for(@user, 'icon_inert')
           .row
-            .pull-right
-              = casecounts(@user)
+            = casecounts(@user)
+            #map_index_user_points
+              = @user.points
       .span.offset2
         .spacer5
         .row
@@ -48,7 +40,10 @@
                 = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name
               .span.offset1
                 = @user.country.name
-
+        .row
+          = @user.degree_level_in_words
+        .row
+          = @user.subject.name
   .row
 
     .span
@@ -99,19 +94,6 @@
                     Skype
 
             #map_index_user_panel_subtitle
-              Feedback
-            .row
-              .span
-                %a.btn.btn-inverse.btn-small{ href:"/cases/new?user_id=" + @user.id.to_s}
-                  %i.icon-edit.icon-white
-                  Send
-              .span
-                %a#map_index_user_button_feedbackrequest.btn.btn-inverse.btn-small
-                  %i.icon-refresh.icon-white
-                  %span
-                    Request
-
-            #map_index_user_panel_subtitle
               Case
             .row
               .span
@@ -121,7 +103,7 @@
                     Schedule
 
               .span
-                %a.btn.btn-inverse.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
+                %a#map_index_user_button_startcase.btn.btn-inverse.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
                   %i.icon-arrow-right.icon-white
                   Start
 

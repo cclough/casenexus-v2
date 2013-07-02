@@ -911,3 +911,20 @@ a:hover {
 .application_colorcode_red {
   color: $alert-red;
 }
+
+
+
+.chzn-drop {
+  input {
+    height:25px !important;
+    font-size: 1em;
+    padding: 4px 20px 4px 5px;
+    font-family: sans-serif;
+    font: 99% sans-serif;
+    -webkit-appearance: textfield;
+  }
+
+  li {
+    color:black;
+  }
+}

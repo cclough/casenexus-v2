@@ -3,8 +3,6 @@
     = link_to "Conversation history", notification_path(notifications_item), class: "notifications_index_notifications_item_button_history", 'data-id' => notifications_item.sender_id.to_s
   - when "feedback"
     = link_to 'Jump to case record', '/cases/' + notifications_item.notificable.id.try(:to_s)
-  - when "feedback_req"
-    = link_to 'Jump to feedback form', ({ controller: "cases", action: "new", user_id: notifications_item.sender_id, subject: notifications_item.content.html_safe, date: notifications_item.event_date })
   - when "friendship_req"
     - if notifications_item.notificable
       - if notifications_item.notificable.status == Friendship::ACCEPTED

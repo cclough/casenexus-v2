@@ -9,20 +9,24 @@
     var account_completeedit_map_lng_start = "#{current_user.lng}";
 
 #account_edit_form.panel.dark.kill_left.kill_right.kill_bottom
+  .spacer10
   .row
-    = form_for(@user, url: account_path, method: :put) do |f|
+    = form_for(@user, url: account_path, method: :put, class: "") do |f|
       = render 'shared/error_messages', object: @user
 
-      .account_edit_form_spacer
+      .account_edit_form_space
 
 
       .row
-        .span25
+        .span24.offset2
           = f.label :first_name
         .span30
           = f.text_field :first_name, class: "span26 account_form_field"
+
+      .spacer10
+
       .row
-        .span25
+        .span24.offset2
           = f.label :last_name
         .span30
           = f.text_field :last_name, class: "span26 account_form_field"
@@ -33,26 +37,52 @@
 
 
 
-      .row
-        .span25.account_form_label
+      .row#account_edit_form_info
+        .span20.offset2.account_form_label
           Info
-        .span4
+        .span10
           = image_tag "universities/"+ @user.university.image
-        .span20.offset1
+        .span30.offset1
           .row
             %strong
               = @user.email
           .row.account_form_label
-            = @user.university.name
-          .spacer5
+            %span.account_form_label_gray University:
+            %span.account_form_label_bold
+              = @user.university.name
           .row
-            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
-
+            %span.account_form_label_gray Degree Level:
+            %span.account_form_label_bold
+              = @user.degree_level_in_words
+          .row
+            %span.account_form_label_gray Subject:
+            %span.account_form_label_bold
+              = @user.subject.name
+          .row
+            %span.account_form_label_gray Reputation:
+            %span.account_form_label_bold
+              = @user.points
+          .row
+            %span.account_form_label_gray Cases Interviewed:
+            %span.account_form_label_bold
+              = @user.case_count_viewer
+          .row
+            %span.account_form_label_gray Cases Interviewee'd
+            %span.account_form_label_bold
+              = @user.case_count_viewee
+          .row
+            %span.account_form_label_gray Member for
+            %span.account_form_label_bold
+              = time_ago_in_words(@user.created_at)
           .spacer5
           .row
             %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
               %i.icon-pencil
               Edit my password
+
+          .spacer5
+          .row
+            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
 
 
 
@@ -60,13 +90,13 @@
 
 
       .row.font-small
-        .span3.offset25
+        .span3.offset26
           = f.check_box :email_admin
         .span23.offset1
           .spacer5
           Receive site news and consulting advice
       .row.font-small
-        .span3.offset25
+        .span3.offset26
           = f.check_box :email_users
         .span23.offset1
           .spacer5
@@ -78,13 +108,15 @@
 
 
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Degree Level
         .span26
-          = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option><option>Experienced Professional</option>".html_safe, class: "chzn-select span26"
+          = f.select :degree_level, options_for_select([['Undergraduate/Masters', 0], ['MBA', 1]]), {}, {class: "chzn-select-nosearch span26"}
+
+      .spacer20
 
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Degree Subject
         .span26
           = f.collection_select :subject_id, Subject.all, :id, :name, {selected: @user.subject}, {class: "chzn-select span26"}
@@ -94,7 +126,7 @@
 
 
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Languages
         .span26
           = f.collection_select :language_ids, Language.all, :id, :name, {selected: @user.language_ids}, {multiple: true, class: "chzn-select span26"}
@@ -102,19 +134,15 @@
       .spacer20
 
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Time Zone
         .span26
           = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select span26" }
 
-
-
       .spacer20
 
-
-
       .row
-        .span25
+        .span24.offset2
           = image_tag 'icons/skype_large.png'
           #account_completeedit_skype_link
             = link_to "Need to register?", "https://login.skype.com/account/signup-form"
@@ -128,13 +156,17 @@
 
 
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Cases outside of casenexus
         .span23
           = f.text_field :cases_external, class: "span5 account_form_field", id: "account_completedit_casesexternal_field"
-      .spacer5
+
+
+      .spacer20
+
+
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Firms you are applying for
         .span26
           = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span26"}
@@ -146,7 +178,7 @@
       = f.hidden_field :lat, id: "account_completeedit_lat"
       = f.hidden_field :lng, id: "account_completeedit_lng"
       .row
-        .span25.account_form_label
+        .span24.offset2.account_form_label
           Location
         .span30
           #account_completeedit_map.edit.map

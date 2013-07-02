@@ -24,18 +24,6 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-
-  def feedback_req(user_from, user_target, url, date, subject, title)
-    @user_from = user_from
-    @user_target = user_target
-    @url = url
-    @date = date
-    @subject = subject
-
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
-  end
-
   def feedback(user_from, user_target, url, date, subject, title)
     @user_from = user_from
     @user_target = user_target

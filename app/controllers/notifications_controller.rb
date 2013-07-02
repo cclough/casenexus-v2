@@ -41,7 +41,7 @@ class NotificationsController < ApplicationController
 
     @notifications = Notification.history(current_user, @sender)
 
-    render layout: false
+    render partial: "conversation", layout: false
   end
 
   def new_message_form
@@ -63,9 +63,6 @@ class NotificationsController < ApplicationController
             format.js
             # format.html { redirect_to (notifications_path) }
             flash.now[:success] = 'Message sent'
-          when "feedback_req"
-            format.js
-            flash.now[:success] = 'Feedback request sent'
           when "friendship_req"
             flash.now[:success] = 'Case Partner request sent'
             format.js
@@ -76,7 +73,7 @@ class NotificationsController < ApplicationController
 
       else
         case params[:notification][:ntype]
-          when "message", "feedback_req", "friendship_req"
+          when "message", "friendship_req"
             @user = @notification.user
             format.js
         end

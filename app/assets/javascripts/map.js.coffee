@@ -53,7 +53,7 @@ window.map_index_map_marker_click = (marker_id) ->
             window.infobox.close()
 
         # Modal Stuff!
-        $("#modal_message, #modal_feedback_req, #modal_friendship_req, #modal_event").modal
+        $("#modal_message, #modal_friendship_req, #modal_event").modal
           backdrop: false
           show: false
 
@@ -70,15 +70,6 @@ window.map_index_map_marker_click = (marker_id) ->
         $("#map_index_user_button_feedbackrequest").click ->
 
           $("#header_nav_panel_browse_search_field").val "hello"
-
-          if !($("#modal_feedback_req").hasClass("in"))
-            $(".modal").modal("hide")
-            $("#modal_feedback_req").modal("show")
-            $("#modal_feedback_req_datepicker").datetimepicker
-              format: "dd MM yyyy - hh:ii"
-              minuteStep: 15
-              showMeridian: true
-              pickerPosition: 'bottom-left'
 
         $("#map_index_user_button_event").click ->
 

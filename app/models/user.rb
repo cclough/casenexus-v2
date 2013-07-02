@@ -112,13 +112,17 @@ class User < ActiveRecord::Base
     ("#{first_name} #{last_name}").truncate(17, separator: ' ')
   end
 
-  def case_count
+  def case_count_viewee
     cases.count
+  end
+
+  def case_count_viewer
+    Case.where("interviewer_id = ?", self.id).all.count
   end
 
   def case_count_bracket
     # defines radar chart last 5 count
-    case case_count
+    case case_count_viewee
     when 0
       #signals to show 'you must do at least one case'
       0
@@ -132,11 +136,9 @@ class User < ActiveRecord::Base
   def degree_level_in_words
     case degree_level
     when 0
-      "Undergraduate"
+      "Undergraduate/Masters"
     when 1
       "MBA"
-    when 2
-      "Professional"
     end
   end
 

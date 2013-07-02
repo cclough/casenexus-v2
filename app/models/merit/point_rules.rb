@@ -19,9 +19,17 @@ module Merit
       #
       # score 15, :on => 'reviews#create', :to => [:reviewer, :reviewed]
       #
-      score 20, :on => [
+
+      # for interviewer
+      score 20, to: :case_creator, :on => [
         'cases#create'
       ]
+
+      # for interviewee
+      score 5, to: :user, :on => [
+        'cases#create'
+      ]
+
     end
   end
 end

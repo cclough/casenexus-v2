@@ -44,17 +44,6 @@ class MembersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    # defines radar chart last 5 count
-    case current_user.cases.where("interviewer_id = #{@user.id}").count
-      when 0
-        #signals to show 'you must do at least one case'
-        @case_count = 0
-      when 1..5
-        @case_count = 1
-      when 6..1000
-        @case_count = 5
-    end
-
     respond_to do |format|
       format.html { render layout: false }
     end

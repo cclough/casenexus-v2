@@ -1,7 +1,7 @@
 = form_tag 'console/sendpdf', remote: true, id: "console_index_subnav_form" do |f| # form must be at top as has to include e.g target_id field
   .row
     .span15#console_index_subnav_select_books_container.offset1
-      %select#console_index_subnav_select_books.chzn-select{name: "book_id", "data-placeholder" => "Choose a Case" }
+      %select#console_index_subnav_select_books{name: "book_id", "data-placeholder" => "Choose a Case" }
         %option
         - @books.each do |books_select_item|
           %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
@@ -31,7 +31,7 @@
           00:00
 
     .span16.pull-right#console_index_subnav_select_friends_container
-      %select#console_index_subnav_select_friends.chzn-select{name: "target_id", "data-placeholder" => "Select Friend" }
+      %select#console_index_subnav_select_friends{name: "target_id", "data-placeholder" => "Select Friend" }
         %option
         = options_from_collection_for_select @friends, :id, :name, (@friend.id unless @friend.blank?)
         

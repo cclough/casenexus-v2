@@ -262,7 +262,7 @@ describe User do
     end
 
     it "case count should be correct" do
-      user.case_count.should eql 2
+      user.case_count_viewee.should eql 2
     end
 
   end
