@@ -12,5 +12,6 @@
       = cases_item.interviewer.name
     .row.cases_index_cases_item_subject
       = cases_item.subject_trunc
-  .span5.panel.dark.kill_all.cases_index_cases_item_score.pull-right
-    = cases_item.totalscore.to_f.round(1)
+  .span8.panel.dark.kill_all.cases_index_cases_item_score.pull-right
+    %span= cases_item.totalscore.to_f.round(1)
+    %span.cases_score_large_outof /15

@@ -15,6 +15,12 @@ $blue_pastel: #98cdff;
 }
 
 
+.cases_score_large_outof {
+  color:white;
+  font-size:10px;
+}
+
+
 /////////////////////////////////////////////////////////////////
 /////////////////////////// INDEX ///////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -99,7 +105,6 @@ $blue_pastel: #98cdff;
   font-weight: bold;
   text-align:center;
   height:30px;
-  width:40px;
   margin-top:-1px !important;
   line-height:27px;
   color: $blue_pastel !important;
@@ -155,7 +160,9 @@ $blue_pastel: #98cdff;
 
 
 
-
+.font-white {
+  color:white !important;
+}
 
 
 
@@ -284,10 +291,6 @@ $blue_pastel: #98cdff;
   color: $blue_pastel !important;
 }
 
-#cases_show_subnav_score_outof {
-  color:white;
-  font-size:10px;
-}
 
 #cases_show_subnav_date {
   font-style:italic;
