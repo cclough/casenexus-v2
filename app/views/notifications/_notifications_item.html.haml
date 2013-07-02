@@ -17,17 +17,6 @@
           - else
             = notifications_item.content_trunc
 
-    .span1.application_timestamp
+    .span1.offset1.application_timestamp
       = notifications_item.date_fb
       / = notifications_item.created_at.strftime("%d %b '%y")
-
-
-    / .span21
-    /   .notifications_index_notifications_item_title
-    /     = notifications_item.title
-    /   .notifications_index_notifications_item_content_trunc.font-small{ id: 'notifications_index_notifications_item_content_trunc_' + notifications_item.id.to_s }
-    /     = notifications_item.content_trunc
-
-
-    / .span15.notifications_index_notifications_item_action.font-small.pull-right
-    /   = render partial: 'notifications_item_actions' , locals: { notifications_item: notifications_item }

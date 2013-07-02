@@ -13,3 +13,6 @@
         = notifications_show_item.title
       .row.notifications_show_item_content
         = notifications_show_item.content
+      .spacer10
+      .row.notifications_show_item_action
+        = render partial: 'notifications_show_item_actions' , locals: { notifications_show_item: notifications_show_item }
