@@ -76,6 +76,7 @@ Casenexus::Application.routes.draw do
     get :new_message_form, on: :collection
     get :conversation, on: :collection
     get :popup, on: :member
+    get :menu, on: :collection
   end
 
   # Library

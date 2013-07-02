@@ -91,6 +91,14 @@ class NotificationsController < ApplicationController
 
   end
 
+  def menu
+    @unread_count = current_user.notifications.unread.for_display.count
+    @notifications = Notification.header(current_user)
+
+    render partial: "menu", layout: false
+  end
+
+
   def read
     @notification = current_user.notifications.find(params[:id])
     @notification.read!

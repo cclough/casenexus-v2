@@ -29,6 +29,11 @@ $(function() {
 
         title_msg = "You have a new notification from " + data.from;
         title_notify(title_msg);
+
+        $.get("/notifications/menu", function(data){
+          $("#header_nav_links_right_notifications").html(data);
+        });
+
       });
       
 
@@ -70,10 +75,6 @@ $(function() {
       // In DOM alert
       function dom_notify(notification_id) {
 
-        // $('#header_nav_panel_browse_search_field').val(msg);
-
-        // $('#header_menu_notifications_unreadcount').css("box-shadow","1px 1px 1px blue")
-
         $.get("/notifications/" + notification_id + "/popup", function(data){
 
           $('#application_notify').html(data);
@@ -83,7 +84,7 @@ $(function() {
           });
           
           window.application_truncatables();
-          
+
           $('#application_notify').fadeIn();
 
           setTimeout(function() {
