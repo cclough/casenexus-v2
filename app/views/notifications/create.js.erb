@@ -26,6 +26,9 @@
 
 				});
 
+		b = $("[data-user_id=<%=@notification.user_id%>]")
+		b.parent().prepend(b)
+
     <%- end %>
 
 <%- end %>
