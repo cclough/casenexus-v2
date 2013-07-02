@@ -215,7 +215,7 @@ class Notification < ActiveRecord::Base
                         user_id).group('asso_id').order("latest")
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
                     user_id).group('asso_id').order("latest")
-    ids = (sent + received).sort_by(&:latest).uniq_by(&:asso_id).collect(&:latest)
+    ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
     where(id: ids).order('created_at desc')
   end
 
