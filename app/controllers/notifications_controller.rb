@@ -8,7 +8,6 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 20, page: params[:page])
-
     respond_to do |format|
       format.html
       format.js # for infinite scroll
@@ -23,7 +22,11 @@ class NotificationsController < ApplicationController
 
     @sender = User.find(@id)
 
-    @notifications = Notification.history(current_user, @sender)
+    if @sender == current_user
+      @notifications = current_user.notifications_sent.order('created_at')
+    else
+      @notifications = Notification.history(current_user, @sender)
+    end
     
     @notifications.each { |n| n.read! }
 

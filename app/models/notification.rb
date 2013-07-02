@@ -211,8 +211,12 @@ class Notification < ActiveRecord::Base
 
   # Still not correct yet
   def self.most_recent_for(user_id)
-    select('DISTINCT ON (sender_id) *').where("(sender_id = ?) or (user_id = ?)",
-                        user_id, user_id).order("sender_id, created_at DESC")
+    sent = select("user_id as asso_id, MAX(id) as latest").where("(sender_id = ?)",
+                        user_id).group('asso_id').order("latest")
+    received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
+                    user_id).group('asso_id').order("latest")
+    ids = (sent + received).sort_by(&:latest).uniq_by(&:asso_id).collect(&:latest)
+    where(id: ids).order('created_at desc')
   end
 
 
