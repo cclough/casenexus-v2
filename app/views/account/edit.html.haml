@@ -38,18 +38,27 @@
 
 
       .row#account_edit_form_info
-        .span20.offset2.account_form_label
+        .span12.offset2.account_form_label
           Info
         .span10
-          = image_tag "universities/"+ @user.university.image
-        .span30.offset1
+          .row#account_edit_form_info_avatar
+            = image_tag "avatars/icon.png"
           .row
-            %strong
-              = @user.email
+            .spacer15
+            #account_edit_form_info_reputation= @user.points
+            .spacer10
+            #account_edit_form_info_reputation_text reputation
+
+        .span30.offset2
+          .row.account_form_label_bold
+            = @user.email
+          .spacer5
           .row.account_form_label
-            %span.account_form_label_gray University:
+            %span.account_form_label_university_logo
+              = image_tag "universities/"+ @user.university.image
             %span.account_form_label_bold
               = @user.university.name
+          .spacer10
           .row
             %span.account_form_label_gray Degree Level:
             %span.account_form_label_bold
@@ -58,10 +67,6 @@
             %span.account_form_label_gray Subject:
             %span.account_form_label_bold
               = @user.subject.name
-          .row
-            %span.account_form_label_gray Reputation:
-            %span.account_form_label_bold
-              = @user.points
           .row
             %span.account_form_label_gray Cases Interviewed:
             %span.account_form_label_bold
@@ -74,7 +79,11 @@
             %span.account_form_label_gray Member for
             %span.account_form_label_bold
               = time_ago_in_words(@user.created_at)
-          .spacer5
+
+
+
+          .spacer15
+
           .row
             %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
               %i.icon-pencil
@@ -89,16 +98,20 @@
       .account_edit_form_spacer
 
 
-      .row.font-small
-        .span3.offset26
+      .row
+
+        .span24.offset2.account_form_label
+          Emailing
+
+        .span3
           = f.check_box :email_admin
-        .span23.offset1
+        .span30.offset1
           .spacer5
           Receive site news and consulting advice
-      .row.font-small
+      .row
         .span3.offset26
           = f.check_box :email_users
-        .span23.offset1
+        .span30.offset1
           .spacer5
           Receive notiffications via email
 
@@ -202,14 +215,5 @@
 
 
       .row
-        .span10.offset21
-          .row
-            .spacer5
-            = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
-
-
-- if current_user.completed?
-
-  .row
-    = render 'invitations_panel'
-
+        .panel.dark.kill_all#account_edit_form_submit_panel
+          = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"

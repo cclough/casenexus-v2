@@ -9,10 +9,6 @@ class AccountController < ApplicationController
 
   def edit
     @user = current_user
-
-    @invitations = Invitation.where(user_id: current_user.id)
-    @invitation = current_user.invitations.build(params[:invitation])
-
     render layout: 'profile'
   end
 

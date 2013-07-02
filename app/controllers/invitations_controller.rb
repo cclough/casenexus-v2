@@ -2,6 +2,14 @@ class InvitationsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
 
+  def index
+    
+    @invitations = Invitation.where(user_id: current_user.id)
+    @invitation = current_user.invitations.build(params[:invitation])
+    
+    render layout: "profile"
+
+  end
   def show
     redirect_to edit_account_path
   end

@@ -38,7 +38,7 @@ $blue_pastel: #98cdff;
 
 #cases_index_cases_form_label {
   margin-top:5px;
-  font-size:12px;
+  font-size:12px !important;
   i {
     margin-left:5px;
   }
@@ -266,6 +266,11 @@ $blue_pastel: #98cdff;
   font-weight: bold;
   text-align:center;
   color: $blue_pastel !important;
+}
+
+#cases_show_subnav_score_outof {
+  color:white;
+  font-size:10px;
 }
 
 #cases_show_subnav_date {

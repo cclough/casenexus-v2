@@ -89,6 +89,13 @@
                     %span.offset1
                       Settings
 
+              .row
+                = link_to invitations_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "invitations") }
+                    %i.icon-user.icon-fixed-width
+                    %span.offset1
+                      Invite Friends
+
               %br
 
 

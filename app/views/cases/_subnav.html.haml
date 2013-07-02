@@ -36,7 +36,7 @@
 .row
   .panel.dark.kill_left.kill_right
     .row
-      .span62
+      .span60
         .row
           .span7
             Source:
@@ -52,6 +52,7 @@
             Date:
           %span#cases_show_subnav_date
             = @case.date.strftime("%a %d %b %Y %I:%M%p")
-      .span8.pull-right
+      .span11.pull-right
         #cases_show_subnav_score.panel.darker.kill_all
-          = @case.totalscore.to_f.round(1)
+          %span= @case.totalscore.to_f.round(1)
+          %span#cases_show_subnav_score_outof /15

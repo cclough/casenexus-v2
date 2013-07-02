@@ -78,6 +78,9 @@ class User < ActiveRecord::Base
   validates :lat, presence: true, on: :update
   validates :lng, presence: true, on: :update
 
+  validates :degree_level, presence: true, on: :update
+  validates :subject, presence: true, on: :update
+
   validates :skype, length: { maximum: 32 },
             format: { with: /^[\w]+[a-z0-9\-]+$/i },
             allow_blank: true,

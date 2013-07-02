@@ -26,6 +26,14 @@ label, .account_form_label { // why the hell won't this work in app.css?
   font-weight:bold;
 }
 
+.account_form_label_university_logo {
+  img {
+    max-height:18px !important; 
+    min-width:18px !important; 
+  }
+}
+
+
 .account_form_field {
   color:white !important;
 
@@ -118,7 +126,23 @@ label, .account_form_label { // why the hell won't this work in app.css?
   }
 }
 
+#account_edit_form_info_reputation {
+  font-size:30px;
+  text-align:center;
+}
 
+#account_edit_form_info_reputation_text {
+  font-size:11px;
+  text-align:center;
+}
+
+#account_edit_form_info_avatar {
+  text-align:center;
+}
+
+#account_edit_form_submit_panel {
+  text-align:center;
+}
 
 /////////////////////////////////////////////////////////////////
 //////////////////////// COMPLETEEDIT ////////////////////////////
