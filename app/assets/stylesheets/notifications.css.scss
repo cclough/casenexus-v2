@@ -83,6 +83,7 @@ $blue_linkedin: #006699;
     -moz-opacity: 0.50;
     opacity: 0.50;
   }
+
 }
 
 
@@ -101,17 +102,61 @@ $blue_linkedin: #006699;
 /////////////////////////////////////////////////////
 
 
-.notifications_show_item {
+#notifications_show_form_container {
+  margin:-10px;
+}
+
+
+
+
+#notifications_show_header {
+//  border-bottom: 1px solid $gray_Light;
+
+
   padding:5px;
-  text-decoration:none;
-
-  background:rgba(0,0,0,0.8);
-
-  margin-bottom:3px !important;
-
-  &:hover {
-    background:rgba(0,0,0,0.9)
+  img {
+    max-width:25px;
   }
+
+}
+
+
+#notifications_show_body {
+
+  position:relative;
+
+  overflow-y:scroll;
+  height:385px;
+  margin:0 -10px 0 -10px;
+  
+  -webkit-box-shadow: inset  0 8px 6px -6px black;
+     -moz-box-shadow: inset  0 8px 6px -6px black;
+          box-shadow: inset  0 8px 6px -6px black;
+}
+
+#notifications_show_body_subcontainer{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  overflow-y:auto !important;
+  max-height:100%;
+}
+
+
+#notifications_show_newmessage_textarea {
+  width:454px;
+  height:50px;
+}
+
+
+
+
+/////////////////////////////////////////////////////
+
+.notifications_show_item {
+  padding:10px 20px;
+  text-decoration:none;
+  margin-bottom:15px !important;
 
   &.select {
     background-color:$blue_pastel;
@@ -122,39 +167,37 @@ $blue_linkedin: #006699;
     opacity: 0.50;
   }
 
+  &.white {
+    color:black !important;
+  }
+
 }
 
 .notifications_show_item_content {
   font-size:12px;
 }
 
-#notifications_show_body {
-  overflow-y:scroll;
-  height:385px;
-  margin-bottom:5px;
-  border-bottom:1px solid $gray_Light;
-}
 
 
-
-#notifications_show_header {
-  border-bottom: 1px solid $gray_Light;
-  padding:5px;
-  img {
-    max-width:25px;
-  }
-}
-
-#notifications_show_newmessage_textarea {
-  width:448px;
-  height:50px;
-}
-
-
-
-
-#notifications_show_item_avatar {
+.notifications_show_item_avatar {
   img {
     max-width:30px;
   }
 }
+
+.notifications_show_item_date_line {
+  border-top: 1px solid $gray_Light;
+  margin:10px 10px 10px 10px; //remember spacer in item
+  height:0;
+}
+
+.notifications_show_item_date {
+  margin:-5px 0 10px 0;
+  text-align:center;
+  color: $gray_Light;
+}
+
+/////////////////////////////////////////////////////
+
+
+

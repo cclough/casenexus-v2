@@ -142,8 +142,14 @@ $(document).ready ->
       $.get "/notifications/new_message_form?id=" + friend_id, (data) ->
         $("#modal_message").html data
 
-      $.get "/notifications/conversation?id=" + friend_id, (data) ->
+      $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
         $("#modal_message_conversation").html data
+
+        # scroll div
+        $("#modal_message_conversation").animate
+          scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
+        , "fast"
+
 
       $("#modal_message").modal("show")
 
@@ -198,3 +204,5 @@ $(document).ready ->
           $("nav .arrow").css left: left_margin - 8
 
     window.ArrowNav.init()
+
+

@@ -1,7 +1,10 @@
-.notifications_show_item.panel.dark.kill_all{id: "notification-"+notifications_show_item.id.to_s, 'data-id' => notifications_show_item.id.to_s, :class => (("read " if notifications_show_item.read?) && ("select" if (notifications_show_item.id.to_s == @id)))}
+.notifications_show_item{id: "notification-"+notifications_show_item.id.to_s, 'data-id' => notifications_show_item.id.to_s, :class => ("white" if (params[:style] == "white"))}
+  /(("read " if notifications_show_item.read?) && ("select" if (notifications_show_item.id.to_s == @id) && 
+  .row.notifications_show_item_date_line
+  .row.notifications_show_item_date= notifications_show_item.date_fb
   .row
     .span5
-      #notifications_show_item_avatar
+      .notifications_show_item_avatar
         = image_tag notifications_show_item.sender.university.image_file
     .span33
       %strong
@@ -10,5 +13,3 @@
         = notifications_show_item.title
       .row.notifications_show_item_content
         = notifications_show_item.content
-    .span5.pull-right.application_timestamp
-      = notifications_show_item.date_fb

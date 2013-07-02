@@ -5,8 +5,8 @@ window.notifications_index_jump = (user_id) ->
     $("#notifications_index_conversation").html data
 
     # scroll div
-    $("#notifications_show_body").animate
-      scrollTop: document.getElementById("notifications_show_body").scrollHeight;
+    $("#notifications_show_body_subcontainer").animate
+      scrollTop: document.getElementById("notifications_show_body_subcontainer").scrollHeight;
     , "fast"
 
     # scroll div

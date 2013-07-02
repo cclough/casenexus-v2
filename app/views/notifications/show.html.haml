@@ -15,7 +15,7 @@
       .row
         - if @sender.last_online_at
           .span.application_lastonline
-            Last online:
+            Last online
             = time_ago_in_words(@sender.last_online_at)
             ago
 
@@ -27,24 +27,23 @@
 
   .spacer5
   .row#notifications_show_body
+    #notifications_show_body_subcontainer
+      = render "conversation"
 
-    = render "conversation"
-
-  .row#notifications_show_form_container
+  .row#notifications_show_form_container.panel.dark.kill_all  
     / - notification = notification || @notification
     = form_for @notification, remote: true do |f|
 
       #flash_notifications
         = render 'shared/error_messages', object: @notification
+        .row
+          = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea"
 
-      %div
-        = f.text_area :content, placeholder: "Send message...", tabindex: "101", id: "notifications_show_newmessage_textarea"
-
-        = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
-        = f.hidden_field :user_id, value: @sender.id
-        = f.hidden_field :sender_id, value: current_user.id
-        = f.hidden_field :ntype, value: "message"
-      %div
-        %button.btn.btn-inverse.pull-right{href: "#", type: "submit", tabindex: "102"}
-          %i.icon-arrow-right.icon-white
-          Send Message
+          = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
+          = f.hidden_field :user_id, value: @sender.id
+          = f.hidden_field :sender_id, value: current_user.id
+          = f.hidden_field :ntype, value: "message"
+        .row
+          %button.btn.btn-inverse.pull-right{href: "#", type: "submit", tabindex: "102"}
+            %i.icon-arrow-right.icon-white
+            Reply

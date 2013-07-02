@@ -12,8 +12,6 @@
 
 			  $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
 
-        // Index - Update Message history
-
         window.notifications_index_jump(<%= escape_javascript(@notification.user_id.to_s) %>);
 
 				$("div[id=application_flash]:last").fadeIn("fast", function () {
@@ -26,8 +24,13 @@
 
 				});
 
-		b = $("[data-user_id=<%=@notification.user_id%>]")
-		b.parent().prepend(b)
+    		// b = $("[data-user_id=<%=@notification.user_id%>]")
+    		// b.parent().prepend(b)
+
+        // $.get("/notifications/conversation?id=" + friend_id), function(data) {
+        //   $("#notifications_index_conversation").html(data)
+        // });
+
 
     <%- end %>
 
