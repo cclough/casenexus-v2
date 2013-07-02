@@ -366,38 +366,61 @@ a:hover {
 
 }
 
+
+
+
+
 #application_notify {
 
   display:none;
 
   position:absolute;
-  right:50px;
-  top:50px;
+  right:60px;
+  top:60px;
   z-index:9999;
   width:300px;
   height:60px;
 
-  font-size:16px;
+  padding:10px;
   
   color: $gray_Lighter;
 
   // border: 1px solid $gray_Mid;
 
-  background: url('app/darker-bg.png') repeat top left;
+  background: url('app/dark-bg.png') repeat top left;
 
-  padding:5px;
 
   -webkit-box-shadow: 0px 2px 17px #000 !important;
   -moz-box-shadow:    0px 2px 17px #000 !important;
   box-shadow:         0px 2px 17px #000 !important;
 
-  // -moz-border-radius:    7px;
-  // -webkit-border-radius: 7px;
-  // border-radius:         7px;
+   -moz-border-radius:    7px;
+   -webkit-border-radius: 7px;
+   border-radius:         7px;
 
   background: rgba(0, 0, 0, 0.8);
 
 }
+
+#application_notify_name {
+  font-weight:bold;
+  width:100%;
+}
+
+
+#application_notify_close {
+  border: 0;
+  margin:18px 10px;
+}
+
+#application_notify_avatar {
+  padding:15px 5px;
+}
+
+
+
+
+
 
 /* For views/shared/_error_messages - is this used for all forms? */
 #application_error_explanation {
@@ -936,5 +959,10 @@ a:hover {
 
 .application_userimage_small {
   max-height:18px !important; 
+  max-width:30px !important; 
+}
+
+.application_userimage_medium {
+  max-height:30px !important; 
   max-width:30px !important; 
 }

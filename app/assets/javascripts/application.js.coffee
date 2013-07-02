@@ -137,21 +137,19 @@ $(document).ready ->
   $(".application_container_online_item_menu_message").click ->
 
     if !($("#modal_message").hasClass("in"))
-      $(".modal").modal("hide")
+
       friend_id = $(this).data "friend_id"
+
       $.get "/notifications/new_message_form?id=" + friend_id, (data) ->
         $("#modal_message").html data
 
-      $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
-        $("#modal_message_conversation").html data
-
-        # scroll div
-        $("#modal_message_conversation").animate
-          scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
-        , "fast"
-
-
-      $("#modal_message").modal("show")
+        $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
+          $("#modal_message_conversation").html data
+          # scroll div
+          $("#modal_message_conversation").animate
+            scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
+          , "fast"
+          $("#modal_message").modal("show")
 
 
 

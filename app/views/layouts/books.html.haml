@@ -16,6 +16,8 @@
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
+    = render partial: 'shared/pusher'
+    
   %body
 
     #application_container_main

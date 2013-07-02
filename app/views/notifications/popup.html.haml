@@ -1,0 +1,15 @@
+.span4
+  #application_notify_avatar
+    = image_tag @notification.sender.university.image_file, class: "application_userimage_medium"
+.span23.offset1
+  #application_notify_name.application_truncatable
+    = @notification.sender.name
+  .row
+    = @notification.title
+  .row
+    = @notification.content_trunc
+  .spacer10
+  .row
+    = render partial: 'notifications_show_item_actions' , locals: { notifications_show_item: @notification }
+.span1.pull-right
+  %button#application_notify_close.close ×

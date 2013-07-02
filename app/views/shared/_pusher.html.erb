@@ -25,9 +25,10 @@ $(function() {
       var channel_priv = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
       
       channel_priv.bind('new_message', function(data) {
-        msg = data.from + ': ' + data.subject;
-        dom_notify(msg);
-        title_notify(msg);
+        dom_notify(data.notification_id);
+
+        title_msg = "You have a new notification from " + data.from;
+        title_notify(title_msg);
       });
       
 
@@ -67,18 +68,32 @@ $(function() {
       /////////////////////////////////////////
 
       // In DOM alert
-      function dom_notify(msg) {
-        $('#header_nav_panel_browse_search_field').val(msg);
+      function dom_notify(notification_id) {
+
+        // $('#header_nav_panel_browse_search_field').val(msg);
 
         // $('#header_menu_notifications_unreadcount').css("box-shadow","1px 1px 1px blue")
 
-        $('#application_notify').html(msg)
+        $.get("/notifications/" + notification_id + "/popup", function(data){
 
-        $('#application_notify').fadeIn();
-        setTimeout(function() {
-          $('#application_notify').fadeOut
-          ();
-        }, 3000);
+          $('#application_notify').html(data);
+
+          $("#application_notify_close").click(function(){
+            $("#application_notify").fadeOut("fast");
+          });
+          
+          window.application_truncatables();
+          
+          $('#application_notify').fadeIn();
+
+          setTimeout(function() {
+
+            $('#application_notify').fadeOut();
+
+          }, 20000);
+
+        });
+
       }
       
       // <title> msg

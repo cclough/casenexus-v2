@@ -65,14 +65,14 @@ class NotificationsController < ApplicationController
           when "message"
             format.js
             # format.html { redirect_to (notifications_path) }
-            flash.now[:success] = 'Message sent'
+            flash.now[:success] = 'Message sent to ' + @notification.sender.first_name
           when "friendship_req"
             flash.now[:success] = 'Case Partner request sent'
             format.js
         end
 
         # Send a Pusher notification
-        # Pusher['private-' + @notification.user_id.to_s].trigger('new_message', {:from => @notification.sender.name, :subject => @notification.content_trunc})
+        Pusher['private-' + @notification.user_id.to_s].trigger('new_message', {:from => @notification.sender.name, :notification_id => @notification.id})
 
       else
         case params[:notification][:ntype]
@@ -82,6 +82,13 @@ class NotificationsController < ApplicationController
         end
       end
     end
+  end
+
+  def popup
+    @notification = Notification.find(params[:id])
+
+    render layout: false
+
   end
 
   def read
