@@ -52,7 +52,7 @@ window.map_index_load_profile = (marker_id) ->
 
         # Code for 'close button'
         $("#map_index_user_profile_close").click ->
-          $("#map_index_container_user_profile").fadeOut "fast", ->
+          $("#map_index_container_user_profile").fadeOut "fast"
 
         # Modal Stuff!
         $("#modal_message, #modal_friendship_req, #modal_event").modal
@@ -87,7 +87,9 @@ window.map_index_load_profile = (marker_id) ->
 
 
 window.map_index_load_infobox = (marker_id) ->
-  # Show User Panel
+
+  # Close profile
+  $("#map_index_container_user_profile").fadeOut "fast"
 
   marker = map_index_map_markers[marker_id]
 
@@ -315,12 +317,12 @@ $(document).ready ->
 
       ######## PAGE LOAD:
 
-      #Pan
+      # Pan
       map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
       window.map_index_map_pan map_index_map_latlng_start
       
-      #Infowindow
-      window.map_index_map_marker_click map_index_map_marker_id_start
+      # Infowindow
+      window.map_index_load_profile map_index_map_marker_id_start
 
 
   map_index_map_marker_locate = (marker) ->

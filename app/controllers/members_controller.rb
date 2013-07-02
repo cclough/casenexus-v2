@@ -27,7 +27,6 @@ class MembersController < ApplicationController
 
     end
 
-    # Using scoped_search gem
     if users_scope
       @users = users_scope.search_for(params[:search]).paginate(per_page: 16, page: params[:page])
     end
