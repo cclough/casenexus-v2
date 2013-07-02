@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701142734) do
+ActiveRecord::Schema.define(:version => 20130702004840) do
 
   create_table "badges_sashes", :force => true do |t|
     t.integer  "badge_id"
@@ -291,6 +291,8 @@ ActiveRecord::Schema.define(:version => 20130701142734) do
     t.string   "time_zone",              :default => "UTC"
     t.integer  "degree_level"
     t.integer  "subject_id"
+    t.integer  "sash_id"
+    t.integer  "level",                  :default => 0
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

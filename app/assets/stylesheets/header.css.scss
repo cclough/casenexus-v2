@@ -33,6 +33,28 @@ $gray_Lightest: #f6f6f6;
   margin-right:15px;
 }
 
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+#header_user_points {
+  font-size:12px;
+  border:2px solid white;
+  padding:5px;
+  text-align:center;
+  color:white;
+  font-weight:bold;
+
+
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
+}
+
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
 
 
 
@@ -92,7 +114,9 @@ $gray_Lightest: #f6f6f6;
 
 
 
-
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
 
 
 
@@ -129,6 +153,11 @@ $gray_Lightest: #f6f6f6;
 
 
 
+
+/////////////////////////////////////////////
+//////// NOTIFICATIONS MENU /////////////////
+/////////////////////////////////////////////
+
 #header_menu_notifications_empty {
   height:150px;
   width:300px;
@@ -146,12 +175,12 @@ $gray_Lightest: #f6f6f6;
 }
 
 
-.header_menu_notifications_name{
+.header_menu_notifications_name {
   font-size: 14px;
-
 }
 
-.header_menu_notifications_title{
+
+.header_menu_notifications_title {
   font-size: 12px;
   font-weight:bold;
 }

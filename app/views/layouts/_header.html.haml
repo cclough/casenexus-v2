@@ -44,7 +44,8 @@
             %li
               = link_to summary_path do
                 = current_user.name
-                / = current_user.add_points(20)
+                %span#header_user_points
+                  = current_user.points
 
         - else
 
