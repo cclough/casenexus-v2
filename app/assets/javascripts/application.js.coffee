@@ -149,12 +149,22 @@ $(document).ready ->
 
         $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
           $("#modal_message_conversation").html data
+
+          $("#modal_message").modal("show")
+
           # scroll div
           $("#modal_message_conversation").animate
             scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
           , "fast"
-          $("#modal_message").modal("show")
 
+
+
+          $("#modal_message_submit_button").click ->
+            $("#application_spinner_container").show()
+            $('#modal_message_form').submit();
+
+
+          
   # The Ping updater! Could be a lot smoother, but for now o-k
   setInterval ->
     $.get "/online_panel", (data) ->

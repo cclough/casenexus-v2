@@ -32,7 +32,17 @@ $(function() {
 
         $.get("/notifications/menu", function(data){
           $("#header_nav_links_right_notifications").html(data);
+
+          // Animated Glow
+          var glow = $("#header_nav_icon_notifications")
+          setInterval(function(){
+            glow.hasClass('glow') ? glow.removeClass('glow') : glow.addClass('glow');
+          }, 500);
+
+
         });
+
+
 
       });
       
@@ -79,18 +89,18 @@ $(function() {
 
           $('#application_notify').html(data);
 
+          // Close Button Prime
           $("#application_notify_close").click(function(){
             $("#application_notify").fadeOut("fast");
           });
           
+          // Truncatables
           window.application_truncatables();
 
           $('#application_notify').fadeIn();
 
           setTimeout(function() {
-
             $('#application_notify').fadeOut();
-
           }, 20000);
 
         });

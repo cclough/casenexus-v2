@@ -10,7 +10,7 @@
   /       window.setTimeout("window.application_show_help(4)", 1000);
   /     });
 
-= form_for @case, id: "#cases_new_form", url: { action: :create } do |f|
+= form_for @case, id: "cases_new_form", url: { action: :create } do |f|
   = f.hidden_field :user_id
 
   = render 'shared/error_messages', object: @case

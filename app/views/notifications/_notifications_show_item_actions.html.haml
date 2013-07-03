@@ -1,7 +1,7 @@
 - case notifications_show_item.ntype
   - when "feedback"
-    = link_to '/cases/' + notifications_show_item.notificable.id.try(:to_s), class: "btn btn-inverse btn-small" do
-      Jump to case record
+    / = link_to '/cases/' + notifications_show_item.notificable.id.try(:to_s), class: "btn btn-inverse btn-small" do
+    Jump to case record
   - when "friendship_req"
     - if notifications_show_item.notificable
       - if notifications_show_item.notificable.status == Friendship::ACCEPTED

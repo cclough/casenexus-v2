@@ -1,5 +1,5 @@
 - notification = notification || @notification
-= form_for(notification, remote: true) do |f|
+= form_for(notification, remote: true, html: {id: "modal_message_form"}) do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
@@ -8,6 +8,7 @@
   .modal-body
 
     #modal_message_conversation
+    
 
     .spacer10
 
@@ -24,6 +25,10 @@
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "102"}
+    #modal_message_submit_button.btn.btn-inverse{tabindex: "102"}
       %i.icon-arrow-right.icon-white
       Send Message
+
+#application_spinner_container
+  #application_spinner
+    Sending
