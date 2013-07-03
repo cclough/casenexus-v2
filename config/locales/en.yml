@@ -9,6 +9,8 @@ en:
       user:
         password_digest: "Password"
         confirm_tac: "Terms & Conditions"
+      event:
+        book_id_partner: "Case"
     errors:
       models:
         user:

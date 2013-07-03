@@ -38,10 +38,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
-
+    @event.user = current_user
+    
     respond_to do |format|
 
-      if Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
+      if @event.valid? && Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
         format.js
         flash[:success] = "Appointment booked."
 
@@ -51,7 +52,7 @@ class EventsController < ApplicationController
 
         #   redirect_to summary_path
       else
-        @event.errors.add(:base, "You have filled in the form incorrectly")
+        # @event.errors.add(:base, "You have filled in the form incorrectly")
         format.js
       end
 
