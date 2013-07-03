@@ -26,9 +26,9 @@ module Merit
       ]
 
       # for interviewee
-      score 5, to: :user, :on => [
-        'cases#create'
-      ]
+      # score 5, to: :user, :on => [
+      #   'cases#create'
+      # ]
 
     end
   end
