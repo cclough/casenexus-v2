@@ -31,15 +31,15 @@ window.events_modal_rebless = ->
 
   window.modal_spinner_prime()
 
-
-$(document).ready ->
-  # Modal Stuff!
-
-
-  $("#modal_event").modal
-  	backdrop: false
-  	show: false
-
+window.events_calendar_rebless = ->
+  $(".events_calendar_event").click ->
+    if !($("#modal_event").hasClass("in"))
+      $(".modal").modal("hide")
+      event_id = $(this).data("id")
+      $.get "/events/" + event_id + "/edit", (data) ->
+        $("#modal_event").html data
+        window.events_modal_rebless()
+      $("#modal_event").modal("show")
 
   $("#events_calendar_new_button").click ->
     if !($("#modal_event").hasClass("in"))
@@ -49,11 +49,15 @@ $(document).ready ->
         window.events_modal_rebless()
       $("#modal_event").modal("show")
 
-  $(".events_calendar_event").click ->
-    if !($("#modal_event").hasClass("in"))
-      $(".modal").modal("hide")
-      event_id = $(this).data("id")
-      $.get "/events/" + event_id + "/edit", (data) ->
-        $("#modal_event").html data
-        window.events_modal_rebless()
-      $("#modal_event").modal("show")
+$(document).ready ->
+  # Modal Stuff!
+
+
+  $("#modal_event").modal
+  	backdrop: false
+  	show: false
+
+  window.events_calendar_rebless()
+
+
+

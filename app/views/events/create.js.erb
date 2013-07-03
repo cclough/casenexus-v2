@@ -20,5 +20,7 @@
 
 	});
 
-
+   $("#events_calendar_container").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
+   window.events_calendar_rebless();
+   
 <%- end %>

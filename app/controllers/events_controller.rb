@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   require 'icalendar'
 
   def index
-    # Identical to events/index
     @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
 
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
@@ -45,6 +44,11 @@ class EventsController < ApplicationController
       if Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
         format.js
         flash[:success] = "Appointment booked."
+
+        # Same as index - to update calendar
+        @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
+        @date = params[:date] ? Date.parse(params[:date]) : Date.today
+
         #   redirect_to summary_path
       else
         @event.errors.add(:base, "You have filled in the form incorrectly")
@@ -69,6 +73,11 @@ class EventsController < ApplicationController
       if Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
         flash[:success] = "Appointment amended. " + @event.partner.first_name + " has been notified."
         format.js
+
+        # Same as index - to update calendar
+        @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
+        @date = params[:date] ? Date.parse(params[:date]) : Date.today
+        
       else
         @event.errors.add(:base, "You have filled in the form incorrectly")
         format.js
