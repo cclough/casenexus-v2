@@ -51,7 +51,7 @@
           .span7
             Date:
           %span#cases_show_subnav_date
-            = @case.date.strftime("%a %d %b %Y %I:%M%p")
+            = @case.created_at.strftime("%a %d %b %Y %I:%M%p")
 
 
       .span13.pull-right

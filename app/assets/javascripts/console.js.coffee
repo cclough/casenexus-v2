@@ -127,7 +127,7 @@ $(document).ready ->
         $("#cases_new_book").html data
     else
       $("#cases_new_book").html ""
-
+      $("#console_index_pdfjs_iframe").attr "src", ""
 
   $("#console_index_subnav_select_friends").change ->
 
@@ -145,8 +145,6 @@ $(document).ready ->
         $.get "/books/" + book_id + "/show_small", (data) ->
           $("#cases_new_book").html data
 
-
-
       # change skypebutton
       $.get ("/console/skypebutton?friend_id=" + friend_id), (data) ->
       	$("#console_index_subnav_button_skype_container").html data
@@ -155,7 +153,8 @@ $(document).ready ->
       # Pdf button  
       console_index_subnav_sendpdf_check()
 
-
+    else
+      $("#console_index_feedback_frame").html ""
 
 
   # Prime the Timer
