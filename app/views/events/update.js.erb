@@ -1,8 +1,8 @@
 <%- if @event.errors.any? %>
 
-  $('#modal_event').html("<%= escape_javascript(render('edit_form')) %>");
+  $('#modal_event').html("<%= escape_javascript(render('shared/modal_event_edit_form')) %>");
 
-  summary_index_events_modal_rebless();
+  window.events_modal_rebless();
 
 <%- else %>
 

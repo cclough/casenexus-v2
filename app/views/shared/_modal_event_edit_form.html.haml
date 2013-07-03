@@ -45,15 +45,21 @@
           %option
             = options_from_collection_for_select(Book.all, "id", "title", @event.book_id_user)
 
-    .spacer10
-    .row
-      .span12
-        Case they want you to prepare:
-      .span.offset1
-        = @event.book_partner.title
+    - unless @event.book_id_partner.blank?
+      .spacer10
+      .row
+        .span12
+          Case they want you to prepare:
+        .span.offset1
+          = @event.book_partner.title
 
   .modal-footer
     .pull-left
       = link_to("Cancel Appointment", event_path(@event), method: :delete, class: "btn btn-inverse", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    = f.submit "Edit Appointment", class: "btn btn-inverse"
+    .modal_submit_button.btn.btn-inverse{tabindex: "102"}
+      %i.icon-arrow-right.icon-white
+      Amend Appointment
+
+#application_spinner_container
+  #application_spinner

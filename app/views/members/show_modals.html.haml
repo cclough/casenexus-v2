@@ -1,8 +1,7 @@
 #modal_message.modal.hide.fade
-  = render '/shared/modal_message_form'
   
 = render '/shared/modal_event'
 
 - if @friendship
   #modal_friendship_req.modal.hide.fade
-    = render '/friendships/request_form'
+    = render 'shared/modal_friendship_req_form'

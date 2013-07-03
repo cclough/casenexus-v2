@@ -1,12 +1,10 @@
 <%- if @event.errors.any? %>
 
-  $('#modal_event').html("<%= escape_javascript(render('new_event_form')) %>");
+  $('#modal_event').html("<%= escape_javascript(render('shared/modal_event_new_form')) %>");
 
-  summary_index_events_modal_rebless();
+  window.events_modal_rebless();
 
 <%- else %>
-
-  $("#events_calendar_container").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
 
 	$('#modal_event').modal('hide');
 
@@ -21,14 +19,6 @@
     }, 4000);
 
 	});
-
-
-
-  // load calendar again
-  $.get "/events/calendar", (data) ->
-    $("#events_calendar_container").html data
-
-
 
 
 <%- end %>

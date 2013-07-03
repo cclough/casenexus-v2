@@ -57,17 +57,32 @@ window.application_truncatables = () ->
 
 
 
+window.modal_spinner_prime = () ->
+
+  $("#application_spinner_container").css "display","none"
+
+  # Submit button loading animation and submit Prime
+  $(".modal_submit_button").click ->
+
+    $("#application_spinner_container").show()
+
+    $(this).closest("form").submit()
+
+
+
+
 window.modal_message_prime = () ->
   # Scroll div
   $("#modal_message_conversation").animate
     scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
   , "fast"
 
-  # Submit button loading animation and submit Prime
-  $("#modal_message_submit_button").click ->
-    $("#application_spinner_container").show()
-    $('#modal_message_form').submit();
+  # # Submit button loading animation and submit Prime
+  # $("#modal_message_submit_button").click ->
+  #   $("#application_spinner_container").show()
+  #   $('#modal_message_form').submit();
 
+  window.modal_spinner_prime()
 
 window.modal_message_show = (friend_id) ->
   
@@ -84,6 +99,12 @@ window.modal_message_show = (friend_id) ->
       window.modal_message_prime()
 
 
+
+window.application_container_online_prime = () ->
+  $(".application_container_online_item_menu_message").click ->
+
+    friend_id = $(this).data "friend_id"
+    window.modal_message_show(friend_id)
 
 
 
@@ -162,7 +183,7 @@ $(document).ready ->
     $(this).parents(".modal").on "show", ->
       $(".modal-footer").find("a, button").attr('disabled', false)
 
-
+  # Fade out any flash
   setTimeout ->
     $("#application_flash").fadeOut('fast');
   , 4000
@@ -172,18 +193,13 @@ $(document).ready ->
 
 
   # ONLINE PANEL STUFF
-
-  $(".application_container_online_item_menu_message").click ->
-
-    friend_id = $(this).data "friend_id"
-    window.modal_message_show(friend_id)
-
-
+  window.application_container_online_prime()
           
   # The Ping updater! Could be a lot smoother, but for now o-k
   setInterval ->
     $.get "/online_panel", (data) ->
       $("#application_container_online").html data
+      window.application_container_online_prime()
   , 30000
 
       

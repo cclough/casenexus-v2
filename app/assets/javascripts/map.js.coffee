@@ -26,7 +26,6 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 
-
       
 window.map_index_load_profile = (marker_id) ->
 
@@ -65,10 +64,15 @@ window.map_index_load_profile = (marker_id) ->
           window.modal_message_show(friend_id)
 
 
+
         $("#map_index_user_profile_button_friendrequest").click ->
           if !($("#modal_friendship_req").hasClass("in"))
             $(".modal").modal("hide")
             $("#modal_friendship_req").modal("show")
+
+            window.modal_spinner_prime()
+
+
 
         $("#map_index_user_profile_button_event").click ->
 
@@ -126,7 +130,9 @@ window.map_index_load_infobox = (marker_id) ->
         $("#map_index_user_infobox_button_friendrequest").click ->
           if !($("#modal_friendship_req").hasClass("in"))
             $(".modal").modal("hide")
+            window.modal_spinner_prime()
             $("#modal_friendship_req").modal("show")
+
 
         $("#map_index_user_infobox_button_event").click ->
 

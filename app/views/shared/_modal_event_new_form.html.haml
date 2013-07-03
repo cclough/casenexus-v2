@@ -65,6 +65,10 @@
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    = f.submit "Book Appointment", class: "btn btn-inverse"
+    .modal_submit_button.btn.btn-inverse{tabindex: "102"}
+      %i.icon-arrow-right.icon-white
+      Book Appointment
 
+#application_spinner_container
+  #application_spinner
     

@@ -29,6 +29,7 @@ window.events_modal_rebless = ->
   $("#events_new_datetime_input").change ->
     window.events_new_timezone_calcs()
 
+  window.modal_spinner_prime()
 
 
 $(document).ready ->

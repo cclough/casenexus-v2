@@ -33,7 +33,8 @@ class EventsController < ApplicationController
     @event = current_user.events.new
     @book_user = Book.find(params[:book_id_user]) if params[:book_id_user]
     @friend = User.find(params[:friend_id]) if params[:friend_id]
-    render layout: false
+
+    render partial: "shared/modal_event_new_form", layout: false
   end
 
   def create
@@ -56,7 +57,8 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    render layout: false
+
+    render partial: "shared/modal_event_edit_form", layout: false
   end
 
   def update
@@ -65,7 +67,7 @@ class EventsController < ApplicationController
     respond_to do |format|
 
       if Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
-        flash[:success] = "Appointment updated. " + @event.partner.first_name + " has been notified."
+        flash[:success] = "Appointment amended. " + @event.partner.first_name + " has been notified."
         format.js
       else
         @event.errors.add(:base, "You have filled in the form incorrectly")
