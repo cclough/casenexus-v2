@@ -482,7 +482,7 @@ if Rails.env == 'development'
       next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(
           interviewer_id: interviewer_id,
-          date: random_date(year_range: 2, year_latest: 0.5),
+          book_id: 1 + rand(30),
           subject: Faker::Lorem.sentence(5),
           source: Faker::Lorem.sentence(3),
 

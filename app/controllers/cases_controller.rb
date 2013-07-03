@@ -60,8 +60,7 @@ class CasesController < ApplicationController
     @case = @user.cases.build
 
 
-    render partial: "new", layout: false #, cases_clipped"
-
+    render partial: "new", layout: false
   end
 
   def create

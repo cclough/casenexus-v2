@@ -29,6 +29,12 @@ class BooksController < ApplicationController
     @comment = Comment.new
   end
 
+  def show_small
+    @book = Book.find(params[:id])
+
+    render partial: "show_small", layout:false
+  end
+
 private
 
   # For index book sorting

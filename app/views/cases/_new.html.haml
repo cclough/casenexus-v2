@@ -19,7 +19,7 @@
 
   = render 'shared/error_messages', object: @case
   .row
-    .span{style: "width:100%"}
+    .span.cases_new_expander
       .panel.dark
         .row
           .span16
@@ -29,12 +29,19 @@
               = @user.name
 
           .span16
-            = f.text_field :date, value: params[:date], placeholder: "Date of the case...", id: "cases_new_datepicker", 'data-date-format' => "dd/mm/yyyy", tabindex: "1", class: "span15"
             = f.text_field :source, placeholder: "Source...", tabindex: "2", class: "span15"
           .span
             = f.text_area :subject, value: params[:subject], placeholder: "Subject of the case...", tabindex: "3", id: "cases_new_subject", style: "width:100%"
 
-  .row#cases_new_guide.panel.darker.kill_top
+
+
+  .row#cases_new_book
+    - if @book
+      = render partial: 'show_small', locals: { book_id: @book.id }
+
+
+
+  .row#cases_new_guide.panel.darker
     .span11
       %span.cases_new_guide_num 1
       &#61; Low
@@ -52,7 +59,7 @@
       &#61; Exceptional
 
   .row    
-    .span{style: "width:100%"}
+    .span.cases_new_expander
       .cases_new_block_title
         Business Analytics
       .panel.dark.cases_new_block.kill_top
@@ -119,7 +126,7 @@
 
 
   .row    
-    .span{style: "width:100%"}
+    .span.cases_new_expander
       .cases_new_block_title
         Structure
       .panel.dark.cases_new_block.kill_top
@@ -190,7 +197,7 @@
 
 
   .row    
-    .span{style: "width:100%"}
+    .span.cases_new_expander
       .cases_new_block_title
         Interpersonal
       .panel.dark.cases_new_block.kill_top
@@ -267,5 +274,10 @@
 
   .row#cases_new_submit_panel
     = f.submit "Submit Feedback", class: "btn btn-large btn-inverse", tabindex: "10", id: "cases_new_submit_button"
+
+
+  / .row#cases_new_submit_panel
+  /   #cases_new_submit_button.btn.btn-large.btn-inverse{tabindex: "10"}
+  /     Submit Feedback
 
   .spacer40

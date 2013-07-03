@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702004840) do
+ActiveRecord::Schema.define(:version => 20130703182957) do
 
   create_table "badges_sashes", :force => true do |t|
     t.integer  "badge_id"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20130702004840) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id",                   :null => false
-    t.date     "date",                      :null => false
     t.text     "subject"
     t.string   "source"
     t.datetime "created_at",                :null => false
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130702004840) do
     t.integer  "stickingtostructure"
     t.integer  "announceschangedstructure"
     t.integer  "pushingtoconclusion"
+    t.integer  "book_id"
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"

@@ -1,6 +1,6 @@
 class Case < ActiveRecord::Base
 
-  attr_accessible :user, :user_id, :interviewer, :interviewer_id, :date, :subject, :source,
+  attr_accessible :user, :user_id, :interviewer, :interviewer_id, :subject, :source, :book_id,
                   :interpersonal_comment, :businessanalytics_comment, :structure_comment,
                   :recommendation1, :recommendation2, :recommendation3,
                   :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
@@ -21,9 +21,7 @@ class Case < ActiveRecord::Base
   validates :interviewer_id, presence: true, if: Proc.new { |c| c.interviewer.nil? }
   validates :interviewer, presence: true, if: Proc.new { |c| c.interviewer_id.nil? }
 
-  validates :date, presence: true
-
-  validates :subject, presence: true, length: { maximum: 500 }
+  validates :subject, length: { maximum: 500 }
   validates :source, length: { maximum: 100 }
 
   validates :quantitativebasics, presence: true,
@@ -315,9 +313,9 @@ class Case < ActiveRecord::Base
 
 
   def self.cases_analysis_chart_progress_data(user)
-    cases_analysis_chart_progress_data = user.cases.order('date asc').map { |c|
+    cases_analysis_chart_progress_data = user.cases.order('created_at asc').map { |c|
       { id: c.id,
-        date: c.date.strftime("%Y-%m-%d"),
+        date: c.created_at.strftime("%Y-%m-%d"),
         businessanalytics: c.businessanalytics_combined,
         structure: c.structure_combined,
         interpersonal: c.interpersonal_combined,
@@ -465,8 +463,7 @@ class Case < ActiveRecord::Base
     self.user.notifications.create(sender_id: self.interviewer_id,
                                    ntype: "feedback",
                                    content: self.subject,
-                                   notificable: self,
-                                   event_date: self.date)
+                                   notificable: self)
   end
 
 end

@@ -328,7 +328,10 @@ $blue_pastel: #98cdff;
 }
 
 
-
+//force 100%
+.cases_new_expander {
+  width:100%;
+}
 
 .cases_new_block {
   padding:3px;
@@ -562,6 +565,38 @@ $blue_pastel: #98cdff;
   font-weight:normal;
 }
 
+
+
+
+//////////////////////////////////////////
+
+
+#cases_new_book {
+  font-size:11px;
+}
+
+#cases_new_book_body {
+  width:352px;
+}
+
+#cases_new_book_image {
+  position:relative;
+  height:60px;
+  width:57px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  img {
+    max-width:55px;
+  
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
 
 /////////////////////////////////////////////////////////////////
 ////////////////////////// ANALYSIS /////////////////////////////

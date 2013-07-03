@@ -82,6 +82,7 @@ Casenexus::Application.routes.draw do
   # Library
   resources :books, only: [:index, :show] do
     resources :comments, only: [:index, :new, :create]
+    get :show_small, on: :member
   end
 
   # get "comments/index"
