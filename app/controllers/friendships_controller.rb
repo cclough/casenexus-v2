@@ -10,6 +10,13 @@ class FriendshipsController < ApplicationController
     @users = User.where("id != ?", current_user.id).all
   end
 
+  def modal_friendship_req_form
+    @user = User.find(params[:id])
+    @friendship = @user.notifications.build
+
+    render partial: "shared/modal_friendship_req_form", layout:false
+  end
+
   def create
     @friendship = Friendship.new(params[:friendship])
     @friendship.user_id = current_user.id

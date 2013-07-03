@@ -71,6 +71,9 @@ window.modal_spinner_prime = () ->
 
 
 
+
+
+
 window.modal_message_prime = () ->
   # Scroll div
   $("#modal_message_conversation").animate
@@ -91,12 +94,80 @@ window.modal_message_show = (friend_id) ->
     $.get "/notifications/modal_message_form?id=" + friend_id, (data) ->
       $("#modal_message").html data
 
-      # $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
-      #   $("#modal_message_conversation").html data
-
       $("#modal_message").modal("show")
 
       window.modal_message_prime()
+
+
+
+
+
+
+
+
+window.modal_event_new_show = (friend_id, book_id) ->
+
+  if !($("#modal_event").hasClass("in"))
+    $(".modal").modal("hide")
+
+  if friend_id && !book_id
+    url = "/events/new?friend_id=" + friend_id
+  else if book_id && !friend_id
+    url = "/events/new?book_id_user=" + book_id
+  else if friend_id && book_id
+    url = "/events/new?friend_id=" + friend_id + "&book_id_user=" + book_id
+  else
+    url = "/events/new"
+
+  $.get url, (data) ->
+    $("#modal_event").html data
+    window.modal_events_rebless()
+
+    if friend_id
+      $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+        $("#events_new_friend_timezone").html data
+
+    $("#modal_event").modal("show")
+
+    window.modal_spinner_prime()
+
+
+
+
+window.modal_events_new_timezone_calcs = ->
+
+  friend_id = $("#events_new_friend_select").val()
+  datetime = $("#events_new_datetime_input").val()
+  
+  if friend_id
+    $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+      $("#events_new_friend_timezone").html data
+  else
+    $("#events_new_friend_timezone").html("")
+
+  if friend_id && datetime
+    $.get "/events/user_timezone?user_id=" + friend_id+"&datetime="+datetime, (data) ->
+      $("#events_new_datetime_friend").html data
+  else
+    $("#events_new_datetime_friend").html("")
+
+window.modal_events_rebless = ->
+  $("#events_new_datetime_picker").datetimepicker
+    format: "dd MM yyyy - hh:ii"
+    minuteStep: 15
+    pickerPosition: 'bottom-left'    
+    showMeridian: true
+
+  $("#events_new_friend_select").change ->
+    window.modal_events_new_timezone_calcs()
+
+  $("#events_new_datetime_input").change ->
+    window.modal_events_new_timezone_calcs()
+
+  window.modal_spinner_prime()
+
+
+
 
 
 
@@ -128,6 +199,19 @@ $(document).ready ->
   # Tooltips throughout app
   $(".application_tooltip").tooltip()
 
+  # Placeholders
+  $("input, textarea").placeholder()
+
+  # Header search - only if not on map page
+  if typeof map_index_map_lat_start is "undefined"
+    $("#header_nav_panel_browse_search_form").on "submit", ->
+      window.location.href = "/map?search=" + $("#header_nav_panel_browse_search_field").val()
+
+  # Modals
+  $("#modal_contact, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
+    backdrop: false
+    show: false
+
   # Modal help checkbox
   $("#modal_help_checkbox").on 'change', ->
     page_id = $(this).attr("data-page_id")
@@ -137,36 +221,12 @@ $(document).ready ->
     else
       $.ajax("/members/" + user_id + "/show_help?act=check&page_id=" + page_id, type: 'PUT')
 
-  # Placeholders
-  $("input, textarea").placeholder()
-
-  # Header search - only if not on map page
-  if typeof map_index_map_lat_start is "undefined"
-    $("#header_nav_panel_browse_search_form").on "submit", ->
-      window.location.href = "/map?search=" + $("#header_nav_panel_browse_search_field").val()
-
-  # Modal help
-  $("#modal_help").modal
-    backdrop: false
-    show: false
-
   # Modal help link
   $("#header_link_help").click ->
     if !($("#modal_help").hasClass("in"))
       $(".modal").modal "hide"
       $("#modal_help").modal "show"
       window.ArrowNav.goTo 1
-
-  # Modal contact
-  $("#modal_contact").modal
-    backdrop: false
-    show: false
-
-  # Modal contact
-  $("#modal_message").modal
-    backdrop: false
-    show: false
-
 
   # Modal contact link
   $("#header_link_contact").click ->

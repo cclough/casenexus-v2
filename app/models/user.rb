@@ -46,6 +46,11 @@ class User < ActiveRecord::Base
   has_many :rejected_friends, through: :rejected_friendships, source: :friend
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
+  
+  # for vincent
+  has_many :not_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status is NULL", dependent: :destroy
+  has_many :not_friends, through: :not_friendships, source: :friend
+
 
   # Invitations
   has_many :invitations, dependent: :destroy
@@ -203,8 +208,6 @@ class User < ActiveRecord::Base
       where("last_online_at > ?", DateTime.now - 1.hour)
     end
 
-
-
     ### Lists for filters
 
     # Simple Filters
@@ -220,8 +223,8 @@ class User < ActiveRecord::Base
       completed.not_admin.online_today.order('last_online_at desc')
     end
 
-    def list_online_recently_notfriends
-      completed.not_admin.online_recently.order('last_online_at desc')
+    def list_online_recently_notfriends(user)
+      user.not_friends.completed.online_recently.order('last_online_at desc')
     end
 
     # Pulldown Filters

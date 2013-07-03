@@ -45,48 +45,29 @@ window.map_index_load_profile = (marker_id) ->
 
       $("#map_index_container_user_profile").show "fast"
 
-      # Load in modals to div then prime buttons
-      $.get "/members/" + marker.id + "/show_modals", (data) ->
-        $("#map_index_container_user_modals").html data
+      # Code for 'close button'
+      $("#map_index_user_profile_close").click ->
+        $("#map_index_container_user_profile").fadeOut "fast"
 
-        # Code for 'close button'
-        $("#map_index_user_profile_close").click ->
-          $("#map_index_container_user_profile").fadeOut "fast"
 
-        # Modal Stuff!
-        $("#modal_message, #modal_friendship_req, #modal_event").modal
-          backdrop: false
-          show: false
+      # Prime Button
+      $("#map_index_user_profile_button_message").click ->
+        friend_id = $(this).data "friend_id"
+        window.modal_message_show(friend_id,null)
 
-        # Prime Button
-        $("#map_index_user_profile_button_message").click ->
-          friend_id = $(this).data "friend_id"
-          window.modal_message_show(friend_id)
+      $("#map_index_user_profile_button_event").click ->          
+        friend_id = $(this).data("friend_id")
+        window.modal_event_new_show(friend_id,null)
 
 
 
-        $("#map_index_user_profile_button_friendrequest").click ->
-          if !($("#modal_friendship_req").hasClass("in"))
-            $(".modal").modal("hide")
-            $("#modal_friendship_req").modal("show")
+      $("#map_index_user_profile_button_friendrequest").click ->
+        if !($("#modal_friendship_req").hasClass("in"))
+          $(".modal").modal("hide")
+          $("#modal_friendship_req").modal("show")
 
-            window.modal_spinner_prime()
+          window.modal_spinner_prime()
 
-
-
-        $("#map_index_user_profile_button_event").click ->
-
-          if !($("#modal_event").hasClass("in"))
-            $(".modal").modal("hide")
-
-            friend_id = $(this).data("friend_id")
-
-            $.get "/events/new?friend_id=" + friend_id, (data) ->
-              $("#modal_event").html data
-              window.events_modal_rebless()
-              $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
-                $("#events_new_friend_timezone").html data
-                $("#modal_event").modal("show")
 
 
 
@@ -105,50 +86,30 @@ window.map_index_load_infobox = (marker_id) ->
       boxcontent.innerHTML = data
 
       window.infobox.setContent boxcontent
+
+      # Code for 'close button'
+      $("#map_index_user_infobox_close").click ->
+        $("#map_index_container_user_infobox").fadeOut "fast", ->
+          window.infobox.close()
+
+      # Prime Button
+      $("#map_index_user_infobox_button_message").click ->
+        friend_id = $(this).data "friend_id"
+        window.modal_message_show(friend_id)
+
+      $("#map_index_user_infobox_button_event").click ->
+        friend_id = $(this).data("friend_id")
+        window.modal_event_new_show(friend_id)
+
+      $("#map_index_user_infobox_button_friendrequest").click ->
+        if !($("#modal_friendship_req").hasClass("in"))
+          $(".modal").modal("hide")
+          window.modal_spinner_prime()
+          $("#modal_friendship_req").modal("show")
+
+
+
       window.infobox.open map, marker
-
-
-      # Load in modals to div then prime buttons
-      $.get "/members/" + marker.id + "/show_modals", (data) ->
-        $("#map_index_container_user_modals").html data
-
-        # Code for 'close button'
-        $("#map_index_user_infobox_close").click ->
-          $("#map_index_container_user_infobox").fadeOut "fast", ->
-            window.infobox.close()
-
-        # Modal Stuff!
-        $("#modal_message, #modal_friendship_req, #modal_event").modal
-          backdrop: false
-          show: false
-
-        # Prime Button
-        $("#map_index_user_infobox_button_message").click ->
-          friend_id = $(this).data "friend_id"
-          window.modal_message_show(friend_id)
-
-        $("#map_index_user_infobox_button_friendrequest").click ->
-          if !($("#modal_friendship_req").hasClass("in"))
-            $(".modal").modal("hide")
-            window.modal_spinner_prime()
-            $("#modal_friendship_req").modal("show")
-
-
-        $("#map_index_user_infobox_button_event").click ->
-
-          if !($("#modal_event").hasClass("in"))
-            $(".modal").modal("hide")
-
-            friend_id = $(this).data("friend_id")
-
-            $.get "/events/new?friend_id=" + friend_id, (data) ->
-              $("#modal_event").html data
-              window.events_modal_rebless()
-              $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
-                $("#events_new_friend_timezone").html data
-                $("#modal_event").modal("show")
-
-
 
 
 
@@ -186,6 +147,9 @@ window.map_index_users_search = ->
 
 
 $(document).ready ->
+
+
+
   # Update the list of users
   map_index_users_updatelist()
 
@@ -197,6 +161,10 @@ $(document).ready ->
     map_index_users_updatelist()  if e.which is 13
 
 
+  # Modal Stuff!
+  $("#modal_message, #modal_friendship_req, #modal_event").modal
+    backdrop: false
+    show: false
 
 
   # For Pull Downs

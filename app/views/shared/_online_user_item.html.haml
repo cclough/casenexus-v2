@@ -25,6 +25,5 @@
           
 - else
   .pull-right
-    = link_to "notifications/1" do
-      .btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + "as a contact", rel: "tooltip", "data-placement"=>"bottom"}
-        %i.icon-envelope
+    .application_container_online_item_menu_addfriend.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + "as a contact", rel: "tooltip", "data-placement"=>"bottom"}
+      %i.icon-plus
