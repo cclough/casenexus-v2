@@ -15,21 +15,23 @@
       %i.icon-caret-right
 
 
+    - if current_user.case_count_viewee >= 2
+      #cases_resultstable_period_container.btn-group.pull-right
+        .btn.btn-inverse.btn-small.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
+          1
+        .btn.btn-inverse.btn-small.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
+          2
+        - if current_user.case_count_viewee >= 5      
+          .btn.btn-inverse.btn-small.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
+            5
+        - if current_user.case_count_viewee >= 10      
+          .btn.btn-inverse.btn-small.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
+            10
 
-    #cases_resultstable_period_container.btn-group.pull-right
-      .btn.btn-inverse.btn-small.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
-        1
-      .btn.btn-inverse.btn-small.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
-        2
-      .btn.btn-inverse.btn-small.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
-        5
-      .btn.btn-inverse.btn-small.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
-        10
 
-
-    .span6.offset1.cases_resultstable_label.pull-right
-      Period
-      %i.icon-caret-right
+      .span6.offset1.cases_resultstable_label.pull-right
+        Period
+        %i.icon-caret-right
 
 
 

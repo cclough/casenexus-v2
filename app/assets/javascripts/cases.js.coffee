@@ -523,7 +523,11 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   legend.valueWidth = 5
   legend.switchable = true
   chart_analysis_radar.addLegend legend
-  
+
+  # FADE
+  $("#cases_analysis_chart_radar").fadeIn "fast"
+  $("#cases_analysis_chart_radar_buttongroup").fadeIn "fast"
+
   # WRITE
   chart_analysis_radar.write "cases_analysis_chart_radar"
 
@@ -553,7 +557,7 @@ window.cases_analysis_chart_country_draw = () ->
 
     chart.write "cases_analysis_chart_country"
 
-
+    $("#cases_analysis_chart_country").fadeIn "fast"
 
 
 window.cases_analysis_chart_university_draw = () ->
@@ -573,7 +577,7 @@ window.cases_analysis_chart_university_draw = () ->
 
     chart.write "cases_analysis_chart_university"
 
-
+    $("#cases_analysis_chart_university").fadeIn "fast"
 
 #////////////////////////////////////////////////////////
 # Table - Bars //////////////////////////////////////////

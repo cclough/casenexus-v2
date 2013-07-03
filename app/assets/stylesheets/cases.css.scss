@@ -595,18 +595,20 @@ $blue_pastel: #98cdff;
   text-align:center;
 }
 #cases_analysis_chart_radar_buttongroup {
+  display:none;
   margin-top:-28px;
 }
 
 
 #cases_analysis_chart_radar {
+  display:none;
   padding-left:2px;
   height:450px;
 }
 
 #cases_analysis_chart_radar_empty {
   height:222px;
-  width:410px;
+  width:100%;
   display:none;
   padding-top:80px;
   padding-left:0px;
@@ -617,7 +619,7 @@ $blue_pastel: #98cdff;
 
 #cases_analysis_chart_radar_empty_icon {
   font-size:100px;
-  margin-bottom:40px; 
+  margin-bottom:30px; 
 }
 
 
@@ -642,7 +644,20 @@ $blue_pastel: #98cdff;
 }
 
 
+#cases_analysis_section_table_empty {
+  height:222px;
+  width:100%;
+  padding-top:80px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
 
+#cases_analysis_section_table_empty_icon {
+  font-size:100px;
+  margin-bottom:30px; 
+}
 
 #cases_resultstable_table {
   width:100%;
@@ -711,14 +726,15 @@ $blue_pastel: #98cdff;
 
 #cases_analysis_chart_country {
   height:300px;
+  display:none;
 }
 
 
 #cases_analysis_chart_country_empty {
   height:222px;
-  width:410px;
+  width:100%;
   display:none;
-  padding-top:80px;
+  padding-top:70px;
   padding-left:0px;
   padding-right:0px;
   font-weight:bold;
@@ -727,7 +743,7 @@ $blue_pastel: #98cdff;
 
 #cases_analysis_chart_country_empty_icon {
   font-size:100px;
-  margin-bottom:40px; 
+  margin-bottom:30px; 
 }
 
 
@@ -735,14 +751,15 @@ $blue_pastel: #98cdff;
 
 #cases_analysis_chart_university {
   height:300px;
+  display:none;
 }
 
 
 #cases_analysis_chart_university_empty {
   height:222px;
-  width:410px;
+  width:100%;
   display:none;
-  padding-top:80px;
+  padding-top:70px;
   padding-left:0px;
   padding-right:0px;
   font-weight:bold;
@@ -751,7 +768,7 @@ $blue_pastel: #98cdff;
 
 #cases_analysis_chart_university_empty_icon {
   font-size:100px;
-  margin-bottom:40px; 
+  margin-bottom:30px; 
 }
 
 
@@ -848,7 +865,7 @@ $blue_pastel: #98cdff;
 
 
 #cases_analysis_comments_empty {
-  width: 443px;
+  width: 100%;
   padding-top:40px;
   padding-left:0px;
   padding-right:0px;

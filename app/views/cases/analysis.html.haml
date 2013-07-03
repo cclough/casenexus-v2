@@ -56,7 +56,7 @@
         var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
 
         $(document).ready(function(){  
-          if (cases_analysis_chart_case_count == 0) {
+          if (cases_analysis_chart_case_count < 2) {
             $("#cases_analysis_chart_progress_empty").fadeIn("fast");
           } else {
             window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
@@ -76,7 +76,7 @@
           #cases_analysis_chart_progress_empty
             #cases_analysis_chart_progress_empty_icon
               %i.icon-bar-chart
-            %p You must do at least one case, 
+            %p You must do at least 2 cases, 
             %p before this chart will work
 
 
@@ -97,12 +97,17 @@
     #cases_analysis_section_table.cases_analysis_section
       .panel.dark.kill_all
         .row
+          - if current_user.case_count_viewee > 0
+            = render "results_table_form"
 
-          = render "results_table_form"
-
-          #cases_analysis_section_table_table_container
-            = render "results_table"
-
+            #cases_analysis_section_table_table_container
+              = render "results_table"
+          - else
+            #cases_analysis_section_table_empty
+              #cases_analysis_section_table_empty_icon
+                %i.icon-bar-chart
+              %p You must do at least 1 case, 
+              %p before this table will work
 
 
 
@@ -122,11 +127,11 @@
 
 
         $(document).ready(function(){
-          // if (cases_analysis_chart_case_count == 0) {
-          //   $("#cases_analysis_chart_radar_empty").fadeIn("fast");
-          // } else {
+          if (cases_analysis_chart_case_count == 0) {
+            $("#cases_analysis_chart_radar_empty").fadeIn("fast");
+          } else {
             window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
-          //}
+          }
         });
         
 
@@ -175,7 +180,7 @@
 
 
         $(document).ready(function(){
-          if (cases_analysis_chart_case_count == 0) {
+          if (cases_analysis_chart_case_count < 2) {
             $("#cases_analysis_chart_country_empty").fadeIn("fast");
             $("#cases_analysis_chart_university_empty").fadeIn("fast");
           } else {
@@ -200,7 +205,7 @@
           #cases_analysis_chart_country_empty
             #cases_analysis_chart_country_empty_icon
               %i.icon-bar-chart
-            %p You must do at least one case, 
+            %p You must do at least two cases, 
             %p before this chart will work
 
 
@@ -216,7 +221,7 @@
           #cases_analysis_chart_university_empty
             #cases_analysis_chart_university_empty_icon
               %i.icon-bar-chart
-            %p You must do at least one case, 
+            %p You must do at least two cases, 
             %p before this chart will work
 
 
