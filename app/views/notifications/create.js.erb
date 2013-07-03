@@ -3,8 +3,9 @@
 <%- else %>
     <%- if @notification.errors.any? %>
 
-        // For Map
         $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
+
+        window.modal_message_prime();
 
     <%- else %>
 

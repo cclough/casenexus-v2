@@ -423,10 +423,18 @@ a:hover {
 
 /* For views/shared/_error_messages - is this used for all forms? */
 #application_error_explanation {
+  position:absolute;
+  top:40px;
+  z-index:10;
+
+  width:500px;
+  left:50%;
+  margin-left:-250px;
+
   color:#ff5252;
   font-size:11px;
   ul {
-    margin: 15px 15px 15px 15px;
+    margin: 0px 15px 0px 15px;
   }
 }
 

@@ -1,5 +1,5 @@
 - notification = notification || @notification
-= form_for(notification, remote: true) do |f|
+= form_for(notification, remote: true, html: {id: "modal_message_form"}) do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
@@ -7,14 +7,15 @@
 
   .modal-body
 
-    %p
-      Contact this user
+    #modal_message_conversation
+      = render partial: 'notifications/conversation', locals: { friend_id: @user.id }
+    .spacer10
 
     #flash_notifications
       = render 'shared/error_messages', object: @notification
 
     %div
-      = f.text_area :content, placeholder: "Send message...", tabindex: "101", class: "modal_textarea"
+      = f.text_area :content, placeholder: "Send message...", tabindex: "101", class: "modal_textarea", id: "modal_message_textarea"
 
       = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
       = f.hidden_field :user_id, value: @user.id
@@ -23,6 +24,10 @@
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    %button.btn.btn-inverse{href: "#", type: "submit", tabindex: "102"}
+    #modal_message_submit_button.btn.btn-inverse{tabindex: "102"}
       %i.icon-arrow-right.icon-white
       Send Message
+
+#application_spinner_container
+  #application_spinner
+    Sending

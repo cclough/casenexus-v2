@@ -79,7 +79,7 @@
             Contact
           .row
             .span
-              = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_profile_button_message", class: "btn btn-inverse btn-small"
+              = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_profile_button_message", class: "btn btn-inverse btn-small", "data-friend_id" => @user.id
 
             / - if Notification.history(current_user, @user).count > 0
             /   .row

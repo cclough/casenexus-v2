@@ -54,6 +54,41 @@ window.application_truncatables = () ->
     multiline: false
 
 
+
+
+
+window.modal_message_prime = () ->
+  # Scroll div
+  $("#modal_message_conversation").animate
+    scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
+  , "fast"
+
+  # Submit button loading animation and submit Prime
+  $("#modal_message_submit_button").click ->
+    $("#application_spinner_container").show()
+    $('#modal_message_form').submit();
+
+
+window.modal_message_show = (friend_id) ->
+  
+  if !($("#modal_message").hasClass("in"))
+
+    $.get "/notifications/modal_message_form?id=" + friend_id, (data) ->
+      $("#modal_message").html data
+
+      # $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
+      #   $("#modal_message_conversation").html data
+
+      $("#modal_message").modal("show")
+
+      window.modal_message_prime()
+
+
+
+
+
+
+
 $(document).ready ->
 
   # Jquery truncate
@@ -140,28 +175,8 @@ $(document).ready ->
 
   $(".application_container_online_item_menu_message").click ->
 
-    if !($("#modal_message").hasClass("in"))
-
-      friend_id = $(this).data "friend_id"
-
-      $.get "/notifications/new_message_form?id=" + friend_id, (data) ->
-        $("#modal_message").html data
-
-        $.get "/notifications/conversation?style=white&id=" + friend_id, (data) ->
-          $("#modal_message_conversation").html data
-
-          $("#modal_message").modal("show")
-
-          # scroll div
-          $("#modal_message_conversation").animate
-            scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
-          , "fast"
-
-
-
-          $("#modal_message_submit_button").click ->
-            $("#application_spinner_container").show()
-            $('#modal_message_form').submit();
+    friend_id = $(this).data "friend_id"
+    window.modal_message_show(friend_id)
 
 
           
@@ -219,5 +234,6 @@ $(document).ready ->
           $("nav .arrow").css left: left_margin - 8
 
     window.ArrowNav.init()
+
 
 

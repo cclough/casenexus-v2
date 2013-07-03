@@ -61,9 +61,9 @@ window.map_index_load_profile = (marker_id) ->
 
         # Prime Button
         $("#map_index_user_profile_button_message").click ->
-          if !($("#modal_message").hasClass("in"))
-            $(".modal").modal("hide")
-            $("#modal_message").modal("show")
+          friend_id = $(this).data "friend_id"
+          window.modal_message_show(friend_id)
+
 
         $("#map_index_user_profile_button_friendrequest").click ->
           if !($("#modal_friendship_req").hasClass("in"))
@@ -120,9 +120,8 @@ window.map_index_load_infobox = (marker_id) ->
 
         # Prime Button
         $("#map_index_user_infobox_button_message").click ->
-          if !($("#modal_message").hasClass("in"))
-            $(".modal").modal("hide")
-            $("#modal_message").modal("show")
+          friend_id = $(this).data "friend_id"
+          window.modal_message_show(friend_id)
 
         $("#map_index_user_infobox_button_friendrequest").click ->
           if !($("#modal_friendship_req").hasClass("in"))

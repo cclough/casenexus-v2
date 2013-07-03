@@ -40,18 +40,14 @@ class NotificationsController < ApplicationController
   def conversation
     @id = params[:id]
 
-    @sender = User.find(@id)
-
-    @notifications = Notification.history(current_user, @sender)
-
     render partial: "conversation", layout: false
   end
 
-  def new_message_form
+  def modal_message_form
     @user = User.find(params[:id])
     @notification = @user.notifications.build
 
-    render layout:false
+    render partial: "shared/modal_message_form", layout:false
   end
 
   def create
