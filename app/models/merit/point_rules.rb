@@ -21,9 +21,9 @@ module Merit
       #
 
       # for interviewer
-      score 20, to: :case_creator, :on => [
-        'cases#create'
-      ]
+      # score 20, to: :case_creator, :on => [
+      #   'cases#create'
+      # ]
 
       # for interviewee
       # score 5, to: :user, :on => [

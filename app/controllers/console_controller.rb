@@ -8,7 +8,7 @@ class ConsoleController < ApplicationController
 		@friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
 		
 		@friends = current_user.accepted_friends
-    	@books = Book.where(btype: "case")
+    @books = Book.where(btype: "case")
 	end
 
 	# PDF JS

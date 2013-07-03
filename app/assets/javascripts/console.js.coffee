@@ -125,18 +125,22 @@ $(document).ready ->
 
   $("#console_index_subnav_select_friends").change ->
 
+    friend_id = $(this).val()
+
     if $(this).val()
+
     	# change feedback form
-      form_for_friend = "/cases/new?user_id=" + $(this).val()
-      $("#console_index_feedback_iframe").attr "src", form_for_friend
-
-
+      $.get "/cases/new?user_id=" + friend_id, (data) ->
+        $("#console_index_feedback_frame").html data
+        window.cases_new_prime()
 
       # change skypebutton
-      $.get ("/console/skypebutton?friend_id=" + $(this).val()), (data) ->
+      $.get ("/console/skypebutton?friend_id=" + friend_id), (data) ->
       	$("#console_index_subnav_button_skype_container").html data
-
+      
       $("#console_index_subnav_button_skype").tooltip()
+
+      # Pdf button  
       console_index_subnav_sendpdf_check()
 
 

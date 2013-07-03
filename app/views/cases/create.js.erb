@@ -1,0 +1,20 @@
+<%- if params[:page_reload] == "true" %>
+
+    window.location = window.location;
+
+<%- else %>
+
+    <%- if @case.errors.any? %>
+
+        $('#console_index_feedback_frame').html('<%= escape_javascript(render partial: 'cases/new') %>');
+
+        window.cases_new_prime();
+
+    <%- else %>
+
+        $(window.location.replace("/map"))
+
+    <%- end %>
+
+<%- end %>
+

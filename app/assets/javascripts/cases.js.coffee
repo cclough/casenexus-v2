@@ -1,4 +1,123 @@
 
+#///////////////////////////////////////////////////////////////
+#/////////////////////////// NEW ///////////////////////////////
+#///////////////////////////////////////////////////////////////
+
+window.cases_new_prime = () ->
+
+  $("#application_error_explanation").click ->
+    $(this).fadeOut "fast"
+
+  $("#cases_new_datepicker").datetimepicker
+    format: "dd MM yyyy - hh:ii"
+    showMeridian: true
+    pickerPosition: 'bottom-left'
+    minuteStep: 15
+  # $("#cases_new_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+   # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
+
+  $("[name=\"case[businessanalytics_comment]\"]").wysihtml5
+    emphasis: false #Italics, bold, etc. Default true
+    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
+    link: false #Button to insert a link. Default true
+    image: false #Button to insert an image. Default true
+
+  $("[name=\"case[structure_comment]\"]").wysihtml5
+    emphasis: false #Italics, bold, etc. Default true
+    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
+    link: false #Button to insert a link. Default true
+    image: false #Button to insert an image. Default true
+
+  $("[name=\"case[interpersonal_comment]\"]").wysihtml5
+    emphasis: false #Italics, bold, etc. Default true
+    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
+    link: false #Button to insert a link. Default true
+    image: false #Button to insert an image. Default true
+
+  # Score selectors!
+  $(".cases_new_scoreselector_button").click ->
+    score = $(this).data("score")
+    criteria = $(this).data("criteria")
+
+    # change value of input
+    $("#cases_new_score_input_" + criteria).val(score)
+
+    # update category score
+    cases_new_calculatecategoryscore($(this).attr("data-category"));
+
+    # make active
+    $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
+    $(this).addClass("active")
+
+
+  # Popovers
+  $(".cases_new_criteria_popover").hover (->
+    $(this).popover "show"
+  ), ->
+    $(this).popover "hide"
+
+
+  cases_new_calculatecategoryscore = (category) ->
+    if category is "businessanalytics"
+      if $("#cases_new_score_input_quantitativebasics").val()
+        category_score_1 = parseInt($("#cases_new_score_input_quantitativebasics").val())
+      else
+        category_score_1 = 0
+      if $("#cases_new_score_input_problemsolving").val()
+        category_score_2 = parseInt($("#cases_new_score_input_problemsolving").val())
+      else
+        category_score_2 = 0
+      if $("#cases_new_score_input_prioritisation").val()
+        category_score_3 = parseInt($("#cases_new_score_input_prioritisation").val())
+      else
+        category_score_3 = 0
+      if $("#cases_new_score_input_sanitychecking").val()
+        category_score_4 = parseInt($("#cases_new_score_input_sanitychecking").val())
+      else
+        category_score_4 = 0
+      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
+      $("#cases_new_block_circle_text_businessanalytics").html category_score
+
+    else if category is "structure"
+      if $("#cases_new_score_input_approachupfront").val()
+        category_score_1 = parseInt($("#cases_new_score_input_approachupfront").val())
+      else
+        category_score_1 = 0
+      if $("#cases_new_score_input_stickingtostructure").val()
+        category_score_2 = parseInt($("#cases_new_score_input_stickingtostructure").val())
+      else
+        category_score_2 = 0
+      if $("#cases_new_score_input_announceschangedstructure").val()
+        category_score_3 = parseInt($("#cases_new_score_input_announceschangedstructure").val())
+      else
+        category_score_3 = 0
+      if $("#cases_new_score_input_pushingtoconclusion").val()
+        category_score_4 = parseInt($("#cases_new_score_input_pushingtoconclusion").val())
+      else
+        category_score_4 = 0
+      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
+      $("#cases_new_block_circle_text_structure").html category_score
+
+    else if category is "interpersonal"
+      if $("#cases_new_score_input_rapport").val()
+        category_score_1 = parseInt($("#cases_new_score_input_rapport").val())
+      else
+        category_score_1 = 0
+      if $("#cases_new_score_input_articulation").val()
+        category_score_2 = parseInt($("#cases_new_score_input_articulation").val())
+      else
+        category_score_2 = 0
+      if $("#cases_new_score_input_concision").val()
+        category_score_3 = parseInt($("#cases_new_score_input_concision").val())
+      else
+        category_score_3 = 0
+      if $("#cases_new_score_input_askingforinformation").val()
+        category_score_4 = parseInt($("#cases_new_score_input_askingforinformation").val())
+      else
+        category_score_4 = 0
+      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
+      $("#cases_new_block_circle_text_interpersonal").html category_score
+
 
 #////////////////////////////////////////////////////
 #////////////////////  SHOW   ///////////////////////
@@ -666,117 +785,7 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 
 
-  $("#cases_new_datepicker").datetimepicker
-    format: "dd MM yyyy - hh:ii"
-    showMeridian: true
-    pickerPosition: 'bottom-left'
-    minuteStep: 15
-  # $("#cases_new_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
-   # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
-
-  $("[name=\"case[businessanalytics_comment]\"]").wysihtml5
-    emphasis: false #Italics, bold, etc. Default true
-    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
-    link: false #Button to insert a link. Default true
-    image: false #Button to insert an image. Default true
-
-  $("[name=\"case[structure_comment]\"]").wysihtml5
-    emphasis: false #Italics, bold, etc. Default true
-    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
-    link: false #Button to insert a link. Default true
-    image: false #Button to insert an image. Default true
-
-  $("[name=\"case[interpersonal_comment]\"]").wysihtml5
-    emphasis: false #Italics, bold, etc. Default true
-    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
-    link: false #Button to insert a link. Default true
-    image: false #Button to insert an image. Default true
-
-  # Score selectors!
-  $(".cases_new_scoreselector_button").click ->
-    score = $(this).data("score")
-    criteria = $(this).data("criteria")
-
-    # change value of input
-    $("#cases_new_score_input_" + criteria).val(score)
-
-    # update category score
-    cases_new_calculatecategoryscore($(this).attr("data-category"));
-
-    # make active
-    $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
-    $(this).addClass("active")
-
-
-  # Popovers
-  $(".cases_new_criteria_popover").hover (->
-    $(this).popover "show"
-  ), ->
-    $(this).popover "hide"
-
-
-  cases_new_calculatecategoryscore = (category) ->
-    if category is "businessanalytics"
-      if $("#cases_new_score_input_quantitativebasics").val()
-        category_score_1 = parseInt($("#cases_new_score_input_quantitativebasics").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_problemsolving").val()
-        category_score_2 = parseInt($("#cases_new_score_input_problemsolving").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_prioritisation").val()
-        category_score_3 = parseInt($("#cases_new_score_input_prioritisation").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_sanitychecking").val()
-        category_score_4 = parseInt($("#cases_new_score_input_sanitychecking").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_businessanalytics").html category_score
-
-    else if category is "structure"
-      if $("#cases_new_score_input_approachupfront").val()
-        category_score_1 = parseInt($("#cases_new_score_input_approachupfront").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_stickingtostructure").val()
-        category_score_2 = parseInt($("#cases_new_score_input_stickingtostructure").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_announceschangedstructure").val()
-        category_score_3 = parseInt($("#cases_new_score_input_announceschangedstructure").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_pushingtoconclusion").val()
-        category_score_4 = parseInt($("#cases_new_score_input_pushingtoconclusion").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_structure").html category_score
-
-    else if category is "interpersonal"
-      if $("#cases_new_score_input_rapport").val()
-        category_score_1 = parseInt($("#cases_new_score_input_rapport").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_articulation").val()
-        category_score_2 = parseInt($("#cases_new_score_input_articulation").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_concision").val()
-        category_score_3 = parseInt($("#cases_new_score_input_concision").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_askingforinformation").val()
-        category_score_4 = parseInt($("#cases_new_score_input_askingforinformation").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_interpersonal").html category_score
-
-
+  window.cases_new_prime()
 
 #///////////////////////////////////////////////////////////////
 #///////////////////////// ANALYSIS ////////////////////////////

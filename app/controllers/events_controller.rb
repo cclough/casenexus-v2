@@ -49,10 +49,7 @@ class EventsController < ApplicationController
         # Same as index - to update calendar
         @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
         @date = params[:date] ? Date.parse(params[:date]) : Date.today
-
-        #   redirect_to summary_path
       else
-        # @event.errors.add(:base, "You have filled in the form incorrectly")
         format.js
       end
 
@@ -71,7 +68,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
 
-      if Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
+      if @event.valid? && Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
         flash[:success] = "Appointment amended. " + @event.partner.first_name + " has been notified."
         format.js
 
@@ -80,7 +77,6 @@ class EventsController < ApplicationController
         @date = params[:date] ? Date.parse(params[:date]) : Date.today
         
       else
-        @event.errors.add(:base, "You have filled in the form incorrectly")
         format.js
       end
 

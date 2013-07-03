@@ -47,17 +47,20 @@ class CasesController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
+
     unless Friendship.friendship(current_user, @user)
       flash[:error] = "You are not friend with #{@user.name}"
       redirect_to map_path and return
     end
+
     if params[:subject] then
       @subject = params[:subject]
     end
 
     @case = @user.cases.build
 
-    render layout: "cases_clipped"
+
+    render partial: "new", layout: false #, cases_clipped"
 
   end
 
@@ -67,14 +70,23 @@ class CasesController < ApplicationController
     @case.user_id = user_id
     @case.interviewer = current_user
 
-    if @case.save
-      flash[:success] = 'Feedback Sent'
-      redirect_to map_path
-    else
-      @user = @case.user
-      render 'new', layout: "cases_clipped"
+
+    respond_to do |format|
+
+      if @case.save
+        flash[:success] = 'Feedback sent successfully to ' + @case.user.first_name
+        #redirect_to map_path
+        format.js #for table form
+      else
+        @user = @case.user
+        format.js #for table form
+        #render 'new', layout: "cases_clipped"
+      end
+
     end
+
   end
+
 
   def analysis
 

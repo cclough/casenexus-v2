@@ -11,12 +11,6 @@ window.events_calendar_rebless = ->
   $("#events_calendar_new_button").click ->
     window.modal_event_new_show(null,null)
 
-    # if !($("#modal_event").hasClass("in"))
-    #   $(".modal").modal("hide")
-    #   $.get "/events/new", (data) ->
-    #     $("#modal_event").html data
-    #     window.modal_events_rebless()
-    #   $("#modal_event").modal("show")
 
 $(document).ready ->
   # Modal Stuff!

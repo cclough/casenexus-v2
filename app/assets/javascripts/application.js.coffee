@@ -129,9 +129,6 @@ window.modal_event_new_show = (friend_id, book_id) ->
 
     $("#modal_event").modal("show")
 
-    window.modal_spinner_prime()
-
-
 
 
 window.modal_events_new_timezone_calcs = ->
@@ -152,6 +149,7 @@ window.modal_events_new_timezone_calcs = ->
     $("#events_new_datetime_friend").html("")
 
 window.modal_events_rebless = ->
+
   $("#events_new_datetime_picker").datetimepicker
     format: "dd MM yyyy - hh:ii"
     minuteStep: 15
@@ -256,11 +254,11 @@ $(document).ready ->
   window.application_container_online_prime()
           
   # The Ping updater! Could be a lot smoother, but for now o-k
-  setInterval ->
-    $.get "/online_panel", (data) ->
-      $("#application_container_online").html data
-      window.application_container_online_prime()
-  , 30000
+  # setInterval ->
+  #   $.get "/online_panel", (data) ->
+  #     $("#application_container_online").html data
+  #     window.application_container_online_prime()
+  # , 30000
 
       
 

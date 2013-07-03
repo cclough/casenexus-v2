@@ -10,8 +10,12 @@
   /       window.setTimeout("window.application_show_help(4)", 1000);
   /     });
 
-= form_for @case, id: "cases_new_form", url: { action: :create } do |f|
-  = f.hidden_field :user_id
+- if @user.blank? then @user = User.find(user_id) end
+- if @case.blank? then @case = @user.cases.build end
+
+= form_for @case, remote:true, id: "cases_new_form", url: { controller: :cases, action: :create } do |f|
+
+  = f.hidden_field :user_id, value: @user.id
 
   = render 'shared/error_messages', object: @case
   .row
@@ -63,9 +67,8 @@
                     %i.icon-info-sign.icon-white
                   Quantitative basics
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "quantitativebasics", category: "businessanalytics" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "quantitativebasics", category: "businessanalytics", existing_score: @case.quantitativebasics }
                   = f.hidden_field :quantitativebasics, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_quantitativebasics'
-
 
             .cases_new_block_desc.panel.dark
               .row
@@ -74,7 +77,7 @@
                     %i.icon-info-sign.icon-white
                   Problem-Solving
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "problemsolving", category: "businessanalytics" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "problemsolving", category: "businessanalytics", existing_score: @case.problemsolving }
                   = f.hidden_field :problemsolving, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_problemsolving'
 
             .cases_new_block_desc.panel.dark
@@ -84,7 +87,7 @@
                     %i.icon-info-sign.icon-white
                   Prioritisation
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "prioritisation", category: "businessanalytics" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "prioritisation", category: "businessanalytics", existing_score: @case.prioritisation }
                   = f.hidden_field :prioritisation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_prioritisation'
 
             .cases_new_block_desc.panel.dark
@@ -94,7 +97,7 @@
                     %i.icon-info-sign.icon-white
                   Sanity-checking
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "sanitychecking", category: "businessanalytics" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "sanitychecking", category: "businessanalytics", existing_score: @case.sanitychecking }
                   = f.hidden_field :sanitychecking, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_sanitychecking'
 
           .span1
@@ -131,7 +134,7 @@
                     %i.icon-info-sign.icon-white
                   Approach upfront
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "approachupfront", category: "structure" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "approachupfront", category: "structure", existing_score: @case.approachupfront }
                   = f.hidden_field :approachupfront, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_approachupfront'
 
             .cases_new_block_desc.panel.dark
@@ -141,7 +144,7 @@
                     %i.icon-info-sign.icon-white
                   Sticking to structure
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "stickingtostructure", category: "structure" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "stickingtostructure", category: "structure", existing_score: @case.stickingtostructure }
                   = f.hidden_field :stickingtostructure, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_stickingtostructure'
 
             .cases_new_block_desc.panel.dark
@@ -151,7 +154,7 @@
                     %i.icon-info-sign.icon-white
                   Announces deviations
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "announceschangedstructure", category: "structure" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "announceschangedstructure", category: "structure", existing_score: @case.announceschangedstructure }
                   = f.hidden_field :announceschangedstructure, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_announceschangedstructure'
 
             .cases_new_block_desc.panel.dark
@@ -161,7 +164,7 @@
                     %i.icon-info-sign.icon-white
                   Pushing to conclusion
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "pushingtoconclusion", category: "structure" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "pushingtoconclusion", category: "structure", existing_score: @case.pushingtoconclusion }
                   = f.hidden_field :pushingtoconclusion, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_pushingtoconclusion'
 
           .span1
@@ -202,7 +205,7 @@
                     %i.icon-info-sign.icon-white
                   Rapport
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "rapport", category: "interpersonal" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "rapport", category: "interpersonal", existing_score: @case.rapport }
                   = f.hidden_field :rapport, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_rapport'
 
             .cases_new_block_desc.panel.dark
@@ -212,7 +215,7 @@
                     %i.icon-info-sign.icon-white
                   Articulation
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "articulation", category: "interpersonal" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "articulation", category: "interpersonal", existing_score: @case.articulation }
                   = f.hidden_field :articulation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_articulation'
 
 
@@ -223,7 +226,7 @@
                     %i.icon-info-sign.icon-white
                   Concision
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "concision", category: "interpersonal" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "concision", category: "interpersonal", existing_score: @case.concision }
                   = f.hidden_field :concision, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_concision'
 
             .cases_new_block_desc.panel.dark
@@ -233,7 +236,7 @@
                     %i.icon-info-sign.icon-white
                   Asks for Information
                 .span
-                  = render partial: 'scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal" }
+                  = render partial: 'cases/scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal", existing_score: @case.askingforinformation }
                   = f.hidden_field :askingforinformation, class: "cases_new_score_input panel darker", tabindex: "-1", id: 'cases_new_score_input_askingforinformation'
           .span1
             .cases_new_block_circle_outer.panel.dark
@@ -265,3 +268,4 @@
   .row#cases_new_submit_panel
     = f.submit "Submit Feedback", class: "btn btn-large btn-inverse", tabindex: "10", id: "cases_new_submit_button"
 
+  .spacer40

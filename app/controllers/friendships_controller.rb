@@ -27,7 +27,7 @@ class FriendshipsController < ApplicationController
     end
 
     respond_to do |format|
-      if flash[:error].nil? && Friendship.request(current_user, @friendship.friend, @friendship.invitation_message)
+      if @friendship.valid? && Friendship.request(current_user, @friendship.friend, @friendship.invitation_message)
         format.js
         flash.now[:success] = 'Case Partner request sent.'
       else
