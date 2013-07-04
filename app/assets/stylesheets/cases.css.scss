@@ -340,16 +340,28 @@ $blue_pastel: #98cdff;
 
 
 
-
-#cases_new_subject {
-  height: 59px;
-  margin-bottom: 0px !important;
-  width:220px;
+#cases_new_nobook {
+  input {
+    margin-bottom: 0px !important;    
+  }
 }
 
 
+#cases_new_nobook_label {
+  margin-top:4px;
+  font-size:14px !important;
+}
 
-
+.cases_new_score_input {
+  width:20px !important;
+  height:20px !important;
+  border:2px solid white !important;
+  background:rgba(0,0,0,0.5) !important;
+  color:$blue_pastel !important;
+  font-weight: bold !important;
+  text-align:center !important;
+  margin-left:5px !important;
+}
 
 
 .cases_new_recommendation {

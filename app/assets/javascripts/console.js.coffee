@@ -123,10 +123,18 @@ $(document).ready ->
 
       console_index_subnav_sendpdf_check()
 
-      $.get "/books/" + book_id + "/show_small", (data) ->
-        $("#cases_new_book").html data
+      $("#cases_new_nobook").fadeOut "fast", ->
+        $.get "/books/" + book_id + "/show_small", (data) ->
+          $("#cases_new_book").html data
+
+        #Prime the raty
+        window.books_item_prime_raty
+
+
     else
       $("#cases_new_book").html ""
+      $("#cases_new_nobook").fadeIn "fast"
+
       $("#console_index_pdfjs_iframe").attr "src", ""
 
   $("#console_index_subnav_select_friends").change ->
@@ -142,8 +150,14 @@ $(document).ready ->
 
         book_id = $("#console_index_subnav_select_books").val()
         # Check on book selection?
-        $.get "/books/" + book_id + "/show_small", (data) ->
-          $("#cases_new_book").html data
+
+        if book_id
+          $("#cases_new_nobook").fadeOut "fast", ->
+            $.get "/books/" + book_id + "/show_small", (data) ->
+              $("#cases_new_book").html data
+
+              #Prime the raty
+              window.books_item_prime_raty
 
       # change skypebutton
       $.get ("/console/skypebutton?friend_id=" + friend_id), (data) ->

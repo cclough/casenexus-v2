@@ -2,7 +2,7 @@
 
 
 .row
-  .books_index_books_item.panel.dark.kill_top.kill_bottom
+  .books_index_books_item.panel.darker.kill_bottom
     .row
 
 
@@ -51,8 +51,6 @@
             User rating:
             = pluralize(@book.average_rating.round(1),"Star")
         .books_index_books_item_info_container.panel.gradient.kill_all
-          %div
-            = @book.chart_num_in_words
           - unless @book.difficulty.blank?
             .books_index_books_item_difficulty
               = book_difficulty_in_words(@book.difficulty)

@@ -177,6 +177,14 @@ window.application_container_online_prime = () ->
 
 
 
+window.books_item_prime_raty = () ->
+  $(".books_rating_read").raty
+    readOnly: true
+      # hints: ["Very Poor", "Poor", "OK", "Good", "Excellent"]
+    score: ->
+      return parseFloat $(this).data("rating")
+
+
 
 
 $(document).ready ->

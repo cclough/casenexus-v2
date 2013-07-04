@@ -2,7 +2,7 @@
   .row
     .span15#console_index_subnav_select_books_container.offset1
       %select#console_index_subnav_select_books{name: "book_id", "data-placeholder" => "Choose a Case" }
-        %option
+        %option{value: ""} Select Case/External Case
         - @books.each do |books_select_item|
           %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
             = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
