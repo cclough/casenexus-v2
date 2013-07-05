@@ -12,19 +12,48 @@ $gray_Lightest: #f6f6f6;
 #header_logo_nav{
   position: absolute;
   top: 3px;
+  padding:2px 0 2px 0px;
   &.signedout {
     top:18px;
   }
+
+    &:hover {
+      background:rgba(255,255,255,0.05);
+    }
 }
 
 .navbar-inner {
   min-width:1100px;
+  background: #141414 !important;
+  border:0px;
 
   &.signedout {
     padding-top:15px;
     padding-bottom:15px;
   }
+
+  li {
+    margin-top:6px;
+    height:34px;
+    a {
+      margin-top:-3px;
+
+    }
+    &.divider-vertical {
+      margin: 0px 0px;
+    }
+    &:hover {
+      background:rgba(255,255,255,0.05);
+    }
+  }
 }
+
+
+
+.header_nav_icon_narrow {
+  padding: 10px 10px !important;
+}
+
 
 
 #header_nav_links_left {
@@ -40,8 +69,8 @@ $gray_Lightest: #f6f6f6;
 /////////////////////////////////////////////
 
 #header_user_points {
-  font-size:12px;
-  border:2px solid white;
+  font-size:14px;
+//  border:2px solid white;
   padding:5px;
   text-align:center;
   color:white;
@@ -62,11 +91,18 @@ $gray_Lightest: #f6f6f6;
 
 #header_nav_panel_browse {
 
-  margin:0px;
+  margin:-6px 0 0 0;
 
-  height:30px;
+  height:36px;
 
-  padding:2px;
+  padding:4px 8px;
+
+//  border-radius:3px;
+
+  input {
+    margin-top:2px;
+    height:22px;
+  }
 
   border-top-left-radius: 0px;
   -moz-border-top-left-radius: 0px;
@@ -106,11 +142,11 @@ $gray_Lightest: #f6f6f6;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
 
 
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
+  box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
 
-}
 
-#header_nav_button_container_browse {
-  margin-top:5px !important;
 }
 
 
@@ -123,7 +159,7 @@ $gray_Lightest: #f6f6f6;
 
 
 #header_nav_links_right_name {
-  width:170px;
+//  width:170px;
 }
 
 
@@ -210,7 +246,7 @@ $gray_Lightest: #f6f6f6;
 #header_menu_notifications_unreadcount {
 
   position:absolute;
-  top:11px;
+  top:7px;
   right:40px;
 
   height:15px;
@@ -242,11 +278,6 @@ $gray_Lightest: #f6f6f6;
 .header_menu_notifications_avatar {
   float:left;
   margin-right:15px;
-}
-
-
-.header_nav_icon_narrow {
-  padding: 10px 2px !important;
 }
 
 
