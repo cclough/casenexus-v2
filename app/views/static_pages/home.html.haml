@@ -4,48 +4,50 @@
 .spacer20
 .row
   .span58
-    #static_home_panel
-      .row
+    #static_home_panel.panel.gradient.kill_top
 
-        .span.offset3
+      = image_tag "home/logo.png"
+      / .row
 
-          .spacer20
+      /   .span.offset3
 
-          = image_tag "home/logo.png"
+      /     .spacer20
 
-        .span.offset2
+      /     = image_tag "home/logo.png"
 
-          .row
-            .span
-              .static_home_bullet_outest
-                .static_home_bullet_outer
-                  .static_home_bullet_inner 
-            .span.offset2.static_home_bullet_text
-              Find people to practice with
-          .spacer20
-          .row
-            .span
-              .static_home_bullet_outest
-                .static_home_bullet_outer
-                  .static_home_bullet_inner 
-            .span.offset2.static_home_bullet_text
-              Schedule cases with friends
-          .spacer20
-          .row
-            .span
-              .static_home_bullet_outest
-                .static_home_bullet_outer
-                  .static_home_bullet_inner 
-            .span.offset2.static_home_bullet_text
-              Library of cases
-          .spacer20
-          .row
-            .span
-              .static_home_bullet_outest
-                .static_home_bullet_outer
-                  .static_home_bullet_inner 
-            .span.offset2.static_home_bullet_text
-              Feedback on your cases
+      /   .span.offset2
+
+      /     .row
+      /       .span
+      /         .static_home_bullet_outest
+      /           .static_home_bullet_outer
+      /             .static_home_bullet_inner 
+      /       .span.offset2.static_home_bullet_text
+      /         Find people to practice with
+      /     .spacer20
+      /     .row
+      /       .span
+      /         .static_home_bullet_outest
+      /           .static_home_bullet_outer
+      /             .static_home_bullet_inner 
+      /       .span.offset2.static_home_bullet_text
+      /         Schedule cases with friends
+      /     .spacer20
+      /     .row
+      /       .span
+      /         .static_home_bullet_outest
+      /           .static_home_bullet_outer
+      /             .static_home_bullet_inner 
+      /       .span.offset2.static_home_bullet_text
+      /         Library of cases
+      /     .spacer20
+      /     .row
+      /       .span
+      /         .static_home_bullet_outest
+      /           .static_home_bullet_outer
+      /             .static_home_bullet_inner 
+      /       .span.offset2.static_home_bullet_text
+      /         Feedback on your cases
 
   .span
     = render 'static_pages/signup_form'

@@ -4,10 +4,11 @@
 - provide(:breadcrumb, "Posts")
 - provide(:breadcrumb_url, "/posts")
 
+#posts_index_panel_main
 
-= render partial: 'posts_item' , locals: { posts_item: @post}
+  = render partial: 'posts_item' , locals: { posts_item: @post}
 
-.spacer10
-= render "comments/comments"
-.spacer10
-= render "comments/new_comment_form"
+  .spacer10
+  = render "comments/comments"
+  .spacer10
+  = render "comments/new_comment_form"
