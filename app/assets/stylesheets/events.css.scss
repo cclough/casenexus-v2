@@ -141,6 +141,10 @@ $blue_linkedin: #006699;
   height:30px;
   font-size:20px;
   border:0;
+
+  -webkit-box-shadow: 0 !important;
+  -moz-box-shadow:    0 !important;
+  box-shadow:         0 !important;
 }
 
 #events_new_datetime_friend {

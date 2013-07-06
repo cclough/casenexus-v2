@@ -123,13 +123,9 @@ $(document).ready ->
 
       console_index_subnav_sendpdf_check()
 
-      if $("#cases_new_nobook").is(':visible')
-        $("#cases_new_nobook").css("display","none")
-        $.get "/books/" + book_id + "/show_small", (data) ->
-          $("#cases_new_book").html data
-      else
-        $.get "/books/" + book_id + "/show_small", (data) ->
-          $("#cases_new_book").html data
+      $("#cases_new_nobook").css("display","none")
+      $.get "/books/" + book_id + "/show_small", (data) ->
+        $("#cases_new_book").html data
 
         #Prime the raty
         window.books_item_prime_raty
@@ -147,7 +143,7 @@ $(document).ready ->
 
     friend_id = $(this).val()
 
-    if $(this).val()
+    if friend_id > 0
 
     	# change feedback form
       $.get "/cases/new?user_id=" + friend_id, (data) ->
@@ -159,7 +155,7 @@ $(document).ready ->
 
         if book_id
           $("#cases_new_nobook").css("display","none")
-          
+
           $.get "/books/" + book_id + "/show_small", (data) ->
             $("#cases_new_book").html data
 

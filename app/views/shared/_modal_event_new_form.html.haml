@@ -29,20 +29,20 @@
     .spacer5
     .row
       .offset13
-        #events_new_friend_timezone.application_bootstrap_yellow
+        #events_new_friend_timezone.application_bootstrap_alert_yellow
     .spacer10
     .row
       .span13
         Chose Date & Time
       .span20
         #events_new_datetime_picker.input-append.date
-          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "..."
+          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg"
           %span.add-on
             %i.icon-calendar
 
     .row
       .offset13
-        #events_new_datetime_friend.application_bootstrap_blue
+        #events_new_datetime_friend.application_bootstrap_alert_blue
 
     .spacer10
     .row

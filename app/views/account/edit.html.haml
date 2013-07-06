@@ -21,7 +21,7 @@
         .span24.offset2
           = f.label :first_name
         .span30
-          = f.text_field :first_name, class: "span26 account_form_field"
+          = f.text_field :first_name, class: "span26 application_form_input_alternative"
 
       .spacer10
 
@@ -29,7 +29,7 @@
         .span24.offset2
           = f.label :last_name
         .span30
-          = f.text_field :last_name, class: "span26 account_form_field"
+          = f.text_field :last_name, class: "span26 application_form_input_alternative"
 
 
 
@@ -94,26 +94,30 @@
             = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
 
 
-
       .account_edit_form_spacer
 
 
+      = f.hidden_field :lat, id: "account_completeedit_lat"
+      = f.hidden_field :lng, id: "account_completeedit_lng"
       .row
-
         .span24.offset2.account_form_label
-          Emailing
+          Location
+          .account_form_sublabel
+            Move the marker to your location
+        .span30
+          #account_completeedit_map.edit.map
 
-        .span3
-          = f.check_box :email_admin
-        .span30.offset1
-          .spacer5
-          Receive site news and consulting advice
-      .row
-        .span3.offset26
-          = f.check_box :email_users
-        .span30.offset1
-          .spacer5
-          Receive notiffications via email
+          #account_completeedit_map_location
+            .row
+              .account_completeedit_map_location_title.span6
+                Country
+              .span10
+                = @user.country.name unless @user.country.blank?
+              .account_completeedit_map_location_title.span4
+                City
+              .span10
+                = @user.city unless @user.city.blank?
+
 
 
 
@@ -160,7 +164,7 @@
           #account_completeedit_skype_link
             = link_to "Need to register?", "https://login.skype.com/account/signup-form"
         .span26
-          = f.text_field :skype, placeholder: "Skype username", class: "span26 account_form_field"
+          = f.text_field :skype, placeholder: "Skype username", class: "span26 application_form_input_alternative"
 
 
 
@@ -172,7 +176,7 @@
         .span24.offset2.account_form_label
           Cases outside of casenexus
         .span23
-          = f.text_field :cases_external, class: "span5 account_form_field", id: "account_completedit_casesexternal_field"
+          = f.text_field :cases_external, class: "span5 application_form_input_alternative", id: "account_completedit_casesexternal_field"
 
 
       .spacer20
@@ -181,31 +185,32 @@
       .row
         .span24.offset2.account_form_label
           Firms you are applying for
+
         .span26
           = f.collection_select :firm_ids, Firm.all, :id, :name, {selected: @user.firm_ids}, {multiple: true, class: "chzn-select span26"}
+
 
 
       .account_edit_form_spacer
 
 
-      = f.hidden_field :lat, id: "account_completeedit_lat"
-      = f.hidden_field :lng, id: "account_completeedit_lng"
       .row
-        .span24.offset2.account_form_label
-          Location
-        .span30
-          #account_completeedit_map.edit.map
 
-          #account_completeedit_map_location
-            .row
-              .account_completeedit_map_location_title.span6
-                Country
-              .span10
-                = @user.country.name unless @user.country.blank?
-              .account_completeedit_map_location_title.span4
-                City
-              .span10
-                = @user.city unless @user.city.blank?
+        .span24.offset2.account_form_label
+          Emailing
+
+        .span3
+          = f.check_box :email_admin
+        .span30.offset1
+          .spacer5
+          Receive site news and consulting advice
+      .row
+        .span3.offset26
+          = f.check_box :email_users
+        .span30.offset1
+          .spacer5
+          Receive notiffications via email
+
 
 
 

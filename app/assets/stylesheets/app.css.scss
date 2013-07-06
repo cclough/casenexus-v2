@@ -874,32 +874,44 @@ a:hover {
 
 
 
-.application_bootstrap_green {
+.application_bootstrap_alert_green {
   color: #468847;
   background-color: #dff0d8;
   border-color: #d6e9c6;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 35px 8px 14px;
 }
 
-.application_bootstrap_yellow {
+.application_bootstrap_alert_yellow {
   color: #C09853;
   background-color: #FCF8E3;
   border: 1px solid #FBEED5;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 35px 8px 14px;
 }
 
-.application_bootstrap_blue {
+.application_bootstrap_alert_blue {
   background-color: #D9EDF7;
   border: 1px solid #BCE8F1;
   color: #3A87AD;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); 
+
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 35px 8px 14px;
 }
 
-.application_bootstrap_red {
+.application_bootstrap_alert_red {
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 35px 8px 14px;
 }
 
 
@@ -1013,3 +1025,42 @@ a:hover {
   }
 }
 
+//////////////////////////////////////////////////////
+
+
+.application_form_input_alternative {
+  color:white !important;
+
+  background:0 !important;
+  border-top:0 !important;
+  border-left:0 !important;
+  border-right:0 !important;
+  border-bottom:1px dotted white !important;
+
+  -moz-border-radius:    0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius:         0px !important;
+
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -moz-transition: none !important;
+  -webkit-transition: none !important;
+
+  padding-bottom:0px !important;
+
+  &.whitebg {
+    color:$gray_Dark !important;
+    border-bottom:1px dotted $gray_Dark !important;
+  }
+
+  &:focus{
+    border-color: rgba(82, 168, 236, 0.8) !important;
+    outline: 0;
+    outline: thin dotted \9 !important;
+    /* IE6-9 */
+  }
+
+
+}

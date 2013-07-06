@@ -16,6 +16,11 @@ $blue_pastel: #98cdff;
 label, .account_form_label { // why the hell won't this work in app.css?
   // font-size:12px !important;
   color:white;
+
+  .account_form_sublabel {
+    font-size:12px;
+    font-style:italic;
+  }
 }
 
 .account_form_label_gray {
@@ -34,38 +39,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
 }
 
 
-.account_form_field {
-  color:white !important;
 
-  background:0 !important;
-  border-top:0 !important;
-  border-left:0 !important;
-  border-right:0 !important;
-  border-bottom:1px dotted white !important;
-
-  -moz-border-radius:    0px !important;
-  -webkit-border-radius: 0px !important;
-  border-radius:         0px !important;
-
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -moz-transition: none !important;
-  -webkit-transition: none !important;
-
-  padding-bottom:0px !important;
-
-  &:focus{
-
-
-  border-color: rgba(82, 168, 236, 0.8) !important;
-  outline: 0;
-  outline: thin dotted \9 !important;
-  /* IE6-9 */
-
-  }
-}
 
 
 
