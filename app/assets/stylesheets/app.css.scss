@@ -77,12 +77,14 @@ body {
 
 header {
 
+  background: #141414 !important;
+  
   position:absolute;
   top:0;
   right:0;
   left:0;
 
-  text-align:center;
+  text-align:center !important;
 
   margin-bottom:0px !important;
   z-index:9999;

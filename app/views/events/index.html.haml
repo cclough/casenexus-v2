@@ -3,7 +3,7 @@
 
 .spacer20
 .row.application_bootstrap_alert_blue
-  - if event = current_user.events.where("datetime < ?", Time.now).first
+  - if event = current_user.events.where("datetime > ?", Time.now).first
     Your next case is with
     = event && event.partner && event.partner.name
 
