@@ -3,8 +3,9 @@
 
 .spacer20
 .row.application_bootstrap_alert_blue
-  Your next case is with
-  = Event.where("user_id = ?", current_user.id).where("datetime < ?", Time.now).first.partner.name
+  - if event = current_user.events.where("datetime < ?", Time.now).first
+    Your next case is with
+    = event && event.partner && event.partner.name
 
 .row.panel.dark.kill_left.kill_right#events_calendar_container
 
