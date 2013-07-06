@@ -15,10 +15,13 @@
             %li.offset1
               #header_nav_panel_browse
                 = form_tag '#', method: 'get', id: "header_nav_panel_browse_search_form", onsubmit: 'return false' do
+
+                  = link_to raw("<i class='icon-circle-blank icon-fixed-width'></i> Connect"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip", id:"header_nav_panel_browse_button"
+
                   = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_panel_browse_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query header application_tooltip'
 
             %li.offset1
-              = link_to raw("<i class='icon-circle-blank icon-fixed-width'></i> Browse"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+
 
             %li
               = link_to raw("<i class='icon-book icon-white icon-fixed-width'></i> Library"), library_path, "data-original-title"=>"Library of Cases", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"

@@ -82,18 +82,14 @@ header {
   right:0;
   left:0;
 
+  text-align:center;
+
   margin-bottom:0px !important;
   z-index:9999;
 
   -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
   -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
   box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
-
-  .navbar-inner {
-    -moz-border-radius:    0px !important;
-    -webkit-border-radius: 0px !important;
-    border-radius:         0px !important;
-  }
 
 }
 
@@ -847,45 +843,9 @@ a:hover {
 }
 
 // Help modal
-
-#modal_help_page_1 { height:950px; width:800px; padding-top:50px; position:relative; }
-      .set-1a { position:absolute; top:105px; left:40px; width:220px;}
-      .set-1b { position:absolute; top:215px; left:120px;  width: 335px;}
-      .set-1c { position:absolute; top:310px; left:200px; width:370px;}
-      .set-1d { position:absolute; top:370px; left:590px }
-      .set-1e { position:absolute; top:770px; left:60px; width: 300px;}
-      .set-1f { position: absolute; top:770px; left:420px; width: 300px;}
-
-#modal_help_page_2 { height:1100px; width:800px; padding-top:50px; position:relative; }
-      .set-2a { position: absolute; top:240px; left:40px; width:300px;}
-      .set-2b { position: absolute; top:260px; left:400px; width:290px;}
-      #modal_help_page_2_50 { font-size:50px; }
-      .set-2c { position: absolute; left: 40px; top: 460px; width: 250px;}
-      .set-2d { position: absolute; left: 40px; top: 730px;  width: 220px;}
-      .set-2e { position: absolute; left: 410px; top: 1000px; width: 370px;}
-
-#modal_help_page_3 { height:1025px; width:800px; padding-top:50px; position:relative; }
-      .set-3a { position: absolute; top:100px; left:160px; width:450px;}
-      .set-3b { position: absolute; top:230px; left:300px; width:450px;}
-      .set-3c { position: absolute; top:610px; left:40px; width:310px;}
-      .set-3d { position: absolute; top:860px; left:40px; width:330px;}
-
-#modal_help_page_4 { height:1025px; width:800px; padding-top:50px; position:relative; }
-      .set-4a { position: absolute; left: 110px; top: 100px; width: 650px;}
-      .set-4b { position: absolute; left: 40px; top: 370px; width:330px;}
-      .set-4c { position: absolute; left: 400px; top: 370px; width: 300px;}
-      .set-4d { position: absolute; left: 40px; top: 690px; width: 309px;}
-      .set-4e { position: absolute; left: 470px; top: 940px; width: 290px;}
-
-#modal_help_page_5 { height:1100px; width:800px; padding-top:50px; position:relative; }
-      .set-5a { position: absolute; left: 475px; top: 140px; width: 310px; }
-      .set-5b {position: absolute;  left: 40px; top: 425px; width: 330px; }
-      .set-5c {position: absolute;  left: 40px; top: 920px; width: 290px; }
-
-#modal_help_page_6 { height:975px; width:800px; padding-top:50px; position:relative; }
-      .set-6b { position: absolute; left: 40px; top: 150px; width: 320px; }
-      .set-6c { position: absolute; left: 390px; top: 90px; width: 360px; }
-      .set-6d { position: absolute; left: 50px; top: 750px; width: 230px; }
+#modal_help .arrownav_page{
+  height:400px;
+}
 
 #modal_help_pages_blue { color: #0D8ECF }
 #modal_help_pages_green { color: #B0DE09 }

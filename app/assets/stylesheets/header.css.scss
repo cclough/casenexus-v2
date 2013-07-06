@@ -7,6 +7,11 @@
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$gray_Darker: #333333;
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
 
 
 #header_logo_nav{
@@ -23,7 +28,7 @@ $gray_Lightest: #f6f6f6;
 }
 
 .navbar-inner {
-  min-width:1100px;
+  max-width:1100px;
   background: #141414 !important;
   border:0px;
 
@@ -31,6 +36,11 @@ $gray_Lightest: #f6f6f6;
     padding-top:15px;
     padding-bottom:15px;
   }
+
+  -moz-border-radius:    0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius:         0px !important;
+  
 
   li {
     margin-top:6px;
@@ -93,7 +103,7 @@ $gray_Lightest: #f6f6f6;
 
   margin:-6px 0 0 0;
 
-  height:36px;
+  height:35px;
 
   padding:4px 8px;
 
@@ -151,7 +161,15 @@ $gray_Lightest: #f6f6f6;
 
 
 
-
+#header_nav_panel_browse_button {
+  color:$gray_Mid;
+  text-decoration:none;
+  padding: 0px 5px 0 5px;
+  margin-top:4px !important;
+  &:hover {
+    color:black !important;
+  }
+}
 
 /////////////////////////////////////////////
 /////////////////////////////////////////////
