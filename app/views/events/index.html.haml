@@ -3,7 +3,9 @@
 
 .spacer20
 .row.application_bootstrap_alert_blue
-  Your next case is in xx days with xx
+  Your next case is in xx days with
+  = Event.where("user_id = ?", current_user.id).where("datetime < ?", Time.now).first
+
 .row.panel.dark.kill_left.kill_right#events_calendar_container
 
   = render "events/calendar"

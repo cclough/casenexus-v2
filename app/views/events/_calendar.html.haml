@@ -15,9 +15,8 @@
         %span#events_calendar_month_text
           = @date.strftime("%B %Y")
           %span#events_calendar_month_text_count
-            (3)
-
-          / = current_user.events.where('created_at >= ? AND <= ?', @date.beginning_of_month, @date.end_of_month).group("to_char(created_at,'MONTH')").count()
+            (3 events)
+            / = current_user.events.where('created_at >= ? AND <= ?', @date.beginning_of_month, @date.end_of_month).group("to_char(created_at,'MONTH')").count()
 
          
 

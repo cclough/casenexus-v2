@@ -13,11 +13,11 @@
   Who's online
 #application_container_online_nonfriends
 
-  / - if User.list_online_recently_notfriends(current_user).count > 0
-  /   - for online_friend_item in User.list_online_recently_notfriends(current_user)
-  /     .application_container_online_item
+  - if User.list_online_recently_notfriends(current_user).count > 0
+    - for online_friend_item in User.list_online_recently_notfriends(current_user)
+      .application_container_online_item
 
-  /       - @online_user_type = "nonfriend"
-  /       - @online_user = User.find(online_friend_item.id)
+        - @online_user_type = "nonfriend"
+        - @online_user = User.find(online_friend_item.id)
 
-  /       = render partial: 'shared/online_user_item'
+        = render partial: 'shared/online_user_item'
