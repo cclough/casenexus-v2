@@ -186,7 +186,7 @@ class User < ActiveRecord::Base
     end
 
     def completed
-      where("completed = true")
+      where(completed: true)
     end
 
     def admin?
@@ -194,16 +194,16 @@ class User < ActiveRecord::Base
     end
 
     def not_admin
-      where("admin = false")
+      where(admin: false)
     end
 
     # used by list_online_today above
     def online_today
-      where("last_online_at > ?", DateTime.now - 1.day)
+      where(last_online_at: (1.day.ago)..(Time.now))
     end
 
     def online_recently
-      where("last_online_at > ?", DateTime.now - 1.hour)
+      where(last_online_at: (1.hour.ago)..(Time.now))
     end
 
     ### Lists for filters
@@ -223,7 +223,7 @@ class User < ActiveRecord::Base
 
 
     def list_online_recently_notfriends(user)
-      not_friends(user).completed.order('last_online_at desc')
+      not_friends(user).completed.online_recently.order('last_online_at desc')
       # user.not_friends.completed.online_recently.order('last_online_at desc')
     end
 
