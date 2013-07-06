@@ -82,11 +82,10 @@ window.map_index_load_infobox = (marker_id) ->
     url: "/members/" + marker.id + "/show_infobox"
     success: (data) ->
 
-      boxcontent = document.createElement "div"
-      boxcontent.innerHTML = data
-
-      window.infobox.setContent boxcontent
-
+      b = $("<div></div>")
+      b.html data
+      window.infobox.setContent b.html()
+      
       # Code for 'close button'
       $("#map_index_user_infobox_close").click ->
         $("#map_index_container_user_infobox").fadeOut "fast", ->
@@ -107,12 +106,7 @@ window.map_index_load_infobox = (marker_id) ->
           window.modal_spinner_prime()
           $("#modal_friendship_req").modal("show")
 
-
-
       window.infobox.open map, marker
-
-
-
 
 
 

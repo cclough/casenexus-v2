@@ -48,6 +48,7 @@ Casenexus::Application.routes.draw do
       put :reject
       put :block
       put :unblock
+      get 'delete_patch' => "friendships#destroy"
     end
     collection do
       get :requests
