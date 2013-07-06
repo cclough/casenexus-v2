@@ -10,6 +10,7 @@ class Friendship < ActiveRecord::Base
   validates :user_id, presence: true
   validates :friend_id, presence: true
   validates :status, presence: true, inclusion: { in: [0, 1, 2, 3, 4] }
+  validates :invitation_message, length: { maximum: 500 }
 
   # Status codes
   REQUESTED = 0         # friend_id REQUESTED user_id to accept invitation

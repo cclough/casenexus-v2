@@ -25,5 +25,5 @@
           
 - else
   .pull-right
-    .application_container_online_item_menu_addfriend.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + " as a friend", rel: "tooltip", "data-placement"=>"bottom"}
+    .application_container_online_item_menu_addfriend.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + " as a friend", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
       %i.icon-plus

@@ -62,11 +62,9 @@ window.map_index_load_profile = (marker_id) ->
 
 
       $("#map_index_user_profile_button_friendrequest").click ->
-        if !($("#modal_friendship_req").hasClass("in"))
-          $(".modal").modal("hide")
-          $("#modal_friendship_req").modal("show")
 
-          window.modal_spinner_prime()
+        friend_id = $(this).data("friend_id")
+        window.modal_friendship_req_show(friend_id)
 
 
 
@@ -101,10 +99,8 @@ window.map_index_load_infobox = (marker_id) ->
         window.modal_event_new_show(friend_id)
 
       $("#map_index_user_infobox_button_friendrequest").click ->
-        if !($("#modal_friendship_req").hasClass("in"))
-          $(".modal").modal("hide")
-          window.modal_spinner_prime()
-          $("#modal_friendship_req").modal("show")
+        friend_id = $(this).data("friend_id")
+        window.modal_friendship_req_show(friend_id)
 
       window.infobox.open map, marker
 

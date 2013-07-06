@@ -55,6 +55,7 @@ Casenexus::Application.routes.draw do
       get :invites
       get :blocked
     end
+    get "modal_friendship_req_form", on: :collection
   end
 
   # Invitations

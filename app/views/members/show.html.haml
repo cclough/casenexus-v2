@@ -120,7 +120,7 @@
         - elsif !Friendship.exist?(current_user, @user)
           .spacer20
           .spacer5
-          %a#map_index_user_profile_button_friendrequest.btn.btn-inverse.btn-small
+          %a#map_index_user_profile_button_friendrequest.btn.btn-inverse.btn-small{"data-friend_id" => @user.id }
             %div
               %i.icon-comment.icon-white.icon-4x
             %span

@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
 
   def modal_friendship_req_form
     @user = User.find(params[:id])
-    @friendship = @user.notifications.build
+    @friendship = Friendship.new
 
     render partial: "shared/modal_friendship_req_form", layout:false
   end
@@ -32,7 +32,7 @@ class FriendshipsController < ApplicationController
         flash.now[:success] = 'Case Partner request sent.'
       else
         format.js
-        flash.now[:notice] = 'You cannot send this person a Case Partner request.'
+        @user = @friendship.friend
       end
     end
   end

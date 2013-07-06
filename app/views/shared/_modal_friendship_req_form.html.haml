@@ -2,9 +2,12 @@
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    %h3 Send Friend Request
+    %h3 Send friend request to #{@user.first_name}
 
   .modal-body
+
+    #flash_notifications
+      = render 'shared/error_messages', object: @friendship
 
     %p
       Introduce yourself

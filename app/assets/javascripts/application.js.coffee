@@ -104,6 +104,32 @@ window.modal_message_show = (friend_id) ->
 
 
 
+window.modal_friendship_req_show = (friend_id) ->
+  
+  if !($("#modal_friendship_req").hasClass("in"))
+
+    $.get "/contacts/modal_friendship_req_form?id=" + friend_id, (data) ->
+      $("#modal_friendship_req").html data
+
+      $("#modal_friendship_req").modal("show")
+
+
+      # repeat of modal spinner prime, but with online refresh command under submit
+      $("#application_spinner_container").css "display","none"
+
+      $(".modal_submit_button").click ->
+
+        $("#application_spinner_container").show()
+
+        $(this).closest("form").submit()
+
+        window.application_container_online_refresh()
+
+
+
+
+
+
 
 window.modal_event_new_show = (friend_id, book_id) ->
 
@@ -175,6 +201,22 @@ window.application_container_online_prime = () ->
     friend_id = $(this).data "friend_id"
     window.modal_message_show(friend_id)
 
+
+  $(".application_container_online_item_menu_addfriend").click ->
+
+    friend_id = $(this).data "friend_id"
+    window.modal_friendship_req_show(friend_id)
+
+
+  # The Ping updater! Could be a lot smoother, but for now o-k
+  # setInterval ->
+  #   application_container_online_refresh()
+  # , 30000
+
+window.application_container_online_refresh = () ->
+  $.get "/online_panel", (data) ->
+    $("#application_container_online").html data
+    window.application_container_online_prime()   
 
 
 window.books_item_prime_raty = () ->
@@ -261,12 +303,6 @@ $(document).ready ->
   # ONLINE PANEL STUFF
   window.application_container_online_prime()
           
-  # The Ping updater! Could be a lot smoother, but for now o-k
-  # setInterval ->
-  #   $.get "/online_panel", (data) ->
-  #     $("#application_container_online").html data
-  #     window.application_container_online_prime()
-  # , 30000
 
       
 
