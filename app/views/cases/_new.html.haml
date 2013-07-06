@@ -36,20 +36,21 @@
     - if @book
       = render partial: 'show_small', locals: { book_id: @book.id }
 
-    - else
-      .row#cases_new_nobook
-        .panel.darker.kill_bottom
+  .row#cases_new_nobook
+    .panel.darker.kill_bottom
+      .row
+        .span16#cases_new_nobook_label
+          External case details
+          %i.icon-caret-right
+        .span
           .row
-            .span16#cases_new_nobook_label
-              External case details
-              %i.icon-caret-right
-            .span
-              .row
-                .span21
-                  = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
-                .span20
-                  = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject", style: "width:100%;"
-      }
+            .span21
+              = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
+            .span20
+              = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject", style: "width:100%;"
+
+
+
 
 
 

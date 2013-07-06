@@ -12,10 +12,12 @@
 #application_container_online_title
   Who's online
 #application_container_online_nonfriends
-  - for online_friend_item in User.list_online_recently_notfriends(current_user)
-    .application_container_online_item
 
-      - @online_user_type = "nonfriend"
-      - @online_user = User.find(online_friend_item.id)
+  / - if User.list_online_recently_notfriends(current_user).count > 0
+  /   - for online_friend_item in User.list_online_recently_notfriends(current_user)
+  /     .application_container_online_item
 
-      = render partial: 'shared/online_user_item'
+  /       - @online_user_type = "nonfriend"
+  /       - @online_user = User.find(online_friend_item.id)
+
+  /       = render partial: 'shared/online_user_item'

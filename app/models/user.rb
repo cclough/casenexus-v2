@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
   
-  # for vincent
+  # For online user panel - vincent work
   scope :not_friends, ->(user) {select('users.*, friends.id as fid').joins("left join friendships on users.id = friendships.friend_id and friendships.user_id = #{User.sanitize(user.id)} left join users as friends on friends.id = friendships.friend_id").where("friends.id is null and users.id != ?",user.id)}
 
   # Invitations
@@ -221,10 +221,12 @@ class User < ActiveRecord::Base
       completed.not_admin.online_today.order('last_online_at desc')
     end
 
+
     def list_online_recently_notfriends(user)
-      not_friends(user).order('last_online_at desc')
+      not_friends(user).completed.order('last_online_at desc')
       # user.not_friends.completed.online_recently.order('last_online_at desc')
     end
+
 
     # Pulldown Filters
     def list_language(language_id)
