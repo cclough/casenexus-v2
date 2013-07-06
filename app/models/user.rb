@@ -48,9 +48,7 @@ class User < ActiveRecord::Base
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
   
   # for vincent
-  has_many :not_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status is NULL", dependent: :destroy
-  has_many :not_friends, through: :not_friendships, source: :friend
-
+  scope :not_friends, ->(user) {select('users.*, friends.id as fid').joins("left join friendships on users.id = friendships.friend_id and friendships.user_id = #{User.sanitize(user.id)} left join users as friends on friends.id = friendships.friend_id").where("friends.id is null and users.id != ?",user.id)}
 
   # Invitations
   has_many :invitations, dependent: :destroy
@@ -224,7 +222,8 @@ class User < ActiveRecord::Base
     end
 
     def list_online_recently_notfriends(user)
-      user.not_friends.completed.online_recently.order('last_online_at desc')
+      not_friends(user).order('last_online_at desc')
+      # user.not_friends.completed.online_recently.order('last_online_at desc')
     end
 
     # Pulldown Filters
