@@ -279,11 +279,12 @@ a:hover {
   -webkit-border-radius: 5px;
 
   @media (min-width: 1201px) {
-    display:none;
+    display:none !important;
   }
-  @media (max-width: 1200px) {
-    display:block;
-  }
+
+//  @media (max-width: 1200px) {
+//    display:block;
+//  }
 }
 
 
@@ -305,6 +306,7 @@ a:hover {
   @media (max-width: 1200px) {
     display:block;
   }
+
   z-index:999;
 
   padding:10px;
