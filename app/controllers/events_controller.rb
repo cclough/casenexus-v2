@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     @event = current_user.events.new
     @book_user = Book.find(params[:book_id_user]) if params[:book_id_user]
     @friend = User.find(params[:friend_id]) if params[:friend_id]
+    @books = Book.where(btype: "case").order("author asc")
 
     render partial: "shared/modal_event_new_form", layout: false
   end
@@ -44,13 +45,17 @@ class EventsController < ApplicationController
 
       if @event.valid? && Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
         format.js
-        flash[:success] = "Appointment booked."
+        flash[:success] = "Appointment booked with " + @event.partner.first_name + "."
 
         # Same as index - to update calendar
         @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
         @date = params[:date] ? Date.parse(params[:date]) : Date.today
       else
         format.js
+
+        # for when it fails
+        @friend = @event.partner unless @event.partner.blank?
+        @book_user = Book.find(@event.book_id_partner) unless @event.book_id_partner.blank?
       end
 
     end
@@ -59,6 +64,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @books = Book.where(btype: "case")
 
     render partial: "shared/modal_event_edit_form", layout: false
   end

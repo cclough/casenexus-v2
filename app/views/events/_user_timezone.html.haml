@@ -22,4 +22,6 @@
   /     #{@user.first_name}'s Timezone:
   / .span.offset1
   .application_bootstrap_alert_yellow
-    = timezone_difference(current_user,@user) + " (#{@user.time_zone})"
+    = timezone_difference(current_user,@user)
+    %br
+    (#{@user.time_zone})

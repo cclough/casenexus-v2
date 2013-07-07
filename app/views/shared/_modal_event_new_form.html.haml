@@ -1,6 +1,3 @@
-- @books = Book.search_for(params[:search]).order("title asc").paginate(per_page: 10, page: params[:page])
-
-
 
 
 = form_for @event, remote: true do |f|
@@ -20,15 +17,16 @@
           %option Choose a friend
           = options_from_collection_for_select(current_user.accepted_friends, "id", "name")
       - else
-        .span13
-          With:
-        .span.offset1#events_edit_avatar
-          = image_tag "avatars/icon.png"
-        .span.offset1
-          %strong
-            = @friend.name
-            = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_new_friend_select"
-    
+        #events_new_friend_selected
+          .span#events_edit_partner_avatar
+            = image_tag "avatars/icon.png"
+          .span.offset1#events_edit_partner_name
+            %strong
+              = @friend.name
+              = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_new_friend_select"
+
+        .spacer10
+      
 
 
 
@@ -41,7 +39,7 @@
     .spacer20
 
 
-    .spacer20
+    .events_form_spacer
 
 
     .row
@@ -62,38 +60,30 @@
     .spacer20
 
 
-    .spacer20
+    .events_form_spacer
 
 
     .row
 
 
-      - if @book_user.blank?
 
-
-        %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partner]"}
-          %option Which case should they prepare for you?
-          / = options_from_collection_for_select(Book.all, "id", "title")
-          - Book.all.each do |books_select_item|
-            %option{value: books_select_item.id }
-              = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partner]"}
+        %option Which case should they prepare for you?
+        / = options_from_collection_for_select(Book.all, "id", "title")
+        - @books.each do |books_select_item|
+          %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }
+            = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
 
 
 
-        .spacer20
+      .spacer10
 
-        #events_new_book_viewer
-          #events_new_book_viewer_empty No book selected
-          / show small loaded in by js
-
-      - else
-        .span13
-          They will prepare
-        .span20
-          = @book_user.author.split(' ')[0] + " - " + @book_user.title
-          = f.hidden_field :book_id_partner, value: @book_user.id
-
-
+      #events_new_book_viewer
+        - if @book_user.blank?
+          #events_new_book_viewer_empty 
+            No book selected
+        -else
+          = render partial: 'books/show_small', locals: { book_id: @book_user.id }
 
 
   .modal-footer

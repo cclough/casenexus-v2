@@ -136,24 +136,24 @@ window.modal_event_new_show = (friend_id, book_id) ->
   if !($("#modal_event").hasClass("in"))
     $(".modal").modal("hide")
 
-  if friend_id && !book_id
-    url = "/events/new?friend_id=" + friend_id
-  else if book_id && !friend_id
-    url = "/events/new?book_id_user=" + book_id
-  else if friend_id && book_id
-    url = "/events/new?friend_id=" + friend_id + "&book_id_user=" + book_id
-  else
-    url = "/events/new"
+    if friend_id && !book_id
+      url = "/events/new?friend_id=" + friend_id
+    else if book_id && !friend_id
+      url = "/events/new?book_id_user=" + book_id
+    else if friend_id && book_id
+      url = "/events/new?friend_id=" + friend_id + "&book_id_user=" + book_id
+    else
+      url = "/events/new"
 
-  $.get url, (data) ->
-    $("#modal_event").html data
-    window.modal_events_rebless()
+    $.get url, (data) ->
+      $("#modal_event").html data
+      window.modal_events_rebless()
 
-    if friend_id
-      $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
-        $("#events_new_friend_timezone").html data
+      if friend_id
+        $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+          $("#events_new_friend_timezone").html data
 
-    $("#modal_event").modal("show")
+      $("#modal_event").modal("show")
 
 
 
@@ -230,9 +230,10 @@ window.application_container_online_refresh = () ->
 
 
 window.books_item_prime_raty = () ->
+  
   $(".books_rating_read").raty
     readOnly: true
-      # hints: ["Very Poor", "Poor", "OK", "Good", "Excellent"]
+    # hints: ["Very Poor", "Poor", "OK", "Good", "Excellent"]
     score: ->
       return parseFloat $(this).data("rating")
 

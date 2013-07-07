@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = javascript_include_tag "books"
     = javascript_include_tag "events"
-    
+
     = yield :javascript_includes
 
     = csrf_meta_tags
@@ -17,6 +17,8 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
     = render partial: 'shared/pusher'
+    
+
     
   %body
 

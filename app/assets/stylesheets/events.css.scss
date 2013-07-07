@@ -119,8 +119,31 @@ $blue_linkedin: #006699;
 
 
 ///////////////////////////////////////////////
-/////////////////// INDEX /////////////////////
+///////////////// INDEX/ALL ///////////////////
 ///////////////////////////////////////////////
+
+
+
+#modal_event {
+  width:600px !important;
+  margin-left:-300px;
+  margin-top:-300px;
+
+  height:520px !important;
+
+  text-align:center !important;
+
+  .modal-body {
+    text-align:center !important;
+    height:380px !important;
+  }
+
+//  .modal-footer {
+//    position:absolute;
+//    bottom:0;
+//  }
+
+}
 
 
 
@@ -129,14 +152,23 @@ $blue_linkedin: #006699;
 ///////////////////// NEW /////////////////////
 ///////////////////////////////////////////////
 
+
+
 #events_new_friend_select {
   margin:0;
 }
 
 
+#events_new_friend_selected {
+  display:inline-block;
+  height:25px;
+
+}
+
+
 #events_new_friend_timezone {
 
-  height:20px;
+  height:40px;
 
   .application_bootstrap_alert_yellow {
 
@@ -144,9 +176,11 @@ $blue_linkedin: #006699;
 
     width:230px;
 
-    height:20px;
+    height:40px;
 
     text-align:center;
+
+    padding: 8px 14px 8px 14px !important;
   }
 
 }
@@ -165,6 +199,8 @@ $blue_linkedin: #006699;
     height:20px;
 
     text-align:center;
+
+    padding: 8px 14px 8px 14px !important;
 
   }
 
@@ -200,7 +236,7 @@ $blue_linkedin: #006699;
   display:inline-block;
 
   width:500px;
-  height:75px;
+  height:65px;
 
   padding:10px;
   border:1px solid $gray_Light;
@@ -217,11 +253,26 @@ $blue_linkedin: #006699;
 }
 
 
+.events_form_spacer {
+
+  border-top:1px solid $gray_Lighter;
+
+  height:1px;
+
+  margin: 10px 30px 20px 30px;
+
+}
+
+
 
 ///////////////////////////////////////////////
 ///////////////////// EDIT ////////////////////
 ///////////////////////////////////////////////
 
-#events_edit_avatar {
-  max-width:30px;
+#events_edit_partner_avatar {
+  max-width:25px;
+}
+
+#events_edit_partner_name {
+  line-height:25px;
 }

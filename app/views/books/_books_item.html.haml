@@ -70,7 +70,9 @@
 
               - if books_item.btype == "case"
                 .row
-                  = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-inverse books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
+                  .books_index_books_item_schedule_button.btn.btn-small.btn-inverse{"data-book_id" => books_item.id.to_s}
+                    %i.icon-calendar 
+                    Schedule
                 .row
                   = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
               

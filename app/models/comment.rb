@@ -8,9 +8,9 @@ class Comment < ActiveRecord::Base
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 500 }
 
-  validates :rating, presence: true, :if => :is_post?
+  validates :rating, presence: true, :if => :is_book?
 
-def is_post?
+def is_book?
   self.commentable_type == "Book"
 end
   

@@ -43,7 +43,7 @@
       .span.offset1
         %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_user]"}
           %option
-            = options_from_collection_for_select(Book.all, "id", "title", @event.book_id_user)
+            = options_from_collection_for_select(@books, "id", "title", @event.book_id_user)
 
     - unless @event.book_id_partner.blank?
       .spacer10
