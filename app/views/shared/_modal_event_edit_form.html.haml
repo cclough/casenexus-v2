@@ -38,12 +38,14 @@
 
     .row
       #events_new_datetime_picker.input-append.date
-
+        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y - %H:%M')
+        
         %span.add-on
           %i.icon-calendar
+          %i.icon-remove
 
-        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg"
-
+      / #events_new_datetime_container
+      /   = f.datetime_select :datetime
 
 
 

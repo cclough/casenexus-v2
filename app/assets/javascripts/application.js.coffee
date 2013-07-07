@@ -182,10 +182,13 @@ window.modal_events_new_timezone_calcs = ->
 window.modal_events_rebless = ->
 
   $("#events_new_datetime_picker").datetimepicker
-    format: "dd MM yyyy - hh:ii"
+    format: "dd M yyyy - hh:ii"
     minuteStep: 15
-    pickerPosition: 'bottom-left'    
+    pickerPosition: 'bottom-left'
+    autoclose: true
     showMeridian: true
+    startDate: $("#events_new_datetime_input").data "start_date"
+    #startDate: "2013-07-07 10:00"
 
   $("#events_new_friend_select").change ->
     window.modal_events_new_timezone_calcs()
@@ -199,9 +202,9 @@ window.modal_events_rebless = ->
 
     if book_id > 0
       $.get "/books/" + book_id + "/show_small", (data) ->
-        $("#events_new_book_viewer").html data
+        $("#events_new_book_viewer_partnertoprepare").html data
     else
-      $("#events_new_book_viewer").html "<div id=events_new_book_viewer_empty>No book selected</div>"
+      $("#events_new_book_viewertoprepare").html "<div id=events_new_book_viewer_empty>No book selected</div>"
 
   window.modal_spinner_prime()
 

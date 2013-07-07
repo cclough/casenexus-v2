@@ -44,10 +44,10 @@
 
     .row
       #events_new_datetime_picker.input-append.date
+        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "Select a date and time", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M")
         %span.add-on
           %i.icon-calendar
-        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "Select a date and time", class: "application_form_input_alternative whitebg"
-
+          %i.icon-remove
 
 
 
@@ -67,20 +67,17 @@
 
 
 
-      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
-        %option Which case should they prepare for you?
-        / = options_from_collection_for_select(Book.all, "id", "title")
-        - @books.each do |books_select_item|
-          %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }
-            = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+
+      #events_new_book_viewer_partnertoprepare_container.application_bootstrap_alert_blue
+
+        %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
+          %option Which case should they prepare for you?
+          / = options_from_collection_for_select(Book.all, "id", "title")
+          - @books.each do |books_select_item|
+            %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }
+              = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
 
 
-
-      .spacer10
-
-
-      #events_new_book_viewer_partnertoprepare_container
-      
         #events_new_book_viewer_partnertoprepare
           - if @book_user.blank?
             #events_new_book_viewer_empty 
