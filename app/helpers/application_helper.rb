@@ -116,4 +116,9 @@ module ApplicationHelper
     end
   end
 
+  def online_user_count
+      count = pluralize(User.online_now.count,"user")
+      count_tag = content_tag :span, count#, class: "application_colorcode_green"
+      count_tag + " online"
+  end
 end

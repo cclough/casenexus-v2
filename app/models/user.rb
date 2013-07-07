@@ -206,6 +206,10 @@ class User < ActiveRecord::Base
       where(last_online_at: (1.hour.ago)..(Time.now))
     end
 
+    def online_now
+      where(last_online_at: (5.minutes.ago)..(Time.now))
+    end
+
     ### Lists for filters
 
     # Simple Filters

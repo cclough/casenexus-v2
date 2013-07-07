@@ -2,56 +2,108 @@
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    %h3 Amend Case Appointment
+    %h3 Amend case appointment...
 
   .modal-body  
     #flash_notifications
       = render 'shared/error_messages', object: @event
 
     .row
-      .span12
-        With:
-      .span.offset1#events_edit_avatar
-        = image_tag "avatars/icon.png"
-      .span.offset1
-        %strong
-          = @event.partner.name
-    .spacer10
-    .row
-      .offset13
-        #events_new_friend_timezone
-          / = render "events/user_timezone", user_id: @event.partner.id
+      #events_new_friend_selected
+        .span#events_edit_partner_avatar
+          = image_tag "avatars/icon.png"
+        .span.offset1#events_edit_partner_name
+          %strong
+            = @event.partner.name
+            = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_new_friend_select"
 
     .spacer10
+
+
+    #events_new_friend_timezone
+      = render "events/user_timezone", user_id: @event.partner.id, display_which: "timezone"
+
+
+
+
+
+
+    .spacer20
+
+
+    .events_form_spacer
+
+
+
+
     .row
-      .span12
-        Date & Time:
-      .span.offset1
-        #events_new_datetime_picker.input-append.date
-          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg"
-          %span.add-on
-            %i.icon-calendar
+      #events_new_datetime_picker.input-append.date
+
+        %span.add-on
+          %i.icon-calendar
+
+        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg"
+
+
+
+
+
+    #events_new_datetime_friend
+      = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime, display_which: "timeforfriend"
+
+
+
+    .spacer20
+
+
+    .events_form_spacer
+
+
     .row
-      .offset13
-        #events_new_datetime_friend
-          = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime
+
+
+
+
+      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partner]"}
+        %option Which case should they prepare for you?
+        / = options_from_collection_for_select(Book.all, "id", "title")
+        - @books.each do |books_select_item|
+          %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partner.id) unless @book_partner.blank?) }
+            = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+
+
+
+    / - unless @event.book_id_partner.blank?
+
+
+    #events_new_book_viewer
+      - if @book_partner.blank?
+        #events_new_book_viewer_empty 
+          No book selected
+      -else
+        = render partial: 'books/show_small', locals: { book_id: @book_partner.id }
+
+
 
     .spacer10
-    .row
-      .span12
-        Case you want them to prepare:
-      .span.offset1
-        %select.chzn-select.span20{"data-placeholder" => "Choose a case", name:"event[book_id_user]"}
-          %option
-            = options_from_collection_for_select(@books, "id", "title", @event.book_id_user)
 
-    - unless @event.book_id_partner.blank?
-      .spacer10
-      .row
-        .span12
-          Case they want you to prepare:
-        .span.offset1
-          = @event.book_partner.title
+
+
+
+    #events_new_book_viewer
+      - if @book_user.blank?
+        #events_new_book_viewer_empty 
+          No book selected
+      -else
+        = render partial: 'books/show_small', locals: { book_id: @book_user.id }
+
+
+
+
+
+
+
+
 
   .modal-footer
     .pull-left
@@ -60,6 +112,9 @@
     .modal_submit_button.btn.btn-inverse{tabindex: "102"}
       %i.icon-arrow-right.icon-white
       Amend Appointment
+
+
+
 
 #application_spinner_container
   #application_spinner

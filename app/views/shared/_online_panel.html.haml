@@ -1,6 +1,6 @@
 #application_container_online_title
   Your friends
-#application_container_online_friends
+#application_container_online_friends{ class: ("non_response" if nonresponse == 1) }
   - for online_friend_item in current_user.accepted_friends
     .application_container_online_item
 
@@ -9,11 +9,12 @@
 
       = render partial: 'shared/online_user_item'
 
-#application_container_online_title
-  Who's online
-#application_container_online_nonfriends
 
-  - if User.list_online_recently_notfriends(current_user).count > 0
+- if User.list_online_recently_notfriends(current_user).count > 0
+  #application_container_online_title
+    Other users
+  #application_container_online_nonfriends
+
     - for online_friend_item in User.list_online_recently_notfriends(current_user)
       .application_container_online_item
 

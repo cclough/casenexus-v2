@@ -1,20 +1,10 @@
-
+- display_which = params[:display_which] if !display_which
 
 / - @datetime = date_and_time if date_and_time?
 - @user = User.find(user_id) if !@user
 
 
-- if @datetime
-  /LOWER
-
-  / .span
-  /   %strong
-  /     For #{@user.first_name}:
-  / .span.offset1
-  .application_bootstrap_alert_blue
-    = @datetime.in_time_zone(@user.time_zone).strftime("%d %B %Y - %H:%M")
-
-- else
+- if display_which == "timezone"
   /UPPER
 
   / .span
@@ -22,6 +12,23 @@
   /     #{@user.first_name}'s Timezone:
   / .span.offset1
   .application_bootstrap_alert_yellow
-    = timezone_difference(current_user,@user)
+    = timezone_difference(current_user, @user)
     %br
     (#{@user.time_zone})
+
+
+
+- elsif display_which == "timeforfriend"
+
+  - @datetime = date_and_time if !@datetime
+
+  /LOWER
+
+  / .span
+  /   %strong
+  /     For #{@user.first_name}:
+  / .span.offset1
+  .application_bootstrap_alert_blue
+    %strong For #{@user.first_name}
+    %br
+    = @datetime.in_time_zone(@user.time_zone).strftime("%d %B %Y - %H:%M")

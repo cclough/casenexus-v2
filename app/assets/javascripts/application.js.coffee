@@ -150,7 +150,7 @@ window.modal_event_new_show = (friend_id, book_id) ->
       window.modal_events_rebless()
 
       if friend_id
-        $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+        $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
           $("#events_new_friend_timezone").html data
 
       $("#modal_event").modal("show")
@@ -163,13 +163,13 @@ window.modal_events_new_timezone_calcs = ->
   datetime = $("#events_new_datetime_input").val()
   
   if friend_id > 0
-    $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
+    $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
       $("#events_new_friend_timezone").html data
   else
     $("#events_new_friend_timezone").html("")
 
   if (friend_id > 0) && (datetime != "")
-    $.get "/events/user_timezone?user_id=" + friend_id+"&datetime="+datetime, (data) ->
+    $.get "/events/user_timezone?display_which=timeforfriend&user_id=" + friend_id+"&datetime="+datetime, (data) ->
       $("#events_new_datetime_friend").html data
   else
     $("#events_new_datetime_friend").html("")
@@ -222,6 +222,13 @@ window.application_container_online_prime = () ->
   # setInterval ->
   #   application_container_online_refresh()
   # , 30000
+
+
+  $("#application_container_online_response_min").click ->
+    if $("#application_container_online_response").is(':visible')
+      $("#application_container_online_response").fadeOut "fast"
+    else
+      $("#application_container_online_response").fadeIn "fast"
 
 window.application_container_online_refresh = () ->
   $.get "/online_panel", (data) ->

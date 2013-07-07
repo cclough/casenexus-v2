@@ -230,6 +230,13 @@ a:hover {
   }
 }
 
+
+
+
+///////////////////////////////////////////
+//////////////ONLINE PANEL/////////////////
+///////////////////////////////////////////
+
 #application_container_online {
  
   position:absolute;
@@ -253,6 +260,69 @@ a:hover {
 }
 
 
+#application_container_online_response {
+
+  width:210px;
+  height:400px;
+
+  position:absolute;
+  bottom:40px;
+  right:20px;
+
+  background: rgba(0,0,0,0.7);
+
+  overflow-y:auto;
+  display:none;
+
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  @media (min-width: 1201px) {
+    display:none;
+  }
+  @media (max-width: 1200px) {
+    display:block;
+  }
+}
+
+
+
+#application_container_online_response_min {
+
+  position:absolute;
+  right:0;
+  bottom:0;
+
+  width:210px;
+  height:20px;
+
+
+  background: rgba(0,0,0,0.7);
+
+  display:none;
+
+  @media (max-width: 1200px) {
+    display:block;
+  }
+  z-index:999;
+
+  padding:10px;
+
+  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
+  box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
+
+  border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+
+  &:hover {
+    cursor:pointer;
+  }
+}
+
+
 
 #application_container_online_title {
   background: url('app/dark-bg.png') repeat top left;
@@ -266,8 +336,11 @@ a:hover {
 
 
 #application_container_online_friends {
-  height:312px;
-  overflow-y:scroll;
+
+  &.non_response {
+    overflow-y:scroll;
+    height:312px;
+  }
 }
 
 .application_container_online_item {
@@ -343,7 +416,9 @@ a:hover {
 }
 
 
-
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
 
 
 .application_icon_skype {
