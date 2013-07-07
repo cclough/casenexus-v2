@@ -546,8 +546,8 @@ if Rails.env == 'development'
     5.times do
       partner_id = rand(2) + 1
       user.events.create!(partner_id: partner_id,
-                          book_id_user: 1,
-                          book_id_partner: 1,
+                          book_id_usertoprepare: 1,
+                          book_id_partnertoprepare: 1,
                           datetime: random_date(year_range: 2, year_latest: 0.5))
 
       puts "Events created for user #{user.name}"

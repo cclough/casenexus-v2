@@ -31,8 +31,8 @@ class EventsController < ApplicationController
   def new
     @event = current_user.events.new
 
-    @book_user = Book.find(params[:book_id_user]) if params[:book_id_user]
-    @book_partner = Book.find(params[:book_id_partner]) if params[:book_id_partner]
+    @book_user = Book.find(params[:book_id_usertoprepare]) if params[:book_id_usertoprepare]
+    @book_partner = Book.find(params[:book_id_partnertoprepare]) if params[:book_id_partnertoprepare]
 
 
     @friend = User.find(params[:friend_id]) if params[:friend_id]
@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     
     respond_to do |format|
 
-      if @event.valid? && Event.set(current_user, @event.partner, @event.datetime, @event.book_id_user, @event.book_id_partner)
+      if @event.valid? && Event.set(current_user, @event.partner, @event.datetime, @event.book_id_usertoprepare, @event.book_id_partnertoprepare)
         format.js
         flash[:success] = "Appointment booked with " + @event.partner.first_name + "."
 
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
 
         # for when it fails
         @friend = @event.partner unless @event.partner.blank?
-        @book_user = Book.find(@event.book_id_partner) unless @event.book_id_partner.blank?
+        @book_user = Book.find(@event.book_id_partnertoprepare) unless @event.book_id_partnertoprepare.blank?
       end
 
     end
@@ -68,10 +68,10 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    @books = Book.where(btype: "case")
+    @books = Book.where(btype: "case").order("author asc")
 
-    @book_user = Book.find(@event.book_id_user) if @event.book_id_user
-    @book_partner = Book.find(@event.book_id_partner) if @event.book_id_partner
+    @book_usertoprepare = Book.find(@event.book_id_usertoprepare) if @event.book_id_usertoprepare
+    @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare) if @event.book_id_partnertoprepare
 
 
     render partial: "shared/modal_event_edit_form", layout: false
@@ -82,7 +82,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
 
-      if @event.valid? && Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_user], params[:event][:book_id_partner])
+      if @event.valid? && Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_usertoprepare], params[:event][:book_id_partnertoprepare])
         flash[:success] = "Appointment amended. " + @event.partner.first_name + " has been notified."
         format.js
 

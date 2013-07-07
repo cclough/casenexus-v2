@@ -104,6 +104,7 @@ window.modal_message_show = (friend_id) ->
 
 
 
+
 window.modal_friendship_req_show = (friend_id) ->
   
   if !($("#modal_friendship_req").hasClass("in"))
@@ -139,9 +140,9 @@ window.modal_event_new_show = (friend_id, book_id) ->
     if friend_id && !book_id
       url = "/events/new?friend_id=" + friend_id
     else if book_id && !friend_id
-      url = "/events/new?book_id_user=" + book_id
+      url = "/events/new?book_id_usertoprepare=" + book_id
     else if friend_id && book_id
-      url = "/events/new?friend_id=" + friend_id + "&book_id_user=" + book_id
+      url = "/events/new?friend_id=" + friend_id + "&book_id_usertoprepare=" + book_id
     else
       url = "/events/new"
 
@@ -152,6 +153,10 @@ window.modal_event_new_show = (friend_id, book_id) ->
       if friend_id
         $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
           $("#events_new_friend_timezone").html data
+
+
+      # to increase height of the modal (removed by new show)
+      $("#modal_event").removeClass "event_edit"
 
       $("#modal_event").modal("show")
 

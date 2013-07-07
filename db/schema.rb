@@ -102,13 +102,13 @@ ActiveRecord::Schema.define(:version => 20130703182957) do
   end
 
   create_table "events", :force => true do |t|
-    t.integer  "user_id",         :null => false
-    t.integer  "partner_id",      :null => false
-    t.datetime "datetime",        :null => false
-    t.integer  "book_id_user"
-    t.integer  "book_id_partner"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "user_id",                  :null => false
+    t.integer  "partner_id",               :null => false
+    t.datetime "datetime",                 :null => false
+    t.integer  "book_id_usertoprepare"
+    t.integer  "book_id_partnertoprepare"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "firms", :force => true do |t|
@@ -154,10 +154,8 @@ ActiveRecord::Schema.define(:version => 20130703182957) do
   add_index "invitations", ["user_id"], :name => "index_invitations_on_user_id"
 
   create_table "languages", :force => true do |t|
-    t.text     "name"
-    t.text     "country_code"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.text "name"
+    t.text "country_code"
   end
 
   create_table "languages_users", :id => false, :force => true do |t|

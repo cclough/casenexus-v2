@@ -67,7 +67,7 @@
 
 
 
-      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partner]"}
+      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
         %option Which case should they prepare for you?
         / = options_from_collection_for_select(Book.all, "id", "title")
         - @books.each do |books_select_item|
@@ -78,12 +78,15 @@
 
       .spacer10
 
-      #events_new_book_viewer
-        - if @book_user.blank?
-          #events_new_book_viewer_empty 
-            No book selected
-        -else
-          = render partial: 'books/show_small', locals: { book_id: @book_user.id }
+
+      #events_new_book_viewer_partnertoprepare_container
+      
+        #events_new_book_viewer_partnertoprepare
+          - if @book_user.blank?
+            #events_new_book_viewer_empty 
+              No book selected
+          -else
+            = render partial: 'books/show_small', locals: { book_id: @book_user.id }
 
 
   .modal-footer

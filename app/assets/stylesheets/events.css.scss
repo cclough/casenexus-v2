@@ -138,6 +138,17 @@ $blue_linkedin: #006699;
     height:400px !important;
   }
 
+  &.event_edit {
+    height:655px !important;
+    margin-top:-320px;
+
+    .modal-body {
+      text-align:center !important;
+      height:515px !important;
+      max-height:515px !important;
+    }
+
+  }
 //  .modal-footer {
 //    position:absolute;
 //    bottom:0;
@@ -231,19 +242,41 @@ $blue_linkedin: #006699;
 }
 
 
-#events_new_book_viewer {
+
+
+
+#events_new_book_viewer_partnertoprepare {
 
   display:inline-block;
 
   width:500px;
   height:65px;
 
-  padding:10px;
-  border:1px solid $gray_Light;
+//  padding:10px;
 
-  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
-  box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
+  #events_new_book_viewer_empty {
+    color:$gray_Mid;
+    font-size:15px;
+    margin-top:27px;
+  }
+}
+
+
+#events_new_book_viewer_usertoprepare_container, #events_new_book_viewer_partnertoprepare_container {
+
+  padding:10px;
+  text-align:center;
+
+}
+
+#events_new_book_viewer_usertoprepare {
+
+  display:inline-block;
+
+  width:500px;
+  height:65px;
+
+//  padding:10px;
 
   #events_new_book_viewer_empty {
     color:$gray_Mid;

@@ -4,8 +4,8 @@ class CreateEvents < ActiveRecord::Migration
       t.integer     "user_id",         :null => false
       t.integer     "partner_id",      :null => false
       t.datetime    "datetime",        :null => false
-      t.integer     "book_id_user"
-      t.integer     "book_id_partner"
+      t.integer     "book_id_usertoprepare"
+      t.integer     "book_id_partnertoprepare"
       t.timestamps
     end
   end

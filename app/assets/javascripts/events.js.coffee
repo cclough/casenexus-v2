@@ -6,6 +6,10 @@ window.events_calendar_rebless = ->
       $.get "/events/" + event_id + "/edit", (data) ->
         $("#modal_event").html data
         window.modal_events_rebless()
+
+      # to increase height of the modal (removed by new show)
+      $("#modal_event").addClass "event_edit"
+
       $("#modal_event").modal("show")
 
   $("#events_calendar_new_button").click ->

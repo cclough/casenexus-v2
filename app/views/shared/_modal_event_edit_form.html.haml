@@ -4,7 +4,7 @@
 
     %h3 Amend case appointment...
 
-  .modal-body  
+  .modal-body
     #flash_notifications
       = render 'shared/error_messages', object: @event
 
@@ -59,29 +59,27 @@
     .events_form_spacer
 
 
-    .row
+
+    / - unless @event.book_id_partnertoprepare.blank?
 
 
+    #events_new_book_viewer_partnertoprepare_container.application_bootstrap_alert_blue
+  
 
-
-      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partner]"}
+      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
         %option Which case should they prepare for you?
         / = options_from_collection_for_select(Book.all, "id", "title")
         - @books.each do |books_select_item|
-          %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partner.id) unless @book_partner.blank?) }
+          %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
             = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
 
 
-
-    / - unless @event.book_id_partner.blank?
-
-
-    #events_new_book_viewer
-      - if @book_partner.blank?
-        #events_new_book_viewer_empty 
-          No book selected
-      -else
-        = render partial: 'books/show_small', locals: { book_id: @book_partner.id }
+      #events_new_book_viewer_partnertoprepare
+        - if @book_partnertoprepare.blank?
+          #events_new_book_viewer_empty 
+            No book selected
+        -else
+          = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
 
 
 
@@ -89,13 +87,16 @@
 
 
 
+    #events_new_book_viewer_usertoprepare_container.application_bootstrap_alert_yellow
+      
+      Case that #{@event.partner.first_name} wants you to prepare
 
-    #events_new_book_viewer
-      - if @book_user.blank?
-        #events_new_book_viewer_empty 
-          No book selected
-      -else
-        = render partial: 'books/show_small', locals: { book_id: @book_user.id }
+      #events_new_book_viewer_usertoprepare
+        - if @book_usertoprepare.blank?
+          #events_new_book_viewer_empty 
+            No book selected
+        -else
+          = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
 
 
 
