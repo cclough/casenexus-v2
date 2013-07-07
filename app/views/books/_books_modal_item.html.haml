@@ -1,0 +1,83 @@
+.row
+  .books_index_books_item.panel.dark.kill_top
+    .row
+
+
+
+
+      .span12
+        .books_index_books_item_image.panel.kill_all
+          - if books_item.thumb.blank?
+            = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
+          - else
+            = image_tag 'library/thumbs/' + books_item.thumb.to_s
+
+
+
+
+
+
+      .span.offset1
+
+
+        .row
+
+          .span.books_index_books_item_body
+            .row.books_index_books_item_titles
+              .span.books_index_books_item_source_title
+                - if books_item.title.blank?
+                  = books_item.source_title
+                - else
+                  = "#{books_item.source_title}:&nbsp;".html_safe
+              - unless books_item.title.blank?
+                .span.books_index_books_item_title
+                  = books_item.title
+
+            .spacer5
+
+            .row
+              .span.books_index_books_item_author
+                = books_item.author
+              .span.offset1.books_index_books_item_university_image
+                - unless books_item.university.blank?
+                  .span
+                    = image_tag "universities/" + books_item.university.image
+                  .span.offset1
+                    = books_item.university.name
+
+
+            .spacer5
+
+            .row.books_index_books_item_description
+              .span
+                = books_item.desc_trunc
+
+
+
+          .span.offset1
+            .books_rating_read_container.panel.dark.kill_all
+              .books_rating_read{"data-rating" => books_item.average_rating.round(1)}
+              .books_rating_read_text
+                User rating:
+                = pluralize(books_item.average_rating.round(1),"Star")
+            .books_index_books_item_info_container.panel.gradient.kill_all
+              %div
+                = books_item.chart_num_in_words
+              - unless books_item.difficulty.blank?
+                .books_index_books_item_difficulty
+                  = book_difficulty_in_words(books_item.difficulty)
+            .books_index_books_item_actions_container.panel.dark.kill_all
+
+              - if books_item.btype == "case"
+                .row
+                  = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-inverse books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
+                .row
+                  = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-inverse"
+              
+
+              
+              .row
+                .books_index_books_item_comments{"data-id"=>books_item.id}
+                  = link_to book_path(books_item), class: "btn btn-small btn-inverse" do
+                    Rate & Comment
+                    %strong (#{books_item.comments.count})

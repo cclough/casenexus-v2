@@ -25,6 +25,10 @@ class Book < ActiveRecord::Base
     desc.to_s.truncate(180, separator: ' ')
   end
 
+  def desc_trunc_very
+    desc.to_s.truncate(50, separator: ' ')
+  end
+
   def charts_file_name
     url.partition('.').first + "_charts.pdf"
   end

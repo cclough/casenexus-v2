@@ -162,13 +162,13 @@ window.modal_events_new_timezone_calcs = ->
   friend_id = $("#events_new_friend_select").val()
   datetime = $("#events_new_datetime_input").val()
   
-  if friend_id
+  if friend_id > 0
     $.get "/events/user_timezone?user_id=" + friend_id, (data) ->
       $("#events_new_friend_timezone").html data
   else
     $("#events_new_friend_timezone").html("")
 
-  if friend_id && datetime
+  if (friend_id > 0) && (datetime != "")
     $.get "/events/user_timezone?user_id=" + friend_id+"&datetime="+datetime, (data) ->
       $("#events_new_datetime_friend").html data
   else
@@ -187,6 +187,16 @@ window.modal_events_rebless = ->
 
   $("#events_new_datetime_input").change ->
     window.modal_events_new_timezone_calcs()
+
+
+  $("#events_new_book_select").change ->
+    book_id = $(this).val()
+
+    if book_id > 0
+      $.get "/books/" + book_id + "/show_small", (data) ->
+        $("#events_new_book_viewer").html data
+    else
+      $("#events_new_book_viewer").html "<div id=events_new_book_viewer_empty>No book selected</div>"
 
   window.modal_spinner_prime()
 

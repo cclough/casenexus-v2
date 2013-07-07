@@ -96,11 +96,11 @@ module ApplicationHelper
     
     if time_difference < 0
       # .abs makes it positive
-      pluralize(time_difference.abs, "hour") + " behind"
+      pluralize(time_difference.abs, "hour") + " behind you"
     elsif time_difference > 0
-      pluralize(time_difference, "hour") + " ahead"
+      pluralize(time_difference, "hour") + " ahead of you"
     elsif time_difference == 0
-      "Same Time Zone"
+      "Same time zone as you"
     end
 
   end
