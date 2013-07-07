@@ -154,7 +154,7 @@ $blue_pastel: #98cdff;
 .cases_show_comment {
   // overflow-y: auto;
   min-height:182px;
-  width:415px;
+  width:405px;
   border:0px !important;
 }
 
@@ -223,8 +223,8 @@ $blue_pastel: #98cdff;
 
 .cases_show_block_circle_outer {
     background: #f00;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin:0px;
     margin-top:60px;
@@ -233,18 +233,18 @@ $blue_pastel: #98cdff;
 
 .cases_show_block_circle {
     background: #f00;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border:0px !important;
     margin:0px;
 }
 
 .cases_show_block_circle_text {
-    margin-top:3px;
+    margin-top:12px;
     text-align:center;
     font-weight:bold;
-    font-size:23px;
+    font-size:24px;
     color: #98cdff !important;
 }
 
@@ -675,6 +675,14 @@ $blue_pastel: #98cdff;
 
 
 
+
+
+
+
+
+
+
+
 #cases_resultstable_form {
 
   padding:10px;
@@ -690,6 +698,9 @@ $blue_pastel: #98cdff;
   -moz-border-top-right-radius: 5px;
   -webkit-border-top-right-radius: 5px;
 }
+
+
+
 
 
 #cases_analysis_section_table_empty {
@@ -709,20 +720,28 @@ $blue_pastel: #98cdff;
 
 #cases_resultstable_table {
   width:100%;
+  font-size:11px;
   td {
     padding-left:5px;
     padding-right:5px;
+    text-align:center;
+    &.text-left-align {
+      text-align:left;
+    }
   }
 }
 
 
-
 .cases_resultstable_chart_bar {
-  width:150px;
+  width:300px;
   height:20px;
   border:0px solid white;
 }
 
+
+#cases_resultstable_table_column_bar {
+  width:300px;
+}
 
 .cases_resultstable_cell_last5 {
   color: $blue_pastel;
@@ -737,7 +756,6 @@ $blue_pastel: #98cdff;
     margin-left:5px;
   } 
 }
-
 
 
 
@@ -853,16 +871,6 @@ $blue_pastel: #98cdff;
 
 
 
-
-
-
-
-
-
-
-#cases_resultstable_table {
-  font-size:11px;
-}
 
 
 

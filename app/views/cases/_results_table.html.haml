@@ -3,36 +3,41 @@
   %th
     Name
   %th
+    Score /5
+  %th#cases_resultstable_table_column_bar
     Bar
   %th
-    Prev #{@period.to_s}
-  %th
-    Last #{@period.to_s}
+    Prev #{@period.to_s} /5
   %th
     Growth
   %th
     Site Av
-  %th
-    Recommendation
+  / %th
+  /   Recommendation
     
 
   - @table_hash.each_with_index do |(key, value), index|
 
     %tr
-      %td
+      %td.text-left-align
         / Name
         = Case.criteria_name(key)
+
+
+      %td.cases_resultstable_cell_last5
+        / Last 5 Average
+        = value
+
+
       %td
         / Chart
-        %div.cases_resultstable_chart_bar{"data-score" => value, id: "cases_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
+        .cases_resultstable_chart_bar{"data-score" => value, id: "cases_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
+
       %td
         / Previous 5 to Last 5 Average
         - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
         = prev_av
 
-      %td.cases_resultstable_cell_last5
-        / Last 5 Average
-        = value
 
       / Growth cell
       - curr_av = value
@@ -44,8 +49,8 @@
       - diff = value - site_av
       = colorcoded_cell(diff, site_av)
       
-      / Recommednation cell
-      = recommendation_cell(growth, diff)
+      / / Recommednation cell
+      / = recommendation_cell(growth, diff)
 
 
 

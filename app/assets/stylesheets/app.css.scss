@@ -707,7 +707,7 @@ a:hover {
 }
 
 #application_title_breadcrumb {
-  border-right:1px solid $gray_Light;
+//  border-right:1px solid $gray_Mid;
   
   margin: -10px 10px -10px -10px;
   padding-right:10px;
@@ -726,6 +726,7 @@ a:hover {
 
   &:hover {
     background-color: $gray_Lightest;
+    color:$gray_Dark;
   }
 
   &.application_title_breadcrumb_smallfont {

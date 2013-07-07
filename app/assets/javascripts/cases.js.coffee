@@ -698,6 +698,8 @@ window.cases_analysis_chart_university_draw = () ->
 
     $("#cases_analysis_chart_university").fadeIn "fast"
 
+
+-
 #////////////////////////////////////////////////////////
 # Table - Bars //////////////////////////////////////////
 #////////////////////////////////////////////////////////
@@ -717,14 +719,19 @@ window.cases_resultstable_bars_draw = () ->
 
     chart = new AmCharts.AmSerialChart()
     chart.autoMarginOffset = 0
+    chart.autoMargins = false
     chart.marginRight = 0  
     chart.marginTop = 0  
+    chart.marginBottom = 0  
+    chart.marginLeft = 0  
+    chart.width = 300
     chart.dataProvider = Data
     chart.categoryField = "name"         
     chart.rotate = true
     chart.depth3D = 3
     chart.angle = 10
     chart.startDuration = 1
+    # chart.valueAxesSettings.inside = false
 
     # AXES
     # Category

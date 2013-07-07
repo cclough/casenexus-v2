@@ -103,11 +103,12 @@
     .row
       .span17
         #cases_show_businessanalytics_chart_bar
-      .span9.offset2
+      .span10.offset2
         .cases_show_block_circle_outer.panel.dark
           .cases_show_block_circle.panel.darker
             .cases_show_block_circle_text
               = @case.businessanalytics_combined
+              %span.cases_score_large_outof /5
       .span
         .cases_show_comment.panel.dark.kill_all
           = @case.businessanalytics_comment.html_safe
@@ -119,11 +120,12 @@
     .row
       .span17
         #cases_show_structure_chart_bar
-      .span9.offset2
+      .span10.offset2
         .cases_show_block_circle_outer.panel.dark
           .cases_show_block_circle.panel.darker
             .cases_show_block_circle_text
               = @case.structure_combined
+              %span.cases_score_large_outof /5
       .span
         .cases_show_comment.panel.dark.kill_all
           = @case.structure_comment.html_safe
@@ -135,11 +137,12 @@
     .row
       .span17
         #cases_show_interpersonal_chart_bar
-      .span9.offset2
+      .span10.offset2
         .cases_show_block_circle_outer.panel.dark
           .cases_show_block_circle.panel.darker
             .cases_show_block_circle_text
               = @case.interpersonal_combined
+              %span.cases_score_large_outof /5
       .span
         .cases_show_comment.panel.dark.kill_all
           = @case.interpersonal_comment.html_safe

@@ -64,7 +64,7 @@ module ApplicationHelper
   def recommendation_cell(growth, diff_from_av)
 
     if (growth < 0) && (diff_from_av < 0)
-      content_tag :td, "This needs attention", class: "application_colorcode_red"
+      content_tag :td, "Needs work", class: "application_colorcode_red"
     else
       content_tag :td, "-", class: "application_colorcode_green"
     end
