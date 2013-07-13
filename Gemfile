@@ -23,6 +23,7 @@ gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notif
 gem 'country-select'                             # Country select for admin
 gem 'icalendar'                                  # ICS output for calendar
 gem 'pusher'                                     # Push notifications and messaging
+gem 'rails_admin'                                # Admin
 
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails
@@ -35,6 +36,7 @@ end
 
 group :assets do
   gem 'sass-rails', '>= 3.2.5'                   # SASS Support
+  gem "sass_rails_patch", "~> 0.0.1"             # Needed to make rails_admin work
   gem 'coffee-rails', '>= 3.2.1'                 # Cofeescript compilation
   gem 'uglifier', '>= 1.2.3'                     # JS Minimizer
 end
