@@ -32,7 +32,7 @@
 
     .span16.pull-right#console_index_subnav_select_friends_container
       %select#console_index_subnav_select_friends{name: "target_id", "data-placeholder" => "Select Friend" }
-        %option
+        %option Select Friend
         = options_from_collection_for_select @friends, :id, :name, (@friend.id unless @friend.blank?)
         
 

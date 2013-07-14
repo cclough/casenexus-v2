@@ -156,6 +156,7 @@ $blue_pastel: #98cdff;
   min-height:182px;
   width:405px;
   border:0px !important;
+  word-wrap:break-word !important;
 }
 
 
@@ -316,14 +317,9 @@ $blue_pastel: #98cdff;
 
 
 
-#cases_new_target_avatar {
-  margin-right:7px;
-  margin-top:6px;
-}
-
 #cases_new_target_name{
   font-size:15px;
-  padding-top:18px;
+  padding:5px;
   font-weight:bold;
 }
 
@@ -341,6 +337,7 @@ $blue_pastel: #98cdff;
 
 
 #cases_new_nobook {
+  display:none;
   input {
     margin-bottom: 0px !important;    
   }
@@ -545,7 +542,7 @@ $blue_pastel: #98cdff;
 
   // width for text box - it'll runs out of yellow if not careful
   // better solution needed here!
-  width:80%;
+  width:90%;
 
   border:1px solid black;
 
@@ -578,7 +575,12 @@ $blue_pastel: #98cdff;
 }
 
 
-
+.cases_new_comment_countChar {
+  position:absolute;
+  right:20px;
+  color: #d6cb82;
+  margin-top:-20px;
+}
 
 //////////////////////////////////////////
 

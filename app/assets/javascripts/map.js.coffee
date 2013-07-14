@@ -211,7 +211,7 @@ $(document).ready ->
         position: google.maps.ControlPosition.LEFT_CENTER
 
     # Create the map
-    window.map = new google.maps.Map(document.getElementById("map_index_container_map"), mapOptions)
+    window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
     # New infobox with offset
     window.infobox = new InfoBox

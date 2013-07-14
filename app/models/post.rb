@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content, :channel_id
+  attr_accessible :content
 
   # Associations
   belongs_to :user
@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
 
   # Validations
   validates :content, presence: true, length: { maximum: 500 }
-  validates :channel_id, presence: true
 
   def content_trunc
     content.truncate(17, separator: ' ')

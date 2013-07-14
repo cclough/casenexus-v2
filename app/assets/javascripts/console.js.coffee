@@ -125,7 +125,7 @@ $(document).ready ->
 
       $("#cases_new_nobook").css("display","none")
       $.get "/books/" + book_id + "/show_small", (data) ->
-        $("#cases_new_book").html data
+        $("#cases_new_book").html "<div class=\"panel dark kill_bottom\">" + data + "</div>"
 
         #Prime the raty
         window.books_item_prime_raty
@@ -157,7 +157,7 @@ $(document).ready ->
           $("#cases_new_nobook").css("display","none")
 
           $.get "/books/" + book_id + "/show_small", (data) ->
-            $("#cases_new_book").html data
+            $("#cases_new_book").html "<div class=\"panel dark kill_bottom\">" + data + "</div>"
 
             #Prime the raty
             window.books_item_prime_raty

@@ -2,8 +2,6 @@ class Country < ActiveRecord::Base
   attr_accessible :name, :code, :lat, :lng
 
   has_many :users
-
-  has_one :channel
   
   def image_file
   	"countries/" + self.code + ".png"

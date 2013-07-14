@@ -55,6 +55,17 @@ window.application_truncatables = () ->
 
 
 
+window.application_countChar = (val) ->
+  len = val.value.length
+  if len >= 500
+    val.value = val.value.substring(0, 500)
+    $("#cases_new_book").html "HELLO"
+    val.parent("div").find(".application_countChar_count").text 0
+  else
+    $("#cases_new_book").html "HELLO"
+    val.parent("div").find(".application_countChar_count").text 500 - len
+  
+
 
 
 window.modal_spinner_prime = () ->
@@ -272,6 +283,10 @@ $(document).ready ->
 
   # Tooltips throughout app
   $(".application_tooltip").tooltip()
+
+  # Countchar
+  $('.application_countchar').keyup ->
+    window.application_countChar(this)
 
   # Voteables
   $(".application_vote").click ->

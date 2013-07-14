@@ -338,12 +338,38 @@ a:hover {
 
 
 #application_container_online_friends {
-
+  height:312px;
+  
   &.non_response {
     overflow-y:scroll;
-    height:312px;
+
   }
 }
+
+#application_container_online_nonfriends {
+  height:200px;
+}
+
+
+#application_container_online_posts {
+  position:absolute;
+  top:512px;
+  bottom:0px;
+  right:0px;
+  width:210px;
+  overflow-y:auto;
+  z-index:999;
+}
+
+
+
+
+
+
+
+
+
+
 
 .application_container_online_item {
 

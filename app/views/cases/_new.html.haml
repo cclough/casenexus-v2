@@ -22,19 +22,25 @@
     .span.cases_new_expander
       .panel.dark.kill_bottom
         .row
-          .span16
-            .span5#cases_new_target_avatar
-              = image_tag "avatars/icon.png"
-            .span10#cases_new_target_name
+          .span5
+            = image_tag "avatars/icon.png", class: "application_userimage_medium"
+          .span#cases_new_target_name
+            = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.first_name}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
+              = image_tag @user.university.image_file, class: "application_userimage_small"
               = @user.name
 
 
 
 
 
-  .row#cases_new_book
-    - if @book
-      = render partial: 'show_small', locals: { book_id: @book.id }
+  .row
+    #cases_new_book
+      - if @book
+        .panel.dark.kill_bottom
+          = render partial: 'books/show_small', locals: { book_id: @book.id }
+
+
+
 
   .row#cases_new_nobook
     .panel.darker.kill_bottom
@@ -122,7 +128,7 @@
                 .span
                   = render partial: 'cases/scoreselector' , locals: { criteria: "sanitychecking", category: "businessanalytics", existing_score: @case.sanitychecking }
                 .span
-                  = f.text_field :sanitychecking, class: "cases_new_score_input", tabindex: "-1", id: 'cases_new_score_input_sanitychecking'
+                  = f.text_field :sanitychecking, class: "cases_new_score_input", tabindex: "-1", id: 'cases_new_score_input_sanitychecking application_countchar'
 
           .span1
             .cases_new_block_circle_outer.panel.dark
@@ -132,7 +138,9 @@
         .row       
           .cases_new_comment
             .cases_new_comment_content_container
-              = f.text_area :businessanalytics_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+              .cases_new_comment_countChar.application_countChar_count
+                hello
+              = f.text_area :businessanalytics_comment, placeholder: "Comment...", class: "cases_new_comment_content application_countchar"
 
 
 
@@ -203,6 +211,8 @@
         .row       
           .cases_new_comment
             .cases_new_comment_content_container
+              .cases_new_comment_countChar.application_countChar_count
+                hello
               = f.text_area :structure_comment, placeholder: "Comment...", class: "cases_new_comment_content"
 
 
@@ -278,6 +288,8 @@
         .row       
           .cases_new_comment
             .cases_new_comment_content_container
+              .cases_new_comment_countChar.application_countChar_count
+                hello
               = f.text_area :interpersonal_comment, placeholder: "Comment...", class: "cases_new_comment_content"
 
 

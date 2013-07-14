@@ -263,24 +263,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 
 
-  # Channels
-
-  Country.all.each do |country|
-
-    Channel.create!(country_id: country.id)
-
-    puts "Channel created for country #{country.name}"
-
-  end
-
-  University.all.each do |university|
-
-    Channel.create!(university_id: university.id)
-
-    puts "Channel created for university #{university.name}"
-
-  end
-
 
 
 
@@ -431,7 +413,7 @@ if Rails.env == 'development'
 
 
 
-  3.times do |n|
+  30.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
 
@@ -602,10 +584,8 @@ if Rails.env == 'development'
     #user = User.find(1)
 
     1.times do
-      channel_id = 1 + rand(5)
       user.posts.create!(
           content: Faker::Lorem.sentence(40),
-          channel_id: channel_id
       )
       puts "Post created for user #{user.name}"
     end

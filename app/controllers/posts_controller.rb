@@ -4,14 +4,6 @@ class PostsController < ApplicationController
   before_filter :completed_user, except: [:show_help, :help_checkbox]
 
 
-  def index
-
-    @posts = Post.all
-
-    @post = current_user.posts.build
-
-  end
-
   def create
 
     @post = current_user.posts.build(params[:post])
@@ -31,11 +23,6 @@ class PostsController < ApplicationController
     @comments = @commentable.comments.order("created_at desc").paginate(per_page: 20, page: params[:page])
     @comment = Comment.new
   end
-
-
-
-
-
 
   
 end

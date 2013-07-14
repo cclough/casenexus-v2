@@ -56,6 +56,9 @@ window.cases_new_prime = () ->
   ), ->
     $(this).popover "hide"
 
+  # Char counters
+  $('.application_countchar').keyup ->
+    window.application_countChar(this)
 
   cases_new_calculatecategoryscore = (category) ->
     if category is "businessanalytics"
@@ -790,7 +793,6 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 #/////////////////////////// NEW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
-
 
   window.cases_new_prime()
 
