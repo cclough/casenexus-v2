@@ -2,8 +2,12 @@ class QuestionsController < ApplicationController
 
 
 	def index
-		@questions = Question.order("created_at Desc")
-	end
+    if params[:tag]
+      @questions = Question.tagged_with(params[:tag])
+    else
+		  @questions = Question.all
+	  end
+  end
 
 	def show
 		@question = Question.find(params[:id])

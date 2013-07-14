@@ -15,6 +15,74 @@ if %w(production development).include?(Rails.env) && User.count == 0
     )
   end
 
+  puts "Creating Tags"
+  
+  Tag.create!(name: "McKinsey & Company")
+  Tag.create!(name: "BCG")
+  Tag.create!(name: "Bain & Company")
+  Tag.create!(name: "OC&C")
+  Tag.create!(name: "Monitor Group")
+  Tag.create!(name: "Roland Berger")
+  Tag.create!(name: "Candesic")
+
+  Tag.create!(name: "University of Cambridge")
+  Tag.create!(name: "University of Oxford")
+  Tag.create!(name: "Imperial College London")
+  Tag.create!(name: "London Business School")
+  Tag.create!(name: "London School of Economics")
+  Tag.create!(name: "Harvard University")
+  Tag.create!(name: "UC San Diego")
+  Tag.create!(name: "Northwestern University")
+  Tag.create!(name: "UC Berkeley")
+  Tag.create!(name: "UPenn")
+  Tag.create!(name: "Duke University")
+  Tag.create!(name: "Stanford University")
+  Tag.create!(name: "Columbia University")
+  Tag.create!(name: "Cornell University")
+  Tag.create!(name: "Brown University")
+  Tag.create!(name: "Dartmouth College")
+  Tag.create!(name: "Princeton University")
+  Tag.create!(name: "Yale")
+
+  Tag.create!(name: "Quantitative basics")
+  Tag.create!(name: "Problem solving")
+  Tag.create!(name: "Prioritisation")
+  Tag.create!(name: "Sanity checking")
+  Tag.create!(name: "Articulation")
+  Tag.create!(name: "Concision")
+  Tag.create!(name: "Asking for information")
+  Tag.create!(name: "Sticking to structure")
+  Tag.create!(name: "Announces changed structure")
+  Tag.create!(name: "Pushing to conclusion")
+
+
+
+  puts "Creating Universities"
+
+  University.create!(name: "University of Cambridge", image: "cambridge.png", domain: "cam.ac.uk")
+  University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
+  University.create!(name: "Imperial College London", image: "imperial.png", domain: "imperial.ac.uk")
+  University.create!(name: "London Business School", image: "lbs.png", domain: "london.edu")
+  University.create!(name: "London School of Economics", image: "lse.png", domain: "lse.ac.uk")
+
+  University.create!(name: "Harvard University", image: "harvard.png", domain: "harvard.edu")
+  University.create!(name: "UC San Diego", image: "ucsd.png", domain: "ucsd.edu")
+  University.create!(name: "Northwestern University", image: "northwestern.png", domain: "northwestern.edu")
+  University.create!(name: "UC Berkeley", image: "ucberkeley.png", domain: "berkeley.edu")
+  University.create!(name: "UPenn", image: "upenn.png", domain: "upenn.edu")
+  University.create!(name: "Duke University", image: "duke.png", domain: "duke.edu")
+  University.create!(name: "Stanford University", image: "stanford.png", domain: "stanford.edu")
+  University.create!(name: "Columbia University", image: "columbia.png", domain: "columbia.edu")
+  University.create!(name: "Cornell University", image: "cornell.png", domain: "cornell.edu")
+  University.create!(name: "Brown University", image: "brown.png", domain: "brown.edu")
+  University.create!(name: "Dartmouth College", image: "dartmouth.png", domain: "dartmouth.edu")
+  University.create!(name: "Princeton University", image: "princeton.png", domain: "princeton.edu")
+  University.create!(name: "Yale", image: "yale.png", domain: "yale.edu")
+
+
+
+
+
   puts "Creating Subjects"
 
   Subject.create!(name: "Agriculture and forestry")
@@ -436,6 +504,20 @@ if Rails.env == 'development'
           content: Faker::Lorem.sentence(40),
           view_count: rand(50)
       )
+
+      # Tag Question
+
+      5.times do
+        
+        tag_id = 1 + rand(10)
+        tag = Tag.find(tag_id)
+        
+        if !Question.last.tags.include? tag
+          Question.last.tags << tag
+        end
+
+      end
+
 
       # Create three comments for last QUESTION
       3.times do

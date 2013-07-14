@@ -22,6 +22,8 @@ Casenexus::Application.routes.draw do
 
   match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
 
+  # Tagging
+  get 'tags/:tag', to: 'questions#index', as: :tag
 
   # Map
   match '/map', to: 'map#index', as: :map

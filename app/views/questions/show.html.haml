@@ -9,13 +9,16 @@
   .panel.dark
     .row
       .span10
+        %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => @question.id }
         = @question.plusminus
-        = @question.user.name
+        %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id }
       .span50
         .row
           = @question.title
         .row
           = @question.content
+        .row.pull-right
+          = @question.user.name
 .row
   - if @question.comments.count > 0
     - @question.comments.each do |question_comment|

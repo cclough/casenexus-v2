@@ -121,4 +121,30 @@ module ApplicationHelper
       count_tag = content_tag :span, count#, class: "application_colorcode_green"
       count_tag + " online"
   end
+
+
+
+
+
+  # def application_taglist(tags, classes)
+  #   max = tags.sort_by(&:count).last
+  #   tags.each do |tag|
+  #     index = tag.count.to_f / Integer(max.count) * (classes.size - 1)
+  #     yield(tag, classes[index.round])
+  #   end
+  # end 
+
+  def application_taglist(tags, classes)
+    max = 0
+    tags.each do |t|
+      if t.count.to_i > max
+        max = t.count.to_i
+      end 
+    end
+    tags.each do |tag|
+      index = tag.count.to_f / max * (classes.size - 1)
+      yield(tag, classes[index.round])
+    end
+  end 
+
 end

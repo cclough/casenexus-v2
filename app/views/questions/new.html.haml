@@ -11,4 +11,8 @@
   
   .row
     = f.text_area :content, placeholder: "Ask a question..."
+  .row
+    = f.label :tag_list, "Tags (separated by commas)"
+    = f.text_field :tag_list
+  .row
     = f.submit "Submit question", class: "btn btn-inverse"

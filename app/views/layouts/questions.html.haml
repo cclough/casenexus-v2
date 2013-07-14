@@ -44,8 +44,17 @@
       .container.main
         = render 'shared/title'
 
+        .row
+          .span80
 
-        = yield
+            = yield
+
+          .span5
+            #application_taglist.panel.dark.kill_left
+              Tags
+              - application_taglist Question.tag_counts, %w[s m l] do |tag, css_class|
+                %p= link_to tag.name, tag_path(tag.name), class: css_class
+
 
         / footer
         = render 'layouts/footer'
