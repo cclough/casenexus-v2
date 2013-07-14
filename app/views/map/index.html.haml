@@ -32,30 +32,29 @@
 
 
 
-#map_index_container
-
-  #map_index_container_users
-    .row
-      = render '/members/users_form'
-      #map_index_users
-      / content is rendered by members#index.js.erb
+#map_index_container_user_profile
 
 
-  #map_index_container_map.map
+#map_index_container_map.map
+
+/ #map_index_map_subnav.map_index_subnav
+/   #map_index_map_subnav_mouseover
+/     / template rendered by js
+
+/ #map_index_map_footer.map_index_subnav
+/   = render 'footer_map'
 
 
-  #map_index_container_user_profile
+
+#map_index_container_users
+  .row
+    = render '/members/users_form'
+    #map_index_users
+    / content is rendered by members#index.js.erb
 
 
-  #map_index_map_subnav.map_index_subnav
-    #map_index_map_subnav_mouseover
-      / template rendered by js
 
-  #map_index_map_footer.map_index_subnav
-    = render 'footer_map'
-
-
-  / where show_modals gets loaded
-  #map_index_container_user_modals
+/ / where show_modals gets loaded
+/ #map_index_container_user_modals
 
 

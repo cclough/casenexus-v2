@@ -1,19 +1,13 @@
 .posts_index_posts_item.panel.darker.kill_bottom
   .row
-    .span5.posts_index_posts_item_vote
-      %div
-        %i.icon-caret-up
-      %div
-        0
-      %div
-        %i.icon-caret-down
     .span2
       = image_tag 'avatars/icon.png'
     .span10.offset1
       = posts_item.user.name
-    .span45.offset1
+  .row
+    .span
       = posts_item.content
   .row
-    = link_to post_path(posts_item), class: "btn btn-inverse pull-right" do
+    = link_to post_path(posts_item), class: "btn btn-inverse btn-mini pull-right" do
       Comment
       %strong (#{posts_item.comments.count})

@@ -30,11 +30,6 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 window.map_index_load_profile = (marker_id) ->
 
 
-  # Close the infobox
-  $("#map_index_container_user_infobox").fadeOut "fast", ->
-    window.infobox.close()
-
-
   marker = map_index_map_markers[marker_id]
 
   $.ajax
@@ -44,10 +39,6 @@ window.map_index_load_profile = (marker_id) ->
       $("#map_index_container_user_profile").html data
 
       $("#map_index_container_user_profile").show "fast"
-
-      # Code for 'close button'
-      $("#map_index_user_profile_close").click ->
-        $("#map_index_container_user_profile").fadeOut "fast"
 
 
       # Prime Button
@@ -59,10 +50,7 @@ window.map_index_load_profile = (marker_id) ->
         friend_id = $(this).data("friend_id")
         window.modal_event_new_show(friend_id,null)
 
-
-
       $("#map_index_user_profile_button_friendrequest").click ->
-
         friend_id = $(this).data("friend_id")
         window.modal_friendship_req_show(friend_id)
 
@@ -70,9 +58,6 @@ window.map_index_load_profile = (marker_id) ->
 
 
 window.map_index_load_infobox = (marker_id) ->
-
-  # Close profile
-  $("#map_index_container_user_profile").fadeOut "fast"
 
   marker = map_index_map_markers[marker_id]
 
@@ -284,8 +269,9 @@ $(document).ready ->
       map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
       window.map_index_map_pan map_index_map_latlng_start
       
-      # Infowindow
+      # Load profile and infowindow
       window.map_index_load_profile map_index_map_marker_id_start
+      window.map_index_load_infobox map_index_map_marker_id_start
 
 
   map_index_map_marker_locate = (marker) ->
