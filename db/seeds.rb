@@ -350,11 +350,20 @@ if Rails.env == 'development'
     rand * (to - from) + from
   end
 
-  ################################
+  ##################################
 
 
 
-  30.times do |n|
+
+
+
+
+
+
+
+
+
+  3.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
 
@@ -412,12 +421,63 @@ if Rails.env == 'development'
 
 
 
+
+
+
+  # Questions & Answers
+
+
+  User.all.each do |user|
+    3.times do
+
+      # Create a new Question
+      user.questions.create!(
+          title:  Faker::Lorem.sentence(10),
+          content: Faker::Lorem.sentence(40),
+          view_count: rand(50)
+      )
+
+      # Create three comments for last QUESTION
+      3.times do
+        Question.last.comments.create!(
+          user_id: 1 + rand(5),
+          content: Faker::Lorem.sentence(10)
+        )
+      end
+
+      # Create three answers for last QUESTION
+      3.times do
+        user.answers.create!(
+            question_id: Question.last.id,
+            content: Faker::Lorem.sentence(40)
+        )
+      end
+
+      # Create three comments for last ANSWER
+      3.times do
+        Answer.last.comments.create!(
+          user_id: 1 + rand(5),
+          content: Faker::Lorem.sentence(10)
+        )
+      end
+
+      puts "Question & Answers created for user #{user.name}"
+    end
+
+  end
+
+
+
+
+
+
+
   # Languages
   #User.all.each do |user|
 
     5.times do
 
-      user = User.find(rand(9) + 1)
+      user = User.find(rand(3) + 1)
 
       language_id = 3
       lang = Language.find(language_id)

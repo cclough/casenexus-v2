@@ -1,0 +1,14 @@
+- provide(:title, 'Ask a Question')
+- provide(:sub_title, 'Fill out the form to ask a question')
+
+
+= form_for @question, url: { controller: :questions, action: :create } do |f|
+
+  = render 'shared/error_messages', object: @question
+
+  .row
+    = f.text_field :title, placeholder: "Title..."
+  
+  .row
+    = f.text_area :content, placeholder: "Ask a question..."
+    = f.submit "Submit question", class: "btn btn-inverse"

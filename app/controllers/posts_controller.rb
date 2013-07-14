@@ -32,4 +32,10 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
 
+
+
+
+
+
+  
 end

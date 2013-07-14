@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :rating, :user_id
+  attr_accessible :content, :rating, :user_id, :commentable, :commentable_type #last 2 can be removed!
 
   belongs_to :commentable, polymorphic: true
   belongs_to :book
@@ -10,8 +10,9 @@ class Comment < ActiveRecord::Base
 
   validates :rating, presence: true, :if => :is_book?
 
-def is_book?
-  self.commentable_type == "Book"
-end
+	def is_book?
+	  self.commentable_type == "Book"
+	end
   
+  acts_as_voteable
 end

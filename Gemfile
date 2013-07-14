@@ -24,6 +24,7 @@ gem 'country-select'                             # Country select for admin
 gem 'icalendar'                                  # ICS output for calendar
 gem 'pusher'                                     # Push notifications and messaging
 gem 'rails_admin'                                # Admin
+gem 'thumbs_up'                                  # Stack Overflow like voting on things
 
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails

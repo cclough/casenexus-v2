@@ -1,0 +1,13 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#questions_index_container {
+  position:absolute;
+  right:0;
+  top:40px;
+  left:0;
+  bottom:0px;
+
+  overflow-y:auto;
+}

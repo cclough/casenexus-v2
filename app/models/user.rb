@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   has_many :events
   has_many :posts
+  has_many :questions
+  has_many :answers
   has_many :comments
   has_many :site_contacts, dependent: :nullify
 
@@ -91,6 +93,10 @@ class User < ActiveRecord::Base
 
   validate :validate_has_languages?, on: :update
   
+
+  # Thumbs Up Gem
+  acts_as_voter
+
   # Scoped_search Gem
   scoped_search on: [:first_name, :last_name]
 

@@ -85,6 +85,18 @@ Casenexus::Application.routes.draw do
     get :menu, on: :collection
   end
 
+  # Questions
+  resources :questions do
+    member do
+      post :vote_up
+      post :vote_down
+    end
+  end
+
+  # Answers
+  resources :answers, only: [:create, :update] do
+  end
+
   # Library
   resources :books, only: [:index, :show] do
     resources :comments, only: [:index, :new, :create]

@@ -273,6 +273,17 @@ $(document).ready ->
   # Tooltips throughout app
   $(".application_tooltip").tooltip()
 
+  # Voteables
+  $(".application_vote").click ->
+
+    direction = $(this).data "vote_direction"
+    voteable_id = $(this).data "voteable_id"
+
+    $.post("/questions/" + voteable_id + "/vote_" + direction, ->
+      alert "success"
+    ).error ->
+      alert "Vote error."
+
   # Placeholders
   $("input, textarea").placeholder()
 

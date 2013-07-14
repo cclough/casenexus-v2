@@ -1,0 +1,61 @@
+!!!
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag    "application", media: "all"
+
+    - if request.ssl?
+      = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
+    - else
+      = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
+
+    = javascript_include_tag "application"
+
+    = javascript_include_tag "lib/amcharts"
+    
+    = javascript_include_tag "events"
+    = javascript_include_tag "cases"
+    = javascript_include_tag "account"
+    = javascript_include_tag "summary"
+    = javascript_include_tag "notifications"
+
+    = yield :javascript_includes
+
+    = csrf_meta_tags
+
+    = analytics_init if Rails.env.production?
+    
+    /[if lte IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
+
+    = render partial: 'shared/pusher'
+
+  %body
+
+
+
+    #application_container_main
+
+      = render 'layouts/header'
+
+      = render 'layouts/flash', flash: flash
+
+
+      .container.main
+        = render 'shared/title'
+
+
+        = yield
+
+        / footer
+        = render 'layouts/footer'
+
+
+    = render 'shared/online_panel_containers'
+
+
+  = render 'shared/modal_help'
+  = render 'shared/modal_contact'
+  = render 'shared/modal_event'
+  = render 'shared/modal_message'
+  = render 'shared/modal_friendship_req'

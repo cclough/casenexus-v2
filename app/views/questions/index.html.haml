@@ -1,0 +1,40 @@
+- provide(:title, 'Questions')
+- provide(:sub_title, 'People discussing stuff')
+
+.span80
+  .row
+    .panel.dark.kill_bottom
+      .row
+        .span
+          = form_tag questions_path, method: 'get' do
+
+            = text_field_tag :search, params[:search], placeholder: "Search questions...", class: 'search-query'
+        .span.pull-right
+
+          = link_to "Ask a question", new_question_path
+  .row
+
+
+    - if @questions.count > 0
+      - for questions_item in @questions
+
+        #questions_index_questions_item.panel.dark
+          / = link_to vote_up_question_path(questions_item), :method => :post do
+          %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => questions_item.id }
+          
+          = questions_item.plusminus
+
+          / = link_to vote_down_question_path(questions_item), :method => :post do
+          %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => questions_item.id }
+
+          = questions_item.user.name
+          %span
+            = link_to questions_item do
+              = questions_item.title
+    - else
+      No questions found
+
+
+.span19
+  .panel.dark
+    TAGS

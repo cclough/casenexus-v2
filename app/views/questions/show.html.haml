@@ -1,0 +1,61 @@
+- provide(:title, @question.title)
+- provide(:sub_title, @question.title)
+
+- provide(:breadcrumb, "Questions")
+- provide(:breadcrumb_url, "/questions")
+
+
+.row
+  .panel.dark
+    .row
+      .span10
+        = @question.plusminus
+        = @question.user.name
+      .span50
+        .row
+          = @question.title
+        .row
+          = @question.content
+.row
+  - if @question.comments.count > 0
+    - @question.comments.each do |question_comment|
+      .row
+        .panel.dark
+          .row
+            .span10
+              = question_comment.plusminus
+              = question_comment.user.name
+            .span50
+              = question_comment.content
+
+
+- if @question.answers.count > 0
+  - @question.answers.each do |question_answer|
+    .row
+      .panel.dark
+        .row
+          .span10
+            = question_answer.plusminus
+            = question_answer.user.name
+          .span50
+            = question_answer.content
+    .row
+      - if question_answer.comments.count > 0
+        - question_answer.comments.each do |question_answer_comment|
+          .row
+            .panel.dark
+              .row
+                .span10
+                  = question_answer_comment.plusminus
+                  = question_answer_comment.user.name
+                .span50
+                  = question_answer_comment.content
+
+
+
+
+
+- form_for @answer do |f|
+  
+  = f.text_area :content
+  = f.submit "Submit answer", class: "btn btn-inverse"
