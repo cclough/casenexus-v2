@@ -1,18 +1,21 @@
 - provide(:title, 'Ask a Question')
 - provide(:sub_title, 'Fill out the form to ask a question')
 
+.panel.dark
+  = form_for @question, url: { controller: :questions, action: :create } do |f|
 
-= form_for @question, url: { controller: :questions, action: :create } do |f|
+    = render 'shared/error_messages', object: @question
 
-  = render 'shared/error_messages', object: @question
-
-  .row
-    = f.text_field :title, placeholder: "Title..."
-  
-  .row
-    = f.text_area :content, placeholder: "Ask a question..."
-  .row
-    = f.label :tag_list, "Tags (separated by commas)"
-    = f.text_field :tag_list
-  .row
-    = f.submit "Submit question", class: "btn btn-inverse"
+    .row
+      %span.offset1#questions_new_title_label
+        Title
+      %span.offset1
+        = f.text_field :title, placeholder: "What's your question?", id: "questions_new_title"
+    
+    .row
+      = f.text_area :content, placeholder: "Ask a question...", id:"questions_new_content"
+    .row
+      = f.label :tag_list, "Tags (separated by commas)"
+      = f.text_field :tag_list, id: "questions_new_tags"
+    .row
+      = f.submit "Submit your question", class: "btn btn-inverse"

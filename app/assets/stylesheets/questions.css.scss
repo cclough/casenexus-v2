@@ -2,6 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$gray_Darker: #333333;
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
+
+
+
+#questions_taglist {
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+
+
+
+.questions_sidecolumn_title {
+  background: rgba(0, 0, 0, 0.4);
+  height:18px;
+  padding:2px;
+  text-align:center;
+  font-weight: bold;
+  font-size:12px;
+  line-height:19px;
+  color: $gray_Lighter;
+
+  margin:5px -10px 5px -10px;  
+  &.top {
+    margin:-10px -10px 5px -10px;
+
+    border-top-left-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+
+    border-top-right-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+  }
+
+}
+
+
+
 #questions_index_container {
   position:absolute;
   right:0;
@@ -10,4 +66,43 @@
   bottom:0px;
 
   overflow-y:auto;
+}
+
+
+#questions_new_content {
+  width:735px;
+  height:200px;
+}
+
+#questions_new_title {
+  width:680px;
+}
+
+
+#questions_new_title_label {
+  font-size:15px;
+  font-weight:bold;
+}
+
+#questions_new_tags {
+  width:735px;
+}
+
+
+/////////////////////////////////
+/////////////SHOW////////////////
+/////////////////////////////////
+
+#questions_show_answer_label {
+  font-size:15px;
+  font-weight:bold;
+}
+
+#questions_show_answer_content {
+  width:735px;
+  height:200px;
+}
+
+.questions_comment_button {
+  cursor:pointer;
 }

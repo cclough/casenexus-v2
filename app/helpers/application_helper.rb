@@ -126,14 +126,6 @@ module ApplicationHelper
 
 
 
-  # def application_taglist(tags, classes)
-  #   max = tags.sort_by(&:count).last
-  #   tags.each do |tag|
-  #     index = tag.count.to_f / Integer(max.count) * (classes.size - 1)
-  #     yield(tag, classes[index.round])
-  #   end
-  # end 
-
   def application_taglist(tags, classes)
     max = 0
     tags.each do |t|
@@ -150,6 +142,13 @@ module ApplicationHelper
   def calendar_ics_url
     host = Rails.env == 'production' ? 'casenexus-staging.herokuapp.com' : 'localhost:3000'
     calendar_ics_url = "webcal://" + host + "/events/ics"
+  end
+
+  def questions_addcomment_link(commentable_id, commentable_type)
+    link = content_tag "span", "Add comment", "data-commentable_id"=>commentable_id, "data-commentable_type"=> commentable_type, class: "questions_comment_button"
+    container = content_tag "div","", class: "questions_comment_form_container"
+
+    link + container
   end
 
 end

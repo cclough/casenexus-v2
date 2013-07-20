@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :load_commentable
+
   
   def create
     @comment = @commentable.comments.new(params[:comment])
@@ -10,6 +10,13 @@ class CommentsController < ApplicationController
       flash[:error] = @comment.errors.full_messages.map {|error| "#{error}<br>"}.join
       redirect_to @commentable
     end
+  end
+
+  def new
+    @commentable_model = params[:commentable_type]
+    @commentable = @commentable_model.classify.constantize.find(params[:commentable_id])
+    @comment = @commentable.comments.new
+    render partial: "new", layout: false
   end
 
 private

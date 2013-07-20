@@ -22,9 +22,6 @@ Casenexus::Application.routes.draw do
 
   match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
 
-  # Tagging
-  get 'tags/:tag', to: 'questions#index', as: :tag
-
   # Map
   match '/map', to: 'map#index', as: :map
 
@@ -74,9 +71,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Posts
-  resources :posts, only: [:index, :create, :show] do
-    resources :comments, only: [:index, :new, :create]
-  end
+  resources :posts, only: [:index, :create, :show]
   
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
@@ -99,14 +94,18 @@ Casenexus::Application.routes.draw do
   resources :answers, only: [:create, :update] do
   end
 
+  # Tagging
+  get 'tags/:tag', to: 'questions#index', as: :tag
+
   # Library
   resources :books, only: [:index, :show] do
-    resources :comments, only: [:index, :new, :create]
     get :show_small, on: :member
   end
 
-  # get "comments/index"
-  # get "comments/new"
+  # Comments
+  resources :comments, only: [:index, :new, :create]
+
+
 
   # Viewer
   resources :console, only: [:index] do
@@ -116,15 +115,18 @@ Casenexus::Application.routes.draw do
   match 'console/sendpdfbutton' => 'console#sendpdfbutton', :as => :sendpdfbutton
   match 'console/skypebutton' => 'console#skypebutton', :as => :skypebutton
 
+
   # Map
   match '/library', to: 'books#index', as: :library
 
-  # Summary
 
+  # Summary
   match '/summary', to: 'summary#index', as: :summary
+
 
   # Site contacts
   match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact
+
 
   # Events
   resources :events do

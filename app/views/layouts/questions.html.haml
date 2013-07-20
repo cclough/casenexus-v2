@@ -11,13 +11,7 @@
 
     = javascript_include_tag "application"
 
-    = javascript_include_tag "lib/amcharts"
-    
-    = javascript_include_tag "events"
-    = javascript_include_tag "cases"
-    = javascript_include_tag "account"
-    = javascript_include_tag "summary"
-    = javascript_include_tag "notifications"
+    = javascript_include_tag "questions"    
 
     = yield :javascript_includes
 
@@ -49,11 +43,13 @@
 
             = yield
 
-          .span5
-            #application_taglist.panel.dark.kill_left
-              Tags
-              - application_taglist Question.tag_counts, %w[s m l] do |tag, css_class|
-                %p= link_to tag.name, tag_path(tag.name), class: css_class
+          .span20
+            .row#questions_sidecolumn.panel.dark.kill_left
+              .questions_sidecolumn_title.top
+                Tags
+              #questions_taglist
+                - application_taglist Question.tag_counts, %w[s m l] do |tag, css_class|
+                  %p= link_to tag.name, tag_path(tag.name), class: css_class
 
 
         / footer

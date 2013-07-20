@@ -8,57 +8,85 @@
 .row
   .panel.dark
     .row
-      .span10
-        %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => @question.id }
-        = @question.plusminus
-        %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id }
+      .span5
+        %div
+          %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => @question.id }
+        %div
+          = @question.plusminus
+        %div
+          %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id }
       .span50
         .row
           = @question.title
         .row
           = @question.content
         .row.pull-right
-          = @question.user.name
-.row
-  - if @question.comments.count > 0
-    - @question.comments.each do |question_comment|
-      .row
-        .panel.dark
-          .row
-            .span10
-              = question_comment.plusminus
-              = question_comment.user.name
-            .span50
-              = question_comment.content
+          = link_to @question.user.name, "/map?user_id=" +  @question.user.id.to_s
 
+    .row
+      .offset5
+        - if @question.comments.count > 0
+          .spacer10
+          - @question.comments.each do |question_comment|
+            .row
+              .span4
+                %div
+                  %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => question_comment.id }
+                %div
+                  %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => question_comment.id }
+              .span1
+                = question_comment.plusminus
+
+              .span50
+                = question_comment.content
+                = link_to question_comment.user.name, "/map?user_id=" +  question_comment.user.id.to_s
+        .spacer10
+        .row
+          = questions_addcomment_link(@question.id,"Question")
 
 - if @question.answers.count > 0
   - @question.answers.each do |question_answer|
     .row
-      .panel.dark
+      .panel.dark.kill_top
         .row
-          .span10
+          .span5
             = question_answer.plusminus
-            = question_answer.user.name
           .span50
-            = question_answer.content
-    .row
-      - if question_answer.comments.count > 0
-        - question_answer.comments.each do |question_answer_comment|
-          .row
-            .panel.dark
+            .row
+              = question_answer.content
+            .row.pull-right
+              = link_to question_answer.user.name, "/map?user_id=" +  question_answer.user.id.to_s
+
+        .row
+          .offset5
+            - if question_answer.comments.count > 0
+              .spacer10
+              - question_answer.comments.each do |question_answer_comment|
+                .row
+                  .span4
+                    %div
+                      %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => question_answer_comment.id }
+                    %div
+                      %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => question_answer_comment.id }
+                  .span1
+                    = question_answer_comment.plusminus
+
+                  .span50
+                    = question_answer_comment.content
+                    = link_to question_answer_comment.user.name, "/map?user_id=" +  question_answer_comment.user.id.to_s
+              .spacer10
               .row
-                .span10
-                  = question_answer_comment.plusminus
-                  = question_answer_comment.user.name
-                .span50
-                  = question_answer_comment.content
+                = questions_addcomment_link(@question.id,"Question")
 
 
 
-
-
-- form_for @answer do |f|
-  
-  = f.text_area :content
-  = f.submit "Submit answer", class: "btn btn-inverse"
+.row.panel.darker
+  #questions_show_answer_label
+    Your Answer
+    .spacer5
+    = form_for @answer do |f|
+      .row
+        = f.text_area :content, id:"questions_show_answer_content"
+        = f.hidden_field :question_id, value: @question.id
+      .row
+        = f.submit "Submit answer", class: "btn btn-inverse"

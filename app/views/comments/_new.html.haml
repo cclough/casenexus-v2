@@ -1,0 +1,25 @@
+.offset5
+  .row
+    = form_for @comment, url: { controller: :comments, action: :create } do |f|
+
+      .span45
+        #flash_notifications
+          = render 'shared/error_messages', object: @comment
+
+          
+          = f.text_area :content, rows: 4, class: "span45", placeholder: "Write a review..."
+
+      .span15.offset1
+
+        / Just for book comment
+        - if params[:controller] == "books"
+          #books_show_form_rating_panel.panel.dark.kill_all
+            .books_rating_set
+            How do you rate it?
+
+        .spacer5
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :rating, id: "books_rating_set_field"
+        = f.hidden_field :commentable_type, value: @commentable_model
+        = f.hidden_field :commentable_id, value: @commentable.id
+        = f.submit "Add comment", class: "btn btn-inverse"
