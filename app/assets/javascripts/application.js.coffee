@@ -55,15 +55,13 @@ window.application_truncatables = () ->
 
 
 
-window.application_countChar = (val) ->
+window.application_countchar = (val) ->
   len = val.value.length
   if len >= 500
     val.value = val.value.substring(0, 500)
-    $("#cases_new_book").html "HELLO"
-    val.parent("div").find(".application_countChar_count").text 0
+    val.parent("div").find(".application_countchar_count").text 0
   else
-    $("#cases_new_book").html "HELLO"
-    val.parent("div").find(".application_countChar_count").text 500 - len
+    val.parent("div").find(".application_countchar_count").text 500 - len
   
 
 
@@ -286,10 +284,10 @@ $(document).ready ->
 
   # Countchar
   $('.application_countchar').keyup ->
-    window.application_countChar(this)
+    window.application_countchar(this)
 
   # Voteables
-  $(".application_vote").click ->
+  $(".application_vote i").click ->
 
     direction = $(this).data "vote_direction"
     voteable_id = $(this).data "voteable_id"

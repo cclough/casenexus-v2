@@ -450,9 +450,20 @@ a:hover {
 
 
 .application_vote {
-  cursor:pointer;
-  font-size:30px;
+  i {
+    cursor:pointer;
+    font-size:40px;
+  }
+  text-align:center;
+  &.comment {
+    margin: 0px 2px;
+    i {
+      font-size: 20px;   
+    }
+  }
 }
+
+
 
 
 .application_icon_skype {
@@ -1143,6 +1154,12 @@ a:hover {
   }
 }
 
+
+
+
+.application_countchar_count {
+  font-size:11px;
+}
 //////////////////////////////////////////////////////
 
 

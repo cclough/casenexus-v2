@@ -8,37 +8,43 @@
 .row
   .panel.dark
     .row
-      .span5
-        %div
-          %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => @question.id }
-        %div
+      .span6
+        .application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => @question.id }
+          %i.icon-caret-up
+        .questions_show_votes
           = @question.plusminus
-        %div
-          %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id }
-      .span50
-        .row
+        .application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id }
+          %i.icon-caret-down
+      .span65
+        .row.questions_show_title
           = @question.title
+        .spacer10
         .row
           = @question.content
+        .spacer10
         .row.pull-right
-          = link_to @question.user.name, "/map?user_id=" +  @question.user.id.to_s
+          .span2
+            = image_tag "avatars/icon.png"
+          .span13.offset1
+            = link_to @question.user.name, "/map?user_id=" +  @question.user.id.to_s
 
     .row
-      .offset5
+      .offset6.span60
         - if @question.comments.count > 0
           .spacer10
           - @question.comments.each do |question_comment|
-            .row
-              .span4
-                %div
-                  %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => question_comment.id }
-                %div
-                  %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => question_comment.id }
+            .row.questions_comment
               .span1
-                = question_comment.plusminus
-
-              .span50
+                - unless question_comment.plusminus == 0
+                  = question_comment.plusminus
+              .span2
+                .span1.application_vote.comment{ "data-vote_direction" => "up" , "data-voteable_id" => question_comment.id }
+                  %i.icon-caret-up
+                / .span1.application_vote.comment{ "data-vote_direction" => "down" , "data-voteable_id" => question_comment.id }
+                /   %i.icon-caret-down
+              .span56
                 = question_comment.content
+                = "- "
                 = link_to question_comment.user.name, "/map?user_id=" +  question_comment.user.id.to_s
         .spacer10
         .row
@@ -50,29 +56,38 @@
       .panel.dark.kill_top
         .row
           .span5
-            = question_answer.plusminus
-          .span50
+            .application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => question_answer.id }
+              %i.icon-caret-up
+            .questions_show_votes
+              = question_answer.plusminus
+            .application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => question_answer.id }
+              %i.icon-caret-down
+          .span65
             .row
               = question_answer.content
+            .spacer10
             .row.pull-right
-              = link_to question_answer.user.name, "/map?user_id=" +  question_answer.user.id.to_s
-
+              .span2
+                = image_tag "avatars/icon.png"
+              .span13.offset1
+                = link_to question_answer.user.name, "/map?user_id=" +  question_answer.user.id.to_s
         .row
-          .offset5
+          .offset5.span60
             - if question_answer.comments.count > 0
               .spacer10
               - question_answer.comments.each do |question_answer_comment|
-                .row
-                  .span4
-                    %div
-                      %i.icon-caret-up.application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => question_answer_comment.id }
-                    %div
-                      %i.icon-caret-down.application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => question_answer_comment.id }
+                .row.questions_comment
                   .span1
-                    = question_answer_comment.plusminus
-
-                  .span50
+                    - unless question_answer_comment.plusminus == 0
+                      = question_answer_comment.plusminus
+                  .span2
+                    .span1.application_vote.comment{ "data-vote_direction" => "up" , "data-voteable_id" => question_answer_comment.id }
+                      %i.icon-caret-up
+                    / .span1.application_vote.comment{ "data-vote_direction" => "down" , "data-voteable_id" => question_answer_comment.id }
+                    /   %i.icon-caret-down
+                  .span56
                     = question_answer_comment.content
+                    = "- "
                     = link_to question_answer_comment.user.name, "/map?user_id=" +  question_answer_comment.user.id.to_s
               .spacer10
               .row
@@ -86,7 +101,31 @@
     .spacer5
     = form_for @answer do |f|
       .row
-        = f.text_area :content, id:"questions_show_answer_content"
+        .application_countchar_count#questions_show_answer_countchar
+          500 characters left
+        = f.text_area :content, id:"questions_show_answer_content", class: "application_countchar"
         = f.hidden_field :question_id, value: @question.id
       .row
-        = f.submit "Submit answer", class: "btn btn-inverse"
+        = f.submit "Post your answer", class: "btn btn-inverse"
+
+
+- content_for :questions_sidecolumn_includes do
+  .row#questions_sidecolumn.panel.dark.kill_left
+    .questions_sidecolumn_title.top
+      Tags
+    - if @question.tags.count > 0
+      = raw @question.tags.map { |t| link_to t.name, tag_path(t.name) }.join('<br>')
+
+    .spacer10
+    #questions_taglist
+      - if @question.tags.count > 0
+        .row
+          asked:
+          %span.questions_show_sidecoloumn_date
+            = time_ago_in_words(@question.created_at)
+            ago
+        .row
+          active:
+          %span.questions_show_sidecoloumn_date
+            = time_ago_in_words(@question.answers.last.created_at)
+            ago

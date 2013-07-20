@@ -16,3 +16,10 @@ $(document).ready ->
     $.get "/comments/new?commentable_id="+commentable_id+"&commentable_type="+commentable_type, (data) ->
       this_button.after(data)
       this_button.remove()
+
+
+  $("[name=\"answer[content]\"]").wysihtml5
+    emphasis: true #Italics, bold, etc. Default true
+    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
+    link: false #Button to insert a link. Default true
+    image: false #Button to insert an image. Default true

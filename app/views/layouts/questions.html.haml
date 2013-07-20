@@ -39,18 +39,13 @@
         = render 'shared/title'
 
         .row
-          .span80
+          .span77
 
             = yield
 
-          .span20
-            .row#questions_sidecolumn.panel.dark.kill_left
-              .questions_sidecolumn_title.top
-                Tags
-              #questions_taglist
-                - application_taglist Question.tag_counts, %w[s m l] do |tag, css_class|
-                  %p= link_to tag.name, tag_path(tag.name), class: css_class
+          .span23
 
+            = yield :questions_sidecolumn_includes
 
         / footer
         = render 'layouts/footer'

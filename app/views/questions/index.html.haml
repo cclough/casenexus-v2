@@ -11,7 +11,7 @@
           = text_field_tag :search, params[:search], placeholder: "Search questions...", class: 'search-query'
       .span.pull-right
 
-        = link_to "Ask a question", new_question_path, class: "btn btn-inverse btn-large"
+        = link_to "Ask a question", new_question_path, class: "btn btn-inverse"
 .row
 
 
@@ -20,10 +20,17 @@
 
       #questions_index_questions_item.panel.dark
         .row
-          .span5
+          .questions_index_questions_item_stats.votes
             = questions_item.plusminus
-
-          .span
+            .questions_index_questions_item_stats_label
+              votes
+            
+          .questions_index_questions_item_stats.answers
+            = questions_item.answers.count
+            .questions_index_questions_item_stats_label
+              answers
+            
+          .span61.offset1
             .row
               = link_to questions_item do
                 = questions_item.title
@@ -38,3 +45,10 @@
 .row
   = will_paginate @questions, class: "application_pagination", inner_window: 2, outer_window: 2
 
+
+
+
+
+- content_for :questions_sidecolumn_includes do
+
+  = render partial: "sidecolumn_tags"
