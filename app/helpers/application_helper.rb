@@ -147,4 +147,9 @@ module ApplicationHelper
     end
   end 
 
+  def calendar_ics_url
+    host = Rails.env == 'production' ? 'casenexus-staging.herokuapp.com' : 'localhost:3000'
+    calendar_ics_url = "webcal://" + host + "/events/ics"
+  end
+
 end
