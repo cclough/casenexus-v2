@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
 
   
   def create
+    @commentable_model = params[:comment][:commentable_type]
+    @commentable = @commentable_model.classify.constantize.find(params[:comment][:commentable_id])
     @comment = @commentable.comments.new(params[:comment])
     if @comment.save
       @commentable.update_average_rating if @comment.commentable_type == "Book" #manually done, as opposed to triggering the call back
@@ -16,6 +18,10 @@ class CommentsController < ApplicationController
     @commentable_model = params[:commentable_type]
     @commentable = @commentable_model.classify.constantize.find(params[:commentable_id])
     @comment = @commentable.comments.new
+
+    @return_to_id = params[:return_to_id]
+    @return_to_type = params[:return_to_type]
+
     render partial: "new", layout: false
   end
 

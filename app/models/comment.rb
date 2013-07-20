@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :rating, :user_id, :commentable, :commentable_type #last 2 can be removed!
+  attr_accessible :content, :rating, :user_id, :commentable, :commentable_type, :commentable_id #last 2 can be removed!
 
   belongs_to :commentable, polymorphic: true
   belongs_to :book

@@ -15,6 +15,11 @@ class Question < ActiveRecord::Base
   acts_as_voteable
 
 
+  # Scoped_search Gem
+  scoped_search on: [:content, :title]
+  scoped_search in: :user, on: [:first_name, :last_name]
+  # ANSWERS?
+
 
 
   # PUT INTO CONTROLLER FOR POLYMORPHIC?

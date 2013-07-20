@@ -10,7 +10,9 @@ $(document).ready ->
     this_button = $(this)
     commentable_id = this_button.data("commentable_id")
     commentable_type = this_button.data("commentable_type")
-    
+    return_to_id = this_button.data("return_to_id")
+    return_to_type = this_button.data("return_to_type")
+
     $.get "/comments/new?commentable_id="+commentable_id+"&commentable_type="+commentable_type, (data) ->
       this_button.after(data)
       this_button.remove()

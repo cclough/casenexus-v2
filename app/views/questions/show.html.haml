@@ -76,7 +76,7 @@
                     = link_to question_answer_comment.user.name, "/map?user_id=" +  question_answer_comment.user.id.to_s
               .spacer10
               .row
-                = questions_addcomment_link(@question.id,"Question")
+                = questions_addcomment_link(question_answer.id,"Answer")
 
 
 

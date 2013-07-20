@@ -3,9 +3,9 @@ class QuestionsController < ApplicationController
 
 	def index
     if params[:tag]
-      @questions = Question.tagged_with(params[:tag])
+      @questions = Question.tagged_with(params[:tag]).paginate(per_page: 20, page: params[:page]).search_for(params[:search])
     else
-		  @questions = Question.all
+		  @questions = Question.paginate(per_page: 20, page: params[:page]).search_for(params[:search])
 	  end
   end
 

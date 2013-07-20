@@ -145,7 +145,9 @@ module ApplicationHelper
   end
 
   def questions_addcomment_link(commentable_id, commentable_type)
-    link = content_tag "span", "Add comment", "data-commentable_id"=>commentable_id, "data-commentable_type"=> commentable_type, class: "questions_comment_button"
+    link = content_tag "span", "Add comment", "data-commentable_id"=>commentable_id, 
+          "data-commentable_type"=> commentable_type,
+          class: "questions_comment_button"
     container = content_tag "div","", class: "questions_comment_form_container"
 
     link + container

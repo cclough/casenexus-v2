@@ -91,7 +91,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Answers
-  resources :answers, only: [:create, :update] do
+  resources :answers, only: [:create, :update, :show] do
   end
 
   # Tagging
