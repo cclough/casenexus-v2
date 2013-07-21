@@ -16,12 +16,20 @@
         .application_vote{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id }
           %i.icon-caret-down
       .span65
-        .row.questions_show_title
+        .row#questions_show_title
           = @question.title
         .spacer10
         .row
           = @question.content
         .spacer10
+
+        / - if @question.user == current_user
+        .row
+          %span.questions_show_edit{ "data-question_id" => @question.id }
+            edit
+          %span.questions_show_delete
+            = link_to("delete", @question, method: :delete, confirm: "Are you sure you want to delete your question?")
+
         .row.pull-right
           .span2
             = image_tag "avatars/icon.png"
@@ -46,6 +54,13 @@
                 = question_comment.content
                 = "- "
                 = link_to question_comment.user.name, "/map?user_id=" +  question_comment.user.id.to_s
+
+                %span.questions_show_edit{ "data-question_id" => question_comment.id }
+                  %i.icon-edit
+                %span.questions_show_delete
+                  = link_to question_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
+                    %i.icon-remove
+
         .spacer10
         .row
           = questions_addcomment_link(@question.id,"Question")
@@ -65,7 +80,15 @@
           .span65
             .row
               = question_answer.content
+              
             .spacer10
+
+            .row
+              %span.questions_show_edit{ "data-question_id" => question_answer.id }
+                edit
+              %span.questions_show_delete
+                = link_to("delete", question_answer, method: :delete, confirm: "Are you sure you want to delete your question?")
+
             .row.pull-right
               .span2
                 = image_tag "avatars/icon.png"
@@ -89,6 +112,14 @@
                     = question_answer_comment.content
                     = "- "
                     = link_to question_answer_comment.user.name, "/map?user_id=" +  question_answer_comment.user.id.to_s
+
+                    %span.questions_show_edit{ "data-question_id" => question_answer_comment.id }
+                      %i.icon-edit
+                    %span.questions_show_delete
+                      = link_to question_answer_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
+                        %i.icon-remove
+
+
               .spacer10
               .row
                 = questions_addcomment_link(question_answer.id,"Answer")
@@ -127,5 +158,5 @@
         .row
           active:
           %span.questions_show_sidecoloumn_date
-            = time_ago_in_words(@question.answers.last.created_at)
+            = time_ago_in_words(@question.last_active_at)
             ago

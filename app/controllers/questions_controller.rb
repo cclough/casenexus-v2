@@ -34,6 +34,12 @@ class QuestionsController < ApplicationController
 	def update
 	end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    flash[:success] = "Your question has now been deleted."
+    redirect_to questions_path
+  end
 
   def vote_up
     begin

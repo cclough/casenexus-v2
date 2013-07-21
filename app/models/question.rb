@@ -37,6 +37,14 @@ class Question < ActiveRecord::Base
     tags.map(&:name).join(", ")
   end
 
+  def content_trunc
+    content.truncate(130, separator: ' ')
+  end
+
+  def last_active_at
+    answers.last.created_at
+  end
+
   def tag_list=(names)
     self.tags = names.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!

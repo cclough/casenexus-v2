@@ -25,6 +25,13 @@ class CommentsController < ApplicationController
     render partial: "new", layout: false
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:success] = "Your comment has now been deleted."
+    redirect_to @comment.commentable
+  end
+
 private
 
   def load_commentable

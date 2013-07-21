@@ -23,3 +23,6 @@ $(document).ready ->
     "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
     link: false #Button to insert a link. Default true
     image: false #Button to insert an image. Default true
+
+  $(".questions_show_edit").click ->
+    alert "hello"

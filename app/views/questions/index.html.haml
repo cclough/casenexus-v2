@@ -20,24 +20,39 @@
 
       #questions_index_questions_item.panel.dark
         .row
-          .questions_index_questions_item_stats.votes
-            = questions_item.plusminus
-            .questions_index_questions_item_stats_label
-              votes
+          .span7
+            .questions_index_questions_item_stats.votes
+              = questions_item.plusminus
+              .questions_index_questions_item_stats_label
+                votes
+              
+            .questions_index_questions_item_stats.answers
+              = questions_item.answers.count
+              .questions_index_questions_item_stats_label
+                answers
             
-          .questions_index_questions_item_stats.answers
-            = questions_item.answers.count
-            .questions_index_questions_item_stats_label
-              answers
-            
-          .span61.offset1
-            .row
+          .span64.offset1
+            .row.questions_index_questions_item_title
               = link_to questions_item do
                 = questions_item.title
+            .spacer10
             .row
-              = questions_item.user.name
-            .row
-              Tags:
+              = questions_item.content_trunc
+            .row.pull-right
+              .row.questions_index_questions_item_date
+                = time_ago_in_words(questions_item.last_active_at)
+                ago
+              .spacer5
+              .row
+                .span2
+                  = image_tag "avatars/icon.png"
+                .span15.offset1
+                  .row
+                    = questions_item.user.name
+                  .row
+                    = questions_item.user.points
+            .spacer5
+            .row.questions_index_questions_item_tags
               / = raw questions_item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')
               = raw questions_item.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
   - else

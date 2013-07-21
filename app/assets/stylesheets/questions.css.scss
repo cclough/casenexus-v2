@@ -88,9 +88,8 @@ $alert-yellow: #FFFF7E;
 .questions_index_questions_item_stats {
   padding:6px;
   height:30px;
-  width:30px;
+  width:50px;
   text-align:center;
-  float:left;
   &.votes {
     background: $alert-blue;
     font-size:20px;
@@ -106,6 +105,21 @@ $alert-yellow: #FFFF7E;
   .questions_index_questions_item_stats_label {
     font-size:9px;
   }
+}
+
+.questions_index_questions_item_title {
+  font-size:15px;
+  font-weight:bold;
+  color:white;
+}
+
+.questions_index_questions_item_tags {
+  font-size:12px;
+}
+
+
+.questions_index_questions_item_date {
+  color:$gray_Mid;
 }
 
 #questions_show_answer_countchar, #questions_new_countchar {
