@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
 
 
+  before_filter :correct_user, :only => [:edit, :update, :destroy]
+
 	def index
     if params[:tag]
       @questions = Question.tagged_with(params[:tag]).paginate(per_page: 20, page: params[:page]).search_for(params[:search])
@@ -19,10 +21,6 @@ class QuestionsController < ApplicationController
 		@question = current_user.questions.build
 	end
 
-  def edit
-    @question = Question.find(params[:id])
-  end
-
 	def create
     @question = current_user.questions.build(params[:question])
 
@@ -35,6 +33,10 @@ class QuestionsController < ApplicationController
 
 	end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+  
 	def update
     @question = Question.find(params[:id])
 
@@ -70,5 +72,13 @@ class QuestionsController < ApplicationController
       render :nothing => true, :status => 404
     end
   end
+
+  private
+
+    def correct_user
+      @question = Question.find params[:id]
+      redirect_to @question unless current_user == @question.user
+    end
+  
 
 end

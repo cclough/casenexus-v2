@@ -1,12 +1,9 @@
 class AnswersController < ApplicationController
 
+  before_filter :correct_user, :only => [:edit, :update, :destroy]
 
   layout "questions"
 
-  def edit
-    @answer = Answer.find(params[:id])
-    @question = @answer.question # for side column
-  end
 
   def show
     @question = Answer.find(params[:id]).question
@@ -26,6 +23,11 @@ class AnswersController < ApplicationController
 
   end
 
+  def edit
+    @answer = Answer.find(params[:id])
+    @question = @answer.question # for side column
+  end
+  
   def update
     @answer = Answer.find(params[:id])
 
@@ -43,5 +45,12 @@ class AnswersController < ApplicationController
     flash[:success] = "Your answer has now been deleted."
     redirect_to @answer.question
   end
+
+  private
+
+    def correct_user
+      @answer = Answer.find params[:id]
+      redirect_to @answer unless current_user == @answer.user
+    end
 
 end

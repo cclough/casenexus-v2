@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, only: [:online_panel, :online_user_item]
   before_filter :completed_user, only: [:online_panel, :online_user_item]
 
+  helper_method :correct_user
+
+
+
   def online_panel
     render partial: "shared/online_panel", layout: false
   end
@@ -48,5 +52,12 @@ class ApplicationController < ActionController::Base
       current_user.update_column(:last_online_at, Time.now())
     end
   end
+
+
+  def correct_user( object, path )
+    redirect_to path unless object.user == current_user
+  end
+
+
 
 end

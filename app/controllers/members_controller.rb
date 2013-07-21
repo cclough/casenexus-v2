@@ -42,17 +42,13 @@ class MembersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    respond_to do |format|
-      format.html { render layout: false }
-    end
+    render layout: false
   end
 
   def show_infobox
     @user = User.find(params[:id])
 
-    respond_to do |format|
-      format.html { render layout: false }
-    end
+    render layout: false
   end
 
 

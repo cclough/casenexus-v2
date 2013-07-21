@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_filter :correct_user, :only => [:edit, :update, :destroy]
+
   def edit
     @comment = Comment.find(params[:id])
 
@@ -18,7 +20,6 @@ class CommentsController < ApplicationController
     end
 
   end
-
 
 
   def create
@@ -56,5 +57,12 @@ private
   #   resource, id = request.path.split('/')[1, 2]
   #   @commentable = resource.singularize.classify.constantize.find(id)
   # end
+
+
+  def correct_user
+    @comment = Comment.find params[:id]
+    redirect_to @comment.commentable unless current_user == @comment.user
+  end
+  
 
 end

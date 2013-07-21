@@ -21,14 +21,17 @@
         .spacer10
         .row
           = @question.content
+
         .spacer10
 
-        / - if @question.user == current_user
-        .row
-          %span.questions_show_edit
-            = link_to "edit", edit_question_path(@question)
-          %span.questions_show_delete
-            = link_to("delete", @question, method: :delete, confirm: "Are you sure you want to delete your question?")
+        - if @question.user == current_user
+          .row
+            %span.questions_show_edit
+              = link_to "edit", edit_question_path(@question)
+            |
+            %span.questions_show_delete
+              = link_to("delete", @question, method: :delete, confirm: "Are you sure you want to delete your question?")
+
 
         .row.pull-right
           .row.questions_date
@@ -62,12 +65,14 @@
                   %span.questions_date
                     #{time_ago_in_words(question_comment.created_at)} ago
 
-                  %span.questions_show_edit{"data-comment_id"=> question_comment.id, class: "questions_comment_edit_button"}
-                    %i.icon-edit
+                  - if question_comment.user == current_user
 
-                  %span.questions_show_delete
-                    = link_to question_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
-                      %i.icon-remove
+                    %span.questions_show_edit{"data-comment_id"=> question_comment.id, class: "questions_comment_edit_button"}
+                      %i.icon-edit
+
+                      %span.questions_show_delete
+                        = link_to question_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
+                          %i.icon-remove
 
         .spacer10
         .row
@@ -78,7 +83,7 @@
     .row
       .panel.dark.kill_top
         .row
-          .span5
+          .span6
             .application_vote{ "data-vote_direction" => "up" , "data-voteable_id" => question_answer.id }
               %i.icon-caret-up
             .questions_show_votes
@@ -91,11 +96,14 @@
 
             .spacer10
 
-            .row
-              %span.questions_show_edit{ "data-question_id" => question_answer.id }
-                = link_to "edit", edit_answer_path(question_answer)
-              %span.questions_show_delete
-                = link_to("delete", question_answer, method: :delete, confirm: "Are you sure you want to delete your question?")
+            - if question_answer.user == current_user
+
+              .row
+                %span.questions_show_edit{ "data-question_id" => question_answer.id }
+                  = link_to "edit", edit_answer_path(question_answer)
+                |
+                %span.questions_show_delete
+                  = link_to("delete", question_answer, method: :delete, confirm: "Are you sure you want to delete your question?")
 
             .row.pull-right
               .row.questions_date
@@ -107,7 +115,7 @@
               .span13.offset1
                 = link_to question_answer.user.name, "/map?user_id=" +  question_answer.user.id.to_s
         .row
-          .offset5.span60
+          .offset6.span60
             - if question_answer.comments.count > 0
               .spacer10
               - question_answer.comments.each do |question_answer_comment|
@@ -126,13 +134,16 @@
                     = link_to question_answer_comment.user.name, "/map?user_id=" +  question_answer_comment.user.id.to_s
                     %span.questions_date
                       #{time_ago_in_words(question_answer_comment.created_at)} ago
-                    
-                    %span.questions_show_edit{"data-comment_id"=> question_answer_comment.id, class: "questions_comment_edit_button"}
-                      %i.icon-edit
 
-                    %span.questions_show_delete
-                      = link_to question_answer_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
-                        %i.icon-remove
+
+                    - if question_answer_comment.user == current_user
+
+                      %span.questions_show_edit{"data-comment_id"=> question_answer_comment.id, class: "questions_comment_edit_button"}
+                        %i.icon-edit
+
+                        %span.questions_show_delete
+                          = link_to question_answer_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
+                            %i.icon-remove
 
 
               .spacer10
