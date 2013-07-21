@@ -1,6 +1,18 @@
 class AnswersController < ApplicationController
 
 
+  layout "questions"
+
+  def edit
+    @answer = Answer.find(params[:id])
+    @question = @answer.question # for side column
+  end
+
+  def show
+    @question = Answer.find(params[:id]).question
+    redirect_to @question
+  end
+
   def create
     @answer = current_user.answers.build(params[:answer])
 
@@ -14,9 +26,15 @@ class AnswersController < ApplicationController
 
   end
 
-  def show
-    @question = Answer.find(params[:id]).question
-    redirect_to @question
+  def update
+    @answer = Answer.find(params[:id])
+
+    if @answer.update_attributes(params[:answer])
+      flash[:success] = 'Your answer has been updated'
+      redirect_to @answer.question
+    else
+      render "edit"
+    end
   end
 
   def destroy

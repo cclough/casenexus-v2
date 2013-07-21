@@ -1,10 +1,31 @@
 class CommentsController < ApplicationController
 
-  
+  def edit
+    @comment = Comment.find(params[:id])
+
+    render partial: "edit", layout: false
+  end
+
+  def update
+
+    @comment = Comment.find(params[:id])
+
+    if @comment.update_attributes(params[:comment])
+      flash[:success] = 'Your comment has been updated'
+      redirect_to @comment.commentable
+    else
+      render "edit"
+    end
+
+  end
+
+
+
   def create
     @commentable_model = params[:comment][:commentable_type]
     @commentable = @commentable_model.classify.constantize.find(params[:comment][:commentable_id])
     @comment = @commentable.comments.new(params[:comment])
+
     if @comment.save
       @commentable.update_average_rating if @comment.commentable_type == "Book" #manually done, as opposed to triggering the call back
       redirect_to @commentable, notice: "Comment posted."
@@ -19,9 +40,6 @@ class CommentsController < ApplicationController
     @commentable = @commentable_model.classify.constantize.find(params[:commentable_id])
     @comment = @commentable.comments.new
 
-    @return_to_id = params[:return_to_id]
-    @return_to_type = params[:return_to_type]
-
     render partial: "new", layout: false
   end
 
@@ -34,9 +52,9 @@ class CommentsController < ApplicationController
 
 private
 
-  def load_commentable
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
-  end
+  # def load_commentable
+  #   resource, id = request.path.split('/')[1, 2]
+  #   @commentable = resource.singularize.classify.constantize.find(id)
+  # end
 
 end

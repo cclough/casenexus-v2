@@ -1,0 +1,23 @@
+- provide(:title, 'Edit your answer')
+- provide(:sub_title, 'Make changes to your answer')
+
+- provide(:breadcrumb, "Question")
+- provide(:breadcrumb_url, question_path(@question))
+
+
+.panel.dark
+
+  = form_for @answer do |f|
+
+    = render 'shared/error_messages', object: @answer
+    .row
+      .application_countchar_count#questions_new_countchar
+        500 characters left
+      = f.text_area :content, placeholder: "Your answer", id:"questions_new_content", class: "application_countchar"
+    .spacer5
+    .row
+      = f.submit "Update your answer", class: "btn btn-inverse"
+
+
+- content_for :questions_sidecolumn_includes do
+  = render partial: "questions/sidecolumn_question"

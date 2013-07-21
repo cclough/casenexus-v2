@@ -65,6 +65,17 @@ $alert-yellow: #FFFF7E;
   }
 }
 
+.questions_comment_add_button, .questions_comment_edit_button {
+  cursor:pointer;
+  &:hover{
+    text-decoration:underline;
+  }
+}
+
+.questions_date {
+  color:$gray_Mid;
+}
+
 
 /////////////////////////////////
 /////////////INDEX///////////////
@@ -118,9 +129,7 @@ $alert-yellow: #FFFF7E;
 }
 
 
-.questions_index_questions_item_date {
-  color:$gray_Mid;
-}
+
 
 #questions_show_answer_countchar, #questions_new_countchar {
   float:right;
@@ -131,12 +140,12 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////
 
 #questions_new_content {
-  width:735px;
+  width:700px;
   height:200px;
 }
 
 #questions_new_title {
-  width:680px;
+  width:645px;
 }
 
 
@@ -146,7 +155,7 @@ $alert-yellow: #FFFF7E;
 }
 
 #questions_new_tags {
-  width:735px;
+  width:700px;
 }
 
 
@@ -164,12 +173,7 @@ $alert-yellow: #FFFF7E;
   height:200px;
 }
 
-.questions_comment_button {
-  cursor:pointer;
-  &:hover{
-    text-decoration:underline;
-  }
-}
+
 
 .questions_show_votes {
   font-size:20px;

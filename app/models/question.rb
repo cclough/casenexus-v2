@@ -42,7 +42,11 @@ class Question < ActiveRecord::Base
   end
 
   def last_active_at
-    answers.last.created_at
+    if answers.count > 0
+      answers.last.created_at
+    else
+      created_at
+    end
   end
 
   def tag_list=(names)

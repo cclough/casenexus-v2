@@ -1,0 +1,19 @@
+.row#questions_sidecolumn.panel.dark.kill_left
+  .questions_sidecolumn_title.top
+    Tags
+  - if @question.tags.count > 0
+    = raw @question.tags.map { |t| link_to t.name, tag_path(t.name) }.join('<br>')
+
+  .spacer10
+  #questions_taglist
+    - if @question.tags.count > 0
+      .row
+        asked:
+        %span.questions_show_sidecoloumn_date
+          = time_ago_in_words(@question.created_at)
+          ago
+      .row
+        active:
+        %span.questions_show_sidecoloumn_date
+          = time_ago_in_words(@question.last_active_at)
+          ago

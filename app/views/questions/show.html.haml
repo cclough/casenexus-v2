@@ -25,12 +25,16 @@
 
         / - if @question.user == current_user
         .row
-          %span.questions_show_edit{ "data-question_id" => @question.id }
-            edit
+          %span.questions_show_edit
+            = link_to "edit", edit_question_path(@question)
           %span.questions_show_delete
             = link_to("delete", @question, method: :delete, confirm: "Are you sure you want to delete your question?")
 
         .row.pull-right
+          .row.questions_date
+            = time_ago_in_words(@question.last_active_at)
+            ago
+          .spacer5
           .span2
             = image_tag "avatars/icon.png"
           .span13.offset1
@@ -51,15 +55,19 @@
                 / .span1.application_vote.comment{ "data-vote_direction" => "down" , "data-voteable_id" => question_comment.id }
                 /   %i.icon-caret-down
               .span56
-                = question_comment.content
-                = "- "
-                = link_to question_comment.user.name, "/map?user_id=" +  question_comment.user.id.to_s
+                .questions_comment_container
+                  = question_comment.content
+                  = "- "
+                  = link_to question_comment.user.name, "/map?user_id=" +  question_comment.user.id.to_s
+                  %span.questions_date
+                    #{time_ago_in_words(question_comment.created_at)} ago
 
-                %span.questions_show_edit{ "data-question_id" => question_comment.id }
-                  %i.icon-edit
-                %span.questions_show_delete
-                  = link_to question_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
-                    %i.icon-remove
+                  %span.questions_show_edit{"data-comment_id"=> question_comment.id, class: "questions_comment_edit_button"}
+                    %i.icon-edit
+
+                  %span.questions_show_delete
+                    = link_to question_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
+                      %i.icon-remove
 
         .spacer10
         .row
@@ -80,16 +88,20 @@
           .span65
             .row
               = question_answer.content
-              
+
             .spacer10
 
             .row
               %span.questions_show_edit{ "data-question_id" => question_answer.id }
-                edit
+                = link_to "edit", edit_answer_path(question_answer)
               %span.questions_show_delete
                 = link_to("delete", question_answer, method: :delete, confirm: "Are you sure you want to delete your question?")
 
             .row.pull-right
+              .row.questions_date
+                = time_ago_in_words(question_answer.created_at)
+                ago
+              .spacer5
               .span2
                 = image_tag "avatars/icon.png"
               .span13.offset1
@@ -112,9 +124,12 @@
                     = question_answer_comment.content
                     = "- "
                     = link_to question_answer_comment.user.name, "/map?user_id=" +  question_answer_comment.user.id.to_s
-
-                    %span.questions_show_edit{ "data-question_id" => question_answer_comment.id }
+                    %span.questions_date
+                      #{time_ago_in_words(question_answer_comment.created_at)} ago
+                    
+                    %span.questions_show_edit{"data-comment_id"=> question_answer_comment.id, class: "questions_comment_edit_button"}
                       %i.icon-edit
+
                     %span.questions_show_delete
                       = link_to question_answer_comment, method: :delete, confirm: "Are you sure you want to delete your comment?" do
                         %i.icon-remove
@@ -141,22 +156,4 @@
 
 
 - content_for :questions_sidecolumn_includes do
-  .row#questions_sidecolumn.panel.dark.kill_left
-    .questions_sidecolumn_title.top
-      Tags
-    - if @question.tags.count > 0
-      = raw @question.tags.map { |t| link_to t.name, tag_path(t.name) }.join('<br>')
-
-    .spacer10
-    #questions_taglist
-      - if @question.tags.count > 0
-        .row
-          asked:
-          %span.questions_show_sidecoloumn_date
-            = time_ago_in_words(@question.created_at)
-            ago
-        .row
-          active:
-          %span.questions_show_sidecoloumn_date
-            = time_ago_in_words(@question.last_active_at)
-            ago
+  = render partial: "sidecolumn_question"

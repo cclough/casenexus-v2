@@ -1,0 +1,20 @@
+= form_for @question do |f|
+
+  = render 'shared/error_messages', object: @question
+
+  .row
+    %span.offset1#questions_new_title_label
+      Title
+    %span.offset1
+      = f.text_field :title, placeholder: "What's your question?", id: "questions_new_title"
+  
+  .spacer5
+  .row
+    .application_countchar_count#questions_new_countchar
+      500 characters left
+    = f.text_area :content, placeholder: "Ask a question...", id:"questions_new_content", class: "application_countchar"
+  .spacer5
+  .row
+    = f.text_field :tag_list, id: "questions_new_tags", placeholder: "Tags (separated by commas)"
+  .row
+    = f.submit "Post your question", class: "btn btn-inverse"

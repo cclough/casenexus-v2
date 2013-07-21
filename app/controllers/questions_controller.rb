@@ -19,6 +19,10 @@ class QuestionsController < ApplicationController
 		@question = current_user.questions.build
 	end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
 	def create
     @question = current_user.questions.build(params[:question])
 
@@ -32,6 +36,14 @@ class QuestionsController < ApplicationController
 	end
 
 	def update
+    @question = Question.find(params[:id])
+
+    if @question.update_attributes(params[:question])
+      flash[:success] = 'Your question has been updated'
+      redirect_to @question
+    else
+      render "edit"
+    end
 	end
 
   def destroy

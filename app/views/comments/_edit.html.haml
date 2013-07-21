@@ -1,13 +1,13 @@
 .offset3
   .row
-    = form_for @comment, url: { controller: :comments, action: :create } do |f|
+    = form_for @comment, url: { controller: :comments, action: :update } do |f|
 
-      .span44
+      .span40
         #flash_notifications
           = render 'shared/error_messages', object: @comment
 
           
-          = f.text_area :content, rows: 4, class: "span44", placeholder: "Write a comment here..."
+          = f.text_area :content, rows: 4, class: "span40", placeholder: "Write a comment here..."
 
       .span12.offset1
 
@@ -17,8 +17,8 @@
             .books_rating_set
             How do you rate it?
             = f.hidden_field :rating, id: "books_rating_set_field"
-            
+
+
         = f.hidden_field :user_id, value: current_user.id
-        = f.hidden_field :commentable_type, value: @commentable_model
-        = f.hidden_field :commentable_id, value: @commentable.id
-        = f.submit "Add comment", class: "btn btn-inverse"
+
+        = f.submit "Save Edits", class: "btn btn-inverse"

@@ -91,7 +91,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Answers
-  resources :answers, only: [:create, :update, :show, :destroy] do
+  resources :answers, only: [:create, :update, :show, :destroy, :edit] do
   end
 
   # Tagging
@@ -103,7 +103,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Comments
-  resources :comments, only: [:index, :new, :create, :destroy]
+  resources :comments
 
 
 
