@@ -12,9 +12,8 @@ Casenexus::Application.routes.draw do
   # Pusher
   post 'pusher/auth'
 
-  # Online user panel
-  match '/online_user_item', to: 'application#online_user_item'
-  match '/online_panel', to: 'application#online_panel'
+  # Online panel
+  resources :onlinepanel, only: [:index, :show]
 
   # Static Pages
   match '/about', to: 'static_pages#about'
@@ -64,6 +63,9 @@ Casenexus::Application.routes.draw do
   # Invitations
   resources :invitations, except: [:edit, :update]
 
+  # Votes
+  match '/votes/up', to: 'votes#up'
+  match '/votes/down', to: 'votes#down'
 
   # Cases
   resources :cases, only: [:index, :show, :new, :create] do
@@ -84,11 +86,9 @@ Casenexus::Application.routes.draw do
 
   # Questions
   resources :questions do
-    member do
-      post :vote_up
-      post :vote_down
-    end
   end
+
+
 
   # Answers
   resources :answers, only: [:create, :update, :show, :destroy, :edit] do

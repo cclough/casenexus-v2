@@ -8,8 +8,10 @@
       = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
     - else
       = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
-
     = javascript_include_tag "application"
+
+    = javascript_include_tag "onlinepanel"
+    = javascript_include_tag "votes"
 
     = javascript_include_tag "questions"    
 
@@ -51,7 +53,7 @@
         = render 'layouts/footer'
 
 
-    = render 'shared/online_panel_containers'
+    = render 'onlinepanel/container'
 
 
   = render 'shared/modal_help'

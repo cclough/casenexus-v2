@@ -1,0 +1,21 @@
+// remove any current ones
+$("div[id=application_flash]:last").remove();
+
+$("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
+
+$("div[id=application_flash]:last").fadeIn("fast", function () {
+
+  setTimeout(function() {
+    $("div[id=application_flash]:last").fadeOut('fast', function() {
+      $("div[id=application_flash]:last").remove();
+    });
+  }, 4000);
+
+});
+
+
+
+// make numbers update if no error - accordingly if devote etc.
+// add class to arrows showing voted
+// show what error it is!
+// down.js.erb/one file for both

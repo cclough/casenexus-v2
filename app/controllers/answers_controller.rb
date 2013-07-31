@@ -6,7 +6,8 @@ class AnswersController < ApplicationController
 
 
   def show
-    @question = Answer.find(params[:id]).question
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
     redirect_to @question
   end
 
@@ -35,6 +36,7 @@ class AnswersController < ApplicationController
       flash[:success] = 'Your answer has been updated'
       redirect_to @answer.question
     else
+      @question = @answer.question
       render "edit"
     end
   end

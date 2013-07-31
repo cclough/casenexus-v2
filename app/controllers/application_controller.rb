@@ -4,26 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :update_last_online_at
   before_filter :set_timezone 
 
-
   before_filter :authenticate_user!, only: [:online_panel, :online_user_item]
   before_filter :completed_user, only: [:online_panel, :online_user_item]
-
-  helper_method :correct_user
-
-
-
-  def online_panel
-    render partial: "shared/online_panel", layout: false
-  end
-
-  def online_user_item
-    # @online_user = User.find(params[:user_id])
-    # @online_user_type = params[:online_user_type]
-
-    render partial: "shared/online_user_item"
-  end
-
-
 
   def set_timezone  
     Time.zone = current_user.time_zone if current_user
@@ -52,12 +34,6 @@ class ApplicationController < ActionController::Base
       current_user.update_column(:last_online_at, Time.now())
     end
   end
-
-
-  def correct_user( object, path )
-    redirect_to path unless object.user == current_user
-  end
-
 
 
 end

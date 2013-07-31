@@ -90,24 +90,24 @@ class Event < ActiveRecord::Base
   class << self
 
     def create_notification_for_create(user, partner, notificable, ntype)
-      Notification.create!(user: user,
-                           sender: partner,
-                           ntype: ntype,
-                           notificable: notificable)
+      # Notification.create!(user: user,
+      #                      sender: partner,
+      #                      ntype: ntype,
+      #                      notificable: notificable)
     end
 
     def create_notification_for_destroy(user, partner, notificable, ntype)
-      Notification.create!(user: user,
-                           sender: partner,
-                           ntype: ntype,
-                           notificable: notificable)
+      # Notification.create!(user: user,
+      #                      sender: partner,
+      #                      ntype: ntype,
+      #                      notificable: notificable)
     end
 
     def create_notification_for_change(user, partner, notificable, ntype)
-      Notification.create!(user: user,
-                           sender: partner,
-                           ntype: ntype,
-                           notificable: notificable)
+      # Notification.create!(user: user,
+      #                      sender: partner,
+      #                      ntype: ntype,
+      #                      notificable: notificable)
     end
 
   end

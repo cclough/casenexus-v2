@@ -14,7 +14,6 @@ class QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@answer = Answer.new
-
 	end
 
 	def new 
@@ -53,24 +52,6 @@ class QuestionsController < ApplicationController
     @question.destroy
     flash[:success] = "Your question has now been deleted."
     redirect_to questions_path
-  end
-
-  def vote_up
-    begin
-      current_user.vote_for(@question = Question.find(params[:id]))
-      render :nothing => true, :status => 200
-    rescue ActiveRecord::RecordInvalid
-      render :nothing => true, :status => 404
-    end
-  end
-
-  def vote_down
-    begin
-      current_user.vote_against(@question = Question.find(params[:id]))
-      render :nothing => true, :status => 200
-    rescue ActiveRecord::RecordInvalid
-      render :nothing => true, :status => 404
-    end
   end
 
   private

@@ -1,5 +1,5 @@
 .span1
-  .application_container_online_item_status{class: (if @online_user.online_now? then "online_now" elsif @online_user.online_earlier? then "online_earlier" end)}
+  .onlinepanel_show_status{class: (if @online_user.online_now? then "online_now" elsif @online_user.online_earlier? then "online_earlier" end)}
 .span2.offset1
   = image_tag "avatars/icon.png"
 .span.offset1
@@ -7,7 +7,7 @@
 
 - if @online_user_type == "friend"
   / .pull-right
-  /   .btn-group.application_container_online_item_button
+  /   .btn-group.onlinepanel_show_button
   /     %a.btn.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
   /       %i.icon-ellipsis-horizontal
   /     %ul.dropdown-menu.pull-right
@@ -20,10 +20,10 @@
   /           = image_tag "icons/skype_button.png", class: "application_icon_skype"
 
   .pull-right
-    .application_container_online_item_menu_message.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
+    .onlinepanel_show_menu_message.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.first_name + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
       %i.icon-envelope
           
 - else
   .pull-right
-    .application_container_online_item_menu_addfriend.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + " as a friend", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
+    .onlinepanel_show_menu_addfriend.btn.btn-inverse.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.first_name + " as a friend", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
       %i.icon-plus

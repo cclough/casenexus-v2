@@ -299,13 +299,13 @@ class User < ActiveRecord::Base
 
 
   def send_newuser_email_to_admin
-    UserMailer.newuser_to_admin(self).deliver
+    # UserMailer.newuser_to_admin(self).deliver
   end
 
   def send_welcome
-    if completed_was == false and completed == true
-      Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
-    end
+    # if completed_was == false and completed == true
+    #   Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
+    # end
   end
 
 

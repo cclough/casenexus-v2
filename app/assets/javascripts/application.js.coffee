@@ -133,7 +133,7 @@ window.modal_friendship_req_show = (friend_id) ->
 
         $(this).closest("form").submit()
 
-        window.application_container_online_refresh()
+        window.onlinepanel_refresh()
 
 
 
@@ -221,38 +221,6 @@ window.modal_events_rebless = ->
 
 
 
-
-window.application_container_online_prime = () ->
-  $(".application_container_online_item_menu_message").click ->
-
-    friend_id = $(this).data "friend_id"
-    window.modal_message_show(friend_id)
-
-
-  $(".application_container_online_item_menu_addfriend").click ->
-
-    friend_id = $(this).data "friend_id"
-    window.modal_friendship_req_show(friend_id)
-
-
-  # The Ping updater! Could be a lot smoother, but for now o-k
-  # setInterval ->
-  #   application_container_online_refresh()
-  # , 30000
-
-
-  $("#application_container_online_response_min").click ->
-    if $("#application_container_online_response").is(':visible')
-      $("#application_container_online_response").fadeOut "fast"
-    else
-      $("#application_container_online_response").fadeIn "fast"
-
-window.application_container_online_refresh = () ->
-  $.get "/online_panel", (data) ->
-    $("#application_container_online").html data
-    window.application_container_online_prime()   
-
-
 window.books_item_prime_raty = () ->
   
   $(".books_rating_read").raty
@@ -285,17 +253,6 @@ $(document).ready ->
   # Countchar
   $('.application_countchar').keyup ->
     window.application_countchar(this)
-
-  # Voteables
-  $(".application_vote i").click ->
-
-    direction = $(this).data "vote_direction"
-    voteable_id = $(this).data "voteable_id"
-
-    $.post("/questions/" + voteable_id + "/vote_" + direction, ->
-      alert "success"
-    ).error ->
-      alert "Vote error."
 
   # Placeholders
   $("input, textarea").placeholder()
@@ -350,9 +307,6 @@ $(document).ready ->
 
 
 
-  # ONLINE PANEL STUFF
-  window.application_container_online_prime()
-          
 
       
 

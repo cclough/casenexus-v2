@@ -10,8 +10,13 @@ class Vote < ActiveRecord::Base
 
   attr_accessible :vote, :voter, :voteable
 
+  validate :no_vote_on_own
 
   # Comment out the line below to allow multiple votes per user.
   validates_uniqueness_of :voteable_id, :scope => [:voteable_type, :voter_type, :voter_id]
+
+  def no_vote_on_own
+    errors.add(:base, "You cannot vote on your own things") if self.voteable.user == self.voter
+  end
 
 end

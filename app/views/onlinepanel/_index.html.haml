@@ -1,29 +1,29 @@
-#application_container_online_title
+#onlinepanel_title
   Your friends
-#application_container_online_friends{ class: ("non_response" if nonresponse == 1) }
+#onlinepanel_friends{ class: ("non_response" if nonresponse == 1) }
   - for online_friend_item in current_user.accepted_friends
-    .application_container_online_item
+    .onlinepanel_show
 
       - @online_user_type = "friend"
       - @online_user = User.find(online_friend_item.id)
 
-      = render partial: 'shared/online_user_item'
+      = render partial: 'onlinepanel/show'
 
 
 / - if User.list_online_recently_notfriends(current_user).count > 0
-#application_container_online_title
+#onlinepanel_title
   Other users
-#application_container_online_nonfriends
+#onlinepanel_nonfriends
 
   - for online_friend_item in User.list_online_recently_notfriends(current_user)
-    .application_container_online_item
+    .onlinepanel_show
 
       - @online_user_type = "nonfriend"
       - @online_user = User.find(online_friend_item.id)
 
-      = render partial: 'shared/online_user_item'
+      = render partial: 'onlinepanel/show'
 
-#application_container_online_posts
-  #application_container_online_title
+#onlinepanel_posts
+  #onlinepanel_title
     Posts
   = render 'shared/posts'

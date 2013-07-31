@@ -372,7 +372,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 end
 
-if Rails.env == 'development'
+# if Rails.env == 'development'
 
   ####### PRIVATE FUNCTIONS #######
 
@@ -413,7 +413,7 @@ if Rails.env == 'development'
 
 
 
-  30.times do |n|
+  15.times do |n|
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
 
@@ -680,5 +680,5 @@ if Rails.env == 'development'
 
 
 
-end
+# end
 

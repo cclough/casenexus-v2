@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   attr_accessible :content, :title, :view_count, :tag_list
 
+  # Associations
   belongs_to :user
   has_many :answers
   has_many :comments, as: :commentable
@@ -8,10 +9,13 @@ class Question < ActiveRecord::Base
   has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags, :through => :taggings
 
+  # Validations
   validates_presence_of :user_id
   validates :title, presence: true, length: { maximum: 255 } 
-  validates :content, presence: true, length: { maximum: 500 } 
+  validates :content, presence: true, length: { maximum: 1000 } 
+  validates_presence_of :taggings
 
+  # Voting
   acts_as_voteable
 
 
@@ -21,9 +25,8 @@ class Question < ActiveRecord::Base
   # ANSWERS?
 
 
-
+  # TAG STUFF
   # PUT INTO CONTROLLER FOR POLYMORPHIC?
-
   def self.tagged_with(name)
     Tag.find_by_name!(name).taggables
   end
@@ -37,6 +40,14 @@ class Question < ActiveRecord::Base
     tags.map(&:name).join(", ")
   end
 
+  def tag_list=(names)
+    self.tags = names.split(",").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
+
+
+
   def content_trunc
     content.truncate(130, separator: ' ')
   end
@@ -46,12 +57,6 @@ class Question < ActiveRecord::Base
       answers.last.created_at
     else
       created_at
-    end
-  end
-
-  def tag_list=(names)
-    self.tags = names.split(",").map do |n|
-      Tag.where(name: n.strip).first_or_create!
     end
   end
 
