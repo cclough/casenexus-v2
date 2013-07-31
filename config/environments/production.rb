@@ -72,9 +72,9 @@ Casenexus::Application.configure do
   GA.tracker = "UA-36414972-1"
 
   # Exception notification
-  config.middleware.use ExceptionNotifier,
-                        email_prefix: "[Casenexus Exception] ",
-                        sender_address: %{"Casenexus Notifier" <mailer@casenexus.com>},
-                        exception_recipients: %w{christian.clough@gmail.com}
+  # config.middleware.use ExceptionNotifier,
+  #                       email_prefix: "[Casenexus Exception] ",
+  #                       sender_address: %{"Casenexus Notifier" <mailer@casenexus.com>},
+  #                       exception_recipients: %w{christian.clough@gmail.com}
 
 end
