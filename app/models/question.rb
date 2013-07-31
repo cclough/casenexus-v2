@@ -13,7 +13,7 @@ class Question < ActiveRecord::Base
   validates_presence_of :user_id
   validates :title, presence: true, length: { maximum: 255 } 
   validates :content, presence: true, length: { maximum: 1000 } 
-  validates_presence_of :taggings
+  # validates_presence_of :taggings
 
   # Voting
   acts_as_voteable

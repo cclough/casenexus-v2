@@ -300,6 +300,39 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.save!
   admin.confirm!
 
+
+  puts "Creating dan's user"
+
+  admin = User.new(
+      first_name: "Dan",
+      last_name: "Biddulph",
+      email: "danb@cam.ac.uk",
+      password: "testing",
+      password_confirmation: "testing",
+      lat: 51.3100,
+      lng: -0.1344,
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+
+      language_ids: 1,
+
+      subject_id: 5,
+      degree_level: 0,
+      
+      cases_external: 14,
+
+      skype: "testing",
+
+      confirm_tac: "1",
+
+      time_zone: "UTC",
+
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+  admin.completed = true
+  admin.admin = false
+  admin.save!
+  admin.confirm!
+
+
   puts "Creating alastair's user"
 
   admin = User.new(

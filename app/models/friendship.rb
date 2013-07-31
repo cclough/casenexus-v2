@@ -181,19 +181,19 @@ class Friendship < ActiveRecord::Base
 
     # Notificates that a friendship has been requested
     def send_friend_request(sender, friend, invitation_message, friendship)
-      Notification.create!(user_id: friend.id,
-                           sender_id: sender.id,
-                           ntype: "friendship_req",
-                           content: invitation_message.to_s,
-                           notificable: friendship)
+      # Notification.create!(user_id: friend.id,
+      #                      sender_id: sender.id,
+      #                      ntype: "friendship_req",
+      #                      content: invitation_message.to_s,
+      #                      notificable: friendship)
     end
 
     # Notificates that a friendship has been accepted
     def send_friend_accept(sender, friend, friendship)
-      Notification.create!(user_id: friend.id,
-                           sender_id: sender.id,
-                           ntype: "friendship_app",
-                           notificable: friendship)
+      # Notification.create!(user_id: friend.id,
+      #                      sender_id: sender.id,
+      #                      ntype: "friendship_app",
+      #                      notificable: friendship)
     end
   end
 end
