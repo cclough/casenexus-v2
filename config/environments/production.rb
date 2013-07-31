@@ -47,7 +47,7 @@ Casenexus::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w( application.js posts.js books.js events.js summary.js cases.js questions.js home.js map.js notifications.js console.js account.js summary.js lib/*.js application.css pdfjs.css)
+  config.assets.precompile += %w( application.js posts.js books.js events.js summary.js cases.js questions.js home.js map.js notifications.js console.js account.js summary.js onlinepanel.js votes.js lib/*.js application.css pdfjs.css)
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
