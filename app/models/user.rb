@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  has_merit
-
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, :token_authenticatable
 
