@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130714092303) do
+ActiveRecord::Schema.define(:version => 20130813164946) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -164,6 +164,14 @@ ActiveRecord::Schema.define(:version => 20130714092303) do
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "points", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "method_id"
+    t.string   "pointable_type"
+    t.integer  "pointable_id"
+    t.datetime "created_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"

@@ -9,12 +9,9 @@
   .panel.dark
     .row
       .span6
-        .votes_control
-          %i.icon-caret-up{ "data-vote_direction" => "up" , "data-voteable_id" => @question.id, "data-voteable_type" => "Question" }
-        .questions_show_votes
-          = @question.plusminus
-        .votes_control
-          %i.icon-caret-down{ "data-vote_direction" => "down" , "data-voteable_id" => @question.id, "data-voteable_type" => "Question" }
+
+
+        = render partial: "/votes/control", locals: { voteable: @question }
       .span65
         .row#questions_show_title
           = @question.title
@@ -61,12 +58,7 @@
       .panel.dark.kill_top
         .row
           .span6
-            .votes_control
-              %i.icon-caret-up{ "data-vote_direction" => "up" , "data-voteable_id" => question_answer.id, "data-voteable_type" => "Answer" }
-            .questions_show_votes
-              = question_answer.plusminus
-            .votes_control
-              %i.icon-caret-down{ "data-vote_direction" => "down" , "data-voteable_id" => question_answer.id, "data-voteable_type" => "Answer" }
+            = render partial: "/votes/control", locals: { voteable: question_answer }
           .span65
             .row
               = question_answer.content.html_safe

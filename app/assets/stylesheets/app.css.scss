@@ -238,11 +238,14 @@ a:hover {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
-
 .votes_control {
   i {
     cursor:pointer;
     font-size:40px;
+    &.voted {
+      color:$blue_pastel;
+      font-size:60px;
+    }
   }
   text-align:center;
   &.comment {
@@ -253,7 +256,14 @@ a:hover {
   }
 }
 
+.votes_control_votes {
+  font-size:20px;
+  text-align:center;
+}
 
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
 
 
 .application_icon_skype {

@@ -62,9 +62,13 @@ Casenexus::Application.routes.draw do
   resources :invitations, except: [:edit, :update]
 
   # Votes
+  resources :votes, only: [:destroy]
+  match '/votes/control', to: 'votes#control'
   match '/votes/up', to: 'votes#up'
   match '/votes/down', to: 'votes#down'
 
+
+  
   # Cases
   resources :cases, only: [:index, :show, :new, :create] do
     get :analysis, on: :collection

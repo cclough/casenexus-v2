@@ -9,12 +9,11 @@ class User < ActiveRecord::Base
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 
-  # Belongs to
+  ### Associations
   belongs_to :university
   belongs_to :country
   belongs_to :subject
 
-  # Has
   has_many :cases, dependent: :destroy
   has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
   has_many :notifications, dependent: :destroy
@@ -44,49 +43,52 @@ class User < ActiveRecord::Base
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
   
-  # For online user panel - vincent work
-  scope :not_friends, ->(user) {select('users.*, friends.id as fid').joins("left join friendships on users.id = friendships.friend_id and friendships.user_id = #{User.sanitize(user.id)} left join users as friends on friends.id = friendships.friend_id").where("friends.id is null and users.id != ?",user.id)}
+  has_many :points
 
-  # Invitations
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
-  # Callbacks
+
+
+  ### Callbacks
   before_create :set_university
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
   after_create :update_invitation
   after_save :send_welcome
-
-  # Geocode
   after_validation :geocode, :reverse_geocode
 
+
   ### Validations
+
+  validates_acceptance_of :confirm_tac
+
+  # ON CREATE
+  validate :validate_university_email, on: :create
+  validate :validate_invitation, on: :create
+
+  # ON UPDATE
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
-  validates_acceptance_of :confirm_tac
-
-  validate :validate_university_email, on: :create
-  validate :validate_invitation, on: :create
-
-
-
-  ## ON UPDATE
   validates :lat, presence: true, on: :update
   validates :lng, presence: true, on: :update
-
   validates :degree_level, presence: true, on: :update
   validates :subject, presence: true, on: :update
-
   validates :skype, length: { maximum: 32 },
             format: { with: /^[\w]+[a-z0-9\-]+$/i },
             allow_blank: true,
             on: :update
-
   validate :validate_has_languages?, on: :update
   
+
+  ### Scopes
+  # For online user panel - vincent work
+  scope :not_friends, ->(user) {select('users.*, friends.id as fid').joins("left join friendships on users.id = friendships.friend_id and friendships.user_id = #{User.sanitize(user.id)} left join users as friends on friends.id = friendships.friend_id").where("friends.id is null and users.id != ?",user.id)}
+
+
+  ### Other
 
   # Thumbs Up Gem
   acts_as_voter
@@ -94,7 +96,7 @@ class User < ActiveRecord::Base
   # Scoped_search Gem
   scoped_search on: [:first_name, :last_name]
 
-  ### Geocoder
+  # Geocoder
   geocoded_by :ip_address, :latitude => :lat, :longitude => :lng
   reverse_geocoded_by :lat, :lng do |obj, results|
     if geo = results.first
@@ -105,6 +107,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+
+
+
 
   def name
     "#{first_name} #{last_name}"

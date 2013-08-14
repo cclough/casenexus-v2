@@ -1,37 +1,54 @@
 class VotesController < ApplicationController
 
-  before_filter :get_voteable
 
-  def up
+  before_filter :get_voteable, only: [:up, :down, :control]
+
+
+  def destroy
+    @vote = Vote.find(params[:id])
+    @vote.destroy
+
+    @voteable = @vote.voteable
+
     respond_to do |format|
-      
-      begin
-
-        current_user.vote_for(@voteable)
-
-        format.js
-        flash.now[:success] = 'Vote saved'
-
-        # render nothing: true, :status => 200
-
-      rescue ActiveRecord::RecordInvalid
-
-        format.js
-        flash.now[:error] = 'Vote error'
-
-        # render nothing: true, :status => 404
-
-      end
-
+      format.js { render :action => "control_update" }
+      flash[:success] = "Your vote has now been removed."
     end
   end
 
+  def control
+    render partial: "control", locals: { voteable: @voteable }, layout: false
+  end
+
+
+  def up
+    respond_to do |format|
+      begin
+        current_user.vote_for(@voteable)
+        format.js { render :action => "control_update" }
+        flash.now[:success] = 'Vote saved'
+        # render nothing: true, :status => 200
+      rescue ActiveRecord::RecordInvalid
+        format.js { render :action => "control_update" }
+        flash.now[:error] = 'Vote error'
+        # render nothing: true, :status => 404
+      end
+    end
+  end
+
+
   def down
-    begin
-      current_user.vote_against(@voteable)
-      render nothing: true, :status => 200
-    rescue ActiveRecord::RecordInvalid
-      render nothing: true, :status => 404
+    respond_to do |format|
+      begin
+        current_user.vote_against(@voteable)
+        format.js { render :action => "control_update" }
+        flash.now[:success] = 'Vote saved'
+        # render nothing: true, :status => 200
+      rescue ActiveRecord::RecordInvalid
+        format.js { render :action => "control_update" }
+        flash.now[:error] = 'Vote error'
+        # render nothing: true, :status => 404
+      end
     end
   end
 

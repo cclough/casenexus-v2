@@ -50,7 +50,7 @@
               = link_to summary_path, id: "header_nav_links_right_name", class: "application_truncatable" do
                 = current_user.name
                 %span#header_user_points
-                  = current_user.points
+                  / = current_user.points
 
         - else
 
