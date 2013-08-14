@@ -141,6 +141,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def points_tally
+    points.map { |a| a.score }.sum
+  end
+
   def degree_level_in_words
     case degree_level
     when 0

@@ -15,6 +15,18 @@ class Point < ActiveRecord::Base
   after_create :create_notification
 
 
+  def score
+    case method_id
+    when 1 # vote up
+      5
+    when 2 # receive feedback
+      10
+    when 3 # give feedback
+      20
+    end
+  end
+
+
 
   private
 
