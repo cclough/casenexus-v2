@@ -1,12 +1,6 @@
 .row.questions_comment
-  .span1
-    - unless comment.plusminus == 0
-      = comment.plusminus
-  .span2
-    .span1.votes_control.comment
-      %i.icon-caret-up{ "data-vote_direction" => "up" , "data-voteable_id" => comment.id, "data-voteable_type" => "comment" }
-    / .span1.votes_control.comment{ "data-vote_direction" => "down" , "data-voteable_id" => comment.id }
-    /   %i.icon-caret-down
+  .span3.votes_control_container{ "data-voteable_id" => comment.id, "data-voteable_type" => comment.class.name }
+    = render partial: "/votes/control", locals: { voteable: comment }
   .span56
     .questions_comment_container
       = comment.content

@@ -8,9 +8,7 @@
 .row
   .panel.dark
     .row
-      .span6
-
-
+      .span6.votes_control_container{ "data-voteable_id" => @question.id, "data-voteable_type" => @question.class.name }
         = render partial: "/votes/control", locals: { voteable: @question }
       .span65
         .row#questions_show_title
@@ -57,7 +55,7 @@
     .row
       .panel.dark.kill_top
         .row
-          .span6
+          .span6.votes_control_container{ "data-voteable_id" => question_answer.id, "data-voteable_type" => question_answer.class.name }
             = render partial: "/votes/control", locals: { voteable: question_answer }
           .span65
             .row
