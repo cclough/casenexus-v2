@@ -11,9 +11,11 @@ class Case < ActiveRecord::Base
   belongs_to :user
   belongs_to :interviewer, class_name: 'User'
   has_many :notifications, as: :notificable, dependent: :destroy
-
+  has_many :points, as: :pointable, dependent: :destroy
+  
   ### Callbacks
   after_create :create_notification
+  after_create :create_points
 
   ### Validations
   validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
@@ -464,6 +466,16 @@ class Case < ActiveRecord::Base
     #                                ntype: "feedback",
     #                                content: self.subject,
     #                                notificable: self)
+  end
+
+  def create_points
+    # award receiving user some points
+    self.user.points.create(method_id: 2,
+                            pointable: self)
+
+    # award sending user some points
+    self.interviewer.points.create(method_id: 3,
+                                   pointable: self)
   end
 
 end
