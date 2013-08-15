@@ -6,7 +6,7 @@
 
     <%- if @case.errors.any? %>
 
-        $('#console_index_feedback_frame').html('<%= escape_javascript(render partial: 'cases/new') %>');
+        $('#console_index_feedback_frame').html('<%= escape_javascript(render partial: 'shared/modal_post_form') %>');
 
         window.cases_new_prime();
 

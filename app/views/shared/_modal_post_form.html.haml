@@ -1,0 +1,26 @@
+/ - @post ||= Post.new
+- if @post.blank? then @post = Post.new end
+= form_for @post, url: posts_path, remote: true do |f|
+  .modal-header
+    %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+    %h3 New Post
+
+  .modal-body
+
+    %p Note: you are limited to one post per day
+
+    = render 'shared/error_messages', object: @post
+
+    .row
+      = f.text_area :content, placeholder: "Broadcast a message to other users...", tabindex: "103", class: "modal_textarea"
+
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    .modal_submit_button.btn.btn-inverse{tabindex: "102"}
+      %i.icon-arrow-right.icon-white
+      Submit post
+
+
+#application_spinner_container
+  #application_spinner

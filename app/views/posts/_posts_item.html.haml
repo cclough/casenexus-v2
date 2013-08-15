@@ -7,7 +7,3 @@
   .row
     .span
       = posts_item.content
-  .row
-    = link_to post_path(posts_item), class: "btn btn-inverse btn-mini pull-right" do
-      Comment
-      %strong (#{posts_item.comments.count})

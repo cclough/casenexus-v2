@@ -7,21 +7,16 @@ class PostsController < ApplicationController
   def create
 
     @post = current_user.posts.build(params[:post])
-    if @post.save
-      flash[:success] = 'Post Posted'
-      redirect_to posts_path
-    else
-      flash[:error] = @post.errors.full_messages.map {|error| "#{error}<br>"}.join
-      redirect_to posts_path
+
+    respond_to do |format|
+      if @post.save
+        flash[:success] = 'Your post has been submitted for review, and will be online shortly.'
+        format.js
+      else
+        format.js
+      end
     end
 
-  end
-
-  def show
-    @post = Post.find(params[:id])
-    @commentable = @post
-    @comments = @commentable.comments.order("created_at desc").paginate(per_page: 20, page: params[:page])
-    @comment = Comment.new
   end
 
   

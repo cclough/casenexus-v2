@@ -89,11 +89,6 @@ window.modal_message_prime = () ->
     scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
   , "fast"
 
-  # # Submit button loading animation and submit Prime
-  # $("#modal_message_submit_button").click ->
-  #   $("#application_spinner_container").show()
-  #   $('#modal_message_form').submit();
-
   window.modal_spinner_prime()
 
 window.modal_message_show = (friend_id) ->
@@ -107,6 +102,17 @@ window.modal_message_show = (friend_id) ->
 
       window.modal_message_prime()
 
+
+
+
+
+
+window.modal_post_show = () ->
+  
+  if !($("#modal_post").hasClass("in"))
+    $("#modal_post").modal("show")
+
+    window.modal_spinner_prime()
 
 
 

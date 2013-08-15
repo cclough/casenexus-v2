@@ -20,13 +20,23 @@ class VotesController < ApplicationController
   end
 
 
+  # MAKE THIS INTO ONE VOTE FUNCTION ONCE YOU ARE SURE IT WONT CAUSE ANY PROBLEMS
   def up
+
     respond_to do |format|
       begin
-        current_user.vote_for(@voteable)
+
+        # UNLOCKABLE
+        if current_user.points_tally >= 5
+          current_user.vote_for(@voteable)
+          flash.now[:success] = 'Your vote has been cast.'
+          # render nothing: true, :status => 200
+        else
+          flash.now[:error] = 'You must have more than 5 reputation points to up vote'
+        end
+
         format.js { render :action => "control_update" }
-        flash.now[:success] = 'Your vote has been cast.'
-        # render nothing: true, :status => 200
+
       rescue ActiveRecord::RecordInvalid
         format.js { render :action => "control_update" }
         flash.now[:error] = 'You cannot vote on your own content.'
@@ -39,10 +49,18 @@ class VotesController < ApplicationController
   def down
     respond_to do |format|
       begin
-        current_user.vote_against(@voteable)
+
+        # UNLOCKABLE
+        if current_user.points_tally >= 20
+          current_user.vote_against(@voteable)
+          flash.now[:success] = 'Your vote has been cast.'
+          # render nothing: true, :status => 200
+        else
+          flash.now[:error] = 'You must have more than 20 reputation points to down vote'
+        end
+
         format.js { render :action => "control_update" }
-        flash.now[:success] = 'Your vote has been cast.'
-        # render nothing: true, :status => 200
+
       rescue ActiveRecord::RecordInvalid
         format.js { render :action => "control_update" }
         flash.now[:error] = 'You cannot vote on your own content.'

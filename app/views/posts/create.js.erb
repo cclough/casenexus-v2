@@ -1,0 +1,23 @@
+<%- if @post.errors.any? %>
+
+    $('#modal_post').html('<%= escape_javascript(render('shared/modal_post_form')) %>');
+
+    window.modal_spinner_prime();
+
+<%- else %>
+
+    $('#modal_post').modal('hide');
+
+    $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+
+    $("div[id=application_flash]:last").fadeIn("fast", function () {
+
+      setTimeout(function() {
+        $("div[id=application_flash]:last").fadeOut('fast', function() {
+          $("div[id=application_flash]:last").remove();
+        });
+      }, 4000);
+
+    });
+
+<%- end %>

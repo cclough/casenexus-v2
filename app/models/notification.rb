@@ -17,9 +17,9 @@ class Notification < ActiveRecord::Base
   validates :content, length: { maximum: 500 }
 
   validate :no_notification_to_self
-  def self.valid_types;%w(welcome message feedback friendship_req friendship_app event_set_partner event_set_sender event_cancel event_change event_remind); end
+  def self.valid_types;%w(welcome message feedback friendship_req friendship_app event_set_partner event_set_sender event_cancel event_change event_remind points_unlock_voteup points_unlock_votedown); end
   # The two validations below must be after the line above!
-  validates :ntype, presence: true, length: { maximum: 20 }, inclusion: { in: self.valid_types }
+  validates :ntype, presence: true, length: { maximum: 25 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
 
   ### Callbacks
@@ -50,7 +50,7 @@ class Notification < ActiveRecord::Base
     def history(from_id, to_id)
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
                         from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_change","event_remind"]])
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_change","event_remind","points_unlock_voteup","points_unlock_votedown"]])
     end
 
   end
@@ -89,6 +89,10 @@ class Notification < ActiveRecord::Base
         "Case appointment updated"
       when "event_remind"
         "Case appointment reminder"
+      when "points_unlock_voteup"
+        "You can now up vote"
+      when "points_unlock_votedown"
+        "You can now down vote"
     end    
   end
 
@@ -126,6 +130,10 @@ class Notification < ActiveRecord::Base
         Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
       when "event_remind"
         Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+      when "points_unlock_voteup"
+        Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
+      when "points_unlock_votedown"
+        Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
     end
   end
 
@@ -201,7 +209,16 @@ class Notification < ActiveRecord::Base
                                 self.notificable_id,
                                 self.title,
                                 self.url).deliver
-    end
+
+      when "points_unlock_voteup"
+        UserMailer.points_unlock_voteup(self.user,
+                                        self.title,
+                                        self.url).deliver
+      when "points_unlock_votedown"
+        UserMailer.points_unlock_votedown(self.user,
+                                          self.title,
+                                          self.url).deliver
+      end
   end
 
 

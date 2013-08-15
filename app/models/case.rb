@@ -462,10 +462,10 @@ class Case < ActiveRecord::Base
   end
 
   def create_notification
-    # self.user.notifications.create(sender_id: self.interviewer_id,
-    #                                ntype: "feedback",
-    #                                content: self.subject,
-    #                                notificable: self)
+    self.user.notifications.create(sender_id: self.interviewer_id,
+                                   ntype: "feedback",
+                                   content: self.subject,
+                                   notificable: self)
   end
 
   def create_points

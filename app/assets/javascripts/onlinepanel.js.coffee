@@ -34,7 +34,8 @@ window.onlinepanel_prime = () ->
 #     $("#onlinepanel_container").html data
 #     window.onlinepanel_prime()   
 
-
+  $("#onlinepanel_posts_new_button").click ->
+    window.modal_post_show()
 
 $(document).ready ->
 

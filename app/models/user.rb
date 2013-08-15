@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
                   :invitation_code, :ip_address, :language_ids, :firm_ids, :cases_external, :last_online_at, 
-                  :time_zone, :subject_id, :degree_level
+                  :time_zone, :subject_id, :degree_level, :can_upvote, :can_downvote
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
 

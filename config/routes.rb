@@ -75,7 +75,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Posts
-  resources :posts, only: [:index, :create, :show]
+  resources :posts, only: [:create]
   
   # Notifications
   resources :notifications, only: [:index, :show, :create] do

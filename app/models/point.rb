@@ -12,8 +12,7 @@ class Point < ActiveRecord::Base
 
 
   ### Callbacks
-  after_create :create_notification
-
+  after_create :unlock_function
 
   def score
     case method_id
@@ -26,22 +25,44 @@ class Point < ActiveRecord::Base
     end
   end
 
+  def method
+    case method_id
+    when 1 # vote up
+      "Vote up"
+    when 2 # receive feedback
+      "Did a case (received feedback)"
+    when 3 # give feedback
+      "Gave a case (sent feedback)"
+    end
+  end
+
 
 
   private
 
-  def create_notification
-    case self.method_id
-    when 1
-      self.user.notifications.create(ntype: "points_feedback_rec",
-                                     notificable: self)
-    when 2
-      self.user.notifications.create(ntype: "points_feedback_sent",
-                                     notificable: self)
-    when 3
-      self.user.notifications.create(ntype: "points_vote",
-                                     notificable: self)
+  def unlock_function
+
+    # 5 points allows upvote
+    if (self.user.points_tally >= 5) && !self.user.can_upvote?
+      self.user.toggle!(:can_upvote)
+
+      Notification.create!(user: self.user,
+                           ntype: "points_unlock_voteup")
+
+      puts "UNLOCK UP VOTE"
     end
+
+    # 20 points allows upvote
+    if (self.user.points_tally >= 20) && !self.user.can_downvote?
+      self.user.toggle!(:can_downvote)
+
+      Notification.create!(user: self.user,
+                           ntype: "points_unlock_votedown")
+
+      puts "UNLOCK DOWN VOTE"
+    end
+
   end
+
 
 end

@@ -45,7 +45,7 @@
             = image_tag "avatars/icon.png"
           .row
             .spacer15
-            #account_edit_form_info_reputation= @user.points
+            #account_edit_form_info_reputation= @user.points_tally
             .spacer10
             #account_edit_form_info_reputation_text reputation
 
@@ -92,6 +92,29 @@
           .spacer5
           .row
             = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+
+
+      .account_edit_form_spacer
+
+      .row
+        - if @user.points.count > 0
+          - @user.points.each do |point|
+            .row
+              .span2
+                = "+" + point.score.to_s
+              .span20.offset1
+                = point.method
+        - else
+          You have no reputation points yet
+
+      .account_edit_form_spacer
+
+      
+      .row
+        Point key
+        .row +5 - Vote up on your Question, Answer or Comment
+        .row +10 - Did a case (received feedback)
+        .row +20 - Gave a case (sent feedback)
 
 
       .account_edit_form_spacer

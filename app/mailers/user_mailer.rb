@@ -12,6 +12,18 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
+  def newuser_to_admin(user)
+    @user = user
+
+    mail(to: "info@casenexus.com", subject: "New User")
+  end
+
+
+  def newpost_to_admin(post)
+    @post = post
+
+    mail(to: "info@casenexus.com", subject: "New Post")
+  end
 
   # conflicts with actionmailer function if just called message
   def usermessage(user_from, user_target, url, message, title)
@@ -134,11 +146,6 @@ class UserMailer < ActionMailer::Base
   end
 
 
-  def newuser_to_admin(user)
-    @user = user
-
-    mail(to: "info@casenexus.com", subject: "New User")
-  end
 
   def case_pdf(user_from, user_target, book)
     
@@ -156,4 +163,21 @@ class UserMailer < ActionMailer::Base
 
   end
 
+
+
+  def points_unlock_voteup(user_target, title, url)
+    @user_target = user_target
+    @url = url
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: "casenexus.com: " + title)
+  end
+
+  def points_unlock_votedown(user_target, title, url)
+    @user_target = user_target
+    @url = url
+
+    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    mail(to: email_with_name, subject: "casenexus.com: " + title)
+  end
 end

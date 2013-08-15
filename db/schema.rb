@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813164946) do
+ActiveRecord::Schema.define(:version => 20130815001312) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -176,8 +176,9 @@ ActiveRecord::Schema.define(:version => 20130813164946) do
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "approved",   :default => false
   end
 
   create_table "questions", :force => true do |t|
@@ -276,6 +277,8 @@ ActiveRecord::Schema.define(:version => 20130813164946) do
     t.string   "time_zone",              :default => "UTC"
     t.integer  "degree_level"
     t.integer  "subject_id"
+    t.boolean  "can_upvote"
+    t.boolean  "can_downvote"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
