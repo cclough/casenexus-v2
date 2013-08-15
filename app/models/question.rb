@@ -41,7 +41,9 @@ class Question < ActiveRecord::Base
   end
 
   def tag_list=(names)
-    self.tags = names.split(",").map do |n|
+    names.pop #added pop and shift to remove first and last array items as chosen always including a blank field for unknown reason
+    names.shift
+    self.tags = names.map do |n| # here a split(", ") is removed to enable chosen multiple input
       Tag.where(name: n.strip).first_or_create!
     end
   end

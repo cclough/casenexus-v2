@@ -246,6 +246,7 @@ $(document).ready ->
   # Chosen
   $(".chzn-select").chosen()
   $(".chzn-select-nosearch").chosen disable_search_threshold: 10
+  $(".chzn-select-tags").chosen max_selected_options: 5
 
   # Style for the checkboxes
   $("input:checkbox").uniform()
