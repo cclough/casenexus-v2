@@ -9,6 +9,14 @@
       = render 'shared/error_messages', object: @event
 
     .row
+      = render 'events/button_startcase'
+
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.first_name} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-inverse btn-large" do
+        = image_tag "icons/skype_button.png"
+        Call #{@event.partner.first_name}
+    %span
+    / %img{src: "http://mystatus.skype.com/smallicon/xxxx" }
+    .row
       #events_new_friend_selected
         .span#events_edit_partner_avatar
           = image_tag "avatars/icon.png"
