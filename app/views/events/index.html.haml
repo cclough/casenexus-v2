@@ -1,6 +1,13 @@
 - provide(:title, 'Calendar')
 - provide(:sub_title, 'Your case appointments')
 
+- content_for :javascript_includes do
+
+  / Params link to choose case modal
+  - if params[:event_id]
+    :javascript
+      var events_index_choosecase_event_id = "#{params[:event_id]}";
+
 .spacer20
 .row.application_bootstrap_alert_blue
   - if event = current_user.events.where("datetime > ?", Time.now).first

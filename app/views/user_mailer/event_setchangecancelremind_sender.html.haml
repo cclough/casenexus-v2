@@ -23,11 +23,18 @@
       %table
         %tr
           %td
-            Choose case for event link
+          - unless @event.book_id_partnertoprepare.blank?
+            You have asked #{@user_target.first_name} to prepare
+            = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+          - else
+            You have not asked #{@user_target.first_name} to prepare a case
         %tr
           %td
-            - unless @event.book_id_partnertoprepare.blank?
-              = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+            - unless @event.book_id_usertoprepare.blank?
+              You have been asked to prepare
+              = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
+            - else
+              You have not been asked to prepare a case
     %td
 
       %table
