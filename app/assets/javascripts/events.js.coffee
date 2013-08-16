@@ -1,5 +1,5 @@
 window.events_calendar_rebless = ->
-  $(".events_calendar_event").click ->
+  $(".events_calendar_event, #events_calendar_reminder").click ->
     event_id = $(this).data("id")
     window.events_calendar_edit_modal_show(event_id)
 

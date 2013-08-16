@@ -204,7 +204,13 @@ class Case < ActiveRecord::Base
     end
   end
 
+  def self.user_has_done_case(user,book_id)
+    user.cases.map { |c| c.id }.include?(book_id)
+  end
 
+  def self.user_has_given_case(user,book_id)
+    where(interviewer_id: user.id).map { |c| c.book_id }.include?(book_id)
+  end
 
   ### Charts
 
@@ -381,69 +387,66 @@ class Case < ActiveRecord::Base
   ## Comments
 
   # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
-  class << self
-    def cases_analysis_comments_businessanalytics(user)
-      user.cases.where("businessanalytics_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                                      created_at: m.created_at,
-                                                                      businessanalytics_comment: m.businessanalytics_comment } }
-    end
-
-    def cases_analysis_comments_structure(user)
-      user.cases.where("structure_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                              created_at: m.created_at,
-                                                              structure_comment: m.structure_comment } }
-    end
-
-    def cases_analysis_comments_interpersonal(user)
-      user.cases.where("interpersonal_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                                  created_at: m.created_at,
-                                                                  interpersonal_comment: m.interpersonal_comment } }
-    end
+  def self.cases_analysis_comments_businessanalytics(user)
+    user.cases.where("businessanalytics_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                                    created_at: m.created_at,
+                                                                    businessanalytics_comment: m.businessanalytics_comment } }
   end
+
+  def self.cases_analysis_comments_structure(user)
+    user.cases.where("structure_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                            created_at: m.created_at,
+                                                            structure_comment: m.structure_comment } }
+  end
+
+  def self.cases_analysis_comments_interpersonal(user)
+    user.cases.where("interpersonal_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
+                                                                created_at: m.created_at,
+                                                                interpersonal_comment: m.interpersonal_comment } }
+  end
+
 
 
   # STATISTICS
 
-  class << self
+  def self.cases_analysis_stats_global(type)
 
-    def cases_analysis_stats_global(type)
+    if Case.all.count > 0
+      case type
+        when "totalscore"
+          (Case.all.map { |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
 
-      if Case.all.count > 0
-        case type
-          when "totalscore"
-            (Case.all.map { |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
+        when "totalscore_top_quart"
+          array = Case.all.map { |a| a.totalscore }
+          percentile = 0.75
+          array ? array.sort[((array.length * percentile).ceil)-1] : nil
 
-          when "totalscore_top_quart"
-            array = Case.all.map { |a| a.totalscore }
-            percentile = 0.75
-            array ? array.sort[((array.length * percentile).ceil)-1] : nil
+        when "totalscore_bottom_quart"
+          array = Case.all.map { |a| a.totalscore }
+          percentile = 0.25
+          array ? array.sort[((array.length * percentile).ceil)-1] : nil
 
-          when "totalscore_bottom_quart"
-            array = Case.all.map { |a| a.totalscore }
-            percentile = 0.25
-            array ? array.sort[((array.length * percentile).ceil)-1] : nil
-
-        end
-      else
-        "-"
       end
+    else
+      "-"
     end
-
-    def criteria_av_global(num)
-      (Case.all.map { |a| a.criteria(num) }.sum/Case.all.count).round(2)
-    end
-
-
-    def criteria_av_user(user, period, offset, num)
-      (user.cases.offset(offset.to_i).last(period.to_i).collect{|i| i.criteria(num) }.sum.to_f/period.to_i).round(1)
-    end
-
-    def category_av_user(user, period, offset, num)
-      (user.cases.offset(offset.to_i).last(period.to_i).collect{|i| i.category(num) }.sum.to_f/period.to_i).round(1)
-    end
-
-
   end
+
+  def self.criteria_av_global(num)
+    (Case.all.map { |a| a.criteria(num) }.sum/Case.all.count).round(2)
+  end
+
+
+  def self.criteria_av_user(user, period, offset, num)
+    (user.cases.offset(offset.to_i).last(period.to_i).collect{|i| i.criteria(num) }.sum.to_f/period.to_i).round(1)
+  end
+
+  def self.category_av_user(user, period, offset, num)
+    (user.cases.offset(offset.to_i).last(period.to_i).collect{|i| i.category(num) }.sum.to_f/period.to_i).round(1)
+  end
+
+
+
 
   private
 

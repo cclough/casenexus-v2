@@ -49,7 +49,6 @@
         
         %span.add-on
           %i.icon-calendar
-          %i.icon-remove
 
       / #events_new_datetime_container
       /   = f.datetime_select :datetime
@@ -80,8 +79,9 @@
         / = options_from_collection_for_select(Book.all, "id", "title")
         - @books.each do |books_select_item|
           %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
+            = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
+            = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
             = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
-
 
       #events_new_book_viewer_partnertoprepare
         - if @book_partnertoprepare.blank?

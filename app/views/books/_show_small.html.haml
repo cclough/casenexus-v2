@@ -1,5 +1,6 @@
 - if @book.blank? then @book = Book.find(book_id) end
 
+%input{ type:"hidden", name:"case[book_id]",value: @book.id }
 
 .row
 
