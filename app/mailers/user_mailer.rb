@@ -67,17 +67,29 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def event_set_partner(user_from, user_target, event_id, title, url)
+
+
+
+  def event_setchangecancelremind_partner(user_from, user_target, event_id, title, url)
     @user_from = user_from
     @user_target = user_target
     @event = Event.find(event_id)
     @url = url
 
+    # Attach selected case file, if selected
+    unless @event.book_id_partnertoprepare.blank?
+      @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare)
+
+      host = Rails.env == 'production' ? 'www.casenexus.com' : 'localhost:3000'
+      @url = Rails.application.routes.url_helpers.root_url(host: host)
+      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_partnertoprepare.url))
+    end
+
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def event_set_sender(user_target, event_id, title, url)
+  def event_setchangecancelremind_sender(user_target, event_id, title, url)
     @user_target = user_target
     @event = Event.find(event_id)
     @url = url
@@ -86,35 +98,9 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def event_cancel(user_from, user_target, event_id, title, url)
-    @user_from = user_from
-    @user_target = user_target
-    @event = Event.find(event_id)
-    @url = url
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
-  end
 
-  def event_change(user_from, user_target, event_id, title, url)
-    @user_from = user_from
-    @user_target = user_target
-    @event = Event.find(event_id)
-    @url = url
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
-  end
-
-  def event_remind(user_from, user_target, event_id, title, url)
-    @user_from = user_from
-    @user_target = user_target
-    @event = Event.find(event_id)
-    @url = url
-
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
-  end
 
 
   def password_reset(user)

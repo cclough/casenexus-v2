@@ -17,7 +17,12 @@ class Notification < ActiveRecord::Base
   validates :content, length: { maximum: 500 }
 
   validate :no_notification_to_self
-  def self.valid_types;%w(welcome message feedback friendship_req friendship_app event_set_partner event_set_sender event_cancel event_change event_remind points_unlock_voteup points_unlock_votedown); end
+  def self.valid_types;%w(welcome message feedback friendship_req friendship_app 
+                         event_set_partner event_set_sender 
+                         event_change_partner event_change_sender 
+                         event_cancel_partner event_cancel_sender 
+                         event_remind_partner event_remind_sender points_unlock_voteup 
+                         points_unlock_votedown); end
   # The two validations below must be after the line above!
   validates :ntype, presence: true, length: { maximum: 25 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
@@ -50,7 +55,12 @@ class Notification < ActiveRecord::Base
     def history(from_id, to_id)
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
                         from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app","event_set_partner","event_set_sender","event_cancel","event_change","event_remind","points_unlock_voteup","points_unlock_votedown"]])
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app",
+                                                                "event_set_partner","event_set_sender",
+                                                                "event_change_partner","event_change_sender",
+                                                                "event_cancel_partner","event_cancel_sender",
+                                                                "event_remind_partner","event_remind_sender",
+                                                                "points_unlock_voteup","points_unlock_votedown"]])
     end
 
   end
@@ -79,16 +89,27 @@ class Notification < ActiveRecord::Base
         "Case partner request"
       when "friendship_app"
         "Case partner accepted"
+
       when "event_set_partner"
         "New case appointment"
       when "event_set_sender"
         "New case appointment"
-      when "event_cancel"
-        "Case appointment cancelled"
-      when "event_change"
+
+      when "event_change_partner"
         "Case appointment updated"
-      when "event_remind"
+      when "event_change_sender"
+        "Case appointment updated"
+
+      when "event_cancel_partner"
+        "Case appointment cancelled"
+      when "event_cancel_sender"
+        "Case appointment cancelled"
+
+      when "event_remind_partner"
         "Case appointment reminder"
+      when "event_remind_sender"
+        "Case appointment reminder"
+
       when "points_unlock_voteup"
         "You can now up vote"
       when "points_unlock_votedown"
@@ -120,16 +141,27 @@ class Notification < ActiveRecord::Base
         Rails.application.routes.url_helpers.notifications_url(host: host)
       when "friendship_app"
         Rails.application.routes.url_helpers.events_url(host: host, user_id: sender_id)
+
       when "event_set_partner"
         Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
       when "event_set_sender"
         Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
-      when "event_cancel"
+
+      when "event_change_partner"
+        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+      when "event_change_sender"
+        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+
+      when "event_cancel_partner"
         Rails.application.routes.url_helpers.new_event_url(host: host)
-      when "event_change"
+      when "event_cancel_sender"
+        Rails.application.routes.url_helpers.new_event_url(host: host)
+
+      when "event_remind_partner"
         Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
-      when "event_remind"
+      when "event_remind_sender"
         Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+
       when "points_unlock_voteup"
         Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
       when "points_unlock_votedown"
@@ -180,35 +212,70 @@ class Notification < ActiveRecord::Base
                                   self.user,
                                   self.url,
                                   self.title).deliver
+
+
+
+
+
       when "event_set_partner"
-        UserMailer.event_set_partner(self.sender,
-                                     self.user,
-                                     self.notificable_id,
-                                     self.title,
-                                     self.url).deliver
+        UserMailer.event_setchangecancelremind_partner(self.sender,
+                                                       self.user,
+                                                       self.notificable_id,
+                                                       self.title,
+                                                       self.url).deliver
       when "event_set_sender"
-        UserMailer.event_set_sender(self.user,
-                                    self.notificable_id,
-                                    self.title,
-                                    self.url).deliver
-      when "event_cancel"
-        UserMailer.event_cancel(self.sender,
-                                self.user,
-                                self.notificable_id,
-                                self.title,
-                                self.url).deliver
-      when "event_change"
-        UserMailer.event_change(self.sender,
-                                self.user,
-                                self.notificable_id,
-                                self.title,
-                                self.url).deliver
-      when "event_remind"
-        UserMailer.event_remind(self.sender,
-                                self.user,
-                                self.notificable_id,
-                                self.title,
-                                self.url).deliver
+        UserMailer.event_setchangecancelremind_sender(self.user,
+                                                      self.notificable_id,
+                                                      self.title,
+                                                      self.url).deliver
+
+
+      when "event_change_partner"
+        UserMailer.event_setchangecancelremind_partner(self.sender,
+                                                       self.user,
+                                                       self.notificable_id,
+                                                       self.title,
+                                                       self.url).deliver
+
+      when "event_change_sender"
+        UserMailer.event_setchangecancelremind_sender(self.user,
+                                                      self.notificable_id,
+                                                      self.title,
+                                                      self.url).deliver
+
+      when "event_cancel_partner"
+        UserMailer.event_setchangecancelremind_partner(self.sender,
+                                                       self.user,
+                                                       self.notificable_id,
+                                                       self.title,
+                                                       self.url).deliver
+
+      when "event_cancel_sender"
+        UserMailer.event_setchangecancelremind_sender(self.user,
+                                                      self.notificable_id,
+                                                      self.title,
+                                                      self.url).deliver
+
+
+
+
+
+      when "event_remind_partner"
+        UserMailer.event_setchangecancelremind_partner(self.sender,
+                                                       self.user,
+                                                       self.notificable_id,
+                                                       self.title,
+                                                       self.url).deliver
+
+      when "event_remind_sender"
+        UserMailer.event_setchangecancelremind_sender(self.user,
+                                                      self.notificable_id,
+                                                      self.title,
+                                                      self.url).deliver
+
+
+
+
 
       when "points_unlock_voteup"
         UserMailer.points_unlock_voteup(self.user,

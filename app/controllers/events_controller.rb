@@ -48,8 +48,8 @@ class EventsController < ApplicationController
     respond_to do |format|
 
       if @event.valid? && Event.set(current_user, @event.partner, @event.datetime, @event.book_id_usertoprepare, @event.book_id_partnertoprepare)
-        format.js
         flash[:success] = "Appointment booked with " + @event.partner.first_name + "."
+        format.js
 
         # Same as index - to update calendar
         @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}

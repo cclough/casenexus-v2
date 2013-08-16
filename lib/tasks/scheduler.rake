@@ -1,5 +1,7 @@
 desc "Heroku Scheduler Task - Event Reminders"
 
-task :send_reminders => :environment do
-  #Event.send_reminders
+task :send_event_reminders => :environment do
+  puts "Sending event reminders..."
+  Event.send_reminders
+  puts "Done."
 end

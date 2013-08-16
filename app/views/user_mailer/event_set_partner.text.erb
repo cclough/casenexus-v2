@@ -1,7 +1,49 @@
-<%= @user_from.name %> has booked a case appointment with you
+<%= @user_from.name %> has booked a case appointment with you on <%= @event.datetime.strftime("%A %e %B at %I:%M%p") %>
 =============================================
 
 You'll be sent an email to remind you about the appointment 2 hours before it starts.
+
+<%- unless @event.book_id_partnertoprepare.blank? %>
+  The case that <%=@user_from.first_name %> would like you to prepare is attached with this email - be sure to read it thoroughly before you start the case:
+
+  <%= @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title %>
+
+<%- end %>
+
+If you would like #{@user_from.first_name} to prepare a case for you, click the link below to choose one.
+
+::Choose case for event link::
+
+If you're ready to start the case now, call <%=@user_from.first_name %> using the button below
+
+<%=
+  link_to "skype:#{@user_from.skype}?call", "data-original-title"=>"Call #{@user_from.first_name} on Skype" do
+    image_tag "https://www.casenexus.com/assets/icons/skype_button.png"
+    + "Call #{@user_from.first_name} now"
+  end
+%>
+
+<%- unless @event.book_id_partnertoprepare.blank? %>
+
+  And if you want to start as the interviewer now, use this button to go to the case console, where you can concurrently view the case PDF , and a feedback form for #{@user_from.first_name}:
+
+  <%= 
+    link_to "https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s do
+      "Start case now as Interviewer"
+    end
+  %>
+    
+<%- else %>
+
+  And if you want to start as the interviewer now, use this button to go to the case console, where you can select a case to give, and fill out a feedback form for #{@user_from.first_name}:
+
+  <%= 
+    link_to "https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s do
+      "Start case now as Interviewer"
+    end
+  %>
+
+<%- end %>
 
 To see the appointment, use the link below
 

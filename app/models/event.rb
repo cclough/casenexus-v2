@@ -16,10 +16,9 @@ class Event < ActiveRecord::Base
   validates :datetime, presence: true, if: Proc.new { |n| n.datetime.nil? }
 
 
-  def send_reminders
-    # TBC
-    # CALLED FROM SCHEDULER.RAKE
-  end
+
+
+  # Macro
 
 
   # Micro
@@ -33,29 +32,29 @@ class Event < ActiveRecord::Base
 
   class << self
 
+    def in_reminder_window
+      where(datetime: (Time.now + 5.hours)..(Time.now + 6.hours))
+    end
+
+    def send_reminders
+      Event.in_reminder_window.each do |notificable|
+        create_notification(notificable.user, notificable.partner, notificable, "event_remind_sender")
+        create_notification(notificable.partner, notificable.user, notificable, "event_remind_partner")
+      end
+    end
+
     def set(user, partner, datetime, book_id_usertoprepare, book_id_partnertoprepare)
       # ?if statement to check for duplicates/other on same day?
       transaction do
         notificable = create!(user: user, partner: partner, datetime: datetime, book_id_usertoprepare: book_id_usertoprepare, book_id_partnertoprepare: book_id_partnertoprepare)
-        create_notification_for_create(user, partner, notificable, "event_set_sender")
+        create_notification(user, partner, notificable, "event_set_sender")
 
         notificable = create!(user: partner, partner: user, datetime: datetime, book_id_usertoprepare: book_id_partnertoprepare, book_id_partnertoprepare: book_id_usertoprepare)
-        create_notification_for_create(partner, user, notificable, "event_set_partner")
+        create_notification(partner, user, notificable, "event_set_partner")
       end
 
       rescue ActiveRecord::RecordInvalid => invalid
         false
-    end
-
-    def cancel(user, partner)
-      transaction do
-        # sent to self so user, user
-        create_notification_for_destroy(user, user, event(user, partner), "event_cancel") 
-        destroy(event(user, partner))
-
-        create_notification_for_destroy(partner, user, event(partner, user), "event_cancel")
-        destroy(event(partner, user))
-      end
     end
 
     def change(user, partner, datetime, book_id_usertoprepare, book_id_partnertoprepare)
@@ -65,16 +64,27 @@ class Event < ActiveRecord::Base
         event.update_attributes!(datetime: datetime, book_id_usertoprepare: book_id_usertoprepare, book_id_partnertoprepare: book_id_partnertoprepare)
         event
         # sent to self so user, user
-        create_notification_for_change(user, user, event, "event_change")
+        create_notification(user, user, event, "event_change_sender")
 
         event = event(partner, user)
         event.update_attributes!(datetime: datetime, book_id_usertoprepare: book_id_partnertoprepare, book_id_partnertoprepare: book_id_usertoprepare)
         event
-        create_notification_for_change(partner, user, event, "event_change")
+        create_notification(partner, user, event, "event_change_partner")
       end
 
       rescue ActiveRecord::RecordInvalid => invalid
         false
+    end
+
+    def cancel(user, partner)
+      transaction do
+        # sent to self so user, user
+        create_notification(user, user, event(user, partner), "event_cancel_sender") 
+        destroy(event(user, partner))
+
+        create_notification(partner, user, event(partner, user), "event_cancel_partner")
+        destroy(event(partner, user))
+      end
     end
 
     # Return a event based on the user and partner (used in e.g. cancel method)
@@ -89,25 +99,11 @@ class Event < ActiveRecord::Base
 
   class << self
 
-    def create_notification_for_create(user, partner, notificable, ntype)
-      # Notification.create!(user: user,
-      #                      sender: partner,
-      #                      ntype: ntype,
-      #                      notificable: notificable)
-    end
-
-    def create_notification_for_destroy(user, partner, notificable, ntype)
-      # Notification.create!(user: user,
-      #                      sender: partner,
-      #                      ntype: ntype,
-      #                      notificable: notificable)
-    end
-
-    def create_notification_for_change(user, partner, notificable, ntype)
-      # Notification.create!(user: user,
-      #                      sender: partner,
-      #                      ntype: ntype,
-      #                      notificable: notificable)
+    def create_notification(user, partner, notificable, ntype)
+      Notification.create!(user: user,
+                           sender: partner,
+                           ntype: ntype,
+                           notificable: notificable)
     end
 
   end

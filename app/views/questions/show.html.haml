@@ -51,7 +51,7 @@
           = questions_addcomment_link(@question.id,"Question")
 
 - if @question.answers.count > 0
-  - @question.answers.each do |question_answer|
+  - @question.answers.sort_by{|t| - t.plusminus.to_i}.each do |question_answer|
     .row
       .panel.dark.kill_top
         .row

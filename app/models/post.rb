@@ -22,9 +22,9 @@ class Post < ActiveRecord::Base
   private
   
   def one_per_day
-    # if Post.where("user_id = ? AND DATE(created_at) = DATE(?)", self.user_id, Time.now).all.any?
-    #   errors.add(:base, "You are limited to one post per day")
-    # end
+    if Post.where("user_id = ? AND DATE(created_at) = DATE(?)", self.user_id, Time.now).all.any?
+      errors.add(:base, "You are limited to one post per day")
+    end
   end
 
   def send_newpost_email_to_admin
