@@ -1,0 +1,8 @@
+- if @ntype == "event_set_partner"
+  #{@user_from.name} has booked a case appointment with you
+- elsif @ntype == "event_change_partner"
+  #{@user_from.name} has ammended your case appointment
+- elsif @ntype == "event_cancel_partner"
+  #{@user_from.name} has cancelled your case appointment
+- elsif @ntype == "event_remind_partner"
+  Reminder: you have a case appointment with #{@user_from.name}

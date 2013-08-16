@@ -1,18 +1,18 @@
 - if @ntype == "event_set_partner"
-  #{@user_from.name} has booked a case appointment with you
+  You have booked a case appointment with #{@user_target.name}
 - elsif @ntype == "event_change_partner"
-  #{@user_from.name} has ammended your case appointment
+  You have ammended your case appointment with #{@user_target.name}
 - elsif @ntype == "event_cancel_partner"
-  #{@user_from.name} has cancelled your case appointment
+  You have cancelled your case appointment with #{@user_target.name} has
 - elsif @ntype == "event_remind_partner"
-  Reminder: you have a case appointment with #{@user_from.name}
+  Reminder: you have a case appointment with #{@user_target.name}
 
 %table
   %tr
     %td
       Avatar/Picture
     %td
-      #{@user_from.name}
+      #{@user_target.name}
       %br
       #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
 
@@ -33,9 +33,9 @@
       %table
         %tr
           %td
-            = link_to "skype:#{@user_from.skype}?call", "data-original-title"=>"Call #{@user_from.first_name} on Skype" do
+            = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.first_name} on Skype" do
               = image_tag "https://www.casenexus.com/assets/icons/skype_button.png"
-              Call #{@user_from.first_name} now
+              Call #{@user_target.first_name} now
         %tr
           %td
             - unless @event.book_id_partnertoprepare.blank?
