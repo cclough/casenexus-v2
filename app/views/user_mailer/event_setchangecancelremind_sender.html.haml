@@ -1,12 +1,10 @@
-- if @ntype == "event_set_partner"
+- if @ntype == "event_set_sender"
   %h4 You have booked a case appointment with #{@user_target.name}
-- elsif @ntype == "event_change_partner"
+- elsif @ntype == "event_change_sender"
   %h4 You have ammended your case appointment with #{@user_target.name}
-- elsif @ntype == "event_cancel_partner"
+- elsif @ntype == "event_cancel_sender"
   %h4 You have cancelled your case appointment with #{@user_target.name} has
-- elsif @ntype == "event_chosen_partner"
-  %h4 #{@user_target.name} has chosen a case for you to prepare
-- elsif @ntype == "event_remind_partner"
+- elsif @ntype == "event_remind_sender"
   %h4 Reminder: you have a case appointment with #{@user_target.name}
 
 
@@ -36,13 +34,14 @@
                   = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
               - else
                 You have not asked #{@user_target.first_name} to prepare a case
-                %div{style:"background-color:#a8d5ff;height:30px;width:150px;margin:2px;"}
+                %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
                   = link_to "Choose a case", "https://casenexus-staging.herokuapp.com/events?event_id=" + @event.id
           %tr
             %td{style: "border:5px solid #e3e3e3;padding:3px;"}
               - unless @event.book_id_usertoprepare.blank?
                 You have been asked to prepare (see PDF attached)
-                = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
+                %strong
+                  = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
               - else
                 You have not yet been asked to prepare a case
       %td
@@ -50,15 +49,13 @@
         %table
           %tr
             %td
-              %div{style:"background-color:#a8d5ff;height:30px;width:150px;margin:2px;"}
+              %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
                 = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.first_name} on Skype" do
                   %span
-                    = image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"
-                  %span
-                    Call #{@user_target.first_name}
+                    #{image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"} Call #{@user_target.first_name}
           %tr
             %td
-              %div{style:"background-color:#a8d5ff;height:30px;width:150px;margin:2px;"}
+              %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
                 - unless @event.book_id_partnertoprepare.blank?
 
                   %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
