@@ -21,7 +21,7 @@
       #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
 
 
-- unless @ntype = "event_cancel_sender"
+- unless @ntype == "event_cancel_sender"
   %table{style: "border:5px solid #e3e3e3;padding:5px;"}
     %tr
       %td
@@ -69,7 +69,7 @@
                     Start case as Interviewer now
 
 %br
-- unless @ntype = "event_cancel_sender"
+- unless @ntype == "event_cancel_sender"
   %p= link_to "Click here to view or change this appointment", @url
 - else
   %p= link_to "Click here to arrange another appointment", @url
