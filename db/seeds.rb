@@ -264,7 +264,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin = User.new(
       first_name: "Christian",
       last_name: "Clough",
-      email: "casenexus@cam.ac.uk",
+      email: "christian.clough@gmail.com",
       password: "testing",
       password_confirmation: "testing",
       lat: 51.5100,

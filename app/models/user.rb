@@ -286,12 +286,14 @@ class User < ActiveRecord::Base
   end
 
   def validate_university_email
-    begin
-      # http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
-      domain = self.email.split("@")[1]
-      errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
-    rescue Exception => e
-      errors.add(:email, "not from a listed University")
+    unless self.email == "christian.clough@gmail.com"
+      begin
+        # http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
+        domain = self.email.split("@")[1]
+        errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
+      rescue Exception => e
+        errors.add(:email, "not from a listed University")
+      end
     end
   end
 
