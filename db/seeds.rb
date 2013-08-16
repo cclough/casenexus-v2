@@ -405,7 +405,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 end
 
-# if Rails.env == 'development'
+if Rails.env == 'development'
 
   ####### PRIVATE FUNCTIONS #######
 
@@ -714,5 +714,5 @@ end
 
 
 
-# end
+end
 

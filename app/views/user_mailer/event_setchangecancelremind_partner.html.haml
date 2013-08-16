@@ -23,10 +23,11 @@
       %table
         %tr
           %td
-            ::Choose case for event link::
+            Choose case for event link
         %tr
           %td
-            = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+            - unless @event.book_id_partnertoprepare.blank?
+              = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
     %td
 
       %table
