@@ -142,25 +142,28 @@ class Notification < ActiveRecord::Base
       when "friendship_app"
         Rails.application.routes.url_helpers.events_url(host: host, user_id: sender_id)
 
+
       when "event_set_partner"
-        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
       when "event_set_sender"
-        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
 
       when "event_change_partner"
-        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
       when "event_change_sender"
-        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
 
       when "event_cancel_partner"
-        Rails.application.routes.url_helpers.new_event_url(host: host)
+        Rails.application.routes.url_helpers.events_url(host: host)
       when "event_cancel_sender"
-        Rails.application.routes.url_helpers.new_event_url(host: host)
+        Rails.application.routes.url_helpers.events_url(host: host)
 
       when "event_remind_partner"
-        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
       when "event_remind_sender"
-        Rails.application.routes.url_helpers.events_url(host: host, id: notificable_id)
+        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
+
+
 
       when "points_unlock_voteup"
         Rails.application.routes.url_helpers.notifications_url(id: id, host: host)

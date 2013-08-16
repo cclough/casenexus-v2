@@ -53,7 +53,8 @@ class UserMailer < ActionMailer::Base
     @user_target = user_target
     @url = url
     @message = message
-
+    @ntype = ntype
+    
     email_with_name = "#{@user_target.name} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end

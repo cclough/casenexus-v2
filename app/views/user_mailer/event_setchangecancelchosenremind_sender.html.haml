@@ -1,13 +1,14 @@
 - if @ntype == "event_set_partner"
-  You have booked a case appointment with #{@user_target.name}
+  %h4 You have booked a case appointment with #{@user_target.name}
 - elsif @ntype == "event_change_partner"
-  You have ammended your case appointment with #{@user_target.name}
+  %h4 You have ammended your case appointment with #{@user_target.name}
 - elsif @ntype == "event_cancel_partner"
-  You have cancelled your case appointment with #{@user_target.name} has
+  %h4 You have cancelled your case appointment with #{@user_target.name} has
 - elsif @ntype == "event_chosen_partner"
-  Reminder: #{@user_target.name} has chosen a case for you to prepare
+  %h4 #{@user_target.name} has chosen a case for you to prepare
 - elsif @ntype == "event_remind_partner"
-  Reminder: you have a case appointment with #{@user_target.name}
+  %h4 Reminder: you have a case appointment with #{@user_target.name}
+
 
 %table
   %tr
@@ -19,50 +20,56 @@
       %br
       #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
 
-%table{style: "border:5px solid #e3e3e3;padding:5px;"}
-  %tr
-    %td
 
-      %table
-        %tr
-          %td{style: "border:5px solid #e3e3e3;padding:3px;margin-bottom:5px;"}
-            - unless @event.book_id_partnertoprepare.blank?
-              You have asked #{@user_target.first_name} to prepare
-              %br
-              %div{style:"text-align:center;"}
-              = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
-            - else
-              You have not asked #{@user_target.first_name} to prepare a case
-              %br
-        %tr
-          %td{style: "border:5px solid #e3e3e3;padding:3px;"}
-            - unless @event.book_id_usertoprepare.blank?
-              You have been asked to prepare
-              = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
-            - else
-              You have not been asked to prepare a case
-    %td
+- unless @ntype = "event_cancel_sender"
+  %table{style: "border:5px solid #e3e3e3;padding:5px;"}
+    %tr
+      %td
 
-      %table
-        %tr
-          %td
-            %div{style:"background-color:#a8d5ff;height:30px;width:100px;margin:2px;"}
-            = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.first_name} on Skype" do
-              = image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"
-              Call #{@user_target.first_name}
-        %tr
-          %td
-            %div{style:"background-color:#a8d5ff;height:30px;width:100px;margin:2px;"}
-            - unless @event.book_id_partnertoprepare.blank?
-
-              %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
-                Start case as Interviewer
+        %table
+          %tr
+            %td{style: "border:5px solid #e3e3e3;padding:3px;margin-bottom:5px;"}
+              - unless @event.book_id_partnertoprepare.blank?
+                You have asked #{@user_target.first_name} to prepare a case
                 %br
-            - else
+                %div{style:"text-align:center;"}
+                  = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+              - else
+                You have not asked #{@user_target.first_name} to prepare a case
+                %div{style:"background-color:#a8d5ff;height:30px;width:150px;margin:2px;"}
+                  = link_to "Choose a case", "https://casenexus-staging.herokuapp.com/events?event_id=" + @event.id
+          %tr
+            %td{style: "border:5px solid #e3e3e3;padding:3px;"}
+              - unless @event.book_id_usertoprepare.blank?
+                You have been asked to prepare (see PDF attached)
+                = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
+              - else
+                You have not yet been asked to prepare a case
+      %td
 
-              %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
-                Start case as Interviewer
-                %br
+        %table
+          %tr
+            %td
+              %div{style:"background-color:#a8d5ff;height:30px;width:150px;margin:2px;"}
+                = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.first_name} on Skype" do
+                  %span
+                    = image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"
+                  %span
+                    Call #{@user_target.first_name}
+          %tr
+            %td
+              %div{style:"background-color:#a8d5ff;height:30px;width:150px;margin:2px;"}
+                - unless @event.book_id_partnertoprepare.blank?
+
+                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
+                    Start case as Interviewer
+                - else
+
+                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
+                    Start case as Interviewer now
 
 %br
-%p= link_to "Click here to login and see the appointment", @url
+- unless @ntype = "event_cancel_sender"
+  %p= link_to "Click here to view or change this appointment", @url
+- else
+  %p= link_to "Click here to arrange another appointment"
