@@ -4,30 +4,35 @@
   You have ammended your case appointment with #{@user_target.name}
 - elsif @ntype == "event_cancel_partner"
   You have cancelled your case appointment with #{@user_target.name} has
+- elsif @ntype == "event_chosen_partner"
+  Reminder: #{@user_target.name} has chosen a case for you to prepare
 - elsif @ntype == "event_remind_partner"
   Reminder: you have a case appointment with #{@user_target.name}
 
 %table
   %tr
     %td
-      Avatar/Picture
-    %td
+      = image_tag "http://casenexus-staging.herokuapp.com/assets/avatars/icon.png", style: "height:50px;"
+    %td{style: "font-size:13px;"}
+      %strong
       #{@user_target.name}
       %br
       #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
 
-%table
+%table{style: "border:5px solid gray;"}
   %tr
     %td
 
-      %table
+      %table{border:"5", bordercolor:"gray"}
         %tr
           %td
-          - unless @event.book_id_partnertoprepare.blank?
-            You have asked #{@user_target.first_name} to prepare
-            = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
-          - else
-            You have not asked #{@user_target.first_name} to prepare a case
+            - unless @event.book_id_partnertoprepare.blank?
+              You have asked #{@user_target.first_name} to prepare
+              %br
+              = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+            - else
+              You have not asked #{@user_target.first_name} to prepare a case
+              %br
         %tr
           %td
             - unless @event.book_id_usertoprepare.blank?
@@ -41,7 +46,7 @@
         %tr
           %td
             = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.first_name} on Skype" do
-              = image_tag "https://www.casenexus.com/assets/icons/skype_button.png"
+              = image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"
               Call #{@user_target.first_name} now
         %tr
           %td
@@ -49,11 +54,12 @@
 
               %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
                 Start case as Interviewer
-                
+                %br
             - else
 
               %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
                 Start case as Interviewer
+                %br
 
-
+%br
 %p= link_to "Click here to login and see the appointment", @url

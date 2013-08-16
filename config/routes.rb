@@ -131,7 +131,7 @@ Casenexus::Application.routes.draw do
 
 
   # Events
-  resources :events do
+  resources :events, except: [:show] do
     get :ics, on: :collection
     get :user_timezone, on: :collection
     get :calendar, on: :collection

@@ -70,7 +70,7 @@ class UserMailer < ActionMailer::Base
 
 
 
-  def event_setchangecancelremind_partner(user_from, user_target, event_id, title, url, ntype)
+  def event_setchangecancelchosenremind_partner(user_from, user_target, event_id, title, url, ntype)
     @user_from = user_from
     @user_target = user_target
     @event = Event.find(event_id)
@@ -90,7 +90,7 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def event_setchangecancelremind_sender(user_target, event_id, title, url, ntype)
+  def event_setchangecancelchosenremind_sender(user_target, event_id, title, url, ntype)
     @user_target = user_target
     @event = Event.find(event_id)
     @url = url

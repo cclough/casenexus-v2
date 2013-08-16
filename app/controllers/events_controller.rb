@@ -22,12 +22,6 @@ class EventsController < ApplicationController
 
 
 
-
-  def show
-    @event = Event.find(params[:id])
-  render layout: false
-  end
-
   def new
     @event = current_user.events.new
 
