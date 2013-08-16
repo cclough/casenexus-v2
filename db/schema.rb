@@ -96,19 +96,6 @@ ActiveRecord::Schema.define(:version => 20130815001312) do
     t.datetime "updated_at",               :null => false
   end
 
-  create_table "firms", :force => true do |t|
-    t.text     "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "firms_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "firm_id"
-  end
-
-  add_index "firms_users", ["user_id", "firm_id"], :name => "index_firms_users_on_user_id_and_firm_id", :unique => true
-
   create_table "friendships", :force => true do |t|
     t.integer  "user_id",                           :null => false
     t.integer  "friend_id",                         :null => false
@@ -143,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20130815001312) do
     t.text "country_code"
   end
 
-  create_table "languages_users", :id => false, :force => true do |t|
+  create_table "languages_users", :force => true do |t|
     t.integer "user_id"
     t.integer "language_id"
   end
@@ -189,19 +176,6 @@ ActiveRecord::Schema.define(:version => 20130815001312) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "rails_admin_histories", :force => true do |t|
-    t.text     "message"
-    t.string   "username"
-    t.integer  "item"
-    t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-  end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "site_contacts", :force => true do |t|
     t.integer  "user_id"

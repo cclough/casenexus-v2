@@ -58,16 +58,6 @@
                 = users_item_language.name
 
 
-        #map_index_user_infobox_panel_subtitle
-          Firms
-        .row#map_index_user_infobox_panel_associations_subpanel_firms
-          - unless @user.firms.blank?
-            - @user.firms.each do |users_item_firm|
-              .map_index_user_infobox_association_item
-                = users_item_firm.name
-
-
-
 
     .span
 

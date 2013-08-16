@@ -106,10 +106,6 @@ window.map_index_users_resetfilters = (filter_excep) ->
     $("#map_index_users_form_pulldown_university_button").html "All Universities <span class=caret></span>"
     $("#users_filter_university").val ""
   
-  if (filter_excep != "firm")
-    $("#map_index_users_form_pulldown_firm_button").html "All Firms <span class=caret></span>"
-    $("#users_filter_firm").val "" 
-  
   if (filter_excep != "language")
     $("#map_index_users_form_pulldown_language_button").html "All Languages <span class=caret></span>"
     $("#users_filter_language").val ""

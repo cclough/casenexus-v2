@@ -18,8 +18,6 @@ class MembersController < ApplicationController
 
       when "language"
         users_scope = User.includes(:cases).list_language(params[:users_filter_language])
-      when "firm"
-        users_scope = User.includes(:cases).list_firm(params[:users_filter_firm])
       when "university"
         users_scope = User.includes(:cases).list_university(params[:users_filter_university])
       when "country"

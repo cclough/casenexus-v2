@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
-                  :invitation_code, :ip_address, :language_ids, :firm_ids, :cases_external, :last_online_at, 
+                  :invitation_code, :ip_address, :language_ids, :cases_external, :last_online_at, 
                   :time_zone, :subject_id, :degree_level, :can_upvote, :can_downvote
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code
@@ -26,8 +26,6 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :site_contacts, dependent: :nullify
 
-  has_many :firms_users, dependent: :destroy
-  has_many :firms, :through => :firms_users
   has_many :languages_users, dependent: :destroy
   has_many :languages, :through => :languages_users
 
@@ -246,14 +244,6 @@ class User < ActiveRecord::Base
     def list_language(language_id)
       if !language_id.blank?
         completed.not_admin.order('created_at desc').joins(:languages_users).where(languages_users: {language_id: language_id})
-      else
-        completed.not_admin.order('created_at desc')
-      end
-    end
-
-    def list_firm(firm_id)
-      if !firm_id.blank?
-        completed.not_admin.order('created_at desc').joins(:firms_users).where(firms_users: {firm_id: firm_id})
       else
         completed.not_admin.order('created_at desc')
       end

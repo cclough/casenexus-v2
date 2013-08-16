@@ -104,12 +104,6 @@
           .span25
             = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30"}
         .spacer10
-        .row
-          .span12
-            Firms
-          .span25
-            = f.collection_select :firm_ids, Firm.all, :id, :name, {:selected => @user.firm_ids}, {multiple: true, class: "chzn-select span30"}
-        .spacer10
 
         .row
           .span12

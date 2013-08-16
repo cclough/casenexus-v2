@@ -32,21 +32,6 @@
                   %a{"data-category" => "language", "data-radio" => 3, "data-name" => language_item.name, "data-id" => language_item.id}
                     = language_item.name
 
-        / .span.btn-group
-        /   .map_index_users_form_pulldown
-        /     %button#map_index_users_form_pulldown_firm_button.map_index_users_form_pulldown_button.btn.btn-mini.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
-        /       All Firms
-        /       %span.caret
-        /     %ul.dropdown-menu
-        /       %li
-        /         / data-id is blank
-        /         %a{"data-category" => "firm", "data-radio" => 4, "data-name" => "All Firms"}
-        /           All Firms
-        /       - Firm.all.each do |firm_item|
-        /         %li
-        /           %a{"data-category" => "firm", "data-radio" => 4, "data-name" => firm_item.name, "data-id" => firm_item.id}
-        /             = firm_item.name
-
         .span
           .map_index_users_form_pulldown.btn-group
             %button#map_index_users_form_pulldown_university_button.map_index_users_form_pulldown_button.btn.btn-mini.btn-inverse.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -83,11 +68,9 @@
     = radio_button_tag :users_listtype, 'global', checked: true
 
     = radio_button_tag :users_listtype, 'language'
-    = radio_button_tag :users_listtype, 'firm'
     = radio_button_tag :users_listtype, 'university'
     = radio_button_tag :users_listtype, 'country'
 
     = text_field_tag :users_filter_language
-    = text_field_tag :users_filter_firm
     = text_field_tag :users_filter_university
     = text_field_tag :users_filter_country

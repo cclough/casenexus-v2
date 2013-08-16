@@ -1,7 +1,7 @@
 class CreateLanguagesUsers < ActiveRecord::Migration
   def change
 
-    create_table :languages_users, :id => false do |t|
+    create_table :languages_users do |t|
     	t.column :user_id, :integer
     	t.column :language_id, :integer
     end

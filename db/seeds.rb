@@ -143,16 +143,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Language.create!(name: "French", country_code: "FR")
 
 
-  puts "Creating Firms"
-
-  Firm.create!(name: "Candesic")
-  Firm.create!(name: "McKinsey & Company")
-  Firm.create!(name: "BCG")
-  Firm.create!(name: "Bain & Company")
-  Firm.create!(name: "Roland Berger")
-  Firm.create!(name: "OC&C")
-
-
   puts "Creating universities"
 
   University.create!(name: "University of Cambridge", image: "cambridge.png", domain: "cam.ac.uk")
@@ -590,23 +580,6 @@ if Rails.env == 'development'
   #end
 
 
-
-
-  # Firms
-  User.all.each do |user|
-    7.times do
-
-      firm_id = rand(5) + 1
-      firm = Firm.find(firm_id)
-      
-      # check if exists already though!
-      if !user.firms.include? firm
-        user.firms << firm
-        puts "Firm association created for user #{user.name}"
-      end
-
-    end
-  end
 
 
 
