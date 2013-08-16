@@ -1,0 +1,52 @@
+- if @ntype == "event_set_partner"
+  #{@user_from.name} has booked a case appointment with you
+- elsif @ntype == "event_change_partner"
+  #{@user_from.name} has ammended your case appointment
+- elsif @ntype == "event_cancel_partner"
+  #{@user_from.name} has cancelled your case appointment
+- elsif @ntype == "event_remind_partner"
+  Reminder: you have a case appointment with #{@user_from.name}
+
+%table
+  %tr
+    %td
+      Avatar/Picture
+    %td
+      #{@user_from.name}
+      %br
+      #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
+
+%table
+  %tr
+    %td
+
+      %table
+        %tr
+          %td
+            Choose case for event link
+        %tr
+          %td
+            - unless @event.book_id_partnertoprepare.blank?
+              = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+    %td
+
+      %table
+        %tr
+          %td
+            = link_to "skype:#{@user_from.skype}?call", "data-original-title"=>"Call #{@user_from.first_name} on Skype" do
+              = image_tag "https://www.casenexus.com/assets/icons/skype_button.png"
+              Call #{@user_from.first_name} now
+        %tr
+          %td
+            - unless @event.book_id_partnertoprepare.blank?
+
+              %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
+                Start case as Interviewer
+                
+            - else
+
+              %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
+                Start case as Interviewer
+
+
+%p= link_to "Click here to login and see the appointment", @url
