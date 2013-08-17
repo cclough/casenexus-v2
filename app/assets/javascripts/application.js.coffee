@@ -30,21 +30,58 @@ window.getQueryParams = (qs) ->
   params
 
 
-window.notifications_animate = () ->
-  x = 0
-  intervalID = setInterval(->
+window.notification_trigger = (data_inc) ->
+
+  # Show Popup
+  $.get "/notifications/" + data_inc.notification_id + "/popup", (data) ->
+    $("#application_notify").html data
+    $("#application_notify").fadeIn()
+    # Popup auto-hide
+    setTimeout (->
+      $("#application_notify").fadeOut()
+    ), 20000
+
+    # Popup close button prime
+    $("#application_notify_close").click ->
+      $("#application_notify").fadeOut "fast"
+
+    # Truncatables
+    window.application_truncatables()
+
+  # TitleAlert options here: http://heyman.info/2010/sep/30/jquery-title-alert/
+  title_msg = "You have a new notification from " + data_inc.from
+  $.titleAlert title_msg,
+    stopOnFocus: true,
+    stopOnMouseMove: true
+
+  # Refresh Header Icon
+  $.get "/notifications/menu", (data) ->
+    $("#header_nav_links_right_notifications").html data
+
+  #Friend's List
+  window.onlinepanels_refresh ->
     
-    glow = $("#header_nav_icon_notifications")
-    (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
-    glow = $("#onlinepanel_container .notifications_glowable")
-    (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
+    # once online list has refreshed, commence animations
+    x = 0
+    intervalID = setInterval(->
+      
+      glow = $("#header_nav_icon_notifications")
+      (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
+      glow = $("#onlinepanel_container .notifications_glowable")
+      (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
 
-    if ++x is 10
-      window.clearInterval intervalID
-      $("#header_nav_icon_notifications").removeClass 'glow'
-      $("#onlinepanel_container .notifications_glowable").removeClass 'glow'
+      if ++x is 10
+        window.clearInterval intervalID
+        $("#header_nav_icon_notifications").removeClass 'glow'
+        $("#onlinepanel_container .notifications_glowable").removeClass 'glow'
 
-  , 500)
+    , 500)
+
+
+
+
+
+
 
 
 window.application_help_checkbox = (help_page) ->

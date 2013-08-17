@@ -25,41 +25,8 @@ $(function() {
       var channel_priv = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
       
       channel_priv.bind('new_message', function(data) {
-        dom_notify(data.notification_id);
 
-        title_msg = "You have a new notification from " + data.from;
-        title_notify(title_msg);
-
-        // Header Icon
-        $.get("/notifications/menu", function(data){
-          $("#header_nav_links_right_notifications").html(data);
-
-          // Animated Glow on icon
-          
-          // window.header_notifications_menu_interval = setInterval(function(){
-            
-          // }, 500);
-        });
-
-        //Friend's List
-        window.onlinepanels_refresh(function () {
-          window.notifications_animate()
-        });
-
-
-
-
-        // //Animate any items which have just notifed current_user (logic in view, enabled via refresh on push)
-        // // glow = $("#onlinepanel_container .notifications_glowable")
-        // // window.onlinepanel_notification_interval = setInterval (->
-        // //   (if glow.hasClass("glow") then glow.removeClass("glow") else glow.addClass("glow"))
-        // // ), 500
-
-        
-        // window.onlinepanel_notification_interval = setInterval(function(){
-          
-        // }, 500);
-
+        window.notification_trigger(data)
       });
       
 
@@ -98,35 +65,7 @@ $(function() {
       ////////// MESSAGING FUNCTIONS //////////
       /////////////////////////////////////////
 
-      // In DOM alert
-      function dom_notify(notification_id) {
 
-        $.get("/notifications/" + notification_id + "/popup", function(data){
-
-          $('#application_notify').html(data);
-
-          // Close Button Prime
-          $("#application_notify_close").click(function(){
-            $("#application_notify").fadeOut("fast");
-          });
-          
-          // Truncatables
-          window.application_truncatables();
-
-          $('#application_notify').fadeIn();
-
-          setTimeout(function() {
-            $('#application_notify').fadeOut();
-          }, 20000);
-
-        });
-
-      }
-      
-      // <title> msg
-      function title_notify(msg) {
-        $.titleAlert(msg);
-      }
       
       /////////////////////////////////////////
       ////////// PRESENCE FUNCTIONS ///////////
