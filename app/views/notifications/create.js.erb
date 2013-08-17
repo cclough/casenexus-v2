@@ -5,25 +5,46 @@
 
         $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
 
-        window.modal_message_prime();
+        <%- if @notification.ntype = "message" %>
+            window.modal_message_prime();
+        <%- end %>
+
 
     <%- else %>
 
-        $('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
 
-        $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
 
-        window.notifications_index_jump(<%= escape_javascript(@notification.user_id.to_s) %>);
+        <%- if @notification.ntype = "message" %>
+        
+            $("#modal_message_textarea").val("");
 
-		$("div[id=application_flash]:last").fadeIn("fast", function () {
+            $("#flash_notifications").html("");
 
-	    setTimeout(function() {
-	      $("div[id=application_flash]:last").fadeOut('fast', function() {
-	        $("div[id=application_flash]:last").remove();
-	      });
-	    }, 4000);
+            $("#modal_message_conversation").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
 
-		});
+            window.modal_message_prime();
+
+        <%- else %>
+
+            $('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
+
+            $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+
+            $("div[id=application_flash]:last").fadeIn("fast", function () {
+
+            setTimeout(function() {
+              $("div[id=application_flash]:last").fadeOut('fast', function() {
+                $("div[id=application_flash]:last").remove();
+              });
+            }, 4000);
+
+            });
+
+        <%- end %>
+
+
+
+
 
 		// b = $("[data-user_id=<%=@notification.user_id%>]")
 		// b.parent().prepend(b)

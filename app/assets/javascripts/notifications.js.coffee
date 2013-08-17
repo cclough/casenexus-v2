@@ -4,14 +4,13 @@ window.notifications_index_jump = (user_id) ->
   $.get "/notifications/" + user_id, (data) ->
     $("#notifications_index_conversation").html data
 
-    # scroll div
-    $("#notifications_show_body_subcontainer").animate
-      scrollTop: document.getElementById("notifications_show_body_subcontainer").scrollHeight;
-    , "fast"
-
-    # scroll div
-    # objDiv = document.getElementById("notifications_show_body")
-    # objDiv.scrollTop = objDiv.scrollHeight
+    # scroll div (animate)
+    # $("#notifications_show_body_subcontainer").animate
+    #   scrollTop: document.getElementById("notifications_show_body_subcontainer").scrollHeight;
+    # , "fast"
+    
+    # scroll div (instant)
+    $("#notifications_show_body_subcontainer").scrollTop document.getElementById("notifications_show_body_subcontainer").scrollHeight
 
 
 

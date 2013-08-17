@@ -37,7 +37,7 @@ window.onlinepanels_refresh = (callback) ->
 
     window.onlinepanel_prime()   
 
-    callback()
+    callback() if callback
 
 
 $(document).ready ->

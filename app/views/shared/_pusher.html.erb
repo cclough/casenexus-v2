@@ -24,9 +24,23 @@ $(function() {
 
       var channel_priv = pusher.subscribe('private-'+<%= current_user ? current_user.id : 'null' %>);
       
-      channel_priv.bind('new_message', function(data) {
+      channel_priv.bind('new_message', function(data_inc) {
 
-        window.notification_trigger(data)
+        window.notification_trigger(data_inc)
+
+        if ($("#modal_message").hasClass("in")) {
+          if ($("#modal_message_form").data("friend_id") == data_inc.from_id) {
+
+            $.get("/notifications/conversation?id=" + data_inc.from_id, function(data) {
+              $("#modal_message_conversation").html(data);
+              window.modal_message_prime();
+            });
+
+
+
+          };
+        };
+
       });
       
 

@@ -1,5 +1,5 @@
 - notification = notification || @notification
-= form_for(notification, remote: true, html: {id: "modal_message_form"}) do |f|
+= form_for(notification, remote: true, html: {id: "modal_message_form", "data-friend_id" => @user.id}) do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 

@@ -140,9 +140,11 @@ window.modal_spinner_prime = () ->
 
 window.modal_message_prime = () ->
   # Scroll div
-  $("#modal_message_conversation").animate
-    scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
-  , "fast"
+  # $("#modal_message_conversation").animate
+  #   scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
+  # , "fast"
+
+  $("#modal_message_conversation").scrollTop(document.getElementById("modal_message_conversation").scrollHeight);
 
   window.modal_spinner_prime()
 
@@ -187,17 +189,10 @@ window.modal_friendship_req_show = (friend_id) ->
 
       # repeat of modal spinner prime, but with online refresh command under submit
       $("#application_spinner_container").css "display","none"
-
       $(".modal_submit_button").click ->
-
         $("#application_spinner_container").show()
-
         $(this).closest("form").submit()
-
-        window.onlinepanel_refresh()
-
-
-
+        window.onlinepanels_refresh()
 
 
 
