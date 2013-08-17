@@ -1,8 +1,76 @@
 - if @ntype == "event_set_partner"
   #{@user_from.name} has booked a case appointment with you
 - elsif @ntype == "event_change_partner"
-  #{@user_from.name} has ammended your case appointment
+  #{@user_from.name} has amended your case appointment
 - elsif @ntype == "event_cancel_partner"
   #{@user_from.name} has cancelled your case appointment
 - elsif @ntype == "event_remind_partner"
   Reminder: you have a case appointment with #{@user_from.name}
+
+
+%table
+  %tr
+    %td
+      = image_tag "http://casenexus-staging.herokuapp.com/assets/avatars/icon.png", style: "height:30px;"
+    %td{style: "font-size:13px;margin-left:10px;"}
+      %strong
+        #{@user_from.name}
+      %br
+      #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
+
+
+- unless @ntype == "event_cancel_partner"
+  %table{style: "border:5px solid #e3e3e3;padding:5px;"}
+    %tr
+      %td
+
+        %table
+          %tr
+            %td{style: "border:5px solid #e3e3e3;padding:3px;margin-bottom:5px;"}
+              - unless @event.book_id_partnertoprepare.blank?
+                You have asked #{@user_from.first_name} to prepare a case
+                %br
+                %div{style:"text-align:center;"}
+                  = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
+              - else
+                You have not yet asked #{@user_from.first_name} to prepare a case
+                %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
+                  = link_to "Choose a case", "https://casenexus-staging.herokuapp.com/events?event_id=" + @event.id
+          %tr
+            %td{style: "border:5px solid #e3e3e3;padding:3px;"}
+              - unless @event.book_id_usertoprepare.blank?
+                You have been asked to prepare (see PDF attached)
+                %strong
+                  = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
+              - else
+                You have not yet been asked to prepare a case
+      %td
+
+        %table
+          %tr
+            %td
+              %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
+                = link_to "skype:#{@user_from.skype}?call", "data-original-title"=>"Call #{@user_from.first_name} on Skype" do
+                  %table
+                    %tr
+                      %td
+                        #{image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"}
+                      %td
+                        Call #{@user_from.first_name}
+          %tr
+            %td
+              %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
+                - unless @event.book_id_partnertoprepare.blank?
+
+                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
+                    Start case as Interviewer
+                - else
+
+                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
+                    Start case as Interviewer now
+
+%br
+- unless @ntype == "event_cancel_partner"
+  %p= link_to "Click here to view or change this appointment", @url
+- else
+  %p= link_to "Click here to arrange another appointment", @url
