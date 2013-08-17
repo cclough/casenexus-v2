@@ -29,6 +29,24 @@ window.getQueryParams = (qs) ->
   params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2])  while tokens = re.exec(qs)
   params
 
+
+window.notifications_animate = () ->
+  x = 0
+  intervalID = setInterval(->
+    
+    glow = $("#header_nav_icon_notifications")
+    (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
+    glow = $("#onlinepanel_container .notifications_glowable")
+    (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
+
+    if ++x is 10
+      window.clearInterval intervalID
+      $("#header_nav_icon_notifications").removeClass 'glow'
+      $("#onlinepanel_container .notifications_glowable").removeClass 'glow'
+
+  , 500)
+
+
 window.application_help_checkbox = (help_page) ->
   $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
     $("#modal_help_checkbox_container").html data

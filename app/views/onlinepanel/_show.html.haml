@@ -1,9 +1,12 @@
 .span1
   .onlinepanel_show_status{class: (if @online_user.online_now? then "online_now" elsif @online_user.online_earlier? then "online_earlier" end)}
+
 .span2.offset1
   = image_tag "avatars/icon.png"
-.span.offset1
+
+.span.offset1{class: ("notifications_glowable highlight" if Notification.recently_notified_by?(current_user, @online_user) == true) }
   = link_to @online_user.name_trunc, "/map?user_id=" + @online_user.id.to_s
+
 
 - if @online_user_type == "friend"
   / .pull-right

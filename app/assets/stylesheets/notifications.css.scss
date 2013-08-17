@@ -200,4 +200,22 @@ $blue_linkedin: #006699;
 /////////////////////////////////////////////////////
 
 
+.notifications_glowable {
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+  &.highlight {
+    a {
+      color:red !important;      
+    }
+  }
+  &.glow {
+//    text-shadow: 0 0 10px red;
+    opacity:0;
+  }
+}
+
+
 

@@ -5,9 +5,9 @@
 
 window.onlinepanel_prime = () ->
   $(".onlinepanel_show_menu_message").click ->
-
     friend_id = $(this).data "friend_id"
     window.modal_message_show(friend_id)
+
 
 
   $(".onlinepanel_show_menu_addfriend").click ->
@@ -15,27 +15,30 @@ window.onlinepanel_prime = () ->
     friend_id = $(this).data "friend_id"
     window.modal_friendship_req_show(friend_id)
 
-  # The Ping updater! Could be a lot smoother, but for now o-k
-  # setInterval ->
-  #   onlinepanel_refresh()
-  # , 30000
-
   $("#onlinepanel_response_min").click ->
     if $("#onlinepanel_response").is(':visible')
       $("#onlinepanel_response").fadeOut "fast"
     else
       $("#onlinepanel_response").fadeIn "fast"
 
-# window.onlinepanels_refresh = () ->
-#   $.get "/onlinepanel/container", (data) ->
-#     $("#onlinepanel_container").html data
-#     window.onlinepanel_prime()   
-
-#     $("#onlinepanel_container").html data
-#     window.onlinepanel_prime()   
-
   $("#onlinepanel_posts_new_button").click ->
     window.modal_post_show()
+
+
+  # The Ping updater! Could be a lot smoother, but for now o-k
+  # setInterval ->
+  #   window.onlinepanels_refresh()
+  # , 30000
+
+window.onlinepanels_refresh = (callback) ->
+  $.get "/onlinepanel/container", (data) ->
+
+    $("#onlinepanel_container").html data
+
+    window.onlinepanel_prime()   
+
+    callback()
+
 
 $(document).ready ->
 

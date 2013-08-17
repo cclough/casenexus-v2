@@ -882,18 +882,6 @@ a:hover {
 }
 
 
-#header_nav_icon_notifications {
-  -webkit-transition: text-shadow 0.5s linear;
-  -moz-transition: text-shadow 0.5s linear;
-  -ms-transition: text-shadow 0.5s linear;
-  -o-transition: text-shadow 0.5s linear;
-  transition: text-shadow 0.5s linear;
-  &:hover,
-  &.glow {
-    text-shadow: 0 0 10px red;
-  }
-}
-
 
 
 

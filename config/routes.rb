@@ -11,7 +11,9 @@ Casenexus::Application.routes.draw do
   post 'pusher/auth'
 
   # Online panel
-  resources :onlinepanel, only: [:index, :show]
+  resources :onlinepanel, only: [:index, :show] do
+    get :container, on: :collection
+  end
 
   # Static Pages
   match '/about', to: 'static_pages#about'

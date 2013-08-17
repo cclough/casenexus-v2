@@ -15,6 +15,7 @@ window.notifications_index_jump = (user_id) ->
 
 
 
+
 $(document).ready ->
 
 

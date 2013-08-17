@@ -63,6 +63,10 @@ class Notification < ActiveRecord::Base
                                                                 "points_unlock_voteup","points_unlock_votedown"]])
     end
 
+    def recently_notified_by?(current_user, query_user)
+      true if where(user_id: current_user.id, sender_id: query_user.id, created_at: (1.minute.ago)..(Time.now)).count > 0
+    end
+
   end
 
   def read!
