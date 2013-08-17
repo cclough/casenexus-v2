@@ -119,8 +119,6 @@ window.map_index_users_search = ->
 
 $(document).ready ->
 
-
-
   # Update the list of users
   map_index_users_updatelist()
 
