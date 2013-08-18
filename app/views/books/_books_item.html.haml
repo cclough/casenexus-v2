@@ -2,19 +2,12 @@
   .books_index_books_item.panel.dark.kill_top
     .row
 
-
-
-
       .span12
         .books_index_books_item_image.panel.kill_all
           - if books_item.thumb.blank?
             = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
           - else
             = image_tag 'library/thumbs/' + books_item.thumb.to_s
-
-
-
-
 
 
       .span.offset1
@@ -52,7 +45,11 @@
               .span
                 = books_item.desc_trunc
 
+            .spacer5
 
+            .row
+              .span
+                = raw books_item.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
 
           .span.offset1
             .books_rating_read_container.panel.dark.kill_all

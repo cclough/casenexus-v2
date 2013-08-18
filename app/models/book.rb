@@ -15,15 +15,37 @@ class Book < ActiveRecord::Base
   scoped_search in: :university, on: [:name]
 
 
-	class << self
-	  def list_cases
-	  	where("btype = 'case'")
-	  end
+  ### TAG STUFF - one day make a polymorphic (repeated in Book)
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).taggables
+  end
 
-	  def list_guides
-	  	where("btype = 'guide' OR btype = 'link'")
-	  end
-	end
+  def self.tag_counts
+    Tag.select("tags.id, tags.name, count(taggings.tag_id) as count").
+      joins(:taggings).group("taggings.tag_id, tags.id, tags.name")
+  end
+
+  def tag_list
+    tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    # names.pop #added pop and shift to remove first and last array items as chosen always including a blank field for unknown reason
+    # names.shift
+    self.tags = names.map do |n| # here a split(", ") is removed to enable chosen multiple input
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
+
+  # def tag_list_ids=(ids)
+  #   # names.pop #added pop and shift to remove first and last array items as chosen always including a blank field for unknown reason
+  #   # names.shift
+  #   self.tags = ids.map do |n| # here a split(", ") is removed to enable chosen multiple input
+  #     Tag.find(n)
+  #   end
+  # end
+
+  ### Micro
 
   def desc_trunc
     desc.to_s.truncate(180, separator: ' ')
@@ -44,6 +66,20 @@ class Book < ActiveRecord::Base
       "Number of Charts: " + chart_num.to_s
     end
   end
+
+  ### Macro
+
+	class << self
+	  def list_cases
+	  	where("btype = 'case'")
+	  end
+
+	  def list_guides
+	  	where("btype = 'guide' OR btype = 'link'")
+	  end
+	end
+
+
 
   def update_average_rating(book=nil) #http://stackoverflow.com/questions/6008015/how-can-i-sort-my-records-by-average-rating
     s = self.comments.sum(:rating)

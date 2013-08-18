@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   attr_accessible :content, :title, :view_count, :tag_list
 
-  # Associations
+  ### Associations
   belongs_to :user
   has_many :answers
   has_many :comments, as: :commentable
@@ -9,24 +9,23 @@ class Question < ActiveRecord::Base
   has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags, :through => :taggings
 
-  # Validations
+  ### Validations
   validates_presence_of :user_id
   validates :title, presence: true, length: { maximum: 255 } 
   validates :content, presence: true, length: { maximum: 1000 } 
   # validates_presence_of :taggings
 
-  # Voting
+  ### Voting
   acts_as_voteable
 
 
-  # Scoped_search Gem
+  ### Scoped_search Gem
   scoped_search on: [:content, :title]
   scoped_search in: :user, on: [:first_name, :last_name]
   # ANSWERS?
 
 
-  # TAG STUFF
-  # PUT INTO CONTROLLER FOR POLYMORPHIC?
+  ### TAG STUFF - one day make a polymorphic (repeated in Book)
   def self.tagged_with(name)
     Tag.find_by_name!(name).taggables
   end
@@ -49,10 +48,13 @@ class Question < ActiveRecord::Base
   end
 
 
+  ### Micro
 
   def content_trunc
     content.truncate(130, separator: ' ')
   end
+
+  ### Macro
 
   def last_active_at
     if answers.count > 0
