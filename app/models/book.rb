@@ -1,10 +1,14 @@
 class Book < ActiveRecord::Base
 
-  attr_accessible :btype, :title, :source_title, :desc, :university_id, :university, :author, :author_url, :url, :thumb, :chart_num, :difficulty, :average_rating
+  attr_accessible :btype, :tag_list, :title, :source_title, :desc, :university_id, :university, :author, :author_url, :url, :thumb, :chart_num, :difficulty, :average_rating
 
   # Associations
-  has_many :comments, as: :commentable, :after_add => :update_average_rating, :after_remove => :update_average_rating
   belongs_to :university
+
+  has_many :comments, as: :commentable, :after_add => :update_average_rating, :after_remove => :update_average_rating
+
+  has_many :taggings, :as => :taggable, :dependent => :destroy
+  has_many :tags, :through => :taggings
 
   # Scoped_search Gem
   scoped_search on: [:title, :source_title, :author, :desc]

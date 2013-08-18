@@ -197,7 +197,8 @@ ActiveRecord::Schema.define(:version => 20130815001312) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "category_id"
   end
 
   create_table "universities", :force => true do |t|
