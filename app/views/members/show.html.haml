@@ -113,4 +113,24 @@
             %div
               %i.icon-comment.icon-white.icon-4x
             %span
-              Send Friend Request      
+              Send Friend Request
+.row
+  %p Recent Questions
+  - @user.questions.last(5).each do |user_question|
+    .row
+      = link_to user_question.title, question_path(user_question)
+.spacer10
+.row
+  %p Recent Answers
+  - @user.answers.last(5).each do |user_answer|
+    .row
+      = link_to user_answer.content_trunc, answer_path(user_answer)
+.spacer10
+.row
+  %p Recent Posts
+  - @user.posts.last(5).each do |user_post|
+    .row
+      = user_post.content_trunc
+.spacer10
+.row
+  ACTIVITY GRAPH

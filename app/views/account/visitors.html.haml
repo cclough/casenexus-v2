@@ -11,6 +11,6 @@
         .span5
           = image_tag "avatars/icon.png"
         .span20.offset2
-          = visit.visitor.username
+          = link_to visit.visitor.username, "/map?user_id=" + visit.visitor.id.to_s
         .span10
           = visit.created_at.strftime("%a %d %b %Y %I:%M%p")
