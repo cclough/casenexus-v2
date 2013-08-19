@@ -2,7 +2,7 @@
   = avatar_for(@user, 'icon')
 %span#map_index_map_subnav_mouseover_text
   %strong
-    = @user.name
+    = @user.username
 %span
   - unless @user.country.blank?
     = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name

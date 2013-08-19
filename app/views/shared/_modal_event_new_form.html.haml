@@ -22,7 +22,7 @@
             = image_tag "avatars/icon.png"
           .span.offset1#events_edit_partner_name
             %strong
-              = @friend.name
+              = @friend.username
               = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_new_friend_select"
 
         .spacer10

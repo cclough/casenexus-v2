@@ -11,9 +11,9 @@
     .row
       = render 'events/button_startcase'
 
-      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.first_name} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-inverse btn-large" do
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-inverse btn-large" do
         = image_tag "icons/skype_button.png"
-        Call #{@event.partner.first_name}
+        Call #{@event.partner.username}
         
     .row
       #events_new_friend_selected
@@ -21,7 +21,7 @@
           = image_tag "avatars/icon.png"
         .span.offset1#events_edit_partner_name
           %strong
-            = @event.partner.name
+            = @event.partner.username
             = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_new_friend_select"
 
     .spacer10
@@ -98,7 +98,7 @@
 
     #events_new_book_viewer_usertoprepare_container.application_bootstrap_alert_yellow
       
-      Case that #{@event.partner.first_name} wants you to prepare
+      Case that #{@event.partner.username} wants you to prepare
 
       #events_new_book_viewer_usertoprepare
         - if @book_usertoprepare.blank?

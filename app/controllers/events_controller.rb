@@ -42,7 +42,7 @@ class EventsController < ApplicationController
     respond_to do |format|
 
       if @event.valid? && Event.set(current_user, @event.partner, @event.datetime, @event.book_id_usertoprepare, @event.book_id_partnertoprepare)
-        flash[:success] = "Appointment booked with " + @event.partner.first_name + "."
+        flash[:success] = "Appointment booked with " + @event.partner.username + "."
         format.js
 
         # Same as index - to update calendar
@@ -77,7 +77,7 @@ class EventsController < ApplicationController
     respond_to do |format|
 
       if @event.valid? && Event.change(@event.user, @event.partner, params[:event][:datetime], params[:event][:book_id_usertoprepare], params[:event][:book_id_partnertoprepare])
-        flash[:success] = "Appointment amended. " + @event.partner.first_name + " has been notified."
+        flash[:success] = "Appointment amended. " + @event.partner.username + " has been notified."
         format.js
 
         # Same as index - to update calendar
@@ -94,7 +94,7 @@ class EventsController < ApplicationController
   def destroy
     @event = current_user.events.find(params[:id])
     Event.cancel(@event.user, @event.partner)
-    flash[:success] = "Appointment cancelled. " + @event.partner.first_name + " has been notified."
+    flash[:success] = "Appointment cancelled. " + @event.partner.username + " has been notified."
     if params[:back_url]
       redirect_to params[:back_url]
     else
@@ -122,8 +122,8 @@ class EventsController < ApplicationController
     @events.each do |event|
       @calendar.event do
         start       event.datetime.strftime("%Y%m%dT%H%M%S")
-        summary     "Case Appt: " + event.partner.name
-        description "casenexus.com: case appointment with " + event.partner.name
+        summary     "Case Appt: " + event.partner.username
+        description "casenexus.com: case appointment with " + event.partner.username
         location    "Skype or in person"
         alarm do
           action    "DISPLAY" # This line isn't necessary, it's the default

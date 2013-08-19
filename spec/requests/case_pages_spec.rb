@@ -36,7 +36,7 @@ describe "Case Pages" do
       it "should list each case" do
         
         user.cases.paginate(per_page: 10, page: 1).each do |c|
-          page.should have_selector('strong', text: c.interviewer.name)
+          page.should have_selector('strong', text: c.interviewer.username)
         end
 
       end

@@ -13,6 +13,12 @@ class AccountController < ApplicationController
     render layout: 'profile'
   end
 
+  def viewers
+    @users = User.all
+
+    render layout: 'profile'
+  end
+
   def update
     @user = current_user
 
@@ -36,7 +42,7 @@ class AccountController < ApplicationController
           redirect_to params[:back_url]
         end
       else
-        render 'edit'
+        render 'edit', layout: "profile"
       end
     end
   end
@@ -60,11 +66,6 @@ class AccountController < ApplicationController
     @user.destroy
     flash[:success] = "Your account has now been deleted."
     redirect_to root_path
-  end
-
-  def random_name
-    @first_name = Faker::Name.first_name
-    @last_name = Faker::Name.last_name
   end
 
 

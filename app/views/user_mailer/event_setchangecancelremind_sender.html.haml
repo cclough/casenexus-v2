@@ -1,11 +1,11 @@
 - if @ntype == "event_set_sender"
-  %h4 You have booked a case appointment with #{@user_target.name}
+  %h4 You have booked a case appointment with #{@user_target.username}
 - elsif @ntype == "event_change_sender"
-  %h4 You have amended your case appointment with #{@user_target.name}
+  %h4 You have amended your case appointment with #{@user_target.username}
 - elsif @ntype == "event_cancel_sender"
-  %h4 You have cancelled your case appointment with #{@user_target.name} has
+  %h4 You have cancelled your case appointment with #{@user_target.username} has
 - elsif @ntype == "event_remind_sender"
-  %h4 Reminder: you have a case appointment with #{@user_target.name}
+  %h4 Reminder: you have a case appointment with #{@user_target.username}
 
 
 %table
@@ -14,7 +14,7 @@
       = image_tag "http://casenexus-staging.herokuapp.com/assets/avatars/icon.png", style: "height:30px;"
     %td{style: "font-size:13px;margin-left:10px;"}
       %strong
-        #{@user_target.name}
+        #{@user_target.username}
       %br
       #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
 
@@ -28,12 +28,12 @@
           %tr
             %td{style: "border:5px solid #e3e3e3;padding:3px;margin-bottom:5px;"}
               - unless @event.book_id_partnertoprepare.blank?
-                You have asked #{@user_target.first_name} to prepare a case
+                You have asked #{@user_target.username} to prepare a case
                 %br
                 %div{style:"text-align:center;"}
                   = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
               - else
-                You have not yet asked #{@user_target.first_name} to prepare a case
+                You have not yet asked #{@user_target.username} to prepare a case
                 %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
                   = link_to "Choose a case", "https://casenexus-staging.herokuapp.com/events?event_id=" + @event.id
           %tr
@@ -50,13 +50,13 @@
           %tr
             %td
               %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
-                = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.first_name} on Skype" do
+                = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.username} on Skype" do
                   %table
                     %tr
                       %td
                         #{image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"}
                       %td
-                        Call #{@user_target.first_name}
+                        Call #{@user_target.username}
           %tr
             %td
               %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}

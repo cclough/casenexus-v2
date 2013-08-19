@@ -30,7 +30,7 @@ class Notification < ActiveRecord::Base
   ### Callbacks
   after_create :send_email
 
-  scoped_search in: :sender, on: [:first_name, :last_name]
+  scoped_search in: :sender, on: [:username]
   scoped_search on: [:content]
   
   class << self

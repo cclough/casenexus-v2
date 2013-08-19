@@ -18,28 +18,6 @@
     .span46
       #account_complete_step2.panel.darker.kill_right
 
-        .row
-          .spacer5
-          .row
-            .span10
-              First name
-              .account_completeedit_condition
-                (required)
-            .span30
-              = f.text_field :first_name, placeholder: "Enter your first name", id: "account_complete_first_name"
-          .row
-            .span10
-              Last name
-              .account_completeedit_condition
-                (required)
-            .span30
-              = f.text_field :last_name, placeholder: "Enter your last name", id: "account_complete_last_name"
-              .row
-                .font-small
-                  %span#account_complete_button_random_name.btn.btn-small.btn-inverse
-                    Generate a random name
-                  %div.pull-right ...if you would prefer to stay anonymous
-        .spacer15
         .row.font-small
           .row
             .span2.offset10

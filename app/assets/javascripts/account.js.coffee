@@ -4,10 +4,6 @@ $(document).ready ->
   #////////////////// COMPLETE & EDIT /////////////////////
   #////////////////////////////////////////////////////////
 
-  $("#account_complete_button_random_name").click (e) ->
-    e.preventDefault()
-    $.ajax("/account/random_name", type: "get", dataType: "script")
-
   if typeof account_completeedit_map_lat_start is "string"
     account_completeedit_latlng = new google.maps.LatLng(account_completeedit_map_lat_start, account_completeedit_map_lng_start)
 

@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
 
   ### Scoped_search Gem
   scoped_search on: [:content, :title]
-  scoped_search in: :user, on: [:first_name, :last_name]
+  scoped_search in: :user, on: [:username]
   # ANSWERS?
 
 

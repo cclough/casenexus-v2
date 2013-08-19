@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, :token_authenticatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :lat, :lng,
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
                   :invitation_code, :ip_address, :language_ids, :cases_external, :last_online_at, 
                   :time_zone, :subject_id, :degree_level, :can_upvote, :can_downvote
@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
 
   ### Callbacks
   before_create :set_university
+  before_create :generate_username
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
   after_create :update_invitation
@@ -66,12 +67,11 @@ class User < ActiveRecord::Base
   validate :validate_invitation, on: :create
 
   # ON UPDATE
-  validates :first_name, presence: true, on: :update
-  validates :last_name, presence: true, on: :update
+  validates :username, presence: true, uniqueness: true, length: { maximum: 30 }, on: :update
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
-  validates :lat, presence: true, on: :update
-  validates :lng, presence: true, on: :update
+  validates :lng, :uniqueness => { :scope => :lat }
+
   validates :degree_level, presence: true, on: :update
   validates :subject, presence: true, on: :update
   validates :skype, length: { maximum: 32 },
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
   acts_as_voter
 
   # Scoped_search Gem
-  scoped_search on: [:first_name, :last_name]
+  scoped_search on: [:username]
 
   # Geocoder
   geocoded_by :ip_address, :latitude => :lat, :longitude => :lng
@@ -110,12 +110,9 @@ class User < ActiveRecord::Base
 
 
 
-  def name
-    "#{first_name} #{last_name}"
-  end
 
-  def name_trunc
-    ("#{first_name} #{last_name}").truncate(17, separator: ' ')
+  def username_trunc
+    (username).truncate(17, separator: ' ')
   end
 
   def case_count_viewee
@@ -324,5 +321,8 @@ class User < ActiveRecord::Base
 
   end
 
+  def generate_username
+    self.username = "user" + Time.now.to_i.to_s.last(5) + rand(999).to_s
+  end
 
 end

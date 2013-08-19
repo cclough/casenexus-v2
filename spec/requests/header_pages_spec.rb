@@ -147,7 +147,7 @@ describe "Header" do
 
     it "should list each notification" do
       #Notification.header.each do |notification|
-        page.should have_selector('strong', text: user.notifications.first.sender.name)
+        page.should have_selector('strong', text: user.notifications.first.sender.username)
       #end
     end
 

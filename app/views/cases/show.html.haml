@@ -1,8 +1,8 @@
 - content_for :title do
   Case with
-  = link_to "/map?user_id=" + @case.interviewer.id.to_s,  "data-original-title"=>"Go to #{@case.interviewer.first_name}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
+  = link_to "/map?user_id=" + @case.interviewer.id.to_s,  "data-original-title"=>"Go to #{@case.interviewer.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
     = image_tag @case.interviewer.university.image_file, class: "application_userimage_small"
-    = @case.interviewer.name
+    = @case.interviewer.username
 
 - provide(:sub_title, @case.subject_trunc)
 

@@ -11,11 +11,11 @@
   /       .span32
   /         .row
   /           .span.offset1#cases_show_subnav_name
-  /             = @case.interviewer.name
+  /             = @case.interviewer.username
   /           .span.offset1
   /             - unless @case.interviewer.country.blank?
   /               .span3
-  /                 = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.name
+  /                 = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.username
   /         .row
   /           .span2.offset1
   /             = image_tag "universities/" + @case.interviewer.university.image

@@ -28,7 +28,7 @@ describe "Notification Pages" do
       it "should list each notification" do
         
         user.notifications.paginate(per_page: 10, page: 1).each do |notification|
-          page.should have_selector('strong', text: notification.sender.name)
+          page.should have_selector('strong', text: notification.sender.username)
         end
 
       end
@@ -132,9 +132,9 @@ describe "Notification Pages" do
         subject { last_email_sent }
 
         it { should be_delivered_from("mailer@casenexus.com") }
-        it { should deliver_to(user.name + " <" + user.email + ">") }
+        it { should deliver_to(user.username + " <" + user.email + ">") }
         it { should have_subject("casenexus: You have been sent a message") }
-        it { should have_body_text("You have been sent a message by " + user.name) }
+        it { should have_body_text("You have been sent a message by " + user.username) }
         it { should have_body_text("notifications/1") }
 
       end
@@ -232,9 +232,9 @@ describe "Notification Pages" do
         subject { last_email_sent }
 
         it { should be_delivered_from("mailer@casenexus.com") }
-        it { should deliver_to(user2.name + " <" + user2.email + ">") }
+        it { should deliver_to(user2.username + " <" + user2.email + ">") }
         it { should have_subject("casenexus: You have been sent case feedback") }
-        it { should have_body_text("You have been sent case feedback by " + user2.name) }
+        it { should have_body_text("You have been sent case feedback by " + user2.username) }
         it { should have_body_text("12/12/2010") }
         it { should have_body_text("cases/2") }
 

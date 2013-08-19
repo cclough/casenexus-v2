@@ -315,12 +315,10 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating christian's user"
 
   admin = User.new(
-      first_name: "Christian",
-      last_name: "Clough",
       email: "christian.clough@gmail.com",
       password: "testing",
       password_confirmation: "testing",
-      lat: 51.5100,
+      lat: 51.51030,
       lng: -0.1344,
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
@@ -347,8 +345,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating dan's user"
 
   admin = User.new(
-      first_name: "Dan",
-      last_name: "Biddulph",
       email: "danb@cam.ac.uk",
       password: "testing",
       password_confirmation: "testing",
@@ -379,8 +375,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating alastair's user"
 
   admin = User.new(
-      first_name: "Alastair",
-      last_name: "Willey",
       email: "alastair.willey@imperial.ac.uk",
       password: "design",
       password_confirmation: "design",
@@ -410,8 +404,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating robin's user"
 
   admin = User.new(
-      first_name: "Robin",
-      last_name: "Clough",
       email: "robin.clough@rady.ucsd.edu",
       password: "testing",
       password_confirmation: "testing",
@@ -490,8 +482,6 @@ if Rails.env == 'development'
 
 
   15.times do |n|
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
 
     university_rand = 1 + rand(10)
     email = "example#{n+1}@" + University.find(university_rand).domain
@@ -514,8 +504,7 @@ if Rails.env == 'development'
 
     ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
 
-    user = User.new(first_name: first_name, last_name: last_name,
-                    email: email, password: password,
+    user = User.new(email: email, password: password,
                     password_confirmation: password,
                     lat: lat, lng: lng,
                     language_ids: language_ids,
@@ -533,9 +522,9 @@ if Rails.env == 'development'
     user.save!
     user.confirm!
 
-    puts "User #{user.name} created"
+    puts "User #{user.username} created"
 
-    puts "Creating #{user.name}'s Friendships"
+    puts "Creating #{user.username}'s Friendships"
 
     Friendship.connect(user, User.find(1))
     Friendship.connect(user, User.find(2))
@@ -601,7 +590,7 @@ if Rails.env == 'development'
         )
       end
 
-      puts "Question & Answers created for user #{user.name}"
+      puts "Question & Answers created for user #{user.username}"
     end
 
   end
@@ -625,7 +614,7 @@ if Rails.env == 'development'
       # check if exists already though!
       if !user.languages.include? lang
         user.languages << lang
-        puts "Language association created for user #{user.name}"
+        puts "Language association created for user #{user.username}"
       end
 
     end
@@ -647,7 +636,7 @@ if Rails.env == 'development'
           content: Faker::Lorem.sentence(40)
       )
       Post.last.toggle!(:approved)
-      puts "Post created for user #{user.name}"
+      puts "Post created for user #{user.username}"
     end
 
   end
@@ -691,7 +680,7 @@ if Rails.env == 'development'
           announceschangedstructure: 1 + rand(4),
           pushingtoconclusion: 1 + rand(4)
       )
-      puts "Case created for user #{user.name}"
+      puts "Case created for user #{user.username}"
     end
 
   end
@@ -707,7 +696,7 @@ if Rails.env == 'development'
                                  sender_id: sender_id,
                                  content: Faker::Lorem.sentence(5))
 
-      puts "Message Notifications created for user #{user.name}"
+      puts "Message Notifications created for user #{user.username}"
     end
 
   #end
@@ -732,7 +721,7 @@ if Rails.env == 'development'
                           book_id_partnertoprepare: 1,
                           datetime: random_date(year_range: 2, year_latest: 0.5))
 
-      puts "Events created for user #{user.name}"
+      puts "Events created for user #{user.username}"
     end
 
 

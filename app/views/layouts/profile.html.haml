@@ -78,6 +78,15 @@
               %br
 
               .row
+                = link_to viewers_account_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "viewers") }
+                    %i.icon-eye-open.icon-fixed-width
+                    %span.offset1
+                      Profile Visitors
+
+              %br
+
+              .row
                 = link_to notifications_path do
                   .profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
                     %i.icon-comments-alt.icon-fixed-width
@@ -86,7 +95,7 @@
               
               .row
                 = link_to edit_account_path do
-                  .profile_nav_item{:class => ("active" if params[:controller] == "account") }
+                  .profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
                     %i.icon-cogs.icon-fixed-width
                     %span.offset1
                       Settings
@@ -125,5 +134,6 @@
   = render 'shared/modal_help'
   = render 'shared/modal_contact'
   = render 'shared/modal_event'
+  = render 'shared/modal_post'
   = render 'shared/modal_message'
   = render 'shared/modal_friendship_req'

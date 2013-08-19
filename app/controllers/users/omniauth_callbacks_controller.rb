@@ -111,7 +111,7 @@ class Users::OmniauthCallbacksController < ApplicationController
 
   def assign_linkedin_data(user, data, email = false)
     user.email = data['email_address'] if email
-    user.first_name = data['first_name']
+    user.username = data['username']
     user.last_name = data['last_name']
     user.headline = data['headline']
     begin

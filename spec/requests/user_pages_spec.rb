@@ -40,7 +40,7 @@ describe "User pages" do
 
       it "should list each user" do
         User.approved.paginate(per_page: 7, page: 1).order('created_at desc').each do |user|
-          page.should have_selector('strong', text: user.name)
+          page.should have_selector('strong', text: user.username)
         end
       end
     end

@@ -49,7 +49,7 @@ class CasesController < ApplicationController
     @user = User.find(params[:user_id])
 
     unless Friendship.friendship(current_user, @user)
-      flash[:error] = "You are not friend with #{@user.name}"
+      flash[:error] = "You are not friend with #{@user.username}"
       redirect_to map_path and return
     end
 
@@ -73,7 +73,7 @@ class CasesController < ApplicationController
     respond_to do |format|
 
       if @case.save
-        flash[:success] = 'Feedback sent successfully to ' + @case.user.first_name
+        flash[:success] = 'Feedback sent successfully to ' + @case.user.username
         #redirect_to map_path
         format.js #for table form
       else

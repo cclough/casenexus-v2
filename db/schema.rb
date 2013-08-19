@@ -229,8 +229,7 @@ ActiveRecord::Schema.define(:version => 20130815001312) do
     t.string   "linkedin_uid"
     t.string   "linkedin_token"
     t.string   "linkedin_secret"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "username",                                  :null => false
     t.float    "lat"
     t.float    "lng"
     t.string   "skype"

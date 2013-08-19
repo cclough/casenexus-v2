@@ -6,8 +6,7 @@ class AddFieldsToUsersOld < ActiveRecord::Migration
     add_column :users, :linkedin_token, :string
     add_column :users, :linkedin_secret, :string
 
-    add_column :users, :first_name, :string
-    add_column :users, :last_name, :string
+    add_column :users, :username, :string, null: false
     add_column :users, :headline, :string
 
     add_column :users, :industry, :string

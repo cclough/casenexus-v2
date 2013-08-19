@@ -7,8 +7,8 @@
       .row
         .notifications_index_notifications_item_name.application_truncatable
           / - unless notifications_item.sender == nil 
-          /   = notifications_item.sender.name_trunc
-          = asso_user.name
+          /   = notifications_item.sender.username_trunc
+          = asso_user.username
 
       .row
         .notifications_index_notifications_item_caption.application_truncatable

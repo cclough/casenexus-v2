@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
     @user_target = user_target
     @url = url
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     @url = url
     @message = message
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -43,7 +43,7 @@ class UserMailer < ActionMailer::Base
     @date = date
     @subject = subject
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -55,7 +55,7 @@ class UserMailer < ActionMailer::Base
     @message = message
     @ntype = ntype
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -64,7 +64,7 @@ class UserMailer < ActionMailer::Base
     @user_target = user_target
     @url = url
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -88,7 +88,7 @@ class UserMailer < ActionMailer::Base
       attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_partnertoprepare.url))
     end
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -108,7 +108,7 @@ class UserMailer < ActionMailer::Base
       attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
     end
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -120,7 +120,7 @@ class UserMailer < ActionMailer::Base
   def password_reset(user)
     @user_target = user
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + "Password Reset")
   end
 
@@ -158,7 +158,7 @@ class UserMailer < ActionMailer::Base
 
     attachments["charts.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library','charts',book.charts_file_name))
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: Charts for a Case") 
 
   end
@@ -169,7 +169,7 @@ class UserMailer < ActionMailer::Base
     @user_target = user_target
     @url = url
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
@@ -177,7 +177,7 @@ class UserMailer < ActionMailer::Base
     @user_target = user_target
     @url = url
 
-    email_with_name = "#{@user_target.name} <#{@user_target.email}>"
+    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 end

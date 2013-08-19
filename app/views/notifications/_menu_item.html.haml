@@ -3,7 +3,7 @@
     .header_menu_notifications_avatar.span3
       = image_tag "avatars/icon.png"
     %div.header_menu_notifications_name
-      = notification.sender.name
+      = notification.sender.username
       %span.font-small.application_timestamp
         = time_ago_in_words(notification.created_at) + " ago"
     %div.font-small

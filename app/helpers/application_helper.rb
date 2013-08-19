@@ -76,13 +76,13 @@ module ApplicationHelper
     case type
       when "icon"
         avatar_url = "avatars/avatar_" + user.level + ".png"
-        avatar_alt = user.name + " has done " + user.cases.count.to_s + " cases"
-        link_to image_tag(avatar_url, alt: avatar_alt, class: "application_avatar_icon", "data-original-title"=>"Go to " + user.name + "'s profile", rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
+        avatar_alt = user.username + " has done " + user.cases.count.to_s + " cases"
+        link_to image_tag(avatar_url, alt: avatar_alt, class: "application_avatar_icon", "data-original-title"=>"Go to " + user.username + "'s profile", rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
 
       when "icon_inert"
         avatar_url = "avatars/avatar_" + user.level + ".png"
-        avatar_alt = user.name + " has done " + user.cases.count.to_s + " cases"
-        image_tag(avatar_url, alt: avatar_alt, class: "application_avatar_icon", "data-original-title" => user.name + " has done " + user.cases.count.to_s + " cases", rel: "tooltip", "data-placement"=>"right")
+        avatar_alt = user.username + " has done " + user.cases.count.to_s + " cases"
+        image_tag(avatar_url, alt: avatar_alt, class: "application_avatar_icon", "data-original-title" => user.username + " has done " + user.cases.count.to_s + " cases", rel: "tooltip", "data-placement"=>"right")
 
     end
   end

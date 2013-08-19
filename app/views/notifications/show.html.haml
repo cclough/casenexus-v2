@@ -1,5 +1,5 @@
 - provide(:title, 'Notification History')
-- provide(:sub_title, 'with ' + @sender.name)
+- provide(:sub_title, 'with ' + @sender.username)
 
 / :javascript
 /   //document.location.hash="#notification-#{@id}";
@@ -11,7 +11,7 @@
 .panel.darker.kill_right.kill_bottom
   .row#notifications_show_header
     .span.offset1
-      = @sender.name
+      = @sender.username
       .row
         - if @sender.last_online_at
           .span.application_lastonline
@@ -22,7 +22,7 @@
     .span.offset1
       - unless @sender.country.blank?
         .span3
-          = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.name
+          = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.username
 
 
   .spacer5

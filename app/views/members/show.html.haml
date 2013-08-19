@@ -13,7 +13,7 @@
       .row
         .span
           #map_index_user_profile_name.application_truncatable
-            = @user.name
+            = @user.username
       .row
         .span
           .application_lastonline
@@ -24,7 +24,7 @@
             %span#map_index_user_profile_removefriend
               - if Friendship.friends?(current_user, @user)
                 &#8226; 
-                = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.first_name + " as a contact?")
+                = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.username + " as a contact?")
       .row
         .span#map_index_user_profile_university
           - unless @user.university.blank?

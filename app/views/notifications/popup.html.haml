@@ -3,7 +3,7 @@
     = image_tag @notification.sender.university.image_file, class: "application_userimage_medium"
 .span23.offset1
   #application_notify_name.application_truncatable
-    = @notification.sender.name
+    = @notification.sender.username
   .row
     = @notification.title
   .row

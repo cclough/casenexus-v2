@@ -36,7 +36,7 @@
           .span2
             = image_tag "avatars/icon.png"
           .span13.offset1
-            = link_to @question.user.name, "/map?user_id=" +  @question.user.id.to_s
+            = link_to @question.user.username, "/map?user_id=" +  @question.user.id.to_s
 
     .row
       .offset6.span60
@@ -80,7 +80,7 @@
               .span2
                 = image_tag "avatars/icon.png"
               .span13.offset1
-                = link_to question_answer.user.name, "/map?user_id=" +  question_answer.user.id.to_s
+                = link_to question_answer.user.username, "/map?user_id=" +  question_answer.user.id.to_s
         .row
           .offset6.span60
             - if question_answer.comments.count > 0

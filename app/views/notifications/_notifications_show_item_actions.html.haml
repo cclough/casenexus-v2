@@ -15,7 +15,7 @@
   - when "friendship_app"
     - if notifications_show_item.notificable
       = link_to "/map?user_id=" + notifications_show_item.notificable.friend.id.to_s, class: "btn btn-inverse btn-small" do
-        Jump to #{notifications_show_item.notificable.friend.first_name}'s profile
+        Jump to #{notifications_show_item.notificable.friend.username}'s profile
 
 
       

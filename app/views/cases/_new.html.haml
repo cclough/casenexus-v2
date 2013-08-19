@@ -25,9 +25,9 @@
           .span5
             = image_tag "avatars/icon.png", class: "application_userimage_medium"
           .span#cases_new_target_name
-            = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.first_name}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
+            = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
               = image_tag @user.university.image_file, class: "application_userimage_small"
-              = @user.name
+              = @user.username
 
 
 
@@ -296,7 +296,7 @@
 
   .row
     .cases_new_block_title
-      Top Recommendations for #{@case.user.first_name}
+      Top Recommendations for #{@case.user.username}
     #cases_new_recommendations_panel.panel.dark.kill_top
       .row
         = f.text_area :recommendation1, placeholder: "1st Recommendation...", class: "cases_new_recommendation", tabindex: "4"

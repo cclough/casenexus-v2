@@ -13,7 +13,7 @@
   .row.application_bootstrap_alert_blue#events_calendar_reminder{"data-id" => event.id}
     %i.icon-exclamation
     Your next case is with
-    = event && event.partner && event.partner.name
+    = event && event.partner && event.partner.username
     on #{event.datetime.strftime("%A %e %B at %I:%M%p")}
 
 .row.panel.dark.kill_left.kill_right#events_calendar_container

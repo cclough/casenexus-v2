@@ -44,7 +44,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = current_user.friendships.find(params[:id])
     Friendship.breakup(@friendship.user, @friendship.friend)
-    flash[:success] = @friendship.friend.first_name + " is no longer your Case Partner."
+    flash[:success] = @friendship.friend.username + " is no longer your Case Partner."
     if params[:back_url]
       redirect_to params[:back_url]
     else
@@ -55,7 +55,7 @@ class FriendshipsController < ApplicationController
   def accept
     @friendship = current_user.friendships.find(params[:id])
     Friendship.accept(@friendship.user, @friendship.friend)
-    flash[:success] = @friendship.friend.first_name + " is now a Case Partner!"
+    flash[:success] = @friendship.friend.username + " is now a Case Partner!"
     if params[:back_url]
       redirect_to params[:back_url]
     else

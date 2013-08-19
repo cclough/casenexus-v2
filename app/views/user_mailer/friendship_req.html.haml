@@ -1,5 +1,5 @@
 %h3
-  #{@user_from.name} from #{@user_from.city}, #{@user_from.country} 
+  #{@user_from.username} from #{@user_from.city}, #{@user_from.country} 
 
 %p ...has asked to add you as their Case Partner.
 
@@ -8,4 +8,4 @@
 
 %p Accept this request to be able to communicate freely and arrange to meet in person or online, as well as send feedback to each other on the cases you do together.
  
-%p= link_to "Sign in to see this request from " + @user_from.first_name, @url, :method => "put"
+%p= link_to "Sign in to see this request from " + @user_from.username, @url, :method => "put"
