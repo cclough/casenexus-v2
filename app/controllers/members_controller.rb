@@ -40,6 +40,10 @@ class MembersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    unless Visit.create_new_visit_check?(current_user,@user)
+      @user.visits.create(visitor_id: current_user.id)
+    end
+
     render layout: false
   end
 

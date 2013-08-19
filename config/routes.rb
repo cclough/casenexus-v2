@@ -31,7 +31,7 @@ Casenexus::Application.routes.draw do
     put :show_help, on: :member
     get :random_name, on: :collection
     get :delete, on: :member
-    get :viewers, on: :collection
+    get :visitors, on: :collection
   end
 
   # Members

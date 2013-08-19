@@ -78,8 +78,8 @@
               %br
 
               .row
-                = link_to viewers_account_path do
-                  .profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "viewers") }
+                = link_to visitors_account_path do
+                  .profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "visitors") }
                     %i.icon-eye-open.icon-fixed-width
                     %span.offset1
                       Profile Visitors

@@ -13,7 +13,7 @@ class AccountController < ApplicationController
     render layout: 'profile'
   end
 
-  def viewers
+  def visitors
     @users = User.all
 
     render layout: 'profile'

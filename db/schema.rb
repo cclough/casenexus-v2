@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815001312) do
+ActiveRecord::Schema.define(:version => 20130819012441) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -261,6 +261,13 @@ ActiveRecord::Schema.define(:version => 20130815001312) do
   add_index "users", ["linkedin_uid"], :name => "index_users_on_linkedin_uid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["university_id"], :name => "index_users_on_university_id"
+
+  create_table "visits", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "visitor_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "votes", :force => true do |t|
     t.boolean  "vote",          :default => false, :null => false
