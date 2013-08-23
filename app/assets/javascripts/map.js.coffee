@@ -38,21 +38,23 @@ window.map_index_load_profile = (marker_id) ->
 
       $("#map_index_container_user_profile").html data
 
-      $("#map_index_container_user_profile").show "fast"
+      $("#map_index_container_user_profile").show "fast", ->
 
+        # Draw chart
+        window.map_index_user_profile_chart_activity_draw()
 
-      # Prime Button
-      $("#map_index_user_profile_button_message").click ->
-        friend_id = $(this).data "friend_id"
-        window.modal_message_show(friend_id,null)
+        # Prime Button
+        $("#map_index_user_profile_button_message").click ->
+          friend_id = $(this).data "friend_id"
+          window.modal_message_show(friend_id,null)
 
-      $("#map_index_user_profile_button_event").click ->          
-        friend_id = $(this).data("friend_id")
-        window.modal_event_new_show(friend_id,null)
+        $("#map_index_user_profile_button_event").click ->          
+          friend_id = $(this).data("friend_id")
+          window.modal_event_new_show(friend_id,null)
 
-      $("#map_index_user_profile_button_friendrequest").click ->
-        friend_id = $(this).data("friend_id")
-        window.modal_friendship_req_show(friend_id)
+        $("#map_index_user_profile_button_friendrequest").click ->
+          friend_id = $(this).data("friend_id")
+          window.modal_friendship_req_show(friend_id)
 
 
 
@@ -113,6 +115,72 @@ window.map_index_users_resetfilters = (filter_excep) ->
 window.map_index_users_search = ->
     $("#map_index_users_form_search_field").val($("#header_nav_panel_browse_search_field").val())
     map_index_users_updatelist()
+
+
+
+window.map_index_user_profile_chart_activity_draw = () ->
+  chart = undefined
+  
+  # SERIAL CHART
+  chart = new AmCharts.AmSerialChart()
+
+  chart.dataProvider = window.map_index_user_profile_chart_activity_data
+  chart.autoMarginOffset = 0
+  chart.marginRight = 0
+  chart.categoryField = "week"
+  
+  # this single line makes the chart a bar chart,              
+  chart.rotate = false
+  chart.depth3D = 20
+  chart.angle = 30
+  
+  # AXES
+  # Category
+  categoryAxis = chart.categoryAxis
+  categoryAxis.gridPosition = "start"
+  categoryAxis.axisColor = "#DADADA"
+  categoryAxis.fillAlpha = 0
+  categoryAxis.gridAlpha = 0
+  categoryAxis.fillColor = "#FAFAFA"
+  categoryAxis.labelsEnabled = false
+  
+  # value
+  valueAxis = new AmCharts.ValueAxis()
+  valueAxis.gridAlpha = 0
+  valueAxis.dashLength = 1
+  
+  # valueAxis.minimum = 1;
+  valueAxis.integersOnly = true
+  valueAxis.labelsEnabled = false
+  valueAxis.maximum = 5
+  chart.addValueAxis valueAxis
+  
+  # GRAPH
+  graph = new AmCharts.AmGraph()
+  graph.title = "Count"
+  graph.valueField = "count"
+  graph.type = "column"
+  graph.labelPosition = "bottom"
+  graph.color = "#ffffff"
+  graph.fontSize = 10
+  graph.labelText = "[[category]]"
+  graph.balloonText = "[[category]]: [[value]]"
+  graph.lineAlpha = 0
+  
+  # Balloon Settings
+  balloon = chart.balloon
+  balloon.adjustBorderColor = true
+  balloon.cornerRadius = 5
+  balloon.showBullet = false
+  balloon.fillColor = "#000000"
+  balloon.fillAlpha = 0.7
+  balloon.color = "#FFFFFF"
+  
+  graph.fillColors = "#0D8ECF"
+  graph.fillAlphas = 0.5
+  chart.addGraph graph
+
+  chart.write "map_index_user_profile_chart_activity"
 
 
 

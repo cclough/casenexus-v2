@@ -1,3 +1,8 @@
+
+:javascript
+  var map_index_user_profile_chart_activity_data = #{Case.user_activity_profile(@user)};
+
+
 .panel.darker#map_index_user_profile_panel_info
   .row
     .span.offset1
@@ -133,4 +138,5 @@
       = user_post.content_trunc
 .spacer10
 .row
-  ACTIVITY GRAPH
+  #map_index_user_profile_chart_activity
+.spacer50

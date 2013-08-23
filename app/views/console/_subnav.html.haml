@@ -33,7 +33,7 @@
     .span16.pull-right#console_index_subnav_select_friends_container
       %select#console_index_subnav_select_friends{name: "target_id", "data-placeholder" => "Select Friend" }
         %option Select Friend
-        = options_from_collection_for_select @friends, :id, :name, (@friend.id unless @friend.blank?)
+        = options_from_collection_for_select @friends, :id, :username, (@friend.id unless @friend.blank?)
         
 
     .span4#console_index_subnav_button_skype_container.pull-right

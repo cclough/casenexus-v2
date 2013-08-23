@@ -214,6 +214,62 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
+  def self.user_activity_profile(user)
+    array = []
+    user.cases.group_by{ |u| u.created_at.beginning_of_week }.each do |week, entries|
+      array << { week: week.strftime("%d %b"), count: entries.count }
+    end
+
+    array.to_json
+  end
+
+
+
+
+  # def self.user_activity_profile(user)
+  #   array = []
+  #   cases = user.cases
+  #   first = user.cases.first.created_at.beginning_of_week
+  #   last = user.cases.last.created_at.beginning_of_week
+
+  #   tmp = first
+  #   begin
+  #     tmp += 1.week
+  #     array << [
+  #       week: tmp.strftime("%d %b"), 
+  #       count: cases.where("created_at BETWEEN ? AND ?", tmp, tmp + 1.week).count
+  #     ]
+  #   end while tmp <= last
+
+  #   array.to_json
+
+  # end
+
+
+
+  # def self.user_activity_profile(user)
+  #   array = []
+  #   cases = user.cases
+  #   first = cases.first.created_at.beginning_of_week
+  #   last = cases.last.created_at.beginning_of_week
+
+  #   # tmp = first
+  #   # begin
+  #   #   tmp += 1.week
+  #   #   array << [
+  #   #     week: tmp.strftime("%d %b"), 
+  #   #     count: cases.where("created_at BETWEEN ? AND ?", tmp, tmp + 1.week).count
+  #   #   ]
+  #   # end while tmp <= last
+
+  #   (first..last).step(7.days) do |date|
+  #     array << { week: date.strftime("%d %b"), count: cases.where("created_at BETWEEN ? AND ?", date, date + 1.week).count }
+  #   end
+
+  #   array.to_json
+
+  # end
+
   def cases_show_chart_radar_data_all
     "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
      {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
