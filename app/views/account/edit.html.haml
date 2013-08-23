@@ -76,13 +76,13 @@
           .spacer15
 
           .row
-            %a.btn.btn-inverse.btn-small{href: "/account/edit_password"}
+            %a.btn.btn-info.btn-small{href: "/account/edit_password"}
               %i.icon-pencil
               Edit my password
 
           .spacer5
           .row
-            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-inverse btn-small")
+            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-info btn-small")
 
 
       .account_edit_form_spacer
@@ -222,4 +222,4 @@
 
       .row
         .panel.dark.kill_all#account_edit_form_submit_panel
-          = f.submit "Save changes", class: "btn btn-large btn-inverse", id: "account_edit_button_submit"
+          = f.submit "Save changes", class: "btn btn-large btn-info", id: "account_edit_button_submit"

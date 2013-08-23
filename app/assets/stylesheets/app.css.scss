@@ -408,9 +408,9 @@ a:hover {
   padding: 10px;
   // overflow:scroll;
 
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
-  border-radius:         5px;
+  -moz-border-radius:    0px;
+  -webkit-border-radius: 0px;
+  border-radius:         0px;
 
   &.gradient{
  
@@ -444,7 +444,7 @@ a:hover {
 
     // background: url('app/dark-bg.png') repeat top left;
 
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.1);
   }
 
   &.darker {
@@ -455,7 +455,7 @@ a:hover {
 
     // background: url('app/darker-bg.png') repeat top left;
 
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.1);
   }
 
   &.title {
@@ -470,7 +470,7 @@ a:hover {
     margin-top: 50px;
     margin-bottom: 0px;
 
-    background: url('app/title-bg.png') repeat top left;
+    background: rgba(0, 0, 0, 0.1);
 
 //    border: 1px solid gray;
 
@@ -521,7 +521,7 @@ a:hover {
 
 #application_title_title {
   font-weight:bold;
-  color:white;
+  color:$gray_Dark;
 }
 
 #application_title_sub_title {

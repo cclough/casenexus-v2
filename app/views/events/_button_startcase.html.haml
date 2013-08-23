@@ -1,8 +1,8 @@
 - unless @book_partnertoprepare.blank?
-  %a.btn.btn-inverse.btn-large{ href:"/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
+  %a.btn.btn-info.btn-large{ href:"/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
     %i.icon-arrow-right.icon-white
     Start case now as Interviewer
 - else
-  %a.btn.btn-inverse.btn-large{ href:"/console?friend_id=" + @event.partner.id.to_s }
+  %a.btn.btn-info.btn-large{ href:"/console?friend_id=" + @event.partner.id.to_s }
     %i.icon-arrow-right.icon-white
     Start case now as Interviewer

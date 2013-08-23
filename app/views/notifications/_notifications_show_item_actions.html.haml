@@ -1,6 +1,6 @@
 - case notifications_show_item.ntype
   - when "feedback"
-    = link_to '/cases/' + notifications_show_item.notificable.id.to_s, class: "btn btn-inverse btn-small" do
+    = link_to '/cases/' + notifications_show_item.notificable.id.to_s, class: "btn btn-info btn-small" do
       Jump to case record
   - when "friendship_req"
     - if notifications_show_item.notificable
@@ -9,12 +9,12 @@
       - elsif notifications_show_item.notificable.status == Friendship::REJECTED
         Request rejected
       - else
-        = link_to("Accept", accept_friendship_path(id: notifications_show_item.notificable, back_url: notifications_path), method: :put, class: "btn btn-inverse btn-small")
+        = link_to("Accept", accept_friendship_path(id: notifications_show_item.notificable, back_url: notifications_path), method: :put, class: "btn btn-info btn-small")
         = link_to("Reject", reject_friendship_path(id: notifications_show_item.notificable, back_url: notifications_path), method: :put, class: "btn btn-small")
         / = link_to("Block", block_friendship_path(notifications_show_item.notificable), method: :put)
   - when "friendship_app"
     - if notifications_show_item.notificable
-      = link_to "/map?user_id=" + notifications_show_item.notificable.friend.id.to_s, class: "btn btn-inverse btn-small" do
+      = link_to "/map?user_id=" + notifications_show_item.notificable.friend.id.to_s, class: "btn btn-info btn-small" do
         Jump to #{notifications_show_item.notificable.friend.username}'s profile
 
 

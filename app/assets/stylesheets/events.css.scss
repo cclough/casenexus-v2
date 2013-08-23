@@ -86,14 +86,14 @@ $blue_linkedin: #006699;
   }
 
   th {
-    background:rgba(0,0,0,0.6);
-    color: #666;
+    background:rgba(0,0,0,0.05);
+    color: $gray_Dark;
     text-align: center;
     width: 14.2857142857143%;
   }
 
   td {
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.05);
     color: $gray_Lightest;
     height: 65px !important;
 
@@ -103,8 +103,8 @@ $blue_linkedin: #006699;
     font-size: 10px;
   }
 
-  .notmonth, .notmonth a { color: #777; background:rgba(0,0,0,0.9); }
-  .today { background:rgba(0,0,0,0.2); }
+  .notmonth, .notmonth a { color: #777; background:rgba(0,0,0,0.3); }
+  .today { background:rgba(0,0,0,0.07); }
 }
 
 #events_calendar #events_calendar_month {
