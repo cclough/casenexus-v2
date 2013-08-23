@@ -19,6 +19,25 @@
 #= require lib/bootstrap-datetimepicker
 #= require bootstrap-wysihtml5
 
+
+
+
+
+#= require lib/bootstrap-select
+#= require lib/bootstrap-switch
+#= require lib/flatui-checkbox
+#= require lib/flatui-radio
+#= require lib/icon-font-ie7
+#= require lib/jquery.stacktable
+#= require lib/jquery.tagsinput
+#= require lib/jquery.ui.touch-punch.min
+
+
+
+
+
+
+
 # Get query params, global function
 
 window.getQueryParams = (qs) ->

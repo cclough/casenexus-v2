@@ -15,7 +15,7 @@
       - if @friend.blank?
         %select#events_new_friend_select.chzn-select.span28{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
           %option Choose a friend
-          = options_from_collection_for_select(current_user.accepted_friends, "id", "name")
+          = options_from_collection_for_select(current_user.accepted_friends, "id", "username")
       - else
         #events_new_friend_selected
           .span#events_edit_partner_avatar
