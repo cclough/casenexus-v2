@@ -37,7 +37,7 @@ $alert-yellow: #FFFF7E;
 
   height:100%;
   float:left;
-  background: url('app/bg-texture4.jpg') repeat top left;
+//  background: url('app/bg-texture4.jpg') repeat top left;
   overflow-y: auto;
   // border-left: 3px solid black;
 }
@@ -163,12 +163,14 @@ $alert-yellow: #FFFF7E;
   line-height:25px;
 
   a {
-    color:white;
+    color:$gray_Dark;
   }
   
   &:hover {
     background: rgba(0, 0, 0, 0.5);
-    color:white;
+    a {
+      color:black !important;
+    }
   }
 
   &.nonfriend {

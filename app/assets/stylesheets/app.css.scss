@@ -34,23 +34,23 @@ html {
 //  -o-background-size: cover;
 //  background-size: cover;
 
-  background: url('app/bg-texture4.jpg') repeat top left;
+//  background: url('app/bg-texture4.jpg') repeat top left;
 
 
   &.application_html_console {
-    background: url('app/bg-texture4.jpg') repeat top left;
-    -webkit-background-size: auto;
-    -moz-background-size: auto;
-    -o-background-size: auto;
-    background-size: auto;
-    overflow:hidden;
+//    background: url('app/bg-texture4.jpg') repeat top left;
+//    -webkit-background-size: auto;
+//    -moz-background-size: auto;
+//    -o-background-size: auto;
+//    background-size: auto;
+//    overflow:hidden;
   }
   &.application_html_map {
-    background: url('app/bg-texture4.jpg') repeat top left;
-    -webkit-background-size: auto;
-    -moz-background-size: auto;
-    -o-background-size: auto;
-    background-size: auto;
+//    background: url('app/bg-texture4.jpg') repeat top left;
+//    -webkit-background-size: auto;
+//    -moz-background-size: auto;
+//    -o-background-size: auto;
+//    background-size: auto;
   }
 }
 
@@ -72,26 +72,6 @@ body {
   }
 
   @include box_sizing; // references above, gets rid of margin at bottom of page without gradient - still not perfect
-
-}
-
-header {
-
-  background: #141414 !important;
-  
-  position:absolute;
-  top:0;
-  right:0;
-  left:0;
-
-  text-align:center !important;
-
-  margin-bottom:0px !important;
-  z-index:9999;
-
-  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
-  box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
 
 }
 
@@ -149,14 +129,14 @@ a:hover {
 
 
 // Supplementing bootstrap class
-.search-query {
-  background: white url(icons/search.png) no-repeat 95% 6px;
-  padding-right: 32px !important;
-  padding-left: 14px !important;
-  &.header {
-  background: white url(icons/search.png) no-repeat 95% 7px;    
-  }
-}
+//.search-query {
+//  background: white url(icons/search.png) no-repeat 95% 6px;
+//  padding-right: 32px !important;
+//  padding-left: 14px !important;
+//  &.header {
+//  background: white url(icons/search.png) no-repeat 95% 7px;    
+//  }
+//}
 
 .simple_form {
   margin-bottom:0px;
@@ -487,7 +467,7 @@ a:hover {
     -moz-border-top-right-radius: 0px;
     -webkit-border-top-right-radius: 0px;
 
-    margin-top: 40px;
+    margin-top: 50px;
     margin-bottom: 0px;
 
     background: url('app/title-bg.png') repeat top left;
