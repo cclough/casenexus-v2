@@ -2,11 +2,13 @@ window.map_index_map_markers = []
 window.map = null
 window.infobox = null
 
+
+
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
-  #window.map.panTo latlng
+  # window.map.panTo latlng
   window.map.panToWithOffset latlng, 0, -30
-  window.map.setZoom 9
+  window.map.setZoom 6
 
 
 # From http://stackoverflow.com/questions/8146676/google-maps-api-v3-offset-panto-by-x-pixels
@@ -26,7 +28,6 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 
-      
 window.map_index_load_profile = (marker_id) ->
 
 
@@ -85,6 +86,7 @@ window.map_index_users_updatelist = ->
   $.get("/members", $("#map_index_users_form").serialize(), null, "script")
   false
 
+
 window.map_index_users_resetfilters = (filter_excep) ->
 
   if (filter_excep != "country")
@@ -98,6 +100,7 @@ window.map_index_users_resetfilters = (filter_excep) ->
   if (filter_excep != "language")
     $("#map_index_users_form_pulldown_language_button").html "All Languages <span class=caret></span>"
     $("#users_filter_language").val ""
+
 
 window.map_index_users_search = ->
     $("#map_index_users_form_search_field").val($("#header_nav_panel_browse_search_field").val())
@@ -171,6 +174,14 @@ window.map_index_user_profile_chart_activity_draw = () ->
 
 
 
+window.map_index_map_load_all = (target_id, target_lat, target_lng) ->
+  target_latlng = new google.maps.LatLng target_lat, target_lng
+  window.map_index_map_pan target_latlng
+  window.map_index_load_profile target_id
+
+
+
+
 
 $(document).ready ->
 
@@ -190,6 +201,12 @@ $(document).ready ->
     backdrop: false
     show: false
 
+  # Switch view button - world vs local
+  $("#map_index_users_form_view_world_button").click ->
+    window.map.setZoom 1
+
+  $("#map_index_users_form_view_local_button").click ->
+    window.map_index_map_pan window.map_index_map_latlng_start
 
   # For Pull Downs
   $(".map_index_users_form_pulldown a").click ->
@@ -205,8 +222,6 @@ $(document).ready ->
     $("#users_filter_"+category).val(selection_id)
 
     map_index_users_updatelist()
-
-
 
     # Change filter button caption
     selection = $(this).data("name")
@@ -248,17 +263,27 @@ $(document).ready ->
   # Map
   if typeof map_index_map_lat_start is "string"
 
+    # Zoom according to div size: http://stackoverflow.com/questions/17412397/zoom-google-map-to-fit-the-world-on-any-screen
+    zl = Math.round(Math.log($("#map_index_map").width() / 512)) + 1
+
+    # Set start latlng var (used in several places in this file)
+    window.map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
+
     # Options for the map
     mapOptions =
-      center: new google.maps.LatLng(map_index_map_lat_start, map_index_map_lng_start)
-      zoom: 14
-      minZoom: 4
+      # center: window.map_index_map_latlng_start
+      center: new google.maps.LatLng(0, 0)
+      zoom: zl
+      minZoom: 1
       mapTypeId: "roadmap"
       disableDefaultUI: true
       zoomControl: true
       zoomControlOptions:
         position: google.maps.ControlPosition.LEFT_CENTER
-
+      styles: [
+        featureType: "water"
+        stylers: [color: "#FFFFFF"]
+      ]
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
@@ -273,15 +298,6 @@ $(document).ready ->
       if $("#map_index_map_zoomcontrol").length is 0
         $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
         $("div.gmnoprint").fadeIn 500
-
-
-    # Commented as now use infobox, do i still want possibly?
-
-    # Fade out user callout when moving away
-    # google.maps.event.addDomListener map, "bounds_changed", ->
-    #   $("#map_index_container_user").fadeOut "fast"
-
-
 
     # Marker
     shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
@@ -302,26 +318,20 @@ $(document).ready ->
           animation: google.maps.Animation.DROP
         )
         google.maps.event.addListener marker, "mouseover", ->
-          # map_index_map_subnav_mouseover(marker.id)
           map_index_load_infobox(marker.id)
 
         google.maps.event.addListener marker, "click", ->
-          map_index_load_profile(marker.id)
-
+          window.map_index_map_load_all marker.id, marker.lat, marker.lng
 
         map_index_map_markers[marker.id] = marker
 
 
-
       ######## PAGE LOAD:
 
-      # Pan
-      map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
-      window.map_index_map_pan map_index_map_latlng_start
-      
       # Load profile and infowindow
       window.map_index_load_profile map_index_map_marker_id_start
       window.map_index_load_infobox map_index_map_marker_id_start
+
 
 
   map_index_map_marker_locate = (marker) ->
@@ -332,7 +342,3 @@ $(document).ready ->
     setTimeout (->
       marker.setAnimation(null)
     ), 1440
-
-  map_index_map_subnav_mouseover = (marker_id) ->
-    # $.get "/members/" + marker_id + "/mouseover", (data) ->
-    #   $("#map_index_map_subnav_mouseover").html data

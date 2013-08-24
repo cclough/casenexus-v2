@@ -11,10 +11,8 @@ $('.map_index_users_item_button').click(function () {
   var target_lat = $(this).attr('data-lat');
   var target_lng = $(this).attr('data-lng');
 
-  var target_latlng = new google.maps.LatLng(target_lat, target_lng)
-  window.map_index_map_pan(target_latlng);
-  window.map_index_load_profile(target_id);
-  
+  window.map_index_map_load_all(target_id, target_lat, target_lng);
+
   setTimeout((function() {
     return window.map_index_load_infobox(target_id);
   }), 300);

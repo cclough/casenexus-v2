@@ -46,7 +46,7 @@ $blue_pastel: #98cdff;
   height:50px;
 }
 
-#map_index_users_subnav{
+#map_index_users_form_subnav{
   padding-right: 20px;
   text-align:center;
 
@@ -85,17 +85,9 @@ $blue_pastel: #98cdff;
   top:100px;
   bottom:0px;
 
-  border:1px solid black;
-
-
 }
 
 #map_index_map {
-  border-top:1px solid $gray_Light;
-  border-left:1px solid $gray_Mid;
-  border-bottom:1px solid $gray_Mid;
-  border-right:1px solid $gray_Mid;
-
   position:absolute;
   left:0px;
   right:0px;
@@ -141,7 +133,7 @@ $blue_pastel: #98cdff;
 }
 
 
-#map_index_users_subnav_filter {
+#map_index_users_form_subnav_filter {
   color:white;
   width:70px;
   font-weight:bold;

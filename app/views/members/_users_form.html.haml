@@ -6,22 +6,23 @@
   / .spacer5
   .row
 
-    #map_index_users_subnav.map_index_subnav
+    #map_index_users_form_subnav.map_index_subnav
       .btn-toolbar
-        .span#map_index_users_subnav_filter
+        .span#map_index_users_form_subnav_filter
           Filter
           %i.icon-caret-right.offset1
         .span.btn-group
           
-          %a.map_index_users_form_button.btn.btn-mini.btn-info{"data-radio"=>0} < 50mi
-          %a.map_index_users_form_button.btn.btn-mini.btn-info{"data-radio"=>1} Online Today
-          %a.map_index_users_form_button.btn.btn-mini.btn-info.active{"data-radio"=>2} Global
+          %a.map_index_users_form_button.btn.btn-small.btn-info{"data-radio"=>0} < 50mi
+          %a.map_index_users_form_button.btn.btn-small.btn-info{"data-radio"=>1} Online Today
+          %a.map_index_users_form_button.btn.btn-small.btn-info.active{"data-radio"=>2} Global
 
         .span
           .map_index_users_form_pulldown.btn-group
-            %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-mini.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
-              All Languages
-              %span.caret
+            %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
+              %span.filter-option.pull-left All Languages
+              &nbsp;
+              %span.caret.small
             %ul.dropdown-menu
               %li
                 / data-id is blank
@@ -34,7 +35,7 @@
 
         .span
           .map_index_users_form_pulldown.btn-group
-            %button#map_index_users_form_pulldown_university_button.map_index_users_form_pulldown_button.btn.btn-mini.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
+            %button#map_index_users_form_pulldown_university_button.map_index_users_form_pulldown_button.btn.btn-small.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
               All Universities
               %span.caret
             %ul.dropdown-menu
@@ -49,7 +50,7 @@
 
         .span
           .map_index_users_form_pulldown.btn-group
-            %button#map_index_users_form_pulldown_country_button.map_index_users_form_pulldown_button.btn.btn-mini.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
+            %button#map_index_users_form_pulldown_country_button.map_index_users_form_pulldown_button.btn.btn-small.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
               All Countries
               %span.caret
             %ul.dropdown-menu
@@ -62,6 +63,11 @@
                   %a{"data-category" => "country", "data-radio" => 5, "data-name" => country_item.name, "data-id" => country_item.id}
                     = country_item.name
 
+        .span.pull-right
+          #map_index_users_form_view_world_button.btn.btn-small.btn-info
+            World View
+          #map_index_users_form_view_local_button.btn.btn-small.btn-info
+            Local to you
   #map_index_users_form_radiogroup
     = radio_button_tag :users_listtype, 'local'
     = radio_button_tag :users_listtype, 'online_today'
