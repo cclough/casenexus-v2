@@ -24,6 +24,10 @@ header {
 
   height:50px;
 
+  &.signedout {
+    height:80px;
+  }
+
   text-align:center !important;
 
   margin-bottom:0px !important;
@@ -41,12 +45,11 @@ header {
   top: 6px;
   padding:2px 10px 2px 10px;
   &.signedout {
-    top:18px;
+    top:20px;
   }
-
-    &:hover {
-      background:$gray_Lightest;
-    }
+  &:hover {
+    background:$gray_Lightest;
+  }
 }
 
 .navbar-inner {

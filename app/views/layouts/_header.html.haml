@@ -1,4 +1,4 @@
-%header.navbar
+%header.navbar{:class => ("signedout" if !signed_in?) }
   .navbar-inner{:class => ("signedout" if !signed_in?) }
     .container
       #header_logo_nav{:class => ("signedout" if !signed_in?) }

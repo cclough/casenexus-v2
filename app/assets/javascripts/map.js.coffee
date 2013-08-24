@@ -5,7 +5,7 @@ window.infobox = null
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   #window.map.panTo latlng
-  window.map.panToWithOffset latlng, 0, -100
+  window.map.panToWithOffset latlng, 0, -30
   window.map.setZoom 9
 
 
@@ -71,23 +71,10 @@ window.map_index_load_infobox = (marker_id) ->
       b.html data
       window.infobox.setContent b.html()
       
-      # Code for 'close button'
-      $("#map_index_user_infobox_close").click ->
+      # Click to close
+      $("#map_index_container_user_infobox").click ->
         $("#map_index_container_user_infobox").fadeOut "fast", ->
           window.infobox.close()
-
-      # Prime Button
-      $("#map_index_user_infobox_button_message").click ->
-        friend_id = $(this).data "friend_id"
-        window.modal_message_show(friend_id)
-
-      $("#map_index_user_infobox_button_event").click ->
-        friend_id = $(this).data("friend_id")
-        window.modal_event_new_show(friend_id)
-
-      $("#map_index_user_infobox_button_friendrequest").click ->
-        friend_id = $(this).data("friend_id")
-        window.modal_friendship_req_show(friend_id)
 
       window.infobox.open map, marker
 
@@ -277,7 +264,8 @@ $(document).ready ->
 
     # New infobox with offset
     window.infobox = new InfoBox
-      pixelOffset: new google.maps.Size(-200, -419)
+      # (h,v), (minus is left ,minus is up)
+      pixelOffset: new google.maps.Size(-50, -200)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->

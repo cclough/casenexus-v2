@@ -312,13 +312,16 @@ $(document).ready ->
   # Jquery truncate
   window.application_truncatables()
 
+  # Switch
+  $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch()
+
   # Chosen
   $(".chzn-select").chosen()
   $(".chzn-select-nosearch").chosen disable_search_threshold: 10
   $(".chzn-select-tags").chosen max_selected_options: 5
 
   # Style for the checkboxes
-  $("input:checkbox").uniform()
+  # $("input:checkbox").uniform()
 
   # Tooltips on Avatars
   $(".application_avatar_icon").tooltip()

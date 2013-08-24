@@ -37,18 +37,28 @@ $blue_pastel: #98cdff;
 
 
 
-#map_index_container_form {
+#map_index_container_subnav {
+  background:$gray_Light;
   position:absolute;
   right:0px;
   left:0px;
   top:50px;
-  height:40px;
+  height:50px;
 }
+
+#map_index_users_subnav{
+  padding-right: 20px;
+  text-align:center;
+
+  .btn-toolbar {
+  }
+}
+
 
 #map_index_container_users {
   position:absolute;
   left:0;
-  top:90px;
+  top:100px;
   width:300px;
   height:500px;
 
@@ -72,9 +82,8 @@ $blue_pastel: #98cdff;
   position:absolute;
   left:300px;
   right:0px;
-  top:90px;
-  bottom:300px;
-  height:500px;
+  top:100px;
+  bottom:0px;
 
   border:1px solid black;
 
@@ -86,15 +95,24 @@ $blue_pastel: #98cdff;
   border-left:1px solid $gray_Mid;
   border-bottom:1px solid $gray_Mid;
   border-right:1px solid $gray_Mid;
-}
-
-
-#map_index_container_user_profile {
 
   position:absolute;
   left:0px;
   right:0px;
-  top:500px;
+  top:0px;
+  bottom:0px;
+}
+
+
+#map_index_container_user_profile {
+  display:none;
+
+  z-index:1000;
+  background:rgba(255,255,255,0.9);
+  position:absolute;
+  left:300px;
+  right:0px;
+  height:150px;
   bottom:0px;
 
   overflow-y:auto;
@@ -106,48 +124,25 @@ $blue_pastel: #98cdff;
 }
 
 
-#map_index_user_profile_chart_activity {
-  width:400px;
-  height:200px;
-}
-
 
 /////////////////////////
 
 
 
+.map_index_users_form_pulldown {
+  text-align:left;
+  margin-left:3px;
+  margin-right:3px;
+}
 
 #map_index_users_form {
   // margin-top:10px;
 
 }
 
-#map_index_users_subnav{
-
-  height: 40px;
-  padding-right: 20px;
-
-  text-align:center;
-
-  // overflow-x:hidden;
-
-  .btn-toolbar {
-    margin-top:8px;
-    margin-bottom:3px;
-  }
-
-  .map_index_users_form_pulldown {
-    text-align:left;
-    margin-left:3px;
-    margin-right:3px;
-  }
-}
 
 #map_index_users_subnav_filter {
   color:white;
-  // background: rgba(0, 0, 0, 0.6);
-  // line-height:38px;
-  // height:40px;
   width:70px;
   font-weight:bold;
   font-size:12px;
@@ -287,13 +282,7 @@ $blue_pastel: #98cdff;
   // Fade in wont work!
   // display:none;
 
-  width:400px;
-
-  background: rgba(0, 0, 0, 0.7);
-
-  -webkit-box-shadow: 0px 16px 26px rgba(0, 0, 0, 0.9);
-  -moz-box-shadow:    0px 16px 26px rgba(0, 0, 0, 0.9);
-  box-shadow:         0px 16px 26px rgba(0, 0, 0, 0.9);
+  width:100px;
 
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -304,191 +293,6 @@ $blue_pastel: #98cdff;
   }
 
 }
-
-
-#map_index_container_user_infobox:after {
-   content:"";
-   position: absolute;
-   left: 50%;
-   top: 100%;
-   margin-left:-18px;
-   width: 0;
-   height: 0;
-   border-left: 18px solid transparent;
-   border-top: 36px solid rgba(0, 0, 0, 0.6);;
-   border-right: 18px solid transparent;
-}
-
-
-#map_index_user_infobox_removefriend {
-  a:hover {
-    color: $gray_Light !important;
-    transition: color .1s ease-in !important;
-    -moz-transition: color .1s ease-in !important;
-    -webkit-transition: color .1s ease-in !important;
-    -o-transition: color .1s ease-in !important;
-  }
-}
-
-
-
-#map_index_user_infobox_close {
-  border: 0;
-}
-
-#map_index_user_infobox_name {
-  font-size:24px;
-  width:200px;
-}
-
-#map_index_user_infobox_avatar {
-  text-align:center;
-  img{
-    max-width:40px;    
-  }
-
-  // ADJUST THIS TO STOP TWITCH ON LOAD
-  height:69px;
-}
-
-
-#map_index_user_infobox_points {
-  font-size:18px;
-  border:2px solid white;
-  padding:5px;
-  text-align:center;
-  color:white;
-  font-weight:bold;
-
-
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
-  border-radius:         5px;
-
-}
-
-#map_index_user_infobox_university, #map_index_user_infobox_country {
-  font-size:11px;
-  text-align:center;
-}
-
-
-#map_index_user_infobox_panel_info {
-  margin:2px;
-}
-
-
-
-
-#map_index_user_infobox_panel_actions, #map_index_user_infobox_panel_associations {
-  width:177px;
-
-  margin: 0px 2px 2px 2px;
-
-  font-size:12px !important;   
-
-  text-align:center;
-
-  height: 161px;
-
-
-
-  .btn {
-    padding:7px;
-    margin:0px 2px;
-    line-height:12px;
-    width:68px
-  }
-}
-
-#map_index_user_infobox_panel_associations_subpanel_languages {
-  height:50px;
-  line-height:17px;
-  overflow-y:auto;
-}
-
-
-
-
-
-
-#map_index_user_infobox_panel_actions {
-  margin-left:0;
-}
-
-
-
-#map_index_user_infobox_panel_subtitle {
-  background: rgba(0, 0, 0, 0.4);
-  height:18px;
-  padding:2px;
-  text-align:center;
-  font-weight: bold;
-  font-size:12px;
-  line-height:19px;
-  margin:5px -10px 5px -10px;  
-  &.top {
-    margin:-10px -10px 5px -10px;
-  }
-  color: $gray_Lighter;
-}
-
-
-
-#map_index_user_infobox_panel_skype {
-  img {
-    max-height:10px;
-    min-width:10px;
-  }
-}
-
-
-
-
-.map_index_user_infobox_association_item {
-
-  color: $gray_Lighter;
-
-  padding:3px;
-
-  // background: url('app/dark-bg.png') repeat top left;
-
-  list-style:none;
-
-}
-
-
-
-
-
-#map_index_user_infobox_button_startcase, #map_index_user_infobox_button_event {
-  height:50px;
-  line-height:50px !important;
-}
-
-
-
-
-
-
-
-
-
-#map_index_user_infobox_button_friendrequest{
-  width:100px !important;
-  min-height:95px !important;
-  line-height:17px !important;
-
-  div {
-    margin-bottom:7px;
-  }
-}
-
-#map_index_user_infobox_friendpending {
-  margin-top:54px;
-  color:#fffa6f;
-}
-
 
 
 
@@ -622,13 +426,9 @@ $blue_pastel: #98cdff;
 
   padding:3px;
 
-  // background: url('app/dark-bg.png') repeat top left;
-
   list-style:none;
 
 }
-
-
 
 
 
@@ -636,11 +436,6 @@ $blue_pastel: #98cdff;
   height:50px;
   line-height:50px !important;
 }
-
-
-
-
-
 
 
 
@@ -658,4 +453,10 @@ $blue_pastel: #98cdff;
 #map_index_user_profile_friendpending {
   margin-top:54px;
   color:#fffa6f;
+}
+
+
+#map_index_user_profile_chart_activity {
+  width:400px;
+  height:200px;
 }
