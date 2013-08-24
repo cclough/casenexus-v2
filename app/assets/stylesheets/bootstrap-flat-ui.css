@@ -632,9 +632,9 @@ a.muted:focus {
   line-height: 22px;
   text-decoration: none;
   text-shadow: none;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -830,7 +830,7 @@ a.muted:focus {
 .btn-toolbar .btn.active {
   color: #ffffff;
 }
-.btn-toolbar .btn:first-child {
+/*.btn-toolbar .btn:first-child {
   -webkit-border-radius: 6px 0 0 6px;
   -moz-border-radius: 6px 0 0 6px;
   border-radius: 6px 0 0 6px;
@@ -839,7 +839,7 @@ a.muted:focus {
   -webkit-border-radius: 0 6px 6px 0;
   -moz-border-radius: 0 6px 6px 0;
   border-radius: 0 6px 6px 0;
-}
+}*/
 .btn-toolbar .btn > [class^="fui-"] {
   font-size: 16px;
   top: 0;
@@ -856,14 +856,14 @@ a.muted:focus {
 .btn-group > .btn.active + .btn {
   border-left-color: transparent;
 }
-.btn-group > .btn:first-of-type {
+/*.btn-group > .btn:first-of-type {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
 .btn-group > .btn:last-of-type {
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-}
+}*/
 .btn-group > .btn + .btn {
   margin-left: 0;
 }
