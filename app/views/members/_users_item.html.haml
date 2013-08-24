@@ -13,8 +13,6 @@
         %span.fui-user
     .spacer5
     .row
-      .map_index_users_item_name.application_truncatable
-        = users_item.username
       .map_index_users_item_lastonline{ class: ("onlinenow" if users_item.online_now?) }
         - unless users_item.last_online_at.blank?
           = time_ago_in_words(users_item.last_online_at)
