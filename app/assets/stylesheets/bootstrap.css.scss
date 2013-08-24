@@ -3750,7 +3750,7 @@ input[type="button"].btn-block {
 .btn-danger.active,
 .btn-success.active,
 .btn-info.active,
-.btn-info.active {
+.btn-inverse.active {
   color: rgba(255, 255, 255, 0.75);
 }
 .btn {
@@ -3912,7 +3912,7 @@ input[type="button"].btn-block {
 .btn-info.active {
   background-color: #24748c \9;
 }
-.btn-info {
+.btn-inverse {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #363636;
@@ -3930,17 +3930,17 @@ input[type="button"].btn-block {
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
-.btn-info:hover,
-.btn-info:active,
-.btn-info.active,
-.btn-info.disabled,
-.btn-info[disabled] {
+.btn-inverse:hover,
+.btn-inverse:active,
+.btn-inverse.active,
+.btn-inverse.disabled,
+.btn-inverse[disabled] {
   color: #ffffff;
   background-color: #222222;
   *background-color: #151515;
 }
-.btn-info:active,
-.btn-info.active {
+.btn-inverse:active,
+.btn-inverse.active {
   background-color: #080808 \9;
 }
 button.btn,
@@ -4046,7 +4046,24 @@ input[type="submit"].btn.btn-mini {
 .btn-group > .btn-large {
   font-size: 16px;
 }
-
+.btn-group > .btn:first-child {
+  margin-left: 0;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+}
+.btn-group > .btn:last-child,
+.btn-group > .dropdown-toggle {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
 .btn-group > .btn.large:first-child {
   margin-left: 0;
   -webkit-border-top-left-radius: 6px;
@@ -4124,7 +4141,7 @@ input[type="submit"].btn.btn-mini {
 .btn-group.open .btn-info.dropdown-toggle {
   background-color: #2f96b4;
 }
-.btn-group.open .btn-info.dropdown-toggle {
+.btn-group.open .btn-inverse.dropdown-toggle {
   background-color: #222222;
 }
 .btn .caret {
@@ -4150,7 +4167,7 @@ input[type="submit"].btn.btn-mini {
 .btn-danger .caret,
 .btn-info .caret,
 .btn-success .caret,
-.btn-info .caret {
+.btn-inverse .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }

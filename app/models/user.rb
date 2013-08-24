@@ -183,8 +183,8 @@ class User < ActiveRecord::Base
     #   where(active: false)
     # end
 
-    def markers
-      User.completed.not_admin.includes(:cases).all.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+    def markers(users)
+      users.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
     end
 
     def confirmed
@@ -224,16 +224,16 @@ class User < ActiveRecord::Base
     end
 
     def list_local(user)
-      user.nearbys(50).completed.not_admin.order('created_at desc')
+      user.nearbys(50).completed.not_admin
     end
 
     def list_online_today
-      completed.not_admin.online_today.order('last_online_at desc')
+      completed.not_admin.online_today
     end
 
 
     def list_online_recently_notfriends(user)
-      not_friends(user).completed.online_recently.order('last_online_at desc')
+      not_friends(user).completed.online_recently
       # user.not_friends.completed.online_recently.order('last_online_at desc')
     end
 

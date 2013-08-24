@@ -173,10 +173,11 @@ a:hover {
 
 
 
-#application_container_main {
+#application_container_master {
 
   position:absolute;
   left:0;
+  top:0;
   bottom:0;
 
   @media (min-width: 1201px) {
@@ -186,19 +187,24 @@ a:hover {
     right:0px;
   }
 
-  height:100%;
   float:left;
-
-  overflow-y: auto;
 
 }
 
+#application_container_main {
+  position:absolute;
+  top:50px;
+  right:0px;
+  left:0px;
+  bottom:0px;
+  overflow-y: auto !important;
+}
+
 .container {
+
   &.main{
-    margin-top:50px;
     min-height: 100%;
     background: url('app/white-wash.png');
-
   }
   &.home {
     position:absolute;

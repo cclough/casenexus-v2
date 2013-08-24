@@ -3,7 +3,7 @@
     .row
       - unless users_item.country.blank?
         .map_index_users_item_country.pull-left
-          = image_tag "countries/"+users_item.country.code.to_s+".png", alt: users_item.country.name
+          / = image_tag "countries/"+users_item.country.code.to_s+".png", alt: users_item.country.name
 
       .map_index_users_item_reputation.pull_right
         = users_item.points_tally

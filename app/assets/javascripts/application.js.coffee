@@ -12,7 +12,6 @@
 
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
-#= require lib/jquery.inview
 #= require lib/jquery.truncate
 
 #= require lib/bootstrap.min

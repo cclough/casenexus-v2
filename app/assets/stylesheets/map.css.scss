@@ -37,30 +37,22 @@ $blue_pastel: #98cdff;
 
 
 
-#map_index_container_subnav {
+#map_index_container_form {
   background:$gray_Light;
   position:absolute;
   right:0px;
   left:0px;
-  top:50px;
+  top:0px;
   height:50px;
-}
-
-#map_index_users_form_subnav{
-  padding-right: 20px;
-  text-align:center;
-
-  .btn-toolbar {
-  }
 }
 
 
 #map_index_container_users {
   position:absolute;
   left:0;
-  top:100px;
+  top:50px;
+  bottom:0px;
   width:300px;
-  height:500px;
 
   overflow-y:auto;
 
@@ -82,7 +74,7 @@ $blue_pastel: #98cdff;
   position:absolute;
   left:300px;
   right:0px;
-  top:100px;
+  top:50px;
   bottom:0px;
 
 }
@@ -128,8 +120,7 @@ $blue_pastel: #98cdff;
 }
 
 #map_index_users_form {
-  // margin-top:10px;
-
+//  margin-top:10px;
 }
 
 
@@ -139,12 +130,6 @@ $blue_pastel: #98cdff;
   font-weight:bold;
   font-size:12px;
 }
-
-
-.map_index_subnav {
-  background:$gray_Light;
-}
-
 
 
 

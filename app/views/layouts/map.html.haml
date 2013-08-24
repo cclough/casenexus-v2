@@ -36,12 +36,13 @@
 
   %body
 
-    #application_container_main
+    #application_container_master
       = render 'layouts/header'
 
       = render 'layouts/flash', flash: flash
 
-      = yield
+      #application_container_main
+        = yield
 
     = render 'onlinepanel/container'
 

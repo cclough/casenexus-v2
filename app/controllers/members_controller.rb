@@ -22,16 +22,17 @@ class MembersController < ApplicationController
         users_scope = User.includes(:cases).list_university(params[:users_filter_university])
       when "country"
         users_scope = User.includes(:cases).list_country(params[:users_filter_country])
-
+    else
+      # users_scope = User.includes(:cases).list_global
     end
 
     if users_scope
-      @users = users_scope.search_for(params[:search]).paginate(per_page: 16, page: params[:page])
+      @users = users_scope.search_for(params[:search]).order("last_online_at desc").paginate(per_page: 20, page: params[:page])
     end
 
     respond_to do |format|
       format.js # links index.js.erb!
-      format.json { render json: User.markers } # USING get_markers_within_viewport INSTEAD
+      format.json { render json: User.markers(@users) } # USING get_markers_within_viewport INSTEAD
     end
 
   end

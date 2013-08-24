@@ -1,9 +1,0 @@
-$('#notifications_index_notifications').append("<%= escape_javascript(render partial: "notifications", :locals => { :notifications => @notifications })%>");
-
-$('a.load-more-posts').attr('href', '<%= notifications_path page: @notifications.next_page %>');
- 
-window.application_truncatables()
-
-<%- unless @notifications.next_page %>
-  $('a.load-more-posts').remove();
-<% end %>

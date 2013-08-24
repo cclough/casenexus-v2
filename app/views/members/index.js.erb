@@ -1,6 +1,8 @@
 // Re-renders the user list
 $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
+window.map_index_map_markers_draw();
+
 // Tooltips on Avatars
 $(".application_avatar_icon").tooltip()
 

@@ -24,20 +24,20 @@
     
   %body
 
-    #application_container_main
+    #application_container_master
     
       = render 'layouts/header'
 
       = render 'layouts/flash', flash: flash
 
-      .container.main
-        = render 'shared/title'
-        .row
-          .span100
-            = yield
+      #application_container_main
+        .container.main
+          .row
+            .span100
+              = yield
 
-        / footer
-        = render 'layouts/footer'
+          / footer
+          = render 'layouts/footer'
 
     = render 'onlinepanel/container'
 

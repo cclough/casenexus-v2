@@ -8,11 +8,6 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 20, page: params[:page])
-    respond_to do |format|
-      format.html
-      format.js # for infinite scroll
-    end
-
   end
 
   def show

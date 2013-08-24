@@ -1,3 +1,49 @@
+
+  # 50.times do |n|
+
+  #   university_rand = 1 + rand(10)
+  #   email = "example#{n+100}@" + University.find(university_rand).domain
+
+  #   password = "password"
+  #   lat = -90 + rand(180)
+  #   lng = -180 + rand(360)
+  #   skype = "skpye"
+  #   language_ids = 1
+
+  #   subject_id = rand(15)
+  #   degree_level = rand(1)
+
+  #   cases_external = 10
+
+  #   confirm_tac = "1"
+
+  #   time_zone = ["Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic", "Fiji"].sample
+
+  #   ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
+
+  #   user = User.new(email: email, password: password,
+  #                   password_confirmation: password,
+  #                   lat: lat, lng: lng,
+  #                   language_ids: language_ids,
+  #                   skype: skype,
+  #                   subject_id: subject_id,
+  #                   degree_level: degree_level,
+  #                   cases_external: cases_external,
+  #                   confirm_tac: confirm_tac,
+  #                   ip_address: ip_address,
+  #                   time_zone: time_zone,
+  #                   invitation_code: 'BYPASS_CASENEXUS_INV')
+
+  #   user.completed = true
+  #   user.save!
+  #   user.confirm!
+
+  #   puts "User #{user.username} created"
+
+  # end
+
+
+
 if %w(production development).include?(Rails.env) && User.count == 0
   
   puts "Creating countries"

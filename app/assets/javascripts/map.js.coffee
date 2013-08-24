@@ -27,7 +27,6 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
   ov.setMap this
 
 
-
 window.map_index_load_profile = (marker_id) ->
 
 
@@ -186,6 +185,47 @@ window.map_index_map_load_all = (target_id, target_lat, target_lng) ->
 
 
 
+
+map_index_map_markers_clear = ->
+
+  if map_index_map_markers
+    for i of map_index_map_markers
+      map_index_map_markers[i].setMap null
+    map_index_map_markers.length = 0
+
+
+window.map_index_map_markers_draw = () ->
+
+  # Marker
+  shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
+
+  map_index_map_markers_clear()
+
+  # Get the members
+  $.getJSON "members", $("#map_index_users_form").serialize(), (json) ->
+    $.each json, (i, marker) ->
+
+      # Draw markers
+      image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
+
+      marker = new google.maps.Marker(
+        id: marker.id
+        map: map
+        position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
+        icon: image
+        shadow: shadow
+        animation: google.maps.Animation.DROP
+      )
+      google.maps.event.addListener marker, "mouseover", ->
+        map_index_load_infobox(marker.id)
+
+      google.maps.event.addListener marker, "click", ->
+        window.map_index_map_load_all marker.id, marker.lat, marker.lng
+
+      map_index_map_markers[marker.id] = marker
+
+
+
 $(document).ready ->
 
   # Update the list of users
@@ -272,12 +312,13 @@ $(document).ready ->
     # Set start latlng var (used in several places in this file)
     window.map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
 
+    zl = map_index_map_zoomcalc()
     # Options for the map
     mapOptions =
       # center: window.map_index_map_latlng_start
       center: new google.maps.LatLng(0, 0)
-      zoom: map_index_map_zoomcalc()
-      minZoom: 1
+      zoom: zl
+      minZoom: zl
       mapTypeId: "roadmap"
       disableDefaultUI: true
       zoomControl: true
@@ -286,7 +327,17 @@ $(document).ready ->
       styles: [
         featureType: "water"
         stylers: [color: "#FFFFFF"]
+      ,
+        featureType: "landscape.natural"
+        elementType: "all"
+        stylers: [
+          hue: "#7bcdff"
+        ,
+          lightness: 3
+        ]
       ]
+
+
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
@@ -302,38 +353,38 @@ $(document).ready ->
         $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
         $("div.gmnoprint").fadeIn 500
 
-    # Marker
-    shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
 
-    # Get the members
-    $.getJSON "members", (json) ->
-      $.each json, (i, marker) ->
+    # # Get the members
+    # $.getJSON "members", (json) ->
+    #   $.each json, (i, marker) ->
 
-        # Draw markers
-        image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
+    #     # Draw markers
+    #     image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
 
-        marker = new google.maps.Marker(
-          id: marker.id
-          map: map
-          position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
-          icon: image
-          shadow: shadow
-          animation: google.maps.Animation.DROP
-        )
-        google.maps.event.addListener marker, "mouseover", ->
-          map_index_load_infobox(marker.id)
+    #     marker = new google.maps.Marker(
+    #       id: marker.id
+    #       map: map
+    #       position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
+    #       icon: image
+    #       shadow: shadow
+    #       animation: google.maps.Animation.DROP
+    #     )
+    #     google.maps.event.addListener marker, "mouseover", ->
+    #       map_index_load_infobox(marker.id)
 
-        google.maps.event.addListener marker, "click", ->
-          window.map_index_map_load_all marker.id, marker.lat, marker.lng
+    #     google.maps.event.addListener marker, "click", ->
+    #       window.map_index_map_load_all marker.id, marker.lat, marker.lng
 
-        map_index_map_markers[marker.id] = marker
+    #     map_index_map_markers[marker.id] = marker
 
+    window.map_index_map_markers_draw()
 
-      ######## PAGE LOAD:
+    ######## PAGE LOAD:
 
-      # Load profile and infowindow
-      window.map_index_load_profile map_index_map_marker_id_start
-      window.map_index_load_infobox map_index_map_marker_id_start
+    # Load profile and infowindow
+    window.map_index_load_profile map_index_map_marker_id_start
+    window.map_index_load_infobox map_index_map_marker_id_start
+
 
 
 

@@ -28,11 +28,3 @@ $(document).ready ->
     # add selected class
     $(".notifications_index_notifications_item").removeClass "select"
     $(this).addClass "select"
-
-
-  # for index infinite scrolling
-  $('a.load-more-posts').on 'inview', (e, visible) ->
-    return unless visible
-    
-    $.getScript $(this).attr('href')
-

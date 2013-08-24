@@ -30,27 +30,25 @@
 
 
 
-    #application_container_main
+    #application_container_master
 
       = render 'layouts/header'
 
       = render 'layouts/flash', flash: flash
 
+      #application_container_main
+        .container.main
+          .row
+            .span77
 
-      .container.main
-        = render 'shared/title'
+              = yield
 
-        .row
-          .span77
+            .span23
 
-            = yield
+              = yield :questions_sidecolumn_includes
 
-          .span23
-
-            = yield :questions_sidecolumn_includes
-
-        / footer
-        = render 'layouts/footer'
+          / footer
+          = render 'layouts/footer'
 
 
     = render 'onlinepanel/container'
