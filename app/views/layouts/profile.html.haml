@@ -43,87 +43,13 @@
       = render 'layouts/flash', flash: flash
 
 
+      #application_container_profilenav
+        = render 'layouts/profilenav'
+        
       #application_container_main
         .container.main
 
-          .row
-            .span25
-              .panel.dark.kill_bottom#profile_nav
-
-                .row
-                  = link_to summary_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "summary") }
-                      %i.icon-home.icon-fixed-width
-                      %span.offset1
-                        Summary
-                .row
-                  = link_to events_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "events") }
-                      %i.icon-calendar.icon-fixed-width
-                      %span.offset1
-                        Calendar
-                
-                .row
-                  = link_to cases_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
-                      %i.icon-edit.icon-fixed-width
-                      %span.offset1
-                        Cases
-                .row
-                  = link_to analysis_cases_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
-                      %i.icon-bar-chart.icon-fixed-width
-                      %span.offset1
-                        Analysis
-                  
-                %br
-
-                .row
-                  = link_to visitors_account_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "visitors") }
-                      %i.icon-eye-open.icon-fixed-width
-                      %span.offset1
-                        Profile Visitors
-
-                %br
-
-                .row
-                  = link_to notifications_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "notifications") }
-                      %i.icon-comments-alt.icon-fixed-width
-                      %span.offset1
-                        Notifications
-                
-                .row
-                  = link_to edit_account_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
-                      %i.icon-cogs.icon-fixed-width
-                      %span.offset1
-                        Settings
-
-                .row
-                  = link_to invitations_path do
-                    .profile_nav_item{:class => ("active" if params[:controller] == "invitations") }
-                      %i.icon-user.icon-fixed-width
-                      %span.offset1
-                        Invite Friends
-
-                %br
-
-
-                .row
-                  = link_to destroy_user_session_path, method: :delete do
-                    .profile_nav_item
-                      %i.icon-bolt.icon-fixed-width
-                      %span.offset1
-                        %strong
-                          Sign out
-
-
-
-
-            .span.profile_container_Width
-              = yield
+          = yield
 
           / footer
           = render 'layouts/footer'

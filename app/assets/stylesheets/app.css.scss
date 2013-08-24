@@ -191,11 +191,45 @@ a:hover {
 
 }
 
+#application_container_profilenav {
+  position:absolute;
+  top: 50px;
+  left:0px;
+  bottom:0px;
+  width:75px;
+  background:black;
+}
+
+#application_profilenav {
+  font-size:30px;
+  color:white;
+}
+
+
+
+.application_profilenav_item {
+  padding: 10px;
+  text-align:center;
+  
+  &.active {
+    border: 1px solid white;
+    // background: rgba(0, 0, 0, 0.6);
+    background: url('app/title-bg.png') repeat top left;
+    margin: 0 -20px 0 -20px;
+    padding-left:30px;
+    font-weight:bold;
+    color:white !important;
+  }
+}
+
+
+
+
 #application_container_main {
   position:absolute;
   top:50px;
   right:0px;
-  left:0px;
+  left:75px;
   bottom:0px;
   overflow-y: auto !important;
 }
