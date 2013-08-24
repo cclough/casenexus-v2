@@ -31,7 +31,7 @@
               .questions_index_questions_item_stats_label
                 answers
             
-          .span64.offset1
+          .span55.offset1
             .row.questions_index_questions_item_title
               = link_to questions_item do
                 = questions_item.title
@@ -52,9 +52,10 @@
                   .row
                     / = questions_item.user.points
             .spacer5
-            .row.questions_index_questions_item_tags
+            .row.questions_index_questions_item_tags.application_tags_container
               / = raw questions_item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')
-              = raw questions_item.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
+              = raw questions_item.tags.map { |t| link_to t.name, tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+
   - else
     No questions found
 .row

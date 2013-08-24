@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$gray_background: #eceef1;
+$gray_second: #BDC3C7;
 
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
@@ -32,26 +34,16 @@ $alert-yellow: #FFFF7E;
 
 
 .questions_sidecolumn_title {
-  background: rgba(0, 0, 0, 0.4);
-  height:18px;
-  padding:2px;
+  background: $gray_second;
+  height:30px;
   text-align:center;
   font-weight: bold;
-  font-size:12px;
-  line-height:19px;
-  color: $gray_Lighter;
+  line-height:31px;
+  color: white;
 
   margin:5px -10px 5px -10px;  
   &.top {
     margin:-10px -10px 5px -10px;
-
-    border-top-left-radius: 5px;
-    -moz-border-top-left-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
-
-    border-top-right-radius: 5px;
-    -moz-border-top-right-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
   }
 
 }
@@ -61,7 +53,7 @@ $alert-yellow: #FFFF7E;
   padding:5px 0px;
 
   &:hover {
-    background: rgba(0,0,0,0.5)
+    background: $gray_background;
   }
 }
 
@@ -81,15 +73,6 @@ $alert-yellow: #FFFF7E;
 /////////////INDEX///////////////
 /////////////////////////////////
 
-
-#questions_index_container {
-  position:absolute;
-  right:0;
-  top:40px;
-  left:0;
-  bottom:0px;
-  overflow-y:auto;
-}
 
 
 .questions_index_questions_item {
@@ -124,11 +107,6 @@ $alert-yellow: #FFFF7E;
   color:white;
 }
 
-.questions_index_questions_item_tags {
-  font-size:12px;
-}
-
-
 
 
 #questions_show_answer_countchar, #questions_new_countchar {
@@ -140,7 +118,7 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////
 
 #questions_new_content {
-  width:700px;
+  width:635px;
   height:200px;
 }
 
@@ -169,7 +147,7 @@ $alert-yellow: #FFFF7E;
 }
 
 #questions_show_answer_content {
-  width:705px;
+  width:635px;
   height:200px;
 }
 

@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+$gray_background: #eceef1;
+$gray_second: #BDC3C7;
+
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
@@ -110,13 +113,14 @@ $alert-yellow: #FFFF7E;
 
 
 #onlinepanel_title {
-  background: url('app/dark-bg.png') repeat top left;
-  height:25px;
-  padding:2px;
+  background: $gray_second;
+  height:30px;
   text-align:center;
   font-weight: bold;
-  font-size:12px;
-  color: $gray_Lighter;
+  line-height:31px;
+  color: white;
+
+
 }
 
 
@@ -166,7 +170,7 @@ $alert-yellow: #FFFF7E;
   }
   
   &:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: $gray_second;
     a {
       color:black !important;
     }

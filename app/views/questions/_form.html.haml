@@ -12,11 +12,11 @@
   .row
     .application_countchar_count#questions_new_countchar
       500 characters left
-    = f.text_area :content, placeholder: "Ask a question...", id:"questions_new_content", class: "application_countchar"
+    = f.text_area :content, placeholder: "Ask a question...", id: "questions_new_content", class: "application_countchar row"
   .spacer5
   .row
     /= f.text_field :tag_list, id: "questions_new_tags", placeholder: "Tags (separated by commas)"
-    = f.collection_select :tag_list, Tag.all, :name, :name, {}, {multiple: true, class: "chzn-select-tags span50"}
+    = f.collection_select :tag_list, Tag.all, :name, :name, {}, { multiple: true, class: "chzn-select-tags span50"}
   .spacer10
   .row
     = f.submit "Post your question", class: "btn btn-primary btn-embossed"

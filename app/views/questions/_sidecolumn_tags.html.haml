@@ -1,6 +1,10 @@
 .row#questions_sidecolumn.panel.dark.kill_left
   .questions_sidecolumn_title.top
     Tags
-  #questions_taglist
-    - application_taglist Question.tag_counts, %w[s m l] do |tag, css_class|
-      %p= link_to tag.name, tag_path(tag.name), class: css_class
+  #questions_taglist.application_tags_container
+    - application_taglist Question.tag_counts do |tag, count|
+      .row
+        = link_to tag_path(tag.name) do
+          .btn.btn-mini
+            = tag.name
+          x #{count}

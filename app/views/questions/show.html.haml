@@ -10,7 +10,7 @@
     .row
       .span6.votes_control_container{ "data-voteable_id" => @question.id, "data-voteable_type" => @question.class.name }
         = render partial: "/votes/control", locals: { voteable: @question }
-      .span65
+      .span60
         .row#questions_show_title
           = @question.title
         .spacer10
@@ -57,7 +57,7 @@
         .row
           .span6.votes_control_container{ "data-voteable_id" => question_answer.id, "data-voteable_type" => question_answer.class.name }
             = render partial: "/votes/control", locals: { voteable: question_answer }
-          .span65
+          .span60
             .row
               = question_answer.content.html_safe
 

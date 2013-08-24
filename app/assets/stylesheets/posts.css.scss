@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$gray_background: #eceef1;
+$gray_second: #BDC3C7;
+
 
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
@@ -26,7 +29,7 @@ $blue_linkedin: #006699;
   margin:15px;
 
   padding: 3px;
-  background: $gray_Light;
+  background: $gray_second;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;

@@ -125,8 +125,7 @@ module ApplicationHelper
 
 
 
-
-  def application_taglist(tags, classes)
+  def application_taglist(tags)
     max = 0
     tags.each do |t|
       if t.count.to_i > max
@@ -134,8 +133,7 @@ module ApplicationHelper
       end 
     end
     tags.each do |tag|
-      index = tag.count.to_f / max * (classes.size - 1)
-      yield(tag, classes[index.round])
+      yield(tag, tag.count)
     end
   end 
 
