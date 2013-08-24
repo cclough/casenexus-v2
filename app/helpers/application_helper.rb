@@ -24,31 +24,31 @@ module ApplicationHelper
 
   def filterable_analysis(view,title)
     if view == @view
-      link_to title, params.merge(view: view), class: "btn btn-primary active"
+      link_to title, params.merge(view: view), class: "btn btn-primary btn-embossed active"
     elsif !params[:view] && (view == "table")
-      link_to title, params.merge(view: view), class: "btn btn-primary active"
+      link_to title, params.merge(view: view), class: "btn btn-primary btn-embossed active"
     else
-      link_to title, params.merge(view: view), class: "btn btn-primary"
+      link_to title, params.merge(view: view), class: "btn btn-primary btn-embossed"
     end
   end
 
   def filterable_books(btype, title)
     if btype == params[:btype]
-      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
+      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary btn-embossed active"
     elsif !params[:btype] && (title == "All")
-      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
+      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary btn-embossed active"
     else
-      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary"
+      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary btn-embossed"
     end
   end
 
   def pageable_books(number)
     if number == params[:per_page]
-      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary active"
+      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary btn-embossed active"
     elsif !params[:per_page] && (number == "10")
-      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary active"
+      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary btn-embossed active"
     else
-      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary"
+      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary btn-embossed"
     end   
   end
 

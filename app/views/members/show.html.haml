@@ -72,7 +72,7 @@
             Contact
           .row
             .span
-              = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_profile_button_message", class: "btn btn-primary btn-small", "data-friend_id" => @user.id
+              = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_profile_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
 
             / - if Notification.history(current_user, @user).count > 0
             /   .row
@@ -81,7 +81,7 @@
                     
             - unless @user.skype.blank?
               .span#map_index_user_profile_panel_skype
-                %a.btn.btm-small.btn-primary{href: "skype:#{@user.skype}?call"}
+                %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
                   %img{src: "http://mystatus.skype.com/smallicon/#{@user.skype}" }
                   Skype
 
@@ -89,13 +89,13 @@
             Case
           .row
             .span
-              %a#map_index_user_profile_button_event.btn.btn-primary.btn-small{"data-friend_id" => @user.id.to_s}
+              %a#map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
                 %i.icon-calendar.icon-white
                 %span
                   Schedule
 
             .span
-              %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
+              %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
                 %i.icon-arrow-right.icon-white
                 Start
 
@@ -107,13 +107,13 @@
         - elsif Friendship.pending?(@user, current_user)
 
           Pending case partner request
-          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-primary btn-mini")
+          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-primary btn-embossed btn-mini")
           = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
 
         - elsif !Friendship.exist?(current_user, @user)
           .spacer20
           .spacer5
-          %a#map_index_user_profile_button_friendrequest.btn.btn-primary.btn-small{"data-friend_id" => @user.id }
+          %a#map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
             %div
               %i.icon-comment.icon-white.icon-4x
             %span

@@ -11,22 +11,22 @@
 - if @online_user_type == "friend"
   / .pull-right
   /   .btn-group.onlinepanel_show_button
-  /     %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+  /     %a.btn.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
   /       %i.icon-ellipsis-horizontal
   /     %ul.dropdown-menu.pull-right
   /       = link_to "/console?friend_id=" + @online_user.id.to_s do
-  /         .btn.btn-primary.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.username, rel: "tooltip", "data-placement"=>"bottom"}
+  /         .btn.btn-primary.btn-embossed.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.username, rel: "tooltip", "data-placement"=>"bottom"}
   /           %i.icon-pencil
 
   /       - if !@online_user.skype.blank?
-  /         = link_to "skype:#{@online_user.skype}?call", class: "btn btn-primary btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.username + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
+  /         = link_to "skype:#{@online_user.skype}?call", class: "btn btn-primary btn-embossed btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.username + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
   /           = image_tag "icons/skype_button.png", class: "application_icon_skype"
 
   .pull-right
-    .onlinepanel_show_menu_message.btn.btn-primary.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.username + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
+    .onlinepanel_show_menu_message.btn.btn-primary.btn-embossed.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.username + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
       %i.icon-envelope
           
 - else
   .pull-right
-    .onlinepanel_show_menu_addfriend.btn.btn-primary.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.username + " as a friend", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
+    .onlinepanel_show_menu_addfriend.btn.btn-primary.btn-embossed.btn-mini.application_tooltip{"data-original-title"=>"Add " + @online_user.username + " as a friend", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
       %i.icon-plus

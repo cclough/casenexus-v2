@@ -9,7 +9,7 @@
 
       #events_calendar_month
         = link_to date: @date.prev_month do
-          .btn.btn-primary.btn-small
+          .btn.btn-primary.btn-embossed.btn-small
             %i.icon-chevron-left.icon-white
         
         %span#events_calendar_month_text
@@ -21,16 +21,16 @@
          
 
         = link_to date: @date.next_month do
-          .btn.btn-primary.btn-small
+          .btn.btn-primary.btn-embossed.btn-small
             %i.icon-chevron-right.icon-white
     .pull-right
       .span
-        #events_calendar_new_button.btn.btn-primary
+        #events_calendar_new_button.btn.btn-primary.btn-embossed
           %i.icon-plus
           New
       .span.offset1
         = link_to calendar_ics_url do
-          .btn.btn-primary
+          .btn.btn-primary.btn-embossed
             %i.icon-external-link
             Subscribe
   .spacer5

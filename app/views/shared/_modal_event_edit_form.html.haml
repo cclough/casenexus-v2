@@ -11,7 +11,7 @@
     .row
       = render 'events/button_startcase'
 
-      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary btn-large" do
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary btn-embossed btn-large" do
         = image_tag "icons/skype_button.png"
         Call #{@event.partner.username}
         
@@ -117,9 +117,9 @@
 
   .modal-footer
     .pull-left
-      = link_to("Cancel Appointment", event_path(@event), method: :delete, class: "btn btn-primary", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+      = link_to("Cancel Appointment", event_path(@event), method: :delete, class: "btn btn-primary btn-embossed", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
-    .modal_submit_button.btn.btn-primary{tabindex: "102"}
+    .modal_submit_button.btn.btn-primary.btn-embossed{tabindex: "102"}
       %i.icon-arrow-right.icon-white
       Amend Appointment
 
