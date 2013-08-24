@@ -2,12 +2,12 @@
   
   - if @book.chart_num > 0
 
-    = link_to '#', class: "btn btn-info btn-small application_tooltip console_index_subnav_button_sendpdf_state", "data-original-title"=>"Send " + @friend.username + " the exhibits in this case via email", rel: "tooltip", "data-placement"=>"bottom", id: "console_index_subnav_button_sendpdf" do
+    = link_to '#', class: "btn btn-primary btn-small application_tooltip console_index_subnav_button_sendpdf_state", "data-original-title"=>"Send " + @friend.username + " the exhibits in this case via email", rel: "tooltip", "data-placement"=>"bottom", id: "console_index_subnav_button_sendpdf" do
       %i.icon-envelope.icon-white
       Email #{@book.chart_num.to_s} Charts
 
   - else
 
-    = link_to '#', class: "btn btn-info btn-small application_tooltip console_index_subnav_button_sendpdf_state active disabled", "data-original-title"=>"This case has no charts", rel: "tooltip", "data-placement"=>"bottom", id:"#console_index_subnav_button_sendpdf_nocharts" do
+    = link_to '#', class: "btn btn-primary btn-small application_tooltip console_index_subnav_button_sendpdf_state active disabled", "data-original-title"=>"This case has no charts", rel: "tooltip", "data-placement"=>"bottom", id:"#console_index_subnav_button_sendpdf_nocharts" do
       %i.icon-envelope.icon-white
       No Charts

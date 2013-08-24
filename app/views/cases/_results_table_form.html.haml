@@ -4,9 +4,9 @@
 
     #cases_resultstable_order_by_container.btn-group.pull-right
 
-      .btn.btn-info.btn-small.cases_resultstable_orderby_button.active{"data-radio"=>0, "data-type"=>"order_by"}
+      .btn.btn-primary.btn-small.cases_resultstable_orderby_button.active{"data-radio"=>0, "data-type"=>"order_by"}
         Rank
-      .btn.btn-info.btn-small.cases_resultstable_orderby_button{"data-radio"=>1, "data-type"=>"order_by"}
+      .btn.btn-primary.btn-small.cases_resultstable_orderby_button{"data-radio"=>1, "data-type"=>"order_by"}
         Group
 
 
@@ -17,15 +17,15 @@
 
     - if current_user.case_count_viewee >= 2
       #cases_resultstable_period_container.btn-group.pull-right
-        .btn.btn-info.btn-small.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
+        .btn.btn-primary.btn-small.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
           1
-        .btn.btn-info.btn-small.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
+        .btn.btn-primary.btn-small.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
           2
         - if current_user.case_count_viewee >= 5      
-          .btn.btn-info.btn-small.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
+          .btn.btn-primary.btn-small.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
             5
         - if current_user.case_count_viewee >= 10      
-          .btn.btn-info.btn-small.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
+          .btn.btn-primary.btn-small.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
             10
 
 

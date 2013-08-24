@@ -10,13 +10,13 @@
         %i.icon-caret-right.offset1
       .span.btn-group
         
-        %a.map_index_users_form_button.btn.btn-small.btn-info{"data-radio"=>0} < 50mi
-        %a.map_index_users_form_button.btn.btn-small.btn-info{"data-radio"=>1} Online Today
-        %a.map_index_users_form_button.btn.btn-small.btn-info.active{"data-radio"=>2} Global
+        %a.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>0} < 50mi
+        %a.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>1} Online Today
+        %a.map_index_users_form_button.btn.btn-small.btn-primary.active{"data-radio"=>2} Global
 
       .span
         .map_index_users_form_pulldown.btn-group
-          %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-info.dropdown-toggle{"data-toggle" => "dropdown"}
+          %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
             %span.filter-option.pull-left All Languages
             &nbsp;
             %span.caret.small
@@ -32,7 +32,7 @@
 
       .span
         .map_index_users_form_pulldown.btn-group
-          %button#map_index_users_form_pulldown_university_button.map_index_users_form_pulldown_button.btn.btn-small.btn-warning.dropdown-toggle{"data-toggle" => "dropdown"}
+          %button#map_index_users_form_pulldown_university_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
             All Universities
             %span.caret
           / %ul.dropdown-menu
@@ -47,7 +47,7 @@
 
       .span
         .map_index_users_form_pulldown.btn-group
-          %button#map_index_users_form_pulldown_country_button.map_index_users_form_pulldown_button.btn.btn-small.btn-warning.dropdown-toggle{"data-toggle" => "dropdown"}
+          %button#map_index_users_form_pulldown_country_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
             All Countries
             %span.caret
           %ul.dropdown-menu
@@ -61,10 +61,10 @@
                   = country_item.name
 
       .span.pull-right
-        #map_index_users_form_view_world_button.btn.btn-small.btn-info
+        #map_index_users_form_view_world_button.btn.btn-small.btn-primary
           %i.icon-globe
           World View
-        #map_index_users_form_view_local_button.btn.btn-small.btn-info
+        #map_index_users_form_view_local_button.btn.btn-small.btn-primary
           %i.icon-map-marker
           Local to you
 
