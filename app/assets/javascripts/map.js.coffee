@@ -106,7 +106,10 @@ window.map_index_users_search = ->
     $("#map_index_users_form_search_field").val($("#header_nav_panel_browse_search_field").val())
     map_index_users_updatelist()
 
-
+map_index_map_zoomcalc = ->
+  # Zoom according to div size: http://stackoverflow.com/questions/17412397/zoom-google-map-to-fit-the-world-on-any-screen
+  zl = Math.round(Math.log($("#map_index_map").width() / 512)) + 1
+  return zl
 
 window.map_index_user_profile_chart_activity_draw = () ->
   chart = undefined
@@ -203,7 +206,10 @@ $(document).ready ->
 
   # Switch view button - world vs local
   $("#map_index_users_form_view_world_button").click ->
-    window.map.setZoom 1
+    LatLng = new google.maps.LatLng(0, 0)
+    window.map.setCenter LatLng
+    window.map.setZoom map_index_map_zoomcalc()
+
 
   $("#map_index_users_form_view_local_button").click ->
     window.map_index_map_pan window.map_index_map_latlng_start
@@ -263,9 +269,6 @@ $(document).ready ->
   # Map
   if typeof map_index_map_lat_start is "string"
 
-    # Zoom according to div size: http://stackoverflow.com/questions/17412397/zoom-google-map-to-fit-the-world-on-any-screen
-    zl = Math.round(Math.log($("#map_index_map").width() / 512)) + 1
-
     # Set start latlng var (used in several places in this file)
     window.map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
 
@@ -273,7 +276,7 @@ $(document).ready ->
     mapOptions =
       # center: window.map_index_map_latlng_start
       center: new google.maps.LatLng(0, 0)
-      zoom: zl
+      zoom: map_index_map_zoomcalc()
       minZoom: 1
       mapTypeId: "roadmap"
       disableDefaultUI: true
