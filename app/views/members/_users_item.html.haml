@@ -1,5 +1,5 @@
 .map_index_users_item
-  .map_index_users_item_button{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
+  .map_index_users_item_button.btn{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
     .row
       - unless users_item.country.blank?
         .map_index_users_item_country.pull-left
@@ -10,7 +10,7 @@
 
     .row
       .map_index_users_item_avatar
-        = image_tag "avatars/icon.png"
+        %span.fui-user
     .spacer5
     .row
       .map_index_users_item_name.application_truncatable

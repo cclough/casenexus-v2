@@ -23,7 +23,7 @@
       .panel.dark.kill_bottom
         .row
           .span5
-            = image_tag "avatars/icon.png", class: "application_userimage_medium"
+            %span.fui-user.application_userimage_medium
           .span#cases_new_target_name
             = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
               = image_tag @user.university.image_file, class: "application_userimage_small"

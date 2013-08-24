@@ -12,6 +12,7 @@ $blue_pastel: #98cdff;
 
 .cases_avatar {
   text-align:center;
+  font-size:30px;
 }
 
 
@@ -93,9 +94,6 @@ $blue_pastel: #98cdff;
 
   color:$gray_Lighter;
 
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
 
 }
 
@@ -131,6 +129,7 @@ $blue_pastel: #98cdff;
 .cases_index_cases_item_avatar {
   text-align:center;
   padding-left:5px;
+  font-size:30px;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -145,7 +144,6 @@ $blue_pastel: #98cdff;
   border-bottom: 1px solid $gray_Mid;
   margin-bottom: 5px;
   margin-top:-5px;
-  color: white;
   &.recommendation {
     font-size:11px;
   }

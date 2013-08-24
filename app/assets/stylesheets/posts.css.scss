@@ -3,6 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+$gray_Light: #d0d0d0;
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$gray_Darker: #333333;
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
 
 
 
@@ -18,7 +26,7 @@
   margin:15px;
 
   padding: 3px;
-  background: #48AFAA;
+  background: $gray_Light;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
@@ -32,7 +40,7 @@
   right: -15px;
   border-style: solid;
   border-width: 14px 0px 14px 15px;
-  border-color: transparent #48AFAA;
+  border-color: transparent $gray_Light;
   display: block;
   width: 0;
   z-index: 1;

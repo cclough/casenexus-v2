@@ -82,7 +82,6 @@ $blue_linkedin: #006699;
     font-family: "Lucida Grande", arial, helvetica, sans-serif;
     font-size: 10px;
     padding: 3px;
-    border: 1px solid $gray_Dark;
   }
 
   th {
@@ -93,14 +92,16 @@ $blue_linkedin: #006699;
   }
 
   td {
-    background:rgba(0,0,0,0.05);
-    color: $gray_Lightest;
+    background:transparent;
+    color: $gray_Dark;
     height: 65px !important;
 
     width: 60px !important;
 
     vertical-align: top;
     font-size: 10px;
+
+
   }
 
   .notmonth, .notmonth a { color: #777; background:rgba(0,0,0,0.3); }

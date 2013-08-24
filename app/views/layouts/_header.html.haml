@@ -15,11 +15,11 @@
             %li.offset1
               = form_tag '#', method: 'get', id: "header_nav_panel_browse_search_form", onsubmit: 'return false', class: "form-search" do
                 .input-prepend
-                  %button.btn{type: "submit"}
+                  %button.btn.btn-small{type: "submit"}
                     %span.fui-search
-                  = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_panel_browse_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded application_tooltip'
+                  = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_panel_browse_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
 
-            %li.offset1
+            %li
               = link_to raw("<i class='icon-circle-blank icon-fixed-width'></i> Connect"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li

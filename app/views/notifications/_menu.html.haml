@@ -5,8 +5,8 @@
   / notifications icon + notification count
   %i#header_nav_icon_notifications.notifications_glowable.icon-comments-alt.icon-white.icon-large{class: ("unread" if @unread_count > 0)}
   - if @unread_count > 0
-    #header_menu_notifications_unreadcount
-      = @unread_count.to_s
+    %span.iconbar-unread
+      = @unread_count.to_s 
 %ul.dropdown-menu
   %li
     / see all link

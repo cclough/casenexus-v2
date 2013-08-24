@@ -60,7 +60,7 @@
               .books_rating_read_text
                 User rating:
                 = pluralize(books_item.average_rating.round(1),"Star")
-            .books_index_books_item_info_container.panel.gradient.kill_all
+            .books_index_books_item_info_container.panel.kill_all
               %div
                 = books_item.chart_num_in_words
               - unless books_item.difficulty.blank?

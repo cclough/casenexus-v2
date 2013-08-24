@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// Shouldn't need these here as well as in app.css.scss
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
@@ -99,6 +98,11 @@ header {
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 /////////////////////////////////////////////
+
+
+#header_nav_panel_browse_search_form {
+  margin-top:8px;
+}
 
 #header_user_points {
   font-size:14px;
@@ -205,30 +209,6 @@ header {
   &.unread {
     color:red;
   }
-}
-
-#header_menu_notifications_unreadcount {
-
-  position:absolute;
-  top:7px;
-  right:40px;
-
-  height:15px;
-
-  padding:2px 5px;
-
-  font-size: 13px;
-  font-weight:bold;
-  letter-spacing: 1px;
-  line-height:13px;
-
-  background-color:red;
-  color:white;
-
-  -moz-border-radius:    15px;
-  -webkit-border-radius: 15px;
-  border-radius:         15px;
-
 }
 
 

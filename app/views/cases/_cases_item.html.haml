@@ -3,7 +3,7 @@
     / ruins anchor!
     / = avatar_for(cases_item.interviewer, 'icon')
     .span4.cases_index_cases_item_avatar
-      = image_tag "avatars/icon.png"
+      %span.fui-user
   .span12.offset1
     .cases_index_cases_item_date
       = cases_item.created_at.strftime("%a %d %b %Y %I:%M%p")

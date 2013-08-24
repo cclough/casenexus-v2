@@ -7,8 +7,7 @@
   .row
     .span.offset1
       #map_index_user_profile_avatar
-        = image_tag "avatars/icon.png"
-        /= avatar_for(@user, 'icon_inert')
+        %span.fui-user
         .row
           = casecounts(@user)
           #map_index_user_profile_points

@@ -1,7 +1,7 @@
 %li
   = link_to "/notifications/" + notification.id.to_s, {class: "header_menu_notifications_item"} do
     .header_menu_notifications_avatar.span3
-      = image_tag "avatars/icon.png"
+      %span.fui-user
     %div.header_menu_notifications_name
       = notification.sender.username
       %span.font-small.application_timestamp
