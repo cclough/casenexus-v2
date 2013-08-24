@@ -46,11 +46,6 @@
                 = books_item.desc_trunc
 
             .spacer5
-
-            .row
-              .span
-                = raw books_item.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
-
           .span.offset1
             .books_rating_read_container.panel.dark.kill_all
               .books_rating_read{"data-rating" => books_item.average_rating.round(1)}
@@ -63,20 +58,26 @@
               - unless books_item.difficulty.blank?
                 .books_index_books_item_difficulty
                   = book_difficulty_in_words(books_item.difficulty)
-            .books_index_books_item_actions_container.panel.dark.kill_all
 
-              - if books_item.btype == "case"
-                .row
-                  .books_index_books_item_schedule_button.btn.btn-small.btn-primary.btn-embossed{"data-book_id" => books_item.id.to_s}
-                    %i.icon-calendar 
-                    Schedule
-                .row
-                  = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary btn-embossed"
-              
 
-              
-              .row
-                .books_index_books_item_comments{"data-id"=>books_item.id}
-                  = link_to book_path(books_item), class: "btn btn-small btn-primary btn-embossed" do
-                    Rate & Comment
-                    %strong (#{books_item.comments.count})
+      .row
+        .span50
+          = raw books_item.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
+
+        .span.pull-right.books_index_books_item_actions_container
+          - if books_item.btype == "case"
+
+            .span
+              .books_index_books_item_schedule_button.btn.btn-small.btn-primary.btn-embossed{"data-book_id" => books_item.id.to_s}
+                %i.icon-calendar 
+                Schedule
+            .span
+              = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary btn-embossed"
+          .span
+            .books_index_books_item_comments{"data-id"=>books_item.id}
+              = link_to book_path(books_item), class: "btn btn-small btn-primary btn-embossed" do
+                Rate & Comment
+                %strong (#{books_item.comments.count})
+
+
+

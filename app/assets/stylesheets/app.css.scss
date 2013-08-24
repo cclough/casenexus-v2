@@ -1,4 +1,9 @@
-$gray_Light: #d0d0d0;
+
+$gray_background: #eceef1;
+
+
+$gray_Light: white;
+
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
@@ -7,6 +12,7 @@ $gray_Darker: #333333;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
+$green_flatui: #1ABC9C;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -36,6 +42,7 @@ html {
 
 //  background: url('app/bg-texture4.jpg') repeat top left;
 
+  background: $gray_background;
 
   &.application_html_console {
 //    background: url('app/bg-texture4.jpg') repeat top left;
@@ -109,22 +116,22 @@ textarea {
 
 
 
-a {
-  color: white;
-  text-decoration:none;
-  &:hover {
-    color:white !important;
-    text-decoration:underline;
-  }
-}
+//a {
+//  color: white;
+//  text-decoration:none;
+//  &:hover {
+//    color:white !important;
+//    text-decoration:underline;
+//  }
+//}
 
-a:hover {
-  color: $gray_Darker;
-  transition: color .1s ease-in;
-  -moz-transition: color .1s ease-in;
-  -webkit-transition: color .1s ease-in;
-  -o-transition: color .1s ease-in;
-}
+//a:hover {
+//  color: $gray_Darker;
+//  transition: color .1s ease-in;
+//  -moz-transition: color .1s ease-in;
+//  -webkit-transition: color .1s ease-in;
+//  -o-transition: color .1s ease-in;
+//}
 
 
 
@@ -200,31 +207,6 @@ a:hover {
   background:black;
 }
 
-#application_profilenav {
-  font-size:30px;
-  color:white;
-}
-
-
-
-.application_profilenav_item {
-  padding: 10px;
-  text-align:center;
-  
-  &.active {
-    border: 1px solid white;
-    // background: rgba(0, 0, 0, 0.6);
-    background: url('app/title-bg.png') repeat top left;
-    margin: 0 -20px 0 -20px;
-    padding-left:30px;
-    font-weight:bold;
-    color:white !important;
-  }
-}
-
-
-
-
 #application_container_main {
   position:absolute;
   top:50px;
@@ -283,6 +265,70 @@ a:hover {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 ///////////////////////////////////////////
+
+
+
+
+#application_profilenav {
+  font-size:30px;
+  color:white;
+  .row {
+    height:60px;
+    a{
+      color:white;
+      text-decoration:none;
+    }
+  }
+}
+
+
+
+.application_profilenav_item {
+  padding: 10px;
+  text-align:center;
+
+
+  &.active {
+    font-size: 35px;
+    color:$green_flatui;
+    .application_profilenav_item_text {
+      display:block;
+    }
+  }
+
+  &:hover {
+    font-size: 35px;
+    .application_profilenav_item_text {
+      display:block;
+    }
+  }
+}
+
+.application_profilenav_item_text {
+  display:none;
+  font-size:9px;
+  margin-top:0px !important;
+}
+
+
+
+
+
+
+
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 
 .application_icon_skype {
@@ -452,11 +498,11 @@ a:hover {
   border-radius:         0px;
 
   &.dark {
-    background: rgba(0, 0, 0, 0.1);
+    background: white;
   }
 
   &.darker {
-    background: rgba(0, 0, 0, 0.1);
+    background: white;
   }
   
   &.kill_right {

@@ -41,7 +41,7 @@
               = render '/notifications/menu'
 
             %li
-              = link_to summary_path, id: "header_nav_links_right_name", class: "application_truncatable" do
+              = link_to events_path, id: "header_nav_links_right_name", class: "application_truncatable" do
                 = current_user.username
                 %span#header_user_points
                   = current_user.points_tally

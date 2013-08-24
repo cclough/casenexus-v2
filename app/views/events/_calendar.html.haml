@@ -6,33 +6,33 @@
 #events_calendar
   .row
     .span
+      #events_calendar_new_button.btn.btn-primary.btn-embossed
+        %i.icon-plus
+        New
+    .span.offset1
+      = link_to calendar_ics_url do
+        .btn.btn-primary.btn-embossed
+          %i.icon-external-link
+          Sync with my calendar
 
-      #events_calendar_month
-        = link_to date: @date.prev_month do
-          .btn.btn-primary.btn-embossed.btn-small
-            %i.icon-chevron-left.icon-white
-        
-        %span#events_calendar_month_text
-          = @date.strftime("%B %Y")
-          %span#events_calendar_month_text_count
-            - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-            = "(#{pluralize(month_count,"event")})"
-
-         
-
-        = link_to date: @date.next_month do
-          .btn.btn-primary.btn-embossed.btn-small
-            %i.icon-chevron-right.icon-white
     .pull-right
       .span
-        #events_calendar_new_button.btn.btn-primary.btn-embossed
-          %i.icon-plus
-          New
-      .span.offset1
-        = link_to calendar_ics_url do
-          .btn.btn-primary.btn-embossed
-            %i.icon-external-link
-            Subscribe
+
+        #events_calendar_month
+          = link_to date: @date.prev_month do
+            .btn.btn-primary.btn-embossed.btn-small
+              %i.icon-chevron-left.icon-white
+          
+          %span#events_calendar_month_text
+            = @date.strftime("%B %Y")
+            %span#events_calendar_month_text_count
+              - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
+              = "(#{pluralize(month_count,"event")})"
+
+
+          = link_to date: @date.next_month do
+            .btn.btn-primary.btn-embossed.btn-small
+              %i.icon-chevron-right.icon-white
   .spacer5
   .row
     = calendar @date do |date|

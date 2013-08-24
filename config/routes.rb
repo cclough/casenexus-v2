@@ -1,11 +1,13 @@
 Casenexus::Application.routes.draw do
 
+  root to: 'static_pages#home'
+
+  # Rails Admin
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
+  # Devise
   devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
-
-  root to: 'static_pages#home'
 
   # Pusher
   post 'pusher/auth'
@@ -18,7 +20,6 @@ Casenexus::Application.routes.draw do
   # Static Pages
   match '/about', to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
-
   match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
 
   # Map
@@ -70,8 +71,6 @@ Casenexus::Application.routes.draw do
   match '/votes/up', to: 'votes#up'
   match '/votes/down', to: 'votes#down'
 
-
-  
   # Cases
   resources :cases, only: [:index, :show, :new, :create] do
     get :analysis, on: :collection
@@ -93,8 +92,6 @@ Casenexus::Application.routes.draw do
   resources :questions do
   end
 
-
-
   # Answers
   resources :answers, only: [:create, :update, :show, :destroy, :edit] do
   end
@@ -110,9 +107,7 @@ Casenexus::Application.routes.draw do
   # Comments
   resources :comments
 
-
-
-  # Viewer
+  # PDF Viewer
   resources :console, only: [:index] do
     get :pdfjs, on: :collection
   end
@@ -120,18 +115,11 @@ Casenexus::Application.routes.draw do
   match 'console/sendpdfbutton' => 'console#sendpdfbutton', :as => :sendpdfbutton
   match 'console/skypebutton' => 'console#skypebutton', :as => :skypebutton
 
-
   # Map
   match '/library', to: 'books#index', as: :library
 
-
-  # Summary
-  match '/summary', to: 'summary#index', as: :summary
-
-
   # Site contacts
   match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact
-
 
   # Events
   resources :events, except: [:show] do
