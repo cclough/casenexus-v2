@@ -6,7 +6,7 @@
 
 .panel.dark
   - if current_user.visits.count > 0
-    - current_user.visits.last(10).each do |visit|
+    - current_user.visits.order("created_at desc").first(10).each do |visit|
       .row.account_visitors_item
         .span5
           %span.fui-user
