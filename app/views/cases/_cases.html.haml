@@ -13,4 +13,4 @@
 = hidden_field_tag :sort, params[:sort]
   
 #cases_index_cases_form_paginate
-  = will_paginate @cases, class: "application_pagination", inner_window: 2, outer_window: 2
+  = paginate @cases

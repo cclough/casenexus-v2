@@ -1,5 +1,6 @@
 module ApplicationHelper
   
+
   # Returns the full title on a per-page basis
   def full_title(page_title)
     base_title = 'casenexus.com'
@@ -8,6 +9,17 @@ module ApplicationHelper
     else
       "#{base_title} | #{page_title}"
     end
+  end
+
+
+  # Render will_paginate with bootstrap pagination css - https://gist.github.com/robacarp/1562185
+  def paginate *params
+    params[1] = {} if params[1].nil?
+    params[1][:renderer] = BootstrapPaginationHelper::LinkRenderer
+    params[1][:class] ||= 'pagination pagination-centered'
+    params[1][:inner_window] ||= 2
+    params[1][:outer_window] ||= 2
+    will_paginate *params
   end
 
   def casecounts(user)

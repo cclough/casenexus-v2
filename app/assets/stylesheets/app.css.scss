@@ -588,53 +588,6 @@ textarea {
   }
 }
 
-.application_pagination {
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-
-  // border: 1px solid $gray_Dark;
-  margin:5px;
-  margin-top:3px;
-  text-align: center;
-  padding: 5px;
-  cursor: default;
-
-  background: url('app/dark-bg.png') repeat top left;
-
-  &.application_pagination_books {
-    margin:15px;
-  }
-}
-
-.application_pagination .disabled {
-  color: $gray_Light;
-}
-.application_pagination .current {
-  font-style: normal;
-  font-weight: bold;
-  background-color: $gray_Mid;
-  display: inline-block;
-  width: 1.4em;
-  height: 1.4em;
-  line-height: 1.4;
-  -moz-border-radius: 1em;
-  -webkit-border-radius: 1em;
-  border-radius: 1em;
-  color:white;
-}
-.application_pagination a, .application_pagination span {
-  padding: 0.2em 0.3em;
-}
-.application_pagination a {
-  text-decoration: none;
-  color: gray;
-}
-.application_pagination a:hover, .application_pagination a:focus {
-  text-decoration: none;
-  color:black;
-}
-
 
 /* remove small skype box hack */
 
@@ -963,13 +916,13 @@ textarea {
 
 
 .application_form_input_alternative {
-  color:white !important;
+
 
   background:0 !important;
   border-top:0 !important;
   border-left:0 !important;
   border-right:0 !important;
-  border-bottom:1px dotted white !important;
+  border-bottom:1px dotted $gray_Dark !important;
 
   -moz-border-radius:    0px !important;
   -webkit-border-radius: 0px !important;
