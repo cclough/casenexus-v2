@@ -5,7 +5,9 @@ class BooksController < ApplicationController
   helper_method :sort_column, :sort_direction
 
 	def index
-
+    # logger.ap params[:tag_type_id]
+    # logger.ap params[:tag_industry_id]
+    # @tagged_books = Tag.find(Array(params[:tag_type_id])).inject(Array.new) {|memo, tag| memo << tag.books} & Tag.find(Array(params[:tag_industry_id])).inject(Array.new) {|memo, tag| memo << tag.books}
     if !params[:btype].blank? && params[:btype] != "all"
       books_scope = Book.where(btype: params[:btype])
     else
@@ -17,9 +19,12 @@ class BooksController < ApplicationController
     else
       books_per_page = 10
     end
-
-    @books = Book.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: books_per_page, page: params[:page])
-
+    params[:tag_type_id] = nil if params[:tag_type_id] == [""]
+    params[:tag_industry_id] = nil if params[:tag_industry_id] == [""]
+    
+    @books = Book.tagged_on(params[:tag_type_id] || Tag.where(category_id: 4).pluck(:id), params[:tag_industry_id] || Tag.where(category_id: 5).pluck(:id)).group('books.id').search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: books_per_page, page: params[:page])
+    logger.ap Book.tagged_on(params[:tag_type_id] || Tag.where(category_id: 4).pluck(:id), params[:tag_industry_id] || Tag.where(category_id: 5).pluck(:id)).group('books.id').size
+    logger.ap " >>>> "+ @books.collect(&:id).to_s 
 	end
 
   def show
