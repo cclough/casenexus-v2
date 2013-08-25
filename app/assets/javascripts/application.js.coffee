@@ -169,6 +169,8 @@ window.modal_message_show = (friend_id) ->
   
   if !($("#modal_message").hasClass("in"))
 
+    $(".modal").modal("hide")
+
     $.get "/notifications/modal_message_form?id=" + friend_id, (data) ->
       $("#modal_message").html data
 
@@ -184,6 +186,9 @@ window.modal_message_show = (friend_id) ->
 window.modal_post_show = () ->
   
   if !($("#modal_post").hasClass("in"))
+
+    $(".modal").modal("hide")
+
     $("#modal_post").modal("show")
 
     window.modal_spinner_prime()
@@ -197,6 +202,8 @@ window.modal_post_show = () ->
 window.modal_friendship_req_show = (friend_id) ->
   
   if !($("#modal_friendship_req").hasClass("in"))
+
+    $(".modal").modal("hide")
 
     $.get "/contacts/modal_friendship_req_form?id=" + friend_id, (data) ->
       $("#modal_friendship_req").html data
