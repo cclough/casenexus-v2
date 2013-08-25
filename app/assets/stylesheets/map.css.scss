@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+$gray_background: #eceef1;
+$gray_second: #BDC3C7;
+
+
 // Shouldn't need these here as well as in app.css.scss
 $gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
@@ -38,7 +42,7 @@ $blue_pastel: #98cdff;
 
 
 #map_index_container_form {
-  background:$gray_Light;
+  background:$gray_second;
   position:absolute;
   right:0px;
   left:0px;

@@ -188,10 +188,15 @@ window.map_index_map_load_all = (target_id, target_lat, target_lng) ->
 
 map_index_map_markers_clear = ->
 
+  i = 0
+
   if map_index_map_markers
-    for i of map_index_map_markers
-      map_index_map_markers[i].setMap null
-    map_index_map_markers.length = 0
+    while i < 1000
+      unless map_index_map_markers[i] == undefined
+        map_index_map_markers[i].setMap null
+        i++
+
+    map_index_map_markers = []
 
 
 window.map_index_map_markers_draw = () ->

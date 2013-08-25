@@ -19,7 +19,16 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
-
+.application_glyph {
+  display:inline-block;
+  font-family: 'Flat-UI-Icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+}
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
