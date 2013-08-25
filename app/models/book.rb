@@ -13,11 +13,10 @@ class Book < ActiveRecord::Base
   # Scoped_search Gem
   scoped_search on: [:title, :source_title, :author, :desc]
   scoped_search in: :university, on: [:name]
-
-
+  scope :tagged_on, ->(type_tag_ids, industry_tag_ids) {joins("LEFT OUTER JOIN taggings as tts ON tts.taggable_id = books.id AND tts.taggable_type = 'Book' LEFT OUTER JOIN taggings as idts ON idts.taggable_id = books.id AND idts.taggable_type = 'Book' WHERE tts.tag_id IN (#{type_tag_ids.join(',')}) AND idts.tag_id IN(#{industry_tag_ids.join(',')})")}#.where('taggings' => {tag_id: (type_tag_ids || [])}).joins(:taggings).where('taggings' => {tag_id: (industry_tag_ids || [])})}
   ### TAG STUFF - one day make a polymorphic (repeated in Book)
   def self.tagged_with(name)
-    Tag.find_by_name!(name).taggables
+    Tag.find_by_name!(name).books
   end
 
   def self.tag_counts

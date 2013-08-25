@@ -3,5 +3,5 @@ class Tag < ActiveRecord::Base
 
   has_many :taggings, :dependent => :destroy
   has_many :taggables, :through => :taggings
-
+  has_many :books, :through => :taggings, source: :taggable, source_type: 'Book'
 end
