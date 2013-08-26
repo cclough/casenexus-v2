@@ -100,8 +100,8 @@ Casenexus::Application.routes.draw do
   end
 
   # Tagging
-  get 'tags/:tag', to: 'questions#index', as: :tag
-
+  get 'questions/tags/:tag', to: 'questions#index', as: :question_tag
+  get 'books/tags/:tag', to: 'books#index', as: :book_tag
   # Library
   resources :books, only: [:index, :show] do
     get :show_small, on: :member

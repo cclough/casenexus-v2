@@ -3,4 +3,4 @@
     Tags
   #questions_taglist
     - application_taglist Question.tag_counts, %w[s m l] do |tag, css_class|
-      %p= link_to tag.name, tag_path(tag.name), class: css_class
+      %p= link_to tag.name, question_tag_path(tag.name), class: css_class

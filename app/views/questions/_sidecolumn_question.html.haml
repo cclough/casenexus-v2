@@ -2,7 +2,7 @@
   .questions_sidecolumn_title.top
     Tags
   - if @question.tags.count > 0
-    = raw @question.tags.map { |t| link_to t.name, tag_path(t.name) }.join('<br>')
+    = raw @question.tags.map { |t| link_to t.name, question_tag_path(t.name) }.join('<br>')
 
   .spacer10
   #questions_taglist

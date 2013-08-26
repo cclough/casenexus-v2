@@ -49,7 +49,7 @@
 
             .row
               .span
-                = raw books_item.tags.map { |t| link_to t.name, tag_path(t.name) }.join(', ')
+                = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name) }.join(', ')
 
           .span.offset1
             .books_rating_read_container.panel.dark.kill_all
