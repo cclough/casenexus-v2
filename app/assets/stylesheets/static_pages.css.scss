@@ -162,7 +162,7 @@ $alert-yellow: #FFFF7E;
   padding:25px;
 
   width:300px;
-  height:350px;
+  height:370px;
   margin-top:-250px;
   margin-left:-50px;
 
@@ -183,4 +183,21 @@ $alert-yellow: #FFFF7E;
     margin-right:3px;
   }
 }
+
+
+#static_home_signup:after
+
+{
+  content: "";
+  position: absolute;
+  top: 120px;
+  left: -15px;
+  border-style: solid;
+  border-width: 14px 15px 14px 0px;
+  border-color: transparent $gray_background;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
 

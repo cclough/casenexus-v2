@@ -2,31 +2,26 @@
   .row
     = simple_form_for @user, url: user_registration_path(@user), :html => { "autocomplete"=>"off" } do |f|
 
-      .row
-        = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6"
+      = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6", class: "span30 large"
       
       = render 'shared/error_messages', object: f.object
 
       = render 'static_pages/universities_select'
-
-      #static_home_signup_notlisted
-        Your university not listed?
-        = link_to "Contact us", "#"
-
       .spacer5
-      = f.text_field :email, placeholder: 'University email address', tabindex: "10"
-      .spacer5
-      = f.password_field :password, placeholder: 'New Password', tabindex: "11"
-      = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12"
-
       .row
-        I agree to the 
-        = link_to "Terms & Conditions", terms_path, tabindex: "13"
-        = f.check_box :confirm_tac, tabindex: "14"
-
+        Your university not listed?
+        = link_to "Tell us", "#"
       .spacer10
 
+      = f.text_field :email, placeholder: 'University email', tabindex: "10", class: "span30 large"
+      = f.password_field :password, placeholder: 'New Password', tabindex: "11", class: "span30 large"
+      = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12", class: "span30 large"
+
       .row
+        .span25
+          I agree to the 
+          = link_to "Terms & Conditions", terms_path, tabindex: "13"
+        .span5
+          = f.check_box :confirm_tac, tabindex: "14"
         = f.hidden_field :ip_address, value: request.remote_ip
-      .row
-        = f.submit "Sign up", class: "btn btn-primary btn-embossed btn-large", tabindex: "16"
+        = f.submit "Sign up", class: "btn btn-default btn-embossed btn-large btn-block", tabindex: "16"
