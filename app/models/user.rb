@@ -266,14 +266,14 @@ class User < ActiveRecord::Base
   def validate_invitation
     return if self.invitation_code == "BYPASS_CASENEXUS_INV"
     if self.invitation_code.blank?
-      errors.add(:invitation_code, "not supplied")
+      errors.add(:invitation_code, "not given")
     else
       if Invitation.where(code: self.invitation_code).exists?
         if Invitation.where("code = ? and invited_id is not null", self.invitation_code).exists?
           errors.add(:invitaiton_code, "already used")
         end
       else
-        errors.add(:invitation_code, "doesn't exists")
+        errors.add(:invitation_code, "doesn't exist")
       end
     end
   end
@@ -283,9 +283,9 @@ class User < ActiveRecord::Base
   end
 
   def validate_university_email
-    unless self.email == "christian.clough@gmail.com"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com"
       begin
-        # http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
+        # finds database listed domain within string after at sign http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
         domain = self.email.split("@")[1]
         errors.add(:email, "Sorry, no match found") if University.all.none?{ |d| domain[d.domain] }
       rescue Exception => e
@@ -296,13 +296,13 @@ class User < ActiveRecord::Base
 
 
   def send_newuser_email_to_admin
-    # UserMailer.newuser_to_admin(self).deliver
+    UserMailer.newuser_to_admin(self).deliver
   end
 
   def send_welcome
-    # if completed_was == false and completed == true
-    #   Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
-    # end
+    if completed_was == false and completed == true
+      Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
+    end
   end
 
 
@@ -323,7 +323,7 @@ class User < ActiveRecord::Base
   end
 
   def generate_username
-    self.username = "user" + Time.now.to_i.to_s.last(5) + rand(999).to_s
+    self.username = "casecracker" + Time.now.to_i.to_s.last(5) + rand(999).to_s
   end
 
 end
