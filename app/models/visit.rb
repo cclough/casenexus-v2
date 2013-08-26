@@ -14,8 +14,12 @@ class Visit < ActiveRecord::Base
   def self.shouldnt_create?(user, visitor)
     visits = Visit.where(user_id: user.id, visitor_id: visitor.id)
     # already visited recently OR if self
-    if (Time.now-5.hours..Time.now).cover?(visits.last.created_at) || (user == visitor)
-     true
+    if visits.count > 0
+      if (Time.now-5.hours..Time.now).cover?(visits.last.created_at) || (user == visitor)
+       true
+      else
+        false
+      end
     else
       false
     end
