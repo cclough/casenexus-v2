@@ -19,16 +19,14 @@
                     %span.fui-search
                   = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_panel_browse_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
 
-            %li
+            %li{:class => ("active" if params[:controller] == "map") }
               = link_to raw("<i class='icon-circle-blank icon-large icon-fixed-width'></i> Connect"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
-            %li
-              = link_to raw("<i class='icon-book icon-white icon-large icon-fixed-width'></i> Library"), library_path, "data-original-title"=>"Library of Cases", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+            %li{:class => ("active" if params[:controller] == "books") }
+              = link_to raw("<i class='icon-book icon-white icon-large icon-fixed-width'></i> Do cases"), library_path, "data-original-title"=>"Do cases", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
-            %li
+            %li{:class => ("active" if params[:controller] == "questions") }
               = link_to raw("<i class='icon-comments-alt icon-large icon-fixed-width'></i> Q&A"), questions_path, "data-original-title"=>"Discussion", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
-
-
             %li
               = link_to raw("<i class='icon-question icon-white icon-large icon-fixed-width'></i>"), '#', id: 'header_link_help', "data-original-title"=>"Help", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
             %li
@@ -40,7 +38,7 @@
             %li#header_nav_links_right_notifications.dropdown
               = render '/notifications/menu'
 
-            %li
+            %li{:class => ("active" if params[:controller] == "events" || "cases" || "account") }
               = link_to events_path, id: "header_nav_links_right_name", class: "application_truncatable" do
                 = current_user.username
                 %span#header_user_points

@@ -78,6 +78,9 @@ header {
     &:hover {
       background:$gray_Lightest;
     }
+    &.active {
+      background:$gray_Lightest;
+    }
   }
 }
 
