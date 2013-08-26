@@ -1,56 +1,7 @@
-- content_for :javascript_includes do
-  = javascript_include_tag 'home'
 
-.spacer20
-.row
-  .span58
-    #static_home_panel.panel.kill_top
+= render 'header/signin_form'
+= render 'static_pages/signup_form'
 
-      = image_tag "home/logo.png"
-      / .row
+/ = render 'layouts/footer'
 
-      /   .span.offset3
 
-      /     .spacer20
-
-      /     = image_tag "home/logo.png"
-
-      /   .span.offset2
-
-      /     .row
-      /       .span
-      /         .static_home_bullet_outest
-      /           .static_home_bullet_outer
-      /             .static_home_bullet_inner 
-      /       .span.offset2.static_home_bullet_text
-      /         Find people to practice with
-      /     .spacer20
-      /     .row
-      /       .span
-      /         .static_home_bullet_outest
-      /           .static_home_bullet_outer
-      /             .static_home_bullet_inner 
-      /       .span.offset2.static_home_bullet_text
-      /         Schedule cases with friends
-      /     .spacer20
-      /     .row
-      /       .span
-      /         .static_home_bullet_outest
-      /           .static_home_bullet_outer
-      /             .static_home_bullet_inner 
-      /       .span.offset2.static_home_bullet_text
-      /         Library of cases
-      /     .spacer20
-      /     .row
-      /       .span
-      /         .static_home_bullet_outest
-      /           .static_home_bullet_outer
-      /             .static_home_bullet_inner 
-      /       .span.offset2.static_home_bullet_text
-      /         Feedback on your cases
-
-  .span
-    = render 'static_pages/signup_form'
-.row
-  #static_home_footer
-    = render 'layouts/footer'

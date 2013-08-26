@@ -1,45 +1,32 @@
-#static_home_signup
-  #static_home_signup_panel.panel.kill_all
-    #static_home_signup_title
-      Get started...
-    .spacer5
-    .row
-      .span23
+#static_home_signup.static_home_slideable
+  .row
+    = simple_form_for @user, url: user_registration_path(@user), :html => { "autocomplete"=>"off" } do |f|
 
-        = simple_form_for @user, url: user_registration_path(@user), :html => { "autocomplete"=>"off" } do |f|
+      .row
+        = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6"
+      
+      = render 'shared/error_messages', object: f.object
 
-          .row#static_home_signup_invitation_code_panel.panel.darker.kill_all
-            #static_home_signup_invitation_code_text
-              Your invitation code
-            = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6", id: "static_home_signup_invitation_code"
+      = render 'static_pages/universities_select'
 
-          .spacer10
-          
-          = render 'shared/error_messages', object: f.object
+      #static_home_signup_notlisted
+        Your university not listed?
+        = link_to "Contact us", "#"
 
-          = render 'static_pages/universities_select'
+      .spacer5
+      = f.text_field :email, placeholder: 'University email address', tabindex: "10"
+      .spacer5
+      = f.password_field :password, placeholder: 'New Password', tabindex: "11"
+      = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12"
 
-          #static_home_signup_notlisted
-            Your university not listed?
-            = link_to "Contact us", "#", id: "static_home_signup_notlisted_button"
+      .row
+        I agree to the 
+        = link_to "Terms & Conditions", terms_path, tabindex: "13"
+        = f.check_box :confirm_tac, tabindex: "14"
 
-            .spacer5
-            = f.text_field :email, placeholder: 'University email address', tabindex: "10"
-            .spacer5
-            = f.password_field :password, placeholder: 'New Password', tabindex: "11"
-            = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12"
-          / .spacer5
-          .row
-            .span21.font-small
-              .static_home_signup_checkbox_label
-                I agree to the 
-                = link_to "Terms & Conditions", terms_path, tabindex: "13"
-            .span2
-              = f.check_box :confirm_tac, tabindex: "14"
-          .spacer10
-          .row
-            = f.hidden_field :ip_address, value: request.remote_ip
-            
+      .spacer10
 
-            #static_home_signup_submit
-              = f.submit "Sign up", class: "btn btn-primary btn-embossed btn-large", id: "static_home_signup_button_submit", tabindex: "16"
+      .row
+        = f.hidden_field :ip_address, value: request.remote_ip
+      .row
+        = f.submit "Sign up", class: "btn btn-primary btn-embossed btn-large", tabindex: "16"

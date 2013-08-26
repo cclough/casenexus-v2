@@ -1,129 +1,167 @@
-$gray_Light: #d0d0d0;
+
+$gray_background: #eceef1;
+
+
+$gray_Light: white;
+
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
-$gray_Dark: #202020;
-$gray_Darker: #303030;
+$gray_Dark: #555555;
+$gray_Darker: #333333;
 $blue_pastel: #98cdff;
-$blue_linkedin: #86c7fe;
+$blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
 
 
-#static_home_panel {
+#static_home_container_main {
+  position:absolute;
+  top:100px;
+  bottom:0px;
+  right:0px;
+  left:0px;
 
-  height:300px;
+  background:white;//$green_flatui;
+
+}
+
+
+
+.static_home_slideable {
+  position:absolute;
+  left: 150%;
+  top:50%;
+}
+
+
+
+/////////////////////////////////////////////
+///////////////  SIGNIN  ////////////////////
+/////////////////////////////////////////////
+
+
+#static_home_signin {
+
+  background:$gray_background;
+
+  padding:25px;
+
+  left:50%;
+
+  width:300px;
+  height:210px;
+  margin-top:-160px;
+  margin-left:-50px;
+
+  z-index:10;
+
+  input {
+    display:block;
+    margin-bottom:15px;
+    -moz-border-radius:    0px !important;
+    -webkit-border-radius: 0px !important;
+    border-radius:         0px !important;
+
+    border:2px solid transparent;
+  }
+
+  i {
+    margin-top:2px;
+    margin-right:3px;
+  }
+}
+
+#static_home_signin:after
+
+{
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: -15px;
+  border-style: solid;
+  border-width: 14px 15px 14px 0px;
+  border-color: transparent $gray_background;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+
+
+.static_home_signin_link {
+  display:block;
   text-align:center;
-  padding-top:90px;
-
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
-  border-radius:         5px;
-
-//  border: 1px solid $gray_Light;
-
-}
-
-#static_home_footer {
-  padding-left:283px;
+  margin-top:10px;
 }
 
 
 
-.static_home_bullet_outest {
-    background: rgba(0, 0, 0, 0.0);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border:1px solid $gray_Light;
-    margin:0px;
+#static_home_logo {
+
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  width:300px;
+  height:180px;
+  margin-top:-150px;
+  margin-left:-350px;
+
+  z-index:0;
+
 }
 
-.static_home_bullet_outer {
-    background: rgba(0, 0, 0, 0.1);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin:0px;
-    padding:11px;
-}
+#static_home_welcome_text {
+//  color:white;
+  opacity:0.95;
+  font-size:17px;
+  font-weight:200;
+  line-height:25px;
 
-.static_home_bullet_inner {
-    background: rgba(50, 50, 50, 0.75);
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    border:0px !important;
-    margin:2px;
-}
-
-.static_home_bullet_text {
-  line-height:35px;
+  margin-left:70px;
+  margin-top:10px;
 }
 
 
 
 
+/////////////////////////////////////////////
+///////////////  SIGNUP  ////////////////////
+/////////////////////////////////////////////
 
 
 #static_home_signup {
-  margin-left:42px;
-  width:255px;
+
+  background:$gray_background;
+
+  padding:25px;
+
+  width:300px;
+  height:350px;
+  margin-top:-250px;
+  margin-left:-50px;
+
+  z-index:10;
+
   input {
-    width:218px;
+    display:block;
+    margin-bottom:15px;
+    -moz-border-radius:    0px !important;
+    -webkit-border-radius: 0px !important;
+    border-radius:         0px !important;
+
+    border:2px solid transparent;
   }
 
-  -moz-box-shadow: 1px 4px 52px #2c2c2c;
-  -webkit-box-shadow: 1px 4px 52px #2c2c2c;
-  box-shadow: 1px 4px 52px #2c2c2c;
-
-}
-
-
-#static_home_signup_title {
-  text-align:center;
-  font-weight: bold;
-  border-bottom: 1px solid $gray_Light;
-  margin-bottom: 5px;
-  margin-top:-5px;
-  padding:7px;
-}
-
-#static_home_signup_invitation_code {
-  width: 207px !important;
-  margin:0px;
-  text-align:center;
-}
-
-#static_home_signup_invitation_code_panel {
-  padding:5px !important;
-  width:221px;
-}
-
-#static_home_signup_invitation_code_text {
-  font-size:11px;
-  text-align:center;
-}
-
-.static_home_signup_checkbox_label {
-  margin-top:5px;
-  margin-left:7px;
-  margin-right:7px;
-  line-height:16px;
-  text-align:left;
-}
-
-
-#static_home_signup_notlisted {
-  font-size:10px;
-  text-align:center;
-}
-
-#static_home_signup_button_submit {
-  width:233px !important;
-  height:40px;
-}
-
-#static_home_signup_university_select {
-  width:232px;
-
+  i {
+    margin-top:2px;
+    margin-right:3px;
+  }
 }
 

@@ -1,20 +1,20 @@
 - @login ||= User.new
-#header_signin_form
+#static_home_signin.static_home_slideable
   = simple_form_for(@login, url: session_path(@login)) do |f|
-    .row
-      .span20
-        = f.text_field :email, class: 'span15', tabindex: "1", placeholder: "University email address", id: "header_signin_email"
-      .span20
-        .input-append
-          = f.password_field :password, class: 'span15', tabindex: "2", placeholder: "Password", id: "header_signin_password"
-          %button.btn.btn-primary.btn-embossed.application_tooltip{:href => "#", :type => "submit", tabindex: "3", id: "static_home_signin", "data-original-title"=>"Sign in with your university email", rel: "tooltip", "data-placement"=>"bottom"}
-            %i.icon-arrow-right.icon-whit
-    .row
-      .span17#header_signin_forgottenpassword
-        %small
-          = link_to "Forgotten your password?", new_password_path('user'), tabindex: "4" 
-      .span25#header_signin_rememberme
-        .span9
-          = f.label :remember_me, class: 'font-small'
-        .span2#header_signin_rememberme_box
-          = f.check_box :remember_me, { checked: true, tabindex: "5","data-toggle"=>"switch" }
+
+    .control-group
+      = f.text_field :email, tabindex: "1", placeholder: "University email", class: "span30 large"
+      %i.input-icon.fui-user.huge
+
+    .control-group
+      = f.password_field :password, tabindex: "2", placeholder: "Password", class: "span30 large"
+      %i.input-icon.fui-lock.huge
+
+    %button.btn.btn-default.btn-large.btn-block.btn-embossed{:href => "#", :type => "submit", tabindex: "3"}
+      Login
+
+    .static_home_signin_link
+      = link_to "Lost your password?", new_password_path('user'), tabindex: "4" 
+    .static_home_signin_link#static_home_signin_link_signup
+      = link_to "Sign up", "#"
+
