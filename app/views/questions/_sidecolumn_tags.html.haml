@@ -4,7 +4,7 @@
   #questions_taglist.application_tags_container
     - application_taglist Question.tag_counts do |tag, count|
       .row
-        = link_to tag_path(tag.name) do
+        = link_to question_tag_path(tag.name) do
           .btn.btn-mini
             = tag.name
           x #{count}

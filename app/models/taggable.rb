@@ -9,7 +9,7 @@ module Taggable
 
     def tag_counts
       Tag.select("tags.id, tags.name, count(taggings.tag_id) as count").
-        joins(:taggings).group("taggings.tag_id, tags.id, tags.name")
+        joins(:taggings).where(taggings: {taggable_type: self.to_s}).group("taggings.tag_id, tags.id, tags.name")
     end
 
   end

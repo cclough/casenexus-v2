@@ -62,7 +62,7 @@
 
       .row
         .span50.application_tags_container
-          = raw books_item.tags.map { |t| link_to t.name, tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+          = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
 
         .span.pull-right.books_index_books_item_actions_container
           - if books_item.btype == "case"

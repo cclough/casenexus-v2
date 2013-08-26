@@ -1,9 +1,11 @@
 .row#questions_sidecolumn.panel.dark.kill_left
   .questions_sidecolumn_title.top
     Tags
+
   .application_tags_container
     - if @question.tags.count > 0
-      = raw @question.tags.map { |t| link_to t.name, tag_path(t.name), class: "btn btn-default btn-mini" }.join('<br>')
+      = raw @question.tags.map { |t| link_to t.name, question_tag_path(t.name), class: "btn btn-default btn-mini" }.join('<br>')
+
 
   .spacer10
   #questions_taglist

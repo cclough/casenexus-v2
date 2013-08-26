@@ -54,12 +54,13 @@
             .spacer5
             .row.questions_index_questions_item_tags.application_tags_container
               / = raw questions_item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')
-              = raw questions_item.tags.map { |t| link_to t.name, tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+              = raw questions_item.tags.map { |t| link_to t.name, question_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
 
     - else
       No questions found
   .row
     = paginate @questions
+
 
 
 
