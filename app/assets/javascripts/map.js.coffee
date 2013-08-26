@@ -102,7 +102,7 @@ window.map_index_users_resetfilters = (filter_excep) ->
 
 
 window.map_index_users_search = ->
-    $("#map_index_users_form_search_field").val($("#header_nav_panel_browse_search_field").val())
+    $("#map_index_users_form_search_field").val($("#header_nav_search_field").val())
     map_index_users_updatelist()
 
 map_index_map_zoomcalc = ->
@@ -236,7 +236,7 @@ $(document).ready ->
   # Update the list of users
   map_index_users_updatelist()
 
-  $("#header_nav_panel_browse_search_form").on "submit", ->
+  $("#header_nav_search_form").on "submit", ->
     window.map_index_users_search()
 
   # Update list of user when enter is pressed

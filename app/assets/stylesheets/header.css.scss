@@ -84,6 +84,11 @@ header {
   }
 }
 
+#header_nav_search_container { // to prevent hover on search field
+  &:hover {
+    background:transparent;
+  }
+}
 
 
 
@@ -102,7 +107,7 @@ header {
 /////////////////////////////////////////////
 
 
-#header_nav_panel_browse_search_form {
+#header_nav_search_form {
   margin-top:8px;
 }
 

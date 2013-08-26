@@ -343,8 +343,8 @@ $(document).ready ->
 
   # Header search - only if not on map page
   if typeof map_index_map_lat_start is "undefined"
-    $("#header_nav_panel_browse_search_form").on "submit", ->
-      window.location.href = "/map?search=" + $("#header_nav_panel_browse_search_field").val()
+    $("#header_nav_search_form").on "submit", ->
+      window.location.href = "/map?search=" + $("#header_nav_search_field").val()
 
   # Modals
   $("#modal_contact, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
