@@ -49,19 +49,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 
-#account_complete_step2, #account_complete_step3 {
-  width:424px;
-}
-
-#account_complete_step4, #account_complete_step5,#account_complete_step6 {
-  width:428px;
-}
-
-#account_complete_button_submit {
-  width: 100%;
-}
-
-
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// EDIT ////////////////////////////////
@@ -133,8 +120,8 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
   &.complete {
     margin-top:10px;
-    height:316px;
-    width:425px;
+    height:200px;
+    width:300px;
   }
   &.edit {
     height:261px;

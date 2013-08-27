@@ -22,7 +22,6 @@ class StaticPagesController < ApplicationController
       @login = User.new
       @user = User.new
       @user.invitation_code = session[:code]
-      render :layout => 'home'
     end
   end
 

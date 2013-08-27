@@ -1,9 +1,0 @@
-%li#fat-menu.dropdown
-
-  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-    / %i.icon-user.icon-white.icon-large
-    = current_user.email
-    %span.caret
-
-  %ul.dropdown-menu
-    %li= link_to raw("<i class=icon-bolt></i> Sign out"), destroy_user_session_path, method: :delete, title: "Sign out"

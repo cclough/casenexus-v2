@@ -49,6 +49,8 @@ class AccountController < ApplicationController
 
   def complete_profile
     @user = current_user
+
+    render layout: 'static_pages'
   end
 
   def edit_password
@@ -67,8 +69,6 @@ class AccountController < ApplicationController
     flash[:success] = "Your account has now been deleted."
     redirect_to root_path
   end
-
-
 
 
 end
