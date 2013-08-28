@@ -1,7 +1,7 @@
 = form_tag books_path, method: 'get', id: "books_index_books_form" do
   .row
     %span
-      = text_field_tag :search, params[:search], placeholder: "Search the Library", id: "books_index_books_form_searchfield", class: 'search-query'
+      = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_books_form_searchfield", class: 'search-query'
     
     .pull-right
       .span.offset1#books_index_books_form_label
@@ -70,4 +70,4 @@
         - Tag.where(category_id:5).each do |tags_industry_item|
           %option{value: tags_industry_item.id }
             = tags_industry_item.name
-    %input{type:"submit" }
+    %input.btn.btn-primary.span15{type:"submit", value: "Filter"}

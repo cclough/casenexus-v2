@@ -15,10 +15,10 @@
 .row
 
 
-  #questions_index_questions_item.panel.dark
-    - if @questions.count > 0
-      - for questions_item in @questions
 
+  - if @questions.count > 0
+    - for questions_item in @questions
+      #questions_index_questions_item.panel.dark
         .row
           .span7
             .questions_index_questions_item_stats.votes
@@ -56,8 +56,8 @@
               / = raw questions_item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')
               = raw questions_item.tags.map { |t| link_to t.name, question_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
 
-    - else
-      No questions found
+  - else
+    No questions found
   .row
     = paginate @questions
 

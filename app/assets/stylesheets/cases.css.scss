@@ -84,7 +84,7 @@ $blue_pastel: #98cdff;
 .cases_index_cases_item {
 
   height:55px;
-  width:706px;
+  width:915px;
 
   padding-top:12px;
   padding-left:5px;
@@ -92,20 +92,19 @@ $blue_pastel: #98cdff;
 
   text-align:left;
 
-  color:$gray_Lighter;
-
-
 }
 
 
 .cases_index_cases_item_score {
   font-size: 26px;
   font-weight: bold;
-  text-align:center;
+  text-align:center !important;
   height:30px;
-  margin-top:-1px !important;
+  margin-top:2px !important;
   line-height:27px;
   color: $blue_pastel !important;
+  background:white;
+  padding:10px;
 }
 
 .cases_index_cases_item_subject {
@@ -118,7 +117,6 @@ $blue_pastel: #98cdff;
   padding-top:2px;
   // line-height:40px;
   font-size:11px;
-  color: $gray_Light;
 }
 
 .cases_index_cases_item_name {
@@ -129,7 +127,8 @@ $blue_pastel: #98cdff;
 .cases_index_cases_item_avatar {
   text-align:center;
   padding-left:5px;
-  font-size:30px;
+  font-size:40px;
+  line-height:50px;
 }
 
 /////////////////////////////////////////////////////////////////

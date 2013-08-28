@@ -44,9 +44,13 @@
             .row.books_index_books_item_description
               .span
                 = books_item.desc_trunc
+            .spacer10
+            .row.application_tags_container
+              = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+
 
             .spacer5
-          .span.offset1
+          .span.offset1.pull-right
             .books_rating_read_container.panel.dark.kill_all
               .books_rating_read{"data-rating" => books_item.average_rating.round(1)}
               .books_rating_read_text
@@ -61,8 +65,6 @@
 
 
       .row
-        .span50.application_tags_container
-          = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
 
         .span.pull-right.books_index_books_item_actions_container
           - if books_item.btype == "case"
