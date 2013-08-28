@@ -37,7 +37,7 @@ class AccountController < ApplicationController
 
       if params[:back_url]
         if params[:back_url].include?('complete')
-          render 'complete_profile'
+          render 'complete_profile', layout: "home"
         else
           redirect_to params[:back_url]
         end

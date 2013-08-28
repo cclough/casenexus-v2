@@ -1,14 +1,22 @@
-// Place all the styles related to the account controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Shouldn't need these here as well as in app.css.scss
-$gray_Light: #d0d0d0;
+$gray_background: #eceef1;
+$gray_second: #BDC3C7;
+$gray_Light: white;
+
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
+$gray_Darker: #333333;
 $blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
 
 
 
@@ -39,13 +47,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 
-
-
-
-
-/////////////////////////////////////////////////////////////////
-///////////////////////// COMPLETE //////////////////////////////
-/////////////////////////////////////////////////////////////////
 
 
 
@@ -116,8 +117,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
 #account_completeedit_map {
 
   &.complete {
-    margin-top:10px;
-    height:200px;
+    height:150px;
     width:300px;
   }
   &.edit {
@@ -136,8 +136,8 @@ label, .account_form_label { // why the hell won't this work in app.css?
 }
 
 #account_completeedit_skype_link {
-  margin-top:5px;
-  font-size:10px;
+  margin-top:-12px;
+  font-size:12px;
 }
 
 .account_completeedit_privacy {
@@ -193,4 +193,77 @@ label, .account_form_label { // why the hell won't this work in app.css?
   img {
     max-width:30px;
   }
+}
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+///////////////////////// COMPLETE //////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+
+#account_complete_panel {
+
+  background:$gray_background;
+
+  padding:25px;
+
+  left:50%;
+
+  width:300px;
+  height:520px;
+  margin-top:-300px;
+  margin-left:-50px;
+
+  z-index:10;
+
+  input {
+    display:block;
+    margin-bottom:15px;
+    -moz-border-radius:    0px !important;
+    -webkit-border-radius: 0px !important;
+    border-radius:         0px !important;
+
+    border:2px solid transparent;
+  }
+
+  i {
+    margin-top:2px;
+    margin-right:3px;
+  }
+}
+
+
+#account_complete_panel:after
+
+{
+  content: "";
+  position: absolute;
+  top: 120px;
+  left: -15px;
+  border-style: solid;
+  border-width: 14px 15px 14px 0px;
+  border-color: transparent $gray_background;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+#account_complete_panel_submit {
+ display:block;
+}
+
+#account_complete_map_header {
+  background: $gray_second;
+  height:30px;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+
 }

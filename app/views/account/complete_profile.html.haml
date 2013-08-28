@@ -9,54 +9,49 @@
     var account_completeedit_map_lat_start = '#{current_user.lat}';
     var account_completeedit_map_lng_start = '#{current_user.lng}';
 
-#static_home_complete.static_home_slideable
+#account_complete_panel.static_home_slideable
+
   = form_for(@user, url: account_path) do |f|
 
     = hidden_field_tag :back_url, complete_profile_account_path
 
+    = render 'shared/error_messages', object: @user
+
+    #account_complete_map_header
+      Drag the marker to your location
+    #account_completeedit_map.complete.map
+
+    = f.hidden_field :lat, id: "account_completeedit_lat"
+    = f.hidden_field :lng, id: "account_completeedit_lng"
+
+    .spacer10
     .row
-      = render 'shared/error_messages', object: @user
+      .span
+        Time Zone
+      .span.offset1
+        = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {}, { class: "chzn-select" }
+    .spacer10
 
-      .span46
+    .control-group
+      = f.text_field :skype, placeholder: "Skype username", class: "span30 large"
+      %i.input-icon.fui-skype.huge
+    #account_completeedit_skype_link.pull-right
+      = link_to "Need to register for a Skype account?", "https://login.skype.com/account/signup-form"
 
-        .row
-          #account_completeedit_map.complete.map
+    .spacer5
 
-          = f.hidden_field :lat, id: "account_completeedit_lat"
-          = f.hidden_field :lng, id: "account_completeedit_lng"
+    = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", "data-placeholder" => "Which languages do you speak?"}
 
-        .row
-          .span
-            Time Zone
-          .span.offset1
-            = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {}, { class: "chzn-select" }
-        .row
-          .control-group
-            = f.text_field :skype, placeholder: "Skype username", class: "span30 large"
-            %i.input-icon.fui-skype.huge
-          .span8
-            #account_completeedit_skype_link
-              = link_to "Need to register?", "https://login.skype.com/account/signup-form"            
-        .row
-          .span25
-            = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30"}
+    .spacer10
+    = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option><option>Experienced Professional</option>".html_safe, {class: "chzn-select span10",:prompt => "Your degree level"}
 
-        .row
-          .span10
-            = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option><option>Experienced Professional</option>".html_safe, {class: "chzn-select span10"}
-          .span10
-            = f.collection_select :subject_id, Subject.all, :id, :name, {class: "chzn-select span10"}
+    = f.collection_select :subject_id, Subject.all, :id, :name, {class: "chzn-select span10",:prompt => "Your degree subject"}
 
-        / .row
-        /   .span12
-        /     = f.label :university_id
-        /   .span4
-        /     = image_tag "universities/" + @user.university.image
-        /   .span
-        /     = @user.university.name
-        .row
-          .span25
-            = f.text_field :cases_external, placeholder: "How many cases have you done so far?"
-        .row
-          = f.submit "Complete Sign up", class: "btn btn-large btn-primary btn-embossed", id: "static_complete_button_submit"
-=debug(params)
+    
+    .row
+      .span
+        = f.label :cases_external, "# cases done to date?"
+      .span.offset1
+        = f.text_field :cases_external, class: "span6"
+
+    = f.submit "Complete Sign up", class: "btn btn-large btn-primary btn-embossed btn-block", id: "account_complete_panel_submit"
