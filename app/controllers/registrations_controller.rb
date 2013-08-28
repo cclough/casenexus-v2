@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     resource = build_resource({})
-    render template: '/static_pages/home'
+    render template: '/static_pages/home', layout: "static_pages"
   end
 
   # POST /resource
@@ -21,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      render template: '/static_pages/home'
+      render template: '/static_pages/home', layout: "static_pages"
     end
   end
 

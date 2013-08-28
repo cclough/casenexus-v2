@@ -1,7 +1,14 @@
 
+- content_for :javascript_includes do
+
+  - if params[:controller] == "registrations" || params[:action] == "create"
+    :javascript
+      $(document).ready(function() {
+        $("#static_home_switch_link_signup").trigger('click')
+      });
+
+
 = render 'static_pages/signin_form'
 = render 'static_pages/signup_form'
 
 / = render 'layouts/footer'
-
-

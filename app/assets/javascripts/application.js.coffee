@@ -387,6 +387,10 @@ $(document).ready ->
     $("#application_flash").fadeOut('fast');
   , 4000
 
+  # Click form errors to hide them
+  $("#application_error_explanation").click ->
+    $(this).fadeOut "fast"
+
 
 
 

@@ -26,6 +26,7 @@ $alert-yellow: #FFFF7E;
   bottom:0px;
   right:0px;
   left:0px;
+  overflow:hidden;
 
   background:white;//$green_flatui;
 
@@ -40,7 +41,7 @@ $alert-yellow: #FFFF7E;
 
   width:300px;
   height:180px;
-  margin-top:-120px;
+  margin-top:-140px;
   margin-left:-350px;
 
   z-index:0;
@@ -54,7 +55,7 @@ $alert-yellow: #FFFF7E;
   font-weight:200;
   line-height:25px;
 
-  margin-left:70px;
+  margin-left:80px;
   margin-top:30px;
 }
 
@@ -100,7 +101,7 @@ $alert-yellow: #FFFF7E;
   left:50%;
 
   width:300px;
-  height:210px;
+  height:185px;
   margin-top:-160px;
   margin-left:-50px;
 

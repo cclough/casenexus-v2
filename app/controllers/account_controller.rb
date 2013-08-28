@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :completed_user, except: "complete_profile"
+  before_filter :completed_user, except: :complete_profile
 
   def show
     #@user = current_user
@@ -30,7 +30,7 @@ class AccountController < ApplicationController
         @user.save
         flash[:success] = 'Welcome to casenexus.com'
       end
-      redirect_to edit_account_path
+      redirect_to map_path
     else
       @invitations = current_user.invitations
       @invitation = current_user.invitations.build(params[:invitation])
@@ -50,7 +50,12 @@ class AccountController < ApplicationController
   def complete_profile
     @user = current_user
 
-    render layout: 'static_pages'
+    if @user.completed?
+      redirect_to map_path
+    else
+      render layout: 'static_pages'
+    end
+
   end
 
   def edit_password

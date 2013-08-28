@@ -2,28 +2,25 @@
 %html
   %head
     %title= full_title(yield(:title))
+
+    = csrf_meta_tags
+    = analytics_init if Rails.env.production?
+
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
-
     - if request.ssl?
       = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
     - else
       = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
-
-    = yield :javascript_includes
-
-    = csrf_meta_tags
-
-    = analytics_init if Rails.env.production?
-
     = javascript_include_tag 'static_pages'
-
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
-
     /[if lte IE 7]
       = javascript_include_tag "lib/icon-font-ie7"
 
+
+    = yield :javascript_includes
+    
   %body{:class => ("signedout" if !signed_in?) }
   
     = render 'layouts/header'
@@ -35,7 +32,7 @@
     #static_home_logo
       = image_tag "home/logo.png"
       #static_home_welcome_text
-        Practise to improve
+        Welcome to
         %br
         %strong casenexus.com
 

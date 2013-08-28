@@ -1,19 +1,4 @@
 $(document).ready ->
-  
-
-
-
-  # Sliding effect on home
-  # $(".static_home_slideable").click ->
-  #   $(this).animate
-  #     left: "-50%"
-  #   , 500, ->
-  #     $(this).css "left", "150%"
-  #     $(this).appendTo "#static_home_container_main"
-
-  #   $(this).next().animate
-  #     left: "50%"
-  #   , 500
 
   $(".static_home_switch_link").click ->
 
