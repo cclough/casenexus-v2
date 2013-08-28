@@ -1,4 +1,4 @@
-%select#static_home_signup_university_select.chzn-select.span30.large{"data-placeholder" => "Select Your University...", tabindex: "9"}
+%select#static_home_signup_university_select.chzn-select.span30.large{"data-placeholder" => "Select University...", tabindex: "9"}
   %option
     - for item in University.order("name asc")
       %option{value: item.domain }

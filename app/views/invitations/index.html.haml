@@ -1,34 +1,46 @@
-.panel.dark.font-small.kill_bottom.kill_left.kill_right
+.panel.dark.kill_bottom.kill_left.kill_right
   .row
     .span
       - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
 
         = simple_form_for @invitation, html: { id: "account_edit_invitations_form" } do |f|
           .row
-            .span20
-              %p Invite Friends (#{current_user.invitations.count}/5 Invitations Used)
-              = hidden_field_tag :back_url, edit_account_path
+            .span42
+              %p Invite Friends (#{current_user.invitations.count}/5 invitations Used)
+              = hidden_field_tag :back_url, invitations_path
             .span19
               = f.text_field :name, class: 'span18 account_field', placeholder: "Name"
             .span20
               .input-append
                 = f.text_field :email, class: 'span25 account_field', placeholder: "Email"
                 = f.submit "Invite", class: 'btn btn-primary btn-embossed'
+          .row
+            Your friend must have a university email address, from one of our listed universities:
+            = render "static_pages/universities_select"
       - else
         %p You have no more invitations
-  .row#account_edit_invitations_list.panel.dark.kill_all
+
+.panel.dark.font-small.kill_bottom.kill_left.kill_right
+  .row
     - if @invitations.count > 0
-      - @invitations.each do |invitation|
-        %div
-          - if invitation.invited
-            .span10
-              = "#{invitation.email} accepted your invitation and created his profile: "
-            .span5.pull-right
-              = link_to(invitation.invited, member_path(invitation.invited))
-          - else
-            .span10
-              = "#{invitation.email} was invited"
-            .span5.pull-right
-              = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: edit_account_path}), method: :delete, confirm: "Are you sure?")
+      %table.table.table-striped
+        %tbody
+          %tr
+            %th
+              Invitation Status
+            %th
+              Action
+          - @invitations.each do |invitation|
+            %tr
+              - if invitation.invited
+                %td
+                  = "#{invitation.email} accepted your invitation and created his profile: "
+                %td
+                  = link_to(invitation.name + "'s profile", member_path(invitation.invited))
+              - else
+                %td
+                  = "#{invitation.email} was invited"
+                %td
+                  = link_to("Cancel Invitation", invitation_path({id: invitation.id, back_url: invitations_path}), method: :delete, confirm: "Are you sure?")
     - else
       %p You have no pending/accepted invitations

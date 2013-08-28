@@ -45,7 +45,12 @@ class MembersController < ApplicationController
       @user.visits.create(visitor_id: current_user.id)
     end
 
-    render layout: false
+    # if via ajax render without layout form map, else redirect to map and profile link
+    if request.xhr?
+      render layout: false
+    else
+      redirect_to '/map?user_id='+params[:id]
+    end
   end
 
   def show_infobox

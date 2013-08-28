@@ -1,7 +1,9 @@
 
 - content_for :javascript_includes do
 
-  - if params[:controller] == "registrations" || params[:action] == "create"
+  // CONDITIONAL - for signup error handling & invitation email code link
+  - if params[:controller] == "registrations" || params[:action] == "create" || !params[:code].blank?
+
     :javascript
       $(document).ready(function() {
         $("#static_home_switch_link_signup").trigger('click')
@@ -12,3 +14,5 @@
 = render 'static_pages/signup_form'
 
 / = render 'layouts/footer'
+
+/ = debug(params)
