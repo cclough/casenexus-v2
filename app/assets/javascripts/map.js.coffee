@@ -107,7 +107,7 @@ window.map_index_users_search = ->
 
 map_index_map_zoomcalc = ->
   # Zoom according to div size: http://stackoverflow.com/questions/17412397/zoom-google-map-to-fit-the-world-on-any-screen
-  zl = Math.round(Math.log($("#map_index_map").width() / 512)) + 1
+  zl = Math.round(Math.log($("#map_index_map").width() / 512)) + 1 + 1 # extra 1 added by cc
   return zl
 
 window.map_index_user_profile_chart_activity_draw = () ->
@@ -307,7 +307,7 @@ $(document).ready ->
 
 
   # Ajax pagination
-  $("#map_index_users .application_pagination a").on "click", ->
+  $(".pagination a").click ->
     $.getScript @href
     false
 
@@ -336,7 +336,7 @@ $(document).ready ->
         featureType: "landscape.natural"
         elementType: "all"
         stylers: [
-          hue: "#7bcdff"
+          color: "#1ABC9C"
         ,
           lightness: 3
         ]

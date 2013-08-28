@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
 
+  layout 'home'
+
   def home
     if params[:code]
       if params[:code] == "BYPASS_CASENEXUS_INV"

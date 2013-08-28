@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :completed_user, except: :complete_profile
+  before_filter :completed_user, except: [:complete_profile, :update]
 
   def show
     #@user = current_user
@@ -53,7 +53,7 @@ class AccountController < ApplicationController
     if @user.completed?
       redirect_to map_path
     else
-      render layout: 'static_pages'
+      render layout: 'home'
     end
 
   end

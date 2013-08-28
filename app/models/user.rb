@@ -312,18 +312,22 @@ class User < ActiveRecord::Base
   end
 
   def set_university
-    domain = self.email.split("@")[1]
-    # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
-    if found = University.all.find{ |d| domain[d.domain] }
-      self.university = found
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com"
+      domain = self.email.split("@")[1]
+      # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
+      if found = University.all.find{ |d| domain[d.domain] }
+        self.university = found
+      else
+        errors.add(:email, "Sorry, no match found")
+      end
     else
-      errors.add(:email, "Sorry, no match found")
+      self.university = University.find(1)
     end
 
   end
 
   def generate_username
-    self.username = "casecracker" + Time.now.to_i.to_s.last(5) + rand(999).to_s
+    self.username = "user" + Time.now.to_i.to_s.last(5) + rand(999).to_s
   end
 
 end
