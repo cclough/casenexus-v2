@@ -546,7 +546,7 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   chart_analysis_radar.startDuration = 0.3
   chart_analysis_radar.startEffect = ">"
   chart_analysis_radar.sequencedAnimation = true
-  chart_analysis_radar.color = "#f6f6f6"
+  chart_analysis_radar.color = "#000000"
   chart_analysis_radar.colors = ["#979797", "#c7c7c7","#16b1ff"]
   chart_analysis_radar.fontSize = 11
   
@@ -638,7 +638,7 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
   legend = new AmCharts.AmLegend()
   legend.position = "bottom"
   legend.align = "center"
-  legend.color = "#f6f6f6"
+  legend.color = "#000000"
   legend.markerType = "square"
   legend.rollOverGraphAlpha = 0
   legend.horizontalGap = 5

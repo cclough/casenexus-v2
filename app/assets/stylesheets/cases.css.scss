@@ -1,14 +1,24 @@
-// Place all the styles related to the cases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Shouldn't need these here as well as in app.css.scss
-$gray_Light: #d0d0d0;
+$gray_background: #eceef1;
+$gray_Light: white;
+$gray_second: #BDC3C7;
+
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
+$gray_Darker: #333333;
 $blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
 
 .cases_avatar {
   text-align:center;
@@ -144,7 +154,6 @@ $blue_pastel: #98cdff;
   margin-bottom: 5px;
   margin-top:-5px;
   &.recommendation {
-    font-size:11px;
   }
 }
 
@@ -251,7 +260,6 @@ $blue_pastel: #98cdff;
 .cases_show_recommendation_content {
   overflow-y:auto;
   height:60px;
-  font-size:11px;
 }
 
 
@@ -276,7 +284,6 @@ $blue_pastel: #98cdff;
 }
 
 #cases_show_subnav_browse {
-  margin-top:-42px;
   color:$gray_Light;
 }
 
@@ -651,6 +658,7 @@ $blue_pastel: #98cdff;
   display:none;
   padding-left:2px;
   height:450px;
+  width:100%;
 }
 
 #cases_analysis_chart_radar_empty {
@@ -845,25 +853,36 @@ $blue_pastel: #98cdff;
 
 
 .cases_analysis_block_title {
-  background: url('app/dark-bg.png') repeat top left;
+//  background: url('app/dark-bg.png') repeat top left;
 
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
+//  border-top-left-radius: 5px;
+//  -moz-border-top-left-radius: 5px;
+//  -webkit-border-top-left-radius: 5px;
 
-  border-top-right-radius: 5px;
-  -moz-border-top-right-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
+//  border-top-right-radius: 5px;
+//  -moz-border-top-right-radius: 5px;
+//  -webkit-border-top-right-radius: 5px;
 
-  line-height:25px;
+//  line-height:25px;
+
+//  height:25px;
+//  text-align:center;
+//  font-weight: bold;
+//  font-size:12px;
+//  // border-bottom: 1px solid $gray_Light;
+//  margin-bottom: 5px;
+//  color: $gray_Lighter;
+
   margin:-10px;
-  height:25px;
+  margin-bottom: 10px;
+  background: $gray_second;
+  height:30px;
   text-align:center;
   font-weight: bold;
-  font-size:12px;
-  // border-bottom: 1px solid $gray_Light;
-  margin-bottom: 5px;
-  color: $gray_Lighter;
+  line-height:31px;
+  color: white;
+
+
 }
 
 
@@ -900,11 +919,11 @@ $blue_pastel: #98cdff;
 
 
 #cases_analysis_comments_tabs {
-  padding-left:150px;
+  padding-left:250px;
   text-decoration:none;
   
   a {
-    background: rgba(0, 0, 0, 0.4);
+    background: $gray_second;
     margin: 0px 3px;
     padding-left:30px;
     padding-right:30px;
@@ -940,21 +959,16 @@ $blue_pastel: #98cdff;
   margin-top: 5px;
   padding: 5px;
 
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
+  background: $gray_background;
   
   &:hover {
-    background: rgba(0, 0, 0, 0.6);
-    color:white;
+    background: $gray_second;
     text-decoration:none !important;
   }
 
   .cases_analysis_comment_from {
     text-decoration:none;
     font-weight: bold;
-    color: $gray_Lightest;
 
     .cases_analysis_comment_date {
       font-weight: normal;
@@ -965,7 +979,7 @@ $blue_pastel: #98cdff;
 
   .cases_analysis_comment_content {
     font-style: italic;
-    color: $gray_Light;
+    color:$gray_Dark;
   }
 
 }
