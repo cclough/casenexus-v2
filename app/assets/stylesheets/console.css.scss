@@ -65,6 +65,18 @@ $alert-yellow: #FFFF7E;
 }
 
 
+#console_index_panel_blank {
+  text-align:center;
+  margin-top: 30%;
+
+  i {
+    font-size:100px;
+  }
+
+  #console_index_panel_blank_text {
+    margin-top:10px;
+  }
+}
 
 //////////////// Send PDF Button States
 

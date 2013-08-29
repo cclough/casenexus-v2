@@ -1,9 +1,14 @@
 #console_index_container
   / #console_index_pdfjs
   %iframe#console_index_pdfjs_iframe{ src: ("/console/pdfjs?id=#{@book.id}" unless @book.blank?) }
-    .spacer50
-    No Case Selected
-    %i.icon-random.icon-white{style: "font-size:100px;"}
+
+    #console_index_panel_blank
+      %i.icon-random.icon-white
+      #console_index_panel_blank_text
+        Select a case
+
+
+
   #console_index_feedback
     #console_index_feedback_subnav
       .spacer5
@@ -12,3 +17,8 @@
     #console_index_feedback_frame
       - unless @friend.blank?
         = render partial: "cases/new", locals: { user_id: @friend.id }
+      - else
+        #console_index_panel_blank
+          %i.icon-user
+          #console_index_panel_blank_text
+            Select a friend to open a feedback form

@@ -74,9 +74,6 @@ window.console_index_subnav_timer_prime = ->
 
 
 
-
-
-
 countdown = (element, minutes, seconds) ->
   
   # set time for the particular countdown
@@ -103,17 +100,6 @@ countdown = (element, minutes, seconds) ->
 
 $(document).ready ->
 
-
-
-	# query = getQueryParams(document.location.search)
-
-	# if query.id != ""
- #    book = "/console/pdfjs?id=" + query.id
- #    $("#console_index_pdfjs_iframe").attr "src", book
-
- #    console_index_subnav_sendpdf_check()
-
-
   $("#console_index_subnav_select_books").change ->
 
     book_id = $(this).val()
@@ -130,13 +116,14 @@ $(document).ready ->
         #Prime the raty
         window.books_item_prime_raty
 
-
     else
       $("#cases_new_book").html ""
 
       $("#console_index_pdfjs_iframe").attr "src", ""
 
       $("#cases_new_nobook").fadeIn "fast"
+
+
 
 
   $("#console_index_subnav_select_friends").change ->
@@ -172,6 +159,8 @@ $(document).ready ->
 
     else
       $("#console_index_feedback_frame").html ""
+
+
 
 
   # Prime the Timer

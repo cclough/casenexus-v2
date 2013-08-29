@@ -334,8 +334,7 @@ $alert-yellow: #FFFF7E;
 }
 
 .cases_new_block {
-  padding:3px;
-  padding-bottom:0px;
+  padding:0;
 }
 
 
@@ -354,14 +353,7 @@ $alert-yellow: #FFFF7E;
 }
 
 .cases_new_score_input {
-  width:20px !important;
-  height:20px !important;
-  border:2px solid white !important;
-  background:rgba(0,0,0,0.5) !important;
-  color:$blue_pastel !important;
-  font-weight: bold !important;
-  text-align:center !important;
-  margin-left:5px !important;
+
 }
 
 
@@ -380,33 +372,14 @@ $alert-yellow: #FFFF7E;
 
 
 .cases_new_block_title {
-
-  width:400px;
-  position:relative;
-  left:50%;
-  margin-left:-200px;
-  margin-bottom:0px;
-
-  line-height:25px;
-  height:25px;
+  background: $gray_second;
+  height:30px;
   text-align:center;
   font-weight: bold;
-  font-size:14px;
-  color: $gray_Lighter;
+  line-height:31px;
+  color: white;
 
-  background: url('app/dark-bg.png') repeat top left;
-
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-
-  border-top-right-radius: 5px;
-  -moz-border-top-right-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-
-
-
-
+  margin: 0px 15px;;
 }
 
 
@@ -426,60 +399,44 @@ $alert-yellow: #FFFF7E;
 
 
 .cases_new_block_desc {
-  color: $gray_Lighter;
   margin:0px;
   margin-bottom:2px;
   border:0 !important;
+
+  min-height:50px;
+
+  padding:10px;
+  &.grayed {
+    background:$gray_Lightest;
+  }
+}
+
+.cases_new_block_desc_title {
+  font-weight:bold;
+}
+
+.cases_new_block_desc_panel_text {
+  width:60%;
+}
+
+.cases_new_block_groupscore {
+  text-align:center;
+}
+
+.cases_new_block_groupscore_businessanalytics_number {
+  font-size:20px;
 }
 
 
-
-
-
-
-
-
-.cases_new_criteria_popover {
-  width:3px;
-  padding-left:6px;
-  margin-right:5px;
+.cases_new_scoreselector_container {
+  margin-top:5px;
 }
 
 .cases_new_scoreselector_button {
-  width:3px;
-  padding-left:10px;
+  width:15px;
 }
 
 
-.cases_new_block_circle {
-    background: #f00;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border:0px !important;
-    margin:0px;
-}
-
-.cases_new_block_circle_outer {
-    background: #f00;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin:0px;
-    margin-left:17px;
-    margin-top:53px;
-    padding:10px;
-}
-
-.cases_new_block_circle_text {
-    margin-top:10px;
-    width:150px;
-    margin-left:-55px;
-    text-align: center;
-    font-weight:bold;
-    font-size:25px;
-    color:$blue_pastel;
-}
 
 
 
@@ -502,7 +459,7 @@ $alert-yellow: #FFFF7E;
 
 
 .cases_new_comment {
-  margin:5px;
+  margin:0px 15px 15px 15px;
 
   background-color: rgb(255, 255, 204);
 

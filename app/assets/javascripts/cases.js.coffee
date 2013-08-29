@@ -50,12 +50,6 @@ window.cases_new_prime = () ->
     $(this).addClass("active")
 
 
-  # Popovers
-  $(".cases_new_criteria_popover").hover (->
-    $(this).popover "show"
-  ), ->
-    $(this).popover "hide"
-
   # Char counters
   $('.application_countchar').keyup ->
     window.application_countChar(this)
@@ -79,7 +73,7 @@ window.cases_new_prime = () ->
       else
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_businessanalytics").html category_score
+      $("#cases_new_block_groupscore_businessanalytics .cases_new_block_groupscore_number").html category_score + "/5"
 
     else if category is "structure"
       if $("#cases_new_score_input_approachupfront").val()
@@ -99,7 +93,7 @@ window.cases_new_prime = () ->
       else
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_structure").html category_score
+      $("#cases_new_block_groupscore_structure  .cases_new_block_groupscore_number").html category_score + "/5"
 
     else if category is "interpersonal"
       if $("#cases_new_score_input_rapport").val()
@@ -119,7 +113,7 @@ window.cases_new_prime = () ->
       else
         category_score_4 = 0
       category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_circle_text_interpersonal").html category_score
+      $("#cases_new_block_groupscore_interpersonal  .cases_new_block_groupscore_number").html category_score + "/5"
 
 
 #////////////////////////////////////////////////////
