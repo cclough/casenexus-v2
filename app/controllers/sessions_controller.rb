@@ -4,6 +4,6 @@ class SessionsController < Devise::SessionsController
     resource = build_resource(nil, :unsafe => true)
     clean_up_passwords(resource)
     @login = resource
-    render template: '/static_pages/home', layout: 'static_pages'
+    render template: '/static_pages/home'
   end
 end

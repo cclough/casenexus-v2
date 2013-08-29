@@ -1,10 +1,24 @@
-$gray_Light: #d0d0d0;
+
+$gray_background: #eceef1;
+$gray_Light: white;
+$gray_second: #BDC3C7;
+
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
+$gray_Darker: #333333;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
 
 #console_index_container {
   margin-top:50px;
@@ -46,21 +60,8 @@ $blue_linkedin: #006699;
 
 
 #console_index_feedback_subnav {
-  // min-height:34px;
-
-  border-bottom: 1px solid #252525;
-  background-color: #3D3D3D;
-  background-image: -moz-linear-gradient(top, #383838, #1C1C1C);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#383838), to(#1C1C1C));
-  background-image: -webkit-linear-gradient(top, #383838, #1C1C1C);
-  background-image: -o-linear-gradient(top, #383838, #1C1C1C);
-  background-image: linear-gradient(to bottom, #383838, #1C1C1C);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff383838', endColorstr='#ff1C1C1C', GradientType=0);
-
-
-  min-height: 32px;
-
+  background: $gray_second;
+  height: 50px;
 }
 
 
@@ -69,37 +70,33 @@ $blue_linkedin: #006699;
 
 
 .console_index_subnav_button_sendpdf_state {
-  width: 100px;
+  width: 80px;
 }
 
 /////////////// Component Height Adjustments ////////////////
-#console_index_subnav_button_sendpdf, #console_index_subnav_button_skype_container {
-  margin-top:-2px!important;
+.console_index_subnav_button_sendpdf_state, #console_index_subnav_button_skype_container {
+  margin-top:-6px; //sets vertical position of these buttons on the subnav
 }
 
 #console_index_subnav_select_friends_container, #console_index_subnav_select_books_container {
-  margin-top:-2px!important; 
+ margin-top:-2px; //sets vertical position of these buttons on the subnav
 }
 
+
+#console_index_subnav_button_skype_container {
+  margin-right:6px;
+}
 
 
 
 
 ////////////// TIMER ///////////////
 #console_index_subnav_timer_panel {
-  border-bottom-left-radius: 5px;
-  -moz-border-bottom-left-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;  
-
-  border-bottom-right-radius: 5px;
-  -moz-border-bottom-rightradius: 5px;
-  -webkit-border-bottom-right-radius: 5px;  
 
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 1px 10px 3px 10px;
-
-  margin: -5px 3px 0px 3px;
-
+  padding: 5px 10px 3px 10px;
+  margin: -7px 3px 0px 3px;
+  width:160px;
 
 }
 
@@ -112,30 +109,38 @@ $blue_linkedin: #006699;
 
 .console_index_subnav_button_timer_set {
   width:12px !important;
-
-  padding-left:1px;
-  padding-right:2px;
   height:11px;
-  line-height:13px;
+  line-height:11px;
   text-align:center;
+  padding: 3px 8px 10px 6px !important;
 }
+
+
 
 #console_index_timer_restartreset_container {
   .btn {
-    width:25px;
-    font-size:10px;
-    padding-left:0px;
-    padding-right:0px;
+    font-size:11px;
   }
 }
 
-#console_index_subnav_button_timer_pause {
+#console_index_subnav_button_timer_pause, {
+  height:11px;
   width:40px;
+  padding: 3px 8px 10px 8px !important;
 }
 
-#console_index_timer_restartreset_container, #console_index_timer_pause_container, #console_index_subnav_timer_timeset_container {
-  width:59px;
+#console_index_subnav_button_timer_reset, #console_index_subnav_button_timer_restart {
+  height:11px;
+  width:25px;
+  padding: 3px 10px 10px 6px !important;
+  text-align:center;
 }
+
+.console_index_timer_panel_container{
+  text-align:center;
+}
+
+
 
 #console_index_timer_pause_container, #console_index_timer_restartreset_container {
   display:none;
@@ -182,7 +187,10 @@ $blue_linkedin: #006699;
 
 
   box-shadow: rgba(255, 255, 255, 0.046875) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.148438) 0px 0px 1px 0px inset, rgba(255, 255, 255, 0.046875) 0px 1px 0px 0px;
+  
   color: rgb(243, 243, 243);
+  color:$gray_Dark;
+
   cursor: default;
   display: block;
   float: left;

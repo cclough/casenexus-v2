@@ -2,7 +2,7 @@
 - content_for :javascript_includes do
 
   // CONDITIONAL - for signup error handling & invitation email code link
-  - if params[:controller] == "registrations" || params[:action] == "create" || !params[:code].blank?
+  - if params[:controller] == "registrations" && params[:action] == "create" || !params[:code].blank?
 
     :javascript
       $(document).ready(function() {

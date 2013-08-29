@@ -268,6 +268,7 @@ window.modal_events_new_timezone_calcs = ->
   else
     $("#events_new_datetime_friend").html("")
 
+
 window.modal_events_rebless = ->
 
   $("#events_new_datetime_picker").datetimepicker
