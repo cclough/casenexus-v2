@@ -160,6 +160,8 @@ $alert-yellow: #FFFF7E;
 
 .onlinepanel_show {
 
+  position:relative;
+  
   height:30px;
   padding:5px;
   font-size:12px;
@@ -192,22 +194,35 @@ $alert-yellow: #FFFF7E;
 }
 
 
-.onlinepanel_show_button {
-  .dropdown-menu {
-    max-width:30px !important;
-  }
+//.onlinepanel_show_button {
+//  .dropdown-menu {
+//    max-width:30px !important;
+//  }
 
-  .btn {
-    width:5px !important;
-    height:15px;
-  }
-}
-
+//  .btn {
+//    width:5px !important;
+//    height:15px;
+//  }
+//}
 
 // .onlinepanel_show_avatar {
 //   max-width: 20px
 // }
 
+
+.onlinepanel_show_menu_container {
+  display:none;
+  position:absolute;
+  right:43px;
+  .btn {
+    margin:0px 2px !important;
+  }
+}
+
+
+.onlinepanel_show_menu_open {
+  width:10px;
+}
 
 .onlinepanel_show_status {
 
