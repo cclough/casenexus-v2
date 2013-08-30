@@ -18,9 +18,9 @@ $(document).ready ->
 
   # WHEN I PUT FUNCTIONS ABOVE, BELOW PRIME RATY IT DOESN"T WORK - SOMETHING BROKEN?
 
-  window.books_item_prime_raty()
+  window.application_raty_prime()
 
-
+  
 
 
 

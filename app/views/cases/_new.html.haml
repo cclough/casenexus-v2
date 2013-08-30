@@ -19,62 +19,60 @@
 
   = render 'shared/error_messages', object: @case
   .row
-    .span.cases_new_expander
-      .panel.dark.kill_bottom
-        .row
-          .span5
-            %span.fui-user.application_userimage_medium
-          .span#cases_new_target_name
-            = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
-              = image_tag @user.university.image_file, class: "application_userimage_small"
-              = @user.username
+
+    #cases_new_user
+      = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
+        .fui-user.application_usericon_huge
+        %br
+        = image_tag @user.university.image_file, class: "application_userimage_small"
+        = @user.username
 
 
 
 
+  #cases_new_book_container
 
-  .row
-    #cases_new_book
-      - if @book
-        .panel.dark.kill_bottom
+    .spacer15
+
+    .row
+      #cases_new_book
+        - if @book
           = render partial: 'books/show_small', locals: { book_id: @book.id }
 
 
 
 
-  .row#cases_new_nobook
-    .panel.darker.kill_bottom
-      .row
-        .span16#cases_new_nobook_label
-          External case details
-          %i.icon-caret-right
-        .span
-          .row
-            .span21
-              = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
-            .span20
-              = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject", style: "width:100%;"
+    .row#cases_new_nobook
+      .panel.darker
+        .row
+          %span#cases_new_nobook_label
+            External case details
+            %i.icon-caret-right
+          %span.pull-right
+            = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
+            = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject"
 
 
 
 
 
-
-  .row#cases_new_guide.panel.darker
-    .span11
-      %span.cases_new_guide_num 1
+  .cases_new_block_title
+    Scoring Guide
+  .row#cases_new_guide.panel.darker.kill_top
+    .row
+      %span.cases_new_guide_num.btn.btn-primary 1
       &#61; Low
-    .span11
-      %span.cases_new_guide_num 2
+    .row
+      %span.cases_new_guide_num.btn.btn-primary 2
       &#61; Below Average
-    .span11
-      %span.cases_new_guide_num 3
+    .row
+      %span.cases_new_guide_num.btn.btn-primary 3
       &#61; Average
-    .span11
-      %span.cases_new_guide_num 4
+    .row
+      %span.cases_new_guide_num.btn.btn-primary 4
       &#61; Above Average
-    .span11
-      %span.cases_new_guide_num 5
+    .row
+      %span.cases_new_guide_num.btn.btn-primary 5
       &#61; Exceptional
 
   .row    

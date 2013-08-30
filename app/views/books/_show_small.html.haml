@@ -2,76 +2,33 @@
 
 %input{ type:"hidden", name:"case[book_id]",value: @book.id }
 
-.row
 
 
+= link_to book_path(@book), class: "btn btn-small btn-primary btn-embossed" do
+
+  #cases_new_book_image.span4
+    - if @book.thumb.blank?
+      = image_tag 'universities/' + @book.university.image.to_s unless !@book.university
+    - else
+      = image_tag 'library/thumbs/' + @book.thumb.to_s
 
 
+  .span27#cases_new_book_body
+    .row
+      / - if @book.title.blank?
+      /   = @book.source_title
+      / - else
+      /   = "#{@book.source_title}:&nbsp;".html_safe
+      - unless @book.title.blank?
+        = @book.title
 
-  .span8
-    #cases_new_book_image.panel.kill_all
-      - if @book.thumb.blank?
-        = image_tag 'universities/' + @book.university.image.to_s unless !@book.university
-      - else
-        = image_tag 'library/thumbs/' + @book.thumb.to_s
-
-
-
-
-
-
-  .span.offset1
-
+    / - unless @book.difficulty.blank?
+    /   .row
+    /     = book_difficulty_in_words(@book.difficulty)
 
     .row
+      = @book.author
 
-      .span#cases_new_book_body
-        .row
-          /.books_index_books_item_titles
-          .span
-            / .books_index_books_item_source_title
-            - if @book.title.blank?
-              = @book.source_title
-            - else
-              = "#{@book.source_title}:&nbsp;".html_safe
-          - unless @book.title.blank?
-            .span
-              /.books_index_books_item_title
-              = @book.title
-
-        .spacer5
-
-        .row
-          /.books_index_books_item_description
-          .span
-            = @book.desc_trunc_very
-
-
-
-    .row
-
-
-
-
-      .books_index_books_item_actions_container.pull-right
-        
-        .row
-          .books_index_books_item_comments{"data-id"=>@book.id}
-            = link_to book_path(@book), class: "btn btn-small btn-primary btn-embossed" do
-              Rate & Comment
-              %strong (#{@book.comments.count})
-
-
-
-      .books_index_books_item_info_container.pull-right
-        - unless @book.difficulty.blank?
-          .books_index_books_item_difficulty
-            = book_difficulty_in_words(@book.difficulty)
-
-
-
-      .books_rating_read_container.pull-right
-        .books_rating_read{"data-rating" => @book.average_rating.round(1)}
-        .books_rating_read_text
-          User rating:
-          = pluralize(@book.average_rating.round(1),"Star")
+    .row#cases_new_book_desc
+      = @book.desc_trunc_very
+.spacer15

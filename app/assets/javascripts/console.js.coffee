@@ -111,10 +111,15 @@ $(document).ready ->
 
       $("#cases_new_nobook").css("display","none")
       $.get "/books/" + book_id + "/show_small", (data) ->
-        $("#cases_new_book").html "<div class=\"panel dark kill_bottom\">" + data + "</div>"
+        $("#cases_new_book").html data
 
         #Prime the raty
-        window.books_item_prime_raty
+
+        SetTimeout (->
+          window.application_raty_prime
+        ), 2000
+
+        
 
     else
       $("#cases_new_book").html ""
@@ -144,10 +149,12 @@ $(document).ready ->
           $("#cases_new_nobook").css("display","none")
 
           $.get "/books/" + book_id + "/show_small", (data) ->
-            $("#cases_new_book").html "<div class=\"panel dark kill_bottom\">" + data + "</div>"
+            $("#cases_new_book").html data
 
             #Prime the raty
-            window.books_item_prime_raty
+            SetTimeout (->
+              window.application_raty_prime
+            ), 2000
 
       # change skypebutton
       $.get ("/console/skypebutton?friend_id=" + friend_id), (data) ->

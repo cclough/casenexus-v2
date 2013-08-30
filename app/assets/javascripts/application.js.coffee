@@ -302,7 +302,7 @@ window.modal_events_rebless = ->
 
 
 
-window.books_item_prime_raty = () ->
+window.application_raty_prime = () ->
   
   $(".books_rating_read").raty
     readOnly: true
