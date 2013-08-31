@@ -1,3 +1,11 @@
+/* Font urls
+Border radiuses on lots of things, particularly 'first-child lis'
+modal backdrop colour
+modal corner radius*/
+
+
+
+
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
 @font-face {
@@ -5815,7 +5823,7 @@ input.search-query {
 }
 .modal-backdrop {
   z-index: 1040;
-  background-color: #243342;
+/*  background-color: #243342;*/
 }
 .modal-backdrop.fade {
   opacity: 0;
@@ -5831,9 +5839,9 @@ input.search-query {
   margin-left: -312px;
   background-color: #ffffff;
   border: 2px solid #ebedef;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   -webkit-background-clip: border-box;
   -moz-background-clip: border-box;
   background-clip: border-box;

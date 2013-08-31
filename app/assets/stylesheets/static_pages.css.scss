@@ -199,3 +199,32 @@ $alert-yellow: #FFFF7E;
   z-index: 1;
 }
 
+
+
+
+
+
+/////////////////////////////////////////////
+///////////////  SIGNUP  ////////////////////
+/////////////////////////////////////////////
+
+
+
+#static_terms_container {
+
+  background:$gray_background;
+
+  padding:25px;
+
+  position:absolute;
+
+  left:10%;
+  right:10%;
+  top:10%;
+  bottom:10%;
+
+  z-index:10;
+
+  overflow-y:scroll;
+
+}

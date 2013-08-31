@@ -1,4 +1,17 @@
+
+
 = form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form" do
   .panel.darker.kill_left.kill_right
+
+    .spacer5
     .row
-      = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query'
+      .span10
+        Unread #{@notifications.count}
+      .span10
+
+    .spacer10
+    .row
+      .input-append
+        = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query'
+        %button{type: "submit", class: "btn"}
+          %span.fui-search

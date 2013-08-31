@@ -1,13 +1,14 @@
 .notifications_index_notifications_item{"data-user_id"=>asso_user.id.to_s}
   .row
-    .span5
-      .span3.notifications_index_notifications_item_avatar
-        %span.fui-user
-    .span12
+
+
+    .span7.notifications_index_notifications_item_avatar
+      %span.fui-user
+
+
+    .span17.notifications_index_notifications_item_text_container
       .row
         .notifications_index_notifications_item_name.application_truncatable
-          / - unless notifications_item.sender == nil 
-          /   = notifications_item.sender.username_trunc
           = asso_user.username
 
       .row
@@ -17,6 +18,5 @@
           - else
             = notifications_item.content_trunc
 
-    .span1.offset1.application_timestamp
+    .span5.application_timestamp.notifications_index_notifications_item_date.pull-right
       = notifications_item.date_fb
-      / = notifications_item.created_at.strftime("%d %b '%y")

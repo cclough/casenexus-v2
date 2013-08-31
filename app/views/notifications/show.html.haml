@@ -7,22 +7,19 @@
 /     $('#notifications_show_body').animate({scrollTop: $("#notification-"+#{@id}).offset().top - 160},'slow');
 /   });
 
+.row#notifications_show_header
+  .span.offset1
+    = @sender.username
 
-.panel.darker.kill_right.kill_bottom
-  .row#notifications_show_header
-    .span.offset1
-      = @sender.username
-      .row
-        - if @sender.last_online_at
-          .span.application_lastonline
-            Last online
-            = time_ago_in_words(@sender.last_online_at)
-            ago
+  .span.offset1
+    - unless @sender.country.blank?
+      .span3
+        = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.username
 
-    .span.offset1
-      - unless @sender.country.blank?
-        .span3
-          = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.username
+
+
+.panel.darker.kill_right.kill_bottom.kill_top
+
 
 
   .spacer5
@@ -37,7 +34,7 @@
       #flash_notifications
         = render 'shared/error_messages', object: @notification
         .row
-          = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea"
+          = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea", class: "span60"
 
           = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
           = f.hidden_field :user_id, value: @sender.id

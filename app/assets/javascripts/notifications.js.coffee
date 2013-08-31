@@ -5,6 +5,7 @@ window.notifications_index_jump = (user_id) ->
     $("#notifications_index_conversation").html data
 
     # scroll div (animate)
+
     # $("#notifications_show_body_subcontainer").animate
     #   scrollTop: document.getElementById("notifications_show_body_subcontainer").scrollHeight;
     # , "fast"
@@ -26,5 +27,5 @@ $(document).ready ->
     window.notifications_index_jump user_id
 
     # add selected class
-    $(".notifications_index_notifications_item").removeClass "select"
-    $(this).addClass "select"
+    $(".notifications_index_notifications_item").removeClass "notifications_index_notifications_item_select"
+    $(this).addClass "notifications_index_notifications_item_select"

@@ -114,10 +114,8 @@ $(document).ready ->
         $("#cases_new_book").html data
 
         #Prime the raty
+        window.application_raty_prime
 
-        SetTimeout (->
-          window.application_raty_prime
-        ), 2000
 
         
 

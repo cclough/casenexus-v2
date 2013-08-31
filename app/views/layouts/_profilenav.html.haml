@@ -24,6 +24,13 @@
   %br
 
   .row
+    = link_to notifications_path do
+      .application_profilenav_item{:class => ("active" if params[:controller] == "notifications") }
+        %i.icon-envelope.icon-fixed-width
+        .application_profilenav_item_text
+          Notifications
+
+  .row
     = link_to visitors_account_path do
       .application_profilenav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "visitors") }
         %i.icon-eye-open.icon-fixed-width

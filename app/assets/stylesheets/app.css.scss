@@ -42,31 +42,13 @@ html {
   min-height: 100%;
   padding-bottom:0px;
   margin-bottom:0px;
-//  background: url(app/bg.jpg) no-repeat center center fixed; 
-//  -webkit-background-size: cover;
-//  -moz-background-size: cover;
-//  -o-background-size: cover;
-//  background-size: cover;
-
-//  background: url('app/bg-texture4.jpg') repeat top left;
 
   background: $gray_background;
 
-  &.application_html_console {
-//    background: url('app/bg-texture4.jpg') repeat top left;
-//    -webkit-background-size: auto;
-//    -moz-background-size: auto;
-//    -o-background-size: auto;
-//    background-size: auto;
-//    overflow:hidden;
+  &.application_html_static {
+    background: white;
   }
-  &.application_html_map {
-//    background: url('app/bg-texture4.jpg') repeat top left;
-//    -webkit-background-size: auto;
-//    -moz-background-size: auto;
-//    -o-background-size: auto;
-//    background-size: auto;
-  }
+
 }
 
 body {
@@ -94,6 +76,7 @@ footer {
 
   padding-top:0px;
   margin-bottom:15px !important;
+
   a{
     color:#333;
     // &:hover {
@@ -103,7 +86,7 @@ footer {
   }
 
   ul {
-
+    margin-left:40%;
     list-style: none;
     li {
       float: left;
@@ -646,10 +629,13 @@ textarea {
 
 #modal_help_checkbox_container {
   text-align:left;
+  margin-top:12px;
+  input {
+    
+  }
 }
 
 #modal_help_checkbox {
-  margin-top:-20px;
 }
 
 .arrownav_page {

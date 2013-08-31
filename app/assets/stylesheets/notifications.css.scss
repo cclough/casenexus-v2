@@ -1,16 +1,22 @@
-// Place all the styles related to the cases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Shouldn't need these here as well as in app.css.scss
+$gray_background: #eceef1;
+$gray_Light: white;
+$gray_second: #BDC3C7;
 
-$gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
+$gray_Darker: #333333;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
 
 
 
@@ -18,10 +24,11 @@ $blue_linkedin: #006699;
 #notifications_index_notifications {
   overflow-y:scroll;
   height:500px;
+  background:$gray_Lightest;
 }
 
 #notifications_index_conversation {
-  width:504px;
+
 }
 
 /////////////////////////////////////////////////////
@@ -35,9 +42,20 @@ $blue_linkedin: #006699;
 
   padding-left:7px !important;
   padding-right:30px !important;
-  width:169px;
+  width:195px;
 }
 
+
+#notifications_index_notifications_header {
+  background: $gray_second;
+  height:30px;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+
+  margin: 0;
+}
 
 
 #notifications_index_notifications_empty {
@@ -59,34 +77,31 @@ $blue_linkedin: #006699;
 
 
 .notifications_index_notifications_item {
-  padding:8px !important;
+  padding:8px 8px 8px 0px !important;
   margin-bottom:2px;
 
-  color:white;
-
-  background:rgba(0,0,0,0.5);
-
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+  background:white;
+  height:50px;
   
   &:hover {
-    background:rgba(0,0,0,0.7);
+    background:$gray_second;
     cursor:pointer;
   }
 
-  &.select {
-    background:rgba(0,0,0,0.8);
+  &.notifications_index_notifications_item_select {
+    background:$green_flatui;
   }
 
   &.read {
-    -moz-opacity: 0.50;
-    opacity: 0.50;
+    background:$gray_Lightest;
   }
 
 }
 
 
+.notifications_index_notifications_item_text_container {
+  margin-top:8px;
+}
 
 .notifications_index_notifications_item_caption {
   color: $gray_Mid;
@@ -94,7 +109,13 @@ $blue_linkedin: #006699;
 }
 
 .notifications_index_notifications_item_avatar {
-  padding-left:3px;
+  text-align:center;
+  font-size:40px;
+}
+
+.notifications_index_notifications_item_date {
+  text-align:right;
+  margin-top:15px;
 }
 
 /////////////////////////////////////////////////////
@@ -110,10 +131,15 @@ $blue_linkedin: #006699;
 
 
 #notifications_show_header {
-//  border-bottom: 1px solid $gray_Light;
 
+  background: $gray_second;
+  height:30px;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+  margin:15px 0px 0px 15px;
 
-  padding:5px;
   img {
     max-width:25px;
   }
@@ -128,10 +154,7 @@ $blue_linkedin: #006699;
   overflow-y:scroll;
   height:385px;
   margin:0 -10px 0 -10px;
-  
-  -webkit-box-shadow: inset  0 8px 6px -6px black;
-     -moz-box-shadow: inset  0 8px 6px -6px black;
-          box-shadow: inset  0 8px 6px -6px black;
+
 }
 
 #notifications_show_body_subcontainer{
@@ -144,8 +167,8 @@ $blue_linkedin: #006699;
 
 
 #notifications_show_newmessage_textarea {
-  width:454px;
   height:50px;
+  display:block;
 }
 
 

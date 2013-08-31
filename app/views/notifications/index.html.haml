@@ -1,19 +1,23 @@
 - provide(:title, 'Your Notifications')
 - provide(:sub_title, 'Browse through all of your notifications')
 
+.row
+  .span30
+    = render 'notifications_form'
 
-.span23
-  = render 'notifications_form'
-  #notifications_index_notifications
-    = render :partial => 'notifications', :locals => { :notifications => @notifications }
+    #notifications_index_notifications_header
+      Your conversations
 
-  = link_to 'Load More Notifications', notifications_path(:page => @notifications.next_page), :class => 'load-more-posts', :remote => true if @notifications.next_page
+    #notifications_index_notifications
+      = render :partial => 'notifications', :locals => { :notifications => @notifications }
+
+    = link_to 'Load More Notifications', notifications_path(:page => @notifications.next_page), :class => 'load-more-posts', :remote => true if @notifications.next_page
 
 
-.span#notifications_index_conversation
+  .span64#notifications_index_conversation
 
-  .row.panel.darker.kill_right
-    #notifications_index_notifications_empty
-      #notifications_index_notifications_empty_icon
-        %i.icon-envelope
-      %p Open a Conversation
+    .row.panel.darker.kill_right
+      #notifications_index_notifications_empty
+        #notifications_index_notifications_empty_icon
+          %i.icon-envelope
+        %p Open a Conversation

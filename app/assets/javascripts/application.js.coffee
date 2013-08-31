@@ -35,7 +35,6 @@
 
 
 
-
 # Get query params, global function
 
 window.getQueryParams = (qs) ->
@@ -348,8 +347,8 @@ $(document).ready ->
       window.location.href = "/map?search=" + $("#header_nav_search_field").val()
 
   # Modals
-  $("#modal_contact, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
-    backdrop: false
+  $("#modal_contact, #modal_message, #modal_post, #modal_friendship_req, #modal_event, #modal_help").modal
+    backdrop: true
     show: false
 
   # Modal help checkbox
@@ -360,6 +359,8 @@ $(document).ready ->
       $.ajax("/members/" + user_id + "/show_help?act=uncheck&page_id=" + page_id, type: 'PUT')
     else
       $.ajax("/members/" + user_id + "/show_help?act=check&page_id=" + page_id, type: 'PUT')
+
+
 
   # Modal help link
   $("#header_link_help").click ->
@@ -373,6 +374,8 @@ $(document).ready ->
     if !($("#modal_contact").hasClass("in"))
       $(".modal").modal "hide"
       $("#modal_contact").modal "show"
+
+      window.modal_spinner_prime()
 
   # Modal buttons
   $(".modal-footer button").on 'click', (e) ->

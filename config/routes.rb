@@ -18,7 +18,6 @@ Casenexus::Application.routes.draw do
   end
 
   # Static Pages
-  match '/about', to: 'static_pages#about'
   match '/terms', to: 'static_pages#terms'
   match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
 

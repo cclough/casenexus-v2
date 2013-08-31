@@ -1,5 +1,6 @@
 / - @post ||= Post.new
 - if @post.blank? then @post = Post.new end
+
 = form_for @post, url: posts_path, remote: true do |f|
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×

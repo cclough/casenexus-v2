@@ -12,7 +12,7 @@
         Display this everytime I use the Map
     - when "3"
       .span3
-        = check_box_tag :help_3_checked, 1, current_user.help_3_checked, id: 'modal_help_checkbox', 'data-page_id' => 3, 'data-user_id' => current_user.id
+        = check_box_tag :help_3_checked, 1, current_user.help_3_checked, id: 'modal_help_checkbox', 'data-page_id' => 3, 'data-user_id' => current_user.id, "data-toggle" => "checkbox"
       .span30.font-small
         Display this everytime I use the Roulette
     - when "4"
@@ -27,6 +27,6 @@
         Display this everytime I use the Case Index
     - when "6"
       .span3
-        = check_box_tag :help_6_checked, 1, current_user.help_6_checked, id: 'modal_help_checkbox', 'data-page_id' => 6, 'data-user_id' => current_user.id
+        = check_box_tag :help_6_checked, 1, current_user.help_6_checked, id: 'modal_help_checkbox', 'data-page_id' => 6, 'data-user_id' => current_user.id, class:"checkbox"
       .span30.font-small
         Display this everytime I use the Progress Analysis

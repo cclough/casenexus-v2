@@ -77,7 +77,7 @@ class Notification < ActiveRecord::Base
     if self.ntype == "friendship_app"
       "Contact Accepted"
     else
-      content.truncate(35, :separator => ' ') unless (content == nil)
+      content.truncate(50, :separator => ' ') unless (content == nil)
     end
   end
 
