@@ -23,12 +23,17 @@ $alert-yellow: #FFFF7E;
 
 #notifications_index_notifications {
   overflow-y:scroll;
-  height:500px;
+  position:absolute;
+  top:120px;
+  bottom:0px;
   background:$gray_Lightest;
 }
 
 #notifications_index_conversation {
-
+  position:absolute;
+  left:400px;
+  bottom:0px;
+  top:0px;
 }
 
 /////////////////////////////////////////////////////
@@ -36,13 +41,11 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////////////////////////
 
 #notifications_index_notifications_form_searchfield {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
 
-  padding-left:7px !important;
-  padding-right:30px !important;
-  width:195px;
+  width:225px;
 }
 
 
@@ -54,12 +57,11 @@ $alert-yellow: #FFFF7E;
   line-height:31px;
   color: white;
 
-  margin: 0;
+  margin: 15px 0 0 0;
 }
 
 
 #notifications_index_notifications_empty {
-  height:367px;
   padding-top:180px;
   padding-left:0px;
   padding-right:0px;

@@ -1,17 +1,13 @@
 
+#notifications_index_notifications_header
 
-= form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form" do
-  .panel.darker.kill_left.kill_right
+  Your conversations
 
-    .spacer5
-    .row
-      .span10
-        Unread #{@notifications.count}
-      .span10
+= form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form", class: "form-search" do
+  .panel.darker.kill_all
 
-    .spacer10
     .row
       .input-append
-        = text_field_tag :search, params[:search], placeholder: "Search notifications...", id: "notifications_index_notifications_form_searchfield", class: 'search-query'
-        %button{type: "submit", class: "btn"}
+        = text_field_tag :search, params[:search], placeholder: "Search...", id: "notifications_index_notifications_form_searchfield", class: 'search-query'
+        %button.btn{type: "submit"}
           %span.fui-search

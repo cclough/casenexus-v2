@@ -1,17 +1,18 @@
-#cases_analysis_comments.panel.dark.kill_all
-  .row
-    .cases_analysis_block_title
-      Comment Aggregator
+#cases_analysis_comments
   .row
     %ul#cases_analysis_comments_tabs.nav.nav-tabs
-      %li
+    
+      %li.active
         %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_businessanalytics"} Business Analytics
+
       %li
         %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_structure"} Structure
         
       %li
         %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_interpersonal"} Interpersonal
 
+      %li
+        %a{"data-toggle" => "tab", :href => "#cases_analysis_comments_tab_interpersonal"} Recommendations
 
     .tab-content
 
@@ -75,3 +76,5 @@
               %i.icon-comment-alt
             %p You have no comments yet 
             %p for Interpersonal
+
+      #cases_analysis_comments_tab_recommendations.cases_analysis_comments_tab.tab-pane

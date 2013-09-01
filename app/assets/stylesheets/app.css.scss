@@ -105,37 +105,6 @@ textarea {
 }
 
 
-
-
-//a {
-//  color: white;
-//  text-decoration:none;
-//  &:hover {
-//    color:white !important;
-//    text-decoration:underline;
-//  }
-//}
-
-//a:hover {
-//  color: $gray_Darker;
-//  transition: color .1s ease-in;
-//  -moz-transition: color .1s ease-in;
-//  -webkit-transition: color .1s ease-in;
-//  -o-transition: color .1s ease-in;
-//}
-
-
-
-// Supplementing bootstrap class
-//.search-query {
-//  background: white url(icons/search.png) no-repeat 95% 6px;
-//  padding-right: 32px !important;
-//  padding-left: 14px !important;
-//  &.header {
-//  background: white url(icons/search.png) no-repeat 95% 7px;    
-//  }
-//}
-
 .simple_form {
   margin-bottom:0px;
 }
@@ -788,7 +757,7 @@ textarea {
 
 
 .application_colorcode_green {
-  color: $alert-green;
+  color: $green_flatui;
 }
 
 .application_colorcode_red {

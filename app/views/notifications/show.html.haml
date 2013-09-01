@@ -8,14 +8,7 @@
 /   });
 
 .row#notifications_show_header
-  .span.offset1
-    = @sender.username
-
-  .span.offset1
-    - unless @sender.country.blank?
-      .span3
-        = image_tag "countries/"+@sender.country.code.to_s+".png", alt: @sender.username
-
+  = @sender.username
 
 
 .panel.darker.kill_right.kill_bottom.kill_top

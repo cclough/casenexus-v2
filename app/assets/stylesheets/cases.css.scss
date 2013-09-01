@@ -595,6 +595,20 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////////////////////////////////////
 
 
+#cases_analysis_nav {
+  .btn {
+    width:110px;
+    i {
+      margin-right:5px;
+    }
+  }
+}
+
+  #cases_analysis_nav_container {
+    margin: 0 auto;
+    width:590px;
+  }
+
 .cases_analysis_loading {
   width:150px;
   position:relative;
@@ -607,13 +621,6 @@ $alert-yellow: #FFFF7E;
   }
 }
 
-#cases_analysis_subnav_label {
-  margin-top:5px;
-  font-size:12px;
-  i {
-    margin-left:5px;
-  }
-}
 
 
 
@@ -623,13 +630,12 @@ $alert-yellow: #FFFF7E;
 }
 #cases_analysis_chart_radar_buttongroup {
   display:none;
-  margin-top:-28px;
 }
 
 
 #cases_analysis_chart_radar {
   display:none;
-  padding-left:2px;
+  padding:0;
   height:450px;
   width:100%;
 }
@@ -668,15 +674,8 @@ $alert-yellow: #FFFF7E;
   padding:10px;
   margin:-10px -10px 5px -10px !important;
 
-  background: rgba(0, 0, 0, 0.5);
+  background: $gray_second;
 
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-
-  border-top-right-radius: 5px;
-  -moz-border-top-right-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
 }
 
 
@@ -700,10 +699,19 @@ $alert-yellow: #FFFF7E;
 
 #cases_resultstable_table {
   width:100%;
-  font-size:11px;
+  font-size:14px;
+  th {
+    padding: 7px 2px;
+    p {
+      font-size:11px;
+      margin:0px;
+    }
+  }
   td {
-    padding-left:5px;
-    padding-right:5px;
+
+    border-top: 2px solid $gray_background;
+    padding: 4px 7px;
+
     text-align:center;
     &.text-left-align {
       text-align:left;
@@ -723,14 +731,14 @@ $alert-yellow: #FFFF7E;
   width:300px;
 }
 
-.cases_resultstable_cell_last5 {
-  color: $blue_pastel;
-  font-size:12px !important;
+.cases_resultstable_cell_score {
+  font-weight:bold;
+  font-size:15px !important;
 }
 
 
 .cases_resultstable_label {
-  margin-top:3px;
+  margin-top:8px;
   font-size:12px;
   i {
     margin-left:5px;
@@ -826,25 +834,6 @@ $alert-yellow: #FFFF7E;
 
 
 .cases_analysis_block_title {
-//  background: url('app/dark-bg.png') repeat top left;
-
-//  border-top-left-radius: 5px;
-//  -moz-border-top-left-radius: 5px;
-//  -webkit-border-top-left-radius: 5px;
-
-//  border-top-right-radius: 5px;
-//  -moz-border-top-right-radius: 5px;
-//  -webkit-border-top-right-radius: 5px;
-
-//  line-height:25px;
-
-//  height:25px;
-//  text-align:center;
-//  font-weight: bold;
-//  font-size:12px;
-//  // border-bottom: 1px solid $gray_Light;
-//  margin-bottom: 5px;
-//  color: $gray_Lighter;
 
   margin:-10px;
   margin-bottom: 10px;
@@ -876,36 +865,55 @@ $alert-yellow: #FFFF7E;
 
 
 
-.cases_analysis_stats_name {
-  font-style:italic;
-  text-align:right;
-  padding-right:10px;
-  margin-right:10px;
-  border-right: 1px solid $gray_Lighter;
-}
 
-.cases_analysis_stats_sub {
-  font-weight:bold;
-  border-bottom: 1px solid $gray_Lighter;
-}
 
+
+#cases_analysis_comments {
+  font-size:85%;
+
+  .tab-content {
+    padding:4px;
+    border:0;
+  }
+
+  ul {
+    margin:0px;
+  }
+}
 
 
 #cases_analysis_comments_tabs {
-  padding-left:250px;
+  padding-left:110px;
+
   text-decoration:none;
-  
+
+  text-align:center;
+
+  li {
+    &.active {
+      a {
+        background:$gray_Lightest;
+        border:0;
+      }
+    }
+  }
+
   a {
+    width:150px;
     background: $gray_second;
     margin: 0px 3px;
-    padding-left:30px;
-    padding-right:30px;
+
+    padding: 10px 10px;
     color: $gray_Light;
+
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+
     &:hover {
-      background: rgba(0, 0, 0, 0.5);
-      color:white;
-      border:1px solid transparent;
+      background:$gray_Lightest;
     }
+
   }
 
 }
@@ -930,9 +938,9 @@ $alert-yellow: #FFFF7E;
 
 .cases_analysis_comment {
   margin-top: 5px;
-  padding: 5px;
+  padding: 10px;
 
-  background: $gray_background;
+  background: white;
   
   &:hover {
     background: $gray_second;
@@ -951,7 +959,6 @@ $alert-yellow: #FFFF7E;
   }
 
   .cases_analysis_comment_content {
-    font-style: italic;
     color:$gray_Dark;
   }
 
@@ -963,14 +970,9 @@ $alert-yellow: #FFFF7E;
   }
 }
 
-#cases_analysis_comments {
-  font-size:85%;
-  ul {
-    margin:0px;
-  }
-}
+
 
 .cases_analysis_comments_tab {
   overflow-y:auto;
-  height:260px;
+  height:400px;
 }
