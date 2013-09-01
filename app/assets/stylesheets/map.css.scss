@@ -97,7 +97,7 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#map_index_container_user_profile {
+#map_index_container_user_profile_small {
   display:none;
 
   z-index:1000;
@@ -108,7 +108,7 @@ $alert-yellow: #FFFF7E;
   height:150px;
   bottom:0px;
 
-  overflow-y:auto;
+  overflow-y:hidden;
 
   .panel {
     border:0px;
@@ -118,7 +118,29 @@ $alert-yellow: #FFFF7E;
 
 
 
-/////////////////////////
+
+#map_index_container_user_infobox {
+
+  // Fade in wont work!
+  // display:none;
+
+  width:100px;
+
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  .panel {
+    border:0px;
+  }
+
+}
+
+
+
+
+
+////////////////////////////////////////
 
 
 
@@ -173,7 +195,7 @@ $alert-yellow: #FFFF7E;
 
 
 //////////////////////////////////////////////
-//////////////////////////////////////////////
+/////////////// USERS ITEM ///////////////////
 //////////////////////////////////////////////
 
 .map_index_users_item {
@@ -206,7 +228,6 @@ $alert-yellow: #FFFF7E;
 
 }
 
-//////////////////////////////////////////////
 
 .map_index_users_item_avatar {
   text-align:center;
@@ -257,189 +278,9 @@ $alert-yellow: #FFFF7E;
 
 
 
-
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-
-
-#map_index_container_user_infobox {
-
-  // Fade in wont work!
-  // display:none;
-
-  width:100px;
-
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-
-  .panel {
-    border:0px;
-  }
-
-}
-
-
-
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-//////////////////////////////////////////////
-
-
-
-#map_index_user_profile_removefriend {
-  a:hover {
-    color: $gray_Light !important;
-    transition: color .1s ease-in !important;
-    -moz-transition: color .1s ease-in !important;
-    -webkit-transition: color .1s ease-in !important;
-    -o-transition: color .1s ease-in !important;
-  }
-}
-
-
-
-
-#map_index_user_profile_name {
-  font-size:24px;
-  width:200px;
-}
-
-#map_index_user_profile_avatar {
-  text-align:center;
-  img{
-    max-width:40px;    
-  }
-
-  // ADJUST THIS TO STOP TWITCH ON LOAD
-  height:69px;
-}
-
-
-#map_index_user_profile_points {
-  font-size:18px;
-  border:2px solid white;
-  padding:5px;
-  text-align:center;
-  color:white;
-  font-weight:bold;
-
-
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
-  border-radius:         5px;
-
-}
-
-#map_index_user_profile_university, #map_index_user_profile_country {
-  font-size:11px;
-  text-align:center;
-}
-
-
-#map_index_user_profile_panel_info {
-
-}
-
-
-
-
-#map_index_user_profile_panel_actions, #map_index_user_profile_panel_associations {
-  width:177px;
-
-  font-size:12px !important;   
-
-  text-align:center;
-
-  height: 161px;
-
-
-
-  .btn {
-    padding:7px;
-    margin:0px 2px;
-    line-height:12px;
-    width:68px
-  }
-}
-
-#map_index_user_profile_panel_associations_subpanel_languages {
-  height:50px;
-  line-height:17px;
-  overflow-y:auto;
-}
-
-
-
-
-#map_index_user_profile_panel_actions {
-  margin-left:0;
-}
-
-
-
-#map_index_user_profile_panel_subtitle {
-  background: rgba(0, 0, 0, 0.4);
-  height:18px;
-  padding:2px;
-  text-align:center;
-  font-weight: bold;
-  font-size:12px;
-  line-height:19px;
-  margin:5px -10px 5px -10px;  
-  &.top {
-    margin:-10px -10px 5px -10px;
-  }
-  color: $gray_Lighter;
-}
-
-
-
-#map_index_user_profile_panel_skype {
-  img {
-    max-height:10px;
-    min-width:10px;
-  }
-}
-
-
-
-
-.map_index_user_profile_association_item {
-
-  color: $gray_Lighter;
-
-  padding:3px;
-
-  list-style:none;
-
-}
-
-
-
-#map_index_user_profile_button_startcase, #map_index_user_profile_button_event {
-  height:50px;
-  line-height:50px !important;
-}
-
-
-
-
-#map_index_user_profile_button_friendrequest{
-  width:100px !important;
-  min-height:95px !important;
-  line-height:17px !important;
-
-  div {
-    margin-bottom:7px;
-  }
-}
-
-#map_index_user_profile_friendpending {
-  margin-top:54px;
-  color:#fffa6f;
-}
 
 
 #map_index_user_profile_chart_activity {

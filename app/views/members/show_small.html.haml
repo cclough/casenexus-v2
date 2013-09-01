@@ -1,0 +1,66 @@
+
+:javascript
+  var map_index_user_profile_chart_activity_data = #{Case.user_activity_profile(@user)};
+
+
+#map_index_user_profile_panel_info
+  .row
+    .span20
+      %span.fui-user
+      .row
+        = casecounts(@user)
+        .span2
+          = @user.points_tally
+    .span20
+      activity chart
+    .span20
+      actions
+/   .row
+/     .span.offset1
+
+/     .span.offset2
+/       .spacer5
+/       .row
+/         .span
+/           #map_index_user_profile_name.application_truncatable
+/             = @user.username
+/       .row
+/         .span
+/           .application_lastonline
+/             - if @user.last_online_at
+/               Last online
+/               = time_ago_in_words(@user.last_online_at)
+/               ago
+/             %span#map_index_user_profile_removefriend
+/               - if Friendship.friends?(current_user, @user)
+/                 &#8226; 
+/                 = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.username + " as a contact?")
+/       .row
+/         .span#map_index_user_profile_university
+/           - unless @user.university.blank?
+/             .span
+/               = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
+/             .span.offset1
+/               = @user.university.name
+/         .span.offset1#map_index_user_profile_country
+/           - unless @user.country.blank?
+/             .span
+/               = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name, class: "application_userimage_small"
+/             .span.offset1
+/               = @user.country.name
+/       .row
+/         = @user.degree_level_in_words
+/       .row
+/         = @user.subject.name unless @user.subject.blank?
+/ .row
+
+/   .span
+/     .panel.darker#map_index_user_profile_panel_associations
+
+/       #map_index_user_profile_panel_subtitle.top
+/         Languages
+/       .row#map_index_user_profile_panel_associations_subpanel_languages
+/         - unless @user.languages.empty?
+/           - @user.languages.each do |users_item_language|
+/             .map_index_user_profile_association_item
+/               = users_item_language.name

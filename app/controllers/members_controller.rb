@@ -60,6 +60,12 @@ class MembersController < ApplicationController
   end
 
 
+  def show_small
+    @user = User.find(params[:id])
+    
+    render layout: false
+  end
+
   def mouseover
     @user = User.find(params[:id])
     respond_to do |format|
