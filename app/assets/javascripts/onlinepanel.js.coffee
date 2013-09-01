@@ -67,7 +67,14 @@ window.onlinepanels_refresh = (callback) ->
     callback() if callback
 
 
+
+
 $(document).ready ->
 
   # ONLINE PANEL STUFF
   window.onlinepanel_prime()
+
+  $("#onlinepanel_posts_post_close").click ->
+    $("#onlinepanel_posts_post").fadeOut "fast"
+
+  

@@ -49,5 +49,5 @@
             .events_calendar_event{"data-id" => event.id}
               .span4
                 = event.datetime.strftime("%H:%M")
-              .span
+              .span20.events_calendar_event_username
                 = event.partner.username

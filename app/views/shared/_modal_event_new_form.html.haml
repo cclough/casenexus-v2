@@ -12,80 +12,75 @@
       = render 'shared/error_messages', object: @event
 
     .row
-      - if @friend.blank?
-        %select#events_new_friend_select.chzn-select.span28{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
-          %option Choose a friend
-          = options_from_collection_for_select(current_user.accepted_friends, "id", "username")
-      - else
-        #events_new_friend_selected
-          .span#events_edit_partner_avatar
-            %span.fui-user
-          .span.offset1#events_edit_partner_name
-            %strong
-              = @friend.username
-              = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_new_friend_select"
 
-        .spacer10
+      .span39
+        - if @friend.blank?
+          %select#events_new_friend_select.chzn-select.span28{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
+            %option Choose a friend
+            = options_from_collection_for_select(current_user.accepted_friends, "id", "username")
+            
+        - else
+          #events_new_friend_selected
+            .span#events_edit_partner_avatar
+              %span.fui-user
+            .span.offset1#events_edit_partner_name
+              %strong
+                = @friend.username
+                = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_new_friend_select"
+
+          .spacer10
       
 
+        #events_new_friend_timezone
 
+      .span39.offset1
 
-
-
-    #events_new_friend_timezone
-
-
-
-    .spacer20
-
-
-    .events_form_spacer
-
-
-    .row
-      #events_new_datetime_picker.input-append.date
-        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "Select a date and time", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M")
-        %span.add-on
-          %i.icon-calendar
+        #events_new_datetime_picker.input-append.date
+          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "Select a date and time", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M")
+          %span.add-on
+            %i.icon-calendar
 
 
 
 
 
-    #events_new_datetime_friend
+        #events_new_datetime_friend
 
 
-
-    .spacer20
-
-
-    .events_form_spacer
-
+    .spacer30
 
     .row
 
+      .span39
 
 
+        #events_new_book_viewer_partnertoprepare_container.application_bootstrap_alert_blue
 
-      #events_new_book_viewer_partnertoprepare_container.application_bootstrap_alert_blue
-
-        %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
-          %option Which case should they prepare for you?
-          / = options_from_collection_for_select(Book.all, "id", "title")
-          - @books.each do |books_select_item|
-            %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }
-              = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
-              = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
-              = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+          %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
+            %option Which case should they prepare for you?
+            / = options_from_collection_for_select(Book.all, "id", "title")
+            - @books.each do |books_select_item|
+              %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }
+                = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
+                = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
+                = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
 
 
-        #events_new_book_viewer_partnertoprepare
-          - if @book_user.blank?
-            #events_new_book_viewer_empty 
-              No book selected
-          -else
-            = render partial: 'books/show_small', locals: { book_id: @book_user.id }
+          #events_new_book_viewer_partnertoprepare
+            - if @book_user.blank?
+              #events_new_book_viewer_empty 
+                No book selected
+            -else
+              = render partial: 'books/show_small', locals: { book_id: @book_user.id }
 
+
+      .span39.offset1
+
+        #events_new_book_viewer_usertoprepare_container.application_bootstrap_alert_yellow
+
+          Partner will be asked to select a case for you to prepare
+
+          #events_new_book_viewer_usertoprepare
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close

@@ -1,6 +1,0 @@
-  
-- if Post.all.count > 0
-  - for posts_item in Post.where("approved",true).order("created_at desc")
-    = render partial: 'posts/posts_item' , locals: { posts_item: posts_item }
-- else
-  No posts found

@@ -6,6 +6,8 @@ window.events_calendar_rebless = ->
   $("#events_calendar_new_button").click ->
     window.modal_event_new_show(null,null)
 
+
+
 window.events_calendar_edit_modal_show = (event_id) ->
   if !($("#modal_event").hasClass("in"))
     $(".modal").modal("hide")

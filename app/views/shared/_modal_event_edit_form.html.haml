@@ -8,104 +8,88 @@
     #flash_notifications
       = render 'shared/error_messages', object: @event
 
-    .row
-      = render 'events/button_startcase'
-
-      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary btn-embossed btn-large" do
-        = image_tag "icons/skype_button.png"
-        Call #{@event.partner.username}
-        
-    .row
-      #events_new_friend_selected
-        .span#events_edit_partner_avatar
-          %span.fui-user
-        .span.offset1#events_edit_partner_name
-          %strong
-            = @event.partner.username
-            = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_new_friend_select"
-
-    .spacer10
-
-
-    #events_new_friend_timezone
-      = render "events/user_timezone", user_id: @event.partner.id, display_which: "timezone"
-
-
-
-
-
-
-    .spacer20
-
-
-    .events_form_spacer
-
-
 
 
     .row
-      #events_new_datetime_picker.input-append.date
-        = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y - %H:%M')
-        
-        %span.add-on
-          %i.icon-calendar
 
-      / #events_new_datetime_container
-      /   = f.datetime_select :datetime
-
-
-
-
-    #events_new_datetime_friend
-      = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime, display_which: "timeforfriend"
+      .span39
+        #events_new_friend_selected
+          .span#events_edit_partner_avatar
+            %span.fui-user
+          .span.offset1#events_edit_partner_name
+            %strong
+              = @event.partner.username
+              = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_new_friend_select"
 
 
 
-    .spacer20
 
-
-    .events_form_spacer
-
-
-
-    / - unless @event.book_id_partnertoprepare.blank?
-
-
-    #events_new_book_viewer_partnertoprepare_container.application_bootstrap_alert_blue
-  
-
-      %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
-        %option Which case should they prepare for you?
-        / = options_from_collection_for_select(Book.all, "id", "title")
-        - @books.each do |books_select_item|
-          %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
-            = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
-            = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
-            = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
-
-      #events_new_book_viewer_partnertoprepare
-        - if @book_partnertoprepare.blank?
-          #events_new_book_viewer_empty 
-            No book selected
-        -else
-          = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
+        #events_new_friend_timezone
+          = render "events/user_timezone", user_id: @event.partner.id, display_which: "timezone"
 
 
 
-    .spacer10
+      .span39.offset1
+
+
+        #events_new_datetime_picker.input-append.date
+          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y - %H:%M')
+          
+          %span.add-on
+            %i.icon-calendar
 
 
 
-    #events_new_book_viewer_usertoprepare_container.application_bootstrap_alert_yellow
+
+        #events_new_datetime_friend
+          = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime, display_which: "timeforfriend"
+
+
+
+
+    .spacer30
+
+    .row
+
+      .span39
+
+
+        #events_new_book_viewer_partnertoprepare_container.application_bootstrap_alert_blue
       
-      Case that #{@event.partner.username} wants you to prepare
 
-      #events_new_book_viewer_usertoprepare
-        - if @book_usertoprepare.blank?
-          #events_new_book_viewer_empty 
-            No book selected
-        -else
-          = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
+          %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
+            %option Which case should they prepare for you?
+            / = options_from_collection_for_select(Book.all, "id", "title")
+            - @books.each do |books_select_item|
+              %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
+                = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
+                = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
+                = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+
+
+
+          #events_new_book_viewer_partnertoprepare
+            - if @book_partnertoprepare.blank?
+              #events_new_book_viewer_empty 
+                No book selected
+            -else
+              = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
+
+
+
+
+      .span39.offset1
+
+        #events_new_book_viewer_usertoprepare_container.application_bootstrap_alert_yellow
+          
+          Case that #{@event.partner.username} wants you to prepare
+
+          #events_new_book_viewer_usertoprepare
+            - if @book_usertoprepare.blank?
+              #events_new_book_viewer_empty 
+                No book selected
+            -else
+              = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
 
 
 
@@ -117,7 +101,15 @@
 
   .modal-footer
     .pull-left
-      = link_to("Cancel Appointment", event_path(@event), method: :delete, class: "btn btn-primary btn-embossed", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+      = link_to("Cancel", event_path(@event), method: :delete, class: "btn btn-primary btn-embossed", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+
+      = render 'events/button_startcase'
+
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary btn-embossed" do
+        = image_tag "icons/skype_button.png"
+        Call #{@event.partner.username}
+        
+
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
     .modal_submit_button.btn.btn-primary.btn-embossed{tabindex: "102"}
       %i.icon-arrow-right.icon-white

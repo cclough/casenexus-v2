@@ -41,7 +41,7 @@ $alert-yellow: #FFFF7E;
   overflow-y: scroll;
   overflow-x: hidden;
 
-  width:95px; // important for column width
+  width:125px; // important for column width
 
   height:46px;
 }
@@ -54,7 +54,7 @@ $alert-yellow: #FFFF7E;
 .events_calendar_event {
   display:block;
 
-  width:105px; // important for column width
+  width:115px; // important for column width
 
   height:19px;
 
@@ -66,8 +66,8 @@ $alert-yellow: #FFFF7E;
 
   color:black;
 
-  line-height:15px;
-  padding:2px;
+  line-height:18px;
+  padding:5px;
 
   &:hover {
     background-color:rgba(0,180,255,0.6);
@@ -115,6 +115,12 @@ $alert-yellow: #FFFF7E;
   .today { background:rgba(0,0,0,0.07); }
 }
 
+.events_calendar_event_username {
+  color:white;
+  font-weight:bold;
+  padding-left:4px;
+}
+
 #events_calendar #events_calendar_month {
   margin: 0;
   padding-bottom: 5px;
@@ -135,27 +141,25 @@ $alert-yellow: #FFFF7E;
 
 
 #modal_event {
-  width:600px !important;
-  margin-left:-300px;
-  margin-top:-300px;
+  width:850px !important;
+  margin-left:-400px;
+  margin-top:-260px;
 
-  height:540px !important;
+  height:470px !important;
 
   text-align:center !important;
 
   .modal-body {
     text-align:center !important;
-    height:400px !important;
+
   }
 
   &.event_edit {
-    height:655px !important;
-    margin-top:-320px;
+    height:470px !important;
+    margin-top:-260px;
 
     .modal-body {
       text-align:center !important;
-      height:515px !important;
-      max-height:515px !important;
     }
 
   }
@@ -177,6 +181,7 @@ $alert-yellow: #FFFF7E;
 
 #events_new_friend_select {
   margin:0;
+  margin-top:10px;
 }
 
 
@@ -290,8 +295,8 @@ $alert-yellow: #FFFF7E;
 
   display:inline-block;
 
-  width:500px;
-  height:65px;
+
+  height:95px;
 
 //  padding:10px;
 
@@ -307,6 +312,7 @@ $alert-yellow: #FFFF7E;
 
   padding:10px;
   text-align:center;
+  height:150px;
 
 }
 
@@ -314,8 +320,7 @@ $alert-yellow: #FFFF7E;
 
   display:inline-block;
 
-  width:500px;
-  height:65px;
+  height:95px;
 
 //  padding:10px;
 

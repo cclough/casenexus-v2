@@ -1,12 +1,8 @@
-// Place all the styles related to the onlinepanel controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 
 $gray_background: #eceef1;
+$gray_Light: white;
 $gray_second: #BDC3C7;
 
-$gray_Light: #d0d0d0;
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
@@ -15,6 +11,7 @@ $gray_Darker: #333333;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
+$green_flatui: #1ABC9C;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -120,6 +117,10 @@ $alert-yellow: #FFFF7E;
   line-height:31px;
   color: white;
 
+  &.onlinepanel_title_posts {
+    text-align:left;
+    padding-left:50px;
+  }
 
 }
 
@@ -251,7 +252,7 @@ $alert-yellow: #FFFF7E;
 
 #onlinepanel_posts_arrow_buttons_container {
   position:absolute;
-  bottom:30px;
+  bottom:0px;
   right:0px;
 }
 
@@ -264,4 +265,51 @@ $alert-yellow: #FFFF7E;
 
 }
 
+
+#onlinepanel_posts_post {
+  position:absolute;
+  bottom:35px;
+  right:0px;
+
+  color:white;
+
+  font-size:13px;
+  margin:15px;
+
+  padding: 6px;
+  background: $green_flatui;
+  
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+
+}
+
+
+
+
+#onlinepanel_posts_post:after 
+{
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:50px; /* controls horizontal position */
+  border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+  border-style:solid;
+  border-color:$green_flatui transparent; 
+
+  /* reduce the damage in FF3.0 */
+  display:block; 
+  width:0;
+}
+
+
+#onlinepanel_posts_post_username {
+  a {
+  color:white !important;
+  font-weight:bold;
+  font-size:14px;    
+  }
+
+}
 

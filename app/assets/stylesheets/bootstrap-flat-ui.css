@@ -1,7 +1,11 @@
 /* Font urls
 Border radiuses on lots of things, particularly 'first-child lis'
 modal backdrop colour
-modal corner radius*/
+modal corner radius
+
+entire drop-down class as it breaks datetimpicker
+
+*/
 
 
 
@@ -4423,14 +4427,14 @@ input.search-query {
   background-color: #edeff1;
   color: #34495e;
 }
-.dropdown-menu {
-  background-color: #f3f4f5;
+/*.dropdown-menu {
+background-color: #f3f4f5;
   border: none;
   display: block;
   margin-top: 8px;
-  opacity: 0;
+/*  opacity: 0;*/
   padding: 0;
-  visibility: hidden;
+/*  visibility: hidden;*/
   width: 100%;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -4439,7 +4443,7 @@ input.search-query {
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
   transition: 0.25s;
-  -webkit-backface-visibility: hidden;
+/*  -webkit-backface-visibility: hidden; */
 }
 .dropdown-menu.typeahead {
   display: none;
@@ -4552,7 +4556,7 @@ input.search-query {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-}
+}*/
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
   margin-bottom: 8px;

@@ -279,6 +279,7 @@ window.modal_events_rebless = ->
     startDate: $("#events_new_datetime_input").data "start_date"
     #startDate: "2013-07-07 10:00"
 
+
   $("#events_new_friend_select").change ->
     window.modal_events_new_timezone_calcs()
 
