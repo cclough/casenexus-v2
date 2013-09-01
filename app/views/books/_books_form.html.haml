@@ -1,8 +1,14 @@
 = form_tag books_path, method: 'get', id: "books_index_books_form" do
   .row
-    %span
-      = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_books_form_searchfield", class: 'search-query'
-    
+    %span.form-search
+      .input-append
+        = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_books_form_searchfield", class: 'search-query'
+        %button.btn{type: "submit"}
+          %span.fui-search
+
+
+
+
     .pull-right
       .span.offset1#books_index_books_form_label
         Per Page
@@ -56,18 +62,28 @@
               = sortable "chart_num", "By Chart Number"
   .spacer10
   .row
-    .span40
-      All Types
-      %select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
-        %option{value: ""} All
-        - Tag.where(category_id:4).each do |tags_type_item|
-          %option{value: tags_type_item.id }
-            = tags_type_item.name
-    .span40
-      All Industries
-      %select{name: "tag_industry_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
-        %option{value: ""} All
-        - Tag.where(category_id:5).each do |tags_industry_item|
-          %option{value: tags_industry_item.id }
-            = tags_industry_item.name
-    %input.btn.btn-primary.span15{type:"submit", value: "Filter"}
+
+
+    .span47
+      .row.books_index_books_form_title
+        Type
+      .row
+        %select.span47.books_index_books_form_select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
+          %option{value: ""} All
+          - Tag.where(category_id:4).each do |tags_type_item|
+            %option{value: tags_type_item.id }
+              = tags_type_item.name
+
+
+    .span47.offset1
+      .row.books_index_books_form_title
+        Industry
+      .row
+        %select.span47.books_index_books_form_select{name: "tag_industry_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
+          %option{value: ""} All
+          - Tag.where(category_id:5).each do |tags_industry_item|
+            %option{value: tags_industry_item.id }
+              = tags_industry_item.name
+
+
+    / %input.btn.btn-primary.span15{type:"submit", value: "Filter"}

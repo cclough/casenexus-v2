@@ -2,6 +2,12 @@
 
 $(document).ready ->
 
+
+  # Submit form on select from selects
+  $(".books_index_books_form_select").change ->
+    $("#books_index_books_form").submit()
+
+
   # Schedule button
   $(".books_index_books_item_schedule_button").click ->
 
@@ -16,11 +22,12 @@ $(document).ready ->
     target: "#books_rating_set_field"
 
 
+
+
   # WHEN I PUT FUNCTIONS ABOVE, BELOW PRIME RATY IT DOESN"T WORK - SOMETHING BROKEN?
 
   window.application_raty_prime()
 
-  
 
 
 

@@ -112,7 +112,7 @@ $alert-yellow: #FFFF7E;
 
 
 
-#onlinepanel_title {
+.onlinepanel_title {
   background: $gray_second;
   height:30px;
   text-align:center;
@@ -137,16 +137,6 @@ $alert-yellow: #FFFF7E;
   height:200px;
 }
 
-
-#onlinepanel_posts {
-  position:absolute;
-  top:512px;
-  bottom:0px;
-  right:0px;
-  width:210px;
-  overflow-y:auto;
-  z-index:999;
-}
 
 
 
@@ -194,20 +184,6 @@ $alert-yellow: #FFFF7E;
 }
 
 
-//.onlinepanel_show_button {
-//  .dropdown-menu {
-//    max-width:30px !important;
-//  }
-
-//  .btn {
-//    width:5px !important;
-//    height:15px;
-//  }
-//}
-
-// .onlinepanel_show_avatar {
-//   max-width: 20px
-// }
 
 
 .onlinepanel_show_menu_container {
@@ -222,6 +198,11 @@ $alert-yellow: #FFFF7E;
 
 .onlinepanel_show_menu_open {
   width:10px;
+}
+
+
+.onlinepanel_show_avatar {
+  font-size:20px;
 }
 
 .onlinepanel_show_status {
@@ -243,4 +224,44 @@ $alert-yellow: #FFFF7E;
     background: $alert-red;   
   }
 
+  &.online_not {
+    background:$gray_second;
+  }
+
 }
+
+
+
+
+#onlinepanel_posts {
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  left:0px;
+}
+
+
+
+
+#onlinepanel_posts_new_button {
+  position:absolute;
+  bottom:0px;
+  left:0px;
+}
+
+#onlinepanel_posts_arrow_buttons_container {
+  position:absolute;
+  bottom:30px;
+  right:0px;
+}
+
+#onlinepanel_posts_arrow_up_button {
+
+}
+
+
+#onlinepanel_posts_arrow_down_button {
+
+}
+
+

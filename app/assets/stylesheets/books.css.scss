@@ -1,13 +1,24 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-$gray_Light: #d0d0d0;
+$gray_background: #eceef1;
+$gray_Light: white;
+$gray_second: #BDC3C7;
+
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
+$gray_Darker: #333333;
 $blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// INDEX ///////////////////////////////
@@ -22,18 +33,10 @@ $blue_pastel: #98cdff;
 }
 
 
-#books_index_books_form_searchfield {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-
-  padding-left:7px !important;
-  padding-right:30px !important;
-}
 
 
 #books_index_books_form_label {
-  margin-top:5px;
+  margin-top:12px;
   font-size:12px;
   i {
     margin-left:5px;
@@ -61,6 +64,21 @@ $blue_pastel: #98cdff;
   margin-left:15px;
 }
 
+.books_index_books_form_title {
+  background: $gray_second;
+  height:30px;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+}
+
+
+.books_index_books_form_select {
+  margin:0px;
+  height:200px !important;
+}
+
 
 ////////////// ITEM
 
@@ -71,9 +89,12 @@ $blue_pastel: #98cdff;
 
 .books_index_books_item_body {
   width:650px;
+
 }
 
-
+.books_index_books_item_body_container {
+    background:$gray_Lightest;
+}
 
 
 ////// first line

@@ -1,4 +1,4 @@
-#onlinepanel_title
+.onlinepanel_title
   Your friends
 #onlinepanel_friends{ class: ("non_response" if nonresponse == 1) }
   - for online_friend_item in current_user.accepted_friends
@@ -11,7 +11,7 @@
 
 
 / - if User.list_online_recently_notfriends(current_user).count > 0
-#onlinepanel_title
+.onlinepanel_title
   Other users
 #onlinepanel_nonfriends
 
@@ -24,8 +24,17 @@
       = render partial: 'onlinepanel/show'
 
 #onlinepanel_posts
-  .btn.btn-block.btn-small.btn-primary.btn-embossed#onlinepanel_posts_new_button
-    New Post
-  #onlinepanel_title
-    Posts
-  = render '/posts/posts'
+  .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_new_button
+    +
+
+
+  #onlinepanel_posts_arrow_buttons_container
+    .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_arrow_down_button
+      %i.icon-angle-down    
+
+    .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_arrow_up_button
+      %i.icon-angle-up
+
+  .onlinepanel_title
+    Broadcasts
+  / = render '/posts/posts'
