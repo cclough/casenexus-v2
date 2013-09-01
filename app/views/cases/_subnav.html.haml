@@ -3,7 +3,7 @@
     .row
       .span5
         .row
-          %span.fui-user
+          %span.fui-user#cases_show_subnav_avatar
         .row
           / = casecounts(@case.interviewer)
       .span32
@@ -52,7 +52,7 @@
             = @case.created_at.strftime("%a %d %b %Y %I:%M%p")
 
 
-      .span13.pull-right
+      .span10.pull-right
         #cases_show_subnav_score.panel.darker.kill_all
           %span= @case.totalscore.to_f.round(1)
           %span.cases_score_large_outof /15

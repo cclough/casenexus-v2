@@ -70,12 +70,14 @@
 
       #cases_show_charts_view_radar.cases_show_charts_view.hidden
 
+        #cases_show_charts_radar_title
+
         #cases_show_chart_radar
 
         #cases_show_chart_radar_buttongroup.pull-right
           .btn-group
-            %a#cases_show_chart_radar_button_all.btn.btn-mini.btn-primary.btn-embossed.active All
-            %a#cases_show_chart_radar_button_combined.btn.btn-mini.btn-primary.btn-embossed Combined
+            %a#cases_show_chart_radar_button_all.btn.btn-small.btn-primary.btn-embossed.active All
+            %a#cases_show_chart_radar_button_combined.btn.btn-small.btn-primary.btn-embossed Combined
 
 .row
   .panel.dark.kill_left.kill_right.kill_top
@@ -104,11 +106,9 @@
       .span17
         #cases_show_businessanalytics_chart_bar
       .span10.offset2
-        .cases_show_block_circle_outer.panel.dark
-          .cases_show_block_circle.panel.darker
-            .cases_show_block_circle_text
-              = @case.businessanalytics_combined
-              %span.cases_score_large_outof /5
+        .cases_show_block_score
+          = @case.businessanalytics_combined
+          %span.cases_score_large_outof /5]
       .span
         .cases_show_comment.panel.dark.kill_all
           = @case.businessanalytics_comment.html_safe
@@ -121,11 +121,9 @@
       .span17
         #cases_show_structure_chart_bar
       .span10.offset2
-        .cases_show_block_circle_outer.panel.dark
-          .cases_show_block_circle.panel.darker
-            .cases_show_block_circle_text
-              = @case.structure_combined
-              %span.cases_score_large_outof /5
+        .cases_show_block_score
+          = @case.structure_combined
+          %span.cases_score_large_outof /5
       .span
         .cases_show_comment.panel.dark.kill_all
           = @case.structure_comment.html_safe
@@ -138,11 +136,9 @@
       .span17
         #cases_show_interpersonal_chart_bar
       .span10.offset2
-        .cases_show_block_circle_outer.panel.dark
-          .cases_show_block_circle.panel.darker
-            .cases_show_block_circle_text
-              = @case.interpersonal_combined
-              %span.cases_score_large_outof /5
+        .cases_show_block_score
+          = @case.interpersonal_combined
+          %span.cases_score_large_outof /5
       .span
         .cases_show_comment.panel.dark.kill_all
           = @case.interpersonal_comment.html_safe

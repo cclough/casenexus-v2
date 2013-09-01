@@ -1,23 +1,27 @@
-= form_tag cases_path, method: 'get', id: "cases_index_cases_form" do
+= form_tag cases_path, method: 'get', id: "cases_index_cases_form", class: "" do
+  .row
+    .form-search.span50
+      .input-append
+        = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span26'
+        %button.btn{type: "submit"}
+          %span.fui-search
 
-  = text_field_tag :search, params[:search], placeholder: "Search cases...", id: "cases_index_cases_form_searchfield", class: 'search-query span23'
-
-  #cases_index_cases_form_sort.application_menu_sort.pull-right
-    .span.offset2#cases_index_cases_form_label
-      Sort by
-      %i.icon-caret-right.offset1
-    .span.offset1
-      .btn-group
-        %a#cases_index_cases_form_button_sort.btn.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
-          - if params[:sort] == "subject"
-            Subject
-          - elsif params[:sort] == "created_at"
-            Date
-          - else
-            Date
-          %span.caret
-        %ul.dropdown-menu
-          %li
-            = sortable "subject", "By Subject"
-          %li
-            = sortable "created_at", "By Date"
+    .span16#cases_index_cases_form_sort.application_menu_sort.pull-right
+      .span.offset2#cases_index_cases_form_label
+        Sort by
+        %i.icon-caret-right.offset1
+      .span.offset1
+        .btn-group
+          %a#cases_index_cases_form_button_sort.btn.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
+            - if params[:sort] == "subject"
+              Subject
+            - elsif params[:sort] == "created_at"
+              Date
+            - else
+              Date
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              = sortable "subject", "By Subject"
+            %li
+              = sortable "created_at", "By Date"

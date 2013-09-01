@@ -168,7 +168,7 @@ window.cases_show_category_chart_bar_draw = (category) ->
   graph.valueField = "score"
   graph.type = "column"
   graph.labelPosition = "bottom"
-  graph.color = "#ffffff"
+
   graph.fontSize = 10
   graph.labelText = "[[category]]"
   graph.balloonText = "[[category]]: [[value]]"
@@ -218,7 +218,7 @@ window.cases_show_chart_radar_draw = (radar_type) ->
   # chart_show_radar.startDuration = 1;
   # chart_show_radar.startEffect = ">";
   # chart_show_radar.sequencedAnimation = true;
-  chart_show_radar.color = "#FFFFFF"
+
   chart_show_radar.fontSize = 11
   chart_show_radar.marginTop = 0
   
