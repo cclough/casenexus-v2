@@ -68,11 +68,9 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 .account_edit_form_spacer {
 
-  background-image: -webkit-linear-gradient(left, transparent,#3c3c3c 20%,#3c3c3c 80%,transparent);
-  height:1px;
-
-  margin-top:30px;
-  margin-bottom:30px;
+  background: $gray_background;
+  height:30px;
+  margin: 30px -10px;
 }
 
 
@@ -100,6 +98,21 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 #account_edit_form_submit_panel {
   text-align:center;
+}
+
+.account_edit_block_title {
+  background: $gray_second;
+  height:30px;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+  margin:-30px -10px 10px -10px;
+}
+
+#account_edit_reputation_history_container {
+  height:200px;
+  overflow-y:auto;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -136,7 +149,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
 }
 
 #account_completeedit_skype_link {
-  margin-top:-12px;
+
   font-size:12px;
 }
 
@@ -190,12 +203,21 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 .account_visitors_item {
   margin-bottom:3px;
-  img {
-    max-width:30px;
+
+  padding:10px;
+  &:hover {
+    background: $gray_second;
+  }
+  div {
+    margin-top:10px;
   }
 }
 
 
+.account_visitors_item_avatar {
+  font-size:30px;
+  margin-top:0px !important;
+}
 
 
 

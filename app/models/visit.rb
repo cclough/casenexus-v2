@@ -11,6 +11,14 @@ class Visit < ActiveRecord::Base
     User.find(visitor_id)
   end
   
+  def date_fb
+    if created_at > DateTime.now - 3.days
+      created_at.strftime("%a")
+    else
+      created_at.strftime("%d %b")   
+    end   
+  end
+  
   def self.shouldnt_create?(user, visitor)
     visits = Visit.where(user_id: user.id, visitor_id: visitor.id)
     # already visited recently OR if self

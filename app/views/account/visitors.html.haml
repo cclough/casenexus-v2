@@ -7,12 +7,16 @@
 .panel.dark
   - if current_user.visits.count > 0
     - current_user.visits.order("created_at desc").first(10).each do |visit|
-      .row.account_visitors_item
-        .span5
-          %span.fui-user
-        .span20.offset2
-          = link_to visit.visitor.username, "/map?user_id=" + visit.visitor.id.to_s
-        .span10
-          = visit.created_at.strftime("%a %d %b %Y %I:%M%p")
+
+      = link_to "/map?user_id=" + visit.visitor.id.to_s do
+        .row.account_visitors_item
+          .span5.account_visitors_item_avatar
+            %span.fui-user
+          .span20.offset2
+            = visit.visitor.username
+          .span6.pull-right
+            = visit.date_fb
+
+
   - else
     No one has visited your profile

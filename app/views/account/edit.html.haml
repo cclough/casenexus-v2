@@ -87,7 +87,9 @@
 
       .account_edit_form_spacer
 
-      .row
+      .account_edit_block_title
+        Reputation Point History
+      .row#account_edit_reputation_history_container
         - if @user.points.count > 0
           - @user.points.each do |point|
             .row
@@ -100,9 +102,9 @@
 
       .account_edit_form_spacer
 
-      
+      .account_edit_block_title
+        Reputation Point Key
       .row
-        Point key
         .row +5 - Vote up on your Question, Answer or Comment
         .row +10 - Did a case (received feedback)
         .row +20 - Gave a case (sent feedback)
@@ -213,13 +215,11 @@
           Receive notiffications via email
 
 
-
-
-
-      .account_edit_form_spacer
-
+      .spacer30
 
 
       .row
-        .panel.dark.kill_all#account_edit_form_submit_panel
+        #account_edit_form_submit_panel
           = f.submit "Save changes", class: "btn btn-large btn-primary btn-embossed", id: "account_edit_button_submit"
+
+      .spacer20
