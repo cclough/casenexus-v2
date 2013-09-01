@@ -12,8 +12,11 @@
       });
 
 .row
-  .panel.darker.kill_left.kill_right
+  .panel.darker.kill_left.kill_right.kill_bottom
     = render 'cases_form'
 
 #cases_index_cases.panel.dark.kill_all
   = render 'cases'
+
+#cases_index_cases_form_paginate
+  = paginate @cases

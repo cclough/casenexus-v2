@@ -54,7 +54,7 @@ $alert-yellow: #FFFF7E;
 }
 
 #cases_index_cases_form_label {
-  margin-top:5px;
+  margin-top:13px;
   font-size:12px !important;
   i {
     margin-left:5px;
@@ -96,31 +96,34 @@ $alert-yellow: #FFFF7E;
   height:55px;
   width:915px;
 
-  padding-top:12px;
+  padding-top:20px;
   padding-left:5px;
   margin-bottom:3px;
 
   text-align:left;
 
+
 }
 
 
 .cases_index_cases_item_score {
+
+  padding:0 0 0 30px;
+  height:85px;
+  margin-top:-20px;
+  margin-right:-12px;
+  line-height:85px;
+
+  background:$gray_second;
+
   font-size: 26px;
   font-weight: bold;
-  text-align:center !important;
-  height:30px;
-  margin-top:2px !important;
-  line-height:27px;
-  color: $blue_pastel !important;
-  background:white;
-  padding:10px;
 }
+
 
 .cases_index_cases_item_subject {
   font-style:italic;
   font-size:13px;
-  color:$gray_Mid;
 }
 
 .cases_index_cases_item_date {
