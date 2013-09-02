@@ -20,9 +20,16 @@ $("div[id=application_flash]:last").fadeIn("fast", function () {
 voteable_id = "<%= escape_javascript( @voteable.id.to_s ) %>"
 voteable_type = "<%= escape_javascript( @voteable.class.name ) %>"
 
-$.get("/votes/control?voteable_id="+voteable_id+"&voteable_type="+voteable_type, function(data) {
+if ($(".votes_control_container[data-voteable_id='"+voteable_id+"'][data-voteable_type='"+voteable_type+"']").data("is_comments") == "comments") {
+  $.get("/votes/control_comments?voteable_id="+voteable_id+"&voteable_type="+voteable_type, function(data) {
 
-  $(".votes_control_container[data-voteable_id='"+voteable_id+"'][data-voteable_type='"+voteable_type+"']").html(data);
-  window.votes_controls_prime();
+    $(".votes_control_container[data-voteable_id='"+voteable_id+"'][data-voteable_type='"+voteable_type+"']").html(data);
+    window.votes_controls_prime();
+  });
+} else {
+  $.get("/votes/control?voteable_id="+voteable_id+"&voteable_type="+voteable_type, function(data) {
 
-});
+    $(".votes_control_container[data-voteable_id='"+voteable_id+"'][data-voteable_type='"+voteable_type+"']").html(data);
+    window.votes_controls_prime();
+  });
+}

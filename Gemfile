@@ -25,6 +25,7 @@ gem 'pusher'                                     # Push notifications and messag
 gem 'rails_admin'                                # Admin
 gem 'thumbs_up'                                  # Stack Overflow like voting on things
 
+
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails
   gem 'guard-rspec'                              # Automatically run RSpec tests

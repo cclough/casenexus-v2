@@ -1,6 +1,6 @@
 .row.questions_comment
-  .span3.votes_control_container{ "data-voteable_id" => comment.id, "data-voteable_type" => comment.class.name }
-    = render partial: "/votes/control", locals: { voteable: comment }
+  .span3.votes_control_container{ "data-voteable_id" => comment.id, "data-voteable_type" => comment.class.name, "data-is_comments" => "comments" }
+    = render partial: "/votes/control_comments", locals: { voteable: comment }
   .span56
     .questions_comment_container
       = comment.content

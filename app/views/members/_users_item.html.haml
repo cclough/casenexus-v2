@@ -11,7 +11,8 @@
     .row
       .map_index_users_item_avatar
         %span.fui-user
-    .spacer5
+    .row.map_index_users_item_username
+      = users_item.username
     .row
       .map_index_users_item_lastonline{ class: ("onlinenow" if users_item.online_now?) }
         - unless users_item.last_online_at.blank?

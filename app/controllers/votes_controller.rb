@@ -19,6 +19,9 @@ class VotesController < ApplicationController
     render partial: "control", locals: { voteable: @voteable }, layout: false
   end
 
+  def control_comments
+    render partial: "control_comments", locals: { voteable: @voteable }, layout: false
+  end
 
   # MAKE THIS INTO ONE VOTE FUNCTION ONCE YOU ARE SURE IT WONT CAUSE ANY PROBLEMS
   def up

@@ -12,7 +12,8 @@ class Case < ActiveRecord::Base
   belongs_to :interviewer, class_name: 'User'
   has_many :notifications, as: :notificable, dependent: :destroy
   has_many :points, as: :pointable, dependent: :destroy
-  
+
+
   ### Callbacks
   after_create :create_notification
   after_create :create_points
@@ -221,6 +222,7 @@ class Case < ActiveRecord::Base
     end
 
     array.to_json
+
   end
 
 

@@ -96,23 +96,35 @@ $alert-yellow: #FFFF7E;
   bottom:0px;
 }
 
+#map_index_container_user_profile {
+  display:none;
+
+  z-index:1000;
+  background:white;
+  position:absolute;
+  left:300px;
+  right:0px;
+  top:50px;
+  bottom:0px;
+
+
+  padding:5px;
+
+}
 
 #map_index_container_user_profile_small {
   display:none;
 
   z-index:1000;
-  background:rgba(255,255,255,0.9);
+  background:white;
   position:absolute;
   left:300px;
   right:0px;
   height:150px;
   bottom:0px;
 
-  overflow-y:hidden;
 
-  .panel {
-    border:0px;
-  }
+  padding:5px;
 
 }
 
@@ -140,9 +152,9 @@ $alert-yellow: #FFFF7E;
 
 
 
-////////////////////////////////////////
-
-
+//////////////////////////////////////////////
+/////////////// USERS ////////////////////////
+//////////////////////////////////////////////
 
 .map_index_users_form_pulldown {
   text-align:left;
@@ -160,15 +172,26 @@ $alert-yellow: #FFFF7E;
   width:70px;
   font-weight:bold;
   font-size:12px;
+  margin-top:8px;
+  margin-left:15px;
 }
 
 
 
 #map_index_users_form_paginate {
   clear:both;
-  .application_pagination {
-    background:0;
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  width:300px;
+  .pagination {
+    margin:0px;
+    a {
+      padding:6px 4px;
+    }
   }
+
+
 }
 
 #map_index_users_form_radiogroup {
@@ -181,13 +204,13 @@ $alert-yellow: #FFFF7E;
   text-align: center;
 
   position:absolute;
-  left:25%;
-  margin-left:-100px;
+
   top: 200px;
 
   width:140px;
   padding-left:35px;
   padding-right:35px;
+  margin-left:20px;
 }
 
 
@@ -200,9 +223,11 @@ $alert-yellow: #FFFF7E;
 
 .map_index_users_item {
   float:left;
-  margin:13px;
+  margin:10px;
 
   display: none;
+
+
 
   text-align:center !important;
 
@@ -212,25 +237,33 @@ $alert-yellow: #FFFF7E;
 
 .map_index_users_item_button {
 
+  background: $green_flatui !important;
+
   padding: 0px 4px 4px 4px;
 
-  height:50px;
-  width:50px;
+  height:70px;
+  width:70px;
 
   padding-top:0px !important;
+
 
   color:white;
   text-align:center;
 
-  .fui-user {
-    font-size:50px;
-  }
+
 
 }
 
+.map_index_users_item_username {
+  font-weight:bold;
+  font-size:10px;
+  margin-top:12px;
+}
 
 .map_index_users_item_avatar {
   text-align:center;
+  font-size:40px;
+  margin-top:-12px !important;
 }
 
 .map_index_users_item_name {
@@ -260,11 +293,13 @@ $alert-yellow: #FFFF7E;
   float:right;
 
   padding:5px;
-  width:20px;
-  margin-right:-5px;
-  margin-top:-1px;
+  width:14px;
+  height:14px;
+  margin-right:-4px;
+  margin-top:0px;
 
-  font-size:13px;
+  font-size:12px;
+  line-height:12px;
   font-weight:bold;
 
   background:rgba(0,0,0,0.3);
@@ -279,11 +314,59 @@ $alert-yellow: #FFFF7E;
 
 
 //////////////////////////////////////////////
-//////////////////////////////////////////////
+////////////////////SHOW FULL/////////////////
 //////////////////////////////////////////////
 
+#map_index_user_profile_showsmall {
+  position:absolute;
+  top:0px;
+  left:50%;
+}
+
+#map_index_user_profile_panel_actions {
+  .btn {
+    width:100px;
+    margin-bottom:3px;
+    height:20px !important;
+  }
+}
+#map_index_user_profile_avatar{
+  font-size:60px;
+}
 
 #map_index_user_profile_chart_activity {
-  width:400px;
-  height:200px;
+
+  display:block;
+  height:130px;
+  padding:5px;
+}
+
+
+//////////////////////////////////////////////
+////////////////SHOW SMALL////////////////////
+//////////////////////////////////////////////
+
+
+#map_index_user_profile_small_showfull {
+  position:absolute;
+  top:-10px;
+  left:50%;
+}
+
+#map_index_user_profile_small_panel_actions {
+  .btn {
+    width:100px;
+    margin-bottom:3px;
+    height:20px !important;
+  }
+}
+#map_index_user_profile_small_avatar{
+  font-size:60px;
+}
+
+#map_index_user_profile_small_chart_activity {
+
+  display:block;
+  height:130px;
+  padding:5px;
 }

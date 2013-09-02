@@ -12,37 +12,28 @@
 .spacer10
 
 - @comments.each do |comment|
-  .comments_item.panel.darker.kill_top
+  .books_show_comments_item.panel.darker.kill_top
     .row
-      .span2
+      .span6.votes_control_container{ "data-voteable_id" => comment.id, "data-voteable_type" => comment.class.name }
+        = render partial: "/votes/control", locals: { voteable: comment }
 
-        .votes_control
-          %i.icon-caret-up{ "data-vote_direction" => "up" , "data-voteable_id" => comment.id, "data-voteable_type" => "Comment" }
-        .questions_show_votes
-          = comment.plusminus
-        .votes_control
-          %i.icon-caret-down{ "data-vote_direction" => "down" , "data-voteable_id" => comment.id, "data-voteable_type" => "Comment" }
-
-      .span4.comments_item_avatar
+      .span4.books_show_comments_item_avatar
         %span.fui-user
       .span10.offset1
         .row
           %strong
             = comment.user.username
-        .row.comments_item_date
+        .row.books_show_comments_item_date
           = comment.created_at.strftime("%a %d %b %Y %I:%M%p")
       .span60.offset1
         = comment.content
       .span.pull-right
 
-
-        - if params[:controller] == "books"
-
-          .span.books_rating_read_container.panel.darker.kill_all
-            .books_rating_read{"data-rating" => comment.rating}
-            .books_rating_read_text
-              User rating:
-              = pluralize(comment.rating.round(0),"Star")
+        .span.books_rating_read_container
+          .books_rating_read{"data-rating" => comment.rating}
+          .books_rating_read_text
+            User rating:
+            = pluralize(comment.rating.round(0),"Star")
 
 = will_paginate @comments, inner_window: 2, outer_window: 2, class: "application_pagination application_pagination_books"
 

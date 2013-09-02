@@ -111,11 +111,14 @@ window.application_show_help = (help_page) ->
     $(".modal").modal "hide"
     $("#modal_help").modal "show"
 
-  setTimeout ->
-    window.ArrowNav.goTo help_page
-  , 50
+    setTimeout ->
+      window.ArrowNav.goTo help_page
+    , 500
 
-  window.application_help_checkbox help_page
+    window.application_help_checkbox help_page
+
+
+
 
 window.application_truncatables = () ->
   $('.application_truncatable').truncate
@@ -173,9 +176,9 @@ window.modal_message_show = (friend_id) ->
     $.get "/notifications/modal_message_form?id=" + friend_id, (data) ->
       $("#modal_message").html data
 
-      $("#modal_message").modal("show")
+      $("#modal_message").modal "show",->
 
-      window.modal_message_prime()
+        window.modal_message_prime()
 
 
 
@@ -367,8 +370,8 @@ $(document).ready ->
   $("#header_link_help").click ->
     if !($("#modal_help").hasClass("in"))
       $(".modal").modal "hide"
-      $("#modal_help").modal "show"
-      window.ArrowNav.goTo 1
+      $("#modal_help").modal "show", ->
+        window.ArrowNav.goTo "1"
 
   # Modal contact link
   $("#header_link_contact").click ->
@@ -398,10 +401,15 @@ $(document).ready ->
 
 
 
+  $("#onlinepanel_posts_arrow_buttons_container .btn").click ->
 
-
-
+    if $(this).data("direction") == "down"
       
+      current_post_id = $(this).data("current_post_id")
+
+      $.get "/posts/" + current_post_id + "?direction=down", (data) ->
+        
+        $("#onlinepanel_posts_post").html data
 
 
 

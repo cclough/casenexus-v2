@@ -2,7 +2,7 @@
 
 .offset3
   .row
-    = form_for @comment, remote:true, url: { controller: :comments, action: :create } do |f|
+    = form_for @comment, remote: (true unless (params[:controller] == "books")), url: { controller: :comments, action: :create } do |f|
 
       .span44
         #flash_notifications

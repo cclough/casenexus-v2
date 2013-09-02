@@ -27,7 +27,7 @@ class MembersController < ApplicationController
     end
 
     if users_scope
-      @users = users_scope.search_for(params[:search]).order("last_online_at desc").paginate(per_page: 20, page: params[:page])
+      @users = users_scope.search_for(params[:search]).order("last_online_at desc").paginate(per_page: 15, page: params[:page])
     end
 
     respond_to do |format|
@@ -52,13 +52,6 @@ class MembersController < ApplicationController
       redirect_to '/map?user_id='+params[:id]
     end
   end
-
-  def show_infobox
-    @user = User.find(params[:id])
-
-    render layout: false
-  end
-
 
   def show_small
     @user = User.find(params[:id])

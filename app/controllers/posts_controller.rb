@@ -20,7 +20,17 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    unless params[:current_post_id].blank?
+      @current_post = Post.find(params[:current_post_id])
+      if params[:direction] == "down"
+        @post = Post.where("approved",true).where("created_at < ?", @current_post).first
+      elsif params[:direction] == "up"
+        @post = Post.where("approved",true).where("created_at > ?", @current_post).first
+      end
+    else
+      @post = Post.find(params[:id])
+    end
+
     render partial: "show"
   end
 

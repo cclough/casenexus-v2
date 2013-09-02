@@ -37,7 +37,6 @@ Casenexus::Application.routes.draw do
   # Members
   resources :members, only: [:index, :show] do
     get :mouseover, on: :member
-    get :show_infobox, on: :member
     get :show_small, on: :member
     put :show_help, on: :member
     get :help_checkbox, on: :collection
@@ -68,6 +67,7 @@ Casenexus::Application.routes.draw do
   # Votes
   resources :votes, only: [:destroy]
   match '/votes/control', to: 'votes#control'
+  match '/votes/control_comments', to: 'votes#control_comments'
   match '/votes/up', to: 'votes#up'
   match '/votes/down', to: 'votes#down'
 

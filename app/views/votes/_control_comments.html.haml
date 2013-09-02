@@ -1,0 +1,9 @@
+- unless voteable.plusminus == 0
+  = voteable.plusminus
+.span1.votes_control.comment
+  - if current_user.voted_for?(voteable)
+    - vote_prev_id = Vote.where(voter_id: current_user.id, voteable_id: voteable.id, voteable_type: voteable.class.name).first.id
+    %i.icon-caret-up.voted{"data-vote_prev_id" => vote_prev_id, "data-voted" => 1, "data-voteable_id" => voteable.id}
+  - else
+    - unless current_user.voted_against?(voteable)
+      %i.icon-caret-up{ "data-vote_direction" => "up" , "data-voteable_id" => voteable.id, "data-voteable_type" => voteable.class.name }

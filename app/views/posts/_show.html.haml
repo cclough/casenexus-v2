@@ -1,3 +1,4 @@
+- if !post then post = @post end
 
 #onlinepanel_posts_post
 
@@ -6,7 +7,7 @@
     .span2
       %span.fui-user
     .span10.offset1#onlinepanel_posts_post_username.application_truncatable
-      = link_to @post_ondisplay.user.username, "/map?user_id=" + @post_ondisplay.user.id.to_s
+      = link_to post.user.username, "/map?user_id=" + post.user.id.to_s
   .row
     .span
-      = @post_ondisplay.content
+      = post.content

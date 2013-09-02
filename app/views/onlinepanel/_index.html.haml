@@ -27,17 +27,17 @@
 
   - @post_ondisplay = Post.where("approved = true").last()
 
-  = render partial: 'posts/show'
+  = render partial: 'posts/show', locals: { post: @post_ondisplay}
 
   .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_new_button
     +
 
 
   #onlinepanel_posts_arrow_buttons_container
-    .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_arrow_down_button
+    .btn.btn-small.btn-primary.btn-embossed{"data-direction"=>"down"}
       %i.icon-angle-down    
 
-    .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_arrow_up_button
+    .btn.btn-small.btn-primary.btn-embossed{"data-direction"=>"up"}
       %i.icon-angle-up
 
   .onlinepanel_title.onlinepanel_title_posts
