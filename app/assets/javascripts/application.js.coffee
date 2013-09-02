@@ -403,18 +403,24 @@ $(document).ready ->
 
   $("#onlinepanel_posts_arrow_buttons_container .btn").click ->
 
-    if $(this).data("direction") == "down"
+    direction = $(this).attr("data-direction")
+    
+    # get current post id
+    current_post_id = $("#onlinepanel_posts_post_container").attr "data-current_post_id"
+
+    $.get "/posts/" + current_post_id + "?direction=" + direction, (data) ->
       
-      current_post_id = $(this).data("current_post_id")
+      $("#onlinepanel_posts_post_container").html data
 
-      $.get "/posts/" + current_post_id + "?direction=down", (data) ->
-        
-        $("#onlinepanel_posts_post").html data
+      # get new post id
+      new_post_id = $("#onlinepanel_posts_post").attr "data-post_id"
 
+      # update current_post_id
+      $('#onlinepanel_posts_post_container').attr('data-current_post_id', new_post_id)
 
-
-
-
+      # Prime close button
+      $("#onlinepanel_posts_post_close").click ->
+        $("#onlinepanel_posts_post").fadeOut "fast"
 
 
   # Arrows for the home page and help

@@ -368,7 +368,7 @@ $(document).ready ->
         featureType: "landscape.natural"
         elementType: "all"
         stylers: [
-          color: "#88ff90"
+          color: "#a2ff9d"
         ,
           lightness: 3
         ]
