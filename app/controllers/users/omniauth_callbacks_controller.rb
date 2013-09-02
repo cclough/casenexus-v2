@@ -88,7 +88,7 @@ class Users::OmniauthCallbacksController < ApplicationController
           sign_in(user)
         else
           @user = user
-          render '/static_pages/home', layout "static_pages" and return
+          render '/static_pages/home', layout "home" and return
         end
       end
       redirect_to after_sign_in_path_for(user)
