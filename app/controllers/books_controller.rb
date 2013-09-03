@@ -20,11 +20,11 @@ class BooksController < ApplicationController
     elsif params[:tag_type_id] || params[:tag_industry_id]
       relation = Book.tagged_on(params[:tag_type_id] || Tag.where(category_id: 4).pluck(:id), params[:tag_industry_id] || Tag.where(category_id: 5).pluck(:id)).group('books.id')
     else
-      if !params[:btype].blank? && params[:btype] != "all"
-        relation = Book.where(btype: params[:btype])
-      else
-        relation = Book
-      end
+      relation = Book.all
+    end
+
+    if !params[:btype].blank? && params[:btype] != "all"
+      relation = relation.where(btype: params[:btype])
     end
 
     @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: books_per_page, page: params[:page])
