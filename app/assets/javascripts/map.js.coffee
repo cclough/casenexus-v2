@@ -381,7 +381,7 @@ $(document).ready ->
     # New infobox with offset
     window.infobox = new InfoBox
       # (h,v), (minus is left ,minus is up)
-      pixelOffset: new google.maps.Size(-50, -200)
+      pixelOffset: new google.maps.Size(-39, -150)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->

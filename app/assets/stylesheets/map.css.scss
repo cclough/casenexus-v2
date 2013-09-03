@@ -65,14 +65,23 @@ $alert-yellow: #FFFF7E;
 
   overflow-y:auto;
 
-  .application_pagination {
-    display:none;
-  }
+//  .pagination {
+//    display:none;
+//  }
 }
 
 
 #map_index_users {
+  overflow-y:hidden;
+}
 
+#map_index_users_users {
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:20px;
+  width:300px;
+  overflow-y:auto;
 }
 
 
@@ -179,13 +188,13 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_users_form_paginate {
-  clear:both;
+  background:$gray_background;
   position:absolute;
   bottom:0px;
   left:0px;
   width:300px;
   .pagination {
-    margin:0px;
+    margin:6px 6px;
     a {
       padding:6px 4px;
     }
@@ -237,7 +246,7 @@ $alert-yellow: #FFFF7E;
 
 .map_index_users_item_button {
 
-  background: $green_flatui !important;
+  background: $green_flatui;
 
   padding: 0px 4px 4px 4px;
 
@@ -250,8 +259,13 @@ $alert-yellow: #FFFF7E;
   color:white;
   text-align:center;
 
+  &:hover{
+    background: #48c9b0;
+  }
 
-
+  &:active{
+    background: #16a085;
+  }
 }
 
 .map_index_users_item_username {
@@ -263,7 +277,7 @@ $alert-yellow: #FFFF7E;
 .map_index_users_item_avatar {
   text-align:center;
   font-size:40px;
-  margin-top:-12px !important;
+  margin-top:-8px !important;
 }
 
 .map_index_users_item_name {
@@ -276,17 +290,6 @@ $alert-yellow: #FFFF7E;
   }
 }
 
-.map_index_users_item_lastonline {
-  font-size:9px;
-  color:$gray_Mid !important;
-  width:100%;
-  line-height:6px;
-  font-style:italic;
-  text-align:center;
-  &.onlinenow {
-    color:#97e0ff !important; 
-  }
-}
 
 .map_index_users_item_reputation {
 
@@ -306,8 +309,21 @@ $alert-yellow: #FFFF7E;
 
 }
 
-.map_index_users_item_country {
-  max-width:19px;
+
+
+.map_index_users_item_university {
+
+  float:left;
+
+  padding:5px;
+  width:14px;
+  height:14px;
+  margin-left:-4px;
+  margin-top:-4px;
+
+  z-index:3000;
+
+
 }
 
 

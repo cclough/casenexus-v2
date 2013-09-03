@@ -5,6 +5,7 @@ modal corner radius
 
 entire drop-down class as it breaks datetimpicker
 
+.iconbar-unread color and position
 */
 
 
@@ -5323,7 +5324,7 @@ input.search-query {
   top: 0;
 }
 .iconbar-unread {
-  background-color: #2a7aaf;
+  background-color: #FF3030;
   border-radius: 50%;
   color: #ffffff;
   font-family: 'Lato', sans-serif;
@@ -5333,9 +5334,9 @@ input.search-query {
   min-width: 14px;
   padding: 0 2px;
   position: absolute;
-  right: 20px;
+  right: 15px;
   text-align: center;
-  top: -2px;
+  top: 7px;
   -webkit-font-smoothing: auto;
 }
 .iconbar-success {

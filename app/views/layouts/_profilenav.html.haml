@@ -1,25 +1,25 @@
 #application_profilenav
 
-  .row
+  .row{:class => ("active" if params[:controller] == "events") }
     = link_to events_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "events") }
+      .application_profilenav_item
         %i.icon-calendar.icon-fixed-width
         .application_profilenav_item_text
           My Calendar
 
   
-  .row
+  .row{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
     = link_to cases_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "cases" && (params[:action] == "index" || params[:action] == "show")) }
+      .application_profilenav_item
         %i.icon-edit.icon-fixed-width
         .application_profilenav_item_text
           My Cases
-  .row
+  .row{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
     = link_to analysis_cases_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "cases" && params[:action] == "analysis") }
+      .application_profilenav_item
         %i.icon-bar-chart.icon-fixed-width
         .application_profilenav_item_text
-          Progress Analysis
+          Analysis
     
   %br
 
@@ -28,23 +28,23 @@
     = render '/notifications/menu2'
 
 
-  .row
+  .row{:class => ("active" if params[:controller] == "account" && params[:action] == "visitors") }
     = link_to visitors_account_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "visitors") }
+      .application_profilenav_item
         %i.icon-eye-open.icon-fixed-width
         .application_profilenav_item_text
           Visitors
   
-  .row
+  .row{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
     = link_to edit_account_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "account" && params[:action] == "edit") }
+      .application_profilenav_item
         %i.icon-cogs.icon-fixed-width
         .application_profilenav_item_text
           Settings
 
-  .row
+  .row{:class => ("active" if params[:controller] == "invitations") }
     = link_to invitations_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "invitations") }
+      .application_profilenav_item
         %i.icon-user.icon-fixed-width
         .application_profilenav_item_text
           Invite

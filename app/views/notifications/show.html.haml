@@ -11,29 +11,24 @@
   = @sender.username
 
 
-.panel.darker.kill_right.kill_bottom.kill_top
+.row#notifications_show_body
+  #notifications_show_body_subcontainer
+    = render "conversation"
 
+.row#notifications_show_form_container.panel.dark.kill_all  
+  / - notification = notification || @notification
+  = form_for @notification, remote: true do |f|
 
+    #flash_notifications
+      = render 'shared/error_messages', object: @notification
+      .row
+        = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea", class: "span60"
 
-  .spacer5
-  .row#notifications_show_body
-    #notifications_show_body_subcontainer
-      = render "conversation"
-
-  .row#notifications_show_form_container.panel.dark.kill_all  
-    / - notification = notification || @notification
-    = form_for @notification, remote: true do |f|
-
-      #flash_notifications
-        = render 'shared/error_messages', object: @notification
-        .row
-          = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea", class: "span60"
-
-          = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
-          = f.hidden_field :user_id, value: @sender.id
-          = f.hidden_field :sender_id, value: current_user.id
-          = f.hidden_field :ntype, value: "message"
-        .row
-          %button.btn.btn-primary.btn-embossed.pull-right{href: "#", type: "submit", tabindex: "102"}
-            %i.icon-arrow-right.icon-white
-            Reply
+        = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
+        = f.hidden_field :user_id, value: @sender.id
+        = f.hidden_field :sender_id, value: current_user.id
+        = f.hidden_field :ntype, value: "message"
+      .row
+        %button.btn.btn-primary.btn-embossed.pull-right{href: "#", type: "submit", tabindex: "102"}
+          %i.icon-arrow-right.icon-white
+          Reply

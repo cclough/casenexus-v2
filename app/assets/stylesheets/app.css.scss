@@ -164,7 +164,7 @@ textarea {
   left:0px;
   bottom:0px;
   width:75px;
-  background:black;
+  background:#363636;
 }
 
 #application_container_main {
@@ -227,7 +227,14 @@ textarea {
   font-size:30px;
   color:white;
   .row {
-    height:60px;
+    height:75px;
+    &:hover {
+      background:#272727;
+    }
+    &.active {
+      background:#272727;
+    }
+
     a{
       color:white;
       text-decoration:none;
@@ -241,27 +248,12 @@ textarea {
   padding: 10px;
   text-align:center;
   position:relative;
-
-  &.active {
-    font-size: 35px;
-    color:$green_flatui;
-    .application_profilenav_item_text {
-//      display:block;
-    }
-  }
-
-  &:hover {
-    font-size: 35px;
-    .application_profilenav_item_text {
-//      display:block;
-    }
-  }
 }
 
 .application_profilenav_item_text {
 //  display:none;
   font-size:9px;
-  margin-top:0px !important;
+  margin-top:2px !important;
 }
 
 
@@ -335,7 +327,7 @@ textarea {
   top:60px;
   z-index:9999;
   width:300px;
-  height:60px;
+  height:75px;
 
   padding:10px;
 }

@@ -1,20 +1,13 @@
 .map_index_users_item
   .map_index_users_item_button.btn{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
     .row
-      - unless users_item.country.blank?
-        .map_index_users_item_country.pull-left
-          / = image_tag "countries/"+users_item.country.code.to_s+".png", alt: users_item.country.name
-
-      .map_index_users_item_reputation.pull_right
+      .map_index_users_item_reputation
         = users_item.points_tally
 
+      .map_index_users_item_university
+        = image_tag "universities/" + users_item.university.image, class: "application_userimage_small"
     .row
       .map_index_users_item_avatar
         %span.fui-user
     .row.map_index_users_item_username
       = users_item.username
-    .row
-      .map_index_users_item_lastonline{ class: ("onlinenow" if users_item.online_now?) }
-        - unless users_item.last_online_at.blank?
-          = time_ago_in_words(users_item.last_online_at)
-          ago
