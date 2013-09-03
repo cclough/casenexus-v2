@@ -4,6 +4,8 @@
 
   window.events_modal_rebless();
 
+  window.application_form_errors_close();
+
 <%- else %>
 
 	$('#modal_event').modal('hide');
@@ -20,7 +22,8 @@
 
 	});
 
-   $("#events_calendar_container").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
-   window.events_calendar_rebless();
+  // Refresh the calendar if on events#index
+  $("#events_calendar_container").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
+  window.events_calendar_rebless();
    
 <%- end %>

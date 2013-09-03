@@ -119,7 +119,7 @@ Casenexus::Application.routes.draw do
   match '/library', to: 'books#index', as: :library
 
   # Site contacts
-  match '/site_contact/create_contact', to: 'site_contacts#create_contact', as: :site_contact
+  match '/site_contacts/create', to: 'site_contacts#create', as: :site_contact
 
   # Events
   resources :events, except: [:show] do

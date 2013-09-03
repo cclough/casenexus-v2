@@ -46,6 +46,11 @@ window.getQueryParams = (qs) ->
   params
 
 
+window.application_form_errors_close = () ->
+  $("#application_error_explanation").click ->
+    $(this).fadeOut "fast"
+
+
 window.notification_trigger = (data_inc) ->
 
   # Show Popup
@@ -142,16 +147,13 @@ window.application_countchar = (val) ->
 
 window.modal_spinner_prime = () ->
 
-  $("#application_spinner_container").css "display","none"
+  $(".modal.in .application_spinner_container").hide()
 
-  # Submit button loading animation and submit Prime
-  $(".modal_submit_button").click ->
-
-    $("#application_spinner_container").show()
+  # SUBMIT CLICK: Submit button loading animation and submit button prime
+  $(".modal.in .modal_submit_button").click ->
 
     $(this).closest("form").submit()
-
-
+    $(".modal.in .application_spinner_container").show()
 
 
 
@@ -159,10 +161,6 @@ window.modal_spinner_prime = () ->
 
 window.modal_message_prime = () ->
   # Scroll div
-  # $("#modal_message_conversation").animate
-  #   scrollTop: document.getElementById("modal_message_conversation").scrollHeight;
-  # , "fast"
-
   $("#modal_message_conversation").scrollTop(document.getElementById("modal_message_conversation").scrollHeight);
 
   window.modal_spinner_prime()
@@ -176,11 +174,11 @@ window.modal_message_show = (friend_id) ->
     $.get "/notifications/modal_message_form?id=" + friend_id, (data) ->
       $("#modal_message").html data
 
-      $("#modal_message").modal "show",->
-
+      # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+      $("#modal_message").on "shown", ->
         window.modal_message_prime()
 
-
+      $("#modal_message").modal "show"
 
 
 
@@ -191,11 +189,10 @@ window.modal_post_show = () ->
 
     $(".modal").modal("hide")
 
-    $("#modal_post").modal("show")
+    $("#modal_post").on "shown", ->
+      window.modal_spinner_prime()
 
-    window.modal_spinner_prime()
-
-
+    $("#modal_post").modal "show"
 
 
 
@@ -210,13 +207,16 @@ window.modal_friendship_req_show = (friend_id) ->
     $.get "/contacts/modal_friendship_req_form?id=" + friend_id, (data) ->
       $("#modal_friendship_req").html data
 
-      $("#modal_friendship_req").modal("show")
+      $("#modal_friendship_req").on "shown", ->
+        window.modal_spinner_prime()
+
+      $("#modal_friendship_req").modal "show"
 
 
       # repeat of modal spinner prime, but with online refresh command under submit
-      $("#application_spinner_container").css "display","none"
+      $(".application_spinner_container").css "display","none"
       $(".modal_submit_button").click ->
-        $("#application_spinner_container").show()
+        $(".application_spinner_container").show()
         $(this).closest("form").submit()
         window.onlinepanels_refresh()
 
@@ -239,7 +239,6 @@ window.modal_event_new_show = (friend_id, book_id) ->
 
     $.get url, (data) ->
       $("#modal_event").html data
-      window.modal_events_rebless()
 
       if friend_id
         $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
@@ -249,8 +248,11 @@ window.modal_event_new_show = (friend_id, book_id) ->
       # to increase height of the modal (removed by new show)
       $("#modal_event").removeClass "event_edit"
 
-      $("#modal_event").modal("show")
+      # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+      $("#modal_event").on "shown", ->
+        window.modal_events_rebless()
 
+      $("#modal_event").modal("show")
 
 
 window.modal_events_new_timezone_calcs = ->
@@ -318,6 +320,8 @@ window.application_raty_prime = () ->
 
 $(document).ready ->
 
+
+
   # Jquery truncate
   window.application_truncatables()
 
@@ -377,9 +381,13 @@ $(document).ready ->
   $("#header_link_contact").click ->
     if !($("#modal_contact").hasClass("in"))
       $(".modal").modal "hide"
+
+      $("#modal_contact").on "shown", ->      
+        window.modal_spinner_prime()
+
       $("#modal_contact").modal "show"
 
-      window.modal_spinner_prime()
+
 
   # Modal buttons
   $(".modal-footer button").on 'click', (e) ->
@@ -463,6 +471,5 @@ $(document).ready ->
           $("nav .arrow").css left: left_margin - 8
 
     window.ArrowNav.init()
-
 
 

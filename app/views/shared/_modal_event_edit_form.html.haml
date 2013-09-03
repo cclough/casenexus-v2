@@ -106,7 +106,7 @@
       = render 'events/button_startcase'
 
       = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary btn-embossed" do
-        = image_tag "icons/skype_button.png"
+        %span.fui-skype
         Call #{@event.partner.username}
         
 
@@ -118,5 +118,5 @@
 
 
 
-#application_spinner_container
-  #application_spinner
+.application_spinner_container
+  .application_spinner

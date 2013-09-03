@@ -5615,7 +5615,7 @@ input.search-query {
   width: 624px;
   margin-left: -312px;
   background-color: #ffffff;
-  border: 2px solid #ebedef;
+  border: 0px solid #ebedef;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;

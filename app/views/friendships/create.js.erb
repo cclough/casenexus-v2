@@ -2,12 +2,16 @@
 
   $('#modal_friendship_req').html('<%= escape_javascript(render('shared/modal_friendship_req_form')) %>');
 
+  window.modal_spinner_prime();
+
+  window.application_form_errors_close();
+
 <%- else %>
 
 	$('#modal_friendship_req').modal('hide');
 
-  // hide user panel (so feedback request button doesn't show anymore)
-	$("#map_index_mapcontainer_user").fadeOut("fast");
+  // Important - so friendship status is refreshed
+  $("map_index_container_user_profile_small").fadeOut("fast");
 
   $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
 	

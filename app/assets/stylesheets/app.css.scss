@@ -809,24 +809,20 @@ textarea {
 
 
 
-
-#application_spinner_container {
-  display:none;
+.application_spinner_container {
+  position:absolute;
+  z-index:2000;
   right:0;
   bottom:0;
   top:0;
   left:0;
-  position:absolute;
-  z-index:100;
   background: rgba(255,255,255,0.75);
 
-  -moz-border-radius:    5px;
-  -webkit-border-radius: 5px;
-  border-radius:         5px;
+  display:none;
 
 }
 
-#application_spinner {
+.application_spinner {
   height:50px;
   width:50px;
 
