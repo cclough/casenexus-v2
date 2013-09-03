@@ -62,11 +62,11 @@
               %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
                 - unless @event.book_id_usertoprepare.blank?
 
-                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_usertoprepare.id.to_s }
+                  %a{ href:"https://casenexus-staging.herokuapp.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_usertoprepare.id.to_s }
                     Start case as Interviewer
                 - else
 
-                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
+                  %a{ href:"https://casenexus-staging.herokuapp.com/console?friend_id=" + @event.partner.id.to_s }
                     Start case as Interviewer now
 
 %br
