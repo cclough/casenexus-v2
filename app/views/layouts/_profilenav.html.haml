@@ -23,12 +23,10 @@
     
   %br
 
-  .row
-    = link_to notifications_path do
-      .application_profilenav_item{:class => ("active" if params[:controller] == "notifications") }
-        %i.icon-envelope.icon-fixed-width
-        .application_profilenav_item_text
-          Notifications
+  .row#application_profilenav_notifications
+
+    = render '/notifications/menu2'
+
 
   .row
     = link_to visitors_account_path do

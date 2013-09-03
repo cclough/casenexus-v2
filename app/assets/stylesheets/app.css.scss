@@ -240,6 +240,7 @@ textarea {
 .application_profilenav_item {
   padding: 10px;
   text-align:center;
+  position:relative;
 
   &.active {
     font-size: 35px;
@@ -264,6 +265,11 @@ textarea {
 }
 
 
+#application_profilenav_item_icon_notifications {
+  &.unread {
+    color:red;
+  }
+}
 
 
 
@@ -332,23 +338,6 @@ textarea {
   height:60px;
 
   padding:10px;
-  
-  color: $gray_Lighter;
-
-  // border: 1px solid $gray_Mid;
-
-  background: url('app/dark-bg.png') repeat top left;
-
-
-  -webkit-box-shadow: 0px 2px 17px #000 !important;
-  -moz-box-shadow:    0px 2px 17px #000 !important;
-  box-shadow:         0px 2px 17px #000 !important;
-
-   -moz-border-radius:    7px;
-   -webkit-border-radius: 7px;
-   border-radius:         7px;
-
-  background: rgba(0, 0, 0, 0.8);
 }
 
 #application_notify_name {

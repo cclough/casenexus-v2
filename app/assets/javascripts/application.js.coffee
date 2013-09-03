@@ -77,7 +77,7 @@ window.notification_trigger = (data_inc) ->
 
   # Refresh Header Icon
   $.get "/notifications/menu", (data) ->
-    $("#header_nav_links_right_notifications").html data
+    $("#application_profilenav_notifications").html data
 
   #Friend's List
   window.onlinepanels_refresh ->
@@ -86,14 +86,14 @@ window.notification_trigger = (data_inc) ->
     x = 0
     intervalID = setInterval(->
       
-      glow = $("#header_nav_icon_notifications")
+      glow = $("#application_profilenav_item_icon_notifications")
       (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
       glow = $("#onlinepanel_container .notifications_glowable")
       (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
 
       if ++x is 10
         window.clearInterval intervalID
-        $("#header_nav_icon_notifications").removeClass 'glow'
+        $("#application_profilenav_item_icon_notifications").removeClass 'glow'
         $("#onlinepanel_container .notifications_glowable").removeClass 'glow'
 
     , 500)

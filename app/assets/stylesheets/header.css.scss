@@ -140,64 +140,6 @@ header {
 
 
 
-
-
-
-/////////////////////////////////////////////
-//////// NOTIFICATIONS MENU /////////////////
-/////////////////////////////////////////////
-
-#header_menu_notifications_empty {
-  height:150px;
-  width:300px;
-  padding-top:20px;
-  padding-left:0px;
-  padding-right:0px;
-
-  font-weight:bold;
-  text-align:center;
-}
-
-#header_menu_notifications_empty_icon {
-  font-size:80px;
-  margin-bottom:10px; 
-}
-
-
-.header_menu_notifications_name {
-  font-size: 14px;
-}
-
-
-.header_menu_notifications_title {
-  font-size: 12px;
-  font-weight:bold;
-}
-
-
-
-
-#header_nav_icon_notifications {
-  &.unread {
-    color:red;
-  }
-}
-
-
-
-
-.header_menu_notifications_item {
-  height:45px;
-  width:330px;
-}
-
-.header_menu_notifications_avatar {
-  float:left;
-  margin-right:15px;
-}
-
-
-
 #header_nav_links_right_signedout {
   img {
     max-width:20px;

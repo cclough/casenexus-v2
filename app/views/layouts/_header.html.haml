@@ -6,7 +6,7 @@
 
       - if signed_in?
 
-        #application_notify
+        #application_notify.alert
 
         - if current_user.completed?
           %ul#header_nav_links_left.nav.pull-left
@@ -34,9 +34,6 @@
 
           %ul#header_nav_links_right.nav.pull-right
           
-            %li#header_nav_links_right_notifications.dropdown
-              = render '/notifications/menu'
-
             %li{:class => ("active" if params[:controller] == "events" || params[:controller] == "cases" || params[:controller] == "account") }
               = link_to events_path, id: "header_nav_links_right_name", class: "application_truncatable" do
                 = current_user.username

@@ -84,9 +84,9 @@ class NotificationsController < ApplicationController
 
   def menu
     @unread_count = current_user.notifications.unread.for_display.count
-    @notifications = Notification.header(current_user)
+    # @notifications = Notification.header(current_user)
 
-    render partial: "menu", layout: false
+    render partial: "menu2", layout: false
   end
 
 
