@@ -3,9 +3,9 @@
 
 = link_to notifications_path do
   .application_profilenav_item{:class => ("active" if params[:controller] == "notifications") }
-    %i#application_profilenav_item_icon_notifications.icon-envelope.icon-fixed-width.notifications_glowable{class: ("unread" if @unread_count > 0)}
+    %i#application_profilenav_item_icon_notifications.icon-envelope.icon-fixed-width
     - if @unread_count > 0
-      %span.iconbar-unread
+      %span.iconbar-unread.notifications_glowable{class: ("unread" if @unread_count > 0)}
         = @unread_count.to_s
     .application_profilenav_item_text
       Notifications

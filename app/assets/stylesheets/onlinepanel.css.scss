@@ -37,9 +37,8 @@ $alert-yellow: #FFFF7E;
 
   height:100%;
   float:left;
-//  background: url('app/bg-texture4.jpg') repeat top left;
-  overflow-y: auto;
-  // border-left: 3px solid black;
+  overflow-y: hidden;
+
 }
 
 
@@ -52,22 +51,15 @@ $alert-yellow: #FFFF7E;
   bottom:40px;
   right:20px;
 
-  background: rgba(0,0,0,0.7);
-
   overflow-y:auto;
   display:none;
 
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+  z-index:10000;
 
   @media (min-width: 1201px) {
     display:none !important;
   }
 
-//  @media (max-width: 1200px) {
-//    display:block;
-//  }
 }
 
 
@@ -81,26 +73,15 @@ $alert-yellow: #FFFF7E;
   width:210px;
   height:20px;
 
-
-  background: rgba(0,0,0,0.7);
-
   display:none;
 
   @media (max-width: 1200px) {
     display:block;
   }
 
-  z-index:999;
+  z-index:10000;
 
   padding:10px;
-
-  -webkit-box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow:    0px 3px 10px rgba(0, 0, 0, 0.75);
-  box-shadow:         0px 3px 10px rgba(0, 0, 0, 0.75);
-
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
 
   &:hover {
     cursor:pointer;
@@ -129,8 +110,7 @@ $alert-yellow: #FFFF7E;
   height:312px;
   
   &.non_response {
-    overflow-y:scroll;
-
+    overflow-y:auto;
   }
 }
 

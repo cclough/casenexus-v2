@@ -50,9 +50,16 @@ window.cases_new_prime = () ->
     $(this).addClass("active")
 
 
+  # Submit form and show spinner
+  $(".application_submit_button_with_spinner").click ->
+    $(".application_spinner_container").show()
+    $(this).closest("form").submit()
+
+    
   # Char counters
   $('.application_countchar').keyup ->
     window.application_countChar(this)
+
 
   cases_new_calculatecategoryscore = (category) ->
     if category is "businessanalytics"

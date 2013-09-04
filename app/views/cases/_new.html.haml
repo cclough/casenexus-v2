@@ -303,6 +303,11 @@
 
 
   .row#cases_new_submit_panel
-    = f.submit "Submit Feedback", class: "btn btn-large btn-primary btn-embossed", tabindex: "10", id: "cases_new_submit_button"
+    .application_submit_button_with_spinner.btn.btn-large.btn-primary.btn-embossed{tabindex: "10", id: "cases_new_submit_button"}
+      Submit button
 
   .spacer40
+
+
+.application_spinner_container
+  .application_spinner

@@ -150,7 +150,7 @@ window.modal_spinner_prime = () ->
   $(".modal.in .application_spinner_container").hide()
 
   # SUBMIT CLICK: Submit button loading animation and submit button prime
-  $(".modal.in .modal_submit_button").click ->
+  $(".modal.in .application_submit_button_with_spinner").click ->
 
     $(this).closest("form").submit()
     $(".modal.in .application_spinner_container").show()
@@ -215,7 +215,8 @@ window.modal_friendship_req_show = (friend_id) ->
 
       # repeat of modal spinner prime, but with online refresh command under submit
       $(".application_spinner_container").css "display","none"
-      $(".modal_submit_button").click ->
+      
+      $(".application_submit_button_with_spinner").click ->
         $(".application_spinner_container").show()
         $(this).closest("form").submit()
         window.onlinepanels_refresh()

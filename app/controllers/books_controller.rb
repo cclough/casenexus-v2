@@ -20,7 +20,7 @@ class BooksController < ApplicationController
     elsif params[:tag_type_id] || params[:tag_industry_id]
       relation = Book.tagged_on(params[:tag_type_id] || Tag.where(category_id: 4).pluck(:id), params[:tag_industry_id] || Tag.where(category_id: 5).pluck(:id)).group('books.id')
     else
-      relation = Book.all
+      relation = Book
     end
 
     if !params[:btype].blank? && params[:btype] != "all"

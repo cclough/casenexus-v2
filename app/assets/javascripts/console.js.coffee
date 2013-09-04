@@ -113,9 +113,6 @@ $(document).ready ->
       $.get "/books/" + book_id + "/show_small", (data) ->
         $("#cases_new_book").html data
 
-        #Prime the raty
-        window.application_raty_prime
-
 
         
 
@@ -149,10 +146,6 @@ $(document).ready ->
           $.get "/books/" + book_id + "/show_small", (data) ->
             $("#cases_new_book").html data
 
-            #Prime the raty
-            SetTimeout (->
-              window.application_raty_prime
-            ), 2000
 
       # change skypebutton
       $.get ("/console/skypebutton?friend_id=" + friend_id), (data) ->
