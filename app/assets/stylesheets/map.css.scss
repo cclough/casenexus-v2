@@ -109,7 +109,7 @@ $alert-yellow: #FFFF7E;
   display:none;
 
   z-index:1000;
-  background:white;
+  background:$gray_background;
   position:absolute;
   left:300px;
   right:0px;
@@ -333,7 +333,7 @@ $alert-yellow: #FFFF7E;
 ////////////////////SHOW FULL/////////////////
 //////////////////////////////////////////////
 
-#map_index_user_profile_showsmall {
+.map_index_user_profile_toggle {
   position:absolute;
   top:0px;
   left:50%;
@@ -357,6 +357,26 @@ $alert-yellow: #FFFF7E;
   padding:5px;
 }
 
+.map_index_user_profile_block_title {
+  background: $gray_second;
+  height:30px;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+
+  margin: -10px -10px 5px -10px;
+}
+
+.map_index_user_profile_block_content {
+  .map_index_user_profile_block_content_text {
+    height:150px;
+    overflow-y:auto;
+    .row {
+
+    }
+  }
+}
 
 //////////////////////////////////////////////
 ////////////////SHOW SMALL////////////////////

@@ -151,14 +151,15 @@ class User < ActiveRecord::Base
   end
 
   def level
-    case case_count_viewee
-      when 0..9 then 0
-      when 10..19 then 1
-      when 20..29 then 2
-      when 30..39 then 3
-      when 40..49 then 4
-      when 50..1000 then 5
-    end.to_s
+    # case case_count_viewee
+    #   when 0..9 then 0
+    #   when 10..19 then 1
+    #   when 20..29 then 2
+    #   when 30..39 then 3
+    #   when 40..49 then 4
+    #   when 50..1000 then 5
+    # end.to_s
+    0
   end
 
   def online_now?

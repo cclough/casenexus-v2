@@ -12,60 +12,60 @@
 
 
 .row
-  .span30
+
+
+  .span20
     .row
-      .span10
-        .row
-          %span#map_index_user_profile_avatar.fui-user
-        .row
-          .span
-            = casecounts(@user).to_s + " cases"
-        .row
-          .span
-            = @user.points_tally.to_s + " reputation"
-        .row
-          - if @user.last_online_at
-            Last online
-            = time_ago_in_words(@user.last_online_at)
-            ago
-          - else
-            Never online
+      %span#map_index_user_profile_avatar.fui-user
+    .row
+      .span
+        = casecounts(@user).to_s + " cases"
+    .row
+      .span
+        = @user.points_tally.to_s + " reputation"
+    .row
+      - if @user.last_online_at
+        Last online
+        = time_ago_in_words(@user.last_online_at)
+        ago
+      - else
+        Never online
 
-      .span20
-        .row
-          = @user.username
+  .span40
+    .row
+      = @user.username
 
-        .row
-          - unless @user.university.blank?
-            %span
-              = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
-            %span
-              = @user.university.name
-        .row
-          - unless @user.country.blank?
-            %span
-              = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name, class: "application_userimage_small"
-            %span
-              = @user.country.name
-        .row
-          = @user.degree_level_in_words
-        .row
-          = @user.subject.name unless @user.subject.blank?
-        .row
-          - unless @user.languages.empty?
-            - @user.languages.each do |users_item_language|
-              = users_item_language.name
-        .row
-          - if Friendship.friends?(current_user, @user)
-            &#8226; 
-            = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.username + " as a contact?")
-          - else
-            Not friends
+    .row
+      - unless @user.university.blank?
+        %span
+          = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
+        %span
+          = @user.university.name
+    .row
+      - unless @user.country.blank?
+        %span
+          = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name, class: "application_userimage_small"
+        %span
+          = @user.country.name
+    .row
+      = @user.degree_level_in_words
+    .row
+      = @user.subject.name unless @user.subject.blank?
+    .row
+      - unless @user.languages.empty?
+        - @user.languages.each do |users_item_language|
+          = users_item_language.name
+    .row
+      - if Friendship.friends?(current_user, @user)
+        &#8226; 
+        = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.username + " as a contact?")
+      - else
+        Not friends
 
 
 
 
-
+.row
   .span30
     #map_index_user_profile_chart_activity
 
@@ -115,22 +115,40 @@
 
 
 .row
-  %p Recent Questions
-  - @user.questions.last(5).each do |user_question|
-    .row
-      = link_to user_question.title, question_path(user_question)
-.spacer10
-.row
-  %p Recent Answers
-  - @user.answers.last(5).each do |user_answer|
-    .row
-      = link_to user_answer.content_trunc, answer_path(user_answer)
-.spacer10
-.row
-  %p Recent Posts
-  - @user.posts.last(5).each do |user_post|
-    .row
-      = user_post.content_trunc
+
+
+  .span20
+    .panel.dark.kill_left.map_index_user_profile_block_content
+
+      .map_index_user_profile_block_title
+        Recent Questions
+      .map_index_user_profile_block_content_text
+        - @user.questions.last(5).each do |user_question|
+          .row.application_truncatable
+            = link_to user_question.title, question_path(user_question)
+
+  .span20
+    .panel.dark.kill_left.map_index_user_profile_block_content
+
+      .map_index_user_profile_block_title
+        Recent Answers
+      .map_index_user_profile_block_content_text
+        - @user.answers.last(5).each do |user_answer|
+          .row.application_truncatable
+            = link_to user_answer.content_trunc, answer_path(user_answer)
+
+  .span20
+
+    .panel.dark.kill_left.map_index_user_profile_block_content
+
+      .map_index_user_profile_block_title
+        Recent Posts
+      .map_index_user_profile_block_content_text
+        - @user.posts.last(5).each do |user_post|
+          .row.application_truncatable
+            = user_post.content_trunc
+
+
 .spacer10
 .row
   #map_index_user_profile_chart_activity

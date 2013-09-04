@@ -54,6 +54,7 @@ window.map_index_profile_bless = () ->
     window.modal_friendship_req_show(friend_id)
 
 
+  window.application_truncatables()
 
 window.map_index_profile_toggle = (marker_id) ->
 
@@ -64,8 +65,8 @@ window.map_index_profile_toggle = (marker_id) ->
       success: (data) ->
 
         $("#map_index_container_user_profile_small").html data
-        $("#map_index_container_user_profile").hide()
-        $("#map_index_container_user_profile_small").show "slide", direction: "down", "fast", ->
+        $("#map_index_container_user_profile").hide "slide", direction: "down", "fast"
+        $("#map_index_container_user_profile_small").fadeIn ->
           $("#map_index_container_user_profile").removeClass "in"
           window.map_index_profile_bless()
 
@@ -76,7 +77,7 @@ window.map_index_profile_toggle = (marker_id) ->
       success: (data) ->
 
         $("#map_index_container_user_profile").html data
-        $("#map_index_container_user_profile_small").hide()
+        $("#map_index_container_user_profile_small").fadeOut()
         $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
           $("#map_index_container_user_profile").addClass "in"
           window.map_index_profile_bless()
@@ -164,9 +165,8 @@ map_index_map_markers_clear = ->
 
   if map_index_map_markers
     while i < 1000
-      unless map_index_map_markers[i] == undefined
-        map_index_map_markers[i].setMap null
-        i++
+      map_index_map_markers[i].setMap null
+      i++
 
     map_index_map_markers = []
 
