@@ -3,7 +3,7 @@
   var map_index_user_profile_chart_activity_data = #{Case.user_activity_profile(@user)};
 
 
-#map_index_user_profile_showsmall.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
+.map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
   %i.icon-angle-down
   Show map
 
@@ -79,7 +79,7 @@
     - if @user != current_user
       - if Friendship.friends?(current_user, @user)
         .row
-          = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_profile_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
+          = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", class: "map_index_user_profile_button_message btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
 
         .row
           - unless @user.skype.blank?
@@ -87,7 +87,7 @@
               %span.fui-skype
               Skype
         .row
-          %a#map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
+          %a.map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
             %i.icon-calendar.icon-white
             Schedule
         .row
@@ -106,7 +106,7 @@
         = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
 
       - elsif !Friendship.exist?(current_user, @user)
-        %a#map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
+        %a.map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
           %div
             %i.icon-comment.icon-white.icon-4x
           Send Friend Request

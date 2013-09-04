@@ -28,56 +28,62 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 window.map_index_profile_bless = () ->
+
+
+  # Toggle button
+  $(".map_index_user_profile_toggle").click ->
+    marker_id = $(this).attr('data-user_id')
+    window.map_index_profile_toggle(marker_id)
+
     # Draw chart
   #setTimeout (->
-  window.map_index_user_profile_chart_activity_draw()
+  # window.map_index_user_profile_chart_activity_draw()
   #), 1000
   
   # Prime Button
-  $("#map_index_user_profile_button_message").click ->
+  $(".map_index_user_profile_button_message").click ->
     friend_id = $(this).data "friend_id"
     window.modal_message_show(friend_id)
 
-  $("#map_index_user_profile_button_event").click ->          
+  $(".map_index_user_profile_button_event").click ->          
     friend_id = $(this).data("friend_id")
     window.modal_event_new_show(friend_id,null)
 
-  $("#map_index_user_profile_button_friendrequest").click ->
+  $(".map_index_user_profile_button_friendrequest").click ->
     friend_id = $(this).data("friend_id")
     window.modal_friendship_req_show(friend_id)
 
 
 
+window.map_index_profile_toggle = (marker_id) ->
 
-  $("#map_index_user_profile_small_showfull").click ->
+  if $("#map_index_container_user_profile").hasClass "in"
 
-    $("#map_index_container_user_profile_small").fadeOut "fast"
+    $.ajax
+      url: "/members/" + marker_id + "/show_small"
+      success: (data) ->
 
-    marker_id = $(this).data 'user_id'
+        $("#map_index_container_user_profile_small").html data
+        $("#map_index_container_user_profile").hide()
+        $("#map_index_container_user_profile_small").show "slide", direction: "down", "fast", ->
+          $("#map_index_container_user_profile").removeClass "in"
+          window.map_index_profile_bless()
+
+  else
 
     $.ajax
       url: "/members/" + marker_id
       success: (data) ->
 
         $("#map_index_container_user_profile").html data
+        $("#map_index_container_user_profile_small").hide()
         $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
-          map_index_profile_bless()
+          $("#map_index_container_user_profile").addClass "in"
+          window.map_index_profile_bless()
 
 
-window.map_index_profile_toggle = (marker_id) ->
 
-  # if $("#map_index_container_user_profile").hasClass "in"
-  #   suffix = "small"
-  # else if $("#map_index_container_user_profile_small").hasClass "in"
-  #   suffix = ""
 
-  $.ajax
-    url: "/members/" + marker_id
-    success: (data) ->
-
-      $("#map_index_container_user_profile").html data
-      $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
-        map_index_profile_bless()
 
 
 window.map_index_load_profile_small = (marker_id) ->
@@ -169,7 +175,6 @@ window.map_index_map_markers_draw = () ->
 
   # Marker
   # shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
-
 
   map_index_map_markers_clear()
 
