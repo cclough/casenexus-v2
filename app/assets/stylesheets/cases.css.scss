@@ -168,7 +168,7 @@ $alert-yellow: #FFFF7E;
 .cases_show_comment {
   // overflow-y: auto;
   min-height:182px;
-  width:405px;
+  width:500px;
   border:0px !important;
   word-wrap:break-word !important;
 }
@@ -213,7 +213,7 @@ $alert-yellow: #FFFF7E;
 #cases_show_businessanalytics_chart_bar, #cases_show_interpersonal_chart_bar, #cases_show_structure_chart_bar {
   margin-top:-20px;
   height:220px;
-  width:170px;
+  width:280px;
 }
 
 
@@ -295,11 +295,6 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#cases_show_subnav_date {
-  font-style:italic;
-  font-size:12px;
-  color: $gray_Light;
-}
 
 
 /////////////////////////////////////////////////////////////////

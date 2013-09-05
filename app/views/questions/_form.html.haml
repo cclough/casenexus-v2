@@ -3,7 +3,7 @@
   = render 'shared/error_messages', object: @question
 
   .row
-    %span.offset1#questions_new_title_label
+    %span#questions_new_title_label
       Title
     %span.offset1
       = f.text_field :title, placeholder: "What's your question?", id: "questions_new_title"
@@ -19,4 +19,4 @@
     = f.collection_select :tag_list, Tag.all, :name, :name, {}, { multiple: true, class: "chzn-select-tags span50"}
   .spacer10
   .row
-    = f.submit "Post your question", class: "btn btn-primary btn-embossed"
+    = f.submit "Post your question", class: "btn btn-primary btn-embossed btn-large"

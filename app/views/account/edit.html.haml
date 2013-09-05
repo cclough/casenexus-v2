@@ -97,17 +97,18 @@
                 = "+" + point.score.to_s
               .span20.offset1
                 = point.method
+              .span10.pull-right
+                = point.date_fb
         - else
           You have no reputation points yet
-
-      .account_edit_form_spacer
-
-      .account_edit_block_title
-        Reputation Point Key
+      .spacer20
       .row
-        .row +5 - Vote up on your Question, Answer or Comment
-        .row +10 - Did a case (received feedback)
-        .row +20 - Gave a case (sent feedback)
+        .row.btn.btn-primary.btn-embossed +5
+        Vote up on your Question, Answer or Comment
+        .row.btn.btn-primary.btn-embossed +10
+        Did a case (received feedback)
+        .row.btn.btn-primary.btn-embossed +20
+        Gave a case (sent feedback)
 
 
       .account_edit_form_spacer
@@ -194,7 +195,7 @@
         .span24.offset2.account_form_label
           Cases outside of casenexus
         .span23
-          = f.text_field :cases_external, class: "span5 application_form_input_alternative", id: "account_completedit_casesexternal_field"
+          = f.text_field :cases_external, class: "span6 application_form_input_alternative", id: "account_completedit_casesexternal_field"
 
       .account_edit_form_spacer
 

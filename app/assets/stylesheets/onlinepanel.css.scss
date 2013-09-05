@@ -45,7 +45,7 @@ $alert-yellow: #FFFF7E;
 #onlinepanel_container_response {
 
   width:210px;
-  height:400px;
+  height:500px;
 
   position:absolute;
   bottom:40px;
@@ -56,6 +56,7 @@ $alert-yellow: #FFFF7E;
 
   z-index:10000;
 
+  background:$gray_background;
   @media (min-width: 1201px) {
     display:none !important;
   }

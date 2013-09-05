@@ -36,6 +36,13 @@ class Point < ActiveRecord::Base
     end
   end
 
+  def date_fb
+    if created_at > DateTime.now - 3.days
+      created_at.strftime("%a")
+    else
+      created_at.strftime("%d %b")   
+    end   
+  end
 
 
   private

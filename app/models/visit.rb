@@ -13,9 +13,9 @@ class Visit < ActiveRecord::Base
   
   def date_fb
     if created_at > DateTime.now - 3.days
-      created_at.strftime("%a")
+      created_at.strftime("%a %l%P")
     else
-      created_at.strftime("%d %b")   
+      created_at.strftime("%d %b %l%P")   
     end   
   end
   

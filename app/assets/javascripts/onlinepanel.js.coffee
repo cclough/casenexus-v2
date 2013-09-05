@@ -18,13 +18,22 @@ onlinepanel_item_togglemenu = (showbutton, menu) ->
 
 window.onlinepanel_prime = () ->
 
+  ######### Response view - show panel
+  $("#onlinepanel_container_response_min").click ->
+    if $("#onlinepanel_container_response").is(':visible')
+      $("#onlinepanel_container_response").hide "slide", direction: "down", "fast"
+    else
+      $("#onlinepanel_container_response").show "slide", direction: "down", "fast", ->
+        window.onlinepanels_posts_prime()
+
+
+  # Item menus
   $(".onlinepanel_show_menu_open").click ->
 
     friend_id = $(this).data("friend_id")
     menu = $(".onlinepanel_show_menu_container[data-friend_id='" + friend_id + "']")
 
     onlinepanel_item_togglemenu(this, menu)
-
 
   # Show message
   $(".onlinepanel_show_menu_message").click ->
@@ -38,24 +47,43 @@ window.onlinepanel_prime = () ->
     friend_id = $(this).data "friend_id"
     window.modal_friendship_req_show(friend_id)
 
-
-  # Response view - show panel
-  $("#onlinepanel_response_min").click ->
-    if $("#onlinepanel_response").is(':visible')
-      $("#onlinepanel_response").fadeOut "fast"
-    else
-      $("#onlinepanel_response").fadeIn "fast"
-
-
-  # New post button
-  $("#onlinepanel_posts_new_button").click ->
-    window.modal_post_show()
-
-
   # The Ping updater! Could be a lot smoother, but for now o-k
   # setInterval ->
   #   window.onlinepanels_refresh()
   # , 30000
+
+  window.onlinepanels_posts_prime()
+
+window.onlinepanels_posts_prime = () ->
+    # New post button
+  $("#onlinepanel_posts_new_button").click ->
+    window.modal_post_show()
+
+  $("#onlinepanel_posts_post_close").click ->
+    $("#onlinepanel_posts_post").fadeOut "fast"
+
+  $("#onlinepanel_posts_arrow_buttons_container .btn").click ->
+
+    direction = $(this).attr("data-direction")
+    
+    # get current post id
+    current_post_id = $("#onlinepanel_posts_post_container").attr "data-current_post_id"
+
+    $.get "/posts/" + current_post_id + "?direction=" + direction, (data) ->
+      
+      $("#onlinepanel_posts_post_container").html data
+
+      # get new post id
+      new_post_id = $("#onlinepanel_posts_post").attr "data-post_id"
+
+      # update current_post_id
+      $('#onlinepanel_posts_post_container').attr('data-current_post_id', new_post_id)
+
+      # Prime close button
+      $("#onlinepanel_posts_post_close").click ->
+        $("#onlinepanel_posts_post").fadeOut "fast"
+
+
 
 window.onlinepanels_refresh = (callback) ->
   $.get "/onlinepanel/container", (data) ->
@@ -74,7 +102,5 @@ $(document).ready ->
   # ONLINE PANEL STUFF
   window.onlinepanel_prime()
 
-  $("#onlinepanel_posts_post_close").click ->
-    $("#onlinepanel_posts_post").fadeOut "fast"
 
   

@@ -52,19 +52,11 @@
 
     .row
 
-
-
-
-
       #cases_show_charts_view_table.cases_show_charts_view
         = render "results_table_form"
 
         #cases_show_charts_view_table_table_container
           = render "results_table"
-
-
-
-
 
 
 
@@ -103,13 +95,13 @@
     .cases_show_title
       Business Analytics
     .row
-      .span17
+      .span25
         #cases_show_businessanalytics_chart_bar
       .span10.offset2
         .cases_show_block_score
           = @case.businessanalytics_combined
           %span.cases_score_large_outof /5]
-      .span
+      .span.offset2
         .cases_show_comment.panel.dark.kill_all
           = @case.businessanalytics_comment.html_safe
 
@@ -118,13 +110,13 @@
     .cases_show_title
       Structure
     .row
-      .span17
+      .span25
         #cases_show_structure_chart_bar
       .span10.offset2
         .cases_show_block_score
           = @case.structure_combined
           %span.cases_score_large_outof /5
-      .span
+      .span.offset2
         .cases_show_comment.panel.dark.kill_all
           = @case.structure_comment.html_safe
 
@@ -133,13 +125,13 @@
     .cases_show_title
       Interpersonal
     .row
-      .span17
+      .span25
         #cases_show_interpersonal_chart_bar
       .span10.offset2
         .cases_show_block_score
           = @case.interpersonal_combined
           %span.cases_score_large_outof /5
-      .span
+      .span.offset2
         .cases_show_comment.panel.dark.kill_all
           = @case.interpersonal_comment.html_safe
 
