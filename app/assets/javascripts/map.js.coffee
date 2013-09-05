@@ -70,9 +70,9 @@ window.map_index_profile_toggle = (marker_id) ->
 
 window.map_index_load_profile_small = (marker_id) ->
 
-  $("#map_index_container_user_profile").fadeOut()
+  $("#map_index_container_user_profile").hide "slide", direction: "down", "fast"
 
-  marker = map_index_map_markers[marker_id]
+  # marker = map_index_map_markers[marker_id]
 
   $.ajax
     url: "/members/" + marker_id + "/show_small"
@@ -90,19 +90,22 @@ window.map_index_load_profile = (marker_id) ->
 
   $("#map_index_container_user_profile_small").fadeOut()
 
-  marker = map_index_map_markers[marker_id]
+  # marker = map_index_map_markers[marker_id]
 
   $.ajax
     url: "/members/" + marker_id
     success: (data) ->
 
       $("#map_index_container_user_profile").html data
-
-      $("#map_index_container_user_profile").show "fast", ->
+      $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
 
         window.map_index_profile_bless()
 
         $("#map_index_container_user_profile").addClass "in"
+
+
+
+
 
 window.map_index_load_infobox = (marker_id) ->
 

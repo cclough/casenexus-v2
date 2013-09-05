@@ -338,10 +338,11 @@ $alert-yellow: #FFFF7E;
 }
 
 #map_index_user_profile_panel_actions {
-  margin:15px !important;
+  margin:6px !important;
   position:absolute;
-  right:10px;
-  top:10px;
+  width:50px;
+  right:0px;
+  top:0px;
   .btn {
     float:right;
     line-height:35px;
@@ -402,6 +403,7 @@ $alert-yellow: #FFFF7E;
 }
 
 #map_index_user_profile_small_panel_actions {
+  margin:6px;
   .btn {
     float:right;
     line-height:35px;

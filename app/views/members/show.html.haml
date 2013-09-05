@@ -27,7 +27,7 @@
       - else
         Never online
 
-  .span40
+  .span50
     .row
       = @user.username
 
@@ -81,7 +81,7 @@
     - if @user != current_user
       - if Friendship.friends?(current_user, @user)
         = link_to raw("<i class=icon-comment icon-white></i>"),"#", class: "map_index_user_profile_button_message btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
-        
+
         - unless @user.skype.blank?
           %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
             %span.fui-skype
