@@ -59,28 +59,9 @@ window.map_index_profile_bless = () ->
 window.map_index_profile_toggle = (marker_id) ->
 
   if $("#map_index_container_user_profile").hasClass "in"
-
-    $.ajax
-      url: "/members/" + marker_id + "/show_small"
-      success: (data) ->
-
-        $("#map_index_container_user_profile_small").html data
-        $("#map_index_container_user_profile").hide "slide", direction: "down", "fast"
-        $("#map_index_container_user_profile_small").fadeIn ->
-          $("#map_index_container_user_profile").removeClass "in"
-          window.map_index_profile_bless()
-
+    window.map_index_load_profile_small(marker_id)
   else
-
-    $.ajax
-      url: "/members/" + marker_id
-      success: (data) ->
-
-        $("#map_index_container_user_profile").html data
-        $("#map_index_container_user_profile_small").fadeOut()
-        $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
-          $("#map_index_container_user_profile").addClass "in"
-          window.map_index_profile_bless()
+    window.map_index_load_profile(marker_id)
 
 
 
@@ -88,6 +69,8 @@ window.map_index_profile_toggle = (marker_id) ->
 
 
 window.map_index_load_profile_small = (marker_id) ->
+
+  $("#map_index_container_user_profile").fadeOut()
 
   marker = map_index_map_markers[marker_id]
 
@@ -101,7 +84,25 @@ window.map_index_load_profile_small = (marker_id) ->
 
         window.map_index_profile_bless()
 
+        $("#map_index_container_user_profile").removeClass "in"
 
+window.map_index_load_profile = (marker_id) ->
+
+  $("#map_index_container_user_profile_small").fadeOut()
+
+  marker = map_index_map_markers[marker_id]
+
+  $.ajax
+    url: "/members/" + marker_id
+    success: (data) ->
+
+      $("#map_index_container_user_profile").html data
+
+      $("#map_index_container_user_profile").show "fast", ->
+
+        window.map_index_profile_bless()
+
+        $("#map_index_container_user_profile").addClass "in"
 
 window.map_index_load_infobox = (marker_id) ->
 
@@ -155,7 +156,10 @@ map_index_map_zoomcalc = ->
 window.map_index_map_load_all = (target_id, target_lat, target_lng) ->
   target_latlng = new google.maps.LatLng target_lat, target_lng
   window.map_index_map_pan target_latlng
-  window.map_index_load_profile_small target_id
+  if $("map_index_container_user_profile").hasClass "in"
+    window.map_index_load_profile target_id
+  else
+    window.map_index_load_profile_small target_id
 
 
 

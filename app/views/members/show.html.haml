@@ -3,10 +3,6 @@
   var map_index_user_profile_chart_activity_data = #{Case.user_activity_profile(@user)};
 
 
-.map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
-  %i.icon-angle-down
-  Show map
-
 
 
 
@@ -75,25 +71,26 @@
 
 
 
-  .span13#map_index_user_profile_panel_actions.offset1.pull-right
+  .span13#map_index_user_profile_panel_actions
+
+    .map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
+      %i.icon-angle-down
+
+
+
     - if @user != current_user
       - if Friendship.friends?(current_user, @user)
-        .row
-          = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", class: "map_index_user_profile_button_message btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
+        = link_to raw("<i class=icon-comment icon-white></i>"),"#", class: "map_index_user_profile_button_message btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
+        
+        - unless @user.skype.blank?
+          %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
+            %span.fui-skype
 
-        .row
-          - unless @user.skype.blank?
-            %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
-              %span.fui-skype
-              Skype
-        .row
-          %a.map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
-            %i.icon-calendar.icon-white
-            Schedule
-        .row
-          %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
-            %i.icon-arrow-right.icon-white
-            Start
+        %a.map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
+          %i.icon-calendar.icon-white
+
+        %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
+          %i.icon-arrow-right.icon-white
 
 
       - elsif Friendship.requested?(@user, current_user)

@@ -129,7 +129,7 @@ $alert-yellow: #FFFF7E;
   position:absolute;
   left:300px;
   right:0px;
-  height:150px;
+  height:75px;
   bottom:0px;
 
 
@@ -334,21 +334,32 @@ $alert-yellow: #FFFF7E;
 //////////////////////////////////////////////
 
 .map_index_user_profile_toggle {
-  position:absolute;
-  top:0px;
-  left:50%;
+
 }
 
 #map_index_user_profile_panel_actions {
+  margin:15px !important;
+  position:absolute;
+  right:10px;
+  top:10px;
   .btn {
-    width:100px;
-    margin-bottom:3px;
-    height:20px !important;
+    float:right;
+    line-height:35px;
+    width:40px !important;
+    height:40px !important;
+    padding:10px;
+    font-size:30px;
+    margin:2px;
   }
+
 }
+
+
+
 #map_index_user_profile_avatar{
   font-size:60px;
 }
+
 
 #map_index_user_profile_chart_activity {
 
@@ -382,18 +393,23 @@ $alert-yellow: #FFFF7E;
 ////////////////SHOW SMALL////////////////////
 //////////////////////////////////////////////
 
+#map_index_user_profile_small_user {
+  text-align:center;
+}
 
-#map_index_user_profile_small_showfull {
-  position:absolute;
-  top:-10px;
-  left:50%;
+#map_index_user_profile_small_username {
+  font-size:25px;
 }
 
 #map_index_user_profile_small_panel_actions {
   .btn {
-    width:100px;
-    margin-bottom:3px;
-    height:20px !important;
+    float:right;
+    line-height:35px;
+    width:40px !important;
+    height:40px !important;
+    padding:10px;
+    font-size:30px;
+    margin:2px;
   }
 }
 #map_index_user_profile_small_avatar{

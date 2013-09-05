@@ -3,95 +3,58 @@
   var map_index_user_profile_chart_activity_data = #{Case.user_activity_profile(@user)};
 
 
-.map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
-  %i.icon-angle-up
-  Show full profile
+
 
 
 
 .row
-  .span30
+  .span8#map_index_user_profile_small_user
     .row
-      .span10
-        .row
-          %span#map_index_user_profile_small_avatar.fui-user
-        .row
-          .span
-            = casecounts(@user).to_s + " cases"
-        .row
-          .span
-            = @user.points_tally.to_s + " reputation"
-        .row
-          - if @user.last_online_at
-            Last online
-            = time_ago_in_words(@user.last_online_at)
-            ago
-          - else
-            Never online
+      %span#map_index_user_profile_small_avatar.fui-user
+  .span8
+    .row
+      .span
+        = casecounts(@user).to_s
+    .row
+      cases
+    .row
+      .span
+        = @user.points_tally.to_s
+    .row
+      reputation
+  .span25
+    .row#map_index_user_profile_small_username
+      = @user.username
+    .row
+      - if @user.last_online_at
+        Last online
+        = time_ago_in_words(@user.last_online_at)
+        ago
+      - else
+        Never online
 
-      .span20
-        .row
-          = @user.username
+    .row
+      - unless @user.university.blank?
+        %span
+          = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
+        %span
+          = @user.university.name
 
-        .row
-          - unless @user.university.blank?
-            %span
-              = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
-            %span
-              = @user.university.name
-        .row
-          - unless @user.country.blank?
-            %span
-              = image_tag "countries/"+@user.country.code.to_s+".png", alt: @user.country.name, class: "application_userimage_small"
-            %span
-              = @user.country.name
-        .row
-          = @user.degree_level_in_words
-        .row
-          = @user.subject.name unless @user.subject.blank?
-        .row
-          - unless @user.languages.empty?
-            - @user.languages.each do |users_item_language|
-              = users_item_language.name
-        .row
-          - if Friendship.friends?(current_user, @user)
-            &#8226; 
-            = link_to("Remove as Contact", friendship_path(Friendship.friendship(current_user, @user)), method: :delete, confirm: "Are you sure you want to remove " + @user.username + " as a contact?")
-          - else
-            Not friends
+  .span37#map_index_user_profile_small_panel_actions.offset1.pull-right
 
-
-
-
-
-  .span30
-    #map_index_user_profile_small_chart_activity
-
-
-
-
-
-
-
-  .span13#map_index_user_profile_small_panel_actions.offset1.pull-right
+    .map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
+      %i.icon-angle-up
+      
     - if @user != current_user
       - if Friendship.friends?(current_user, @user)
-        .row
-          = link_to raw("<i class=icon-comment icon-white></i> Message"),"#", id: "map_index_user_profile_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
-
-        .row
-          - unless @user.skype.blank?
-            %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
-              %span.fui-skype
-              Skype
-        .row
-          %a#map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
-            %i.icon-calendar.icon-white
-            Schedule
-        .row
-          %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
-            %i.icon-arrow-right.icon-white
-            Start
+        = link_to raw("<i class=icon-comment icon-white></i>"),"#", id: "map_index_user_profile_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
+        - unless @user.skype.blank?
+          %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
+            %span.fui-skype
+        %a#map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
+          %i.icon-calendar.icon-white
+        %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
+          %i.icon-arrow-right.icon-white
 
 
       - elsif Friendship.requested?(@user, current_user)
@@ -106,5 +69,4 @@
       - elsif !Friendship.exist?(current_user, @user)
         %a#map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
           %div
-            %i.icon-comment.icon-white.icon-4x
-          Send Friend Request
+            %i.icon-plus.icon-white.icon-4x
