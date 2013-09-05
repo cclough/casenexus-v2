@@ -143,8 +143,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   puts "Creating Languages"
 
-  Language.create!(name: "English - UK", country_code: "GB")
-  Language.create!(name: "English - US", country_code: "US")
+  Language.create!(name: "English", country_code: "GB")
   Language.create!(name: "French", country_code: "FR")
 
 

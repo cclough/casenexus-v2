@@ -8,24 +8,19 @@
 
 
 .row
-  .span8#map_index_user_profile_small_user
+  .span9#map_index_user_profile_small_user
     .row
       %span#map_index_user_profile_small_avatar.fui-user
-  .span8
+  .span9
     .row
-      .span
-        = casecounts(@user).to_s
-    .row
-      cases
-    .row
-      .span
+      .span#map_index_user_profile_small_reputation
         = @user.points_tally.to_s
-    .row
-      reputation
-  .span25
+        .row#map_index_user_profile_small_reputation_text
+          reputation
+  .span20
     .row#map_index_user_profile_small_username
       = @user.username
-    .row
+    .row.application_lastonline
       - if @user.last_online_at
         Last online
         = time_ago_in_words(@user.last_online_at)
@@ -33,7 +28,7 @@
       - else
         Never online
 
-    .row
+    .row#map_index_user_profile_small_university
       - unless @user.university.blank?
         %span
           = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
@@ -42,16 +37,16 @@
 
   .span37#map_index_user_profile_small_panel_actions.offset1.pull-right
 
-    .map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
+    .map_index_user_profile_toggle.btn.btn-default.btn-embossed{"data-user_id"=>@user.id}
       %i.icon-angle-up
       
     - if @user != current_user
       - if Friendship.friends?(current_user, @user)
-        = link_to raw("<i class=icon-comment icon-white></i>"),"#", id: "map_index_user_profile_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => @user.id
+        = link_to raw("<i class=icon-comment icon-white></i>"),"#", class: "btn btn-primary btn-embossed btn-small map_index_user_profile_button_message", "data-friend_id" => @user.id
         - unless @user.skype.blank?
           %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{@user.skype}?call"}
             %span.fui-skype
-        %a#map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
+        %a.map_index_user_profile_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id.to_s}
           %i.icon-calendar.icon-white
         %a#map_index_user_profile_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + @user.id.to_s}
           %i.icon-arrow-right.icon-white
@@ -67,6 +62,6 @@
         = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, @user), back_url: map_path), method: :put, class: "btn btn-mini")
 
       - elsif !Friendship.exist?(current_user, @user)
-        %a#map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
+        %a.map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
           %div
             %i.icon-plus.icon-white.icon-4x

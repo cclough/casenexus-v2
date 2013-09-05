@@ -7,6 +7,9 @@
       %span.fui-user
     .span10.offset1#onlinepanel_posts_post_username.application_truncatable
       = link_to post.user.username, "/map?user_id=" + post.user.id.to_s
+  .row#onlinepanel_posts_post_datetime
+    = time_ago_in_words(post.created_at)
+    ago
   .row
     .span
       = post.content

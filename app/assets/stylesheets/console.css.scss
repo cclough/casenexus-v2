@@ -34,6 +34,14 @@ $alert-yellow: #FFFF7E;
   width: 50%;
 }
 
+#console_index_pdfjs_header {
+  position:absolute;
+  right:0px;
+  left:0px;
+  top:50px;
+  height:50px;
+  background:$gray_second;
+}
 #console_index_pdfjs_iframe {
   height:100%;
   // width:49%;

@@ -424,16 +424,14 @@ $alert-yellow: #FFFF7E;
 
 #cases_new_submit_panel {
   text-align:center;
-  margin-bottom:70px;
+
+  #cases_new_submit_button {
+    width:300px;
+  }
 }
 
 
-#cases_new_submit_button {
 
-  width:300px;
-  height:45px;
-
-}
 
 
 

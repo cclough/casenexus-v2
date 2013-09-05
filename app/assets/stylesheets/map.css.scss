@@ -119,6 +119,8 @@ $alert-yellow: #FFFF7E;
 
   padding:5px;
 
+  overflow-y:auto;
+
 }
 
 #map_index_container_user_profile_small {
@@ -333,12 +335,29 @@ $alert-yellow: #FFFF7E;
 ////////////////////SHOW FULL/////////////////
 //////////////////////////////////////////////
 
+#map_index_user_profile_reputation {
+  font-size:25px;
+  background:white;
+  padding:5px;
+  text-align:center;
+  margin:10px 10px;
+  #map_index_user_profile_reputation_text {
+    font-size:11px;
+  }
+}
+
+
+
+#map_index_user_profile_username {
+  font-size:25px;
+}
+
 .map_index_user_profile_toggle {
 
 }
 
 #map_index_user_profile_panel_actions {
-  margin:6px !important;
+  margin:10px !important;
   position:absolute;
   width:50px;
   right:0px;
@@ -358,7 +377,7 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_user_profile_avatar{
-  font-size:60px;
+  font-size:80px;
 }
 
 
@@ -381,6 +400,8 @@ $alert-yellow: #FFFF7E;
 }
 
 .map_index_user_profile_block_content {
+  width:26%;
+  float:left;
   .map_index_user_profile_block_content_text {
     height:150px;
     overflow-y:auto;
@@ -390,16 +411,47 @@ $alert-yellow: #FFFF7E;
   }
 }
 
+.map_index_user_profile_block_content_votes {
+  padding:3px;
+  background:$gray_background;
+  margin:0px 5px 2px 0px;
+  text-align:center;
+}
+
+#map_index_user_profile_panel_basicinfo {
+  width:60%;
+  float:left;
+}
+
+#map_index_user_profile_panel_user {
+  width:20%;
+  float:left;
+}
+
 //////////////////////////////////////////////
 ////////////////SHOW SMALL////////////////////
 //////////////////////////////////////////////
 
+#map_index_user_profile_small_reputation {
+  font-size:25px;
+  background:$gray_background;
+  padding:5px;
+  text-align:center;
+  margin:10px 10px;
+  #map_index_user_profile_small_reputation_text {
+    font-size:11px;
+  }
+}
 #map_index_user_profile_small_user {
   text-align:center;
 }
 
 #map_index_user_profile_small_username {
   font-size:25px;
+}
+
+#map_index_user_profile_small_university {
+  margin-top:5px;
 }
 
 #map_index_user_profile_small_panel_actions {

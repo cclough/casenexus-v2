@@ -34,12 +34,7 @@ window.map_index_profile_bless = () ->
   $(".map_index_user_profile_toggle").click ->
     marker_id = $(this).attr('data-user_id')
     window.map_index_profile_toggle(marker_id)
-
-    # Draw chart
-  #setTimeout (->
-  # window.map_index_user_profile_chart_activity_draw()
-  #), 1000
-  
+    
   # Prime Button
   $(".map_index_user_profile_button_message").click ->
     friend_id = $(this).data "friend_id"
@@ -71,7 +66,6 @@ window.map_index_profile_toggle = (marker_id) ->
 window.map_index_load_profile_small = (marker_id) ->
 
   $("#map_index_container_user_profile").hide "slide", direction: "down", "fast"
-
   # marker = map_index_map_markers[marker_id]
 
   $.ajax
@@ -79,17 +73,16 @@ window.map_index_load_profile_small = (marker_id) ->
     success: (data) ->
 
       $("#map_index_container_user_profile_small").html data
-
-      $("#map_index_container_user_profile_small").show "fast", ->
-
+      $("#map_index_container_user_profile_small").show "slide", direction: "down", "fast", ->
         window.map_index_profile_bless()
-
         $("#map_index_container_user_profile").removeClass "in"
+
+
+
 
 window.map_index_load_profile = (marker_id) ->
 
-  $("#map_index_container_user_profile_small").fadeOut()
-
+  $("#map_index_container_user_profile_small").hide "slide", direction: "down", "fast", ->
   # marker = map_index_map_markers[marker_id]
 
   $.ajax
@@ -98,9 +91,9 @@ window.map_index_load_profile = (marker_id) ->
 
       $("#map_index_container_user_profile").html data
       $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
-
         window.map_index_profile_bless()
-
+        # Draw chart
+        window.map_index_user_profile_chart_activity_draw()
         $("#map_index_container_user_profile").addClass "in"
 
 
@@ -272,7 +265,7 @@ window.map_index_user_profile_chart_activity_draw = () ->
   graph.fillAlphas = 1
   chart.addGraph graph
 
-  chart.write "map_index_user_profile_small_chart_activity"
+  chart.write "map_index_user_profile_chart_activity"
 
 $(document).ready ->
 

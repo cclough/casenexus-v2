@@ -10,26 +10,33 @@
 .row
 
 
-  .span20
+  #map_index_user_profile_panel_user
     .row
       %span#map_index_user_profile_avatar.fui-user
     .row
-      .span
-        = casecounts(@user).to_s + " cases"
-    .row
-      .span
-        = @user.points_tally.to_s + " reputation"
-    .row
+      .span9
+        .row
+          .span#map_index_user_profile_reputation
+            = @user.points_tally.to_s
+            .row#map_index_user_profile_reputation_text
+              reputation
+
+
+  .panel.dark.kill_left#map_index_user_profile_panel_basicinfo
+
+    .map_index_user_profile_block_title
+      Basic Info
+
+    .row#map_index_user_profile_username
+      = @user.username
+
+    .row.application_lastonline
       - if @user.last_online_at
         Last online
         = time_ago_in_words(@user.last_online_at)
         ago
       - else
         Never online
-
-  .span50
-    .row
-      = @user.username
 
     .row
       - unless @user.university.blank?
@@ -58,11 +65,17 @@
       - else
         Not friends
 
-
+    .row
+      .span
+        = casecounts(@user).to_s + " cases"
 
 
 .row
-  .span30
+  .panel.dark.kill_left.kill_top.kill_bottom
+
+
+    .map_index_user_profile_block_title
+      Recent Activity
     #map_index_user_profile_chart_activity
 
 
@@ -73,7 +86,7 @@
 
   .span13#map_index_user_profile_panel_actions
 
-    .map_index_user_profile_toggle.btn.btn-primary.btn-embossed{"data-user_id"=>@user.id}
+    .map_index_user_profile_toggle.btn.btn-default.btn-embossed{"data-user_id"=>@user.id}
       %i.icon-angle-down
 
 
@@ -114,39 +127,36 @@
 .row
 
 
-  .span20
-    .panel.dark.kill_left.map_index_user_profile_block_content
+  .panel.dark.kill_left.map_index_user_profile_block_content
 
-      .map_index_user_profile_block_title
-        Recent Questions
-      .map_index_user_profile_block_content_text
-        - @user.questions.last(5).each do |user_question|
-          .row.application_truncatable
+    .map_index_user_profile_block_title
+      Recent Questions
+    .map_index_user_profile_block_content_text
+      - @user.questions.last(5).each do |user_question|
+        .row
+          .span2.map_index_user_profile_block_content_votes
+            = user_question.plusminus
+          %span.application_truncatable
             = link_to user_question.title, question_path(user_question)
 
-  .span20
-    .panel.dark.kill_left.map_index_user_profile_block_content
+  .panel.dark.kill_left.map_index_user_profile_block_content
 
-      .map_index_user_profile_block_title
-        Recent Answers
-      .map_index_user_profile_block_content_text
-        - @user.answers.last(5).each do |user_answer|
-          .row.application_truncatable
+    .map_index_user_profile_block_title
+      Recent Answers
+    .map_index_user_profile_block_content_text
+      - @user.answers.last(5).each do |user_answer|
+        .row
+          .span2.map_index_user_profile_block_content_votes
+            = user_answer.plusminus
+          %span.application_truncatable
             = link_to user_answer.content_trunc, answer_path(user_answer)
 
-  .span20
 
-    .panel.dark.kill_left.map_index_user_profile_block_content
+  .panel.dark.kill_left.map_index_user_profile_block_content
 
-      .map_index_user_profile_block_title
-        Recent Posts
-      .map_index_user_profile_block_content_text
-        - @user.posts.last(5).each do |user_post|
-          .row.application_truncatable
-            = user_post.content_trunc
-
-
-.spacer10
-.row
-  #map_index_user_profile_chart_activity
-.spacer50
+    .map_index_user_profile_block_title
+      Recent Posts
+    .map_index_user_profile_block_content_text
+      - @user.posts.last(5).each do |user_post|
+        .row.application_truncatable
+          = user_post.content_trunc

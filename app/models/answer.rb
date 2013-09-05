@@ -17,7 +17,7 @@ class Answer < ActiveRecord::Base
   ### Micro
 
   def content_trunc
-    content.truncate(17, separator: ' ')
+    content.truncate(50, separator: ' ')
   end
 
 end
