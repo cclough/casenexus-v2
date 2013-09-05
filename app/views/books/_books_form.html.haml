@@ -28,6 +28,7 @@
           = filterable_books('guide', 'Guides')
           = filterable_books('link', 'Web')
           = filterable_books('case', 'Cases')
+          = hidden_field_tag('btype', params[:btype])
 
       .span.offset1#books_index_books_form_label
         Sort by
