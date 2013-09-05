@@ -12,7 +12,7 @@ class Case < ActiveRecord::Base
   belongs_to :interviewer, class_name: 'User'
   has_many :notifications, as: :notificable, dependent: :destroy
   has_many :points, as: :pointable, dependent: :destroy
-
+  has_one :book
 
   ### Callbacks
   after_create :create_notification
@@ -109,6 +109,14 @@ class Case < ActiveRecord::Base
 
   def to_s
     self.subject
+  end
+
+  def next
+    user.cases.where("id > ?", id).order("id ASC").first
+  end
+
+  def prev
+    user.cases.where("id < ?", id).order("id DESC").first
   end
 
   ## Macro

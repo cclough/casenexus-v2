@@ -1,7 +1,7 @@
 .row
   .panel.kill_bottom.kill_left.kill_right
     .row
-      .span5
+      .span6
         .row
           %span.fui-user#cases_show_subnav_avatar
         .row
@@ -10,10 +10,7 @@
         .row
           .span.offset1#cases_show_subnav_name
             = @case.interviewer.username
-          .span.offset1
-            - unless @case.interviewer.country.blank?
-              .span3
-                = image_tag "countries/"+@case.interviewer.country.code.to_s+".png", alt: @case.interviewer.username
+        .spacer5
         .row
           .span2.offset1
             = image_tag "universities/" + @case.interviewer.university.image
@@ -21,38 +18,41 @@
             = @case.interviewer.university.name
 
 
-      .span39.pull-right#cases_show_subnav_browse
+      .span49.pull-right#cases_show_subnav_browse
         .span8.offset1#cases_show_subnav_label
-          Select case
+          Change case
           %i.icon-caret-right
-        %select#cases_show_subnav_select.chzn-select.span29.offset1{"data-placeholder" => "Jump to Case...", value: @case.id }
+        %select#cases_show_subnav_select.chzn-select.span29.offset2{"data-placeholder" => "Jump to Case...", value: @case.id }
           %option
             - @cases.each do |cases_select_item|
               %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
                 = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
 
+        = link_to case_path(@case.prev), class: "btn btn-primary" do
+          %i.icon-caret-left
+        = link_to case_path(@case.next), class: "btn btn-primary" do
+          %i.icon-caret-right
 .row
-  .panel.dark.kill_left.kill_right.kill_bottom
+  .panel.dark.kill_left.kill_right.kill_bottom#cases_show_subnav_info
     .row
-      .span58
-        .row
-          .span7
-            Source:
-          %span
-            = @case.source
-        .row
-          .span7
-            Subject:
-          %span
-            = @case.subject
-        .row
-          .span7
-            Date:
-          %span
-            = @case.created_at.strftime("%a %d %b %Y %I:%M%p")
+      .span50
+        - if @case.book_id?
+          = render partial: 'books/show_small', locals: { book_id: @case.book_id }
+        - else
+          .row
+            .span7
+              Source:
+            %span
+              = @case.source
+          .row
+            .span7
+              Subject:
+            %span
+              = @case.subject
 
-
-      .span10.pull-right
-        #cases_show_subnav_score.panel.darker.kill_all
+      .span25.pull-right#cases_show_subnav_score
+        .span15#cases_show_subnav_date
+          = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
+        .span10
           %span= @case.totalscore.to_f.round(1)
           %span.cases_score_large_outof /15

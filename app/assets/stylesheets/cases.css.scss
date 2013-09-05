@@ -148,11 +148,16 @@ $alert-yellow: #FFFF7E;
 //////////////////////////// SHOW ///////////////////////////////
 /////////////////////////////////////////////////////////////////
 
+#cases_show_subnav_info {
+  font-size:16px;
+}
 
 #cases_show_subnav_avatar {
   text-align:center;
   font-size:40px;
   line-height:50px;
+  padding-left:10px;
+  padding-top:5px;
 }
 
 .cases_show_title {
@@ -257,7 +262,7 @@ $alert-yellow: #FFFF7E;
 
 
 #cases_show_subnav_name {
-  font-size:17px;
+  font-size:22px;
   line-height:30px;
   color: $gray_Dark;
 }
@@ -268,15 +273,22 @@ $alert-yellow: #FFFF7E;
 }
 
 #cases_show_subnav_label {
-  margin-top:3px;
+  margin-top:13px;
   font-size:12px;
+  margin-right:3px;
   i {
     margin-left:5px;
   }
 }
 
 #cases_show_subnav_browse {
-  color:$gray_Light;
+  margin-top:7px;
+
+  .btn {
+    width:20px;
+    height:20px;
+    margin:2px;
+  }
 }
 
 #cases_show_subnav_score {
@@ -292,6 +304,10 @@ $alert-yellow: #FFFF7E;
   font-weight: bold;
 
 
+}
+
+#cases_show_subnav_date {
+  font-size:11px;
 }
 
 
