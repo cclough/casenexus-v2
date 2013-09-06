@@ -227,6 +227,7 @@ $alert-yellow: #FFFF7E;
   font-size:11px;
   width:150px !important;
   padding:2px;
+
 }
 
 
@@ -234,7 +235,7 @@ $alert-yellow: #FFFF7E;
 
 
 .books_show_comments_item {
-  margin-bottom: 5px !important;
+  margin-bottom: 15px !important;
   padding:10px;
 }
 
@@ -249,4 +250,14 @@ $alert-yellow: #FFFF7E;
   color:$gray_Mid;
 }
 
+
+#books_show_comments_form_container {
+  width:670px;
+  margin:0 auto;
+  text-align:center;
+}
+
+#books_show_comments_form_submit {
+  margin-left:5px;
+}
 

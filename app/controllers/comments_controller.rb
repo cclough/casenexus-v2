@@ -41,10 +41,13 @@ class CommentsController < ApplicationController
       redirect_to @commentable, notice: "Comment posted."
     else
       
-      respond_to do |format|
-        format.js
+      unless @commentable_model = "books"
+        respond_to do |format|
+          format.js
+        end
       end
 
+      redirect_to @commentable
       flash[:error] = @comment.errors.full_messages.map {|error| "#{error}<br>"}.join
     end
 

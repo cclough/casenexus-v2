@@ -287,9 +287,11 @@ $(document).ready ->
 
   # Switch view button - world vs local
   $("#map_index_users_form_view_world_button").click ->
-    LatLng = new google.maps.LatLng(0, 0)
-    window.map.setCenter LatLng
-    window.map.setZoom map_index_map_zoomcalc()
+    # LatLng = new google.maps.LatLng(0, 0)
+    # window.map.setCenter LatLng
+    # window.map.setZoom map_index_map_zoomcalc()
+
+    map_index_map_markers_clear()
 
 
   $("#map_index_users_form_view_local_button").click ->

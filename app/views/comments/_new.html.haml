@@ -15,12 +15,13 @@
 
         / Just for book comment
         - if params[:controller] == "books"
-          #books_show_form_rating_panel.panel.dark.kill_all
+          .spacer5
+          #books_show_form_rating_panel
             .books_rating_set
             How do you rate it?
             = f.hidden_field :rating, id: "books_rating_set_field"
-            
+          .spacer15
         = f.hidden_field :user_id, value: current_user.id
         = f.hidden_field :commentable_type, value: @commentable_model
         = f.hidden_field :commentable_id, value: @commentable.id
-        = f.submit "Add comment", class: "btn btn-primary btn-embossed"
+        = f.submit "Add comment", class: "btn btn-primary btn-large btn-embossed", id: "books_show_comments_form_submit"

@@ -167,11 +167,24 @@ textarea {
   background:#363636;
 }
 
+#application_container_profilepanel {
+  display:none;
+  position:absolute;
+  top:50px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+  background:rgba(255,255,255,0.95);
+  z-index:100000;
+}
+
+
 #application_container_main {
   position:absolute;
   top:50px;
   right:0px;
-  left:75px;
+  left:75px; // comment in for left bar demo!
+  //left:0px;
   bottom:0px;
   overflow-y: auto !important;
 }
@@ -264,6 +277,70 @@ textarea {
 }
 
 
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+
+
+#application_profilepanel {
+  position:absolute;
+
+  top:50%;
+  margin-top:-230px;
+  left:50%;
+  margin-left:-400px;
+
+  font-size:100px;
+
+  .row {
+    &.active {
+      background:#272727;
+    }
+    a{
+      color:$gray_Dark;
+      text-decoration:none;
+      &:hover {
+        color:black;
+      }
+    }
+  }
+}
+
+
+
+.application_profilepanel_item {
+  padding: 10px;
+  margin:30px;
+  text-align:center;
+  position:relative;
+
+  .iconbar-unread {
+    top:20px;
+    right:5px;
+
+    line-height:26px;
+    width:30px !important;
+    height:30px !important;
+    font-size:20px !important;
+  }
+
+}
+
+.application_profilepanel_item_text {
+//  display:none;
+  font-size:12px;
+  margin-top:2px !important;
+}
+
+
+#application_profilepanel_item_icon_notifications {
+  &.unread {
+    color:red;
+  }
+
+}
 
 
 

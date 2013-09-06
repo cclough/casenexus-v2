@@ -135,9 +135,13 @@ header {
 
 
 #header_nav_links_right_name {
-//  width:170px;
+  cursor:pointer;
 }
 
+
+#header_nav_links_right_name_caret {
+  font-size:25px;
+}
 
 
 #header_nav_links_right_signedout {
