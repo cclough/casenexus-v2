@@ -614,9 +614,6 @@ textarea {
 
 #modal_help {
   overflow-x: hidden;
-  width:840px !important;
-  margin-left:-420px;
-  margin-top:-300px;
   .modal-header {
     border-bottom:0px;
   }
@@ -674,8 +671,8 @@ textarea {
 #modal_help_arrownav {
 
   margin-top:-30px;
-  margin-left:-14px;
-  margin-right:-14px;
+  margin-left:-25px;
+  margin-right:-25px;
   margin-bottom:20px;
 
   background: #f6f6f6;
@@ -693,7 +690,7 @@ textarea {
   nav { 
     position: relative; 
     // ITS THIS LEFT
-    left:97px; }
+    left:155px; }
   nav ul {
     list-style: none;
     padding: 0px 0px 0px 0px;
@@ -737,7 +734,9 @@ textarea {
 
 // Help modal
 #modal_help .arrownav_page{
-  height:400px;
+  height:300px;
+  margin-top:75px;
+  overflow-y:scroll
 }
 
 #modal_help_pages_blue { color: #0D8ECF }
@@ -751,8 +750,18 @@ textarea {
 }
 
 
+#modal_help_button_next {
+
+}
+
+#modal_help_button_close {
+  display:none;
+}
 
 
+.modal_help_page_instructions {
+  font-size:40px;
+}
 
 ///////////////////////////////////////////////////
 

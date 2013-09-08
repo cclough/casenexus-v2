@@ -9,7 +9,7 @@
       .span3
         = check_box_tag :help_2_checked, 1, current_user.help_2_checked, id: 'modal_help_checkbox', 'data-page_id' => 2, 'data-user_id' => current_user.id
       .span30.font-small
-        Display this everytime I use the Map
+        Display this everytime I login
     - when "3"
       .span3
         = check_box_tag :help_3_checked, 1, current_user.help_3_checked, id: 'modal_help_checkbox', 'data-page_id' => 3, 'data-user_id' => current_user.id, "data-toggle" => "checkbox"

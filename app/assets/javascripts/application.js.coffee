@@ -392,7 +392,7 @@ $(document).ready ->
     if !($("#modal_help").hasClass("in"))
       $(".modal").modal "hide"
       $("#modal_help").modal "show", ->
-        window.ArrowNav.goTo "1"
+        window.ArrowNav.goTo 1
 
   # Modal contact link
   $("#header_link_contact").click ->
