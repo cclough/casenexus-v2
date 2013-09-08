@@ -8,7 +8,9 @@ window.infobox = null
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   # window.map.panTo latlng
-  window.map.panToWithOffset latlng, 0, -30
+  # window.map.panToWithOffset latlng, 0, -30
+  # latlng = new google.maps.LatLng lat, lng
+  window.map.panTo latlng
   window.map.setZoom 6
 
 
@@ -83,6 +85,8 @@ window.map_index_load_profile_small = (marker_id) ->
 
 window.map_index_load_profile = (marker_id) ->
 
+
+
   $("#map_index_container_user_profile_small").hide "slide", direction: "down", "fast", ->
   # marker = map_index_map_markers[marker_id]
 
@@ -108,9 +112,9 @@ window.map_index_load_infobox = (marker_id) ->
   window.infobox.setContent b.html()
   
   # Click to close
-  $("#map_index_container_user_infobox").click ->
-    $("#map_index_container_user_infobox").fadeOut "fast", ->
-      window.infobox.close()
+  # $("#map_index_container_user_infobox").click ->
+  #   $("#map_index_container_user_infobox").fadeOut "fast", ->
+  #     window.infobox.close()
 
   marker = map_index_map_markers[marker_id]
   window.infobox.open map, marker
@@ -150,13 +154,15 @@ map_index_map_zoomcalc = ->
 
 
 
-window.map_index_map_load_all = (target_id, target_lat, target_lng) ->
-  target_latlng = new google.maps.LatLng target_lat, target_lng
-  window.map_index_map_pan target_latlng
-  # if $("map_index_container_user_profile").hasClass "in"
-  #   window.map_index_load_profile target_id
-  # else
-  #   window.map_index_load_profile_small target_id
+window.map_index_map_load_all = (target_id, latlng) ->
+
+  # THIS CODE IS CAUSING A STACKOVERFLOW
+  window.map_index_map_pan latlng
+
+  if $("map_index_container_user_profile").hasClass "in"
+    window.map_index_load_profile target_id
+  else
+    window.map_index_load_profile_small target_id
 
 
 
@@ -182,15 +188,13 @@ window.map_index_map_markers_draw = () ->
 
   json = $.parseJSON map_index_map_markers_json
 
-  i = 0
-  while i < json.length
-
+  $.each json, (i, marker) ->
     marker = json[i]
 
     # Draw markers
     image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
 
-    marker = new google.maps.Marker(
+    map_marker = new google.maps.Marker(
       id: marker.id
       map: map
       position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
@@ -199,16 +203,16 @@ window.map_index_map_markers_draw = () ->
       animation: google.maps.Animation.DROP
     )
 
-    google.maps.event.addListener marker, "mouseover", ->
-      map_index_load_infobox(marker.id)
+    google.maps.event.addListener map_marker, "mouseover", ->
+      map_index_load_infobox(map_marker.id)
+    
+    google.maps.event.addListener map_marker, "click", ->
+      latlng = new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
+      window.map_index_map_load_all map_marker.id, latlng
 
-    google.maps.event.addListener marker, "click", ->
-      # window.map_index_map_load_all marker.id, marker.lat, marker.lng
-
-    map_index_map_markers[marker.id] = marker
+    window.map_index_map_markers[marker.id] = map_marker
     window.map_index_map_markers_ids[i] = marker.id
 
-    i++
 
 
 window.map_index_user_profile_chart_activity_draw = () ->
@@ -407,19 +411,12 @@ $(document).ready ->
         $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
         $("div.gmnoprint").fadeIn 500
 
-    # window.map_index_map_markers_draw()
 
     ######## PAGE LOAD:
 
     # Load profile and infowindow
-    window.map_index_load_profile_small 2#map_index_map_marker_id_start
+    window.map_index_load_profile_small map_index_map_marker_id_start
     window.map_index_load_infobox map_index_map_marker_id_start
-
-
-
-
-
-
 
 
 
