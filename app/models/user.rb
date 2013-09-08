@@ -185,7 +185,7 @@ class User < ActiveRecord::Base
     # end
 
     def markers(users)
-      users.map { |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
+      users.map{ |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
     end
 
     def confirmed

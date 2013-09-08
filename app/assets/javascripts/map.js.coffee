@@ -1,4 +1,5 @@
 window.map_index_map_markers = []
+window.map_index_map_markers_ids = []
 window.map = null
 window.infobox = null
 
@@ -152,10 +153,10 @@ map_index_map_zoomcalc = ->
 window.map_index_map_load_all = (target_id, target_lat, target_lng) ->
   target_latlng = new google.maps.LatLng target_lat, target_lng
   window.map_index_map_pan target_latlng
-  if $("map_index_container_user_profile").hasClass "in"
-    window.map_index_load_profile target_id
-  else
-    window.map_index_load_profile_small target_id
+  # if $("map_index_container_user_profile").hasClass "in"
+  #   window.map_index_load_profile target_id
+  # else
+  #   window.map_index_load_profile_small target_id
 
 
 
@@ -163,12 +164,13 @@ map_index_map_markers_clear = ->
 
   i = 0
 
-  if map_index_map_markers
-    while i < 1000
-      map_index_map_markers[i].setMap null
-      i++
+  # if map_index_map_markers
+  while i < map_index_map_markers_ids.length
+    # alert "deleting item in marker array #" + String map_index_map_markers_ids[i]
+    window.map_index_map_markers[map_index_map_markers_ids[i]].setMap null
+    i++
 
-    map_index_map_markers = []
+  map_index_map_markers = []
 
 
 window.map_index_map_markers_draw = () ->
@@ -178,28 +180,35 @@ window.map_index_map_markers_draw = () ->
 
   map_index_map_markers_clear()
 
-  # Get the members
-  $.getJSON "members", $("#map_index_users_form").serialize(), (json) ->
-    $.each json, (i, marker) ->
+  json = $.parseJSON map_index_map_markers_json
 
-      # Draw markers
-      image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
+  i = 0
+  while i < json.length
 
-      marker = new google.maps.Marker(
-        id: marker.id
-        map: map
-        position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
-        icon: image
-        # shadow: shadow
-        animation: google.maps.Animation.DROP
-      )
-      google.maps.event.addListener marker, "mouseover", ->
-        map_index_load_infobox(marker.id)
+    marker = json[i]
 
-      google.maps.event.addListener marker, "click", ->
-        window.map_index_map_load_all marker.id, marker.lat, marker.lng
+    # Draw markers
+    image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
 
-      map_index_map_markers[marker.id] = marker
+    marker = new google.maps.Marker(
+      id: marker.id
+      map: map
+      position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
+      icon: image
+      # shadow: shadow
+      animation: google.maps.Animation.DROP
+    )
+
+    google.maps.event.addListener marker, "mouseover", ->
+      map_index_load_infobox(marker.id)
+
+    google.maps.event.addListener marker, "click", ->
+      # window.map_index_map_load_all marker.id, marker.lat, marker.lng
+
+    map_index_map_markers[marker.id] = marker
+    window.map_index_map_markers_ids[i] = marker.id
+
+    i++
 
 
 window.map_index_user_profile_chart_activity_draw = () ->
@@ -287,15 +296,16 @@ $(document).ready ->
 
   # Switch view button - world vs local
   $("#map_index_users_form_view_world_button").click ->
-    # LatLng = new google.maps.LatLng(0, 0)
-    # window.map.setCenter LatLng
-    # window.map.setZoom map_index_map_zoomcalc()
+    LatLng = new google.maps.LatLng(0, 0)
+    window.map.setCenter LatLng
+    window.map.setZoom map_index_map_zoomcalc()
 
-    map_index_map_markers_clear()
-
+    # map_index_map_markers_clear()
 
   $("#map_index_users_form_view_local_button").click ->
     window.map_index_map_pan window.map_index_map_latlng_start
+
+
 
   # For Pull Downs
   $(".map_index_users_form_pulldown a").click ->
@@ -397,7 +407,7 @@ $(document).ready ->
         $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
         $("div.gmnoprint").fadeIn 500
 
-    window.map_index_map_markers_draw()
+    # window.map_index_map_markers_draw()
 
     ######## PAGE LOAD:
 

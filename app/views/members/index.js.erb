@@ -1,6 +1,9 @@
 // Re-renders the user list
 $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
+// Set the json as a js variable - when used getJSON in the coffeescript file it wouldn't work with e.g. different pages, just gave the same set of markers everytime
+var map_index_map_markers_json = "<%= escape_javascript(User.markers(@users).to_json.html_safe) %>";
+
 window.map_index_map_markers_draw();
 
 // Tooltips on Avatars

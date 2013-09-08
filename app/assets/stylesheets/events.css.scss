@@ -145,7 +145,7 @@ $alert-yellow: #FFFF7E;
   margin-left:-400px;
   margin-top:-260px;
 
-  height:474px !important;
+  height:495px !important;
 
   text-align:center !important;
 
@@ -154,7 +154,7 @@ $alert-yellow: #FFFF7E;
   }
 
   &.event_edit {
-    height:470px !important;
+    height:492px !important;
     margin-top:-260px;
 
     .modal-body {
@@ -176,7 +176,15 @@ $alert-yellow: #FFFF7E;
 ///////////////////// NEW /////////////////////
 ///////////////////////////////////////////////
 
-
+.events_new_book_viewer_title {
+  height:30px;
+  background: $gray_second;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+  color: white;
+  margin: 0px 0px;
+}
 
 #events_new_friend_select {
   margin:0;
@@ -195,7 +203,7 @@ $alert-yellow: #FFFF7E;
 
   height:40px;
 
-  .application_bootstrap_alert_yellow {
+  .application_bootstrap_alert_blue {
 
     display:inline-block;
 
@@ -207,6 +215,8 @@ $alert-yellow: #FFFF7E;
 
     padding: 8px 14px 8px 14px !important;
   }
+
+  margin-top:10px;
 
 }
 
@@ -258,6 +268,9 @@ $alert-yellow: #FFFF7E;
   box-shadow:         0 !important;
 
   margin:0 !important;
+
+  border-bottom:0 !important;
+  cursor:pointer;
 }
 
 
@@ -293,8 +306,6 @@ $alert-yellow: #FFFF7E;
 #events_new_book_viewer_partnertoprepare {
 
   display:inline-block;
-
-
   height:95px;
 
 //  padding:10px;
@@ -311,8 +322,8 @@ $alert-yellow: #FFFF7E;
 
   padding:10px;
   text-align:center;
-  height:150px;
-
+  height:140px;
+  background:$gray_background;
 }
 
 #events_new_book_viewer_usertoprepare {
@@ -326,7 +337,7 @@ $alert-yellow: #FFFF7E;
   #events_new_book_viewer_empty {
     color:$gray_Mid;
     font-size:15px;
-    margin-top:27px;
+    margin-top:55px;
   }
 }
 
@@ -347,10 +358,15 @@ $alert-yellow: #FFFF7E;
 ///////////////////// EDIT ////////////////////
 ///////////////////////////////////////////////
 
+#events_edit_friend_selected_container {
+  margin-top:12px;
+}
+
 #events_edit_partner_avatar {
   max-width:25px;
 }
 
 #events_edit_partner_name {
   line-height:25px;
+  font-size:25px;
 }
