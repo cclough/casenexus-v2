@@ -57,6 +57,7 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_container_users {
+  display:none;
   position:absolute;
   left:0;
   top:50px;
@@ -90,7 +91,7 @@ $alert-yellow: #FFFF7E;
   z-index: 0;
 
   position:absolute;
-  left:300px;
+  left:0px;
   right:0px;
   top:50px;
   bottom:0px;
@@ -111,7 +112,7 @@ $alert-yellow: #FFFF7E;
   z-index:1000;
   background:$gray_background;
   position:absolute;
-  left:300px;
+  left:0px;
   right:0px;
   top:50px;
   bottom:0px;
@@ -129,8 +130,8 @@ $alert-yellow: #FFFF7E;
   z-index:1000;
   background:white;
   position:absolute;
-  left:300px;
-  right:0px;
+  left:150px;
+  right:150px;
   height:75px;
   bottom:0px;
 
