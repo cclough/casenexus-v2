@@ -37,10 +37,10 @@ $alert-yellow: #FFFF7E;
   top:50%;
   left:50%;
 
-  width:300px;
+  width:400px;
   height:180px;
   margin-top:-140px;
-  margin-left:-350px;
+  margin-left:-400px;
 
   z-index:0;
 
@@ -101,7 +101,7 @@ $alert-yellow: #FFFF7E;
   width:300px;
   height:185px;
   margin-top:-160px;
-  margin-left:-50px;
+  margin-left:0px;
 
   z-index:10;
 
@@ -163,7 +163,7 @@ $alert-yellow: #FFFF7E;
   width:300px;
   height:370px;
   margin-top:-250px;
-  margin-left:-50px;
+  margin-left:0px;
 
   z-index:10;
 
@@ -220,8 +220,8 @@ $alert-yellow: #FFFF7E;
 
   left:10%;
   right:10%;
-  top:10%;
-  bottom:10%;
+  top:5%;
+  bottom:15%;
 
   z-index:10;
 
