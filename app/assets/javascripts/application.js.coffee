@@ -122,7 +122,8 @@ window.application_show_help = (help_page) ->
 
     window.application_help_checkbox help_page
 
-
+    $("#modal_help_button_next").click ->
+      window.ArrowNav.goTo help_page
 
 
 window.application_truncatables = () ->
