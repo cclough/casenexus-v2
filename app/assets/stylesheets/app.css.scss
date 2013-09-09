@@ -621,7 +621,7 @@ textarea {
 
 
 .modal_help_header_icon {
-  font-size:70px;
+  font-size:30px;
 
   position:absolute; 
   top:70px; 
@@ -635,19 +635,19 @@ textarea {
 
   position:absolute; 
   top:70px; 
-  left:150px;
+  left:80px;
   z-index:10;
 }
 
-.modal_help_header_sub {
-  font-size:20px;
-  color:#999999;
+//.modal_help_header_sub {
+//  font-size:20px;
+//  color:#999999;
 
-  position:absolute; 
-  top:110px; 
-  left:150px; 
-  z-index:10;
-}
+//  position:absolute; 
+//  top:110px; 
+//  left:150px; 
+//  z-index:10;
+//}
 
 
 
@@ -735,7 +735,7 @@ textarea {
 // Help modal
 #modal_help .arrownav_page{
   height:300px;
-  margin-top:75px;
+  margin-top:35px;
   overflow-y:scroll
 }
 
@@ -750,13 +750,6 @@ textarea {
 }
 
 
-#modal_help_button_next {
-
-}
-
-#modal_help_button_close {
-  display:none;
-}
 
 
 .modal_help_page_instructions {

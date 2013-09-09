@@ -34,7 +34,7 @@ $alert-yellow: #FFFF7E;
 
 #map_index_map_zoomcontrol {
   position: absolute;
-  left: 50px;
+  left: 400px;
 }
 
 /* When the below is used, control disappears on mouse over */
@@ -124,16 +124,27 @@ $alert-yellow: #FFFF7E;
 
 }
 
+#map_index_container_guide {
+  position:absolute;
+  top:50px;
+  left:400px;
+  width:250px;
+  height:30px;
+  background:$gray_background;
+  line-height:30px;
+  padding:10px;
+}
+
 #map_index_container_user_profile_small {
   display:none;
 
   z-index:1000;
   background:white;
   position:absolute;
-  left:150px;
-  right:150px;
-  height:75px;
+  left:20px;
   bottom:0px;
+  top:50px;
+  width:350px;
 
 
   padding:5px;
@@ -354,7 +365,9 @@ $alert-yellow: #FFFF7E;
 }
 
 .map_index_user_profile_toggle {
-
+  position:absolute;
+  bottom:30px;
+  right:10px;
 }
 
 #map_index_user_profile_panel_actions {

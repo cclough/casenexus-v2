@@ -450,8 +450,13 @@ $(document).ready ->
         
         if $("#modal_help_arrownav").size() > 0
           next_page.fadeIn 500
-          $('.modal-body').scrollTop(0)
-          window.application_help_checkbox(page)
+          # $('.modal-body').scrollTop(0)
+          # window.application_help_checkbox(page)
+          $('#modal_help_button_next').off('click');
+          # next button!
+          $("#modal_help_button_next").click ->
+            window.ArrowNav.goTo String(parseInt(page) + 1)
+
         else
           next_page.show "slide", direction: "right", 500
 

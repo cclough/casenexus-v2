@@ -8,16 +8,11 @@
 
 
 .row
+  .spacer10
   .span9#map_index_user_profile_small_user
     .row
       %span#map_index_user_profile_small_avatar.fui-user
-  .span9
-    .row
-      .span#map_index_user_profile_small_reputation
-        = @user.points_tally.to_s
-        .row#map_index_user_profile_small_reputation_text
-          reputation
-  .span20
+  .span17
     .row#map_index_user_profile_small_username
       = @user.username
     .row.application_lastonline
@@ -27,18 +22,27 @@
         ago
       - else
         Never online
+  .span9
+    .row
+      .span#map_index_user_profile_small_reputation
+        = @user.points_tally.to_s
+        .row#map_index_user_profile_small_reputation_text
+          reputation
+.row
+  .span#map_index_user_profile_small_university
+    - unless @user.university.blank?
+      %span
+        = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
+      %span
+        = @user.university.name
 
-    .row#map_index_user_profile_small_university
-      - unless @user.university.blank?
-        %span
-          = image_tag "universities/" + @user.university.image, class: "application_userimage_small"
-        %span
-          = @user.university.name
 
+
+.row
   .span37#map_index_user_profile_small_panel_actions.offset1.pull-right
 
     .map_index_user_profile_toggle.btn.btn-default.btn-embossed{"data-user_id"=>@user.id}
-      %i.icon-angle-up
+      %i.icon-angle-right
       
     - if @user != current_user
       - if Friendship.friends?(current_user, @user)
@@ -65,3 +69,17 @@
         %a.map_index_user_profile_button_friendrequest.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => @user.id }
           %div
             %i.icon-plus.icon-white
+
+- if @user == current_user
+  .spacer100
+  When your own profile shows small'Control panel' for your personal stuff
+  .spacer10
+  .row
+    showing e.g. recent
+    %ul
+      %li
+        cases
+      %li
+        messages
+      %li
+        friends

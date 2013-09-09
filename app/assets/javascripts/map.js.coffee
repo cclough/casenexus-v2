@@ -68,7 +68,7 @@ window.map_index_profile_toggle = (marker_id) ->
 
 window.map_index_load_profile_small = (marker_id) ->
 
-  $("#map_index_container_user_profile").hide "slide", direction: "down", "fast"
+  $("#map_index_container_user_profile").hide "slide", direction: "left", "fast"
   # marker = map_index_map_markers[marker_id]
 
   $.ajax
@@ -76,7 +76,7 @@ window.map_index_load_profile_small = (marker_id) ->
     success: (data) ->
 
       $("#map_index_container_user_profile_small").html data
-      $("#map_index_container_user_profile_small").show "slide", direction: "down", "fast", ->
+      $("#map_index_container_user_profile_small").show "slide", direction: "left", "fast", ->
         window.map_index_profile_bless()
         $("#map_index_container_user_profile").removeClass "in"
 
@@ -87,7 +87,7 @@ window.map_index_load_profile = (marker_id) ->
 
 
 
-  $("#map_index_container_user_profile_small").hide "slide", direction: "down", "fast", ->
+  $("#map_index_container_user_profile_small").hide "slide", direction: "left", "fast", ->
   # marker = map_index_map_markers[marker_id]
 
   $.ajax
@@ -95,7 +95,7 @@ window.map_index_load_profile = (marker_id) ->
     success: (data) ->
 
       $("#map_index_container_user_profile").html data
-      $("#map_index_container_user_profile").show "slide", direction: "down", "fast", ->
+      $("#map_index_container_user_profile").show "slide", direction: "left", "fast", ->
         window.map_index_profile_bless()
         # Draw chart
         window.map_index_user_profile_chart_activity_draw()
