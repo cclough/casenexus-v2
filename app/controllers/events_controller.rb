@@ -52,6 +52,7 @@ class EventsController < ApplicationController
         format.js
 
         # for when it fails
+        @books = Book.where(btype: "case").order("author asc")
         @friend = @event.partner unless @event.partner.blank?
         @book_user = Book.find(@event.book_id_partnertoprepare) unless @event.book_id_partnertoprepare.blank?
       end
