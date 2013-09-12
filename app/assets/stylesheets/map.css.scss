@@ -2,16 +2,22 @@
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_gunmetal: #363636;
 
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
 $gray_Mid: #767676;
 $gray_Dark: #555555;
 $gray_Darker: #333333;
+
+
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
+
+
 $green_flatui: #1ABC9C;
+
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -46,25 +52,18 @@ $alert-yellow: #FFFF7E;
 
 
 
-#map_index_container_form {
-  background:$gray_second;
-  position:absolute;
-  right:0px;
-  left:0px;
-  top:0px;
-  height:50px;
-}
+
 
 
 #map_index_container_users {
-  display:none;
   position:absolute;
-  left:0;
-  top:50px;
+  left:30px;
+  top:0px;
   bottom:0px;
-  width:300px;
-
+  width:420px;
+  z-index:10;
   overflow-y:auto;
+  background:rgba(255,255,255,0.95s);
 
 //  .pagination {
 //    display:none;
@@ -73,16 +72,12 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_users {
-  overflow-y:hidden;
+  overflow-y:auto;
+  padding:10px;
 }
 
 #map_index_users_users {
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:20px;
-  width:300px;
-  overflow-y:auto;
+
 }
 
 
@@ -93,7 +88,7 @@ $alert-yellow: #FFFF7E;
   position:absolute;
   left:0px;
   right:0px;
-  top:50px;
+  top:0px;
   bottom:0px;
 
 }
@@ -124,16 +119,6 @@ $alert-yellow: #FFFF7E;
 
 }
 
-#map_index_container_guide {
-  position:absolute;
-  top:50px;
-  left:400px;
-  width:250px;
-  height:30px;
-  background:$gray_background;
-  line-height:30px;
-  padding:10px;
-}
 
 #map_index_container_user_profile_small {
   display:none;
@@ -190,14 +175,6 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#map_index_users_form_subnav_filter {
-  color:white;
-  width:70px;
-  font-weight:bold;
-  font-size:12px;
-  margin-top:8px;
-  margin-left:15px;
-}
 
 
 
@@ -245,100 +222,106 @@ $alert-yellow: #FFFF7E;
 //////////////////////////////////////////////
 
 .map_index_users_item {
-  float:left;
-  margin:10px;
-
-  display: none;
-
-
-
-  text-align:center !important;
-
-  position:relative;
+  width:400px;
+  height:150px;
+  background:white;
   @include box_sizing;
-}
-
-.map_index_users_item_button {
-
-  background: $green_flatui;
-
-  padding: 0px 4px 4px 4px;
-
-  height:70px;
-  width:70px;
-
-  padding-top:0px !important;
-
-
-  color:white;
-  text-align:center;
-
-  &:hover{
-    background: #48c9b0;
-  }
-
-  &:active{
-    background: #16a085;
-  }
-}
-
-.map_index_users_item_username {
-  font-weight:bold;
-  font-size:10px;
-  margin-top:12px;
+  margin-bottom:10px;
 }
 
 .map_index_users_item_avatar {
-  text-align:center;
-  font-size:40px;
-  margin-top:-8px !important;
-}
-
-.map_index_users_item_name {
-  font-weight:bold;
-  text-align:center;
-  font-size:10px;
-  width:100%;
-  &.name_long {
-    font-size:10px;
-  }
-}
-
-
-.map_index_users_item_reputation {
-
-  float:right;
-
-  padding:5px;
-  width:14px;
-  height:14px;
-  margin-right:-4px;
-  margin-top:0px;
-
-  font-size:12px;
-  line-height:12px;
-  font-weight:bold;
-
-  background:rgba(0,0,0,0.3);
-
-}
-
-
-
-.map_index_users_item_university {
-
   float:left;
-
-  padding:5px;
-  width:14px;
-  height:14px;
-  margin-left:-4px;
-  margin-top:-4px;
-
-  z-index:3000;
+  background:$gray_background;
+  position:relative;
+  width:100px;
+  height:150px;
+  img {
+    width:50px;
+    max-height:50px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-25px;
+    margin-left:-25px;
+  }
 
 
 }
+
+
+.map_index_users_item_info {
+  float:left;
+  width:220px;
+  height:130px;
+  padding:10px; //offsets width!
+  div {
+    display:block;
+  }
+  .map_index_users_item_username {
+    font-size:20px;
+  }
+
+  .map_index_users_item_university {
+
+  }
+
+  .map_index_users_item_activity {
+    opacity:0.3;
+    margin-top:30px;
+  }
+
+}
+
+.map_index_users_stuff_pre_stuff {
+  float:left;
+  width:10px;
+  height:150px;
+  background:$gray_gunmetal;  
+}
+.map_index_users_item_stuff{
+  float:left;
+  width:50px;
+  height:150px;
+  background:$gray_gunmetal;
+  div {
+    display:block;
+    width:50px;
+    height:50px;
+  }
+
+
+  .map_index_users_item_cases_given {
+    background: $alert-blue;
+    font-size:20px;
+    color:white;
+
+  }
+
+  .map_index_users_item_cases_recd{
+    background: $alert-green;
+    font-size:20px;
+    color:green;
+  }
+
+  .map_index_users_item_cases_external{
+    background: $gray_background;
+    font-size:20px;
+    color:$gray_second;
+  }
+
+
+}
+
+
+
+
+//.map_index_users_item_reputation {
+
+
+//}
+
+
+
 
 
 

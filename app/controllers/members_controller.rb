@@ -12,16 +12,9 @@ class MembersController < ApplicationController
         users_scope = User.includes(:cases).list_local(current_user)
       when "online_today"
         users_scope = User.includes(:cases).list_online_today
-      when "global"
-        users_scope = User.includes(:cases).list_global
-
 
       when "language"
         users_scope = User.includes(:cases).list_language(params[:users_filter_language])
-      when "university"
-        users_scope = User.includes(:cases).list_university(params[:users_filter_university])
-      when "country"
-        users_scope = User.includes(:cases).list_country(params[:users_filter_country])
     else
       # users_scope = User.includes(:cases).list_global
     end

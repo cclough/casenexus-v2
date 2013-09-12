@@ -1,13 +1,35 @@
-.map_index_users_item
-  .map_index_users_item_button.btn{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
-    .row
-      .map_index_users_item_reputation
-        = users_item.points_tally
+:javascript
+  var map_index_users_item_activity = #{Case.user_activity_profile(users_item)};
 
-      .map_index_users_item_university
-        = image_tag "universities/" + users_item.university.image, class: "application_userimage_small"
-    .row
-      .map_index_users_item_avatar
-        %span.fui-user
-    .row.map_index_users_item_username
+.map_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
+
+
+  .map_index_users_item_avatar
+    = avatar_for(users_item,"large")
+
+  .map_index_users_item_info
+
+    .map_index_users_item_username
       = users_item.username
+
+    .map_index_users_item_university
+      = users_item.university.name
+
+    .map_index_users_item_activity{ id:"map_index_users_item_activity_" + users_item.id.to_s}
+      = image_tag "app/temp_activity_chart.png"
+
+
+  .map_index_users_stuff_pre_stuff
+
+  
+  .map_index_users_item_stuff
+
+    .map_index_users_item_cases_given
+      = users_item.case_count_givn
+    .map_index_users_item_cases_recd
+      = users_item.case_count_recd
+    .map_index_users_item_cases_external
+      = users_item.cases_external
+
+/ .map_index_users_item_reputation
+/ / = users_item.points_tally

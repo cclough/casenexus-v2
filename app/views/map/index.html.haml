@@ -23,16 +23,15 @@
 
 
 
-  :javascript
-    $(document).ready(function() {
-      window.application_show_help(1);
-    });
+  / :javascript
+  /   $(document).ready(function() {
+  /     window.application_show_help(1);
+  /   });
 
 
-#map_index_container_form
-  = render '/members/users_form'
 
 #map_index_container_users
+  = render '/members/users_form'
   .row
     #map_index_users
     / content is rendered by members#index.js.erb
@@ -43,12 +42,9 @@
 #map_index_container_map.map
   #map_index_map
 
-#map_index_container_guide
-  Showing 25 most recently active users
 
 
 
-
-#map_index_container_user_profile_small
+/ #map_index_container_user_profile_small
 
 #map_index_container_user_profile

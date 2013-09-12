@@ -215,7 +215,7 @@ window.map_index_map_markers_draw = () ->
 
 
 
-window.map_index_user_profile_chart_activity_draw = () ->
+window.map_index_user_profile_chart_activity_draw = (user_id) ->
   chart = undefined
   
   # SERIAL CHART
@@ -278,7 +278,7 @@ window.map_index_user_profile_chart_activity_draw = () ->
   graph.fillAlphas = 1
   chart.addGraph graph
 
-  chart.write "map_index_user_profile_chart_activity"
+  chart.write "map_index_users_item_activity_" + user_id
 
 $(document).ready ->
 
@@ -297,17 +297,6 @@ $(document).ready ->
   $("#modal_message, #modal_friendship_req, #modal_event").modal
     backdrop: false
     show: false
-
-  # Switch view button - world vs local
-  $("#map_index_users_form_view_world_button").click ->
-    LatLng = new google.maps.LatLng(0, 0)
-    window.map.setCenter LatLng
-    window.map.setZoom map_index_map_zoomcalc()
-
-    # map_index_map_markers_clear()
-
-  $("#map_index_users_form_view_local_button").click ->
-    window.map_index_map_pan window.map_index_map_latlng_start
 
 
 

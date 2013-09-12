@@ -96,7 +96,8 @@ header {
 
 
 #header_nav_links_left {
-  margin-left:180px;
+  margin-left:50px;
+
 }
 
 #header_nav_links_right {
@@ -110,6 +111,11 @@ header {
 
 #header_nav_search_form {
   margin-top:8px;
+}
+
+#header_nav_search_field {
+  width:290px;
+  margin-right:5px;
 }
 
 #header_user_points {

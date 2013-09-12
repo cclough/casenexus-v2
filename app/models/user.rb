@@ -116,11 +116,11 @@ class User < ActiveRecord::Base
     (username).truncate(17, separator: ' ')
   end
 
-  def case_count_viewee
+  def case_count_recd
     cases.count
   end
 
-  def case_count_viewer
+  def case_count_givn
     Case.where("interviewer_id = ?", self.id).all.count
   end
 
