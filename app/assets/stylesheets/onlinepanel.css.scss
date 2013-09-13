@@ -92,6 +92,55 @@ $alert-yellow: #FFFF7E;
 }
 
 
+#onlinepanel_user {
+  height:50px;
+  color:white;
+  text-align:center;
+  font-weight: bold;
+  line-height:31px;
+    line-height:45px;
+
+  #onlinepanel_user_avatar {
+    width: 50px;
+    height:50px;
+    float:left;
+  }
+
+  #onlinepanel_user_username {
+    width: 50px;
+    height:50px;
+    float:left;
+  }
+
+
+  #onlinepanel_user_cases_givn {
+    background: $alert-blue;
+    font-size:20px;
+    color:white;
+    width: 50px;
+    height:50px;
+    float:right;
+  }
+
+  #onlinepanel_user_cases_recd {
+    background: $alert-green;
+    font-size:20px;
+    color:green;
+    width: 50px;
+    height:50px;
+    float:right;
+  }
+
+
+}
+
+
+
+
+
+
+
+
 
 .onlinepanel_title {
   background: $gray_gunmetal_second;

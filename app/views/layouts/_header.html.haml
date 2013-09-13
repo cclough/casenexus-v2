@@ -23,20 +23,15 @@
               = link_to raw("<i class='icon-circle-blank icon-large icon-fixed-width'></i> Find people"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li{:class => ("active" if params[:controller] == "books") }
-              = link_to raw("<i class='icon-book icon-white icon-large icon-fixed-width'></i> Cases"), library_path, "data-original-title"=>"Choose a case to practise", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<i class='icon-book icon-white icon-large icon-fixed-width'></i> Get cases"), library_path, "data-original-title"=>"Choose a case to practise", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li{:class => ("active" if params[:controller] == "questions") }
-              = link_to raw("<i class='icon-comments-alt icon-large icon-fixed-width'></i> Q&A"), questions_path, "data-original-title"=>"Discussion", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<i class='icon-comments-alt icon-large icon-fixed-width'></i> Ask questions"), questions_path, "data-original-title"=>"Discussion", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
             %li
               = link_to raw("<i class='icon-question icon-white icon-large icon-fixed-width'></i>"), '#', id: 'header_link_help', "data-original-title"=>"Help", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
             %li
               = link_to raw("<i class='icon-bullhorn icon-white icon-large icon-fixed-width'></i>"), '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
-          %ul#header_nav_links_right.nav.pull-right
-          
-            %li{:class => ("active" if params[:controller] == "events" || params[:controller] == "cases" || params[:controller] == "account") }
-              %a#header_nav_links_right_name.application_truncatable
-                = current_user.username
         - else
           %ul.nav.pull-right
             %li
