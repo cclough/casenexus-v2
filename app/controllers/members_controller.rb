@@ -12,6 +12,8 @@ class MembersController < ApplicationController
         users_scope = User.includes(:cases).list_local(current_user)
       when "online_today"
         users_scope = User.includes(:cases).list_online_today
+      when "online_now"
+        users_scope = User.includes(:cases).list_online_now
 
       when "language"
         users_scope = User.includes(:cases).list_language(params[:users_filter_language])

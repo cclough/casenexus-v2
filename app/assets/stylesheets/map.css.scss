@@ -40,7 +40,7 @@ $alert-yellow: #FFFF7E;
 
 #map_index_map_zoomcontrol {
   position: absolute;
-  left: 400px;
+  left: 460px;
 }
 
 /* When the below is used, control disappears on mouse over */
@@ -156,7 +156,38 @@ $alert-yellow: #FFFF7E;
 
 }
 
+#map_index_container_surfer {
+  position:absolute;
+  bottom:100px;
+  left:50%;
+  width:400px;
+  padding:10px;
 
+  background:rgba(255,255,255,0.9);
+
+  div {
+    font-size:30px;
+    float:left;
+  }
+
+  .btn {
+    width:30px;
+    height:30px;
+  }
+  #map_index_surfer_button_right {
+    float:right
+  }
+
+  #map_index_surfer_button_left {
+    float:left;
+  }
+
+  #map_index_surfer_text {
+    width:290px;
+    line-height:40px;
+    text-align:center;
+  }
+}
 
 
 
@@ -171,8 +202,35 @@ $alert-yellow: #FFFF7E;
 }
 
 #map_index_users_form {
-//  margin-top:10px;
+  padding:10px;
+
 }
+
+.map_index_users_form_button {
+  position:relative;
+  width:92px;
+  .iconbar-unread {
+    right:-7px;
+    top:-7px;
+    z-index:1000;
+  }
+}
+
+#map_index_users_form_button_shouts {
+//  height:75px;
+  width:100px;
+//  padding:25px 0 0 0;
+
+}
+
+
+#map_index_users_form_row_second {
+  .btn-group {
+    float:left;
+  }
+}
+
+
 
 
 
@@ -227,6 +285,7 @@ $alert-yellow: #FFFF7E;
   background:white;
   @include box_sizing;
   margin-bottom:10px;
+  cursor:pointer;
 }
 
 .map_index_users_item_avatar {
@@ -276,17 +335,18 @@ $alert-yellow: #FFFF7E;
   float:left;
   width:10px;
   height:150px;
-  background:$gray_gunmetal;  
+//  background:$gray_gunmetal;  
 }
 .map_index_users_item_stuff{
   float:left;
   width:50px;
   height:150px;
-  background:$gray_gunmetal;
   div {
     display:block;
     width:50px;
     height:50px;
+    text-align:center;
+    line-height:50px;
   }
 
 
@@ -294,6 +354,7 @@ $alert-yellow: #FFFF7E;
     background: $alert-blue;
     font-size:20px;
     color:white;
+
 
   }
 

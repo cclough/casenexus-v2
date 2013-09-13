@@ -219,19 +219,21 @@ class User < ActiveRecord::Base
 
     ### Lists for filters
 
-    # Simple Filters
-    def list_global
-      User.completed.not_admin
+    def list_new
+      completed.where(created_at: (1.day.ago)..(Time.now))
     end
 
     def list_local(user)
-      user.nearbys(50).completed.not_admin
+      user.nearbys(50).completed
     end
 
     def list_online_today
-      completed.not_admin.online_today
+      completed.online_today
     end
 
+    def list_online_now
+      completed.online_now
+    end
 
     def list_online_recently_notfriends(user)
       not_friends(user).completed.online_recently
@@ -242,18 +244,10 @@ class User < ActiveRecord::Base
     # Pulldown Filters
     def list_language(language_id)
       if !language_id.blank?
-        completed.not_admin.order('created_at desc').joins(:languages_users).where(languages_users: {language_id: language_id})
+        completed.order('created_at desc').joins(:languages_users).where(languages_users: {language_id: language_id})
       else
-        completed.not_admin.order('created_at desc')
+        completed.order('created_at desc')
       end
-    end
-
-    def list_university(university_id)
-      completed.not_admin.order('created_at desc').where(university_id: university_id)
-    end
-
-    def list_country(country_id)
-      completed.not_admin.order('created_at desc').where(country_id: country_id)
     end
 
 

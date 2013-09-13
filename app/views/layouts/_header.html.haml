@@ -20,7 +20,7 @@
                   = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
 
             %li{:class => ("active" if params[:controller] == "map") }
-              = link_to raw("<i class='icon-circle-blank icon-large icon-fixed-width'></i> People"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<i class='icon-circle-blank icon-large icon-fixed-width'></i> Find people"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li{:class => ("active" if params[:controller] == "books") }
               = link_to raw("<i class='icon-book icon-white icon-large icon-fixed-width'></i> Cases"), library_path, "data-original-title"=>"Choose a case to practise", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"

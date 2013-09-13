@@ -4,31 +4,36 @@
   - for online_friend_item in current_user.accepted_friends
     .onlinepanel_show
 
-      - @online_user_type = "friend"
       - @online_user = User.find(online_friend_item.id)
 
       = render partial: 'onlinepanel/show'
 
-
-/ - if User.list_online_recently_notfriends(current_user).count > 0
 .onlinepanel_title
-  Other users
-#onlinepanel_nonfriends
+  Feedback
 
-  - for online_friend_item in User.list_online_recently_notfriends(current_user)
-    .onlinepanel_show
+.onlinepanel_title
+  Notifications
 
-      - @online_user_type = "nonfriend"
-      - @online_user = User.find(online_friend_item.id)
+.onlinepanel_title
+  Settings
 
-      = render partial: 'onlinepanel/show'
+.onlinepanel_title
+  Visitors
+
+.onlinepanel_title
+  Calendar
+
+.onlinepanel_title
+  Invite
+.onlinepanel_title
+  Signout
 
 - if Post.all.size > 0
   #onlinepanel_posts
     
-    - @post_ondisplay = Post.where("approved = true").order("created_at asc").last
-    #onlinepanel_posts_post_container{"data-current_post_id" => @post_ondisplay.id }
-      = render partial: 'posts/show', locals: { post: @post_ondisplay}
+    / - @post_ondisplay = Post.where("approved = true").order("created_at asc").last
+    / #onlinepanel_posts_post_container{"data-current_post_id" => @post_ondisplay.id }
+    /   = render partial: 'posts/show', locals: { post: @post_ondisplay}
 
     .btn.btn-small.btn-primary.btn-embossed#onlinepanel_posts_new_button
       +

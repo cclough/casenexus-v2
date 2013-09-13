@@ -2,6 +2,8 @@
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_gunmetal: #363636;
+$gray_gunmetal_second: #2d2d2d;
 
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
@@ -21,7 +23,7 @@ $alert-yellow: #FFFF7E;
 
 
 #onlinepanel_container {
- 
+ background:$gray_gunmetal;
   position:absolute;
   right:0;
   top:0;
@@ -92,7 +94,7 @@ $alert-yellow: #FFFF7E;
 
 
 .onlinepanel_title {
-  background: $gray_second;
+  background: $gray_gunmetal_second;
   height:30px;
   text-align:center;
   font-weight: bold;
@@ -133,7 +135,6 @@ $alert-yellow: #FFFF7E;
 .onlinepanel_show {
 
   position:relative;
-  
   height:30px;
   padding:5px;
   font-size:12px;

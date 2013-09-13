@@ -8,10 +8,8 @@ window.infobox = null
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   # window.map.panTo latlng
-  # window.map.panToWithOffset latlng, 0, -30
-  # latlng = new google.maps.LatLng lat, lng
-  window.map.panTo latlng
-  window.map.setZoom 6
+  window.map.panToWithOffset latlng, -100, -30
+  window.map.setZoom 10
 
 
 # From http://stackoverflow.com/questions/8146676/google-maps-api-v3-offset-panto-by-x-pixels
@@ -146,10 +144,6 @@ window.map_index_users_search = ->
     $("#map_index_users_form_search_field").val($("#header_nav_search_field").val())
     map_index_users_updatelist()
 
-map_index_map_zoomcalc = ->
-  # Zoom according to div size: http://stackoverflow.com/questions/17412397/zoom-google-map-to-fit-the-world-on-any-screen
-  zl = Math.round(Math.log($("#map_index_map").width() / 512)) + 1 + 1 # extra 1 added by cc
-  return zl
 
 
 
@@ -209,6 +203,12 @@ window.map_index_map_markers_draw = () ->
     google.maps.event.addListener map_marker, "click", ->
       latlng = new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
       window.map_index_map_load_all map_marker.id, latlng
+
+      # Bounce that shit up
+      map_marker.setAnimation(google.maps.Animation.BOUNCE)
+      setTimeout (->
+        map_marker.setAnimation(null)
+      ), 1440
 
     window.map_index_map_markers[marker.id] = map_marker
     window.map_index_map_markers_ids[i] = marker.id
@@ -331,7 +331,6 @@ $(document).ready ->
     # Reset all other menues to 'all'
     map_index_users_resetfilters category
 
-
   # List type Button-Radio link
   $(".map_index_users_form_button").click ->
 
@@ -355,34 +354,42 @@ $(document).ready ->
 
   # Map
   if typeof map_index_map_lat_start is "string"
-
+    # alert map_index_map_lat_start
     # Set start latlng var (used in several places in this file)
-    window.map_index_map_latlng_start = new google.maps.LatLng map_index_map_lat_start,map_index_map_lng_start
-
-    zl = map_index_map_zoomcalc()
+    #map_index_map_latlng_start = new google.maps.LatLng(parseFloat(map_index_map_lat_start),parseFloat(map_index_map_lng_start))
+    # map_index_map_latlng_start = new google.maps.LatLng(20,20)
     # Options for the map
+    # mapOptions =
+    #   zoom: 10
+    #   minZoom: 4
+    #   mapTypeId: "roadmap"
+    #   disableDefaultUI: true
+    #   zoomControl: true
+    #   center: new google.maps.LatLng(map_index_map_lat_start, map_index_map_lng_start)
+    #   zoomControlOptions:
+    #     position: google.maps.ControlPosition.LEFT_CENTER
+    #   styles: [
+    #     featureType: "water"
+    #     stylers: [color: "#abe2ff"]
+    #   ,
+    #     featureType: "landscape.natural"
+    #     elementType: "all"
+    #     stylers: [
+    #       color: "#a2ff9d"
+    #     ,
+    #       lightness: 3
+    #     ]
+    #   ]
+
     mapOptions =
-      # center: window.map_index_map_latlng_start
-      center: new google.maps.LatLng(0, 0)
-      zoom: zl
-      minZoom: zl
+      zoom: 1
+      minZoom: 4
       mapTypeId: "roadmap"
+      center: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
       disableDefaultUI: true
       zoomControl: true
       zoomControlOptions:
         position: google.maps.ControlPosition.LEFT_CENTER
-      styles: [
-        featureType: "water"
-        stylers: [color: "#abe2ff"]
-      ,
-        featureType: "landscape.natural"
-        elementType: "all"
-        stylers: [
-          color: "#a2ff9d"
-        ,
-          lightness: 3
-        ]
-      ]
 
 
     # Create the map
@@ -401,22 +408,11 @@ $(document).ready ->
         $("div.gmnoprint").fadeIn 500
 
 
+    window.map_index_map_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
+
     ######## PAGE LOAD:
 
     # Load profile and infowindow
     window.map_index_load_profile_small map_index_map_marker_id_start
     window.map_index_load_infobox map_index_map_marker_id_start
-
-
-
-
-
-
-  map_index_map_marker_locate = (marker) ->
-    newlatlng = marker.getPosition()
-    #window.map.setCenter newlatlng
-    window.map.panToWithOffset newlatlng, 150, 0
-    marker.setAnimation(google.maps.Animation.BOUNCE)
-    setTimeout (->
-      marker.setAnimation(null)
-    ), 1440
+    

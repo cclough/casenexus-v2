@@ -4,47 +4,61 @@
 
   .row
 
-    .btn-toolbar
-      .span
-        
-        %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
-          %icon.icon-bullhorn
-          Shoutouts
-        %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
-          Online Now
-        %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
-          New users
-        %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>0}
-          %i.icon-user
-        %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>1} Online Today
+    %a.btn.btn-small.btn-primary.btn-embossed.active{"data-radio"=>0}
+      %i.icon-user
 
 
-        .btn-group
-          .map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
-            UG
-          .map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
-            MBA
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
+      New users
+      %span.iconbar-unread
+        = User.list_new.count
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>1}
+      Online Today
+      %span.iconbar-unread
+        = User.list_online_today.count
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>2}
+      Online Now
+      %span.iconbar-unread
+        = User.list_online_now.count
 
-        .map_index_users_form_pulldown.btn-group
-          %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
-            %span.filter-option.pull-left All Languages
-            &nbsp;
-            %span.caret.small
-          %ul.dropdown-menu
-            %li
-              / data-id is blank
-              %a{"data-category" => "language", "data-radio" => 3, "data-name" => "All Languages"}
-                All Languages
-            - Language.all.each do |language_item|
-              %li
-                %a{"data-category" => "language", "data-radio" => 3, "data-name" => language_item.name, "data-id" => language_item.id}
-                  = language_item.name
+  .spacer10
+  .row#map_index_users_form_row_second
+
+    .btn-group
+      %a#map_index_users_form_button_shouts.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
+        %i.icon-bullhorn
+        Shoutouts
+        %span.iconbar-unread
+          = Post.count
+
+
+    .btn-group
+      .btn.btn-small.btn-primary.btn-embossed
+        UG
+      .btn.btn-small.btn-primary.btn-embossed
+        MBA
+
+    .btn-group.map_index_users_form_pulldown
+      %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
+        %span.filter-option.pull-left All Languages
+        &nbsp;
+        %span.caret.small
+      %ul.dropdown-menu
+        %li
+          / data-id is blank
+          %a{"data-category" => "language", "data-radio" => 3, "data-name" => "All Languages"}
+            All Languages
+        - Language.all.each do |language_item|
+          %li
+            %a{"data-category" => "language", "data-radio" => 3, "data-name" => language_item.name, "data-id" => language_item.id}
+              = language_item.name
 
 
 
   #map_index_users_form_radiogroup
     = radio_button_tag :users_listtype, 'local', checked: true
     = radio_button_tag :users_listtype, 'online_today'
+    = radio_button_tag :users_listtype, 'online_now'
 
     = radio_button_tag :users_listtype, 'language'
 
