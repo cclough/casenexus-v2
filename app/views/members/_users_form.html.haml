@@ -4,7 +4,7 @@
 
   .row
 
-    %a.btn.btn-small.btn-primary.btn-embossed.active{"data-radio"=>0}
+    %a.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>0}
       %i.icon-user
 
 
@@ -25,6 +25,16 @@
   .row#map_index_users_form_row_second
 
     .btn-group
+
+
+    
+      / - @post_ondisplay = Post.where("approved = true").order("created_at asc").last
+      / #onlinepanel_posts_post_container{"data-current_post_id" => @post_ondisplay.id }
+      /   = render partial: 'posts/show', locals: { post: @post_ondisplay}
+
+      #map_index_posts_new_button.btn.btn-small.btn-primary.btn-embossed
+        +
+
       %a#map_index_users_form_button_shouts.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
         %i.icon-bullhorn
         Shoutouts

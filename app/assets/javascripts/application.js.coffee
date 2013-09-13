@@ -318,20 +318,6 @@ window.application_raty_prime = () ->
       return parseFloat $(this).data("rating")
 
 
-window.application_profilepanel_toggle = () ->
-  panel = $("#application_container_profilepanel")
-  caret = $("#header_nav_links_right_name_caret i")
-
-  if panel.hasClass "in"
-    panel.hide "slide", direction: "up", 200
-    caret.removeClass "icon-caret-up"
-    caret.addClass "icon-caret-down"
-    panel.removeClass "in"
-  else
-    panel.show "slide", direction: "up", 200
-    caret.addClass "icon-caret-up"
-    caret.removeClass "icon-caret-down"
-    panel.addClass "in"
 
 
 $(document).ready ->

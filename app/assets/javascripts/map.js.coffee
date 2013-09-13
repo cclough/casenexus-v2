@@ -5,6 +5,12 @@ window.infobox = null
 
 
 
+map_index_posts_prime = () ->
+    # New post button
+  $("#map_index_posts_new_button").click ->
+    window.modal_post_show()
+
+
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   # window.map.panTo latlng
@@ -281,6 +287,9 @@ window.map_index_user_profile_chart_activity_draw = (user_id) ->
   chart.write "map_index_users_item_activity_" + user_id
 
 $(document).ready ->
+
+  #prime posts buttons etc.
+  map_index_posts_prime()
 
   # Update the list of users
   map_index_users_updatelist()

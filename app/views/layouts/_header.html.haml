@@ -37,11 +37,6 @@
             %li{:class => ("active" if params[:controller] == "events" || params[:controller] == "cases" || params[:controller] == "account") }
               %a#header_nav_links_right_name.application_truncatable
                 = current_user.username
-                %span#header_user_points
-                  = current_user.points_tally
-                %span
-                  %i.icon-th#header_nav_links_right_name_th
-                  %i.icon-caret-down#header_nav_links_right_name_caret
         - else
           %ul.nav.pull-right
             %li

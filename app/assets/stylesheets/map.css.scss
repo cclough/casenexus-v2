@@ -204,6 +204,10 @@ $alert-yellow: #FFFF7E;
 #map_index_users_form {
   padding:10px;
 
+  .btn-group {
+    float:left;
+  }
+
 }
 
 .map_index_users_form_button {
@@ -224,11 +228,7 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#map_index_users_form_row_second {
-  .btn-group {
-    float:left;
-  }
-}
+
 
 
 

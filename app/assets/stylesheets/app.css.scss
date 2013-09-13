@@ -158,26 +158,6 @@ textarea {
 
 }
 
-#application_container_profilenav {
-  position:absolute;
-  top: 50px;
-  left:0px;
-  bottom:0px;
-  width:75px;
-  background:#363636;
-}
-
-#application_container_profilepanel {
-  display:none;
-  position:absolute;
-  top:50px;
-  left:0px;
-  bottom:0px;
-  right:0px;
-  background:rgba(255,255,255,0.95);
-  z-index:100000;
-}
-
 
 #application_container_main {
   position:absolute;
@@ -229,52 +209,7 @@ textarea {
   text-align:center;
 }
 
-///////////////////////////////////////////
-///////////////////////////////////////////
-///////////////////////////////////////////
 
-
-
-
-#application_profilenav {
-  font-size:30px;
-  color:white;
-  .row {
-    height:75px;
-    &:hover {
-      background:#272727;
-    }
-    &.active {
-      background:#272727;
-    }
-
-    a{
-      color:white;
-      text-decoration:none;
-    }
-  }
-}
-
-
-
-.application_profilenav_item {
-  padding: 10px;
-  text-align:center;
-  position:relative;
-}
-
-.application_profilenav_item_text {
-//  display:none;
-  font-size:9px;
-  margin-top:2px !important;
-}
-
-
-#application_profilenav_item_icon_notifications {
-  &.unread {
-    color:red;
-  }
-}
 
 
 ///////////////////////////////////////////
