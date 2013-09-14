@@ -223,62 +223,37 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
-  def self.user_activity_profile(user)
+  def self.user_activity_chart(user)
+    options = {}
+    options[:type] ||= :line
+    options[:size] ||= "300x80"
+    options[:bgcolor] ||= "FFFFFF"
+    options[:chart_color] ||= "336699"
+    options[:area_color] ||= "DFEBFF"
+    options[:line_color] ||= "0077CC"
+    options[:line_width] ||= "2"
+    max_data_point = 20
+
+    # create activity string
+    from = Time.now - 3.months
+    to = Time.now
+    tmp = from
     array = []
-    user.cases.group_by{ |u| u.created_at.beginning_of_week }.each do |week, entries|
-      array << { week: week.strftime("%d %b"), count: entries.count }
+    begin
+       tmp += 1.week
+       array << user.cases.where("created_at BETWEEN ? AND ?", tmp, tmp + 1.week).count
+    end while tmp <= to
+
+    activity_str = array.map(&:inspect).join(',')
+
+    if options[:type] == :line
+      return "http://chart.apis.google.com/chart?chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
+    else
+      return "http://chart.apis.google.com/chart?cht=bvs&chs=#{options[:size]}&chd=t:#{activity_str}&chco=#{options[:chart_color]}&chbh=a,#{options[:line_width]}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
     end
-
-    array.to_json
-
   end
 
 
-
-
-  # def self.user_activity_profile(user)
-  #   array = []
-  #   cases = user.cases
-  #   first = user.cases.first.created_at.beginning_of_week
-  #   last = user.cases.last.created_at.beginning_of_week
-
-  #   tmp = first
-  #   begin
-  #     tmp += 1.week
-  #     array << [
-  #       week: tmp.strftime("%d %b"), 
-  #       count: cases.where("created_at BETWEEN ? AND ?", tmp, tmp + 1.week).count
-  #     ]
-  #   end while tmp <= last
-
-  #   array.to_json
-
-  # end
-
-
-
-  # def self.user_activity_profile(user)
-  #   array = []
-  #   cases = user.cases
-  #   first = cases.first.created_at.beginning_of_week
-  #   last = cases.last.created_at.beginning_of_week
-
-  #   # tmp = first
-  #   # begin
-  #   #   tmp += 1.week
-  #   #   array << [
-  #   #     week: tmp.strftime("%d %b"), 
-  #   #     count: cases.where("created_at BETWEEN ? AND ?", tmp, tmp + 1.week).count
-  #   #   ]
-  #   # end while tmp <= last
-
-  #   (first..last).step(7.days) do |date|
-  #     array << { week: date.strftime("%d %b"), count: cases.where("created_at BETWEEN ? AND ?", date, date + 1.week).count }
-  #   end
-
-  #   array.to_json
-
-  # end
 
   def cases_show_chart_radar_data_all
     "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},

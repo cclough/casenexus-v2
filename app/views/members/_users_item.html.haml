@@ -1,6 +1,3 @@
-:javascript
-  var map_index_users_item_activity = #{Case.user_activity_profile(users_item)};
-
 .map_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, class: ("application_onlinenow" if users_item.online_now?) }
 
 
@@ -16,7 +13,8 @@
       = users_item.university.name
 
     .map_index_users_item_activity{ id:"map_index_users_item_activity_" + users_item.id.to_s}
-      = image_tag "app/temp_activity_chart.png"
+      = image_tag Case.user_activity_chart(users_item)
+
 
 
   .map_index_users_stuff_pre_stuff
