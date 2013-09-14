@@ -34,94 +34,94 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
   ov.setMap this
 
 
-window.map_index_profile_bless = () ->
+# window.map_index_profile_bless = () ->
 
 
-  # Toggle button
-  $(".map_index_user_profile_toggle").click ->
-    marker_id = $(this).attr('data-user_id')
-    window.map_index_profile_toggle(marker_id)
+#   # Toggle button
+#   $(".map_index_user_profile_toggle").click ->
+#     marker_id = $(this).attr('data-user_id')
+#     window.map_index_profile_toggle(marker_id)
     
-  # Prime Button
-  $(".map_index_user_profile_button_message").click ->
-    friend_id = $(this).data "friend_id"
-    window.modal_message_show(friend_id)
+#   # Prime Button
+#   $(".map_index_user_profile_button_message").click ->
+#     friend_id = $(this).data "friend_id"
+#     window.modal_message_show(friend_id)
 
-  $(".map_index_user_profile_button_event").click ->          
-    friend_id = $(this).data("friend_id")
-    window.modal_event_new_show(friend_id,null)
+#   $(".map_index_user_profile_button_event").click ->          
+#     friend_id = $(this).data("friend_id")
+#     window.modal_event_new_show(friend_id,null)
 
-  $(".map_index_user_profile_button_friendrequest").click ->
-    friend_id = $(this).data("friend_id")
-    window.modal_friendship_req_show(friend_id)
-
-
-  window.application_truncatables()
-
-window.map_index_profile_toggle = (marker_id) ->
-
-  if $("#map_index_container_user_profile").hasClass "in"
-    window.map_index_load_profile_small(marker_id)
-  else
-    window.map_index_load_profile(marker_id)
+#   $(".map_index_user_profile_button_friendrequest").click ->
+#     friend_id = $(this).data("friend_id")
+#     window.modal_friendship_req_show(friend_id)
 
 
+#   window.application_truncatables()
 
+# window.map_index_profile_toggle = (marker_id) ->
 
-
-
-window.map_index_load_profile_small = (marker_id) ->
-
-  $("#map_index_container_user_profile").hide "slide", direction: "left", "fast"
-  # marker = map_index_map_markers[marker_id]
-
-  $.ajax
-    url: "/members/" + marker_id + "/show_small"
-    success: (data) ->
-
-      $("#map_index_container_user_profile_small").html data
-      $("#map_index_container_user_profile_small").show "slide", direction: "left", "fast", ->
-        window.map_index_profile_bless()
-        $("#map_index_container_user_profile").removeClass "in"
-
-
-
-
-window.map_index_load_profile = (marker_id) ->
-
-
-
-  $("#map_index_container_user_profile_small").hide "slide", direction: "left", "fast", ->
-  # marker = map_index_map_markers[marker_id]
-
-  $.ajax
-    url: "/members/" + marker_id
-    success: (data) ->
-
-      $("#map_index_container_user_profile").html data
-      $("#map_index_container_user_profile").show "slide", direction: "left", "fast", ->
-        window.map_index_profile_bless()
-        # Draw chart
-        window.map_index_user_profile_chart_activity_draw()
-        $("#map_index_container_user_profile").addClass "in"
+#   if $("#map_index_container_user_profile").hasClass "in"
+#     window.map_index_load_profile_small(marker_id)
+#   else
+#     window.map_index_load_profile(marker_id)
 
 
 
 
 
-window.map_index_load_infobox = (marker_id) ->
 
-  b = $("<div></div>")
-  b.html "<img src=/assets/markers/arrow.png></img>"
-  window.infobox.setContent b.html()
+# window.map_index_load_profile_small = (marker_id) ->
+
+#   $("#map_index_container_user_profile").hide "slide", direction: "left", "fast"
+#   # marker = map_index_map_markers[marker_id]
+
+#   $.ajax
+#     url: "/members/" + marker_id + "/show_small"
+#     success: (data) ->
+
+#       $("#map_index_container_user_profile_small").html data
+#       $("#map_index_container_user_profile_small").show "slide", direction: "left", "fast", ->
+#         window.map_index_profile_bless()
+#         $("#map_index_container_user_profile").removeClass "in"
+
+
+
+
+# window.map_index_load_profile = (marker_id) ->
+
+
+
+#   $("#map_index_container_user_profile_small").hide "slide", direction: "left", "fast", ->
+#   # marker = map_index_map_markers[marker_id]
+
+#   $.ajax
+#     url: "/members/" + marker_id
+#     success: (data) ->
+
+#       $("#map_index_container_user_profile").html data
+#       $("#map_index_container_user_profile").show "slide", direction: "left", "fast", ->
+#         window.map_index_profile_bless()
+#         # Draw chart
+#         window.map_index_user_profile_chart_activity_draw()
+#         $("#map_index_container_user_profile").addClass "in"
+
+
+
+
+
+# window.map_index_load_infobox = (marker_id) ->
+
+  # b = $("<div></div>")
+  # b.html "<img src=/assets/markers/arrow.png></img>"
+  # window.infobox.setContent b.html()
   
-  # Click to close
-  # $("#map_index_container_user_infobox").click ->
-  #   $("#map_index_container_user_infobox").fadeOut "fast", ->
-  #     window.infobox.close()
+  # # Click to close
+  # # $("#map_index_container_user_infobox").click ->
+  # #   $("#map_index_container_user_infobox").fadeOut "fast", ->
+  # #     window.infobox.close()
 
-  marker = map_index_map_markers[marker_id]
-  window.infobox.open map, marker
+  # marker = map_index_map_markers[marker_id]
+  # window.infobox.open map, marker
 
 
 
@@ -133,14 +133,6 @@ window.map_index_users_updatelist = ->
 
 window.map_index_users_resetfilters = (filter_excep) ->
 
-  if (filter_excep != "country")
-    $("#map_index_users_form_pulldown_country_button").html "All Countries <span class=caret></span>"
-    $("#users_filter_country").val ""
-  
-  if (filter_excep != "university")
-    $("#map_index_users_form_pulldown_university_button").html "All Universities <span class=caret></span>"
-    $("#users_filter_university").val ""
-  
   if (filter_excep != "language")
     $("#map_index_users_form_pulldown_language_button").html "All Languages <span class=caret></span>"
     $("#users_filter_language").val ""
@@ -159,24 +151,24 @@ window.map_index_map_load_all = (target_id, latlng) ->
   # THIS CODE IS CAUSING A STACKOVERFLOW
   window.map_index_map_pan latlng
 
-  if $("map_index_container_user_profile").hasClass "in"
-    window.map_index_load_profile target_id
-  else
-    window.map_index_load_profile_small target_id
+  # if $("map_index_container_user_profile").hasClass "in"
+  #   window.map_index_load_profile target_id
+  # else
+  #   window.map_index_load_profile_small target_id
 
 
 
 map_index_map_markers_clear = ->
 
-  i = 0
+  # i = 0
 
-  # if map_index_map_markers
-  while i < map_index_map_markers_ids.length
-    # alert "deleting item in marker array #" + String map_index_map_markers_ids[i]
-    window.map_index_map_markers[map_index_map_markers_ids[i]].setMap null
-    i++
+  # # if map_index_map_markers
+  # while i < map_index_map_markers_ids.length
+  #   # alert "deleting item in marker array #" + String map_index_map_markers_ids[i]
+  #   window.map_index_map_markers[map_index_map_markers_ids[i]].setMap null
+  #   i++
 
-  map_index_map_markers = []
+  # map_index_map_markers = []
 
 
 window.map_index_map_markers_draw = () ->
@@ -363,51 +355,41 @@ $(document).ready ->
 
   # Map
   if typeof map_index_map_lat_start is "string"
-    # alert map_index_map_lat_start
-    # Set start latlng var (used in several places in this file)
-    #map_index_map_latlng_start = new google.maps.LatLng(parseFloat(map_index_map_lat_start),parseFloat(map_index_map_lng_start))
-    # map_index_map_latlng_start = new google.maps.LatLng(20,20)
-    # Options for the map
-    # mapOptions =
-    #   zoom: 10
-    #   minZoom: 4
-    #   mapTypeId: "roadmap"
-    #   disableDefaultUI: true
-    #   zoomControl: true
-    #   center: new google.maps.LatLng(map_index_map_lat_start, map_index_map_lng_start)
-    #   zoomControlOptions:
-    #     position: google.maps.ControlPosition.LEFT_CENTER
-    #   styles: [
-    #     featureType: "water"
-    #     stylers: [color: "#abe2ff"]
-    #   ,
-    #     featureType: "landscape.natural"
-    #     elementType: "all"
-    #     stylers: [
-    #       color: "#a2ff9d"
-    #     ,
-    #       lightness: 3
-    #     ]
-    #   ]
 
+    #Options for the map
     mapOptions =
-      zoom: 1
-      minZoom: 4
+      zoom: 10
+      minZoom: 3
       mapTypeId: "roadmap"
       center: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
+      
       disableDefaultUI: true
       zoomControl: true
       zoomControlOptions:
         position: google.maps.ControlPosition.LEFT_CENTER
+      styles: [
+        featureType: "water"
+        stylers: [color: "#abe2ff"]
+      ,
+        featureType: "landscape.natural"
+        elementType: "all"
+        stylers: [
+          color: "#a2ff9d"
+        ,
+          lightness: 3
+        ]
+      ]
+
+
 
 
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
     # New infobox with offset
-    window.infobox = new InfoBox
-      # (h,v), (minus is left ,minus is up)
-      pixelOffset: new google.maps.Size(-39, -150)
+    # window.infobox = new InfoBox
+    #   # (h,v), (minus is left ,minus is up)
+    #   pixelOffset: new google.maps.Size(-39, -150)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
@@ -417,11 +399,10 @@ $(document).ready ->
         $("div.gmnoprint").fadeIn 500
 
 
-    window.map_index_map_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
 
     ######## PAGE LOAD:
 
     # Load profile and infowindow
-    window.map_index_load_profile_small map_index_map_marker_id_start
-    window.map_index_load_infobox map_index_map_marker_id_start
+    # window.map_index_load_profile_small map_index_map_marker_id_start
+    # window.map_index_load_infobox map_index_map_marker_id_start
     

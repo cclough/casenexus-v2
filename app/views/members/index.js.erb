@@ -1,7 +1,7 @@
 // Re-renders the user list
 $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
-// Set the json as a js variable - when used getJSON in the coffeescript file it wouldn't work with e.g. different pages, just gave the same set of markers everytime
+//Set the json as a js variable - when used getJSON in the coffeescript file it wouldn't work with e.g. different pages, just gave the same set of markers everytime
 var map_index_map_markers_json = "<%= escape_javascript(User.markers(@users).to_json.html_safe) %>";
 
 window.map_index_map_markers_draw();
@@ -12,17 +12,17 @@ $(".application_avatar_icon").tooltip()
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item').click(function () {
 
-  var target_id = $(this).attr('data-id');
+  var target_id = $(this).data('id');
   var target_lat = $(this).attr('data-lat');
   var target_lng = $(this).attr('data-lng');
 
-  var latlng = new google.maps.LatLng(parseFloat(target_lng), parseFloat(target_lng));   
-
-  window.map_index_map_load_all(target_id, latlng);
-
-  setTimeout((function() {
-    return window.map_index_load_infobox(target_id);
-  }), 300);
+  // the problem is something to do with the latlng variable i think!
+  window.map.panTo(new google.maps.LatLng(target_lat,target_lng));
+  window.map.panTo(latlng);
+  // window.map.setZoom(10);
+  // setTimeout((function() {
+  //   return window.map_index_load_infobox(target_id);
+  // }), 300);
 
 });
 
