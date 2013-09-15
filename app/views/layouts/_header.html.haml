@@ -33,7 +33,7 @@
               = link_to raw("<i class='icon-bullhorn icon-white icon-large icon-fixed-width'></i>"), '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
         - else
-          %ul.nav.pull-right
+          %ul.nav.pull-right#header_nav_links_right_signedout
             %li
               = link_to current_user.email
               %span#header_nav_links_right_signedout

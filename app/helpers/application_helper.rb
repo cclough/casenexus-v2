@@ -11,6 +11,22 @@ module ApplicationHelper
     end
   end
 
+  def avatar_for(user, options = {})
+
+    options[:size] ||= "small"
+    options[:link] ||= 1
+
+    avatar_url = "universities/" + user.university.image
+    
+
+    if options[:link] === 1
+      avatar_alt = "Jump to " + user.username + "'s profile"
+      link_to image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title"=>avatar_alt, rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
+    else
+      avatar_alt = user.username + " is a student of " + user.university.name
+      image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title"=>avatar_alt, rel: "tooltip", "data-placement"=>"bottom")
+    end  
+  end
 
   # Render will_paginate with bootstrap pagination css - https://gist.github.com/robacarp/1562185
   def paginate *params
@@ -82,11 +98,7 @@ module ApplicationHelper
     end
   end
   
-  def avatar_for(user,size)
-    avatar_url = "universities/" + user.university.image
-    avatar_alt = "Jump to " + user.username + "'s profile"
-    link_to image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + size, "data-original-title"=>"Go to " + user.username + "'s profile", rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
-  end
+
 
   def timezone_difference(user1, user2)
     

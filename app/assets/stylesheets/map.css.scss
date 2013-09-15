@@ -24,7 +24,9 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
+$green_linkedin: #3489bd;
 
+$blue_skype:#45adea;
 
 
 @mixin box_sizing {
@@ -101,40 +103,7 @@ $alert-yellow: #FFFF7E;
   bottom:0px;
 }
 
-#map_index_container_user_profile {
-  display:none;
 
-  z-index:1000;
-  background:$gray_background;
-  position:absolute;
-  left:0px;
-  right:0px;
-  top:50px;
-  bottom:0px;
-
-
-  padding:5px;
-
-  overflow-y:auto;
-
-}
-
-
-#map_index_container_user_profile_small {
-  display:none;
-
-  z-index:1000;
-  background:white;
-  position:absolute;
-  left:20px;
-  bottom:0px;
-  top:50px;
-  width:350px;
-
-
-  padding:5px;
-
-}
 
 
 
@@ -227,14 +196,6 @@ $alert-yellow: #FFFF7E;
 }
 
 
-
-
-
-
-
-
-
-
 #map_index_users_form_paginate {
   background:$gray_background;
   position:absolute;
@@ -266,7 +227,7 @@ $alert-yellow: #FFFF7E;
   left:50%;
   width:200px;
 
-  margin-left:-100px;
+  margin-left:-120px;
   margin-top:-20px;
   font-size:18px;
 
@@ -283,17 +244,18 @@ $alert-yellow: #FFFF7E;
 //////////////////////////////////////////////
 
 .map_index_users_item {
+  position:relative;
   display:none;
   width:460px;
   height:150px;
   background:white;
   @include box_sizing;
   margin-bottom:10px;
-  cursor:pointer;
 }
 
 .map_index_users_item_avatar {
   float:left;
+  cursor:pointer;
   background:$gray_background;
   position:relative;
   width:100px;
@@ -312,13 +274,24 @@ $alert-yellow: #FFFF7E;
 }
 
 
+
 .map_index_users_item_info {
+  cursor:pointer;
   float:left;
+  position:relative;
   width:280px;
   height:130px;
   padding:10px; //offsets width!
-  div {
-    display:block;
+//  div {
+//    display:block;
+//  }
+
+  .map_index_users_item_user {
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index:2;
+
   }
   .map_index_users_item_username {
     font-size:20px;
@@ -327,20 +300,28 @@ $alert-yellow: #FFFF7E;
   .map_index_users_item_university {
 
   }
-
-  .map_index_users_item_activity {
-    opacity:0.3;
-    margin-top:30px;
-  }
-
 }
+
+.map_index_users_item_activity {
+  position:absolute;
+  cursor:pointer;
+  left:110px;
+  top:10px;
+  height:100px;
+  width:280px;
+  opacity:0.5;
+  z-index:1;
+}
+
+
 
 .map_index_users_stuff_pre_stuff {
   float:left;
   width:10px;
   height:150px;
-//  background:$gray_gunmetal;  
+  background:$gray_gunmetal;  
 }
+
 .map_index_users_item_stuff{
   float:left;
   width:50px;
@@ -377,183 +358,56 @@ $alert-yellow: #FFFF7E;
 
 
 .map_index_users_item_actions {
-  padding-top:5px;
+
+  position:absolute;
+  bottom:10px;
+  left:110px;
   .btn {
-    height:35px !important;
-    width:35px;
+    height:30px !important;
+    width:30px;
     padding:10px;;
     font-size:25px;
-    line-height:35px;
+    line-height:30px;
+    span {
+      margin:0;
+      padding:0;
+    }
   }
 
-  #map_index_users_item_button_add {
+  .map_index_users_item_button_add {
     width:120px;
     font-size:17px;
   }
-}
 
-
-
-
-
-
-
-
-//.map_index_users_item_reputation {
-
-
-//}
-
-
-
-
-
-
-
-//////////////////////////////////////////////
-////////////////////SHOW FULL/////////////////
-//////////////////////////////////////////////
-
-#map_index_user_profile_reputation {
-  font-size:25px;
-  background:white;
-  padding:5px;
-  text-align:center;
-  margin:10px 10px;
-  #map_index_user_profile_reputation_text {
-    font-size:11px;
+  .map_index_users_item_button_linkedin {
+    background:$green_linkedin;
   }
-}
-
-
-
-#map_index_user_profile_username {
-  font-size:25px;
-}
-
-.map_index_user_profile_toggle {
-  position:absolute;
-  bottom:30px;
-  right:10px;
-}
-
-#map_index_user_profile_panel_actions {
-  margin:10px !important;
-  position:absolute;
-  width:50px;
-  right:0px;
-  top:0px;
-  .btn {
-    float:right;
-    line-height:35px;
-    width:40px !important;
-    height:40px !important;
-    padding:10px;
-    font-size:30px;
-    margin:2px;
+  .map_index_users_item_button_linkedin:hover,
+  .map_index_users_item_button_linkedin:focus {
+    background-color: #2e79a6;
+  }
+  .map_index_users_item_button_linkedin:active,
+  .map_index_users_item_button_linkedin.active {
+    background-color: #215676;
   }
 
-}
 
-
-
-#map_index_user_profile_avatar{
-  font-size:80px;
-}
-
-
-#map_index_user_profile_chart_activity {
-
-  display:block;
-  height:130px;
-  padding:5px;
-}
-
-.map_index_user_profile_block_title {
-  background: $gray_second;
-  height:30px;
-  text-align:center;
-  font-weight: bold;
-  line-height:31px;
-  color: white;
-
-  margin: -10px -10px 5px -10px;
-}
-
-.map_index_user_profile_block_content {
-  width:26%;
-  float:left;
-  .map_index_user_profile_block_content_text {
-    height:150px;
-    overflow-y:auto;
-    .row {
-
-    }
+  .map_index_users_item_button_skype {
+    background:$blue_skype;
   }
-}
-
-.map_index_user_profile_block_content_votes {
-  padding:3px;
-  background:$gray_background;
-  margin:0px 5px 2px 0px;
-  text-align:center;
-}
-
-#map_index_user_profile_panel_basicinfo {
-  width:60%;
-  float:left;
-}
-
-#map_index_user_profile_panel_user {
-  width:20%;
-  float:left;
-}
-
-//////////////////////////////////////////////
-////////////////SHOW SMALL////////////////////
-//////////////////////////////////////////////
-
-#map_index_user_profile_small_reputation {
-  font-size:25px;
-  background:$gray_background;
-  padding:5px;
-  text-align:center;
-  margin:10px 10px;
-  #map_index_user_profile_small_reputation_text {
-    font-size:11px;
+  .map_index_users_item_button_skype:hover,
+  .map_index_users_item_button_skype:focus {
+    background-color: #40a0d8;
   }
-}
-#map_index_user_profile_small_user {
-  text-align:center;
-}
-
-#map_index_user_profile_small_username {
-  font-size:25px;
-}
-
-#map_index_user_profile_small_university {
-  margin-top:5px;
-}
-
-#map_index_user_profile_small_panel_actions {
-  margin:6px;
-  .btn {
-    float:right;
-    line-height:35px;
-    width:40px !important;
-    height:40px !important;
-    padding:10px;
-    font-size:30px;
-    margin:2px;
+  .map_index_users_item_button_skype:active,
+  .map_index_users_item_button_skype.active {
+    background-color: #3483b1;
   }
-}
-#map_index_user_profile_small_avatar{
-  font-size:60px;
+
+
+
 }
 
-#map_index_user_profile_small_chart_activity {
 
-  display:block;
-  height:130px;
-  padding:5px;
-}
+
+

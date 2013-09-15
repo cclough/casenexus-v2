@@ -34,76 +34,24 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
   ov.setMap this
 
 
-# window.map_index_profile_bless = () ->
+window.map_index_users_item_bless = () ->
+
+  # Prime Button
+  $(".map_index_users_item_button_message").click ->
+    friend_id = $(this).data "friend_id"
+    window.modal_message_show(friend_id)
+
+  $(".map_index_users_item_button_event").click ->          
+    friend_id = $(this).data("friend_id")
+    window.modal_event_new_show(friend_id,null)
+
+  $(".map_index_users_item_button_add").click ->
+    friend_id = $(this).data("friend_id")
+    window.modal_friendship_req_show(friend_id)
+
+  window.application_truncatables()
 
 
-#   # Toggle button
-#   $(".map_index_user_profile_toggle").click ->
-#     marker_id = $(this).attr('data-user_id')
-#     window.map_index_profile_toggle(marker_id)
-    
-#   # Prime Button
-#   $(".map_index_user_profile_button_message").click ->
-#     friend_id = $(this).data "friend_id"
-#     window.modal_message_show(friend_id)
-
-#   $(".map_index_user_profile_button_event").click ->          
-#     friend_id = $(this).data("friend_id")
-#     window.modal_event_new_show(friend_id,null)
-
-#   $(".map_index_user_profile_button_friendrequest").click ->
-#     friend_id = $(this).data("friend_id")
-#     window.modal_friendship_req_show(friend_id)
-
-
-#   window.application_truncatables()
-
-# window.map_index_profile_toggle = (marker_id) ->
-
-#   if $("#map_index_container_user_profile").hasClass "in"
-#     window.map_index_load_profile_small(marker_id)
-#   else
-#     window.map_index_load_profile(marker_id)
-
-
-
-
-
-
-# window.map_index_load_profile_small = (marker_id) ->
-
-#   $("#map_index_container_user_profile").hide "slide", direction: "left", "fast"
-#   # marker = map_index_map_markers[marker_id]
-
-#   $.ajax
-#     url: "/members/" + marker_id + "/show_small"
-#     success: (data) ->
-
-#       $("#map_index_container_user_profile_small").html data
-#       $("#map_index_container_user_profile_small").show "slide", direction: "left", "fast", ->
-#         window.map_index_profile_bless()
-#         $("#map_index_container_user_profile").removeClass "in"
-
-
-
-
-# window.map_index_load_profile = (marker_id) ->
-
-
-
-#   $("#map_index_container_user_profile_small").hide "slide", direction: "left", "fast", ->
-#   # marker = map_index_map_markers[marker_id]
-
-#   $.ajax
-#     url: "/members/" + marker_id
-#     success: (data) ->
-
-#       $("#map_index_container_user_profile").html data
-#       $("#map_index_container_user_profile").show "slide", direction: "left", "fast", ->
-#         window.map_index_profile_bless()
-#         # Draw chart
-#         window.map_index_user_profile_chart_activity_draw()
-#         $("#map_index_container_user_profile").addClass "in"
 
 
 
@@ -150,12 +98,6 @@ window.map_index_map_load_all = (target_id, latlng) ->
 
   # THIS CODE IS CAUSING A STACKOVERFLOW
   window.map_index_map_pan latlng
-
-  # if $("map_index_container_user_profile").hasClass "in"
-  #   window.map_index_load_profile target_id
-  # else
-  #   window.map_index_load_profile_small target_id
-
 
 
 map_index_map_markers_clear = ->
@@ -280,9 +222,6 @@ window.map_index_user_profile_chart_activity_draw = (user_id) ->
 
 $(document).ready ->
 
-  #prime posts buttons etc.
-  map_index_posts_prime()
-
   # Update the list of users
   map_index_users_updatelist()
 
@@ -402,7 +341,5 @@ $(document).ready ->
 
     ######## PAGE LOAD:
 
-    # Load profile and infowindow
-    # window.map_index_load_profile_small map_index_map_marker_id_start
     # window.map_index_load_infobox map_index_map_marker_id_start
-    
+    # 

@@ -15,6 +15,7 @@
 #= require lib/jquery.truncate
 
 #= require lib/bootstrap.min
+#= require lib/bootstrap-clickover
 #= require lib/bootstrap-datetimepicker
 #= require bootstrap-wysihtml5
 

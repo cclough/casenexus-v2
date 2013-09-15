@@ -4,6 +4,8 @@ $(document).ready ->
   #////////////////// COMPLETE & EDIT /////////////////////
   #////////////////////////////////////////////////////////
 
+  $("#account_complete_skype").clickover trigger: "hover"
+
   if typeof account_completeedit_map_lat_start is "string"
     account_completeedit_latlng = new google.maps.LatLng(account_completeedit_map_lat_start, account_completeedit_map_lng_start)
 
@@ -12,7 +14,7 @@ $(document).ready ->
 
     window.map = new google.maps.Map(document.getElementById("account_completeedit_map"),
       # zoomed right out
-      zoom: 13
+      zoom: 5
       center: account_completeedit_latlng
       mapTypeId: google.maps.MapTypeId.ROADMAP
       streetViewControl: false

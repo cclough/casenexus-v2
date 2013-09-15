@@ -2,54 +2,55 @@
 
 
   .map_index_users_item_avatar
-    = avatar_for(users_item,"large")
+    = avatar_for(users_item, { link: 0, size: "large" })
 
-  .map_index_users_item_info{style: "background: url(#{Case.user_activity_chart(users_item)})no-repeat"}
+  .map_index_users_item_activity{style: "background: url(#{Case.user_activity_chart(users_item)})no-repeat"}
 
-    .map_index_users_item_username
-      = users_item.username
+  .map_index_users_item_info
 
-    .map_index_users_item_university
-      = users_item.university.name
+    .map_index_users_item_user
+      .map_index_users_item_username
+        = users_item.username
 
-    .map_index_users_item_activity{ id:"map_index_users_item_activity_" + users_item.id.to_s}
-      / = image_tag Case.user_activity_chart(users_item)
-
-
+      .map_index_users_item_university
+        = users_item.university.name
 
 
+  .map_index_users_item_actions
+
+    - if users_item != current_user
+
+      - if Friendship.friends?(current_user, users_item)
+        = link_to raw("<i class=icon-comment icon-white></i>"),"#", id:"map_index_users_item_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => users_item.id
+
+        %a.map_index_users_item_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => users_item.id.to_s}
+          %i.icon-calendar.icon-white
+
+        %a.map_index_users_item_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + users_item.id.to_s}
+          %i.icon-arrow-right.icon-white
+
+        - unless users_item.skype.blank?
+          %a.map_index_users_item_button_skype.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{users_item.skype}?call"}
+            %span.fui-skype
 
 
-    .map_index_users_item_actions
-      - if users_item != current_user
-        - if Friendship.friends?(current_user, users_item)
-          = link_to raw("<i class=icon-comment icon-white></i>"),"#", id:"map_index_users_item_button_message", class: "btn btn-primary btn-embossed btn-small", "data-friend_id" => users_item.id
+      - elsif Friendship.requested?(users_item, current_user)
+        Request Pending
 
-          - unless users_item.skype.blank?
-            %a.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{users_item.skype}?call"}
-              %span.fui-skype
+      - elsif Friendship.pending?(users_item, current_user)
 
-          %a#map_index_users_item_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => users_item.id.to_s}
-            %i.icon-calendar.icon-white
+        Pending case partner request
+        = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-primary btn-embossed btn-mini")
+        = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-mini")
 
-          %a#map_index_users_item_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + users_item.id.to_s}
-            %i.icon-arrow-right.icon-white
+      - elsif !Friendship.exist?(current_user, users_item)
+        %a.map_index_users_item_button_add.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => users_item.id }
+          %i.icon-plus.icon-white
+          Add partner
 
-
-        - elsif Friendship.requested?(users_item, current_user)
-          Request Pending
-
-        - elsif Friendship.pending?(users_item, current_user)
-
-          Pending case partner request
-          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-primary btn-embossed btn-mini")
-          = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-mini")
-
-        - elsif !Friendship.exist?(current_user, users_item)
-          %a#map_index_users_item_button_add.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => users_item.id }
-            %i.icon-plus.icon-white
-            Add partner
-
+      - unless users_item.linkedin.blank?
+        %a.map_index_users_item_button_linkedin.btn.btn-primary.btn-embossed.btn-small{href: "http://www.linkedin.com/"+users_item.linkedin}
+          %span.fui-linkedin
 
 
 
@@ -69,6 +70,3 @@
       = users_item.case_count_recd
     .map_index_users_item_cases_external
       = users_item.cases_external
-
-/ .map_index_users_item_reputation
-/ / = users_item.points_tally

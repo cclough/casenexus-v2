@@ -132,12 +132,13 @@ header {
 }
 
 
-#header_nav_links_right_name_caret {
 
-}
 
 
 #header_nav_links_right_signedout {
+  li:hover {
+    background:0;
+  }
   img {
     max-width:20px;
   }
