@@ -232,7 +232,7 @@ class Case < ActiveRecord::Base
     options[:area_color] ||= "DFEBFF"
     options[:line_color] ||= "0077CC"
     options[:line_width] ||= "2"
-    max_data_point = 20
+    max_data_point = 5
 
     # create activity string
     from = Time.now - 3.months

@@ -653,7 +653,7 @@ end
 
       user = User.find(rand(3) + 1)
 
-      language_id = 3
+      language_id = 2
       lang = Language.find(language_id)
       
       # check if exists already though!

@@ -14,7 +14,7 @@ map_index_posts_prime = () ->
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   # window.map.panTo latlng
-  window.map.panToWithOffset latlng, -100, -30
+  window.map.panToWithOffset latlng, -200, -30
   window.map.setZoom 10
 
 
@@ -109,19 +109,19 @@ google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
 
 
 
-# window.map_index_load_infobox = (marker_id) ->
+window.map_index_load_infobox = (marker_id) ->
 
-  # b = $("<div></div>")
-  # b.html "<img src=/assets/markers/arrow.png></img>"
-  # window.infobox.setContent b.html()
+  b = $("<div></div>")
+  b.html "<img src=/assets/markers/arrow.png></img>"
+  window.infobox.setContent b.html()
   
-  # # Click to close
-  # # $("#map_index_container_user_infobox").click ->
-  # #   $("#map_index_container_user_infobox").fadeOut "fast", ->
-  # #     window.infobox.close()
+  # Click to close
+  # $("#map_index_container_user_infobox").click ->
+  #   $("#map_index_container_user_infobox").fadeOut "fast", ->
+  #     window.infobox.close()
 
-  # marker = map_index_map_markers[marker_id]
-  # window.infobox.open map, marker
+  marker = map_index_map_markers[marker_id]
+  window.infobox.open map, marker
 
 
 
@@ -160,15 +160,15 @@ window.map_index_map_load_all = (target_id, latlng) ->
 
 map_index_map_markers_clear = ->
 
-  # i = 0
+  i = 0
 
-  # # if map_index_map_markers
-  # while i < map_index_map_markers_ids.length
-  #   # alert "deleting item in marker array #" + String map_index_map_markers_ids[i]
-  #   window.map_index_map_markers[map_index_map_markers_ids[i]].setMap null
-  #   i++
+  # if map_index_map_markers
+  while i < map_index_map_markers_ids.length
+    # alert "deleting item in marker array #" + String map_index_map_markers_ids[i]
+    window.map_index_map_markers[map_index_map_markers_ids[i]].setMap null
+    i++
 
-  # map_index_map_markers = []
+  map_index_map_markers = []
 
 
 window.map_index_map_markers_draw = () ->
@@ -386,10 +386,10 @@ $(document).ready ->
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
-    # New infobox with offset
-    # window.infobox = new InfoBox
-    #   # (h,v), (minus is left ,minus is up)
-    #   pixelOffset: new google.maps.Size(-39, -150)
+    #New infobox with offset
+    window.infobox = new InfoBox
+      # (h,v), (minus is left ,minus is up)
+      pixelOffset: new google.maps.Size(-39, -150)
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->

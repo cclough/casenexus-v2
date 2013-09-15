@@ -16,13 +16,13 @@ $('.map_index_users_item').click(function () {
   var target_lat = $(this).attr('data-lat');
   var target_lng = $(this).attr('data-lng');
 
-  // the problem is something to do with the latlng variable i think!
-  window.map.panTo(new google.maps.LatLng(target_lat,target_lng));
-  window.map.panTo(latlng);
-  // window.map.setZoom(10);
-  // setTimeout((function() {
-  //   return window.map_index_load_infobox(target_id);
-  // }), 300);
+  // the problem is something to do with the latlng variable i think! - overlapping with another definition
+  var user_latlng = new google.maps.LatLng(target_lat,target_lng)
+  window.map_index_map_pan(user_latlng)
+
+  setTimeout((function() {
+    return window.map_index_load_infobox(target_id);
+  }), 300);
 
 });
 
@@ -31,7 +31,7 @@ $(".map_index_users_item").each(function (i) {
 
   if ((i+1) == $(".map_index_users_item").length) {
     $(this).delay((i + 1) * 50).fadeIn(function(){
-      $("#map_index_users .application_pagination").fadeIn(500); 
+      $("#map_index_users .pagination").fadeIn(500); 
     });
   } else {
     $(this).delay((i + 1) * 50).fadeIn();

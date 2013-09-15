@@ -60,7 +60,7 @@ $alert-yellow: #FFFF7E;
   left:30px;
   top:0px;
   bottom:0px;
-  width:420px;
+  width:480px;
   z-index:10;
   overflow-y:auto;
   background:rgba(255,255,255,0.95s);
@@ -205,24 +205,23 @@ $alert-yellow: #FFFF7E;
   padding:10px;
 
   .btn-group {
-    float:left;
+    display:inline-block;
   }
 
 }
 
 .map_index_users_form_button {
   position:relative;
-  width:92px;
+
   .iconbar-unread {
     right:-7px;
     top:-7px;
-    z-index:1000;
+    z-index:10;
   }
 }
 
 #map_index_users_form_button_shouts {
 //  height:75px;
-  width:100px;
 //  padding:25px 0 0 0;
 
 }
@@ -263,12 +262,16 @@ $alert-yellow: #FFFF7E;
 
   position:absolute;
 
-  top: 200px;
+  top: 50%;
+  left:50%;
+  width:200px;
 
-  width:140px;
-  padding-left:35px;
-  padding-right:35px;
-  margin-left:20px;
+  margin-left:-100px;
+  margin-top:-20px;
+  font-size:18px;
+
+  background:$gray_background;
+  padding:20px;
 }
 
 
@@ -280,7 +283,8 @@ $alert-yellow: #FFFF7E;
 //////////////////////////////////////////////
 
 .map_index_users_item {
-  width:400px;
+  display:none;
+  width:460px;
   height:150px;
   background:white;
   @include box_sizing;
@@ -310,7 +314,7 @@ $alert-yellow: #FFFF7E;
 
 .map_index_users_item_info {
   float:left;
-  width:220px;
+  width:280px;
   height:130px;
   padding:10px; //offsets width!
   div {
@@ -370,6 +374,27 @@ $alert-yellow: #FFFF7E;
 
 
 }
+
+
+.map_index_users_item_actions {
+  padding-top:5px;
+  .btn {
+    height:35px !important;
+    width:35px;
+    padding:10px;;
+    font-size:25px;
+    line-height:35px;
+  }
+
+  #map_index_users_item_button_add {
+    width:120px;
+    font-size:17px;
+  }
+}
+
+
+
+
 
 
 
