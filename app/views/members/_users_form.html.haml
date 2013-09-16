@@ -4,21 +4,31 @@
 
   .row
 
-    %a.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>0}
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>0}
       %i.icon-user
+      Local
+      %span.iconbar-unread
+        = User.list_local(current_user).count
 
-
-    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed.active{"data-radio"=>1}
       New
       %span.iconbar-unread
         = User.list_new.count
 
-    .btn-group
-      .btn.btn-small.btn-primary.btn-embossed
-        UG
-      .btn.btn-small.btn-primary.btn-embossed
-        MBA
 
+
+
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>2}
+      Online today
+      %span.iconbar-unread
+        = User.list_online_today.count
+    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>3}
+      Online now
+      %span.iconbar-unread
+        = User.list_online_now.count
+
+  .spacer10
+  .row#map_index_users_form_row_second
 
     .btn-group.map_index_users_form_pulldown
       %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
@@ -35,9 +45,13 @@
             %a{"data-category" => "language", "data-radio" => 3, "data-name" => language_item.name, "data-id" => language_item.id}
               = language_item.name
 
+    .btn-group
+      .btn.btn-small.btn-primary.btn-embossed
+        UG
+      .btn.btn-small.btn-primary.btn-embossed
+        MBA
 
-  .spacer10
-  .row#map_index_users_form_row_second
+
 
     .btn-group
 
@@ -61,20 +75,11 @@
 
 
 
-    Online
-    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>1}
-      Today
-      %span.iconbar-unread
-        = User.list_online_today.count
-    %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>2}
-      Now
-      %span.iconbar-unread
-        = User.list_online_now.count
-
 
 
   #map_index_users_form_radiogroup
-    = radio_button_tag :users_listtype, 'local', checked: true
+    = radio_button_tag :users_listtype, 'local'
+    = radio_button_tag :users_listtype, 'new', checked: true
     = radio_button_tag :users_listtype, 'online_today'
     = radio_button_tag :users_listtype, 'online_now'
 

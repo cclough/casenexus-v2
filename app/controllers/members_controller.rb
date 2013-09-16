@@ -10,6 +10,8 @@ class MembersController < ApplicationController
 
       when "local"
         users_scope = User.includes(:cases).list_local(current_user)
+      when "new"
+        users_scope = User.includes(:cases).list_new
       when "online_today"
         users_scope = User.includes(:cases).list_online_today
       when "online_now"
