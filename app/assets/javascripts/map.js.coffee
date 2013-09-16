@@ -360,4 +360,5 @@ $(document).ready ->
     ######## PAGE LOAD:
 
     # window.map_index_load_infobox map_index_map_marker_id_start
+    window.map_index_map_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
     # 

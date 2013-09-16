@@ -24,6 +24,9 @@ Casenexus::Application.routes.draw do
   # Map
   match '/map', to: 'map#index', as: :map
 
+  # Profile
+  match '/profile', to: 'profile#index', as: :profile
+
   # Account
   resource :account, controller: 'account' do
     get :complete_profile, on: :collection

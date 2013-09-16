@@ -30,7 +30,7 @@ class AccountController < ApplicationController
         @user.save
         flash[:success] = 'Welcome to casenexus.com'
       end
-      redirect_to map_path
+      redirect_to profile_path
     else
       @invitations = current_user.invitations
       @invitation = current_user.invitations.build(params[:invitation])
@@ -51,7 +51,7 @@ class AccountController < ApplicationController
     @user = current_user
 
     if @user.completed?
-      redirect_to map_path
+      redirect_to profile_path
     else
       render layout: 'home'
     end

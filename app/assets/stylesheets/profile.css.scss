@@ -1,0 +1,47 @@
+$gray_background: #eceef1;
+$gray_Light: white;
+$gray_second: #BDC3C7;
+
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$gray_Darker: #333333;
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+
+$green_flatui: #1ABC9C;
+
+ $gray_gunmetal: #363636;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+#profile_index_container {
+  background: $gray_gunmetal !important;
+  position:absolute;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  top:0px;
+}
+
+#profile_index_icon_container {
+  position:absolute;
+  top:20%;
+  left:50%;
+  width:800px;
+  margin-left:-400px;
+  margin-top:-100px;
+
+}
+
+.profile_index_icon {
+  float:left;
+  margin:50px;
+  width:100px;
+  height:100px;
+}
+
