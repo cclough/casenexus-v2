@@ -76,7 +76,7 @@ window.map_index_load_infobox = (marker_id) ->
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   # show the spinner briefly
-  $("#map_index_container_users .application_spinner_container").show()
+  $("#map_index_container_users .application_spinner_container").fadeIn("fast")
 
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
@@ -278,17 +278,26 @@ $(document).ready ->
   # List type Button-Radio link
   $(".map_index_users_form_button").click ->
 
-    radio = $(this).data("radio")
-
-    # Change radio
-    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
-    
     # Remove and add active class to buttons
     $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
     $(this).addClass "active"
     
+    radio = $(this).data("radio")
+
+    # Change radio
+    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
+        
     map_index_users_updatelist()
 
+  $(".map_index_users_form_button_degreelevel").click ->
+
+    $(".map_index_users_form_button_degreelevel").removeClass "active"
+    $(this).addClass "active"
+
+    selection_id = $(this).data("degreelevel_id")
+    $("#users_filter_degreelevel").val(selection_id)
+
+    map_index_users_updatelist()
 
   # Ajax pagination
   $(".pagination a").click ->

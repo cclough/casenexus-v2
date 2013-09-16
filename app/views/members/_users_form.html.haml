@@ -46,9 +46,10 @@
               = language_item.name
 
     .btn-group
-      .btn.btn-small.btn-primary.btn-embossed
+      .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary.btn-embossed{ "data-degreelevel_id" => 0,class: ("active" if current_user.degree_level == 0)}
         UG
-      .btn.btn-small.btn-primary.btn-embossed
+      }
+      .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary.btn-embossed{ "data-degreelevel_id" => 1 ,class: ("active" if current_user.degree_level == 1)}
         MBA
 
 
@@ -85,4 +86,5 @@
 
     = radio_button_tag :users_listtype, 'language'
 
+    = text_field_tag :users_filter_degreelevel, current_user.degree_level
     = text_field_tag :users_filter_language
