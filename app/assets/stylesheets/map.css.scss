@@ -176,11 +176,25 @@ $blue_skype:#45adea;
 #map_index_users_form {
   padding:10px;
 
+}
+
+#map_index_users_form_button_container_local {
+  height:90px;
+  width:105px;
+  float:left;
+}
+
+.map_index_users_form_button_container {
+  float:left;
+  height:90px;
+  width:110px;
   .btn-group {
-    display:inline-block;
+    margin:0px;
+    padding:0px;
   }
 
 }
+
 
 .map_index_users_form_button {
   position:relative;
@@ -190,13 +204,69 @@ $blue_skype:#45adea;
     top:-7px;
     z-index:10;
   }
+
+}
+
+
+
+#map_index_users_form_button_local {
+  height:70px;
+  width:70px;
+  text-align:center;
+  position:relative;
+  line-height:35px;
+  i {
+    font-size:35px;
+    margin:0 !important;
+    position:absolute;
+    left:35px;
+    top:12px;
+  }
 }
 
 #map_index_users_form_button_shouts {
-//  height:75px;
-//  padding:25px 0 0 0;
-
+//  height:35px;
+  height:25px;
+  width:75px;
+  margin-bottom:6px;
+  line-height:25px;
 }
+
+#map_index_users_form_button_posts_new {
+  height:25px;
+  width:75px;
+  line-height:25px;
+}
+
+#map_index_users_form_button_onlinenow {
+  width:75px;
+  height:25px;
+  line-height:25px;
+}
+
+#map_index_users_form_button_onlinetoday {
+  width:81px;
+  height:25px;
+  padding: 6px 10px 8px 10px;
+  margin-bottom:6px;
+  line-height:25px;
+}
+
+
+#map_index_users_form_pulldown_language_button {
+  height:40px;
+}
+
+
+.map_index_users_form_button_degreelevel {
+  height:25px;
+  width:35px;
+  line-height:28px !important;
+  margin-bottom:5px;
+}
+
+
+
 
 
 #map_index_users_form_paginate {
