@@ -1,11 +1,15 @@
 #map_index_users_users
-- if @users.count > 0
-  - for users_item in @users
-    = render partial: 'users_item' , locals: { users_item: users_item }
-- else
-  #map_index_users_empty.panel.dark.center
-    No one found
+  - if @users.count > 0
+    - for users_item in @users
+      = render partial: 'users_item' , locals: { users_item: users_item }
+  - else
+    #map_index_users_empty.panel.dark.center
+      No one found
 
+
+  .application_spinner_container
+    .application_spinner
+    
 #map_index_users_form_paginate
   = paginate @users
 

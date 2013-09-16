@@ -75,8 +75,12 @@ window.map_index_load_infobox = (marker_id) ->
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
-  $.get("/members", $("#map_index_users_form").serialize(), null, "script")
+  # show the spinner briefly
+  $("#map_index_container_users .application_spinner_container").show()
+
+  $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
+
 
 
 window.map_index_users_resetfilters = (filter_excep) ->
@@ -277,7 +281,7 @@ $(document).ready ->
     radio = $(this).data("radio")
 
     # Change radio
-    $("input[name=users_listtype]:eq(" + radio + ")").attr "checked", "checked"
+    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
     
     # Remove and add active class to buttons
     $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"

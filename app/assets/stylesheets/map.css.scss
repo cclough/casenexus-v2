@@ -42,7 +42,7 @@ $blue_skype:#45adea;
 
 #map_index_map_zoomcontrol {
   position: absolute;
-  left: 460px;
+  left: 520px;
 }
 
 /* When the below is used, control disappears on mouse over */
@@ -74,14 +74,17 @@ $blue_skype:#45adea;
 
 
 #map_index_users {
-  overflow-y:auto;
   padding:10px;
 }
 
-#map_index_users_users {
+#map_index_users {
+  position:absolute;
+  top:95px;
+  bottom:0px;
+  left:0px;
+  right:0px;
 
 }
-
 
 
 #map_index_container_map {
@@ -228,7 +231,7 @@ $blue_skype:#45adea;
   width:200px;
 
   margin-left:-120px;
-  margin-top:-20px;
+  margin-top:-50px;
   font-size:18px;
 
   background:$gray_background;
@@ -307,7 +310,7 @@ $blue_skype:#45adea;
   cursor:pointer;
   left:110px;
   top:10px;
-  height:100px;
+  height:80px;
   width:280px;
   opacity:0.5;
   z-index:1;
