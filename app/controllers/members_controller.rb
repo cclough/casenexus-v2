@@ -5,28 +5,30 @@ class MembersController < ApplicationController
   # Map - access via /map
   def index
 
+    users_pre_scope = User.where(["users.id <> ?",current_user.id]).where(degree_level:params[:users_filter_degreelevel]).search_for(params[:search]).order("last_online_at desc")
+
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
 
       when "local"
-        users_scope = User.includes(:cases).list_local(current_user)
+        users_scope = users_pre_scope.list_local(current_user)
       when "new"
-        users_scope = User.includes(:cases).list_new
+        users_scope = users_pre_scope.list_new
       when "online_today"
-        users_scope = User.includes(:cases).list_online_today
+        users_scope = users_pre_scope.list_online_today
       when "online_now"
-        users_scope = User.includes(:cases).list_online_now
+        users_scope = users_pre_scope.list_online_now
       when "posts"
-        users_scope = User.includes(:cases).includes(:posts).list_users_with_posts
+        users_scope = users_pre_scope.includes(:posts).list_users_with_posts
 
       when "language"
-        users_scope = User.includes(:cases).list_language(params[:users_filter_language])
+        users_scope = users_pre_scope.list_language(params[:users_filter_language])
     else
       # users_scope = User.includes(:cases).list_global
     end
 
     if users_scope
-      @users = users_scope.where(degree_level:params[:users_filter_degreelevel]).search_for(params[:search]).order("last_online_at desc").paginate(per_page: 50, page: params[:page])
+      @users = users_scope.paginate(per_page: 50, page: params[:page])
     end
 
     respond_to do |format|

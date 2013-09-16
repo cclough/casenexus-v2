@@ -113,20 +113,31 @@ $blue_skype:#45adea;
 
 #map_index_container_user_infobox {
 
-  // Fade in wont work!
-  // display:none;
-
+  background:white;
   width:100px;
+  height:50px;
+  padding:10px;
 
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-
-  .panel {
-    border:0px;
+  &:after {
+    content:"";
+    position:absolute;
+    bottom:-20px; /* value = - border-top-width - border-bottom-width */
+    left:50px; /* controls horizontal position */
+    border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+    border-style:solid;
+    border-color:white transparent; 
+    /* reduce the damage in FF3.0 */
+    display:block; 
+    width:0;
   }
 
 }
+
+
+
+
+
+
 
 #map_index_container_surfer {
   position:absolute;

@@ -37,11 +37,11 @@
       %a#map_index_users_form_button_onlinetoday.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed.active{"data-radio"=>2}
         Online today
         %span.iconbar-unread
-          = User.list_online_today.count
+          = User.where(["users.id <> ?",current_user.id]).list_online_today.count
       %a#map_index_users_form_button_onlinenow.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>3}
         Online now
         %span.iconbar-unread
-          = User.list_online_now.count
+          = User.where(["users.id <> ?",current_user.id]).list_online_now.count
 
 
     .map_index_users_form_button_container.pull-right
@@ -62,11 +62,11 @@
         %ul.dropdown-menu
           %li
             / data-id is blank
-            %a{"data-category" => "language", "data-name" => "All Languages"}
+            %a{"data-category" => "language", "data-radio"=>5, "data-name" => "All Languages"}
               All Languages
           - Language.all.each do |language_item|
             %li
-              %a{"data-category" => "language", "data-name" => language_item.name, "data-id" => language_item.id}
+              %a{"data-category" => "language", "data-radio"=>5,"data-name" => language_item.name, "data-id" => language_item.id}
                 = language_item.name
 
 
@@ -85,6 +85,7 @@
     = radio_button_tag :users_listtype, 'online_today', checked: true
     = radio_button_tag :users_listtype, 'online_now'
     = radio_button_tag :users_listtype, 'posts'
+    = radio_button_tag :users_listtype, 'language'
 
     = text_field_tag :users_filter_degreelevel, current_user.degree_level
     = text_field_tag :users_filter_language

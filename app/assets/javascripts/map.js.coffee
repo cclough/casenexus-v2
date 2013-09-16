@@ -17,6 +17,10 @@ window.map_index_map_pan = (latlng) ->
   window.map.panToWithOffset latlng, -200, -30
   window.map.setZoom 10
 
+window.map_index_map_zoomout_and_pan = (latlng) ->
+  # window.map.panTo latlng
+  window.map.panToWithOffset latlng, -200, -30
+  window.map.setZoom 1
 
 # From http://stackoverflow.com/questions/8146676/google-maps-api-v3-offset-panto-by-x-pixels
 google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
@@ -59,9 +63,12 @@ window.map_index_users_item_bless = () ->
 
 window.map_index_load_infobox = (marker_id) ->
 
+  $("#map_index_container_user_infobox").fadeOut "fast", ->
   b = $("<div></div>")
-  b.html "<img src=/assets/markers/arrow.png></img>"
-  window.infobox.setContent b.html()
+  $.get "/members/" + marker_id + "/show_small", (data) ->
+    # b.html "<img src=/assets/markers/arrow.png></img>"
+    b.html data
+    window.infobox.setContent b.html()
   
   # Click to close
   # $("#map_index_container_user_infobox").click ->
@@ -71,6 +78,7 @@ window.map_index_load_infobox = (marker_id) ->
   marker = map_index_map_markers[marker_id]
   window.infobox.open map, marker
 
+  $("#map_index_container_user_infobox").fadeIn "fast"
 
 
 # Update the User List - submits form...
@@ -81,7 +89,8 @@ window.map_index_users_updatelist = ->
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
 
-
+  if (window.map?)
+    window.map_index_map_zoomout_and_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
 
 window.map_index_users_resetfilters = (filter_excep) ->
 
@@ -255,8 +264,8 @@ $(document).ready ->
     category = $(this).data("category")
 
     # Change radio
-    # radio = $(this).data("radio")
-    # $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
+    radio = $(this).data("radio")
+    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
 
     # Change text field to language name
     selection_id = $(this).data("id")
@@ -343,10 +352,19 @@ $(document).ready ->
     # Create the map
     window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
-    #New infobox with offset
+    # New infobox with offset
     window.infobox = new InfoBox
       # (h,v), (minus is left ,minus is up)
-      pixelOffset: new google.maps.Size(-39, -150)
+      pixelOffset: new google.maps.Size(-65, -145)
+
+    # Draw user marker
+    self_marker = new google.maps.Marker(
+      map: map
+      position: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
+      icon: new google.maps.MarkerImage("/assets/markers/arrow.png")
+      # shadow: shadow
+      animation: google.maps.Animation.DROP
+    )
 
     # Zoom Control Position Hack
     google.maps.event.addDomListener map, "tilesloaded", ->
