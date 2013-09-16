@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :approved
 
   ### Associations
   belongs_to :user

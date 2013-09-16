@@ -185,16 +185,6 @@ window.modal_message_show = (friend_id) ->
 
 
 
-window.modal_post_show = () ->
-  
-  if !($("#modal_post").hasClass("in"))
-
-    $(".modal").modal("hide")
-
-    $("#modal_post").on "shown", ->
-      window.modal_spinner_prime()
-
-    $("#modal_post").modal "show"
 
 
 
@@ -360,7 +350,7 @@ $(document).ready ->
       window.location.href = "/map?search=" + $("#header_nav_search_field").val()
 
   # Modals
-  $("#modal_contact, #modal_message, #modal_post, #modal_friendship_req, #modal_event, #modal_help").modal
+  $("#modal_contact, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
     backdrop: true
     show: false
 

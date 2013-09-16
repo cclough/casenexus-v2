@@ -239,6 +239,10 @@ class User < ActiveRecord::Base
       # user.not_friends.completed.online_recently.order('last_online_at desc')
     end
 
+    def list_users_with_posts
+      completed.where('posts.approved = ?',true)
+  
+    end
 
     # Pulldown Filters
     def list_language(language_id)

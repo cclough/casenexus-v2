@@ -65,8 +65,8 @@ $blue_skype:#45adea;
   width:480px;
   z-index:10;
   overflow-y:auto;
-  background:rgba(255,255,255,0.95s);
-
+  background:rgba(255,255,255,0.5s);
+  //background: rgba(54,54,54,0.5);
 //  .pagination {
 //    display:none;
 //  }
@@ -253,7 +253,7 @@ $blue_skype:#45adea;
   height:150px;
   background:white;
   @include box_sizing;
-  margin-bottom:10px;
+  margin-bottom:5px;
 }
 
 .map_index_users_item_avatar {
@@ -269,12 +269,20 @@ $blue_skype:#45adea;
     position:absolute;
     top:50%;
     left:50%;
-    margin-top:-25px;
+    margin-top:-40px;
     margin-left:-25px;
   }
 
+  .map_index_users_item_university {
+    position:absolute;
+    top:100px;
+    font-weight:bold;
+    width:100px;
+    text-align:center;
+  }
 
 }
+
 
 
 
@@ -285,9 +293,6 @@ $blue_skype:#45adea;
   width:280px;
   height:130px;
   padding:10px; //offsets width!
-//  div {
-//    display:block;
-//  }
 
   .map_index_users_item_user {
     position:absolute;
@@ -300,10 +305,51 @@ $blue_skype:#45adea;
     font-size:20px;
   }
 
-  .map_index_users_item_university {
+  .map_index_users_item_onlinestatus {
+
+    position:absolute;
+    top:25px;
+    left:0px;
+    right:10px;
+    width:200px;
+    z-index:5;
+    color:$gray_second;
+    font-size:11px;
+
+
+    .map_index_users_item_onlinestatus_icon {
+      float:left;
+    }
+    .map_index_users_item_onlinestatus_icon {
+
+      width: 12px;
+      height: 12px;
+
+      border-radius: 50%;
+      border:0px !important;
+      margin:1px 6px 0 0px;
+
+      background:transparent;
+
+      &.online_now {
+        background: $alert-green;   
+      }
+
+      &.online_earlier {
+        background: $alert-red;   
+      }
+
+      &.online_not {
+        background:$gray_second;
+      }
+
+    }
+
 
   }
 }
+
+
 
 .map_index_users_item_activity {
   position:absolute;
@@ -334,7 +380,8 @@ $blue_skype:#45adea;
     width:50px;
     height:50px;
     text-align:center;
-    line-height:50px;
+    line-height:43px;
+    position:relative;
   }
 
 
@@ -356,6 +403,14 @@ $blue_skype:#45adea;
     color:$gray_second;
   }
 
+  .map_index_users_item_cases_text {
+    position:absolute;
+    left:0px;
+    right:0px;
+    text-align:center;
+    top:15px;
+    font-size:10px;
+  }
 
 }
 
@@ -407,10 +462,38 @@ $blue_skype:#45adea;
     background-color: #3483b1;
   }
 
+}
 
+.map_index_users_item_post {
+  position:absolute;
+
+  left:110px;
+
+  top:55px;
+  right:70px;
+  background:$gray_second;
+  padding:10px;
+  color:white;
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
 
 }
 
+.map_index_users_item_post:after {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:50px; /* controls horizontal position */
+  border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+  border-style:solid;
+  border-color:$gray_second transparent; 
+
+  /* reduce the damage in FF3.0 */
+  display:block; 
+  width:0;
+}
 
 
 

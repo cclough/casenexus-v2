@@ -236,12 +236,17 @@ $(document).ready ->
   $("#map_index_users_form input").keypress (e) ->
     map_index_users_updatelist()  if e.which is 13
 
-
-  # Modal Stuff!
-  $("#modal_message, #modal_friendship_req, #modal_event").modal
-    backdrop: false
+  # Prime posts
+  $("#modal_post").modal
+    backdrop: true
     show: false
 
+  $("#map_index_users_form_button_posts_new").click ->
+    if !($("#modal_post").hasClass("in"))
+      $(".modal").modal("hide")
+      $("#modal_post").on "shown", ->
+        window.modal_spinner_prime()
+      $("#modal_post").modal "show"
 
 
   # For Pull Downs
@@ -250,8 +255,8 @@ $(document).ready ->
     category = $(this).data("category")
 
     # Change radio
-    radio = $(this).data("radio")
-    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
+    # radio = $(this).data("radio")
+    # $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
 
     # Change text field to language name
     selection_id = $(this).data("id")
@@ -281,7 +286,7 @@ $(document).ready ->
     # Remove and add active class to buttons
     $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
     $(this).addClass "active"
-    
+
     radio = $(this).data("radio")
 
     # Change radio
