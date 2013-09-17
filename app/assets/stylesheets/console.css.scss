@@ -1,7 +1,7 @@
-
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_gunmetal_second: #2d2d2d;
 
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
@@ -12,12 +12,12 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 $green_flatui: #1ABC9C;
+$gray_gunmetal: #363636;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
-
 
 
 #console_index_container {
@@ -34,14 +34,10 @@ $alert-yellow: #FFFF7E;
   width: 50%;
 }
 
-#console_index_pdfjs_header {
-  position:absolute;
-  right:0px;
-  left:0px;
-  top:50px;
-  height:50px;
-  background:$gray_second;
-}
+
+
+
+
 #console_index_pdfjs_iframe {
   height:100%;
   // width:49%;
@@ -51,11 +47,36 @@ $alert-yellow: #FFFF7E;
   border:0;
 }
 
+#console_index_pdfjs_blank {
+  position:absolute;
+  top:50px;
+  left:0px;
+  width:50%;
+  bottom:0px;
+
+  #console_index_pdfjs_blank_header {
+    position:absolute;
+    right:0px;
+    left:0px;
+    top:0px;
+    height:50px;
+    background:$gray_gunmetal;
+  }
+  #console_index_pdfjs_blank_message {
+    position:absolute;
+    left:50%;
+    top:50%;
+    height:100px;
+    width:100px;
+  }
+}
+
 #console_index_feedback {
   height:100%;
   overflow-y: hidden;
   overflow-x: hidden;
   position:relative;
+
 }
 
 
@@ -64,13 +85,12 @@ $alert-yellow: #FFFF7E;
   width:100%;
   overflow-y:auto;
   border:0;
-
 }
 
 
 
 #console_index_feedback_subnav {
-  background: $gray_second;
+  background: $gray_gunmetal;
   height: 50px;
 }
 
@@ -85,38 +105,65 @@ $alert-yellow: #FFFF7E;
   }
 }
 
-//////////////// Send PDF Button States
+//////////////// Send PDF Button ////////////
 
+#console_index_subnav_button_sendpdf_container {
+  width:130px;
+  float:left;
+  margin-top:8px;
+}
 
 .console_index_subnav_button_sendpdf_state {
-  width: 80px;
-}
-
-/////////////// Component Height Adjustments ////////////////
-.console_index_subnav_button_sendpdf_state, #console_index_subnav_button_skype_container {
-  margin-top:-6px; //sets vertical position of these buttons on the subnav
-}
-
-#console_index_subnav_select_friends_container, #console_index_subnav_select_books_container {
- margin-top:-2px; //sets vertical position of these buttons on the subnav
+  width: 130px;
 }
 
 
-#console_index_subnav_button_skype_container {
-  margin-right:6px;
+///////////////// BOOKS ////////////////////
+
+
+#console_index_subnav_select_books_container {
+  position:absolute;
+  left:50%;
+  top:58px;
+  margin-left:-230px !important;
+  z-index:1000;
+  width:200px;
 }
+
+
+///////////////// FRIENDS ///////////////////
+
+#console_index_subnav_select_friends_container {
+  float:right;
+  width:260px;
+  margin-top:8px;
+
+  #console_index_subnav_button_skype_container {
+
+
+    width:50px;
+    display:inline-block;
+  }
+  #console_index_subnav_select_friends{
+    width:200px;
+  }
+}
+
+
+
 
 
 
 
 ////////////// TIMER ///////////////
 #console_index_subnav_timer_panel {
-
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px 10px 3px 10px;
-  margin: -7px 3px 0px 3px;
+  position:absolute;
+  left:50%;
+  margin-left:-142px;
+  background-color: $gray_gunmetal_second;
+  padding: 10px 10px 10px 10px;
+  height:30px;
   width:160px;
-
 }
 
 #console_index_subnav_timer {
@@ -128,10 +175,10 @@ $alert-yellow: #FFFF7E;
 
 .console_index_subnav_button_timer_set {
   width:12px !important;
-  height:11px;
+  height:15px;
   line-height:11px;
   text-align:center;
-  padding: 3px 8px 10px 6px !important;
+  padding: 5px 8px 10px 6px !important;
 }
 
 
@@ -143,16 +190,15 @@ $alert-yellow: #FFFF7E;
 }
 
 #console_index_subnav_button_timer_pause, {
-  height:11px;
+  height:15px;
   width:40px;
-  padding: 3px 8px 10px 8px !important;
+  padding: 5px 8px 10px 8px !important;
 }
 
 #console_index_subnav_button_timer_reset, #console_index_subnav_button_timer_restart {
-  height:11px;
-  width:25px;
-  padding: 3px 10px 10px 6px !important;
-  text-align:center;
+  height:15px;
+  width:29px;
+  padding: 5px 6px 10px 6px !important;
 }
 
 .console_index_timer_panel_container{
@@ -169,72 +215,4 @@ $alert-yellow: #FFFF7E;
 
 
 
-//////////////////////////////////// SELECTS
 
-
-#console_index_subnav_select_books, #console_index_subnav_select_friends{
-
-  -webkit-transition-duration: 0.15000000596046448s, 0.15000000596046448s, 0.15000000596046448s;
-  -webkit-transition-property: background-color, border-color, box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1), cubic-bezier(0.25, 0.1, 0.25, 1), cubic-bezier(0.25, 0.1, 0.25, 1);
-  -webkit-user-select: none;
-
-  background-color:  transparent;
-  background-image:  url(pdfjs/toolbarButton-menuArrows.png);
-  background-repeat: no-repeat;
-  background-position :95% 50%;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-origin: padding-box;
-  background-size: auto auto;
-
-
-  border-radius:0px;
-
-  border-bottom-color: rgba(0, 0, 0, 0.417969);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-left-color: rgba(0, 0, 0, 0.378906);
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-right-color: rgba(0, 0, 0, 0.378906);
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-top-color: rgba(0, 0, 0, 0.316406);
-  border-top-style: solid;
-  border-top-width: 1px;
-
-
-  box-shadow: rgba(255, 255, 255, 0.046875) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.148438) 0px 0px 1px 0px inset, rgba(255, 255, 255, 0.046875) 0px 1px 0px 0px;
-  
-  color: rgb(243, 243, 243);
-  color:$gray_Dark;
-
-  cursor: default;
-  display: block;
-  float: left;
-  font-size: 12px;
-
-  height: 20px;
-
-  line-height: 14px;
-
-  margin-bottom: 4px;
-  margin-left: 0px;
-  margin-right: 2px;
-  margin-top: 3px;
-
-  max-width: 155px;
-  min-width: 155px;
-
-  overflow-x: hidden;
-  overflow-y: hidden;
-  padding-bottom: 2px;
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 3px;
-  position: relative;
-  right: auto;
-  width: 105px;
-  z-index: auto;
-}

@@ -40,9 +40,32 @@
               .splitToolbarButtonSeparator
               %button#next.toolbarButton.pageDown{"data-l10n-id" => "next", :tabindex => "7", :title => "Next Page"}
                 %span{"data-l10n-id" => "next_label"} Next
-            %label#pageNumberLabel.toolbarLabel{"data-l10n-id" => "page_label", :for => "pageNumber"} Page:
+
+            / %label#pageNumberLabel.toolbarLabel{"data-l10n-id" => "page_label", :for => "pageNumber"} Page:
             %input#pageNumber.toolbarField.pageNumber{:min => "1", :size => "4", :tabindex => "8", :type => "number", :value => "1"}/
             %span#numPages.toolbarLabel
+
+
+            .splitToolbarButton
+              %button#zoomOut.toolbarButton.zoomOut{"data-l10n-id" => "zoom_out", :tabindex => "9", :title => "Zoom Out"}
+                %span{"data-l10n-id" => "zoom_out_label"} Zoom Out
+              .splitToolbarButtonSeparator
+              %button#zoomIn.toolbarButton.zoomIn{"data-l10n-id" => "zoom_in", :tabindex => "10", :title => "Zoom In"}
+                %span{"data-l10n-id" => "zoom_in_label"} Zoom In
+            %span#scaleSelectContainer.dropdownToolbarButton
+              %select#scaleSelect{"data-l10n-id" => "zoom", :oncontextmenu => "return false;", :tabindex => "11", :title => "Zoom"}
+                %option#pageAutoOption{"data-l10n-id" => "page_scale_auto", :selected => "selected", :value => "auto"} Automatic Zoom
+                %option#pageActualOption{"data-l10n-id" => "page_scale_actual", :value => "page-actual"} Actual Size
+                %option#pageFitOption{"data-l10n-id" => "page_scale_fit", :value => "page-fit"} Fit Page
+                %option#pageWidthOption{"data-l10n-id" => "page_scale_width", :value => "page-width"} Full Width
+                %option#customScaleOption{:value => "custom"}
+                %option{:value => "0.5"} 50%
+                %option{:value => "0.75"} 75%
+                %option{:value => "1"} 100%
+                %option{:value => "1.25"} 125%
+                %option{:value => "1.5"} 150%
+                %option{:value => "2"} 200%
+
           #toolbarViewerRight
             %input#fileInput.fileInput{:oncontextmenu => "return false;", :style => "visibility: hidden; position: fixed; right: 0; top: 0", :type => "file"}/
             %button#presentationMode.toolbarButton.presentationMode.hiddenSmallView{"data-l10n-id" => "presentation_mode", :tabindex => "12", :title => "Switch to Presentation Mode"}
@@ -56,27 +79,9 @@
             / <div class="toolbarButtonSpacer"></div>
             %a#viewBookmark.toolbarButton.bookmark.hiddenSmallView{"data-l10n-id" => "bookmark", :href => "#", :tabindex => "16", :title => "Current view (copy or open in new window)"}
               %span{"data-l10n-id" => "bookmark_label"} Current View
-          .outerCenter
-            #toolbarViewerMiddle.innerCenter
-              .splitToolbarButton
-                %button#zoomOut.toolbarButton.zoomOut{"data-l10n-id" => "zoom_out", :tabindex => "9", :title => "Zoom Out"}
-                  %span{"data-l10n-id" => "zoom_out_label"} Zoom Out
-                .splitToolbarButtonSeparator
-                %button#zoomIn.toolbarButton.zoomIn{"data-l10n-id" => "zoom_in", :tabindex => "10", :title => "Zoom In"}
-                  %span{"data-l10n-id" => "zoom_in_label"} Zoom In
-              %span#scaleSelectContainer.dropdownToolbarButton
-                %select#scaleSelect{"data-l10n-id" => "zoom", :oncontextmenu => "return false;", :tabindex => "11", :title => "Zoom"}
-                  %option#pageAutoOption{"data-l10n-id" => "page_scale_auto", :selected => "selected", :value => "auto"} Automatic Zoom
-                  %option#pageActualOption{"data-l10n-id" => "page_scale_actual", :value => "page-actual"} Actual Size
-                  %option#pageFitOption{"data-l10n-id" => "page_scale_fit", :value => "page-fit"} Fit Page
-                  %option#pageWidthOption{"data-l10n-id" => "page_scale_width", :value => "page-width"} Full Width
-                  %option#customScaleOption{:value => "custom"}
-                  %option{:value => "0.5"} 50%
-                  %option{:value => "0.75"} 75%
-                  %option{:value => "1"} 100%
-                  %option{:value => "1.25"} 125%
-                  %option{:value => "1.5"} 150%
-                  %option{:value => "2"} 200%
+
+          / .outerCenter
+
         #loadingBar
           .progress
             .glimmer

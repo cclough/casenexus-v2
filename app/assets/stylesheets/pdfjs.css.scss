@@ -1,6 +1,3 @@
-
-
-
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
@@ -14,6 +11,7 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 $green_flatui: #1ABC9C;
+$gray_gunmetal: #363636;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -32,6 +30,14 @@ $alert-yellow: #FFFF7E;
     background-color: #48c9b0;
     cursor:pointer;
   }
+}
+
+#pageNumber.toolbarField.pageNumber {
+  display:none !important;
+}
+
+#numPages.toolbarLabel {
+  display:none !important;
 }
 
 ///////////
@@ -297,7 +303,7 @@ html[dir='rtl'] #sidebarContent {
 #toolbarContainer, .findbar {
   position: relative;
   height: 50px;
-  background: $gray_second;
+  background: $gray_gunmetal;
 
 }
 
@@ -1441,11 +1447,11 @@ canvas {
 
 @media all and (max-width: 770px) {
   #sidebarContainer {
-    top: 32px;
+    top: 50px;
     z-index: 100;
   }
   .loadingInProgress #sidebarContainer {
-    top: 39px;
+    top: 32px;
   }
   #sidebarContent {
     top: 32px;

@@ -4,7 +4,7 @@
 
     = link_to '#', class: "btn btn-primary  btn-small application_tooltip console_index_subnav_button_sendpdf_state", "data-original-title"=>"Send " + @friend.username + " the exhibits in this case via email", rel: "tooltip", "data-placement"=>"bottom", id: "console_index_subnav_button_sendpdf" do
       %i.icon-envelope.icon-white
-      = @book.chart_num.to_s + " Charts"
+      = "Email " + @book.chart_num.to_s + " Charts"
 
   - else
 

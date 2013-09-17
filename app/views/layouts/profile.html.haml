@@ -44,6 +44,16 @@
 
     = render 'layouts/flash', flash: flash
 
+
+    #profile_index_colorblock
+
+      #profile_index_widgets
+        %div
+          = link_to edit_account_path(current_user) do
+            %i.icon-cogs
+        %div
+          = link_to notifications_path do
+            %i.icon-envelope
         
     #application_container_main.profile
       .container.main

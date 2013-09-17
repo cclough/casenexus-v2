@@ -1,6 +1,9 @@
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_gunmetal: #363636;
+$gray_gunmetal_second: #2d2d2d;
+$green_flatui: #1ABC9C;
 
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
@@ -10,15 +13,44 @@ $gray_Darker: #333333;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
-$green_flatui: #1ABC9C;
-$gray_gunmetal: #363636;
-
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
+#profile_index_colorblock {
+  position:absolute;
+  top:50px;
+  left:0px;
+  right:0px;
+  height:80px;
+  background:$gray_gunmetal_second;
+  z-index:0;
+
+  #profile_index_widgets {
+    position:absolute;
+    right:200px;
+    top:20px;
+    height:50px;
+    width:200px;
+//    outline:1px solid white;
+    text-align:center;
+    div {
+      width:50px;
+      height:50px;
+      font-size:30px;
+      display:inline-block;
+      color:white;
+    }
+    a {
+      color:white;
+    }
+  }
+}
 #profile_index_container {
+  a {
+    color:white !important;
+  }
   position:absolute;
   left:50%;
   width:1000px;
@@ -162,22 +194,7 @@ $alert-yellow: #FFFF7E;
     }
   }
 
-  #profile_index_widgets {
-    position:absolute;
-    right:50px;
-    top:-50px;
-    height:50px;
-    width:200px;
-//    outline:1px solid white;
-    text-align:center;
-    div {
-      width:50px;
-      height:50px;
-      font-size:30px;
-      display:inline-block;
-      color:white;
-    }
-  }
+
 }
 
 

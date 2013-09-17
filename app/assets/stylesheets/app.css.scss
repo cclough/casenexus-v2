@@ -11,8 +11,7 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 $green_flatui: #1ABC9C;
-
- $gray_gunmetal: #363636;
+$gray_gunmetal: #363636;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -171,6 +170,7 @@ textarea {
 
   &.profile {
     background: $gray_gunmetal !important;
+    top:130px;
   }
 }
 

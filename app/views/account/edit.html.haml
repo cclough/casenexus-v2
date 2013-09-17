@@ -55,10 +55,6 @@
             %span.account_form_label_bold
               = @user.degree_level_in_words
           .row
-            %span.account_form_label_gray Subject:
-            %span.account_form_label_bold
-              = @user.subject.name
-          .row
             %span.account_form_label_gray Cases Interviewed:
             %span.account_form_label_bold
               = @user.case_count_givn
@@ -147,13 +143,6 @@
         .span26
           = f.select :degree_level, options_for_select([['Undergraduate/Masters', 0], ['MBA', 1]]), {}, {class: "chzn-select-nosearch span26"}
 
-      .spacer20
-
-      .row
-        .span24.offset2.account_form_label
-          Degree Subject
-        .span26
-          = f.collection_select :subject_id, Subject.all, :id, :name, {selected: @user.subject}, {class: "chzn-select span26"}
 
       .account_edit_form_spacer
 

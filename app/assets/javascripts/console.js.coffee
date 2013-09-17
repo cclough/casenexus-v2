@@ -105,7 +105,10 @@ $(document).ready ->
     book_id = $(this).val()
     if book_id > 0
       book_url = "/console/pdfjs?id=" + book_id
+
+      # $("#console_index_pdfjs_blank").fadeOut "fast"
       $("#console_index_pdfjs_iframe").attr "src", book_url
+      $("#console_index_pdfjs_blank").hide()
 
       console_index_subnav_sendpdf_check()
 
@@ -113,13 +116,11 @@ $(document).ready ->
       $.get "/books/" + book_id + "/show_small", (data) ->
         $("#cases_new_book").html data
 
-
-        
-
     else
       $("#cases_new_book").html ""
+      $("#console_index_pdfjs_blank").show ->
+        $("#console_index_pdfjs_iframe").attr "src", ""
 
-      $("#console_index_pdfjs_iframe").attr "src", ""
 
       $("#cases_new_nobook").fadeIn "fast"
 
