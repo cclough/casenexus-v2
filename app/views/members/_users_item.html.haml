@@ -81,15 +81,14 @@
 
   
   .map_index_users_item_stuff
-
-    .map_index_users_item_cases_givn
-      = users_item.case_count_givn
-      %span.map_index_users_item_cases_text
-        given
     .map_index_users_item_cases_recd
       = users_item.case_count_recd
       %span.map_index_users_item_cases_text
         rec'd
+    .map_index_users_item_cases_givn
+      = users_item.case_count_givn
+      %span.map_index_users_item_cases_text
+        given
     .map_index_users_item_cases_external
       = users_item.cases_external
       %span.map_index_users_item_cases_text

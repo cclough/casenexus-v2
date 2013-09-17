@@ -16,70 +16,64 @@
         .row
 
           .span.books_index_books_item_body
+
             .row.books_index_books_item_titles
-              .span.books_index_books_item_source_title
-                - if books_item.title.blank?
-                  = books_item.source_title
-                - else
-                  = "#{books_item.source_title}:&nbsp;".html_safe
+              / .span.books_index_books_item_source_title
+              /   - if books_item.title.blank?
+              /     = books_item.source_title
+              /   - else
+              /     = "#{books_item.source_title}:&nbsp;".html_safe
+
+              - unless books_item.difficulty.blank?
+                = books_difficulty_stamp(books_item)
+
               - unless books_item.title.blank?
-                .span.books_index_books_item_title
+                %span.books_index_books_item_title
                   = books_item.title
 
             .spacer5
 
             .row
-              .span.books_index_books_item_author
-                = books_item.author
-              .span.offset1.books_index_books_item_university_image
-                - unless books_item.university.blank?
-                  .span
-                    = image_tag "universities/" + books_item.university.image
-                  .span.offset1
-                    = books_item.university.name
+              / .span.books_index_books_item_author
+              /   = books_item.author
+              / .span.offset1.books_index_books_item_university_image
+              /   - unless books_item.university.blank?
+              /     .span
+              /       = image_tag "universities/" + books_item.university.image
+              /     .span.offset1
+              /       = books_item.university.name
 
+              .books_index_books_item_info_container
+                = books_item.chart_num_in_words
 
-            .spacer5
-
-            .row.books_index_books_item_description
-              .span
-                = books_item.desc_trunc
             .spacer10
+
+            / .row.books_index_books_item_description
+            /   .span
+            /     = books_item.desc_trunc
+            / .spacer10
             .row.application_tags_container
               = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
 
 
-            .spacer5
-          .span.offset1.pull-right
-            .books_rating_read_container.panel.dark.kill_all
-              .books_rating_read{"data-rating" => books_item.average_rating.round(1)}
-              .books_rating_read_text
-                User rating:
-                = pluralize(books_item.average_rating.round(1),"Star")
-            .books_index_books_item_info_container.panel.kill_all
-              %div
-                = books_item.chart_num_in_words
-              - unless books_item.difficulty.blank?
-                .books_index_books_item_difficulty
-                  = book_difficulty_in_words(books_item.difficulty)
+      .span.offset1.pull-right
+        .row
+          .books_rating_read_container
+            %span.books_rating_read{"data-rating" => books_item.average_rating.round(1)}
+            %div
+              = books_item.average_rating.round(1).to_s + "/5"
 
+        .spacer10
+        .row
+          .books_index_books_item_actions_container
+            - if books_item.btype == "case"
 
-      .row
-
-        .span.pull-right.books_index_books_item_actions_container
-          - if books_item.btype == "case"
-
-            .span
-              .books_index_books_item_schedule_button.btn.btn-small.btn-primary{"data-book_id" => books_item.id.to_s}
+              .books_index_books_item_schedule_button.btn.btn-primary{"data-book_id" => books_item.id.to_s}
                 %i.icon-calendar 
-                Schedule
-            .span
-              = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary "
-          .span
-            .books_index_books_item_comments{"data-id"=>books_item.id}
-              = link_to book_path(books_item), class: "btn btn-small btn-primary " do
-                Rate & Comment
+
+              = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-primary"
+
+              = link_to book_path(books_item), "data-id"=>books_item.id,class: "books_index_books_item_comments btn btn-primary" do
+                Comment
                 %strong (#{books_item.comments.count})
-
-
 

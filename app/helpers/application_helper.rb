@@ -118,16 +118,20 @@ module ApplicationHelper
 
   end
 
-  def book_difficulty_in_words(num)
+  def books_difficulty_stamp(book)
+
+    num = book.difficulty
+
     case num
     when 1
-      content_tag :span, "Novice", class: "application_bootstrap_green"
+      content_tag :div, "Novice", class: "books_index_books_item_difficulty application_bootstrap_alert_green"
     when 2
-      content_tag :span, "Intermediate", class: "application_bootstrap_yellow"
+      content_tag :div, "Intermediate", class: "books_index_books_item_difficulty application_bootstrap_alert_blue"
     when 3
-      content_tag :span, "Advanced", class: "application_bootstrap_red"
+      content_tag :div, "Advanced", class: "books_index_books_item_difficulty application_bootstrap_alert_red"
     end
   end
+
 
   def online_user_count
       count = pluralize(User.online_now.count,"user")
