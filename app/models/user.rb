@@ -240,8 +240,7 @@ class User < ActiveRecord::Base
     end
 
     def list_users_with_posts
-      completed.where('posts.approved = ?',true)
-  
+      includes(:posts).completed.where('posts.approved = ?',true)
     end
 
     # Pulldown Filters

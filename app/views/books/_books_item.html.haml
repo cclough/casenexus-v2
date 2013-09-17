@@ -1,5 +1,5 @@
 .row
-  .books_index_books_item.panel.dark.kill_top
+  .books_index_books_item.panel.dark.kill_top.kill_left.kill_right
     .row
 
       .span12
@@ -70,14 +70,14 @@
           - if books_item.btype == "case"
 
             .span
-              .books_index_books_item_schedule_button.btn.btn-small.btn-primary.btn-embossed{"data-book_id" => books_item.id.to_s}
+              .books_index_books_item_schedule_button.btn.btn-small.btn-primary{"data-book_id" => books_item.id.to_s}
                 %i.icon-calendar 
                 Schedule
             .span
-              = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary btn-embossed"
+              = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary "
           .span
             .books_index_books_item_comments{"data-id"=>books_item.id}
-              = link_to book_path(books_item), class: "btn btn-small btn-primary btn-embossed" do
+              = link_to book_path(books_item), class: "btn btn-small btn-primary " do
                 Rate & Comment
                 %strong (#{books_item.comments.count})
 

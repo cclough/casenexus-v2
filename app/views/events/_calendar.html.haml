@@ -6,12 +6,12 @@
 #events_calendar
   .row
     .span
-      #events_calendar_new_button.btn.btn-primary.btn-embossed
+      #events_calendar_new_button.btn.btn-primary
         %i.icon-plus
         New
     .span.offset1
       = link_to calendar_ics_url do
-        .btn.btn-primary.btn-embossed
+        .btn.btn-primary
           %i.icon-external-link
           Sync with my calendar
 
@@ -20,7 +20,7 @@
 
         #events_calendar_month
           = link_to date: @date.prev_month do
-            .btn.btn-primary.btn-embossed.btn-small
+            .btn.btn-primary.btn-small
               %i.icon-chevron-left.icon-white
           
           %span#events_calendar_month_text
@@ -31,7 +31,7 @@
 
 
           = link_to date: @date.next_month do
-            .btn.btn-primary.btn-embossed.btn-small
+            .btn.btn-primary.btn-small
               %i.icon-chevron-right.icon-white
   .spacer5
   .row

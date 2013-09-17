@@ -82,7 +82,7 @@
 
           .spacer5
           .row
-            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-primary btn-embossed btn-small")
+            = link_to(raw("<i class=icon-remove></i> Delete my account"), delete_account_path, class: "btn btn-primary  btn-small")
 
 
       .account_edit_form_spacer
@@ -103,11 +103,11 @@
           You have no reputation points yet
       .spacer20
       .row
-        .row.btn.btn-primary.btn-embossed +5
+        .row.btn.btn-primary +5
         Vote up on your Question, Answer or Comment
-        .row.btn.btn-primary.btn-embossed +10
+        .row.btn.btn-primary +10
         Did a case (received feedback)
-        .row.btn.btn-primary.btn-embossed +20
+        .row.btn.btn-primary +20
         Gave a case (sent feedback)
 
 
@@ -223,6 +223,6 @@
 
       .row
         #account_edit_form_submit_panel
-          = f.submit "Save changes", class: "btn btn-large btn-primary btn-embossed", id: "account_edit_button_submit"
+          = f.submit "Save changes", class: "btn btn-large btn-primary ", id: "account_edit_button_submit"
 
       .spacer20

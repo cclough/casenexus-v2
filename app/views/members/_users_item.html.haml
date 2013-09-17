@@ -39,16 +39,16 @@
 
         - if Friendship.friends?(current_user, users_item)
 
-          = link_to raw("<i class=icon-comment icon-white></i>"),"#", class: "map_index_users_item_button_message btn btn-primary btn-embossed btn-small", "data-friend_id" => users_item.id
+          = link_to raw("<i class=icon-comment icon-white></i>"),"#", class: "map_index_users_item_button_message btn btn-primary  btn-small", "data-friend_id" => users_item.id
 
-          %a.map_index_users_item_button_event.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => users_item.id.to_s}
+          %a.map_index_users_item_button_event.btn.btn-primary.btn-small{"data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
 
-          %a.map_index_users_item_button_startcase.btn.btn-primary.btn-embossed.btn-small{ href:"/console?friend_id=" + users_item.id.to_s}
+          %a.map_index_users_item_button_startcase.btn.btn-primary.btn-small{ href:"/console?friend_id=" + users_item.id.to_s}
             %i.icon-arrow-right.icon-white
 
           - unless users_item.skype.blank?
-            %a.map_index_users_item_button_skype.btn.btm-small.btn-primary.btn-embossed{href: "skype:#{users_item.skype}?call"}
+            %a.map_index_users_item_button_skype.btn.btm-small.btn-primary{href: "skype:#{users_item.skype}?call"}
               %span.fui-skype
 
 
@@ -58,16 +58,16 @@
         - elsif Friendship.pending?(users_item, current_user)
 
           Pending case partner request
-          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-primary btn-embossed btn-mini")
+          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-primary  btn-mini")
           = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-mini")
 
         - elsif !Friendship.exist?(current_user, users_item)
-          %a.map_index_users_item_button_add.btn.btn-primary.btn-embossed.btn-small{"data-friend_id" => users_item.id }
+          %a.map_index_users_item_button_add.btn.btn-primary.btn-small{"data-friend_id" => users_item.id }
             %i.icon-plus.icon-white
             Add partner
 
         - unless users_item.linkedin.blank?
-          %a.map_index_users_item_button_linkedin.btn.btn-primary.btn-embossed.btn-small{href: "http://www.linkedin.com/"+users_item.linkedin}
+          %a.map_index_users_item_button_linkedin.btn.btn-primary.btn-small{href: "http://www.linkedin.com/"+users_item.linkedin}
             %span.fui-linkedin
 
 

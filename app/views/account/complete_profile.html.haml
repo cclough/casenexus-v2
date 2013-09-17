@@ -47,4 +47,4 @@
     = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", "data-placeholder" => "Which languages do you speak?"}
 
     .spacer15 
-    = f.submit "Complete Sign up", class: "btn btn-large btn-primary btn-embossed btn-block", id: "account_complete_panel_submit"
+    = f.submit "Complete Sign up", class: "btn btn-large btn-primary  btn-block", id: "account_complete_panel_submit"

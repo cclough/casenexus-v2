@@ -248,6 +248,12 @@ $alert-yellow: #FFFF7E;
 
 #events_new_datetime_picker {
   margin:0;
+  border:2px solid $gray_second;
+  .add-on {
+    border-radius:0px !important;
+    height:26px;
+    line-height:27px;
+  }
 }
 
 
@@ -260,6 +266,9 @@ $alert-yellow: #FFFF7E;
   width:300px !important;
   font-size:25px;
   border:0;
+
+
+  padding-top:5px;
 
   text-align:center;
 

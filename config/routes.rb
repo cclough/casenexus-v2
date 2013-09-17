@@ -99,13 +99,17 @@ Casenexus::Application.routes.draw do
   resources :answers, only: [:create, :update, :show, :destroy, :edit] do
   end
 
+
   # Tagging
   get 'questions/tags/:tag', to: 'questions#index', as: :question_tag
   get 'books/tags/:tag', to: 'books#index', as: :book_tag
+
+
   # Library
   resources :books, only: [:index, :show] do
     get :show_small, on: :member
   end
+  match '/library', to: 'books#index', as: :library
 
   # Comments
   resources :comments
@@ -118,11 +122,10 @@ Casenexus::Application.routes.draw do
   match 'console/sendpdfbutton' => 'console#sendpdfbutton', :as => :sendpdfbutton
   match 'console/skypebutton' => 'console#skypebutton', :as => :skypebutton
 
-  # Map
-  match '/library', to: 'books#index', as: :library
 
   # Site contacts
   match '/site_contacts/create', to: 'site_contacts#create', as: :site_contact
+
 
   # Events
   resources :events, except: [:show] do
@@ -130,5 +133,5 @@ Casenexus::Application.routes.draw do
     get :user_timezone, on: :collection
     get :calendar, on: :collection
   end
-
+  match '/calendar', to: 'events#index', as: :calendar
 end

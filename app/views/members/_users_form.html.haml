@@ -5,57 +5,66 @@
   .row
 
     #map_index_users_form_button_container_local
-      %a#map_index_users_form_button_local.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>0}
+      %a#map_index_users_form_button_local.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>0}
         %i.icon-user
         %br
         Near you
-        %span.iconbar-unread
-          = User.list_local(current_user).count
+        - user_near_count = User.list_local(current_user).count
+        - unless user_near_count == 0
+          %span.iconbar-unread
+            = user_near_count
 
 
     .map_index_users_form_button_container
 
 
-      %a#map_index_users_form_button_shouts.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>4}
+      %a#map_index_users_form_button_shouts.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>4}
         %i.icon-bullhorn
         Shoutouts
-        %span.iconbar-unread
-          = Post.count
+        - user_with_post_count = User.list_users_with_posts.count
+        - unless user_with_post_count == 0
+          %span.iconbar-unread
+            = user_with_post_count
 
-      #map_index_users_form_button_posts_new.btn.btn-small.btn-primary.btn-embossed
+      #map_index_users_form_button_posts_new.btn.btn-small.btn-primary
         Shout!
 
 
 
     .map_index_users_form_button_container.pull-right
 
-      / %a.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>1}
+      / %a.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>1}
       /   New
       /   %span.iconbar-unread
       /     = User.list_new.count
 
-      %a#map_index_users_form_button_onlinetoday.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed.active{"data-radio"=>2}
+      %a#map_index_users_form_button_onlinetoday.map_index_users_form_button.btn.btn-small.btn-primary.active{"data-radio"=>2}
         Online today
-        %span.iconbar-unread
-          = User.where(["users.id <> ?",current_user.id]).list_online_today.count
-      %a#map_index_users_form_button_onlinenow.map_index_users_form_button.btn.btn-small.btn-primary.btn-embossed{"data-radio"=>3}
+        - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
+        - unless online_today_count == 0
+          %span.iconbar-unread
+            = online_today_count
+
+      %a#map_index_users_form_button_onlinenow.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>3}
         Online now
-        %span.iconbar-unread
-          = User.where(["users.id <> ?",current_user.id]).list_online_now.count
+        - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
+        - unless online_now_count == 0
+          %span.iconbar-unread
+            = online_now_count
 
 
     .map_index_users_form_button_container.pull-right
 
       .btn-group
-        .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary.btn-embossed{ "data-degreelevel_id" => 0,class: ("active" if current_user.degree_level == 0)}
+        .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary{ "data-degreelevel_id" => 0,class: ("active" if current_user.degree_level == 0)}
           UG
         }
-        .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary.btn-embossed{ "data-degreelevel_id" => 1 ,class: ("active" if current_user.degree_level == 1)}
+        .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary{ "data-degreelevel_id" => 1 ,class: ("active" if current_user.degree_level == 1)}
           MBA
 
 
       .btn-group.map_index_users_form_pulldown
-        %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
+        %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
           %span.filter-option.pull-left All Languages
           &nbsp;
           %span.caret.small

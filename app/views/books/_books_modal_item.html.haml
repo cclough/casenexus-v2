@@ -70,14 +70,14 @@
 
               - if books_item.btype == "case"
                 .row
-                  = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-primary btn-embossed books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
+                  = link_to raw("<i class=icon-calendar></i> Schedule"), "#", class: "btn btn-small btn-primary  books_index_books_item_schedule_button", "data-book_id" => books_item.id.to_s
                 .row
-                  = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary btn-embossed"
+                  = link_to raw("<i class=icon-arrow-right></i> Start case"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-small btn-primary "
               
 
               
               .row
                 .books_index_books_item_comments{"data-id"=>books_item.id}
-                  = link_to book_path(books_item), class: "btn btn-small btn-primary btn-embossed" do
+                  = link_to book_path(books_item), class: "btn btn-small btn-primary " do
                     Rate & Comment
                     %strong (#{books_item.comments.count})

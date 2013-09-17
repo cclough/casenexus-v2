@@ -10,16 +10,16 @@
 .onlinepanel_show_menu_container{"data-friend_id"=> @online_user.id}
 
   - if !@online_user.skype.blank?
-    = link_to "skype:#{@online_user.skype}?call", class: "btn btn-primary btn-embossed btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.username + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
+    = link_to "skype:#{@online_user.skype}?call", class: "btn btn-primary  btn-mini application_tooltip", "data-original-title"=>"Call " + @online_user.username + " on Skype", rel: "tooltip", "data-placement"=>"bottom" do
       = image_tag "icons/skype_button.png", class: "application_icon_skype"
 
   = link_to "/console?friend_id=" + @online_user.id.to_s do
-    .btn.btn-primary.btn-embossed.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.username, rel: "tooltip", "data-placement"=>"bottom"}
+    .btn.btn-primary.btn-mini.application_tooltip{"data-original-title"=>"Start case with " + @online_user.username, rel: "tooltip", "data-placement"=>"bottom"}
       %i.icon-arrow-right
 
-  .onlinepanel_show_menu_message.btn.btn-primary.btn-embossed.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.username + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
+  .onlinepanel_show_menu_message.btn.btn-primary.btn-mini.application_tooltip{"data-original-title"=>"Send " + @online_user.username + " a message", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @online_user.id}
     %i.icon-envelope
 
 .pull-right
-  .onlinepanel_show_menu_open.btn.btn-primary.btn-embossed.btn-mini{"data-friend_id" => @online_user.id}
+  .onlinepanel_show_menu_open.btn.btn-primary.btn-mini{"data-friend_id" => @online_user.id}
     %i.icon-ellipsis-horizontal

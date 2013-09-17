@@ -1,34 +1,14 @@
 = form_tag books_path, method: 'get', id: "books_index_books_form" do
   .row
-    %span.form-search
-      .input-append
-        = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_books_form_searchfield", class: 'search-query'
-        %button.btn{type: "submit"}
-          %span.fui-search
+    .span47
+
+      .span.form-search
+        .input-append
+          = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_books_form_searchfield", class: 'search-query'
+          %button.btn{type: "submit"}
+            %span.fui-search
 
 
-
-
-    .pull-right
-      .span.offset1#books_index_books_form_label
-        Per Page
-        %i.icon-caret-right
-      .span.offset1
-        .btn-group
-          = pageable_books("10")
-          = pageable_books("20")
-          = pageable_books("50") 
-      .span.offset1#books_index_books_form_label
-        Filter
-        %i.icon-caret-right
-      / Type Buttons
-      .span.offset1
-        .btn-group
-          = filterable_books('all', 'All')
-          = filterable_books('guide', 'Guides')
-          = filterable_books('link', 'Web')
-          = filterable_books('case', 'Cases')
-          = hidden_field_tag('btype', params[:btype])
 
       .span.offset1#books_index_books_form_label
         Sort by
@@ -36,7 +16,7 @@
 
       .span.offset1#books_index_books_form_sort.application_menu_sort
         .btn-group
-          %a.btn.btn-primary.btn-embossed.dropdown-toggle{"data-toggle" => "dropdown"}
+          %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
             - if params[:sort] == "average_rating"
               Rating
             - elsif params[:sort] == "title"
@@ -46,7 +26,7 @@
             - elsif params[:sort] == "difficulty"
               Difficulty
             - elsif params[:sort] == "chart_num"
-              Chart Number
+              Chart #
             - else
               Title
             %span.caret
@@ -60,31 +40,55 @@
             %li
               = sortable "difficulty", "By Difficulty"
             %li
-              = sortable "chart_num", "By Chart Number"
-  .spacer10
-  .row
+              = sortable "chart_num", "By Chart #"
 
-
-    .span47
-      .row.books_index_books_form_title
-        Type
+      .spacer50
       .row
-        %select.span47.books_index_books_form_select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
-          %option{value: ""} All
-          - Tag.where(category_id:4).each do |tags_type_item|
-            %option{value: tags_type_item.id }
-              = tags_type_item.name
+
+        / .span.offset1#books_index_books_form_label
+        /   Show
+        /   %i.icon-caret-right
+        .span
+          .btn-group
+            = pageable_books("10")
+            = pageable_books("20")
+            = pageable_books("50") 
+        .span.offset4#books_index_books_form_label
+          Filter
+          %i.icon-caret-right
+        / Type Buttons
+        .span.offset1
+          .btn-group
+            = filterable_books('all', 'All')
+            = filterable_books('guide', 'Guides')
+            = filterable_books('link', 'Web')
+            = filterable_books('case', 'Cases')
+            = hidden_field_tag('btype', params[:btype])
 
 
-    .span47.offset1
-      .row.books_index_books_form_title
-        Industry
-      .row
-        %select.span47.books_index_books_form_select{name: "tag_industry_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
-          %option{value: ""} All
-          - Tag.where(category_id:5).each do |tags_industry_item|
-            %option{value: tags_industry_item.id }
-              = tags_industry_item.name
+
+
+    .span4#books_index_books_form_label
+      .spacer25
+      Type
+      %i.icon-caret-right
+    .span35.offset1
+      %select.span40.books_index_books_form_select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
+        %option{value: ""} All
+        - Tag.where(category_id:4).each do |tags_type_item|
+          %option{value: tags_type_item.id }
+            = tags_type_item.name
+
+
+    / .span47.offset1
+    /   .row.books_index_books_form_title
+    /     Industry
+    /   .row
+    /     %select.span46.books_index_books_form_select{name: "tag_industry_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
+    /       %option{value: ""} All
+    /       - Tag.where(category_id:5).each do |tags_industry_item|
+    /         %option{value: tags_industry_item.id }
+    /           = tags_industry_item.name
 
 
     / %input.btn.btn-primary.span15{type:"submit", value: "Filter"}
