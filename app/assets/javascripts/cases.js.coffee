@@ -442,16 +442,17 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     chart_analysis_progress.addGraph graph
     
     # LEGEND
-    legend = new AmCharts.AmLegend()
-    legend.position = "bottom"
-    legend.align = "center"
-    legend.rollOverGraphAlpha = "0.15"
-    # legend.color = "#f6f6f6"
-    legend.horizontalGap = 5
-    legend.switchable = true
-    legend.valueWidth = 25
-    chart_analysis_progress.addLegend legend
-    
+    # legend = new AmCharts.AmLegend()
+    # # legend.position = "bottom"
+    # # legend.align = "center"
+    # legend.rollOverGraphAlpha = "0.15"
+    # # legned.fontSize = 8
+    # # legend.color = "#f6f6f6"
+    # legend.horizontalGap = 0
+    # legend.switchable = true
+    # legend.valueWidth = 10
+    # chart_analysis_progress.addLegend(legend, "profile_index_feedback_chart_legend")
+
     # CURSOR //////////
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
     chartCursor = new AmCharts.ChartCursor()
@@ -483,7 +484,7 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     chart_analysis_progress.addChartScrollbar chartScrollbar
     
     # WRITE
-    chart_analysis_progress.write "cases_analysis_chart_progress"
+    chart_analysis_progress.write "profile_index_feedback_chart"
   
   # method to parse sql date string into AM compataible Date Object
   parseDate = (dateString) ->

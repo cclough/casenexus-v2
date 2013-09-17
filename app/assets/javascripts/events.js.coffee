@@ -3,6 +3,8 @@ window.events_calendar_rebless = ->
     event_id = $(this).data("id")
     window.events_calendar_edit_modal_show(event_id)
 
+  $(".application_tooltip").tooltip()
+  
   $("#events_calendar_new_button").click ->
     window.modal_event_new_show(null,null)
 

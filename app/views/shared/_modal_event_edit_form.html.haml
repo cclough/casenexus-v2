@@ -105,14 +105,13 @@
 
       = render 'events/button_startcase'
 
-      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary " do
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary events_edit_actions_button" do
         %span.fui-skype
-        Call #{@event.partner.username}
         
 
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
+
     .application_submit_button_with_spinner.btn.btn-primary{tabindex: "102"}
-      %i.icon-arrow-right.icon-white
       Amend Appointment
 
 

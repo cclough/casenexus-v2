@@ -99,7 +99,7 @@ class EventsController < ApplicationController
     if params[:back_url]
       redirect_to params[:back_url]
     else
-      redirect_to events_path
+      redirect_to profile_path
     end
   end
 

@@ -4,50 +4,45 @@
 
 
 #events_calendar
-  .row
-    .span
-      #events_calendar_new_button.btn.btn-primary
-        %i.icon-plus
-        New
-    .span.offset1
-      = link_to calendar_ics_url do
-        .btn.btn-primary
-          %i.icon-external-link
-          Sync with my calendar
-
-    .pull-right
-      .span
-
-        #events_calendar_month
-          = link_to date: @date.prev_month do
-            .btn.btn-primary.btn-small
-              %i.icon-chevron-left.icon-white
-          
-          %span#events_calendar_month_text
-            = @date.strftime("%B %Y")
-            %span#events_calendar_month_text_count
-              - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-              = "(#{pluralize(month_count,"event")})"
+  #events_calendar_month
+    = link_to date: @date.prev_month do
+      .btn.btn-primary.btn-small
+        %i.icon-chevron-left.icon-white
+    
+    %span#events_calendar_month_text
+      = @date.strftime("%B %Y")
+      %span#events_calendar_month_text_count
+        - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
+        = "(#{pluralize(month_count,"event")})"
 
 
-          = link_to date: @date.next_month do
-            .btn.btn-primary.btn-small
-              %i.icon-chevron-right.icon-white
-  .spacer5
-  .row
-    = calendar @date do |date|
-      = date.day
-      - if @events_by_date[date]
+    = link_to date: @date.next_month do
+      .btn.btn-primary.btn-small
+        %i.icon-chevron-right.icon-white
+
+  .spacer10
+
+  = calendar @date do |date|
+    = date.day
+    - if @events_by_date[date]
 
 
-        .span.pull-right.events_calendar_event_count
-          = "x" + @events_by_date[date].count.to_s
+      .span.pull-right.events_calendar_event_count
+        = "x" + @events_by_date[date].count.to_s
 
 
-        .events_calendar_event_container
-          - @events_by_date[date].each do |event|
-            .events_calendar_event{"data-id" => event.id}
-              .span4
-                = event.datetime.strftime("%H:%M")
-              .span20.events_calendar_event_username
-                = event.partner.username
+      .events_calendar_event_container
+        - @events_by_date[date].each do |event|
+          .events_calendar_event.application_tooltip.btn.btn-primary{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username, rel: "tooltip", "data-placement"=>"bottom"}
+            = event.datetime.strftime("%H:%M")
+
+  .spacer10
+           
+  #events_calendar_actions
+    #events_calendar_new_button.btn.btn-primary
+      %i.icon-plus
+      New
+    = link_to calendar_ics_url do
+      .btn.btn-primary
+        %i.icon-external-link
+        Sync with my calendar

@@ -11,8 +11,7 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 $green_flatui: #1ABC9C;
-
- $gray_gunmetal: #363636;
+$gray_gunmetal: #363636;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -29,7 +28,7 @@ $alert-yellow: #FFFF7E;
   margin-left:-500px;
   color:white;
 
-  
+//  outline:1px solid white;
 
   .profile_index_title {
     height:30px;
@@ -38,11 +37,12 @@ $alert-yellow: #FFFF7E;
   }
 
   #profile_index_calendar {
-    height:400px;
-    width:340px;
+    height:420px;
+    width:350px;
     float:left;
-    margin-right:80px;
-    
+    margin-right:70px;
+//    outline:1px solid white;
+    margin-top:40px;
   }
 
   #profile_index_friends {
@@ -50,7 +50,7 @@ $alert-yellow: #FFFF7E;
     width:270px;
     float:left;
     margin-right:40px;
-    
+//    outline:1px solid white;
 
     .profile_index_title {
       height:30px;
@@ -98,7 +98,7 @@ $alert-yellow: #FFFF7E;
     height:220px;
     width:270px;
     float:left;
-    
+//    outline:1px solid white;
 
     #profile_index_notes_canvas {
       height:220px;
@@ -122,12 +122,13 @@ $alert-yellow: #FFFF7E;
     width:580px;
     float:left;
     margin-top:40px;
-    
+    position:relative;
+//    outline:1px solid white;
 
     #profile_index_feedback_cases {
       height:210px;
       width:200px;
-      
+//      outline:1px solid white;
       float:left;
       overflow:auto;
       .profile_index_feedback_cases_item {
@@ -149,8 +150,15 @@ $alert-yellow: #FFFF7E;
     #profile_index_feedback_chart{
       height:210px;
       width:380px;
-       
+//      outline:1px solid white; 
       float:left;     
+    }
+
+    #profile_index_feedback_chart_legend {
+      position:absolute;
+      right:0px;
+      top:0px;
+
     }
   }
 
@@ -160,7 +168,7 @@ $alert-yellow: #FFFF7E;
     top:-50px;
     height:50px;
     width:200px;
-    
+//    outline:1px solid white;
     text-align:center;
     div {
       width:50px;

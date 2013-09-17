@@ -1,3 +1,22 @@
+
+- content_for :javascript_includes do
+  :javascript
+    var cases_analysis_chart_case_count = #{@case_count_bracket};
+
+    var cases_analysis_chart_site_average = #{Case.cases_analysis_stats_global("totalscore")};
+    var cases_analysis_chart_top_quart = #{Case.cases_analysis_stats_global("totalscore_top_quart")};
+    var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
+
+    $(document).ready(function(){  
+      if (cases_analysis_chart_case_count < 2) {
+        $("#cases_analysis_chart_progress_empty").fadeIn("fast");
+      } else {
+        window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
+      }
+    });
+
+
+
 #profile_index_container
 
   #profile_index_widgets
@@ -47,6 +66,7 @@
       - if @cases.count > 0
         - @cases.each do |cases_item|
           .profile_index_feedback_cases_item
+          
             .profile_index_feedback_cases_item_score
               = cases_item.totalscore.to_f.round(1)
             .profile_index_feedback_cases_item_username
@@ -55,6 +75,9 @@
 
     #profile_index_feedback_chart
 
+    #profile_index_feedback_chart_legend
+
+    
   / .profile_index_icon
   /   =image_tag "flat-ui/icons/Calendar_2x.png"
   / .profile_index_icon

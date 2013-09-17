@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
 
   def case_count_bracket
     # defines radar chart last 5 count
-    case case_count_viewee
+    case case_count_recd
     when 0
       #signals to show 'you must do at least one case'
       0
