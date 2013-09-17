@@ -1,11 +1,65 @@
 #profile_index_container
 
-  #profile_index_icon_container
-    .profile_index_icon
-      =image_tag "flat-ui/icons/Calendar_2x.png"
-    .profile_index_icon
-      =image_tag "flat-ui/icons/Clipboard_2x.png"
-    .profile_index_icon
-      =image_tag "flat-ui/icons/Book_2x.png"
-    .profile_index_icon
-      =image_tag "flat-ui/icons/Mail_2x.png"
+  #profile_index_widgets
+    %div
+      %i.icon-cogs
+    %div
+      %i.icon-envelope
+    %div
+      %i.icon-user
+
+
+
+  #profile_index_calendar
+    = render "events/calendar"
+
+
+  #profile_index_friends
+
+    .profile_index_title
+      Friends
+
+    #profile_index_friends_friends
+      - for friends_item in @friends
+        .profile_index_friends_friends_item
+
+          .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
+
+          .profile_index_friends_friends_item_avatar
+            = avatar_for(friends_item,size: "small")
+
+          .profile_index_friends_friends_item_username
+            = link_to friends_item.username_trunc, "/map?user_id=" + friends_item.id.to_s
+
+
+
+  #profile_index_notes
+    #profile_index_notes_canvas
+      #profile_index_notes_input
+
+
+  #profile_index_feedback
+    .profile_index_title
+      Feedback
+
+    #profile_index_feedback_cases
+
+      - if @cases.count > 0
+        - @cases.each do |cases_item|
+          .profile_index_feedback_cases_item
+            .profile_index_feedback_cases_item_score
+              = cases_item.totalscore.to_f.round(1)
+            .profile_index_feedback_cases_item_username
+              = link_to case_path(cases_item) do
+                = cases_item.interviewer.username
+
+    #profile_index_feedback_chart
+
+  / .profile_index_icon
+  /   =image_tag "flat-ui/icons/Calendar_2x.png"
+  / .profile_index_icon
+  /   =image_tag "flat-ui/icons/Clipboard_2x.png"
+  / .profile_index_icon
+  /   =image_tag "flat-ui/icons/Book_2x.png"
+  / .profile_index_icon
+  /   =image_tag "flat-ui/icons/Mail_2x.png"
