@@ -118,8 +118,8 @@ $(document).ready ->
 
     else
       $("#cases_new_book").html ""
-      $("#console_index_pdfjs_blank").show ->
-        $("#console_index_pdfjs_iframe").attr "src", ""
+      $("#console_index_pdfjs_blank").show()
+      $("#console_index_pdfjs_iframe").attr "src", ""
 
 
       $("#cases_new_nobook").fadeIn "fast"
