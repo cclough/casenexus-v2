@@ -8,8 +8,8 @@
     #console_index_pdfjs_blank_header
   
     #console_index_pdfjs_blank_message
-      %i.icon-random.icon-white
-      #console_index_panel_blank_text
+      %i.icon-book.icon-white
+      #console_index_panel_blank_message_text
         Select a case
 
 
@@ -30,7 +30,7 @@
       - unless @friend.blank?
         = render partial: "cases/new", locals: { user_id: @friend.id }
       - else
-        #console_index_panel_blank
-          .fui-user.application_usericon_huge
-          #console_index_panel_blank_text
+        #console_index_feedback_blank
+          = image_tag "icons/user.png"
+          #console_index_feedback_blank_text
             Select a friend to open a feedback form

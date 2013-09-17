@@ -39,16 +39,15 @@
 
   %body
 
-    #application_container_master
-      = render 'layouts/header'
+    = render 'layouts/header'
 
-      = render 'layouts/flash', flash: flash
+    = render 'layouts/flash', flash: flash
 
-          
-      #application_container_main
-        = yield
+        
+    #application_container_main
+      = yield
 
-    = render 'onlinepanel/container'
+  / = render 'onlinepanel/container'
 
   = render 'shared/modal_help' if signed_in?
   = render 'shared/modal_contact'

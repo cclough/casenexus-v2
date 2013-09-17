@@ -63,11 +63,15 @@ $alert-yellow: #FFFF7E;
     background:$gray_gunmetal;
   }
   #console_index_pdfjs_blank_message {
-    position:absolute;
-    left:50%;
-    top:50%;
-    height:100px;
-    width:100px;
+    text-align:center;
+    margin-top: 270px;
+    i {
+      font-size:55px;
+      color:$gray_second;
+    }
+    #console_index_panel_blank_message_text {
+      margin-top:10px;
+    }
   }
 }
 
@@ -95,12 +99,14 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#console_index_panel_blank {
+#console_index_feedback_blank {
   text-align:center;
-  margin-top: 30%;
+  margin-top: 220px;
+  img {
+    width:50px;
+  }
 
-
-  #console_index_panel_blank_text {
+  #console_index_feedback_blank_text {
     margin-top:10px;
   }
 }
