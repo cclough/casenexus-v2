@@ -6,7 +6,8 @@
 
     #map_index_users_form_button_container_local
       %a#map_index_users_form_button_local.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>0}
-        %i.icon-user
+        / %i.icon-user
+        = image_tag "icons/user.png"
         %br
         Near you
         - user_near_count = User.list_local(current_user).count

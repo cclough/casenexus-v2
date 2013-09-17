@@ -13,7 +13,7 @@
       = @date.strftime("%B %Y")
       %span#events_calendar_month_text_count
         - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-        = "(#{pluralize(month_count,"event")})"
+        = "(#{pluralize(month_count,"appt")})"
 
 
     = link_to date: @date.next_month do
