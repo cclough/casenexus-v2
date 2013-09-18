@@ -651,9 +651,7 @@ end
           recommendation2: Faker::Lorem.sentence(10),
           recommendation3: Faker::Lorem.sentence(10),
 
-          structure_comment: Faker::Lorem.sentence(30),
-          businessanalytics_comment: Faker::Lorem.sentence(30),
-          interpersonal_comment: Faker::Lorem.sentence(30),
+          main_comment: Faker::Lorem.sentence(100),
 
           quantitativebasics: 1 + rand(4),
           problemsolving: 1 + rand(4),

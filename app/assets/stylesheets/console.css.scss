@@ -60,7 +60,7 @@ $alert-yellow: #FFFF7E;
     left:0px;
     top:0px;
     height:50px;
-    background:$gray_gunmetal;
+    background:$gray_gunmetal_second;
   }
   #console_index_pdfjs_blank_message {
     text-align:center;
@@ -94,7 +94,7 @@ $alert-yellow: #FFFF7E;
 
 
 #console_index_feedback_subnav {
-  background: $gray_gunmetal;
+  background: $gray_gunmetal_second;
   height: 50px;
 }
 
@@ -117,6 +117,7 @@ $alert-yellow: #FFFF7E;
   width:130px;
   float:left;
   margin-top:8px;
+  margin-left:10px;
 }
 
 .console_index_subnav_button_sendpdf_state {

@@ -1,4 +1,3 @@
-
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
@@ -12,12 +11,12 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 
 $green_flatui: #1ABC9C;
+$gray_gunmetal: #363636;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
-
 
 
 .cases_avatar {
@@ -326,10 +325,31 @@ $alert-yellow: #FFFF7E;
   text-align:center;
 }
 
+#cases_new_subnav {
+  padding:10px;
+  height:85px;
+  background:$gray_gunmetal;
+}
+
+
+#cases_new_book_container {
+  display:inline-block;
+  width:300px;
+  float:left;
+}
 
 
 #cases_new_user {
   text-align:center;
+  display:inline-block;
+  width:100px;
+  padding:0px;
+  float:right;
+  #cases_new_user_username {
+    margin-top:5px;
+    color:white;
+    font-weight:bold;
+  }
 }
 
 
@@ -556,10 +576,9 @@ $alert-yellow: #FFFF7E;
 #cases_new_book {
   font-size:11px;
   text-align:center;
-
   .btn {
     width:350px;
-    margin:0px 15px;
+    margin:0;
   }
 
   .books_rating_read {
@@ -568,34 +587,7 @@ $alert-yellow: #FFFF7E;
   }
 }
 
-#cases_new_book_body {
-  text-align:left;
-}
 
-#cases_new_book_desc {
-  font-size:11px;
-}
-
-
-#cases_new_book_image {
-  position:relative;
-  height:60px;
-  width:57px;
-  background:white;
-  margin:0 10px 0 0;
-  
-  overflow: hidden;
-  img {
-    max-width:55px;
-  
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
 
 /////////////////////////////////////////////////////////////////
 ////////////////////////// ANALYSIS /////////////////////////////

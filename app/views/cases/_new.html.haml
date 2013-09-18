@@ -18,39 +18,45 @@
   = f.hidden_field :user_id, value: @user.id
 
   = render 'shared/error_messages', object: @case
-  .row
+  .row#cases_new_subnav
+
+
+    #cases_new_book_container
+
+      #cases_new_book
+        - if @book
+          = render partial: 'books/show_small', locals: { book_id: @book.id }
+
+      #cases_new_nobook
+        .panel.darker
+          .row
+            %span#cases_new_nobook_label
+              External case details
+              %i.icon-caret-right
+            %span.pull-right
+              = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
+              = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject"
+
 
     #cases_new_user
-      = link_to "/map?user_id=" + @user.id.to_s,  "data-original-title"=>"Go to #{@user.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
-        .fui-user.application_usericon_huge
-        %br
-        = image_tag @user.university.image_file, class: "application_userimage_small"
+      = avatar_for(@user,size:"large")
+      #cases_new_user_username
         = @user.username
 
 
 
 
-  #cases_new_book_container
 
-    .spacer15
-
-    .row
-      #cases_new_book
-        - if @book
-          = render partial: 'books/show_small', locals: { book_id: @book.id }
+  .spacer15
 
 
 
+  .cases_new_comment
+    .cases_new_comment_content_container
+      .cases_new_comment_countChar.application_countChar_count
+        hello
+      = f.text_area :main_comment, placeholder: "Comment...", class: "cases_new_comment_content application_countchar"
 
-    .row#cases_new_nobook
-      .panel.darker
-        .row
-          %span#cases_new_nobook_label
-            External case details
-            %i.icon-caret-right
-          %span.pull-right
-            = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
-            = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject"
 
 
 
@@ -74,6 +80,7 @@
     .row
       %span.cases_new_guide_num.btn.btn-primary 5
       &#61; Exceptional
+
 
   .row    
     .span.cases_new_expander
@@ -131,11 +138,7 @@
                 0.0/5    
 
       
-      .cases_new_comment
-        .cases_new_comment_content_container
-          .cases_new_comment_countChar.application_countChar_count
-            hello
-          = f.text_area :businessanalytics_comment, placeholder: "Comment...", class: "cases_new_comment_content application_countchar"
+  .spacer15
 
 
 
@@ -203,15 +206,8 @@
 
 
 
-      .cases_new_comment
-        .cases_new_comment_content_container
-          .cases_new_comment_countChar.application_countChar_count
-            hello
-          = f.text_area :structure_comment, placeholder: "Comment...", class: "cases_new_comment_content"
 
-
-
-
+  .spacer15
 
 
 
@@ -278,12 +274,7 @@
 
 
 
-
-      .cases_new_comment
-        .cases_new_comment_content_container
-          .cases_new_comment_countChar.application_countChar_count
-            hello
-          = f.text_area :interpersonal_comment, placeholder: "Comment...", class: "cases_new_comment_content"
+  .spacer15
 
 
 

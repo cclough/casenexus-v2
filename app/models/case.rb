@@ -1,7 +1,7 @@
 class Case < ActiveRecord::Base
 
   attr_accessible :user, :user_id, :interviewer, :interviewer_id, :subject, :source, :book_id,
-                  :interpersonal_comment, :businessanalytics_comment, :structure_comment,
+                  :main_comment,
                   :recommendation1, :recommendation2, :recommendation3,
                   :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
                   :rapport, :articulation, :concision, :askingforinformation,
@@ -55,9 +55,7 @@ class Case < ActiveRecord::Base
   validates :askingforinformation, presence: true,
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
-  validates :interpersonal_comment, length: { maximum: 500 }
-  validates :businessanalytics_comment, length: { maximum: 500 }
-  validates :structure_comment, length: { maximum: 500 }
+  validates :main_comment, length: { maximum: 1000 }
 
   validates :recommendation1, length: { maximum: 200 }
   validates :recommendation2, length: { maximum: 200 }
@@ -69,8 +67,8 @@ class Case < ActiveRecord::Base
   ### Scopes
 
   # Scoped_search Gem
-  scoped_search on: [:subject, :source, :recommendation1, :recommendation2, :recommendation3, :interpersonal_comment,
-                     :businessanalytics_comment, :structure_comment]
+  scoped_search on: [:subject, :source, :recommendation1, :recommendation2, :recommendation3, 
+                     :main_comment]
   scoped_search in: :interviewer, on: [:username]
 
 
@@ -422,29 +420,6 @@ class Case < ActiveRecord::Base
 
 
 
-
-
-
-  ## Comments
-
-  # marker_id to username conversion done in comment partial - saves repetition - may not be best tho
-  def self.cases_analysis_comments_businessanalytics(user)
-    user.cases.where("businessanalytics_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                                    created_at: m.created_at,
-                                                                    businessanalytics_comment: m.businessanalytics_comment } }
-  end
-
-  def self.cases_analysis_comments_structure(user)
-    user.cases.where("structure_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                            created_at: m.created_at,
-                                                            structure_comment: m.structure_comment } }
-  end
-
-  def self.cases_analysis_comments_interpersonal(user)
-    user.cases.where("interpersonal_comment <> ''").all { |m| { interviewer_id: m.interviewer_id,
-                                                                created_at: m.created_at,
-                                                                interpersonal_comment: m.interpersonal_comment } }
-  end
 
 
 

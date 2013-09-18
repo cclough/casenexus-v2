@@ -1,34 +1,27 @@
 - if @book.blank? then @book = Book.find(book_id) end
 
-%input{ type:"hidden", name:"case[book_id]",value: @book.id }
+.books_show_small
+  %input{ type:"hidden", name:"case[book_id]",value: @book.id }
 
+  = link_to book_path(@book), class: "btn btn-small btn-primary " do
 
+    .books_show_small_image
+      - if @book.thumb.blank?
+        = image_tag 'universities/' + @book.university.image.to_s unless !@book.university
+      - else
+        = image_tag 'library/thumbs/' + @book.thumb.to_s
 
-= link_to book_path(@book), class: "btn btn-small btn-primary " do
+    .books_show_small_body
+      .books_show_small_title
+        - unless @book.title.blank?
+          = @book.title
+      .books_show_small_university
+        = university_logo_for(@book.university,size:"small")
+        = @book.university.name
 
-  #cases_new_book_image.span4
-    - if @book.thumb.blank?
-      = image_tag 'universities/' + @book.university.image.to_s unless !@book.university
-    - else
-      = image_tag 'library/thumbs/' + @book.thumb.to_s
+      .books_show_small_desc
+        = @book.desc_trunc_very
 
-
-  .span27#cases_new_book_body
-    .row
-      / - if @book.title.blank?
-      /   = @book.source_title
-      / - else
-      /   = "#{@book.source_title}:&nbsp;".html_safe
-      - unless @book.title.blank?
-        = @book.title
-
-    / - unless @book.difficulty.blank?
-    /   .row
-    /     = book_difficulty_in_words(@book.difficulty)
-
-    .row
-      = @book.author
-
-    .row#cases_new_book_desc
-      = @book.desc_trunc_very
-.spacer15
+      - unless @book.difficulty.blank?
+        .books_show_small_difficulty
+          = books_difficulty_stamp(@book)

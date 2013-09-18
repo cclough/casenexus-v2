@@ -21,11 +21,21 @@ module ApplicationHelper
 
     if options[:link] === 1
       avatar_alt = "Jump to " + user.username + "'s profile"
-      link_to image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title"=>avatar_alt, rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
+      link_to image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title" => avatar_alt, rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
     else
       avatar_alt = user.username + " is a student of " + user.university.name
-      image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title"=>avatar_alt, rel: "tooltip", "data-placement"=>"bottom")
+      image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title" => avatar_alt, rel: "tooltip", "data-placement"=>"bottom")
     end  
+  end
+
+  def university_logo_for(university, options = {})
+
+    options[:size] ||= "small"
+
+    university_url = "universities/" + university.image
+    
+    university_alt = university.name
+    image_tag(university_url, alt: university_alt, class: "application_userimage_" + options[:size], "data-original-title" => university_alt, rel: "tooltip", "data-placement"=>"bottom")
   end
 
   # Render will_paginate with bootstrap pagination css - https://gist.github.com/robacarp/1562185

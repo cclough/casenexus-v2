@@ -199,7 +199,7 @@ $alert-yellow: #FFFF7E;
 
 .books_index_books_item_difficulty {
   display:inline-block;
-  width:100px !important;
+  width:60px !important;
   text-align:center;
   font-size:11px;
   margin:0px;
@@ -271,4 +271,64 @@ $alert-yellow: #FFFF7E;
 #books_show_comments_form_submit {
   margin-left:5px;
 }
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////// SHOW ////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+.books_show_small {
+  width:300px;
+}
+
+.books_show_small_image {
+  position:relative;
+  float:left;
+  height:60px;
+  width:57px;
+  background:white;
+  margin:0 10px 0 0;
+  background:white;
+  padding:5px;
+  overflow: hidden;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  img {
+    max-width:50px;
+  
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.books_show_small_body {
+  text-align:left;
+  float:left;
+  position:relative;
+  width:272px;
+  .books_show_small_title {
+    font-weight:bold;
+  }
+  .books_show_small_desc {
+    font-size:11px;
+  }
+
+  .books_show_small_difficulty {
+    float:right;
+    position:absolute;
+    right:0px;
+    top:0px;
+  }
+
+}
+
+
+
+
 
