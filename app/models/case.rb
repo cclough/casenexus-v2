@@ -1,7 +1,7 @@
 class Case < ActiveRecord::Base
 
   attr_accessible :user, :user_id, :interviewer, :interviewer_id, :subject, :source, :book_id,
-                  :main_comment,
+                  :main_comment, :created_at,
                   :recommendation1, :recommendation2, :recommendation3,
                   :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
                   :rapport, :articulation, :concision, :askingforinformation,
