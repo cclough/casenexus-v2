@@ -101,17 +101,20 @@ $alert-yellow: #FFFF7E;
       height:190px;
 
       .profile_index_friends_friends_item {
-        height:30px;
+        height:35px;
         display:block;
         div {
           display:inline-block;
+        }
+        &:hover {
+          background:$gray_gunmetal_second;
         }
         .profile_index_friends_friends_item_status {
           width: 10px;
           height: 10px;
           border-radius: 50%;
           border:0px !important;
-          margin:7px 0 0 4px;
+          margin:13px 0 0 8px;
           background:transparent;
           &.online_now {
             background: $alert-green;   
@@ -124,8 +127,12 @@ $alert-yellow: #FFFF7E;
           }
         }
         .profile_index_friends_friends_item_avatar {
+          display:inline-block;
           width:40px;
-          margin-left:10px;
+          img {
+            margin:-4px 0 0 5px;
+          }
+          
           text-align:center;
         }
       }
@@ -170,8 +177,11 @@ $alert-yellow: #FFFF7E;
       float:left;
       overflow:auto;
       .profile_index_feedback_cases_item {
-        height:30px;
+        height:35px;
         display:block;
+        &:hover {
+          background:$gray_gunmetal_second;
+        }
         div {
           display:inline-block;
         }

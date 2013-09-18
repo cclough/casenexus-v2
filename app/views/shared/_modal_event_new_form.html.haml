@@ -11,6 +11,7 @@
     #flash_notifications
       = render 'shared/error_messages', object: @event
 
+    .spacer35
 
     #events_new_triangle
 
@@ -50,7 +51,7 @@
         #events_new_datetime_friend
 
 
-    .spacer30
+    .spacer25
 
     .row
 
@@ -73,8 +74,8 @@
 
           #events_new_book_viewer_partnertoprepare
             - if @book_user.blank?
-              #events_new_book_viewer_empty 
-                No book selected
+              #events_new_book_viewer_partnertoprepare_empty 
+                Select a case...
             -else
               = render partial: 'books/show_small', locals: { book_id: @book_user.id }
 
@@ -85,7 +86,8 @@
           Case you will prepare for them
         #events_new_book_viewer_usertoprepare_container
           #events_new_book_viewer_usertoprepare
-
+            #events_new_book_viewer_usertoprepare_empty 
+              You will be notified when your partner chooses a case for you to prepare
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close
     .application_submit_button_with_spinner.btn.btn-primary{tabindex: "102"}

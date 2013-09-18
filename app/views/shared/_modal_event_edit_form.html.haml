@@ -15,7 +15,7 @@
       .span39#events_edit_friend_selected_container
         #events_new_friend_selected
           .span#events_edit_partner_avatar
-            %span.fui-user
+            = avatar_for(@event.partner, size:"medium")
           .span.offset1#events_edit_partner_name
             = @event.partner.username
             = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_new_friend_select"
@@ -23,7 +23,7 @@
 
 
 
-        #events_new_friend_timezone
+        #events_edit_friend_timezone
           = render "events/user_timezone", user_id: @event.partner.id, display_which: "timezone"
 
 
@@ -86,8 +86,8 @@
         #events_new_book_viewer_usertoprepare_container
           #events_new_book_viewer_usertoprepare
             - if @book_usertoprepare.blank?
-              #events_new_book_viewer_empty 
-                No case selected
+              #events_new_book_viewer_usertoprepare_empty 
+                You will be notified when your partner chooses a case for you to prepare
             -else
               = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
 

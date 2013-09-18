@@ -146,7 +146,7 @@ $alert-yellow: #FFFF7E;
   margin-left:-400px;
   margin-top:-260px;
 
-  height:495px !important;
+  height:510px !important;
 
   text-align:center !important;
 
@@ -155,7 +155,7 @@ $alert-yellow: #FFFF7E;
   }
 
   &.event_edit {
-    height:492px !important;
+    height:480px !important;
     margin-top:-260px;
 
     .modal-body {
@@ -188,8 +188,7 @@ $alert-yellow: #FFFF7E;
 }
 
 #events_new_friend_select {
-  margin:0;
-  margin-top:10px;
+  margin:10px 0 0 20px;
 }
 
 
@@ -201,31 +200,36 @@ $alert-yellow: #FFFF7E;
 
 
 #events_new_friend_timezone {
-
   height:40px;
-
   .application_bootstrap_alert_blue {
-
     display:inline-block;
-
     width:230px;
-
     height:40px;
-
     text-align:center;
-
     padding: 8px 14px 8px 14px !important;
   }
-
   margin-top:10px;
-
 }
+
+#events_edit_friend_timezone {
+  height:40px;
+  .application_bootstrap_alert_blue {
+    display:inline-block;
+    width:230px;
+    height:40px;
+    text-align:center;
+    padding: 8px 14px 8px 14px !important;
+  }
+  margin-top:15px;
+}
+
+
 
 #events_new_triangle {
   position:absolute;
   left:50%;
   margin-left:-10px;
-  top:85px;
+  top:113px;
   width: 0; 
   height: 0; 
   border-top: 25px solid transparent;
@@ -247,7 +251,7 @@ $alert-yellow: #FFFF7E;
     height:40px;
 
     text-align:center;
-
+    margin-left:-32px;
     padding: 8px 14px 8px 14px !important;
 
   }
@@ -260,7 +264,7 @@ $alert-yellow: #FFFF7E;
 
 
 #events_new_datetime_picker {
-  margin:0;
+  margin:0 0 0 15px;
   border:2px solid $gray_second;
   .add-on {
     border-radius:0px !important;
@@ -298,40 +302,11 @@ $alert-yellow: #FFFF7E;
 
 
 
-//#events_new_datetime_container {
-//  #event_datetime_1i {
-//    width: 60px;
-//  }
-
-//  #event_datetime_2i {
-//    width: 60px;
-//  }
-
-//  #event_datetime_3i {
-//    width: 60px;
-//  }
-
-//  #event_datetime_4i {
-//    width: 60px;
-//  }
-
-//  #event_datetime_5i {
-//    width: 60px;
-//  }
-//}
-
-
-
-
-
 #events_new_book_viewer_partnertoprepare {
 
-  display:inline-block;
   height:95px;
 
-//  padding:10px;
-
-  #events_new_book_viewer_empty {
+  #events_new_book_viewer_partnertoprepare_empty {
     color:$gray_Mid;
     font-size:15px;
     margin-top:27px;
@@ -343,22 +318,22 @@ $alert-yellow: #FFFF7E;
 
   padding:10px;
   text-align:center;
-  height:140px;
+  height:124px;
   background:$gray_background;
+  .btn {
+    width:345px;
+  }
 }
 
 #events_new_book_viewer_usertoprepare {
 
-  display:inline-block;
-
   height:95px;
 
-//  padding:10px;
-
-  #events_new_book_viewer_empty {
+  #events_new_book_viewer_usertoprepare_empty {
     color:$gray_Mid;
     font-size:15px;
-    margin-top:55px;
+    margin-top:40px;
+    padding:0px 20px;
   }
 }
 
