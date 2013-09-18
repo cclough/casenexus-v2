@@ -16,6 +16,7 @@ $green_linkedin: #3489bd;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 $blue_skype:#45adea;
+$blue_casenexus:#0e9ce2;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -177,7 +178,8 @@ $alert-yellow: #FFFF7E;
       float:left;
       overflow:auto;
       .profile_index_feedback_cases_item {
-        height:35px;
+        height:19px;
+        padding:8px;
         display:block;
         &:hover {
           background:$gray_gunmetal_second;
@@ -189,6 +191,8 @@ $alert-yellow: #FFFF7E;
           width:30px;
           font-weight:bold;
           font-size:16px;
+          color:$blue_casenexus;
+          margin-top:1px;
         }
         .profile_index_feedback_cases_item_username {
 

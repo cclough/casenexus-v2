@@ -282,7 +282,10 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////////////////////////////////////
 
 .books_show_small {
-  width:300px;
+  .btn {
+    width:345px;
+  }
+  
 }
 
 .books_show_small_image {

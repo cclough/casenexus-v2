@@ -16,6 +16,7 @@ $green_linkedin: #3489bd;
 $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 $blue_skype:#45adea;
+$blue_casenexus:#0e9ce2;
 
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
@@ -52,7 +53,7 @@ $alert-yellow: #FFFF7E;
 
 
 #events_calendar_month_text_count {
-  color: rgba(0,180,255,1);
+  color: $blue_casenexus;
 }
 
 .events_calendar_event {
@@ -75,7 +76,7 @@ $alert-yellow: #FFFF7E;
 }
 
 .events_calendar_event_count {
-  color:#00b4ff;
+  color:$blue_casenexus;
 }
 
 
@@ -320,9 +321,6 @@ $alert-yellow: #FFFF7E;
   text-align:center;
   height:124px;
   background:$gray_background;
-  .btn {
-    width:345px;
-  }
 }
 
 #events_new_book_viewer_usertoprepare {
