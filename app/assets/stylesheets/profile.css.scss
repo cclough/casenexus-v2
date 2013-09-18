@@ -3,6 +3,7 @@ $gray_Light: white;
 $gray_second: #BDC3C7;
 $gray_gunmetal: #363636;
 $gray_gunmetal_second: #2d2d2d;
+$gray_gunmetal_third: #2f2f2f;
 
 $gray_Lighter: #e1e1e1;
 $gray_Lightest: #f6f6f6;
@@ -24,39 +25,47 @@ $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
 
-
 #profile_index_colorblock {
   position:absolute;
-  top:50px;
+  bottom:0px;
   left:0px;
   right:0px;
-  height:80px;
+  top:44%;
   background:$gray_gunmetal_second;
-  z-index:0;
-
-  #profile_index_widgets {
-    position:absolute;
-    right:200px;
-    top:20px;
-    height:50px;
-    width:200px;
-//    outline:1px solid white;
-    text-align:center;
-    div {
-      width:50px;
-      height:50px;
-      font-size:30px;
-      display:inline-block;
-      color:white;
-    }
-    a {
-      color:white;
-    }
-  }
+  z-index:1;
 }
+//#profile_index_colorblock {
+//  position:absolute;
+//  top:50px;
+//  left:0px;
+//  right:0px;
+//  height:50px;
+//  background:$gray_gunmetal_second;
+//  z-index:0;
+
+//  #profile_index_widgets {
+//    position:absolute;
+//    right:200px;
+//    top:20px;
+//    height:50px;
+//    width:200px;
+////    outline:1px solid white;
+//    text-align:center;
+//    div {
+//      width:50px;
+//      height:50px;
+//      font-size:30px;
+//      display:inline-block;
+//      color:white;
+//    }
+//    a {
+//      color:white;
+//    }
+//  }
+//}
 #profile_index_container {
   a {
-    color:white !important;
+    color:$gray_second !important;
   }
   position:absolute;
   left:50%;
@@ -65,7 +74,8 @@ $alert-yellow: #FFFF7E;
   top:50%;
   margin-top:-250px;
   margin-left:-500px;
-  color:white;
+  color:$gray_second;
+  z-index:2;
 
 //  outline:1px solid white;
 
@@ -88,7 +98,6 @@ $alert-yellow: #FFFF7E;
     height:220px;
     width:270px;
     float:left;
-    margin-right:40px;
 //    outline:1px solid white;
 
     .profile_index_title {
@@ -104,10 +113,14 @@ $alert-yellow: #FFFF7E;
       .profile_index_friends_friends_item {
         height:35px;
         display:block;
+        cursor:pointer;
         div {
           display:inline-block;
         }
         &:hover {
+          background:$gray_gunmetal_second;
+        }
+        &.active {
           background:$gray_gunmetal_second;
         }
         .profile_index_friends_friends_item_status {
@@ -140,26 +153,67 @@ $alert-yellow: #FFFF7E;
     }
   }
 
-  #profile_index_notes {
-    height:220px;
+  #profile_index_info {
+    height:180px;
     width:270px;
     float:left;
+    margin-right:40px;
+    padding-top:40px;
 //    outline:1px solid white;
-
-    #profile_index_notes_canvas {
-      height:220px;
-      width:270px;
-//      background-color: rgb(255, 255, 204);
-      background:rgb(255, 255, 204) url(app/note_line.gif) repeat-y left top !important;
+    
+    #profile_index_info_avatar {
+      display:inline-block;
+//      outline:1px solid white;
+      margin-top:-2px;
+      height:35px;
+    }
+    #profile_index_info_username {
+      color:white;
+      display:inline-block;
+      font-size:20px;
+      font-weight:bolder;
+      margin-left:10px;
+//      outline:1px solid white;
+      height:30px;
+      padding-top:5px;
     }
 
-    #profile_index_notes_input {
-      margin-left:20px;
-      border:0 !important;
-      border-left: 1px solid #ffd4d4 !important;
-      background:transparent;
-      height:220px;
-      width:250px;
+    #profile_index_info_cases {
+      div {
+        display:inline-block;
+        width:50px;
+        height:50px;
+        text-align:center;
+        line-height:43px;
+        position:relative;     
+      }
+
+      .profile_index_info_cases_text {
+        position:absolute;
+        left:0px;
+        right:0px;
+        text-align:center;
+        top:15px;
+        font-size:10px;
+      }
+
+      #profile_index_info_cases_givn {
+        background: $alert-green;
+        font-size:20px;
+        color:white;
+      }
+
+      #profile_index_info_cases_recd{
+        background: $alert-blue;
+        font-size:20px;
+        color:green;
+      }
+
+      #profile_index_info_cases_external{
+        background: $gray_background;
+        font-size:20px;
+        color:$gray_second;
+      }
     }
   }
 
@@ -169,6 +223,7 @@ $alert-yellow: #FFFF7E;
     float:left;
     margin-top:40px;
     position:relative;
+
 //    outline:1px solid white;
 
     #profile_index_feedback_cases {
@@ -196,6 +251,13 @@ $alert-yellow: #FFFF7E;
         }
         .profile_index_feedback_cases_item_username {
 
+        }
+        .profile_index_feedback_cases_item_date {
+          float:right;
+          font-size:10px;
+          margin-top:3px;
+          color:white !important;
+          font-weight:bolder;
         }
       }
     }

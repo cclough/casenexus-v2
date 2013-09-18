@@ -23,10 +23,62 @@
     = render "events/calendar"
 
 
+  #profile_index_info
+    #profile_index_info_avatar
+      = avatar_for(current_user,size:"medium")
+    #profile_index_info_username
+      = current_user.username
+
+    .spacer10
+
+    #profile_index_info_degreelevel
+      = current_user.degree_level_in_words
+
+    #profile_index_info_cases_joined
+      Signed up:
+      = time_ago_in_words(current_user.created_at)
+      ago
+
+    #profile_index_info_cases_rate
+      Rate: 2 cases per week
+      
+    .spacer15
+
+    #profile_index_info_cases
+      #profile_index_info_cases_givn
+        = current_user.case_count_givn
+        %span.profile_index_info_cases_text
+          rec'd
+      #profile_index_info_cases_recd    
+        = current_user.case_count_recd
+        %span.profile_index_info_cases_text
+          given
+      #profile_index_info_cases_external
+        = current_user.cases_external
+        %span.profile_index_info_cases_text
+          ext.
+
+
+
+
+
+
+
+
+
+
+
   #profile_index_friends
 
     .profile_index_title
-      Friends
+      Partners
+      %span.pull-right
+        %i.icon-plus
+        %span.fui-skype
+        %i.icon-arrow-right
+        %i.icon-envelope
+        %i.icon-globe
+
 
     #profile_index_friends_friends
       - for friends_item in @friends
@@ -38,18 +90,18 @@
             = avatar_for(friends_item,size: "small")
 
           .profile_index_friends_friends_item_username
-            = link_to friends_item.username_trunc, "/map?user_id=" + friends_item.id.to_s
+            = friends_item.username_trunc
 
 
 
-  #profile_index_notes
-    #profile_index_notes_canvas
-      #profile_index_notes_input
 
 
   #profile_index_feedback
     .profile_index_title
       Feedback
+      %span.pull-right
+        %i.icon-list
+
 
     #profile_index_feedback_cases
 
@@ -62,6 +114,8 @@
             .profile_index_feedback_cases_item_username
               = link_to case_path(cases_item) do
                 = cases_item.interviewer.username
+            .profile_index_feedback_cases_item_date
+              = cases_item.date_fb
 
     #profile_index_feedback_chart
 

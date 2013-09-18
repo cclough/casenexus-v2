@@ -15,6 +15,7 @@
     
     = javascript_include_tag "lib/amcharts"
 
+    = javascript_include_tag "profile"
     = javascript_include_tag "events"
     = javascript_include_tag "cases"
     = javascript_include_tag "account"
@@ -47,13 +48,13 @@
 
     #profile_index_colorblock
 
-      #profile_index_widgets
-        %div
-          = link_to edit_account_path(current_user) do
-            %i.icon-cogs
-        %div
-          = link_to notifications_path do
-            %i.icon-envelope
+    /   #profile_index_widgets
+    /     %div
+    /       = link_to edit_account_path(current_user) do
+    /         %i.icon-cogs
+    /     %div
+    /       = link_to notifications_path do
+    /         %i.icon-envelope
         
     #application_container_main.profile
       .container.main

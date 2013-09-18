@@ -126,9 +126,7 @@ class Notification < ActiveRecord::Base
       created_at.strftime("%a")
     else
       created_at.strftime("%d %b")   
-    end   
-
-
+    end
   end
 
   def url

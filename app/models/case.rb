@@ -105,6 +105,14 @@ class Case < ActiveRecord::Base
     subject.truncate(25, separator: ' ')
   end
 
+  def date_fb
+    if created_at > DateTime.now - 3.days
+      created_at.strftime("%a")
+    else
+      created_at.strftime("%d %b")   
+    end
+  end
+  
   def to_s
     self.subject
   end
