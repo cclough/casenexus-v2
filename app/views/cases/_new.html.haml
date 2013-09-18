@@ -51,12 +51,12 @@
 
 
 
-  .cases_new_comment
-    .cases_new_comment_content_container
-      .cases_new_comment_countChar.application_countChar_count
-        hello
-      = f.text_area :main_comment, placeholder: "Comment...", class: "cases_new_comment_content application_countchar"
-
+  #cases_new_maincomment
+    #cases_new_maincomment_linedbackground
+    = f.text_area :main_comment, placeholder: "Write detailed and structured feedback on " + @user.username + "'s performance in the case...", class: "application_countchar", id:"cases_new_maincomment_content"
+    / #cases_new_comment_countChar.application_countChar_count
+    /   hello
+    #cases_new_maincomment_line
 
 
 
@@ -280,7 +280,7 @@
 
   .row
     .cases_new_block_title
-      Your Top Three Recommendations for #{@case.user.username}
+      In summary, what are your top three recommendations for #{@case.user.username}
     #cases_new_recommendations_panel.panel.dark.kill_top
       .row
         = f.text_area :recommendation1, placeholder: "1st Recommendation...", class: "cases_new_recommendation", tabindex: "4"

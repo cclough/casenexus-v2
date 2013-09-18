@@ -16,24 +16,13 @@ window.cases_new_prime = () ->
   # $("#cases_new_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
    # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
 
-  $("[name=\"case[businessanalytics_comment]\"]").wysihtml5
+  $("[name=\"case[main_comment]\"]").wysihtml5
     emphasis: false #Italics, bold, etc. Default true
     "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
     link: false #Button to insert a link. Default true
     image: false #Button to insert an image. Default true
-
-  $("[name=\"case[structure_comment]\"]").wysihtml5
-    emphasis: false #Italics, bold, etc. Default true
-    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
-    link: false #Button to insert a link. Default true
-    image: false #Button to insert an image. Default true
-
-  $("[name=\"case[interpersonal_comment]\"]").wysihtml5
-    emphasis: false #Italics, bold, etc. Default true
-    "font-styles": false #Font styling, e.g. h1, h2, etc. Default true
-    link: false #Button to insert a link. Default true
-    image: false #Button to insert an image. Default true
-
+    autoLink: false
+    composerClassName: "cases_new_maincomment_content"    
   # Score selectors!
   $(".cases_new_scoreselector_button").click ->
     score = $(this).data("score")
