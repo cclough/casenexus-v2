@@ -24,6 +24,10 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
+#modal_analysis {
+  width:1000px !important;
+  margin-left:-500px;
+}
 
 #profile_index_colorblock {
   position:absolute;
@@ -104,6 +108,12 @@ $alert-yellow: #FFFF7E;
       height:30px;
       border-bottom:1px solid $gray_second;
       line-height:30px;
+
+      #profile_index_friends_actions {
+        i, span {
+          cursor:pointer;
+        }
+      }
     }
 
     #profile_index_friends_friends {
@@ -225,6 +235,10 @@ $alert-yellow: #FFFF7E;
     position:relative;
 
 //    outline:1px solid white;
+
+    #profile_index_feedback_actions_resultstable {
+      cursor:pointer;
+    }
 
     #profile_index_feedback_cases {
       height:210px;

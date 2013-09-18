@@ -33,29 +33,29 @@
 
 
 
-    #application_container_master
+    / #application_container_master
 
-      = render 'layouts/header'
+    = render 'layouts/header'
 
-      = render 'layouts/flash', flash: flash
+    = render 'layouts/flash', flash: flash
 
-         
-      #application_container_main
-        .container.main
-          .row
-            .span71
+       
+    #application_container_main
+      .container.main
+        .row
+          .span71
 
-              = yield
+            = yield
 
-            .span23
+          .span23
 
-              = yield :questions_sidecolumn_includes
+            = yield :questions_sidecolumn_includes
 
-          / footer
-          = render 'layouts/footer'
+        / footer
+        = render 'layouts/footer'
 
 
-    = render 'onlinepanel/container'
+    / = render 'onlinepanel/container'
 
 
   = render 'shared/modal_help'

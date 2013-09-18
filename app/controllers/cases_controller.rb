@@ -109,10 +109,11 @@ class CasesController < ApplicationController
     if params[:view] then @view = params[:view] else @view = "table" end
 
     respond_to do |format|
-      format.html
+      format.html { render layout:false }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
       format.js #for table form
     end
+
 
   end
 

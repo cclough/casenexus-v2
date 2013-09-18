@@ -72,17 +72,18 @@
 
     .profile_index_title
       Partners
-      %span.pull-right
-        %i.icon-plus
-        %span.fui-skype
-        %i.icon-arrow-right
-        %i.icon-envelope
-        %i.icon-globe
+      %span#profile_index_friends_actions.pull-right
+        / %i#profile_index_friends_actions_invite.icon-plus
+        / %span#profile_index_friends_actions_skype.fui-skype
+        %i#profile_index_friends_actions_start.icon-arrow-right
+        %i#profile_index_friends_actions_message.icon-envelope
+        %i#profile_index_friends_actions_profile.icon-globe
 
+      %input#profile_index_friends_action_input{type:"hidden"}
 
     #profile_index_friends_friends
       - for friends_item in @friends
-        .profile_index_friends_friends_item
+        .profile_index_friends_friends_item{"data-friend_id"=>friends_item.id }
 
           .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
 
@@ -100,7 +101,7 @@
     .profile_index_title
       Feedback
       %span.pull-right
-        %i.icon-list
+        %i#profile_index_feedback_actions_resultstable.icon-list
 
 
     #profile_index_feedback_cases

@@ -19,23 +19,23 @@
   /     });
 
 
-.spacer20
+/ .spacer20
 
-.row#cases_analysis_nav
+/ .row#cases_analysis_nav
 
-  #cases_analysis_nav_container
-    .span10
-      = filterable_analysis("table", "<i class=icon-list></i>Aggregate".html_safe)
-    .span10.offset5
-      = filterable_analysis("progress", "<i class=icon-time></i>Over time".html_safe)
-    .span10.offset5
-      = filterable_analysis("radar", "<i class=icon-resize-small></i>Now vs Then".html_safe)
-    / .span10.offset5
-    /   = filterable_analysis("users", "<span class=fui-user></span>Partners".html_safe)
-    .span10.offset5
-      = filterable_analysis("comments", "<i class=icon-comment-alt></i>Comments".html_safe)
+/   #cases_analysis_nav_container
+/     .span10
+/       = filterable_analysis("table", "<i class=icon-list></i>Aggregate".html_safe)
+/     .span10.offset5
+/       = filterable_analysis("progress", "<i class=icon-time></i>Over time".html_safe)
+/     .span10.offset5
+/       = filterable_analysis("radar", "<i class=icon-resize-small></i>Now vs Then".html_safe)
+/     / .span10.offset5
+/     /   = filterable_analysis("users", "<span class=fui-user></span>Partners".html_safe)
+/     .span10.offset5
+/       = filterable_analysis("comments", "<i class=icon-comment-alt></i>Comments".html_safe)
 
-.spacer20
+/ .spacer20
 
 
 .row
@@ -57,21 +57,26 @@
         });
 
 
-    #cases_analysis_section_table.cases_analysis_section
-      .panel.dark.kill_all
-        .row
-          - if current_user.case_count_viewee > 0
-            = render "results_table_form"
+    .modal-body
+      #cases_analysis_section_table.cases_analysis_section
+        .panel.dark.kill_all
+          .row
+            - if current_user.case_count_recd > 0
+              = render "results_table_form"
 
-            #cases_analysis_section_table_table_container
-              = render "results_table"
-          - else
-            #cases_analysis_section_table_empty
-              #cases_analysis_section_table_empty_icon
-                %i.icon-bar-chart
-              %p You must do at least 1 case, 
-              %p before this table will work
+              #cases_analysis_section_table_table_container
+                = render "results_table"
+            - else
+              #cases_analysis_section_table_empty
+                #cases_analysis_section_table_empty_icon
+                  %i.icon-bar-chart
+                %p You must do at least 1 case, 
+                %p before this table will work
 
+
+    .modal-footer
+
+      %a.btn{"data-dismiss" => "modal", href: "#"} Close
 
 
 
