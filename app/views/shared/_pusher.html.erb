@@ -14,13 +14,7 @@ $(function() {
       Pusher.host = 'ws-eu.pusher.com';
       Pusher.sockjs_host = 'sockjs-eu.pusher.com';
       
-      <%- if Rails.env == 'development' %>
-
-      var pusher = new Pusher('819414d582ac4a755ad6'); // Replace with your app key
-      
-      <%- end %>
-
-
+      var pusher = new Pusher('<%= Pusher.key %>');
 
 
       // PRIVATE MESSAGING CHANNEL
