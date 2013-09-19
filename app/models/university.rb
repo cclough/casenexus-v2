@@ -1,10 +1,9 @@
 class University < ActiveRecord::Base
+  attr_accessible :name, :image, :domain
+
   has_many :users
   has_many :books
 
-  has_one :channel
-
-  attr_accessible :name, :image, :domain
 
   def image_file
     "universities/" + self.image
