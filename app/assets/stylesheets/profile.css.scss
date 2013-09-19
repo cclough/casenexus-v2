@@ -250,9 +250,7 @@ $alert-yellow: #FFFF7E;
         height:19px;
         padding:8px;
         display:block;
-        &:hover {
-          background:$gray_gunmetal_second;
-        }
+
         div {
           display:inline-block;
         }
@@ -272,6 +270,9 @@ $alert-yellow: #FFFF7E;
           margin-top:3px;
           color:white !important;
           font-weight:bolder;
+        }
+        &:hover {
+          background:$gray_gunmetal;
         }
       }
     }

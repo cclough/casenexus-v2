@@ -18,20 +18,22 @@
         %select#events_modal_friend_select.chzn-select.span28{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
           %option Choose a friend
           = options_from_collection_for_select(current_user.accepted_friends, "id", "username")
-          
+
+
+        #events_modal_friend_timezone
+
       - else
-        #events_modal_friend_selected
-          .span#events_edit_partner_avatar
-            %span.fui-user
-          .span.offset1#events_edit_partner_name
-            %strong
+        #events_edit_friend_selected_container
+          #events_modal_friend_selected
+            .span#events_edit_partner_avatar
+              = avatar_for(@friend, size:"medium")
+            .span.offset1#events_edit_partner_name
               = @friend.username
               = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_modal_friend_select"
 
 
-
-      #events_modal_friend_timezone
-
+          #events_edit_friend_timezone
+            = render "events/user_timezone", user_id: @friend.id, display_which: "timezone"
 
     .events_modal_block_spacer
     .events_modal_block

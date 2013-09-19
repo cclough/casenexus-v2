@@ -1,7 +1,7 @@
 
 .span4
   #application_notify_avatar
-    = image_tag @notification.sender.university.image_file, class: "application_userimage_medium"
+    = avatar_for(@notification.sender,"medium")
 .span23.offset1
   #application_notify_name.application_truncatable
     = @notification.sender.username

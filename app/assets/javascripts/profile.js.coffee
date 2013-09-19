@@ -79,6 +79,9 @@ $(document).ready ->
     friend_id = $("#profile_index_friends_action_input").val()
     window.location.href = "/map?user_id=" + friend_id
 
+  $("#profile_index_friends_actions_event").click ->
+    friend_id = $("#profile_index_friends_action_input").val()
+    window.modal_event_new_show(friend_id,null)
 
 
 

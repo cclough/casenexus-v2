@@ -21,9 +21,6 @@
             = @event.partner.username
             = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_modal_friend_select"
 
-
-
-
         #events_edit_friend_timezone
           = render "events/user_timezone", user_id: @event.partner.id, display_which: "timezone"
 
