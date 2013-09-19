@@ -46,7 +46,8 @@
     = render 'layouts/flash', flash: flash
 
 
-    #profile_index_colorblock
+    - if params[:controller] == "profile"
+      #profile_index_colorblock
 
     /   #profile_index_widgets
     /     %div

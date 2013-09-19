@@ -1,4 +1,9 @@
 class ProfileController < ApplicationController
+
+  before_filter :authenticate_user!
+  before_filter :completed_user, except: [:show_help, :help_checkbox]
+
+
   def index
     @friends = current_user.accepted_friends
     @cases = current_user.cases
