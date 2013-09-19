@@ -28,12 +28,36 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////////////////////////////////////
 
 
+#books_index_books_form_container {
+  background:$gray_second;
+  position:absolute;
+  left:0;
+  right:0;
+  height:110px;
+  padding-top:20px;
+}
+
 ////////////// FORM
 
 
+#books_index_books_form_pageable {
+  margin-right:40px;
+}
+
+
 #books_index_form {
+
   height: 40px;
 }
+
+
+
+
+
+#books_index_books {
+  margin-top:145px;
+}
+
 
 
 #books_index_books_form_searchfield {
@@ -86,12 +110,39 @@ $alert-yellow: #FFFF7E;
 .books_index_books_item {
   margin-bottom: 15px !important;
   padding:10px;
+  position:relative;
 }
 
 .books_index_books_item_body {
   width:500px;
+  height:155px;
+
 }
 
+.books_index_books_item_difficulty_triangle {
+  position:absolute;
+  z-index:10;
+  left:0;
+  top:0;
+  width: 0; 
+  height: 0; 
+
+  border-style: solid;
+  border-width: 70px 70px 0 0;
+  border-color: $gray_second transparent transparent transparent;
+
+  &.novice {
+    border-color: #dff0d8 transparent transparent transparent;
+  }
+  &.intermediate {
+    border-color: #D9EDF7 transparent transparent transparent;
+  }
+  &.advanced {
+    border-color: #f2dede transparent transparent transparent;
+  }
+
+
+}
 
 
 
@@ -131,9 +182,11 @@ $alert-yellow: #FFFF7E;
 
 
 .books_index_books_item_image {
+
   position:relative;
   height:100px;
   width:95px;
+  top:16px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
@@ -155,6 +208,10 @@ $alert-yellow: #FFFF7E;
 }
 
 .books_rating_read_container {
+  position:absolute;
+  right:70px;
+  top:30px;
+
   padding:2px;
   text-align:center;
   border-bottom-left-radius: 0px;
@@ -210,6 +267,10 @@ $alert-yellow: #FFFF7E;
 
 
 .books_index_books_item_actions_container {
+
+  position:absolute;
+  right:10px;
+  bottom:10px;
 
   .btn {
     height:25px !important;
@@ -289,6 +350,8 @@ $alert-yellow: #FFFF7E;
 }
 
 .books_show_small_image {
+
+
   position:relative;
   float:left;
   height:60px;

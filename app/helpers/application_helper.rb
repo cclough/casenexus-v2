@@ -142,6 +142,20 @@ module ApplicationHelper
     end
   end
 
+  def books_difficulty_triangle(book)
+
+    num = book.difficulty
+
+    case num
+    when 1
+      content_tag :div,"" , class: "books_index_books_item_difficulty_triangle novice"
+    when 2
+      content_tag :div,"" , class: "books_index_books_item_difficulty_triangle intermediate"
+    when 3
+      content_tag :div,"" , class: "books_index_books_item_difficulty_triangle advanced"
+    end
+  end
+
 
   def online_user_count
       count = pluralize(User.online_now.count,"user")

@@ -48,12 +48,12 @@
         / .span.offset1#books_index_books_form_label
         /   Show
         /   %i.icon-caret-right
-        .span
+        .span#books_index_books_form_pageable
           .btn-group
             = pageable_books("10")
             = pageable_books("20")
             = pageable_books("50") 
-        .span.offset4#books_index_books_form_label
+        .span#books_index_books_form_label
           Filter
           %i.icon-caret-right
         / Type Buttons
@@ -73,7 +73,7 @@
       Type
       %i.icon-caret-right
     .span35.offset1
-      %select.span40.books_index_books_form_select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
+      %select.span42.books_index_books_form_select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
         %option{value: ""} All
         - Tag.where(category_id:4).each do |tags_type_item|
           %option{value: tags_type_item.id }

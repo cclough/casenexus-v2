@@ -7,19 +7,11 @@ class EventsController < ApplicationController
 
   require 'icalendar'
 
-  def index
-    @events_by_date = current_user.events.group_by {|i| i.datetime.to_date}
-
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
-  end
-
-
 
   # DOESNT SEEM TO BLOODY WORK!
   def calendar
     render partial: "calendar", layout: false
   end
-
 
 
   def new
@@ -113,6 +105,7 @@ class EventsController < ApplicationController
 
     render partial: "user_timezone", layout: false
   end
+
 
   # For subscribe
   def ics

@@ -1,10 +1,10 @@
 - provide(:title, 'Library')
 - provide(:sub_title, 'Library of cases, guides and web resources')
 
-.row.panel.darker.kill_left.kill_right
-  = render 'books_form'
 
-.row
+#books_index_books_form_container
+  .container.main
+    = render 'books_form'
 
-  #books_index_books
-    = render 'books'
+#books_index_books
+  = render 'books'

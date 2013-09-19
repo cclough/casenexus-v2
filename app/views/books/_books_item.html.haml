@@ -2,6 +2,8 @@
   .books_index_books_item.panel.dark.kill_top.kill_left.kill_right
     .row
 
+      = books_difficulty_triangle(books_item)
+
       .span12
         .books_index_books_item_image.panel.kill_all
           - if books_item.thumb.blank?
@@ -48,32 +50,31 @@
 
             .spacer10
 
-            / .row.books_index_books_item_description
-            /   .span
-            /     = books_item.desc_trunc
-            / .spacer10
+            .row.books_index_books_item_description
+              .span
+                = books_item.desc_trunc
+            .spacer10
             .row.application_tags_container
               = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
 
 
-      .span.offset1.pull-right
-        .row
-          .books_rating_read_container
-            %span.books_rating_read{"data-rating" => books_item.average_rating.round(1)}
-            %div
-              = books_item.average_rating.round(1).to_s + "/5"
 
-        .spacer10
-        .row
-          .books_index_books_item_actions_container
-            - if books_item.btype == "case"
 
-              .books_index_books_item_schedule_button.btn.btn-primary{"data-book_id" => books_item.id.to_s}
-                %i.icon-calendar 
+      .books_rating_read_container
+        %span.books_rating_read{"data-rating" => books_item.average_rating.round(1)}
+        %div
+          = books_item.average_rating.round(1).to_s + "/5"
 
-              = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-primary"
 
-              = link_to book_path(books_item), "data-id"=>books_item.id,class: "books_index_books_item_comments btn btn-primary" do
-                Comment
-                %strong (#{books_item.comments.count})
+      .books_index_books_item_actions_container
+        - if books_item.btype == "case"
+
+          .books_index_books_item_schedule_button.btn.btn-primary{"data-book_id" => books_item.id.to_s}
+            %i.icon-calendar 
+
+          = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-primary"
+
+          = link_to book_path(books_item), "data-id"=>books_item.id,class: "books_index_books_item_comments btn btn-primary" do
+            Comment
+            %strong (#{books_item.comments.count})
 

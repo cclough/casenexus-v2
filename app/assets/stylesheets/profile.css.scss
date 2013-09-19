@@ -112,6 +112,9 @@ $alert-yellow: #FFFF7E;
       #profile_index_friends_actions {
         i, span {
           cursor:pointer;
+          &:hover {
+            color:white;
+          }
         }
       }
     }
@@ -210,18 +213,21 @@ $alert-yellow: #FFFF7E;
       #profile_index_info_cases_givn {
         background: $alert-green;
         font-size:20px;
+        font-weight:bolder;
         color:white;
       }
 
       #profile_index_info_cases_recd{
         background: $alert-blue;
         font-size:20px;
-        color:green;
+        font-weight:bolder;
+        color:white;
       }
 
       #profile_index_info_cases_external{
         background: $gray_background;
         font-size:20px;
+        font-weight:bolder;
         color:$gray_second;
       }
     }
@@ -237,7 +243,10 @@ $alert-yellow: #FFFF7E;
 //    outline:1px solid white;
 
     #profile_index_feedback_actions_resultstable {
-      cursor:pointer;
+      cursor:pointer;          
+      &:hover {
+        color:white;
+      }
     }
 
     #profile_index_feedback_cases {
