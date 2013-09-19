@@ -235,7 +235,7 @@ window.modal_event_new_show = (friend_id, book_id) ->
 
       if friend_id
         $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
-          $("#events_new_friend_timezone").html data
+          $("#events_modal_friend_timezone").html data
 
 
       # to increase height of the modal (removed by new show)
@@ -248,51 +248,51 @@ window.modal_event_new_show = (friend_id, book_id) ->
       $("#modal_event").modal("show")
 
 
-window.modal_events_new_timezone_calcs = ->
+window.modal_events_modal_timezone_calcs = ->
 
-  friend_id = $("#events_new_friend_select").val()
-  datetime = $("#events_new_datetime_input").val()
+  friend_id = $("#events_modal_friend_select").val()
+  datetime = $("#events_modal_datetime_input").val()
   
   if friend_id > 0
     $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
-      $("#events_new_friend_timezone").html data
+      $("#events_modal_friend_timezone").html data
   else
-    $("#events_new_friend_timezone").html("")
+    $("#events_modal_friend_timezone").html("")
 
   if (friend_id > 0) && (datetime != "")
     $.get "/events/user_timezone?display_which=timeforfriend&user_id=" + friend_id+"&datetime="+datetime, (data) ->
-      $("#events_new_datetime_friend").html data
+      $("#events_modal_datetime_friend").html data
   else
-    $("#events_new_datetime_friend").html("")
+    $("#events_modal_datetime_friend").html("")
 
 
 window.modal_events_rebless = ->
 
-  $("#events_new_datetime_picker").datetimepicker
+  $("#events_modal_datetime_picker").datetimepicker
     format: "dd M yyyy - hh:ii"
     minuteStep: 15
     pickerPosition: 'bottom-left'
     autoclose: true
     showMeridian: true
-    startDate: $("#events_new_datetime_input").data "start_date"
+    startDate: $("#events_modal_datetime_input").data "start_date"
     #startDate: "2013-07-07 10:00"
 
 
-  $("#events_new_friend_select").change ->
-    window.modal_events_new_timezone_calcs()
+  $("#events_modal_friend_select").change ->
+    window.modal_events_modal_timezone_calcs()
 
-  $("#events_new_datetime_input").change ->
-    window.modal_events_new_timezone_calcs()
+  $("#events_modal_datetime_input").change ->
+    window.modal_events_modal_timezone_calcs()
 
 
-  $("#events_new_book_select").change ->
+  $("#events_modal_book_select").change ->
     book_id = $(this).val()
 
     if book_id > 0
       $.get "/books/" + book_id + "/show_small", (data) ->
-        $("#events_new_book_viewer_partnertoprepare").html data
+        $("#events_modal_book_viewer_partnertoprepare").html data
     else
-      $("#events_new_book_viewertoprepare").html "<div id=events_new_book_viewer_empty>No book selected</div>"
+      $("#events_modal_book_viewertoprepare").html "<div id=events_modal_book_viewer_empty>No book selected</div>"
 
   window.modal_spinner_prime()
 

@@ -8,17 +8,18 @@
     #flash_notifications
       = render 'shared/error_messages', object: @event
 
-    #events_new_triangle
+    #events_modal_triangle
 
-    .row
 
-      .span39#events_edit_friend_selected_container
-        #events_new_friend_selected
+    .events_modal_block
+
+      #events_edit_friend_selected_container
+        #events_modal_friend_selected
           .span#events_edit_partner_avatar
             = avatar_for(@event.partner, size:"medium")
           .span.offset1#events_edit_partner_name
             = @event.partner.username
-            = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_new_friend_select"
+            = f.hidden_field :partner_id, value: @event.partner.id.to_s, id: "#events_modal_friend_select"
 
 
 
@@ -28,68 +29,73 @@
 
 
 
-      .span39.offset1
-
-
-        #events_new_datetime_picker.input-append.date
-          = f.text_field :datetime, id: "events_new_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y - %H:%M')
-          
-          %span.add-on
-            %i.icon-calendar
+    .events_modal_block_spacer
+    .events_modal_block
 
 
 
 
-        #events_new_datetime_friend
-          = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime, display_which: "timeforfriend"
+      #events_modal_datetime_picker.input-append.date
+        = f.text_field :datetime, id: "events_modal_datetime_input", placeholder: "...", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y - %H:%M')
+        
+        %span.add-on
+          %i.icon-calendar
 
 
 
 
-    .spacer30
-
-    .row
-
-      .span39.offset1
-
-
-        .events_new_book_viewer_title
-          Case they will prepare for you
-        #events_new_book_viewer_partnertoprepare_container
-      
-
-          %select#events_new_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
-            %option Which case should they prepare for you?
-            / = options_from_collection_for_select(Book.all, "id", "title")
-            - @books.each do |books_select_item|
-              %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
-                = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
-                = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
-                = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
-
-
-
-          #events_new_book_viewer_partnertoprepare
-            - if @book_partnertoprepare.blank?
-              #events_new_book_viewer_empty 
-                No book selected
-            -else
-              = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
+      #events_modal_datetime_friend
+        = render "events/user_timezone", user_id: @event.partner.id, date_and_time: @event.datetime, display_which: "timeforfriend"
 
 
 
 
-      .span39.offset1
+    .events_modal_block
 
-        .events_new_book_viewer_title
-          Case you will prepare for them
-        #events_new_book_viewer_usertoprepare_container
-          #events_new_book_viewer_usertoprepare
-            - if @book_usertoprepare.blank?
-              #events_new_book_viewer_usertoprepare_empty 
-                You will be notified when your partner chooses a case for you to prepare
-            -else
-              = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
+
+
+
+      .events_modal_book_viewer_title
+        Case they will prepare for you
+      #events_modal_book_viewer_partnertoprepare_container
+    
+
+        %select#events_modal_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
+          %option Which case should they prepare for you?
+          / = options_from_collection_for_select(Book.all, "id", "title")
+          - @books.each do |books_select_item|
+            %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
+              = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
+              = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
+              = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+
+
+
+        #events_modal_book_viewer_partnertoprepare
+          - if @book_partnertoprepare.blank?
+            #events_modal_book_viewer_empty 
+              No book selected
+          -else
+            = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
+
+
+
+
+
+    .events_modal_block_spacer
+    .events_modal_block
+
+
+    
+      .events_modal_book_viewer_title
+        Case you will prepare for them
+      #events_modal_book_viewer_usertoprepare_container
+        #events_modal_book_viewer_usertoprepare
+          - if @book_usertoprepare.blank?
+            #events_modal_book_viewer_usertoprepare_empty 
+              You will be notified when your partner chooses a case for you to prepare
+          -else
+            = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
 
 
 

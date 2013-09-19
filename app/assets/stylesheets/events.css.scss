@@ -42,7 +42,7 @@ $alert-yellow: #FFFF7E;
 }
 
 .events_calendar_event_container {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   margin-top:1px;
@@ -152,14 +152,17 @@ $alert-yellow: #FFFF7E;
   text-align:center !important;
 
   .modal-body {
+    height:325px;
     text-align:center !important;
   }
 
   &.event_edit {
-    height:480px !important;
+    height:510px !important;
+
     margin-top:-260px;
 
     .modal-body {
+      height:325px;
       text-align:center !important;
     }
 
@@ -178,7 +181,22 @@ $alert-yellow: #FFFF7E;
 ///////////////////// NEW /////////////////////
 ///////////////////////////////////////////////
 
-.events_new_book_viewer_title {
+.events_modal_block {
+  width:396px;
+  height:150px;
+  float:left;
+
+}
+
+
+.events_modal_block_spacer {
+  height:150px;
+  width:15px;
+  float:left;
+}
+
+
+.events_modal_book_viewer_title {
   height:30px;
   background: $gray_second;
   text-align:center;
@@ -188,19 +206,19 @@ $alert-yellow: #FFFF7E;
   margin: 0px 0px;
 }
 
-#events_new_friend_select {
-  margin:10px 0 0 20px;
+#events_modal_friend_select {
+  margin-top:35px;
 }
 
 
-#events_new_friend_selected {
+#events_modal_friend_selected {
   display:inline-block;
   height:20px;
 
 }
 
 
-#events_new_friend_timezone {
+#events_modal_friend_timezone {
   height:40px;
   .application_bootstrap_alert_blue {
     display:inline-block;
@@ -209,24 +227,14 @@ $alert-yellow: #FFFF7E;
     text-align:center;
     padding: 8px 14px 8px 14px !important;
   }
-  margin-top:10px;
-}
-
-#events_edit_friend_timezone {
-  height:40px;
-  .application_bootstrap_alert_blue {
-    display:inline-block;
-    width:230px;
-    height:40px;
-    text-align:center;
-    padding: 8px 14px 8px 14px !important;
-  }
-  margin-top:15px;
+  margin-top:0px;
 }
 
 
 
-#events_new_triangle {
+
+
+#events_modal_triangle {
   position:absolute;
   left:50%;
   margin-left:-10px;
@@ -239,7 +247,7 @@ $alert-yellow: #FFFF7E;
 
 }
 
-#events_new_datetime_friend {
+#events_modal_datetime_friend {
 
   height:40px;
 
@@ -264,8 +272,8 @@ $alert-yellow: #FFFF7E;
 
 
 
-#events_new_datetime_picker {
-  margin:0 0 0 15px;
+#events_modal_datetime_picker {
+  margin:25px 0 0 0;
   border:2px solid $gray_second;
   .add-on {
     border-radius:0px !important;
@@ -279,7 +287,7 @@ $alert-yellow: #FFFF7E;
 
 
 
-#events_new_datetime_input {
+#events_modal_datetime_input {
   height:40px;
   width:250px !important;
   font-size:22px;
@@ -303,11 +311,9 @@ $alert-yellow: #FFFF7E;
 
 
 
-#events_new_book_viewer_partnertoprepare {
+#events_modal_book_viewer_partnertoprepare {
 
-  height:95px;
-
-  #events_new_book_viewer_partnertoprepare_empty {
+  #events_modal_book_viewer_partnertoprepare_empty {
     color:$gray_Mid;
     font-size:15px;
     margin-top:27px;
@@ -315,7 +321,7 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#events_new_book_viewer_usertoprepare_container, #events_new_book_viewer_partnertoprepare_container {
+#events_modal_book_viewer_usertoprepare_container, #events_modal_book_viewer_partnertoprepare_container {
 
   padding:10px;
   text-align:center;
@@ -323,11 +329,9 @@ $alert-yellow: #FFFF7E;
   background:$gray_background;
 }
 
-#events_new_book_viewer_usertoprepare {
+#events_modal_book_viewer_usertoprepare {
 
-  height:95px;
-
-  #events_new_book_viewer_usertoprepare_empty {
+  #events_modal_book_viewer_usertoprepare_empty {
     color:$gray_Mid;
     font-size:15px;
     margin-top:40px;
@@ -352,12 +356,27 @@ $alert-yellow: #FFFF7E;
 ///////////////////// EDIT ////////////////////
 ///////////////////////////////////////////////
 
+#events_edit_friend_timezone {
+  height:40px;
+  margin-top:17px;
+  .application_bootstrap_alert_blue {
+    display:inline-block;
+    width:230px;
+    height:40px;
+    text-align:center;
+    padding: 8px 14px 8px 14px !important;
+  }
+
+}
+
+
 #events_edit_friend_selected_container {
-  margin-top:12px;
+  margin-top:35px;
 }
 
 #events_edit_partner_avatar {
   max-width:25px;
+  margin-right:5px;
 }
 
 #events_edit_partner_name {
