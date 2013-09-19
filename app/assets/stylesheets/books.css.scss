@@ -207,10 +207,26 @@ $alert-yellow: #FFFF7E;
   width:150px !important;
 }
 
-.books_rating_read_container {
+.books_item_rating_read_container {
   position:absolute;
   right:70px;
   top:30px;
+
+  padding:2px;
+  text-align:center;
+  border-bottom-left-radius: 0px;
+  -moz-border-bottom-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+
+  border-bottom-right-radius: 0px;
+  -moz-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+}
+
+.books_comment_rating_read_container {
+  position:absolute;
+  right:50px;
+  top:10px;
 
   padding:2px;
   text-align:center;
@@ -228,11 +244,7 @@ $alert-yellow: #FFFF7E;
   text-align:center;
 }
 
-.books_rating_read_text {
-  font-size:11px;
-  text-align:center;
-  margin-top:2px;
-}
+
 
 .books_rating_read_num {
   font-size:14px;
@@ -262,7 +274,7 @@ $alert-yellow: #FFFF7E;
   width:60px !important;
   text-align:center;
   font-size:11px;
-  margin:0px;
+  margin:0 10px 0 0;
 }
 
 
@@ -312,6 +324,7 @@ $alert-yellow: #FFFF7E;
 .books_show_comments_item {
   margin-bottom: 15px !important;
   padding:10px;
+  position:relative;
 }
 
 .books_show_comments_item_avatar {

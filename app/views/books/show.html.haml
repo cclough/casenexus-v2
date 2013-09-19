@@ -11,29 +11,8 @@
 
 .spacer10
 
-- @comments.each do |comment|
-  .books_show_comments_item.panel.darker.kill_top
-    .row
-      .span6.votes_control_container{ "data-voteable_id" => comment.id, "data-voteable_type" => comment.class.name }
-        = render partial: "/votes/control", locals: { voteable: comment }
-
-      .span4.books_show_comments_item_avatar
-        %span.fui-user
-      .span10.offset1
-        .row
-          %strong
-            = comment.user.username
-        .row.books_show_comments_item_date
-          = comment.created_at.strftime("%a %d %b %Y %I:%M%p")
-      .span60.offset1
-        = comment.content
-      .span.pull-right
-
-        .span.books_rating_read_container
-          .books_rating_read{"data-rating" => comment.rating}
-          .books_rating_read_text
-            User rating:
-            = pluralize(comment.rating.round(0),"Star")
+- @comments.each do |books_comment|
+  = render partial: "comments/comment_books", locals: { comment: books_comment }
 
 = will_paginate @comments, inner_window: 2, outer_window: 2, class: "application_pagination application_pagination_books"
 

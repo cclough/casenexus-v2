@@ -1,0 +1,18 @@
+.books_show_comments_item.panel.darker.kill_top
+  .row
+
+    .span4.books_show_comments_item_avatar
+      = avatar_for(comment.user, size:"medium")
+    .span10.offset2
+      .row
+        %strong
+          = comment.user.username
+      .row.books_show_comments_item_date
+        = comment.created_at.strftime("%a %d %b %Y %I:%M%p")
+    .span60.offset2
+      = comment.content
+    .span.pull-right
+
+      .span.books_comment_rating_read_container
+        .books_rating_read{"data-rating" => comment.rating}
+        = comment.rating.round(1).to_s + "/5"
