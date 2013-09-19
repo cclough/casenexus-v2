@@ -83,18 +83,23 @@
       %input#profile_index_friends_action_input{type:"hidden"}
 
     #profile_index_friends_friends
-      - for friends_item in @friends
-        .profile_index_friends_friends_item{"data-friend_id"=>friends_item.id }
+      - if @friends.count > 0
+        - for friends_item in @friends
+          .profile_index_friends_friends_item{"data-friend_id"=>friends_item.id }
 
-          .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
+            .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
 
-          .profile_index_friends_friends_item_avatar
-            = avatar_for(friends_item,size: "small")
+            .profile_index_friends_friends_item_avatar
+              = avatar_for(friends_item,size: "small")
 
-          .profile_index_friends_friends_item_username
-            = friends_item.username_trunc
+            .profile_index_friends_friends_item_username
+              = friends_item.username_trunc
 
-
+      - else
+        #profile_index_friends_friends_empty
+          %i.icon-user
+          %div
+            No friends yet
 
 
 
@@ -118,6 +123,11 @@
                 = cases_item.interviewer.username
             .profile_index_feedback_cases_item_date
               = cases_item.date_fb
+      - else
+        #profile_index_feedback_cases_empty
+          %i.icon-edit
+          %div
+            No feedback yet
 
     #profile_index_feedback_chart
 

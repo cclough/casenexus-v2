@@ -123,6 +123,16 @@ $alert-yellow: #FFFF7E;
       overflow:auto;
       height:190px;
 
+      #profile_index_friends_friends_empty {
+        text-align:center;
+        padding-top:60px;
+        i {
+          font-size:25px;
+          margin-bottom:7px;
+          display:block;
+        }
+      }
+      
       .profile_index_friends_friends_item {
         height:35px;
         display:block;
@@ -255,6 +265,17 @@ $alert-yellow: #FFFF7E;
 //      outline:1px solid white;
       float:left;
       overflow:auto;
+
+      #profile_index_feedback_cases_empty {
+        text-align:center;
+        padding-top:60px;
+        i {
+          font-size:25px;
+          margin-bottom:7px;
+          display:block;
+        }
+      }
+
       .profile_index_feedback_cases_item {
         height:19px;
         padding:8px;
