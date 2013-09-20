@@ -6,8 +6,7 @@
 #events_calendar
   #events_calendar_month
     = link_to date: @date.prev_month do
-      .btn.btn-primary.btn-small
-        %i.icon-chevron-left.icon-white
+      %i.icon-chevron-left.icon-white
     
     %span#events_calendar_month_text
       = @date.strftime("%B %Y")
@@ -17,8 +16,7 @@
 
 
     = link_to date: @date.next_month do
-      .btn.btn-primary.btn-small
-        %i.icon-chevron-right.icon-white
+      %i.icon-chevron-right.icon-white
 
   .spacer10
 
@@ -36,7 +34,7 @@
           .events_calendar_event.application_tooltip.btn.btn-primary{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username, rel: "tooltip", "data-placement"=>"bottom"}
             = event.datetime.strftime("%H:%M")
 
-  .spacer10
+  .spacer20
            
   #events_calendar_actions
     #events_calendar_new_button.btn.btn-primary

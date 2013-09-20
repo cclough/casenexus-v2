@@ -110,7 +110,29 @@ header {
 }
 
 #header_nav_links_right {
-  margin-right:15px;
+
+  div {
+
+  }
+  li {
+    padding: 0 8px;
+    &.header_nav_links_right_profile_active {
+      background:$gray_gunmetal;
+      a {
+        color:white !important;
+      }
+
+      &:hover {
+        background:$gray_gunmetal_second;
+      }
+
+    }
+
+  }
+  #header_nav_links_right_username {
+    margin-left:5px;
+  }
+
 }
 
 /////////////////////////////////////////////

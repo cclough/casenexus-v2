@@ -12,12 +12,12 @@
           %ul#header_nav_links_left.nav.pull-left
 
             / %li.divider-vertical
-            %li.offset1#header_nav_search_container
-              = form_tag '#', method: 'get', id: "header_nav_search_form", onsubmit: 'return false', class: "form-search" do
-                .input-prepend
-                  %button.btn.btn-small{type: "submit"}
-                    %span.fui-search
-                  = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
+            / %li.offset1#header_nav_search_container
+            /   = form_tag '#', method: 'get', id: "header_nav_search_form", onsubmit: 'return false', class: "form-search" do
+            /     .input-prepend
+            /       %button.btn.btn-small{type: "submit"}
+            /         %span.fui-search
+            /       = text_field_tag :search, params[:search], placeholder: "Search...", id: "header_nav_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
 
             %li{:class => ("active" if params[:controller] == "map") }
               = link_to raw("<i class='icon-circle-blank icon-large icon-fixed-width'></i> Find people"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
@@ -32,8 +32,21 @@
             %li
               = link_to raw("<i class='icon-bullhorn icon-white icon-large icon-fixed-width'></i>"), '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
+          %ul#header_nav_links_right.nav.pull-right
+            %li
+              = render '/notifications/menu'
+            %li{"data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip", class: ("application_tooltip header_nav_links_right_profile_active" if params[:controller]=="profile")}
+              = link_to profile_path do
+                %span#header_nav_links_right_avatar
+                  = avatar_for(current_user, size:"small", link:0)
+                %span#header_nav_links_right_username
+                  = current_user.username
+
+              
+
+
         - else
-          %ul.nav.pull-right#header_nav_links_right_signedout
+          %ul#header_nav_links_right_signedout.nav.pull-right
             %li
               = link_to current_user.email
               %span#header_nav_links_right_signedout
