@@ -5,7 +5,7 @@ window.events_calendar_rebless = ->
 
   $(".application_tooltip").tooltip()
   
-  $("#events_calendar_new_button").click ->
+  $("#profile_index_calendar_actions_new").click ->
     window.modal_event_new_show(null,null)
 
 

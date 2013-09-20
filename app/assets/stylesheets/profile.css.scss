@@ -88,7 +88,7 @@ $alert-yellow: #FFFF7E;
 
   .profile_index_title {
     height:30px;
-    border-bottom:1px solid $gray_second;
+    border-bottom:2px solid $gray_gunmetal_second;
     line-height:30px;
   }
 
@@ -100,6 +100,14 @@ $alert-yellow: #FFFF7E;
     margin-right:90px;
 //    outline:1px solid white;
     margin-top:35px;
+    #profile_index_calendar_actions {
+      i, span {
+        cursor:pointer;
+        &:hover {
+          color:white;
+        }
+      }
+    }
   }
 
   #profile_index_friends {
@@ -108,20 +116,16 @@ $alert-yellow: #FFFF7E;
     float:left;
 //    outline:1px solid white;
 
-    .profile_index_title {
-      height:30px;
-      border-bottom:1px solid $gray_second;
-      line-height:30px;
 
-      #profile_index_friends_actions {
-        i, span {
-          cursor:pointer;
-          &:hover {
-            color:white;
-          }
+    #profile_index_friends_actions {
+      i, span {
+        cursor:pointer;
+        &:hover {
+          color:white;
         }
       }
     }
+
 
     #profile_index_friends_friends {
       overflow:auto;
@@ -255,6 +259,10 @@ $alert-yellow: #FFFF7E;
     position:relative;
 
 //    outline:1px solid white;
+
+    .profile_index_title {
+      border-bottom:2px solid $gray_gunmetal;
+    }
 
     #profile_index_feedback_actions_resultstable {
       cursor:pointer;          
