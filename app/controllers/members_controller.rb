@@ -33,7 +33,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       format.js # links index.js.erb!
-      format.json { render json: User.markers(@users) } # USING get_markers_within_viewport INSTEAD
+      format.json { render json: User.markers_geojson(@users) } # USING get_markers_within_viewport INSTEAD
     end
 
   end

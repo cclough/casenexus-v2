@@ -1,6 +1,13 @@
 = form_tag '#', method: 'get', id: "map_index_users_form", onsubmit: 'return false' do
 
-  = hidden_field_tag :search, params[:search], placeholder: "Search for candidates...", id: "map_index_users_form_search_field", class: 'search-query'
+  / = hidden_field_tag :search, params[:search], placeholder: "Search for candidates...", id: "", class: 'search-query'
+
+  .form-search
+    .input-prepend
+      %button.btn.btn-small{type: "submit"}
+        %span.fui-search
+      = text_field_tag :search, params[:search], placeholder: "Search...", id: "map_index_users_form_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
+
 
   .row
 

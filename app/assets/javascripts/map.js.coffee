@@ -14,13 +14,13 @@ map_index_posts_prime = () ->
 # Option: Pan To and Zoom
 window.map_index_map_pan = (latlng) ->
   # window.map.panTo latlng
-  window.map.panToWithOffset latlng, -200, -30
-  window.map.setZoom 10
+  # window.map.panToWithOffset latlng, -200, -30
+  # window.map.setZoom 10
 
 window.map_index_map_zoomout_and_pan = (latlng) ->
   # window.map.panTo latlng
-  window.map.panToWithOffset latlng, -200, -30
-  window.map.setZoom 1
+  # window.map.panToWithOffset latlng, -200, -30
+  # window.map.setZoom 1
 
 # From http://stackoverflow.com/questions/8146676/google-maps-api-v3-offset-panto-by-x-pixels
 google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
@@ -63,22 +63,22 @@ window.map_index_users_item_bless = () ->
 
 window.map_index_load_infobox = (marker_id) ->
 
-  $("#map_index_container_user_infobox").fadeOut "fast", ->
-  b = $("<div></div>")
-  $.get "/members/" + marker_id + "/show_small", (data) ->
-    # b.html "<img src=/assets/markers/arrow.png></img>"
-    b.html data
-    window.infobox.setContent b.html()
+  # $("#map_index_container_user_infobox").fadeOut "fast", ->
+  # b = $("<div></div>")
+  # $.get "/members/" + marker_id + "/show_small", (data) ->
+  #   # b.html "<img src=/assets/markers/arrow.png></img>"
+  #   b.html data
+  #   window.infobox.setContent b.html()
   
-  # Click to close
-  # $("#map_index_container_user_infobox").click ->
-  #   $("#map_index_container_user_infobox").fadeOut "fast", ->
-  #     window.infobox.close()
+  # # Click to close
+  # # $("#map_index_container_user_infobox").click ->
+  # #   $("#map_index_container_user_infobox").fadeOut "fast", ->
+  # #     window.infobox.close()
 
-  marker = map_index_map_markers[marker_id]
-  window.infobox.open map, marker
+  # marker = map_index_map_markers[marker_id]
+  # window.infobox.open map, marker
 
-  $("#map_index_container_user_infobox").fadeIn "fast"
+  # $("#map_index_container_user_infobox").fadeIn "fast"
 
 
 # Update the User List - submits form...
@@ -131,41 +131,48 @@ window.map_index_map_markers_draw = () ->
   # Marker
   # shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
 
-  map_index_map_markers_clear()
+  # map_index_map_markers_clear()
 
-  json = $.parseJSON map_index_map_markers_json
+  # json = $.parseJSON map_index_map_markers_json
 
-  $.each json, (i, marker) ->
-    marker = json[i]
+  # $.each json, (i, marker) ->
+  #   marker = json[i]
 
-    # Draw markers
-    image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
+  #   # Draw markers
+  #   image = new google.maps.MarkerImage("/assets/markers/marker_" + marker.level + ".png")
 
-    map_marker = new google.maps.Marker(
-      id: marker.id
-      map: map
-      position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
-      icon: image
-      # shadow: shadow
-      animation: google.maps.Animation.DROP
-    )
+  #   map_marker = new google.maps.Marker(
+  #     id: marker.id
+  #     map: map
+  #     position: new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
+  #     icon: image
+  #     # shadow: shadow
+  #     animation: google.maps.Animation.DROP
+  #   )
 
-    google.maps.event.addListener map_marker, "mouseover", ->
-      map_index_load_infobox(map_marker.id)
+  #   google.maps.event.addListener map_marker, "mouseover", ->
+  #     map_index_load_infobox(map_marker.id)
     
-    google.maps.event.addListener map_marker, "click", ->
-      latlng = new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
-      window.map_index_map_load_all map_marker.id, latlng
+  #   google.maps.event.addListener map_marker, "click", ->
+  #     latlng = new google.maps.LatLng(parseFloat(marker.lat), parseFloat(marker.lng))
+  #     window.map_index_map_load_all map_marker.id, latlng
 
-      # Bounce that shit up
-      map_marker.setAnimation(google.maps.Animation.BOUNCE)
-      setTimeout (->
-        map_marker.setAnimation(null)
-      ), 1440
+  #     # Bounce that shit up
+  #     map_marker.setAnimation(google.maps.Animation.BOUNCE)
+  #     setTimeout (->
+  #       map_marker.setAnimation(null)
+  #     ), 1440
 
-    window.map_index_map_markers[marker.id] = map_marker
-    window.map_index_map_markers_ids[i] = marker.id
+  #   window.map_index_map_markers[marker.id] = map_marker
+  #   window.map_index_map_markers_ids[i] = marker.id
 
+
+
+
+
+  # markerLayer = L.mapbox.markerLayer(map_index_map_markers_json).addTo(map)
+
+  #.loadURL("/members.json")
 
 
 window.map_index_user_profile_chart_activity_draw = (user_id) ->
@@ -319,64 +326,134 @@ $(document).ready ->
     false
 
 
-  # Map
-  if typeof map_index_map_lat_start is "string"
+  
 
-    #Options for the map
-    mapOptions =
-      zoom: 10
-      minZoom: 3
-      mapTypeId: "roadmap"
-      center: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
+  window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2").setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 2)
+
+
+
+  # markerLayer = L.mapbox.markerLayer(
+  #   type: "FeatureCollection"
+  #   features: [
+  #     type: "Feature"
+  #     properties:
+  #       size: 5
+  #       population: 10
+
+  #     geometry:
+  #       type: "Point"
+  #       coordinates: [0, 0]
+  #   ]
+  # ).addTo(map)
+
+
+  # markerLayer.eachLayer (layer) ->
+    
+  #   # here you call `bindPopup` with a string of HTML you create - the feature
+  #   # properties declared above are available under `layer.feature.properties`
+  #   content = "<h1>size: " + layer.feature.properties.size + "</h1>" + "<h2>population: " + layer.feature.properties.population + "</h2>"
+  #   layer.bindPopup content
+
+
+  # markerLayer.on "click", (e) ->
+  #   map.panTo e.layer.getLatLng()
+
+
+
+
+
+
+
+
+  
+
+  # # Map
+  # if typeof map_index_map_lat_start is "string"
+
+  #   #Options for the map
+  #   mapOptions =
+  #     zoom: 10
+  #     minZoom: 3
+  #     mapTypeId: "roadmap"
+  #     center: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
       
-      disableDefaultUI: true
-      zoomControl: true
-      zoomControlOptions:
-        position: google.maps.ControlPosition.LEFT_CENTER
-      styles: [
-        featureType: "water"
-        stylers: [color: "#abe2ff"]
-      ,
-        featureType: "landscape.natural"
-        elementType: "all"
-        stylers: [
-          color: "#a2ff9d"
-        ,
-          lightness: 3
-        ]
-      ]
+  #     disableDefaultUI: true
+  #     zoomControl: true
+  #     zoomControlOptions:
+  #       position: google.maps.ControlPosition.LEFT_CENTER
+  #     styles: [
+  #       featureType: "water"
+  #       stylers: [color: "#abe2ff"]
+  #     ,
+  #       featureType: "landscape.natural"
+  #       elementType: "all"
+  #       stylers: [
+  #         color: "#a2ff9d"
+  #       ,
+  #         lightness: 3
+  #       ]
+  #     ]
 
 
 
+  # [{ type: 'Feature', "geometry": { "type": "Point", "coordinates": [0.0,0.0]}, "properties": { "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg", "url": "http://en.wikipedia.org/wiki/Washington,_D.C.", "marker-symbol": "star", "city": "Washington, D.C." } }]
 
-    # Create the map
-    window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
+  # {
+  #     type: 'Feature',
+  #     "geometry": { "type": "Point", "coordinates": [-77.03, 38.90]},
+  #     "properties": {
+  #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
+  #         "url": "http://en.wikipedia.org/wiki/Washington,_D.C.",
+  #         "marker-symbol": "star",
+  #         "city": "Washington, D.C."
+  #     }
+  # }, {
+  #     type: 'Feature',
+  #     "geometry": { "type": "Point", "coordinates": [-87.63, 41.88]},
+  #     "properties": {
+  #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Chicago_sunrise_1.jpg/640px-Chicago_sunrise_1.jpg",
+  #         "url": "http://en.wikipedia.org/wiki/Chicago",
+  #         "city": "Chicago"
+  #     }
+  # }, {
+  #     type: 'Feature',
+  #     "geometry": { "type": "Point", "coordinates": [-74.00, 40.71]},
+  #     "properties": {
+  #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/3/39/NYC_Top_of_the_Rock_Pano.jpg/640px-NYC_Top_of_the_Rock_Pano.jpg",
+  #         "url": "http://en.wikipedia.org/wiki/New_York_City",
+  #         "city": "New York City"
+  #     }
+  # }];
 
-    # New infobox with offset
-    window.infobox = new InfoBox
-      # (h,v), (minus is left ,minus is up)
-      pixelOffset: new google.maps.Size(-65, -145)
 
-    # Draw user marker
-    self_marker = new google.maps.Marker(
-      map: map
-      position: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
-      icon: new google.maps.MarkerImage("/assets/markers/arrow.png")
-      # shadow: shadow
-      animation: google.maps.Animation.DROP
-    )
+  #   # Create the map
+  #   window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
 
-    # Zoom Control Position Hack
-    google.maps.event.addDomListener map, "tilesloaded", ->
-      # We only want to wrap once!
-      if $("#map_index_map_zoomcontrol").length is 0
-        $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
-        $("div.gmnoprint").fadeIn 500
+  #   # New infobox with offset
+  #   window.infobox = new InfoBox
+  #     # (h,v), (minus is left ,minus is up)
+  #     pixelOffset: new google.maps.Size(-65, -145)
+
+  #   # Draw user marker
+  #   self_marker = new google.maps.Marker(
+  #     map: map
+  #     position: new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
+  #     icon: new google.maps.MarkerImage("/assets/markers/arrow.png")
+  #     # shadow: shadow
+  #     animation: google.maps.Animation.DROP
+  #   )
+
+  #   # Zoom Control Position Hack
+  #   google.maps.event.addDomListener map, "tilesloaded", ->
+  #     # We only want to wrap once!
+  #     if $("#map_index_map_zoomcontrol").length is 0
+  #       $("div.gmnoprint").last().parent().wrap "<div id=\"map_index_map_zoomcontrol\" />"
+  #       $("div.gmnoprint").fadeIn 500
 
 
 
-    ######## PAGE LOAD:
+  #   ######## PAGE LOAD:
 
-    # window.map_index_load_infobox map_index_map_marker_id_start
-    window.map_index_map_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
+  #   # window.map_index_load_infobox map_index_map_marker_id_start
+  #   window.map_index_map_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
     # 

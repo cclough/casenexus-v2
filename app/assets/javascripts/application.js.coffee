@@ -344,10 +344,10 @@ $(document).ready ->
   # Placeholders
   $("input, textarea").placeholder()
 
-  # Header search - only if not on map page
-  if typeof map_index_map_lat_start is "undefined"
-    $("#header_nav_search_form").on "submit", ->
-      window.location.href = "/map?search=" + $("#header_nav_search_field").val()
+  # # Header search - only if not on map page
+  # if typeof map_index_map_lat_start is "undefined"
+  #   $("#header_nav_search_form").on "submit", ->
+  #     window.location.href = "/map?search=" + $("#header_nav_search_field").val()
 
   # Modals
   $("#modal_contact, #modal_analysis, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal

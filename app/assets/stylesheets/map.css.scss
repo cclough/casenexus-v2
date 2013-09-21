@@ -56,11 +56,11 @@ $alert-yellow: #FFFF7E;
 
 #map_index_container_users {
   position:absolute;
-  left:30px;
+  right:0px;
   top:0px;
   bottom:0px;
-  width:480px;
-  z-index:10;
+  width:50%;
+  z-index:0;
   overflow-y:auto;
   background:rgba(255,255,255,0.5s);
   border-left:3px solid white;
@@ -78,7 +78,7 @@ $alert-yellow: #FFFF7E;
 
 #map_index_users {
   position:absolute;
-  top:95px;
+  top:130px;
   bottom:0px;
   left:0px;
   right:0px;
@@ -91,7 +91,7 @@ $alert-yellow: #FFFF7E;
 
   position:absolute;
   left:0px;
-  right:0px;
+  right:50%;
   top:0px;
   bottom:0px;
 
@@ -335,7 +335,6 @@ $alert-yellow: #FFFF7E;
 .map_index_users_item {
   position:relative;
   display:none;
-  width:460px;
   height:150px;
   background:white;
   @include box_sizing;
@@ -459,7 +458,7 @@ $alert-yellow: #FFFF7E;
 }
 
 .map_index_users_item_stuff{
-  float:left;
+  float:right;
   width:50px;
   height:150px;
   div {

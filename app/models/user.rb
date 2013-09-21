@@ -187,6 +187,81 @@ class User < ActiveRecord::Base
       users.map{ |m| { id: m.id, level: m.level, lat: m.lat, lng: m.lng } }
     end
 
+    def markers_geojson(users)
+
+      string = "["
+
+      for user in users
+        new_bit = "{
+                    \"type\": \"Feature\",
+                    \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lat},#{user.lng}] },
+                    \"properties\": {
+                        \"image\": \"http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg\",
+                        \"marker-symbol\": \"star\"
+                    }
+                  },"
+
+        string = string + new_bit
+      end
+
+      string = string.chop! + "]"
+      string
+
+    end
+
+
+
+  def cases_show_chart_radar_data_combined
+     "[{criteria: \"Business Analytics\", score: "+businessanalytics_combined.to_s+"},
+     {criteria: \"Structure\", score: "+structure_combined.to_s+"},
+     {criteria: \"Interpersonal\", score: "+interpersonal_combined.to_s+"}]"
+  end
+
+
+
+  # [{ "type": 'Feature',
+  #                    "geometry": {
+  #                       "type": "Point",
+  #                       "coordinates": [0.0,0.0]
+  #                       },
+  #                     "properties": {
+  #                         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
+  #                         "url": "http://en.wikipedia.org/wiki/Washington,_D.C.",
+  #                         "marker-symbol": "star",
+  #                         "city": "Washington, D.C."
+  #                     }
+  #                   }] 
+
+
+
+    # var geoJson = [{
+    #     type: 'Feature',
+    #     "geometry": { "type": "Point", "coordinates": [-77.03, 38.90]},
+    #     "properties": {
+    #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
+    #         "url": "http://en.wikipedia.org/wiki/Washington,_D.C.",
+    #         "marker-symbol": "star",
+    #         "city": "Washington, D.C."
+    #     }
+    # }, {
+    #     type: 'Feature',
+    #     "geometry": { "type": "Point", "coordinates": [-87.63, 41.88]},
+    #     "properties": {
+    #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Chicago_sunrise_1.jpg/640px-Chicago_sunrise_1.jpg",
+    #         "url": "http://en.wikipedia.org/wiki/Chicago",
+    #         "city": "Chicago"
+    #     }
+    # }, {
+    #     type: 'Feature',
+    #     "geometry": { "type": "Point", "coordinates": [-74.00, 40.71]},
+    #     "properties": {
+    #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/3/39/NYC_Top_of_the_Rock_Pano.jpg/640px-NYC_Top_of_the_Rock_Pano.jpg",
+    #         "url": "http://en.wikipedia.org/wiki/New_York_City",
+    #         "city": "New York City"
+    #     }
+    # }];
+
+
     def confirmed
       where("confirmed_at is not null")
     end

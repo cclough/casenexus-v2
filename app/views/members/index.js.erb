@@ -3,10 +3,46 @@ $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
 window.map_index_users_item_bless();
 
-//Set the json as a js variable - when used getJSON in the coffeescript file it wouldn't work with e.g. different pages, just gave the same set of markers everytime
-var map_index_map_markers_json = "<%= escape_javascript(User.markers(@users).to_json.html_safe) %>";
 
-window.map_index_map_markers_draw();
+var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users).html_safe) %>";
+
+var geoJson = $.parseJSON(geoJson_precursor);
+
+alert(geoJson);
+
+// var geoJson = [{
+//     type: 'Feature',
+//     "geometry": { "type": "Point", "coordinates": [-77.03, 38.90]},
+//     "properties": {
+//         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
+//         "url": "http://en.wikipedia.org/wiki/Washington,_D.C.",
+//         "marker-symbol": "star",
+//         "city": "Washington, D.C."
+//     }
+// }, {
+//     type: 'Feature',
+//     "geometry": { "type": "Point", "coordinates": [-87.63, 41.88]},
+//     "properties": {
+//         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Chicago_sunrise_1.jpg/640px-Chicago_sunrise_1.jpg",
+//         "url": "http://en.wikipedia.org/wiki/Chicago",
+//         "city": "Chicago"
+//     }
+// }, {
+//     type: 'Feature',
+//     "geometry": { "type": "Point", "coordinates": [-74.00, 40.71]},
+//     "properties": {
+//         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/3/39/NYC_Top_of_the_Rock_Pano.jpg/640px-NYC_Top_of_the_Rock_Pano.jpg",
+//         "url": "http://en.wikipedia.org/wiki/New_York_City",
+//         "city": "New York City"
+//     }
+// }];
+
+
+window.map.markerLayer.setGeoJSON(geoJson);
+
+window.map.setView([45.908, -78.525], 4);
+
+
 
 // Tooltips on Avatars
 $(".application_avatar_icon").tooltip()
@@ -14,17 +50,17 @@ $(".application_avatar_icon").tooltip()
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item_avatar, .map_index_users_item_info, .map_index_users_item_activity').click(function () {
 
-  var target_id = $(this).parent().attr('data-id');
-  var target_lat = $(this).parent().attr('data-lat');
-  var target_lng = $(this).parent().attr('data-lng');
+  // var target_id = $(this).parent().attr('data-id');
+  // var target_lat = $(this).parent().attr('data-lat');
+  // var target_lng = $(this).parent().attr('data-lng');
 
-  // the problem is something to do with the latlng variable i think! - overlapping with another definition
-  var user_latlng = new google.maps.LatLng(target_lat,target_lng)
-  window.map_index_map_pan(user_latlng)
+  // // the problem is something to do with the latlng variable i think! - overlapping with another definition
+  // var user_latlng = new google.maps.LatLng(target_lat,target_lng)
+  // window.map_index_map_pan(user_latlng)
 
-  setTimeout((function() {
-    return window.map_index_load_infobox(target_id);
-  }), 300);
+  // setTimeout((function() {
+  //   return window.map_index_load_infobox(target_id);
+  // }), 300);
 
 });
 

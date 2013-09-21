@@ -88,8 +88,9 @@ $alert-yellow: #FFFF7E;
 
   .profile_index_title {
     height:30px;
-    border-bottom:2px solid $gray_gunmetal_second;
+    border-bottom:1px solid $gray_second;
     line-height:30px;
+    font-weight:bold;
   }
 
   #profile_index_calendar {
@@ -261,7 +262,7 @@ $alert-yellow: #FFFF7E;
 //    outline:1px solid white;
 
     .profile_index_title {
-      border-bottom:2px solid $gray_gunmetal;
+//      border-bottom:2px solid $gray_gunmetal;
     }
 
     #profile_index_feedback_actions_resultstable {
