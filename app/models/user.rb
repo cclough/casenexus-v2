@@ -198,10 +198,11 @@ class User < ActiveRecord::Base
                     \"properties\": {
                         \"id\": \"#{user.id}\",
                         \"title\": \"#{user.username}\",
-                        \"icon\": {
-                          \"iconUrl\": \"http://localhost:3000/assets/markers/marker_new.png\",
-                          \"iconSize\": [33, 42]
-                        }
+                        \"marker-color\": \"#f44\",
+                        \"university_image\": \"#{user.university.image}\",
+                        \"cases_recd\": \"#{user.case_count_recd}\",
+                        \"cases_givn\": \"#{user.case_count_givn}\",
+                        \"cases_ext\": \"#{user.cases_external}\"
                     }
                   },"
         string = string + new_bit

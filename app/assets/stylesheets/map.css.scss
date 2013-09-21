@@ -586,3 +586,69 @@ $alert-yellow: #FFFF7E;
 
 
 
+
+///////////////POPUP////////////////
+
+
+.map_index_map_popup{
+  height:65px;
+
+  .map_index_map_popup_user {
+    margin-bottom:5px;
+    font-weight:bold;
+    img {
+      margin-right:10px;
+    }
+  }
+
+  .map_index_map_popup_cases {
+
+    div {
+      display:block;
+      width:30px;
+      height:30px;
+      text-align:center;
+      line-height:23px;
+      position:relative;
+      float:left;
+    }
+
+    .map_index_users_item_cases_recd {
+      background: $alert-green;
+      font-size:15px;
+      font-weight:bolder;
+      color:white;
+    }
+
+    .map_index_users_item_cases_givn{
+      background: $alert-blue;
+      font-size:15px;
+      font-weight:bolder;
+      color:white;
+    }
+
+    .map_index_users_item_cases_external{
+      background: $gray_background;
+      font-size:15px;
+      font-weight:bolder;
+      color:$gray_second;
+    }
+
+    .map_index_users_item_cases_text {
+      position:absolute;
+      left:0px;
+      right:0px;
+      text-align:center;
+      top:12px;
+      font-size:9px;
+    }
+
+
+
+  }
+
+
+}
+
+
+
