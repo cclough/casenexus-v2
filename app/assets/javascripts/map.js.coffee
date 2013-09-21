@@ -170,10 +170,6 @@ window.map_index_map_markers_draw = () ->
 
 
 
-  # markerLayer = L.mapbox.markerLayer(map_index_map_markers_json).addTo(map)
-
-  #.loadURL("/members.json")
-
 
 window.map_index_user_profile_chart_activity_draw = (user_id) ->
   chart = undefined
@@ -326,44 +322,9 @@ $(document).ready ->
     false
 
 
-  
 
   window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2").setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 2)
-
-
-
-  # markerLayer = L.mapbox.markerLayer(
-  #   type: "FeatureCollection"
-  #   features: [
-  #     type: "Feature"
-  #     properties:
-  #       size: 5
-  #       population: 10
-
-  #     geometry:
-  #       type: "Point"
-  #       coordinates: [0, 0]
-  #   ]
-  # ).addTo(map)
-
-
-  # markerLayer.eachLayer (layer) ->
-    
-  #   # here you call `bindPopup` with a string of HTML you create - the feature
-  #   # properties declared above are available under `layer.feature.properties`
-  #   content = "<h1>size: " + layer.feature.properties.size + "</h1>" + "<h2>population: " + layer.feature.properties.population + "</h2>"
-  #   layer.bindPopup content
-
-
-  # markerLayer.on "click", (e) ->
-  #   map.panTo e.layer.getLatLng()
-
-
-
-
-
-
-
+ 
 
   
 
@@ -393,38 +354,6 @@ $(document).ready ->
   #         lightness: 3
   #       ]
   #     ]
-
-
-
-  # [{ type: 'Feature', "geometry": { "type": "Point", "coordinates": [0.0,0.0]}, "properties": { "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg", "url": "http://en.wikipedia.org/wiki/Washington,_D.C.", "marker-symbol": "star", "city": "Washington, D.C." } }]
-
-  # {
-  #     type: 'Feature',
-  #     "geometry": { "type": "Point", "coordinates": [-77.03, 38.90]},
-  #     "properties": {
-  #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Cherry_Blossoms_and_Washington_Monument.jpg/320px-Cherry_Blossoms_and_Washington_Monument.jpg",
-  #         "url": "http://en.wikipedia.org/wiki/Washington,_D.C.",
-  #         "marker-symbol": "star",
-  #         "city": "Washington, D.C."
-  #     }
-  # }, {
-  #     type: 'Feature',
-  #     "geometry": { "type": "Point", "coordinates": [-87.63, 41.88]},
-  #     "properties": {
-  #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Chicago_sunrise_1.jpg/640px-Chicago_sunrise_1.jpg",
-  #         "url": "http://en.wikipedia.org/wiki/Chicago",
-  #         "city": "Chicago"
-  #     }
-  # }, {
-  #     type: 'Feature',
-  #     "geometry": { "type": "Point", "coordinates": [-74.00, 40.71]},
-  #     "properties": {
-  #         "image": "http://upload.wikimedia.org/wikipedia/commons/thumb/3/39/NYC_Top_of_the_Rock_Pano.jpg/640px-NYC_Top_of_the_Rock_Pano.jpg",
-  #         "url": "http://en.wikipedia.org/wiki/New_York_City",
-  #         "city": "New York City"
-  #     }
-  # }];
-
 
   #   # Create the map
   #   window.map = new google.maps.Map(document.getElementById("map_index_map"), mapOptions)
