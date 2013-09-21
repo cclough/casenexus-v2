@@ -10,13 +10,13 @@ var geoJson = $.parseJSON(geoJson_precursor);
 
 // alert(geoJson);
 
-window.map.markerLayer.setGeoJSON(geoJson);
+map.markerLayer.setGeoJSON(geoJson);
 
-window.map.setView([51.7519,-1.2578], 14);
+// map.setView([51.7519,-1.2578], 14);
 
 map.markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
-        feature = marker.feature;
+    feature = marker.feature;
 
     marker.setIcon(L.icon(feature.properties.icon));
 });
@@ -28,6 +28,27 @@ map.markerLayer.on('mouseout', function(e) {
     e.layer.closePopup();
 });
 
+window.map.markerLayer.on('click', function(e) {
+    window.map.panTo(e.layer.getLatLng());
+});
+
+// Open popup when user mouses over a marker
+map.markerLayer.on('ready', function(e) {
+    var markers = [];
+    this.eachLayer(function(marker) { markers.push(marker); });
+    cycle(markers);
+});
+
+function cycle(markers) {
+    var i = 0;
+    function run() {
+        if (++i > markers.length - 1) i = 0;
+        map.setView(markers[i].getLatLng(), 12);
+        markers[i].openPopup();
+        window.setTimeout(run, 3000);
+    }
+    run();
+}
 
 // Tooltips on Avatars
 $(".application_avatar_icon").tooltip()
@@ -35,17 +56,13 @@ $(".application_avatar_icon").tooltip()
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item_avatar, .map_index_users_item_info, .map_index_users_item_activity').click(function () {
 
-  // var target_id = $(this).parent().attr('data-id');
-  // var target_lat = $(this).parent().attr('data-lat');
-  // var target_lng = $(this).parent().attr('data-lng');
+  var target_id = $(this).parent().attr('data-id');
 
-  // // the problem is something to do with the latlng variable i think! - overlapping with another definition
-  // var user_latlng = new google.maps.LatLng(target_lat,target_lng)
-  // window.map_index_map_pan(user_latlng)
-
-  // setTimeout((function() {
-  //   return window.map_index_load_infobox(target_id);
-  // }), 300);
+  map.markerLayer.eachLayer(function(marker) {
+      if (marker.feature.properties.id == target_id) {
+          marker.openPopup();
+      }
+  });
 
 });
 

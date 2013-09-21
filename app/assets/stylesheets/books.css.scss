@@ -116,7 +116,9 @@ $alert-yellow: #FFFF7E;
 .books_index_books_item_body {
   width:500px;
   height:155px;
-
+  &.books_index_books_item_body_show {
+    height:250px;
+  }
 }
 
 .books_index_books_item_difficulty_triangle {

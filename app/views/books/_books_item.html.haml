@@ -17,7 +17,7 @@
 
         .row
 
-          .span.books_index_books_item_body
+          .span.books_index_books_item_body{class: ("books_index_books_item_body_show" if params[:action] == "show")}
 
             .row.books_index_books_item_titles
               / .span.books_index_books_item_source_title
@@ -52,7 +52,10 @@
 
             .row.books_index_books_item_description
               .span
-                = books_item.desc_trunc
+                - if params[:action] == "show"
+                  = books_item.desc
+                - else
+                  = books_item.desc_trunc
             .spacer10
             .row.application_tags_container
               = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')

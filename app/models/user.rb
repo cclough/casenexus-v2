@@ -196,6 +196,7 @@ class User < ActiveRecord::Base
                     \"type\": \"Feature\",
                     \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
                     \"properties\": {
+                        \"id\": \"#{user.id}\",
                         \"title\": \"#{user.username}\",
                         \"icon\": {
                           \"iconUrl\": \"http://localhost:3000/assets/markers/marker_new.png\",
