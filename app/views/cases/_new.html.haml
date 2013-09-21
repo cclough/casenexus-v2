@@ -131,13 +131,7 @@
                 = render partial: 'cases/scoreselector' , locals: { criteria: "sanitychecking", category: "businessanalytics", existing_score: @case.sanitychecking }
                 = f.hidden_field :sanitychecking, class: "cases_new_score_input", tabindex: "-1", id: 'cases_new_score_input_sanitychecking'
 
-          .cases_new_block_desc
-            #cases_new_block_groupscore_businessanalytics.cases_new_block_groupscore
-              Average score for Business Analytics
-              .cases_new_block_groupscore_number
-                0.0/5    
 
-      
   .spacer15
 
 
@@ -197,12 +191,6 @@
                 = render partial: 'cases/scoreselector' , locals: { criteria: "pushingtoconclusion", category: "structure", existing_score: @case.pushingtoconclusion }
                 = f.hidden_field :pushingtoconclusion, class: "cases_new_score_input", tabindex: "-1", id: 'cases_new_score_input_pushingtoconclusion'
 
-
-          .cases_new_block_desc
-            #cases_new_block_groupscore_structure.cases_new_block_groupscore
-              Average score for Structure
-              .cases_new_block_groupscore_number
-                0.0/5
 
 
 
@@ -265,12 +253,6 @@
               .span.pull-right
                 = render partial: 'cases/scoreselector' , locals: { criteria: "askingforinformation", category: "interpersonal", existing_score: @case.askingforinformation }
                 = f.hidden_field :askingforinformation, class: "cases_new_score_input", tabindex: "-1", id: 'cases_new_score_input_askingforinformation'
-
-          .cases_new_block_desc
-            #cases_new_block_groupscore_interpersonal.cases_new_block_groupscore
-              Average score for Interpersonal
-              .cases_new_block_groupscore_number
-                0.0/5 
 
 
 

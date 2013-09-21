@@ -4,30 +4,16 @@
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
-    = javascript_include_tag "onlinepanel"
 
-    - if request.ssl?
-      = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true"
-    - else
-      = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=true"
-
-
-
+    / Mapbox
     = javascript_include_tag '//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'
     = stylesheet_link_tag '//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css'
+    = javascript_include_tag 'https://dragdealer.googlecode.com/svn/tags/0.9.5/dragdealer.js'
 
-
-
-    = javascript_include_tag "lib/infobox"
-    
-    = javascript_include_tag "http://maps.stamen.com/js/tile.stamen.js?v1.2.3"
-    
     = javascript_include_tag "map"
     = javascript_include_tag "events"
 
 
-    = javascript_include_tag "lib/amcharts"
-    = javascript_include_tag "http://download.skype.com/share/skypebuttons/js/skypeCheck.js"
 
     = yield :javascript_includes
 

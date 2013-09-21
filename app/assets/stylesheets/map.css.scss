@@ -55,13 +55,9 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_container_users {
-  position:absolute;
-  right:0px;
-  top:0px;
-  bottom:0px;
+  margin-left:20px;
   width:50%;
   z-index:0;
-  overflow-y:auto;
   background:rgba(255,255,255,0.5s);
   border-left:3px solid white;
   border-right:3px solid white;
@@ -71,33 +67,31 @@ $alert-yellow: #FFFF7E;
 //  }
 }
 
-
 #map_index_users {
-  padding:10px;
+
 }
 
-#map_index_users {
-  position:absolute;
-  top:130px;
-  bottom:0px;
-  left:0px;
-  right:0px;
 
+.zoomout, .ts-map .zoomout { 
+    left: 50% !important;
+}
+.zoomin, .ts-map .zoomin {
+    left: 50% !important;
 }
 
 
 #map_index_container_map {
-  z-index: 0;
-
-  position:absolute;
+  position:fixed;
+  top:50px;
   left:0px;
-  right:50%;
-  top:0px;
   bottom:0px;
+  right:0px;
+  z-index:-1;
 
 }
 
 #map_index_map {
+  z-index: 0;
   position:absolute;
   left:0px;
   right:0px;
@@ -110,27 +104,27 @@ $alert-yellow: #FFFF7E;
 
 
 
-#map_index_container_user_infobox {
+//#map_index_container_user_infobox {
 
-  background:white;
-  width:100px;
-  height:50px;
-  padding:10px;
+//  background:white;
+//  width:100px;
+//  height:50px;
+//  padding:10px;
 
-  &:after {
-    content:"";
-    position:absolute;
-    bottom:-20px; /* value = - border-top-width - border-bottom-width */
-    left:50px; /* controls horizontal position */
-    border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
-    border-style:solid;
-    border-color:white transparent; 
-    /* reduce the damage in FF3.0 */
-    display:block; 
-    width:0;
-  }
+//  &:after {
+//    content:"";
+//    position:absolute;
+//    bottom:-20px; /* value = - border-top-width - border-bottom-width */
+//    left:50px; /* controls horizontal position */
+//    border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+//    border-style:solid;
+//    border-color:white transparent; 
+//    /* reduce the damage in FF3.0 */
+//    display:block; 
+//    width:0;
+//  }
 
-}
+//}
 
 
 
@@ -651,4 +645,41 @@ $alert-yellow: #FFFF7E;
 }
 
 
+
+
+
+
+
+
+
+
+
+#z {
+    top: 10px;
+    right: 100px;
+    position: absolute;
+    z-index: 999;
+}
+
+#zoom-bar {
+    width: 200px;
+    position: relative;
+    height: 30px;
+    background: #FFF;
+    border: 1px solid #BBB;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.dragdealer .handle {
+    position: absolute;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: #222;
+    color: #fff;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+}
 

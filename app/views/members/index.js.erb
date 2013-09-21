@@ -12,9 +12,6 @@ var geoJson = $.parseJSON(geoJson_precursor);
 
 map.markerLayer.setGeoJSON(geoJson);
 
-// map.setView([51.7519,-1.2578], 14);
-
-
 
 // map.markerLayer.on('mouseover', function(e) {
 //     e.layer.openPopup();
@@ -23,10 +20,17 @@ map.markerLayer.setGeoJSON(geoJson);
 //     e.layer.closePopup();
 // });
 
-// map.markerLayer.on('click', function(e) {
-//     e.layer.openPopup();
-//     window.map.panTo(e.layer.getLatLng());
-// });
+map.markerLayer.on('click', function(e) {
+    // e.layer.openPopup();
+    window.map.panTo(e.layer.getLatLng());
+
+    // http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
+    // // Calculate the offset
+    // var offset = map.getSize().x*0.14;
+    // // Then move the map
+    // map.panBy(new L.Point(-offset, 0), {animate: false});
+
+});
 
 map.markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
@@ -55,7 +59,7 @@ map.markerLayer.on('layeradd', function(e) {
                         '   </div>' +
 
                         '</div>';
-    // http://leafletjs.com/reference.html#popup
+
     marker.bindPopup(popupContent,{
         closeButton: false,
         minWidth: 130

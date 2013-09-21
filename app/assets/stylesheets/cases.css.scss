@@ -430,13 +430,6 @@ $alert-yellow: #FFFF7E;
   width:60%;
 }
 
-.cases_new_block_groupscore {
-  text-align:center;
-}
-
-.cases_new_block_groupscore_businessanalytics_number {
-  font-size:20px;
-}
 
 
 .cases_new_scoreselector_container {
@@ -576,6 +569,13 @@ $alert-yellow: #FFFF7E;
 }
 
 
+
+#cases_new_recommendations_panel {
+  background:$gray_second;
+  textarea {
+    
+  }
+}
 
 
 //////////////////////////////////////////

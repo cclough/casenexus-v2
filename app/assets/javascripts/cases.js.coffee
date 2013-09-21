@@ -31,8 +31,6 @@ window.cases_new_prime = () ->
     # change value of input
     $("#cases_new_score_input_" + criteria).val(score)
 
-    # update category score
-    cases_new_calculatecategoryscore($(this).attr("data-category"));
 
     # make active
     $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
@@ -48,68 +46,6 @@ window.cases_new_prime = () ->
   # Char counters
   $('.application_countchar').keyup ->
     window.application_countChar(this)
-
-
-  cases_new_calculatecategoryscore = (category) ->
-    if category is "businessanalytics"
-      if $("#cases_new_score_input_quantitativebasics").val()
-        category_score_1 = parseInt($("#cases_new_score_input_quantitativebasics").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_problemsolving").val()
-        category_score_2 = parseInt($("#cases_new_score_input_problemsolving").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_prioritisation").val()
-        category_score_3 = parseInt($("#cases_new_score_input_prioritisation").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_sanitychecking").val()
-        category_score_4 = parseInt($("#cases_new_score_input_sanitychecking").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_groupscore_businessanalytics .cases_new_block_groupscore_number").html category_score + "/5"
-
-    else if category is "structure"
-      if $("#cases_new_score_input_approachupfront").val()
-        category_score_1 = parseInt($("#cases_new_score_input_approachupfront").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_stickingtostructure").val()
-        category_score_2 = parseInt($("#cases_new_score_input_stickingtostructure").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_announceschangedstructure").val()
-        category_score_3 = parseInt($("#cases_new_score_input_announceschangedstructure").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_pushingtoconclusion").val()
-        category_score_4 = parseInt($("#cases_new_score_input_pushingtoconclusion").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_groupscore_structure  .cases_new_block_groupscore_number").html category_score + "/5"
-
-    else if category is "interpersonal"
-      if $("#cases_new_score_input_rapport").val()
-        category_score_1 = parseInt($("#cases_new_score_input_rapport").val())
-      else
-        category_score_1 = 0
-      if $("#cases_new_score_input_articulation").val()
-        category_score_2 = parseInt($("#cases_new_score_input_articulation").val())
-      else
-        category_score_2 = 0
-      if $("#cases_new_score_input_concision").val()
-        category_score_3 = parseInt($("#cases_new_score_input_concision").val())
-      else
-        category_score_3 = 0
-      if $("#cases_new_score_input_askingforinformation").val()
-        category_score_4 = parseInt($("#cases_new_score_input_askingforinformation").val())
-      else
-        category_score_4 = 0
-      category_score = (category_score_1 + category_score_2 + category_score_3 + category_score_4) / 4
-      $("#cases_new_block_groupscore_interpersonal  .cases_new_block_groupscore_number").html category_score + "/5"
 
 
 #////////////////////////////////////////////////////

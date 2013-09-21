@@ -23,19 +23,19 @@ window.map_index_map_zoomout_and_pan = (latlng) ->
   # window.map.setZoom 1
 
 # From http://stackoverflow.com/questions/8146676/google-maps-api-v3-offset-panto-by-x-pixels
-google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
-  map = this
-  ov = new google.maps.OverlayView()
-  ov.onAdd = ->
-    proj = @getProjection()
-    aPoint = proj.fromLatLngToContainerPixel(latlng)
-    aPoint.x = aPoint.x + offsetX
-    aPoint.y = aPoint.y + offsetY
-    map.panTo proj.fromContainerPixelToLatLng(aPoint)
+# google.maps.Map::panToWithOffset = (latlng, offsetX, offsetY) ->
+#   map = this
+#   ov = new google.maps.OverlayView()
+#   ov.onAdd = ->
+#     proj = @getProjection()
+#     aPoint = proj.fromLatLngToContainerPixel(latlng)
+#     aPoint.x = aPoint.x + offsetX
+#     aPoint.y = aPoint.y + offsetY
+#     map.panTo proj.fromContainerPixelToLatLng(aPoint)
 
-  ov.draw = ->
+#   ov.draw = ->
 
-  ov.setMap this
+#   ov.setMap this
 
 
 window.map_index_users_item_bless = () ->
@@ -323,10 +323,32 @@ $(document).ready ->
 
 
 
-  window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2").setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 2)
+  window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false }).setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 2)
  
 
-  
+  new L.Control.Zoom({ position: 'topright' }).addTo(map)
+
+  zooms = 17
+  handle = document.getElementById("handle")
+
+  # Configure Dragdealer to update the map zoom
+  zoom_bar = new Dragdealer("zoom-bar",
+    steps: zooms
+    snap: true
+    callback: (x, y) ->
+      z = x * (zooms - 1)
+      map.setZoom z
+      handle.innerHTML = z
+  )
+
+  # Round zoom so that numbers in the bar look presentable.
+  map.on "zoomend", ->
+    z = Math.round(map.getZoom())
+    zoom_bar.setValue z / 16
+    handle.innerHTML = z
+
+
+
 
   # # Map
   # if typeof map_index_map_lat_start is "string"
