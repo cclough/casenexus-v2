@@ -32,6 +32,7 @@ window.map.markerLayer.on('click', function(e) {
     window.map.panTo(e.layer.getLatLng());
 });
 
+
 // Open popup when user mouses over a marker
 map.markerLayer.on('ready', function(e) {
     var markers = [];
@@ -61,6 +62,8 @@ $('.map_index_users_item_avatar, .map_index_users_item_info, .map_index_users_it
   map.markerLayer.eachLayer(function(marker) {
       if (marker.feature.properties.id == target_id) {
           marker.openPopup();
+          marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';
+          map.markerLayer.setGeoJSON(geoJson);
       }
   });
 
