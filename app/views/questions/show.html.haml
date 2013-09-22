@@ -34,7 +34,7 @@
             ago
           .spacer5
           .span2
-            %span.fui-user
+            = avatar_for(@question.user, size: "small")
           .span13.offset1
             = link_to @question.user.username, "/map?user_id=" +  @question.user.id.to_s
 
@@ -78,7 +78,7 @@
                 ago
               .spacer5
               .span2
-                %span.fui-user
+                = avatar_for(question_answer.user, size: "small")
               .span13.offset1
                 = link_to question_answer.user.username, "/map?user_id=" +  question_answer.user.id.to_s
         .row

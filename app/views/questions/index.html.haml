@@ -48,7 +48,7 @@
               .spacer5
               .row
                 .span2
-                  %span.fui-user
+                  = avatar_for(questions_item.user, size: "small")
                 .span15.offset1
                   .row
                     = questions_item.user.username

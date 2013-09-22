@@ -12,11 +12,15 @@ var geoJson = $.parseJSON(geoJson_precursor);
 
 map.markerLayer.setGeoJSON(geoJson);
 
-// reset zoom out every time list is refreshed
-window.map.setZoom(2);
-offset = map.getSize().x * 0.25
-$("#map_index_map_zoomout").fadeOut("fast");
-
+// Switch to allow zoomed in state on page run
+if (map_index_users_firstrun_switch == "on") {
+  map_index_users_firstrun_switch = "off"
+} else {
+  // reset zoom out every time list is refreshed
+  window.map.setZoom(2);
+  offset = map.getSize().x * 0.25
+  $("#map_index_map_zoomout").fadeOut("fast");
+}
 
 // open tooltip of first marker in list + make user item active - NB RUBY IF
 <%- if @users.count > 0 %>
@@ -38,17 +42,13 @@ $("#map_index_map_zoomout").fadeOut("fast");
 
 
 
-// map.markerLayer.on('mouseover', function(e) {
-//     e.layer.openPopup();
-// });
-// map.markerLayer.on('mouseout', function(e) {
-//     e.layer.closePopup();
-// });
+
 
 
 map.markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
         feature = marker.feature;
+
 
     var popupContent =  '<div class="map_index_map_popup">' +
 
@@ -74,10 +74,13 @@ map.markerLayer.on('layeradd', function(e) {
 
                         '</div>';
 
-    marker.bindPopup(popupContent,{
-        closeButton: false,
-        minWidth: 130
-    });
+
+    // marker.bindPopup(popupContent,{
+    //     closeButton: false,
+    //     // autoPan: false,
+    //     closeOnClick: false,
+    //     minWidth: 130
+    // });
 
     marker.on('click', function () {
       // pan, offset pan, zoom and show button
@@ -86,6 +89,30 @@ map.markerLayer.on('layeradd', function(e) {
       map.panBy(new L.Point(-offset, 0), {animate: false});
       window.map.setZoom(15);
       $("#map_index_map_zoomout").fadeIn("fast");
+
+      var popup = L.popup({
+            closeButton: false,
+            minWidth: 130,
+            offset: new L.Point(0, -25)
+            })
+            .setLatLng(marker.getLatLng())
+            .setContent(popupContent)
+            .addTo(map);
+
+    });
+
+    marker.on('mouseover', function(e) {
+      var popup = L.popup({
+            closeButton: false,
+            minWidth: 130,
+            offset: new L.Point(0, -25)
+            })
+            .setLatLng(marker.getLatLng())
+            .setContent(popupContent)
+            .openOn(map);
+    });
+    marker.on('mouseout', function(e) {
+        marker.closePopup();
     });
 
 });
