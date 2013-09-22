@@ -18,9 +18,8 @@ offset = map.getSize().x * 0.25
 $("#map_index_map_zoomout").fadeOut("fast");
 
 
+// open tooltip of first marker in list + make user item active - NB RUBY IF
 <%- if @users.count > 0 %>
-
-  // open tooltip of first marker in list + make user item active
   var firstmarker_id = "<%= j(@users.first.id.to_s) %>";
   map.markerLayer.eachLayer(function(marker) {
       if (marker.feature.properties.id == firstmarker_id) {
@@ -35,8 +34,9 @@ $("#map_index_map_zoomout").fadeOut("fast");
   });
   $('.map_index_users_item').removeClass("map_index_users_item_info_active");
   $("#map_index_users").find('.map_index_users_item').first().addClass("map_index_users_item_info_active");
-
 <%- end %>
+
+
 
 // map.markerLayer.on('mouseover', function(e) {
 //     e.layer.openPopup();
@@ -45,10 +45,6 @@ $("#map_index_map_zoomout").fadeOut("fast");
 //     e.layer.closePopup();
 // });
 
-map.markerLayer.on('click', function(e) {
-    // e.layer.openPopup();
-    window.map.panTo(e.layer.getLatLng());
-});
 
 map.markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
@@ -82,7 +78,24 @@ map.markerLayer.on('layeradd', function(e) {
         closeButton: false,
         minWidth: 130
     });
+
+    marker.on('click', function () {
+      // pan, offset pan, zoom and show button
+      window.map.panTo(marker.getLatLng());
+      var offset = map.getSize().x*0.25;
+      map.panBy(new L.Point(-offset, 0), {animate: false});
+      window.map.setZoom(15);
+      $("#map_index_map_zoomout").fadeIn("fast");
+    });
+
 });
+
+
+// map.markerLayer.on('click', function(marker) {
+//     // e.layer.openPopup();
+//     window.map.panTo(marker.layer.getLatLng());    
+// });
+
 
 // map.markerLayer.on('layeradd', function(e) {
 //     var marker = e.layer,
