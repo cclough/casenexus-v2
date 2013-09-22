@@ -29,6 +29,15 @@
     #profile_index_info_username
       = current_user.username
 
+      #profile_index_info_widgets
+        = link_to edit_account_path(current_user), "data-original-title"=>"Your settings", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip" do
+          %i.icon-cogs
+        = link_to visitors_account_path,"data-original-title"=>"Visitors", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip" do
+          %i.icon-user
+        = link_to invitations_path,"data-original-title"=>"Invite friends", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip" do
+          %i.icon-plus
+        = link_to destroy_user_session_path,"data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip", method: :delete do
+          %i.icon-reply
     .spacer10
 
     #profile_index_info_degreelevel
