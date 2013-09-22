@@ -99,6 +99,12 @@ $alert-yellow: #FFFF7E;
   right:0px;
   z-index:1;
 
+  #map_index_map_zoomout {
+    position:absolute;
+    left:635px;
+    top:10px;
+    z-index:10;
+  }
 }
 
 #map_index_map {

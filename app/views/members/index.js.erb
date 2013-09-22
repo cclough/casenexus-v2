@@ -12,6 +12,31 @@ var geoJson = $.parseJSON(geoJson_precursor);
 
 map.markerLayer.setGeoJSON(geoJson);
 
+// reset zoom out every time list is refreshed
+window.map.setZoom(2);
+offset = map.getSize().x * 0.25
+$("#map_index_map_zoomout").fadeOut("fast");
+
+
+<%- if @users.count > 0 %>
+
+  // open tooltip of first marker in list + make user item active
+  var firstmarker_id = "<%= j(@users.first.id.to_s) %>";
+  map.markerLayer.eachLayer(function(marker) {
+      if (marker.feature.properties.id == firstmarker_id) {
+
+        window.map.panTo(marker.getLatLng());
+        var offset = map.getSize().x*0.25;
+        map.panBy(new L.Point(-offset, 0), {animate: false});
+
+        marker.openPopup();
+        $("#map_index_map_zoomout").fadeIn("fast");
+      }
+  });
+  $('.map_index_users_item').removeClass("map_index_users_item_info_active");
+  $("#map_index_users").find('.map_index_users_item').first().addClass("map_index_users_item_info_active");
+
+<%- end %>
 
 // map.markerLayer.on('mouseover', function(e) {
 //     e.layer.openPopup();
@@ -23,14 +48,6 @@ map.markerLayer.setGeoJSON(geoJson);
 map.markerLayer.on('click', function(e) {
     // e.layer.openPopup();
     window.map.panTo(e.layer.getLatLng());
-
-    //http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
-    
-    // Calculate the offset
-    var offset = map.getSize().x*0.14;
-    // Then move the map
-    map.panBy(-offset, 0)
-
 });
 
 map.markerLayer.on('layeradd', function(e) {
@@ -92,19 +109,21 @@ $('.map_index_users_item').click(function () {
 
   map.markerLayer.eachLayer(function(marker) {
       if (marker.feature.properties.id == target_id) {
-          marker.openPopup();
+
           window.map.panTo(marker.getLatLng());
 
-          // Calculate the offset
+          //http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
           var offset = map.getSize().x*0.25;
-          // Then move the map
           map.panBy(new L.Point(-offset, 0), {animate: false});
 
-          marker.layer.openPopup();
-          //marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';
-          marker.feature.properties['marker-color'] = '#000';
-          map.markerLayer.setGeoJSON(geoJson);
+          window.map.setZoom(15);
 
+          //marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';
+          //marker.feature.properties['marker-color'] = '#fff';
+          // map.markerLayer.setGeoJSON(geoJson);
+
+          marker.openPopup();
+          $("#map_index_map_zoomout").fadeIn("fast");
 
       }
   });

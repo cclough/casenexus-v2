@@ -40,6 +40,8 @@ window.map_index_users_updatelist = ->
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
 
+
+
 window.map_index_users_resetfilters = (filter_excep) ->
 
   if (filter_excep != "language")
@@ -64,6 +66,7 @@ $(document).ready ->
   # Update the list of users
   map_index_users_updatelist()
 
+  # search
   $("#header_nav_search_form").on "submit", ->
     window.map_index_users_search()
 
@@ -153,9 +156,20 @@ $(document).ready ->
 
 
   window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false }).setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 2)
- 
-  new L.Control.Zoom({ position: 'topright' }).addTo(map)
 
+  # back to world view button (must be after map variable has been set)
+  $("#map_index_map_zoomout").click ->
+    window.map.setZoom(2);
+    # Calculate the offset
+    offset = map.getSize().x * 0.25
+    $(this).fadeOut("fast");
+
+    # Then move the map
+    map.panBy new L.Point(-offset, 0),
+      animate: false
+
+  # custom zoom control
+  new L.Control.Zoom({ position: 'topright' }).addTo(map)
   zooms = 17
   handle = document.getElementById("map_index_map_zoomer_handle")
   # Configure Dragdealer to update the map zoom
@@ -167,8 +181,6 @@ $(document).ready ->
       map.setZoom z
       handle.innerHTML = z
   )
-
-  # Round zoom so that numbers in the bar look presentable.
   map.on "zoomend", ->
     z = Math.round(map.getZoom())
     zoom_bar.setValue z / 16
