@@ -277,6 +277,9 @@ $alert-yellow: #FFFF7E;
   text-align:center;
   font-size:11px;
   margin:0 10px 0 0;
+
+  border-radius: 4px 4px 4px 4px;
+  padding: 8px 14px 8px 14px;
 }
 
 
@@ -358,9 +361,13 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////////////////////////////////////
 
 .books_show_small {
+  width:375px;
   .btn {
     width:345px;
+    outline:1px solid black;
+
   }
+position:relative;
   
 }
 
@@ -395,7 +402,7 @@ $alert-yellow: #FFFF7E;
   text-align:left;
   float:left;
   position:relative;
-  width:262px;
+  width:220px;
   margin-top:5px;
   .books_show_small_title {
     font-weight:bolder;
@@ -404,16 +411,21 @@ $alert-yellow: #FFFF7E;
     font-size:11px;
   }
 
-  .books_show_small_difficulty {
-    float:right;
-    position:absolute;
-    right:0px;
-    top:0px;
-  }
 
 }
 
 
+.books_show_small_difficulty {
+  position:absolute;
+  height:68px;
+  width:60px;
+  right:0px;
+  top:0px;
+  line-height:67px;
+  padding:8px;
+  z-index:99;
+  font-weight:bold;
+}
 
 
 

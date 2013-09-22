@@ -142,6 +142,21 @@ module ApplicationHelper
     end
   end
 
+  def books_small_difficulty_stamp(book)
+    num = book.difficulty
+
+    case num
+    when 1
+      content_tag :div, "Novice", class: "books_show_small_difficulty application_bootstrap_alert_green"
+    when 2
+      content_tag :div, "Intermediate", class: "books_show_small_difficulty application_bootstrap_alert_blue"
+    when 3
+      content_tag :div, "Advanced", class: "books_show_small_difficulty application_bootstrap_alert_red"
+    end
+  end
+
+
+
   def books_difficulty_triangle(book)
 
     num = book.difficulty

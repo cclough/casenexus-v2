@@ -354,7 +354,7 @@ $alert-yellow: #FFFF7E;
   cursor:pointer;
   float:left;
   position:relative;
-  width:300px;
+  width:200px;
   height:130px;
   padding:10px; //offsets width!
 
@@ -545,6 +545,7 @@ $alert-yellow: #FFFF7E;
   position:absolute;
 
   left:110px;
+  width:295px;
 
   top:55px;
   right:70px;
@@ -598,6 +599,7 @@ $alert-yellow: #FFFF7E;
       text-align:center;
       line-height:23px;
       position:relative;
+      float:left;
     }
 
     .map_index_users_item_cases_recd {

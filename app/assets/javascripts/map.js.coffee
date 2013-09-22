@@ -40,9 +40,6 @@ window.map_index_users_updatelist = ->
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
 
-  if (window.map?)
-    window.map_index_map_zoomout_and_pan new google.maps.LatLng(parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start))
-
 window.map_index_users_resetfilters = (filter_excep) ->
 
   if (filter_excep != "language")

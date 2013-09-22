@@ -238,10 +238,6 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
   # DRAW BOTH CHARTS
   cases_analysis_chart_progress_draw = (data) ->
     
-    # Fade out loading bars
-    $(".cases_analysis_loading").fadeOut "slow", ->
-      $(".cases_analysis_loading").remove()
-
     chart_analysis_progress = undefined
     
     # SERIAL CHART

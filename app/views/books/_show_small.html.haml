@@ -1,6 +1,8 @@
 - if @book.blank? then @book = Book.find(book_id) end
 
 .books_show_small
+  - unless @book.difficulty.blank?
+    = books_small_difficulty_stamp(@book)
   %input{ type:"hidden", name:"case[book_id]",value: @book.id }
 
   = link_to book_path(@book), target: "_blank", class: "btn btn-small btn-primary " do
@@ -22,6 +24,3 @@
       .books_show_small_desc
         = @book.desc_trunc_very
 
-      - unless @book.difficulty.blank?
-        .books_show_small_difficulty
-          = books_difficulty_stamp(@book)
