@@ -80,14 +80,14 @@ map.markerLayer.on('layeradd', function(e) {
 $(".application_avatar_icon").tooltip()
 
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
-$('.map_index_users_item_avatar, .map_index_users_item_info, .map_index_users_item_activity').click(function () {
+$('.map_index_users_item').click(function () {
 
-  var target_id = $(this).parent().attr('data-id');
+  var target_id = $(this).attr('data-id');
 
   map.markerLayer.eachLayer(function(marker) {
       if (marker.feature.properties.id == target_id) {
           marker.openPopup();
-          window.map.panTo(marker.layer.getLatLng());
+          window.map.panTo(marker.getLatLng());
           marker.layer.openPopup();
           //marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';
           marker.feature.properties['marker-color'] = '#000';
