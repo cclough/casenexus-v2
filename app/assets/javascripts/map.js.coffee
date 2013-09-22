@@ -58,6 +58,59 @@ window.map_index_users_search = ->
 
 
 
+window.create_popup_content_for = (marker) ->
+  feature = marker.feature
+  popupContent =  '<div class="map_index_map_popup">' +
+
+                      '   <div class="map_index_map_popup_user">' +
+                      '     <span><img src="/assets/universities/' + feature.properties.university_image + '" class="application_userimage_medium"></span>' +
+                      '     <span>' + feature.properties.username + '</span>' +
+                      '   </div>' +    
+
+                      '   <div class="map_index_map_popup_cases">' +
+                      '     <div class="map_index_users_item_cases_recd">' + 
+                      '         <div class="map_index_users_item_cases_text">taken</div>' +
+                                feature.properties.cases_recd + 
+                      '     </div>' +
+                      '     <div class="map_index_users_item_cases_givn">' + 
+                      '         <div class="map_index_users_item_cases_text">given</div>' +
+                                feature.properties.cases_givn + 
+                      '     </div>' +
+                      '     <div class="map_index_users_item_cases_external">' + 
+                      '         <div class="map_index_users_item_cases_text">ext</div>' +
+                                feature.properties.cases_ext + 
+                      '     </div>' +
+                      '   </div>' +
+
+                      '</div>'
+  popupContent
+
+
+
+window.place_popup_for = (marker, persistance) ->
+
+  popupContent = window.create_popup_content_for(marker)
+
+  popup = L.popup(
+    closeButton: false
+    minWidth: 130
+    offset: new L.Point(0, -27)
+    autoPan: false
+    zoomAnimation: true
+  ).setLatLng(marker.getLatLng()).setContent(popupContent)
+
+  if persistance == "temp"
+    popup.openOn(map)
+  else if persistance == "perm"
+    popup.addTo(map)
+
+
+
+
+
+
+
+
 
 
 
@@ -169,6 +222,7 @@ $(document).ready ->
 
   # custom zoom control
   new L.Control.Zoom({ position: 'topright' }).addTo(map)
+  # zoomer
   zooms = 17
   handle = document.getElementById("map_index_map_zoomer_handle")
   # Configure Dragdealer to update the map zoom

@@ -21,15 +21,22 @@ if (map_index_users_firstrun_switch == "on") {
   $("#map_index_map_zoomout").fadeOut("fast");
 }
 
+
+
+
 // open tooltip of first marker in list + make user item active - NB RUBY IF
 <%- if @users.count > 0 %>
   var firstmarker_id = "<%= j(@users.first.id.to_s) %>";
   map.markerLayer.eachLayer(function(marker) {
+
       if (marker.feature.properties.id == firstmarker_id) {
 
+        // window.place_popup_for(marker,"perm"); 
+
         window.map.panTo(marker.getLatLng());
-        marker.openPopup();
+
         $("#map_index_map_zoomout").fadeIn("fast");
+
       }
   });
   $('.map_index_users_item').removeClass("map_index_users_item_info_active");
@@ -41,81 +48,34 @@ if (map_index_users_firstrun_switch == "on") {
 
 
 
+
+
+
 map.markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
         feature = marker.feature;
 
-
-    var popupContent =  '<div class="map_index_map_popup">' +
-
-                        '   <div class="map_index_map_popup_user">' +
-                        '     <span><img src="/assets/universities/' + feature.properties.university_image + '" class="application_userimage_medium"></span>' +
-                        '     <span>' + feature.properties.title + '</span>' +
-                        '   </div>' +    
-
-                        '   <div class="map_index_map_popup_cases">' +
-                        '     <div class="map_index_users_item_cases_recd">' + 
-                        '         <div class="map_index_users_item_cases_text">taken</div>' +
-                                  feature.properties.cases_recd + 
-                        '     </div>' +
-                        '     <div class="map_index_users_item_cases_givn">' + 
-                        '         <div class="map_index_users_item_cases_text">given</div>' +
-                                  feature.properties.cases_givn + 
-                        '     </div>' +
-                        '     <div class="map_index_users_item_cases_external">' + 
-                        '         <div class="map_index_users_item_cases_text">ext</div>' +
-                                  feature.properties.cases_ext + 
-                        '     </div>' +
-                        '   </div>' +
-
-                        '</div>';
-
-
-    // marker.bindPopup(popupContent,{
-    //     closeButton: false,
-    //     // autoPan: false,
-    //     closeOnClick: false,
-    //     minWidth: 130
-    // });
-
     marker.on('click', function () {
       // pan, offset pan, zoom and show button
-      window.map.panTo(marker.getLatLng());
+      // window.map.panTo(marker.getLatLng());
       window.map.setZoom(15);
+
       $("#map_index_map_zoomout").fadeIn("fast");
 
-      var popup = L.popup({
-            closeButton: false,
-            minWidth: 130,
-            offset: new L.Point(0, -25)
-            })
-            .setLatLng(marker.getLatLng())
-            .setContent(popupContent)
-            .addTo(map);
+      window.place_popup_for(marker,"perm"); 
 
     });
 
-    marker.on('mouseover', function(e) {
-      var popup = L.popup({
-            closeButton: false,
-            minWidth: 130,
-            offset: new L.Point(0, -25)
-            })
-            .setLatLng(marker.getLatLng())
-            .setContent(popupContent)
-            .openOn(map);
+    marker.on('mouseover', function() {
+      window.place_popup_for(marker,"temp"); 
     });
-    marker.on('mouseout', function(e) {
+
+    marker.on('mouseout', function() {
         marker.closePopup();
     });
 
 });
 
-
-// map.markerLayer.on('click', function(marker) {
-//     // e.layer.openPopup();
-//     window.map.panTo(marker.layer.getLatLng());    
-// });
 
 
 // map.markerLayer.on('layeradd', function(e) {
@@ -134,7 +94,7 @@ $(".application_avatar_icon").tooltip()
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item').click(function () {
 
-  // change color on click
+  // change item color on click
   $('.map_index_users_item').removeClass("map_index_users_item_info_active");
   $(this).addClass("map_index_users_item_info_active");
 
@@ -142,24 +102,43 @@ $('.map_index_users_item').click(function () {
   var target_id = $(this).attr('data-id');
 
   map.markerLayer.eachLayer(function(marker) {
-      if (marker.feature.properties.id == target_id) {
 
-          window.map.panTo(marker.getLatLng());
+    feature = marker.feature;
 
-          //http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
-          window.map.setZoom(15);
+    if (feature.properties.id == target_id) {
+      window.place_popup_for(marker,"temp"); 
 
-          //marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';
-          //marker.feature.properties['marker-color'] = '#fff';
-          // map.markerLayer.setGeoJSON(geoJson);
+      window.map.setZoom(15,{animate:true});
 
-          marker.openPopup();
-          $("#map_index_map_zoomout").fadeIn("fast");
+      window.map.panTo(marker.getLatLng(),{animate:true});
 
-      }
+      $("#map_index_map_zoomout").fadeIn("fast");
+    }
+
   });
 
 });
+
+
+// Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
+$('.map_index_users_item').mouseover(function () {
+
+  // Marker interaction
+  var target_id = $(this).attr('data-id');
+
+  map.markerLayer.eachLayer(function(marker) {
+
+    feature = marker.feature;
+
+    if (feature.properties.id == target_id) {
+      window.place_popup_for(marker, "temp"); 
+    }
+
+  });
+
+});
+
+
 
 // Users Item Cascade Fade
 $(".map_index_users_item").each(function (i) {

@@ -197,8 +197,8 @@ class User < ActiveRecord::Base
                     \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
                     \"properties\": {
                         \"id\": \"#{user.id}\",
-                        \"title\": \"#{user.username}\",
                         \"marker-color\": \"#f44\",
+                        \"username\": \"#{user.username}\",
                         \"university_image\": \"#{user.university.image}\",
                         \"cases_recd\": \"#{user.case_count_recd}\",
                         \"cases_givn\": \"#{user.case_count_givn}\",
