@@ -1,7 +1,4 @@
-window.map_index_map_markers = []
-window.map_index_map_markers_ids = []
 window.map = null
-window.infobox = null
 
 
 
@@ -94,13 +91,13 @@ window.place_popup_for = (marker, persistance) ->
   popup = L.popup(
     closeButton: false
     minWidth: 130
-    offset: new L.Point(0, -27)
+    offset: new L.Point(17, 8) # THIS IS THE IMPORTANT POPUP OFFSET
     autoPan: false
     zoomAnimation: true
   ).setLatLng(marker.getLatLng()).setContent(popupContent)
 
   if persistance == "temp"
-    unless window.current_active_popup == popup
+    unless popup == window.current_active_popup
       popup.openOn(map)
 
   else if persistance == "perm"
@@ -111,6 +108,24 @@ window.place_popup_for = (marker, persistance) ->
     map.addLayer(popup)
     window.current_active_popup = popup
 
+
+window.active_icon_for = (marker) ->
+
+  # # Reset icon on previous marker
+  if window.current_active_marker
+    window.current_active_marker.setIcon L.icon(current_active_marker.feature.properties.icon)
+
+  # Make new current active this marker
+  window.current_active_marker = marker
+
+  # Change Icon
+  activeIcon = L.icon(
+    iconUrl: "/assets/markers/marker_new_active.png"
+    iconSize: [33, 42]
+    iconAnchor: [0, 0]
+    popupAnchor: [17, 8]
+  )
+  marker.setIcon activeIcon
 
 
 
@@ -214,6 +229,7 @@ $(document).ready ->
 
 
 
+  ######## DRAW MAP
 
   window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false })
 

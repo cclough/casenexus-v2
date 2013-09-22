@@ -3,14 +3,14 @@ $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
 window.map_index_users_item_bless();
 
-
+// Draw Markers
 var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users).html_safe) %>";
 
 var geoJson = $.parseJSON(geoJson_precursor);
 
-// alert(geoJson);
-
 map.markerLayer.setGeoJSON(geoJson);
+
+
 
 // Switch to allow zoomed in state on page run
 if (map_index_users_firstrun_switch == "on") {
@@ -20,8 +20,6 @@ if (map_index_users_firstrun_switch == "on") {
   window.map.setZoom(2);
   $("#map_index_map_zoomout").fadeOut("fast");
 }
-
-
 
 
 // open tooltip of first marker in list + make user item active - NB RUBY IF
@@ -55,14 +53,26 @@ map.markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
         feature = marker.feature;
 
+    marker.setIcon(L.icon(feature.properties.icon));
+
+
+
+
+
+
     marker.on('click', function () {
+ 
       // pan, offset pan, zoom and show button
       // window.map.panTo(marker.getLatLng());
-      window.map.setZoom(15);
 
       $("#map_index_map_zoomout").fadeIn("fast");
 
+      window.map.setZoom(15);
+
+      window.active_icon_for(marker)
+
       window.place_popup_for(marker,"perm"); 
+
 
     });
 
@@ -78,19 +88,7 @@ map.markerLayer.on('layeradd', function(e) {
 
 
 
-// map.markerLayer.on('layeradd', function(e) {
-//     var marker = e.layer,
-//     feature = marker.feature;
 
-//     // marker.setIcon(L.icon(feature.properties.icon));
-
-// });
-
-
-
-
-// Tooltips on Avatars
-$(".application_avatar_icon").tooltip()
 
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item').click(function () {
@@ -107,6 +105,9 @@ $('.map_index_users_item').click(function () {
     feature = marker.feature;
 
     if (feature.properties.id == target_id) {
+
+      window.active_icon_for(marker)
+      
       window.place_popup_for(marker,"perm"); 
 
       window.map.setZoom(15,{animate:true});
@@ -154,10 +155,9 @@ $(".map_index_users_item").each(function (i) {
 
 });
 
-// Truncate user item names
-window.application_truncatables();
 
 
+// Pagination
 $("#map_index_users .pagination a").on("click", function() {
   $.getScript(this.href);
   return false;

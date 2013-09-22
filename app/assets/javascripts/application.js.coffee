@@ -324,9 +324,6 @@ $(document).ready ->
   # Style for the checkboxes
   # $("input:checkbox").uniform()
 
-  # Tooltips on Avatars
-  $(".application_avatar_icon").tooltip()
-
   # Tooltips throughout app
   $(".application_tooltip").tooltip()
 

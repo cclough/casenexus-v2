@@ -196,13 +196,18 @@ class User < ActiveRecord::Base
                     \"type\": \"Feature\",
                     \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
                     \"properties\": {
-                        \"id\": \"#{user.id}\",
-                        \"marker-color\": \"#f44\",
-                        \"username\": \"#{user.username}\",
-                        \"university_image\": \"#{user.university.image}\",
-                        \"cases_recd\": \"#{user.case_count_recd}\",
-                        \"cases_givn\": \"#{user.case_count_givn}\",
-                        \"cases_ext\": \"#{user.cases_external}\"
+                      \"id\": \"#{user.id}\",
+                      \"username\": \"#{user.username}\",
+                      \"university_image\": \"#{user.university.image}\",
+                      \"cases_recd\": \"#{user.case_count_recd}\",
+                      \"cases_givn\": \"#{user.case_count_givn}\",
+                      \"cases_ext\": \"#{user.cases_external}\",
+                      \"icon\": {
+                        \"iconUrl\": \"/assets/markers/marker_new.png\",
+                        \"iconSize\": [33, 42],
+                        \"iconAnchor\": [0, 0],
+                        \"popupAnchor\": [17, 8]
+                      }
                     }
                   },"
         string = string + new_bit
