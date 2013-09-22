@@ -100,9 +100,16 @@ window.place_popup_for = (marker, persistance) ->
   ).setLatLng(marker.getLatLng()).setContent(popupContent)
 
   if persistance == "temp"
-    popup.openOn(map)
+    unless window.current_active_popup == popup
+      popup.openOn(map)
+
   else if persistance == "perm"
-    popup.addTo(map)
+    # Stuff here enables permanent popup to stay and be removed
+    if window.current_active_popup
+      map.removeLayer(window.current_active_popup)
+    # popup.addTo(map)
+    map.addLayer(popup)
+    window.current_active_popup = popup
 
 
 

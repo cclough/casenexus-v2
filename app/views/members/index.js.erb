@@ -31,7 +31,7 @@ if (map_index_users_firstrun_switch == "on") {
 
       if (marker.feature.properties.id == firstmarker_id) {
 
-        // window.place_popup_for(marker,"perm"); 
+        window.place_popup_for(marker,"perm"); 
 
         window.map.panTo(marker.getLatLng());
 
@@ -88,6 +88,7 @@ map.markerLayer.on('layeradd', function(e) {
 
 
 
+
 // Tooltips on Avatars
 $(".application_avatar_icon").tooltip()
 
@@ -106,7 +107,7 @@ $('.map_index_users_item').click(function () {
     feature = marker.feature;
 
     if (feature.properties.id == target_id) {
-      window.place_popup_for(marker,"temp"); 
+      window.place_popup_for(marker,"perm"); 
 
       window.map.setZoom(15,{animate:true});
 
