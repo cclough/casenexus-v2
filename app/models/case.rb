@@ -238,7 +238,7 @@ class Case < ActiveRecord::Base
     options[:area_color] ||= "DFEBFF"
     options[:line_color] ||= "0077CC"
     options[:line_width] ||= "2"
-    max_data_point = 5
+    max_data_point = 3
 
     # create activity string
     from = Time.now - 3.months
@@ -253,7 +253,9 @@ class Case < ActiveRecord::Base
     activity_str = array.map(&:inspect).join(',')
 
     if options[:type] == :line
-      return "http://chart.apis.google.com/chart?chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
+
+
+      return "http://chart.apis.google.com/chart?chg=5,30,1,1,0,0&chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
     else
       return "http://chart.apis.google.com/chart?cht=bvs&chs=#{options[:size]}&chd=t:#{activity_str}&chco=#{options[:chart_color]}&chbh=a,#{options[:line_width]}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
     end

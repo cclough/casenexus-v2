@@ -172,12 +172,13 @@ textarea {
   bottom:0px;
   overflow-y: auto !important;
 
+
   &.profile {
     background: $gray_gunmetal !important;
     top:50px;
   }
-  .map {
-    
+  &.map {
+    z-index:1;
   }
 }
 

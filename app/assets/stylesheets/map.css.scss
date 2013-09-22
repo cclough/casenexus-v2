@@ -56,18 +56,19 @@ $alert-yellow: #FFFF7E;
   position:fixed;
   left:20px;
   top:50px;
-  width:50%;
+  width:600px;
   bottom:0px;
   background:rgba(255,255,255,0.5s);
   border-left:3px solid white;
   border-right:3px solid white;
-  z-index:0;
+  z-index:2;
 }
 
 #map_index_container_users {
+  position:relative;
   margin-left:20px;
-  width:50%;
-  z-index:1;
+  width:600px;
+  z-index:2;
 
   //background: rgba(54,54,54,0.5);
 //  .pagination {
@@ -76,7 +77,8 @@ $alert-yellow: #FFFF7E;
 }
 
 #map_index_users {
-
+  padding: 0 10px;
+  width:585px;
 }
 
 
@@ -94,7 +96,7 @@ $alert-yellow: #FFFF7E;
   left:0px;
   bottom:0px;
   right:0px;
-  z-index:-1;
+  z-index:1;
 
 }
 
@@ -352,7 +354,7 @@ $alert-yellow: #FFFF7E;
   cursor:pointer;
   float:left;
   position:relative;
-  width:280px;
+  width:300px;
   height:130px;
   padding:10px; //offsets width!
 
@@ -413,69 +415,78 @@ $alert-yellow: #FFFF7E;
 
 
 
-.map_index_users_item_activity {
-  position:absolute;
-  cursor:pointer;
-  left:110px;
-  top:10px;
-  height:80px;
-  width:280px;
-  opacity:0.5;
-  z-index:1;
-}
 
 
 
-.map_index_users_stuff_pre_stuff {
-  float:left;
-  width:10px;
-  height:150px;
-  background:0;//$gray_gunmetal;  
-}
 
 .map_index_users_item_stuff{
   float:right;
-  width:50px;
+  width:150px;
   height:150px;
-  div {
-    display:block;
-    width:50px;
-    height:50px;
+  position:relative;
+
+  .map_index_users_item_stats {
+    height:30px;
+    background:$gray_second;
+    color:white;
+    font-weight:bold;
     text-align:center;
-    line-height:43px;
-    position:relative;
-    float:left;
+    line-height:25px;
   }
-
-
-  .map_index_users_item_cases_recd {
-    background: $alert-green;
-    font-size:20px;
-    font-weight:bolder;
-    color:white;
-  }
-
-  .map_index_users_item_cases_givn{
-    background: $alert-blue;
-    font-size:20px;
-    font-weight:bolder;
-    color:white;
-  }
-
-  .map_index_users_item_cases_external{
-    background: $gray_background;
-    font-size:20px;
-    font-weight:bolder;
-    color:$gray_second;
-  }
-
-  .map_index_users_item_cases_text {
+  .map_index_users_item_activity {
     position:absolute;
-    left:0px;
-    right:0px;
-    text-align:center;
-    top:15px;
-    font-size:10px;
+    bottom:50px;
+    height:70px;
+    width:150px;
+    opacity:0.5;
+  }
+
+
+
+
+  .map_index_users_item_cases {
+
+    position:absolute;
+    bottom:0px;
+    div {
+      display:block;
+      width:50px;
+      height:50px;
+      text-align:center;
+      line-height:43px;
+      position:relative;
+      float:left;
+    }
+
+    .map_index_users_item_cases_recd {
+      background: $alert-green;
+      font-size:20px;
+      font-weight:bolder;
+      color:white;
+    }
+
+    .map_index_users_item_cases_givn{
+      background: $alert-blue;
+      font-size:20px;
+      font-weight:bolder;
+      color:white;
+    }
+
+    .map_index_users_item_cases_external{
+      background: $gray_background;
+      font-size:20px;
+      font-weight:bolder;
+      color:$gray_second;
+    }
+
+    .map_index_users_item_cases_text {
+      position:absolute;
+      left:0px;
+      right:0px;
+      text-align:center;
+      top:15px;
+      font-size:10px;
+    }
   }
 
 }
@@ -587,7 +598,6 @@ $alert-yellow: #FFFF7E;
       text-align:center;
       line-height:23px;
       position:relative;
-      float:left;
     }
 
     .map_index_users_item_cases_recd {
@@ -638,9 +648,9 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_map_zoomer {
+  position: absolute;
   top: 10px;
   right: 100px;
-  position: absolute;
   z-index: 999;
   #map_index_map_zoomer_zoom-bar {
       width: 200px;

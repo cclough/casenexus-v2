@@ -44,9 +44,9 @@
               /       = image_tag "universities/" + books_item.university.image
               /     .span.offset1
               /       = books_item.university.name
-
-              .books_index_books_item_info_container
-                = books_item.chart_num_in_words
+              - if books_item.btype == "case"
+                .books_index_books_item_info_container
+                  = books_item.chart_num_in_words
 
             .spacer10
 

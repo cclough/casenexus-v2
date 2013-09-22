@@ -29,8 +29,6 @@
           ago
   - else
 
-    .map_index_users_item_activity{style: "background: url(#{Case.user_activity_chart(users_item)})no-repeat"}
-
     .map_index_users_item_actions
 
       - if users_item != current_user
@@ -71,23 +69,22 @@
 
 
 
-
-
-
-
-  .map_index_users_stuff_pre_stuff
-
-  
   .map_index_users_item_stuff
-    .map_index_users_item_cases_recd
-      = users_item.case_count_recd
-      %span.map_index_users_item_cases_text
-        taken
-    .map_index_users_item_cases_givn
-      = users_item.case_count_givn
-      %span.map_index_users_item_cases_text
-        given
-    .map_index_users_item_cases_external
-      = users_item.cases_external
-      %span.map_index_users_item_cases_text
-        ext.
+
+    .map_index_users_item_stats
+      cases per week
+    .map_index_users_item_activity{style: "background: url(#{Case.user_activity_chart(users_item)})no-repeat"}
+
+    .map_index_users_item_cases
+      .map_index_users_item_cases_recd
+        = users_item.case_count_recd
+        %span.map_index_users_item_cases_text
+          taken
+      .map_index_users_item_cases_givn
+        = users_item.case_count_givn
+        %span.map_index_users_item_cases_text
+          given
+      .map_index_users_item_cases_external
+        = users_item.cases_external
+        %span.map_index_users_item_cases_text
+          ext.
