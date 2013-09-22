@@ -24,11 +24,12 @@ map.markerLayer.on('click', function(e) {
     // e.layer.openPopup();
     window.map.panTo(e.layer.getLatLng());
 
-    // http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
-    // // Calculate the offset
-    // var offset = map.getSize().x*0.14;
-    // // Then move the map
-    // map.panBy(new L.Point(-offset, 0), {animate: false});
+    //http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
+    
+    // Calculate the offset
+    var offset = map.getSize().x*0.14;
+    // Then move the map
+    map.panBy(-offset, 0)
 
 });
 
@@ -82,16 +83,29 @@ $(".application_avatar_icon").tooltip()
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item').click(function () {
 
+  // change color on click
+  $('.map_index_users_item').removeClass("map_index_users_item_info_active");
+  $(this).addClass("map_index_users_item_info_active");
+
+  // Marker interaction
   var target_id = $(this).attr('data-id');
 
   map.markerLayer.eachLayer(function(marker) {
       if (marker.feature.properties.id == target_id) {
           marker.openPopup();
           window.map.panTo(marker.getLatLng());
+
+          // Calculate the offset
+          var offset = map.getSize().x*0.25;
+          // Then move the map
+          map.panBy(new L.Point(-offset, 0), {animate: false});
+
           marker.layer.openPopup();
           //marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';
           marker.feature.properties['marker-color'] = '#000';
           map.markerLayer.setGeoJSON(geoJson);
+
+
       }
   });
 
