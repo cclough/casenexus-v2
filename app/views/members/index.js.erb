@@ -18,7 +18,6 @@ if (map_index_users_firstrun_switch == "on") {
 } else {
   // reset zoom out every time list is refreshed
   window.map.setZoom(2);
-  offset = map.getSize().x * 0.25
   $("#map_index_map_zoomout").fadeOut("fast");
 }
 
@@ -29,9 +28,6 @@ if (map_index_users_firstrun_switch == "on") {
       if (marker.feature.properties.id == firstmarker_id) {
 
         window.map.panTo(marker.getLatLng());
-        var offset = map.getSize().x*0.25;
-        map.panBy(new L.Point(-offset, 0), {animate: false});
-
         marker.openPopup();
         $("#map_index_map_zoomout").fadeIn("fast");
       }
@@ -85,8 +81,6 @@ map.markerLayer.on('layeradd', function(e) {
     marker.on('click', function () {
       // pan, offset pan, zoom and show button
       window.map.panTo(marker.getLatLng());
-      var offset = map.getSize().x*0.25;
-      map.panBy(new L.Point(-offset, 0), {animate: false});
       window.map.setZoom(15);
       $("#map_index_map_zoomout").fadeIn("fast");
 
@@ -153,9 +147,6 @@ $('.map_index_users_item').click(function () {
           window.map.panTo(marker.getLatLng());
 
           //http://stackoverflow.com/questions/17758256/how-can-i-change-the-location-center-of-a-map-using-leaflet-api
-          var offset = map.getSize().x*0.25;
-          map.panBy(new L.Point(-offset, 0), {animate: false});
-
           window.map.setZoom(15);
 
           //marker.feature.properties.icon['iconUrl'] = 'http://localhost:3000/assets/markers/marker_new_active.png';

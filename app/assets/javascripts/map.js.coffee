@@ -159,19 +159,13 @@ $(document).ready ->
 
   # Start at current_user, zoomed
   window.map.setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 15)
-  offset = map.getSize().x*0.25;
-  map.panBy(new L.Point(-offset, 0), {animate: false})
+
 
   # back to world view button (must be after map variable has been set)
   $("#map_index_map_zoomout").click ->
     window.map.setZoom(2);
-    # Calculate the offset
-    offset = map.getSize().x * 0.25
     $(this).fadeOut("fast");
 
-    # Then move the map
-    map.panBy new L.Point(-offset, 0),
-      animate: false
 
   # custom zoom control
   new L.Control.Zoom({ position: 'topright' }).addTo(map)

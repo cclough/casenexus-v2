@@ -35,18 +35,6 @@ $alert-yellow: #FFFF7E;
 
 
 
-/***** for custom control position hack *****/
-
-#map_index_map_zoomcontrol {
-  position: absolute;
-  left: 520px;
-}
-
-/* When the below is used, control disappears on mouse over */
-// .gmnoprint{
-//     display: none;
-// }
-
 /********************************************/
 
 
@@ -54,11 +42,12 @@ $alert-yellow: #FFFF7E;
 
 #map_index_container_users_container {
   position:fixed;
-  left:20px;
+  left:0px;
   top:50px;
   width:600px;
   bottom:0px;
-  background:rgba(255,255,255,0.5s);
+//  background:rgba(255,255,255,0.5s);
+  background:$gray_background;
   border-left:3px solid white;
   border-right:3px solid white;
   z-index:2;
@@ -67,7 +56,7 @@ $alert-yellow: #FFFF7E;
 #map_index_container_users {
   position:relative;
   min-height:100%;
-  margin-left:20px;
+  margin-left:0px;
   width:604px;
   z-index:2;
 
@@ -83,25 +72,19 @@ $alert-yellow: #FFFF7E;
 }
 
 
-.zoomout, .ts-map .zoomout { 
-    left: 50% !important;
-}
-.zoomin, .ts-map .zoomin {
-    left: 50% !important;
-}
 
 
 #map_index_container_map {
   position:fixed;
   top:50px;
-  left:0px;
+  left:604px;
   bottom:0px;
   right:0px;
   z-index:1;
 
   #map_index_map_zoomout {
     position:absolute;
-    left:635px;
+    left:10px;
     top:10px;
     z-index:10;
   }
