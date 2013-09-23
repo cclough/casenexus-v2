@@ -11,15 +11,16 @@ var geoJson = $.parseJSON(geoJson_precursor);
 map.markerLayer.setGeoJSON(geoJson);
 
 
-
-// Switch to allow zoomed in state on page run
-if (map_index_users_firstrun_switch == "on") {
-  map_index_users_firstrun_switch = "off"
+// If local zoom in, otherwise zoom out
+if($("input[name=users_listtype]:eq(0)").is(':checked')) {
+  window.map.setZoom(15);
+  $("#map_index_map_zoomout").fadeIn("fast");
 } else {
   // reset zoom out every time list is refreshed
   window.map.setZoom(2);
   $("#map_index_map_zoomout").fadeOut("fast");
 }
+
 
 
 // open tooltip of first marker in list + make user item active - NB RUBY IF
@@ -119,7 +120,7 @@ $('.map_index_users_item').click(function () {
 
 
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
-$('.map_index_users_item').mouseover(function () {
+$('.map_index_users_item').mouseenter(function () {
 
   // Marker interaction
   var target_id = $(this).attr('data-id');

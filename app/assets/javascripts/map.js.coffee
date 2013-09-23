@@ -61,14 +61,20 @@ window.map_index_users_search = ->
 window.marker_and_popup_actions_for = (marker, persistance) ->
 
   if persistance == "temp"
-    popup = generate_popup_for marker
-    popup.openOn(map)
+    if window.current_active_marker
+      unless window.current_active_marker == marker
+        popup = generate_popup_for marker
+        popup.openOn(map)
+    else
+      popup = generate_popup_for marker
+      popup.openOn(map)
 
   else if persistance == "perm"
 
     if window.current_active_marker
 
       if window.current_active_marker == marker
+        # marker.closePopup();
         map.removeLayer(window.current_active_popup)
         marker.setIcon L.icon(marker.feature.properties.icon)
         window.current_active_marker = null
