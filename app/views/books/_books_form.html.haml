@@ -22,11 +22,9 @@
             - elsif params[:sort] == "title"
               Title
             - elsif params[:sort] == "author"
-              Source
+              Author
             - elsif params[:sort] == "difficulty"
               Difficulty
-            - elsif params[:sort] == "chart_num"
-              Chart #
             - else
               Title
             %span.caret
@@ -39,8 +37,6 @@
               = sortable "author", "By Author"
             %li
               = sortable "difficulty", "By Difficulty"
-            %li
-              = sortable "chart_num", "By Chart #"
 
       .spacer50
       .row
