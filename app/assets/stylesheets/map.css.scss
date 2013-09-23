@@ -44,12 +44,16 @@ $alert-yellow: #FFFF7E;
   position:fixed;
   left:0px;
   top:50px;
-  width:600px;
+  width:604px;
   bottom:0px;
 //  background:rgba(255,255,255,0.5s);
-  background:$gray_background;
-  border-left:3px solid white;
-  border-right:3px solid white;
+  background:rgba(0,0,0,0.7s);
+
+//  background:$gray_background;
+//  border-left:3px solid white;
+//  border-right:3px solid white;
+//  border-left:3px solid $gray_gunmetal_second;
+  border-right:3px solid $gray_gunmetal_second;
   z-index:2;
 }
 
@@ -239,6 +243,7 @@ $alert-yellow: #FFFF7E;
 
 #map_index_users_form_pulldown_language_button {
   height:40px;
+  width:120px;
 }
 
 

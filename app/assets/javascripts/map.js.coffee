@@ -241,8 +241,6 @@ $(document).ready ->
 
 
 
-
-
   ######## DRAW MAP
 
   window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false })

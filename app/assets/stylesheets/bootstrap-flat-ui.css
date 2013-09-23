@@ -653,9 +653,9 @@ a.muted:focus {
   line-height: 22px;
   text-decoration: none;
   text-shadow: none;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -851,16 +851,22 @@ a.muted:focus {
 .btn-toolbar .btn.active {
   color: #ffffff;
 }
-/*.btn-toolbar .btn:first-child {
-  -webkit-border-radius: 6px 0 0 6px;
-  -moz-border-radius: 6px 0 0 6px;
-  border-radius: 6px 0 0 6px;
+
+
+/* BUTTON RADIUS */
+.btn-toolbar .btn:first-child {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
 }
 .btn-toolbar .btn:last-child {
-  -webkit-border-radius: 0 6px 6px 0;
-  -moz-border-radius: 0 6px 6px 0;
-  border-radius: 0 6px 6px 0;
-}*/
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+
+
+
 .btn-toolbar .btn > [class^="fui-"] {
   font-size: 16px;
   top: 0;
@@ -877,14 +883,17 @@ a.muted:focus {
 .btn-group > .btn.active + .btn {
   border-left-color: transparent;
 }
-/*.btn-group > .btn:first-of-type {
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+
+/* BUTTON RADIUS */
+.btn-group > .btn:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 .btn-group > .btn:last-of-type {
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-}*/
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
 .btn-group > .btn + .btn {
   margin-left: 0;
 }
