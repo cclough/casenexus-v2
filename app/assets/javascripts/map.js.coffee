@@ -55,7 +55,56 @@ window.map_index_users_search = ->
 
 
 
-window.create_popup_content_for = (marker) ->
+
+
+
+window.marker_and_popup_actions_for = (marker, persistance) ->
+
+  if persistance == "temp"
+    popup = generate_popup_for marker
+    popup.openOn(map)
+
+  else if persistance == "perm"
+
+    if window.current_active_marker
+
+      if window.current_active_marker == marker
+        map.removeLayer(window.current_active_popup)
+        marker.setIcon L.icon(marker.feature.properties.icon)
+        window.current_active_marker = null
+        window.current_active_popup = null
+      else
+        window.current_active_marker.setIcon L.icon(current_active_marker.feature.properties.icon)
+        map.removeLayer(window.current_active_popup)
+
+        activate_perm_popup_and_icon_for(marker)
+    else
+      activate_perm_popup_and_icon_for(marker)
+
+
+window.activate_perm_popup_and_icon_for = (marker) ->
+
+  # Add perm popup
+  popup = generate_popup_for marker
+  map.addLayer(popup)
+
+  # Change Icon
+  activeIcon = L.icon(
+    iconUrl: "/assets/markers/marker_new_active.png"
+    iconSize: [33, 42]
+    iconAnchor: [0, 0]
+    popupAnchor: [17, 8]
+  )
+  marker.setIcon activeIcon
+
+  # Make new current active this marker
+  window.current_active_marker = marker
+  window.current_active_popup = popup
+
+
+
+window.generate_popup_for = (marker) ->
+
   feature = marker.feature
   popupContent =  '<div class="map_index_map_popup">' +
 
@@ -80,13 +129,6 @@ window.create_popup_content_for = (marker) ->
                       '   </div>' +
 
                       '</div>'
-  popupContent
-
-
-
-window.place_popup_for = (marker, persistance) ->
-
-  popupContent = window.create_popup_content_for(marker)
 
   popup = L.popup(
     closeButton: false
@@ -96,41 +138,7 @@ window.place_popup_for = (marker, persistance) ->
     zoomAnimation: true
   ).setLatLng(marker.getLatLng()).setContent(popupContent)
 
-  if persistance == "temp"
-    unless popup == window.current_active_popup
-      popup.openOn(map)
-
-  else if persistance == "perm"
-    # Stuff here enables permanent popup to stay and be removed
-    if window.current_active_popup
-      map.removeLayer(window.current_active_popup)
-    # popup.addTo(map)
-    map.addLayer(popup)
-    window.current_active_popup = popup
-
-
-window.active_icon_for = (marker) ->
-
-  # # Reset icon on previous marker
-  if window.current_active_marker
-    window.current_active_marker.setIcon L.icon(current_active_marker.feature.properties.icon)
-
-  # Make new current active this marker
-  window.current_active_marker = marker
-
-  # Change Icon
-  activeIcon = L.icon(
-    iconUrl: "/assets/markers/marker_new_active.png"
-    iconSize: [33, 42]
-    iconAnchor: [0, 0]
-    popupAnchor: [17, 8]
-  )
-  marker.setIcon activeIcon
-
-
-
-
-
+  popup
 
 
 
