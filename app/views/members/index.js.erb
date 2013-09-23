@@ -3,54 +3,22 @@ $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
 window.map_index_users_item_bless();
 
-// Draw Markers
+/////////////////////////////////////////////////////////////////////////////////////////
+///////////NB ORDER OF STUFF IS IMPORTANT HERE OR YOU GET MARKER FUCKUPS ON LOAD/////////
+/////////////////////////////////////////////////////////////////////////////////////////
+
+// Draw Markers (MUST BE AFTER LAYERADD ABOVE!)
 var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users).html_safe) %>";
 
 var geoJson = $.parseJSON(geoJson_precursor);
 
-map.markerLayer.setGeoJSON(geoJson);
-
-
-// If local zoom in, otherwise zoom out
-if($("input[name=users_listtype]:eq(0)").is(':checked')) {
-  window.map.setZoom(15);
-  $("#map_index_map_zoomout").fadeIn("fast");
-} else {
-  // reset zoom out every time list is refreshed
-  window.map.setZoom(2);
-  $("#map_index_map_zoomout").fadeOut("fast");
+if (markerLayer) {
+  map.removeLayer(markerLayer);
 }
 
+var markerLayer = L.mapbox.markerLayer();
 
-
-// open tooltip of first marker in list + make user item active - NB RUBY IF
-<%- if @users.count > 0 %>
-  var firstmarker_id = "<%= j(@users.first.id.to_s) %>";
-  map.markerLayer.eachLayer(function(marker) {
-
-      if (marker.feature.properties.id == firstmarker_id) {
-
-        window.marker_and_popup_actions_for(marker,"perm"); 
-
-        window.map.panTo(marker.getLatLng());
-
-        $("#map_index_map_zoomout").fadeIn("fast");
-
-      }
-  });
-  $('.map_index_users_item').removeClass("map_index_users_item_info_active");
-  $("#map_index_users").find('.map_index_users_item').first().addClass("map_index_users_item_info_active");
-<%- end %>
-
-
-
-
-
-
-
-
-
-map.markerLayer.on('layeradd', function(e) {
+markerLayer.on('layeradd', function(e) {
     var marker = e.layer,
         feature = marker.feature;
 
@@ -95,6 +63,74 @@ map.markerLayer.on('layeradd', function(e) {
 
 
 
+markerLayer.addTo(map);
+
+
+markerLayer.setGeoJSON(geoJson);
+
+
+
+
+
+
+
+
+// open tooltip of first marker in list + make user item active - NB RUBY IF
+<%- if @users.count > 0 %>
+  var firstmarker_id = "<%= j(@users.first.id.to_s) %>";
+  markerLayer.eachLayer(function(marker) {
+
+      if (marker.feature.properties.id == firstmarker_id) {
+
+        window.marker_and_popup_actions_for(marker,"perm"); 
+
+        window.map.panTo(marker.getLatLng());
+
+        $("#map_index_map_zoomout").fadeIn("fast");
+
+      }
+  });
+  $('.map_index_users_item').removeClass("map_index_users_item_info_active");
+  $("#map_index_users").find('.map_index_users_item').first().addClass("map_index_users_item_info_active");
+<%- end %>
+
+
+
+
+// If local zoom in, otherwise zoom out
+if($("input[name=users_listtype]:eq(0)").is(':checked')) {
+  window.map.setZoom(15);
+  $("#map_index_map_zoomout").fadeIn("fast");
+} else {
+  // reset zoom out every time list is refreshed
+  window.map.setZoom(2);
+  $("#map_index_map_zoomout").fadeOut("fast");
+}
+
+
+
+
+
+
+
+
+// Users Item Cascade Fade
+$(".map_index_users_item").each(function (i) {
+
+  if ((i+1) == $(".map_index_users_item").length) {
+    $(this).delay((i + 1) * 50).fadeIn(function(){
+      $("#map_index_users .pagination").fadeIn(500); 
+    });
+  } else {
+    $(this).delay((i + 1) * 50).fadeIn();
+  }
+
+});
+
+
+
+
+
 // Marker Click Trigger - Has to be in here because other wise does not load in time for list to be loaded
 $('.map_index_users_item').click(function () {
 
@@ -105,7 +141,7 @@ $('.map_index_users_item').click(function () {
   // Marker interaction
   var target_id = $(this).attr('data-id');
 
-  map.markerLayer.eachLayer(function(marker) {
+  markerLayer.eachLayer(function(marker) {
 
     feature = marker.feature;
 
@@ -131,7 +167,7 @@ $('.map_index_users_item').mouseenter(function () {
   // Marker interaction
   var target_id = $(this).attr('data-id');
 
-  map.markerLayer.eachLayer(function(marker) {
+  markerLayer.eachLayer(function(marker) {
 
     feature = marker.feature;
 
@@ -144,19 +180,6 @@ $('.map_index_users_item').mouseenter(function () {
 });
 
 
-
-// Users Item Cascade Fade
-$(".map_index_users_item").each(function (i) {
-
-  if ((i+1) == $(".map_index_users_item").length) {
-    $(this).delay((i + 1) * 50).fadeIn(function(){
-      $("#map_index_users .pagination").fadeIn(500); 
-    });
-  } else {
-    $(this).delay((i + 1) * 50).fadeIn();
-  }
-
-});
 
 
 
