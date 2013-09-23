@@ -57,10 +57,6 @@ map.markerLayer.on('layeradd', function(e) {
     marker.setIcon(L.icon(feature.properties.icon));
 
 
-
-
-
-
     marker.on('click', function () {
  
       // pan, offset pan, zoom and show button
@@ -68,10 +64,20 @@ map.markerLayer.on('layeradd', function(e) {
 
       $("#map_index_map_zoomout").fadeIn("fast");
 
-      window.map.setZoom(15);
+      // window.map.setZoom(15);
 
       window.marker_and_popup_actions_for(marker,"perm"); 
 
+
+      // scroll to item
+      var users_item = $("#map_index_users_item_" + feature.properties.id);
+      $("#application_container_main").animate({
+        scrollTop: users_item.position().top - 5
+      }, "fast");
+      // activate item
+      $('.map_index_users_item').removeClass("map_index_users_item_info_active");
+      users_item.addClass("map_index_users_item_info_active");
+      
 
     });
 
