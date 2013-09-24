@@ -174,7 +174,9 @@ textarea {
 
 
   &.profile {
-    background: $gray_gunmetal !important;
+    //background: $gray_gunmetal !important;
+//    background: $gray_gunmetal url('app/bg-texture4_trans.png') !important;
+    background: $gray_gunmetal;
     top:50px;
   }
   &.map {

@@ -31,7 +31,8 @@ header {
   right:0;
   left:0;
 
-  height:50px;
+  padding-top:5px;
+  height:45px;
 
   &.signedout {
     height:100px;
@@ -48,7 +49,7 @@ header {
 #header_logo_nav{
   position: absolute;
   padding:7px 10px;
-  height:36px;
+  height:31px;
   &.signedout {
     top:30px;
   }
@@ -79,7 +80,7 @@ header {
   
 
   li {
-    height:50px;
+    height:45px;
     a {
       padding:13px !important;
       color:$gray_Dark !important;
@@ -88,7 +89,7 @@ header {
       background:$gray_Lightest;
     }
     &.active {
-      background:$gray_Lightest;
+      background:$gray_background;
     }
   }
 }
