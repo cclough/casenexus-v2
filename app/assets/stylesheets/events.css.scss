@@ -1,6 +1,7 @@
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_button: #989898;
 $gray_gunmetal: #363636;
 $gray_gunmetal_second: #2d2d2d;
 
@@ -250,7 +251,7 @@ $alert-yellow: #FFFF7E;
 
 }
 
-#events_modal_datetime_friend {
+#events_modal_datetime_friend { // one for datetime
 
   height:40px;
 
@@ -258,12 +259,12 @@ $alert-yellow: #FFFF7E;
 
     display:inline-block;
 
-    width:230px;
+    width:220px;
 
     height:40px;
 
     text-align:center;
-    margin-left:-32px;
+    margin-left:-43px;
     padding: 8px 14px 8px 14px !important;
 
   }
@@ -276,12 +277,14 @@ $alert-yellow: #FFFF7E;
 
 
 #events_modal_datetime_picker {
-  margin:25px 0 0 0;
-  border:2px solid $gray_second;
+  margin:30px 0 0 0;
+  border:0px solid $gray_second;
   .add-on {
     border-radius:0px !important;
+    border-color: $gray_button;
     height:26px;
     line-height:27px;
+    background:$gray_button;
   }
 }
 
@@ -291,23 +294,23 @@ $alert-yellow: #FFFF7E;
 
 
 #events_modal_datetime_input {
-  height:40px;
+  height:32px;
   width:250px !important;
   font-size:22px;
   border:0;
 
-  padding-top:5px;
+  padding:8px 0px 8px 0px !important;
 
   text-align:center;
-
-  -webkit-box-shadow: 0 !important;
-  -moz-box-shadow:    0 !important;
-  box-shadow:         0 !important;
-
   margin:0 !important;
 
   border-bottom:0 !important;
   cursor:pointer;
+  background-color:#ffffff !important;
+  -webkit-box-shadow: 0 !important;
+  -moz-box-shadow:    0 !important;
+  box-shadow:         0 !important;
+
 }
 
 
@@ -329,7 +332,7 @@ $alert-yellow: #FFFF7E;
   padding:10px;
   text-align:center;
   height:124px;
-  background:$gray_background;
+  background:white;
 }
 
 #events_modal_book_viewer_usertoprepare {

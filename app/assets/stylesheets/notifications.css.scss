@@ -208,7 +208,7 @@ $alert-yellow: #FFFF7E;
 }
 
 .notifications_show_item_date_line {
-  border-top: 1px solid $gray_Light;
+  border-top: 2px solid $gray_second;
   margin:10px 10px 10px 10px; //remember spacer in item
   height:0;
 }
@@ -216,7 +216,7 @@ $alert-yellow: #FFFF7E;
 .notifications_show_item_date {
   margin:-5px 0 10px 0;
   text-align:center;
-  color: $gray_Light;
+  color: $gray_second;
 }
 
 /////////////////////////////////////////////////////
@@ -239,5 +239,36 @@ $alert-yellow: #FFFF7E;
   }
 }
 
+
+///////////////////////////////////////////////////
+
+#modal_message {
+  .modal-header {
+    text-align:center;
+  }
+  .modal-body {
+    padding:0 5px;
+  }
+}
+
+#modal_message_conversation {
+  height:320px;
+  overflow-y:auto;
+}
+
+#modal_message_textarea {
+  height:60px;
+  margin:0px !important;
+  width:590px;
+}
+
+
+//////////////////////////////////////////////////
+
+#modal_contact {
+  .modal-header {
+    text-align:center;
+  } 
+}
 
 
