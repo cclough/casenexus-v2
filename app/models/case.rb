@@ -370,13 +370,30 @@ class Case < ActiveRecord::Base
 
 
   def self.cases_analysis_chart_progress_data(user)
-    cases_analysis_chart_progress_data = user.cases.order('created_at asc').map { |c|
-      { id: c.id,
-        date: c.created_at.strftime("%Y-%m-%d"),
-        businessanalytics: c.businessanalytics_combined,
-        structure: c.structure_combined,
-        interpersonal: c.interpersonal_combined,
-        totalscore: c.totalscore } }
+    if user.cases.count > 2
+      cases_analysis_chart_progress_data = user.cases.order('created_at asc').map { |c|
+        { id: c.id,
+          date: c.created_at.strftime("%Y-%m-%d"),
+          businessanalytics: c.businessanalytics_combined,
+          structure: c.structure_combined,
+          interpersonal: c.interpersonal_combined,
+          totalscore: c.totalscore } }
+    else
+      # DUMMY DATA
+      cases_analysis_chart_progress_data = []
+      starting_date = Time.now - 1.month
+
+      4.times do |n|
+        cases_analysis_chart_progress_data << { id: n,
+                                                date: starting_date.strftime("%Y-%m-%d"),
+                                                businessanalytics: 2,
+                                                structure: 2,
+                                                interpersonal: 2,
+                                                totalscore: 6 }
+        starting_date = starting_date + 1.week
+      end
+    end
+    cases_analysis_chart_progress_data
   end
 
 

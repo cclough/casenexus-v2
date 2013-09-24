@@ -250,7 +250,10 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
       backgroundColor: "#000000"
       backgroundAlpha: 0.15
 
-    chart_analysis_progress.colors = ["#0D8ECF", "#B0DE09", "#FCD202"]
+    if case_count > 2
+      chart_analysis_progress.colors = ["#0D8ECF", "#B0DE09", "#FCD202"]
+    else
+      chart_analysis_progress.colors = ["#1f1f1f", "#1f1f1f", "#1f1f1f"]
     chart_analysis_progress.dataProvider = data
     chart_analysis_progress.categoryField = "date"
     
@@ -319,6 +322,8 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7 # setting fillAlphas to > 0 value makes it area graph
     graph.bullet = "round"
+    if case_count < 3
+      graph.showBalloon = false
     addclicklistener graph
     chart_analysis_progress.addGraph graph
 
@@ -331,6 +336,8 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7
     graph.bullet = "round"
+    if case_count < 3
+      graph.showBalloon = false
     addclicklistener graph
     chart_analysis_progress.addGraph graph
 
@@ -342,6 +349,8 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7
     graph.bullet = "round"
+    if case_count < 3
+      graph.showBalloon = false
     addclicklistener graph
     chart_analysis_progress.addGraph graph
     
@@ -353,7 +362,6 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     graph.lineAlpha = 1
     graph.fillAlphas = 0.6
     graph.bullet = "none"
-    
     #graph.hidden = true;
     graph.showBalloon = false
     graph.visibleInLegend = false
@@ -385,7 +393,9 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
 
     chart_analysis_progress.addChartCursor chartCursor
     
+
     # Balloon Settings
+
     balloon = chart_analysis_progress.balloon
     balloon.adjustBorderColor = true
     balloon.cornerRadius = 5

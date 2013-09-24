@@ -50,6 +50,10 @@ profile_index_feedback_analysis_prime = () ->
 
 $(document).ready ->
 
+
+
+
+
   $(".profile_index_friends_friends_item").click ->
 
     $(".profile_index_friends_friends_item").removeClass "active"
