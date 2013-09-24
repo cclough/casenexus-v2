@@ -73,24 +73,6 @@ window.notification_trigger = (data_inc) ->
   $.get "/notifications/menu", (data) ->
     $("#application_profilenav_notifications").html data
 
-  #Friend's List
-  window.onlinepanels_refresh ->
-    
-    # once online list has refreshed, commence animations
-    x = 0
-    intervalID = setInterval(->
-      
-      glow = $("#application_profilenav_item_icon_notifications")
-      (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
-      glow = $("#onlinepanel_container .notifications_glowable")
-      (if not glow.hasClass("glow") then glow.addClass("glow") else glow.removeClass("glow"))
-
-      if ++x is 10
-        window.clearInterval intervalID
-        $("#application_profilenav_item_icon_notifications").removeClass 'glow'
-        $("#onlinepanel_container .notifications_glowable").removeClass 'glow'
-
-    , 500)
 
 
 
@@ -204,7 +186,6 @@ window.modal_friendship_req_show = (friend_id) ->
       $(".application_submit_button_with_spinner").click ->
         $(".application_spinner_container").show()
         $(this).closest("form").submit()
-        window.onlinepanels_refresh()
 
 
 

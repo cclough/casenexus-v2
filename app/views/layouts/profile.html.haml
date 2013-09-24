@@ -11,8 +11,6 @@
 
     = javascript_include_tag "application"
 
-    = javascript_include_tag "onlinepanel"
-    
     = javascript_include_tag "lib/amcharts"
 
     = javascript_include_tag "profile"
@@ -49,13 +47,9 @@
     - if params[:controller] == "profile"
       #profile_index_colorblock
 
-    /   #profile_index_widgets
-    /     %div
-    /       = link_to edit_account_path(current_user) do
-    /         %i.icon-cogs
-    /     %div
-    /       = link_to notifications_path do
-    /         %i.icon-envelope
+
+
+
         
     #application_container_main.profile
       .container.main
@@ -65,8 +59,6 @@
         / footer
         / = render 'layouts/footer'
 
-
-  / = render 'onlinepanel/container'
 
 
   = render 'shared/modal_help'
