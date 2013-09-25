@@ -170,17 +170,17 @@ $alert-yellow: #FFFF7E;
   }
 
   #profile_index_info {
-    height:165px;
+    height:155px;
     width:270px;
     float:left;
     margin-right:40px;
-    padding-top:55px;
+    padding-top:65px;
 //    outline:1px solid white;
     
 
     #profile_index_info_actions {
     //    outline:1px solid white;
-
+      margin-left:38px;
       div, a {
         display:inline-block;
         cursor:pointer;
@@ -223,13 +223,21 @@ $alert-yellow: #FFFF7E;
       font-weight:bolder;
       margin-left:10px;
 //      outline:1px solid white;
-      height:30px;
+      height:20px;
       padding-top:5px;
     }
 
 
+    #profile_index_info_degreelevel {
+      margin-left:38px;
+    }
+
+    #profile_index_info_cases_joined {
+      margin-left:38px;
+    }
 
     #profile_index_info_cases {
+      margin-left:4px;
       div {
         display:inline-block;
         width:50px;
