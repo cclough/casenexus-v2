@@ -50,17 +50,17 @@
     #profile_index_info_actions
       #profile_index_info_actions_settings{"data-original-title"=>"Your settings", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
         %i.icon-cogs
-      #profile_index_info_actions_visitors{"data-original-title"=>"Visitors", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
-        %i.icon-user
-          %span.iconbar-unread
-            = current_user.visits.count
+      / #profile_index_info_actions_visitors{"data-original-title"=>"Visitors", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+      /   %i.icon-user
+      /     %span.iconbar-unread
+      /       = current_user.visits.count
       #profile_index_info_actions_invite{"data-original-title"=>"Invite friends", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
         %i.icon-plus
       = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip", method: :delete do
         %i.icon-reply
 
 
-    .spacer10
+    .spacer15
 
     #profile_index_info_cases
       #profile_index_info_cases_givn

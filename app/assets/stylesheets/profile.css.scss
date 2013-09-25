@@ -34,7 +34,7 @@ $alert-yellow: #FFFF7E;
   bottom:0px;
   left:0px;
   right:0px;
-  top:49%;
+  top:50%;
   background:$gray_gunmetal_second;
   z-index:1;
 }
@@ -170,11 +170,11 @@ $alert-yellow: #FFFF7E;
   }
 
   #profile_index_info {
-    height:160px;
+    height:165px;
     width:270px;
     float:left;
     margin-right:40px;
-    padding-top:60px;
+    padding-top:55px;
 //    outline:1px solid white;
     
 
@@ -188,6 +188,7 @@ $alert-yellow: #FFFF7E;
       }
 
       i {
+        font-size:20px;
         margin:4px;
         color:$gray_second !important;
         -webkit-transition: color 0.25s;
@@ -196,6 +197,10 @@ $alert-yellow: #FFFF7E;
         transition: color 0.25s;
         &:hover {
           color:white !important;
+        }
+        .iconbar-unread {
+          top:-10px;
+          right:-5px;
         }
       }
       z-index:2;
