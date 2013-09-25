@@ -112,19 +112,38 @@ $(document).ready ->
 
   $("#profile_index_friends_actions_start").click ->
     friend_id = $("#profile_index_friends_action_input").val()
-    window.location.href = "/console?friend_id=" + friend_id
+
+    unless !friend_id
+      window.location.href = "/console?friend_id=" + friend_id
+    else
+      alert "Please select a friend from the list..."
+
 
   $("#profile_index_friends_actions_message").click ->
     friend_id = $("#profile_index_friends_action_input").val()
-    window.modal_message_show(friend_id)
+
+    unless !friend_id
+      window.modal_message_show(friend_id)
+    else
+      alert "Please select a friend from the list..."
+
 
   $("#profile_index_friends_actions_profile").click ->
     friend_id = $("#profile_index_friends_action_input").val()
-    window.location.href = "/map?user_id=" + friend_id
+    
+    unless !friend_id
+      window.location.href = "/map?user_id=" + friend_id
+    else
+      alert "Please select a friend from the list..."
+
 
   $("#profile_index_friends_actions_event").click ->
     friend_id = $("#profile_index_friends_action_input").val()
-    window.modal_event_new_show(friend_id,null)
+    
+    unless !friend_id
+      window.modal_event_new_show(friend_id,null)
+    else
+      alert "Please select a friend from the list..."
 
 
 
