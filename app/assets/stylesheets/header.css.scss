@@ -1,4 +1,4 @@
-$gray_background: #eceef1;
+$gray_background: #f2f4f7;
 $gray_Light: white;
 $gray_second: #BDC3C7;
 $gray_gunmetal: #363636;
@@ -96,6 +96,7 @@ header {
     -webkit-border-top-right-radius: 6px !important;
     border-top-right-radius:         6px !important;
 
+    margin-left:3px;
     a {
       padding:13px !important;
       color:$gray_Dark !important;
