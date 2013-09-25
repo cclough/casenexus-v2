@@ -24,8 +24,11 @@
             $("#flash_notifications").html("");
 
             $("#modal_message_conversation").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
-
             window.modal_message_prime();
+
+
+            $("#notifications_show_body_subcontainer").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
+
 
         <%- else %>
 

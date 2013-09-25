@@ -22,17 +22,39 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
-#notifications_index_notifications {
-  overflow-y:scroll;
+
+#notifications_index_notifications_container {
   position:absolute;
-  top:120px;
+  top:0px;
+  left:0px;
   bottom:0px;
-  background:$gray_Lightest;
+  width:300px;
+
+}
+
+#notifications_index_form_container {
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  height:80px;
+  background:$gray_second;
+}
+
+#notifications_index_notifications {
+  overflow-y:auto;
+  background:white;
+  position:absolute;
+  bottom:0px;
+  top:80px;
+  left:0px;
+  right:0px;
 }
 
 #notifications_index_conversation {
   position:absolute;
-  left:400px;
+  left:300px;
+  right:0px;
   bottom:0px;
   top:0px;
 }
@@ -54,7 +76,7 @@ $alert-yellow: #FFFF7E;
   line-height:31px;
   color: white;
 
-  margin: 15px 0 0 0;
+  margin: 0 0 0 0;
 }
 
 
@@ -88,7 +110,7 @@ $alert-yellow: #FFFF7E;
   }
 
   &.notifications_index_notifications_item_select {
-    background:$green_flatui;
+    background:$gray_second;
   }
 
   &.read {
@@ -122,10 +144,6 @@ $alert-yellow: #FFFF7E;
 /////////////////////////////////////////////////////
 
 
-#notifications_show_form_container {
-  margin:-10px;
-}
-
 
 
 
@@ -137,7 +155,6 @@ $alert-yellow: #FFFF7E;
   font-weight: bold;
   line-height:31px;
   color: white;
-  margin:-10px;
 
   img {
     max-width:25px;
@@ -148,13 +165,21 @@ $alert-yellow: #FFFF7E;
 
 #notifications_show_body {
 
-  position:relative;
+  position:absolute;
+  top:30px;
+  bottom:170px;
+  right:0px;
+  left:0px;
 
   overflow-y:scroll;
-  height:385px;
-  margin:0 -10px 0 -10px;
+
+  background:white;
+//  outline:1px solid red;
+//  margin:0 -10px 0 -10px;
 
 }
+
+
 
 #notifications_show_body_subcontainer{
   position:absolute;
@@ -165,8 +190,25 @@ $alert-yellow: #FFFF7E;
 }
 
 
+
+#notifications_show_form {
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  left:0px;
+  height:150px;
+
+  padding:10px;
+//  outline:1px solid red;
+  background:$gray_second;
+}
+
+
+
+
+
 #notifications_show_newmessage_textarea {
-  height:50px;
+  height:100px;
   display:block;
 }
 

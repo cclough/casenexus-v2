@@ -11,18 +11,18 @@
   = @sender.username
 
 
-.row#notifications_show_body
+#notifications_show_body
   #notifications_show_body_subcontainer
     = render "conversation"
 
-.row#notifications_show_form_container.panel.dark.kill_all  
+#notifications_show_form
   / - notification = notification || @notification
   = form_for @notification, remote: true do |f|
 
     #flash_notifications
       = render 'shared/error_messages', object: @notification
       .row
-        = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea", class: "span60"
+        = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea", class: "span58"
 
         = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
         = f.hidden_field :user_id, value: @sender.id

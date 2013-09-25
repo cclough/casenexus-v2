@@ -1,13 +1,7 @@
 
-#notifications_index_notifications_header
-
-  Your conversations
 
 = form_tag notifications_path, method: 'get', id: "notifications_index_notifications_form", class: "form-search" do
-  .panel.darker.kill_all
-
-    .row
-      .input-append
-        = text_field_tag :search, params[:search], placeholder: "Search...", id: "notifications_index_notifications_form_searchfield", class: 'search-query'
-        %button.btn{type: "submit"}
-          %span.fui-search
+  .input-append
+    = text_field_tag :search, params[:search], placeholder: "Search...", id: "notifications_index_notifications_form_searchfield", class: 'search-query'
+    %button.btn{type: "submit"}
+      %span.fui-search

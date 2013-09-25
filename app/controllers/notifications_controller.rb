@@ -4,7 +4,6 @@ class NotificationsController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
-  layout 'profile'
 
   def index
     @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 20, page: params[:page])
