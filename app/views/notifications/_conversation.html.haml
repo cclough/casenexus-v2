@@ -10,4 +10,5 @@
     = render partial: 'notifications/notifications_show_item' , locals: { notifications_show_item: notifications_show_item }
 
 - else
-  %p No notifications found
+  #notifications_conversation_empty.panel.dark.center
+    No messages found
