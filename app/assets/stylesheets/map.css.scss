@@ -42,9 +42,9 @@ $alert-yellow: #FFFF7E;
 
 #map_index_container_users_container {
   position:fixed;
-  left:0px;
+  left:20px;
   top:50px;
-  width:604px;
+  width:600px;
   bottom:0px;
 //  background:rgba(255,255,255,0.5s);
   background:rgba(0,0,0,0.7s);
@@ -52,7 +52,7 @@ $alert-yellow: #FFFF7E;
 //  background:$gray_background;
 //  border-left:3px solid white;
 //  border-right:3px solid white;
-//  border-left:3px solid $gray_gunmetal_second;
+  border-left:3px solid $gray_gunmetal_second;
   border-right:3px solid $gray_gunmetal_second;
   z-index:2;
 }
@@ -60,7 +60,7 @@ $alert-yellow: #FFFF7E;
 #map_index_container_users {
   position:relative;
   min-height:100%;
-  margin-left:0px;
+  margin-left:20px;
   width:604px;
   z-index:2;
 
@@ -81,14 +81,15 @@ $alert-yellow: #FFFF7E;
 #map_index_container_map {
   position:fixed;
   top:50px;
-  left:604px;
+  //left:604px;
+  left:0px;
   bottom:0px;
   right:0px;
   z-index:1;
 
   #map_index_map_zoomout {
     position:absolute;
-    left:10px;
+    left:640px;
     top:10px;
     z-index:10;
   }
@@ -321,6 +322,31 @@ $alert-yellow: #FFFF7E;
     background:#fffae8;//$gray_background;
   }
 }
+
+.map_index_users_item_skill_triangle {
+  position:absolute;
+  z-index:100;
+  left:0;
+  top:0;
+  width: 0; 
+  height: 0; 
+
+  border-style: solid;
+  border-width: 50px 50px 0 0;
+  border-color: $gray_second transparent transparent transparent;
+
+  &.novice {
+    border-color: #dff0d8 transparent transparent transparent;
+  }
+  &.intermediate {
+    border-color: #D9EDF7 transparent transparent transparent;
+  }
+  &.advanced {
+    border-color: #f2dede transparent transparent transparent;
+  }
+}
+
+
 
 .map_index_users_item_avatar {
   float:left;
