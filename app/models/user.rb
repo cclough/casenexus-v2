@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true, length: { maximum: 30 }, on: :update
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
-  validates :lng, :uniqueness => { :scope => :lat }
+  # validates :lng, :uniqueness => { :scope => :lat }
 
   validates :linkedin, length: { maximum: 100 }
   validates :degree_level, presence: true, on: :update
