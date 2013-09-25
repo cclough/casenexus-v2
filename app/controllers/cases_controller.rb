@@ -38,7 +38,7 @@ class CasesController < ApplicationController
 
 
     respond_to do |format|
-      format.html
+      format.html { render layout: false }
       format.js #for table form
     end
 

@@ -1,12 +1,14 @@
-<%- if @event.errors.any? %>
 
-  $('#modal_event').html("<%= escape_javascript(render('shared/modal_event_edit_form')) %>");
 
-  window.events_modal_rebless();
+<%- if @user.errors.any? %>
+
+  $('#modal_profile').html("<%= escape_javascript(render('account/edit')) %>");
+
+  window.account_completeedit_bless();
 
 <%- else %>
 
-  $('#modal_event').modal('hide');
+  $('#modal_profile').modal('hide');
 
   $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
   
@@ -20,7 +22,5 @@
 
   });
 
-   $("#events_calendar_container").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
-   window.events_calendar_rebless();
    
 <%- end %>

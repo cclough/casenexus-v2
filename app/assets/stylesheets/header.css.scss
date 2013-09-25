@@ -50,6 +50,13 @@ header {
   position: absolute;
   padding:7px 10px;
   height:31px;
+    -moz-border-top-left-radius:    6px !important;
+    -webkit-border-top-left-radius: 6px !important;
+    border-top-left-radius:         6px !important;
+
+    -moz-border-top-right-radius:    6px !important;
+    -webkit-border-top-right-radius: 6px !important;
+    border-top-right-radius:         6px !important;
   &.signedout {
     top:30px;
   }
@@ -81,6 +88,14 @@ header {
 
   li {
     height:45px;
+    -moz-border-top-left-radius:    6px !important;
+    -webkit-border-top-left-radius: 6px !important;
+    border-top-left-radius:         6px !important;
+
+    -moz-border-top-right-radius:    6px !important;
+    -webkit-border-top-right-radius: 6px !important;
+    border-top-right-radius:         6px !important;
+
     a {
       padding:13px !important;
       color:$gray_Dark !important;

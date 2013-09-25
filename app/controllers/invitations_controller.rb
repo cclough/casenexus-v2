@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
     @invitations = Invitation.where(user_id: current_user.id)
     @invitation = current_user.invitations.build(params[:invitation])
     
-    render layout: "profile"
+    render layout: false
 
   end
   def show

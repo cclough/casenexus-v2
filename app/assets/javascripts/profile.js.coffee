@@ -51,20 +51,59 @@ profile_index_feedback_analysis_prime = () ->
 $(document).ready ->
 
 
+  # INFO
+  $("#profile_index_info_actions_settings").click ->
+
+    if !($("#modal_profile").hasClass("in"))
+
+      $(".modal").modal("hide")
+
+      $.get "/account/edit", (data) ->
+        $("#modal_profile").html data
+
+        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+        $("#modal_profile").on "shown", ->
+
+          window.account_completeedit_bless()
+
+        $("#modal_profile").modal "show"
+
+  $("#profile_index_info_actions_visitors").click ->
+
+    if !($("#modal_profile").hasClass("in"))
+
+      $(".modal").modal("hide")
+
+      $.get "/account/visitors", (data) ->
+        $("#modal_profile").html data
+
+        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+        # $("#modal_profile").on "shown", ->
+
+        #   #window.account_completeedit_bless()
+
+        $("#modal_profile").modal "show"
+
+
+  $("#profile_index_info_actions_invite").click ->
+
+    if !($("#modal_profile").hasClass("in"))
+
+      $(".modal").modal("hide")
+
+      $.get "/invitations", (data) ->
+        $("#modal_profile").html data
+
+        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+        # $("#modal_profile").on "shown", ->
+
+        #   #window.account_completeedit_bless()
+
+        $("#modal_profile").modal "show"
 
 
 
-  $(".profile_index_friends_friends_item").click ->
-
-    $(".profile_index_friends_friends_item").removeClass "active"
-    $(this).addClass "active"
-
-    friend_id = $(this).data "friend_id"
-    $("#profile_index_friends_action_input").val(friend_id)    
-
-
-  # Friends actions
-
+  # FRIENDS
   # $("#profile_index_friends_actions_invite")
   
   # $("#profile_index_friends_actions_skype")
@@ -89,20 +128,54 @@ $(document).ready ->
 
 
 
+  $(".profile_index_friends_friends_item").click ->
 
+    $(".profile_index_friends_friends_item").removeClass "active"
+    $(this).addClass "active"
+
+    friend_id = $(this).data "friend_id"
+    $("#profile_index_friends_action_input").val(friend_id)    
+
+
+
+
+  # FEEDBACK
+
+  $(".profile_index_feedback_cases_item").click ->
+
+    if !($("#modal_cases").hasClass("in"))
+
+      case_id = $(this).data "case_id"
+
+      $(".modal").modal("hide")
+
+      $.get "/cases/" + case_id, (data) ->
+        $("#modal_cases").html data
+
+        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+        $("#modal_cases").on "shown", ->
+
+          window.cases_resultstable_bars_draw()
+          
+          window.cases_show_category_chart_bar_draw("businessanalytics")
+          window.cases_show_category_chart_bar_draw("structure")
+          window.cases_show_category_chart_bar_draw("interpersonal")
+
+
+        $("#modal_cases").modal "show"
 
 
   $("#profile_index_feedback_actions_resultstable").click ->
 
-    if !($("#modal_analysis").hasClass("in"))
+    if !($("#modal_cases").hasClass("in"))
 
       $(".modal").modal("hide")
 
       $.get "/cases/analysis?view=table", (data) ->
-        $("#modal_analysis").html data
+        $("#modal_cases").html data
 
         # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-        $("#modal_analysis").on "shown", ->
+        $("#modal_cases").on "shown", ->
 
           if (cases_analysis_chart_case_count == 0)
             $("#cases_analysis_chart_table_empty").fadeIn "fast"
@@ -110,4 +183,4 @@ $(document).ready ->
             window.cases_resultstable_bars_draw()
             profile_index_feedback_analysis_prime()
 
-        $("#modal_analysis").modal "show"
+        $("#modal_cases").modal "show"

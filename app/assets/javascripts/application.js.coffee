@@ -321,7 +321,7 @@ $(document).ready ->
   #     window.location.href = "/map?search=" + $("#header_nav_search_field").val()
 
   # Modals
-  $("#modal_contact, #modal_analysis, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
+  $("#modal_contact, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
     backdrop: true
     show: false
 

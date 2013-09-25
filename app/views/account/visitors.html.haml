@@ -1,10 +1,14 @@
 - provide(:title, 'Who has viewed your profile')
 - provide(:sub_title, 'A list of users who have recently viewed your profile')
 
-- content_for :javascript_includes do
-  = javascript_include_tag('account')
 
-.panel.dark
+.modal-header
+  %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+  %h3 Who's visited your profile
+
+.modal-body
+
   - if current_user.visits.count > 0
     - current_user.visits.order("created_at desc").first(10).each do |visit|
 
@@ -20,3 +24,8 @@
 
   - else
     No one has visited your profile
+
+
+
+.modal-footer
+  %a.btn{"data-dismiss" => "modal", href: "#"} Close

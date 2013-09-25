@@ -10,41 +10,49 @@ class AccountController < ApplicationController
   def edit
     @user = current_user
 
-    render layout: 'profile'
+    render partial: 'edit', layout:false
   end
 
   def visitors
     @users = User.all
 
-    render layout: 'profile'
+    render layout:false
   end
 
   def update
     @user = current_user
 
-    if @user.update_attributes(params[:user])
-      if @user.completed
-        flash[:success] = 'Your profile has been updated'
-      else
-        @user.completed = true
-        @user.save
-        flash[:success] = 'Welcome to casenexus.com'
-      end
-      redirect_to profile_path
-    else
-      @invitations = current_user.invitations
-      @invitation = current_user.invitations.build(params[:invitation])
+    respond_to do |format|
 
-      if params[:back_url]
-        if params[:back_url].include?('complete')
-          render 'complete_profile', layout: "home"
+      if @user.update_attributes(params[:user])
+        if @user.completed
+          flash[:success] = 'Your profile has been updated'
+          format.js
         else
-          redirect_to params[:back_url]
+          format.html
+          @user.completed = true
+          @user.save
+          flash[:success] = 'Welcome to casenexus.com'
+          redirect_to profile_path
         end
       else
-        render 'edit', layout: "profile"
+        @invitations = current_user.invitations
+        @invitation = current_user.invitations.build(params[:invitation])
+
+        if params[:back_url]
+          if params[:back_url].include?('complete')
+            render 'complete_profile', layout: "home"
+          else
+            redirect_to params[:back_url]
+          end
+        else
+          format.js
+        end
       end
+
     end
+
+
   end
 
   def complete_profile
@@ -60,8 +68,6 @@ class AccountController < ApplicationController
 
   def edit_password
     @user = current_user
-    
-    render layout: 'profile'
   end
 
   def delete

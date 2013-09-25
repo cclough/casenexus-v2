@@ -59,11 +59,14 @@ window.cases_show_category_chart_bar_draw = (category) ->
   
   # SERIAL CHART
   chart = new AmCharts.AmSerialChart()
-  if category is "businessanalytics"
-    chart.dataProvider = cases_show_businessanalytics_chart_bar_data
-  else if category is "interpersonal"
-    chart.dataProvider = cases_show_interpersonal_chart_bar_data
-  else chart.dataProvider = cases_show_structure_chart_bar_data  if category is "structure"
+  # if category is "businessanalytics"
+  #   chart.dataProvider = cases_show_businessanalytics_chart_bar_data
+  # else if category is "interpersonal"
+  #   chart.dataProvider = cases_show_interpersonal_chart_bar_data
+  # else chart.dataProvider = cases_show_structure_chart_bar_data  if category is "structure"
+
+  chart_data = $("#cases_show_" + category + "_chart_bar").data("scores")
+  chart.dataProvider = chart_data
   chart.autoMarginOffset = 0
   chart.marginRight = 0
   chart.categoryField = "criteria"
@@ -581,7 +584,7 @@ window.cases_analysis_chart_radar_draw = (radar_type, case_count) ->
 
   # FADE
   $("#cases_analysis_chart_radar").fadeIn "fast"
-  $("#cases_analysis_chart_radar_buttongroup").fadeIn "fast"
+  # $("#cases_analysis_chart_radar_buttongroup").fadeIn "fast"
 
   # WRITE
   chart_analysis_radar.write "cases_analysis_chart_radar"
@@ -752,9 +755,6 @@ $(document).ready ->
     false
 
 
-
-
-
   # RADAR BUTTONS
   $("#cases_analysis_chart_radar_button_all").click ->
     $("#cases_analysis_chart_radar").empty()
@@ -811,21 +811,21 @@ $(document).ready ->
 
 
 
-  $("#cases_show_charts_view_buttongroup .btn").click ->
+  # $("#cases_show_charts_view_buttongroup .btn").click ->
 
-    view = $(this).data("view")
+  #   view = $(this).data("view")
 
-    # Change view
-    $(".cases_show_charts_view").addClass "hidden"
-    $("#cases_show_charts_view_"+view).removeClass "hidden"
+  #   # Change view
+  #   $(".cases_show_charts_view").addClass "hidden"
+  #   $("#cases_show_charts_view_"+view).removeClass "hidden"
 
-    # Run radar draw if needed
-    if view == "radar"
-      window.cases_show_chart_radar_draw("all");
+  #   # Run radar draw if needed
+  #   if view == "radar"
+  #     window.cases_show_chart_radar_draw("all");
 
-    # Remove and add active class to buttons
-    $("#cases_show_charts_view_buttongroup .btn").removeClass "active"
-    $(this).addClass "active"
+  #   # Remove and add active class to buttons
+  #   $("#cases_show_charts_view_buttongroup .btn").removeClass "active"
+  #   $(this).addClass "active"
 
 
   # Select Case Pull Down
