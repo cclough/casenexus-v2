@@ -61,7 +61,7 @@ $alert-yellow: #FFFF7E;
   position:relative;
   min-height:100%;
   margin-left:20px;
-  width:604px;
+  width:606px;
   z-index:2;
 
   //background: rgba(54,54,54,0.5);
@@ -175,9 +175,25 @@ $alert-yellow: #FFFF7E;
     margin:0px;
     padding:0px;
   }
+//  outline:1px solid white;
 
 }
 
+.map_index_users_form_button_container_double {
+  float:left;
+  height:90px;
+  width:248px;
+  .btn-group {
+    margin:0px;
+    padding:0px;
+  }
+
+  .map_index_users_form_button_container_double_lower {
+    width:124px;
+      float:left;
+  }
+
+}
 
 .map_index_users_form_button {
   position:relative;
@@ -193,7 +209,7 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_users_form_button_local {
-  height:70px;
+  height:71px;
   width:70px;
   text-align:center;
   position:relative;
@@ -213,6 +229,23 @@ $alert-yellow: #FFFF7E;
   }
 }
 
+
+#map_index_users_form_search_container {
+  button {
+    margin: 2px 0 !important;
+    height:35px !important;
+  }
+  #map_index_users_form_search_field {
+    width:198px;
+    height:25px;
+
+    margin: 2px 0 !important;
+  }
+  margin-bottom:6px;
+}
+
+
+
 #map_index_users_form_button_shouts {
 //  height:35px;
   height:25px;
@@ -228,16 +261,15 @@ $alert-yellow: #FFFF7E;
 }
 
 #map_index_users_form_button_onlinenow {
-  width:75px;
+  width:89px;
   height:25px;
   line-height:25px;
+
 }
 
 #map_index_users_form_button_onlinetoday {
-  width:81px;
+  width:89px;
   height:25px;
-  padding: 6px 10px 8px 10px;
-  margin-bottom:6px;
   line-height:25px;
 }
 
@@ -296,6 +328,11 @@ $alert-yellow: #FFFF7E;
 
   background:white;
   padding:20px;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
 }
 
 
@@ -680,6 +717,7 @@ $alert-yellow: #FFFF7E;
 
 
 #map_index_map_zoomer {
+  display:none;
   position: absolute;
   top: 10px;
   right: 100px;

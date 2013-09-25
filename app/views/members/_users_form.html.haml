@@ -2,13 +2,6 @@
 
   / = hidden_field_tag :search, params[:search], placeholder: "Search for candidates...", id: "", class: 'search-query'
 
-  .form-search
-    .input-prepend
-      %button.btn.btn-small{type: "submit"}
-        %span.fui-search
-      = text_field_tag :search, params[:search], placeholder: "Search...", id: "map_index_users_form_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
-
-  .spacer10
   .row
 
     #map_index_users_form_button_container_local
@@ -21,6 +14,34 @@
         - unless user_near_count == 0
           %span.iconbar-unread
             = user_near_count
+
+
+    .map_index_users_form_button_container_double
+
+      .form-search
+        .input-prepend#map_index_users_form_search_container
+          %button.btn.btn-small{type: "submit"}
+            %span.fui-search
+          = text_field_tag :search, params[:search], placeholder: "Search...", id: "map_index_users_form_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
+
+
+      .map_index_users_form_button_container_double_lower
+
+        %a#map_index_users_form_button_onlinetoday.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>2}
+          Online today
+          - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
+          - unless online_today_count == 0
+            %span.iconbar-unread
+              = online_today_count
+
+      .map_index_users_form_button_container_double_lower
+
+        %a#map_index_users_form_button_onlinenow.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>3}
+          Online now
+          - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
+          - unless online_now_count == 0
+            %span.iconbar-unread
+              = online_now_count
 
 
     .map_index_users_form_button_container
@@ -39,26 +60,11 @@
 
 
 
-    .map_index_users_form_button_container.pull-right
-
       / %a.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>1}
       /   New
       /   %span.iconbar-unread
       /     = User.list_new.count
 
-      %a#map_index_users_form_button_onlinetoday.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>2}
-        Online today
-        - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
-        - unless online_today_count == 0
-          %span.iconbar-unread
-            = online_today_count
-
-      %a#map_index_users_form_button_onlinenow.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>3}
-        Online now
-        - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
-        - unless online_now_count == 0
-          %span.iconbar-unread
-            = online_now_count
 
 
     .map_index_users_form_button_container.pull-right
