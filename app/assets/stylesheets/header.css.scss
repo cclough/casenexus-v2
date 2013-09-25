@@ -191,3 +191,13 @@ header {
   }
 }
 
+
+
+#header_nav_icon_notifications_container {
+  position:relative;
+  .iconbar-unread {
+    position:absolute;
+    top:0px;
+    right:0px;
+  }
+}

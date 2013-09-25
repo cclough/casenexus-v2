@@ -68,21 +68,21 @@ $(document).ready ->
 
         $("#modal_profile").modal "show"
 
-  $("#profile_index_info_actions_visitors").click ->
+  # $("#profile_index_info_actions_visitors").click ->
 
-    if !($("#modal_profile").hasClass("in"))
+  #   if !($("#modal_profile").hasClass("in"))
 
-      $(".modal").modal("hide")
+  #     $(".modal").modal("hide")
 
-      $.get "/account/visitors", (data) ->
-        $("#modal_profile").html data
+  #     $.get "/account/visitors", (data) ->
+  #       $("#modal_profile").html data
 
-        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-        # $("#modal_profile").on "shown", ->
+  #       # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+  #       # $("#modal_profile").on "shown", ->
 
-        #   #window.account_completeedit_bless()
+  #       #   #window.account_completeedit_bless()
 
-        $("#modal_profile").modal "show"
+  #       $("#modal_profile").modal "show"
 
 
   $("#profile_index_info_actions_invite").click ->
