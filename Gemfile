@@ -34,6 +34,7 @@ group :development, :test do
   gem 'haml-rails'                               # Haml generator
   gem 'wirble'
   gem 'awesome_print'                                   # Colors on console
+  gem 'pry'
 end
 
 group :assets do

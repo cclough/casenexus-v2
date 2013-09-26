@@ -259,7 +259,7 @@ class User < ActiveRecord::Base
     end
 
     def list_local(user)
-      collection = user.nearbys(50).completed
+      user.nearbys(50).completed.merge(user)
     end
 
     def list_online_today

@@ -42,7 +42,7 @@ $(document).ready ->
 
   
 
-  if typeof account_completeedit_map_lat_start is "string"
+  if typeof account_this_is_complete is "string"
     window.account_completeedit_bless()
 
 
