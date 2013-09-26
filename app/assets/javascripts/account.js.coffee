@@ -42,8 +42,8 @@ $(document).ready ->
 
   
 
-  # if typeof account_completeedit_map_lat_start is "string"
-  #   window.account_completeedit_bless()
+  if typeof account_completeedit_map_lat_start is "string"
+    window.account_completeedit_bless()
 
 
 

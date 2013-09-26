@@ -50,7 +50,6 @@ class User < ActiveRecord::Base
 
   ### Callbacks
   before_create :set_university
-  before_create :generate_username
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
   after_create :update_invitation
@@ -360,8 +359,5 @@ class User < ActiveRecord::Base
 
   end
 
-  def generate_username
-    self.username = "user" + Time.now.to_i.to_s.last(5) + rand(999).to_s
-  end
 
 end

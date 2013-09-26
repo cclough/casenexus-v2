@@ -22,34 +22,31 @@ class AccountController < ApplicationController
   def update
     @user = current_user
 
-    respond_to do |format|
+    
 
-      if @user.update_attributes(params[:user])
-        if @user.completed
-          flash[:success] = 'Your profile has been updated'
-          format.js
+    if @user.update_attributes(params[:user])
+      if @user.completed
+        flash[:success] = 'Your profile has been updated'
+        respond_id js
+      else
+        @user.completed = true
+        @user.save
+        flash[:success] = 'Welcome to casenexus.com'
+        redirect_to profile_path
+      end
+    else
+      @invitations = current_user.invitations
+      @invitation = current_user.invitations.build(params[:invitation])
+
+      if params[:back_url]
+        if params[:back_url].include?('complete')
+          render 'complete_profile', layout: "home"
         else
-          format.html
-          @user.completed = true
-          @user.save
-          flash[:success] = 'Welcome to casenexus.com'
-          redirect_to profile_path
+          redirect_to params[:back_url]
         end
       else
-        @invitations = current_user.invitations
-        @invitation = current_user.invitations.build(params[:invitation])
-
-        if params[:back_url]
-          if params[:back_url].include?('complete')
-            render 'complete_profile', layout: "home"
-          else
-            redirect_to params[:back_url]
-          end
-        else
-          format.js
-        end
+        respond_id js
       end
-
     end
 
 
