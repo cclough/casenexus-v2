@@ -11,7 +11,7 @@
 %table
   %tr
     %td
-      = image_tag "http://casenexus-staging.herokuapp.com/assets/avatars/icon.png", style: "height:30px;"
+      = image_tag "http://www.casenexus.com/assets/avatars/icon.png", style: "height:30px;"
     %td{style: "font-size:13px;margin-left:10px;"}
       %strong
         #{@user_from.username}
@@ -35,7 +35,7 @@
               - else
                 You have not yet asked #{@user_from.username} to prepare a case
                 %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
-                  = link_to "Choose a case", "https://casenexus-staging.herokuapp.com/events?event_id=" + @event.id.to_s
+                  = link_to "Choose a case", "https://www.casenexus.com/events?event_id=" + @event.id.to_s
           %tr
             %td{style: "border:5px solid #e3e3e3;padding:3px;"}
               - unless @event.book_id_partnertoprepare.blank?
@@ -54,7 +54,7 @@
                   %table
                     %tr
                       %td
-                        #{image_tag "https://casenexus-staging.herokuapp.com/assets/icons/skype_button.png"}
+                        #{image_tag "https://www.casenexus.com/assets/icons/skype_button.png"}
                       %td
                         Call #{@user_from.username}
           %tr
@@ -62,11 +62,11 @@
               %div{style:"background-color:#a8d5ff;height:35px;width:180px;margin:2px;padding:3px;"}
                 - unless @event.book_id_partnertoprepare.blank?
 
-                  %a{ href:"https://casenexus-staging.herokuapp.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
+                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
                     Start case as Interviewer
                 - else
 
-                  %a{ href:"https://casenexus-staging.herokuapp.com/console?friend_id=" + @event.partner.id.to_s }
+                  %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
                     Start case as Interviewer now
 
 %br

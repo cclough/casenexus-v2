@@ -61,7 +61,7 @@ header {
     top:30px;
   }
   &:hover {
-    background:$gray_Lightest;
+    background:$gray_background;
   }
 }
 
@@ -102,7 +102,7 @@ header {
       color:$gray_Dark !important;
     }
     &:hover {
-      background:$gray_Lightest;
+      background:$gray_background;
     }
     &.active {
       background:$gray_background;

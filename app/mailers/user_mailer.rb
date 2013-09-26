@@ -152,7 +152,7 @@ class UserMailer < ActionMailer::Base
     @user_target = user_target
     @book = book
 
-    host = Rails.env == 'production' ? 'casenexus-staging.herokuapp.com' : 'localhost:3000'
+    host = Rails.env == 'production' ? 'www.casenexus.com' : 'localhost:3000'
     @url = Rails.application.routes.url_helpers.root_url(host: host)
 
     attachments["charts.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library','charts',book.charts_file_name))

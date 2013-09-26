@@ -130,7 +130,7 @@ class Notification < ActiveRecord::Base
   end
 
   def url
-    host = Rails.env == 'production' ? 'casenexus-staging.herokuapp.com' : 'localhost:3000'
+    host = Rails.env == 'production' ? 'www.casenexus.com' : 'localhost:3000'
 
     case ntype
       when "welcome"
