@@ -24,6 +24,7 @@ gem 'icalendar'                                  # ICS output for calendar
 gem 'pusher'                                     # Push notifications and messaging
 gem 'rails_admin'                                # Admin
 gem 'thumbs_up'                                  # Stack Overflow like voting on things
+gem 'delayed_job_active_record'                  # For threaded email sending
 
 
 group :development, :test do

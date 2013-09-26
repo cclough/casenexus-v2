@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
   end
 
   def send_newpost_email_to_admin
-    UserMailer.newpost_to_admin(self).deliver
+    UserMailer.delay.newpost_to_admin(self)
   end
 
 end

@@ -330,7 +330,7 @@ class User < ActiveRecord::Base
 
 
   def send_newuser_email_to_admin
-    UserMailer.newuser_to_admin(self).deliver
+    UserMailer.delay.newuser_to_admin(self)
   end
 
   def send_welcome

@@ -192,114 +192,114 @@ class Notification < ActiveRecord::Base
       when "welcome"
         UserMailer.welcome(self.user,
                            self.url,
-                           self.title).deliver
+                           self.title)
       when "feedback"
-        UserMailer.feedback(self.sender,
+        UserMailer.delay.feedback(self.sender,
                             self.user,
                             self.url,
                             self.event_date,
                             self.content,
-                            self.title).deliver
+                            self.title)
       when "message"
-        UserMailer.usermessage(self.sender,
+        UserMailer.delay.usermessage(self.sender,
                                self.user,
                                self.url,
                                self.content,
-                               self.title).deliver
+                               self.title)
       when "friendship_req"
-        UserMailer.friendship_req(self.sender,
+        UserMailer.delay.friendship_req(self.sender,
                                   self.user,
                                   self.url,
                                   self.content,
-                                  self.title).deliver
+                                  self.title)
       when "friendship_app"
-        UserMailer.friendship_app(self.sender,
+        UserMailer.delay.friendship_app(self.sender,
                                   self.user,
                                   self.url,
-                                  self.title).deliver
+                                  self.title)
 
 
 
 
 
       when "event_set_partner"
-        UserMailer.event_setchangecancelremind_partner(self.sender,
+        UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
                                                        self.notificable_id,
                                                        self.title,
                                                        self.url,
-                                                       self.ntype).deliver
+                                                       self.ntype)
       when "event_set_sender"
-        UserMailer.event_setchangecancelremind_sender(self.user,
+        UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
-                                                      self.ntype).deliver
+                                                      self.ntype)
 
 
       when "event_change_partner"
-        UserMailer.event_setchangecancelremind_partner(self.sender,
+        UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
                                                        self.notificable_id,
                                                        self.title,
                                                        self.url,
-                                                       self.ntype).deliver
+                                                       self.ntype)
 
       when "event_change_sender"
-        UserMailer.event_setchangecancelremind_sender(self.user,
+        UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
-                                                      self.ntype).deliver
+                                                      self.ntype)
 
 
 
       when "event_cancel_partner"
-        UserMailer.event_setchangecancelremind_partner(self.sender,
+        UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
                                                        self.notificable_id,
                                                        self.title,
                                                        self.url,
-                                                       self.ntype).deliver
+                                                       self.ntype)
 
       when "event_cancel_sender"
-        UserMailer.event_setchangecancelremind_sender(self.user,
+        UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
-                                                      self.ntype).deliver
+                                                      self.ntype)
 
 
 
 
 
       when "event_remind_partner"
-        UserMailer.event_setchangecancelremind_partner(self.sender,
+        UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
                                                        self.notificable_id,
                                                        self.title,
                                                        self.url,
-                                                       self.ntype).deliver
+                                                       self.ntype)
 
       when "event_remind_sender"
-        UserMailer.event_setchangecancelremind_sender(self.user,
+        UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
-                                                      self.ntype).deliver
+                                                      self.ntype)
 
 
 
 
 
       when "points_unlock_voteup"
-        UserMailer.points_unlock_voteup(self.user,
+        UserMailer.delay.points_unlock_voteup(self.user,
                                         self.title,
-                                        self.url).deliver
+                                        self.url)
       when "points_unlock_votedown"
-        UserMailer.points_unlock_votedown(self.user,
+        UserMailer.delay.points_unlock_votedown(self.user,
                                           self.title,
-                                          self.url).deliver
+                                          self.url)
       end
   end
 
