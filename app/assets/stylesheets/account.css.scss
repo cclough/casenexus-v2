@@ -213,9 +213,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
   input {
     display:block;
     margin-bottom:15px;
-    -moz-border-radius:    0px !important;
-    -webkit-border-radius: 0px !important;
-    border-radius:         0px !important;
+
 
     border:2px solid transparent;
   }

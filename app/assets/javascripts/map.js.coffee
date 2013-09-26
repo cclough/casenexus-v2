@@ -252,6 +252,8 @@ $(document).ready ->
   # back to world view button (must be after map variable has been set)
   $("#map_index_map_zoomout").click ->
     window.map.setZoom(2);
+    offset = map.getSize().x*0.25;
+    window.map.panBy(new L.Point(-offset, 0), {animate: false})
     $(this).fadeOut("fast");
 
 

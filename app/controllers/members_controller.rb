@@ -11,7 +11,8 @@ class MembersController < ApplicationController
     case params[:users_listtype]
 
       when "local"
-        users_scope = users_pre_scope.list_local(current_user)
+        require 'will_paginate/array' # neccessary to allow list_local to work in members
+        users_scope = users_pre_scope.list_local(current_user).reverse! # reverse brings current_user to the top
       when "new"
         users_scope = users_pre_scope.list_new
       when "online_today"
