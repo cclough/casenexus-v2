@@ -25,7 +25,7 @@ gem 'pusher'                                     # Push notifications and messag
 gem 'rails_admin'                                # Admin
 gem 'thumbs_up'                                  # Stack Overflow like voting on things
 gem 'delayed_job_active_record'                  # For threaded email sending
-
+gem "workless", "~> 1.1.3"
 
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails
