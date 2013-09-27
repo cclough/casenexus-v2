@@ -12,12 +12,6 @@
       var pdf_path = "/assets/library/#{@book.url}"
       PDFJS.workerSrc = '/javascripts/pdfjs/pdf.js';
 
-
-    / = javascript_include_tag "lib/pdfjs/compatibility"
-
-    / = javascript_include_tag "lib/pdfjs/debugger"
-    / = javascript_include_tag "lib/pdfjs/l10n"
-
     / #if !(FIREFOX || MOZCENTRAL || CHROME)
     %script{:src => "/javascripts/pdfjs/compatibility.js"}
     / #endif
@@ -25,11 +19,8 @@
     %script{:src => "/javascripts/pdfjs/l10n.js"}
     %script{:src => "/javascripts/pdfjs/viewer.js"}
 
-
-
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
-
     /[if lte IE 7]
       = javascript_include_tag "lib/icon-font-ie7"
 
@@ -46,8 +37,6 @@
     / #endif
 
     = csrf_meta_tags
-
-    = analytics_init if Rails.env.production?
 
 
   %body{:tabindex => "1"}

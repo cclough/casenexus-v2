@@ -10,8 +10,6 @@
 
     = csrf_meta_tags
 
-    = analytics_init if Rails.env.production?
-    
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
     /[if lte IE 7]
