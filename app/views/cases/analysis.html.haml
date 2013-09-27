@@ -36,210 +36,208 @@
 / .spacer20
 
 
-.row
+
+- case @view
 
 
-  - case @view
+- when "table"
+
+  - content_for :javascript_includes do
+    :javascript
+      $(document).ready(function(){
+        if (cases_analysis_chart_case_count == 0) {
+          $("#cases_analysis_chart_table_empty").fadeIn("fast");
+        } else {
+          window.cases_resultstable_bars_draw();
+        }
+      });
 
 
-  - when "table"
+  .modal-body
+    #cases_analysis_section_table.cases_analysis_section
+      .panel.dark.kill_all
+        .row
+          - if current_user.case_count_recd > 0
+            = render "results_table_form"
 
-    - content_for :javascript_includes do
-      :javascript
-        $(document).ready(function(){
-          if (cases_analysis_chart_case_count == 0) {
-            $("#cases_analysis_chart_table_empty").fadeIn("fast");
-          } else {
-            window.cases_resultstable_bars_draw();
-          }
-        });
-
-
-    .modal-body
-      #cases_analysis_section_table.cases_analysis_section
-        .panel.dark.kill_all
-          .row
-            - if current_user.case_count_recd > 0
-              = render "results_table_form"
-
-              #cases_analysis_section_table_table_container
-                = render "results_table"
-            - else
-              #cases_analysis_section_table_empty
-                #cases_analysis_section_table_empty_icon
-                  %i.icon-bar-chart
-                %p You must do at least 1 case, 
-                %p before this table will work
+            #cases_analysis_section_table_table_container
+              = render "results_table"
+          - else
+            #cases_analysis_section_table_empty
+              #cases_analysis_section_table_empty_icon
+                %i.icon-bar-chart
+              %p You must do at least 1 case, 
+              %p before this table will work
 
 
-    .modal-footer
+  .modal-footer
 
-      %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    %a.btn{"data-dismiss" => "modal", href: "#"} Close
 
 
 
 
-  - when "progress"
+- when "progress"
 
-    - content_for :javascript_includes do
+  - content_for :javascript_includes do
 
-      :javascript
+    :javascript
 
-        var cases_analysis_chart_site_average = #{Case.cases_analysis_stats_global("totalscore")};
-        var cases_analysis_chart_top_quart = #{Case.cases_analysis_stats_global("totalscore_top_quart")};
-        var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
+      var cases_analysis_chart_site_average = #{Case.cases_analysis_stats_global("totalscore")};
+      var cases_analysis_chart_top_quart = #{Case.cases_analysis_stats_global("totalscore_top_quart")};
+      var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
 
-        $(document).ready(function(){  
-          if (cases_analysis_chart_case_count < 2) {
-            $("#cases_analysis_chart_progress_empty").fadeIn("fast");
-          } else {
-            window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
-          }
-        });
+      $(document).ready(function(){  
+        if (cases_analysis_chart_case_count < 2) {
+          $("#cases_analysis_chart_progress_empty").fadeIn("fast");
+        } else {
+          window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
+        }
+      });
 
 
-    #cases_analysis_section_area.cases_analysis_section
+  #cases_analysis_section_area.cases_analysis_section
+    .panel.dark.kill_all
+      .row
+        .cases_analysis_block_title
+          Over Time
+      .row
+        #cases_analysis_chart_progress
+          .cases_analysis_loading.progress.progress-striped.active 
+            .bar
+        #cases_analysis_chart_progress_empty
+          #cases_analysis_chart_progress_empty_icon
+            %i.icon-bar-chart
+          %p You must do at least 2 cases, 
+          %p before this chart will work
+
+
+
+
+
+
+- when "radar"
+
+  - content_for :javascript_includes do
+
+    :javascript
+
+      // Radar
+      var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count_bracket)};
+
+      var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count_bracket)};
+
+
+
+      $(document).ready(function(){
+        if (cases_analysis_chart_case_count == 0) {
+          $("#cases_analysis_chart_radar_empty").fadeIn("fast");
+        } else {
+          window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
+        }
+      });
+      
+
+
+
+  #cases_analysis_section_radar.cases_analysis_section
+
+    .row
+
+
+
       .panel.dark.kill_all
         .row
           .cases_analysis_block_title
-            Over Time
+            Now vs Then
         .row
-          #cases_analysis_chart_progress
+          #cases_analysis_chart_radar_buttongroup.pull-right
+            .btn-group
+              %a#cases_analysis_chart_radar_button_all.btn.btn-mini.btn-primary.active By criteria
+              %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-primary By category
+
+          #cases_analysis_chart_radar
             .cases_analysis_loading.progress.progress-striped.active 
               .bar
-          #cases_analysis_chart_progress_empty
-            #cases_analysis_chart_progress_empty_icon
-              %i.icon-bar-chart
-            %p You must do at least 2 cases, 
+
+          #cases_analysis_chart_radar_empty
+            #cases_analysis_chart_radar_empty_icon
+              %i.icon-tasks
+            %p You must do at least one case, 
             %p before this chart will work
 
 
 
 
+- when "users"
 
 
-  - when "radar"
+  - content_for :javascript_includes do
+    :javascript
 
-    - content_for :javascript_includes do
+      // Country
+      var cases_analysis_chart_country_data = #{Case.cases_analysis_chart_country_data(current_user)};
 
-      :javascript
-
-        // Radar
-        var cases_analysis_chart_radar_data_all = #{Case.cases_analysis_chart_radar_data_all(current_user, @case_count_bracket)};
-
-        var cases_analysis_chart_radar_data_combined = #{Case.cases_analysis_chart_radar_data_combined(current_user, @case_count_bracket)};
+      // University
+      var cases_analysis_chart_university_data = #{Case.cases_analysis_chart_university_data(current_user)};
 
 
-
-        $(document).ready(function(){
-          if (cases_analysis_chart_case_count == 0) {
-            $("#cases_analysis_chart_radar_empty").fadeIn("fast");
-          } else {
-            window.cases_analysis_chart_radar_draw("all", cases_analysis_chart_case_count);
-          }
-        });
-        
+      $(document).ready(function(){
+        if (cases_analysis_chart_case_count < 2) {
+          $("#cases_analysis_chart_country_empty").fadeIn("fast");
+          $("#cases_analysis_chart_university_empty").fadeIn("fast");
+        } else {
+          window.cases_analysis_chart_country_draw();
+          window.cases_analysis_chart_university_draw();
+        }
+      });
 
 
 
-    #cases_analysis_section_radar.cases_analysis_section
 
+
+  #cases_analysis_section_users.cases_analysis_section
+
+    .span44.panel.dark.kill_all
       .row
+        .cases_analysis_block_title
+          Country
+      .row
+        #cases_analysis_chart_country
+          .cases_analysis_loading.country.progress-striped.active 
+            .bar
+        #cases_analysis_chart_country_empty
+          #cases_analysis_chart_country_empty_icon
+            %i.icon-bar-chart
+          %p You must do at least two cases, 
+          %p before this chart will work
 
 
-
-        .panel.dark.kill_all
-          .row
-            .cases_analysis_block_title
-              Now vs Then
-          .row
-            #cases_analysis_chart_radar_buttongroup.pull-right
-              .btn-group
-                %a#cases_analysis_chart_radar_button_all.btn.btn-mini.btn-primary.active By criteria
-                %a#cases_analysis_chart_radar_button_combined.btn.btn-mini.btn-primary By category
-
-            #cases_analysis_chart_radar
-              .cases_analysis_loading.progress.progress-striped.active 
-                .bar
-
-            #cases_analysis_chart_radar_empty
-              #cases_analysis_chart_radar_empty_icon
-                %i.icon-tasks
-              %p You must do at least one case, 
-              %p before this chart will work
-
-
-
-
-  - when "users"
-
-
-    - content_for :javascript_includes do
-      :javascript
-
-        // Country
-        var cases_analysis_chart_country_data = #{Case.cases_analysis_chart_country_data(current_user)};
-
-        // University
-        var cases_analysis_chart_university_data = #{Case.cases_analysis_chart_university_data(current_user)};
-
-
-        $(document).ready(function(){
-          if (cases_analysis_chart_case_count < 2) {
-            $("#cases_analysis_chart_country_empty").fadeIn("fast");
-            $("#cases_analysis_chart_university_empty").fadeIn("fast");
-          } else {
-            window.cases_analysis_chart_country_draw();
-            window.cases_analysis_chart_university_draw();
-          }
-        });
+    .span44.panel.dark.kill_top.kill_right.kill_bottom
+      .row
+        .cases_analysis_block_title
+          University
+      .row
+        #cases_analysis_chart_university
+          .cases_analysis_loading.university.progress-striped.active 
+            .bar
+        #cases_analysis_chart_university_empty
+          #cases_analysis_chart_university_empty_icon
+            %i.icon-bar-chart
+          %p You must do at least two cases, 
+          %p before this chart will work
 
 
 
 
 
-    #cases_analysis_section_users.cases_analysis_section
-
-      .span44.panel.dark.kill_all
-        .row
-          .cases_analysis_block_title
-            Country
-        .row
-          #cases_analysis_chart_country
-            .cases_analysis_loading.country.progress-striped.active 
-              .bar
-          #cases_analysis_chart_country_empty
-            #cases_analysis_chart_country_empty_icon
-              %i.icon-bar-chart
-            %p You must do at least two cases, 
-            %p before this chart will work
-
-
-      .span44.panel.dark.kill_top.kill_right.kill_bottom
-        .row
-          .cases_analysis_block_title
-            University
-        .row
-          #cases_analysis_chart_university
-            .cases_analysis_loading.university.progress-striped.active 
-              .bar
-          #cases_analysis_chart_university_empty
-            #cases_analysis_chart_university_empty_icon
-              %i.icon-bar-chart
-            %p You must do at least two cases, 
-            %p before this chart will work
+- when "comments"
 
 
 
-
-
-  - when "comments"
-
-
-
-    #cases_analysis_section_comments.cases_analysis_section
-      = render 'comments'
-        
+  #cases_analysis_section_comments.cases_analysis_section
+    = render 'comments'
+      
 
 
 

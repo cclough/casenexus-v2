@@ -23,6 +23,12 @@ $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
 
+#notifications_index_container {
+  width:1000px;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+}
 #notifications_conversation_empty {
 
   text-align: center;
@@ -48,40 +54,50 @@ $alert-yellow: #FFFF7E;
 }
 
 #notifications_index_notifications_container {
-  position:absolute;
-  top:0px;
-  left:0px;
-  bottom:0px;
+//  position:absolute;
+//  top:0px;
+//  left:0px;
+//  bottom:0px;
+//  width:300px;
+//  outline: 1px solid red;
+
+//  margin-left:100px;
   width:300px;
+  float:left;
+  height:100%;
 
-}
-
-#notifications_index_form_container {
-  position:absolute;
-  top:0px;
-  left:0px;
-  right:0px;
-  height:80px;
-  background:$gray_second;
-}
-
-#notifications_index_notifications {
-  overflow-y:auto;
-  background:white;
-  position:absolute;
-  bottom:0px;
-  top:80px;
-  left:0px;
-  right:0px;
 }
 
 #notifications_index_conversation {
-  position:absolute;
-  left:300px;
-  right:0px;
+  width:700px;
+  left:500px;
   bottom:0px;
-  top:0px;
+  top:50px;
+
+  position:fixed;
 }
+
+//#notifications_index_form_container {
+//  position:absolute;
+//  top:0px;
+//  left:0px;
+//  right:0px;
+//  height:80px;
+//  background:$gray_second;
+//  outline: 1px solid red;
+//}
+
+#notifications_index_notifications {
+////  background:white;
+//  position:absolute;
+//  bottom:0px;
+//  top:80px;
+//  left:0px;
+//  right:300px;
+//  overflow-y:auto;
+}
+
+
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
