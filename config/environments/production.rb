@@ -9,16 +9,17 @@ Casenexus::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_assets = true # false pre rails_deflate
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true # false pre rails_deflate
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -48,6 +49,9 @@ Casenexus::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
   config.assets.precompile += %w( application.js books.js events.js cases.js profile.js questions.js static_pages.js map.js notifications.js console.js account.js onlinepanel.js votes.js lib/*.js application.css pdfjs.css)
+
+  # For deflate gem
+  # RAILS_ENV=production rake assets:precompile
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false

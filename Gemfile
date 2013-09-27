@@ -27,6 +27,10 @@ gem 'thumbs_up'                                  # Stack Overflow like voting on
 gem 'delayed_job_active_record'                  # For threaded email sending
 gem "workless", "~> 1.1.3"                       # Start worker ad hoc
 
+group :production do
+  gem 'heroku_rails_deflate'
+end
+
 group :development, :test do
   gem 'rspec-rails'                              # RSpec support for rails
   gem 'guard-rspec'                              # Automatically run RSpec tests
