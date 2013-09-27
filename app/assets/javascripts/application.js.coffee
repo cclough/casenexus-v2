@@ -1,6 +1,5 @@
 #= require jquery
 #= require jquery_ujs
-
 #= require jquery.ui.effect-slide
 #= require jquery.ui.effect
 #= require jquery.ui.widget
@@ -11,11 +10,6 @@
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
-
-#= require lib/icon-font-ie7
-
-#= require lib/dragdealer
-#= require lib/mapbox
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-clickover
@@ -39,8 +33,10 @@
 #= require votes
 
 #= require lib/pusher
-
-
+#= require lib/amcharts
+#= require lib/icon-font-ie7
+#= require lib/dragdealer
+#= require lib/mapbox
 
 
 # Get query params, global function

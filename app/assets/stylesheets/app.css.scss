@@ -56,25 +56,76 @@ html {
 }
 
 body {
-  // padding-top: 40px;
-  // height:100%;
-  // min-height: 100%;
-
   position: absolute;
   top: 0px;
   bottom: 0px;
   right:0px;
   left:0px;
 
-  overflow-y:hidden;
+  padding-top:50px; // so all content is pushed down below header
 
-  &.signedout {
-
-  }
+//  overflow-y:hidden;
 
   @include box_sizing; // references above, gets rid of margin at bottom of page without gradient - still not perfect
 
 }
+
+
+#application_container_master {
+
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+
+  @media (min-width: 1201px) {
+    right:210px;
+  }
+  @media (max-width: 1200px) {
+    right:0px;
+  }
+
+  float:left;
+
+}
+
+
+#application_container_main {
+
+
+  &.profile {
+    //background: $gray_gunmetal !important;
+//    background: $gray_gunmetal url('app/bg-texture4_trans.png') !important;
+    position:absolute;
+    top:50px;
+    right:0px;
+    //left:75px; // comment in for left bar demo!
+    left:0px;
+    bottom:0px;
+    background: $gray_gunmetal;
+    top:50px;
+
+  }
+  &.map {
+    z-index:1;
+  }
+}
+
+.container {
+  &.main{
+    min-height: 100%;
+//    background: url('app/white-wash.png');
+  }
+
+  &.scroll_less {
+    position:relative;
+    min-height: 100%;
+  }
+  
+
+}
+
+
 
 footer {
 
@@ -142,62 +193,6 @@ textarea {
 
 
 
-
-
-#application_container_master {
-
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-
-  @media (min-width: 1201px) {
-    right:210px;
-  }
-  @media (max-width: 1200px) {
-    right:0px;
-  }
-
-  float:left;
-
-}
-
-
-#application_container_main {
-  position:absolute;
-  top:50px;
-  right:0px;
-  //left:75px; // comment in for left bar demo!
-  left:0px;
-  bottom:0px;
-  overflow-y: auto !important;
-
-
-  &.profile {
-    //background: $gray_gunmetal !important;
-//    background: $gray_gunmetal url('app/bg-texture4_trans.png') !important;
-    background: $gray_gunmetal;
-    top:50px;
-
-  }
-  &.map {
-    z-index:1;
-  }
-}
-
-.container {
-  &.main{
-    min-height: 100%;
-//    background: url('app/white-wash.png');
-  }
-
-  &.scroll_less {
-    position:relative;
-    min-height: 100%;
-  }
-  
-
-}
 
 
 
