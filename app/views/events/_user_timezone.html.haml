@@ -11,7 +11,8 @@
   /   %strong
   /     #{@user.username}'s Timezone:
   / .span.offset1
-  .application_bootstrap_alert_blue
+  .events_modal_timezone_popup
+    %i.icon-time
     = timezone_difference(current_user, @user)
     %br
     (#{@user.time_zone})
@@ -28,7 +29,7 @@
   /   %strong
   /     For #{@user.username}:
   / .span.offset1
-  .application_bootstrap_alert_blue
+  .events_modal_timezone_popup
     %strong For #{@user.username}
     %br
     = @datetime.in_time_zone(@user.time_zone).strftime("%d %B %Y - %H:%M")

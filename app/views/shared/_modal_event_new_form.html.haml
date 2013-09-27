@@ -16,7 +16,7 @@
     .events_modal_block
       - if @friend.blank?
         %select#events_modal_friend_select.chzn-select.span28{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
-          %option Choose a friend
+          %option{value:""} Choose a friend
           = options_from_collection_for_select(current_user.accepted_friends, "id", "username")
 
 
@@ -62,7 +62,7 @@
       #events_modal_book_viewer_partnertoprepare_container
 
         %select#events_modal_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
-          %option Which case should they prepare for you?
+          %option{value:""} Which case should they prepare for you?
           / = options_from_collection_for_select(Book.all, "id", "title")
           - @books.each do |books_select_item|
             %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }

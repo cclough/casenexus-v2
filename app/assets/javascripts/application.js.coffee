@@ -379,9 +379,7 @@ $(document).ready ->
   , 4000
 
   # Click form errors to hide them
-  $("#application_error_explanation").click ->
-    $(this).fadeOut "fast"
-
+  window.application_form_errors_close();
 
 
 

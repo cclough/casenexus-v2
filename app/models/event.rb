@@ -7,13 +7,13 @@ class Event < ActiveRecord::Base
   has_many :notifications, as: :notificable
 
   ### Validations
-  validates :user_id, presence: true, if: Proc.new { |n| n.user.nil? }
+  validates :user_id, presence: true#, if: Proc.new { |n| n.user.nil? }
   # validates :user, presence: true, if: Proc.new { |n| n.user_id.nil? }
-  validates :partner_id, presence: true, if: Proc.new { |n| n.partner.nil? }
+  validates :partner_id, presence: true#, if: Proc.new { |n| n.partner.nil? }
   # validates :partner, presence: true, if: Proc.new { |n| n.partner_id.nil? }
   # validates :user_id,:partner_id, presence: true
   # validates :book_id_partnertoprepare, presence: true
-  validates :datetime, presence: true, if: Proc.new { |n| n.datetime.nil? }
+  validates :datetime, presence: true#, if: Proc.new { |n| n.datetime.nil? }
 
 
 

@@ -2,9 +2,11 @@
 
   $('#modal_event').html("<%= escape_javascript(render('shared/modal_event_new_form')) %>");
 
-  window.events_modal_rebless();
 
   window.application_form_errors_close();
+
+  window.events_modal_rebless();
+
 
 <%- else %>
 
