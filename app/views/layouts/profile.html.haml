@@ -11,23 +11,12 @@
 
     = javascript_include_tag "application"
 
-    = javascript_include_tag "lib/amcharts"
-
-    = javascript_include_tag "profile"
-    = javascript_include_tag "events"
-    = javascript_include_tag "cases"
-    = javascript_include_tag "account"
-    = javascript_include_tag "notifications"
-
     = yield :javascript_includes
 
     = csrf_meta_tags
-
-    = analytics_init if Rails.env.production?
     
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
-
     /[if lte IE 7]
       = javascript_include_tag "lib/icon-font-ie7"
 
@@ -68,3 +57,5 @@
   = render 'shared/modal_cases'
   = render 'shared/modal_message'
   = render 'shared/modal_friendship_req'
+
+  = javascript_include_tag "lib/amcharts"

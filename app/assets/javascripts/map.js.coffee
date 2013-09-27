@@ -152,9 +152,6 @@ window.generate_popup_for = (marker) ->
 
 $(document).ready ->
 
-  # Update the list of users
-  map_index_users_updatelist()
-
   # search
   $("#header_nav_search_form").on "submit", ->
     window.map_index_users_search()
@@ -241,37 +238,44 @@ $(document).ready ->
 
 
 
-  ######## DRAW MAP
+  ######## IF MAP PAGE
 
-  window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false })
-
-  # Start at current_user, zoomed
-  window.map.setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 15)
+  if typeof map_index_map_lat_start is "string"
 
 
-  # back to world view button (must be after map variable has been set)
-  $("#map_index_map_zoomout").click ->
-    window.map.setZoom(2);
-    offset = map.getSize().x*0.25;
-    window.map.panBy(new L.Point(-offset, 0), {animate: false})
-    $(this).fadeOut("fast");
+    # Update the list of users
+    map_index_users_updatelist()
+
+    # Draw map
+    window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false })
+
+    # Start at current_user, zoomed
+    window.map.setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 15)
 
 
-  # custom zoom control
-  new L.Control.Zoom({ position: 'topright' }).addTo(map)
-  # zoomer
-  zooms = 17
-  handle = document.getElementById("map_index_map_zoomer_handle")
-  # Configure Dragdealer to update the map zoom
-  zoom_bar = new Dragdealer("map_index_map_zoomer_zoom-bar",
-    steps: zooms
-    snap: true
-    callback: (x, y) ->
-      z = x * (zooms - 1)
-      map.setZoom z
+    # back to world view button (must be after map variable has been set)
+    $("#map_index_map_zoomout").click ->
+      window.map.setZoom(2);
+      offset = map.getSize().x*0.25;
+      window.map.panBy(new L.Point(-offset, 0), {animate: false})
+      $(this).fadeOut("fast");
+
+
+    # custom zoom control
+    new L.Control.Zoom({ position: 'topright' }).addTo(map)
+    # zoomer
+    zooms = 17
+    handle = document.getElementById("map_index_map_zoomer_handle")
+    # Configure Dragdealer to update the map zoom
+    zoom_bar = new Dragdealer("map_index_map_zoomer_zoom-bar",
+      steps: zooms
+      snap: true
+      callback: (x, y) ->
+        z = x * (zooms - 1)
+        map.setZoom z
+        handle.innerHTML = z
+    )
+    map.on "zoomend", ->
+      z = Math.round(map.getZoom())
+      zoom_bar.setValue z / 16
       handle.innerHTML = z
-  )
-  map.on "zoomend", ->
-    z = Math.round(map.getZoom())
-    zoom_bar.setValue z / 16
-    handle.innerHTML = z

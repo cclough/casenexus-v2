@@ -10,6 +10,8 @@
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
 
+#= require lib/icon-font-ie7
+
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
 #= require lib/jquery.truncate
@@ -25,6 +27,21 @@
 #= require lib/flatui-checkbox
 #= require lib/flatui-radio
 
+#= require account
+#= require books
+#= require cases
+#= require console
+#= require events
+#= require map
+#= require notifications
+#= require profile
+#= require questions
+#= require static_pages
+#= require votes
+
+#= require lib/pusher
+#= require lib/mapbox
+#= require lib/dragdealer
 
 
 

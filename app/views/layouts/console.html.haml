@@ -4,19 +4,15 @@
     %title= full_title(yield(:title))
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
-    = javascript_include_tag "cases"
-    = javascript_include_tag "console"
 
 
     = yield :javascript_includes
 
     = csrf_meta_tags
 
-    = analytics_init if Rails.env.production?
 
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
-
     /[if lte IE 7]
       = javascript_include_tag "lib/icon-font-ie7"
 
