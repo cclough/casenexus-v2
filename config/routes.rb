@@ -6,8 +6,10 @@ Casenexus::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   # Devise
-  devise_for :users, controllers: {
-      omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
+  devise_for :users, :path => '', 
+      :path_names => { :sign_in => 'signin', :sign_out => 'signout' }, 
+      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
+
 
   # Pusher
   post 'pusher/auth'

@@ -47,6 +47,7 @@ module ApplicationHelper
     will_paginate *params
   end
 
+
   def casecounts(user)
     count_int = content_tag :span, user.cases.count.to_s, style: "font-weight:bolder;"
     count_ext = content_tag :span, "+" + user.cases_external.to_s, style: "font-weight:lighter;"

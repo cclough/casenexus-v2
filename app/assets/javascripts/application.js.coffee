@@ -331,7 +331,7 @@ $(document).ready ->
 
   # Modals
   $("#modal_contact, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
-    backdrop: true
+    backdrop: false
     show: false
 
   # Modal help checkbox

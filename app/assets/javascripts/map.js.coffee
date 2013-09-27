@@ -229,7 +229,7 @@ $(document).ready ->
     map_index_users_updatelist()
 
   # Ajax pagination
-  $(".pagination a").click ->
+  $("#map_index_users_container .pagination a").click ->
     $.getScript @href
     false
 
