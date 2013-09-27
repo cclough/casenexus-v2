@@ -3,11 +3,14 @@ $(function() {
 
 
 
+      <%- unless (Rails.env == 'production') %>
+      
+        // Enable pusher logging - don't include this in production
+        Pusher.log = function(message) {
+          if (window.console && window.console.log) window.console.log(message);
+        };
 
-      // Enable pusher logging - don't include this in production
-      Pusher.log = function(message) {
-        if (window.console && window.console.log) window.console.log(message);
-      };
+      <%- end %>
       
       Pusher.host = 'ws-eu.pusher.com';
       Pusher.sockjs_host = 'sockjs-eu.pusher.com';
