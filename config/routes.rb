@@ -75,7 +75,7 @@ Casenexus::Application.routes.draw do
   match '/votes/down', to: 'votes#down'
 
   # Cases
-  resources :cases, only: [:index, :show, :new, :create] do
+  resources :cases, only: [:show, :new, :create] do
     get :analysis, on: :collection
   end
 
