@@ -5,23 +5,22 @@
 #= require jquery.ui.effect
 #= require jquery.ui.widget
 #= require jquery.ui.accordion
-
+#= require lib/jquery.raty
+#= require lib/jquery.titlealert
+#= require lib/jquery.truncate
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
 
 #= require lib/icon-font-ie7
 
-#= require lib/jquery.raty
-#= require lib/jquery.titlealert
-#= require lib/jquery.truncate
+#= require lib/dragdealer
+#= require lib/mapbox
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-clickover
 #= require lib/bootstrap-datetimepicker
 #= require bootstrap-wysihtml5
-
-
 #= require lib/bootstrap-select
 #= require lib/bootstrap-switch
 #= require lib/flatui-checkbox
@@ -40,8 +39,6 @@
 #= require votes
 
 #= require lib/pusher
-#= require lib/mapbox
-#= require lib/dragdealer
 
 
 
