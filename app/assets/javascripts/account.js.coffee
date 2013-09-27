@@ -3,38 +3,45 @@ window.account_completeedit_bless = () ->
 
   $("#account_completeedit_skype").clickover trigger: "hover"
 
-  account_completeedit_latlng = new google.maps.LatLng(account_completeedit_map_lat_start, account_completeedit_map_lng_start)
+  # if not defined before
+  account_completeedit_map_lat_start = $("#account_completeedit_lat").val()
+  account_completeedit_map_lng_start = $("#account_completeedit_lng").val()
 
-  $("#account_completeedit_lat").val(account_completeedit_latlng.lat())
-  $("#account_completeedit_lng").val(account_completeedit_latlng.lng())
+  # Draw map
+  window.map = L.mapbox.map("account_completeedit_map", "christianclough.map-pzcx86x2", { zoomControl: false })
 
-  window.map = new google.maps.Map(document.getElementById("account_completeedit_map"),
-    # zoomed right out
-    zoom: 5
-    center: account_completeedit_latlng
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-    streetViewControl: false
-    mapTypeControl: false
+  # Start at current_user, zoomed
+  window.map.setView([parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)], 15)
+
+  # Icon for marker
+  userIcon = L.icon(
+    iconUrl: "/assets/markers/marker_new.png"
+    iconSize: [33, 42]
+    iconAnchor: [0, 0]
+    popupAnchor: [17, 8]
   )
 
-  shadow = new google.maps.MarkerImage("/assets/markers/marker_shadow.png", new google.maps.Size(67.0, 52.0), new google.maps.Point(0, 0), new google.maps.Point(20.0, 50.0))
-
-  window.marker = new google.maps.Marker(
-    position: account_completeedit_latlng
-    map: window.map
-    icon: new google.maps.MarkerImage("/assets/markers/marker_0.png")
-    shadow: shadow
+  # Marker
+  marker = L.marker(new L.LatLng(parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)),
+    icon: userIcon#L.mapbox.marker.icon("marker-color": "CC0033")
     draggable: true
   )
+  marker.addTo map
+  marker.on "dragend", (e) ->
+    coords = e.target.getLatLng()
+    $("#account_completeedit_lat").val(coords.lat)
+    $("#account_completeedit_lng").val(coords.lng)
 
-  google.maps.event.addListener(window.marker, "drag", (event) ->
-    $("#account_completeedit_lat").val(event.latLng.lat())
-    $("#account_completeedit_lng").val(event.latLng.lng())
-  )
 
   window.modal_spinner_prime()
 
+
+
 $(document).ready ->
+
+
+
+
 
   #////////////////////////////////////////////////////////
   #////////////////// COMPLETE & EDIT /////////////////////

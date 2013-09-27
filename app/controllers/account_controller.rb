@@ -27,7 +27,7 @@ class AccountController < ApplicationController
     if @user.update_attributes(params[:user])
       if @user.completed
         flash[:success] = 'Your profile has been updated'
-        respond_id js
+        respond_to(:js)
       else
         @user.completed = true
         @user.save
@@ -45,7 +45,7 @@ class AccountController < ApplicationController
           redirect_to params[:back_url]
         end
       else
-        respond_id js
+        respond_to(:js)
       end
     end
 
