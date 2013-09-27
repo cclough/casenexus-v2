@@ -1,36 +1,43 @@
-#console_index_container
-  / #console_index_pdfjs
+
+#console_index_pdfjs
   %iframe#console_index_pdfjs_iframe{ src: ("/console/pdfjs?id=#{@book.id}" unless @book.blank?) }
 
 
-  #console_index_pdfjs_blank{style:("display:none" unless @book.blank?)}
+#console_index_pdfjs_blank{style:("display:none" unless @book.blank?)}
 
-    #console_index_pdfjs_blank_header
-  
-    #console_index_pdfjs_blank_message
-      %i.icon-book.icon-white
-      #console_index_panel_blank_message_text
-        Select a case
+  #console_index_pdfjs_blank_header
 
-
-  / BOOK SELECT - if you put in subnav can't locate here with css
-  #console_index_subnav_select_books_container.offset1
-    %select#console_index_subnav_select_books.chzn-select{name: "book_id", "data-placeholder" => "Choose a Case" }
-      %option{value: ""} Select Case/External Case
-      - @books.each do |books_select_item|
-        %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
-          = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+  #console_index_pdfjs_blank_message
+    %i.icon-book.icon-white
+    #console_index_panel_blank_message_text
+      Select a case
 
 
-  #console_index_feedback
-    #console_index_feedback_subnav
-      = render 'subnav'
 
-    #console_index_feedback_frame
-      - unless @friend.blank?
-        = render partial: "cases/new", locals: { user_id: @friend.id }
-      - else
-        #console_index_feedback_blank
-          = image_tag "icons/user.png"
-          #console_index_feedback_blank_text
-            Select a friend to open a feedback form
+
+
+
+/ BOOK SELECT - if you put in subnav can't locate here with css
+#console_index_subnav_select_books_container.offset1
+  %select#console_index_subnav_select_books.chzn-select{name: "book_id", "data-placeholder" => "Choose a Case" }
+    %option{value: ""} Select Case/External Case
+    - @books.each do |books_select_item|
+      %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
+        = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+
+
+
+
+
+
+#console_index_feedback_subnav
+  = render 'subnav'
+
+#console_index_feedback_frame
+  - unless @friend.blank?
+    = render partial: "cases/new", locals: { user_id: @friend.id }
+  - else
+    #console_index_feedback_blank
+      = image_tag "icons/user.png"
+      #console_index_feedback_blank_text
+        Select a friend to open a feedback form

@@ -59,16 +59,13 @@ $alert-yellow: #FFFF7E;
 
 #map_index_container_users {
   position:relative;
-  min-height:100%;
+  height:100%;
+  display:block;
   margin-left:20px;
 
   width:606px;
   z-index:2;
 
-  //background: rgba(54,54,54,0.5);
-//  .pagination {
-//    display:none;
-//  }
 }
 
 #map_index_users {

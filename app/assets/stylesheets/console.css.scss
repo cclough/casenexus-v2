@@ -22,30 +22,21 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
-#console_index_container {
-  margin-top:50px;
-  width:100%;
-  height:100% !important;
-}
+
+
 
 #console_index_pdfjs {
-  height:100%;
-  // width:49%;
-  float: left;
-  height: 100% !important;
-  width: 50%;
+//  extra container required as iframes don't respond to css as normal
+  position:absolute;
+  top:50px;
+  left:0px;
+  right:50%;
+  bottom:0px;
 }
 
-
-
-
-
 #console_index_pdfjs_iframe {
+  width:100%;
   height:100%;
-  // width:49%;
-  float: left;
-  height: 100% !important;
-  width: 50%;
   border:0;
 }
 
@@ -77,36 +68,56 @@ $alert-yellow: #FFFF7E;
   }
 }
 
-#console_index_feedback {
-  height:100%;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  position:relative;
-
-}
 
 
-#console_index_feedback_frame {
-  height:100%;
-  width:100%;
-  overflow-y:auto;
-  border:0;
-}
-
+//#console_index_feedback {
+//  height:100%;
+//  overflow-y: hidden;
+//  overflow-x: hidden;
+//  position:relative;
+//  border:0;
+//  position:absolute;
+//  left:50%;
+//  right:0;
+//  bottom:0px;
+//  top:50px;
+//}
 
 
 #console_index_feedback_subnav {
   background: $gray_gunmetal_second;
   height: 50px;
+  position:absolute;
+  left:50%;
+  right:0;
+  top:50px;
 }
+
+
+
+#console_index_feedback_frame {
+  border:0;
+  position:absolute;
+  left:50%;
+  right:0;
+  bottom:0;
+  top:100px;
+  overflow:auto;
+}
+
+
 
 
 #console_index_feedback_blank {
   text-align:center;
-  margin-top: 220px;
   img {
     width:50px;
   }
+
+  position:absolute;
+  left:0;
+  right:0;
+  top:220px;
 
   #console_index_feedback_blank_text {
     margin-top:10px;
