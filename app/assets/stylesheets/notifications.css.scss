@@ -63,7 +63,6 @@ $alert-yellow: #FFFF7E;
 
 //  margin-left:100px;
   width:300px;
-  float:left;
   height:100%;
 
 }
@@ -77,15 +76,16 @@ $alert-yellow: #FFFF7E;
   position:fixed;
 }
 
-//#notifications_index_form_container {
+#notifications_index_form_container {
 //  position:absolute;
 //  top:0px;
 //  left:0px;
 //  right:0px;
 //  height:80px;
-//  background:$gray_second;
+  background:$gray_second;
 //  outline: 1px solid red;
-//}
+
+}
 
 #notifications_index_notifications {
 ////  background:white;
@@ -95,6 +95,7 @@ $alert-yellow: #FFFF7E;
 //  left:0px;
 //  right:300px;
 //  overflow-y:auto;
+margin-top:50px;
 }
 
 

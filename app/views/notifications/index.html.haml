@@ -4,19 +4,24 @@
 
 
 #notifications_index_container
+
+
   #notifications_index_notifications_container
+
 
     #notifications_index_form_container
       #notifications_index_notifications_header
         Your conversations
-
         = render 'notifications_form'
-
     #notifications_index_notifications
 
       = render :partial => 'notifications', :locals => { :notifications => @notifications }
 
     = link_to 'Load More Notifications', notifications_path(:page => @notifications.next_page), :class => 'load-more-posts', :remote => true if @notifications.next_page
+
+
+
+
 
 
   #notifications_index_conversation
