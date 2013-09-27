@@ -72,8 +72,7 @@ Casenexus::Application.configure do
 
   config.action_mailer.default_url_options = { :host => "www.casenexus.com" }
 
-  # Google analytics Gem
-  GA.tracker = "UA-36414972-1"
+
 
   # Exception notification
   # config.middleware.use ExceptionNotifier,

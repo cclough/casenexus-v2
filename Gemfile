@@ -16,8 +16,6 @@ gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
 gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
 gem 'ffaker'                                     # Generate random data
-gem 'newrelic_rpm'                               # New Relic
-gem 'google-analytics-rails'                     # Google Analytics
 # gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
 gem 'country-select'                             # Country select for admin
 gem 'icalendar'                                  # ICS output for calendar
