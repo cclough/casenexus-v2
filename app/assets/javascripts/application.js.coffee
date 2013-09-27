@@ -34,7 +34,6 @@
 
 #= require lib/pusher
 #= require lib/amcharts
-#= require lib/icon-font-ie7
 #= require lib/dragdealer
 #= require lib/mapbox
 
