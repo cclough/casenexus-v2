@@ -9,7 +9,7 @@
     = friends_item.username_trunc
 
     - if Friendship.pending?(current_user,friends_item)
-      #profile_index_friends_friends_pending
+      .profile_index_friends_friends_pending
         = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: profile_path), method: :put, class: "btn btn-dark btn-mini profile_index_friends_friends_item_friendship_button")
         = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: profile_path), method: :put, class: "btn btn-dark btn-mini profile_index_friends_friends_item_friendship_button" do
           %i.icon-remove
