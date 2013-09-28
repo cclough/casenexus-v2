@@ -30,12 +30,19 @@ class User < ActiveRecord::Base
   has_many :languages, :through => :languages_users
 
   has_many :friendships, dependent: :destroy
+  
+  # has_many :connected_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status IS NOT NULL", dependent: :destroy
+  # has_many :connected_friends, through: :connected_friendships, source: :friend
+  
   has_many :accepted_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::ACCEPTED}", dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendships, source: :friend
+  
   has_many :requested_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REQUESTED}", dependent: :destroy
   has_many :requested_friends, through: :requested_friendships, source: :friend
+  
   has_many :pending_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::PENDING}", dependent: :destroy
   has_many :pending_friends, through: :pending_friendships, source: :friend
+  
   has_many :rejected_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REJECTED}", dependent: :destroy
   has_many :rejected_friends, through: :rejected_friendships, source: :friend
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy

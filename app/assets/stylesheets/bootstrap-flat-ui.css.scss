@@ -795,6 +795,27 @@ a.muted:focus {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+
+
+.btn.btn-dark {
+  background-color: #2c2c2c;
+}
+.btn.btn-dark:hover,
+.btn.btn-dark:focus,
+.btn-group:focus .btn.btn-dark.dropdown-toggle {
+  background-color: #343434;
+}
+.btn.btn-dark:active,
+.btn-group.open .btn.btn-dark.dropdown-toggle,
+.btn.btn-dark.active {
+  background-color: #212121;
+}
+
+
+
+
+
 .btn.btn-primary {
   background-color: #989898;
 }

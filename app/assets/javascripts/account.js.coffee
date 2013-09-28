@@ -8,10 +8,7 @@ window.account_completeedit_bless = () ->
   account_completeedit_map_lng_start = $("#account_completeedit_lng").val()
 
   # Draw map
-  window.map = L.mapbox.map("account_completeedit_map", "christianclough.map-pzcx86x2", { zoomControl: false })
-
-  # Start at current_user, zoomed
-  window.map.setView([parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)], 15)
+  window.map = L.mapbox.map("account_completeedit_map", "christianclough.map-pzcx86x2")
 
   # Icon for marker
   userIcon = L.icon(
@@ -32,6 +29,8 @@ window.account_completeedit_bless = () ->
     $("#account_completeedit_lat").val(coords.lat)
     $("#account_completeedit_lng").val(coords.lng)
 
+  # Start at current_user, zoomed
+  window.map.setView([parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)], 15)
 
   window.modal_spinner_prime()
 

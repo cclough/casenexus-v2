@@ -70,7 +70,7 @@ class FriendshipsController < ApplicationController
     #Friendship.reject(@friendship.user, @friendship.friend)
     Friendship.breakup(@friendship.user, @friendship.friend)
 
-    flash[:success] = "Case Partner request rejected."
+    flash[:success] = "Partner request from #{@friendship.friend.username} rejected."
 
     if params[:back_url]
       redirect_to params[:back_url]

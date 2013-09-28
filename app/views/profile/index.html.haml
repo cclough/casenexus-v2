@@ -44,7 +44,9 @@
 
     / #profile_index_info_cases_rate
     /   Rate: 2 cases per week
-      
+
+
+
     .spacer15
 
     #profile_index_info_actions
@@ -78,9 +80,7 @@
 
 
 
-
-
-
+      
 
 
 
@@ -90,6 +90,9 @@
 
     .profile_index_title
       Partners
+      - if @friends_pending.count > 0
+        %span.iconbar-unread
+          = @friends_pending.count.to_s
       %span#profile_index_friends_actions.pull-right
         / %i#profile_index_friends_actions_invite.icon-plus
         / %span#profile_index_friends_actions_skype.fui-skype
@@ -101,18 +104,13 @@
       %input#profile_index_friends_action_input{type:"hidden"}
 
     #profile_index_friends_friends
+      - if @friends_pending.count > 0
+        - for friends_pending_item in @friends_pending
+          = render partial: "friends_item",locals:{friends_item: friends_pending_item}
+        #profile_index_friends_friends_pending_divider
       - if @friends.count > 0
         - for friends_item in @friends
-          .profile_index_friends_friends_item{"data-friend_id"=>friends_item.id }
-
-            .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
-
-            .profile_index_friends_friends_item_avatar
-              = avatar_for(friends_item,size: "small")
-
-            .profile_index_friends_friends_item_username
-              = friends_item.username_trunc
-
+          = render partial: "friends_item",locals:{friends_item: friends_item}
       - else
         #profile_index_friends_friends_empty
           %i.icon-user

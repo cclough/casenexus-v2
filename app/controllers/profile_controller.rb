@@ -6,6 +6,7 @@ class ProfileController < ApplicationController
 
   def index
     @friends = current_user.accepted_friends
+    @friends_pending = current_user.pending_friends
 
     @cases = current_user.cases
 
