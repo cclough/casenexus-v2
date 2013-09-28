@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :completed_user, except: [:show_help, :help_checkbox]
+  before_filter :completed_user
 
   # Map - access via /map
   def index
@@ -59,31 +59,6 @@ class MembersController < ApplicationController
     @user = User.find(params[:id])
     
     render layout: false
-  end
-
-  def mouseover
-    @user = User.find(params[:id])
-    respond_to do |format|
-      format.html { render layout: false }
-    end
-  end
-
-  def show_help
-    column_name = "help_#{params[:page_id]}_checked"
-    if params[:act] == "uncheck"
-      current_user.update_attribute(column_name, false)
-    elsif params[:act] == "check"
-      current_user.update_attribute(column_name, true)
-    end
-    render text: "OK"
-  end
-
-  def help_checkbox
-    @help_page = params[:help_page]
-
-    respond_to do |format|
-      format.html { render layout: false }
-    end
   end
 
 end

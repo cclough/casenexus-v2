@@ -88,29 +88,6 @@ window.notification_trigger = (data_inc) ->
 
 
 
-
-
-window.application_help_checkbox = (help_page) ->
-  $.get "/members/help_checkbox?help_page=" + help_page, (data) ->
-    $("#modal_help_checkbox_container").html data
-    $("input:checkbox").uniform()
-
-
-window.application_show_help = (help_page) ->
-  if !($("#modal_help").hasClass("in"))
-    $(".modal").modal "hide"
-    $("#modal_help").modal "show"
-
-    setTimeout ->
-      window.ArrowNav.goTo help_page
-    , 500
-
-    window.application_help_checkbox help_page
-
-    $("#modal_help_button_next").click ->
-      window.ArrowNav.goTo help_page
-
-
 window.application_truncatables = () ->
   $('.application_truncatable').truncate
     width: 'auto'
@@ -334,25 +311,17 @@ $(document).ready ->
     backdrop: false
     show: false
 
-  # Modal help checkbox
-  $("#modal_help_checkbox").on 'change', ->
-    page_id = $(this).attr("data-page_id")
-    user_id = $(this).attr("data-user_id")
-    if !$(this).is(':checked')
-      $.ajax("/members/" + user_id + "/show_help?act=uncheck&page_id=" + page_id, type: 'PUT')
-    else
-      $.ajax("/members/" + user_id + "/show_help?act=check&page_id=" + page_id, type: 'PUT')
 
-
-
-  # Modal help link
+  # Help modal show
   $("#header_link_help").click ->
     if !($("#modal_help").hasClass("in"))
       $(".modal").modal "hide"
-      $("#modal_help").modal "show", ->
-        window.ArrowNav.goTo 1
+      $("#modal_help").modal "show"
+      window.ArrowNav.init()
+      # window.ArrowNav.goTo "1"
 
-  # Modal contact link
+
+  # Contact modal show 
   $("#header_link_contact").click ->
     if !($("#modal_contact").hasClass("in"))
       $(".modal").modal "hide"
@@ -404,16 +373,35 @@ $(document).ready ->
         next_page.addClass "current"
         
         if $("#modal_help_arrownav").size() > 0
-          next_page.fadeIn 500
-          # $('.modal-body').scrollTop(0)
-          # window.application_help_checkbox(page)
+          next_page.fadeIn 100
+
+          # NEXT BUTTON - on last, change
           $('#modal_help_button_next').off('click');
-          # next button!
-          $("#modal_help_button_next").click ->
-            window.ArrowNav.goTo String(parseInt(page) + 1)
+          if page == "5"
+            $("#modal_help_button_next").html("Finish")
+            $("#modal_help_button_skip").hide()
+            $("#modal_help_button_next").click ->
+              $("#modal_help").modal('hide')
+          else
+            $("#modal_help_button_next").html("Next")
+            if page == "1"
+              $("#modal_help_button_prev").hide()
+            else
+              $("#modal_help_button_prev").show()
+            $("#modal_help_button_skip").show()
+            $("#modal_help_button_next").click ->
+              window.ArrowNav.goTo String(parseInt(page) + 1)     
+          
+          # PREVIOUS BUTTON
+          $('#modal_help_button_prev').off('click');
+          $("#modal_help_button_prev").click ->
+            window.ArrowNav.goTo String(parseInt(page) - 1)    
+
+          # PAGE NUM
+          $("#modal_help_page_num").html("Part " + page + " of 5")
 
         else
-          next_page.show "slide", direction: "right", 500
+          next_page.show "slide", direction: "right", 100
 
         window.ArrowNav.centerArrow nav_item
 
@@ -422,7 +410,7 @@ $(document).ready ->
         unless animate is false
           $("nav .arrow").animate
             left: left_margin - 8
-          , 500, ->
+          , 100, ->
             $(this).show()
 
         else

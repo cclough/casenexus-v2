@@ -493,6 +493,16 @@ textarea {
   .modal-header {
     border-bottom:0px;
   }
+
+  .modal-footer {
+    .btn {
+      width:65px;
+    }
+
+    #modal_help_page_num {
+      margin-top:15px;
+    }
+  }
 }
 
 
@@ -525,18 +535,6 @@ textarea {
 //  z-index:10;
 //}
 
-
-
-#modal_help_checkbox_container {
-  text-align:left;
-  margin-top:12px;
-  input {
-    
-  }
-}
-
-#modal_help_checkbox {
-}
 
 .arrownav_page {
   display:none;
@@ -613,23 +611,6 @@ textarea {
   height:300px;
   margin-top:35px;
   overflow-y:scroll
-}
-
-#modal_help_pages_blue { color: #0D8ECF }
-#modal_help_pages_green { color: #B0DE09 }
-#modal_help_pages_yellow { color: #FCD202 }
-
-.modal_help_list {
-  li { 
-    margin-bottom:10px;
-  }
-}
-
-
-
-
-.modal_help_page_instructions {
-  font-size:40px;
 }
 
 
