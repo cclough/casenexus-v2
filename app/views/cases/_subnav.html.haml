@@ -1,5 +1,26 @@
+#cases_show_subnav_browse
+
+  %span#cases_show_subnav_label
+    Browse your cases
+    %i.icon-caret-right
+    
+  %select#cases_show_subnav_select.chzn-select.span29.offset2{"data-placeholder" => "Jump to Case...", value: @case.id }
+    %option
+      - @cases.each do |cases_select_item|
+        %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
+          = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
+
+  = link_to case_path(@case.prev), class: "btn btn-primary" do
+    %i.icon-caret-left
+  = link_to case_path(@case.next), class: "btn btn-primary" do
+    %i.icon-caret-right
+
+
 .row
-  .panel.kill_bottom.kill_left.kill_right
+  .panel.dark.kill_left.kill_right.kill_bottom#cases_show_subnav_info
+
+    .row
+
     .row
       .span6
         .row
@@ -10,33 +31,13 @@
         .row
           .span.offset1#cases_show_subnav_name
             = @case.interviewer.username
+
         .spacer5
         .row
-          .span.offset1
-            .map_index_users_item_onlinestatus_text
-              last online
-              = time_ago_in_words(@case.interviewer.last_online_at)
-              ago
+          .span.offset1#cases_show_subnav_date
+            = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
 
-
-      .span53.pull-right#cases_show_subnav_browse
-        .span12.offset1#cases_show_subnav_label
-          Browse your cases
-          %i.icon-caret-right
-        %select#cases_show_subnav_select.chzn-select.span29.offset2{"data-placeholder" => "Jump to Case...", value: @case.id }
-          %option
-            - @cases.each do |cases_select_item|
-              %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
-                = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
-
-        = link_to case_path(@case.prev), class: "btn btn-primary" do
-          %i.icon-caret-left
-        = link_to case_path(@case.next), class: "btn btn-primary" do
-          %i.icon-caret-right
-.row
-  .panel.dark.kill_left.kill_right.kill_bottom#cases_show_subnav_info
-    .row
-      .span60
+      .span10
         - if @case.book_id?
           = render partial: 'books/show_small', locals: { book_id: @case.book_id }
         - else
@@ -51,9 +52,6 @@
             %span
               = @case.subject
 
-      .span25.pull-right#cases_show_subnav_score
-        .span15#cases_show_subnav_date
-          = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
-        .span10
-          %span= @case.totalscore.to_f.round(1)
-          %span.cases_score_large_outof /15
+      .span10.pull-right#cases_show_subnav_score
+        %span= @case.totalscore.to_f.round(1)
+        %span.cases_score_large_outof /15
