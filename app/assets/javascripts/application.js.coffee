@@ -40,6 +40,13 @@
 
 # Get query params, global function
 
+
+window.modal_help_show = () ->
+  if !($("#modal_help").hasClass("in"))
+    $(".modal").modal "hide"
+    $("#modal_help").modal "show"
+    window.ArrowNav.init()
+
 window.getQueryParams = (qs) ->
   qs = qs.split("+").join(" ")
   params = {}
@@ -307,18 +314,17 @@ $(document).ready ->
   #     window.location.href = "/map?search=" + $("#header_nav_search_field").val()
 
   # Modals
-  $("#modal_contact, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event, #modal_help").modal
+  $("#modal_contact, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
     backdrop: false
     show: false
 
+  $("#modal_help").modal
+    backdrop:true
+    show:false
 
   # Help modal show
   $("#header_link_help").click ->
-    if !($("#modal_help").hasClass("in"))
-      $(".modal").modal "hide"
-      $("#modal_help").modal "show"
-      window.ArrowNav.init()
-      # window.ArrowNav.goTo "1"
+    window.modal_help_show()
 
 
   # Contact modal show 

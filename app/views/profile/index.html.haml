@@ -1,5 +1,6 @@
 
 - content_for :javascript_includes do
+
   :javascript
     var cases_analysis_chart_case_count = #{@case_count_bracket};
 
@@ -18,6 +19,15 @@
       // } else {
       window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
       // }
+
+    });
+
+- if flash[:success] == 'Welcome'
+  :javascript
+    $(document).ready(function(){  
+      setTimeout(function() {
+        window.modal_help_show();
+      }, 500);
     });
 
 

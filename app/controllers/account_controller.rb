@@ -31,7 +31,7 @@ class AccountController < ApplicationController
       else
         @user.completed = true
         @user.save
-        flash[:success] = 'Welcome to casenexus.com'
+        flash[:success] = 'Welcome'
         redirect_to profile_path
       end
     else
