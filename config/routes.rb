@@ -86,7 +86,7 @@ Casenexus::Application.routes.draw do
     put :read, on: :member
     get :modal_message_form, on: :collection
     get :conversation, on: :collection
-    get :popup, on: :member
+    get :notify, on: :member
     get :menu, on: :collection
   end
 

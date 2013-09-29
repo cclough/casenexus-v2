@@ -65,7 +65,7 @@ window.application_form_errors_close = () ->
 window.notification_trigger = (data_inc) ->
 
   # Show Popup
-  $.get "/notifications/" + data_inc.notification_id + "/popup", (data) ->
+  $.get "/notifications/" + data_inc.notification_id + "/notify", (data) ->
     $("#application_notify").html data
     $("#application_notify").fadeIn()
     # Popup auto-hide

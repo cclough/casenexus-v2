@@ -18,7 +18,7 @@
   #notifications_show_body_subcontainer
     = render "conversation"
 
-#notifications_show_form
+#notifications_show_form{"data-friend_id"=>@sender.id}
   / - notification = notification || @notification
   = form_for @notification, remote: true do |f|
 

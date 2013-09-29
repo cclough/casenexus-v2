@@ -80,7 +80,7 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def popup
+  def notify
     @notification = Notification.find(params[:id])
 
     render layout: false

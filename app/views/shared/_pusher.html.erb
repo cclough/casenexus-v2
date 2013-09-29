@@ -2,7 +2,6 @@
 $(function() {
 
 
-
       <%- unless (Rails.env == 'production') %>
       
         // Enable pusher logging - don't include this in production
@@ -26,6 +25,7 @@ $(function() {
 
         window.notification_trigger(data_inc)
 
+        // MODAL
         if ($("#modal_message").hasClass("in")) {
           if ($("#modal_message_form").data("friend_id") == data_inc.from_id) {
 
@@ -33,11 +33,14 @@ $(function() {
               $("#modal_message_conversation").html(data);
               window.modal_message_prime();
             });
-
-
-
           };
         };
+
+        // INDEX
+        if ($("#notifications_show_form").data("friend_id") == data_inc.from_id) {
+          window.notifications_index_show_prime(data_inc.from_id);
+        };
+
 
       });
       
