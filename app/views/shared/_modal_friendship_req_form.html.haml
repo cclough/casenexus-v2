@@ -15,7 +15,7 @@
     #flash_notifications
 
     %div
-      = f.text_area :invitation_message, placeholder: "Send message...", tabindex: "1", class: "modal_textarea"
+      = f.text_area :invitation_message, placeholder: "Send message... (optional)", tabindex: "1", class: "modal_textarea"
       = f.hidden_field :friend_id, value: @user.id
 
   .modal-footer
