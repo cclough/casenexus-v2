@@ -118,11 +118,19 @@ class Case < ActiveRecord::Base
   end
 
   def next
-    user.cases.where("id > ?", id).order("id ASC").first
+    if user.cases.where("id > ?", id).count == 0
+      user.cases.order("id ASC").first
+    else
+      user.cases.where("id > ?", id).order("id ASC").first
+    end
   end
 
   def prev
-    user.cases.where("id < ?", id).order("id DESC").first
+    if user.cases.where("id < ?", id).count == 0
+      user.cases.order("id DESC").first
+    else
+      user.cases.where("id < ?", id).order("id DESC").first
+    end
   end
 
   ## Macro

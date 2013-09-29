@@ -55,6 +55,7 @@ GEM
     coffee-script-source (1.6.3)
     columnize (0.3.6)
     country-select (1.1.1)
+    daemons (1.1.9)
     database_cleaner (1.0.1)
     debugger (1.6.1)
       columnize (>= 0.3.1)
@@ -300,6 +301,7 @@ DEPENDENCIES
   capybara
   coffee-rails (>= 3.2.1)
   country-select
+  daemons
   database_cleaner
   debugger
   delayed_job_active_record

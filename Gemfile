@@ -39,6 +39,11 @@ group :development, :test do
   gem 'pry'
 end
 
+group :development do
+  gem "daemons"
+end
+
+
 group :assets do
   gem 'sass-rails', '>= 3.2.5'                   # SASS Support
   gem "sass_rails_patch", "~> 0.0.1"             # Needed to make rails_admin work

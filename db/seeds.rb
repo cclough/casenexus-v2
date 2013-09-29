@@ -290,7 +290,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lat: 51.51030,
       lng: -0.1344,
       invitation_code: 'BYPASS_CASENEXUS_INV',
-
+      username: "christian.clough",
       language_ids: 1,
 
       degree_level: 0,
@@ -321,7 +321,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       language_ids: 1,
-
+      username: "dan.b",
       degree_level: 0,
       linkedin: "dan.b",
       cases_external: 14,
@@ -350,7 +350,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       invitation_code: 'BYPASS_CASENEXUS_INV',
 
       language_ids: 1,
-
+      username: "alastair.willey",
       degree_level: 1,
       linkedin: "alastair.wiley",
       cases_external: 12,
@@ -376,7 +376,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lat: 32.869627,
       lng: -117.221015,
       invitation_code: 'BYPASS_CASENEXUS_INV',
-
+      username: "robin.clough",
       language_ids: 1,
       linkedin: "robin.clough",
       degree_level: 1,
@@ -457,6 +457,7 @@ end
     skype = "skpye"
     language_ids = 1
 
+    username = Faker::Name.first_name() + (1 + rand(100)).to_s
     degree_level = rand(1)
     linkedin = "linkedin_username"
     last_online_at = rand_time(2.days.ago)
@@ -475,6 +476,7 @@ end
                     skype: skype,
                     degree_level: degree_level,
                     linkedin: linkedin,
+                    username: username,
                     last_online_at: last_online_at,
                     cases_external: cases_external,
                     confirm_tac: confirm_tac,
