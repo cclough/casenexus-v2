@@ -132,6 +132,9 @@
   #profile_index_feedback
     .profile_index_title
       Feedback
+      - if @cases.unread.count > 0
+        %span.iconbar-unread
+          = @cases.unread.count.to_s
       %span.pull-right
         %i#profile_index_feedback_actions_resultstable.icon-list{ "data-container"=>"body", "data-original-title"=>"Show detailed results...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
 
@@ -141,7 +144,9 @@
       - if @cases.count > 0
         - @cases.each do |cases_item|
           .profile_index_feedback_cases_item{"data-case_id" => cases_item.id}
-          
+            
+            .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
+
             .profile_index_feedback_cases_item_score
               = cases_item.totalscore.to_f.round(1)
             .profile_index_feedback_cases_item_username

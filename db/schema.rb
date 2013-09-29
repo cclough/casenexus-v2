@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130928052157) do
+ActiveRecord::Schema.define(:version => 20130929220751) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(:version => 20130928052157) do
   end
 
   create_table "cases", :force => true do |t|
-    t.integer  "user_id",                   :null => false
+    t.integer  "user_id",                                      :null => false
     t.text     "subject"
     t.string   "source"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "interviewer_id",            :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.integer  "interviewer_id",                               :null => false
     t.integer  "rapport"
     t.integer  "approachupfront"
     t.text     "recommendation1"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130928052157) do
     t.integer  "pushingtoconclusion"
     t.integer  "book_id"
     t.text     "main_comment"
+    t.boolean  "read",                      :default => false
   end
 
   add_index "cases", ["user_id"], :name => "index_cases_on_user_id"

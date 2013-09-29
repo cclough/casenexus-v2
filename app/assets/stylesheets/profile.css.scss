@@ -310,6 +310,13 @@ $alert-yellow: #FFFF7E;
 
 //    outline:1px solid white;
 
+    .profile_index_title {
+      position:relative;
+      .iconbar-unread {
+        position:absolute;
+        right:495px;
+      }
+    }
 
     #profile_index_feedback_actions_resultstable {
       cursor:pointer;          
@@ -340,10 +347,26 @@ $alert-yellow: #FFFF7E;
         height:21px;
         padding:7px;
         display:block;
+        position:relative;
 
         div {
           display:inline-block;
         }
+
+        .profile_index_feedback_cases_item_read_highlight {
+          display:none;
+          &.unread {
+            height:35px;
+            position:absolute;
+            left:0px;
+            top:0px;
+            bottom:0px;
+            width:5px;
+            background: $blue_pastel;
+            display:inline;
+          }
+        }
+
         .profile_index_feedback_cases_item_score {
           width:35px;
           font-weight:bold;

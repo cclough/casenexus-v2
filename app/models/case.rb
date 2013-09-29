@@ -133,7 +133,15 @@ class Case < ActiveRecord::Base
     end
   end
 
+  def read!
+    update_attribute(:read, true)
+  end
+  
   ## Macro
+
+  def self.unread
+    where(read: false)
+  end
 
   def criteria(num)
     case num

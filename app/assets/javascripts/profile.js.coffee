@@ -129,6 +129,18 @@ $(document).ready ->
 
   $(".profile_index_feedback_cases_item").click ->
 
+    unread_flag = $(this).find(".profile_index_feedback_cases_item_read_highlight")
+    
+    # if unread
+    if unread_flag.hasClass "unread"
+      # Fade out unread marker
+      unread_flag.fadeOut "fast"
+
+      # Update unread count
+      current_count = $("#profile_index_feedback").find(".iconbar-unread").html()
+      $("#profile_index_feedback").find(".iconbar-unread").html(Number(current_count) - 1)
+
+
     if !($("#modal_cases").hasClass("in"))
 
       $("#modal_cases").removeClass "analysis"

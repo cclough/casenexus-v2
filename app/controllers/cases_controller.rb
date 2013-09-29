@@ -8,7 +8,7 @@ class CasesController < ApplicationController
     @case = current_user.cases.find(params[:id])
     @cases = current_user.cases.order("created_at desc")
 
-
+    @case.read!
 
     # Period
     if params[:resultstable_period] then @period = params[:resultstable_period].to_i else @period = 1 end
