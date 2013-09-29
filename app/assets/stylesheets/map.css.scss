@@ -565,7 +565,7 @@ $alert-yellow: #FFFF7E;
   .btn {
     height:30px !important;
     width:30px;
-    padding:10px;;
+    padding:10px;
     font-size:25px;
     line-height:30px;
     span {
@@ -639,6 +639,27 @@ $alert-yellow: #FFFF7E;
 }
 
 
+.map_index_users_item_friendship_requested {
+  display:inline-block;
+  margin:0;
+  width:100px !important;
+  font-size:15px !important;
+  background-color: #989898;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #ffffff;
+  height:30px !important;
+  padding:10px;
+  line-height:30px;
+  text-align:center;
+  vertical-align: middle;
+}
+
+.map_index_users_item_friendship_action_button {
+  font-size:15px !important;
+  width:80px !important;
+}
 
 
 ///////////////POPUP////////////////

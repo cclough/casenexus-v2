@@ -51,13 +51,13 @@
 
 
         - elsif Friendship.requested?(users_item, current_user)
-          Request Pending
+          .map_index_users_item_friendship_requested
+            Requested
 
         - elsif Friendship.pending?(users_item, current_user)
 
-          Pending case partner request
-          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-primary  btn-mini")
-          = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-mini")
+          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-primary map_index_users_item_friendship_action_button btn-mini")
+          = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-mini map_index_users_item_friendship_action_button")
 
         - elsif !Friendship.exist?(current_user, users_item)
           %a.map_index_users_item_button_add.btn.btn-primary.btn-small{"data-friend_id" => users_item.id }
