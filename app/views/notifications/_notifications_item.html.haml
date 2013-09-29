@@ -1,4 +1,6 @@
-.notifications_index_notifications_item{"data-user_id"=>asso_user.id.to_s}
+.notifications_index_notifications_item{"data-user_id"=>asso_user.id.to_s, id: "notifications_index_notifications_item_"+asso_user.id.to_s }
+
+  .notifications_index_notifications_item_read_highlight{class:("unread" unless notifications_item.read?)}
 
   .notifications_index_notifications_item_avatar
     = avatar_for(asso_user,size:"medium")

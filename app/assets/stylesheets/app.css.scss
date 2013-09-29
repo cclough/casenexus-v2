@@ -285,7 +285,6 @@ textarea {
 
 
 #application_notify {
-
   display:none;
 
   position:absolute;
@@ -307,7 +306,9 @@ textarea {
 
 #application_notify_close {
   border: 0;
-  margin:18px 10px;
+  position:absolute;
+  right:5px;
+  top:37px;
 }
 
 #application_notify_avatar {

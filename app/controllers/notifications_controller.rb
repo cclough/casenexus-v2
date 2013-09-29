@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 
 
   def index
-    @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 20, page: params[:page])
+    @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 100, page: params[:page])
   
     respond_to do |format|
       format.js
@@ -91,7 +91,7 @@ class NotificationsController < ApplicationController
     @unread_count = current_user.notifications.unread.for_display.count
     # @notifications = Notification.header(current_user)
 
-    render partial: "menu2", layout: false
+    render partial: "menu", layout: false
   end
 
 

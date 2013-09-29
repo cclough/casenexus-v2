@@ -88,7 +88,7 @@ window.notification_trigger = (data_inc) ->
 
   # Refresh Header Icon
   $.get "/notifications/menu", (data) ->
-    $("#application_profilenav_notifications").html data
+    $("#header_notifications_menu_container").html data
 
 
 

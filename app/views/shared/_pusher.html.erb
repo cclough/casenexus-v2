@@ -37,9 +37,35 @@ $(function() {
         };
 
         // INDEX
-        if ($("#notifications_show_form").data("friend_id") == data_inc.from_id) {
-          window.notifications_index_show_prime(data_inc.from_id);
+        if ($("#notifications_index_notifications").length) {
+
+          // // // update list
+          // $.get("/notifications", null, null, "script", function() {
+          //   alert("hello");
+          //   window.notifications_index_notifications_prime();
+          // });
+
+          $.ajax({
+            async:false,
+            type:'GET',
+            url:"/notifications",
+            data:null,
+            success: function() {
+              window.notifications_index_notifications_prime();
+            },
+            dataType:'script'
+          });
+          
+          // update menu
+          $.get("/notifications/menu", function(data) {
+            $("#header_notifications_menu_container").html(data);
+          });
+
+          if ($("#notifications_show_form").data("friend_id") == data_inc.from_id) {
+            window.notifications_index_show_prime(data_inc.from_id);
+          };
         };
+
 
 
       });
@@ -114,20 +140,20 @@ $(function() {
 
 
       
-      // Some useful Pusher debug msgs
-      pusher.connection.bind('connecting', function() {
-        $('#header_nav_panel_browse_search_field').val('Connecting to Pusher...');
-      });
-      pusher.connection.bind('connected', function() {
-        $('#header_nav_panel_browse_search_field').val('Connected to Pusher!');
-      });
-      pusher.connection.bind('failed', function() {
-        $('#header_nav_panel_browse_search_field').val('Connection to Pusher failed :(');
-      });
+      // // Some useful Pusher debug msgs
+      // pusher.connection.bind('connecting', function() {
+      //   $('#header_nav_panel_browse_search_field').val('Connecting to Pusher...');
+      // });
+      // pusher.connection.bind('connected', function() {
+      //   $('#header_nav_panel_browse_search_field').val('Connected to Pusher!');
+      // });
+      // pusher.connection.bind('failed', function() {
+      //   $('#header_nav_panel_browse_search_field').val('Connection to Pusher failed :(');
+      // });
 
-      channel_priv.bind('subscription_error', function(status) {
-        $('#header_nav_panel_browse_search_field').val('Pusher subscription_error');
-      });
+      // channel_priv.bind('subscription_error', function(status) {
+      //   $('#header_nav_panel_browse_search_field').val('Pusher subscription_error');
+      // });
 
 
 

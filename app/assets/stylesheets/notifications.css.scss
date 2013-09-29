@@ -27,13 +27,15 @@ $alert-yellow: #FFFF7E;
 
 
 #notifications_index_notifications_container {
-  width:300px;
+  width:296px;
   position:absolute;
   left:0px;
   top:0px;
   bottom:0px;
   display:block;
   z-index:999;
+  border-right:2px solid $gray_second;
+  border-left:2px solid $gray_second;
 }
 
 #notifications_index_form_container {
@@ -50,7 +52,7 @@ $alert-yellow: #FFFF7E;
   bottom:0px;
   top:80px;
   left:0px;
-  width:300px;
+  width:296px;
   overflow-y:auto;
 }
 
@@ -61,10 +63,16 @@ $alert-yellow: #FFFF7E;
   right:0px;
   bottom:0px;
   top:0px;
+  border-right:2px solid $gray_second;
 }
 
 
-#notifications_conversation_empty {
+
+
+
+
+
+#modal_message_conversation_empty {
 
   text-align: center;
 
@@ -122,8 +130,8 @@ $alert-yellow: #FFFF7E;
 }
 
 #notifications_index_notifications_empty_icon {
-  font-size:100px;
-  margin-bottom:30px; 
+  font-size:50px;
+  margin-bottom:20px; 
 }
 
 
@@ -133,17 +141,17 @@ $alert-yellow: #FFFF7E;
 .notifications_index_notifications_item {
   padding:8px 8px 8px 0px !important;
   margin-bottom:2px;
-
+  position:relative;
   background:white;
   height:50px;
   
   &:hover {
-    background:$gray_second;
+    background:$gray_background;
     cursor:pointer;
   }
 
   &.notifications_index_notifications_item_select {
-    background:$gray_second;
+    background:$blue_pastel;
   }
 
   &.read {
@@ -157,6 +165,20 @@ $alert-yellow: #FFFF7E;
   font-size:40px;
   float:left;
   width:70px;
+}
+
+.notifications_index_notifications_item_read_highlight {
+  display:none;
+  &.unread {
+    height:66px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    bottom:0px;
+    width:5px;
+    background: $blue_pastel;
+    display:inline;
+  }
 }
 
 .notifications_index_notifications_item_text_container {
@@ -176,13 +198,28 @@ $alert-yellow: #FFFF7E;
   text-align:right;
   margin-top:15px;
   float:left;
-  width:52px;
+  width:48px;
 }
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
+
+
+
+#notifications_index_conversation_empty {
+  padding-top:220px;
+  padding-left:0px;
+  padding-right:0px;
+  font-weight:bold;
+  text-align:center;
+}
+
+#notifications_index_conversation_empty_icon {
+  font-size:70px;
+  margin-bottom:20px; 
+}
 
 
 
