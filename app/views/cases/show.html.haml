@@ -1,29 +1,7 @@
-- content_for :title do
-  Case with
-  = link_to "/map?user_id=" + @case.interviewer.id.to_s,  "data-original-title"=>"Go to #{@case.interviewer.username}'s profile","data-placement"=>"bottom", class: "application_tooltip" do
-    = image_tag @case.interviewer.university.image_file, class: "application_userimage_small"
-    = @case.interviewer.username
-
-- provide(:sub_title, @case.subject_trunc)
-
-
-- content_for :javascript_includes do
-
-  :javascript
-
-
-    / var cases_show_chart_radar_data_all = #{@case.cases_show_chart_radar_data_all};
-    / var cases_show_chart_radar_data_combined = #{@case.cases_show_chart_radar_data_combined};
-
-
-
-
-
 
 .modal-body
 
-  .row
-    = render 'subnav'
+  = render 'subnav'
 
   / .btn-group#cases_show_charts_view_buttongroup
   /   .btn.btn-primary.active{"data-view"=>"table"}

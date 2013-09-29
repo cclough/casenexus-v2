@@ -224,11 +224,7 @@ class User < ActiveRecord::Base
 
     end
 
-    def cases_show_chart_radar_data_combined
-       "[{criteria: \"Business Analytics\", score: "+businessanalytics_combined.to_s+"},
-       {criteria: \"Structure\", score: "+structure_combined.to_s+"},
-       {criteria: \"Interpersonal\", score: "+interpersonal_combined.to_s+"}]"
-    end
+
 
     def confirmed
       where("confirmed_at is not null")

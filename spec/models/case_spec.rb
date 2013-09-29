@@ -207,48 +207,6 @@ describe Case do
 
   end
 
-  describe "cases_show_chart_radar_data should be correctly assembled and contain case scores" do
-
-    before { @case.save }
-
-    its(:cases_show_chart_radar_data) { should include("[{criteria: \"Structure\", score: 5},") }
-    its(:cases_show_chart_radar_data) { should include("{criteria: \"Commercial\", score: 10},") }
-    its(:cases_show_chart_radar_data) { should include("{criteria: \"Conclusion\", score: 1},") }
-    its(:cases_show_chart_radar_data) { should include("{criteria: \"Analytical\", score: 9}]") }
-
-  end
-
-  describe "chart_analysis_radar" do
-
-    let(:user) { FactoryGirl.create(:user) }
-
-    before do
-      11.times { user.cases.create(interviewer_id: 2, date: Date.new(2012, 3, 3), subject:
-                  "Some Subject", source: "Some Source",
-                  structure: 5,analytical: 9,commercial: 10,conclusion: 1, 
-                  structure_comment: "Structure Comment",
-                  analytical_comment: "Analytical Comment",
-                  commercial_comment: "Commercial Comment",
-                  conclusion_comment: "Conclusion Comment",
-                  comment: "Overall Comment",
-                  notes: "Some Notes") }
-    end
-
-    # Does not test first5 and last 5 cases well, 
-    # pending getting factory girl to make different kinds of cases!
-    it "should be in a valid format, with the correct scores" do
-      Case.cases_analysis_chart_radar_data(user).should include("first5: 5.0") # Structure
-      Case.cases_analysis_chart_radar_data(user).should include("last5: 5.0")
-      Case.cases_analysis_chart_radar_data(user).should include("first5: 10.0") # Commercial
-      Case.cases_analysis_chart_radar_data(user).should include("last5: 10.0")
-      Case.cases_analysis_chart_radar_data(user).should include("first5: 1.0") # Conclusion 
-      Case.cases_analysis_chart_radar_data(user).should include("last5: 1.0")
-      Case.cases_analysis_chart_radar_data(user).should include("first5: 9.0") # Analytical   
-      Case.cases_analysis_chart_radar_data(user).should include("last5: 9.0")
-    end
-  
-  end
-
 
 
   describe "cases_analysis_chart_progress_data" do

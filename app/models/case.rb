@@ -260,82 +260,6 @@ class Case < ActiveRecord::Base
       return "http://chart.apis.google.com/chart?cht=bvs&chs=#{options[:size]}&chd=t:#{activity_str}&chco=#{options[:chart_color]}&chbh=a,#{options[:line_width]}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
     end
   end
-
-
-
-  def cases_show_chart_radar_data_all
-    "[{criteria: \"Quantitative basics\", score: "+quantitativebasics.to_s+"},
-     {criteria: \"Problem-Solving\", score: "+problemsolving.to_s+"},
-     {criteria: \"Prioritisation\", score: "+prioritisation.to_s+"},
-     {criteria: \"Sanity-checking\", score: "+sanitychecking.to_s+"},
-
-     {criteria: \"Make approach clear up front\", score: "+approachupfront.to_s+"},
-     {criteria: \"Sticking to structure\", score: "+stickingtostructure.to_s+"},
-     {criteria: \"Announces changed Structure\", score: "+announceschangedstructure.to_s+"},
-     {criteria: \"Pusing to conclusion\", score: "+pushingtoconclusion.to_s+"},
-
-     {criteria: \"Asking for information\", score: "+askingforinformation.to_s+"},
-     {criteria: \"Articulation\", score: "+articulation.to_s+"},
-     {criteria: \"Concision\", score: "+concision.to_s+"},
-     {criteria: \"Rapport\", score: "+rapport.to_s+"}]"
-  end
-
-  def cases_show_chart_radar_data_combined
-     "[{criteria: \"Business Analytics\", score: "+businessanalytics_combined.to_s+"},
-     {criteria: \"Structure\", score: "+structure_combined.to_s+"},
-     {criteria: \"Interpersonal\", score: "+interpersonal_combined.to_s+"}]"
-  end
-
-
-  def cases_show_category_chart_bar_data(category)
-
-    case category
-    when "businessanalytics"
-      range = 0..3
-    when "structure"
-      range = 4..7
-    when "interpersonal"
-      range = 8..11
-    end
-
-    array = []
-    range.each do |n|
-      array << {:criteria => Case.criteria_name(n), :score => criteria(n)}
-    end
-
-    array.to_json
-
-  end
-
-
-  def self.cases_analysis_chart_radar_data_all(user, period)
-    array = []
-
-    12.times do |n|
-      array << { criteria: self.criteria_name(n), 
-                 all: self.criteria_av_user(user, user.cases.all.count, 0, n),
-                 last: self.criteria_av_user(user, period, 0, n),
-                 first: self.criteria_av_user(user, period, (user.cases.all.count - period), n) }
-    end
-
-    array.to_json
-  end
-
-
-
-  def self.cases_analysis_chart_radar_data_combined(user, period)
-    array = []
-
-    3.times do |n|
-      array << { criteria: self.category_name(n), 
-                 all: self.category_av_user(user, user.cases.all.count, 0, n),
-                 last: self.category_av_user(user, period, 0, n),
-                 first: self.category_av_user(user, period, (user.cases.all.count - period), n) }
-    end
-
-    array.to_json
-  end
-
   
   def self.cases_analysis_table(user, period)
 
@@ -349,8 +273,6 @@ class Case < ActiveRecord::Base
 
   end
 
-
-
   def cases_show_table
 
     # make hash
@@ -362,12 +284,6 @@ class Case < ActiveRecord::Base
     hash
 
   end
-
-
-
-
-
-
 
   def self.cases_analysis_chart_progress_data(user)
     if user.cases.count > 2
@@ -397,53 +313,6 @@ class Case < ActiveRecord::Base
   end
 
 
-
-
-
-  def self.cases_analysis_chart_country_data(user)
-    # Replace with SQL call as this will be expensive!
-    # http://stackoverflow.com/questions/17243585/rails-pie-chart-for-countries-that-senders-of-a-users-messages-are-from
-    interviewer_ids = user.notifications.collect(&:sender_id)
-
-    country_count_hash = {}
-    interviewer_ids.each do |interviewer_id|
-      country = User.find(interviewer_id).country
-      next unless country
-      country_count_hash[country.name] ||= 0
-      country_count_hash[country.name] += 1 
-    end
-
-    count_array = []
-    country_count_hash.each do |key, value|
-      count_array << {:country => key, :count => value}
-    end
-
-    count_array.to_json
-
-  end
-
-
-  def self.cases_analysis_chart_university_data(user)
-    # Replace with SQL call as this will be expensive!
-    # http://stackoverflow.com/questions/17243585/rails-pie-chart-for-countries-that-senders-of-a-users-messages-are-from
-    interviewer_ids = user.notifications.collect(&:sender_id)
-
-    university_count_hash = {}
-    interviewer_ids.each do |interviewer_id|
-      university = User.find(interviewer_id).university
-      next unless university
-      university_count_hash[university.name] ||= 0
-      university_count_hash[university.name] += 1 
-    end
-
-    count_array = []
-    university_count_hash.each do |key, value|
-      count_array << {:university => key, :count => value}
-    end
-
-    count_array.to_json
-
-  end
 
 
 

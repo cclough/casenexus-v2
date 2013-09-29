@@ -1,6 +1,6 @@
 %table#cases_resultstable_table
   %thead
-    %th
+    %th#cases_resultstable_table_column_criteria
       Scoring Criteria
 
     %th
@@ -8,17 +8,18 @@
       %p (Last #{@period.to_s} Av. /5)
     %th#cases_resultstable_table_column_bar
 
-    %th
-      Previous
-      %p (Prev #{@period.to_s} Av. /5)
-    %th
-      Growth
-      %p (Prev #{@period.to_s} Av. to Last #{@period.to_s} Av.)
-    %th
-      Site Av.
-      %p (All cases by all users)
     / %th
-    /   Recommendation
+    /   Previous
+    /   %p (Prev #{@period.to_s} Av. /5)
+    - if params[:action] == "analysis"
+      %th
+        Growth
+        %p (From previous #{@period.to_s} to last #{@period.to_s})
+      %th
+        / Site Av.
+        / %p (All cases by all users)
+      / %th
+      /   Recommendation
     
 
   %tbody
@@ -35,29 +36,24 @@
           / Last 5 Average
           = value
 
-
         %td
           / Chart
           .cases_resultstable_chart_bar{"data-score" => value, id: "cases_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
 
-        %td
-          / Previous 5 to Last 5 Average
+        - if params[:action] == "analysis"
+          / Growth cell
           - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
-          = prev_av
+          - curr_av = value
+          - growth = ((curr_av/prev_av)-1)*100
+          = colorcoded_cell(growth, "#{number_to_percentage(growth, precision: 0)} (#{prev_av})")
 
-
-        / Growth cell
-        - curr_av = value
-        - growth = ((curr_av/prev_av)-1)*100
-        = colorcoded_cell(growth,number_to_percentage(growth, precision: 0))
-
-        / Diff from avareage cell
-        - site_av = Case.criteria_av_global(key)
-        - diff = value - site_av
-        = colorcoded_cell(diff, site_av)
-        
-        / / Recommednation cell
-        / = recommendation_cell(growth, diff)
+          / Diff from average cell
+          / - site_av = Case.criteria_av_global(key)
+          / - diff = value - site_av
+          / = colorcoded_cell(diff, site_av)
+          
+          / / Recommednation cell
+          / = recommendation_cell(growth, diff)
 
 
 

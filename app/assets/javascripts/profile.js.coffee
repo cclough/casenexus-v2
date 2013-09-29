@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-profile_index_feedback_analysis_prime = () ->
+modal_cases_analysis_prime = () ->
     # Order and Period buttons
   $("#cases_analysis_section_table .btn").click ->
 
@@ -20,18 +20,6 @@ profile_index_feedback_analysis_prime = () ->
     $.get("/cases/analysis", $("#cases_resultstable_form").serialize(), null, "script")
     false
 
-  # RADAR BUTTONS
-  $("#cases_analysis_chart_radar_button_all").click ->
-    $("#cases_analysis_chart_radar").empty()
-    cases_analysis_chart_radar_draw "all", cases_analysis_chart_case_count
-    $("#cases_analysis_chart_radar_button_all").addClass "active"
-    $("#cases_analysis_chart_radar_button_combined").removeClass "active"
-
-  $("#cases_analysis_chart_radar_button_combined").click ->
-    $("#cases_analysis_chart_radar").empty()
-    cases_analysis_chart_radar_draw "combined", cases_analysis_chart_case_count
-    $("#cases_analysis_chart_radar_button_all").removeClass "active"
-    $("#cases_analysis_chart_radar_button_combined").addClass "active"
 
   # BAR BUTTONS
   $("#cases_analysis_chart_bar_button_all").click ->
@@ -46,6 +34,25 @@ profile_index_feedback_analysis_prime = () ->
     $("#cases_analysis_chart_bar_button_all").removeClass "active"
     $("#cases_analysis_chart_bar_button_combined").addClass "active"
 
+  window.cases_resultstable_bars_draw()
+
+modal_cases_show_prime = () ->
+  window.cases_resultstable_bars_draw()
+  
+  window.cases_show_category_chart_bar_draw("businessanalytics")
+  window.cases_show_category_chart_bar_draw("structure")
+  window.cases_show_category_chart_bar_draw("interpersonal")
+
+  $(".cases_show_subnav_browse_button").click ->
+    case_id = $(this).data "case_id"
+
+    next_case_id = parseInt(case_id) + 1
+    $("#modal_cases").html("")
+
+    $.get "/cases/" + next_case_id, (data) ->
+      $("#modal_cases").html data
+      modal_cases_show_prime()
+
 
 
 $(document).ready ->
@@ -57,6 +64,8 @@ $(document).ready ->
     if !($("#modal_profile").hasClass("in"))
 
       $(".modal").modal("hide")
+      $("#modal_profile").html("")
+      $("#modal_profile").modal "show"
 
       $.get "/account/edit", (data) ->
         $("#modal_profile").html data
@@ -66,7 +75,7 @@ $(document).ready ->
 
           window.account_completeedit_bless()
 
-        $("#modal_profile").modal "show"
+
 
   # $("#profile_index_info_actions_visitors").click ->
 
@@ -90,16 +99,11 @@ $(document).ready ->
     if !($("#modal_profile").hasClass("in"))
 
       $(".modal").modal("hide")
+      $("#modal_profile").html("")
+      $("#modal_profile").modal "show"
 
       $.get "/invitations", (data) ->
         $("#modal_profile").html data
-
-        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-        # $("#modal_profile").on "shown", ->
-
-        #   #window.account_completeedit_bless()
-
-        $("#modal_profile").modal "show"
 
 
 
@@ -166,40 +170,35 @@ $(document).ready ->
 
       case_id = $(this).data "case_id"
 
+      $("#modal_cases").html("")
       $(".modal").modal("hide")
+      $("#modal_cases").modal "show"
 
       $.get "/cases/" + case_id, (data) ->
         $("#modal_cases").html data
 
         # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
         $("#modal_cases").on "shown", ->
-
-          window.cases_resultstable_bars_draw()
-          
-          window.cases_show_category_chart_bar_draw("businessanalytics")
-          window.cases_show_category_chart_bar_draw("structure")
-          window.cases_show_category_chart_bar_draw("interpersonal")
+          modal_cases_show_prime()
 
 
-        $("#modal_cases").modal "show"
+
+
 
 
   $("#profile_index_feedback_actions_resultstable").click ->
 
     if !($("#modal_cases").hasClass("in"))
 
+      $("#modal_cases").html ""
       $(".modal").modal("hide")
+      $("#modal_cases").modal "show"
 
       $.get "/cases/analysis?view=table", (data) ->
         $("#modal_cases").html data
+        if (cases_analysis_chart_case_count == 0)
+          $("#cases_analysis_chart_table_empty").fadeIn "fast"
+        else
+          modal_cases_analysis_prime()
 
-        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-        $("#modal_cases").on "shown", ->
 
-          if (cases_analysis_chart_case_count == 0)
-            $("#cases_analysis_chart_table_empty").fadeIn "fast"
-          else
-            window.cases_resultstable_bars_draw()
-            profile_index_feedback_analysis_prime()
-
-        $("#modal_cases").modal "show"

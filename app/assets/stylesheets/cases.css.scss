@@ -34,117 +34,117 @@ $alert-yellow: #FFFF7E;
 }
 
 
-/////////////////////////////////////////////////////////////////
-/////////////////////////// INDEX ///////////////////////////////
-/////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+///////////////////////////// INDEX ///////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 
 
-#cases_index_cases {
-  padding:4px;
-}
+//#cases_index_cases {
+//  padding:4px;
+//}
 
 
-#cases_index_cases_form_searchfield {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+//#cases_index_cases_form_searchfield {
+//  border-radius: 3px;
+//  -moz-border-radius: 3px;
+//  -webkit-border-radius: 3px;
 
-  padding-left:7px !important;
-  padding-right:30px !important;
-  width:209px;
-}
+//  padding-left:7px !important;
+//  padding-right:30px !important;
+//  width:209px;
+//}
 
-#cases_index_cases_form_label {
-  margin-top:13px;
-  font-size:12px !important;
-  i {
-    margin-left:5px;
-  }
-}
-
-
-
-////////// definitely need? /////////
-#cases_index_cases_form_body_empty {
-  height: 732px;
-}
-
-
-#cases_index_cases_form_empty {
-  height:280px;
-  padding-top:275px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  font-size:20px;
-  text-align:center;
-}
-
-#cases_index_cases_form_empty_icon {
-  font-size:100px;
-  margin-bottom:25px; 
-  margin-left:15px;
-}
+//#cases_index_cases_form_label {
+//  margin-top:13px;
+//  font-size:12px !important;
+//  i {
+//    margin-left:5px;
+//  }
+//}
 
 
 
-////////////////////////////////////
+//////////// definitely need? /////////
+//#cases_index_cases_form_body_empty {
+//  height: 732px;
+//}
+
+
+//#cases_index_cases_form_empty {
+//  height:280px;
+//  padding-top:275px;
+//  padding-left:0px;
+//  padding-right:0px;
+//  font-weight:bold;
+//  font-size:20px;
+//  text-align:center;
+//}
+
+//#cases_index_cases_form_empty_icon {
+//  font-size:100px;
+//  margin-bottom:25px; 
+//  margin-left:15px;
+//}
 
 
 
-.cases_index_cases_item {
-
-  height:55px;
-  width:915px;
-
-  padding-top:20px;
-  padding-left:5px;
-  margin-bottom:3px;
-
-  text-align:left;
+//////////////////////////////////////
 
 
-}
+
+//.cases_index_cases_item {
+
+//  height:55px;
+//  width:915px;
+
+//  padding-top:20px;
+//  padding-left:5px;
+//  margin-bottom:3px;
+
+//  text-align:left;
 
 
-.cases_index_cases_item_score {
-
-  padding:0 0 0 30px;
-  height:85px;
-  margin-top:-20px;
-  margin-right:-12px;
-  line-height:85px;
-
-  background:$gray_second;
-
-  font-size: 26px;
-  font-weight: bold;
-}
+//}
 
 
-.cases_index_cases_item_subject {
-  font-style:italic;
-  font-size:13px;
-}
+//.cases_index_cases_item_score {
 
-.cases_index_cases_item_date {
-  padding-top:2px;
-  // line-height:40px;
-  font-size:11px;
-}
+//  padding:0 0 0 30px;
+//  height:85px;
+//  margin-top:-20px;
+//  margin-right:-12px;
+//  line-height:85px;
 
-.cases_index_cases_item_name {
-  font-size: 15px;
-  font-weight: bold;
-}
+//  background:$gray_second;
 
-.cases_index_cases_item_avatar {
-  text-align:center;
-  padding-left:5px;
-  font-size:40px;
-  line-height:50px;
-}
+//  font-size: 26px;
+//  font-weight: bold;
+//}
+
+
+//.cases_index_cases_item_subject {
+//  font-style:italic;
+//  font-size:13px;
+//}
+
+//.cases_index_cases_item_date {
+//  padding-top:2px;
+//  // line-height:40px;
+//  font-size:11px;
+//}
+
+//.cases_index_cases_item_name {
+//  font-size: 15px;
+//  font-weight: bold;
+//}
+
+//.cases_index_cases_item_avatar {
+//  text-align:center;
+//  padding-left:5px;
+//  font-size:40px;
+//  line-height:50px;
+//}
 
 /////////////////////////////////////////////////////////////////
 //////////////////////////// SHOW ///////////////////////////////
@@ -224,25 +224,6 @@ $alert-yellow: #FFFF7E;
 }
 
 
-#cases_show_chart_radar {
-  padding-top:10px;
-  height:400px;
-}
-
-#cases_show_charts_radar_title {
-  background: $gray_second;
-  height:55px;
-  text-align:center;
-  font-weight: bold;
-  line-height:31px;
-  color: white;
-  margin:-10px;
-}
-
-#cases_show_chart_radar_buttongroup {
-  margin-top:-445px;
-}
-
 
 .cases_show_block_score {
   margin-top:70px;
@@ -275,7 +256,7 @@ $alert-yellow: #FFFF7E;
 #cases_show_subnav_browse {
   margin-top:7px;
   display:block;
-  margin:-20px -24px 0px -24px;
+  margin:0px 0px 0px 0px;
   text-align:right;
   background:$gray_second;
   height:30px;
@@ -666,46 +647,6 @@ $alert-yellow: #FFFF7E;
 
 
 
-#cases_analysis_section_radar {
-  text-align:center;
-}
-#cases_analysis_chart_radar_buttongroup {
-  display:none;
-}
-
-
-#cases_analysis_chart_radar {
-  display:none;
-  padding:0;
-  height:450px;
-  width:100%;
-}
-
-#cases_analysis_chart_radar_empty {
-  height:300px;
-  width:100%;
-  display:none;
-  padding-top:80px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  text-align:center;
-}
-
-#cases_analysis_chart_radar_empty_icon {
-  font-size:100px;
-  margin-bottom:20px; 
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -718,6 +659,7 @@ $alert-yellow: #FFFF7E;
   background: $gray_second;
 
 }
+
 
 
 
@@ -739,9 +681,9 @@ $alert-yellow: #FFFF7E;
 }
 
 #cases_resultstable_table {
-  position:relative;
   width:100%;
   font-size:14px;
+  outline:1px solid red;
   th {
     padding: 7px 2px;
     p {
@@ -759,19 +701,25 @@ $alert-yellow: #FFFF7E;
       text-align:left;
     }
   }
+
 }
 
 
 .cases_resultstable_chart_bar {
-  width:300px;
+  width:100%;
   height:20px;
   border:0px solid white;
 }
 
 
-#cases_resultstable_table_column_bar {
-  width:300px;
+#cases_resultstable_table_column_criteria {
+
 }
+
+#cases_resultstable_table_column_bar {
+
+}
+
 
 .cases_resultstable_cell_score {
   font-weight:bold;
@@ -794,78 +742,82 @@ $alert-yellow: #FFFF7E;
 
 
 
-#cases_analysis_chart_progress {
-  width:100%;
-  height:350px;
-  display:none;
-}
-
-#cases_analysis_chart_progress_empty {
-  height:260px;
-  width:100%;
-  display:none;
-  padding-top:70px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  text-align:center;
-}
-
-
-#cases_analysis_chart_progress_empty_icon {
-  font-size:100px;
-  margin-bottom:20px;  
-}
 
 
 
 
-#cases_analysis_chart_country {
-  height:300px;
-  display:none;
-}
+//#cases_analysis_chart_progress {
+//  width:100%;
+//  height:350px;
+//  display:none;
+//}
+
+//#cases_analysis_chart_progress_empty {
+//  height:260px;
+//  width:100%;
+//  display:none;
+//  padding-top:70px;
+//  padding-left:0px;
+//  padding-right:0px;
+//  font-weight:bold;
+//  text-align:center;
+//}
 
 
-#cases_analysis_chart_country_empty {
-  height:222px;
-  width:100%;
-  display:none;
-  padding-top:70px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  text-align:center;
-}
-
-#cases_analysis_chart_country_empty_icon {
-  font-size:100px;
-  margin-bottom:30px; 
-}
+//#cases_analysis_chart_progress_empty_icon {
+//  font-size:100px;
+//  margin-bottom:20px;  
+//}
 
 
 
 
-#cases_analysis_chart_university {
-  height:300px;
-  display:none;
-}
+//#cases_analysis_chart_country {
+//  height:300px;
+//  display:none;
+//}
 
 
-#cases_analysis_chart_university_empty {
-  height:222px;
-  width:100%;
-  display:none;
-  padding-top:70px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  text-align:center;
-}
+//#cases_analysis_chart_country_empty {
+//  height:222px;
+//  width:100%;
+//  display:none;
+//  padding-top:70px;
+//  padding-left:0px;
+//  padding-right:0px;
+//  font-weight:bold;
+//  text-align:center;
+//}
 
-#cases_analysis_chart_university_empty_icon {
-  font-size:100px;
-  margin-bottom:30px; 
-}
+//#cases_analysis_chart_country_empty_icon {
+//  font-size:100px;
+//  margin-bottom:30px; 
+//}
+
+
+
+
+//#cases_analysis_chart_university {
+//  height:300px;
+//  display:none;
+//}
+
+
+//#cases_analysis_chart_university_empty {
+//  height:222px;
+//  width:100%;
+//  display:none;
+//  padding-top:70px;
+//  padding-left:0px;
+//  padding-right:0px;
+//  font-weight:bold;
+//  text-align:center;
+//}
+
+//#cases_analysis_chart_university_empty_icon {
+//  font-size:100px;
+//  margin-bottom:30px; 
+//}
 
 
 
@@ -910,111 +862,111 @@ $alert-yellow: #FFFF7E;
 
 
 
-#cases_analysis_comments {
-  font-size:85%;
+//#cases_analysis_comments {
+//  font-size:85%;
 
-  .tab-content {
-    padding:4px;
-    border:0;
-  }
+//  .tab-content {
+//    padding:4px;
+//    border:0;
+//  }
 
-  ul {
-    margin:0px;
-  }
-}
-
-
-#cases_analysis_comments_tabs {
-  padding-left:110px;
-
-  text-decoration:none;
-
-  text-align:center;
-
-  li {
-    &.active {
-      a {
-        background:$green-flatui;
-        border:0;
-      }
-    }
-  }
-
-  a {
-    width:150px;
-    background: $gray_second;
-    margin: 0px 3px;
-
-    padding: 10px 10px;
-    color: $gray_Light;
-
-    border-radius: 0px;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-
-    &:hover {
-        background:$green-flatui;
-    }
-
-  }
-
-}
+//  ul {
+//    margin:0px;
+//  }
+//}
 
 
-#cases_analysis_comments_empty {
-  width: 100%;
-  padding-top:40px;
-  padding-left:0px;
-  padding-right:0px;
-  font-weight:bold;
-  text-align:center;
-}
+//#cases_analysis_comments_tabs {
+//  padding-left:110px;
 
-#ccases_analysis_comments_empty_icon {
-  font-size:100px;
-  margin-bottom:40px;  
-}
+//  text-decoration:none;
+
+//  text-align:center;
+
+//  li {
+//    &.active {
+//      a {
+//        background:$green-flatui;
+//        border:0;
+//      }
+//    }
+//  }
+
+//  a {
+//    width:150px;
+//    background: $gray_second;
+//    margin: 0px 3px;
+
+//    padding: 10px 10px;
+//    color: $gray_Light;
+
+//    border-radius: 0px;
+//    -moz-border-radius: 0px;
+//    -webkit-border-radius: 0px;
+
+//    &:hover {
+//        background:$green-flatui;
+//    }
+
+//  }
+
+//}
+
+
+//#cases_analysis_comments_empty {
+//  width: 100%;
+//  padding-top:40px;
+//  padding-left:0px;
+//  padding-right:0px;
+//  font-weight:bold;
+//  text-align:center;
+//}
+
+//#ccases_analysis_comments_empty_icon {
+//  font-size:100px;
+//  margin-bottom:40px;  
+//}
 
 
 
 
-.cases_analysis_comment {
-  margin-top: 5px;
-  padding: 10px;
+//.cases_analysis_comment {
+//  margin-top: 5px;
+//  padding: 10px;
 
-  background: white;
+//  background: white;
   
-  &:hover {
-    background: $gray_second;
-    text-decoration:none !important;
-  }
+//  &:hover {
+//    background: $gray_second;
+//    text-decoration:none !important;
+//  }
 
-  .cases_analysis_comment_from {
-    text-decoration:none;
-    font-weight: bold;
+//  .cases_analysis_comment_from {
+//    text-decoration:none;
+//    font-weight: bold;
 
-    .cases_analysis_comment_date {
-      font-weight: normal;
-      color: gray;
-    }
+//    .cases_analysis_comment_date {
+//      font-weight: normal;
+//      color: gray;
+//    }
 
-  }
+//  }
 
-  .cases_analysis_comment_content {
-    color:$gray_Dark;
-  }
+//  .cases_analysis_comment_content {
+//    color:$gray_Dark;
+//  }
 
-}
+//}
 
-.cases_analysis_comment_link  {
-  &:hover {
-    text-decoration:none;
-  }
-}
+//.cases_analysis_comment_link  {
+//  &:hover {
+//    text-decoration:none;
+//  }
+//}
 
 
 
-.cases_analysis_comments_tab {
-  overflow-y:auto;
-  height:400px;
-}
+//.cases_analysis_comments_tab {
+//  overflow-y:auto;
+//  height:400px;
+//}
