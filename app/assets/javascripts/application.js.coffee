@@ -116,15 +116,15 @@ window.application_countchar = (val) ->
 
 
 
-window.modal_spinner_prime = () ->
+window.application_spinner_prime = (container) ->
 
-  $(".modal.in .application_spinner_container").hide()
+  $(container + " .application_spinner_container").hide()
 
   # SUBMIT CLICK: Submit button loading animation and submit button prime
-  $(".modal.in .application_submit_button_with_spinner").click ->
+  $(container + " .application_submit_button_with_spinner").click ->
 
     $(this).closest("form").submit()
-    $(".modal.in .application_spinner_container").show()
+    $(container + " .application_spinner_container").show()
 
 
 
@@ -132,9 +132,18 @@ window.modal_spinner_prime = () ->
 
 window.modal_message_prime = () ->
   # Scroll div
-  $("#modal_message_conversation").scrollTop(document.getElementById("modal_message_conversation").scrollHeight);
+  $(".modal.in #modal_message_conversation").scrollTop($(".modal.in #modal_message_conversation").prop("scrollHeight"));
 
-  window.modal_spinner_prime()
+  window.application_spinner_prime(".modal.in")
+
+  $(".modal.in #modal_message_textarea").keydown((event) ->
+    if event.keyCode is 13
+      $(@form).submit()
+      $(".modal.in .application_spinner_container").show()
+      false
+  )
+
+
 
 window.modal_message_show = (friend_id) ->
   
@@ -169,7 +178,7 @@ window.modal_friendship_req_show = (friend_id) ->
       $("#modal_friendship_req").html data
 
       $("#modal_friendship_req").on "shown", ->
-        window.modal_spinner_prime()
+        window.application_spinner_prime(".modal.in")
 
       $("#modal_friendship_req").modal "show"
 
@@ -262,7 +271,7 @@ window.modal_events_rebless = ->
     else
       $("#events_modal_book_viewertoprepare").html "<div id=events_modal_book_viewer_empty>No book selected</div>"
 
-  window.modal_spinner_prime()
+  window.application_spinner_prime(".modal.in")
 
 
 
@@ -334,7 +343,7 @@ $(document).ready ->
       $(".modal").modal "hide"
 
       $("#modal_contact").on "shown", ->      
-        window.modal_spinner_prime()
+        window.application_spinner_prime(".modal.in")
 
       $("#modal_contact").modal "show"
 

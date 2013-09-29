@@ -1,4 +1,6 @@
 - if @id.blank? then @id = friend_id end
+
+
 - @sender = User.find(@id)
 - @notifications = Notification.history(current_user, @sender)
 

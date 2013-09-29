@@ -4,12 +4,21 @@
     <%- if @notification.errors.any? %>
 
 
-        $('#modal_<%= escape_javascript(@notification.ntype) %>').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
+        // THIS IS GOING TO POPULATE THE MESSAGE MODAL ALL THE TIME
+        $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
+
 
         <%- if @notification.ntype = "message" %>
+            // MODAL
             window.modal_message_prime();
 
+            // INDEX
+            $("#notifications_index_conversation #application_error_explanation").fadeIn("fast");
+            $("#notifications_index_conversation #application_error_explanation ul").html("<%= j(@notification.errors.full_messages.map {|error| "<li>#{error}</li>"}.join).html_safe %>")
+            window.application_spinner_prime("#notifications_show_form");
             window.application_form_errors_close();
+
+
         <%- end %>
 
 
@@ -19,15 +28,18 @@
 
         <%- if @notification.ntype = "message" %>
         
-            $("#modal_message_textarea").val("");
-
-            $("#flash_notifications").html("");
-
-            $("#modal_message_conversation").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
+            // MODAL
+            $("#modal_message.modal.in #modal_message_textarea").val("");
+            $("#modal_message.modal.in #flash_notifications").html("");
+            $("#modal_message.modal.in #modal_message_conversation").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
             window.modal_message_prime();
 
 
+            // INDEX
             $("#notifications_show_body_subcontainer").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
+            window.application_spinner_prime("#notifications_show_form");
+            $("#notifications_show_newmessage_textarea").val('');
+            $("#notifications_show_body_subcontainer").scrollTop(document.getElementById("notifications_show_body_subcontainer").scrollHeight);
 
 
         <%- else %>
@@ -48,16 +60,6 @@
 
         <%- end %>
 
-
-
-
-
-		// b = $("[data-user_id=<%=@notification.user_id%>]")
-		// b.parent().prepend(b)
-
-        // $.get("/notifications/conversation?id=" + friend_id), function(data) {
-        //   $("#notifications_index_conversation").html(data)
-        // });
 
 
     <%- end %>

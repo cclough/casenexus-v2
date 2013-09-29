@@ -32,7 +32,7 @@ window.account_completeedit_bless = () ->
   # Start at current_user, zoomed
   window.map.setView([parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)], 15)
 
-  window.modal_spinner_prime()
+  window.application_spinner_prime(".modal.in")
 
 
 

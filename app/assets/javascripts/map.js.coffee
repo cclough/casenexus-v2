@@ -169,7 +169,7 @@ $(document).ready ->
     if !($("#modal_post").hasClass("in"))
       $(".modal").modal("hide")
       $("#modal_post").on "shown", ->
-        window.modal_spinner_prime()
+        window.application_spinner_prime(".modal.in")
       $("#modal_post").modal "show"
 
 

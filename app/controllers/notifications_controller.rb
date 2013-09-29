@@ -10,8 +10,7 @@ class NotificationsController < ApplicationController
   end
 
   def show
-
-    # for jump to
+    # of user
     @id = params[:id]
 
     @sender = User.find(@id)
