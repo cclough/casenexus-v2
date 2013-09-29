@@ -23,7 +23,7 @@
     = render 'layouts/flash', flash: flash
 
           
-    #application_container_main
+    #application_container_main.notifications
       = yield
 
   = render 'shared/modal_help' if signed_in?

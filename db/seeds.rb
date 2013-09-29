@@ -644,6 +644,8 @@ end
           announceschangedstructure: 1 + rand(4),
           pushingtoconclusion: 1 + rand(4)
       )
+      user.cases.last.created_at = random_date(year_range: 1, year_latest: 0.1)
+      
       puts "Case created for user #{user.username}"
     end
 

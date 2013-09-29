@@ -109,6 +109,14 @@ body {
   &.map {
     z-index:1;
   }
+
+  &.notifications {
+    height:100%;
+    outline:1px solid blue;
+    width:1000px;
+    margin: 0px auto;
+    position:relative;
+  }
 }
 
 .container {
