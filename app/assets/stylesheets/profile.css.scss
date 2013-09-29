@@ -133,7 +133,7 @@ $alert-yellow: #FFFF7E;
       #profile_index_friends_friends_requested_divider{
         height:1px;
         display:block;
-        margin:5px;
+        margin:10px;
         border-top:1px solid $gray_second;
       }
       .profile_index_friends_friends_item {
@@ -150,12 +150,25 @@ $alert-yellow: #FFFF7E;
         &.active {
           background:$gray_gunmetal_second;
         }
+        .profile_index_friends_friends_item_requested_highlight {
+          display:none;
+          &.unread {
+            height:35px;
+            position:absolute;
+            left:0px;
+            top:0px;
+            bottom:0px;
+            width:5px;
+            background: $blue_pastel;
+            display:inline;
+          }
+        }
         .profile_index_friends_friends_item_status {
           width: 10px;
           height: 10px;
           border-radius: 50%;
           border:0px !important;
-          margin:13px 0 0 8px;
+          margin:13px 0 0 10px;
           background:transparent;
           &.online_now {
             background: $alert-green;   

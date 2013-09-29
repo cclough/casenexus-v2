@@ -5,8 +5,8 @@ class ProfileController < ApplicationController
 
 
   def index
-    @friends = current_user.accepted_friends
-    @friends_requested = current_user.requested_friends
+    @friends = current_user.accepted_friends.order("username ASC")
+    @friends_requested = current_user.requested_friends.order("username ASC")
 
     @cases = current_user.cases
 

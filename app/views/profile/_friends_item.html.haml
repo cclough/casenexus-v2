@@ -1,5 +1,7 @@
 .profile_index_friends_friends_item{"data-friend_id"=>friends_item.id }
 
+  .profile_index_friends_friends_item_requested_highlight{ class: ("unread" if Friendship.requested?(current_user,friends_item)) }
+
   .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
 
   .profile_index_friends_friends_item_avatar
