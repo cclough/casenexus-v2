@@ -1,21 +1,19 @@
 .notifications_index_notifications_item{"data-user_id"=>asso_user.id.to_s}
-  .row
 
-    .span7.notifications_index_notifications_item_avatar
-      = avatar_for(asso_user,size:"medium")
+  .notifications_index_notifications_item_avatar
+    = avatar_for(asso_user,size:"medium")
 
 
-    .span17.notifications_index_notifications_item_text_container
-      .row
-        .notifications_index_notifications_item_name.application_truncatable
-          = asso_user.username
+  .notifications_index_notifications_item_text_container
+    .notifications_index_notifications_item_name.application_truncatable
+      = asso_user.username
 
-      .row
-        .notifications_index_notifications_item_caption.application_truncatable
-          - if notifications_item.content_trunc.blank?
-            = notifications_item.title
-          - else
-            = notifications_item.content_trunc
 
-    .span5.application_timestamp.notifications_index_notifications_item_date.pull-right
-      = notifications_item.date_fb
+    .notifications_index_notifications_item_caption.application_truncatable
+      - if notifications_item.content_trunc.blank?
+        = notifications_item.title
+      - else
+        = notifications_item.content_trunc
+
+  .notifications_index_notifications_item_date.application_timestamp
+    = notifications_item.date_fb
