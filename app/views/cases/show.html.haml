@@ -3,12 +3,6 @@
 
   = render 'subnav'
 
-  / .btn-group#cases_show_charts_view_buttongroup
-  /   .btn.btn-primary.active{"data-view"=>"table"}
-  /     Table
-  /   .btn.btn-primary{"data-view"=>"radar"}
-  /     Radar
-
   .row
 
     #cases_show_charts_panel.panel.dark.kill_left.kill_right
@@ -22,18 +16,6 @@
           #cases_show_charts_view_table_table_container
             = render "results_table"
 
-
-
-        / #cases_show_charts_view_radar.cases_show_charts_view.hidden
-
-        /   #cases_show_charts_radar_title
-
-        /   #cases_show_chart_radar
-
-        /   #cases_show_chart_radar_buttongroup.pull-right
-        /     .btn-group
-        /       %a#cases_show_chart_radar_button_all.btn.btn-small.btn-primary.active All
-        /       %a#cases_show_chart_radar_button_combined.btn.btn-small.btn-primary Combined
 
   .row
     .panel.dark.kill_left.kill_right.kill_top
@@ -53,55 +35,6 @@
             3rd Recommendation
           .cases_show_recommendation_content
             = @case.recommendation3
-
-  .row
-    .panel.dark.kill_left.kill_right.kill_top
-      .cases_show_title
-        Business Analytics
-      .row
-        .span25
-          #cases_show_businessanalytics_chart_bar{"data-scores" => @case.cases_show_category_chart_bar_data("businessanalytics")}
-        .span10.offset2
-          .cases_show_block_score
-            = @case.businessanalytics_combined
-            %span.cases_score_large_outof /5
-        .span.offset2
-          .cases_show_comment.panel.dark.kill_all
-            / = @case.businessanalytics_comment.html_safe
-
-
-
-
-  .row
-    .panel.dark.kill_left.kill_right.kill_top
-      .cases_show_title
-        Structure
-      .row
-        .span25
-          #cases_show_structure_chart_bar{"data-scores" => @case.cases_show_category_chart_bar_data("structure")}
-        .span10.offset2
-          .cases_show_block_score
-            = @case.structure_combined
-            %span.cases_score_large_outof /5
-        .span.offset2
-          .cases_show_comment.panel.dark.kill_all
-            / = @case.structure_comment.html_safe
-
-  .row
-    .panel.dark.kill_left.kill_right.kill_top
-      .cases_show_title
-        Interpersonal
-      .row
-        .span25
-          #cases_show_interpersonal_chart_bar{"data-scores" => @case.cases_show_category_chart_bar_data("interpersonal")}
-        .span10.offset2
-          .cases_show_block_score
-            = @case.interpersonal_combined
-            %span.cases_score_large_outof /5
-        .span.offset2
-          .cases_show_comment.panel.dark.kill_all
-            / = @case.interpersonal_comment.html_safe
-
 
 
 .modal-footer

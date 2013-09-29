@@ -22,7 +22,9 @@ window.cases_new_prime = () ->
     link: false #Button to insert a link. Default true
     image: false #Button to insert an image. Default true
     autoLink: false
-    composerClassName: "cases_new_maincomment_content"    
+    composerClassName: "cases_new_maincomment_content"  
+
+      
   # Score selectors!
   $(".cases_new_scoreselector_button").click ->
     score = $(this).data("score")
@@ -51,92 +53,6 @@ window.cases_new_prime = () ->
 #////////////////////////////////////////////////////
 #////////////////////  SHOW   ///////////////////////
 #////////////////////////////////////////////////////
-
-
-
-window.cases_show_category_chart_bar_draw = (category) ->
-  chart = undefined
-  
-  # SERIAL CHART
-  chart = new AmCharts.AmSerialChart()
-  # if category is "businessanalytics"
-  #   chart.dataProvider = cases_show_businessanalytics_chart_bar_data
-  # else if category is "interpersonal"
-  #   chart.dataProvider = cases_show_interpersonal_chart_bar_data
-  # else chart.dataProvider = cases_show_structure_chart_bar_data  if category is "structure"
-
-  chart_data = $("#cases_show_" + category + "_chart_bar").data("scores")
-  chart.dataProvider = chart_data
-  chart.autoMarginOffset = 0
-  chart.marginRight = 0
-  chart.categoryField = "criteria"
-  
-  # this single line makes the chart a bar chart,              
-  chart.rotate = true
-  chart.depth3D = 20
-  chart.angle = 30
-  
-  # AXES
-  # Category
-  categoryAxis = chart.categoryAxis
-  categoryAxis.gridPosition = "start"
-  categoryAxis.axisColor = "#DADADA"
-  categoryAxis.fillAlpha = 0
-  categoryAxis.gridAlpha = 0
-  categoryAxis.fillColor = "#FAFAFA"
-  categoryAxis.labelsEnabled = false
-  
-  # value
-  valueAxis = new AmCharts.ValueAxis()
-  valueAxis.gridAlpha = 0
-  valueAxis.dashLength = 1
-  
-  # valueAxis.minimum = 1;
-  valueAxis.integersOnly = true
-  valueAxis.labelsEnabled = false
-  valueAxis.maximum = 5
-  chart.addValueAxis valueAxis
-  
-  # GRAPH
-  graph = new AmCharts.AmGraph()
-  graph.title = "Score"
-  graph.valueField = "score"
-  graph.type = "column"
-  graph.labelPosition = "bottom"
-
-  graph.fontSize = 10
-  graph.labelText = "[[category]]"
-  graph.balloonText = "[[category]]: [[value]]"
-  graph.lineAlpha = 0
-  
-  # Balloon Settings
-  balloon = chart.balloon
-  balloon.adjustBorderColor = true
-  balloon.cornerRadius = 5
-  balloon.showBullet = false
-  balloon.fillColor = "#000000"
-  balloon.fillAlpha = 0.7
-  balloon.color = "#FFFFFF"
-
-  if category is "businessanalytics"
-    graph.fillColors = "#0D8ECF"
-  else if category is "structure"
-    graph.fillColors = "#B0DE09"
-  else if category is "interpersonal"
-    graph.fillColors = "#FCD202"
-
-
-  graph.fillAlphas = 0.5
-  chart.addGraph graph
-
-
-  # WRITE
-  if category is "businessanalytics"
-    chart.write "cases_show_businessanalytics_chart_bar"
-  else if category is "interpersonal"
-    chart.write "cases_show_interpersonal_chart_bar"
-  else chart.write "cases_show_structure_chart_bar" if category is "structure"
-
 
 
 
@@ -454,17 +370,13 @@ window.cases_resultstable_bars_draw = () ->
 #///////////////////////////////////////////////////////////////
 
 $(document).ready ->
-  
-#///////////////////////////////////////////////////////////////
-#////////////////////////// INDEX //////////////////////////////
-#///////////////////////////////////////////////////////////////
-  
 
 #///////////////////////////////////////////////////////////////
 #/////////////////////////// NEW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
 
-  window.cases_new_prime()
+
+
 
 #///////////////////////////////////////////////////////////////
 #///////////////////////// ANALYSIS ////////////////////////////
@@ -516,22 +428,7 @@ $(document).ready ->
     false
 
 
-
-
-
   # Select Case Pull Down
   $("#cases_show_subnav_select").change ->
     window.location = "/cases/" + $(this).val()
 
-
-
-
-#///////////////////////////////////////////////////////////////
-#////////////////////////    CALLS    //////////////////////////
-#///////////////////////////////////////////////////////////////
-
-
-
-#///////////////////////////////////////////////////////////////
-#///////////////////////////////////////////////////////////////
-#///////////////////////////////////////////////////////////////
