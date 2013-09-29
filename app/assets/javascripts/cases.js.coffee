@@ -272,7 +272,7 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
   $("#cases_analysis_chart_progress").fadeIn "fast"
 
   cases_analysis_chart_progress_data = []
-  $.getJSON("/cases/analysis", (json) ->
+  $.getJSON("/cases/results", (json) ->
     $.each json, (i, item) ->
       dataObject =
         id: json[i].id
@@ -295,7 +295,26 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
 
 
 
-window.cases_resultstable_bars_draw = () ->
+window.cases_resultstable_prime = (view) ->
+
+  $("#cases_resultstable_form .btn").off 'click'
+
+  $("#cases_resultstable_form .btn").click ->
+
+    radio = $(this).data("radio")
+    type = $(this).data("type")
+
+    # Change radio
+    $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+    
+    # Remove and add active class to buttons
+    $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
+    $(this).addClass "active"
+    
+    # Submit form
+    $.get("/cases/results?view=" + view, $("#cases_resultstable_form").serialize(), null, "script")
+    false
+
 
   i = 0
 
@@ -383,22 +402,22 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 
 
-  # Order and Period buttons
-  $("#cases_analysis_section_table .btn").click ->
+  # # Order and Period buttons
+  # $("#cases_analysis_section_table .btn").click ->
 
-    radio = $(this).data("radio")
-    type = $(this).data("type")
+  #   radio = $(this).data("radio")
+  #   type = $(this).data("type")
 
-    # Change radio
-    $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+  #   # Change radio
+  #   $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
-    # Remove and add active class to buttons
-    $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
-    $(this).addClass "active"
+  #   # Remove and add active class to buttons
+  #   $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
+  #   $(this).addClass "active"
     
-    # Submit form
-    $.get("/cases/analysis", $("#cases_resultstable_form").serialize(), null, "script")
-    false
+  #   # Submit form
+  #   $.get("/cases/analysis", $("#cases_resultstable_form").serialize(), null, "script")
+  #   false
 
 
 
@@ -409,23 +428,23 @@ $(document).ready ->
 
 
 
-  # Order and Period buttons
-  $("#cases_show_charts_view_table .btn").click ->
+  # # Order and Period buttons
+  # $("#cases_show_charts_view_table .btn").click ->
 
-    radio = $(this).data("radio")
-    type = $(this).data("type")
+  #   radio = $(this).data("radio")
+  #   type = $(this).data("type")
 
-    # Change radio
-    $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+  #   # Change radio
+  #   $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
-    # Remove and add active class to buttons
-    $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
-    $(this).addClass "active"
+  #   # Remove and add active class to buttons
+  #   $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
+  #   $(this).addClass "active"
     
-    case_id = $("#cases_resultstable_caseid").val()
-    # Submit form
-    $.get("/cases/"+case_id, $("#cases_resultstable_form").serialize(), null, "script")
-    false
+  #   case_id = $("#cases_resultstable_caseid").val()
+  #   # Submit form
+  #   $.get("/cases/"+case_id, $("#cases_resultstable_form").serialize(), null, "script")
+  #   false
 
 
   # Select Case Pull Down

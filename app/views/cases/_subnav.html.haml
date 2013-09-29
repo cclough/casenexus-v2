@@ -1,57 +1,30 @@
-#cases_show_subnav_browse
+#cases_show_subnav
 
-  %span#cases_show_subnav_label
-    Browse your cases
-    %i.icon-caret-right
+  #cases_show_subnav_basics
+    #cases_show_subnav_avatar
+      = avatar_for(@case.interviewer,size:"medium")
+    #cases_show_subnav_name
+      = @case.interviewer.username
+      #cases_show_subnav_date
+        = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
+    #cases_show_subnav_score
+      = @case.totalscore.to_f.round(1)
+      - "/15"
 
-  %select#cases_show_subnav_select.chzn-select.span29.offset2{"data-placeholder" => "Jump to Case...", value: @case.id }
-    %option
-      - @cases.each do |cases_select_item|
-        %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
-          = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
+  #cases_show_subnav_browse
 
-  .cases_show_subnav_browse_button.btn.btn-primary{ "data-case_id" => @case.prev.id }
-    %i.icon-caret-left
-  .cases_show_subnav_browse_button.btn.btn-primary{ "data-case_id" => @case.next.id }
-    %i.icon-caret-right
+    %span#cases_show_subnav_label
+      Browse your cases
+      %i.icon-caret-right
 
+    %select#cases_show_subnav_select.chzn-select{"data-placeholder" => "Jump to Case...", value: @case.id }
+      %option
+        - @cases.each do |cases_select_item|
+          %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
+            = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
 
-.row
-  .panel.dark.kill_left.kill_right.kill_bottom#cases_show_subnav_info
+    .cases_show_subnav_browse_button.btn.btn-primary{ "data-case_id" => @case.prev.id }
+      %i.icon-caret-left
+    .cases_show_subnav_browse_button.btn.btn-primary{ "data-case_id" => @case.next.id }
+      %i.icon-caret-right
 
-    .row
-
-    .row
-      .span6
-        .row
-          = avatar_for(@case.interviewer,size:"large")
-        .row
-          / = casecounts(@case.interviewer)
-      .span32
-        .row
-          .span.offset1#cases_show_subnav_name
-            = @case.interviewer.username
-
-        .spacer5
-        .row
-          .span.offset1#cases_show_subnav_date
-            = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
-
-      .span10
-        - if @case.book_id?
-          = render partial: 'books/show_small', locals: { book_id: @case.book_id }
-        - else
-          .row
-            .span7
-              Source:
-            %span
-              = @case.source
-          .row
-            .span7
-              Subject:
-            %span
-              = @case.subject
-
-      .span10.pull-right#cases_show_subnav_score
-        %span= @case.totalscore.to_f.round(1)
-        %span.cases_score_large_outof /15

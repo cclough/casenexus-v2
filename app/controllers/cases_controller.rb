@@ -74,7 +74,7 @@ class CasesController < ApplicationController
   end
 
 
-  def analysis
+  def results
 
     # CHAGNE? Same as period
     @case_count_bracket = current_user.case_count_bracket
@@ -92,9 +92,8 @@ class CasesController < ApplicationController
       @table_hash = hash.sort_by{|k, v| v}.reverse      
     end
 
-    # which view to show?
-    if params[:view] then @view = params[:view] else @view = "table" end
-
+    @view = params[:view]
+    
     respond_to do |format|
       format.html { render layout:false }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }

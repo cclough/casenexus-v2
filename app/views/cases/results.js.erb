@@ -1,0 +1,7 @@
+$(".cases_resultstable_container").html("<%= escape_javascript(render("results_table")) %>")
+
+if (cases_analysis_chart_case_count == 0) {
+  $("#cases_analysis_chart_table_empty").fadeIn("fast");
+} else {
+  window.cases_resultstable_prime("<%= escape_javascript(@view) %>");
+}

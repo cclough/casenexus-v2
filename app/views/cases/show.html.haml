@@ -3,38 +3,48 @@
 
   = render 'subnav'
 
-  .row
+  #cases_show_panel_left
 
-    #cases_show_charts_panel.panel.dark.kill_left.kill_right
+    #cases_show_book
+
+      - if @case.book_id?
+        = render partial: 'books/show_small', locals: { book_id: @case.book_id }
+      - else
+        .row
+          .span7
+            Source:
+          %span
+            = @case.source
+        .row
+          .span7
+            Subject:
+          %span
+            = @case.subject
+
+    #cases_show_results
+
+      = render "results_table_form"
+      .cases_resultstable_container
+        = render "results_table"
 
 
-      .row
+  #cases_show_panel_right
 
-        #cases_show_charts_view_table.cases_show_charts_view
-          = render "results_table_form"
+    #cases_show_recommendations
+      .cases_show_recommendation
+        .cases_show_recommendation_content
+          = @case.recommendation1
+      .cases_show_recommendation
+        .cases_show_recommendation_content
+          = @case.recommendation2
+      .cases_show_recommendation
+        .cases_show_recommendation_content
+          = @case.recommendation3
 
-          #cases_show_charts_view_table_table_container
-            = render "results_table"
-
-
-  .row
-    .panel.dark.kill_left.kill_right.kill_top
-      .row
-        .span30
-          .cases_show_title.recommendation
-            1st Recommendation
-          .cases_show_recommendation_content
-            = @case.recommendation1
-        .span30.offset1
-          .cases_show_title.recommendation
-            2nd Recommendation
-          .cases_show_recommendation_content
-            = @case.recommendation2
-        .span30.offset1
-          .cases_show_title.recommendation
-            3rd Recommendation
-          .cases_show_recommendation_content
-            = @case.recommendation3
+    #cases_show_maincomment
+      #cases_show_maincomment_content
+        = @case.main_comment
+        hello
 
 
 .modal-footer

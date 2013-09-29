@@ -1,7 +1,7 @@
+- @view = "show" if params[:view].blank?
+
 = form_tag '#', method: 'get', id: "cases_resultstable_form", remote:true do
   .row
-
-
     #cases_resultstable_order_by_container.btn-group.pull-right
 
       .btn.btn-primary.btn-small.cases_resultstable_orderby_button.active{"data-radio"=>0, "data-type"=>"order_by"}
@@ -15,7 +15,7 @@
       %i.icon-caret-right
 
 
-    - if params[:action] == "analysis"
+    - if @view != "show"
       - if current_user.case_count_recd >= 2
         #cases_resultstable_period_container.btn-group.pull-right
           .btn.btn-primary.btn-small.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
@@ -40,7 +40,7 @@
       = radio_button_tag :resultstable_order_by, 'order', checked: true
       = radio_button_tag :resultstable_order_by, 'group'
 
-      - if params[:action] == "analysis"
+      - if @view != "show"
         = radio_button_tag :resultstable_period, 1, checked: true
         = radio_button_tag :resultstable_period, 2
         = radio_button_tag :resultstable_period, 5

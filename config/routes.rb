@@ -75,7 +75,7 @@ Casenexus::Application.routes.draw do
 
   # Cases
   resources :cases, only: [:show, :new, :create] do
-    get :analysis, on: :collection
+    get :results, on: :collection
   end
 
   # Posts

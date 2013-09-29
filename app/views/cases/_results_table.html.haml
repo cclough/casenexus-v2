@@ -1,17 +1,23 @@
-%table#cases_resultstable_table
+- @view = "show" if params[:view].blank?
+
+%table#cases_resultstable_table{class: ("show" if @view == "show")}
   %thead
+
+
     %th#cases_resultstable_table_column_criteria
-      Scoring Criteria
+      / Criteria
+      = params[:view]
 
     %th
       Score
-      %p (Last #{@period.to_s} Av. /5)
+      - if @view != "show"
+        %p (Last #{@period.to_s} Av. /5)
     %th#cases_resultstable_table_column_bar
 
     / %th
     /   Previous
     /   %p (Prev #{@period.to_s} Av. /5)
-    - if params[:action] == "analysis"
+    - if @view != "show"
       %th
         Growth
         %p (From previous #{@period.to_s} to last #{@period.to_s})
@@ -40,7 +46,7 @@
           / Chart
           .cases_resultstable_chart_bar{"data-score" => value, id: "cases_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
 
-        - if params[:action] == "analysis"
+        - if @view != "show"
           / Growth cell
           - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
           - curr_av = value
