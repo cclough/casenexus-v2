@@ -9,7 +9,7 @@
       Your conversations
       = render 'notifications_form'
   #notifications_index_notifications
-    = render :partial => 'notifications', :locals => { :notifications => @notifications }
+    = render :partial => 'notifications'
 
 /     = link_to 'Load More Notifications', notifications_path(:page => @notifications.next_page), :class => 'load-more-posts', :remote => true if @notifications.next_page
 

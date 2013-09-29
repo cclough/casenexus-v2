@@ -18,7 +18,6 @@
             window.application_spinner_prime("#notifications_show_form");
             window.application_form_errors_close();
 
-
         <%- end %>
 
 
@@ -40,6 +39,8 @@
             window.application_spinner_prime("#notifications_show_form");
             $("#notifications_show_newmessage_textarea").val('');
             $("#notifications_show_body_subcontainer").scrollTop(document.getElementById("notifications_show_body_subcontainer").scrollHeight);
+
+            $.get("/notifications", null, null, "script");
 
 
         <%- else %>

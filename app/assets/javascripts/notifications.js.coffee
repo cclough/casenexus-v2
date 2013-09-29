@@ -1,6 +1,6 @@
 
 
-window.notifications_index_jump = (user_id) ->
+window.notifications_index_show_prime = (user_id) ->
   $.get "/notifications/" + user_id, (data) ->
     $("#notifications_index_conversation").html data
     $("#notifications_show_body_subcontainer").scrollTop document.getElementById("notifications_show_body_subcontainer").scrollHeight
@@ -15,16 +15,14 @@ window.notifications_index_jump = (user_id) ->
         false
     )
 
-
 $(document).ready ->
-
 
   $(".notifications_index_notifications_item").click ->
 
     user_id = $(this).data("user_id")
 
     # get and load
-    window.notifications_index_jump user_id
+    window.notifications_index_show_prime user_id
 
     # add selected class
     $(".notifications_index_notifications_item").removeClass "notifications_index_notifications_item_select"
