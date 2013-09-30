@@ -271,9 +271,9 @@ class Case < ActiveRecord::Base
     if options[:type] == :line
 
 
-      return "http://chart.apis.google.com/chart?chg=5,30,1,1,0,0&chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
+      return "https://chart.googleapis.com/chart?chg=5,30,1,1,0,0&chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
     else
-      return "http://chart.apis.google.com/chart?cht=bvs&chs=#{options[:size]}&chd=t:#{activity_str}&chco=#{options[:chart_color]}&chbh=a,#{options[:line_width]}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
+      return "https://chart.googleapis.com/chart?cht=bvs&chs=#{options[:size]}&chd=t:#{activity_str}&chco=#{options[:chart_color]}&chbh=a,#{options[:line_width]}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
     end
   end
   

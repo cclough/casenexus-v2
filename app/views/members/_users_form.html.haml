@@ -5,7 +5,7 @@
   .row
 
     #map_index_users_form_button_container_local
-      %a#map_index_users_form_button_local.map_index_users_form_button.btn.btn-small.btn-primary.active{"data-radio"=>0}
+      %a#map_index_users_form_button_local.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
         / %i.icon-user
         = image_tag "icons/user.png"
         %br

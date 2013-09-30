@@ -28,11 +28,11 @@ markerLayer.on('layeradd', function(e) {
     marker.on('click', function () {
  
       // pan, offset pan, zoom and show button
-      // window.map.panTo(marker.getLatLng());
-
+      window.map.setZoom(15);
+      window.map.panTo(marker.getLatLng());
+      offset = map.getSize().x*0.25;
+      window.map.panBy(new L.Point(-offset, 0), {animate: false})
       $("#map_index_map_zoomout").fadeIn("fast");
-
-      // window.map.setZoom(15);
 
       window.marker_and_popup_actions_for(marker,"perm"); 
 
