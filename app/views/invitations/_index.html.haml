@@ -1,0 +1,61 @@
+
+.modal-header
+  %button.close{"data-dismiss" => "modal", type: "button"} ×
+
+  %h3 Invite a friend
+
+.modal-body
+
+  #flash_notifications
+    = render 'shared/error_messages', object: @invitation
+
+  .row
+    .span
+      - if current_user.invitations.count < Invitation::INVITATION_LIMIT || current_user.id == 1
+
+        = simple_form_for @invitation, remote:true, html: { id: "account_edit_invitations_form" } do |f|
+          .row
+            .span28
+              .spacer5
+              %b #{current_user.invitations.count}/20 invitations Used
+              = hidden_field_tag :back_url, invitations_path
+            .span19
+              = f.text_field :name, class: 'span18 application_form_input_alternative', placeholder: "Name"
+            .span25
+              = f.text_field :email, class: 'span25 application_form_input_alternative', placeholder: "Email"
+            .span5.offset1
+              = f.submit "Invite", class: 'btn btn-primary'
+          .spacer15
+          .row
+            NB casenexus is currently only available at certain universities:
+            .spacer10
+            = render "static_pages/universities_select"
+      - else
+        %b You have no more invitations!
+
+  .panel.dark.kill_bottom.kill_left.kill_right
+    .row
+      - if @invitations.count > 0
+        %table.table
+          %tbody
+            - @invitations.each do |invitation|
+              %tr
+                - if invitation.invited
+                  %td
+                    = "#{invitation.email} accepted your invitation and created his profile: "
+                  %td
+                    = link_to(invitation.name + "'s profile", member_path(invitation.invited))
+                - else
+                  %td
+                    = "#{invitation.email} was invited"
+                  %td
+                    = link_to("Cancel Invitation", invitation_path({id: invitation.id}), method: :delete, confirm: "Are you sure?")
+      - else
+        You have not invited anyone yet
+
+
+
+.modal-footer
+  %a.btn{"data-dismiss" => "modal", href: "#"} Close
+
+

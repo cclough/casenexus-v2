@@ -144,7 +144,8 @@ footer {
   }
 
   ul {
-    margin-left:40%;
+    width:270px;
+    margin:0 auto;
     list-style: none;
     li {
       float: left;
@@ -334,6 +335,9 @@ textarea {
 
   ul {
     margin: 0px 15px 0px 15px;
+    li {
+      text-align:left;
+    }
   }
 }
 
@@ -393,9 +397,9 @@ textarea {
   padding: 10px;
   // overflow:scroll;
 
-  -moz-border-radius:    0px;
-  -webkit-border-radius: 0px;
-  border-radius:         0px;
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
 
   &.dark {
     background: white;

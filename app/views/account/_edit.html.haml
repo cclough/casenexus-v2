@@ -17,11 +17,11 @@
     .row
       .span24.offset2
         = f.label :username
-      .span30
+      .span26
         = f.text_field :username, class: "span26 application_form_input_alternative"
 
     .row
-      .span30.offset20
+      .span26.offset20
         %a.btn.btn-primary.btn-small{href: "/account/edit_password"}
           %i.icon-pencil
           Edit my password
@@ -109,14 +109,14 @@
     .row
       .span24.offset2.account_form_label
         Cases outside of casenexus
-      .span23
-        = f.text_field :cases_external, class: "span6 application_form_input_alternative", id: "account_completedit_casesexternal_field"
+      .span5
+        = f.text_field :cases_external, class: "span5 application_form_input_alternative", id: "account_completedit_casesexternal_field"
 
     .account_edit_form_spacer
 
 
     .row
-      .span23.offset26
+      .span16.offset26
         = link_to(raw("<i class=icon-share-alt></i> Remove my account"), delete_account_path, class: "btn btn-primary btn-small")
 
     .account_edit_form_spacer
@@ -128,13 +128,13 @@
 
       .span3
         = f.check_box :email_admin
-      .span30.offset1
+      .span30.offset1.account_edit_form_emailing_label
         .spacer5
         Receive site news and consulting advice
     .row
       .span3.offset26
         = f.check_box :email_users
-      .span30.offset1
+      .span30.offset1.account_edit_form_emailing_label
         .spacer5
         Receive notiffications via email
 

@@ -1,0 +1,24 @@
+<%- if @invitation.errors.any? %>
+
+  $('#modal_profile').html("<%= j(render('invitations/index')) %>");
+
+  window.application_form_errors_close();
+
+<%- else %>
+
+  $('#modal_profile').modal('hide');
+
+  $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
+  
+  $("div[id=application_flash]:last").fadeIn("fast", function () {
+
+    setTimeout(function() {
+      $("div[id=application_flash]:last").fadeOut('fast', function() {
+        $("div[id=application_flash]:last").remove();
+      });
+    }, 4000);
+
+  });
+
+   
+<%- end %>
