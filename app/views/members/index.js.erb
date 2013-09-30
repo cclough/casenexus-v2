@@ -87,6 +87,7 @@ markerLayer.setGeoJSON(geoJson);
 
 // open tooltip of first marker in list + make user item active - NB RUBY IF
 <%- if @users.count > 0 %>
+
   var firstmarker_id = "<%= j(@users.first.id.to_s) %>";
   markerLayer.eachLayer(function(marker) {
 
@@ -98,9 +99,9 @@ markerLayer.setGeoJSON(geoJson);
         offset = map.getSize().x*0.25;
         window.map.panBy(new L.Point(-offset, 0), {animate: false})
         // $("#map_index_map_zoomout").fadeIn("fast");
-
       }
   });
+
   $('.map_index_users_item').removeClass("map_index_users_item_info_active");
   $("#map_index_users").find('.map_index_users_item').first().addClass("map_index_users_item_info_active");
 <%- end %>

@@ -618,6 +618,7 @@ $alert-yellow: #FFFF7E;
     height:322px;
     font-size:11px;
     td {
+      border-top: 0;
       padding:1px 10px !important;
     }
     #cases_resultstable_table_column_criteria {
@@ -625,10 +626,10 @@ $alert-yellow: #FFFF7E;
       padding-left:10px;
     }
     .cases_resultstable_chart_bar{
-      width:160px !important;
+      width:150px !important;
     }
     #cases_resultstable_table_column_bar {
-      width:160px !important;
+      width:150px !important;
     }
     .cases_resultstable_cell_score {
       font-size:12px;

@@ -377,7 +377,7 @@ position:relative;
   height:60px;
   width:57px;
   background:white;
-  margin:0 10px 0 0;
+  margin:0 10px 0 -6px;
   background:white;
   padding:5px;
   overflow: hidden;
@@ -424,6 +424,16 @@ position:relative;
   z-index:99;
   font-size:11px;
   font-weight:bold;
+  text-align:center;
+
+  border-top-right-radius: 3px;
+  -moz-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+
+  border-bottom-right-radius: 3px;
+  -moz-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+
 }
 
 
