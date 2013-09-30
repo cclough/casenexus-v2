@@ -232,10 +232,10 @@ $alert-yellow: #FFFF7E;
     top:12px;
   }
   img {
-    width:30px;
+    width:35px;
     position:absolute;
-    left:34px;
-    top:10px;
+    left:32px;
+    top:13px;
   }
 }
 
@@ -325,6 +325,7 @@ $alert-yellow: #FFFF7E;
 
 #map_index_users_empty {
   text-align: center;
+  display:none;
 
   position:absolute;
 

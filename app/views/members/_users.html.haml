@@ -2,9 +2,6 @@
   - if @users.count > 0
     - for users_item in @users
       = render partial: 'users_item' , locals: { users_item: users_item }
-  - else
-    #map_index_users_empty.panel.dark.center
-      No one found
 
     
 #map_index_users_form_paginate

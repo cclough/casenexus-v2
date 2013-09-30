@@ -3,6 +3,10 @@ $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
 $("#map_index_users_spinner_container").fadeOut("fast");
 
+if ("<%= @users.count.to_s %>" == "0") {
+  $("#map_index_users_empty").fadeIn("fast");
+}
+
 window.map_index_users_item_bless();
 
 /////////////////////////////////////////////////////////////////////////////////////////

@@ -32,6 +32,7 @@ window.map_index_users_item_bless = () ->
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   # show the spinner briefly
+  $("#map_index_users_empty").fadeOut(100)
   $("#map_index_users_spinner_container").fadeIn("fast")
 
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
