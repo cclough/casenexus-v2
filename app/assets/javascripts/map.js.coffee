@@ -38,6 +38,7 @@ window.map_index_users_updatelist = ->
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
 
+  $("#map_index_map_guide").fadeOut("fast")
 
 
 window.map_index_users_resetfilters = (filter_excep) ->
@@ -97,7 +98,7 @@ window.activate_perm_popup_and_icon_for = (marker) ->
 
   # Change Icon
   activeIcon = L.icon(
-    iconUrl: "/assets/markers/marker_new_active.png"
+    iconUrl: "/assets/markers/marker_active.png"
     iconSize: [33, 42]
     iconAnchor: [0, 0]
     popupAnchor: [17, 8]
@@ -280,3 +281,27 @@ $(document).ready ->
       z = Math.round(map.getZoom())
       zoom_bar.setValue z / 16
       handle.innerHTML = z
+
+
+
+
+
+    markerLayer_user = L.mapbox.markerLayer(
+      type: "Feature"
+      geometry:
+        type: "Point"
+        coordinates: [parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)]
+      properties:
+        icon:
+          iconUrl: "/assets/markers/arrow2.png"
+          iconSize: [20, 45]
+          iconAnchor: [0, 0]
+          popupAnchor: [17, 8]
+    ).addTo(map)
+
+    markerLayer_user.on 'layeradd', (e) ->
+      marker = e.layer
+      feature = marker.feature
+      marker.setIcon L.icon(feature.properties.icon)
+
+

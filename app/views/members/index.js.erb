@@ -5,6 +5,10 @@ $("#map_index_users_spinner_container").fadeOut("fast");
 
 if ("<%= @users.count.to_s %>" == "0") {
   $("#map_index_users_empty").fadeIn("fast");
+} else {
+  setTimeout(function () {
+    $("#map_index_map_guide").fadeIn("fast")
+  },750);
 }
 
 window.map_index_users_item_bless();

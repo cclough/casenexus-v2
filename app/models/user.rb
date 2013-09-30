@@ -209,7 +209,7 @@ class User < ActiveRecord::Base
                       \"cases_givn\": \"#{user.case_count_givn}\",
                       \"cases_ext\": \"#{user.cases_external}\",
                       \"icon\": {
-                        \"iconUrl\": \"/assets/markers/marker_new.png\",
+                        \"iconUrl\": \"/assets/markers/marker.png\",
                         \"iconSize\": [33, 42],
                         \"iconAnchor\": [0, 0],
                         \"popupAnchor\": [17, 8]
