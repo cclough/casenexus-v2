@@ -12,14 +12,14 @@
       - else
         .row
           .span7
-            Source:
-          %span
-            = @case.source
+            %b Subject
+          .span32
+            = @case.subject
         .row
           .span7
-            Subject:
-          %span
-            = @case.subject
+            %b Source
+          .span32
+            = @case.source
 
     #cases_show_results
       .cases_resultstable_container
