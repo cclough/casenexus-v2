@@ -1,0 +1,19 @@
+$('#modal_event').modal('hide');
+
+$("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
+
+$("div[id=application_flash]:last").fadeIn("fast", function () {
+
+  setTimeout(function() {
+    $("div[id=application_flash]:last").fadeOut('fast', function() {
+      $("div[id=application_flash]:last").remove();
+    });
+  }, 4000);
+
+});
+
+// Refresh the calendar if on events#index
+$("#profile_index_calendar").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
+window.events_calendar_rebless();
+
+ 

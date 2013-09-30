@@ -88,11 +88,7 @@ class EventsController < ApplicationController
     @event = current_user.events.find(params[:id])
     Event.cancel(@event.user, @event.partner)
     flash[:success] = "Appointment cancelled. " + @event.partner.username + " has been notified."
-    if params[:back_url]
-      redirect_to params[:back_url]
-    else
-      redirect_to profile_path
-    end
+    respond_to(:js)
   end
 
   def user_timezone

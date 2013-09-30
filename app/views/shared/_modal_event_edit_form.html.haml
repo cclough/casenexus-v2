@@ -104,7 +104,7 @@
 
   .modal-footer
     .pull-left
-      = link_to("Cancel", event_path(@event), method: :delete, class: "btn btn-primary ", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btn btn-primary ", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
 
       = render 'events/button_startcase'
 
