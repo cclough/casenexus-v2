@@ -48,6 +48,7 @@ window.modal_help_show = () ->
     window.ArrowNav.init()
     window.ArrowNav.goTo "1"
 
+
 window.getQueryParams = (qs) ->
   qs = qs.split("+").join(" ")
   params = {}

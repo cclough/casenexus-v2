@@ -109,6 +109,10 @@
     = radio_button_tag :users_listtype, 'online_now'
     = radio_button_tag :users_listtype, 'posts'
     = radio_button_tag :users_listtype, 'language'
+    / for params user_id link
+    - unless params[:user_id].blank?
+      = radio_button_tag :users_listtype, 'params', checked: true
+      = hidden_field_tag :user_id, params[:user_id]
 
     = text_field_tag :users_filter_degreelevel, current_user.degree_level
     = text_field_tag :users_filter_language

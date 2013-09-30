@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130929220751) do
+ActiveRecord::Schema.define(:version => 20130930020150) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -217,9 +217,10 @@ ActiveRecord::Schema.define(:version => 20130929220751) do
   end
 
   create_table "universities", :force => true do |t|
-    t.string "name"
-    t.string "image"
-    t.string "domain"
+    t.string  "name"
+    t.string  "image"
+    t.string  "domain"
+    t.boolean "enabled"
   end
 
   create_table "users", :force => true do |t|

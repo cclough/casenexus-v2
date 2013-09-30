@@ -62,32 +62,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   end
 
 
-  puts "Creating Universities"
-
-  University.create!(name: "University of Cambridge", image: "cambridge.png", domain: "cam.ac.uk")
-  University.create!(name: "University of Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
-  University.create!(name: "Imperial College London", image: "imperial.png", domain: "imperial.ac.uk")
-  University.create!(name: "London Business School", image: "lbs.png", domain: "london.edu")
-  University.create!(name: "London School of Economics", image: "lse.png", domain: "lse.ac.uk")
-
-  University.create!(name: "Harvard University", image: "harvard.png", domain: "harvard.edu")
-  University.create!(name: "UC San Diego", image: "ucsd.png", domain: "ucsd.edu")
-  University.create!(name: "Northwestern University", image: "northwestern.png", domain: "northwestern.edu")
-  University.create!(name: "UC Berkeley", image: "ucberkeley.png", domain: "berkeley.edu")
-  University.create!(name: "UPenn", image: "upenn.png", domain: "upenn.edu")
-  University.create!(name: "Duke University", image: "duke.png", domain: "duke.edu")
-  University.create!(name: "Stanford University", image: "stanford.png", domain: "stanford.edu")
-  University.create!(name: "Columbia University", image: "columbia.png", domain: "columbia.edu")
-  University.create!(name: "Cornell University", image: "cornell.png", domain: "cornell.edu")
-  University.create!(name: "Brown University", image: "brown.png", domain: "brown.edu")
-  University.create!(name: "Dartmouth College", image: "dartmouth.png", domain: "dartmouth.edu")
-  University.create!(name: "Princeton University", image: "princeton.png", domain: "princeton.edu")
-  University.create!(name: "Yale", image: "yale.png", domain: "yale.edu")
-
-
-
-
-
 
 
 
@@ -99,25 +73,25 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   puts "Creating universities"
 
-  University.create!(name: "Cambridge", image: "cambridge.png", domain: "cam.ac.uk")
-  University.create!(name: "Oxford", image: "oxford.jpg", domain: "ox.ac.uk")
-  University.create!(name: "Imperial", image: "imperial.png", domain: "imperial.ac.uk")
-  University.create!(name: "LBS", image: "lbs.png", domain: "london.edu")
-  University.create!(name: "LSE", image: "lse.png", domain: "lse.ac.uk")
+  University.create!(name: "Cambridge", image: "cambridge.png", domain: "cam.ac.uk", enabled: true)
+  University.create!(name: "Oxford", image: "oxford.jpg", domain: "ox.ac.uk", enabled: true)
+  University.create!(name: "Imperial", image: "imperial.png", domain: "imperial.ac.uk", enabled: false)
+  University.create!(name: "LBS", image: "lbs.png", domain: "london.edu", enabled: false)
+  University.create!(name: "LSE", image: "lse.png", domain: "lse.ac.uk", enabled: false)
 
-  University.create!(name: "Harvard", image: "harvard.png", domain: "harvard.edu")
-  University.create!(name: "UCSD", image: "ucsd.png", domain: "ucsd.edu")
-  University.create!(name: "Northwestern", image: "northwestern.png", domain: "northwestern.edu")
-  University.create!(name: "Berkeley", image: "ucberkeley.png", domain: "berkeley.edu")
-  University.create!(name: "UPenn", image: "upenn.png", domain: "upenn.edu")
-  University.create!(name: "Duke", image: "duke.png", domain: "duke.edu")
-  University.create!(name: "Stanford", image: "stanford.png", domain: "stanford.edu")
-  University.create!(name: "Columbia", image: "columbia.png", domain: "columbia.edu")
-  University.create!(name: "Cornell", image: "cornell.png", domain: "cornell.edu")
-  University.create!(name: "Brown", image: "brown.png", domain: "brown.edu")
-  University.create!(name: "Dartmouth", image: "dartmouth.png", domain: "dartmouth.edu")
-  University.create!(name: "Princeton", image: "princeton.png", domain: "princeton.edu")
-  University.create!(name: "Yale", image: "yale.png", domain: "yale.edu")
+  University.create!(name: "Stanford", image: "stanford.png", domain: "stanford.edu", enabled: false)
+  University.create!(name: "Harvard", image: "harvard.png", domain: "harvard.edu", enabled: false)
+  University.create!(name: "UCSD", image: "ucsd.png", domain: "ucsd.edu", enabled: false)
+  University.create!(name: "Northwestern", image: "northwestern.png", domain: "northwestern.edu", enabled: false)
+  University.create!(name: "Berkeley", image: "ucberkeley.png", domain: "berkeley.edu", enabled: false)
+  University.create!(name: "UPenn", image: "upenn.png", domain: "upenn.edu", enabled: false)
+  University.create!(name: "Duke", image: "duke.png", domain: "duke.edu", enabled: false)
+  University.create!(name: "Columbia", image: "columbia.png", domain: "columbia.edu", enabled: false)
+  University.create!(name: "Cornell", image: "cornell.png", domain: "cornell.edu", enabled: false)
+  University.create!(name: "Brown", image: "brown.png", domain: "brown.edu", enabled: false)
+  University.create!(name: "Dartmouth", image: "dartmouth.png", domain: "dartmouth.edu", enabled: false)
+  University.create!(name: "Princeton", image: "princeton.png", domain: "princeton.edu", enabled: false)
+  University.create!(name: "Yale", image: "yale.png", domain: "yale.edu", enabled: false)
 
 
 

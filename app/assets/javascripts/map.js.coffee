@@ -47,8 +47,8 @@ window.map_index_users_resetfilters = (filter_excep) ->
 
 
 window.map_index_users_search = ->
-    $("#map_index_users_form_search_field").val($("#header_nav_search_field").val())
-    map_index_users_updatelist()
+  $("#map_index_users_form_search_field").val($("#header_nav_search_field").val())
+  map_index_users_updatelist()
 
 
 

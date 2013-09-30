@@ -1,5 +1,5 @@
 class University < ActiveRecord::Base
-  attr_accessible :name, :image, :domain
+  attr_accessible :name, :image, :domain, :enabled
 
   has_many :users
   has_many :books
@@ -7,6 +7,10 @@ class University < ActiveRecord::Base
 
   def image_file
     "universities/" + self.image
+  end
+
+  def self.enabled
+    where(enabled: true)
   end
 
 end

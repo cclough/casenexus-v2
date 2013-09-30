@@ -100,7 +100,7 @@ markerLayer.setGeoJSON(geoJson);
 
 
 // If local zoom in, otherwise zoom out
-if($("input[name=users_listtype]:eq(0)").is(':checked')) {
+if($("input[name=users_listtype]:eq(0)").is(':checked') || $("input[name=users_listtype]:eq(6)").is(':checked')) {
   window.map.setZoom(15);
   $("#map_index_map_zoomout").fadeIn("fast");
 } else {
