@@ -1,6 +1,8 @@
 // Re-renders the user list
 $("#map_index_users").html("<%= escape_javascript(render("users")) %>")
 
+$("#map_index_users_spinner_container").fadeOut("fast");
+
 window.map_index_users_item_bless();
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -87,8 +89,7 @@ markerLayer.setGeoJSON(geoJson);
         window.map.panTo(marker.getLatLng());
         offset = map.getSize().x*0.25;
         window.map.panBy(new L.Point(-offset, 0), {animate: false})
-
-        $("#map_index_map_zoomout").fadeIn("fast");
+        // $("#map_index_map_zoomout").fadeIn("fast");
 
       }
   });

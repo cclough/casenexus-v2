@@ -57,16 +57,28 @@ $alert-yellow: #FFFF7E;
   z-index:2;
 }
 
+#map_index_users_spinner_container {
+  display:none;
+  position:fixed;
+  left:20px;
+  top:50px;
+  width:606px;
+  bottom:0px;
+  z-index:10;
+  background: rgba(255,255,255,0.75);
+}
+
+
 #map_index_container_users {
   position:relative;
   height:100%;
   display:block;
   margin-left:20px;
-
   width:606px;
   z-index:2;
-
 }
+
+
 
 #map_index_users {
   padding: 0 10px;
