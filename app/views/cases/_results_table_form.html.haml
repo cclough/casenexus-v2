@@ -1,6 +1,6 @@
 - @view = "show" if params[:view].blank?
 
-= form_tag '#', method: 'get', id: "cases_resultstable_form", remote:true do
+= form_tag '#', method: 'get', id: "cases_resultstable_form", class: ("show" if @view == "show"), remote:true do
   .row
     #cases_resultstable_order_by_container.btn-group.pull-right
 

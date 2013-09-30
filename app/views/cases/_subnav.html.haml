@@ -9,11 +9,11 @@
         = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
     #cases_show_subnav_score
       = @case.totalscore.to_f.round(1)
-      - "/15"
+      = "/ 15"
 
   #cases_show_subnav_browse
 
-    %span#cases_show_subnav_label
+    #cases_show_subnav_label
       Browse your cases
       %i.icon-caret-right
 

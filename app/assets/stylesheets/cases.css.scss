@@ -33,7 +33,7 @@ $alert-yellow: #FFFF7E;
 #modal_cases {
   width:1000px !important;
   margin-left:-500px;
-
+  background:white;
 
 
   &.analysis {
@@ -60,6 +60,7 @@ $alert-yellow: #FFFF7E;
     left:0px;
     right:0px;
     bottom:0px;
+    background:white;
   }
 }
 
@@ -75,9 +76,11 @@ $alert-yellow: #FFFF7E;
 #cases_show_subnav {
   display:block;
   margin:0px 0px 0px 0px;
-  background:$gray_second;
-  height:30px;
+  background:white;//$gray_background;
+  height:38px;
   padding:10px;
+
+  border-bottom:2px solid $gray_background;
 
   border-top-left-radius: 3px;
   -moz-border-top-left-radius: 3px;
@@ -92,30 +95,36 @@ $alert-yellow: #FFFF7E;
 
     #cases_show_subnav_avatar{
       float:left;
-      margin-right:10px;
+      margin-right:15px;
+      margin-left:10px;
+      margin-top:5px;
     }
 
     #cases_show_subnav_name {
       float:left;
-      font-size:22px;
+      font-size:20px;
       color: $gray_Dark;
-      margin-top:-5px;
+      margin-top:2px;
+      width:200px;
+      font-weight:bold;
 
     }
 
     #cases_show_subnav_date {
       font-size:11px;
+      font-weight:normal;
     }
 
     #cases_show_subnav_score {
       float:left;
-      padding:10px;
-      height:30px;
+      padding:16px 20px;
+      height:28px;
       margin:-10px 0 0 20px;
-      color:white;
-      background:$gray_gunmetal;
-      font-size: 20px;
+//      color:white;
+//      background:$gray_gunmetal;
+      font-size: 22px;
       font-weight: bold;
+
     }
   }
 
@@ -128,11 +137,11 @@ $alert-yellow: #FFFF7E;
     .btn {
       width:20px;
       height:20px;
-      margin:-7px 2px 0 0;
+      margin:-3px 2px 0 0;
     }
 
     #cases_show_subnav_label {
-      margin-top:13px;
+      display:inline-block;
       font-size:12px;
       margin-right:3px;
       i {
@@ -142,6 +151,7 @@ $alert-yellow: #FFFF7E;
 
     #cases_show_subnav_select {
       margin-right:10px;
+      margin-top:6px;
     }
 
   }
@@ -151,18 +161,20 @@ $alert-yellow: #FFFF7E;
 
 
 #cases_show_panel_left {
-  width:375px;
+  width:395px;
   position:absolute;
   left:0px;
   bottom:0px;
-  top:50px;
+  top:60px;
+
   #cases_show_book {
-    width:375px;
+    width:395px;
+    padding: 10px;
 
   }
   #cases_show_results {
-
-    height:416px;
+    padding:10px;
+    height:356px;
   }
 }
 
@@ -170,8 +182,8 @@ $alert-yellow: #FFFF7E;
 
   right:0px;
   position:absolute;
-  left:375px;
-  top:50px;
+  left:395px;
+  top:60px;
   bottom:0px;
   #cases_show_recommendations {
     height:138px;
@@ -180,33 +192,47 @@ $alert-yellow: #FFFF7E;
       width:33.3%;
       height:138px;
       float:left;
-      padding:10px;
+      padding:15px;
       @include box_sizing;
       .cases_show_recommendation_content {
+
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
         overflow-y:auto;
         height:100%;
         width:100%;
-        padding:5px;
-        background:rgb(255, 255, 204);
+        padding:10px;
+//        background:rgb(255, 255, 204);
+        background:$gray_background;
+        //color:white;
         @include box_sizing;
+      }
+
+      .cases_show_recommendation_title {
+        text-align:center;
+        font-size:11px;
+        margin-bottom:3px;
+        font-weight:bold;
       }
 
     }
   }
   #cases_show_maincomment {
-    height:300px;
+    line-height:26px;
+    font-size:15px;
     position:absolute;
     top:138px;
-    height:362px;
+    height:352px;
     right:0px;
     left:0px;
-    padding:20px;
+    padding:30px;
     @include box_sizing;
     #cases_show_maincomment_content {
       @include box_sizing;
       padding:5px;
       height:100%;
-      background:rgb(255, 255, 204);
+//      background:rgb(255, 255, 204);
     }
   }
 
@@ -279,6 +305,8 @@ $alert-yellow: #FFFF7E;
   height:50px !important;
   margin-left:5px;
 }
+
+
 
 
 #cases_new_recommendations_panel {
@@ -527,7 +555,11 @@ $alert-yellow: #FFFF7E;
   padding:10px;
   margin:0 0 5px 0;
 
-  background: $gray_second;
+
+  background: $gray_background;
+  &.show {
+    background:white;
+  }
 
 }
 
@@ -580,12 +612,16 @@ $alert-yellow: #FFFF7E;
 
 
 
-  // THE 'SHOW' CASE
+  // THE 'SHOW' PHENOTYPE
   &.show {
-    height:362px;
+    height:322px;
     font-size:11px;
     td {
-      padding:2px 10px !important;
+      padding:1px 10px !important;
+    }
+    #cases_resultstable_table_column_criteria {
+      text-align:left;
+      padding-left:10px;
     }
     .cases_resultstable_chart_bar{
       width:160px !important;
@@ -593,7 +629,9 @@ $alert-yellow: #FFFF7E;
     #cases_resultstable_table_column_bar {
       width:160px !important;
     }
-
+    .cases_resultstable_cell_score {
+      font-size:12px;
+    }
 
   }
 
@@ -620,7 +658,7 @@ $alert-yellow: #FFFF7E;
 
 .cases_resultstable_cell_score {
   font-weight:bold;
-  font-size:15px !important;
+  font-size:15px;
 }
 
 

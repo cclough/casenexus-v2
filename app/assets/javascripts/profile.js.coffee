@@ -6,10 +6,19 @@
   
 
 modal_cases_show_prime = () ->
-  $(".cases_show_subnav_browse_button").click ->
-    case_id = $(this).data "case_id"
 
-    next_case_id = parseInt(case_id) + 1
+  # Browse Buttons
+  $(".cases_show_subnav_browse_button").click ->
+    next_case_id = $(this).attr "data-case_id"
+    $("#modal_cases").html("")
+
+    $.get "/cases/" + next_case_id, (data) ->
+      $("#modal_cases").html data
+      modal_cases_show_prime()
+
+  # Select Case Pull Down
+  $("#cases_show_subnav_select").change ->
+    next_case_id = $(this).val()
     $("#modal_cases").html("")
 
     $.get "/cases/" + next_case_id, (data) ->
@@ -17,7 +26,6 @@ modal_cases_show_prime = () ->
       modal_cases_show_prime()
 
   window.cases_resultstable_prime("show")
-
 
 
 $(document).ready ->

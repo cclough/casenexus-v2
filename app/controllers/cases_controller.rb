@@ -6,7 +6,7 @@ class CasesController < ApplicationController
   def show
 
     @case = current_user.cases.find(params[:id])
-    @cases = current_user.cases.order("created_at desc")
+    @cases = current_user.cases.order("created_at asc")
 
     @case.read!
 

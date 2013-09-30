@@ -447,7 +447,5 @@ $(document).ready ->
   #   false
 
 
-  # Select Case Pull Down
-  $("#cases_show_subnav_select").change ->
-    window.location = "/cases/" + $(this).val()
+
 
