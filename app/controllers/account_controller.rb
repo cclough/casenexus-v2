@@ -22,7 +22,6 @@ class AccountController < ApplicationController
   def update
     @user = current_user
 
-    
 
     if @user.update_attributes(params[:user])
       if @user.completed
@@ -32,7 +31,7 @@ class AccountController < ApplicationController
         @user.completed = true
         @user.save
         flash[:success] = 'Welcome'
-        redirect_to profile_path
+        redirect_to "/"
       end
     else
       @invitations = current_user.invitations
@@ -56,7 +55,7 @@ class AccountController < ApplicationController
     @user = current_user
 
     if @user.completed?
-      redirect_to profile_path
+      redirect_to "/"
     else
       render layout: 'home'
     end

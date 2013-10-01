@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   # Redirection after sign in with devise
   def after_sign_in_path_for(resource_or_scope)
     if session[:user_return_to].blank?
-      profile_path
+      "/"
     else
       session[:user_return_to]
     end

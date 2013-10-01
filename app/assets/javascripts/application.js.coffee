@@ -184,14 +184,7 @@ window.modal_friendship_req_show = (friend_id) ->
       $("#modal_friendship_req").modal "show"
 
 
-      # repeat of modal spinner prime, but with online refresh command under submit
-      $(".application_spinner_container").css "display","none"
-      
-      $(".application_submit_button_with_spinner").click ->
-        $(".application_spinner_container").show()
-        $(this).closest("form").submit()
-
-
+      window.application_spinner_prime(".modal.in")
 
 
 window.modal_event_new_show = (friend_id, book_id) ->

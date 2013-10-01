@@ -2,7 +2,7 @@
   .navbar-inner{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
     .container
       #header_logo_nav{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
-        = link_to image_tag("app/logo.png"), root_path
+        = link_to image_tag("app/logo.png"), "/"
 
       - if signed_in?
 
@@ -36,7 +36,7 @@
             %li#header_notifications_menu_container{:class => ("active" if params[:controller] == "notifications") }
               = render '/notifications/menu'
             %li{"data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip", class: ("application_tooltip header_nav_links_right_profile_active" if params[:controller]=="profile")}
-              = link_to profile_path do
+              = link_to "/" do
                 %span#header_nav_links_right_avatar
                   = avatar_for(current_user, size:"small", link:0)
                 %span#header_nav_links_right_username
@@ -48,7 +48,7 @@
         - else
           %ul#header_nav_links_right_signedout.nav.pull-right
             %li
-              = link_to current_user.email
+              = current_user.email
               %span#header_nav_links_right_signedout
                 = image_tag "universities/" + @user.university.image
               = @user.university.name

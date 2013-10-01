@@ -2,17 +2,18 @@
 .spacer20
 .row
   .span32.offset33
-    .panel{style:"text-align:center;"}
+    .panel.darkest{style:"text-align:center;"}
       = render 'layouts/flash', flash: flash
 
-      %h5 Forgotten your password?
+      %b Forgotten your password?
+
 
       = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
         = f.error_notification
         .spacer10
         .row
           .span25
-            = f.text_field :email, placeholder: "Enter your email address", style:"width:253px;"
+            = f.text_field :email, placeholder: "Enter your email address...", style:"width:260px;"
         .spacer10
         .row
           = f.button :submit, "Email me instructions"

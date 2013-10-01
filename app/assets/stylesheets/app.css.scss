@@ -1,6 +1,7 @@
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_button: #989898;
 $gray_gunmetal: #363636;
 $gray_gunmetal_second: #2d2d2d;
 
@@ -406,7 +407,11 @@ textarea {
   }
 
   &.darker {
-    background: white;
+    background: $gray_background;
+  }
+
+  &.darkest {
+    background: $gray_second;
   }
   
   &.transparent {
@@ -511,6 +516,12 @@ textarea {
   .modal-footer {
     .btn {
       width:65px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     #modal_help_page_num {
@@ -720,7 +731,7 @@ textarea {
 
 .application_spinner_container {
   position:absolute;
-  z-index:2000;
+  z-index:9000;
   right:0;
   bottom:0;
   top:0;
@@ -728,6 +739,11 @@ textarea {
   background: rgba(255,255,255,0.75);
 
   display:none;
+
+  &.fixed {
+    position:fixed;
+    margin-top:50px;
+  }
 
 }
 

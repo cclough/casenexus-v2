@@ -98,7 +98,7 @@ window.activate_perm_popup_and_icon_for = (marker) ->
 
   # Change Icon
   activeIcon = L.icon(
-    iconUrl: "/assets/markers/marker_active.png"
+    iconUrl: "/assets/markers/marker_active_"+marker.feature.properties.university_image
     iconSize: [33, 42]
     iconAnchor: [0, 0]
     popupAnchor: [17, 8]

@@ -112,12 +112,14 @@ $alert-yellow: #FFFF7E;
 
   z-index:10;
 
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
+
   input {
     display:block;
     margin-bottom:15px;
-//    -moz-border-radius:    0px !important;
-//    -webkit-border-radius: 0px !important;
-//    border-radius:         0px !important;
+
 
     border:2px solid transparent;
   }
@@ -173,6 +175,10 @@ $alert-yellow: #FFFF7E;
   margin-left:0px;
 
   z-index:10;
+
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
 
   input {
     display:block;

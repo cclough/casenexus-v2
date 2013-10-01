@@ -33,17 +33,16 @@ window.cases_new_prime = () ->
     # change value of input
     $("#cases_new_score_input_" + criteria).val(score)
 
-
     # make active
     $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
     $(this).addClass("active")
 
-
   # Submit form and show spinner
-  $(".application_submit_button_with_spinner").click ->
-    $(".application_spinner_container").show()
-    $(this).closest("form").submit()
+  # $(".application_submit_button_with_spinner").click ->
+  #   $(".application_spinner_container").show()
+  #   $(this).closest("form").submit()
 
+  window.application_spinner_prime "#console_index_feedback_frame"
     
   # Char counters
   $('.application_countchar').keyup ->
@@ -394,7 +393,7 @@ $(document).ready ->
 #/////////////////////////// NEW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
 
-
+  window.cases_new_prime()
 
 
 #///////////////////////////////////////////////////////////////

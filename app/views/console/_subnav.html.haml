@@ -33,5 +33,5 @@
       = render 'console/skypebutton', layout: false
       
     %select#console_index_subnav_select_friends.chzn-select{name: "target_id", "data-placeholder" => "Select Friend" }
-      %option{value: ""} Select Friend
+      %option{value: ""} Select a partner...
       = options_from_collection_for_select @friends, :id, :username, (@friend.id unless @friend.blank?)

@@ -219,6 +219,10 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
   z-index:10;
 
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
+  
   input {
     display:block;
     margin-bottom:15px;
@@ -268,16 +272,10 @@ label, .account_form_label { // why the hell won't this work in app.css?
 }
 
 
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////
-///////////////////////// COMPLETE //////////////////////////////
+////////////////////////// MODAL ////////////////////////////////
 /////////////////////////////////////////////////////////////////
+
 
 
 
@@ -290,6 +288,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
   height:510px !important;
 
   text-align:center !important;
+
 
   .modal-body {
     height:325px;

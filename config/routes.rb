@@ -1,6 +1,5 @@
 Casenexus::Application.routes.draw do
 
-  root to: 'static_pages#home'
 
   # Rails Admin
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -10,6 +9,17 @@ Casenexus::Application.routes.draw do
       :path_names => { :sign_in => 'signin', :sign_out => 'signout' }, 
       controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
 
+
+  authenticated :user do
+    # root :to => "profile#index"
+    match '/' => 'profile#index', :as => :root
+  end
+
+  unauthenticated :user do
+    devise_scope :user do 
+      get "/" => 'static_pages#home'
+    end
+  end
 
   # Pusher
   post 'pusher/auth'
@@ -27,7 +37,7 @@ Casenexus::Application.routes.draw do
   match '/map', to: 'map#index', as: :map
 
   # Profile
-  match '/profile', to: 'profile#index', as: :profile
+  match '/profile', to: 'profile#index', as: :root
 
   # Account
   resource :account, controller: 'account' do

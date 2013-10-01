@@ -1,14 +1,6 @@
 - provide(:title, 'Give Feedback')
 - provide(:sub_title, 'Score and comment on your case partners performance')
 
-- content_for :javascript_includes do
-  = javascript_include_tag "cases"
-
-  / - if current_user.help_4_checked
-  /   :javascript
-  /     $(document).ready(function() {
-  /       window.setTimeout("window.application_show_help(4)", 1000);
-  /     });
 
 - if @user.blank? then @user = User.find(user_id) end
 - if @case.blank? then @case = @user.cases.build end
@@ -23,19 +15,26 @@
 
     #cases_new_book_container
 
+
+
       #cases_new_book
         - if @book
           = render partial: 'books/show_small', locals: { book_id: @book.id }
 
-      #cases_new_nobook
-        .panel.darker
-          .row
-            %span#cases_new_nobook_label
-              External case details
-              %i.icon-caret-right
-            %span.pull-right
-              = f.text_field :source, placeholder: "What guide is it from?", tabindex: "2", class: "span20"
-              = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject"
+
+
+
+      #cases_new_nobook.panel.darker.kill_all{class: ("show_at_start" unless @book) }
+
+        #cases_new_nobook_label
+          No case selected
+          #cases_new_nobook_label_subtext
+            External case details
+        #cases_new_nobook_inputs
+          = f.text_field :source, placeholder: "Who authored this case?", tabindex: "2"
+          .spacer5
+          = f.text_field :subject, value: params[:subject], placeholder: "What was the case about?", tabindex: "3", id: "cases_new_subject"
+
 
 
     #cases_new_user
@@ -274,14 +273,13 @@
         = f.text_area :recommendation3, placeholder: "3rd Recommendation...", class: "cases_new_recommendation", tabindex: "6"
 
 
+  .spacer30
 
   .row#cases_new_submit_panel
     .application_submit_button_with_spinner.btn.btn-large.btn-primary{tabindex: "10", id: "cases_new_submit_button"}
       Submit feedback
 
-.spacer100
-.spacer50
+  .spacer50
 
-
-.application_spinner_container
-  .application_spinner
+  .application_spinner_container.fixed
+    .application_spinner

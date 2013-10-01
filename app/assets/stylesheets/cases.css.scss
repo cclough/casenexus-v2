@@ -1,6 +1,7 @@
 $gray_background: #eceef1;
 $gray_Light: white;
 $gray_second: #BDC3C7;
+$gray_button: #989898;
 $gray_gunmetal: #363636;
 $gray_gunmetal_second: #2d2d2d;
 
@@ -515,18 +516,51 @@ $alert-yellow: #FFFF7E;
 
 #cases_new_nobook {
   display:none;
-  input {
-    margin-bottom: 0px !important;    
+  padding:7px !important;
+  &.show_at_start {
+    display:block;
   }
+  input {
+    margin-bottom: 0px !important;  
+    width:250px;
+  }
+  width:390px;
+  padding:2px;
+  margin:-5px -3px;
 }
 
 
 #cases_new_nobook_label {
   font-size:14px !important;
-  margin-right:10px;
-  line-height:40px;
+  display:inline-block;
+
+  width:100px;
+  vertical-align:top;
+  background:$gray_button;
+  color:white;
+  font-weight:bold;
+  margin:-7px 5px -7px -7px;
+  padding: 10px 13px;
+  text-align:center;
+
+  border-top-left-radius: 3px;
+  -moz-border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+
+  border-bottom-left-radius: 3px;
+  -moz-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+
+  #cases_new_nobook_label_subtext {
+    font-weight:normal;
+    margin-top:6px;
+  }
 }
 
+#cases_new_nobook_inputs {
+  display:inline-block;
+  vertical-align:top;
+}
 
 
 #cases_new_book {

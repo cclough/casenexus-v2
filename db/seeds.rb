@@ -74,7 +74,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating universities"
 
   University.create!(name: "Cambridge", image: "cambridge.png", domain: "cam.ac.uk", enabled: true)
-  University.create!(name: "Oxford", image: "oxford.jpg", domain: "ox.ac.uk", enabled: true)
+  University.create!(name: "Oxford", image: "oxford.png", domain: "ox.ac.uk", enabled: true)
   University.create!(name: "Imperial", image: "imperial.png", domain: "imperial.ac.uk", enabled: false)
   University.create!(name: "LBS", image: "lbs.png", domain: "london.edu", enabled: false)
   University.create!(name: "LSE", image: "lse.png", domain: "lse.ac.uk", enabled: false)
@@ -316,7 +316,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating alastair's user"
 
   admin = User.new(
-      email: "alastair.willey@imperial.ac.uk",
+      email: "alastair.willey@cam.ac.uk",
       password: "design",
       password_confirmation: "design",
       lat: 51.90128232665856,
@@ -344,7 +344,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating robin's user"
 
   admin = User.new(
-      email: "robin.clough@rady.ucsd.edu",
+      email: "robin.clough@keble.ox.ac.uk",
       password: "testing",
       password_confirmation: "testing",
       lat: 32.869627,
@@ -422,7 +422,7 @@ end
 
   15.times do |n|
 
-    university_rand = 1 + rand(10)
+    university_rand = 1 + rand(2)
     email = "example#{n+1}@" + University.find(university_rand).domain
 
     password = "password"
