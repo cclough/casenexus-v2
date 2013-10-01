@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :completed_user
+  before_filter :completed_user, except: [:index]
 
   # Map - access via /map
   def index

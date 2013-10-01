@@ -11,7 +11,7 @@ window.account_completeedit_bless = () ->
   window.map = L.mapbox.map("account_completeedit_map", "christianclough.map-pzcx86x2")
 
   # Plot other members
-  $.getJSON "members", null, (json) ->
+  $.getJSON "/members", null, (json) ->
     markerLayer = L.mapbox.markerLayer()
     markerLayer.on "layeradd", (e) ->
       marker = e.layer
