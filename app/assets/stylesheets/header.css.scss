@@ -190,11 +190,17 @@ header {
   li:hover {
     background:0;
   }
+  a {
+    padding:5px !important;
+  }
   img {
-    max-width:20px;
+    margin-left:0px;
   }
 }
 
+#header_nav_links_right_signedout_university {
+  margin-top:10px;
+}
 
 
 #header_nav_icon_notifications_container {

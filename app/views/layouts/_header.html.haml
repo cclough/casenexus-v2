@@ -49,9 +49,9 @@
           %ul#header_nav_links_right_signedout.nav.pull-right
             %li
               = current_user.email
-              %span#header_nav_links_right_signedout
-                = image_tag "universities/" + @user.university.image
-              = @user.university.name
+              #header_nav_links_right_signedout_university
+                = avatar_for(@user, link:false)
+                = @user.university.name
       - else
         %ul#header_nav_links_left.nav.pull-left
             
