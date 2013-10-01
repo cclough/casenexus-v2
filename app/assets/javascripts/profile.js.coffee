@@ -45,8 +45,11 @@ $(document).ready ->
 
         # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
         $("#modal_profile").on "shown", ->
+          setTimeout (->
+            window.account_completeedit_bless()
+          ), 100
 
-          window.account_completeedit_bless()
+          
 
   $("#profile_index_info_actions_invite").click ->
 

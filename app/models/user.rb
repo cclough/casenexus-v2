@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
             allow_blank: true,
             on: :update
   validate :validate_has_languages?, on: :update
-  
+  validate :validate_not_too_close_to_another?, on: :update
 
   ### Scopes
   # For online user panel - vincent work
@@ -273,9 +273,8 @@ class User < ActiveRecord::Base
       completed.online_now
     end
 
-    def list_online_recently_notfriends(user)
-      not_friends(user).completed.online_recently
-      # user.not_friends.completed.online_recently.order('last_online_at desc')
+    def list_all_excl_current(user)
+      completed.where("id <> ?", user.id)
     end
 
     def list_users_with_posts
@@ -316,6 +315,11 @@ class User < ActiveRecord::Base
 
   def validate_has_languages?
     self.errors.add :base, "You must choose at least one language." if self.languages.blank?
+  end
+
+
+  def validate_not_too_close_to_another?
+     self.errors.add :base, "Your marker is too close to someone else." if self.nearbys(0.01).count > 0
   end
 
   def validate_university_email

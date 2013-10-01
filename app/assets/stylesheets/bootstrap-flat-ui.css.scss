@@ -6,7 +6,7 @@ modal corner radius
 
 entire dropdown-menu class as it breaks datetimpicker
 
-.iconbar-unread color and position
+.iconbar-unread color and position, font-size
 
 remove popover
 
@@ -5405,11 +5405,11 @@ input.search-query {
   top: 0;
 }
 .iconbar-unread {
-  background-color: #2a7aaf;
+  background-color: red;
   border-radius: 50%;
   color: #ffffff;
   font-family: 'Lato', sans-serif;
-  font-size: 11.998px;
+  font-size: 9px; //11.998
   font-weight: 500;
   line-height: 18.998px;
   min-width: 14px;

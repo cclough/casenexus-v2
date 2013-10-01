@@ -9,7 +9,6 @@ class MembersController < ApplicationController
 
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
-
       when "params"
         require 'will_paginate/array' # neccessary to allow list_local to work in members
         target_user = User.find(params[:user_id])
@@ -25,11 +24,10 @@ class MembersController < ApplicationController
         users_scope = users_pre_scope.where(["users.id <> ?",current_user.id]).list_online_now
       when "posts"
         users_scope = users_pre_scope.list_users_with_posts
-
       when "language"
         users_scope = users_pre_scope.where(["users.id <> ?",current_user.id]).list_language(params[:users_filter_language])
     else
-      # users_scope = User.includes(:cases).list_global
+      users_scope = User.includes(:cases).list_all_excl_current(current_user)
     end
 
     if users_scope

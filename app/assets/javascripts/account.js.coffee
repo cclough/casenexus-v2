@@ -10,11 +10,20 @@ window.account_completeedit_bless = () ->
   # Draw map
   window.map = L.mapbox.map("account_completeedit_map", "christianclough.map-pzcx86x2")
 
+  # Plot other members
+  $.getJSON "members", null, (json) ->
+    markerLayer = L.mapbox.markerLayer()
+    markerLayer.on "layeradd", (e) ->
+      marker = e.layer
+      marker.setIcon L.icon(marker.feature.properties.icon)
+    markerLayer.addTo map
+    markerLayer.setGeoJSON json
+
   # Icon for marker
   userIcon = L.icon(
     iconUrl: "/assets/markers/marker_" + account_completeedit_currentuser_university_image
     iconSize: [33, 42]
-    iconAnchor: [0, 0]
+    iconAnchor: [16, 42] # high is left, high is up
     popupAnchor: [17, 8]
   )
 
@@ -23,6 +32,7 @@ window.account_completeedit_bless = () ->
     icon: userIcon#L.mapbox.marker.icon("marker-color": "CC0033")
     draggable: true
   )
+
   marker.addTo map
   marker.on "dragend", (e) ->
     coords = e.target.getLatLng()
@@ -33,6 +43,8 @@ window.account_completeedit_bless = () ->
   window.map.setView([parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)], 15)
 
   window.application_spinner_prime(".modal.in")
+
+
 
 
 

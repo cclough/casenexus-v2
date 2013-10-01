@@ -17,7 +17,7 @@ window.map_index_users_item_bless();
 ///////////NB ORDER OF STUFF IS IMPORTANT HERE OR YOU GET MARKER FUCKUPS ON LOAD/////////
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// Draw Markers (MUST BE AFTER LAYERADD ABOVE!)
+
 var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users).html_safe) %>";
 
 var geoJson = $.parseJSON(geoJson_precursor);
@@ -72,7 +72,7 @@ markerLayer.on('layeradd', function(e) {
 
 
 
-
+// Draw Markers (MUST BE AFTER LAYERADD ABOVE!)
 markerLayer.addTo(map);
 
 
