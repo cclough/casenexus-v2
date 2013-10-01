@@ -509,6 +509,9 @@ textarea {
 #modal_help {
   background:white;
   overflow-x: hidden;
+  .modal-body {
+    height:335px;
+  }
   .modal-header {
     border-bottom:0px;
   }

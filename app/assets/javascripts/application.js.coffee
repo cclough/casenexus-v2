@@ -43,10 +43,12 @@
 
 window.modal_help_show = () ->
   if !($("#modal_help").hasClass("in"))
+    $(".arrownav_page").hide()
     $(".modal").modal "hide"
     $("#modal_help").modal "show"
-    window.ArrowNav.init()
-    window.ArrowNav.goTo "1"
+    $("#modal_help").on "shown", ->
+      # window.ArrowNav.init()
+      window.ArrowNav.goTo "1"
 
 
 window.getQueryParams = (qs) ->
@@ -426,6 +428,6 @@ $(document).ready ->
         else
           $("nav .arrow").css left: left_margin - 8
 
-    window.ArrowNav.init()
+    # window.ArrowNav.init()
 
 
