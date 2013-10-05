@@ -263,45 +263,50 @@ $(document).ready ->
       $(this).fadeOut("fast");
 
 
-    # custom zoom control
-    new L.Control.Zoom({ position: 'topright' }).addTo(map)
-    # zoomer
-    zooms = 17
-    handle = document.getElementById("map_index_map_zoomer_handle")
-    # Configure Dragdealer to update the map zoom
-    zoom_bar = new Dragdealer("map_index_map_zoomer_zoom-bar",
-      steps: zooms
-      snap: true
-      callback: (x, y) ->
-        z = x * (zooms - 1)
-        map.setZoom z
-        handle.innerHTML = z
-    )
-    map.on "zoomend", ->
-      z = Math.round(map.getZoom())
-      zoom_bar.setValue z / 16
-      handle.innerHTML = z
+    # # custom zoom control
+    # new L.Control.Zoom({ position: 'topright' }).addTo(map)
+    # # zoomer
+    # zooms = 17
+    # handle = document.getElementById("map_index_map_zoomer_handle")
+    # # Configure Dragdealer to update the map zoom
+    # zoom_bar = new Dragdealer("map_index_map_zoomer_zoom-bar",
+    #   steps: zooms
+    #   snap: true
+    #   callback: (x, y) ->
+    #     z = x * (zooms - 1)
+    #     map.setZoom z
+    #     handle.innerHTML = z
+    # )
+    # map.on "zoomend", ->
+    #   z = Math.round(map.getZoom())
+    #   zoom_bar.setValue z / 16
+    #   handle.innerHTML = z
 
 
+    # DRAW SELF MARKER
+    markerLayer_user = L.mapbox.markerLayer()
 
-
-
-    markerLayer_user = L.mapbox.markerLayer(
+    geoJson = [
       type: "Feature"
       geometry:
         type: "Point"
-        coordinates: [parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)]
+        coordinates: [parseFloat(map_index_map_lng_start), parseFloat(map_index_map_lat_start)]
       properties:
+        title: "self user"
         icon:
           iconUrl: "/assets/markers/arrow2.png"
-          iconSize: [20, 45]
-          iconAnchor: [0, 0]
-          popupAnchor: [17, 8]
-    ).addTo(map)
+          iconSize: [20, 45] # size of the icon
+          iconAnchor: [25, 25] # point of the icon which will correspond to marker's location
+          popupAnchor: [0, -25] # point from which the popup should open relative to the iconAnchor
+    ]
 
     markerLayer_user.on 'layeradd', (e) ->
       marker = e.layer
       feature = marker.feature
       marker.setIcon L.icon(feature.properties.icon)
+
+    markerLayer_user.addTo map
+    markerLayer_user.setGeoJSON geoJson
+
 
 

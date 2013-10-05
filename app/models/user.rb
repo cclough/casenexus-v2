@@ -319,7 +319,7 @@ class User < ActiveRecord::Base
 
 
   def validate_not_too_close_to_another?
-     self.errors.add :base, "Your marker is too close to someone else." if self.nearbys(0.01).count > 0
+     self.errors.add :base, "Your marker is too close to someone else." if self.nearbys(0.008).count > 0
   end
 
   def validate_university_email
