@@ -375,7 +375,7 @@ class User < ActiveRecord::Base
     if self.cases_external.blank?
       self.cases_external = 0
     else
-      errors.add(:cases_external, "must be a number between 0 and 500") unless (0..500).include?(self.cases_external)
+      errors.add(:cases_external, "must be a number between 0 and 500") unless cases_external.between?(0, 500)
     end
   end
 
