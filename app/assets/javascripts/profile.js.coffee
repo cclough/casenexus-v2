@@ -30,7 +30,6 @@ modal_cases_show_prime = () ->
 
 $(document).ready ->
 
-
   # INFO
   $("#profile_index_info_actions_settings").click ->
 
@@ -47,7 +46,7 @@ $(document).ready ->
         $("#modal_profile").on "shown", ->
           setTimeout (->
             window.account_completeedit_bless()
-          ), 100
+          ), 500
 
           
 

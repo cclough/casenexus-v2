@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'pg'                                         # Database
@@ -23,6 +23,7 @@ gem 'pusher'                                     # Push notifications and messag
 gem 'rails_admin'                                # Admin
 gem 'thumbs_up'                                  # Stack Overflow like voting on things
 gem 'delayed_job_active_record'                  # For threaded email sending
+gem 'devise-async'
 gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
 
 group :production do
