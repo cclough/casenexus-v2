@@ -19,7 +19,7 @@ class StaticPagesController < ApplicationController
     end
     if signed_in?
       flash[:notice] = "You must be signed out to accept an invitation" if @invitation
-      redirect_to profile_path
+      redirect_to "/"
     else
       @login = User.new
       @user = User.new

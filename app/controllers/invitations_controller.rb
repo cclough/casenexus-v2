@@ -34,6 +34,6 @@ class InvitationsController < ApplicationController
     @invitation = current_user.invitations.find(params[:id])
     @invitation.destroy
     flash[:notice] = "Invitation cancelled"
-    redirect_to profile_path
+    redirect_to "/"
   end
 end
