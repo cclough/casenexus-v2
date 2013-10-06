@@ -40,7 +40,7 @@
 
 
       #events_modal_datetime_picker.input-append.date
-        = f.text_field :datetime, id: "events_modal_datetime_input", placeholder: "Select a date and time", class: "application_form_input_alternative whitebg", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d @ %H:%M")
+        = f.text_field :datetime, id: "events_modal_datetime_input", placeholder: "Select a date and time", class: "", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d @ %H:%M")
         %span.add-on
           %i.icon-calendar
 
