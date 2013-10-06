@@ -31,7 +31,7 @@ class MembersController < ApplicationController
     end
 
     if users_scope
-      @users = users_scope.paginate(per_page: 50, page: params[:page])
+      @users = users_scope.paginate(per_page: 10, page: params[:page])
     end
 
     respond_to do |format|

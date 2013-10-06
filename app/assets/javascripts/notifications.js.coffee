@@ -46,6 +46,8 @@ window.notifications_index_notifications_prime = () ->
     $(this).addClass "notifications_index_notifications_item_select"
 
 
+
 $(document).ready ->
 
   window.notifications_index_notifications_prime();
+

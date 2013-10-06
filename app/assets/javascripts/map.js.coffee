@@ -154,6 +154,10 @@ window.generate_popup_for = (marker) ->
 
 $(document).ready ->
 
+
+
+
+
   # search
   $("#header_nav_search_form").on "submit", ->
     window.map_index_users_search()
