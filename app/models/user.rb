@@ -31,9 +31,6 @@ class User < ActiveRecord::Base
 
   has_many :friendships, dependent: :destroy
   
-  # has_many :connected_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status IS NOT NULL", dependent: :destroy
-  # has_many :connected_friends, through: :connected_friendships, source: :friend
-  
   has_many :accepted_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::ACCEPTED}", dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendships, source: :friend
   
@@ -63,7 +60,6 @@ class User < ActiveRecord::Base
   after_save :send_welcome
   after_validation :geocode, :reverse_geocode
 
-
   ### Validations
 
   validates_acceptance_of :confirm_tac
@@ -77,7 +73,6 @@ class User < ActiveRecord::Base
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
   # validates :lng, :uniqueness => { :scope => :lat }
-
   validates :linkedin, length: { maximum: 100 }
   validates :degree_level, presence: true, on: :update
   validates :skype, length: { maximum: 32 },
@@ -86,6 +81,8 @@ class User < ActiveRecord::Base
             on: :update
   validate :validate_has_languages?, on: :update
   validate :validate_not_too_close_to_another?, on: :update
+  validate :validate_cases_external?, on: :update
+
 
   ### Scopes
   # For online user panel - vincent work
@@ -123,6 +120,14 @@ class User < ActiveRecord::Base
 
   def case_count_recd
     cases.count
+  end
+
+  def case_count_external
+    if cases_external.blank?
+      0
+    else
+      cases_external
+    end
   end
 
   def case_count_givn
@@ -366,5 +371,12 @@ class User < ActiveRecord::Base
 
   end
 
+  def validate_cases_external?
+    if self.cases_external.blank?
+      self.cases_external = 0
+    else
+      errors.add(:cases_external, "must be a number between 0 and 500") unless (0..500).include?(self.cases_external)
+    end
+  end
 
 end

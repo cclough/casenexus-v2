@@ -17,12 +17,11 @@ module ApplicationHelper
 
     avatar_url = "universities/" + user.university.image
     
-
     if options[:link] === 1
-      avatar_alt = "Jump to " + user.username + "'s profile"
+      avatar_alt = "Jump to " + user.username + "'s profile" # if you use the user name in here, it breaks complete_profile!
       link_to image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title" => avatar_alt, rel: "tooltip", "data-placement"=>"bottom"), "/map?user_id=" + user.id.to_s
     else
-      avatar_alt = user.username + " is a student of " + user.university.name
+      avatar_alt = user.university.name
       image_tag(avatar_url, alt: avatar_alt, class: "application_userimage_" + options[:size], "data-original-title" => avatar_alt, rel: "tooltip", "data-placement"=>"bottom")
     end  
   end

@@ -54,8 +54,6 @@ $alert-yellow: #FFFF7E;
 }
 
 #static_home_welcome_text {
-//  color:white;
-  opacity:0.95;
   font-size:17px;
   font-weight:200;
   line-height:25px;
@@ -131,7 +129,6 @@ $alert-yellow: #FFFF7E;
 }
 
 #static_home_signin:after
-
 {
   content: "";
   position: absolute;

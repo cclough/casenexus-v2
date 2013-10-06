@@ -16,34 +16,50 @@
 
     = render 'shared/error_messages', object: @user
 
-    .control-group
-      = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large"
-      %i.input-icon.fui-user.huge
+    #account_complete_panel_column_left
 
-    #account_complete_map_header
-      Drag the marker to your location
-    #account_completeedit_map.complete.map
 
-    = f.hidden_field :lat, id: "account_completeedit_lat"
-    = f.hidden_field :lng, id: "account_completeedit_lng"
+      .control-group
+        = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large"
+        %i.input-icon.fui-user.huge
+      
 
-    .spacer15
-    = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {prompt: "What time zone are you in?"}, { class: "chzn-select" }
-    .spacer15
+      = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option>".html_safe,{:prompt => "What's your degree level?"}, {class: "chzn-select"}
 
-    .control-group
-      = f.text_field :linkedin, placeholder: "Linkedin username (optional)", class: "span30 large"
-      %i.input-icon.fui-linkedin.huge
+      .spacer15
 
-    .control-group{rel: "popover", "data-content"=> "Sign up at <a href=https://login.skype.com/account/signup-form target=_blank>Skype.com</a>".html_safe, "data-original-title"=>"Not registered?", id: "account_completeedit_skype"}
-      = f.text_field :skype, placeholder: "Skype username (recommended)", class: "span30 large"
-      %i.input-icon.fui-skype.huge
+      .control-group
+        = f.text_field :linkedin, placeholder: "Linkedin username (optional)", class: "span30 large"
+        %i.input-icon.fui-linkedin.huge
 
-    = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option>".html_safe,{:prompt => "What's your degree level?"}, {class: "chzn-select"}
+      .control-group{rel: "popover", "data-content"=> "Sign up at <a href=https://login.skype.com/account/signup-form target=_blank><span class=fui-skype></span>Skype.com</a>".html_safe, "data-original-title"=>"Not registered?", id: "account_completeedit_skype"}
+        = f.text_field :skype, placeholder: "Skype username (recommended)", class: "span30 large"
+        %i.input-icon.fui-skype.huge
 
-    .spacer15
 
-    = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", "data-placeholder" => "Which languages do you speak?"}
+      = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", "data-placeholder" => "Which languages do you speak?"}
 
-    .spacer15 
-    = f.submit "Complete Sign up", class: "btn btn-large btn-primary  btn-block", id: "account_complete_panel_submit"
+      .spacer15
+
+      #account_complete_cases_ext_label
+        How many cases have you done outside of casenexus?
+
+      = f.text_field :cases_external, id: "account_complete_cases_ext_input",placeholder:"0...500"
+
+
+
+    #account_complete_panel_column_right
+
+      #account_complete_map_header
+        Drag the marker to your location
+      #account_completeedit_map.complete.map
+
+      = f.hidden_field :lat, id: "account_completeedit_lat"
+      = f.hidden_field :lng, id: "account_completeedit_lng"
+
+      .spacer15
+      
+      = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {prompt: "What time zone are you in?"}, { class: "chzn-select" }
+
+      .spacer15 
+      = f.submit "Complete Sign up", class: "btn btn-large btn-primary  btn-block", id: "account_complete_panel_submit"

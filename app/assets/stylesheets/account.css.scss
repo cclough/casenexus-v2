@@ -62,13 +62,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 
-#account_edit_button_submit {
-  width:300px;
-}
-
-
-
-
 
 .account_edit_form_spacer {
 
@@ -92,9 +85,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
   font-size:50px;
 }
 
-#account_edit_form_submit_panel {
-  text-align:center;
-}
+
 
 .account_edit_block_title {
   background: $gray_second;
@@ -120,7 +111,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
 #account_completeedit_map {
 
   &.complete {
-    height:130px;
+    height:210px;
     width:300px;
   }
   &.edit {
@@ -136,6 +127,13 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 .account_completeedit_map_location_title {
   font-weight:bold;
+}
+
+
+#account_completeedit_skype {
+  span {
+    margin-right:3px;
+  }
 }
 
 
@@ -210,11 +208,11 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
   padding:25px;
 
-  left:50%;
+  left:41.5%;
 
-  width:300px;
-  height:560px;
-  margin-top:-310px;
+  width:620px;
+  height:350px;
+  margin-top:-250px;
   margin-left:0px;
 
   z-index:10;
@@ -239,7 +237,15 @@ label, .account_form_label { // why the hell won't this work in app.css?
   .chzn-container {
     width:300px !important;
   }
+
+  .popover-content {
+    span {
+      margin-right:3px;
+      margin-left:2px;
+    }
+  }
 }
+
 
 
 #account_complete_panel:after
@@ -247,7 +253,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
 {
   content: "";
   position: absolute;
-  top: 200px;
+  top: 100px;
   left: -15px;
   border-style: solid;
   border-width: 14px 15px 14px 0px;
@@ -256,6 +262,70 @@ label, .account_form_label { // why the hell won't this work in app.css?
   width: 0;
   z-index: 1;
 }
+
+
+
+
+#account_complete_panel_column_left, #account_complete_panel_column_right {
+  float:left;
+  width: 300px;
+}
+
+#account_complete_panel_column_left {
+  margin-right:20px;
+}
+
+
+
+#account_complete_cases_ext_label {
+  width:135px;
+  height:50px;
+  font-weight:bold;
+  color:white;
+  font-size:13px;
+  float:left;
+  margin:0;
+  background:$gray_second;
+  padding:10px;
+
+  -moz-border-top-left-radius:    3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius:         3px;
+
+  -moz-border-bottom-left-radius:    3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius:         3px;
+
+
+}
+
+#account_complete_cases_ext_input {
+  height:50px;
+  float:left;
+  width:130px;
+  margin:0;
+  font-size:25px;
+  text-align:center;
+  text-index:0;
+
+  -moz-border-top-left-radius:    0px;
+  -webkit-border-top-left-radius: 0px;
+  border-top-left-radius:         0px;
+
+  -moz-border-bottom-left-radius:    0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius:         0px;
+
+  -moz-border-top-right-radius:    3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius:         3px;
+
+  -moz-border-bottom-right-radius:    3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius:         3px;
+}
+
+
 
 #account_complete_panel_submit {
  display:block;

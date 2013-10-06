@@ -1,7 +1,9 @@
 
 window.account_completeedit_bless = () ->
 
-  $("#account_completeedit_skype").clickover trigger: "hover"
+  $("#account_completeedit_skype").clickover 
+    trigger: "hover"
+    html: true
 
   # if not defined before
   account_completeedit_map_lat_start = $("#account_completeedit_lat").val()

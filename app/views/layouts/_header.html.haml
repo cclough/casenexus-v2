@@ -50,7 +50,7 @@
             %li
               = current_user.email
               #header_nav_links_right_signedout_university
-                = avatar_for(@user, link:false)
+                = avatar_for(@user, link: 0)
                 = @user.university.name
       - else
         %ul#header_nav_links_left.nav.pull-left

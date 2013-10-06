@@ -182,19 +182,13 @@ header {
   cursor:pointer;
 }
 
-
-
-
-
 #header_nav_links_right_signedout {
   li:hover {
     background:0;
   }
-  a {
-    padding:5px !important;
-  }
   img {
     margin-left:0px;
+    padding:5px;
   }
 }
 

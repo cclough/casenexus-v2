@@ -4,9 +4,21 @@
     %title= full_title(yield(:title))
 
     = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+
+    = yield :javascript_includes
 
     = csrf_meta_tags
-    
+    %meta{charset: "UTF-8"}/
+    %meta{content: "notranslate", name: "google"}/
+    %meta{content: "en", "http-equiv" => "Content-Language"}/
+
+    /[if lte IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
+    /[if lte IE 7]
+      = javascript_include_tag "lib/icon-font-ie7"
+
+
   %body
   
     = render 'layouts/header'
@@ -17,12 +29,14 @@
       = yield
     #static_home_logo
       = image_tag "home/logo.png"
-      #static_home_welcome_text
-        Welcome to
-        %br
-        %strong casenexus.com
-        %br
-        Platform for live case interview practice
+
+      - if params[:action] == "home"
+        #static_home_welcome_text
+          Welcome to
+          %br
+          %strong casenexus.com
+          %br
+          Platform for live case interview practice
 
     - if !signed_in?
       #static_home_switch_link_signup.static_home_switch_link{"data-switch_to"=>"signup", "data-switch_from"=>"signin"}
@@ -38,12 +52,3 @@
 
 
 
-
-  = javascript_include_tag "application"
-
-  /[if lte IE 9]
-    = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
-  /[if lte IE 7]
-    = javascript_include_tag "lib/icon-font-ie7"
-
-  = yield :javascript_includes
