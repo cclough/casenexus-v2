@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130930020150) do
+ActiveRecord::Schema.define(:version => 20131006163858) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -201,10 +201,6 @@ ActiveRecord::Schema.define(:version => 20130930020150) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "subjects", :force => true do |t|
-    t.string "name", :null => false
-  end
-
   create_table "taggings", :force => true do |t|
     t.integer "tag_id",        :null => false
     t.integer "taggable_id"
@@ -245,7 +241,6 @@ ActiveRecord::Schema.define(:version => 20130930020150) do
     t.string   "linkedin_uid"
     t.string   "linkedin_token"
     t.string   "linkedin_secret"
-    t.string   "username",                                  :null => false
     t.float    "lat"
     t.float    "lng"
     t.string   "skype"
@@ -264,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20130930020150) do
     t.boolean  "can_upvote"
     t.boolean  "can_downvote"
     t.string   "linkedin"
+    t.string   "username"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

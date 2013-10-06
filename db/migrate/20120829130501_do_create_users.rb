@@ -2,7 +2,7 @@ class DoCreateUsers < ActiveRecord::Migration
   def change
 
 	  create_table "users", :force => true do |t|
-	    t.string   "username",                          :null => false
+	    t.string   "username",                                  :null => false
 	    t.string   "password_digest"
 	    t.string   "remember_token"
 	    t.float    "lat"
