@@ -5,6 +5,6 @@
     - application_taglist Question.tag_counts do |tag, count|
       .row
         = link_to question_tag_path(tag.name) do
-          .btn.btn-mini
+          .btn.btn-mini.questions_sidecolumn_tags_item.application_truncatable
             = tag.name
           x #{count}

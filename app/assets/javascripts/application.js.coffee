@@ -121,6 +121,9 @@ window.application_countchar = (val) ->
 
 window.application_spinner_prime = (container) ->
 
+  # unbind the click (cause of event duplication bug)
+  $(container + " .application_submit_button_with_spinner").off 'click'
+
   $(container + " .application_spinner_container").hide()
 
   # SUBMIT CLICK: Submit button loading animation and submit button prime

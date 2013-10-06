@@ -15,6 +15,7 @@ pagination color
 btn-primary color
 a
 
+btn color
 
 .form-search .btn { remove border on prepended button
   
@@ -682,9 +683,17 @@ a.muted:focus {
 
   font-weight: 500;
 }
+
+
+
+
+
+
+
+
 .btn {
   border: none;
-  background: #bdc3c7;
+  background: #989898;
   color: #ffffff;
   padding: 9px 12px 10px;
   line-height: 22px;
@@ -705,7 +714,7 @@ a.muted:focus {
 .btn:hover,
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle {
-  background-color: #cacfd2;
+  background-color: #8b8b8b;
   color: #ffffff;
   outline: none;
   -webkit-transition: 0.25s;
@@ -717,7 +726,7 @@ a.muted:focus {
 .btn:active,
 .btn-group.open .btn.dropdown-toggle,
 .btn.active {
-  background-color: #a1a6a9;
+  background-color: #545454;
   color: rgba(255, 255, 255, 0.75);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
