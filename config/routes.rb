@@ -18,19 +18,6 @@ Casenexus::Application.routes.draw do
   end
 
 
-# devise_for :users, skip: :registrations
-# devise_scope :user do
-#   resource :registration,
-#     only: [:new, :create, :edit, :update],
-#     path: 'users',
-#     path_names: { new: 'sign_up' },
-#     controller: 'devise/registrations',
-#     as: :user_registration do
-#       get :cancel
-#     end
-# end
-
-
   authenticated :user do
     # root :to => "profile#index"
     match '/' => 'profile#index', :as => :root
@@ -41,8 +28,6 @@ Casenexus::Application.routes.draw do
       get "/" => 'static_pages#home'
     end
   end
-
-
 
 
 
@@ -58,6 +43,7 @@ Casenexus::Application.routes.draw do
 
   # Profile
   match '/profile', to: 'profile#index', as: :root
+  match '/profile_staging', to: 'profile#staging'
 
   # Account
   resource :account, controller: 'account' do
@@ -150,10 +136,8 @@ Casenexus::Application.routes.draw do
   match 'console/sendpdfbutton' => 'console#sendpdfbutton', :as => :sendpdfbutton
   match 'console/skypebutton' => 'console#skypebutton', :as => :skypebutton
 
-
   # Site contacts
   match '/site_contacts/create', to: 'site_contacts#create', as: :site_contact
-
 
   # Events
   resources :events, except: [:index,:show] do
@@ -161,6 +145,7 @@ Casenexus::Application.routes.draw do
     get :user_timezone, on: :collection
     get :calendar, on: :collection
   end
+
   match '/calendar', to: 'events#index', as: :calendar
 
 end
