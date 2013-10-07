@@ -4,11 +4,18 @@ Casenexus::Application.routes.draw do
   # Rails Admin
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  # Devise
-  devise_for :users, :path => '', 
-      :path_names => { :sign_in => 'signin', :sign_out => 'signout' }, 
-      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations', sessions: 'sessions' }
+  ##### Devise
+  devise_for :users,  :skip_helpers => true, skip: :registrations, :path => '', 
+      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' }
 
+  # custom so doesn't include e.g. edit routes
+  devise_scope :user do
+    resource :registration,
+      only: [:new, :create, :update],
+      path: 'users',
+      path_names: { :sign_in => 'signin', :sign_out => 'signout' },
+      controller: 'registrations'
+  end
 
   authenticated :user do
     # root :to => "profile#index"
@@ -21,13 +28,12 @@ Casenexus::Application.routes.draw do
     end
   end
 
+
+
+
+
   # Pusher
   post 'pusher/auth'
-
-  # Online panel
-  resources :onlinepanel, only: [:index, :show] do
-    get :container, on: :collection
-  end
 
   # Static Pages
   match '/terms', to: 'static_pages#terms'
@@ -44,7 +50,6 @@ Casenexus::Application.routes.draw do
     get :complete_profile, on: :collection
     get :edit_password, on: :member
     put :show_help, on: :member
-    get :random_name, on: :collection
     get :delete, on: :member
     get :visitors, on: :collection
   end
@@ -143,4 +148,5 @@ Casenexus::Application.routes.draw do
     get :calendar, on: :collection
   end
   match '/calendar', to: 'events#index', as: :calendar
+
 end
