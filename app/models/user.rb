@@ -295,11 +295,20 @@ class User < ActiveRecord::Base
       end
     end
 
-
-
-
   end
 
+
+
+  # devise email overides (to enable async)
+  def send_on_create_confirmation_instructions
+    Devise::Mailer.delay.confirmation_instructions(self)
+  end
+  def send_reset_password_instructions
+    Devise::Mailer.delay.reset_password_instructions(self)
+  end
+  def send_unlock_instructions
+    Devise::Mailer.delay.unlock_instructions(self)
+  end
 
   private
 
