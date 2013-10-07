@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131006163858) do
+ActiveRecord::Schema.define(:version => 20131007003106) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -238,9 +238,6 @@ ActiveRecord::Schema.define(:version => 20131006163858) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false, :null => false
-    t.string   "linkedin_uid"
-    t.string   "linkedin_token"
-    t.string   "linkedin_secret"
     t.float    "lat"
     t.float    "lng"
     t.string   "skype"
@@ -259,13 +256,11 @@ ActiveRecord::Schema.define(:version => 20131006163858) do
     t.boolean  "can_upvote"
     t.boolean  "can_downvote"
     t.string   "linkedin"
-    t.string   "username"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["linkedin_uid"], :name => "index_users_on_linkedin_uid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["university_id"], :name => "index_users_on_university_id"
 

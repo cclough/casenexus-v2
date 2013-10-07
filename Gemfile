@@ -11,9 +11,6 @@ gem 'will_paginate'                              # Pagination
 gem 'simple_form'                                # Rails form builder
 gem 'scoped_search'                              # Active Record Easy Search
 gem 'geocoder'                                   # Geocoding solution for rails
-gem 'omniauth'                                   # Authentication with Rack
-gem 'omniauth-linkedin'                          # Linkedin plugin for omniauth
-gem 'linkedin'                                   # Linkedin client
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
 gem 'ffaker'                                     # Generate random data
 # gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
@@ -23,7 +20,7 @@ gem 'pusher'                                     # Push notifications and messag
 gem 'rails_admin'                                # Admin
 gem 'thumbs_up'                                  # Stack Overflow like voting on things
 gem 'delayed_job_active_record'                  # For threaded email sending
-gem 'devise-async'
+gem 'devise-async'                               # Enables async devise email sending
 gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
 
 group :production do

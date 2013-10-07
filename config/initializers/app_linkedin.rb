@@ -1,2 +1,0 @@
-LINKEDIN_KEY = 'o4xqdhzf03cf'
-LINKEDIN_SECRET = 'n2x15WLOzZ2bLmaU'
