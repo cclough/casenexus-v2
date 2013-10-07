@@ -21,6 +21,7 @@ gem 'rails_admin'                                # Admin
 gem 'thumbs_up'                                  # Stack Overflow like voting on things
 gem 'delayed_job_active_record'                  # For threaded email sending
 gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
+gem 'griddler'                                   # Receive emails
 
 group :production do
   gem 'heroku_rails_deflate'
