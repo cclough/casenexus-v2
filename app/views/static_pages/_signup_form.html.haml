@@ -23,5 +23,8 @@
           = link_to "Terms & Conditions", terms_path, tabindex: "13"
         .span5
           = f.check_box :confirm_tac, tabindex: "14"
+
         = f.hidden_field :ip_address, value: request.remote_ip
-        = f.submit "Sign up", class: "btn btn-default  btn-large btn-block", tabindex: "16"
+        
+        %button.btn.btn-default.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "16"}
+          Sign up
