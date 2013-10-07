@@ -5,7 +5,7 @@ Casenexus::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   ##### Devise
-  devise_for :users,  :skip_helpers => true, skip: :registrations, :path => '', 
+  devise_for :users, skip: :registrations, path_names: { :sign_in => 'signin', :sign_out => 'signout' }, :path => '', 
       controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' }
 
   # custom so doesn't include e.g. edit routes
@@ -13,9 +13,23 @@ Casenexus::Application.routes.draw do
     resource :registration,
       only: [:new, :create, :update],
       path: 'users',
-      path_names: { :sign_in => 'signin', :sign_out => 'signout' },
-      controller: 'registrations'
+      controller: 'registrations',
+      as: :user_registration
   end
+
+
+# devise_for :users, skip: :registrations
+# devise_scope :user do
+#   resource :registration,
+#     only: [:new, :create, :edit, :update],
+#     path: 'users',
+#     path_names: { new: 'sign_up' },
+#     controller: 'devise/registrations',
+#     as: :user_registration do
+#       get :cancel
+#     end
+# end
+
 
   authenticated :user do
     # root :to => "profile#index"

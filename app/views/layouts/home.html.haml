@@ -43,7 +43,7 @@
         = link_to "Not yet registered? Sign up", "#"
       #static_home_switch_link_signin.static_home_switch_link{"data-switch_to"=>"signin", "data-switch_from"=>"signup"}
         = link_to "Already registered? Sign in", "#"
-    - else
+    - elsif !signed_in?
       = link_to "Return to the home page", root_path, id: "static_home_switch_nothome_link"
 
   = render 'shared/modal_help' if signed_in?
