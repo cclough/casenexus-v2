@@ -93,9 +93,6 @@ GEM
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     geocoder (1.1.8)
-    griddler (0.6.1)
-      htmlentities
-      rails (>= 3.2.0)
     growl (1.0.3)
     guard (1.8.1)
       formatador (>= 0.2.4)
@@ -122,7 +119,6 @@ GEM
     heroku_rails_deflate (0.2.1)
       rack (~> 1.4.5)
     hike (1.2.3)
-    htmlentities (4.3.1)
     i18n (0.6.5)
     icalendar (1.4.1)
     journey (1.0.4)
@@ -300,7 +296,6 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   geocoder
-  griddler
   growl
   guard-rspec
   guard-spork
