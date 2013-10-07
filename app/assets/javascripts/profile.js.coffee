@@ -39,14 +39,14 @@ $(document).ready ->
       $("#modal_profile").html("")
       $("#modal_profile").modal "show"
 
-      $.get "/account/edit", (data) ->
-        $("#modal_profile").html data
+      # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+      $("#modal_profile").on "shown", ->
+        $.get "/account/edit", (data) ->
+          $("#modal_profile").html data
+          window.account_completeedit_bless()
 
-        # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-        $("#modal_profile").on "shown", ->
-          setTimeout (->
-            window.account_completeedit_bless()
-          ), 500
+
+
 
           
 
