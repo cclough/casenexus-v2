@@ -89,7 +89,7 @@ module Casenexus
         Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "home" }
         Devise::ConfirmationsController.layout "home"
         Devise::UnlocksController.layout "home"            
-        Devise::PasswordsController.layout "application"
+        Devise::PasswordsController.layout "home"
     end
 
   end

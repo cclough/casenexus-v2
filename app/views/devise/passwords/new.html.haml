@@ -1,19 +1,9 @@
-.spacer40
-.spacer20
-.row
-  .span32.offset33
-    .panel.darkest{style:"text-align:center;"}
-      = render 'layouts/flash', flash: flash
+#devise_passwords_new_panel
+  = render 'shared/error_messages', object: resource
 
-      %b Forgotten your password?
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    .control-group
+      = f.text_field :email, tabindex: "1", placeholder: "Enter your email address...", class: "span30 large"
+      %i.input-icon.fui-user.huge
 
-
-      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-        = f.error_notification
-        .spacer10
-        .row
-          .span25
-            = f.text_field :email, placeholder: "Enter your email address...", style:"width:260px;"
-        .spacer10
-        .row
-          = f.button :submit, "Email me instructions"
+    = f.button :submit, "Reset my password...", class: "btn btn-default btn-large btn-block", tabindex: "2"

@@ -1,20 +1,9 @@
-.row
-  .span50.offset22
-    .panel
-      = render 'layouts/flash', flash: flash
+#devise_confirmations_new_panel
+  = render 'shared/error_messages', object: resource
 
-      %h4 Resend email confirmation instructions
+  = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    .control-group
+      = f.text_field :email, tabindex: "1", placeholder: "Enter your email address...", class: "span30 large"
+      %i.input-icon.fui-user.huge
 
-      = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-        = f.error_notification
-
-        .form-inputs
-          .offset8
-            Email:
-            = f.text_field :email
-
-        .form-actions
-          .offset9
-            = f.button :submit, "Resend confirmation instructions"
-
-      = render "devise/shared/links"
+    = f.button :submit, "Resend confirmation instructions", class: "btn btn-default btn-large btn-block", tabindex: "2"

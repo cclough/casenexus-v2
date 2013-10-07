@@ -1,0 +1,130 @@
+$gray_background: #eceef1;
+$gray_Light: white;
+$gray_second: #BDC3C7;
+$gray_button: #989898;
+$gray_gunmetal: #363636;
+$gray_gunmetal_second: #2d2d2d;
+
+$gray_Lighter: #e1e1e1;
+$gray_Lightest: #f6f6f6;
+$gray_Mid: #767676;
+$gray_Dark: #555555;
+$gray_Darker: #333333;
+
+$green_flatui: #1ABC9C;
+$green_linkedin: #3489bd;
+
+$blue_pastel: #98cdff;
+$blue_linkedin: #006699;
+$blue_skype:#45adea;
+
+$alert-green: #88ff8e;
+$alert-red: #FF3030;
+$alert-blue: #7EB6FF;
+$alert-yellow: #FFFF7E;
+
+
+
+#devise_confirmations_new_panel {
+
+  position:absolute;
+  left: 150%;
+  top:50%;
+
+  background:$gray_background;
+
+  padding:25px;
+
+  left:50%;
+
+  width:300px;
+  height:110px;
+  margin-top:-160px;
+  margin-left:0px;
+
+  z-index:10;
+
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
+
+  input {
+    display:block;
+    margin-bottom:15px;
+    border:2px solid transparent;
+  }
+
+  i {
+    margin-top:2px;
+    margin-right:3px;
+  }
+}
+
+#devise_confirmations_new_panel:after
+{
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: -15px;
+  border-style: solid;
+  border-width: 14px 15px 14px 0px;
+  border-color: transparent $gray_background;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
+
+
+
+
+
+#devise_passwords_new_panel {
+
+  position:absolute;
+  left: 150%;
+  top:50%;
+
+  background:$gray_background;
+
+  padding:25px;
+
+  left:50%;
+
+  width:300px;
+  height:110px;
+  margin-top:-160px;
+  margin-left:0px;
+
+  z-index:10;
+
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
+
+  input {
+    display:block;
+    margin-bottom:15px;
+    border:2px solid transparent;
+  }
+
+  i {
+    margin-top:2px;
+    margin-right:3px;
+  }
+}
+
+#devise_passwords_new_panel:after
+{
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: -15px;
+  border-style: solid;
+  border-width: 14px 15px 14px 0px;
+  border-color: transparent $gray_background;
+  display: block;
+  width: 0;
+  z-index: 1;
+}
+
