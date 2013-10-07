@@ -10,6 +10,7 @@ window.static_switch_view = (object,speed) ->
     switch_to = $(object).data("switch_to")
     element = "#static_home_" + switch_from
 
+
     if speed == "instant"
       clicks = 1
     else if speed == "normal"
@@ -25,13 +26,15 @@ window.static_switch_view = (object,speed) ->
       left: "50%"
     , clicks
 
+
+
 $(document).ready ->
 
   $(".static_home_switch_link").click ->
     window.static_switch_view(this,"normal")
 
-
-
+  window.application_disablesubmit_prime "#static_home_signin"
+  window.application_disablesubmit_prime "#static_home_signup"
 
   ######################### SIGNUP ############################
 

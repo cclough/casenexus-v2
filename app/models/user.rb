@@ -332,9 +332,9 @@ class User < ActiveRecord::Base
       begin
         # finds database listed domain within string after at sign http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
         domain = self.email.split("@")[1]
-        errors.add(:email, "Sorry, casenexus is not yet available for your university") if University.all.none?{ |d| domain[d.domain] }
+        errors.add(:base, "Sorry, casenexus is not yet available for your university") if University.all.none?{ |d| domain[d.domain] }
       rescue Exception => e
-        errors.add(:email, "Sorry, casenexus is not yet available for your university")
+        errors.add(:base, "Sorry, casenexus is not yet available for your university")
       end
     end
   end
@@ -362,8 +362,8 @@ class User < ActiveRecord::Base
       # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
       if found = University.find{ |d| domain[d.domain] } # Switch on enabled here eventually
         self.university = found
-      else
-        errors.add(:email, "Sorry, casenexus is not yet available for your university")
+      else # not the important one
+        errors.add(:base, "Sorry, casenexus is not yet available for your university")
       end
     else
       self.university = University.find(1)

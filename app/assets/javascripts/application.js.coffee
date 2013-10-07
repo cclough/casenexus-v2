@@ -133,6 +133,19 @@ window.application_spinner_prime = (container) ->
     $(container + " .application_spinner_container").show()
 
 
+window.application_disablesubmit_prime = (container) ->
+  
+  # unbind the click (cause of event duplication bug)
+  # $(container + " .application_submit_button_with_disable").off 'click'
+
+  $(container + " .application_submit_button_with_disable").removeClass "disabled"
+
+  # SUBMIT CLICK: Submit button loading animation and submit button prime
+  $(container + " .application_submit_button_with_disable").click ->
+
+    $(this).closest("form").submit()
+    $(container + " .application_submit_button_with_disable").addClass "disabled"
+    $(container + " .application_submit_button_with_disable").off 'click'
 
 
 
