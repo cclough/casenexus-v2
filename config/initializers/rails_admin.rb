@@ -792,9 +792,6 @@ RailsAdmin.config do |config|
   #     configure :created_at, :datetime 
   #     configure :updated_at, :datetime 
   #     configure :admin, :boolean 
-  #     configure :linkedin_uid, :string 
-  #     configure :linkedin_token, :string 
-  #     configure :linkedin_secret, :string 
   #     configure :first_name, :string 
   #     configure :last_name, :string 
   #     configure :lat, :float 

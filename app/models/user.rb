@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :token_authenticatable#, :async ,:omniauthable
+         :confirmable#, :token_authenticatable, :async ,:omniauthable
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,

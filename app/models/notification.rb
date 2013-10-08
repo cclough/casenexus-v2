@@ -201,11 +201,11 @@ class Notification < ActiveRecord::Base
                             self.content,
                             self.title)
       when "message"
-        UserMailer.usermessage(self.sender,
+        UserMailer.delay.usermessage(self.sender,
                                self.user,
                                self.url,
                                self.content,
-                               self.title).deliver unless self.user.online_now?
+                               self.title) unless self.user.online_now?
       when "friendship_req"
         UserMailer.delay.friendship_req(self.sender,
                                   self.user,
