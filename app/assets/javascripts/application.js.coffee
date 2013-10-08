@@ -148,6 +148,21 @@ window.application_disablesubmit_prime = (container) ->
 
 
 
+
+window.modal_contact_show = () ->
+  if !($("#modal_contact").hasClass("in"))
+
+    # clear out inputs and textareas
+    $("#modal_contact input, #modal_contact textarea").val ""
+
+    $(".modal").modal "hide"
+
+    $("#modal_contact").on "shown", ->      
+      window.application_spinner_prime(".modal.in")
+
+    $("#modal_contact").modal "show"
+
+
 window.modal_message_prime = () ->
   # Scroll div
   $(".modal.in #modal_message_conversation").scrollTop($(".modal.in #modal_message_conversation").prop("scrollHeight"));
@@ -302,9 +317,6 @@ window.application_raty_prime = () ->
 $(document).ready ->
 
 
-  $("#header_nav_links_right_name").click ->
-    window.application_profilepanel_toggle()
-
   # Jquery truncate
   window.application_truncatables()
 
@@ -347,16 +359,9 @@ $(document).ready ->
   $("#header_link_help").click ->
     window.modal_help_show()
 
-
   # Contact modal show 
   $("#header_link_contact").click ->
-    if !($("#modal_contact").hasClass("in"))
-      $(".modal").modal "hide"
-
-      $("#modal_contact").on "shown", ->      
-        window.application_spinner_prime(".modal.in")
-
-      $("#modal_contact").modal "show"
+    window.modal_contact_show()
 
 
 

@@ -39,9 +39,7 @@ $(document).ready ->
   ######################### SIGNUP ############################
 
   $('#static_home_signup_notlisted_button').click ->
-    if !($("#modal_contact").hasClass("in"))
-      $(".modal").modal "hide"
-      $("#modal_contact").modal "show"
+    window.modal_contact_show()
 
   $('.chzn-select').chosen()
     # not really needed...
