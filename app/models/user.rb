@@ -18,12 +18,12 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
 
-  has_many :events
-  has_many :visits
-  has_many :posts
-  has_many :questions
-  has_many :answers
-  has_many :comments
+  has_many :events, dependent: :nullify
+  has_many :visits, dependent: :nullify
+  has_many :posts, dependent: :nullify
+  has_many :questions, dependent: :nullify
+  has_many :answers, dependent: :nullify
+  has_many :comments, dependent: :nullify
   has_many :site_contacts, dependent: :nullify
 
   has_many :languages_users, dependent: :destroy
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
   
-  has_many :points
+  has_many :points, dependent: :destroy
 
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
