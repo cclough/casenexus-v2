@@ -142,10 +142,9 @@ window.application_disablesubmit_prime = (container) ->
 
   # SUBMIT CLICK: Submit button loading animation and submit button prime
   $(container + " .application_submit_button_with_disable").click ->
-
-    $(this).closest("form").submit()
     $(container + " .application_submit_button_with_disable").addClass "disabled"
     $(container + " .application_submit_button_with_disable").off 'click'
+    $(this).closest("form").submit() # stops addclass on safari for some reason
 
 
 

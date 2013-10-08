@@ -84,12 +84,11 @@ module Casenexus
     # Layout for devise mailers
     config.to_prepare do
       Devise::Mailer.layout "email" # email.haml or email.erb
-
-        Devise::SessionsController.layout "home"
-        Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "home" }
-        Devise::ConfirmationsController.layout "home"
-        Devise::UnlocksController.layout "home"            
-        Devise::PasswordsController.layout "home"
+      Devise::SessionsController.layout "home"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "home" }
+      Devise::ConfirmationsController.layout "home"
+      Devise::UnlocksController.layout "home"            
+      Devise::PasswordsController.layout "home"
     end
 
   end
