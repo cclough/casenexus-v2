@@ -337,29 +337,6 @@ class Case < ActiveRecord::Base
 
   # STATISTICS
 
-  def self.cases_analysis_stats_global(type)
-
-    if Case.all.count > 0
-      case type
-        when "totalscore"
-          (Case.all.map { |a| a.totalscore }.sum/Case.all.count).round(1) if Case.all.count > 0
-
-        when "totalscore_top_quart"
-          array = Case.all.map { |a| a.totalscore }
-          percentile = 0.75
-          array ? array.sort[((array.length * percentile).ceil)-1] : nil
-
-        when "totalscore_bottom_quart"
-          array = Case.all.map { |a| a.totalscore }
-          percentile = 0.25
-          array ? array.sort[((array.length * percentile).ceil)-1] : nil
-
-      end
-    else
-      "-"
-    end
-  end
-
   def self.criteria_av_global(num)
     (Case.all.map { |a| a.criteria(num) }.sum/Case.all.count).round(2)
   end

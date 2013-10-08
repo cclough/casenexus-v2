@@ -4,11 +4,6 @@
   :javascript
     var cases_analysis_chart_case_count = #{@case_count_bracket};
 
-    var cases_analysis_chart_site_average = #{Case.cases_analysis_stats_global("totalscore")};
-    var cases_analysis_chart_top_quart = #{Case.cases_analysis_stats_global("totalscore_top_quart")};
-    var cases_analysis_chart_bottom_quart = #{Case.cases_analysis_stats_global("totalscore_bottom_quart")};
-
-
     var account_completeedit_map_lat_start = "#{current_user.lat}";
     var account_completeedit_map_lng_start = "#{current_user.lng}";
 
@@ -18,7 +13,7 @@
       // if (cases_analysis_chart_case_count < 3) {
       //   $("#cases_analysis_chart_progress_empty").fadeIn("fast");
       // } else {
-      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, cases_analysis_chart_site_average, cases_analysis_chart_top_quart, cases_analysis_chart_bottom_quart);
+      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count);
       // }
 
     });

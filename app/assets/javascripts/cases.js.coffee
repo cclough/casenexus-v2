@@ -64,7 +64,7 @@ window.cases_new_prime = () ->
 # Progress chart //////////////////////////
 #//////////////////////////////////////////
 
-window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart, bottom_quart) ->
+window.cases_analysis_chart_progress_init = (case_count) ->
   
   # loop through model json, construct AM compatabile array + run parseDate
   
@@ -126,25 +126,6 @@ window.cases_analysis_chart_progress_init = (case_count, site_average, top_quart
     valueAxis.maximum = 15
     valueAxis.labelsEnabled = false
 
-    # # HORIZONTAL Guide Quartiles
-    # guide = new AmCharts.Guide()
-    # guide.value = bottom_quart
-    # guide.toValue = top_quart
-    # guide.fillColor = "#000"
-    # guide.inside = true
-    # guide.fillAlpha = 0.3
-    # guide.lineAlpha = 0
-    # valueAxis.addGuide guide
-
-    # # GUIDE for average
-    # guide = new AmCharts.Guide()
-    # guide.value = site_average
-    # guide.lineColor = "#CC0000"
-    # guide.dashLength = 4
-    # guide.label = "average for all users"
-    # guide.inside = true
-    # guide.lineAlpha = 1
-    # valueAxis.addGuide guide
 
     chart_analysis_progress.addValueAxis valueAxis
     
