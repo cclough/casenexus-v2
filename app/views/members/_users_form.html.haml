@@ -79,8 +79,11 @@
       %div
         LANGUAGE
 
+      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 0, "data-switch_name" => "language", class: "active"}
+        All
+
       - Language.all.each do |language_item|
-        .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => language_item.id, "data-switch_name" => "language", class: ("active" if current_user.degree_level == language_item.id)}
+        .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => language_item.id, "data-switch_name" => "language" }
           = language_item.name
 
 
@@ -94,7 +97,6 @@
     = radio_button_tag :users_listtype, 'online_today'
     = radio_button_tag :users_listtype, 'online_now'
     = radio_button_tag :users_listtype, 'posts'
-    = radio_button_tag :users_listtype, 'language'
     / for params user_id link
     - unless params[:user_id].blank?
       = radio_button_tag :users_listtype, 'params', checked: true

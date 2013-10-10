@@ -63,8 +63,8 @@ $cn_colour_-1:#b0bcc3; // buttons
 $cn_colour_0: #84b4db; // header
 $cn_colour_1: #8dc0e9; // header button highlights
 
-$cn_grey_1: #f0f1f2; // users form
-$cn_grey_2: #dee1e3; // search input border
+$cn_grey_-1: #dee1e3; // search input border
+$cn_grey_0: #f0f1f2; // users form
 
 
 
@@ -855,6 +855,24 @@ a.muted:focus {
 }
 
 
+
+
+
+
+
+.btn.btn-colour {
+  background-color: $cn_colour_0;
+}
+.btn.btn-colour:hover,
+.btn.btn-colour:focus,
+.btn-group:focus .btn.btn-red.dropdown-toggle {
+  background-color: $cn_colour_1;
+}
+.btn.btn-colour:active,
+.btn-group.open .btn.btn-colour.dropdown-toggle,
+.btn.btn-colour.active {
+  background-color: $cn_colour_-1;
+}
 
 
 
@@ -1917,7 +1935,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  border: 1px solid $cn_grey_2;  // EDITED from #bdc3c7
+  border: 1px solid $cn_grey_-1;  // EDITED from #bdc3c7
   color: #34495e;
   font-family: 'Lato', sans-serif;
   font-size: 14px;

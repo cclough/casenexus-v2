@@ -288,10 +288,10 @@ class User < ActiveRecord::Base
 
     # Pulldown Filters
     def list_language(language_id)
-      if !language_id.blank?
-        completed.order('created_at desc').joins(:languages_users).where(languages_users: {language_id: language_id})
+      if !language_id.blank? && language_id != "0"
+        completed.joins(:languages_users).where(languages_users: {language_id: language_id})
       else
-        completed.order('created_at desc')
+        completed
       end
     end
 

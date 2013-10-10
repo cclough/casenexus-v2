@@ -1,35 +1,30 @@
 .map_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, id: "map_index_users_item_" + users_item.id.to_s, class: ("posts" if params[:users_listtype] == "posts")}
 
-  / = users_skill_triangle_for(users_item)
 
   .map_index_users_item_avatar
     = avatar_for(users_item, { link: 0, size: "large" })
+
+  .map_index_users_item_info{class: ("posts" if params[:users_listtype] == "posts")}
+
+    .map_index_users_item_username
+      = users_item.username
+
     .map_index_users_item_university
-      = users_item.university.name
-  .map_index_users_item_info
+      = users_item.university.name.upcase
 
-    .map_index_users_item_user
-      .map_index_users_item_username
-        = users_item.username
 
-      - unless users_item.last_online_at.blank?
-        .map_index_users_item_onlinestatus
+    - unless users_item.last_online_at.blank?
+      .map_index_users_item_onlinestatus
 
-          .map_index_users_item_onlinestatus_icon{class: (if users_item.online_now? then "online_now" elsif users_item.online_earlier? then "online_earlier" else "online_not" end)}
+        %i.icon-circle-blank.map_index_users_item_onlinestatus_icon{class: (if users_item.online_now? then "online_now" elsif users_item.online_earlier? then "online_earlier" else "online_not" end)}
+
+        - unless users_item.online_now? || users_item.online_earlier? 
           .map_index_users_item_onlinestatus_text
             last online
             = time_ago_in_words(users_item.last_online_at)
             ago
 
-  - if params[:users_listtype] == "posts"
-    .map_index_users_item_post
-      .row
-        = users_item.posts.last.content
-      .row
-        .pull-right
-          = time_ago_in_words(users_item.posts.last.created_at)
-          ago
-  - else
+
 
     .map_index_users_item_actions
 
@@ -37,13 +32,14 @@
 
         - if Friendship.friends?(current_user, users_item)
 
-          = link_to raw("<i class=icon-comment icon-white></i>"),"#", class: "map_index_users_item_button_message btn btn-primary  btn-small", "data-friend_id" => users_item.id
+          .map_index_users_item_button_message.btn.btn-primary.btn-small
+            %i.icon-envelope-alt.icon-white{ "data-friend_id" => users_item.id }
 
-          %a.map_index_users_item_button_event.btn.btn-primary.btn-small{"data-friend_id" => users_item.id.to_s}
+          .map_index_users_item_button_event.btn.btn-primary.btn-small{"data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
 
           %a.map_index_users_item_button_startcase.btn.btn-primary.btn-small{ href:"/console?friend_id=" + users_item.id.to_s}
-            %i.icon-arrow-right.icon-white
+            %i.icon-play-sign.icon-white
 
           - unless users_item.skype.blank?
             %a.map_index_users_item_button_skype.btn.btm-small.btn-primary{href: "skype:#{users_item.skype}?call"}
@@ -60,9 +56,9 @@
           = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-mini map_index_users_item_friendship_action_button")
 
         - elsif !Friendship.exist?(current_user, users_item)
-          %a.map_index_users_item_button_add.btn.btn-primary.btn-small{"data-friend_id" => users_item.id }
-            %i.icon-plus.icon-white
-            Add partner
+          %a.map_index_users_item_button_add.btn.btn-colour.btn-micro{"data-friend_id" => users_item.id }
+            %i.icon-plus-sign.icon-white
+            ADD PARTNER
 
         - unless users_item.linkedin.blank?
           %a.map_index_users_item_button_linkedin.btn.btn-primary.btn-small{href: "http://www.linkedin.com/"+users_item.linkedin}
@@ -71,22 +67,34 @@
 
 
 
-  .map_index_users_item_stuff
+    - if params[:users_listtype] == "posts"
+      .map_index_users_item_post
+        = users_item.posts.last.content
+        .pull-right
+          = time_ago_in_words(users_item.posts.last.created_at)
+          ago
 
-    .map_index_users_item_stats
-      cases per week
-    .map_index_users_item_activity{style: "background: url(#{Case.user_activity_chart(users_item)})no-repeat"}
 
-    .map_index_users_item_cases
-      .map_index_users_item_cases_recd
-        = users_item.case_count_recd
-        %span.map_index_users_item_cases_text
-          taken
-      .map_index_users_item_cases_givn
-        = users_item.case_count_givn
-        %span.map_index_users_item_cases_text
-          given
-      .map_index_users_item_cases_external
-        = users_item.case_count_external
-        %span.map_index_users_item_cases_text
-          ext.
+
+  .map_index_users_item_cases
+    .map_index_users_item_cases_recd
+      = users_item.case_count_recd
+      %span.map_index_users_item_cases_text
+        taken
+    .map_index_users_item_cases_givn
+      = users_item.case_count_givn
+      %span.map_index_users_item_cases_text
+        given
+    .map_index_users_item_cases_external
+      = users_item.case_count_external
+      %span.map_index_users_item_cases_text
+        ext.
+
+
+  .map_index_users_item_stats
+    CASES PER WEEK
+
+  .map_index_users_item_activity{style: "background: url(#{Case.user_activity_chart(users_item)})no-repeat"}
+
+
+

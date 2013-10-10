@@ -248,7 +248,7 @@ class Case < ActiveRecord::Base
   def self.user_activity_chart(user)
     options = {}
     options[:type] ||= :line
-    options[:size] ||= "300x70"
+    options[:size] ||= "365x78"
     options[:bgcolor] ||= "FFFFFF"
     options[:chart_color] ||= "336699"
     options[:area_color] ||= "DFEBFF"

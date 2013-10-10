@@ -206,17 +206,4 @@ module ApplicationHelper
 
 
 
-  def users_skill_triangle_for(user)
-
-    num = user.cases.count
-
-    # case num
-    # when 1..3
-      content_tag :div,"" , class: "map_index_users_item_skill_triangle novice"
-    # when 3..8
-    #   content_tag :div,"" , class: "map_index_users_item_skill_triangle intermediate"
-    # # when 8..11
-    #   content_tag :div,"" , class: "map_index_users_item_skill_triangle advanced"
-    # # end
-  end
 end
