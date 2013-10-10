@@ -26,6 +26,8 @@ a color -> gunmetal
 find and replace the green with gray_button
 
 lots of input radius's to 3
+
+.navbar .nav > li > a { - remove padding
 */
 
 
@@ -1163,7 +1165,7 @@ a.muted:focus {
   font-size: 14.994px;
   /* 15px */
 
-  padding: 29px 20px 27px;
+//  padding: 29px 20px 27px;
   text-shadow: none;
   -webkit-transition: background-color .25s, color .25s, border-bottom-color .25s;
   -moz-transition: background-color .25s, color .25s, border-bottom-color .25s;

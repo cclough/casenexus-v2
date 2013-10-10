@@ -17,6 +17,9 @@ $blue_pastel: #98cdff;
 $blue_linkedin: #006699;
 $blue_skype:#45adea;
 
+$cn_colour_0: #84b4db;
+$cn_colour_1: #8dc0e9;
+
 $alert-green: #88ff8e;
 $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
@@ -24,7 +27,7 @@ $alert-yellow: #FFFF7E;
 
 header {
 
-  background: white !important;
+  background: $cn_colour_0;
   
   position:fixed;
   top:0;
@@ -50,21 +53,21 @@ header {
   position: absolute;
   padding:7px 10px;
   height:31px;
-    -moz-border-top-left-radius:    6px !important;
-    -webkit-border-top-left-radius: 6px !important;
-    border-top-left-radius:         6px !important;
+    -moz-border-top-left-radius:    3px !important;
+    -webkit-border-top-left-radius: 3px !important;
+    border-top-left-radius:         3px !important;
 
-    -moz-border-top-right-radius:    6px !important;
-    -webkit-border-top-right-radius: 6px !important;
-    border-top-right-radius:         6px !important;
+    -moz-border-top-right-radius:    3px !important;
+    -webkit-border-top-right-radius: 3px !important;
+    border-top-right-radius:         3px !important;
   &.signedout {
     top:30px;
-    -moz-border-radius:    6px !important;
-    -webkit-border-radius: 6px !important;
-    border-radius:         6px !important;
+    -moz-border-radius:    3px !important;
+    -webkit-border-radius: 3px !important;
+    border-radius:         3px !important;
   }
   &:hover {
-    background:$gray_background;
+    background:$cn_colour_1;
   }
 }
 
@@ -91,24 +94,24 @@ header {
 
   li {
     height:45px;
-    -moz-border-top-left-radius:    6px !important;
-    -webkit-border-top-left-radius: 6px !important;
-    border-top-left-radius:         6px !important;
+    -moz-border-top-left-radius:    3px !important;
+    -webkit-border-top-left-radius: 3px !important;
+    border-top-left-radius:         3px !important;
 
-    -moz-border-top-right-radius:    6px !important;
-    -webkit-border-top-right-radius: 6px !important;
-    border-top-right-radius:         6px !important;
+    -moz-border-top-right-radius:    3px !important;
+    -webkit-border-top-right-radius: 3px !important;
+    border-top-right-radius:         3px !important;
 
     margin-left:3px;
     a {
-      padding:13px !important;
-      color:$gray_Dark !important;
+      padding:13px;
+      color:white !important;
     }
     &:hover {
-      background:$gray_background;
+      background:$cn_colour_1;
     }
     &.active {
-      background:$gray_background;
+      background:$cn_colour_1;
     }
   }
 }
@@ -131,26 +134,18 @@ header {
 
 #header_nav_links_right {
 
-  div {
-
-  }
   li {
-    padding: 0 8px;
-    &.header_nav_links_right_profile_active {
-      background:$gray_gunmetal;
-      a {
-        color:white !important;
-      }
-
-      &:hover {
-        background:$gray_gunmetal_second;
-      }
-
+    a {
+      padding: 13px 9px;
     }
-
   }
   #header_nav_links_right_username {
-    margin-left:5px;
+    background:$cn_colour_1;
+
+    -moz-border-radius:    3px !important;
+    -webkit-border-radius: 3px !important;
+    border-radius:         3px !important;
+    padding:7px 9px;
   }
 
 }
