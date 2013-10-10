@@ -15,7 +15,7 @@
 
       %div
         LOCATION
-      %a.btn.btn-micro.btn-primary{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
+      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
         Near you
         - user_near_count = User.list_local(current_user).count
         %span.map_index_users_form_filters_button_user_count
@@ -26,13 +26,13 @@
 
       %div
         ONLINE
-      %a.btn.btn-micro.btn-primary{"data-radio"=>2}
+      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>2}
         Today
         - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
         %span.map_index_users_form_filters_button_user_count
           = online_today_count
 
-      %a.btn.btn-micro.btn-primary{"data-radio"=>3}
+      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>3}
         Now
         - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
         %span.map_index_users_form_filters_button_user_count
@@ -44,7 +44,7 @@
       %div
         CONNECT
 
-      %a.btn.btn-micro.btn-primary{"data-radio"=>4}
+      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>4}
         Shoutouts
         - user_with_post_count = User.list_users_with_posts.count
         %span.map_index_users_form_filters_button_user_count
@@ -54,7 +54,7 @@
         Shout!
 
 
-  .spacer10
+  .spacer5
 
   #map_index_users_form_filters_row_second.row
 
@@ -63,10 +63,10 @@
       %div
         EDUCATION
 
-      .btn.btn-micro.btn-primary{ "data-degreelevel_id" => 0,class: ("active" if current_user.degree_level == 0)}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 0, "data-switch_name" => "degreelevel" ,class: ("active" if current_user.degree_level == 0)}
         UG
 
-      .btn.btn-micro.btn-primary{ "data-degreelevel_id" => 1 ,class: ("active" if current_user.degree_level == 1)}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 1, "data-switch_name" => "degreelevel" ,class: ("active" if current_user.degree_level == 1)}
         MBA
 
       / %a.map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>1}
@@ -77,15 +77,15 @@
     .map_index_users_form_filters_span
 
       %div
-        EDUCATION
+        LANGUAGE
 
       - Language.all.each do |language_item|
-        .btn.btn-micro.btn-primary{ "data-category" => "language", "data-radio"=>5,"data-name" => language_item.name, "data-id" => language_item.id }
+        .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => language_item.id, "data-switch_name" => "language", class: ("active" if current_user.degree_level == language_item.id)}
           = language_item.name
 
 
 
-
+  .spacer15
 
 
   #map_index_users_form_radiogroup

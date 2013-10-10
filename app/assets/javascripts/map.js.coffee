@@ -41,13 +41,6 @@ window.map_index_users_updatelist = ->
   $("#map_index_map_guide").fadeOut("fast")
 
 
-window.map_index_users_resetfilters = (filter_excep) ->
-
-  if (filter_excep != "language")
-    $("#map_index_users_form_pulldown_language_button").html "All Languages <span class=caret></span>"
-    $("#users_filter_language").val ""
-
-
 window.map_index_users_search = ->
   $("#map_index_users_form_search_field").val($("#header_nav_search_field").val())
   map_index_users_updatelist()
@@ -179,37 +172,6 @@ $(document).ready ->
       $("#modal_post").modal "show"
 
 
-  # For Pull Downs
-  $(".map_index_users_form_pulldown a").click ->
-
-    category = $(this).data("category")
-
-    # Change radio
-    radio = $(this).data("radio")
-    $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
-
-    # Change text field to language name
-    selection_id = $(this).data("id")
-    $("#users_filter_"+category).val(selection_id)
-
-    map_index_users_updatelist()
-
-    # Change filter button caption
-    selection = $(this).data("name")
-    $("#map_index_users_form_pulldown_"+category+"_button").html(selection + "  <span class=caret></span>")
-
-    # Remove and add active class to buttons
-    $(".map_index_users_form_pulldown_button, .map_index_users_form_button").removeClass "active"
-    $("#map_index_users_form_pulldown_"+category+"_button").addClass "active"
-
-    # Menu item select and remove others
-    $(".map_index_users_form_pulldown a").removeClass "hovered"
-    $(this).addClass "hovered"
-    $(this).parent().parent().parent().removeClass 'open'
-
-    # Reset all other menues to 'all'
-    map_index_users_resetfilters category
-
   # List type Button-Radio link
   $(".map_index_users_form_button").click ->
 
@@ -224,13 +186,17 @@ $(document).ready ->
         
     map_index_users_updatelist()
 
-  $(".map_index_users_form_button_degreelevel").click ->
+  $(".map_index_users_form_button_switch").click ->
 
-    $(".map_index_users_form_button_degreelevel").removeClass "active"
+    $(this).parent().find(".map_index_users_form_button_switch").removeClass "active"
+
+    switch_name = $(this).data("switch_name")
+
+    $(".map_index_users_form_button_" + switch_name).removeClass "active"
     $(this).addClass "active"
 
-    selection_id = $(this).data("degreelevel_id")
-    $("#users_filter_degreelevel").val(selection_id)
+    choice_id = $(this).data("choice_id")
+    $("#users_filter_" + switch_name).val(choice_id)
 
     map_index_users_updatelist()
 
