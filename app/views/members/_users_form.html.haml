@@ -50,7 +50,7 @@
         %span.map_index_users_form_filters_button_user_count
           = user_with_post_count
 
-      .btn.btn-micro.btn-primary
+      #map_index_users_form_button_posts_new.btn.btn-micro.btn-primary
         Shout!
 
 
@@ -63,10 +63,13 @@
       %div
         EDUCATION
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 0, "data-switch_name" => "degreelevel" ,class: ("active" if current_user.degree_level == 0)}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => "", "data-switch_name" => "degreelevel" ,class: "active"}
+        All
+
+      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 0, "data-switch_name" => "degreelevel"}
         UG
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 1, "data-switch_name" => "degreelevel" ,class: ("active" if current_user.degree_level == 1)}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 1, "data-switch_name" => "degreelevel"}
         MBA
 
       / %a.map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>1}
@@ -102,5 +105,5 @@
       = radio_button_tag :users_listtype, 'params', checked: true
       = hidden_field_tag :user_id, params[:user_id]
 
-    = text_field_tag :users_filter_degreelevel, current_user.degree_level
+    = text_field_tag :users_filter_degreelevel
     = text_field_tag :users_filter_language

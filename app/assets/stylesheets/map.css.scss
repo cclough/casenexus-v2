@@ -103,7 +103,7 @@ $cn_contrastor_second_0: #9ac787;
   top:50px;
   //left:604px;
   left:425px;
-  bottom:0px;
+  bottom:60px;
   right:0px;
   z-index:1;
 
@@ -269,7 +269,7 @@ $cn_contrastor_second_0: #9ac787;
   }
 
   &.map_index_users_item_info_active {
-//    background:#eff7ff;//$gray_background;
+    background:#eff7ff;//$gray_background;
   }
 
   // POSTS PHENOTYPE
@@ -294,9 +294,9 @@ $cn_contrastor_second_0: #9ac787;
   padding:5px;
   float:left;
   text-align:center;
-  img {
-    width:40px;
-  }
+//  img {
+//    width:40px;
+//  }
 
 
 }
@@ -585,48 +585,72 @@ $cn_contrastor_second_0: #9ac787;
 /////////////// POPUP ////////////////
 //////////////////////////////////////
 
-.map_index_map_popup{
-  height:65px;
+.leaflet-popup-content {
+  margin:5px !important;
+}
 
-  .map_index_map_popup_user {
+.map_index_map_popup{
+
+  height:80px;
+  width:200px;
+  padding:0px !important;
+
+  .map_index_map_popup_avatar {
+    display:inline-block;
+    vertical-align:middle;
+    width:30px;
+    height:40px;
+  }
+  .map_index_map_popup_info {
+    display:inline-block;
+    vertical-align:top;
+    margin-left:5px;
     margin-bottom:5px;
-    font-weight:bold;
-    img {
-      margin-right:10px;
+
+    .map_index_map_popup_username {
+      font-size:18px;
+      color:$cn_colour_0;
+      font-weight:bold;
+    }
+
+    .map_index_map_popup_university {
+      font-size:12px;
     }
   }
 
   .map_index_map_popup_cases {
-
+    display:block;
+    margin: 0 auto;
+    width:150px;
     div {
-      display:block;
-      width:30px;
+      width:50px;
       height:30px;
+      float:left;
       text-align:center;
       line-height:23px;
       position:relative;
-      float:left;
+
     }
 
     .map_index_users_item_cases_recd {
-      background: $alert-green;
-      font-size:15px;
+      background: $cn_contrastor_second_0;
+      font-size:20px;
       font-weight:bolder;
       color:white;
     }
 
     .map_index_users_item_cases_givn{
-      background: $alert-blue;
-      font-size:15px;
+      background: $cn_colour_0;
+      font-size:20px;
       font-weight:bolder;
       color:white;
     }
 
     .map_index_users_item_cases_external{
-      background: $gray_background;
-      font-size:15px;
+      background: $cn_colour_-2;
+      font-size:20px;
       font-weight:bolder;
-      color:$gray_second;
+      color:white;
     }
 
     .map_index_users_item_cases_text {

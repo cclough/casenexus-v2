@@ -210,6 +210,7 @@ class User < ActiveRecord::Base
                       \"id\": \"#{user.id}\",
                       \"username\": \"#{user.username}\",
                       \"university_image\": \"#{user.university.image}\",
+                      \"university_name\": \"#{user.university.name.upcase}\",
                       \"cases_recd\": \"#{user.case_count_recd}\",
                       \"cases_givn\": \"#{user.case_count_givn}\",
                       \"cases_ext\": \"#{user.cases_external}\",

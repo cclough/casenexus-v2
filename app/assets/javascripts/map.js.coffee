@@ -4,7 +4,7 @@ window.map = null
 
 map_index_posts_prime = () ->
     # New post button
-  $("#map_index_posts_new_button").click ->
+  $("#map_index_users_form_button_posts_new").click ->
     window.modal_post_show()
 
 
@@ -110,27 +110,31 @@ window.generate_popup_for = (marker) ->
   feature = marker.feature
   popupContent =  '<div class="map_index_map_popup">' +
 
-                      '   <div class="map_index_map_popup_user">' +
-                      '     <span><img src="/assets/universities/' + feature.properties.university_image + '" class="application_userimage_medium"></span>' +
-                      '     <span>' + feature.properties.username + '</span>' +
-                      '   </div>' +    
+                    '   <div class="map_index_map_popup_avatar">' +
+                    '     <img src="/assets/universities/' + feature.properties.university_image + '" class="application_userimage_medium">' +
+                    '   </div>' +
 
-                      '   <div class="map_index_map_popup_cases">' +
-                      '     <div class="map_index_users_item_cases_recd">' + 
-                      '         <div class="map_index_users_item_cases_text">taken</div>' +
-                                feature.properties.cases_recd + 
-                      '     </div>' +
-                      '     <div class="map_index_users_item_cases_givn">' + 
-                      '         <div class="map_index_users_item_cases_text">given</div>' +
-                                feature.properties.cases_givn + 
-                      '     </div>' +
-                      '     <div class="map_index_users_item_cases_external">' + 
-                      '         <div class="map_index_users_item_cases_text">ext</div>' +
-                                feature.properties.cases_ext + 
-                      '     </div>' +
-                      '   </div>' +
+                    '   <div class="map_index_map_popup_info">' +                      
+                    '     <div class="map_index_map_popup_username">' + feature.properties.username + '</div>' +
+                    '     <div class="map_index_map_popup_university">' + feature.properties.university_name + '</div>' +
+                    '   </div>' +
 
-                      '</div>'
+                    '   <div class="map_index_map_popup_cases">' +
+                    '     <div class="map_index_users_item_cases_recd">' + 
+                    '         <div class="map_index_users_item_cases_text">taken</div>' +
+                              feature.properties.cases_recd + 
+                    '     </div>' +
+                    '     <div class="map_index_users_item_cases_givn">' + 
+                    '         <div class="map_index_users_item_cases_text">given</div>' +
+                              feature.properties.cases_givn + 
+                    '     </div>' +
+                    '     <div class="map_index_users_item_cases_external">' + 
+                    '         <div class="map_index_users_item_cases_text">ext</div>' +
+                              feature.properties.cases_ext + 
+                    '     </div>' +
+                    '   </div>' +
+
+                  '</div>'
 
   popup = L.popup(
     closeButton: false
@@ -228,8 +232,6 @@ $(document).ready ->
     # back to world view button (must be after map variable has been set)
     $("#map_index_map_zoomout").click ->
       window.map.setZoom(2);
-      offset = map.getSize().x*0.25;
-      window.map.panBy(new L.Point(-offset, 0), {animate: false})
       $(this).fadeOut("fast");
 
     # # zoomer

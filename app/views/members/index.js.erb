@@ -41,8 +41,6 @@ markerLayer.on('layeradd', function(e) {
       // pan, offset pan, (zoom?) and show button
       // window.map.setZoom(15);
       window.map.panTo(marker.getLatLng());
-      offset = map.getSize().x*0.25;
-      window.map.panBy(new L.Point(-offset, 0), {animate: false})
       $("#map_index_map_zoomout").fadeIn("fast");
 
       window.marker_and_popup_actions_for(marker,"perm"); 
@@ -97,8 +95,6 @@ markerLayer.setGeoJSON(geoJson);
         window.marker_and_popup_actions_for(marker,"perm"); 
 
         window.map.panTo(marker.getLatLng());
-        offset = map.getSize().x*0.25;
-        window.map.panBy(new L.Point(-offset, 0), {animate: false})
         // $("#map_index_map_zoomout").fadeIn("fast");
       }
   });
@@ -165,8 +161,6 @@ $('.map_index_users_item').click(function () {
       window.map.setZoom(15,{animate:true});
 
       window.map.panTo(marker.getLatLng(),{animate:true});
-      offset = map.getSize().x*0.25;
-      window.map.panBy(new L.Point(-offset, 0), {animate: false});
 
       $("#map_index_map_zoomout").fadeIn("fast");
     }
