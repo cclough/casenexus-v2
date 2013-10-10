@@ -6,10 +6,11 @@ $("#map_index_users_spinner_container").fadeOut("fast");
 if ("<%= @users.count.to_s %>" == "0") {
   $("#map_index_users_empty").fadeIn("fast");
 } else {
-  setTimeout(function () {
-    $("#map_index_map_guide").fadeIn("fast")
-  },750);
+  $("#map_index_guide_text").html("Showing <%= @users.count.to_s %> users");
+  $("#map_index_guide_text").fadeIn("fast");
 }
+
+
 
 window.map_index_users_item_bless();
 

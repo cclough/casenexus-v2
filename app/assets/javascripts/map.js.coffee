@@ -32,6 +32,7 @@ window.map_index_users_item_bless = () ->
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   # show the spinner briefly
+  $("#map_index_guide_text").fadeOut("fast");
   $("#map_index_users_empty").fadeOut(100)
   $("#map_index_users_spinner_container").fadeIn("fast")
 
@@ -219,11 +220,10 @@ $(document).ready ->
     map_index_users_updatelist()
 
     # Draw map
-    window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2", { zoomControl: false })
+    window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2")
 
     # Start at current_user, zoomed
     window.map.setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 15)
-
 
     # back to world view button (must be after map variable has been set)
     $("#map_index_map_zoomout").click ->
@@ -232,9 +232,6 @@ $(document).ready ->
       window.map.panBy(new L.Point(-offset, 0), {animate: false})
       $(this).fadeOut("fast");
 
-
-    # # custom zoom control
-    # new L.Control.Zoom({ position: 'topright' }).addTo(map)
     # # zoomer
     # zooms = 17
     # handle = document.getElementById("map_index_map_zoomer_handle")
