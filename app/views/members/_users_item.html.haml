@@ -32,8 +32,8 @@
 
         - if Friendship.friends?(current_user, users_item)
 
-          .map_index_users_item_button_message.btn.btn-primary.btn-small
-            %i.icon-envelope-alt.icon-white{ "data-friend_id" => users_item.id }
+          .map_index_users_item_button_message.btn.btn-primary.btn-small{ "data-friend_id" => users_item.id }
+            %i.icon-envelope-alt.icon-white
 
           .map_index_users_item_button_event.btn.btn-primary.btn-small{"data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
