@@ -1,101 +1,87 @@
 = form_tag '#', method: 'get', id: "map_index_users_form", onsubmit: 'return false' do
 
-  / = hidden_field_tag :search, params[:search], placeholder: "Search for candidates...", id: "", class: 'search-query'
 
-  .row
+  #map_index_users_form_search_container
 
-    #map_index_users_form_button_container_local
-      %a#map_index_users_form_button_local.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
-        / %i.icon-user
-        = image_tag "icons/user.png"
-        %br
+    = text_field_tag :search, params[:search], placeholder: "Search...", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'application_tooltip', id:"map_index_users_form_search_field"
+
+    %button.btn.btn-small.btn-red{type: "submit"}
+      %span.fui-search
+
+
+  #map_index_users_form_filters_row_first.row
+
+    .map_index_users_form_filters_span
+
+      %div
+        LOCATION
+      %a.btn.btn-micro.btn-primary{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
         Near you
         - user_near_count = User.list_local(current_user).count
-        - unless user_near_count == 0
-          %span.iconbar-unread
-            = user_near_count
+        %span.map_index_users_form_filters_button_user_count
+          = user_near_count
+
+    .map_index_users_form_filters_span
 
 
-    .map_index_users_form_button_container_double
+      %div
+        ONLINE
+      %a.btn.btn-micro.btn-primary{"data-radio"=>2}
+        Today
+        - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
+        %span.map_index_users_form_filters_button_user_count
+          = online_today_count
 
-      .form-search
-        .input-prepend#map_index_users_form_search_container
-          %button.btn.btn-small{type: "submit"}
-            %span.fui-search
-          = text_field_tag :search, params[:search], placeholder: "Search...", id: "map_index_users_form_search_field", "data-original-title"=>"Search for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: 'search-query search-query-rounded small application_tooltip'
+      %a.btn.btn-micro.btn-primary{"data-radio"=>3}
+        Now
+        - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
+        %span.map_index_users_form_filters_button_user_count
+          = online_now_count
 
-
-      .map_index_users_form_button_container_double_lower
-
-        %a#map_index_users_form_button_onlinetoday.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>2}
-          Online today
-          - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
-          - unless online_today_count == 0
-            %span.iconbar-unread
-              = online_today_count
-
-      .map_index_users_form_button_container_double_lower
-
-        %a#map_index_users_form_button_onlinenow.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>3}
-          Online now
-          - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
-          - unless online_now_count == 0
-            %span.iconbar-unread
-              = online_now_count
+    .map_index_users_form_filters_span
 
 
-    .map_index_users_form_button_container
+      %div
+        CONNECT
 
-
-      %a#map_index_users_form_button_shouts.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>4}
-        %i.icon-bullhorn
+      %a.btn.btn-micro.btn-primary{"data-radio"=>4}
         Shoutouts
         - user_with_post_count = User.list_users_with_posts.count
-        - unless user_with_post_count == 0
-          %span.iconbar-unread
-            = user_with_post_count
+        %span.map_index_users_form_filters_button_user_count
+          = user_with_post_count
 
-      #map_index_users_form_button_posts_new.btn.btn-small.btn-primary
+      .btn.btn-micro.btn-primary
         Shout!
 
 
+  .spacer10
 
-      / %a.map_index_users_form_button.btn.btn-small.btn-primary{"data-radio"=>1}
+  #map_index_users_form_filters_row_second.row
+
+    .map_index_users_form_filters_span
+
+      %div
+        EDUCATION
+
+      .btn.btn-micro.btn-primary{ "data-degreelevel_id" => 0,class: ("active" if current_user.degree_level == 0)}
+        UG
+
+      .btn.btn-micro.btn-primary{ "data-degreelevel_id" => 1 ,class: ("active" if current_user.degree_level == 1)}
+        MBA
+
+      / %a.map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>1}
       /   New
       /   %span.iconbar-unread
       /     = User.list_new.count
 
+    .map_index_users_form_filters_span
 
+      %div
+        EDUCATION
 
-    .map_index_users_form_button_container.pull-right
-
-      .btn-group
-        .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary{ "data-degreelevel_id" => 0,class: ("active" if current_user.degree_level == 0)}
-          UG
-        }
-        .map_index_users_form_button_degreelevel.btn.btn-small.btn-primary{ "data-degreelevel_id" => 1 ,class: ("active" if current_user.degree_level == 1)}
-          MBA
-
-
-      .btn-group.map_index_users_form_pulldown
-        %button#map_index_users_form_pulldown_language_button.map_index_users_form_pulldown_button.btn.btn-small.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
-          %span.filter-option.pull-left All Languages
-          &nbsp;
-          %span.caret.small
-        %ul.dropdown-menu
-          %li
-            / data-id is blank
-            %a{"data-category" => "language", "data-radio"=>5, "data-name" => "All Languages"}
-              All Languages
-          - Language.all.each do |language_item|
-            %li
-              %a{"data-category" => "language", "data-radio"=>5,"data-name" => language_item.name, "data-id" => language_item.id}
-                = language_item.name
-
-
-
-
-
+      - Language.all.each do |language_item|
+        .btn.btn-micro.btn-primary{ "data-category" => "language", "data-radio"=>5,"data-name" => language_item.name, "data-id" => language_item.id }
+          = language_item.name
 
 
 

@@ -57,6 +57,15 @@ $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
 
+$cn_colour_-2:#7d8288; // button overlays
+$cn_colour_-1:#b0bcc3; // buttons
+
+$cn_colour_0: #84b4db; // header
+$cn_colour_1: #8dc0e9; // header button highlights
+
+$cn_grey_1: #f0f1f2; // users form
+$cn_grey_2: #dee1e3; // search input border
+
 
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,700italic,900,400italic,300");
@@ -784,6 +793,13 @@ a.muted:focus {
   padding: 8px 13px 9px;
   line-height: 1.2;
 }
+.btn.btn-micro {
+  font-size: 11.998px;
+  /* 12px */
+
+  padding: 8px 8px 9px;
+  line-height: 1.2;
+}
 .btn.btn-mini > [class^="fui-"] {
   top: 0;
 }
@@ -824,19 +840,45 @@ a.muted:focus {
 
 
 
+.btn.btn-red {
+  background-color: #c18176;
+}
+.btn.btn-red:hover,
+.btn.btn-red:focus,
+.btn-group:focus .btn.btn-red.dropdown-toggle {
+  background-color: #ce8a7e;
+}
+.btn.btn-red:active,
+.btn-group.open .btn.btn-red.dropdown-toggle,
+.btn.btn-red.active {
+  background-color: #b3786e;
+}
+
+
+
+
+
+
+
+
+
 .btn.btn-primary {
-  background-color: #989898;
+  background-color: $cn_colour_-1;
 }
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
 .btn-group:focus .btn.btn-primary.dropdown-toggle {
-  background-color: #8b8b8b;
+  background-color: #bcc8cf;
 }
 .btn.btn-primary:active,
 .btn-group.open .btn.btn-primary.dropdown-toggle,
 .btn.btn-primary.active {
-  background-color: #545454;
+  background-color: #a3aeb4;
 }
+
+
+
+
 .btn.btn-info {
   background-color: #3498db;
 }
@@ -1875,18 +1917,17 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  border: 0px solid transparent;  // EDITED from #bdc3c7
-  border-color: transparent;
+  border: 1px solid $cn_grey_2;  // EDITED from #bdc3c7
   color: #34495e;
   font-family: 'Lato', sans-serif;
   font-size: 14px;
-  padding: 8px 5px;
+  padding: 6px 5px; // down from 8 on y
   height: 21px;
   text-indent: 6px;
   -webkit-appearance: none;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;

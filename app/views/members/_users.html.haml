@@ -1,7 +1,6 @@
-#map_index_users_users
-  - if @users.count > 0
-    - for users_item in @users
-      = render partial: 'users_item' , locals: { users_item: users_item }
+- if @users.count > 0
+  - for users_item in @users
+    = render partial: 'users_item' , locals: { users_item: users_item }
 
     
 #map_index_users_form_paginate
