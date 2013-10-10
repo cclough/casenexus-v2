@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   ### Relationships
 	belongs_to :user
   belongs_to :partner, class_name: 'User'
-  has_many :notifications, as: :notificable
+  has_many :notifications, as: :notificable, dependent: :destroy
 
   ### Validations
   validates :user_id, presence: true#, if: Proc.new { |n| n.user.nil? }

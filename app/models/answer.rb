@@ -4,7 +4,7 @@ class Answer < ActiveRecord::Base
   ### Associations
   belongs_to :question
   belongs_to :user
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   ### Validations
   validates_presence_of :question_id
