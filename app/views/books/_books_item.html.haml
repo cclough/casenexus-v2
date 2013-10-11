@@ -8,52 +8,57 @@
     - else
       = image_tag 'library/thumbs/' + books_item.thumb.to_s
 
-
+    .spacer20
 
     %span.books_rating_read{"data-rating" => books_item.average_rating.round(1)}
-    %div
+    .books_rating_read_text
       = books_item.average_rating.round(1).to_s + "/5"
 
 
-    = link_to book_path(books_item), "data-id"=>books_item.id,class: "btn btn-primary" do
+    .spacer20
+    
+    = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button" do
       Comment
       %strong (#{books_item.comments.count})
 
 
     - if books_item.btype == "case"
 
-      .btn.btn-primary{"data-book_id" => books_item.id.to_s}
+      .btn.btn-colour.btn-micro.books_index_books_item_event_button{"data-book_id" => books_item.id.to_s}
         %i.icon-calendar 
 
-      = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-primary"
+      = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-micro"
+
+
+
 
 
 
   .books_index_books_item_panel_right 
 
-    %div
-      - unless books_item.difficulty.blank?
-        %span
-          = books_difficulty_stamp(books_item)
+    - unless books_item.difficulty.blank?
+      = books_difficulty_stamp(books_item)
 
-      - unless books_item.title.blank?
-        %span
-          = books_item.title
+    - unless books_item.title.blank?
+      %span.books_index_books_item_title
+        = books_item.title
 
-      - if books_item.btype == "case"
-        %div.pull-right
-          = books_item.chart_num_in_words
+    - if books_item.btype == "case"
+      .books_index_books_item_chartnum.pull-right
+        = books_item.chart_num_in_words
 
-    %div
+    .spacer20
+
+    .books_index_books_item_desc
       - if params[:action] == "show"
         = books_item.desc
       - else
         = books_item.desc_trunc
 
-
+    .spacer10
 
     .application_tags_container
-      = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+      = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-tag btn-micro" }.join('')
 
   / %div
   /   - if books_item.title.blank?

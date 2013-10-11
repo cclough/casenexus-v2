@@ -15,7 +15,7 @@
 
       %div
         LOCATION
-      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
         Near you
         - user_near_count = User.list_local(current_user).count
         %span.map_index_users_form_filters_button_user_count
@@ -26,13 +26,13 @@
 
       %div
         ONLINE
-      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>2}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>2}
         Today
         - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
         %span.map_index_users_form_filters_button_user_count
           = online_today_count
 
-      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>3}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>3}
         Now
         - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
         %span.map_index_users_form_filters_button_user_count
@@ -44,13 +44,13 @@
       %div
         CONNECT
 
-      .map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>4}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>4}
         Shoutouts
         - user_with_post_count = User.list_users_with_posts.count
         %span.map_index_users_form_filters_button_user_count
           = user_with_post_count
 
-      #map_index_users_form_button_posts_new.btn.btn-micro.btn-primary
+      #map_index_users_form_button_posts_new.btn.btn-micro.btn-colour
         Shout!
 
 
@@ -63,16 +63,16 @@
       %div
         EDUCATION
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => "", "data-switch_name" => "degreelevel" ,class: "active"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => "", "data-switch_name" => "degreelevel" ,class: "active"}
         All
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 0, "data-switch_name" => "degreelevel"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 0, "data-switch_name" => "degreelevel"}
         UG
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 1, "data-switch_name" => "degreelevel"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 1, "data-switch_name" => "degreelevel"}
         MBA
 
-      / %a.map_index_users_form_button.btn.btn-micro.btn-primary{"data-radio"=>1}
+      / %a.map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>1}
       /   New
       /   %span.iconbar-unread
       /     = User.list_new.count
@@ -82,11 +82,11 @@
       %div
         LANGUAGE
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => 0, "data-switch_name" => "language", class: "active"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 0, "data-switch_name" => "language", class: "active"}
         All
 
       - Language.all.each do |language_item|
-        .map_index_users_form_button_switch.btn.btn-micro.btn-primary{ "data-choice_id" => language_item.id, "data-switch_name" => "language" }
+        .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => language_item.id, "data-switch_name" => "language" }
           = language_item.name
 
 

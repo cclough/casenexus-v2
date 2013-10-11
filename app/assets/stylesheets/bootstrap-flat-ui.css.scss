@@ -703,9 +703,9 @@ a.muted:focus {
 
 
 .btn {
-  border: none;
-  background: #989898;
-  color: #ffffff;
+  border: 2px solid $cn_colour_-1;
+  background: transparent;
+  color: $cn_colour_-1;
   padding: 9px 12px 10px;
   line-height: 22px;
   text-decoration: none;
@@ -722,7 +722,7 @@ a.muted:focus {
 .btn:hover,
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle {
-  background-color: #8b8b8b;
+  background: transparent;
   color: #ffffff;
   outline: none;
   -webkit-transition: 0.25s;
@@ -734,7 +734,7 @@ a.muted:focus {
 .btn:active,
 .btn-group.open .btn.dropdown-toggle,
 .btn.active {
-  background-color: #545454;
+  background: transparent;
   color: rgba(255, 255, 255, 0.75);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -742,7 +742,7 @@ a.muted:focus {
 }
 .btn.disabled,
 .btn[disabled] {
-  background-color: #bdc3c7;
+  background: transparent;
   color: rgba(255, 255, 255, 0.75);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -797,7 +797,7 @@ a.muted:focus {
   font-size: 11.998px;
   /* 12px */
 
-  padding: 8px 8px 9px;
+  padding: 6px 6px 7px;
   line-height: 1.2;
 }
 .btn.btn-mini > [class^="fui-"] {
@@ -861,17 +861,21 @@ a.muted:focus {
 
 
 .btn.btn-colour {
-  background-color: $cn_colour_0;
+  border: 2px solid $cn_colour_-1;
+  color: $cn_colour_-1;
 }
 .btn.btn-colour:hover,
 .btn.btn-colour:focus,
 .btn-group:focus .btn.btn-red.dropdown-toggle {
-  background-color: $cn_colour_1;
+  border: 2px solid $cn_colour_0;
+  color: $cn_colour_0;
 }
 .btn.btn-colour:active,
 .btn-group.open .btn.btn-colour.dropdown-toggle,
 .btn.btn-colour.active {
-  background-color: $cn_colour_-1;
+  border: 2px solid $cn_colour_0;
+  background: $cn_colour_0;
+  color: white;
 }
 
 
@@ -893,6 +897,28 @@ a.muted:focus {
 .btn.btn-primary.active {
   background-color: $cn_colour_0;
 }
+
+
+
+
+.btn.btn-tag {
+  border: 2px solid $cn_colour_-1;
+  color: $cn_colour_-1;
+}
+.btn.btn-tag:hover,
+.btn.btn-tag:focus,
+.btn-group:focus .btn.btn-red.dropdown-toggle {
+  border: 2px solid $cn_colour_0;
+  color: $cn_colour_0;
+}
+.btn.btn-tag:active,
+.btn-group.open .btn.btn-tag.dropdown-toggle,
+.btn.btn-tag.active {
+  border: 2px solid $cn_colour_-2;
+  color: $cn_colour_-2;
+}
+
+
 
 
 

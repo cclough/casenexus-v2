@@ -105,13 +105,17 @@ module ApplicationHelper
 
     case num
     when 1
-      content_tag :div, "Novice", class: "books_index_books_item_difficulty application_bootstrap_alert_green"
+      content_tag :span, "NOVICE", class: "books_index_books_item_difficulty novice"
     when 2
-      content_tag :div, "Intermediate", class: "books_index_books_item_difficulty application_bootstrap_alert_blue"
+      content_tag :span, "INTERMEDIATE", class: "books_index_books_item_difficulty intermediate"
     when 3
-      content_tag :div, "Advanced", class: "books_index_books_item_difficulty application_bootstrap_alert_red"
+      content_tag :span, "ADVANCED", class: "books_index_books_item_difficulty advanced"
     end
   end
+
+
+
+
 
   def books_small_difficulty_stamp(book)
     num = book.difficulty

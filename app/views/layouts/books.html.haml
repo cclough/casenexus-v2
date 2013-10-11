@@ -28,12 +28,9 @@
     = render 'layouts/flash', flash: flash
 
 
-    #application_container_main
-      .container.main
-        = yield
+    #application_container.regular
+      = yield
 
-        / footer
-        = render 'layouts/footer'
 
 
   = render 'shared/modal_help' if signed_in?

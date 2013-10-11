@@ -10,7 +10,7 @@
   #books_index_form_filters_container
 
     .spacer10
-    
+
     .books_index_form_filters_title
       Filter
 
@@ -35,7 +35,7 @@
         %span.application_filtergroup_choicenav_follower_line
 
 
-    = hidden_field_tag :books_filter_btype
+    = text_field_tag :books_filter_btype
 
 
 
@@ -64,7 +64,7 @@
         %span.application_filtergroup_choicenav_backbone_line
         %span.application_filtergroup_choicenav_follower_line
 
-    = hidden_field_tag :books_filter_sort
+    = text_field_tag :books_filter_sort
 
     .spacer20
 
@@ -86,7 +86,7 @@
           = tags_type_item.name
 
 
-    = hidden_field_tag :books_filter_tag, value: 0
+    = text_field_tag :books_filter_tag, value: 0
 
 
     .spacer10

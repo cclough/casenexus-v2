@@ -22,8 +22,6 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
-
-
 $cn_colour_-2:#7d8288; // button overlays
 $cn_colour_-1:#b0bcc3; // buttons
 
@@ -34,6 +32,12 @@ $cn_grey_-1: #dee1e3; // search input border
 $cn_grey_0: #f0f1f2; // users form
 
 
+
+.books_rating_read_text {
+  margin-top:3px;
+  font-size:12px;
+  font-weight:bold;
+}
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// INDEX ///////////////////////////////
@@ -48,7 +52,7 @@ $cn_grey_0: #f0f1f2; // users form
 
 
 #books_index_books {
-  width:680px;
+  width:764px;
   float:left;
   height:100%;
 }
@@ -265,34 +269,91 @@ $cn_grey_0: #f0f1f2; // users form
   position:relative;
   display:none;
   height:190px;
-  outline:1px solid red;
 }
 
 
 .books_index_books_item_panel_left {
-  outline:1px solid red;
   background: $cn_grey_-1;
   height:150px;
   width:180px;
   padding:20px;
   float:left;
+  text-align:center;
+
+  .books_index_books_item_comments_button {
+    margin-right:7px;
+  }
+  .books_index_books_item_event_button {
+    margin-right:4px;
+  }
+
 }
 
 
 .books_index_books_item_panel_right  {
-  outline:1px solid red;
   float:left;
   height:150px;
   background: $cn_grey_0;
-  width:380px;
+  width:464px;
   padding:20px;
 }
 
+.books_index_books_item_difficulty {
+  display: "inline-block" !important;
+  vertical-align:middle;
+
+  background: transparent;
+
+  font-size: 11.998px;
+  padding: 6px 6px 7px;
+  line-height: 1.2;
+
+//  text-decoration: none;
+//  text-shadow: none;
+//  -webkit-backface-visibility: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 
 
+  &.novice {
+    border: 2px solid $cn_colour_0;
+    color: $cn_colour_0;
+  }
+
+  &.intermediate {
+    border: 2px solid $cn_colour_0;
+    color: $cn_colour_0;
+  }
+
+  &.advanced {
+    border: 2px solid $cn_colour_0;
+    color: $cn_colour_0;
+  }
+}
 
 
+.books_index_books_item_title {
+  vertical-align:middle;
+  font-size:17px;
+  font-weight:bold;
+  margin-left:5px;
+}
 
+.books_index_books_item_chartnum {
+  background:$cn_colour_-1;
+  padding: 6px 6px 7px;
+  line-height: 1.2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin:0;
+}
+
+
+.books_index_books_item_desc {
+  line-height:22px;
+}
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// SHOW ////////////////////////////////
