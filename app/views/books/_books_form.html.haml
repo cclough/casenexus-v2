@@ -1,90 +1,119 @@
 = form_tag books_path, method: 'get', id: "books_index_books_form" do
-  .row
-    .span47
 
-      .span.form-search
-        .input-append
-          = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_books_form_searchfield", class: 'search-query'
-          %button.btn{type: "submit"}
-            %span.fui-search
+  #books_index_form_search_container
+    = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_form_search_input"
+    %button.btn.btn-red.btn-small{type: "submit"}
+      %span.fui-search
 
 
+  .spacer10
 
-      .span.offset1#books_index_books_form_label
-        Sort by
-        %i.icon-caret-right
+  #books_index_form_filters_container
 
-      .span.offset1#books_index_books_form_sort.application_menu_sort
-        .btn-group
-          %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
-            - if params[:sort] == "average_rating"
-              Rating
-            - elsif params[:sort] == "title"
-              Title
-            - elsif params[:sort] == "author"
-              Author
-            - elsif params[:sort] == "difficulty"
-              Difficulty
-            - else
-              Title
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              = sortable "average_rating", "By Rating"
-            %li
-              = sortable "title", "By Title"
-            %li
-              = sortable "author", "By Author"
-            %li
-              = sortable "difficulty", "By Difficulty"
+    .books_index_form_filters_title
+      Filter
 
-      .spacer50
-      .row
+    #application_filtergroup_choicenav_btype.application_filtergroup_choicenav{"data-filter_name"=> "btype"}
+      %nav
+        %ul
+          %li{:href => "#1", "data-btype"=>"all"} 
+            All
+            .application_filtergroup_choicenav_blip
+          %li{:href => "#2", "data-btype"=>"guides"} 
+            Guides
+            .application_filtergroup_choicenav_blip
+          %li{:href => "#3", "data-btype"=>"web"} 
+            Web
+            .application_filtergroup_choicenav_blip
+          %li{:href => "#4", "data-btype"=>"cases"} 
+            Cases
+            .application_filtergroup_choicenav_blip
 
-        / .span.offset1#books_index_books_form_label
-        /   Show
-        /   %i.icon-caret-right
-        .span#books_index_books_form_pageable
-          .btn-group
-            = pageable_books("10")
-            = pageable_books("20")
-            = pageable_books("50") 
-        .span#books_index_books_form_label
-          Filter
-          %i.icon-caret-right
-        / Type Buttons
-        .span.offset1
-          .btn-group
-            = filterable_books('all', 'All')
-            = filterable_books('guide', 'Guides')
-            = filterable_books('link', 'Web')
-            = filterable_books('case', 'Cases')
-            = hidden_field_tag('btype', params[:btype])
+        %span.arrow
+        %span.application_filtergroup_choicenav_backbone_line
+        %span.application_filtergroup_choicenav_follower_line
+
+
+    = hidden_field_tag :books_filter_btype
+
+    .spacer50
 
 
 
+    .books_index_form_filters_title
+      Sort by
 
-    .span4#books_index_books_form_label
-      .spacer25
-      Type
-      %i.icon-caret-right
-    .span35.offset1
-      %select.span42.books_index_books_form_select{name: "tag_type_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
-        %option{value: ""} All
-        - Tag.where(category_id:4).each do |tags_type_item|
-          %option{value: tags_type_item.id }
-            = tags_type_item.name
+    #application_filtergroup_choicenav_sort.application_filtergroup_choicenav{"data-filter_name"=> "sort"}
+      %nav
+        %ul
+          %li{:href => "#1", "data-btype"=>"rating"} 
+            Rating
+            .application_filtergroup_choicenav_blip
+          %li{:href => "#2", "data-btype"=>"title"} 
+            Title
+            .application_filtergroup_choicenav_blip
+          %li{:href => "#3", "data-btype"=>"author"} 
+            Author
+            .application_filtergroup_choicenav_blip
+          %li{:href => "#4", "data-btype"=>"difficulty"} 
+            Difficulty
+            .application_filtergroup_choicenav_blip
+
+        %span.arrow
+        %span.application_filtergroup_choicenav_backbone_line
+        %span.application_filtergroup_choicenav_follower_line
+
+    = hidden_field_tag :books_filter_sort
+
+    .spacer50
 
 
-    / .span47.offset1
-    /   .row.books_index_books_form_title
-    /     Industry
-    /   .row
-    /     %select.span46.books_index_books_form_select{name: "tag_industry_id[]", "data-placeholder" => "Choose a Case", "multiple"=>"multiple" }
-    /       %option{value: ""} All
-    /       - Tag.where(category_id:5).each do |tags_industry_item|
-    /         %option{value: tags_industry_item.id }
-    /           = tags_industry_item.name
 
 
-    / %input.btn.btn-primary.span15{type:"submit", value: "Filter"}
+
+
+
+    #books_index_form_filters_tag_selector
+      .books_index_form_fitlers_tag_selector_item.books_index_form_fitlers_tag_selector_item_active{value: ""} All
+      - Tag.where(category_id:4).each do |tags_type_item|
+        .books_index_form_fitlers_tag_selector_item{"data-tag_id"=> tags_type_item.id }
+          = tags_type_item.name
+
+
+    = text_field_tag :books_filter_tag, value: 0
+
+
+
+
+  / .application_menu_sort
+  /   %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
+  /     - if params[:sort] == "average_rating"
+  /       Rating
+  /     - elsif params[:sort] == "title"
+  /       Title
+  /     - elsif params[:sort] == "author"
+  /       Author
+  /     - elsif params[:sort] == "difficulty"
+  /       Difficulty
+  /     - else
+  /       Title
+  /     %span.caret
+  /   %ul.dropdown-menu
+  /     %li
+  /       = sortable "average_rating", "By Rating"
+  /     %li
+  /       = sortable "title", "By Title"
+  /     %li
+  /       = sortable "author", "By Author"
+  /     %li
+  /       = sortable "difficulty", "By Difficulty"
+
+  / .btn-group
+  /   = pageable_books("10")
+  /   = pageable_books("20")
+  /   = pageable_books("50") 
+
+
+
+
+

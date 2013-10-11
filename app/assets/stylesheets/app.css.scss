@@ -62,7 +62,7 @@ html {
   padding-bottom:0px;
   margin-bottom:0px;
 
-  background: $gray_background;
+  background: white;
 
   &.application_html_static {
     background: white;
@@ -93,12 +93,6 @@ body {
   top:0;
   bottom:0;
 
-  @media (min-width: 1201px) {
-    right:210px;
-  }
-  @media (max-width: 1200px) {
-    right:0px;
-  }
 
   float:left;
 
@@ -106,6 +100,8 @@ body {
 
 
 #application_container_main {
+
+
 
 
   &.profile {
@@ -135,6 +131,7 @@ body {
 
 .container {
   &.main{
+      outline:1px solid red;
     min-height: 100%;
 //    background: url('app/white-wash.png');
   }

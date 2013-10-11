@@ -2,9 +2,11 @@
 - provide(:sub_title, 'Library of cases, guides and web resources')
 
 
-#books_index_books_form_container
-  .container.main
-    = render 'books_form'
+#books_index_form_container
+  = render 'books_form'
 
 #books_index_books
   = render 'books'
+
+
+= debug(params)

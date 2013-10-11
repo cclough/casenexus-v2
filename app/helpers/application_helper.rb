@@ -69,15 +69,15 @@ module ApplicationHelper
     end
   end
 
-  def filterable_books(btype, title)
-    if btype == params[:btype]
-      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
-    elsif !params[:btype] && (title == "All")
-      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
-    else
-      link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary"
-    end
-  end
+  # def filterable_books(btype, title)
+  #   if btype == params[:btype]
+  #     link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
+  #   elsif !params[:btype] && (title == "All")
+  #     link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
+  #   else
+  #     link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary"
+  #   end
+  # end
 
   def pageable_books(number)
     if number == params[:per_page]

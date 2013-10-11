@@ -386,7 +386,7 @@ $(document).ready ->
 
 
   # Arrows for the home page and help
-  if $("#static_home_arrownav").size() > 0 || $("#modal_help_arrownav").size() > 0
+  if $("#modal_help_arrownav").size() > 0
     window.ArrowNav =
       init: ->
         $("a[href*=#]").click (e) ->
