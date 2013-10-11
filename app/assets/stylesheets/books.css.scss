@@ -260,185 +260,42 @@ $cn_grey_0: #f0f1f2; // users form
 /////////////////////////////////////////////////////////////////
 
 .books_index_books_item {
-  margin-bottom: 15px !important;
-  padding:10px;
+  margin: 20px 20px 0px 20px;
+  padding:0px;
   position:relative;
   display:none;
-}
-
-.books_index_books_item_body {
-  width:300px;
-  height:155px;
-  &.books_index_books_item_body_show {
-    height:250px;
-  }
+  height:190px;
+  outline:1px solid red;
 }
 
 
-
-////// first line
-.books_index_books_item_titles {
-  font-size:16px;
-  padding-bottom:5px;
-}
-.books_index_books_item_source_title {
-  font-weight:lighter;
-}
-.books_index_books_item_title {
-  font-weight:bolder;
-}
-
-/////// second line
-.books_index_books_item_author {
-
+.books_index_books_item_panel_left {
+  outline:1px solid red;
+  background: $cn_grey_-1;
+  height:150px;
+  width:180px;
+  padding:20px;
+  float:left;
 }
 
 
-///////
-.books_index_books_item_description{
-//  height:85px;
-  // font-size:11px;
+.books_index_books_item_panel_right  {
+  outline:1px solid red;
+  float:left;
+  height:150px;
+  background: $cn_grey_0;
+  width:380px;
+  padding:20px;
 }
 
 
 
 
-.books_index_books_item_university_image {
-  img {
-    max-height:18px !important;    
-  }
-}
-
-
-
-.books_index_books_item_image {
-
-  position:relative;
-  height:100px;
-  width:95px;
-  top:16px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  img {
-    max-width:90px;
-  
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-}
-
-.books_rating_set {
-  width:150px !important;
-}
-
-.books_item_rating_read_container {
-  position:absolute;
-  right:70px;
-  top:30px;
-
-  padding:2px;
-  text-align:center;
-  border-bottom-left-radius: 0px;
-  -moz-border-bottom-left-radius: 0px;
-  -webkit-border-bottom-left-radius: 0px;
-
-  border-bottom-right-radius: 0px;
-  -moz-border-bottom-right-radius: 0px;
-  -webkit-border-bottom-right-radius: 0px;
-}
-
-.books_comment_rating_read_container {
-  position:absolute;
-  right:50px;
-  top:10px;
-
-  padding:2px;
-  text-align:center;
-  border-bottom-left-radius: 0px;
-  -moz-border-bottom-left-radius: 0px;
-  -webkit-border-bottom-left-radius: 0px;
-
-  border-bottom-right-radius: 0px;
-  -moz-border-bottom-right-radius: 0px;
-  -webkit-border-bottom-right-radius: 0px;
-}
-
-.books_rating_read {
-  width:150px !important;
-  text-align:center;
-}
-
-
-
-.books_rating_read_num {
-  font-size:14px;
-}
-
-
-
-.books_index_books_item_info_container {
-
-  font-size:11px;
-
-  color:$gray_Mid;
-
-  border-top:0;
-
-  border-radius: 0px;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-
-
-
-}
-
-
-.books_index_books_item_difficulty {
-  display:inline-block;
-  width:60px !important;
-  text-align:center;
-  font-size:11px;
-  margin:0 10px 0 0;
-
-  border-radius: 4px 4px 4px 4px;
-  padding: 8px 14px 8px 14px;
-}
-
-
-.books_index_books_item_actions_container {
-
-  position:absolute;
-  right:10px;
-  bottom:10px;
-
-  .btn {
-    height:25px !important;
-    width:25px;
-    padding:10px;;
-    font-size:20px;
-    line-height:25px;
-    span {
-      margin:0;
-      padding:0;
-    }
-  }
-  .books_index_books_item_comments {
-    width:140px;
-    font-size:17px;
-  }
-
-}
 
 
 
 /////////////////////////////////////////////////////////////////
-//////////////////////// SMALL SHOW /////////////////////////////
+/////////////////////////// SHOW ////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
 

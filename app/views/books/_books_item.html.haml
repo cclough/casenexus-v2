@@ -1,82 +1,90 @@
-.row
-  .books_index_books_item.panel.dark.kill_top.kill_left.kill_right
-    .row
+.books_index_books_item
 
 
-      .span12
-        .books_index_books_item_image.panel.kill_all
-          - if books_item.thumb.blank?
-            = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
-          - else
-            = image_tag 'library/thumbs/' + books_item.thumb.to_s
+  .books_index_books_item_panel_left
 
-
-      .span.offset1
-
-
-        .row
-
-          .span.books_index_books_item_body{class: ("books_index_books_item_body_show" if params[:action] == "show")}
-
-            .row.books_index_books_item_titles
-              / .span.books_index_books_item_source_title
-              /   - if books_item.title.blank?
-              /     = books_item.source_title
-              /   - else
-              /     = "#{books_item.source_title}:&nbsp;".html_safe
-
-              - unless books_item.difficulty.blank?
-                = books_difficulty_stamp(books_item)
-
-              - unless books_item.title.blank?
-                %span.books_index_books_item_title
-                  = books_item.title
-
-            .spacer5
-
-            .row
-              / .span.books_index_books_item_author
-              /   = books_item.author
-              / .span.offset1.books_index_books_item_university_image
-              /   - unless books_item.university.blank?
-              /     .span
-              /       = image_tag "universities/" + books_item.university.image
-              /     .span.offset1
-              /       = books_item.university.name
-              - if books_item.btype == "case"
-                .books_index_books_item_info_container
-                  = books_item.chart_num_in_words
-
-            .spacer10
-
-            .row.books_index_books_item_description
-              .span
-                - if params[:action] == "show"
-                  = books_item.desc
-                - else
-                  = books_item.desc_trunc
-            .spacer10
-            .row.application_tags_container
-              = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+    - if books_item.thumb.blank?
+      = image_tag 'universities/' + books_item.university.image.to_s unless !books_item.university
+    - else
+      = image_tag 'library/thumbs/' + books_item.thumb.to_s
 
 
 
-
-      .books_item_rating_read_container
-        %span.books_rating_read{"data-rating" => books_item.average_rating.round(1)}
-        %div
-          = books_item.average_rating.round(1).to_s + "/5"
+    %span.books_rating_read{"data-rating" => books_item.average_rating.round(1)}
+    %div
+      = books_item.average_rating.round(1).to_s + "/5"
 
 
-      .books_index_books_item_actions_container
-        - if books_item.btype == "case"
+    = link_to book_path(books_item), "data-id"=>books_item.id,class: "btn btn-primary" do
+      Comment
+      %strong (#{books_item.comments.count})
 
-          .books_index_books_item_schedule_button.btn.btn-primary{"data-book_id" => books_item.id.to_s}
-            %i.icon-calendar 
 
-          = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-primary"
+    - if books_item.btype == "case"
 
-          = link_to book_path(books_item), "data-id"=>books_item.id,class: "books_index_books_item_comments btn btn-primary" do
-            Comment
-            %strong (#{books_item.comments.count})
+      .btn.btn-primary{"data-book_id" => books_item.id.to_s}
+        %i.icon-calendar 
+
+      = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-primary"
+
+
+
+  .books_index_books_item_panel_right 
+
+    %div
+      - unless books_item.difficulty.blank?
+        %span
+          = books_difficulty_stamp(books_item)
+
+      - unless books_item.title.blank?
+        %span
+          = books_item.title
+
+      - if books_item.btype == "case"
+        %div.pull-right
+          = books_item.chart_num_in_words
+
+    %div
+      - if params[:action] == "show"
+        = books_item.desc
+      - else
+        = books_item.desc_trunc
+
+
+
+    .application_tags_container
+      = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-default btn-mini" }.join('')
+
+  / %div
+  /   - if books_item.title.blank?
+  /     = books_item.source_title
+  /   - else
+  /     = "#{books_item.source_title}:&nbsp;".html_safe
+
+  / %div{class: ("books_index_books_item_body_show" if params[:action] == "show")}
+
+
+
+
+
+  /     / .span.books_index_books_item_author
+  /     /   = books_item.author
+  /     / .span.offset1.books_index_books_item_university_image
+  /     /   - unless books_item.university.blank?
+  /     /     .span
+  /     /       = image_tag "universities/" + books_item.university.image
+  /     /     .span.offset1
+  /     /       = books_item.university.name
+
+
+
+
+
+
+
+
+
+
+
+
 
