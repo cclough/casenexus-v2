@@ -8,7 +8,9 @@ window.books_index_books_updatelist = ->
 
 $(document).ready ->
 
-  window.books_index_books_updatelist()
+    # Arrows for the home page and help
+  if $("#books_index_form").size() > 0
+    window.books_index_books_updatelist()
 
   # Filter buttons
   $(".application_filtergroup_choicenav li").click ->
@@ -86,4 +88,4 @@ $(document).ready ->
         , 100, ->
           $(this).show()  
 
-  window.ChoiceNav.init()
+    window.ChoiceNav.init()
