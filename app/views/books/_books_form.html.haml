@@ -1,12 +1,10 @@
-= form_tag books_path, method: 'get', id: "books_index_books_form" do
+= form_tag "#", method: 'get', remote: true, id: "books_index_form" do
 
   #books_index_form_search_container
     = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_form_search_input"
     %button.btn.btn-red.btn-small{type: "submit"}
       %span.fui-search
 
-
-  .spacer10
 
   #books_index_form_filters_container
 
@@ -36,9 +34,9 @@
 
     = hidden_field_tag :books_filter_btype
 
+
+
     .spacer50
-
-
 
     .books_index_form_filters_title
       Sort by
@@ -65,12 +63,17 @@
 
     = hidden_field_tag :books_filter_sort
 
-    .spacer50
+    .spacer20
+
+    #books_index_form_filters_sort_order_button.btn.btn-small
+      Descending
+      %i.icon-arrow-down
 
 
+    .spacer20
 
-
-
+    .books_index_form_filters_title
+      Type
 
 
     #books_index_form_filters_tag_selector
@@ -80,40 +83,10 @@
           = tags_type_item.name
 
 
-    = text_field_tag :books_filter_tag, value: 0
+    = hidden_field_tag :books_filter_tag, value: 0
 
 
-
-
-  / .application_menu_sort
-  /   %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
-  /     - if params[:sort] == "average_rating"
-  /       Rating
-  /     - elsif params[:sort] == "title"
-  /       Title
-  /     - elsif params[:sort] == "author"
-  /       Author
-  /     - elsif params[:sort] == "difficulty"
-  /       Difficulty
-  /     - else
-  /       Title
-  /     %span.caret
-  /   %ul.dropdown-menu
-  /     %li
-  /       = sortable "average_rating", "By Rating"
-  /     %li
-  /       = sortable "title", "By Title"
-  /     %li
-  /       = sortable "author", "By Author"
-  /     %li
-  /       = sortable "difficulty", "By Difficulty"
-
-  / .btn-group
-  /   = pageable_books("10")
-  /   = pageable_books("20")
-  /   = pageable_books("50") 
-
-
+    .spacer10
 
 
 

@@ -53,41 +53,13 @@ module ApplicationHelper
     count_int + count_ext
   end
 
-  def sortable(column, title)
-    css_class = column == sort_column ? "current #{sort_direction}" : nil
-    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-    link_to title, params.merge(:sort => column, :direction => direction, :page => nil), { :class => css_class }
-  end
-
-  def filterable_analysis(view,title)
-    if view == @view
-      link_to title, params.merge(view: view), class: "btn btn-primary active"
-    elsif !params[:view] && (view == "table")
-      link_to title, params.merge(view: view), class: "btn btn-primary active"
-    else
-      link_to title, params.merge(view: view), class: "btn btn-primary"
-    end
-  end
-
-  # def filterable_books(btype, title)
-  #   if btype == params[:btype]
-  #     link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
-  #   elsif !params[:btype] && (title == "All")
-  #     link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary active"
-  #   else
-  #     link_to title, params.merge(btype: btype, page: 1), class: "btn btn-primary"
-  #   end
+  # def sortable(column, title)
+  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
+  #   direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+  #   link_to title, params.merge(:sort => column, :direction => direction, :page => nil), { :class => css_class }
   # end
 
-  def pageable_books(number)
-    if number == params[:per_page]
-      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary active"
-    elsif !params[:per_page] && (number == "10")
-      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary active"
-    else
-      link_to number, params.merge(per_page: number, page: 1), class: "btn btn-primary"
-    end   
-  end
+
 
 
   def colorcoded_cell(num_to_code, value)
@@ -156,19 +128,6 @@ module ApplicationHelper
 
 
 
-  def books_difficulty_triangle(book)
-
-    num = book.difficulty
-
-    case num
-    when 1
-      content_tag :div,"" , class: "books_index_books_item_difficulty_triangle novice"
-    when 2
-      content_tag :div,"" , class: "books_index_books_item_difficulty_triangle intermediate"
-    when 3
-      content_tag :div,"" , class: "books_index_books_item_difficulty_triangle advanced"
-    end
-  end
 
 
   def online_user_count

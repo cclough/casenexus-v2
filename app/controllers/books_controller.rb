@@ -24,12 +24,17 @@ class BooksController < ApplicationController
       relation = Book
     end
 
-    if !params[:btype].blank? && params[:btype] != "all"
-      relation = relation.where(btype: params[:btype])
+    if !params[:books_filter_btype].blank? && params[:books_filter_btype] != "all"
+      relation = relation.where(btype: params[:books_filter_btype])
     end
 
     @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: books_per_page, page: params[:page])
-	end
+	
+    respond_to do |format|
+      format.js # links index.js.erb!
+      format.html
+    end
+  end
 
   def show
     @book = Book.find(params[:id])
@@ -48,7 +53,7 @@ private
 
   # For index book sorting
   def sort_column
-    Book.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    Book.column_names.include?(params[:books_filter_sort]) ? params[:books_filter_sort] : "title"
   end
 
   def sort_direction

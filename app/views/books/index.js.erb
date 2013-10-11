@@ -1,0 +1,16 @@
+$("#books_index_books").html("<%= escape_javascript(render("books")) %>")
+
+
+
+// Users Item Cascade Fade
+$(".books_index_books_item").each(function (i) {
+
+  if ((i+1) == $(".books_index_books_item").length) {
+    $(this).delay((i + 1) * 50).fadeIn(function(){
+      $("#books_index_books .pagination").fadeIn(500); 
+    });
+  } else {
+    $(this).delay((i + 1) * 50).fadeIn();
+  }
+
+});

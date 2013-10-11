@@ -1,6 +1,18 @@
 
 
+# Update the User List - submits form...
+window.books_index_books_updatelist = ->
+  $.get "/books", $("#books_index_form").serialize(), null, "script"
+  false
+
+
 $(document).ready ->
+
+  window.books_index_books_updatelist()
+
+  # Filter buttons
+  $(".application_filtergroup_choicenav li").click ->
+    window.books_index_books_updatelist()
 
   # Tag Select click
   $(".books_index_form_fitlers_tag_selector_item").click ->
@@ -10,6 +22,7 @@ $(document).ready ->
     $(".books_index_form_fitlers_tag_selector_item").removeClass "books_index_form_fitlers_tag_selector_item_active"
     $(this).addClass "books_index_form_fitlers_tag_selector_item_active"
 
+    window.books_index_books_updatelist()
 
   # Submit form on select from selects
   $(".books_index_books_form_select").change ->
