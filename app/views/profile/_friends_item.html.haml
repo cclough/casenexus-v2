@@ -2,10 +2,9 @@
 
   .profile_index_friends_friends_item_requested_highlight{ class: ("unread" if Friendship.requested?(current_user,friends_item)) }
 
-  .profile_index_friends_friends_item_status{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
 
   .profile_index_friends_friends_item_avatar
-    = avatar_for(friends_item,size: "small")
+    = avatar_for(friends_item,size: "medium")
 
   .profile_index_friends_friends_item_username
     = friends_item.username_trunc
@@ -15,3 +14,8 @@
         = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-dark btn-mini profile_index_friends_friends_item_friendship_button")
         = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-dark btn-mini profile_index_friends_friends_item_friendship_button" do
           %i.icon-remove
+
+
+  .profile_index_friends_friends_item_status
+
+    %i.icon-circle-blank.profile_index_friends_friends_item_status_icon{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}

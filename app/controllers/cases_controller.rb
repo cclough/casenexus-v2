@@ -95,7 +95,7 @@ class CasesController < ApplicationController
     @view = params[:view]
     
     respond_to do |format|
-      format.html { render layout:false }
+      # format.html { render layout:false }
       format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
       format.js #for table form
     end

@@ -102,20 +102,6 @@ body {
 #application_container {
 
 
-
-  &.profile {
-    //background: $gray_gunmetal !important;
-//    background: $gray_gunmetal url('app/bg-texture4_trans.png') !important;
-    position:absolute;
-    top:50px;
-    right:0px;
-    //left:75px; // comment in for left bar demo!
-    left:0px;
-    bottom:0px;
-    background: $gray_gunmetal;
-    top:50px;
-
-  }
   &.map {
     z-index:1;
   }
@@ -129,9 +115,11 @@ body {
   }
 
   &.regular {
+    position:relative;
     margin:0 auto;
     width:1024px;
     clear:both;
+    min-height:100%;
   }
 }
 

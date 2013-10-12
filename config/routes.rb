@@ -43,7 +43,6 @@ Casenexus::Application.routes.draw do
 
   # Profile
   match '/profile', to: 'profile#index', as: :root
-  match '/profile_staging', to: 'profile#staging'
 
   # Account
   resource :account, controller: 'account' do
