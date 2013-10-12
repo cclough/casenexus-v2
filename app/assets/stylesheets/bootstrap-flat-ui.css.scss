@@ -18,7 +18,7 @@ a
 btn color
 
 .form-search .btn { remove border on prepended button
-  
+
 .navbar .nav > li:first-child
 
 a color -> gunmetal
@@ -841,6 +841,8 @@ a.muted:focus {
 
 
 .btn.btn-red {
+  border:0;
+  color:white;
   background-color: #c18176;
 }
 .btn.btn-red:hover,
