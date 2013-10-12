@@ -35,11 +35,9 @@
         %span.application_filtergroup_choicenav_follower_line
 
 
-    = text_field_tag :books_filter_btype
+    = text_field_tag :books_filter_btype, "all"
 
 
-
-    .spacer50
 
     .books_index_form_filters_title
       Sort by
@@ -86,7 +84,7 @@
           = tags_type_item.name
 
 
-    = text_field_tag :books_filter_tag, value: 0
+    = text_field_tag :books_filter_tag, 0
 
 
     .spacer10

@@ -6,29 +6,26 @@ class BooksController < ApplicationController
 
 	def index
 
-    if !params[:per_page].blank?
-      books_per_page = params[:per_page]
-    else
-      books_per_page = 10
-    end
-
-    params[:tag_type_id] = nil if params[:tag_type_id] == [""]
-    params[:tag_industry_id] = nil if params[:tag_industry_id] == [""]
+    # TAGS
+    params[:books_filter_tag] = nil if params[:books_filter_tag] == [""]
 
     if params[:tag]
       relation = Book.tagged_with(params[:tag])  
-    elsif params[:tag_type_id] || params[:tag_industry_id]
-      relation = Book.tagged_on_type(params[:tag_type_id] || params[:tag_industry_id])
-      # relation = Book.tagged_on(params[:tag_type_id] || Tag.where(category_id: 4).pluck(:id), params[:tag_industry_id] || Tag.where(category_id: 5).pluck(:id)).group('books.id')
+    elsif params[:books_filter_tag]
+      relation = Book.tagged_on_type(params[:books_filter_tag])
     else
       relation = Book
     end
 
-    if !params[:books_filter_btype].blank? && params[:books_filter_btype] != "all"
-      relation = relation.where(btype: params[:books_filter_btype])
-    end
+    # BTYPE
+    params[:books_filter_btype] = nil if params[:books_filter_btype] == [""] || params[:books_filter_btype] == ["all"] 
+    
+    # if params[:books_filter_btype]
+    #   relation = relation.where(btype: params[:books_filter_btype])
+    # end
 
-    @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: books_per_page, page: params[:page])
+    # (SORT IS IN HERE)
+    @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 	
     respond_to do |format|
       format.js # links index.js.erb!
