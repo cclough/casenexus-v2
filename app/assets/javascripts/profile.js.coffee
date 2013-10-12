@@ -30,6 +30,17 @@ modal_cases_show_prime = () ->
 
 $(document).ready ->
 
+
+  # Load results table
+  $.get "/cases/results?view=analysis", (data) ->
+    $("#profile_index_feedback_results").html data
+    if (cases_analysis_chart_case_count == 0)
+      $("#cases_analysis_chart_table_empty").fadeIn "fast"
+    else
+      window.cases_resultstable_prime("analysis")
+
+
+
   # INFO
   $("#profile_index_info_actions_settings").click ->
 
@@ -169,22 +180,6 @@ $(document).ready ->
 
 
 
-  $("#profile_index_feedback_actions_resultstable").click ->
 
-    if !($("#modal_cases").hasClass("in"))
-
-      $("#modal_cases").removeClass "show"
-      $("#modal_cases").addClass "analysis"
-
-      $("#modal_cases").html ""
-      $(".modal").modal("hide")
-      $("#modal_cases").modal "show"
-
-      $.get "/cases/results?view=analysis", (data) ->
-        $("#modal_cases").html data
-        if (cases_analysis_chart_case_count == 0)
-          $("#cases_analysis_chart_table_empty").fadeIn "fast"
-        else
-          window.cases_resultstable_prime("analysis")
 
 

@@ -621,11 +621,20 @@ $alert-yellow: #FFFF7E;
 
 #cases_resultstable_table {
   width:100%;
-  font-size:14px;
+  font-size:11px;
+
+
+  #cases_resultstable_table_column_criteria {
+    width:180px;
+  }
+
+  #cases_resultstable_table_column_bar {
+    width:150px;
+  }
 
 
   th {
-    padding: 7px 2px;
+    padding: 5px 2px;
     p {
       font-size:11px;
       margin:0px;
@@ -633,14 +642,28 @@ $alert-yellow: #FFFF7E;
   }
   td {
     border-top: 2px solid $gray_background;
-    padding: 4px 7px;
+    padding: 1px 7px;
 
     text-align:center;
-    &.text-left-align {
+    &.cases_resultstable_table_cell_criteria {
       text-align:left;
     }
   }
 
+
+  .cases_resultstable_chart_bar {
+    width:150px;
+    height:15px;
+    border:0px solid white;
+  }
+
+
+
+
+  .cases_resultstable_cell_score {
+    font-weight:bold;
+    font-size:13px;
+  }
 
 
 
@@ -675,26 +698,6 @@ $alert-yellow: #FFFF7E;
 
 
 
-.cases_resultstable_chart_bar {
-  width:300px;
-  height:20px;
-  border:0px solid white;
-}
-
-
-#cases_resultstable_table_column_criteria {
-
-}
-
-#cases_resultstable_table_column_bar {
-  width:300px;
-}
-
-
-.cases_resultstable_cell_score {
-  font-weight:bold;
-  font-size:15px;
-}
 
 
 .cases_resultstable_label {

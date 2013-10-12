@@ -18,11 +18,6 @@
       window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count);
       // }
 
-      if (cases_analysis_chart_case_count == 0) {
-        $("#cases_analysis_chart_table_empty").fadeIn("fast");
-      } else {
-        window.cases_resultstable_bars_draw();
-      }
     });
 
 
@@ -120,7 +115,7 @@
 
   #profile_index_friends
 
-    #profile_index_title
+    .profile_index_title
       Partners
 
       - if @friends_requested.count > 0
@@ -170,11 +165,8 @@
 #profile_index_panel_calendar
 
 
-  #profile_index_title
-    Schedule
-
-  / #profile_index_calendar
-  /   = render "events/calendar"
+  #profile_index_panel_calendar_container
+    = render "events/calendar"
 
 
     
@@ -185,7 +177,7 @@
 
 #profile_index_panel_feedback
 
-  #profile_index_title
+  .profile_index_title
     Feedback
 
     - if @cases.unread.count > 0
@@ -221,18 +213,6 @@
 
 
   #profile_index_feedback_results
-
-    - if current_user.case_count_recd > 0
-      = render "results_table_form"
-
-      .cases_resultstable_container
-        = render "results_table"
-    - else
-      #cases_resultstable_table_empty
-        #cases_resultstable_table_empty_icon
-          %i.icon-bar-chart
-        %p You must do at least one case, 
-        %p before this table will work
 
 
   

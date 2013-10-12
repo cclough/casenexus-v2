@@ -10,8 +10,8 @@
 
     %th
       Score
-      - if @view != "show"
-        %p (Last #{@period.to_s} Av. /5)
+      / - if @view != "show"
+      /   %p (Last #{@period.to_s} Av. /5)
     %th#cases_resultstable_table_column_bar
 
     / %th
@@ -20,7 +20,7 @@
     - if @view != "show"
       %th
         Growth
-        %p (From previous #{@period.to_s} to last #{@period.to_s})
+        / %p (From previous #{@period.to_s} to last #{@period.to_s})
       %th
         / Site Av.
         / %p (All cases by all users)
@@ -32,7 +32,7 @@
     - @table_hash.each_with_index do |(key, value), index|
 
       %tr
-        %td.text-left-align
+        %td.cases_resultstable_table_cell_criteria
           / Name
           = Case.criteria_name(key)
 
