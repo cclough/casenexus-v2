@@ -7,10 +7,12 @@
 
   .profile_index_title
     Schedule
-    / %span#profile_index_calendar_actions.pull-right
-    /   %i#profile_index_calendar_actions_new.icon-plus{ "data-container"=>"body", "data-original-title"=>"New case appointment...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
-    /   = link_to calendar_ics_url do
-    /     %i#profile_index_calendar_actions_sync.icon-refresh{ "data-container"=>"body", "data-original-title"=>"Sync with your calendar software/phone", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+
+
+    %span#profile_index_calendar_actions.pull-right
+      %i#profile_index_calendar_actions_new.icon-plus{ "data-container"=>"body", "data-original-title"=>"New case appointment...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+      = link_to calendar_ics_url do
+        %i#profile_index_calendar_actions_sync.icon-refresh{ "data-container"=>"body", "data-original-title"=>"Sync with your calendar software/phone", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
 
     %span#events_calendar_month
       = link_to date: @date.prev_month do
@@ -26,17 +28,19 @@
       = link_to date: @date.next_month do
         %i.icon-chevron-right.icon-white
 
-
-  = calendar @date do |date|
-    = date.day
-    - if @events_by_date[date]
-
-
-      .span.pull-right.events_calendar_event_count
-        = "x" + @events_by_date[date].count.to_s
+  .spacer20
+  
+  #profile_index_panel_calendar_container
+    = calendar @date do |date|
+      = date.day
+      - if @events_by_date[date]
 
 
-      .events_calendar_event_container
-        - @events_by_date[date].each do |event|
-          .events_calendar_event.application_tooltip.btn.btn-primary{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username, rel: "tooltip", "data-placement"=>"bottom"}
-            = event.datetime.strftime("%H:%M")
+        .span.pull-right.events_calendar_event_count
+          = "x" + @events_by_date[date].count.to_s
+
+
+        .events_calendar_event_container
+          - @events_by_date[date].each do |event|
+            .events_calendar_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username, rel: "tooltip", "data-placement"=>"right"}
+              / = event.datetime.strftime("%H:%M")

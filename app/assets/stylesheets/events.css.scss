@@ -24,6 +24,19 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
+
+$cn_colour_-2: #7d8288; // button overlays
+$cn_colour_-1: #b0bcc3; // buttons
+
+$cn_colour_0: #84b4db; // header
+$cn_colour_1: #8dc0e9; // header button highlights
+
+$cn_grey_-1: #dee1e3; // search input border
+$cn_grey_0: #f0f1f2; // users form
+
+$cn_contrastor_0: #c18176; // orange!
+$cn_contrastor_second_0: #9ac787;
+
 ///////////////////////////////////////////////
 ////////////////// CALENDAR ///////////////////
 ///////////////////////////////////////////////
@@ -42,15 +55,15 @@ $alert-yellow: #FFFF7E;
   cursor:pointer;
 }
 
-.events_calendar_event_container {
-  overflow-y: auto;
-  overflow-x: hidden;
+//.events_calendar_event_container {
+//  overflow-y: auto;
+//  overflow-x: hidden;
 
-  margin-top:1px;
-  width:45px; // make sure below td width or will skew table
+//  margin-top:1px;
+//  width:45px; // make sure below td width or will skew table
 
-  height:46px;
-}
+//  height:46px;
+//}
 
 #events_calendar_month_text {
 
@@ -63,19 +76,23 @@ $alert-yellow: #FFFF7E;
 .events_calendar_event {
   display:block;
 
-  height:10px;
+  height:50px;
+  width:6px;
 
-  margin-bottom:2px;
+  margin-top:10px;
+
   text-align:center;
-
-  // border:1px solid red;
-  // background-color:rgba(255,0,0,0.2);
 
   color:black;
 
   line-height:10px;
   padding:5px;
   font-size:11px;
+  background:$cn_colour_0;
+
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
 
 }
 
@@ -99,24 +116,38 @@ $alert-yellow: #FFFF7E;
 //    text-align: center;
 //    width: 14.2857142857143%;
 //  }
-  width:3500px;
+  width:3360px;
   overflow-y:scroll;
+
+
   .events_calendar_week {
     float:left;
     display:block;
+
   }
   .events_calendar_day {
-    background:transparent;
+    background: $cn_grey_0 url("app/timeline.png") no-repeat left center;
     color: $gray_Dark;
-    height: 100px !important;
+    height: 96px !important;
 
-    width: 100px !important;
+    width: 96px !important;
     display:block;
     float:left;
     vertical-align: top;
     font-size: 10px;
 
 
+//  outline:1px solid red;
+    position:relative;
+    .events_calendar_day_timeline {
+      height:1px;
+      border-top:2px solid $cn_grey_-1;
+      position:Absolute;
+      top:43px;
+      left:0px;
+      right:0px;
+//        outline:1px solid red;
+    }
   }
 
   .notmonth, .notmonth a { color: #777; background:rgba(0,0,0,0.3); }
@@ -130,7 +161,7 @@ $alert-yellow: #FFFF7E;
 }
 
 #events_calendar_month {
-  outline:1px solid red;
+
   margin: 0 0 10px 0;
   text-align:center;
   font-size: 15px;
