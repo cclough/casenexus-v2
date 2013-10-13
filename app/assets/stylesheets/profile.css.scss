@@ -331,7 +331,7 @@ $cn_contrastor_second_0: #9ac787;
   position:absolute;
   left:260px;
   top:0px;
-  height:190px;
+  height:150px;
   outline:1px solid red;
   right:0px;
   padding:20px;
@@ -358,9 +358,9 @@ $cn_contrastor_second_0: #9ac787;
 
   #profile_index_feedback_cases {
     position:absolute;
-    left:0px;
-    top:0px;
-    bottom:0px;
+    left:20px;
+    top:50px;
+    bottom:20px;
     width:260px;
     overflow-y:auto;
     background:$cn_grey_0;
@@ -395,7 +395,7 @@ $cn_contrastor_second_0: #9ac787;
           top:0px;
           bottom:0px;
           width:5px;
-          background: $blue_pastel;
+          background: $cn_colour_0;
           display:inline;
         }
       }
@@ -405,7 +405,7 @@ $cn_contrastor_second_0: #9ac787;
         font-weight:bold;
         font-size:16px;
         text-align:center;
-        color:$blue_casenexus;
+        color: $cn_colour_0;
         margin-top:1px;
       }
       .profile_index_feedback_cases_item_username {
@@ -415,11 +415,10 @@ $cn_contrastor_second_0: #9ac787;
         float:right;
         font-size:10px;
         margin-top:5px;
-        color:white !important;
         font-weight:bolder;
       }
       &:hover {
-        background:$gray_gunmetal;
+        background:$cn_grey_-1;
       }
     }
   }
@@ -427,9 +426,9 @@ $cn_contrastor_second_0: #9ac787;
   #profile_index_feedback_chart{
     outline:1px solid green;
     position:absolute; 
-    left:260px;
-    top:0px;
-    right:0px;
+    left:300px;
+    top:50px;
+    right:20px;
     height:150px;
   }
 
@@ -442,10 +441,10 @@ $cn_contrastor_second_0: #9ac787;
   #profile_index_feedback_results {
     outline:1px solid blue;
     position:absolute;
-    left:260px;
-    bottom:0px;
-    right:0px;
-    top:150px;
+    left:300px;
+    bottom:20px;
+    right:20px;
+    top:200px;
 
   }
 }

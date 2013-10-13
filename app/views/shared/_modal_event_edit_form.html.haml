@@ -104,11 +104,11 @@
 
   .modal-footer
     .pull-left
-      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btn btn-primary ", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btn btn-colour ", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
 
       = render 'events/button_startcase'
 
-      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-primary events_edit_actions_button" do
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-colour events_edit_actions_button" do
         %span.fui-skype
         
 

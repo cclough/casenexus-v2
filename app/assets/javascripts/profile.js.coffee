@@ -38,10 +38,6 @@ $(document).ready ->
     , 250
   ), 300
 
-    # setTimeout (->
-    #   $("#application_notify").fadeOut()
-    # ), 20000
-
 
   # Load results table
   $.get "/cases/results?view=analysis", (data) ->
@@ -50,7 +46,6 @@ $(document).ready ->
       $("#cases_analysis_chart_table_empty").fadeIn "fast"
     else
       window.cases_resultstable_prime("analysis")
-
 
 
   # INFO

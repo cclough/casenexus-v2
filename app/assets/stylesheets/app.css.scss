@@ -36,6 +36,15 @@ $cn_grey_0: #f0f1f2; // users form
 
 
 
+.application_unread_circle {
+  width:30px;
+  height:30px;
+  padding:5px;
+  border-radius:50%;
+  border:1px solid red;
+  color:red;
+  font-size:11px;
+}
 
 .application_glyph {
   display:inline-block;
