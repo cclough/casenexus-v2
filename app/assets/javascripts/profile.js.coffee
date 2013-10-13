@@ -31,21 +31,24 @@ modal_cases_show_prime = () ->
 $(document).ready ->
 
 
-  # Scroll calendar to today
-  setTimeout (->
-    $("#profile_index_panel_calendar_container").animate
-      scrollLeft:  $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
-    , 250
-  ), 300
+  # If profile page
+  if $("#profile_index_panel_calendar_container").size > 0
+
+    # Scroll calendar to today
+    setTimeout (->
+      $("#profile_index_panel_calendar_container").animate
+        scrollLeft:  $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
+      , 250
+    ), 300
 
 
-  # Load results table
-  $.get "/cases/results?view=analysis", (data) ->
-    $("#cases_analysis_results").html data
-    if (cases_analysis_chart_case_count == 0)
-      $("#cases_analysis_chart_table_empty").fadeIn "fast"
-    else
-      window.cases_resultstable_prime("analysis")
+    # Load results table
+    $.get "/cases/results?view=analysis", (data) ->
+      $("#cases_analysis_results").html data
+      if (cases_analysis_chart_case_count == 0)
+        $("#cases_analysis_chart_table_empty").fadeIn "fast"
+      else
+        window.cases_resultstable_prime("analysis")
 
 
   # INFO

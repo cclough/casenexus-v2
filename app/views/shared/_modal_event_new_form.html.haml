@@ -34,7 +34,7 @@
         #events_edit_friend_selected_container
           #events_modal_friend_selected
             .span#events_edit_partner_avatar
-              = avatar_for(@friend, size:"medium")
+              = avatar_for(@friend, size:"small")
             .span.offset1#events_edit_partner_name
               = @friend.username
               = f.hidden_field :partner_id, value: @friend.id.to_s, id: "#events_modal_friend_select"
@@ -84,7 +84,7 @@
 
 
       .events_modal_book_viewer_title
-        Case they will prepare for you
+        Select a case for them to prepare for you
 
       #events_modal_book_viewer_partnertoprepare_container
 

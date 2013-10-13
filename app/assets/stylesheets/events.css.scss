@@ -205,9 +205,9 @@ $cn_contrastor_third_0: #c18176;
   background:white;
   width:855px !important;
   margin-left:-427px;
-  margin-top:-300px;
+  margin-top:-325px;
 
-  height:600px !important;
+  height:650px !important;
 
   text-align:center !important;
   .close {
@@ -230,6 +230,7 @@ $cn_contrastor_third_0: #c18176;
       font-weight:100 !important;
       border-radius:50%;
       margin:15px 0px;
+      line-height:50px;
     }
   }
 
@@ -243,7 +244,8 @@ $cn_contrastor_third_0: #c18176;
     border:1px solid $cn_grey_-1 !important;
     font-weight:100 !important;
     border-radius:50%;
-
+    margin-bottom:10px;
+    line-height:22px;
   }
 
   .events_modal_block_title {
@@ -251,8 +253,8 @@ $cn_contrastor_third_0: #c18176;
   }
 
   .modal-body {
-    height:490px;
-    max-height:490px;
+    height:530px;
+    max-height:530px;
     text-align:center !important;
   }
 
@@ -283,14 +285,14 @@ $cn_contrastor_third_0: #c18176;
 
 .events_modal_block {
   width:396px;
-  height:180px;
+  height:190px;
   float:left;
   text-align:center;
   outline:1px solid red;
 }
 
 .events_modal_block_spacer {
-  height:180px;
+  height:190px;
   width:15px;
   float:left;
   outline:1px solid red;
@@ -329,7 +331,7 @@ $cn_contrastor_third_0: #c18176;
 }
 
 #events_modal_friend_select {
-  margin-top:10px;
+  margin-top:15px;
   width:330px;
 }
 
@@ -337,7 +339,7 @@ $cn_contrastor_third_0: #c18176;
 #events_modal_friend_selected {
   display:inline-block;
   height:20px;
-
+  outline:1px solid red;
 }
 
 
@@ -374,7 +376,7 @@ $cn_contrastor_third_0: #c18176;
 
 
 #events_modal_datetime_picker {
-  margin:10px 0 0 0;
+  margin:15px 0 0 0;
   outline:1px solid red;
 
   #events_modal_datetime_input {
@@ -399,9 +401,10 @@ $cn_contrastor_third_0: #c18176;
   .add-on {
     border-radius:0px !important;
 //    border-color: $gray_button;
-    height:11px;
+    height:19px;
     width:11px;
-    line-height:7px;
+    line-height:22px;
+    padding:5px;
     background:$cn_contrastor_third_0;
   }
 }
@@ -414,7 +417,6 @@ $cn_contrastor_third_0: #c18176;
 #events_modal_book_viewer_partnertoprepare {
 
   #events_modal_book_viewer_partnertoprepare_empty {
-    color:$gray_Mid;
     font-size:15px;
     margin-top:27px;
   }
@@ -432,10 +434,10 @@ $cn_contrastor_third_0: #c18176;
 #events_modal_book_viewer_usertoprepare {
 
   #events_modal_book_viewer_usertoprepare_empty {
-    color:$gray_Mid;
+    background:$cn_grey_0;
     font-size:15px;
-    margin-top:40px;
-    padding:0px 20px;
+    margin-top:0px;
+    padding:30px 30px;
   }
 }
 
@@ -471,17 +473,16 @@ $cn_contrastor_third_0: #c18176;
 
 
 #events_edit_friend_selected_container {
-  margin-top:35px;
+  margin-top:15px;
 }
 
 #events_edit_partner_avatar {
-  max-width:25px;
-  margin-right:5px;
+
 }
 
 #events_edit_partner_name {
-  line-height:25px;
-  font-size:25px;
+//  line-height:25px;
+  font-weight:bold;
 }
 
 .events_edit_actions_button {
