@@ -85,8 +85,12 @@ window.cases_analysis_chart_progress_init = (case_count) ->
       backgroundColor: "#000000"
       backgroundAlpha: 0.15
 
+
+
+
+
     if case_count > 2
-      chart_analysis_progress.colors = ["#0D8ECF", "#B0DE09", "#FCD202"]
+      chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
     else
       chart_analysis_progress.colors = ["#1f1f1f", "#1f1f1f", "#1f1f1f"]
     chart_analysis_progress.dataProvider = data
@@ -277,22 +281,22 @@ window.cases_analysis_chart_progress_init = (case_count) ->
 
 window.cases_resultstable_prime = (view) ->
 
-  $("#cases_resultstable_form .btn").off 'click'
+  $("#cases_"+view+"_results .btn").off 'click'
 
-  $("#cases_resultstable_form .btn").click ->
+  $("#cases_"+view+"_results .btn").click ->
 
     radio = $(this).data("radio")
     type = $(this).data("type")
 
     # Change radio
-    $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+    $("#cases_"+view+"_results input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
     # Remove and add active class to buttons
-    $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
+    $("#cases_"+view+"_results #cases_resultstable_"+type+"_container .btn").removeClass "active"
     $(this).addClass "active"
     
     # Submit form
-    $.get("/cases/results?view=" + view, $("#cases_resultstable_form").serialize(), null, "script")
+    $.get("/cases/results?view=" + view, $("#cases_"+view+"_results #cases_resultstable_form").serialize(), null, "script")
     false
 
 
@@ -300,8 +304,8 @@ window.cases_resultstable_prime = (view) ->
 
   while i < 12
 
-    score = $("#cases_resultstable_chart_bar_" + i).data "score"
-    category = $("#cases_resultstable_chart_bar_" + i).data "category"
+    score = $("#cases_"+view+"_results #cases_"+view+"_resultstable_chart_bar_" + i).data "score"
+    category = $("#cases_"+view+"_results #cases_"+view+"_resultstable_chart_bar_" + i).data "category"
 
     Data = [{ name: i, score: parseFloat(score), category: category }]
 
@@ -316,8 +320,8 @@ window.cases_resultstable_prime = (view) ->
     chart.dataProvider = Data
     chart.categoryField = "name"         
     chart.rotate = true
-    chart.depth3D = 3
-    chart.angle = 10
+    # chart.depth3D = 3
+    # chart.angle = 10
     chart.startDuration = 1
     # chart.valueAxesSettings.inside = false
 
@@ -348,17 +352,17 @@ window.cases_resultstable_prime = (view) ->
     graph.showBalloon = false
 
     if (category == "businessanalytics")
-      graph.fillColors = "#0D8ECF"
+      graph.fillColors = "#72aac9"
     else if (category == "structure")
-      graph.fillColors = "#B0DE09"
+      graph.fillColors = "#73bf72"
     else if (category == "interpersonal")
-      graph.fillColors = "#FCD202"
+      graph.fillColors = "#f1d765"
 
     graph.fillAlphas = 1
     chart.addGraph graph
 
     # WRITE
-    chart.write("cases_resultstable_chart_bar_" + i)
+    chart.write("cases_"+view+"_resultstable_chart_bar_" + i)
 
     i++
 

@@ -44,7 +44,7 @@
 
         %td
           / Chart
-          .cases_resultstable_chart_bar{"data-score" => value, id: "cases_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
+          .cases_resultstable_chart_bar{"data-score" => value, id: "cases_"+@view+"_resultstable_chart_bar_"+index.to_s, "data-category" => Case.criteria_category(key)}
 
         - if @view != "show"
           / Growth cell

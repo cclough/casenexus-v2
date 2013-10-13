@@ -201,6 +201,7 @@ $cn_contrastor_second_0: #9ac787;
 
 
 #modal_event {
+  background:white;
   width:855px !important;
   margin-left:-400px;
   margin-top:-260px;
@@ -208,6 +209,35 @@ $cn_contrastor_second_0: #9ac787;
   height:510px !important;
 
   text-align:center !important;
+
+  #events_modal_title {
+    font-size:25px;
+    margin:0 0 20px 0;
+    #events_modal_title_icon {
+      display:block;
+      width:30px;
+      height:30px;
+      padding:7px;
+      border:1px solid $cn_grey_-1 !important;
+      font-weight:100 !important;
+      border-radius:50%;
+      margin:15px 0px;
+    }
+  }
+
+  .events_modal_block_number {
+    display:block;
+    width:20px;
+    height:20px;
+    padding:7px;
+    border:1px solid $cn_grey_-1 !important;
+    font-weight:100 !important;
+    border-radius:50%;
+  }
+
+  .events_modal_block_title {
+    font-size:20px;
+  }
 
   .modal-body {
     height:325px;
@@ -225,10 +255,7 @@ $cn_contrastor_second_0: #9ac787;
     }
 
   }
-//  .modal-footer {
-//    position:absolute;
-//    bottom:0;
-//  }
+
 
 }
 
@@ -241,8 +268,8 @@ $cn_contrastor_second_0: #9ac787;
 
 
 .events_modal_timezone_popup {
-  background:$gray_second;
-  color:white;
+  border:1px solid $cn_grey_-1;
+  color:$cn_grey_-1;
   display:block;
   i {
     font-size:40px;
@@ -260,8 +287,9 @@ $cn_contrastor_second_0: #9ac787;
 }
 .events_modal_block {
   width:396px;
-  height:150px;
+//  height:150px;
   float:left;
+  text-align:center;
 
 }
 
@@ -310,20 +338,6 @@ $cn_contrastor_second_0: #9ac787;
 
 
 
-
-#events_modal_triangle {
-  position:absolute;
-  left:50%;
-  margin-left:-10px;
-  top:113px;
-  width: 0; 
-  height: 0; 
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-  border-left: 25px solid $gray_second;
-
-}
-
 #events_modal_datetime_friend { // one for datetime
 
   height:40px;
@@ -368,19 +382,19 @@ $cn_contrastor_second_0: #9ac787;
 
 
 #events_modal_datetime_input {
-  height:32px;
-  width:250px !important;
+  height:20px;
+  width:300px !important;
   font-size:22px;
 ////  border:0;
 //  border-bottom:0 !important;
-
+  color:black;
   padding:8px 0px 8px 0px !important;
 
   text-align:center;
   margin:0 !important;
 
   cursor:pointer;
-  background-color:#ffffff !important;
+  background:$cn_grey_-1 !important;
   -webkit-box-shadow: 0 !important;
   -moz-box-shadow:    0 !important;
   box-shadow:         0 !important;

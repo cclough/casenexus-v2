@@ -14,17 +14,16 @@
   #cases_show_subnav_browse
 
     #cases_show_subnav_label
-      Browse your cases
-      %i.icon-caret-right
-
+      Browse your cases:
     %select#cases_show_subnav_select.chzn-select{"data-placeholder" => "Jump to Case...", value: @case.id }
       %option
         - @cases.each do |cases_select_item|
           %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
             = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
 
-    .cases_show_subnav_browse_button.btn.btn-primary{ "data-case_id" => @case.prev.id }
-      %i.icon-caret-left
-    .cases_show_subnav_browse_button.btn.btn-primary{ "data-case_id" => @case.next.id }
-      %i.icon-caret-right
+  #cases_show_subnav_browse_buttons_container
+    .cases_show_subnav_browse_button.btn.btn-colour.application_btn_circle{ "data-case_id" => @case.prev.id }
+      %i.icon-chevron-left
+    .cases_show_subnav_browse_button.btn.btn-colour.application_btn_circle{ "data-case_id" => @case.next.id }
+      %i.icon-chevron-right
 

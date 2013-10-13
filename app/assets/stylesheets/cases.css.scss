@@ -25,6 +25,16 @@ $alert-yellow: #FFFF7E;
 
 
 
+$cn_colour_-2:#7d8288; // button overlays
+$cn_colour_-1:#b0bcc3; // buttons
+
+$cn_colour_0: #84b4db; // header
+$cn_colour_1: #8dc0e9; // header button highlights
+
+$cn_grey_-1: #dee1e3; // search input border
+$cn_grey_0: #f0f1f2; // users form
+
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -61,7 +71,6 @@ $alert-yellow: #FFFF7E;
     left:0px;
     right:0px;
     bottom:0px;
-    background:white;
   }
 }
 
@@ -77,11 +86,10 @@ $alert-yellow: #FFFF7E;
 #cases_show_subnav {
   display:block;
   margin:0px 0px 0px 0px;
-  background:white;//$gray_background;
+  background:$cn_grey_0;
   height:38px;
   padding:10px;
 
-  border-bottom:2px solid $gray_background;
 
   border-top-left-radius: 3px;
   -moz-border-top-left-radius: 3px;
@@ -121,9 +129,8 @@ $alert-yellow: #FFFF7E;
       padding:16px 20px;
       height:28px;
       margin:-10px 0 0 20px;
-//      color:white;
-//      background:$gray_gunmetal;
-      font-size: 22px;
+      color:$cn_colour_-1;
+      font-size: 25px;
       font-weight: bold;
 
     }
@@ -132,7 +139,7 @@ $alert-yellow: #FFFF7E;
 
 
   #cases_show_subnav_browse {
-    float:right;
+    float:left;
     display:inline-block;
 
     .btn {
@@ -143,7 +150,7 @@ $alert-yellow: #FFFF7E;
 
     #cases_show_subnav_label {
       display:inline-block;
-      font-size:12px;
+      font-size:13px;
       margin-right:3px;
       i {
         margin-left:5px;
@@ -153,8 +160,14 @@ $alert-yellow: #FFFF7E;
     #cases_show_subnav_select {
       margin-right:10px;
       margin-top:6px;
+      width:300px;
     }
 
+  }
+
+  #cases_show_subnav_browse_buttons_container {
+    float:right;
+    display:inline;
   }
 
 }
@@ -168,12 +181,7 @@ $alert-yellow: #FFFF7E;
   bottom:0px;
   top:60px;
 
-  #cases_show_book {
-    width:395px;
-    padding: 10px;
-    height:84px;
 
-  }
   #cases_show_results {
     padding:10px;
     height:356px;
@@ -187,14 +195,35 @@ $alert-yellow: #FFFF7E;
   left:395px;
   top:60px;
   bottom:0px;
+  padding:20px;
+  overflow-y:auto;
+
+  #cases_show_book {
+    height:88px;
+    text-align:right;
+
+    #cases_show_book_subject {
+      font-size:20px;
+    }
+
+    #cases_show_book_source {
+      font-size:16px;
+    }
+  }
+
   #cases_show_recommendations {
     height:138px;
     margin:0px;
+    .cases_show_recommendation_spacer{
+      width:15px;
+      height:15px;
+      float:left;
+    }
     .cases_show_recommendation {
-      width:33.3%;
+      width:178px;
       height:138px;
       float:left;
-      padding:15px;
+      padding:15px 0 0 0;
       @include box_sizing;
       .cases_show_recommendation_content {
 
@@ -213,7 +242,6 @@ $alert-yellow: #FFFF7E;
 
       .cases_show_recommendation_title {
         text-align:center;
-        font-size:11px;
         margin-bottom:3px;
         font-weight:bold;
       }
@@ -223,12 +251,8 @@ $alert-yellow: #FFFF7E;
   #cases_show_maincomment {
     line-height:26px;
     font-size:15px;
-    position:absolute;
-    top:138px;
-    height:352px;
-    right:0px;
-    left:0px;
-    padding:30px;
+    display:block;
+    padding:10px 0px;
     @include box_sizing;
     #cases_show_maincomment_content {
       @include box_sizing;
@@ -633,28 +657,11 @@ $alert-yellow: #FFFF7E;
   }
 
 
-//  th {
-//    padding: 5px 2px;
-//    p {
-//      font-size:11px;
-//      margin:0px;
-//    }
-//  }
-//  td {
-//    border-top: 2px solid $gray_background;
-//    padding: 1px 7px;
-
-//    text-align:center;
-//    &.cases_resultstable_table_cell_criteria {
-//      text-align:left;
-//    }
-//  }
-
 
   .cases_resultstable_chart_bar {
     width:150px;
     height:15px;
-    border:0px solid white;
+//    outline:1px solid red;
   }
 
 
@@ -662,7 +669,7 @@ $alert-yellow: #FFFF7E;
 
   .cases_resultstable_cell_score {
     font-weight:bold;
-    font-size:12px;
+    font-size:14px;
   }
 
 
@@ -671,8 +678,9 @@ $alert-yellow: #FFFF7E;
 
   // THE 'SHOW' PHENOTYPE
   &.show {
-    height:322px;
-    font-size:11px;
+    height:430px;
+    font-size:12px;
+
     td {
       border-top: 0;
       padding:1px 10px !important;
@@ -680,12 +688,14 @@ $alert-yellow: #FFFF7E;
     #cases_resultstable_table_column_criteria {
       text-align:left;
       padding-left:10px;
+      width:200px;
     }
     .cases_resultstable_chart_bar{
-      width:150px !important;
+      width:130px !important;
+      height:32px;
     }
     #cases_resultstable_table_column_bar {
-      width:150px !important;
+      width:130px !important;
     }
     .cases_resultstable_cell_score {
       font-size:12px;

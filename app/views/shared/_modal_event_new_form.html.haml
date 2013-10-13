@@ -1,19 +1,26 @@
 
 
 = form_for @event, remote: true do |f|
-  .modal-header
-    %button.close{"data-dismiss" => "modal", type: "button"} ×
-
-    %h3 New case appointment...
+  %button.close{"data-dismiss" => "modal", type: "button"} ×
 
   .modal-body  
+
+    #events_modal_title
+      #events_modal_title_icon
+        %i.icon-calendar
+      NEW CASE APPOINTMENT...
 
     #flash_notifications
       = render 'shared/error_messages', object: @event
 
-    #events_modal_triangle
 
     .events_modal_block
+
+      .events_modal_block_number
+        1
+      .events_modal_block_title
+        Select partner
+
       - if @friend.blank?
         %select#events_modal_friend_select.chzn-select.span28{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
           %option{value:""} Choose a friend
@@ -39,6 +46,13 @@
     .events_modal_block
 
 
+      .events_modal_block_number
+        2
+
+      .events_modal_block_title
+        Select a date and time
+
+
       #events_modal_datetime_picker.input-append.date
         = f.text_field :datetime, id: "events_modal_datetime_input", placeholder: "Select a date and time", class: "", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d @ %H:%M")
         %span.add-on
@@ -55,6 +69,8 @@
 
 
     .events_modal_block
+
+
 
       .events_modal_book_viewer_title
         Case they will prepare for you
@@ -97,8 +113,8 @@
 
 
   .modal-footer
-    %a.btn.btn-colour{"data-dismiss" => "modal", href: "#"} Close
-    .application_submit_button_with_spinner.btn.btn-colour{tabindex: "102"}
+    %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
+    .application_submit_button_with_spinner.btn.btn-colour.btn-micro{tabindex: "102"}
       %i.icon-arrow-right.icon-white
       Book Appointment
 

@@ -41,7 +41,7 @@ $(document).ready ->
 
   # Load results table
   $.get "/cases/results?view=analysis", (data) ->
-    $("#profile_index_feedback_results").html data
+    $("#cases_analysis_results").html data
     if (cases_analysis_chart_case_count == 0)
       $("#cases_analysis_chart_table_empty").fadeIn "fast"
     else
@@ -182,7 +182,8 @@ $(document).ready ->
 
       $.get "/cases/" + case_id, (data) ->
         $("#modal_cases").html data
-        modal_cases_show_prime("show")
+        # modal_cases_show_prime("show")
+        window.cases_resultstable_prime("show")
 
 
 

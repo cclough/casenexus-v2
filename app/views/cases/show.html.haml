@@ -5,21 +5,6 @@
 
   #cases_show_panel_left
 
-    #cases_show_book
-
-      - if @case.book_id?
-        = render partial: 'books/show_small', locals: { book_id: @case.book_id }
-      - else
-        .row
-          .span7
-            %b Subject
-          .span32
-            = @case.subject
-        .row
-          .span7
-            %b Source
-          .span32
-            = @case.source
 
     #cases_show_results
       .cases_resultstable_container
@@ -28,18 +13,35 @@
 
   #cases_show_panel_right
 
+    #cases_show_book
+
+      - if @case.book_id?
+        = render partial: 'books/show_small', locals: { book_id: @case.book_id }
+
+      - else
+        #cases_show_book_subject
+          = @case.subject
+        #cases_show_book_source
+          = @case.source
+
     #cases_show_recommendations
       .cases_show_recommendation
         .cases_show_recommendation_content
-          .cases_show_recommendation_title 1st recommendation
+          .cases_show_recommendation_title 1st Recommendation
           = @case.recommendation1
+
+      .cases_show_recommendation_spacer
+
       .cases_show_recommendation
         .cases_show_recommendation_content
-          .cases_show_recommendation_title 2nd recommendation
+          .cases_show_recommendation_title 2nd Recommendation
           = @case.recommendation2
+
+      .cases_show_recommendation_spacer
+
       .cases_show_recommendation
         .cases_show_recommendation_content
-          .cases_show_recommendation_title 3rd recommendation
+          .cases_show_recommendation_title 3rd Recommendation
           = @case.recommendation3
 
     #cases_show_maincomment
@@ -50,5 +52,5 @@
 
 .modal-footer
 
-  %a.btn{"data-dismiss" => "modal", href: "#"} Close
+  %a.btn.btn-micro.btn-colour{"data-dismiss" => "modal", href: "#"} Close
 
