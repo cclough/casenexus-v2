@@ -9,7 +9,7 @@
 
 = render partial: 'books/books_item' , locals: { books_item: @book}
 
-.spacer10
+.spacer50
 
 - @comments.each do |books_comment|
   = render partial: "comments/comment_books", locals: { comment: books_comment }
@@ -19,5 +19,5 @@
 
 .spacer10
 
-#books_show_comments_form_container.panel.dark
+#books_show_comments_form_container
   = render "comments/new"

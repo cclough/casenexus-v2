@@ -269,6 +269,16 @@ $cn_grey_0: #f0f1f2; // users form
   position:relative;
   display:none;
   height:190px;
+  &.show {
+    display:block !important;
+    height:310px;
+    .books_index_books_item_panel_left {
+      height:300px !important;
+    }
+    .books_index_books_item_panel_right {
+      height:300px !important;
+    }
+  }
 }
 
 
@@ -287,6 +297,7 @@ $cn_grey_0: #f0f1f2; // users form
     margin-right:4px;
   }
 
+
 }
 
 
@@ -296,6 +307,8 @@ $cn_grey_0: #f0f1f2; // users form
   background: $cn_grey_0;
   width:464px;
   padding:20px;
+
+
 }
 
 .books_index_books_item_difficulty {
@@ -365,7 +378,10 @@ $cn_grey_0: #f0f1f2; // users form
   font-size:11px;
   width:150px !important;
   padding:2px;
-
+  .books_rating_set {
+    width:120px;
+    margin:0 auto;
+  }
 }
 
 
@@ -376,6 +392,8 @@ $cn_grey_0: #f0f1f2; // users form
   margin-bottom: 15px !important;
   padding:10px;
   position:relative;
+  background:$cn_grey_0;
+  margin:0 20px;
 }
 
 .books_show_comments_item_avatar {
@@ -386,7 +404,6 @@ $cn_grey_0: #f0f1f2; // users form
 
 .books_show_comments_item_date {
   font-size:11px;
-  color:$gray_Mid;
 }
 
 
