@@ -5,12 +5,8 @@
 
 
 - if display_which == "timezone"
-  /UPPER
+  /LEFT
 
-  / .span
-  /   %strong
-  /     #{@user.username}'s Timezone:
-  / .span.offset1
   .events_modal_timezone_popup
     %i.icon-time
     = timezone_difference(current_user, @user)
@@ -18,17 +14,12 @@
     (#{@user.time_zone})
 
 
-
 - elsif display_which == "timeforfriend"
 
   - @datetime = date_and_time if !@datetime
 
-  /LOWER
+  /RIGHT
 
-  / .span
-  /   %strong
-  /     For #{@user.username}:
-  / .span.offset1
   .events_modal_timezone_popup
     %strong For #{@user.username}
     %br
