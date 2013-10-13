@@ -203,20 +203,27 @@ $cn_contrastor_second_0: #9ac787;
 #modal_event {
   background:white;
   width:855px !important;
-  margin-left:-400px;
-  margin-top:-260px;
+  margin-left:-427px;
+  margin-top:-300px;
 
-  height:510px !important;
+  height:600px !important;
 
   text-align:center !important;
-
+  .close {
+    margin:15px;
+    position:absolute;
+    top:15px;
+    right:15px;
+  }
   #events_modal_title {
     font-size:25px;
     margin:0 0 20px 0;
+
     #events_modal_title_icon {
-      display:block;
-      width:30px;
-      height:30px;
+      font-size:35px;
+      display:inline-block;
+      width:50px;
+      height:50px;
       padding:7px;
       border:1px solid $cn_grey_-1 !important;
       font-weight:100 !important;
@@ -228,11 +235,14 @@ $cn_contrastor_second_0: #9ac787;
   .events_modal_block_number {
     display:block;
     width:20px;
+    display:inline-block;
     height:20px;
+    text-align:center;
     padding:7px;
     border:1px solid $cn_grey_-1 !important;
     font-weight:100 !important;
     border-radius:50%;
+
   }
 
   .events_modal_block_title {
@@ -240,13 +250,15 @@ $cn_contrastor_second_0: #9ac787;
   }
 
   .modal-body {
-    height:325px;
+    height:530px;
     text-align:center !important;
+  }
+
+  .modal-footer {
   }
 
   &.event_edit {
     height:510px !important;
-
     margin-top:-260px;
 
     .modal-body {
@@ -267,6 +279,21 @@ $cn_contrastor_second_0: #9ac787;
 ///////////////////////////////////////////////
 
 
+.events_modal_block {
+  width:396px;
+//  height:150px;
+  float:left;
+  text-align:center;
+  outline:1px solid red;
+}
+
+.events_modal_block_spacer {
+  height:150px;
+  width:15px;
+  float:left;
+  outline:1px solid red;
+}
+
 .events_modal_timezone_popup {
   border:1px solid $cn_grey_-1;
   color:$cn_grey_-1;
@@ -285,20 +312,8 @@ $cn_contrastor_second_0: #9ac787;
   border-radius:         3px;
   
 }
-.events_modal_block {
-  width:396px;
-//  height:150px;
-  float:left;
-  text-align:center;
-
-}
 
 
-.events_modal_block_spacer {
-  height:150px;
-  width:15px;
-  float:left;
-}
 
 
 .events_modal_book_viewer_title {
@@ -366,7 +381,7 @@ $cn_contrastor_second_0: #9ac787;
 #events_modal_datetime_picker {
   margin:30px 0 0 0;
   border:0px solid $gray_second;
-
+  outline:1px solid red;
   .add-on {
     border-radius:0px !important;
     border-color: $gray_button;
@@ -382,8 +397,9 @@ $cn_contrastor_second_0: #9ac787;
 
 
 #events_modal_datetime_input {
+  outline:1px solid red;
   height:20px;
-  width:300px !important;
+  width:200px !important;
   font-size:22px;
 ////  border:0;
 //  border-bottom:0 !important;
