@@ -31,6 +31,18 @@ modal_cases_show_prime = () ->
 $(document).ready ->
 
 
+  # Scroll calendar to today
+  setTimeout (->
+    $("#profile_index_panel_calendar_container").animate
+      scrollLeft:  $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
+    , 250
+  ), 300
+
+    # setTimeout (->
+    #   $("#application_notify").fadeOut()
+    # ), 20000
+
+
   # Load results table
   $.get "/cases/results?view=analysis", (data) ->
     $("#profile_index_feedback_results").html data

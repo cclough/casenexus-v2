@@ -18,29 +18,34 @@
       = link_to date: @date.prev_month do
         %i.icon-chevron-left.icon-white
       
-
       %span#events_calendar_month_text
         = @date.strftime("%B %Y")
-        %span#events_calendar_month_text_count
-          - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-          = "(#{pluralize(month_count,"appt")})"
 
       = link_to date: @date.next_month do
         %i.icon-chevron-right.icon-white
 
+
+    %span#events_calendar_month_text_count
+      - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
+      = "(#{pluralize(month_count,"appt")})"
+
+
+
+
   .spacer20
+  
+
+
   
   #profile_index_panel_calendar_container
     = calendar @date do |date|
-      = date.day
+      .events_calendar_day_num
+        = date.day
+      .events_calendar_day_name
+        = date.strftime('%a').upcase
+
       - if @events_by_date[date]
 
-
-        .span.pull-right.events_calendar_event_count
-          = "x" + @events_by_date[date].count.to_s
-
-
-        .events_calendar_event_container
+        .events_calendar_day_event_container
           - @events_by_date[date].each do |event|
-            .events_calendar_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username, rel: "tooltip", "data-placement"=>"right"}
-              / = event.datetime.strftime("%H:%M")
+            .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username, rel: "tooltip", "data-placement"=>"right"}

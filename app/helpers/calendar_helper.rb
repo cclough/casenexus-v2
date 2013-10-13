@@ -5,23 +5,16 @@ module CalendarHelper
   end
 
   class Calendar < Struct.new(:view, :date, :callback)
-    HEADER = %w[Sun Mon Tue Wed Thu Fri Sat]
     START_DAY = :sunday
 
     delegate :content_tag, to: :view
 
     def table
       content_tag :div, class: "calendar" do
-        # header + 
         week_rows
       end
     end
 
-    # def header
-    #   content_tag :div, class: "events_calendar_week" do
-    #     HEADER.map { |day| content_tag :th, day }.join.html_safe
-    #   end
-    # end
 
     def week_rows
       weeks.map do |week|
