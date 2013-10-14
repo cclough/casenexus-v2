@@ -594,7 +594,7 @@ $cn_contrastor_third_0: #c18176;
 .map_index_map_popup{
 
   height:90px;
-  width:200px;
+  width:170px;
   padding:0px !important;
 
   .map_index_map_popup_avatar {
@@ -627,14 +627,14 @@ $cn_contrastor_third_0: #c18176;
   .map_index_map_popup_cases {
     display:block;
     margin: 0 auto;
-    width:138px;
+    width:150px; // includes 18 margin
     div {
-      width:40px;
-      height:40px;
+      width:50px;
+      height:45px;
       float:left;
-      margin:3px;
+
       text-align:center;
-      line-height:23px;
+      line-height:33px;
       position:relative;
 
     }
@@ -665,10 +665,10 @@ $cn_contrastor_third_0: #c18176;
       left:0px;
       right:0px;
       text-align:center;
-      top:12px;
+      top:18px;
       font-size:9px;
       height:10px;
-      width:34px;
+
     }
 
 

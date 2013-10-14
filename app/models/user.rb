@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
 
 
   def username_trunc
-    (username).truncate(17, separator: ' ')
+    (username).truncate(15, separator: ' ')
   end
 
   def case_count_recd
@@ -209,7 +209,7 @@ class User < ActiveRecord::Base
                       \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
                       \"properties\": {
                         \"id\": \"#{user.id}\",
-                        \"username\": \"#{user.username}\",
+                        \"username\": \"#{user.username_trunc}\",
                         \"university_image\": \"#{user.university.image}\",
                         \"university_name\": \"#{user.university.name.upcase}\",
                         \"cases_recd\": \"#{user.case_count_recd}\",
