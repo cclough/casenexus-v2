@@ -1,17 +1,4 @@
 
-- content_for :javascript_includes do
-
-  // CONDITIONAL - for signup error handling & invitation email code link
-  - if params[:controller] == "registrations" && params[:action] == "create" || !params[:code].blank?
-
-    :javascript
-      $(document).ready(function() {
-        window.static_switch_view($("#static_home_switch_link_signup"),"instant");
-      });
-
-
-
-
 #static_home_panel_left
 
   #static_home_title

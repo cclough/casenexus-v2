@@ -1,4 +1,4 @@
-#static_home_signup.static_home_slideable
+#static_home_signup{style:("display:block;" if params[:controller] == "registrations" && params[:action] == "create" || !params[:code].blank?)}
   .row
     = simple_form_for @user, url: user_registration_path(@user), :html => { "autocomplete"=>"off" } do |f|
 

@@ -1,5 +1,5 @@
 
-window.static_switch_view = (object,speed) ->
+window.static_switch_view = (object) ->
 
 
   switch_from = $(object).data("switch_from")
@@ -11,8 +11,11 @@ window.static_switch_view = (object,speed) ->
 
 
   # Switch
-  $("#static_home_" + switch_from).fadeOut "fast", ->
-    $("#static_home_" + switch_to).fadeIn "fast"
+
+
+
+  $("#static_home_" + switch_from).fadeOut 300, ->
+    $("#static_home_" + switch_to).fadeIn 300
 
   # if speed == "instant"
   #   clicks = 1

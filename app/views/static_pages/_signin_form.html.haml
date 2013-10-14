@@ -1,5 +1,8 @@
 - @login ||= User.new
-#static_home_signin.static_home_slideable
+
+
+
+#static_home_signin{style:("display:none;" if params[:controller] == "registrations" && params[:action] == "create" || !params[:code].blank?)}
   = simple_form_for(@login, url: session_path(@login)) do |f|
 
     #static_home_sigin_title
