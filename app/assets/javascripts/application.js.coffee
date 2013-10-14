@@ -263,7 +263,7 @@ window.modal_events_modal_timezone_calcs = ->
     $("#events_modal_friend_timezone").html("")
 
   if (friend_id > 0) && (datetime != "")
-    $.get "/events/user_timezone?display_which=timeforfriend&user_id=" + friend_id+"&datetime="+datetime, (data) ->
+    $.get "/events/user_timezone?display_which=timeforfriend&user_id=" + friend_id + "&datetime=" + datetime, (data) ->
       $("#events_modal_datetime_friend").html data
   else
     $("#events_modal_datetime_friend").html("")

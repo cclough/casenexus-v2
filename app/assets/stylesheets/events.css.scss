@@ -24,19 +24,21 @@ $alert-red: #FF3030;
 $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
-
 $cn_colour_-2: #7d8288; // button overlays
 $cn_colour_-1: #b0bcc3; // buttons
 
 $cn_colour_0: #84b4db; // header
 $cn_colour_1: #8dc0e9; // header button highlights
 
+$cn_grey_-2: #697076;
 $cn_grey_-1: #dee1e3; // search input border
 $cn_grey_0: #f0f1f2; // users form
 
 $cn_contrastor_0: #c18176; // orange!
 $cn_contrastor_second_0: #9ac787;
 $cn_contrastor_third_0: #c18176;
+
+
 
 ///////////////////////////////////////////////
 ////////////////// CALENDAR ///////////////////
@@ -105,7 +107,7 @@ $cn_contrastor_third_0: #c18176;
     vertical-align: top;
     font-size: 10px;
 
-//  outline:1px solid red;
+
     position:relative;
     .events_calendar_day_timeline {
       height:1px;
@@ -114,7 +116,7 @@ $cn_contrastor_third_0: #c18176;
       top:43px;
       left:0px;
       right:0px;
-//        outline:1px solid red;
+
     }
 
     .events_calendar_day_num {
@@ -141,7 +143,7 @@ $cn_contrastor_third_0: #c18176;
       bottom:0px;
       left:0px;
       width:60px;
-      outline:1px solid red;
+
     }
 
 
@@ -262,12 +264,10 @@ $cn_contrastor_third_0: #c18176;
   }
 
   &.event_edit {
-    height:510px !important;
-    margin-top:-260px;
+
 
     .modal-body {
-      height:325px;
-      text-align:center !important;
+
     }
 
   }
@@ -288,19 +288,19 @@ $cn_contrastor_third_0: #c18176;
   height:190px;
   float:left;
   text-align:center;
-  outline:1px solid red;
+
 }
 
 .events_modal_block_spacer {
   height:190px;
   width:15px;
   float:left;
-  outline:1px solid red;
+
 }
 
 .events_modal_timezone_popup {
-  border:1px solid $cn_grey_-1;
-  color:$cn_grey_-1;
+  border:1px solid $cn_grey_-2;
+  color:$cn_grey_-2;
   display:block;
   i {
     font-size:40px;
@@ -332,14 +332,14 @@ $cn_contrastor_third_0: #c18176;
 
 #events_modal_friend_select {
   margin-top:15px;
-  width:330px;
+  width:340px;
 }
 
 
 #events_modal_friend_selected {
   display:inline-block;
   height:20px;
-  outline:1px solid red;
+
 }
 
 
@@ -347,7 +347,7 @@ $cn_contrastor_third_0: #c18176;
   height:40px;
   .events_modal_timezone_popup {
     display:inline-block;
-    width:300px;
+    width:312px; //makes total length up to 340px - alex's suggested
     height:40px;
     text-align:center;
     padding: 8px 14px 8px 14px !important;
@@ -363,7 +363,7 @@ $cn_contrastor_third_0: #c18176;
 
   .events_modal_timezone_popup {
     display:inline-block;
-    width:300px;
+    width:312px; //makes total length up to 340px - alex's suggested
     height:40px;
     text-align:center;
     padding: 8px 14px 8px 14px !important;
@@ -377,16 +377,16 @@ $cn_contrastor_third_0: #c18176;
 
 #events_modal_datetime_picker {
   margin:15px 0 0 0;
-  outline:1px solid red;
+
 
   #events_modal_datetime_input {
-    outline:1px solid red;
+
     height:15px;
-    width:280px !important;
+    width:297px !important; // makes total length up to 340 - alex's suggested
     font-size:22px;
-    color:black;
     padding:8px 0px 8px 0px !important;
 
+    color: $cn_grey_-2;
     text-align:center;
     margin:0 !important;
 
@@ -399,26 +399,40 @@ $cn_contrastor_third_0: #c18176;
   }
 
   .add-on {
-    border-radius:0px !important;
-//    border-color: $gray_button;
-    height:19px;
-    width:11px;
+    border:0;
+    height:23px;
+    width:8px;
     line-height:22px;
     padding:5px;
     background:$cn_contrastor_third_0;
+    text-indent:0 !important;
+//    border-top-right-radius: 3px;
+//    -moz-border-top-right-radius: 3px;
+//    -webkit-border-top-right-radius: 3px;
+
+//    border-bottom-right-radius: 3px;
+//    -moz-border-bottom-right-radius: 3px;
+//    -webkit-border-bottom-right-radius: 3px;
   }
 }
 
 
 
 
-
+#events_modal_book_select {
+  width:340px;
+}
 
 #events_modal_book_viewer_partnertoprepare {
 
   #events_modal_book_viewer_partnertoprepare_empty {
+    margin:0 auto;
     font-size:15px;
-    margin-top:27px;
+    background:$cn_grey_0;
+    padding:30px;
+    height:36px;
+    line-height:35px;
+    width:280px; // to make it up to 340px - alex's suggested
   }
 }
 
@@ -434,10 +448,13 @@ $cn_contrastor_third_0: #c18176;
 #events_modal_book_viewer_usertoprepare {
 
   #events_modal_book_viewer_usertoprepare_empty {
+    margin:0 auto;
     background:$cn_grey_0;
     font-size:15px;
     margin-top:0px;
-    padding:30px 30px;
+    padding:30px;
+    width:280px; // to make it up to 340px - alex's suggested
+
   }
 }
 
@@ -460,20 +477,18 @@ $cn_contrastor_third_0: #c18176;
 
 #events_edit_friend_timezone {
   height:40px;
-  margin-top:17px;
+  margin-top:10px;
   .events_modal_timezone_popup {
     display:inline-block;
-    width:230px;
+    width:312px; //makes total length up to 340px - alex's suggested
     height:40px;
     text-align:center;
     padding: 8px 14px 8px 14px !important;
   }
-
 }
 
-
 #events_edit_friend_selected_container {
-  margin-top:15px;
+  margin-top:20px;
 }
 
 #events_edit_partner_avatar {
@@ -486,5 +501,5 @@ $cn_contrastor_third_0: #c18176;
 }
 
 .events_edit_actions_button {
- width:20px;
+  width:20px;
 }

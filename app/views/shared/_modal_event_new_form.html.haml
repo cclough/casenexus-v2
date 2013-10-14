@@ -1,5 +1,3 @@
-
-
 = form_for @event, remote: true do |f|
   %button.close{"data-dismiss" => "modal", type: "button"} ×
 
@@ -88,7 +86,7 @@
 
       #events_modal_book_viewer_partnertoprepare_container
 
-        %select#events_modal_book_select.chzn-select.span30{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
+        %select#events_modal_book_select.chzn-select{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
           %option{value:""} Which case should they prepare for you?
           / = options_from_collection_for_select(Book.all, "id", "title")
           - @books.each do |books_select_item|
@@ -115,6 +113,7 @@
         Case you will prepare for them
       #events_modal_book_viewer_usertoprepare_container
         #events_modal_book_viewer_usertoprepare
+
           #events_modal_book_viewer_usertoprepare_empty 
             You will be notified when your partner chooses a case for you to prepare
 
