@@ -104,13 +104,13 @@ Casenexus::Application.routes.draw do
     get :menu, on: :collection
   end
 
-  # Questions
-  resources :questions do
-  end
+  # Questions # COMMENTED FOR LAUNCH
+    # resources :questions do
+    # end
 
-  # Answers
-  resources :answers, only: [:create, :update, :show, :destroy, :edit] do
-  end
+    # Answers
+    # resources :answers, only: [:create, :update, :show, :destroy, :edit] do
+    # end
 
 
   # Tagging
