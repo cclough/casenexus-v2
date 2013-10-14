@@ -291,13 +291,12 @@ $cn_contrastor_third_0: #c18176;
 #cases_new_subnav {
   padding:10px;
   height:85px;
-  background:$gray_gunmetal;
+  border-bottom:1px solid $cn_grey_0;
 }
 
 
 #cases_new_book_container {
   display:inline-block;
-  width:300px;
   float:left;
 }
 
@@ -308,10 +307,12 @@ $cn_contrastor_third_0: #c18176;
   width:100px;
   padding:0px;
   float:right;
+  img {
+    margin-top:7px;
+  }
   #cases_new_user_username {
     margin-top:5px;
-    color:white;
-    font-weight:bold;
+    font-size:15px;
   }
 }
 
@@ -328,15 +329,12 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-.cases_new_score_input {
-
-}
 
 
 .cases_new_recommendation {
-  width: 90% !important;
+  width: 94% !important;
+
   height:50px !important;
-  margin-left:5px;
 }
 
 
@@ -344,19 +342,17 @@ $cn_contrastor_third_0: #c18176;
 
 #cases_new_recommendations_panel {
   text-align:center;
+  margin: 0 15px;
 }
 
 
 
 
 .cases_new_block_title {
-  background: $gray_second;
-  height:30px;
-  text-align:center;
-  font-weight: bold;
+  height:50px;
   line-height:31px;
-  color: white;
-
+  font-size:20px;
+  text-align:center;
   margin: 0px 15px;
 }
 
@@ -377,18 +373,20 @@ $cn_contrastor_third_0: #c18176;
 .cases_new_block_desc {
   margin:0px;
   margin-bottom:2px;
-  border:0 !important;
 
   min-height:50px;
 
   padding:10px;
-  &.grayed {
-    background:$gray_Lightest;
+
+  border-bottom: 1px solid $cn_grey_0;
+  &.not_bordered {
+    border-bottom:0;
   }
 }
 
 .cases_new_block_desc_title {
-  font-weight:bold;
+  font-size:17px;
+  color:$cn_grey_-2;
 }
 
 .cases_new_block_desc_panel_text {
@@ -536,7 +534,8 @@ $cn_contrastor_third_0: #c18176;
 
 
 #cases_new_recommendations_panel {
-  background:$gray_second;
+  background:$cn_grey_0;
+  padding:15px;
 }
 
 
@@ -597,10 +596,7 @@ $cn_contrastor_third_0: #c18176;
 #cases_new_book {
   font-size:11px;
   text-align:center;
-  .btn {
-    width:350px;
-    margin:0;
-  }
+
 
   .books_rating_read {
     height:20px;

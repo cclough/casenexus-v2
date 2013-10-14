@@ -43,12 +43,12 @@ $cn_contrastor_third_0: #c18176;
 /////////// CUSTOM 
 
 #viewFind {
-  background: $green_flatui;
+  background: #c18176;
   padding: 12px 15px 13px !important;
   border:0;
 
   &:hover {
-    background-color: #48c9b0;
+    background-color: #ce8a7e;
     cursor:pointer;
   }
 }
@@ -60,6 +60,18 @@ $cn_contrastor_third_0: #c18176;
 #numPages.toolbarLabel {
   display:none !important;
 }
+
+#print {
+display:none;
+}
+
+#toolbarContainer, .findbar {
+  position: relative;
+  height: 50px;
+  background:$cn_grey_0;
+}
+
+
 
 ///////////
 
@@ -324,8 +336,9 @@ html[dir='rtl'] #sidebarContent {
 #toolbarContainer, .findbar {
   position: relative;
   height: 50px;
-  background: $gray_gunmetal_second;
 }
+
+
 
 #toolbarViewer {
   height: 32px;

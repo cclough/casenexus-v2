@@ -24,10 +24,10 @@
 
     - if books_item.btype == "case"
 
-      .btn.btn-colour.btn-micro.books_index_books_item_event_button{"data-book_id" => books_item.id.to_s}
+      .btn.btn-colour.btn-round.btn-round-small.books_index_books_item_event_button{"data-book_id" => books_item.id.to_s}
         %i.icon-calendar 
 
-      = link_to raw("<i class=icon-arrow-right></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-micro"
+      = link_to raw("<i class=icon-play-sign></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small"
 
 
 

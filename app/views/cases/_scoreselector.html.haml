@@ -1,9 +1,9 @@
 .cases_new_scoreselector_container{id: "cases_new_scoreselector_" + criteria }
   - (1..5).each do |i|
-    - class_content = "cases_new_scoreselector_button btn btn-primary "
+    - class_content = "cases_new_scoreselector_button btn btn-colour "
     - if i == existing_score
-      - class_content = "cases_new_scoreselector_button btn btn-primary  active"
+      - class_content = "cases_new_scoreselector_button btn btn-colour  active"
     - else
-      - class_content = "cases_new_scoreselector_button btn btn-primary "
+      - class_content = "cases_new_scoreselector_button btn btn-colour "
 
     = content_tag :div, i, class: class_content, "data-score" => i, "data-criteria" => criteria, "data-category" => category

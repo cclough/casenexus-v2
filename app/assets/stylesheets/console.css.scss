@@ -45,8 +45,9 @@ $cn_contrastor_third_0: #c18176;
   top:50px;
   left:0px;
   right:50%;
-  bottom:3px; // WHAT THE FUCK
+  bottom:4px; // WHAT THE FUCK
   border:0 !important;
+  margin:0 !important;
 }
 
 #console_index_pdfjs_iframe {
@@ -69,14 +70,15 @@ $cn_contrastor_third_0: #c18176;
     left:0px;
     top:0px;
     height:50px;
-    background:$gray_gunmetal_second;
+    background:$cn_grey_0;
+
   }
   #console_index_pdfjs_blank_message {
     text-align:center;
     margin-top: 270px;
     i {
       font-size:55px;
-      color:$gray_second;
+      color:$cn_grey_0;
     }
     #console_index_panel_blank_message_text {
       margin-top:10px;
@@ -101,7 +103,7 @@ $cn_contrastor_third_0: #c18176;
 
 
 #console_index_feedback_subnav {
-  background: $gray_gunmetal_second;
+  background: $cn_grey_0;
   height: 50px;
   position:absolute;
   left:50%;
@@ -195,16 +197,20 @@ $cn_contrastor_third_0: #c18176;
   position:absolute;
   left:50%;
   margin-left:-142px;
-  background-color: $gray_gunmetal_second;
-  padding: 10px 10px 10px 10px;
+  margin-top:5px;
+  background-color: $cn_grey_-1;
+  padding: 5px;
   height:30px;
   width:170px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
 }
 
 #console_index_subnav_timer {
   font-size:23px;
   line-height:30px;
-  color:white;
+
 
 }
 
@@ -215,6 +221,9 @@ $cn_contrastor_third_0: #c18176;
   text-align:center;
   padding: 5px 9px 10px 6px !important;
   font-weight:bold;
+  margin:-1px 2px 0;
+  display:block;
+  float:left;
 }
 
 
