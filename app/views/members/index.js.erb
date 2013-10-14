@@ -6,7 +6,7 @@ $("#map_index_users_spinner_container").fadeOut("fast");
 if ("<%= @users.count.to_s %>" == "0") {
   $("#map_index_users_empty").fadeIn("fast");
 } else {
-  $("#map_index_guide_text").html("Showing <%= @users.count.to_s %> users");
+  $("#map_index_guide_text").html("<%= escape_javascript(render partial: "map/guide",locals: {users: @users} ) %>");
   $("#map_index_guide_text").fadeIn("fast");
 }
 

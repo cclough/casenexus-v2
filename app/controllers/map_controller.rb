@@ -5,4 +5,5 @@ class MapController < ApplicationController
   def index
     # All the ajax actions for users/members should go to the members controller
   end
+
 end

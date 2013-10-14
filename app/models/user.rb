@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   validates :linkedin, length: { maximum: 100 }
   validates :degree_level, presence: true, on: :update
   validates :skype, length: { maximum: 32 },
-            format: { with: /^[\w]+[a-z0-9\-]+$/i },
+            format: { with: /^[\W\w]+[a-z0-9\-]+$/i },
             allow_blank: true,
             on: :update
   validate :validate_has_languages?, on: :update
