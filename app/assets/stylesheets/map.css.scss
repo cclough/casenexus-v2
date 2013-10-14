@@ -408,6 +408,7 @@ $cn_contrastor_third_0: #c18176;
 
   .map_index_users_item_button_linkedin {
     background:$green_linkedin;
+    color:white;
   }
   .map_index_users_item_button_linkedin:hover,
   .map_index_users_item_button_linkedin:focus {
@@ -416,11 +417,13 @@ $cn_contrastor_third_0: #c18176;
   .map_index_users_item_button_linkedin:active,
   .map_index_users_item_button_linkedin.active {
     background-color: #215676;
+
   }
 
 
   .map_index_users_item_button_skype {
     background:$blue_skype;
+    color:white;
   }
   .map_index_users_item_button_skype:hover,
   .map_index_users_item_button_skype:focus {
@@ -429,6 +432,7 @@ $cn_contrastor_third_0: #c18176;
   .map_index_users_item_button_skype:active,
   .map_index_users_item_button_skype.active {
     background-color: #3483b1;
+
   }
 
 }

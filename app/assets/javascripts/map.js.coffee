@@ -94,8 +94,7 @@ window.activate_perm_popup_and_icon_for = (marker) ->
   activeIcon = L.icon(
     iconUrl: "/assets/markers/marker_active_"+marker.feature.properties.university_image
     iconSize: [35, 51]
-    iconAnchor: [0, 0]
-    popupAnchor: [17, 8]
+    iconAnchor: [17, 51]
   )
   marker.setIcon activeIcon
 
@@ -139,7 +138,7 @@ window.generate_popup_for = (marker) ->
   popup = L.popup(
     closeButton: false
     minWidth: 130
-    offset: new L.Point(17, 8) # THIS IS THE IMPORTANT POPUP OFFSET
+    offset: new L.Point(0, -49) # THIS IS THE IMPORTANT POPUP OFFSET
     autoPan: false
     zoomAnimation: true
   ).setLatLng(marker.getLatLng()).setContent(popupContent)
@@ -265,7 +264,7 @@ $(document).ready ->
         icon:
           iconUrl: "/assets/markers/user_location.png"
           iconSize: [78, 78] # size of the icon
-          iconAnchor: [25, 25] # point of the icon which will correspond to marker's location
+          iconAnchor: [39, 39] # point of the icon which will correspond to marker's location
           popupAnchor: [0, -25] # point from which the popup should open relative to the iconAnchor
     ]
 

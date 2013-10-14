@@ -200,33 +200,35 @@ class User < ActiveRecord::Base
 
     def markers_geojson(users)
 
-      string = "["
+      # if users.count > 0
+        string = "["
 
-      for user in users
-        new_bit = "{
-                    \"type\": \"Feature\",
-                    \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
-                    \"properties\": {
-                      \"id\": \"#{user.id}\",
-                      \"username\": \"#{user.username}\",
-                      \"university_image\": \"#{user.university.image}\",
-                      \"university_name\": \"#{user.university.name.upcase}\",
-                      \"cases_recd\": \"#{user.case_count_recd}\",
-                      \"cases_givn\": \"#{user.case_count_givn}\",
-                      \"cases_ext\": \"#{user.cases_external}\",
-                      \"icon\": {
-                        \"iconUrl\": \"/assets/markers/marker_#{user.university.image}\",
-                        \"iconSize\": [35, 51],
-                        \"iconAnchor\": [0, 0],
-                        \"popupAnchor\": [17, 8]
+        for user in users
+          new_bit = "{
+                      \"type\": \"Feature\",
+                      \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
+                      \"properties\": {
+                        \"id\": \"#{user.id}\",
+                        \"username\": \"#{user.username}\",
+                        \"university_image\": \"#{user.university.image}\",
+                        \"university_name\": \"#{user.university.name.upcase}\",
+                        \"cases_recd\": \"#{user.case_count_recd}\",
+                        \"cases_givn\": \"#{user.case_count_givn}\",
+                        \"cases_ext\": \"#{user.cases_external}\",
+                        \"icon\": {
+                          \"iconUrl\": \"/assets/markers/marker_#{user.university.image}\",
+                          \"iconSize\": [35, 51],
+                          \"iconAnchor\": [17, 51]
+                        }
                       }
-                    }
-                  },"
-        string = string + new_bit
-      end
+                    },"
+          string = string + new_bit
+        end
 
-      string = string.chop! + "]"
-      string
+        string = string.chop! + "]"
+        string
+
+      # end
 
     end
 
