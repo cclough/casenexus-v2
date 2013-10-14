@@ -93,7 +93,7 @@ window.activate_perm_popup_and_icon_for = (marker) ->
   # Change Icon
   activeIcon = L.icon(
     iconUrl: "/assets/markers/marker_active_"+marker.feature.properties.university_image
-    iconSize: [33, 42]
+    iconSize: [35, 51]
     iconAnchor: [0, 0]
     popupAnchor: [17, 8]
   )
@@ -263,8 +263,8 @@ $(document).ready ->
       properties:
         title: "self user"
         icon:
-          iconUrl: "/assets/markers/arrow2.png"
-          iconSize: [20, 45] # size of the icon
+          iconUrl: "/assets/markers/user_location.png"
+          iconSize: [78, 78] # size of the icon
           iconAnchor: [25, 25] # point of the icon which will correspond to marker's location
           popupAnchor: [0, -25] # point from which the popup should open relative to the iconAnchor
     ]

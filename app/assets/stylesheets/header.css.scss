@@ -65,13 +65,10 @@ header {
   position: absolute;
   padding:7px 10px;
   height:31px;
-  -moz-border-top-left-radius:    3px !important;
-  -webkit-border-top-left-radius: 3px !important;
-  border-top-left-radius:         3px !important;
 
-  -moz-border-top-right-radius:    3px !important;
-  -webkit-border-top-right-radius: 3px !important;
-  border-top-right-radius:         3px !important;
+  -moz-border-radius:    3px !important;
+  -webkit-border-radius: 3px !important;
+  border-radius:         3px !important;
 
   &:hover {
     background:$cn_colour_05;
@@ -95,14 +92,11 @@ header {
   
 
   li {
-    height:45px;
-    -moz-border-top-left-radius:    3px !important;
-    -webkit-border-top-left-radius: 3px !important;
-    border-top-left-radius:         3px !important;
+    height:39px;
 
-    -moz-border-top-right-radius:    3px !important;
-    -webkit-border-top-right-radius: 3px !important;
-    border-top-right-radius:         3px !important;
+    -moz-border-radius:    3px !important;
+    -webkit-border-radius: 3px !important;
+    border-radius:         3px !important;
 
     margin-left:3px;
     a {

@@ -114,9 +114,19 @@ $cn_contrastor_third_0: #c18176;
 
   #map_index_map_zoomout {
     position:absolute;
-    left:50px;
+    left:38px;
     top:10px;
+    height:36px;
     z-index:10;
+    line-height:35px;
+
+    -moz-border-top-left-radius:    0px !important;
+    -webkit-border-top-left-radius: 0px !important;
+    border-top-left-radius:         0px !important;
+
+    -moz-border-bottom-left-radius:    0px !important;
+    -webkit-border-bottom-left-radius: 0px !important;
+    border-top-bottom-left-radius:         0px !important;
   }
 }
 
@@ -139,7 +149,7 @@ $cn_contrastor_third_0: #c18176;
   left:0px;
   z-index:999;
   right:0px;
-  background:$cn_colour_-2;
+  background:$cn_colour_0;
 
   #map_index_guide_text {
     margin-left:300px;
@@ -202,7 +212,7 @@ $cn_contrastor_third_0: #c18176;
 
   -moz-border-bottom-right-radius:    3px !important;
   -webkit-border-bottom-right-radius: 3px !important;
-  border-top-bottom-radius:         3px !important;
+  border-top-bottom-right-radius:         3px !important;
 }
 
 
@@ -596,7 +606,7 @@ $cn_contrastor_third_0: #c18176;
 
 .map_index_map_popup{
 
-  height:80px;
+  height:90px;
   width:200px;
   padding:0px !important;
 
@@ -626,11 +636,12 @@ $cn_contrastor_third_0: #c18176;
   .map_index_map_popup_cases {
     display:block;
     margin: 0 auto;
-    width:150px;
+    width:138px;
     div {
-      width:50px;
-      height:30px;
+      width:40px;
+      height:40px;
       float:left;
+      margin:3px;
       text-align:center;
       line-height:23px;
       position:relative;
@@ -638,14 +649,14 @@ $cn_contrastor_third_0: #c18176;
     }
 
     .map_index_users_item_cases_recd {
-      background: $cn_contrastor_second_0;
+      background: #73bf72;
       font-size:20px;
       font-weight:bolder;
       color:white;
     }
 
     .map_index_users_item_cases_givn{
-      background: $cn_colour_0;
+      background: $cn_colour_1;
       font-size:20px;
       font-weight:bolder;
       color:white;
@@ -665,6 +676,8 @@ $cn_contrastor_third_0: #c18176;
       text-align:center;
       top:12px;
       font-size:9px;
+      height:10px;
+      width:34px;
     }
 
 
