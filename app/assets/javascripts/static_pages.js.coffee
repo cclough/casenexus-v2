@@ -5,9 +5,9 @@ window.static_switch_view = (object,speed) ->
   switch_from = $(object).data("switch_from")
   switch_to = $(object).data("switch_to")
 
-  # Show other button
-  $("#static_home_switch_link_" + switch_to).fadeOut "fast", ->
-    $("#static_home_switch_link_" + switch_from).fadeIn("fast")
+  # # Show other button
+  # $("#static_home_switch_link_" + switch_to).fadeOut "fast", ->
+  #   $("#static_home_switch_link_" + switch_from).fadeIn("fast")
 
 
   # Switch

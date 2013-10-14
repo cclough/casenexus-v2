@@ -111,7 +111,6 @@ $cn_contrastor_third_0: #c18176;
   width:424px;
   float:left;
   height:100%;
-
 }
 
 
@@ -126,10 +125,6 @@ $cn_contrastor_third_0: #c18176;
 /////////////////////////////////////////////
 
 
-#static_home_forms_switch {
-  text-align:center;
-}
-
 .static_home_slideable {
 //  position:absolute;
 //  left: 150%;
@@ -138,13 +133,14 @@ $cn_contrastor_third_0: #c18176;
 
 
 #static_home_switch_link_signup {
-
+  text-align:center;
+  margin-top:50px;
 
 }
 
 #static_home_switch_link_signin {
-  display:none;
-
+  margin-top:30px;
+  text-align:center;
 }
 
 #static_home_switch_nothome_link {
@@ -190,8 +186,7 @@ $cn_contrastor_third_0: #c18176;
 
 #static_home_signin {
 
-  margin: 150px auto;
-
+  margin: 150px auto 0;
   width:300px;
   height:185px;
 
@@ -230,8 +225,7 @@ $cn_contrastor_third_0: #c18176;
 
 
 #static_home_signup {
-
-  margin: 50px auto;
+  margin: 50px auto 0;
 
   display:none;
   padding:25px;
