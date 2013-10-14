@@ -40,15 +40,15 @@ $cn_contrastor_third_0: #c18176;
 
 
 #notifications_index_notifications_container {
-  width:296px;
+  width:298px;
   position:absolute;
   left:0px;
   top:0px;
   bottom:0px;
   display:block;
   z-index:999;
-  border-right:2px solid $gray_second;
-  border-left:2px solid $gray_second;
+  border-right:1px solid $cn_grey_0;
+  border-left:1px solid $cn_grey_0;
 }
 
 #notifications_index_form_container {
@@ -57,13 +57,12 @@ $cn_contrastor_third_0: #c18176;
   left:0px;
   right:0px;
   height:80px;
-  background:$gray_second;
 }
 
 #notifications_index_notifications {
   position:absolute;
   bottom:0px;
-  top:80px;
+  top:65px;
   left:0px;
   width:296px;
   overflow-y:scroll;
@@ -76,7 +75,7 @@ $cn_contrastor_third_0: #c18176;
   right:0px;
   bottom:0px;
   top:0px;
-  border-right:2px solid $gray_second;
+  border-right:1px solid $cn_grey_0;
 }
 
 
@@ -117,21 +116,33 @@ $cn_contrastor_third_0: #c18176;
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 
-#notifications_index_notifications_form_searchfield {
-  width:225px;
-}
 
 
 #notifications_index_notifications_header {
-  background: $gray_second;
   height:30px;
   text-align:center;
-  font-weight: bold;
   line-height:31px;
-  color: white;
 
+  padding:15px;
   margin: 0 0 0 0;
 }
+
+#notifications_index_notifications_form_search_container{
+  #notifications_index_notifications_form_search_field {
+    width:207px;
+  }
+  .btn {
+    height:34px;
+    width:34px;
+    vertical-align:top;
+    margin-left:10px;
+    padding:6px 7px 8px 7px !important
+  }
+}
+
+
+
+
 
 
 #notifications_index_notifications_empty {
@@ -159,16 +170,16 @@ $cn_contrastor_third_0: #c18176;
   height:50px;
   
   &:hover {
-    background:$gray_background;
+    background:$cn_colour_1;
     cursor:pointer;
   }
 
   &.notifications_index_notifications_item_select {
-    background:$blue_pastel;
+    background:$cn_colour_1;
   }
 
   &.read {
-    background:$gray_Lightest;
+    background:$cn_grey_0;
   }
 
 }
@@ -189,7 +200,7 @@ $cn_contrastor_third_0: #c18176;
     top:0px;
     bottom:0px;
     width:5px;
-    background: $blue_pastel;
+    background: $cn_colour_1;
     display:inline;
   }
 }
@@ -201,10 +212,8 @@ $cn_contrastor_third_0: #c18176;
 }
 
 .notifications_index_notifications_item_caption {
-  color: $gray_Mid;
   font-size:12px;
 }
-
 
 
 .notifications_index_notifications_item_date {
@@ -242,13 +251,12 @@ $cn_contrastor_third_0: #c18176;
 
 #notifications_show_header {
 
-  background: $gray_second;
-  height:30px;
-  text-align:center;
-  font-weight: bold;
-  line-height:31px;
-  color: white;
+  height:30px; 
+  font-size:20px;
+  padding:15px;
 
+  line-height:31px;
+  border-bottom:1px solid $cn_grey_0;
   img {
     max-width:25px;
   }
@@ -259,7 +267,7 @@ $cn_contrastor_third_0: #c18176;
 #notifications_show_body {
 
   position:absolute;
-  top:30px;
+  top:61px;
   bottom:170px;
   right:0px;
   left:0px;
@@ -293,7 +301,6 @@ $cn_contrastor_third_0: #c18176;
 
   padding:10px;
 //  outline:1px solid red;
-  background:$gray_second;
 }
 
 
@@ -343,7 +350,7 @@ $cn_contrastor_third_0: #c18176;
 }
 
 .notifications_show_item_date_line {
-  border-top: 2px solid $gray_second;
+  border-top: 1px solid $gray_second;
   margin:10px 10px 10px 10px; //remember spacer in item
   height:0;
 }

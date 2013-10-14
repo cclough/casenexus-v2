@@ -32,12 +32,10 @@
             %li#header_notifications_menu_container{:class => ("active" if params[:controller] == "notifications") }
               = render '/notifications/menu'
 
-            %li.application_tooltip{"data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class: ("active" if params[:controller]=="profile")}
-              = link_to "/" do
-                / %span#header_nav_links_right_avatar
-                /   = avatar_for(current_user, size:"small", link:0)
-                %span#header_nav_links_right_username
-                  %i.icon-user.icon-large
+            %li#header_nav_links_right_user{ class: ("active" if params[:controller]=="profile")}
+              = link_to "/", "data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class:"application_tooltip" do
+                = avatar_for(current_user, size:"small", link:0)
+                / %i.icon-user.icon-large.icon-white
 
               
 

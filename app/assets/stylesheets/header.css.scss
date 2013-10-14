@@ -129,13 +129,15 @@ header {
       padding: 13px 9px;
     }
   }
-  #header_nav_links_right_username {
-    background:$cn_colour_1;
-
-    -moz-border-radius:    3px !important;
-    -webkit-border-radius: 3px !important;
-    border-radius:         3px !important;
-    padding:7px 9px;
+  #header_nav_links_right_user {
+    margin-right:10px;
+    a {
+      padding:13px 12px;
+    }
+    img {
+      margin-top:-7px;
+//      margin-left:-5px;
+    }
   }
 
 }

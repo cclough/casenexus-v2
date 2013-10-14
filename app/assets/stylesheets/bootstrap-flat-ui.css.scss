@@ -715,7 +715,7 @@ a.muted:focus {
 
 
 .btn {
-  border: 2px solid $cn_colour_-1;
+  border: 1px solid $cn_colour_-1;
   background: transparent;
   color: $cn_colour_-1;
   padding: 9px 12px 10px;
@@ -875,19 +875,19 @@ a.muted:focus {
 
 
 .btn.btn-colour {
-  border: 2px solid $cn_colour_-1;
+  border-color: $cn_colour_-1;
   color: $cn_colour_-1;
 }
 .btn.btn-colour:hover,
 .btn.btn-colour:focus,
 .btn-group:focus .btn.btn-red.dropdown-toggle {
-  border: 2px solid $cn_colour_0;
+  border-color: $cn_colour_0;
   color: $cn_colour_0;
 }
 .btn.btn-colour:active,
 .btn-group.open .btn.btn-colour.dropdown-toggle,
 .btn.btn-colour.active {
-  border: 2px solid $cn_colour_0;
+  border-color: $cn_colour_0;
   background: $cn_colour_0;
   color: white;
 }
