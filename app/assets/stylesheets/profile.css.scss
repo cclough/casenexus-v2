@@ -30,7 +30,8 @@ $cn_colour_-2:#7d8288; // button overlays
 $cn_colour_-1:#b0bcc3; // buttons
 
 $cn_colour_0: #242d32; // header
-$cn_colour_1: #e0ecf6; // header button highlights
+$cn_colour_05: #2c363d; // header button highlights
+$cn_colour_1: #72aac9; // header button highlights
 
 $cn_grey_-2: #697076; // Text and borders in places
 $cn_grey_-1: #dee1e3; // search input border
@@ -137,30 +138,31 @@ $cn_contrastor_third_0: #c18176;
 
 
     #profile_index_info_cases {
-//      float:left;
       padding:0;
       margin:0 auto;
       width:180px;
       div {
         display:block;
-        width:60px;
+        width:36px;
         height:36px;
         text-align:center;
         line-height:26px;
         position:relative;
         float:left;
+        margin: 0 2px;
+        padding:3px;
       }
 
 
       #profile_index_info_cases_recd {
-        background: $cn_contrastor_second_0;
+        background: #73bf72;
         font-size:20px;
         font-weight:bolder;
         color:white;
       }
 
       #profile_index_info_cases_givn{
-        background: $cn_colour_0;
+        background: $cn_colour_1;
         font-size:20px;
         font-weight:bolder;
         color:white;
@@ -332,10 +334,10 @@ $cn_contrastor_third_0: #c18176;
   position:absolute;
   left:260px;
   top:0px;
-  height:150px;
+  height:140px;
   outline:1px solid red;
   right:0px;
-  padding:20px;
+  padding:20px 20px 0;
   #profile_index_panel_calendar_container {
     width:100%;
     overflow-y:scroll;
@@ -350,7 +352,7 @@ $cn_contrastor_third_0: #c18176;
 
   position:absolute;
   left:260px;
-  top:190px;
+  top:160px;
   bottom:0px;
   outline:1px solid red;
   right:0px;
@@ -360,7 +362,7 @@ $cn_contrastor_third_0: #c18176;
   #profile_index_feedback_cases {
     position:absolute;
     left:20px;
-    top:50px;
+    top:60px;
     bottom:20px;
     width:260px;
     overflow-y:auto;
@@ -428,7 +430,7 @@ $cn_contrastor_third_0: #c18176;
     outline:1px solid green;
     position:absolute; 
     left:300px;
-    top:50px;
+    top:60px;
     right:20px;
     height:150px;
   }
@@ -445,7 +447,7 @@ $cn_contrastor_third_0: #c18176;
     left:300px;
     bottom:20px;
     right:20px;
-    top:200px;
+    top:210px;
 
   }
 }

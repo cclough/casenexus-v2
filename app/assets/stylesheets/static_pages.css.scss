@@ -27,7 +27,8 @@ $cn_colour_-2:#7d8288; // button overlays
 $cn_colour_-1:#b0bcc3; // buttons
 
 $cn_colour_0: #242d32; // header
-$cn_colour_1: #e0ecf6; // header button highlights
+$cn_colour_05: #2c363d; // header button highlights
+$cn_colour_1: #72aac9; // header button highlights
 
 $cn_grey_-2: #697076; // Text and borders in places
 $cn_grey_-1: #dee1e3; // search input border
@@ -222,7 +223,7 @@ $cn_contrastor_third_0: #c18176;
 
 
 #static_home_signup {
-  margin: 50px auto 0;
+  margin: 20px auto 0;
 
   display:none;
   padding:25px;
@@ -245,22 +246,6 @@ $cn_contrastor_third_0: #c18176;
     margin-top:2px;
     margin-right:3px;
   }
-}
-
-
-#static_home_signup:after
-
-{
-  content: "";
-  position: absolute;
-  top: 120px;
-  left: -15px;
-  border-style: solid;
-  border-width: 14px 15px 14px 0px;
-  border-color: transparent $gray_background;
-  display: block;
-  width: 0;
-  z-index: 1;
 }
 
 
