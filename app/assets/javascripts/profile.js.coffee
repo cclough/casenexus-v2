@@ -30,9 +30,8 @@ modal_cases_show_prime = () ->
 
 $(document).ready ->
 
-
   # If profile page
-  if $("#profile_index_panel_calendar_container").size > 0
+  if $("#profile_index_panel_calendar_container").length > 0
 
     # Scroll calendar to today
     setTimeout (->
@@ -97,7 +96,6 @@ $(document).ready ->
   #       #   #window.account_completeedit_bless()
 
   #       $("#modal_profile").modal "show"
-
 
 
 
