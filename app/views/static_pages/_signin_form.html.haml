@@ -2,15 +2,21 @@
 #static_home_signin.static_home_slideable
   = simple_form_for(@login, url: session_path(@login)) do |f|
 
-    .control-group
+    #static_home_sigin_title
+      Login to your account
+
+    .static_home_form_input_container
+      .static_home_form_input_icon_container
+        %i.input-icon.fui-user.huge
       = f.text_field :email, tabindex: "1", placeholder: "University email", class: "span30 large"
-      %i.input-icon.fui-user.huge
 
-    .control-group
+    .static_home_form_input_container
+      .static_home_form_input_icon_container
+        %i.input-icon.fui-lock.huge
       = f.password_field :password, tabindex: "2", placeholder: "Password", class: "span30 large"
-      %i.input-icon.fui-lock.huge
+      
 
-    .application_submit_button_with_disable.btn.btn-default.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "3"}
+    .application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "3"}
       Login
 
     .static_home_signin_link

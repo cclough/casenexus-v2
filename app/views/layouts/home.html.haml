@@ -1,5 +1,5 @@
 !!!
-%html.application_html_static
+%html
   %head
     %title= full_title(yield(:title))
 
@@ -19,32 +19,17 @@
       = javascript_include_tag "lib/icon-font-ie7"
 
 
-  %body
+  %body{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
   
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
 
-    #static_home_container_main
+    #application_container.regular
       = yield
-    #static_home_logo
-      = image_tag "home/logo.png"
 
-      - if params[:action] == "home"
-        #static_home_welcome_text
-          Welcome to
-          %br
-          %strong casenexus.com
-          %br
-          Platform for live case interview practice
 
-    - if !signed_in? && !(params[:controller].include? 'devise')
-      #static_home_switch_link_signup.static_home_switch_link{"data-switch_to"=>"signup", "data-switch_from"=>"signin"}
-        = link_to "Not yet registered? Sign up", "#"
-      #static_home_switch_link_signin.static_home_switch_link{"data-switch_to"=>"signin", "data-switch_from"=>"signup"}
-        = link_to "Already registered? Sign in", "#"
-    - elsif !signed_in?
-      = link_to "Return to the home page", root_path, id: "static_home_switch_nothome_link"
+
 
   = render 'shared/modal_help' if signed_in?
   = render 'shared/modal_contact'

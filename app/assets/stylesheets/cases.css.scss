@@ -24,15 +24,19 @@ $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
 
-
 $cn_colour_-2:#7d8288; // button overlays
 $cn_colour_-1:#b0bcc3; // buttons
 
-$cn_colour_0: #84b4db; // header
-$cn_colour_1: #8dc0e9; // header button highlights
+$cn_colour_0: #242d32; // header
+$cn_colour_1: #e0ecf6; // header button highlights
 
+$cn_grey_-2: #697076; // Text and borders in places
 $cn_grey_-1: #dee1e3; // search input border
 $cn_grey_0: #f0f1f2; // users form
+
+$cn_contrastor_0: #c18176; // orange!
+$cn_contrastor_second_0: #9ac787;
+$cn_contrastor_third_0: #c18176;
 
 
 @mixin box_sizing {

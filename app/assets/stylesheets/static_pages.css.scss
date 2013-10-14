@@ -23,81 +23,165 @@ $alert-blue: #7EB6FF;
 $alert-yellow: #FFFF7E;
 
 
+$cn_colour_-2:#7d8288; // button overlays
+$cn_colour_-1:#b0bcc3; // buttons
+
+$cn_colour_0: #242d32; // header
+$cn_colour_1: #e0ecf6; // header button highlights
+
+$cn_grey_-2: #697076; // Text and borders in places
+$cn_grey_-1: #dee1e3; // search input border
+$cn_grey_0: #f0f1f2; // users form
+
+$cn_contrastor_0: #c18176; // orange!
+$cn_contrastor_second_0: #9ac787;
+$cn_contrastor_third_0: #c18176;
 
 
-#static_home_container_main {
-  position:absolute;
-  top:100px;
+
+
+/////////////////////////////////////////////
+////////////////  HOME  /////////////////////
+/////////////////////////////////////////////
+
+#static_home_bottom_margin {
+  height:100px;
+  background:$cn_colour_0;
+  position:fixed;
   bottom:0px;
-  right:0px;
   left:0px;
-  overflow:hidden;
+  right:0px;
+  z-index:10;
+}
 
-  background:white;//$green_flatui;
+
+#static_home_panel_left { 
+  width: 600px;
+  float:left;
+  height:100%;
+
+  text-align:center;
+
+  #static_home_title {
+    font-size:30px;
+    margin-top:20px;
+    line-height:30px;
+    #static_home_title_url {
+      font-weight:bold;
+    }
+  }
+
+  #static_home_subtitle {
+    margin-top:15px;
+    font-size:20px;
+  }
+
+  #static_home_logo {
+    margin: 20px 0 ;
+  }
+
+  .static_home_pitch_block {
+
+    width: 33.333333%;
+    float:left;
+    text-align:center;
+
+    .static_home_pitch_block_icon {
+      margin: 10px auto;
+      width:55px;
+      height:55px;
+      line-height:55px;
+      border-radius:50%;
+      font-size:30px;
+      border:2px solid $cn_grey_-2;
+    }
+
+    .static_home_pitch_block_title {
+      font-size:20px;
+      margin-bottom:5px;
+    }
+    .static_home_pitch_block_text {
+      line-height:22px;
+    }
+  }
+}
+
+
+#static_home_panel_right {
+  width:424px;
+  float:left;
+  height:100%;
 
 }
 
 
-#static_home_logo {
 
-  position:absolute;
-  top:50%;
-  left:50%;
 
-  width:400px;
-  height:180px;
-  margin-top:-140px;
-  margin-left:-400px;
 
-  z-index:0;
 
+
+
+/////////////////////////////////////////////
+////////////////  FORMS  ////////////////////
+/////////////////////////////////////////////
+
+
+#static_home_forms_switch {
+  text-align:center;
 }
-
-#static_home_welcome_text {
-  font-size:17px;
-  font-weight:200;
-  line-height:25px;
-
-  margin-left:80px;
-  margin-top:30px;
-}
-
-
 
 .static_home_slideable {
-  position:absolute;
-  left: 150%;
-  top:50%;
+//  position:absolute;
+//  left: 150%;
+//  top:50%;
 }
-
-
 
 
 #static_home_switch_link_signup {
-  position:absolute;
-  bottom:50px;
-  left:50%;
-  width:200px;
-  margin-left:-100px;
+
+
 }
 
 #static_home_switch_link_signin {
   display:none;
-  position:absolute;
-  bottom:50px;
-  left:50%; 
-  width:200px;
-  margin-left:-100px;
+
 }
 
 #static_home_switch_nothome_link {
-  position:absolute;
-  bottom:50px;
-  left:50%; 
-  width:200px;
-  margin-left:-100px;
+
 }
 
+.static_home_signin_link {
+  display:block;
+  text-align:center;
+  margin-top:10px;
+}
+
+
+.static_home_form_input_container {
+  position:relative;
+}
+
+.static_home_form_input_icon_container {
+  position:absolute;
+  left:0;
+  top:0;
+  height:41px;
+  width:45px;
+  background:$cn_grey_0;
+  border: 2px solid $cn_grey_-1;
+  z-index:20;
+
+  i {
+    position:absolute;
+    left:5px;
+    top:5px;
+    color:$cn_grey_-2;
+    font-size:26px;
+    text-align:center;
+    margin-left:4px;
+  }
+}
 
 /////////////////////////////////////////////
 ///////////////  SIGNIN  ////////////////////
@@ -106,58 +190,34 @@ $alert-yellow: #FFFF7E;
 
 #static_home_signin {
 
-  background:$gray_background;
-
-  padding:25px;
-
-  left:50%;
+  margin: 150px auto;
 
   width:300px;
   height:185px;
-  margin-top:-160px;
-  margin-left:0px;
-
-  z-index:10;
-
-  -moz-border-radius:    3px;
-  -webkit-border-radius: 3px;
-  border-radius:         3px;
 
   input {
     display:block;
     margin-bottom:15px;
-
-
-    border:2px solid transparent;
+    border:2px solid $cn_grey_-1;
+    -moz-border-radius:    3px;
+    -webkit-border-radius: 3px;
+    border-radius:         3px;
+    padding-left:47px;
+    width:244px;
   }
 
-  i {
-    margin-top:2px;
-    margin-right:3px;
+  #static_home_sigin_title {
+    text-align:center;
+    font-size:20px;
+    margin-bottom:20px;
   }
-}
 
-#static_home_signin:after
-{
-  content: "";
-  position: absolute;
-  top: 35px;
-  left: -15px;
-  border-style: solid;
-  border-width: 14px 15px 14px 0px;
-  border-color: transparent $gray_background;
-  display: block;
-  width: 0;
-  z-index: 1;
 }
 
 
 
-.static_home_signin_link {
-  display:block;
-  text-align:center;
-  margin-top:10px;
-}
+
+
 
 
 
@@ -171,29 +231,23 @@ $alert-yellow: #FFFF7E;
 
 #static_home_signup {
 
-  background:$gray_background;
+  margin: 50px auto;
 
+  display:none;
   padding:25px;
 
   width:300px;
   height:385px;
-  margin-top:-250px;
-  margin-left:0px;
-
-  z-index:10;
-
-  -moz-border-radius:    3px;
-  -webkit-border-radius: 3px;
-  border-radius:         3px;
 
   input {
     display:block;
     margin-bottom:15px;
-    -moz-border-radius:    0px !important;
-    -webkit-border-radius: 0px !important;
-    border-radius:         0px !important;
+    border:2px solid $cn_grey_-1;
+    -moz-border-radius:    3px;
+    -webkit-border-radius: 3px;
+    border-radius:         3px;
 
-    border:2px solid transparent;
+    width:286px;
   }
 
   i {

@@ -1,30 +1,35 @@
 
 window.static_switch_view = (object,speed) ->
 
-    $(object).fadeOut("fast")
 
-    # Show other button
-    switch_from = $(object).data("switch_from")
+  switch_from = $(object).data("switch_from")
+  switch_to = $(object).data("switch_to")
+
+  # Show other button
+  $("#static_home_switch_link_" + switch_to).fadeOut "fast", ->
     $("#static_home_switch_link_" + switch_from).fadeIn("fast")
 
-    switch_to = $(object).data("switch_to")
-    element = "#static_home_" + switch_from
+
+  # Switch
+  $("#static_home_" + switch_from).fadeOut "fast", ->
+    $("#static_home_" + switch_to).fadeIn "fast"
+
+  # if speed == "instant"
+  #   clicks = 1
+  # else if speed == "normal"
+  #   clicks = 500
+
+  # $(element).animate
+  #   left: "-50%"
+  # , clicks, ->
+  #   $(element).css "left", "150%"
+  #   $(element).appendTo "#static_home_container_main"
+
+  # $(element).next().animate
+  #   left: "50%"
+  # , clicks
 
 
-    if speed == "instant"
-      clicks = 1
-    else if speed == "normal"
-      clicks = 500
-
-    $(element).animate
-      left: "-50%"
-    , clicks, ->
-      $(element).css "left", "150%"
-      $(element).appendTo "#static_home_container_main"
- 
-    $(element).next().animate
-      left: "50%"
-    , clicks
 
 
 

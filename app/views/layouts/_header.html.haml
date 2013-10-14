@@ -1,7 +1,7 @@
-%header.navbar{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
-  .navbar-inner{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
+%header.navbar
+  .navbar-inner
     .container
-      #header_logo_nav{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
+      #header_logo_nav
         = link_to image_tag("app/logo.png"), "/"
 
       - if signed_in?

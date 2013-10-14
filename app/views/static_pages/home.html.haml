@@ -10,7 +10,69 @@
       });
 
 
-= render 'static_pages/signin_form'
-= render 'static_pages/signup_form'
+
+
+#static_home_panel_left
+
+  #static_home_title
+    Welcome to
+    #static_home_title_url
+      casenexus.com
+  #static_home_subtitle
+    Platform for live case interview practice
+
+  #static_home_logo
+    = image_tag "home/logo.png"
+
+
+  .static_home_pitch_block
+
+    .static_home_pitch_block_icon
+      %i.icon-map-marker
+    .static_home_pitch_block_title
+      Find partners
+    .static_home_pitch_block_text
+      Integer eget sagittis magna, eget rhoncus suspendisse at ipsum amet nulla congue consequat sed.
+
+  .static_home_pitch_block
+    .static_home_pitch_block_icon
+      %i.icon-book
+    .static_home_pitch_block_title
+      Case library
+    .static_home_pitch_block_text
+      Integer eget sagittis magna, eget rhoncus suspendisse at ipsum amet nulla congue consequat sed.
+
+  .static_home_pitch_block
+    .static_home_pitch_block_icon
+      %i.icon-bar-chart
+    .static_home_pitch_block_title
+      Feedback
+    .static_home_pitch_block_text
+      Integer eget sagittis magna, eget rhoncus suspendisse at ipsum amet nulla congue consequat sed.
+
+#static_home_panel_right
+
+  = render 'static_pages/signin_form'
+
+  = render 'static_pages/signup_form'
+
+
+
+
+
+  #static_home_forms_switch
+    - if !signed_in? && !(params[:controller].include? 'devise')
+      #static_home_switch_link_signup.static_home_switch_link{"data-switch_to"=>"signup", "data-switch_from"=>"signin"}
+        = link_to "Not yet registered? Sign up", "#"
+      #static_home_switch_link_signin.static_home_switch_link{"data-switch_to"=>"signin", "data-switch_from"=>"signup"}
+        = link_to "Already registered? Sign in", "#"
+    - elsif !signed_in?
+      = link_to "Return to the home page", root_path, id: "static_home_switch_nothome_link"
+
+
+#static_home_bottom_margin
+
+
+
 
 / = render 'layouts/footer'
