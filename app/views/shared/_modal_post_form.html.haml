@@ -14,7 +14,7 @@
     = render 'shared/error_messages', object: @post
 
     .row
-      = f.text_area :content, placeholder: "Broadcast a message to other users...", tabindex: "103", class: "modal_textarea"
+      = f.text_area :content, placeholder: "Broadcast a message to other users... (max 255 characters)", tabindex: "103", class: "modal_textarea"
 
   .modal-footer
     %a.btn{"data-dismiss" => "modal", href: "#"} Close

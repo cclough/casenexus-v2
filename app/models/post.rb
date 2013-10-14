@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   ### Validations
-  validates :content, presence: true, length: { maximum: 500 }
+  validates :content, presence: true, length: { maximum: 255 }
   validate :one_per_day
 
   ### Callbacks

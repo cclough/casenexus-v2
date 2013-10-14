@@ -2,9 +2,9 @@
 
 
   .map_index_users_item_avatar
-    = avatar_for(users_item, { link: 0, size: "medium" })
+    = avatar_for(users_item, { link: 0, size: "large" })
 
-  .map_index_users_item_info{class: ("posts" if params[:users_listtype] == "posts")}
+  .map_index_users_item_info
 
     .map_index_users_item_username
       = users_item.username
@@ -73,7 +73,7 @@
         .pull-right
           = time_ago_in_words(users_item.posts.last.created_at)
           ago
-
+        .map_index_users_item_post_triangle
 
 
   .map_index_users_item_cases
