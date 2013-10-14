@@ -118,7 +118,7 @@ $cn_contrastor_third_0: #c18176;
       float:left;
       font-size:20px;
       color: $gray_Dark;
-      margin-top:2px;
+      margin-top:0px;
       width:200px;
       font-weight:bold;
 
@@ -147,11 +147,6 @@ $cn_contrastor_third_0: #c18176;
     float:left;
     display:inline-block;
 
-    .btn {
-      width:20px;
-      height:20px;
-      margin:-3px 2px 0 0;
-    }
 
     #cases_show_subnav_label {
       display:inline-block;
@@ -173,6 +168,13 @@ $cn_contrastor_third_0: #c18176;
   #cases_show_subnav_browse_buttons_container {
     float:right;
     display:inline;
+
+    .btn {
+      i {
+        font-size:15px !important;
+      }
+    }
+
   }
 
 }

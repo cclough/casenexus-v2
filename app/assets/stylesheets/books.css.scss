@@ -57,11 +57,14 @@ $cn_contrastor_third_0: #c18176;
   height:100%;
 }
 
-
-#books_index_books {
+#books_index_books_container {
   width:764px;
   float:left;
   height:100%;
+}
+
+#books_index_books {
+
 }
 
 
@@ -240,7 +243,12 @@ $cn_contrastor_third_0: #c18176;
 /////////////////////////// LIST ////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-
+#books_index_books_guide {
+  border-bottom:1px solid $cn_grey_0;
+  font-size:20px;
+  height:30px;
+  padding:20px;
+}
 
 #books_index_books_form_body_empty {
   height: 732px;
@@ -335,20 +343,20 @@ $cn_contrastor_third_0: #c18176;
   -moz-border-radius: 3px;
   border-radius: 3px;
 
-
+  font-weight:bold;
   &.novice {
-    border: 2px solid $cn_colour_0;
-    color: $cn_colour_0;
+    border: 1px solid $cn_contrastor_0;
+    color:  $cn_contrastor_0;
   }
 
   &.intermediate {
-    border: 2px solid $cn_colour_0;
-    color: $cn_colour_0;
+    border: 1px solid $cn_colour_1;
+    color:  $cn_colour_1;
   }
 
   &.advanced {
-    border: 2px solid $cn_colour_0;
-    color: $cn_colour_0;
+    border: 1px solid $cn_contrastor_third_0;
+    color:  $cn_contrastor_third_0;
   }
 }
 

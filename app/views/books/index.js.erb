@@ -1,6 +1,8 @@
 $("#books_index_books").html("<%= escape_javascript(render("books")) %>")
 
 
+$("#books_index_books_guide").html("<%= escape_javascript(render partial: "guide", locals: {books:@books}) %>")
+
 window.books_index_books_item_prime();
 
 // Users Item Cascade Fade
