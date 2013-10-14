@@ -2,12 +2,14 @@ Showing
 %span#map_index_guide_count_users
   = users.count.to_s
 
-= pluralize_without_count(users.count, 'user')
+#{pluralize_without_count(users.count, 'user')},
+
+
 
 - if users.count > 1
-  who have done a total of 
+  who've done a total of 
 - else
-  who has done
+  who's done
 
 %span#map_index_guide_count_cases
   = users.map { |a| a.cases.count }.sum.to_s

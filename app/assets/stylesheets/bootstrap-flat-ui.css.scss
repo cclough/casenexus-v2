@@ -834,6 +834,31 @@ a.muted:focus {
 
 
 
+
+.btn-round {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  padding:1px !important;
+  width:30px;
+  height:30px;
+  line-height:33px;
+  i {
+    font-size:20px;
+  }
+  &.btn-round-small {
+    width:25px;
+    height:25px;
+    line-height:26px;
+    i {
+      font-size:17px;
+    }
+  }
+}
+
+
+
+
 .btn.btn-dark {
   background-color: #2c2c2c;
 }
@@ -5514,7 +5539,7 @@ input.search-query {
   top: 0;
 }
 .iconbar-unread {
-  background-color: red;
+  background-color: #c18176;
   border-radius: 50%;
   color: #ffffff;
   font-family: 'Source Sans Pro', sans-serif;

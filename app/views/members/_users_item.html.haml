@@ -32,17 +32,17 @@
 
         - if Friendship.friends?(current_user, users_item)
 
-          .map_index_users_item_button_message.btn.btn-colour.btn-small{ "data-friend_id" => users_item.id }
+          .map_index_users_item_button_message.btn.btn-colour.btn-round.btn-round-small{ "data-friend_id" => users_item.id }
             %i.icon-envelope-alt.icon-white
 
-          .map_index_users_item_button_event.btn.btn-colour.btn-small{"data-friend_id" => users_item.id.to_s}
+          .map_index_users_item_button_event.btn.btn-colour.btn-round.btn-round-small{"data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
 
-          %a.map_index_users_item_button_startcase.btn.btn-colour.btn-small{ href:"/console?friend_id=" + users_item.id.to_s}
+          %a.map_index_users_item_button_startcase.btn.btn-colour.btn-round.btn-round-small{ href:"/console?friend_id=" + users_item.id.to_s}
             %i.icon-play-sign.icon-white
 
           - unless users_item.skype.blank?
-            %a.map_index_users_item_button_skype.btn.btm-small.btn-colour{href: "skype:#{users_item.skype}?call"}
+            %a.map_index_users_item_button_skype.btn.btn-round.btn-round-small.btn-colour{href: "skype:#{users_item.skype}?call"}
               %span.fui-skype
 
 
@@ -61,7 +61,7 @@
             ADD PARTNER
 
         - unless users_item.linkedin.blank?
-          %a.map_index_users_item_button_linkedin.btn.btn-colour.btn-small{href: "http://www.linkedin.com/"+users_item.linkedin}
+          %a.map_index_users_item_button_linkedin.btn.btn-colour.btn-round.btn-round-small{href: "http://www.linkedin.com/"+users_item.linkedin}
             %span.fui-linkedin
 
 

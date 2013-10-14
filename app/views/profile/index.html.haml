@@ -39,15 +39,15 @@
 
 
   #profile_index_info_actions
-    #profile_index_info_actions_settings{"data-original-title"=>"Your settings", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
+    #profile_index_info_actions_settings.btn.btn-colour.btn-round{"data-original-title"=>"Your settings", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
       %i.icon-cogs
     / #profile_index_info_actions_visitors{"data-original-title"=>"Visitors", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
     /   %i.icon-user
     /     %span.iconbar-unread
     /       = current_user.visits.count
-    #profile_index_info_actions_invite{"data-original-title"=>"Invite friends", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
+    #profile_index_info_actions_invite.btn.btn-colour.btn-round{"data-original-title"=>"Invite friends", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
       %i.icon-plus
-    = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-container"=>"body", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip", method: :delete do
+    = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-container"=>"body", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btn btn-colour btn-round", method: :delete do
       %i.icon-reply
 
 
@@ -126,10 +126,15 @@
       %span#profile_index_friends_actions.pull-right
         / %i#profile_index_friends_actions_invite.icon-plus
         / %span#profile_index_friends_actions_skype.fui-skype
-        %i#profile_index_friends_actions_start.icon-arrow-right{ "data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
-        %i#profile_index_friends_actions_message.icon-envelope{ "data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
-        %i#profile_index_friends_actions_profile.icon-globe{ "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
-        %i#profile_index_friends_actions_event.icon-calendar{ "data-container"=>"body", "data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+        #profile_index_friends_actions_start.btn.btn-colour.btn-round{ "data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+          %i.icon-arrow-right
+
+        #profile_index_friends_actions_message.btn.btn-colour.btn-round{ "data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+          %i.icon-envelope
+        #profile_index_friends_actions_profile.btn.btn-colour.btn-round{ "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+          %i.icon-globe
+        #profile_index_friends_actions_event.btn.btn-colour.btn-round{ "data-container"=>"body", "data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+          %i.icon-calendar
 
       %input#profile_index_friends_action_input{type:"hidden"}
 

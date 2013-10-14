@@ -377,19 +377,19 @@ $cn_contrastor_third_0: #c18176;
   position:absolute;
   top:10px;
   right:10px;
-  .btn {
-    height:14px !important;
-    width:14px;
-    padding:8px;
+//  .btn {
+//    height:14px !important;
+//    width:14px;
+//    padding:8px;
 
-    font-size:15px;
-    line-height:14px;
-    text-align:center;
-    span {
-      margin:0;
-      padding:0;
-    }
-  }
+//    font-size:15px;
+//    line-height:14px;
+//    text-align:center;
+//    span {
+//      margin:0;
+//      padding:0;
+//    }
+//  }
 
   .map_index_users_item_button_add {
     width:110px;
@@ -403,6 +403,7 @@ $cn_contrastor_third_0: #c18176;
   .map_index_users_item_button_linkedin {
     background:$green_linkedin;
     color:white;
+    line-height:24px;
   }
   .map_index_users_item_button_linkedin:hover,
   .map_index_users_item_button_linkedin:focus {
@@ -418,6 +419,7 @@ $cn_contrastor_third_0: #c18176;
   .map_index_users_item_button_skype {
     background:$blue_skype;
     color:white;
+    line-height:24px;
   }
   .map_index_users_item_button_skype:hover,
   .map_index_users_item_button_skype:focus {
@@ -677,7 +679,7 @@ $cn_contrastor_third_0: #c18176;
       right:0px;
       text-align:center;
       top:18px;
-      font-size:9px;
+      font-size:10px;
       height:10px;
 
     }
