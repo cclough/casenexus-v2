@@ -118,12 +118,6 @@ header {
   }
 }
 
-//#header_nav_search_container { // to prevent hover on search field
-//  margin-right:10px;
-//  &:hover {
-//    background:transparent;
-//  }
-//}
 
 
 
@@ -152,20 +146,6 @@ header {
 
 }
 
-/////////////////////////////////////////////
-/////////////////////////////////////////////
-/////////////////////////////////////////////
-
-
-#header_nav_search_form {
-  margin-top:8px;
-}
-
-#header_nav_search_field {
-  width:220px;
-  margin-right:5px;
-}
-
 
 
 
@@ -174,24 +154,6 @@ header {
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 
-
-#header_nav_links_right_name {
-  cursor:pointer;
-}
-
-#header_nav_links_right_signedout {
-  li:hover {
-    background:0;
-  }
-  img {
-    margin-left:0px;
-    padding:5px;
-  }
-}
-
-#header_nav_links_right_signedout_university {
-  margin-top:10px;
-}
 
 
 #header_nav_icon_notifications_container {
@@ -202,3 +164,26 @@ header {
     right:2px;
   }
 }
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+
+#header_nav_links_right_incomplete {
+  color:white;
+  padding-top:5px;
+  li:hover {
+    background:0;
+  }
+  img {
+    margin-left:0px;
+    padding:5px;
+  }
+}
+
+#header_nav_links_right_incomplete_university {
+  margin-top:10px;
+}
+
+

@@ -125,11 +125,6 @@ $cn_contrastor_third_0: #c18176;
 /////////////////////////////////////////////
 
 
-.static_home_slideable {
-//  position:absolute;
-//  left: 150%;
-//  top:50%;
-}
 
 
 #static_home_switch_link_signup {
@@ -170,13 +165,19 @@ $cn_contrastor_third_0: #c18176;
 
   i {
     position:absolute;
-    left:5px;
-    top:5px;
+    left:6px;
+    top:4px;
     color:$cn_grey_-2;
     font-size:26px;
     text-align:center;
     margin-left:4px;
   }
+}
+
+.static_home_form_title {
+  text-align:center;
+  font-size:20px;
+  margin-bottom:20px;
 }
 
 /////////////////////////////////////////////
@@ -201,11 +202,7 @@ $cn_contrastor_third_0: #c18176;
     width:244px;
   }
 
-  #static_home_sigin_title {
-    text-align:center;
-    font-size:20px;
-    margin-bottom:20px;
-  }
+
 
 }
 

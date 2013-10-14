@@ -53,7 +53,7 @@ window.account_completeedit_bless = () ->
 $(document).ready ->
 
 
-
+  window.application_disablesubmit_prime "#account_complete_panel"
 
 
   #////////////////////////////////////////////////////////

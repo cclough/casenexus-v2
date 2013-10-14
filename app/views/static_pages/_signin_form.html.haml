@@ -5,7 +5,7 @@
 #static_home_signin{style:("display:none;" if params[:controller] == "registrations" && params[:action] == "create" || !params[:code].blank?)}
   = simple_form_for(@login, url: session_path(@login)) do |f|
 
-    #static_home_sigin_title
+    .static_home_form_title
       Login to your account
 
     .static_home_form_input_container

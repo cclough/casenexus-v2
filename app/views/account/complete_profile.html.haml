@@ -8,7 +8,10 @@
     var account_completeedit_currentuser_university_image = "#{current_user.university.image}";
 
 
-#account_complete_panel.static_home_slideable
+#account_complete_panel
+
+  .static_home_form_title
+    Complete sign up...
 
   = form_for(@user, url: account_path) do |f|
 
@@ -19,22 +22,28 @@
     #account_complete_panel_column_left
 
 
-      .control-group
+      .static_home_form_input_container
+        .static_home_form_input_icon_container
+          %i.input-icon.fui-user.huge
         = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large"
-        %i.input-icon.fui-user.huge
+        
       
 
       = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option>".html_safe, {:prompt => "What's your degree level?"}, { class: "chzn-select", tabindex: "2"}
 
       .spacer15
 
-      .control-group
+      .static_home_form_input_container
+        .static_home_form_input_icon_container
+          %i.input-icon.fui-linkedin.huge
         = f.text_field :linkedin, tabindex: "3", placeholder: "Linkedin username (optional)", class: "span30 large"
-        %i.input-icon.fui-linkedin.huge
+        
 
-      .control-group{rel: "popover", "data-content"=> "Sign up at <a href=https://login.skype.com/account/signup-form target=_blank><span class=fui-skype></span>Skype.com</a>".html_safe, "data-original-title"=>"Not registered?", id: "account_completeedit_skype"}
+      .static_home_form_input_container{rel: "popover", "data-content"=> "Sign up at <a href=https://login.skype.com/account/signup-form target=_blank><span class=fui-skype></span>Skype.com</a>".html_safe, "data-original-title"=>"Not registered?", id: "account_completeedit_skype"}
+        .static_home_form_input_icon_container
+          %i.input-icon.fui-skype.huge
         = f.text_field :skype, tabindex: "4", placeholder: "Skype username (recommended)", class: "span30 large"
-        %i.input-icon.fui-skype.huge
+        
 
 
       = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", tabindex: "5", "data-placeholder" => "Which languages do you speak?"}
@@ -42,7 +51,7 @@
       .spacer15
 
       #account_complete_cases_ext_label
-        How many cases have you done outside of casenexus?
+        How many cases have you done outside of casenexus.com?
 
       = f.text_field :cases_external, tabindex: "6", id: "account_complete_cases_ext_input",placeholder:"0"
 
@@ -61,5 +70,7 @@
       
       = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
 
-      .spacer15 
-      = f.submit "Complete Sign up", class: "btn btn-large btn-primary  btn-block", id: "account_complete_panel_submit", tabindex: "8"
+      .spacer15
+
+      #account_complete_panel_submit.application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "8"}
+        Complete Sign up

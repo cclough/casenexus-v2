@@ -217,29 +217,29 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 #account_complete_panel {
 
-  background:$gray_background;
 
   padding:25px;
 
-  left:41.5%;
-
   width:620px;
   height:350px;
-  margin-top:-250px;
-  margin-left:0px;
 
+  margin:50px auto 0;
   z-index:10;
 
   -moz-border-radius:    3px;
   -webkit-border-radius: 3px;
   border-radius:         3px;
   
+
   input {
     display:block;
     margin-bottom:15px;
-
-
-    border:2px solid transparent;
+    border:2px solid $cn_grey_-1;
+    -moz-border-radius:    3px;
+    -webkit-border-radius: 3px;
+    border-radius:         3px;
+    padding-left:47px;
+    width:244px;
   }
 
   i {
@@ -261,23 +261,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 
-#account_complete_panel:after
-
-{
-  content: "";
-  position: absolute;
-  top: 100px;
-  left: -15px;
-  border-style: solid;
-  border-width: 14px 15px 14px 0px;
-  border-color: transparent $gray_background;
-  display: block;
-  width: 0;
-  z-index: 1;
-}
-
-
-
 
 #account_complete_panel_column_left, #account_complete_panel_column_right {
   float:left;
@@ -291,16 +274,15 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 #account_complete_cases_ext_label {
-  width:135px;
-  height:50px;
+  width:155px;
+  height:48px;
   font-weight:bold;
-  color:white;
   font-size:13px;
   float:left;
   margin:0;
-  background:$gray_second;
-  padding:10px;
-
+  background:$cn_grey_0;
+  padding:7px 10px;
+  border:2px solid $cn_grey_-1;
   -moz-border-top-left-radius:    3px;
   -webkit-border-top-left-radius: 3px;
   border-top-left-radius:         3px;
@@ -315,19 +297,21 @@ label, .account_form_label { // why the hell won't this work in app.css?
 #account_complete_cases_ext_input {
   height:50px;
   float:left;
-  width:130px;
+  width:108px !important;
+  padding-left:5px !important;
   margin:0;
   font-size:25px;
   text-align:center;
   text-index:0;
+  border-left:0 !important;
 
-  -moz-border-top-left-radius:    0px;
-  -webkit-border-top-left-radius: 0px;
-  border-top-left-radius:         0px;
+  -moz-border-top-left-radius:    0px !important;
+  -webkit-border-top-left-radius: 0px !important;
+  border-top-left-radius:         0px !important;
 
-  -moz-border-bottom-left-radius:    0px;
-  -webkit-border-bottom-left-radius: 0px;
-  border-bottom-left-radius:         0px;
+  -moz-border-bottom-left-radius:    0px !important;
+  -webkit-border-bottom-left-radius: 0px !important;
+  border-bottom-left-radius:         0px !important;
 
   -moz-border-top-right-radius:    3px;
   -webkit-border-top-right-radius: 3px;
@@ -341,16 +325,15 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 #account_complete_panel_submit {
- display:block;
+
 }
 
 #account_complete_map_header {
-  background: $gray_second;
+  background: $cn_grey_0;
   height:30px;
   text-align:center;
-  font-weight: bold;
   line-height:31px;
-  color: white;
+
 
 }
 
