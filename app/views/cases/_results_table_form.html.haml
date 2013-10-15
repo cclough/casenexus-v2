@@ -17,22 +17,49 @@
 
     - if @view != "show"
       - if current_user.case_count_recd >= 2
-        .cases_resultstable_period_container.btn-group.pull-right
-          .btn.btn-colour.btn-micro.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
-            1
-          .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
-            2
-          - if current_user.case_count_recd >= 5      
-            .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
-              5
-          - if current_user.case_count_recd >= 10      
-            .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
-              10
 
+        .books_index_form_filters_title
+          Period
 
-        .span12.offset1.cases_resultstable_label.pull-right
-          Period (# cases)
-          %i.icon-caret-right
+        #application_filtergroup_choicenav_btype.application_filtergroup_choicenav{"data-filter_name"=> "btype"}
+          %nav
+            %ul
+              %li{:href => "#1", "data-radio"=>0, "data-type"=>"period"} 
+                1
+                .application_filtergroup_choicenav_blip
+              %li{:href => "#2", "data-radio"=>1, "data-type"=>"period"} 
+                2
+                .application_filtergroup_choicenav_blip
+              - if current_user.case_count_recd >= 5  
+                %li{:href => "#3", "data-radio"=>2, "data-type"=>"period"} 
+                  5
+                  .application_filtergroup_choicenav_blip
+              - if current_user.case_count_recd >= 10
+                %li{:href => "#4", "data-radio"=>3, "data-type"=>"period"} 
+                  10
+                  .application_filtergroup_choicenav_blip
+
+            %span.arrow
+            %span.application_filtergroup_choicenav_backbone_line
+            %span.application_filtergroup_choicenav_follower_line
+
+        = text_field_tag :books_filter_btype, "all"
+
+        / .cases_resultstable_period_container.btn-group.pull-right
+        /   .btn.btn-colour.btn-micro.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
+        /     1
+        /   .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
+        /     2
+        /   - if current_user.case_count_recd >= 5      
+        /     .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
+        /       5
+        /   - if current_user.case_count_recd >= 10      
+        /     .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
+        /       10
+
+        / .span12.offset1.cases_resultstable_label.pull-right
+        /   Period (# cases)
+        /   %i.icon-caret-right
 
 
 

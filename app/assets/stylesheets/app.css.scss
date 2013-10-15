@@ -60,6 +60,20 @@ $cn_contrastor_third_0: #c18176;
 
 }
 
+.application_unread_label_large {
+  -moz-border-radius:    50%;
+  -webkit-border-radius: 50%;
+  border-radius:         50%;
+  border: 1px solid #c18176;
+  color: #c18176;
+  width:20px;
+  height:20px;
+  padding:4px;
+  display:inline-block;
+  text-align:center;
+  line-height:17px;
+  margin-left:10px;
+}
 
 
 @mixin box_sizing {

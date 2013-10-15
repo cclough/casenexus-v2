@@ -617,8 +617,7 @@ $cn_contrastor_third_0: #c18176;
   padding:10px;
   margin:0 0 5px 0;
 
-
-  background: $gray_background;
+  border-top:1px solid $cn_grey_0;
   &.show {
     background:white;
   }

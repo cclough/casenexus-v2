@@ -119,7 +119,7 @@
       Partners
 
       - if @friends_requested.count > 0
-        %span.iconbar-unread
+        %span.application_unread_label_large
           = @friends_requested.count.to_s
 
 
@@ -185,7 +185,7 @@
     Feedback
 
     - if @cases.unread.count > 0
-      %span.application_unread_circle
+      %span.application_unread_label_large
         = @cases.unread.count.to_s
 
   .spacer10
