@@ -7,7 +7,7 @@
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    %h3 Settings
+    Profile settings
 
   .modal-body
     #flash_notifications
@@ -21,8 +21,8 @@
         = f.text_field :username, class: "span26 application_form_input_alternative"
 
     .row
-      .span26.offset20
-        %a.btn.btn-primary.btn-small{href: "/account/edit_password"}
+      .span24.offset20
+        %a.btn.btn-colour.btn-micro{href: "/account/edit_password"}
           %i.icon-pencil
           Edit my password
 
@@ -110,14 +110,14 @@
       .span24.offset2.account_form_label
         Cases outside of casenexus
       .span5
-        = f.text_field :cases_external, class: "span5 application_form_input_alternative", id: "account_completedit_casesexternal_field"
+        = f.text_field :cases_external, class: "span5 application_form_input_alternative", id: "account_edit_casesexternal_field"
 
     .account_edit_form_spacer
 
 
     .row
-      .span16.offset26
-        = link_to(raw("<i class=icon-share-alt></i> Remove my account"), delete_account_path, class: "btn btn-primary btn-small")
+      .span14.offset26
+        = link_to(raw("<i class=icon-share-alt></i> Remove my account"), delete_account_path, class: "btn btn-colour btn-micro")
 
     .account_edit_form_spacer
 
@@ -144,9 +144,9 @@
 
 
   .modal-footer
-    %a.btn{"data-dismiss" => "modal", href: "#"} Close
+    %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 
-    .application_submit_button_with_spinner.btn.btn-primary{tabindex: "102"}
+    .application_submit_button_with_spinner.btn.btn-colour.btn-micro{tabindex: "102"}
       Save Settings
 
 

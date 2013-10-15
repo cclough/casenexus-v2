@@ -116,6 +116,9 @@ label, .account_form_label { // why the hell won't this work in app.css?
   text-align:left;
 }
 
+#account_edit_casesexternal_field {
+  font-size:20px;
+}
 
 /////////////////////////////////////////////////////////////////
 //////////////////////// COMPLETEEDIT ///////////////////////////
@@ -131,7 +134,7 @@ label, .account_form_label { // why the hell won't this work in app.css?
   }
   &.edit {
     height:261px;
-    width:500px;
+    width:540px;
   }
 }
 
@@ -350,33 +353,15 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 #modal_profile {
   width:855px !important;
-  margin-left:-400px;
-  margin-top:-260px;
+  height:560px !important;
 
-  height:510px !important;
+  margin-left:-400px;
+  margin-top:-280px;
 
   text-align:center !important;
 
-
   .modal-body {
-    height:325px;
+    height:385px;
     text-align:center !important;
   }
-
-  &.event_edit {
-    height:510px !important;
-
-    margin-top:-260px;
-
-    .modal-body {
-      height:325px;
-      text-align:center !important;
-    }
-
-  }
-//  .modal-footer {
-//    position:absolute;
-//    bottom:0;
-//  }
-
 }

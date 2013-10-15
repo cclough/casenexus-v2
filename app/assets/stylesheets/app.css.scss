@@ -52,25 +52,15 @@ $cn_contrastor_third_0: #c18176;
   text-align:center;
 }
 
-.application_btn_circle {
-  width:20px;
-  height:20px;
-  padding:7px;
-  border-width:1px !important;
-  font-weight:100 !important;
-  border-radius:50%;
+.application_submit_button_with_disable {
+  &.with_icon {
+    padding-top:7px !important;
+    padding-bottom:8px !important;    
+  }
+
 }
 
-.application_glyph {
-  display:inline-block;
-  font-family: 'Flat-UI-Icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  -webkit-font-smoothing: antialiased;
-}
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;

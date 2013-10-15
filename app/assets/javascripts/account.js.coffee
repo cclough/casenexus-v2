@@ -5,6 +5,8 @@ window.account_completeedit_bless = () ->
     trigger: "hover"
     html: true
 
+  $(".chzn-select").chosen()
+
   # if not defined before
   account_completeedit_map_lat_start = $("#account_completeedit_lat").val()
   account_completeedit_map_lng_start = $("#account_completeedit_lng").val()

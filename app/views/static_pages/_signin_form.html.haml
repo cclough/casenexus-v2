@@ -19,8 +19,8 @@
       = f.password_field :password, tabindex: "2", placeholder: "Password", class: "span30 large"
       
 
-    .application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{tabindex: "3"}
-      Login
+    .application_submit_button_with_disable.with_icon.btn.btn-red.btn-large.btn-block{tabindex: "3"}
+      = image_tag "icons/submit_button.png"
 
     .static_home_signin_link
       = link_to "Lost your password?", new_password_path('user'), tabindex: "4" 
