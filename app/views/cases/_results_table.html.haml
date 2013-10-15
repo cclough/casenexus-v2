@@ -1,10 +1,10 @@
 - @view = "show" if params[:view].blank?
 
-%table#cases_resultstable_table{class: ("show" if @view == "show")}
+%table.cases_resultstable_table{class: ("show" if @view == "show")}
   %thead
 
 
-    %th#cases_resultstable_table_column_criteria
+    %th.cases_resultstable_table_column_criteria
       Criteria
       / = params[:view]
 
@@ -12,7 +12,7 @@
       Score
       / - if @view != "show"
       /   %p (Last #{@period.to_s} Av. /5)
-    %th#cases_resultstable_table_column_bar
+    %th.cases_resultstable_table_column_bar
 
     / %th
     /   Previous

@@ -292,11 +292,11 @@ window.cases_resultstable_prime = (view) ->
     $("#cases_"+view+"_results input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
     # Remove and add active class to buttons
-    $("#cases_"+view+"_results #cases_resultstable_"+type+"_container .btn").removeClass "active"
+    $("#cases_"+view+"_results .cases_resultstable_"+type+"_container .btn").removeClass "active"
     $(this).addClass "active"
     
     # Submit form
-    $.get("/cases/results?view=" + view, $("#cases_"+view+"_results #cases_resultstable_form").serialize(), null, "script")
+    $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
     false
 
 
@@ -304,8 +304,8 @@ window.cases_resultstable_prime = (view) ->
 
   while i < 12
 
-    score = $("#cases_"+view+"_results #cases_"+view+"_resultstable_chart_bar_" + i).data "score"
-    category = $("#cases_"+view+"_results #cases_"+view+"_resultstable_chart_bar_" + i).data "category"
+    score = $("#cases_"+view+"_resultstable_chart_bar_" + i).data "score"
+    category = $("#cases_"+view+"_resultstable_chart_bar_" + i).data "category"
 
     Data = [{ name: i, score: parseFloat(score), category: category }]
 

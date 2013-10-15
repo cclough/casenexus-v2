@@ -183,8 +183,7 @@ $(document).ready ->
 
       $.get "/cases/" + case_id, (data) ->
         $("#modal_cases").html data
-        # modal_cases_show_prime("show")
-        window.cases_resultstable_prime("show")
+        modal_cases_show_prime("show")
 
 
 

@@ -1,8 +1,8 @@
 - @view = "show" if params[:view].blank?
 
-= form_tag '#', method: 'get', id: "cases_resultstable_form", class: ("show" if @view == "show"), remote:true do
+= form_tag '#', method: 'get', class: "cases_resultstable_form " + (if @view == "show" then "show" else "" end), remote:true do
   .row
-    #cases_resultstable_order_by_container.btn-group.pull-right
+    .cases_resultstable_order_by_container.btn-group.pull-right
 
       .btn.btn-colour.btn-micro.cases_resultstable_orderby_button.active{"data-radio"=>0, "data-type"=>"order_by"}
         Score
@@ -17,7 +17,7 @@
 
     - if @view != "show"
       - if current_user.case_count_recd >= 2
-        #cases_resultstable_period_container.btn-group.pull-right
+        .cases_resultstable_period_container.btn-group.pull-right
           .btn.btn-colour.btn-micro.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
             1
           .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
@@ -36,7 +36,7 @@
 
 
 
-    #cases_resultstable_form_radiogroup.hidden
+    .cases_resultstable_form_radiogroup.hidden
       = radio_button_tag :resultstable_order_by, 'order', checked: true
       = radio_button_tag :resultstable_order_by, 'group'
 
@@ -46,4 +46,4 @@
         = radio_button_tag :resultstable_period, 5
         = radio_button_tag :resultstable_period, 10
 
-      = hidden_field_tag :id, @case.id, id: "cases_resultstable_caseid" if @case
+      = hidden_field_tag :id, @case.id, class: "cases_resultstable_caseid" if @case
