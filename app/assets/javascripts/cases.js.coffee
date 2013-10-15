@@ -81,12 +81,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     
     # below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
     chart_analysis_progress.panEventsEnabled = true
+    chart_analysis_progress.color = "#697076"
     chart_analysis_progress.zoomOutButton =
       backgroundColor: "#000000"
       backgroundAlpha: 0.15
-
-
-
 
 
     if case_count > 2
@@ -96,7 +94,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chart_analysis_progress.dataProvider = data
     chart_analysis_progress.categoryField = "date"
     
-    # neccessary ?
+
     chart_analysis_progress.autoMargins = false
     chart_analysis_progress.marginRight = 0
     chart_analysis_progress.marginLeft = 0
@@ -114,7 +112,9 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     categoryAxis.gridAlpha = 0.07
     categoryAxis.axisColor = "#DADADA"
     categoryAxis.startOnAxis = true
-    categoryAxis.labelRotation = 45
+    # categoryAxis.labelRotation = 45
+    # categoryAxis.fillColor = "#dee1e3"
+    # categoryAxis.fillAlpha = 100
     categoryAxis.parseDates = true
     
     #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
@@ -125,8 +125,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     valueAxis.stackType = "regular" # this line makes the chart "stacked"
     valueAxis.gridAlpha = 0.07
     valueAxis.axisAlpha = 0
-    
-    # change to 50?
     valueAxis.maximum = 15
     valueAxis.labelsEnabled = false
 
@@ -142,6 +140,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7 # setting fillAlphas to > 0 value makes it area graph
     graph.bullet = "round"
+    graph.bulletBorderColor = "#72aac9"
+    graph.bulletColor = "#ffffff"
+    graph.bulletBorderThickness = 1
+    graph.bulletSize = 5
     if case_count < 3
       graph.showBalloon = false
     addclicklistener graph
@@ -156,6 +158,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7
     graph.bullet = "round"
+    graph.bulletBorderColor = "#73bf72"
+    graph.bulletColor = "#ffffff"
+    graph.bulletBorderThickness = 1
+    graph.bulletSize = 5
     if case_count < 3
       graph.showBalloon = false
     addclicklistener graph
@@ -169,6 +175,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7
     graph.bullet = "round"
+    graph.bulletBorderColor = "#f1d765"
+    graph.bulletColor = "#ffffff"
+    graph.bulletBorderThickness = 1
+    graph.bulletSize = 5
     if case_count < 3
       graph.showBalloon = false
     addclicklistener graph
@@ -208,7 +218,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartCursor.cursorPosition = "mouse"
     chartCursor.pan = false
     chartCursor.cursorColor = "#c18176"
-    chartCursor.bulletsEnabled = false
     chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
     chartCursor.zoomable = false
 
@@ -232,7 +241,9 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartScrollbar.graph = graph # uses 'fifth graph' above - last to use graph variable
     chartScrollbar.autoGridCount = true
     chartScrollbar.scrollbarHeight = 25
-    chartScrollbar.color = "#000000"
+    chartScrollbar.color = "#697076"
+    chartScrollbar.backgroundColor = "#f0f1f2"
+    chartScrollbar.selectedBackgroundColor = "#dee1e3"
     chart_analysis_progress.addChartScrollbar chartScrollbar
     
     # WRITE
@@ -250,7 +261,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     date
   addclicklistener = (graph) ->
     graph.addListener "clickGraphItem", (event) ->
-      window.location = "/cases/" + event.item.dataContext.id
+      window.modal_cases_show_show(event.item.dataContext.id)
 
 
   # DRAW THE CHART

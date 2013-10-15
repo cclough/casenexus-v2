@@ -28,6 +28,23 @@ modal_cases_show_prime = () ->
   window.cases_resultstable_prime("show")
 
 
+window.modal_cases_show_show = (case_id) ->
+
+  if !($("#modal_cases").hasClass("in"))
+
+    $("#modal_cases").removeClass "analysis"
+    $("#modal_cases").addClass "show"
+
+    $("#modal_cases").html("")
+    $(".modal").modal("hide")
+    $("#modal_cases").modal "show"
+
+    $.get "/cases/" + case_id, (data) ->
+      $("#modal_cases").html data
+      modal_cases_show_prime("show")
+
+
+
 $(document).ready ->
 
   # If profile page
@@ -158,34 +175,18 @@ $(document).ready ->
 
   $(".profile_index_feedback_cases_item").click ->
 
+    # if item unread
     unread_flag = $(this).find(".profile_index_feedback_cases_item_read_highlight")
-    
-    # if unread
     if unread_flag.hasClass "unread"
       # Fade out unread marker
       unread_flag.fadeOut "fast"
-
       # Update unread count
       current_count = $("#profile_index_feedback").find(".iconbar-unread").html()
       $("#profile_index_feedback").find(".iconbar-unread").html(Number(current_count) - 1)
 
+    case_id = $(this).data "case_id"
 
-    if !($("#modal_cases").hasClass("in"))
-
-      $("#modal_cases").removeClass "analysis"
-      $("#modal_cases").addClass "show"
-
-      case_id = $(this).data "case_id"
-
-      $("#modal_cases").html("")
-      $(".modal").modal("hide")
-      $("#modal_cases").modal "show"
-
-      $.get "/cases/" + case_id, (data) ->
-        $("#modal_cases").html data
-        modal_cases_show_prime("show")
-
-
+    window.modal_cases_show_show(case_id)
 
 
 
