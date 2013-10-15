@@ -98,10 +98,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     
     # neccessary ?
     chart_analysis_progress.autoMargins = false
-    chart_analysis_progress.marginRight = 15
-    chart_analysis_progress.marginLeft = 25
-    chart_analysis_progress.marginBottom = 35
-    chart_analysis_progress.marginTop = 10
+    chart_analysis_progress.marginRight = 0
+    chart_analysis_progress.marginLeft = 0
+    chart_analysis_progress.marginBottom = 20
+    chart_analysis_progress.marginTop = 0
     
     # animations
     chart_analysis_progress.startDuration = 0.3
@@ -207,6 +207,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartCursor = new AmCharts.ChartCursor()
     chartCursor.cursorPosition = "mouse"
     chartCursor.pan = false
+    chartCursor.cursorColor = "#c18176"
     chartCursor.bulletsEnabled = false
     chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
     chartCursor.zoomable = false

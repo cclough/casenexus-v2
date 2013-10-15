@@ -573,7 +573,7 @@ end
 
     1.times do
       user.posts.create!(
-          content: Faker::Lorem.sentence(40)
+          content: Faker::Lorem.sentence(20)
       )
       Post.last.toggle!(:approved)
       puts "Post created for user #{user.username}"
