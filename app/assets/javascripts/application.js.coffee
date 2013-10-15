@@ -327,6 +327,7 @@ $(document).ready ->
   $(".chzn-select").chosen()
   $(".chzn-select-nosearch").chosen disable_search_threshold: 10
   $(".chzn-select-tags").chosen max_selected_options: 5
+  $('.chzn-search').hide()
 
   # Style for the checkboxes
   # $("input:checkbox").uniform()

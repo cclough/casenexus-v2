@@ -5,6 +5,8 @@
     Welcome to
     #static_home_title_url
       casenexus.com
+      %span#static_home_title_beta
+        BETA
   #static_home_subtitle
     Platform for live case interview practice
 
@@ -46,15 +48,6 @@
 
 
 
-
-  / #static_home_forms_switch
-  /   - if !signed_in? && !(params[:controller].include? 'devise')
-  /     #static_home_switch_link_signup.static_home_switch_link{"data-switch_to"=>"signup", "data-switch_from"=>"signin"}
-  /       = link_to "Not yet registered? Sign up", "#"
-  /     #static_home_switch_link_signin.static_home_switch_link{"data-switch_to"=>"signin", "data-switch_from"=>"signup"}
-  /       = link_to "Already registered? Sign in", "#"
-  /   - if !signed_in?
-  /     = link_to "Return to the home page", root_path, id: "static_home_switch_nothome_link"
 
 
 #static_home_bottom_margin

@@ -68,12 +68,27 @@ $cn_contrastor_third_0: #c18176;
     margin-top:20px;
     line-height:30px;
     #static_home_title_url {
-      font-weight:bold;
+      font-weight:400;
+      margin-top:10px;
+    }
+
+    #static_home_title_beta {
+      padding:7px;
+
+      background:$cn_colour_1;
+      color:white;
+
+      vertical-align:middle;
+      font-size:16px;
+      -moz-border-radius:    3px;
+      -webkit-border-radius: 3px;
+      border-radius:         3px;
+
     }
   }
 
   #static_home_subtitle {
-    margin-top:15px;
+    margin-top:10px;
     font-size:20px;
   }
 
@@ -131,14 +146,15 @@ $cn_contrastor_third_0: #c18176;
 
 
 #static_home_switch_link_signup {
-  text-align:center;
-  margin-top:50px;
-
+  margin:50px auto 0;
+  display:block;
+  width:200px;
 }
 
 #static_home_switch_link_signin {
-  margin-top:30px;
-  text-align:center;
+  margin:20px auto 0;
+  display:block;
+  width:200px;
 }
 
 #static_home_switch_nothome_link {
@@ -164,7 +180,7 @@ $cn_contrastor_third_0: #c18176;
   width:45px;
   background:$cn_grey_0;
   border: 2px solid $cn_grey_-1;
-  z-index:20;
+  z-index:1;
 
   i {
     position:absolute;
@@ -225,7 +241,7 @@ $cn_contrastor_third_0: #c18176;
 
 
 #static_home_signup {
-  margin: 20px auto 0;
+  margin: 10px auto 0;
 
   display:none;
   padding:25px;
@@ -256,7 +272,7 @@ $cn_contrastor_third_0: #c18176;
 
 
 /////////////////////////////////////////////
-///////////////  SIGNUP  ////////////////////
+///////////////  TERMS  ////////////////////
 /////////////////////////////////////////////
 
 
@@ -278,4 +294,15 @@ $cn_contrastor_third_0: #c18176;
 
   overflow-y:scroll;
 
+  #static_forms_back_button {
+    bottom:-20px;
+  }
+}
+
+#static_forms_back_button {
+  position:absolute;
+  bottom:-100px;
+  left:50%;
+  width:100px;
+  margin-left:-50px;
 }

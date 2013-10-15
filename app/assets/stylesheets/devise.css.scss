@@ -42,19 +42,15 @@ $cn_contrastor_third_0: #c18176;
 #devise_confirmations_new_panel {
 
   position:absolute;
-  left: 150%;
+  left:50%;
   top:50%;
 
-  background:$gray_background;
-
   padding:25px;
-
-  left:50%;
 
   width:300px;
   height:110px;
   margin-top:-160px;
-  margin-left:0px;
+  margin-left:-150px;
 
   z-index:10;
 
@@ -65,8 +61,14 @@ $cn_contrastor_third_0: #c18176;
   input {
     display:block;
     margin-bottom:15px;
-    border:2px solid transparent;
+    border:2px solid $cn_grey_-1;
+    -moz-border-radius:    3px;
+    -webkit-border-radius: 3px;
+    border-radius:         3px;
+    padding-left:47px;
+    width:244px;
   }
+
 
   i {
     margin-top:2px;
@@ -74,19 +76,6 @@ $cn_contrastor_third_0: #c18176;
   }
 }
 
-#devise_confirmations_new_panel:after
-{
-  content: "";
-  position: absolute;
-  top: 35px;
-  left: -15px;
-  border-style: solid;
-  border-width: 14px 15px 14px 0px;
-  border-color: transparent $gray_background;
-  display: block;
-  width: 0;
-  z-index: 1;
-}
 
 
 
@@ -96,19 +85,16 @@ $cn_contrastor_third_0: #c18176;
 #devise_passwords_new_panel {
 
   position:absolute;
-  left: 150%;
-  top:50%;
 
-  background:$gray_background;
+  top:50%;
+  left:50%;
 
   padding:25px;
-
-  left:50%;
 
   width:300px;
   height:110px;
   margin-top:-160px;
-  margin-left:0px;
+  margin-left:-150px;
 
   z-index:10;
 
@@ -119,7 +105,12 @@ $cn_contrastor_third_0: #c18176;
   input {
     display:block;
     margin-bottom:15px;
-    border:2px solid transparent;
+    border:2px solid $cn_grey_-1;
+    -moz-border-radius:    3px;
+    -webkit-border-radius: 3px;
+    border-radius:         3px;
+    padding-left:47px;
+    width:244px;
   }
 
   i {
@@ -128,17 +119,4 @@ $cn_contrastor_third_0: #c18176;
   }
 }
 
-#devise_passwords_new_panel:after
-{
-  content: "";
-  position: absolute;
-  top: 35px;
-  left: -15px;
-  border-style: solid;
-  border-width: 14px 15px 14px 0px;
-  border-color: transparent $gray_background;
-  display: block;
-  width: 0;
-  z-index: 1;
-}
 

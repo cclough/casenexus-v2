@@ -22,16 +22,16 @@
       = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12", class: "span30 large"
 
       .row
-        .span25
+        .span23
           I agree to the 
-          = link_to "Terms & Conditions", terms_path, tabindex: "13"
+          = link_to "Terms & Conditions", terms_path, target:"_new", tabindex: "13"
         .span5
           = f.check_box :confirm_tac, tabindex: "14"
 
         = f.hidden_field :ip_address, value: request.remote_ip
         
-      .application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "16"}
+      .application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{tabindex: "16"}
         Sign up
 
-  #static_home_switch_link_signin.static_home_switch_link{"data-switch_to"=>"signin", "data-switch_from"=>"signup"}
-    = link_to "Already registered? Sign in", "#"
+  #static_home_switch_link_signin.static_home_switch_link.btn.btn-colour.btn-micro{"data-switch_to"=>"signin", "data-switch_from"=>"signup"}
+    Already registered? Sign in
