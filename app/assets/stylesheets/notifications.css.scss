@@ -84,33 +84,6 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-#modal_message_conversation_empty {
-
-  text-align: center;
-
-  position:absolute;
-
-  top: 50%;
-  left:50%;
-  width:200px;
-
-  margin-left:-120px;
-  margin-top:-50px;
-  font-size:15px;
-
-  background:white;
-  padding:20px;
-
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-
-
-}
-
-
-
-
 
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -337,6 +310,11 @@ $cn_contrastor_third_0: #c18176;
 
 }
 
+.notifications_show_item_username {
+  font-size:16px;
+  margin-bottom:5px;
+  font-weight:400;
+}
 .notifications_show_item_content {
   font-size:12px;
 }
@@ -387,6 +365,8 @@ $cn_contrastor_third_0: #c18176;
 #modal_message {
   .modal-header {
     text-align:center;
+    height:30px;
+    font-size:20px;
   }
   .modal-body {
     padding:0 10px;
@@ -394,7 +374,7 @@ $cn_contrastor_third_0: #c18176;
 }
 
 #modal_message_conversation {
-  height:315px;
+  height:310px;
   overflow-y:auto;
 }
 
@@ -402,6 +382,31 @@ $cn_contrastor_third_0: #c18176;
   height:60px;
   margin:0px !important;
   width:580px;
+}
+
+
+#modal_message_conversation_empty {
+
+  text-align: center;
+
+  position:absolute;
+
+  top: 50%;
+  left:50%;
+  width:200px;
+
+  margin-left:-120px;
+  margin-top:-50px;
+  font-size:15px;
+
+  background:white;
+  padding:20px;
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+
 }
 
 

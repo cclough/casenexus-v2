@@ -12,6 +12,6 @@ Showing
   who's done
 
 %span#map_index_guide_count_cases
-  = users.map { |a| a.cases.count }.sum.to_s
-cases
+  = users.map { |a| a.cases.where("created_at > ?", Time.now - 1.month).count }.sum.to_s
+cases in the last month
 
