@@ -140,12 +140,13 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7 # setting fillAlphas to > 0 value makes it area graph
     graph.bullet = "round"
-    graph.bulletBorderColor = "#72aac9"
-    graph.bulletColor = "#ffffff"
-    graph.bulletBorderThickness = 1
     graph.bulletSize = 5
     if case_count < 3
       graph.showBalloon = false
+    else
+      graph.bulletBorderColor = "#72aac9"
+      graph.bulletColor = "#ffffff"
+      graph.bulletBorderThickness = 1
     addclicklistener graph
     chart_analysis_progress.addGraph graph
 
@@ -158,12 +159,13 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7
     graph.bullet = "round"
-    graph.bulletBorderColor = "#73bf72"
-    graph.bulletColor = "#ffffff"
-    graph.bulletBorderThickness = 1
     graph.bulletSize = 5
     if case_count < 3
       graph.showBalloon = false
+    else
+      graph.bulletBorderColor = "#73bf72"
+      graph.bulletColor = "#ffffff"
+      graph.bulletBorderThickness = 1
     addclicklistener graph
     chart_analysis_progress.addGraph graph
 
@@ -175,12 +177,13 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.lineAlpha = 1
     graph.fillAlphas = 0.7
     graph.bullet = "round"
-    graph.bulletBorderColor = "#f1d765"
-    graph.bulletColor = "#ffffff"
-    graph.bulletBorderThickness = 1
     graph.bulletSize = 5
     if case_count < 3
       graph.showBalloon = false
+    else
+      graph.bulletBorderColor = "#f1d765"
+      graph.bulletColor = "#ffffff"
+      graph.bulletBorderThickness = 1
     addclicklistener graph
     chart_analysis_progress.addGraph graph
     

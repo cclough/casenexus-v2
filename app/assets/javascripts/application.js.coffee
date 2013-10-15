@@ -146,6 +146,12 @@ window.application_disablesubmit_prime = (container) ->
     $(container + " .application_submit_button_with_disable").off 'click'
     $(this).closest("form").submit() # stops addclass on safari for some reason
 
+  $(container + " input").keydown((event) ->
+    if event.keyCode is 13
+      $(container + " .application_submit_button_with_disable").addClass "disabled"
+      $(container + " .application_submit_button_with_disable").off 'click'
+      $(this).closest("form").submit() # stops addclass on safari for some reason
+  )
 
 
 
