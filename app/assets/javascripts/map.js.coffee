@@ -221,7 +221,13 @@ $(document).ready ->
     window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2")
 
     # Start at current_user, zoomed
-    window.map.setView([parseFloat(map_index_map_lat_start), parseFloat(map_index_map_lng_start)], 15)
+    lat_start = parseFloat(map_index_map_lat_start)
+    lng_start = parseFloat(map_index_map_lng_start)
+
+    # Offset slightly and then pan to, to impress
+    window.map.setView([lat_start-0.005, lng_start+0.02], 15)
+    #window.map.panTo new L.LatLng(lat_start, lng_start)
+
 
     # back to world view button (must be after map variable has been set)
     $("#map_index_map_zoomout").click ->

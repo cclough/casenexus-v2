@@ -43,7 +43,6 @@ markerLayer.on('layeradd', function(e) {
 
       window.marker_and_popup_actions_for(marker,"perm"); 
 
-
       // scroll to item
       var users_item = $("#map_index_users_item_" + feature.properties.id);
       $("#application_container_main").animate({
@@ -93,7 +92,7 @@ markerLayer.setGeoJSON(geoJson);
         window.marker_and_popup_actions_for(marker,"perm"); 
 
         window.map.panTo(marker.getLatLng());
-        // $("#map_index_map_zoomout").fadeIn("fast");
+        
       }
   });
 
