@@ -20,24 +20,43 @@
       %i.icon-map-marker
     .static_home_pitch_block_title
       Find partners
-    .static_home_pitch_block_text
-      Integer eget sagittis magna, eget rhoncus suspendisse at ipsum amet nulla congue consequat sed.
+    .static_home_pitch_block_content
+      = image_tag "home/pitch1_thumb.png", "data-toggle" => "lightbox", href: "#static_home_pitch_block_lightbox_1"
+
+
+      #static_home_pitch_block_lightbox_1.lightbox.hide.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+        .lightbox-content
+          %img{src: "/assets/home/pitch1.png"}/
+          .lightbox-caption
+            %p Find case partners to practise with, in person or via Skype
 
   .static_home_pitch_block
     .static_home_pitch_block_icon
       %i.icon-book
     .static_home_pitch_block_title
-      Case library
-    .static_home_pitch_block_text
-      Integer eget sagittis magna, eget rhoncus suspendisse at ipsum amet nulla congue consequat sed.
+      Do cases live
+    .static_home_pitch_block_content
+      = image_tag "home/pitch2_thumb.png", "data-toggle" => "lightbox", href: "#static_home_pitch_block_lightbox_2"
+
+      #static_home_pitch_block_lightbox_2.lightbox.hide.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+        .lightbox-content
+          %img{src: "/assets/home/pitch2.png"}/
+          .lightbox-caption
+            %p Conducting a case with someone is easy - pick a case from the library, set a timer, and fill out a feedback form, which we've had designed by top firm consultants, on your partner's performance
 
   .static_home_pitch_block
     .static_home_pitch_block_icon
       %i.icon-bar-chart
     .static_home_pitch_block_title
-      Feedback
-    .static_home_pitch_block_text
-      Integer eget sagittis magna, eget rhoncus suspendisse at ipsum amet nulla congue consequat sed.
+      Review feedback
+    .static_home_pitch_block_content
+      = image_tag "home/pitch1_thumb.png", "data-toggle" => "lightbox", href: "#static_home_pitch_block_lightbox_3"
+
+      #static_home_pitch_block_lightbox_3.lightbox.hide.fade{"aria-hidden" => "true", role: "dialog", tabindex: "-1"}
+        .lightbox-content
+          %img{src: "/assets/home/pitch1.png"}/
+          .lightbox-caption
+            %p Review the feedback you've been sent
 
 #static_home_panel_right
 

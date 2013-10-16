@@ -14,6 +14,7 @@
 #= require lib/bootstrap.min
 #= require lib/bootstrap-clickover
 #= require lib/bootstrap-datetimepicker
+#= require lib/bootstrap-lightbox
 #= require bootstrap-wysihtml5
 #= require lib/bootstrap-select
 #= require lib/bootstrap-switch

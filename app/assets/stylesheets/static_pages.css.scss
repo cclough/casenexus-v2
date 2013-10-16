@@ -94,6 +94,10 @@ $cn_contrastor_third_0: #c18176;
 
   #static_home_logo {
     margin: 20px 0 ;
+
+    img {
+      max-height:100px;
+    }
   }
 
   .static_home_pitch_block {
@@ -117,7 +121,7 @@ $cn_contrastor_third_0: #c18176;
       font-size:20px;
       margin-bottom:5px;
     }
-    .static_home_pitch_block_text {
+    .static_home_pitch_block_content {
       line-height:22px;
       padding:10px;
     }

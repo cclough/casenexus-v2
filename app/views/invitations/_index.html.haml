@@ -24,7 +24,7 @@
             .span25
               = f.text_field :email, class: 'span25 application_form_input_alternative', placeholder: "Email"
             .span5.offset1
-              = f.submit "Invite", class: 'btn btn-primary'
+              = f.submit "Invite", class: 'btn btn-colour btn-micro'
           .spacer15
           .row
             NB casenexus is currently only available at certain universities:
@@ -33,7 +33,7 @@
       - else
         %b You have no more invitations!
 
-  .panel.dark.kill_bottom.kill_left.kill_right
+  %div
     .row
       - if @invitations.count > 0
         %table.table
@@ -56,6 +56,6 @@
 
 
 .modal-footer
-  %a.btn{"data-dismiss" => "modal", href: "#"} Close
+  %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 
 
