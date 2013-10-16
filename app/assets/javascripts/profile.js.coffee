@@ -7,6 +7,8 @@
 
 modal_cases_show_prime = () ->
 
+  window.cases_resultstable_prime("show")
+
   # Browse Buttons
   $(".cases_show_subnav_browse_button").click ->
     next_case_id = $(this).attr "data-case_id"
@@ -25,24 +27,25 @@ modal_cases_show_prime = () ->
       $("#modal_cases").html data
       modal_cases_show_prime()
 
-  window.cases_resultstable_prime("show")
 
 
 window.modal_cases_show_show = (case_id) ->
 
   if !($("#modal_cases").hasClass("in"))
 
+    $("#modal_cases").empty()
+    
     $("#modal_cases").removeClass "analysis"
     $("#modal_cases").addClass "show"
 
-    $("#modal_cases").html("")
     $(".modal").modal("hide")
     $("#modal_cases").modal "show"
 
     $.get "/cases/" + case_id, (data) ->
       $("#modal_cases").html data
-      modal_cases_show_prime("show")
-
+        
+    $("#modal_cases").on "shown", ->
+      modal_cases_show_prime()
 
 
 $(document).ready ->
@@ -184,7 +187,7 @@ $(document).ready ->
       current_count = $("#profile_index_feedback").find(".iconbar-unread").html()
       $("#profile_index_feedback").find(".iconbar-unread").html(Number(current_count) - 1)
 
-    case_id = $(this).data "case_id"
+    case_id = $(this).attr "data-case_id"
 
     window.modal_cases_show_show(case_id)
 

@@ -319,8 +319,8 @@ window.cases_resultstable_prime = (view) ->
 
   while i < 12
 
-    score = $("#cases_"+view+"_resultstable_chart_bar_" + i).data "score"
-    category = $("#cases_"+view+"_resultstable_chart_bar_" + i).data "category"
+    score = $("#cases_"+view+"_resultstable_chart_bar_" + i).attr "data-score"
+    category = $("#cases_"+view+"_resultstable_chart_bar_" + i).attr "data-category"
 
     Data = [{ name: i, score: parseFloat(score), category: category }]
 
