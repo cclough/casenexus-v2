@@ -58,20 +58,18 @@ class CasesController < ApplicationController
 
     # In case they enter something in the blank form before selecting a book
     if !@case.book_id.blank?
-      @case.subject = nil
-      @case.source = nil
+      @case.subject = ''
+      @case.source = ''
     end
 
     respond_to do |format|
 
       if @case.save
         flash[:success] = 'Feedback sent successfully to ' + @case.user.username
-        #redirect_to map_path
         format.js #for table form
       else
         @user = @case.user
         format.js #for table form
-        #render 'new', layout: "cases_clipped"
       end
 
     end
