@@ -225,7 +225,7 @@ $(document).ready ->
     lng_start = parseFloat(map_index_map_lng_start)
 
     # Offset slightly and then pan to, to impress
-    window.map.setView([lat_start-0.005, lng_start+0.02], 15)
+    window.map.setView([lat_start-0.005, lng_start+0.03], 15)
     #window.map.panTo new L.LatLng(lat_start, lng_start)
 
 
