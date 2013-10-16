@@ -43,9 +43,10 @@ window.modal_cases_show_show = (case_id) ->
 
     $.get "/cases/" + case_id, (data) ->
       $("#modal_cases").html data
-        
-    $("#modal_cases").on "shown", ->
       modal_cases_show_prime()
+      
+    # $("#modal_cases").on "shown", ->
+    #   modal_cases_show_prime()
 
 
 $(document).ready ->

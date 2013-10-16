@@ -302,7 +302,7 @@ class Case < ActiveRecord::Base
   end
 
   def self.cases_analysis_chart_progress_data(user)
-    if user.cases.count > 2
+    if user.cases.count >= 2
       cases_analysis_chart_progress_data = user.cases.order('created_at asc').map { |c|
         { id: c.id,
           date: c.created_at.strftime("%Y-%m-%d"),
