@@ -46,7 +46,7 @@
 
     #cases_show_maincomment
       #cases_show_maincomment_content
-        = @case.main_comment
+        = @case.main_comment.html_safe
         hello
 
 
