@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
     @friends = current_user.accepted_friends.order("username ASC")
     @friends_requested = current_user.requested_friends.order("username ASC")
 
-    @cases = current_user.cases
+    @cases = current_user.cases.order("created_at desc")
 
     @case_count_bracket = current_user.case_count_bracket
 

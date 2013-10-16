@@ -56,6 +56,11 @@ class CasesController < ApplicationController
     @case.user_id = user_id
     @case.interviewer = current_user
 
+    # In case they enter something in the blank form before selecting a book
+    if !@case.book_id.blank?
+      @case.subject = nil
+      @case.source = nil
+    end
 
     respond_to do |format|
 

@@ -121,7 +121,6 @@ $(document).ready ->
       $("#console_index_pdfjs_blank").show()
       $("#console_index_pdfjs_iframe").attr "src", ""
 
-
       $("#cases_new_nobook").fadeIn "fast"
 
 

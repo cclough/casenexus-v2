@@ -15,8 +15,6 @@
 
     #cases_new_book_container
 
-
-
       #cases_new_book
         - if @book
           = render partial: 'books/show_small', locals: { book_id: @book.id }
@@ -29,7 +27,7 @@
         #cases_new_nobook_label
           No case selected
           #cases_new_nobook_label_subtext
-            External case details
+            Enter details of external case:
         #cases_new_nobook_inputs
           = f.text_field :source, placeholder: "Who authored this case?", tabindex: "2"
           .spacer5
