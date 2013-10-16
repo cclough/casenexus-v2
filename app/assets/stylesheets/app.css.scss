@@ -572,8 +572,15 @@ textarea {
 #modal_help {
   background:white;
   overflow-x: hidden;
+
+  .close {
+    position:absolute;
+    right:20px;
+    top:15px;
+  }
   .modal-body {
-    height:335px;
+    height:430px;
+    max-height:430px;
   }
   .modal-header {
     border-bottom:0px;
@@ -591,44 +598,30 @@ textarea {
     }
 
     #modal_help_page_num {
-      margin-top:15px;
+      margin-top:5px;
     }
   }
 }
 
-.modal_help_text {
-  position:absolute;
-  width:500px;
-  left:50px;
-  top:120px;
-}
-
-.modal_help_image {
-  margin-top:20px;
-}
 
 
-
-.modal_help_header_title {
+.modal_help_title {
   font-size:25px;
   font-weight:bold;
   text-align:center;
-  position:absolute;
-  left:0px;
-  right:0px;
-  top:70px;
   z-index:10;
 }
 
-//.modal_help_header_sub {
-//  font-size:20px;
-//  color:#999999;
+.modal_help_text {
+  margin:5px 0 15px 0;
 
-//  position:absolute; 
-//  top:110px; 
-//  left:150px; 
-//  z-index:10;
-//}
+  text-align:center;
+}
+
+.modal_help_image {
+
+}
+
 
 
 .arrownav_page {
@@ -637,75 +630,9 @@ textarea {
 }
 
 
-#modal_help_arrownav {
-
-  margin-top:-30px;
-  margin-left:-25px;
-  margin-right:-25px;
-  margin-bottom:20px;
-
-  background: #f6f6f6;
-  border-bottom: 1px solid #eaeaea;
-  height:50px;
-
-  border-top-left-radius: 5px;
-  -moz-border-top-left-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-
-  border-top-right-radius: 5px;
-  -moz-border-top-right-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-
-  nav { 
-    position: relative; 
-    // ITS THIS LEFT
-    left:175px; }
-  nav ul {
-    list-style: none;
-    padding: 0px 0px 0px 0px;
-  }
-
-  nav ul li {
-    float: left;
-    margin-left: 30px;
-    margin-top:0px;
-    position: relative;
-  }   
-
-  nav ul li a {
-    color: #9f9f9f;
-    font-size: 14px;
-    -webkit-transition:color 0.2s ease-in;  
-    -moz-transition:color 0.2s ease-in;  
-    -o-transition:color 0.2s ease-in;  
-    transition:color 0.2s ease-in;
-
-  }
-  
-  nav ul li a:hover {
-    color: #777; 
-  }
-  nav ul li.current a {
-    border-bottom: 2px solid $blue_pastel;
-    color: #555;
-  }
-
-  nav span.arrow {
-    width: 24px;
-    height: 13px;
-    background: url('app/light-nav_arrow.png') no-repeat;
-    display: none;
-    position: absolute;
-    top: 50px;
-  }
-
-}
-
 // Help modal
 #modal_help .arrownav_page{
-  height:300px;
-  margin-top:35px;
-  overflow-y:scroll
+
 }
 
 

@@ -1,37 +1,7 @@
 #modal_help.modal.hide.fade
 
-  .modal-header
-    %button.close{"data-dismiss" => "modal", type: "button"} ×
+  %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    #modal_help_arrownav
-      %nav
-        %ul
-          %li
-            %a{:href => "#1"} 
-              / %span.modal_help_arrownav_title_number 1.
-              1
-          %li
-            %a{:href => "#2"}
-              / %span.modal_help_arrownav_title_number 2. 
-              2
-          %li
-            %a{:href => "#3"}
-              / %span.modal_help_arrownav_title_number 3. 
-              3
-          %li
-            %a{:href => "#4"}
-              / %span.modal_help_arrownav_title_number 4.
-              4
-          %li
-            %a{:href => "#5"}
-              / %span.modal_help_arrownav_title_number 5. 
-              5
-          %li
-
-        %span.arrow
-
-
-        
   .modal-body
 
     #application_arrownav_page_1.arrownav_page
@@ -39,41 +9,38 @@
       #modal_help_page_1
 
 
-        .modal_help_header_title Welcome #{current_user.username}
+        .modal_help_title Welcome #{current_user.username}
         
         .modal_help_text
           casenexus is a platform to help you practise case interviews live
-        .spacer5
+
         .modal_help_image
-          = image_tag "help/placeholder.jpg"
+          = image_tag "help/console.png"
 
 
     #application_arrownav_page_2.arrownav_page
 
       #modal_help_page_2
 
-
-        .modal_help_header_title Find case partners
+        .modal_help_title Find case partners
         
         .modal_help_text
-          Find other people to practise with, who live near you or are online now. Schedule a case appointment with them
-        .spacer5
+          Find other people to practise with, who live near you or are online now.
+
         .modal_help_image
-          = image_tag "help/placeholder.jpg"
+          = image_tag "help/map.png"
 
 
     #application_arrownav_page_3.arrownav_page
 
       #modal_help_page_3
 
-
-        .modal_help_header_title Choose a case
+        .modal_help_title Choose a case
         
         .modal_help_text Select from a range of carefully categorised cases from the world's top business schools
 
-        .spacer5
         .modal_help_image
-          = image_tag "help/placeholder.jpg"
+          = image_tag "help/feedback.png"
 
 
     #application_arrownav_page_4.arrownav_page
@@ -81,13 +48,12 @@
       #modal_help_page_4
 
 
-        .modal_help_header_title Collect Feedback
+        .modal_help_title Collect feedback
         
         .modal_help_text Review your case feedback and track your progress over tiem
           
-        .spacer5
         .modal_help_image
-          = image_tag "help/placeholder.jpg"
+          = image_tag "help/feedback.png"
 
 
     #application_arrownav_page_5.arrownav_page
@@ -95,14 +61,12 @@
       #modal_help_page_5
 
 
-        .modal_help_header_title That's it!
+        .spacer100
+
+        .modal_help_title That's it!
         
         .modal_help_text You've got everything you need to get started, we hope you find it useful!
           
-        .spacer5
-        .modal_help_image
-          = image_tag "help/placeholder.jpg"
-
 
 
 

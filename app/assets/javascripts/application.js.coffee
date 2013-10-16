@@ -394,7 +394,7 @@ $(document).ready ->
 
 
   # Arrows for the home page and help
-  if $("#modal_help_arrownav").size() > 0
+  if $("#modal_help").size() > 0
     window.ArrowNav =
       init: ->
         $("a[href*=#]").click (e) ->
@@ -412,7 +412,7 @@ $(document).ready ->
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
         
-        if $("#modal_help_arrownav").size() > 0
+        if $("#modal_help").size() > 0
           next_page.fadeIn 100
 
           # NEXT BUTTON - on last, change
@@ -443,20 +443,9 @@ $(document).ready ->
         else
           next_page.show "slide", direction: "right", 100
 
-        window.ArrowNav.centerArrow nav_item
 
-      centerArrow: (nav_item, animate) ->
-        left_margin = (nav_item.parent().position().left + nav_item.parent().width()) + 24 - (nav_item.parent().width() / 2)
-        unless animate is false
-          $("nav .arrow").animate
-            left: left_margin - 8
-          , 100, ->
-            $(this).show()
 
-        else
-          $("nav .arrow").css left: left_margin - 8
 
-    # window.ArrowNav.init()
 
 
   # FILTER SLIDERS

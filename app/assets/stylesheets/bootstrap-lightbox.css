@@ -23,7 +23,7 @@
 
 .lightbox-content {
   display: inline-block;
-  padding: 10px;
+  padding: 10px 10px 60px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -42,19 +42,10 @@
 }
 
 .lightbox-content .lightbox-caption {
-  position: absolute;
-  right: 12px;
-  bottom: 11px;
-  left: 11px;
-  padding: 2%;
-  font-size: 14px;
+  padding: 5px;
+  font-size: 16px !important;
   line-height: 18px;
-  color: white;
   text-align: center;
-  text-shadow: 0 -1px 0 #000000;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
-  background: #000;
-  background: rgba(0, 0, 0, 0.6);
 }
 
 .lightbox-header .close {
