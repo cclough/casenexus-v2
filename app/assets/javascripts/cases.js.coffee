@@ -90,10 +90,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     if case_count > 2
       chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
     else
-      chart_analysis_progress.colors = ["#1f1f1f", "#1f1f1f", "#1f1f1f"]
+      chart_analysis_progress.colors = ["#dee1e3", "#dee1e3", "#dee1e3"]
     chart_analysis_progress.dataProvider = data
     chart_analysis_progress.categoryField = "date"
-    
+  
 
     chart_analysis_progress.autoMargins = false
     chart_analysis_progress.marginRight = 0
@@ -297,7 +297,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
 window.cases_resultstable_prime = (view) ->
 
   $("#cases_"+view+"_results .btn").off 'click'
-
   $("#cases_"+view+"_results .btn").click ->
 
     radio = $(this).data("radio")
@@ -314,6 +313,14 @@ window.cases_resultstable_prime = (view) ->
     $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
     false
 
+
+  window.application_choicenav_prime()
+
+  $("#cases_"+view+"_results .application_filtergroup_choicenav li").off 'click'
+  $("#cases_"+view+"_results .application_filtergroup_choicenav li").click ->
+    # Submit form
+    $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
+    false
 
   i = 0
 

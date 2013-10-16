@@ -321,6 +321,10 @@ window.application_raty_prime = () ->
 
 
 
+window.application_choicenav_prime = () ->
+  window.ChoiceNav.init()
+
+
 
 $(document).ready ->
 
@@ -446,43 +450,53 @@ $(document).ready ->
 
 
 
-
-
-
   # FILTER SLIDERS
   if $(".application_filtergroup_choicenav").size() > 0
+    window.application_choicenav_prime()
 
-    window.ChoiceNav =
-      init: ->
 
-        $("li[href*=#]").click (e) ->
-          e.preventDefault()
-          filter_name = $(this).closest(".application_filtergroup_choicenav").attr "data-filter_name"
-          window.ChoiceNav.goTo $(this).attr("href").split("#")[1], filter_name if $(this).attr("href").split("#")[1]
-        # @goTo "1"
-      goTo: (page, filter_name) ->
-        filter_name_complete = "#application_filtergroup_choicenav_" + filter_name
-        nav_item = $(filter_name_complete + " nav ul li[href=#" + page + "]")
+  window.ChoiceNav =
+    init: ->
 
+      $("li[href*=#]").click (e) ->
+        e.preventDefault()
+        filter_name = $(this).closest(".application_filtergroup_choicenav").attr "data-filter_name"
+        window.ChoiceNav.goTo $(this).attr("href").split("#")[1], filter_name if $(this).attr("href").split("#")[1]
+        alert "hello"
+      # @goTo "1"
+
+    goTo: (page, filter_name) ->
+      filter_name_complete = "#application_filtergroup_choicenav_" + filter_name
+      nav_item = $(filter_name_complete + " nav ul li[href=#" + page + "]")
+
+
+
+      if filter_name == "btype"
         btype = $(nav_item).data "btype"
         $("#books_filter_" + filter_name).val btype
+      else
+        alert "hello"
+        period = $(nav_item).data "period"
+        $("#cases_resultstable_" + filter_name).val period
 
-        window.ChoiceNav.centerArrow nav_item, filter_name_complete
-        window.ChoiceNav.growLine nav_item, filter_name_complete
-      
-      centerArrow: (nav_item, filter_name) ->
-        left_margin = (nav_item.position().left + nav_item.width()/2) + 22 - (nav_item.width() / 2)
-        $(filter_name + " nav .arrow").animate
-          left: left_margin
-        , 100, ->
-          $(this).show()
 
-      growLine: (nav_item, filter_name) ->
-        left_margin = (nav_item.position().left + nav_item.width()/2) - (nav_item.width() / 2)
-        $(filter_name + " nav .application_filtergroup_choicenav_follower_line").animate
-          width: left_margin
-        , 100, ->
-          $(this).show()  
 
-    window.ChoiceNav.init()
+
+      window.ChoiceNav.centerArrow nav_item, filter_name_complete
+      window.ChoiceNav.growLine nav_item, filter_name_complete
+    
+    centerArrow: (nav_item, filter_name) ->
+      left_margin = (nav_item.position().left + nav_item.width()/2) + 22 - (nav_item.width() / 2)
+      $(filter_name + " nav .arrow").animate
+        left: left_margin
+      , 100, ->
+        $(this).show()
+
+    growLine: (nav_item, filter_name) ->
+      left_margin = (nav_item.position().left + nav_item.width()/2) - (nav_item.width() / 2)
+      $(filter_name + " nav .application_filtergroup_choicenav_follower_line").animate
+        width: left_margin
+      , 100, ->
+        $(this).show()  
+
 
