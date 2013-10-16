@@ -356,7 +356,7 @@ $(document).ready ->
 
   # Modals
   $("#modal_contact, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
-    backdrop: false
+    backdrop: true
     show: false
 
   $("#modal_help").modal
