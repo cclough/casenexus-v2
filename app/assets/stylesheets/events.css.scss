@@ -74,7 +74,17 @@ $cn_contrastor_third_0: #c18176;
 }
 
 #events_calendar_month_text_count {
-  color: $blue_casenexus;
+  color: $cn_colour_1;
+  border-color: $cn_colour_1;
+  padding:4px 6px 5px 6px !important;
+  vertical-align:top;
+  margin-left:5px;
+}
+#events_calendar_month_text_count:active,
+#events_calendar_month_text_count.active {
+  border-color: $cn_colour_1;
+  background: white;
+  color: $cn_colour_1;
 }
 
 
@@ -183,7 +193,13 @@ $cn_contrastor_third_0: #c18176;
 
 #events_calendar_month {
 
-  margin: 0 0 10px 0;
+//  border:1px solid $cn_grey_-1;
+
+//  -moz-border-radius:    3px;
+//  -webkit-border-radius: 3px;
+//  border-radius:         3px;
+//  padding:5px solid
+  margin: 0 0 10px 10px;
   text-align:center;
   font-size: 15px;
   font-weight:bold;

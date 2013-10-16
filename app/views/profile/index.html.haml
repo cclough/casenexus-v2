@@ -12,15 +12,25 @@
 
 
     $(document).ready(function(){  
-      // if (cases_analysis_chart_case_count < 3) {
-      //   $("#cases_analysis_chart_progress_empty").fadeIn("fast");
-      // } else {
-      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count);
-      // }
+      if (cases_analysis_chart_case_count < 3) {
+        $("#cases_analysis_chart_progress_empty").fadeIn("fast");
+      } else {
+        window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count);
+      }
 
     });
 
 
+    var myScroll;
+    function loaded() {
+      profile_index_calendar_scoller = new iScroll('profile_index_panel_calendar_container', {
+        //snap: 'div',
+        momentum: true,     
+      });
+    }
+
+
+    document.addEventListener('DOMContentLoaded', loaded, false);
 
 
 - if flash[:success] == 'Welcome'
@@ -46,7 +56,7 @@
     /     %span.iconbar-unread
     /       = current_user.visits.count
     #profile_index_info_actions_invite.btn.btn-colour.btn-round{"data-original-title"=>"Invite friends", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
-      %i.icon-plus
+      %i.icon-group
     = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-container"=>"body", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btn btn-colour btn-round", method: :delete do
       %i.icon-reply
 
@@ -61,11 +71,11 @@
 
   #profile_index_info
 
-
-    #profile_index_info_avatar
-      = avatar_for(current_user,size:"medium")
-    #profile_index_info_username
-      = current_user.username
+    #profile_index_info_user
+      #profile_index_info_avatar
+        = avatar_for(current_user,size:"medium")
+      #profile_index_info_username
+        = current_user.username
 
     #profile_index_info_degreelevel
       %i.icon-star

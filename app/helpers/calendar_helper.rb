@@ -25,7 +25,7 @@ module CalendarHelper
     end
 
     def day_cell(day)
-      content_tag :div, view.capture(day, &callback), class: day_classes(day)
+      content_tag :div, view.capture(day, &callback), class: day_classes(day), id: ("events_calendar_day_today" if day == Date.today)
     end
 
     def day_classes(day)

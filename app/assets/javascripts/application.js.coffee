@@ -10,16 +10,17 @@
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
+#= require lib/iscroll
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-clickover
 #= require lib/bootstrap-datetimepicker
 #= require lib/bootstrap-lightbox
-#= require bootstrap-wysihtml5
 #= require lib/bootstrap-select
 #= require lib/bootstrap-switch
 #= require lib/flatui-checkbox
 #= require lib/flatui-radio
+#= require bootstrap-wysihtml5
 
 #= require account
 #= require books

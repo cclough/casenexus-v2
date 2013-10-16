@@ -18,7 +18,7 @@
           %i.icon-refresh
     
 
-    %span#events_calendar_month
+    %span#events_calendar_month.btn.btn-micro.btn-colour
       = link_to date: @date.prev_month do
         %i.icon-chevron-left.icon-white
       
@@ -29,18 +29,18 @@
         %i.icon-chevron-right.icon-white
 
 
-    %span#events_calendar_month_text_count
+    %span#events_calendar_month_text_count.btn.btn-colour
       - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
       = "(#{pluralize(month_count,"appt")})"
 
 
 
 
-  .spacer20
   
 
 
-  
+  .profile_index_panel_calendar_shift_button{"data-direction"=>"-672"}
+    %i.icon-chevron-left
   #profile_index_panel_calendar_container
     = calendar @date do |date|
       .events_calendar_day_num
@@ -51,4 +51,6 @@
       - if @events_by_date[date]
 
         - @events_by_date[date].each do |event|
-          .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top",style:"left:" + (event.datetime.hour * 4).to_s + "px"}
+          .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top",style: "left:" + (event.datetime.hour * 4).to_s + "px"}
+  .profile_index_panel_calendar_shift_button{"data-direction"=>"672"}
+    %i.icon-chevron-right
