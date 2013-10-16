@@ -163,11 +163,6 @@ $(document).ready ->
   $("#map_index_users_form input").keypress (e) ->
     map_index_users_updatelist()  if e.which is 13
 
-  # Prime posts
-  $("#modal_post").modal
-    backdrop: true
-    show: false
-
   $("#map_index_users_form_button_posts_new").click ->
     if !($("#modal_post").hasClass("in"))
       $(".modal").modal("hide")

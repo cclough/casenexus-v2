@@ -29,10 +29,6 @@ $(document).ready ->
   if typeof events_index_choosecase_event_id is "string"
     window.events_calendar_edit_modal_show(events_index_choosecase_event_id)
 
-  $("#modal_event").modal
-  	backdrop: false
-  	show: false
-
   window.events_calendar_rebless()
 
 
