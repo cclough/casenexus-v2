@@ -269,8 +269,12 @@ class User < ActiveRecord::Base
       completed.where(created_at: (1.day.ago)..(Time.now))
     end
 
-    def list_local(user)
-      user.nearbys(50).completed << user
+    def list_local(user,include_current_user)
+      if include_current_user == true
+        user.nearbys(50).completed << user
+      else
+        user.nearbys(50).completed
+      end
     end
 
     def list_online_today

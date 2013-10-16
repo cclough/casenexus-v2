@@ -12,10 +12,10 @@ class MembersController < ApplicationController
       when "params"
         require 'will_paginate/array' # neccessary to allow list_local to work in members
         target_user = User.find(params[:user_id])
-        users_scope = users_pre_scope.list_local(target_user).reverse! # reverse brings current_user to the top
+        users_scope = users_pre_scope.list_local(target_user,true).reverse! # reverse brings current_user to the top
       when "local"
         require 'will_paginate/array' # neccessary to allow list_local to work in members
-        users_scope = users_pre_scope.list_local(current_user).reverse! # reverse brings current_user to the top
+        users_scope = users_pre_scope.list_local(current_user,true).reverse! # reverse brings current_user to the top
       when "new"
         users_scope = users_pre_scope.list_new
       when "online_today"
