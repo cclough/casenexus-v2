@@ -1,0 +1,25 @@
+<%- if @headsup.errors.any? %>
+
+  $('#modal_headsup').html('<%= j(render('modal_headsup_form')) %>');
+
+  window.application_spinner_prime(".modal.in");
+
+  window.application_form_errors_close();
+
+<%- else %>
+
+  $('#modal_headsup').modal('hide');
+
+  $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");
+
+  $("div[id=application_flash]:last").fadeIn("fast", function () {
+
+    setTimeout(function() {
+      $("div[id=application_flash]:last").fadeOut('fast', function() {
+        $("div[id=application_flash]:last").remove();
+      });
+    }, 4000);
+
+  });
+
+<%- end %>

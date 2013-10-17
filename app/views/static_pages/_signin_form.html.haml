@@ -10,12 +10,12 @@
 
     .static_home_form_input_container
       .static_home_form_input_icon_container
-        %i.input-icon.fui-user.huge
+        = image_tag "icons/forms/user.png"
       = f.text_field :email, tabindex: "1", placeholder: "University email", class: "span30 large"
 
     .static_home_form_input_container
       .static_home_form_input_icon_container
-        %i.input-icon.fui-lock.huge
+        = image_tag "icons/forms/password.png"
       = f.password_field :password, tabindex: "2", placeholder: "Password", class: "span30 large"
       
 
@@ -27,5 +27,5 @@
 
 
 
-  #static_home_switch_link_signup.static_home_switch_link.btn.btn-colour.btn-micro{"data-switch_to"=>"signup", "data-switch_from"=>"signin"}
+  #static_home_switch_link_signup.static_home_switch_link.btn.btn-colour.btn-small{"data-switch_to"=>"signup", "data-switch_from"=>"signin"}
     Not yet registered? Sign up

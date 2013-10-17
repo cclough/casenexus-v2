@@ -103,6 +103,10 @@ header {
       padding:13px;
       color:white !important;
     }
+    img {
+
+
+    }
     &:hover {
       background:$cn_colour_05;
     }
@@ -126,17 +130,13 @@ header {
 
   li {
     a {
-      padding: 13px 9px;
+      padding:13px 10px; //make a little thinner padding horizontally
     }
   }
   #header_nav_links_right_user {
     margin-right:10px;
     a {
       padding:13px 12px;
-    }
-    img {
-      margin-top:-7px;
-//      margin-left:-5px;
     }
   }
 

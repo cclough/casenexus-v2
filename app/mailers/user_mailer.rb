@@ -18,6 +18,11 @@ class UserMailer < ActionMailer::Base
     mail(to: "info@casenexus.com", subject: "New User")
   end
 
+  def newheadsup_to_admin(headsup)
+    @headsup = headsup
+
+    mail(to: "info@casenexus.com", subject: "New Headsup")
+  end
 
   def newpost_to_admin(post)
     @post = post

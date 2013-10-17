@@ -96,7 +96,7 @@ $cn_contrastor_third_0: #c18176;
     margin: 20px 0 ;
 
     img {
-      max-height:100px;
+      max-height:120px;
     }
   }
 
@@ -106,25 +106,26 @@ $cn_contrastor_third_0: #c18176;
     float:left;
     text-align:center;
 
-
-    .static_home_pitch_block_icon {
-      margin: 10px auto;
-      width:55px;
-      height:55px;
-      line-height:55px;
-      border-radius:50%;
-      font-size:30px;
-      border:2px solid $cn_grey_-2;
+    .static_home_pitch_icon {
+      max-width:50px;
+      margin-bottom:10px;
     }
 
     .static_home_pitch_block_title {
       font-size:20px;
-      margin-bottom:5px;
+      margin-bottom:10px;
     }
     .static_home_pitch_block_content {
       line-height:22px;
       padding:10px;
+      margin:4px;
+      border:1px solid $cn_grey_-1;
+      -moz-border-radius:    3px;
+      -webkit-border-radius: 3px;
+      border-radius:         3px;
+      cursor:pointer;
     }
+
   }
 }
 
@@ -168,7 +169,8 @@ $cn_contrastor_third_0: #c18176;
 .static_home_signin_link {
   display:block;
   text-align:center;
-  margin-top:10px;
+  margin-top:15px;
+  font-size:12px;
 }
 
 
@@ -183,17 +185,13 @@ $cn_contrastor_third_0: #c18176;
   height:41px;
   width:45px;
   background:$cn_grey_0;
-  border: 2px solid $cn_grey_-1;
+  border: 1px solid $cn_grey_-1;
   z-index:1;
 
-  i {
+  img {
     position:absolute;
-    left:6px;
-    top:4px;
-    color:$cn_grey_-2;
-    font-size:26px;
-    text-align:center;
-    margin-left:4px;
+    left:11px;
+    top:10px;
   }
 }
 
@@ -217,7 +215,7 @@ $cn_contrastor_third_0: #c18176;
   input {
     display:block;
     margin-bottom:15px;
-    border:2px solid $cn_grey_-1;
+    border:1px solid $cn_grey_-1;
     -moz-border-radius:    3px;
     -webkit-border-radius: 3px;
     border-radius:         3px;
@@ -256,7 +254,7 @@ $cn_contrastor_third_0: #c18176;
   input {
     display:block;
     margin-bottom:15px;
-    border:2px solid $cn_grey_-1;
+    border:1px solid $cn_grey_-1;
     -moz-border-radius:    3px;
     -webkit-border-radius: 3px;
     border-radius:         3px;

@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
           session[:code] = nil
           flash[:notice] = "Invitation already used"
         else
-          flash[:notice] = "Hello #{@invitation.name}, thank you for accepting your invitation"
+          flash[:notice] = "Hello #{@invitation.name}, thank you for accepting your invitation - complete the form to sign up for an account."
           session[:code] = params[:code]
         end
       end
@@ -23,6 +23,7 @@ class StaticPagesController < ApplicationController
     else
       @login = User.new
       @user = User.new
+      @headsup = Headsup.new
       @user.invitation_code = session[:code]
     end
   end

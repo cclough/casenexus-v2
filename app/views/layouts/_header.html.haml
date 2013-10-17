@@ -12,32 +12,32 @@
           %ul#header_nav_links_left.nav.pull-left
 
             %li{:class => ("active" if params[:controller] == "map") }
-              = link_to raw("<i class='icon-map-marker icon-large icon-fixed-width'></i> Find partners"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<img src=/assets/icons/header/map.png\> Find partners"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li{:class => ("active" if params[:controller] == "books") }
-              = link_to raw("<i class='icon-book icon-white icon-large icon-fixed-width'></i> Case library"), library_path, "data-original-title"=>"Choose a case to practise", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<img src=/assets/icons/header/library.png\> Case library"), library_path, "data-original-title"=>"Choose a case to practise", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li
-              = link_to raw("<i class='icon-comments-alt icon-large icon-fixed-width'></i> Discussion"), "#", "data-original-title"=>"Coming soon...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<img src=/assets/icons/header/discussion.png\> Discussion"), "#", "data-original-title"=>"Coming soon...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li
-              = link_to raw("<i class='icon-circle-blank icon-large icon-fixed-width'></i> Meta"), "#", "data-original-title"=>"Coming soon...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<i class='icon-circle-blank icon-medium icon-fixed-width'></i> Meta"), "#", "data-original-title"=>"Coming soon...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
 
           %ul#header_nav_links_right.nav.pull-right
 
             %li
-              = link_to raw("<i class='icon-question-sign icon-white icon-large icon-fixed-width'></i>"), '#', id: 'header_link_help', "data-original-title"=>"Help", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<img src=/assets/icons/header/help.png\>"), '#', id: 'header_link_help', "data-original-title"=>"Help", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
             %li
-              = link_to raw("<i class='icon-bell-alt icon-white icon-large icon-fixed-width'></i>"), '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<img src=/assets/icons/header/contact.png\>"), '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li#header_notifications_menu_container{:class => ("active" if params[:controller] == "notifications") }
               = render '/notifications/menu'
 
             %li#header_nav_links_right_user{ class: ("active" if params[:controller]=="profile")}
-              = link_to "/", "data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class:"application_tooltip" do
-                = avatar_for(current_user, size:"small", link:0)
-                / %i.icon-user.icon-large.icon-white
+              = link_to "/", "data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip" do
+                / = avatar_for(current_user, size:"small", link:0)
+                %img{src:"/assets/icons/header/user.png"}
 
               
 
