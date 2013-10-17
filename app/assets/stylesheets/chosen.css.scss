@@ -210,7 +210,7 @@ $cn_contrastor_third_0: #c18176;
   background-image: -moz-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
   background-image: -o-linear-gradient(top, #eeeeee 1%, #ffffff 15%);
   background-image: linear-gradient(#eeeeee 1%, #ffffff 15%);*/
-  border: 2px solid $cn_grey_-1;
+  border: 1px solid $cn_grey_-1;
   margin: 0;
   padding: 0;
   cursor: text;
@@ -327,7 +327,7 @@ $cn_contrastor_third_0: #c18176;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
-  border:2px solid #BDC3C7;
+  border:1px solid #BDC3C7;
   -webkit-overflow-scrolling: touch;
 }
 .chzn-container-multi .chzn-results {
