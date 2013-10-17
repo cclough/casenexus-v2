@@ -63,7 +63,8 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-
+  background:$cn_colour_05;
+  color:white !important;
 
 
 
@@ -202,6 +203,7 @@ $cn_contrastor_third_0: #c18176;
 
 
     #profile_index_friends_friends {
+      margin-top:5px;
       overflow:auto;
       height:400px;
 
@@ -229,17 +231,17 @@ $cn_contrastor_third_0: #c18176;
         display:block;
         cursor:pointer;
         position:relative;
-        border-bottom:1px solid $cn_grey_-1;
+        border-bottom:1px solid $cn_colour_0;
 
         line-height:50px;
         div {
           display:inline-block;
         }
         &:hover {
-          background:$cn_grey_-1;
+          background:$cn_colour_0;
         }
         &.active {
-          background:$cn_grey_-1;
+          background:$cn_colour_0;
         }
         .profile_index_friends_friends_item_requested_highlight {
           display:none;
@@ -392,7 +394,7 @@ $cn_contrastor_third_0: #c18176;
       padding:7px;
       display:block;
       position:relative;
-
+      border-bottom:1px solid $cn_grey_0;
       div {
         display:inline-block;
       }

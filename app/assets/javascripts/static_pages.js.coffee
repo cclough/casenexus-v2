@@ -18,8 +18,12 @@ window.modal_headsup_show = () ->
 
     $("#modal_headsup").on "shown", ->      
       window.application_spinner_prime(".modal.in")
+      # prevent enter submission
+      # $("#headsup_email").keypress (e) ->
+      #   return false if e.keyCode is "13"
 
     $("#modal_headsup").modal "show"
+
 
 
 $(document).ready ->

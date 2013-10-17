@@ -653,6 +653,11 @@ $cn_contrastor_third_0: #c18176;
     height:9px;
     padding:0px;
   }
+  tr {
+    &:hover {
+      font-weight:500;
+    }
+  }
   .cases_resultstable_table_column_criteria {
     width:140px;
   }
