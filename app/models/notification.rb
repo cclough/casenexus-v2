@@ -190,9 +190,9 @@ class Notification < ActiveRecord::Base
     return if self.user.email_users == false
     case self.ntype
       when "welcome"
-        UserMailer.welcome(self.user,
-                           self.url,
-                           self.title)
+        UserMailer.delay.welcome(self.user,
+                                 self.url,
+                                 self.title)
       when "feedback"
         UserMailer.delay.feedback(self.sender,
                             self.user,
@@ -311,9 +311,9 @@ class Notification < ActiveRecord::Base
   # Still not correct yet
   def self.most_recent_for(user_id)
     sent = select("user_id as asso_id, MAX(id) as latest").where("(sender_id = ?)",
-                        user_id).group('asso_id').order("latest")
+                        user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
-                    user_id).group('asso_id').order("latest")
+                    user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
     ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
     where(id: ids).order('created_at desc')
   end
