@@ -9,6 +9,6 @@ class Headsup < ActiveRecord::Base
   before_create :send_newheadsup_email_to_admin
 
   def send_newheadsup_email_to_admin
-    UserMailer.newheadsup_to_admin(self).deliver
+    UserMailer.delay.newheadsup_to_admin(self)
   end
 end
