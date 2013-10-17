@@ -98,7 +98,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chart_analysis_progress.autoMargins = false
     chart_analysis_progress.marginRight = 0
     chart_analysis_progress.marginLeft = 0
-    chart_analysis_progress.marginBottom = 20
+    chart_analysis_progress.marginBottom = 30
     chart_analysis_progress.marginTop = 0
     
     # animations
@@ -112,6 +112,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     categoryAxis.gridAlpha = 0.07
     categoryAxis.axisColor = "#DADADA"
     categoryAxis.startOnAxis = true
+    categoryAxis.equalSpacing = true
     # categoryAxis.labelRotation = 45
     # categoryAxis.fillColor = "#dee1e3"
     # categoryAxis.fillAlpha = 100
