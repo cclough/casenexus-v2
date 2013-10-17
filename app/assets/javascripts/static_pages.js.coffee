@@ -24,9 +24,10 @@ window.modal_headsup_show = () ->
 
 $(document).ready ->
 
-  setTimeout (->
-    window.modal_headsup_show()
-  ), 2000
+  if $("#static_home_panel_left").length > 0
+    setTimeout (->
+      window.modal_headsup_show()
+    ), 2000
 
   $(".static_home_switch_link").click ->
     window.static_switch_view(this,"normal")
