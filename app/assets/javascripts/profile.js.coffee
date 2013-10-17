@@ -80,6 +80,8 @@ $(document).ready ->
   # INFO
   $("#profile_index_info_actions_settings").click ->
 
+    $("#modal_profile").off "shown"
+    
     if !($("#modal_profile").hasClass("in"))
 
       $(".modal").modal("hide")
@@ -93,11 +95,9 @@ $(document).ready ->
           window.account_completeedit_bless()
 
 
-
-
-          
-
   $("#profile_index_info_actions_invite").click ->
+
+    $("#modal_profile").off "shown"
 
     if !($("#modal_profile").hasClass("in"))
 

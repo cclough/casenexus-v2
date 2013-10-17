@@ -945,19 +945,19 @@ a.muted:focus {
 
 
 .btn.btn-tag {
-  border: 2px solid $cn_colour_-1;
+  border: 1px solid $cn_colour_-1;
   color: $cn_colour_-1;
 }
 .btn.btn-tag:hover,
 .btn.btn-tag:focus,
 .btn-group:focus .btn.btn-red.dropdown-toggle {
-  border: 2px solid $cn_colour_0;
+  border: 1px solid $cn_colour_0;
   color: $cn_colour_0;
 }
 .btn.btn-tag:active,
 .btn-group.open .btn.btn-tag.dropdown-toggle,
 .btn.btn-tag.active {
-  border: 2px solid $cn_colour_-2;
+  border: 1px solid $cn_colour_-2;
   color: $cn_colour_-2;
 }
 

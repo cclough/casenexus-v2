@@ -252,20 +252,23 @@ $cn_contrastor_third_0: #c18176;
   -moz-border-radius: 3px;
   border-radius: 3px;
 
-  font-weight:bold;
+  font-weight:400;
   &.novice {
     border: 1px solid $cn_contrastor_0;
-    color:  $cn_contrastor_0;
+    background: $cn_contrastor_0;
+    color:  white;
   }
 
   &.intermediate {
     border: 1px solid $cn_colour_1;
-    color:  $cn_colour_1;
+    background: $cn_colour_1;
+    color:  white;
   }
 
   &.advanced {
     border: 1px solid $cn_contrastor_third_0;
-    color:  $cn_contrastor_third_0;
+    background: $cn_contrastor_third_0;
+    color:  white;
   }
 }
 
