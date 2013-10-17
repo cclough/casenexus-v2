@@ -737,8 +737,8 @@ a.muted:focus {
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle {
   background: transparent;
-  color: $cn_colour_0;
-  border-color: $cn_colour_0;
+  color: $cn_colour_1;
+  border-color: $cn_colour_1;
   outline: none;
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
@@ -752,8 +752,8 @@ a.muted:focus {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  border-color: $cn_colour_0;
-  background: $cn_colour_0;
+  border-color: $cn_colour_1;
+  background: $cn_colour_1;
   color: white;
 }
 .btn.disabled,
@@ -910,14 +910,14 @@ a.muted:focus {
 .btn.btn-colour:hover,
 .btn.btn-colour:focus,
 .btn-group:focus .btn.btn-red.dropdown-toggle {
-  border-color: $cn_colour_0;
-  color: $cn_colour_0;
+  border-color: $cn_colour_1;
+  color: $cn_colour_1;
 }
 .btn.btn-colour:active,
 .btn-group.open .btn.btn-colour.dropdown-toggle,
 .btn.btn-colour.active {
-  border-color: $cn_colour_0;
-  background: $cn_colour_0;
+  border-color: $cn_colour_1;
+  background: $cn_colour_1;
   color: white;
 }
 

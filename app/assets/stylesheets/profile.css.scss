@@ -334,8 +334,12 @@ $cn_contrastor_third_0: #c18176;
     line-height:100px;
     text-align:center;
     font-size:20px;
-    color:$cn_grey_0;
+    color:$cn_grey_-1;
     cursor:pointer;
+    &:hover {
+      background:$cn_grey_-1;
+      color:white;
+    }
   }
   #profile_index_panel_calendar_container {
     overflow-y:hidden;

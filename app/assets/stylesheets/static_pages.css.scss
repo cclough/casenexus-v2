@@ -124,6 +124,9 @@ $cn_contrastor_third_0: #c18176;
       -webkit-border-radius: 3px;
       border-radius:         3px;
       cursor:pointer;
+      &:hover {
+        background:rgba(114,170,201,0.2); //cn_colour_1
+      }
     }
 
   }

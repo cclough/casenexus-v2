@@ -55,25 +55,18 @@ $(document).ready ->
   if $("#profile_index_panel_calendar_container").length > 0
 
     # # Scroll calendar to today
-    setTimeout (->
-      # $("#profile_index_panel_calendar_container").animate
-      #   scrollLeft:  $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
-      # , 250
+    if $("#profile_index_panel_calendar_container").find(".today")
+      setTimeout (->
+        distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
+        profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
+      ), 100
 
-      distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
-      profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
-
-    ), 100
-
+    # Prime calendar shift buttons
     $(".profile_index_panel_calendar_shift_button").click ->
       direction = $(this).data "direction"
 
       profile_index_calendar_scoller.scrollTo(direction, 0, 300,true) 
 
-
-      # $("#profile_index_panel_calendar_container").animate
-      #   scrollLeft: $("#profile_index_panel_calendar_container").scrollLeft - 672
-      # , 250
 
     # Load results table
     $.get "/cases/results?view=analysis", (data) ->
