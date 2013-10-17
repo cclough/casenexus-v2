@@ -63,8 +63,8 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-  background:$cn_colour_05;
-  color:white !important;
+//  background:$cn_colour_05;
+//  color:white !important;
 
 
 
@@ -231,17 +231,17 @@ $cn_contrastor_third_0: #c18176;
         display:block;
         cursor:pointer;
         position:relative;
-        border-bottom:1px solid $cn_colour_0;
+        border-bottom:1px solid $cn_grey_0;//$cn_colour_0;
 
         line-height:50px;
         div {
           display:inline-block;
         }
         &:hover {
-          background:$cn_colour_0;
+          background:$cn_grey_0;//$cn_colour_0;
         }
         &.active {
-          background:$cn_colour_0;
+          background:$cn_grey_0;//$cn_colour_0;
         }
         .profile_index_friends_friends_item_requested_highlight {
           display:none;
@@ -252,7 +252,7 @@ $cn_contrastor_third_0: #c18176;
             top:0px;
             bottom:0px;
             width:5px;
-            background: $cn_colour_0;
+            background: $cn_colour_1;
             display:inline;
           }
         }
