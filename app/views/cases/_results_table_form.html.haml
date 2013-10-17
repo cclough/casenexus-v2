@@ -16,61 +16,40 @@
 
 
     - if @view != "show"
-      / - if current_user.case_count_recd >= 2
+      - if current_user.case_count_recd >= 2
 
-      /   .books_index_form_filters_title
-      /     Period
+        .cases_resultstable_form_filters_title
+          Period
 
-      /   #application_filtergroup_choicenav_period.application_filtergroup_choicenav{"data-filter_name"=> "period"}
-      /     %nav
-      /       %ul
-      /         %li{:href => "#1", "data-radio"=>0, "data-type"=>"period"} 
-      /           1
-      /           .application_filtergroup_choicenav_blip
-      /         %li{:href => "#2", "data-radio"=>1, "data-type"=>"period"} 
-      /           2
-      /           .application_filtergroup_choicenav_blip
-      /         - if current_user.case_count_recd >= 5  
-      /           %li{:href => "#3", "data-radio"=>2, "data-type"=>"period"} 
-      /             5
-      /             .application_filtergroup_choicenav_blip
-      /         - if current_user.case_count_recd >= 10
-      /           %li{:href => "#4", "data-radio"=>3, "data-type"=>"period"} 
-      /             10
-      /             .application_filtergroup_choicenav_blip
+        #application_filtergroup_choicenav_period.application_filtergroup_choicenav.cases{"data-filter_name"=> "period"}
+          %nav
+            %ul
+              %li{:href => "#1", "data-period"=>"1"} 
+                1
+                .application_filtergroup_choicenav_blip
+              %li{:href => "#2", "data-period"=>"2"} 
+                2
+                .application_filtergroup_choicenav_blip
+              - if current_user.case_count_recd >= 5  
+                %li{:href => "#3", "data-period"=>"5"} 
+                  5
+                  .application_filtergroup_choicenav_blip
+              - if current_user.case_count_recd >= 10
+                %li{:href => "#4", "data-period"=>"10"} 
+                  10
+                  .application_filtergroup_choicenav_blip
 
-      /       %span.arrow
-      /       %span.application_filtergroup_choicenav_backbone_line
-      /       %span.application_filtergroup_choicenav_follower_line
+            %span.arrow
+            %span.application_filtergroup_choicenav_backbone_line
+            %span.application_filtergroup_choicenav_follower_line
 
-      /   = text_field_tag :cases_resultstable_period, "1"
+        = hidden_field_tag :cases_resultstable_period, "1"
 
-      / .cases_resultstable_period_container.btn-group.pull-right
-      /   .btn.btn-colour.btn-micro.cases_resultstable_period_button.active{"data-radio"=>0, "data-type"=>"period"}
-      /     1
-      /   .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>1, "data-type"=>"period"}
-      /     2
-      /   - if current_user.case_count_recd >= 5      
-      /     .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>2, "data-type"=>"period"}
-      /       5
-      /   - if current_user.case_count_recd >= 10      
-      /     .btn.btn-colour.btn-micro.cases_resultstable_period_button{"data-radio"=>3, "data-type"=>"period"}
-      /       10
-
-      / .span12.offset1.cases_resultstable_label.pull-right
-      /   Period (# cases)
-      /   %i.icon-caret-right
 
 
 
     .cases_resultstable_form_radiogroup.hidden
       = radio_button_tag :resultstable_order_by, 'order', checked: true
       = radio_button_tag :resultstable_order_by, 'group'
-
-      - if @view != "show"
-        = radio_button_tag :resultstable_period, 1, checked: true
-        = radio_button_tag :resultstable_period, 2
-        = radio_button_tag :resultstable_period, 5
-        = radio_button_tag :resultstable_period, 10
 
       = hidden_field_tag :id, @case.id, class: "cases_resultstable_caseid" if @case

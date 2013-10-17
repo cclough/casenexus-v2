@@ -289,6 +289,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     # used to call other chart draw functions here, but now in navigation button click
 
 
+
+
+
+
 #////////////////////////////////////////////////////////
 # Table - Bars //////////////////////////////////////////
 #////////////////////////////////////////////////////////
@@ -314,12 +318,15 @@ window.cases_resultstable_prime = (view) ->
     $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
     false
 
-
+  # For period slider
   $("#cases_"+view+"_results .application_filtergroup_choicenav li").off 'click'
   $("#cases_"+view+"_results .application_filtergroup_choicenav li").click ->
     # Submit form
     $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
     false
+
+  window.application_choiceNav()
+
 
   i = 0
 

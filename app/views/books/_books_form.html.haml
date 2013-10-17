@@ -35,7 +35,7 @@
         %span.application_filtergroup_choicenav_follower_line
 
 
-    = hidden_field_tag :books_filter_btype, "all"
+    = text_field_tag :books_filter_btype, "all"
 
 
 
@@ -45,16 +45,16 @@
     #application_filtergroup_choicenav_sort.application_filtergroup_choicenav{"data-filter_name"=> "sort"}
       %nav
         %ul
-          %li{:href => "#1", "data-btype"=>"rating"} 
+          %li{:href => "#1", "data-sort"=>"rating"} 
             Rating
             .application_filtergroup_choicenav_blip
-          %li{:href => "#2", "data-btype"=>"title"} 
+          %li{:href => "#2", "data-sort"=>"title"} 
             Title
             .application_filtergroup_choicenav_blip
-          %li{:href => "#3", "data-btype"=>"author"} 
+          %li{:href => "#3", "data-sort"=>"author"} 
             Author
             .application_filtergroup_choicenav_blip
-          %li{:href => "#4", "data-btype"=>"difficulty"} 
+          %li{:href => "#4", "data-sort"=>"difficulty"} 
             Difficulty
             .application_filtergroup_choicenav_blip
 
@@ -62,7 +62,7 @@
         %span.application_filtergroup_choicenav_backbone_line
         %span.application_filtergroup_choicenav_follower_line
 
-    = hidden_field_tag :books_filter_sort
+    = text_field_tag :books_filter_sort
 
     .spacer30
 
