@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  # before_filter :authenticate_user!, :unless => :devise_controller?
 
   before_filter :update_last_online_at
   before_filter :set_timezone 
