@@ -35,7 +35,7 @@
         %span.application_filtergroup_choicenav_follower_line
 
 
-    = text_field_tag :books_filter_btype, "all"
+    = hidden_field_tag :books_filter_btype, "all"
 
 
 
@@ -62,7 +62,7 @@
         %span.application_filtergroup_choicenav_backbone_line
         %span.application_filtergroup_choicenav_follower_line
 
-    = text_field_tag :books_filter_sort
+    = hidden_field_tag :books_filter_sort,"rating"
 
     .spacer30
 
@@ -84,7 +84,7 @@
           = tags_type_item.name
 
 
-    = text_field_tag :books_filter_tag, 0
+    = hidden_field_tag :books_filter_tag
 
 
     .spacer10
