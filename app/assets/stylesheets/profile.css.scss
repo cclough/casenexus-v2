@@ -204,8 +204,9 @@ $cn_contrastor_third_0: #c18176;
 
     #profile_index_friends_friends {
       margin-top:5px;
-      overflow:auto;
+      overflow-y:hidden;
       height:400px;
+      position:relative;
 
       #profile_index_friends_friends_empty {
         text-align:center;
@@ -230,7 +231,7 @@ $cn_contrastor_third_0: #c18176;
         height:50px;
         display:block;
         cursor:pointer;
-        position:relative;
+//        position:relative;
         border-bottom:1px solid $cn_grey_0;//$cn_colour_0;
 
         line-height:50px;

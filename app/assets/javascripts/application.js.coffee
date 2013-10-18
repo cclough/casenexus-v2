@@ -341,13 +341,14 @@ window.application_choiceNav = () ->
       if filter_name == "btype"
         btype = $(nav_item).data "btype"
         $("#books_filter_" + filter_name).val btype
+        window.books_index_books_updatelist()
       else if filter_name == "sort"
         sort = $(nav_item).data "sort"
         $("#books_filter_" + filter_name).val sort
+        window.books_index_books_updatelist()
       else if filter_name == "period"
         period = $(nav_item).data "period"
         $("#cases_resultstable_" + filter_name).val period
-
 
       window.ChoiceNav.centerArrow nav_item, filter_name_complete
       window.ChoiceNav.growLine nav_item, filter_name_complete

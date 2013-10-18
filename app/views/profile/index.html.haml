@@ -7,8 +7,8 @@
     var account_completeedit_map_lat_start = "#{current_user.lat}";
     var account_completeedit_map_lng_start = "#{current_user.lng}";
 
+    // For settings map, I think
     var account_completeedit_currentuser_university_image = "#{current_user.university.image}";
-
 
 
     $(document).ready(function(){  
@@ -21,16 +21,7 @@
     });
 
 
-    var myScroll;
-    function loaded() {
-      profile_index_calendar_scoller = new iScroll('profile_index_panel_calendar_container', {
-        //snap: 'div',
-        momentum: true,     
-      });
-    }
 
-
-    document.addEventListener('DOMContentLoaded', loaded, false);
 
 
 - if flash[:success] == 'Welcome'

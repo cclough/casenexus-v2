@@ -54,6 +54,16 @@ $(document).ready ->
   # If profile page
   if $("#profile_index_panel_calendar_container").length > 0
 
+    # Load Scroller
+    profile_index_calendar_scoller = new iScroll("profile_index_panel_calendar_container",
+      momentum: true
+    )
+    profile_index_friends_scoller = new iScroll("profile_index_friends_friends",
+      #snap: 'div',
+      vScrollbar: true,
+      momentum: true
+    )
+  
     # # Scroll calendar to today
     if $("#profile_index_panel_calendar_container").find(".today")
       setTimeout (->

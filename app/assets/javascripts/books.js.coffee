@@ -29,9 +29,9 @@ $(document).ready ->
   if $("#books_index_form").size() > 0
     window.books_index_books_updatelist()
 
-  # Filter buttons
-  $(".application_filtergroup_choicenav li").click ->
-    window.books_index_books_updatelist()
+  # # Filter buttons
+  # $(".application_filtergroup_choicenav li").click ->
+  #   window.books_index_books_updatelist()
 
   # Tag Select click
   $(".books_index_form_fitlers_tag_selector_item").click ->
