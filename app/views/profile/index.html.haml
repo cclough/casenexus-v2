@@ -67,22 +67,22 @@
       /   Rate: 2 cases per week
 
 
-
-      .spacer10
-
-      #profile_index_info_cases
-        #profile_index_info_cases_givn
-          = current_user.case_count_givn
-          %span.profile_index_info_cases_text
-            taken
-        #profile_index_info_cases_recd    
-          = current_user.case_count_recd
-          %span.profile_index_info_cases_text
-            given
-        #profile_index_info_cases_external
-          = current_user.case_count_external
-          %span.profile_index_info_cases_text
-            ext.
+  #profile_index_info_cases
+    #profile_index_info_cases_givn
+      .profile_index_info_cases_counts_container
+        = current_user.case_count_givn
+        %span.profile_index_info_cases_text
+          taken
+    #profile_index_info_cases_recd
+      .profile_index_info_cases_counts_container
+        = current_user.case_count_recd
+        %span.profile_index_info_cases_text
+          given
+    #profile_index_info_cases_external
+      .profile_index_info_cases_counts_container
+        = current_user.case_count_external
+        %span.profile_index_info_cases_text
+          external
 
 
 

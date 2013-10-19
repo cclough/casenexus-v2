@@ -17,21 +17,6 @@
       = link_to calendar_ics_url, "data-container"=>"body", "data-original-title"=>"Sync with your calendar software/phone", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btn btn-colour btn-round" do
         %i.icon-refresh
 
-    %span#events_calendar_month.btn.btn-micro.btn-colour
-      = link_to date: @date.prev_month do
-        %i.icon-arrow-left.icon-white
-      
-      %span#events_calendar_month_text
-        = @date.strftime("%B %Y")
-
-      = link_to date: @date.next_month do
-        %i.icon-arrow-right.icon-white
-
-
-    %span#events_calendar_month_text_count.btn.btn-colour
-      - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-      = "(#{pluralize(month_count,"appt")})"
-
 
 
 
@@ -49,3 +34,19 @@
 
         - @events_by_date[date].each do |event|
           .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top",style: "left:" + (event.datetime.hour * 4).to_s + "px"}
+
+
+  %span#events_calendar_month.btn.btn-micro.btn-colour
+    = link_to date: @date.prev_month do
+      %i.icon-arrow-left.icon-white
+    
+    %span#events_calendar_month_text
+      = @date.strftime("%B %Y")
+
+    = link_to date: @date.next_month do
+      %i.icon-arrow-right.icon-white
+
+
+  %span#events_calendar_month_text_count.btn.btn-colour
+    - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
+    = "(#{pluralize(month_count,"appt")})"

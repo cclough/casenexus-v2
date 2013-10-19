@@ -73,16 +73,16 @@ $cn_contrastor_third_0: #c18176;
 
   #profile_index_info {
     padding:15px;
-    height:130px;
 
     #profile_index_info_avatar {
       float:left;
       margin-right:10px;
       padding-top:10px;
+      display:inline-block;
     }
     #profile_index_info_user {
-      width:140px;
-      float:left;
+      width:160px;
+      display:inline-block;
       #profile_index_info_username {
         display:inline-block;
         font-size:20px;
@@ -99,39 +99,45 @@ $cn_contrastor_third_0: #c18176;
 
     }
 
+  }
+
+
     #profile_index_info_cases {
       padding:0;
-      width:170px;
       display:block;
-      div {
-        display:inline-block;
-        width:50px;
-        height:45px;
+      border-top:1px solid $cn_grey_0;
+      height:60px;
+      .profile_index_info_cases_counts_container {
+        display:none;
+      }
+      #profile_index_info_cases_recd, #profile_index_info_cases_givn, #profile_index_info_cases_external {
+        width:33.3333333%;
+        float:left;
+        height:60px;
         text-align:center;
-        line-height:33px;
+        line-height:50px;
         position:relative;
       }
 
 
       #profile_index_info_cases_recd {
-        background: #73bf72;
-        font-size:20px;
+        font-size:30px;
         font-weight:bolder;
-        color:white;
+        color:#73bf72;
+        border-right:1px solid $cn_grey_0;
       }
 
-      #profile_index_info_cases_givn{
-        background: $cn_colour_1;
-        font-size:20px;
+      #profile_index_info_cases_givn {
+        font-size:30px;
         font-weight:bolder;
-        color:white;
+        color:$cn_colour_1;
+        border-right:1px solid $cn_grey_0;
       }
 
-      #profile_index_info_cases_external{
-        background: $cn_colour_-2;
-        font-size:20px;
+      #profile_index_info_cases_external {
+        font-size:30px;
         font-weight:bolder;
-        color:white;
+        color:$cn_colour_-2;
       }
 
       .profile_index_info_cases_text {
@@ -140,11 +146,10 @@ $cn_contrastor_third_0: #c18176;
         right:0px;
         text-align:center;
         height:10px;
-        top:18px;
+        top:20px;
         font-size:10px;
       }
     }
-  }
 
 
 
@@ -167,6 +172,9 @@ $cn_contrastor_third_0: #c18176;
     .btn-round {
     }
   }
+
+
+
 
 
 
@@ -216,13 +224,12 @@ $cn_contrastor_third_0: #c18176;
 
 
       .profile_index_friends_friends_item {
+        display:none;
         height:80px;
-        display:block;
         cursor:pointer;
         position:relative;
 //        position:relative;
         border-bottom:1px solid $cn_grey_0;//$cn_colour_0;
-
         line-height:50px;
         div {
 //          display:inline-block;

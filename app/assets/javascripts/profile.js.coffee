@@ -54,37 +54,6 @@ $(document).ready ->
   # If profile page
   if $("#profile_index_panel_calendar_container").length > 0
 
-    # Load Scroller
-    # profile_index_calendar_scoller = new iScroll("profile_index_panel_calendar_container",
-    #   momentum: true
-    # )
-    # profile_index_friends_scoller = new iScroll("profile_index_friends_friends",
-    #   #snap: 'div',
-    #   vScrollbar: true,
-    #   momentum: true
-    # )
-  
-    $('#profile_index_friends_friends').slimscroll({
-      height: 'auto'
-      width: 'auto'
-    });
-
-    # , #profile_index_feedback_cases
-
-    # # Scroll calendar to today
-    # if $("#profile_index_panel_calendar_container").find(".today")
-    #   setTimeout (->
-    #     distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
-    #     profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
-    #   ), 100
-
-    # Prime calendar shift buttons
-    $(".profile_index_panel_calendar_shift_button").click ->
-      direction = $(this).data "direction"
-
-      # profile_index_calendar_scoller.scrollTo(direction, 0, 300,true) 
-
-
     # Load results table
     $.get "/cases/results?view=analysis", (data) ->
       $("#cases_analysis_results").html data
@@ -92,6 +61,59 @@ $(document).ready ->
         $("#cases_analysis_chart_table_empty").fadeIn "fast"
       else
         window.cases_resultstable_prime("analysis")
+
+
+
+  $('#profile_index_friends_friends').slimscroll({
+    height: 'auto'
+    width: 'auto'
+  });
+
+  # Prime calendar shift buttons
+  $(".profile_index_panel_calendar_shift_button").click ->
+    direction = $(this).data "direction"
+
+    # profile_index_calendar_scoller.scrollTo(direction, 0, 300,true) 
+
+
+  # Load Scroller
+  # profile_index_calendar_scoller = new iScroll("profile_index_panel_calendar_container",
+  #   momentum: true
+  # )
+  # profile_index_friends_scoller = new iScroll("profile_index_friends_friends",
+  #   #snap: 'div',
+  #   vScrollbar: true,
+  #   momentum: true
+  # )
+
+  # , #profile_index_feedback_cases
+
+  # # Scroll calendar to today
+  # if $("#profile_index_panel_calendar_container").find(".today")
+  #   setTimeout (->
+  #     distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
+  #     profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
+  #   ), 100
+
+
+
+  
+
+  setTimeout (->
+    # Fade in counts cases
+    $(".profile_index_info_cases_counts_container").fadeIn "500"
+
+    # Users Item Cascade Fade
+    $(".profile_index_friends_friends_item").each (i) ->
+      $(this).delay((i + 1) * 50).fadeIn()
+
+    ), 500
+  
+
+
+
+
+
 
 
   # INFO
