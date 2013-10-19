@@ -249,16 +249,22 @@ class Case < ActiveRecord::Base
 
   ### Charts
 
-  def self.user_activity_chart(user)
+  def self.user_activity_chart(user,view)
     options = {}
     options[:type] ||= :line
-    options[:size] ||= "365x78"
-    options[:bgcolor] ||= "FFFFFF"
+    options[:bgcolor] ||= "00000000"
     options[:chart_color] ||= "336699"
     options[:area_color] ||= "DFEBFF"
     options[:line_color] ||= "0077CC"
     options[:line_width] ||= "2"
     max_data_point = 3
+
+    if view = "profile"
+      options[:size] ||= "100x30"
+    else
+      options[:size] ||= "365x78"
+      options[:gridlines] ||= "chg=5,30,1,1,0,0&"
+    end
 
     # create activity string
     from = Time.now - 3.months
@@ -272,13 +278,8 @@ class Case < ActiveRecord::Base
 
     activity_str = array.map(&:inspect).join(',')
 
-    if options[:type] == :line
+    return "https://chart.googleapis.com/chart?#{options[:gridlines]}chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
 
-
-      return "https://chart.googleapis.com/chart?chg=5,30,1,1,0,0&chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
-    else
-      return "https://chart.googleapis.com/chart?cht=bvs&chs=#{options[:size]}&chd=t:#{activity_str}&chco=#{options[:chart_color]}&chbh=a,#{options[:line_width]}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
-    end
   end
   
   def self.cases_analysis_table(user, period)

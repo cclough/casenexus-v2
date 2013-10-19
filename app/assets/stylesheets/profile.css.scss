@@ -79,6 +79,7 @@ $cn_contrastor_third_0: #c18176;
       margin-right:10px;
       padding-top:10px;
       display:inline-block;
+      width:26px; //fix according to calc'd so no adj on load
     }
     #profile_index_info_user {
       width:160px;
@@ -106,16 +107,16 @@ $cn_contrastor_third_0: #c18176;
       padding:0;
       display:block;
       border-top:1px solid $cn_grey_0;
-      height:60px;
+      height:70px;
       .profile_index_info_cases_counts_container {
         display:none;
       }
       #profile_index_info_cases_recd, #profile_index_info_cases_givn, #profile_index_info_cases_external {
         width:33.3333333%;
         float:left;
-        height:60px;
+        height:70px;
         text-align:center;
-        line-height:50px;
+        line-height:60px;
         position:relative;
       }
 
@@ -160,7 +161,6 @@ $cn_contrastor_third_0: #c18176;
     height:50px;
     line-height:45px;
     text-align:center;
-    display:block;
     border-top:1px solid $cn_grey_0;
     border-bottom:1px solid $cn_grey_0;
     div, a {
@@ -189,7 +189,7 @@ $cn_contrastor_third_0: #c18176;
 
     position:absolute;
     bottom:50px;
-    top:230px;
+    top:240px;
     left:0px;
     right:0px;
     width:230px;
@@ -225,15 +225,12 @@ $cn_contrastor_third_0: #c18176;
 
       .profile_index_friends_friends_item {
         display:none;
-        height:80px;
+        height:50px;
         cursor:pointer;
         position:relative;
-//        position:relative;
         border-bottom:1px solid $cn_grey_0;//$cn_colour_0;
         line-height:50px;
-        div {
-//          display:inline-block;
-        }
+
         &:hover {
           background:$cn_grey_0;//$cn_colour_0;
         }
@@ -254,7 +251,7 @@ $cn_contrastor_third_0: #c18176;
 
 
         .profile_index_friends_friends_item_avatar {
-          width:40px;
+          width:55px;
           float:left;
           img {
             margin:-4px 0 0 5px;
@@ -265,14 +262,29 @@ $cn_contrastor_third_0: #c18176;
 
         .profile_index_friends_friends_item_user {
           float:left;
-          height:80px;
+          height:40px;
           .profile_index_friends_friends_item_username{
             height:30px;
           }
 
           .profile_index_friends_friends_item_actions {
             height:30px;
-
+            display:none;
+            position:absolute;
+            right:0px;
+            top:0px;
+//            background:$cn_grey_0;
+            height:50px;
+            z-index:10;
+            padding:0 5px;
+            line-height:45px;
+            border-top-left-radius: 5px;
+            -moz-border-top-left-radius: 5px;
+            -webkit-border-top-left-radius: 5px;
+       
+            border-bottom-left-radius: 5px;
+            -moz-border-bottom-left-radius: 5px;
+            -webkit-border-bottom-left-radius: 5px;
 
           }
 
@@ -288,7 +300,14 @@ $cn_contrastor_third_0: #c18176;
           }          
         }
 
-
+        .profile_index_friends_friends_item_activity {
+          height:30px;
+          position:absolute;
+          right:0px;
+          bottom:0px;
+          width:100px;
+          opacity:0.5;
+        }
 
 
         .profile_index_friends_friends_item_status {

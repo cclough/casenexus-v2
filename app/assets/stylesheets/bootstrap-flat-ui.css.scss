@@ -345,7 +345,7 @@ a.muted:focus {
 
 .btn {
   border: 1px solid $cn_colour_-1;
-  background: transparent;
+  background: white;
   color: $cn_colour_-1;
   padding: 9px 12px 10px;
   line-height: 22px;
@@ -363,7 +363,7 @@ a.muted:focus {
 .btn:hover,
 .btn:focus,
 .btn-group:focus .btn.dropdown-toggle {
-  background: transparent;
+  background: white;
   color: $cn_colour_1;
   border-color: $cn_colour_1;
   outline: none;

@@ -9,8 +9,11 @@
 #= require lib/jquery.truncate
 #= require lib/jquery.placeholder
 #= require lib/jquery.uniform
+#= require lib/jquery.hoverIntent
 #= require lib/chosen.jquery
 #= require lib/slimscroll
+
+
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-clickover

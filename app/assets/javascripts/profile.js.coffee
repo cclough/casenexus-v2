@@ -97,7 +97,23 @@ $(document).ready ->
 
 
 
-  
+  mouseover = ->
+    # $(this).find(".profile_index_friends_friends_item_actions").fadeIn 200
+
+    $(this).find(".profile_index_friends_friends_item_actions").show "slide", direction: "right", 100
+
+    
+  mouseout = ->
+    # $(this).find(".profile_index_friends_friends_item_actions").fadeOut 200
+    $(this).find(".profile_index_friends_friends_item_actions").hide "slide", direction: "right", 100
+
+  # $(".profile_index_friends_friends_item").hover mouseover, mouseout
+    
+
+  $(".profile_index_friends_friends_item").hoverIntent
+    over: mouseover,
+    out: mouseout,
+    interval: 250
 
   setTimeout (->
     # Fade in counts cases
