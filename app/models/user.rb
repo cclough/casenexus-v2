@@ -154,7 +154,7 @@ class User < ActiveRecord::Base
   def degree_level_in_words
     case degree_level
     when 0
-      "Undergraduate/Masters"
+      "Undergrad/Masters"
     else
       "MBA"
     end

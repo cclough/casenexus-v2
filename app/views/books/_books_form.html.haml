@@ -66,10 +66,11 @@
 
     .spacer30
 
-    #books_index_form_filters_sort_order_button.btn.btn-small
+    #books_index_form_filters_sort_direction_button.btn.btn-micro
       Descending
       %i.icon-arrow-down
 
+    = hidden_field_tag :books_filter_sort_direction, "desc"
 
     .spacer20
 
@@ -86,7 +87,6 @@
 
     = hidden_field_tag :books_filter_tag
 
-
-    .spacer10
+    .spacer5
 
 

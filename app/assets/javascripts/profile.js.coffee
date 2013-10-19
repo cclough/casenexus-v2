@@ -66,7 +66,7 @@ $(document).ready ->
   
     $('#profile_index_friends_friends').slimscroll({
       height: 'auto'
-      width: '260px'
+      width: 'auto'
     });
 
     # , #profile_index_feedback_cases
@@ -184,17 +184,6 @@ $(document).ready ->
       window.modal_event_new_show(friend_id,null)
     else
       alert "Please select a friend from the list..."
-
-
-
-  $(".profile_index_friends_friends_item").click ->
-
-    $(".profile_index_friends_friends_item").removeClass "active"
-    $(this).addClass "active"
-
-    friend_id = $(this).data "friend_id"
-    $("#profile_index_friends_action_input").val(friend_id)    
-
 
 
 

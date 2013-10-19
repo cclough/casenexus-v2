@@ -108,6 +108,14 @@ $cn_contrastor_third_0: #c18176;
   background:$cn_grey_0;
   padding:0px;
 
+  -moz-border-bottom-left-radius:    3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-border-bottom-left-radius:  3px;
+
+  -moz-border-bottom-right-radius:    3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-border-bottom-right-radius:  3px;
+
   .books_index_form_filters_title {
     margin-left:10px;
   }
@@ -133,7 +141,7 @@ $cn_contrastor_third_0: #c18176;
       }
     }
   }
-  #books_index_form_filters_sort_order_button {
+  #books_index_form_filters_sort_direction_button {
     margin-left:15px;
   }
 }

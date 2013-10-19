@@ -1,4 +1,4 @@
-.profile_index_friends_friends_item{"data-friend_id"=>friends_item.id }
+.profile_index_friends_friends_item
 
   .profile_index_friends_friends_item_requested_highlight{ class: ("unread" if Friendship.requested?(current_user,friends_item)) }
 
@@ -32,8 +32,8 @@
 
     - if Friendship.requested?(current_user,friends_item)
       .profile_index_friends_friends_requested
-        = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-dark btn-mini profile_index_friends_friends_item_friendship_button")
-        = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-dark btn-mini profile_index_friends_friends_item_friendship_button" do
+        = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button")
+        = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button" do
           %i.icon-remove
 
 
