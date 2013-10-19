@@ -3,7 +3,7 @@
   #books_index_form_search_container
     = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_form_search_input"
     %button.btn.btn-red.btn-small{type: "submit"}
-      %span.fui-search
+      %i.icon-search
 
 
 
@@ -67,10 +67,10 @@
     .spacer30
 
     #books_index_form_filters_sort_direction_button.btn.btn-micro
-      Descending
-      %i.icon-arrow-down
+      Ascending
+      %i.icon-arrow-up
 
-    = hidden_field_tag :books_filter_sort_direction, "desc"
+    = hidden_field_tag :books_filter_sort_direction, "asc"
 
     .spacer20
 

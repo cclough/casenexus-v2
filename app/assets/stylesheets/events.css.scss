@@ -97,16 +97,13 @@ $cn_contrastor_third_0: #c18176;
 #events_calendar .calendar {
 
   width:3360px;
-  overflow-y:scroll;
-
 
   .events_calendar_week {
-    float:left;
     display:block;
-
   }
   .events_calendar_day {
-    background: url("app/timeline.png") no-repeat left center;
+//    background: url("app/timeline.png") no-repeat left center;
+    border:1px solid $cn_grey_0;
     height: 96px !important;
 
     position:relative;
@@ -118,22 +115,13 @@ $cn_contrastor_third_0: #c18176;
     font-size: 10px;
 
 
-    position:relative;
-    .events_calendar_day_timeline {
-      height:1px;
-      border-top:2px solid $cn_grey_-1;
-      position:Absolute;
-      top:43px;
-      left:0px;
-      right:0px;
-
-    }
 
     .events_calendar_day_num {
       position:absolute;
       top:15px;
       width:20px;
-      left:-10px;
+      left:50%;
+      margin-left:-10px;
       text-align:center;
       font-size:12px;
     }
@@ -142,7 +130,8 @@ $cn_contrastor_third_0: #c18176;
       bottom:15px;
 
       width:30px;
-      left:-15px;
+      left:50%;
+      margin-left:-15px;
       text-align:center;
       font-size:12px;
     }
@@ -153,11 +142,8 @@ $cn_contrastor_third_0: #c18176;
       bottom:0px;
       left:0px;
       width:60px;
-
     }
-
-
-
+    
     .events_calendar_day_event {
       cursor:pointer;
 
@@ -174,15 +160,14 @@ $cn_contrastor_third_0: #c18176;
         background:$cn_colour_0;
         border:2px solid $cn_colour_0;  
       }
-
     }
-
-
-    
   }
 
-  .notmonth, .notmonth a { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
-  .today { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
+//  .notmonth, .notmonth a { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
+//  .today { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
+
+  .notmonth, .notmonth a { background: $cn_grey_0 no-repeat left center; }
+  .today { background: $cn_grey_0 no-repeat left center; }
 }
 
 .events_calendar_event_username {
