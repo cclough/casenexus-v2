@@ -18,6 +18,7 @@
     /[if lte IE 7]
       = javascript_include_tag "lib/icon-font-ie7"
 
+    = render 'shared/google_analytics'
 
   %body{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
   
