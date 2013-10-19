@@ -97,6 +97,10 @@ class Case < ActiveRecord::Base
     interpersonal_combined + businessanalytics_combined + structure_combined
   end
 
+  def totalscore_percentage
+    (totalscore / 15) * 100
+  end
+
   def subject_trunc
     subject.truncate(40, separator: ' ')
   end

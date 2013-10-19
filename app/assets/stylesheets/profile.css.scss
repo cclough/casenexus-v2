@@ -63,9 +63,6 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-//  background:$cn_colour_05;
-//  color:white !important;
-
 
 
 
@@ -91,33 +88,17 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-
   #profile_index_info {
 
 
   
     padding:10px;
-    text-align:center;
-
     #profile_index_info_user {
-      margin-left:-25px;
-      #profile_index_info_avatar {
-        display:inline-block;
-
-        img {
-          margin-top:-5px;
-        }
-        height:35px;
-      }
-
 
       #profile_index_info_username {
         display:inline-block;
         font-size:20px;
-        font-weight:bolder;
-        height:20px;
-        margin-left:5px;
-      }
+        font-weight:bolder;}
 
     }
 
@@ -135,7 +116,6 @@ $cn_contrastor_third_0: #c18176;
 
     #profile_index_info_cases {
       padding:0;
-      margin:0 auto;
       width:150px;
       div {
         display:block;
@@ -197,15 +177,12 @@ $cn_contrastor_third_0: #c18176;
     position:relative;
 
 
-    #profile_index_friends_actions {
-
-    }
 
 
     #profile_index_friends_friends {
       margin-top:5px;
-      overflow-y:hidden;
-      height:400px;
+      overflow-y:auto;
+      height:350px;
       position:relative;
 
       #profile_index_friends_friends_empty {
@@ -228,18 +205,22 @@ $cn_contrastor_third_0: #c18176;
 
 
       .profile_index_friends_friends_item {
-        height:50px;
+        height:80px;
         display:block;
         cursor:pointer;
+        position:relative;
 //        position:relative;
         border-bottom:1px solid $cn_grey_0;//$cn_colour_0;
 
         line-height:50px;
         div {
-          display:inline-block;
+//          display:inline-block;
         }
         &:hover {
           background:$cn_grey_0;//$cn_colour_0;
+          .profile_index_friends_friends_item_actions {
+            opacity:0;
+          }
         }
         &.active {
           background:$cn_grey_0;//$cn_colour_0;
@@ -259,14 +240,35 @@ $cn_contrastor_third_0: #c18176;
         }
 
 
+
         .profile_index_friends_friends_item_avatar {
-          display:inline-block;
           width:40px;
+          float:left;
           img {
             margin:-4px 0 0 5px;
           }
           
           text-align:center;
+        }
+
+        .profile_index_friends_friends_item_user {
+          float:left;
+          height:80px;
+          .profile_index_friends_friends_item_username{
+            height:30px;
+          }
+
+          .profile_index_friends_friends_item_actions {
+            height:30px;
+            display:none;
+            -webkit-transition: opacity 1s ease-in-out;
+            -moz-transition: opacity 1s ease-in-out;
+            -o-transition: opacity 1s ease-in-out;
+            -ms-transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out;
+
+          }
+
         }
 
         .profile_index_friends_friends_requested {
@@ -306,8 +308,6 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-
-
       }
     }
   }
@@ -320,17 +320,16 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-
-
-#profile_index_panel_calendar {
+#profile_index_main_container {
   position:absolute;
   left:260px;
   top:0px;
-  height:160px;
-  float:left;
-  right:0px;
-  padding:20px 20px 0;
+  right:0px;  
+  padding:20px 0 20px 20px;
+}
 
+#profile_index_panel_calendar {
+  height:300px;
   #profile_index_calendar_actions_new {
     cursor:pointer;
   }
@@ -350,11 +349,12 @@ $cn_contrastor_third_0: #c18176;
     }
   }
   #profile_index_panel_calendar_container {
-    overflow-y:hidden;
-    position:relative;
-    float:left;
+    overflow-x:hidden;
     width:662px;
-    height:96px;
+    float:left;
+    height:150px;//96px;
+
+
   }
 }
 
@@ -364,10 +364,7 @@ $cn_contrastor_third_0: #c18176;
 
 #profile_index_panel_feedback {
 
-  position:absolute;
-  left:260px;
-  top:180px;
-  bottom:0px;
+  width:100%;
   border-top:1px solid $cn_grey_0;
 
   right:0px;
@@ -375,12 +372,12 @@ $cn_contrastor_third_0: #c18176;
   padding:20px;
 
   #profile_index_feedback_cases {
-    position:absolute;
-    left:20px;
-    top:60px;
-    bottom:20px;
+    position:relative;
     width:260px;
-    overflow-y:auto;
+    height:300px;
+    overflow-y:hidden;
+    float:left;
+    margin-right:20px;
 //    background:$cn_grey_0;
 
     #profile_index_feedback_cases_empty {
@@ -397,6 +394,7 @@ $cn_contrastor_third_0: #c18176;
       cursor:pointer;
       height:21px;
       padding:7px;
+      width:246px;
       display:block;
       position:relative;
       border-bottom:1px solid $cn_grey_0;
@@ -442,27 +440,17 @@ $cn_contrastor_third_0: #c18176;
   }
 
   #profile_index_feedback_chart{
-
-    position:absolute; 
-    left:300px;
-    top:60px;
-    right:20px;
-    height:190px;
+    width:400px;
+    height:300px;
+    float:left;
   }
 
   #profile_index_feedback_chart_legend {
-    position:absolute;
-    right:0px;
-    top:0px;
+
   }
 
   #profile_index_feedback_results {
-
-    position:absolute;
-    left:300px;
-    bottom:20px;
-    right:20px;
-    top:250px;
+    display:none;
   }
 }
 

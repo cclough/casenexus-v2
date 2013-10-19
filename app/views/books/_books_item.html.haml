@@ -17,9 +17,10 @@
 
     .spacer20
     
-    = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button" do
-      Comment
-      %strong (#{books_item.comments.count})
+    - unless params[:action] == "show"
+      = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button" do
+        Comment
+        %strong (#{books_item.comments.count})
 
 
     - if books_item.btype == "case"

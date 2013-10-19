@@ -8,8 +8,7 @@
       #cases_show_subnav_date
         = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
     #cases_show_subnav_score
-      = @case.totalscore.to_f.round(1)
-      = "/ 15"
+      = @case.totalscore_percentage.to_f.round(0).to_s + "%"
 
   #cases_show_subnav_browse
 

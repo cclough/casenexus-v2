@@ -64,7 +64,9 @@ $cn_contrastor_third_0: #c18176;
 }
 
 #books_index_books {
-
+  .pagination {
+    display:none;
+  }
 }
 
 
@@ -193,6 +195,9 @@ $cn_contrastor_third_0: #c18176;
   position:relative;
   display:none;
   height:190px;
+  img {
+    max-height:50px;
+  }
   &.show {
     display:block !important;
     height:310px;
@@ -245,6 +250,7 @@ $cn_contrastor_third_0: #c18176;
   padding: 6px 6px 7px;
   line-height: 1.2;
 
+  margin-right:5px;
 //  text-decoration: none;
 //  text-shadow: none;
 //  -webkit-backface-visibility: hidden;
@@ -254,8 +260,8 @@ $cn_contrastor_third_0: #c18176;
 
   font-weight:400;
   &.novice {
-    border: 1px solid $cn_contrastor_0;
-    background: $cn_contrastor_0;
+    border: 1px solid #73bf72;
+    background: #73bf72;
     color:  white;
   }
 
@@ -277,7 +283,7 @@ $cn_contrastor_third_0: #c18176;
   vertical-align:middle;
   font-size:17px;
   font-weight:bold;
-  margin-left:5px;
+
 }
 
 .books_index_books_item_chartnum {
@@ -288,6 +294,8 @@ $cn_contrastor_third_0: #c18176;
   -moz-border-radius: 3px;
   border-radius: 3px;
   margin:0;
+  color:white !important;
+  font-weight:400;
 }
 
 
@@ -300,27 +308,15 @@ $cn_contrastor_third_0: #c18176;
 /////////////////////////////////////////////////////////////////
 
 
-#books_show_form_rating_panel {
-  text-align:center;
-  font-size:11px;
-  width:150px !important;
-  padding:2px;
-  .books_rating_set {
-    width:120px;
-    margin:0 auto;
-  }
-}
-
-
 
 
 
 .books_show_comments_item {
-  margin-bottom: 15px !important;
   padding:10px;
   position:relative;
-  background:$cn_grey_0;
-  margin:0 20px;
+  border-top:1px solid $cn_grey_0;
+  width:650px;
+  margin:0 auto 15px;
 }
 
 .books_show_comments_item_avatar {
@@ -338,10 +334,27 @@ $cn_contrastor_third_0: #c18176;
   width:670px;
   margin:0 auto;
   text-align:center;
+  border-top:1px solid $cn_grey_0;
+  padding-top:15px;
 }
 
+
+#books_show_form_rating_panel {
+  text-align:center;
+  font-size:11px;
+  width:150px !important;
+  padding:2px;
+  .books_rating_set {
+    width:120px;
+    margin:0 auto;
+  }
+
+}
+
+
 #books_show_comments_form_submit {
-  margin-left:5px;
+  margin-left:10px;
+
 }
 
 

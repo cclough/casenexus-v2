@@ -2,8 +2,6 @@
 = hidden_field_tag :sort, params[:sort]
 
 
-= paginate @books
-
 - if @books.to_a.size > 0
 
   - @books.each do |books_item|
@@ -16,5 +14,8 @@
         %i.icon-book
       %p Nothing found!
 
-.spacer20
+.spacer15
 
+= paginate @books
+
+.spacer15

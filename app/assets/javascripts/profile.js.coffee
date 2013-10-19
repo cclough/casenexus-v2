@@ -55,27 +55,34 @@ $(document).ready ->
   if $("#profile_index_panel_calendar_container").length > 0
 
     # Load Scroller
-    profile_index_calendar_scoller = new iScroll("profile_index_panel_calendar_container",
-      momentum: true
-    )
-    profile_index_friends_scoller = new iScroll("profile_index_friends_friends",
-      #snap: 'div',
-      vScrollbar: true,
-      momentum: true
-    )
+    # profile_index_calendar_scoller = new iScroll("profile_index_panel_calendar_container",
+    #   momentum: true
+    # )
+    # profile_index_friends_scoller = new iScroll("profile_index_friends_friends",
+    #   #snap: 'div',
+    #   vScrollbar: true,
+    #   momentum: true
+    # )
   
+    # $('#profile_index_friends_friends, #profile_index_feedback_cases').slimscroll({
+    #   height: 'auto'
+    #   width: '260px'
+    # });
+
+
+
     # # Scroll calendar to today
-    if $("#profile_index_panel_calendar_container").find(".today")
-      setTimeout (->
-        distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
-        profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
-      ), 100
+    # if $("#profile_index_panel_calendar_container").find(".today")
+    #   setTimeout (->
+    #     distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
+    #     profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
+    #   ), 100
 
     # Prime calendar shift buttons
     $(".profile_index_panel_calendar_shift_button").click ->
       direction = $(this).data "direction"
 
-      profile_index_calendar_scoller.scrollTo(direction, 0, 300,true) 
+      # profile_index_calendar_scoller.scrollTo(direction, 0, 300,true) 
 
 
     # Load results table

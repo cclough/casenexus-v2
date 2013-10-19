@@ -139,7 +139,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.title = "Business Analytics"
     graph.valueField = "businessanalytics"
     graph.lineAlpha = 1
-    graph.fillAlphas = 0.7 # setting fillAlphas to > 0 value makes it area graph
+    graph.fillAlphas = 0.5 # setting fillAlphas to > 0 value makes it area graph
     graph.bullet = "round"
     graph.bulletSize = 5
     if case_count < 3
@@ -158,7 +158,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.title = "Structure"
     graph.valueField = "structure"
     graph.lineAlpha = 1
-    graph.fillAlphas = 0.7
+    graph.fillAlphas = 0.5
     graph.bullet = "round"
     graph.bulletSize = 5
     if case_count < 3
@@ -176,7 +176,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.title = "Interpersonal"
     graph.valueField = "interpersonal"
     graph.lineAlpha = 1
-    graph.fillAlphas = 0.7
+    graph.fillAlphas = 0.5
     graph.bullet = "round"
     graph.bulletSize = 5
     if case_count < 3

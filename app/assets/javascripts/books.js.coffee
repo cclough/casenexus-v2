@@ -13,6 +13,11 @@ window.books_index_books_item_prime = ->
     book_id = $(this).data("book_id")
     window.modal_event_new_show(null,book_id)
 
+  # Ajax pagination
+  $("#books_index_books .pagination a").click ->
+    $.getScript @href
+    false
+
   # Set rate, for book#show
   $(".books_rating_set").raty
     targetType   : 'number'
@@ -25,13 +30,11 @@ window.books_index_books_item_prime = ->
 
 $(document).ready ->
 
-    # Arrows for the home page and help
+  # update list on load
   if $("#books_index_form").size() > 0
     window.books_index_books_updatelist()
 
-  # # Filter buttons
-  # $(".application_filtergroup_choicenav li").click ->
-  #   window.books_index_books_updatelist()
+  window.books_index_books_item_prime()
 
   # Tag Select click
   $(".books_index_form_fitlers_tag_selector_item").click ->

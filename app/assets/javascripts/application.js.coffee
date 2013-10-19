@@ -11,6 +11,7 @@
 #= require lib/jquery.uniform
 #= require lib/chosen.jquery
 #= require lib/iscroll
+#= require lib/slimscroll
 
 #= require lib/bootstrap.min
 #= require lib/bootstrap-clickover

@@ -27,7 +27,7 @@ class BooksController < ApplicationController
     end
 
     # (SORT IS IN HERE)
-    @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 100, page: params[:page])
+    @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 	
     respond_to do |format|
       format.js # links index.js.erb!
@@ -37,6 +37,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @commentable = @book
     @comments = @commentable.comments.order("created_at desc").paginate(per_page: 20, page: params[:page])
     @comment = Comment.new
   end
