@@ -39,6 +39,55 @@
 
 
 
+
+
+
+
+  #profile_index_info
+
+    #profile_index_info_avatar
+      = avatar_for(current_user,size:"large")
+
+    #profile_index_info_user
+
+      #profile_index_info_username
+        = current_user.username
+
+      #profile_index_info_degreelevel
+        %i.icon-star
+        = current_user.degree_level_in_words
+
+      #profile_index_info_joined
+        %i.icon-time
+        Signed up:
+        = time_ago_in_words(current_user.created_at)
+        ago
+
+      / #profile_index_info_cases_rate
+      /   Rate: 2 cases per week
+
+
+
+      .spacer10
+
+      #profile_index_info_cases
+        #profile_index_info_cases_givn
+          = current_user.case_count_givn
+          %span.profile_index_info_cases_text
+            taken
+        #profile_index_info_cases_recd    
+          = current_user.case_count_recd
+          %span.profile_index_info_cases_text
+            given
+        #profile_index_info_cases_external
+          = current_user.case_count_external
+          %span.profile_index_info_cases_text
+            ext.
+
+
+
+
+
   #profile_index_info_actions
     #profile_index_info_actions_settings{"data-original-title"=>"Your settings", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
       = image_tag "icons/profile/settings.png"
@@ -56,60 +105,6 @@
 
 
 
-
-
-  / #profile_index_info_avatar
-  /   = avatar_for(current_user,size:"large")
-
-
-  #profile_index_info
-
-    #profile_index_info_user
-
-      #profile_index_info_username
-        = current_user.username
-
-    #profile_index_info_degreelevel
-      %i.icon-star
-      = current_user.degree_level_in_words
-
-    #profile_index_info_joined
-      %i.icon-time
-      Signed up:
-      = time_ago_in_words(current_user.created_at)
-      ago
-
-    / #profile_index_info_cases_rate
-    /   Rate: 2 cases per week
-
-
-
-    .spacer10
-
-    #profile_index_info_cases
-      #profile_index_info_cases_givn
-        = current_user.case_count_givn
-        %span.profile_index_info_cases_text
-          taken
-      #profile_index_info_cases_recd    
-        = current_user.case_count_recd
-        %span.profile_index_info_cases_text
-          given
-      #profile_index_info_cases_external
-        = current_user.case_count_external
-        %span.profile_index_info_cases_text
-          ext.
-
-
-
-
-
-
-
-
-
-
-  .spacer50
 
 
 
@@ -173,47 +168,47 @@
 
 
 
-  #profile_index_panel_feedback
+  / #profile_index_panel_feedback
 
-    .profile_index_title
-      Feedback
+  /   .profile_index_title
+  /     Feedback
 
-      - if @cases.unread.count > 0
-        %span.application_unread_label_large
-          = @cases.unread.count.to_s
+  /     - if @cases.unread.count > 0
+  /       %span.application_unread_label_large
+  /         = @cases.unread.count.to_s
 
-    .spacer10
+  /   .spacer10
     
-    #profile_index_feedback_cases
+  /   #profile_index_feedback_cases
 
-      - if @cases.count > 0
-        - @cases.each do |cases_item|
-          .profile_index_feedback_cases_item{"data-case_id" => cases_item.id}
+  /     - if @cases.count > 0
+  /       - @cases.each do |cases_item|
+  /         .profile_index_feedback_cases_item{"data-case_id" => cases_item.id}
             
-            .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
+  /           .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
 
-            .profile_index_feedback_cases_item_score
-              = cases_item.totalscore_percentage.to_f.round(0).to_s + "%"
-            .profile_index_feedback_cases_item_username
-              = cases_item.interviewer.username
-            .profile_index_feedback_cases_item_date
-              = cases_item.date_fb
-      - else
-        #profile_index_feedback_cases_empty
-          %i.icon-edit
-          %div
-            No feedback yet
+  /           .profile_index_feedback_cases_item_score
+  /             = cases_item.totalscore_percentage.to_f.round(0).to_s + "%"
+  /           .profile_index_feedback_cases_item_username
+  /             = cases_item.interviewer.username
+  /           .profile_index_feedback_cases_item_date
+  /             = cases_item.date_fb
+  /     - else
+  /       #profile_index_feedback_cases_empty
+  /         %i.icon-edit
+  /         %div
+  /           No feedback yet
 
 
-    #profile_index_feedback_chart
+  /   #profile_index_feedback_chart
       
 
 
-    #profile_index_feedback_chart_legend
+  /   #profile_index_feedback_chart_legend
 
 
-    #profile_index_feedback_results
-      #cases_analysis_results
+  /   #profile_index_feedback_results
+  /     #cases_analysis_results
 
     
   / / .profile_index_icon

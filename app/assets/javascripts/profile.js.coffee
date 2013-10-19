@@ -64,12 +64,12 @@ $(document).ready ->
     #   momentum: true
     # )
   
-    # $('#profile_index_friends_friends, #profile_index_feedback_cases').slimscroll({
-    #   height: 'auto'
-    #   width: '260px'
-    # });
+    $('#profile_index_friends_friends').slimscroll({
+      height: 'auto'
+      width: '260px'
+    });
 
-
+    # , #profile_index_feedback_cases
 
     # # Scroll calendar to today
     # if $("#profile_index_panel_calendar_container").find(".today")

@@ -66,65 +66,47 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-  #profile_index_info_actions {
-
-    height:70px;
-    line-height:70px;
-    text-align:center;
-
-    div, a {
-      display:inline-block;
-      cursor:pointer;
-      position:relative;
-      margin: 0 5px;
-    }
-    .btn-round {
-    }
-  }
-
-
-
-
 
 
 
   #profile_index_info {
+    padding:15px;
+    height:140px;
 
-
-  
-    padding:10px;
+    #profile_index_info_avatar {
+      float:left;
+      margin-right:15px;
+    }
     #profile_index_info_user {
 
+      float:left;
       #profile_index_info_username {
         display:inline-block;
         font-size:20px;
-        font-weight:bolder;}
+        font-weight:bolder;
+        margin:10px 0;
+      }
+
+      #profile_index_info_degreelevel {
+
+      }
+      #profile_index_info_joined {
+
+      }
 
     }
-
-
-
-    #profile_index_info_degreelevel {
-
-    }
-
-    #profile_index_info_joined {
-
-    }
-
-
 
     #profile_index_info_cases {
       padding:0;
-      width:150px;
+      width:170px;
+      display:block;
       div {
-        display:block;
+        display:inline-block;
         width:50px;
         height:45px;
         text-align:center;
         line-height:33px;
         position:relative;
-        float:left;
       }
 
 
@@ -165,6 +147,27 @@ $cn_contrastor_third_0: #c18176;
 
 
 
+  #profile_index_info_actions {
+
+    height:50px;
+    line-height:45px;
+    text-align:center;
+    display:block;
+    border-top:1px solid $cn_grey_0;
+    border-bottom:1px solid $cn_grey_0;
+    div, a {
+      display:inline-block;
+      cursor:pointer;
+      position:relative;
+      margin: 0 5px;
+    }
+    .btn-round {
+    }
+  }
+
+
+
+
 
 
 
@@ -173,17 +176,21 @@ $cn_contrastor_third_0: #c18176;
 
   #profile_index_friends {
 
-    padding:10px;
-    position:relative;
+    position:absolute;
+    bottom:50px;
+    top:230px;
+    left:0px;
+    right:0px;
+    width:260px;
 
-
-
+    .profile_index_title {
+      text-align:center;
+    }
 
     #profile_index_friends_friends {
       margin-top:5px;
-      overflow-y:auto;
-      height:350px;
-      position:relative;
+      overflow-y:hidden;
+      height:100%;
 
       #profile_index_friends_friends_empty {
         text-align:center;
