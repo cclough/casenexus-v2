@@ -33,17 +33,17 @@
         - if Friendship.friends?(current_user, users_item)
 
           .map_index_users_item_button_message.btn.btn-colour.btn-round.btn-round-small{ "data-friend_id" => users_item.id }
-            %i.icon-envelope-alt.icon-white
+            %i.icon-email-mail-streamline
 
           .map_index_users_item_button_event.btn.btn-colour.btn-round.btn-round-small{"data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
 
           %a.map_index_users_item_button_startcase.btn.btn-colour.btn-round.btn-round-small{ href:"/console?friend_id=" + users_item.id.to_s}
-            %i.icon-play-sign.icon-white
+            %i.icon-arrow-right-1
 
           - unless users_item.skype.blank?
             %a.map_index_users_item_button_skype.btn.btn-round.btn-round-small.btn-colour{href: "skype:#{users_item.skype}?call"}
-              %span.fui-skype
+              %i.icon-skype
 
 
         - elsif Friendship.requested?(users_item, current_user)
@@ -62,7 +62,7 @@
 
         - unless users_item.linkedin.blank?
           %a.map_index_users_item_button_linkedin.btn.btn-colour.btn-round.btn-round-small{href: "http://www.linkedin.com/"+users_item.linkedin,target:"_new"}
-            %span.fui-linkedin
+            %i.icon-linkedin-alt
 
 
 

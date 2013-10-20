@@ -178,15 +178,6 @@ $(document).ready ->
   #   friend_id = $("#profile_index_friends_action_input").val()
   #   window.location.href = "skype:friend's_skype?call" + friend_id
 
-  $("#profile_index_friends_actions_start").click ->
-    friend_id = $("#profile_index_friends_action_input").val()
-
-    unless !friend_id
-      window.location.href = "/console?friend_id=" + friend_id
-    else
-      alert "Please select a friend from the list..."
-
-
   $("#profile_index_friends_actions_message").click ->
     friend_id = $("#profile_index_friends_action_input").val()
 
@@ -194,16 +185,6 @@ $(document).ready ->
       window.modal_message_show(friend_id)
     else
       alert "Please select a friend from the list..."
-
-
-  $("#profile_index_friends_actions_profile").click ->
-    friend_id = $("#profile_index_friends_action_input").val()
-    
-    unless !friend_id
-      window.location.href = "/map?user_id=" + friend_id
-    else
-      alert "Please select a friend from the list..."
-
 
   $("#profile_index_friends_actions_event").click ->
     friend_id = $("#profile_index_friends_action_input").val()

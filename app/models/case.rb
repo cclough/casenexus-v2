@@ -259,9 +259,9 @@ class Case < ActiveRecord::Base
     options[:line_width] ||= "2"
     max_data_point = 3
 
-    if view = "profile"
+    if view == "profile"
       options[:size] ||= "100x30"
-    else
+    elsif view == "map"
       options[:size] ||= "365x78"
       options[:gridlines] ||= "chg=5,30,1,1,0,0&"
     end

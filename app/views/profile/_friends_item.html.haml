@@ -15,18 +15,19 @@
     .profile_index_friends_friends_item_actions
       / %i#profile_index_friends_actions_invite.icon-plus
       / %span#profile_index_friends_actions_skype.fui-skype
-      #profile_index_friends_actions_start.btn.btn-colour.btn-round.btn-round-small{ "data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", class: ""}
-        %i.icon-arrow-right-1
+
 
       #profile_index_friends_actions_message.btn.btn-colour.btn-round.btn-round-small{ "data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", class: ""}
         %i.icon-email-mail-streamline
-      #profile_index_friends_actions_profile.btn.btn-colour.btn-round.btn-round-small{ "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: ""}
-        %i.icon-map-pin-streamline
+
       #profile_index_friends_actions_event.btn.btn-colour.btn-round.btn-round-small{ "data-container"=>"body", "data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom", class: ""}
         %i.icon-calendar
 
+      %a#profile_index_friends_actions_start.btn.btn-colour.btn-round.btn-round-small{ href:"/console?friend_id=" + friends_item.id.to_s, "data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", class: ""}
+        %i.icon-arrow-right-1
 
-
+      %a#profile_index_friends_actions_profile.btn.btn-colour.btn-round.btn-round-small{ href: "/map?user_id=" + friends_item.id.to_s, "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: ""}
+        %i.icon-map-pin-streamline
 
 
 
