@@ -22,6 +22,7 @@ gem 'thumbs_up'                                  # Stack Overflow like voting on
 gem 'delayed_job_active_record'                  # For threaded email sending
 gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
 #gem 'griddler'                                   # Receive emails
+gem 'rack-mini-profiler'
 
 group :production do
   gem 'heroku_rails_deflate'
@@ -35,7 +36,6 @@ group :development, :test do
   gem 'wirble'
   gem 'awesome_print'                                   # Colors on console
   gem 'pry'
-  gem 'rack-mini-profiler'
 end
 
 group :development do

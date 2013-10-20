@@ -406,11 +406,6 @@ $(document).ready ->
   # Placeholders
   $("input, textarea").placeholder()
 
-  # # Header search - only if not on map page
-  # if typeof map_index_map_lat_start is "undefined"
-  #   $("#header_nav_search_form").on "submit", ->
-  #     window.location.href = "/map?search=" + $("#header_nav_search_field").val()
-
   # Modals
   $("#modal_headsup, #modal_contact, #modal_post, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
     backdrop: true
