@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 
 
   def index
-    @notifications = Notification.most_recent_for(current_user.id).search_for(params[:search]).paginate(per_page: 12, page: params[:page])
+    @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search]).paginate(per_page: 12, page: params[:page])
   
     respond_to do |format|
       format.js

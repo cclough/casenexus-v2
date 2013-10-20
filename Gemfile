@@ -26,7 +26,14 @@ gem 'rack-mini-profiler'
 
 
 group :production do
-  gem 'heroku_rails_deflate'
+  gem 'heroku-deflater'                          # Enables GZIP compression on heroku - alt to 'heroku_rails_deflate' - used because fix for mini-profiler in production doesn't work with latter gem
+end
+
+group :assets do
+  gem 'sass-rails', '>= 3.2.5'                   # SASS Support
+  gem "sass_rails_patch", "~> 0.0.1"             # Needed to make rails_admin work
+  gem 'coffee-rails', '>= 3.2.1'                 # Cofeescript compilation
+  gem 'uglifier', '>= 1.2.3'                     # JS Minimizer
 end
 
 group :development, :test do
@@ -42,14 +49,6 @@ end
 
 group :development do
   gem "daemons"
-end
-
-
-group :assets do
-  gem 'sass-rails', '>= 3.2.5'                   # SASS Support
-  gem "sass_rails_patch", "~> 0.0.1"             # Needed to make rails_admin work
-  gem 'coffee-rails', '>= 3.2.1'                 # Cofeescript compilation
-  gem 'uglifier', '>= 1.2.3'                     # JS Minimizer
 end
 
 group :test do

@@ -5,13 +5,13 @@ class ProfileController < ApplicationController
 
 
   def index
-    @friends = current_user.accepted_friends.order("username ASC")
+    @friends = current_user.accepted_friends.order("username ASC").includes(:university)
+    
     @friends_requested = current_user.requested_friends.order("username ASC")
 
-    @cases = current_user.cases.order("created_at desc")
+    @cases = current_user.cases.includes(:interviewer).order("created_at desc")
 
     @case_count_bracket = current_user.case_count_bracket
-
   end
 
 end

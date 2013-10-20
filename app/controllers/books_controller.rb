@@ -10,7 +10,7 @@ class BooksController < ApplicationController
     params[:books_filter_tag] = nil if params[:books_filter_tag] == ""
 
     if params[:tag]
-      relation = Book.tagged_with(params[:tag])  
+      relation = Book.tagged_with(params[:tag])
     elsif params[:books_filter_tag]
       relation = Book.tagged_on_type(params[:books_filter_tag])
     else
@@ -27,7 +27,7 @@ class BooksController < ApplicationController
     end
 
     # (SORT IS IN HERE)
-    @books = relation.search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
+    @books = relation.includes(:tags).search_for(params[:search]).order(sort_column + " " + sort_direction).paginate(per_page: 10, page: params[:page])
 	
     respond_to do |format|
       format.js # links index.js.erb!
