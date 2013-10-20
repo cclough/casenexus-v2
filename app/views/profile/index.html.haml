@@ -195,8 +195,9 @@
             .profile_index_feedback_cases_item_user
               .profile_index_feedback_cases_item_username
                 = cases_item.interviewer.username
-              .profile_index_feedback_cases_item_subject
-                = cases_item.subject_trunc_menu
+              - unless cases_item.subject.blank?
+                .profile_index_feedback_cases_item_subject
+                  = cases_item.subject_trunc_menu
             .profile_index_feedback_cases_item_date
               = cases_item.date_fb
       - else
