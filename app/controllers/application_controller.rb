@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, only: [:online_panel, :online_user_item]
   before_filter :completed_user, only: [:online_panel, :online_user_item]
 
+  before_filter :miniprofiler
+  
   def set_timezone  
     Time.zone = current_user.time_zone if current_user
   end
@@ -36,5 +38,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+  def miniprofiler
+    Rack::MiniProfiler.authorize_request if current_user.admin?
+  end
 
 end

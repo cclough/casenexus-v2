@@ -35,7 +35,7 @@ group :development, :test do
   gem 'wirble'
   gem 'awesome_print'                                   # Colors on console
   gem 'pry'
-  gem 'perftools.rb', :git => 'git://github.com/tmm1/perftools.rb.git'
+  gem 'rack-mini-profiler'
 end
 
 group :development do
