@@ -31,7 +31,8 @@ $cn_colour_-1:#b0bcc3; // buttons
 $cn_colour_0: #242d32; // header
 $cn_colour_05: #313c44; // header button highlights
 $cn_colour_1: #72aac9; // header button highlights
-$cn_colour_2: #ddf3ff; // header button highlights
+$cn_colour_2: #eaf8ff; // header button highlights
+
 $cn_grey_-2: #697076; // Text and borders in places
 $cn_grey_-1: #dee1e3; // search input border
 $cn_grey_0: #f0f1f2; // users form
@@ -172,22 +173,23 @@ $cn_contrastor_third_0: #c18176;
   font-size:18px;
   position:absolute;
   left:45px;
-  bottom:5px;
+  bottom:-5px;
+
 }
 
 #events_calendar_month_text_count{
+  vertical-align:middle;
   position:absolute;
   right:55px;
-  bottom:5px;
-}
-
-
-#events_calendar_month_text_count {
+  bottom:-5px;
   color: $cn_colour_1;
   border-color: $cn_colour_1;
   padding:4px 6px 5px 6px !important;
   vertical-align:middle;
   margin-top:5px;
+  &:active {
+    background:white;
+  }
 }
 
 
@@ -202,9 +204,9 @@ $cn_contrastor_third_0: #c18176;
   background:white;
   width:855px !important;
   margin-left:-427px;
-  margin-top:-325px;
+  margin-top:-320px;
 
-  height:650px !important;
+  height:640px !important;
 
   text-align:center !important;
   .close {
@@ -227,7 +229,7 @@ $cn_contrastor_third_0: #c18176;
       font-weight:100 !important;
       border-radius:50%;
       margin:15px 0px;
-      line-height:50px;
+      line-height:55px;
     }
   }
 
@@ -282,15 +284,15 @@ $cn_contrastor_third_0: #c18176;
 }
 
 .events_modal_timezone_popup {
-  border:1px solid $cn_grey_-2;
+  border:1px solid $cn_grey_-1;
   color:$cn_grey_-2;
   display:block;
   i {
-    font-size:40px;
+    font-size:35px;
     position:absolute;
     left:15px;
     top:50%;
-    margin-top:-20px;
+    margin-top:-17px;
     font-weight:lighter;
   }
   position:relative;
@@ -309,7 +311,7 @@ $cn_contrastor_third_0: #c18176;
   text-align:center;
   font-weight: bold;
   line-height:31px;
-  color: $gray_second;
+  color: $cn_grey_-2;
   margin: 0px 0px;
 }
 

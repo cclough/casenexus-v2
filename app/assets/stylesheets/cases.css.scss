@@ -65,10 +65,12 @@ $cn_contrastor_third_0: #c18176;
     height:630px !important;
     margin-top:-315px;
     .modal-body {
+      overflow-y:hidden;
       position:relative;
-      max-height:550px !important;
-      height:550px;
+      max-height:560px !important;
+      height:560px;
       padding:0 !important;
+
     }
   }
   .modal-footer {
@@ -91,10 +93,10 @@ $cn_contrastor_third_0: #c18176;
 #cases_show_subnav {
   display:block;
   margin:0px 0px 0px 0px;
-  background:$cn_grey_0;
+//  background:$cn_grey_0;
   height:38px;
   padding:10px;
-
+  border-bottom:1px solid $cn_grey_0;
 
   border-top-left-radius: 3px;
   -moz-border-top-left-radius: 3px;
@@ -116,28 +118,26 @@ $cn_contrastor_third_0: #c18176;
 
     #cases_show_subnav_name {
       float:left;
-      font-size:20px;
-      color: $gray_Dark;
-      margin-top:0px;
+      font-size:21px;
+      color: $cn_colour_-2;
       width:200px;
-      font-weight:bold;
+
 
     }
 
     #cases_show_subnav_date {
-      font-size:11px;
+      font-size:13px;
       font-weight:normal;
+      line-height:15px;
     }
 
     #cases_show_subnav_score {
       float:left;
       padding:16px 20px;
       height:28px;
-      margin:-10px 0 0 20px;
-      color:$cn_colour_-1;
+      margin:-10px 0 0 60px;
+      color:$cn_colour_-2;
       font-size: 25px;
-      font-weight: bold;
-
     }
   }
 
@@ -146,7 +146,7 @@ $cn_contrastor_third_0: #c18176;
   #cases_show_subnav_browse {
     float:left;
     display:inline-block;
-
+    margin-left:0px;
 
     #cases_show_subnav_label {
       display:inline-block;
@@ -170,6 +170,7 @@ $cn_contrastor_third_0: #c18176;
     display:inline;
 
     .btn {
+      margin-top:3px;
       i {
         font-size:15px !important;
       }
@@ -195,15 +196,17 @@ $cn_contrastor_third_0: #c18176;
   }
 }
 
+
 #cases_show_panel_right {
 
   right:0px;
   position:absolute;
-  left:395px;
+  left:396px;
   top:60px;
   bottom:0px;
-  padding:20px;
-  overflow-y:scroll;
+  overflow-y:auto;
+  padding:20px 20px 0 20px;
+  border-left:1px solid $cn_grey_0;
 
   #cases_show_book {
     height:88px;
@@ -220,37 +223,31 @@ $cn_contrastor_third_0: #c18176;
 
   #cases_show_recommendations {
     height:138px;
-    margin:0px;
-    .cases_show_recommendation_spacer{
-      width:14px;
-      height:15px;
-      float:left;
-    }
+    margin-top:20px;
+    border-top:1px solid $cn_grey_0;
+    border-bottom:1px solid $cn_grey_0;
     .cases_show_recommendation {
-      width:170px;
+      width:176px;
       height:138px;
       float:left;
-      padding:15px 0 0 0;
+      border-right:1px solid $cn_grey_0;
       @include box_sizing;
-      .cases_show_recommendation_content {
 
-        border-radius: 3px;
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        overflow-y:auto;
+      &.cases_show_recommendation_third {
+        border-right:0;
+      }
+      .cases_show_recommendation_content {
         height:100%;
         width:100%;
         padding:10px;
-//        background:rgb(255, 255, 204);
-        background:$gray_background;
-        //color:white;
         @include box_sizing;
+
       }
 
       .cases_show_recommendation_title {
         text-align:center;
-        margin-bottom:3px;
-        font-size:10px;
+        margin-bottom:5px;
+        font-size:14px;
         font-weight:400;
       }
 
@@ -617,7 +614,7 @@ $cn_contrastor_third_0: #c18176;
   padding:10px;
   margin:0 0 5px 0;
 
-  border-top:1px solid $cn_grey_0;
+
   &.show {
     background:white;
   }
@@ -652,11 +649,11 @@ $cn_contrastor_third_0: #c18176;
     height:9px;
     padding:0px;
   }
-  tr {
-    &:hover {
-      font-weight:500;
-    }
-  }
+//  tr {
+//    &:hover {
+//      font-weight:500;
+//    }
+//  }
   .cases_resultstable_table_column_criteria {
     width:140px;
   }
@@ -691,10 +688,14 @@ $cn_contrastor_third_0: #c18176;
   &.show {
     height:430px;
     font-size:12px;
-
+    th {
+      height:40px;
+    }
     td {
       border-top: 0;
       padding:1px 10px !important;
+      height:25px;
+      font-size:14px;
     }
     .cases_resultstable_table_column_criteria {
       text-align:left;
@@ -703,13 +704,14 @@ $cn_contrastor_third_0: #c18176;
     }
     .cases_resultstable_chart_bar{
       width:130px !important;
-      height:32px;
+      height:30px;
     }
     .cases_resultstable_table_column_bar {
       width:130px !important;
     }
     .cases_resultstable_cell_score {
-      font-size:12px;
+      font-size:13px;
+      font-weight:400;
     }
 
   }
@@ -719,10 +721,12 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-
+.cases_resultstable_order_by_container {
+  margin-top:5px;
+}
 
 .cases_resultstable_label {
-  margin-top:8px;
+  margin-top:10px;
   font-size:12px;
   i {
     margin-left:5px;

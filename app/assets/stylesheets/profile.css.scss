@@ -55,8 +55,8 @@ $cn_contrastor_third_0: #c18176;
   position:absolute;
   left:0px;
   top:0px;
-  bottom:0px;
   width:231px;
+  height:655px;
 //  background:$cn_colour_05;
 //  color:white;
   border-right:1px solid $cn_grey_0;
@@ -188,13 +188,9 @@ $cn_contrastor_third_0: #c18176;
 
 
   #profile_index_friends {
-
-    position:absolute;
-    bottom:50px;
-    top:243px;
-    left:0px;
-    right:0px;
+    height:350px;
     width:231px;
+    margin-top:20px;
 
     .profile_index_title {
 //      text-align:center;
@@ -204,8 +200,6 @@ $cn_contrastor_third_0: #c18176;
     #profile_index_friends_friends {
       margin-top:5px;
       overflow-y:hidden;
-      height:100%;
-
       #profile_index_friends_friends_empty {
         text-align:center;
         padding-top:60px;
@@ -274,7 +268,7 @@ $cn_contrastor_third_0: #c18176;
             display:none;
             position:absolute;
             right:0px;
-            top:0px;
+            top:2px;
 //            background:$cn_grey_0;
             height:50px;
             z-index:10;
@@ -354,8 +348,6 @@ $cn_contrastor_third_0: #c18176;
   left:231px;
   top:0px;
   right:0px;  
-  padding:20px 0 20px 20px;
-  border-bottom:1px solid $cn_grey_0;
 }
 
 
@@ -363,12 +355,13 @@ $cn_contrastor_third_0: #c18176;
 
 
   #profile_index_panel_calendar {
-    height:300px;
+    height:309px;
+    padding:20px 0 20px 20px;
 
     #profile_index_calendar_actions {
       z-index:100;
       position:absolute;
-      right:20px;
+      right:0px;
       top:0;
     }
 
@@ -418,19 +411,18 @@ $cn_contrastor_third_0: #c18176;
 
   width:100%;
   border-top:1px solid $cn_grey_0;
+  height:260px;
+  padding:20px 0 20px 20px;
 
-  right:0px;
-
-  padding:20px;
-
+  .slimScrollDiv {
+    float:left;
+  }
   #profile_index_feedback_cases {
     position:relative;
     width:260px;
-    height:300px;
-    overflow-y:hidden;
+    height:100%;
     float:left;
-    margin-right:20px;
-//    background:$cn_grey_0;
+    margin-bottom:20px;
 
     #profile_index_feedback_cases_empty {
       text-align:center;
@@ -444,15 +436,14 @@ $cn_contrastor_third_0: #c18176;
 
     .profile_index_feedback_cases_item {
       cursor:pointer;
-      height:21px;
-      padding:7px;
-      width:246px;
-      display:block;
+
+      height:50px;
+      line-height:50px;
+      width:260px;
+      display:none;
       position:relative;
       border-bottom:1px solid $cn_grey_0;
-      div {
-        display:inline-block;
-      }
+
 
       .profile_index_feedback_cases_item_read_highlight {
         display:none;
@@ -469,20 +460,37 @@ $cn_contrastor_third_0: #c18176;
       }
 
       .profile_index_feedback_cases_item_score {
+        display:inline-block;
         width:35px;
         font-weight:bold;
         font-size:16px;
         text-align:center;
-        color: $cn_colour_0;
-        margin-top:1px;
+        color: $cn_grey_-2;
+        margin-left:10px;
+        vertical-align:middle;
       }
-      .profile_index_feedback_cases_item_username {
 
+      .profile_index_feedback_cases_item_user {
+        vertical-align:middle;
+        display:inline-block;
+        width:150px;
+        line-height:16px;
+        margin-left:5px;
+        .profile_index_feedback_cases_item_username {
+          //outline:1px solid red;
+          font-weight:400;
+
+        }
+        .profile_index_feedback_cases_item_subject {
+          //outline:1px solid red;   
+          font-size:12px; 
+        }
       }
       .profile_index_feedback_cases_item_date {
-        float:right;
-        font-size:10px;
-        margin:5px 5px 0 0;
+        display:inline-block;
+        position:absolute;
+        right:10px;
+        top:2px;
         font-weight:bolder;
       }
       &:hover {
@@ -491,15 +499,18 @@ $cn_contrastor_third_0: #c18176;
     }
   }
 
+
+
+
   #profile_index_feedback_chart{
-    width:400px;
-    height:300px;
+    width:510px;
+    height:100%;
     float:left;
+    margin-left:20px;
+    display:none;
   }
 
-  #profile_index_feedback_chart_legend {
 
-  }
 
   #profile_index_feedback_results {
     display:none;

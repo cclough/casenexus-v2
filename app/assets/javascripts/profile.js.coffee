@@ -28,6 +28,14 @@ modal_cases_show_prime = () ->
       modal_cases_show_prime()
 
 
+  # $("#cases_show_panel_right").slimscroll
+  #   width: '300px'
+  #   height: '500px'
+
+  $(".cases_show_recommendation_content").slimscroll
+    width: '170px'
+    height: '138px'
+
 
 window.modal_cases_show_show = (case_id) ->
 
@@ -50,7 +58,6 @@ window.modal_cases_show_show = (case_id) ->
 
 
 
-
 $(document).ready ->
 
   # If profile page
@@ -65,10 +72,14 @@ $(document).ready ->
   #       window.cases_resultstable_prime("analysis")
 
 
-  $('#profile_index_friends_friends').slimscroll({
+  $('#profile_index_friends_friends').slimscroll
     height: 'auto'
     width: 'auto'
-  });
+
+
+  $('#profile_index_feedback_cases').slimscroll
+    height: 'auto',
+    width: '260px'
 
 
 
@@ -101,11 +112,15 @@ $(document).ready ->
     # Users Item Cascade Fade
     $(".profile_index_friends_friends_item").each (i) ->
       $(this).delay((i + 1) * 50).fadeIn()
-  
+
+    $(".profile_index_feedback_cases_item").each (i) ->
+      $(this).delay((i + 1) * 50).fadeIn()
+
+
+
   ), 500
 
-
-
+  $("#profile_index_feedback_chart").fadeIn "500"
 
   # INFO
   $("#profile_index_info_actions_settings").click ->

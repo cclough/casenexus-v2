@@ -350,7 +350,7 @@ a.muted:focus {
   padding: 9px 12px 10px;
   line-height: 22px;
   text-decoration: none;
-  text-shadow: none;
+  text-shadow: none !important;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;

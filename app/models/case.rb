@@ -106,7 +106,7 @@ class Case < ActiveRecord::Base
   end
 
   def subject_trunc_menu
-    subject.truncate(25, separator: ' ')
+    subject.truncate(30, separator: ' ')
   end
 
   def date_fb

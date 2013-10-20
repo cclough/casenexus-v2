@@ -15,7 +15,7 @@
       // if (cases_analysis_chart_case_count < 3) {
       //   $("#cases_analysis_chart_progress_empty").fadeIn("fast");
       // } else {
-      // window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count);
+      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count);
       // }
 
     });
@@ -131,7 +131,7 @@
       %input#profile_index_friends_action_input{type:"hidden"}
 
 
-    .spacer10
+    .spacer20
 
 
 
@@ -170,58 +170,45 @@
 
       
 
+  #profile_index_panel_feedback
 
+    .profile_index_title
+      Feedback
 
+      - if @cases.unread.count > 0
+        %span.application_unread_label_large
+          = @cases.unread.count.to_s
 
-
-  / #profile_index_panel_feedback
-
-  /   .profile_index_title
-  /     Feedback
-
-  /     - if @cases.unread.count > 0
-  /       %span.application_unread_label_large
-  /         = @cases.unread.count.to_s
-
-  /   .spacer10
+    .spacer20
     
-  /   #profile_index_feedback_cases
+    #profile_index_feedback_cases
 
-  /     - if @cases.count > 0
-  /       - @cases.each do |cases_item|
-  /         .profile_index_feedback_cases_item{"data-case_id" => cases_item.id}
+      - if @cases.count > 0
+        - @cases.each do |cases_item|
+          .profile_index_feedback_cases_item{"data-case_id" => cases_item.id}
             
-  /           .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
+            .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
 
-  /           .profile_index_feedback_cases_item_score
-  /             = cases_item.totalscore_percentage.to_f.round(0).to_s + "%"
-  /           .profile_index_feedback_cases_item_username
-  /             = cases_item.interviewer.username
-  /           .profile_index_feedback_cases_item_date
-  /             = cases_item.date_fb
-  /     - else
-  /       #profile_index_feedback_cases_empty
-  /         %i.icon-edit
-  /         %div
-  /           No feedback yet
+            .profile_index_feedback_cases_item_score
+              = cases_item.totalscore_percentage.to_f.round(0).to_s + "%"
 
-
-  /   #profile_index_feedback_chart
-      
-
-
-  /   #profile_index_feedback_chart_legend
+            .profile_index_feedback_cases_item_user
+              .profile_index_feedback_cases_item_username
+                = cases_item.interviewer.username
+              .profile_index_feedback_cases_item_subject
+                = cases_item.subject_trunc_menu
+            .profile_index_feedback_cases_item_date
+              = cases_item.date_fb
+      - else
+        #profile_index_feedback_cases_empty
+          %i.icon-edit
+          %div
+            No feedback yet
 
 
-  /   #profile_index_feedback_results
-  /     #cases_analysis_results
+    #profile_index_feedback_chart
 
-    
-  / / .profile_index_icon
-  / /   =image_tag "flat-ui/icons/Calendar_2x.png"
-  / / .profile_index_icon
-  / /   =image_tag "flat-ui/icons/Clipboard_2x.png"
-  / / .profile_index_icon
-  / /   =image_tag "flat-ui/icons/Book_2x.png"
-  / / .profile_index_icon
-  / /   =image_tag "flat-ui/icons/Mail_2x.png"
+
+
+    / #profile_index_feedback_results
+    /   #cases_analysis_results

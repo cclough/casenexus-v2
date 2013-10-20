@@ -129,7 +129,7 @@
       = render 'events/button_startcase'
 
       = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-colour btn-micro events_edit_actions_button" do
-        %span.fui-skype
+        %i.icon-skype
         
 
     %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close

@@ -205,16 +205,16 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chart_analysis_progress.addGraph graph
     
     # LEGEND
-    # legend = new AmCharts.AmLegend()
-    # # legend.position = "bottom"
-    # # legend.align = "center"
-    # legend.rollOverGraphAlpha = "0.15"
-    # # legned.fontSize = 8
-    # # legend.color = "#f6f6f6"
-    # legend.horizontalGap = 0
-    # legend.switchable = true
-    # legend.valueWidth = 10
-    # chart_analysis_progress.addLegend(legend, "profile_index_feedback_chart_legend")
+    legend = new AmCharts.AmLegend()
+    # legend.position = "bottom"
+    legend.align = "center"
+    legend.rollOverGraphAlpha = "0.15"
+    legend.fontSize = 8
+    # legend.color = "#f6f6f6"
+    legend.horizontalGap = 0
+    legend.switchable = true
+    legend.valueWidth = 20
+    chart_analysis_progress.addLegend(legend, "profile_index_feedback_chart_legend")
 
     # CURSOR //////////
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
@@ -229,7 +229,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     
 
     # Balloon Settings
-
     balloon = chart_analysis_progress.balloon
     balloon.adjustBorderColor = true
     balloon.cornerRadius = 5
