@@ -19,10 +19,12 @@
         = render partial: 'books/show_small', locals: { book_id: @case.book_id }
 
       - else
-        #cases_show_book_subject
-          = @case.subject
-        #cases_show_book_source
-          = @case.source
+        - unless @case.subject.blank?
+          #cases_show_book_subject
+            = @case.subject
+        - unless @case.source.blank?
+          #cases_show_book_source
+            = @case.source
 
     #cases_show_recommendations
       .cases_show_recommendation
