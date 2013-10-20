@@ -80,4 +80,7 @@ Casenexus::Application.configure do
   #                       sender_address: %{"Casenexus Notifier" <mailer@casenexus.com>},
   #                       exception_recipients: %w{christian.clough@gmail.com}
 
+  # Mini-profiler-Delfater fix - https://github.com/SamSaffron/MiniProfiler/issues/131
+  config.middleware.delete(Rack::MiniProfiler)
+  config.middleware.insert_after(HerokuDeflater::SkipBinary, Rack::MiniProfiler)
 end

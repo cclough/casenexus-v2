@@ -24,6 +24,7 @@ gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
 #gem 'griddler'                                   # Receive emails
 gem 'rack-mini-profiler'
 
+
 group :production do
   gem 'heroku_rails_deflate'
 end
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'wirble'
   gem 'awesome_print'                                   # Colors on console
   gem 'pry'
+  gem 'bullet'
 end
 
 group :development do
