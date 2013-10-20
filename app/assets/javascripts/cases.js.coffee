@@ -87,7 +87,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
       backgroundAlpha: 0.15
 
 
-    if case_count > 1
+    if parseInt(case_count) > 1
       chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
     else
       chart_analysis_progress.colors = ["#dee1e3", "#dee1e3", "#dee1e3"]
