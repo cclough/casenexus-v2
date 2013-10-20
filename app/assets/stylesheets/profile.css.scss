@@ -195,6 +195,11 @@ $cn_contrastor_third_0: #c18176;
     .profile_index_title {
 //      text-align:center;
       padding-left:10px;
+      .application_unread_label_large {
+        position:absolute;
+        right:20px;
+        top:0px;
+      }
     }
 
     #profile_index_friends_friends {
@@ -211,12 +216,6 @@ $cn_contrastor_third_0: #c18176;
       }
 
 
-      #profile_index_friends_friends_requested_divider{
-        height:1px;
-        display:block;
-        margin:10px;
-        border-top:2px solid $cn_grey_-1;
-      }
 
 
       .profile_index_friends_friends_item {
@@ -233,7 +232,7 @@ $cn_contrastor_third_0: #c18176;
         .profile_index_friends_friends_item_requested_highlight {
           display:none;
           &.unread {
-            height:35px;
+            height:50px;
             position:absolute;
             left:0px;
             top:0px;
@@ -290,9 +289,10 @@ $cn_contrastor_third_0: #c18176;
         .profile_index_friends_friends_requested {
           position:absolute;
           right:5px;
-          top:5px;
+          top:0px;
           .profile_index_friends_friends_item_friendship_button {
             padding:6px;
+            margin-right:3px;
   //          float:right;
           }          
         }

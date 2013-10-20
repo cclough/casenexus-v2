@@ -413,7 +413,7 @@
 }
 
 .icon-arrow-1-up:before {
-  content: '\\';
+  content: "\\";
 }
 
 .icon-fontawesome-webfont-13:before {
@@ -470,5 +470,85 @@
 
 .icon-fontawesome-webfont-18:before {
   content: "\e00d";
+}
+
+.icon-check-5:before {
+  content: "\e00e";
+}
+
+.icon-fontawesome-webfont-19:before {
+  content: "\e00f";
+}
+
+.icon-fontawesome-webfont-20:before {
+  content: "\e010";
+}
+
+.icon-fontawesome-webfont-21:before {
+  content: "\e011";
+}
+
+.icon-fontawesome-webfont-22:before {
+  content: "\e012";
+}
+
+.icon-check-2:before {
+  content: "\e013";
+}
+
+.icon-check-alt:before {
+  content: "\e014";
+}
+
+.icon-checkmark:before {
+  content: "\e015";
+}
+
+.icon-checkbox-checked:before {
+  content: "\e016";
+}
+
+.icon-fontawesome-webfont-23:before {
+  content: "\e017";
+}
+
+.icon-x:before {
+  content: "\e018";
+}
+
+.icon-cancel:before {
+  content: "\e019";
+}
+
+.icon-cancel-circled:before {
+  content: "\e01a";
+}
+
+.icon-x-1:before {
+  content: "\e01b";
+}
+
+.icon-block:before {
+  content: "\e01c";
+}
+
+.icon-fontawesome-webfont-24:before {
+  content: "\e01d";
+}
+
+.icon-fontawesome-webfont-25:before {
+  content: "\e01e";
+}
+
+.icon-x-circle:before {
+  content: "\e01f";
+}
+
+.icon-x-alt:before {
+  content: "\e020";
+}
+
+.icon-close:before {
+  content: "\e021";
 }
 
