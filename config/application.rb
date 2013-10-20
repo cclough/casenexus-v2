@@ -91,9 +91,5 @@ module Casenexus
       Devise::PasswordsController.layout "home"
     end
     
-    # Mini-profiler-Delfater fix - https://github.com/SamSaffron/MiniProfiler/issues/131
-    config.middleware.delete(Rack::MiniProfiler)
-    config.middleware.insert_after(HerokuDeflater::SkipBinary, Rack::MiniProfiler)
-
   end
 end
