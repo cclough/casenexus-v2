@@ -413,7 +413,7 @@
 }
 
 .icon-arrow-1-up:before {
-  content: "\";
+  content: '\\';
 }
 
 .icon-fontawesome-webfont-13:before {

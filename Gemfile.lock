@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/tmm1/perftools.rb.git
+  revision: f3d0c5c6c8f997d24764c0aa98100adb60416006
+  specs:
+    perftools.rb (2.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -306,6 +312,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy
+  perftools.rb!
   pg
   pry
   pusher

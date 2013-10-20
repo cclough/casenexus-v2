@@ -14,7 +14,7 @@ events_ordinal = (date) ->
 events_set_week_date = () ->
 
   current_week_div = $(".calendar").find(".events_calendar_week:nth-child("+window.events_current_week_number+")")
-  
+
   $(".calendar").find(".events_calendar_week").addClass "out_of_focus"
   current_week_div.removeClass "out_of_focus"
 
@@ -35,6 +35,15 @@ events_set_week_date = () ->
 
 window.events_calendar_rebless = ->
 
+  # On load animations
+  setTimeout (->
+    # Scroll calendar to today
+    distance_to_this_week = ($("#profile_index_panel_calendar_container").find(".today").position().top - 47 - 47) + 'px'
+    $('#profile_index_panel_calendar_container').animate
+      scrollTop: distance_to_this_week
+    , 500
+  ), 500
+
   # Set current week variable
   today_div = $("#profile_index_panel_calendar_container .today")
   current_week_div = today_div.parent()
@@ -52,15 +61,6 @@ window.events_calendar_rebless = ->
   # New event button
   $("#profile_index_calendar_actions_new").click ->
     window.modal_event_new_show(null,null)
-
-  # On load animations
-  setTimeout (->
-    # Scroll calendar to today
-    distance_to_this_week = ($("#profile_index_panel_calendar_container").find(".today").position().top - 47 - 47) + 'px'
-    $('#profile_index_panel_calendar_container').animate
-      scrollTop: distance_to_this_week
-    , 500
-  ), 500
 
   # Prime scroll within days
   $(".more_than_two_events").slimscroll({
@@ -106,10 +106,11 @@ window.events_calendar_edit_modal_show = (event_id) ->
 $(document).ready ->
 
   # Params show event trigger used e.g. by event emails
-  if typeof events_index_choosecase_event_id is "string"
-    window.events_calendar_edit_modal_show(events_index_choosecase_event_id)
+  # if typeof events_index_choosecase_event_id is "string"
+  #   window.events_calendar_edit_modal_show(events_index_choosecase_event_id)
 
-  window.events_calendar_rebless()
+  if $("#profile_index_panel_calendar_container").length > 0
+    window.events_calendar_rebless()
 
 
 

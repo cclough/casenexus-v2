@@ -171,7 +171,6 @@ body {
 #application_container:before,
 #application_container:after {
   display: table;
-  content: "";
   line-height: 0;
 }
 #application_container:after {
