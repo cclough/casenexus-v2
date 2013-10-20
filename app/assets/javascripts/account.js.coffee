@@ -38,10 +38,13 @@ window.account_completeedit_bless = () ->
   )
 
   marker.addTo map
-  marker.on "dragend", (e) ->
-    coords = e.target.getLatLng()
-    $("#account_completeedit_lat").val(coords.lat)
-    $("#account_completeedit_lng").val(coords.lng)
+  # marker.on "dragend", (e) ->
+  #   coords = e.target.getLatLng()
+  #   $("#account_completeedit_lat").val(coords.lat)
+  #   $("#account_completeedit_lng").val(coords.lng)
+
+
+
 
   # Start at current_user, zoomed
   window.map.setView([parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)], 15)

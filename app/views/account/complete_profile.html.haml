@@ -35,13 +35,13 @@
 
       .static_home_form_input_container
         .static_home_form_input_icon_container
-          %i.input-icon.fui-linkedin.huge
+          %i.input-icon.icon-linkedin-alt
         = f.text_field :linkedin, tabindex: "3", placeholder: "Linkedin username (optional)", class: "span30 large"
         
 
       .static_home_form_input_container{rel: "popover", "data-content"=> "Sign up at <a href=https://login.skype.com/account/signup-form target=_blank><span class=fui-skype></span>Skype.com</a>".html_safe, "data-original-title"=>"Not registered?", id: "account_completeedit_skype"}
         .static_home_form_input_icon_container
-          %i.input-icon.fui-skype.huge
+          %i.input-icon.icon-skype
         = f.text_field :skype, tabindex: "4", placeholder: "Skype username (recommended)", class: "span30 large"
         
 
@@ -68,7 +68,7 @@
 
       .spacer15
       
-      = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
+      = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, { prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
 
       .spacer15
 

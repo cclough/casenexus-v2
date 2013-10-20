@@ -58,7 +58,7 @@
 
       #profile_index_info_joined
         %i.icon-clock
-        Signed up:
+        Joined:
         = time_ago_in_words(current_user.created_at)
         ago
 
@@ -147,7 +147,6 @@
 
       - else
         #profile_index_friends_friends_empty
-          %i.icon-user
           %div
             No partners yet
 
@@ -201,7 +200,6 @@
               = cases_item.date_fb
       - else
         #profile_index_feedback_cases_empty
-          %i.icon-edit
           %div
             No feedback yet
 
