@@ -31,7 +31,7 @@ $cn_colour_-1:#b0bcc3; // buttons
 $cn_colour_0: #242d32; // header
 $cn_colour_05: #313c44; // header button highlights
 $cn_colour_1: #72aac9; // header button highlights
-
+$cn_colour_2: #ddf3ff; // header button highlights
 $cn_grey_-2: #697076; // Text and borders in places
 $cn_grey_-1: #dee1e3; // search input border
 $cn_grey_0: #f0f1f2; // users form
@@ -79,21 +79,27 @@ $cn_contrastor_third_0: #c18176;
 
   .events_calendar_week {
     display:block;
+    &.last_week_of_period {
+      .events_calendar_day {
+        border-bottom:0 !important;
+      }
+    }
+    &.out_of_focus {
+      opacity:0.3;
+    }
   }
   .events_calendar_day {
 //    background: url("app/timeline.png") no-repeat left center;
     border-right:1px solid $cn_grey_0;
     border-bottom:1px solid $cn_grey_0;
-    height: 75px !important; //with 20px padding - 1 for border
-    padding-top:20px;
+    height: 95px !important; //with 20px padding - 1 for border
+
     position:relative;
     width: 95px !important;// -1 for border
     display:block;
     float:left;
     vertical-align: top;
     font-size: 10px;
-
-
 
     .events_calendar_day_num {
       position:absolute;
@@ -113,26 +119,37 @@ $cn_contrastor_third_0: #c18176;
       margin-left:-15px;
       text-align:center;
       font-size:12px;
+      font-weight:400;
     }    
 
+    .slimScrollDiv {
+      margin-top:20px;
+      height:55px;
+      margin-bottom:20px;
+      .events_calendar_day_events {
+        margin:0;
+      }
+    }
+    .events_calendar_day_events {
+      margin-top:20px;
+      height:55px;
+      margin-bottom:20px;      
+    }
     .events_calendar_day_event {
       cursor:pointer;
 
       -moz-border-radius:    3px;
       -webkit-border-radius: 3px;
       border-radius:         3px;
-      font-weight:400;
+      font-weight:500;
       height:15px;
       background:$cn_colour_1;
       margin:3px;
       padding:5px;
       color:white;
       font-size:12px;
-      line-height:12px;
-      .events_calendar_day_event_datetime {
-        font-size:10px;
-        float:right;
-      }
+
+      line-height:13px;
     }
   }
 
@@ -140,7 +157,7 @@ $cn_contrastor_third_0: #c18176;
 //  .today { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
 
   .notmonth, .notmonth a { background: $cn_grey_0; }
-  .today { background: $cn_grey_0; }
+  .today { background: $cn_colour_2; }
   .last_day_of_week { border-right: 0; }
 }
 
@@ -153,6 +170,15 @@ $cn_contrastor_third_0: #c18176;
 #events_calendar_month_date {
   vertical-align:middle;
   font-size:18px;
+  position:absolute;
+  left:45px;
+  bottom:5px;
+}
+
+#events_calendar_month_text_count{
+  position:absolute;
+  right:55px;
+  bottom:5px;
 }
 
 
@@ -161,7 +187,7 @@ $cn_contrastor_third_0: #c18176;
   border-color: $cn_colour_1;
   padding:4px 6px 5px 6px !important;
   vertical-align:middle;
-  margin-left:5px;
+  margin-top:5px;
 }
 
 

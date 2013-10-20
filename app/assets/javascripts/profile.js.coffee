@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
-  
+
 
 modal_cases_show_prime = () ->
 
@@ -48,16 +48,8 @@ window.modal_cases_show_show = (case_id) ->
     # $("#modal_cases").on "shown", ->
     #   modal_cases_show_prime()
 
-events_set_week_date = () ->
 
-  current_week_div = $(".calendar").find(".events_calendar_week:nth-child("+window.events_current_week_number+")")
-  
-  current_week_first_day_num = current_week_div.find(".events_calendar_day:nth-child(1)").data "day_num"
-  current_week_last_day_num = current_week_div.find(".events_calendar_day:nth-child(7)").data "day_num"
-  current_week_month = current_week_div.find(".events_calendar_day:nth-child(1)").data "month"
-  
-  string = current_week_month + " " + current_week_first_day_num + " - " + current_week_last_day_num
-  $("#events_calendar_month_date").html string
+
 
 $(document).ready ->
 
@@ -79,27 +71,7 @@ $(document).ready ->
   });
 
 
-  # Prime calendar shift buttons
-  $(".profile_index_panel_calendar_shift_button").click ->
-    direction = $(this).data "direction"
 
-
-    if direction == "up"
-      unless window.events_current_week_number == 1
-        scroll_by = "+=-96px"
-        window.events_current_week_number -= 1
-        $('#profile_index_panel_calendar_container').animate
-          scrollTop: scroll_by
-        , 150
-    else
-      unless window.events_current_week_number == $("#profile_index_panel_calendar_container .events_calendar_week").length
-        scroll_by = "+=96px"
-        window.events_current_week_number += 1
-        $('#profile_index_panel_calendar_container').animate
-          scrollTop: scroll_by
-        , 150
-
-    events_set_week_date()
 
 
 
@@ -130,12 +102,6 @@ $(document).ready ->
     $(".profile_index_friends_friends_item").each (i) ->
       $(this).delay((i + 1) * 50).fadeIn()
   
-    # Scroll calendar to today
-    distance_to_this_week = ($("#profile_index_panel_calendar_container").find(".today").position().top - 47 - 47) + 'px'
-    $('#profile_index_panel_calendar_container').animate
-      scrollTop: distance_to_this_week
-    , 500
-
   ), 500
 
 
@@ -251,14 +217,7 @@ $(document).ready ->
 
     window.modal_cases_show_show(case_id)
 
-  # Set current week variable
-  today_div = $("#profile_index_panel_calendar_container .today")
-  current_week_div = today_div.parent()
-  current_week_num = current_week_div.data "week_number"
-  window.events_current_week_number = current_week_num + 1
 
-  events_set_week_date()
-    
 
 
 

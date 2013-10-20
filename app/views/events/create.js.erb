@@ -6,7 +6,6 @@
 
   window.modal_events_rebless();
 
-
 <%- else %>
 
 	$('#modal_event').modal('hide');
@@ -24,7 +23,8 @@
 	});
 
   // Refresh the calendar if on events#index
-  $("#profile_index_calendar").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
+  $("#profile_index_panel_calendar").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
+  
   window.events_calendar_rebless();
 
    

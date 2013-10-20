@@ -2,6 +2,8 @@
 
   $('#modal_event').html("<%= escape_javascript(render('shared/modal_event_edit_form')) %>");
 
+  window.application_form_errors_close();
+
   window.events_modal_rebless();
 
 <%- else %>
@@ -20,7 +22,7 @@
 
   });
 
-   $("#events_calendar_container").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
+   $("#profile_index_panel_calendar").html("<%= escape_javascript(render 'calendar') %>"); // add back in ruby brackets
    window.events_calendar_rebless();
    
 <%- end %>

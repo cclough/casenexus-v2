@@ -9,7 +9,7 @@
     Schedule
 
 
-    #profile_index_calendar_actions.pull-right
+    #profile_index_calendar_actions
 
       #profile_index_calendar_actions_new.btn.btn-colour.btn-round{"data-container"=>"body", "data-original-title"=>"New case appointment...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
         %i.icon-plus
@@ -25,28 +25,23 @@
       %i.icon-fontawesome-webfont-17
 
     #profile_index_panel_calendar_container
-      = calendar @date do |date|
+      = calendar @date, current_user do |date|
         .events_calendar_day_num
           = date.day
         .events_calendar_day_name
           = date.strftime('%a').upcase
 
+
         - if @events_by_date[date]
+          .events_calendar_day_events{class: ("more_than_two_events" if @events_by_date[date].count > 2)}
+            - @events_by_date[date].each do |event|
+              .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top","data-container"=>"body" }
+                = event.partner.username
 
-          - @events_by_date[date].each do |event|
-            .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top"}
-              = event.partner.username
-              %span.events_calendar_day_event_datetime
-                = event.datetime.strftime("%I:%M%p")
 
-    #profile_index_panel_calendar_controls
-      
-      %span#events_calendar_month_date
-        = @date.strftime("%B %Y")
+    #events_calendar_month_date
 
-      %span#events_calendar_month_text_count.btn.btn-colour
-        - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-        = "(#{pluralize(month_count,"appt")})"
+    #events_calendar_month_text_count.btn.btn-colour
 
 
     .profile_index_panel_calendar_shift_button{"data-direction"=>"down"}

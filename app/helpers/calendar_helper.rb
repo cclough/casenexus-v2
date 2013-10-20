@@ -1,10 +1,10 @@
 module CalendarHelper
 
-  def calendar(date = Date.today, &block)
-    Calendar.new(self, date, block).table
+  def calendar(date = Date.today, current_user, &block)
+    Calendar.new(self, date, current_user, block).table
   end
 
-  class Calendar < Struct.new(:view, :date, :callback)
+  class Calendar < Struct.new(:view, :date, :current_user, :callback)
 
     START_DAY = :sunday
 
@@ -18,7 +18,7 @@ module CalendarHelper
 
     def week_rows
       weeks.map.with_index do |week,index|
-        content_tag :div, class: "events_calendar_week", "data-week_number"=> index do
+        content_tag :div, class: (if index == (weeks.length-1) then "events_calendar_week last_week_of_period out_of_focus" else "events_calendar_week out_of_focus" end), "data-week_number"=> index, "data-events_this_week"=> current_user.events.where(datetime: (week[1].beginning_of_week)..(week[1].end_of_week)).count do
           week.map { |day| day_cell(day) }.join.html_safe
         end
       end.join.html_safe

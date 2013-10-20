@@ -365,6 +365,13 @@ $cn_contrastor_third_0: #c18176;
   #profile_index_panel_calendar {
     height:300px;
 
+    #profile_index_calendar_actions {
+      z-index:100;
+      position:absolute;
+      right:20px;
+      top:0;
+    }
+
     #profile_index_panel_calendar_container_container { // allows positioning up on title line
       height:300px;
       margin-top:-30px;
@@ -383,12 +390,6 @@ $cn_contrastor_third_0: #c18176;
         margin:0 auto;
       }
 
-      #profile_index_panel_calendar_controls {
-        width:300px;
-        position:absolute;
-        left:60px;
-        bottom:10px;
-      }
 
 
       .profile_index_panel_calendar_shift_button {
@@ -401,6 +402,7 @@ $cn_contrastor_third_0: #c18176;
         text-align:center;
         margin: 5px auto;
         color:$cn_grey_0;
+        cursor:pointer;
         &:hover {
           color:$cn_grey_-1;
         }
