@@ -20,33 +20,37 @@
 
 
 
-  
+  #profile_index_panel_calendar_container_container
+    .profile_index_panel_calendar_shift_button{"data-direction"=>"up"}
+      %i.icon-fontawesome-webfont-17
+
+    #profile_index_panel_calendar_container
+      = calendar @date do |date|
+        .events_calendar_day_num
+          = date.day
+        .events_calendar_day_name
+          = date.strftime('%a').upcase
+
+        - if @events_by_date[date]
+
+          - @events_by_date[date].each do |event|
+            .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top"}
+              = event.partner.username
+              %span.events_calendar_day_event_datetime
+                = event.datetime.strftime("%I:%M%p")
+
+    #profile_index_panel_calendar_controls
+      
+      %span#events_calendar_month_date
+        = @date.strftime("%B %Y")
+
+      %span#events_calendar_month_text_count.btn.btn-colour
+        - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
+        = "(#{pluralize(month_count,"appt")})"
 
 
-  #profile_index_panel_calendar_container
-    = calendar @date do |date|
-      .events_calendar_day_num
-        = date.day
-      .events_calendar_day_name
-        = date.strftime('%a').upcase
-
-      - if @events_by_date[date]
-
-        - @events_by_date[date].each do |event|
-          .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top",style: "left:" + (event.datetime.hour * 4).to_s + "px"}
+    .profile_index_panel_calendar_shift_button{"data-direction"=>"down"}
+      %i.icon-fontawesome-webfont-15
 
 
-  %span#events_calendar_month.btn.btn-micro.btn-colour
-    = link_to date: @date.prev_month do
-      %i.icon-arrow-left.icon-white
-    
-    %span#events_calendar_month_text
-      = @date.strftime("%B %Y")
 
-    = link_to date: @date.next_month do
-      %i.icon-arrow-right.icon-white
-
-
-  %span#events_calendar_month_text_count.btn.btn-colour
-    - month_count = current_user.events.where(created_at: (@date.beginning_of_month)..(@date.end_of_month)).count
-    = "(#{pluralize(month_count,"appt")})"

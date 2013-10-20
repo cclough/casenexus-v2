@@ -48,20 +48,29 @@ window.modal_cases_show_show = (case_id) ->
     # $("#modal_cases").on "shown", ->
     #   modal_cases_show_prime()
 
+events_set_week_date = () ->
+
+  current_week_div = $(".calendar").find(".events_calendar_week:nth-child("+window.events_current_week_number+")")
+  
+  current_week_first_day_num = current_week_div.find(".events_calendar_day:nth-child(1)").data "day_num"
+  current_week_last_day_num = current_week_div.find(".events_calendar_day:nth-child(7)").data "day_num"
+  current_week_month = current_week_div.find(".events_calendar_day:nth-child(1)").data "month"
+  
+  string = current_week_month + " " + current_week_first_day_num + " - " + current_week_last_day_num
+  $("#events_calendar_month_date").html string
 
 $(document).ready ->
 
   # If profile page
-  if $("#profile_index_panel_calendar_container").length > 0
+  # if $("#profile_index_panel_calendar_container").length > 0
 
-    # Load results table
-    $.get "/cases/results?view=analysis", (data) ->
-      $("#cases_analysis_results").html data
-      if (cases_analysis_chart_case_count == 0)
-        $("#cases_analysis_chart_table_empty").fadeIn "fast"
-      else
-        window.cases_resultstable_prime("analysis")
-
+  #   # Load results table
+  #   $.get "/cases/results?view=analysis", (data) ->
+  #     $("#cases_analysis_results").html data
+  #     if (cases_analysis_chart_case_count == 0)
+  #       $("#cases_analysis_chart_table_empty").fadeIn "fast"
+  #     else
+  #       window.cases_resultstable_prime("analysis")
 
 
   $('#profile_index_friends_friends').slimscroll({
@@ -69,65 +78,65 @@ $(document).ready ->
     width: 'auto'
   });
 
+
   # Prime calendar shift buttons
   $(".profile_index_panel_calendar_shift_button").click ->
     direction = $(this).data "direction"
 
-    # profile_index_calendar_scoller.scrollTo(direction, 0, 300,true) 
 
+    if direction == "up"
+      unless window.events_current_week_number == 1
+        scroll_by = "+=-96px"
+        window.events_current_week_number -= 1
+        $('#profile_index_panel_calendar_container').animate
+          scrollTop: scroll_by
+        , 150
+    else
+      unless window.events_current_week_number == $("#profile_index_panel_calendar_container .events_calendar_week").length
+        scroll_by = "+=96px"
+        window.events_current_week_number += 1
+        $('#profile_index_panel_calendar_container').animate
+          scrollTop: scroll_by
+        , 150
 
-  # Load Scroller
-  # profile_index_calendar_scoller = new iScroll("profile_index_panel_calendar_container",
-  #   momentum: true
-  # )
-  # profile_index_friends_scoller = new iScroll("profile_index_friends_friends",
-  #   #snap: 'div',
-  #   vScrollbar: true,
-  #   momentum: true
-  # )
-
-  # , #profile_index_feedback_cases
-
-  # # Scroll calendar to today
-  # if $("#profile_index_panel_calendar_container").find(".today")
-  #   setTimeout (->
-  #     distance_to_today = $("#profile_index_panel_calendar_container").find(".today").position().left - ($("#profile_index_panel_calendar_container").width() /2)
-  #     profile_index_calendar_scoller.scrollTo(distance_to_today,0, 500,true)
-  #   ), 100
+    events_set_week_date()
 
 
 
+      
+
+
+  # Friends item - show actions on mouseover
   mouseover = ->
-    # $(this).find(".profile_index_friends_friends_item_actions").fadeIn 200
-
     $(this).find(".profile_index_friends_friends_item_actions").show "slide", direction: "right", 100
-
-    
   mouseout = ->
-    # $(this).find(".profile_index_friends_friends_item_actions").fadeOut 200
     $(this).find(".profile_index_friends_friends_item_actions").hide "slide", direction: "right", 100
-
-  # $(".profile_index_friends_friends_item").hover mouseover, mouseout
-    
-
   $(".profile_index_friends_friends_item").hoverIntent
     over: mouseover,
     out: mouseout,
     interval: 250
 
+
+
+
+
+  # On load animations
   setTimeout (->
+
     # Fade in counts cases
     $(".profile_index_info_cases_counts_container").fadeIn "500"
 
     # Users Item Cascade Fade
     $(".profile_index_friends_friends_item").each (i) ->
       $(this).delay((i + 1) * 50).fadeIn()
-
-    ), 500
   
+    # Scroll calendar to today
+    distance_to_this_week = ($("#profile_index_panel_calendar_container").find(".today").position().top - 47 - 47) + 'px'
+    $('#profile_index_panel_calendar_container').animate
+      scrollTop: distance_to_this_week
+    , 500
 
-
-
+  ), 500
 
 
 
@@ -242,6 +251,14 @@ $(document).ready ->
 
     window.modal_cases_show_show(case_id)
 
+  # Set current week variable
+  today_div = $("#profile_index_panel_calendar_container .today")
+  current_week_div = today_div.parent()
+  current_week_num = current_week_div.data "week_number"
+  window.events_current_week_number = current_week_num + 1
+
+  events_set_week_date()
+    
 
 
 

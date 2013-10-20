@@ -74,6 +74,9 @@
 
         // sets border radius
         borderRadius: '7px',
+        
+         // sets animation status on a given scroll
+        animate: false,
 
         // sets border radius of the rail
         railBorderRadius : '7px'
@@ -270,8 +273,8 @@
           // prevent scrolling the page if necessary
           if(!releaseScroll)
           {
-              e.originalEvent.preventDefault();
-              }
+            e.originalEvent.preventDefault();
+          }
           if (e.originalEvent.touches.length)
           {
             // see how far user swiped
@@ -363,7 +366,11 @@
           }
 
           // scroll content
-          me.scrollTop(delta);
+        if (o.animate){
+              me.animate({ scrollTop: delta });
+        }else{
+              me.scrollTop(delta);
+        }
 
           // fire scrolling event
           me.trigger('slimscrolling', ~~delta);

@@ -55,10 +55,6 @@ $cn_contrastor_third_0: #c18176;
 
 
 
-#events_calendar_reminder {
-  cursor:pointer;
-}
-
 .events_calendar_event_container {
   overflow-y: auto;
   overflow-x: hidden;
@@ -69,23 +65,6 @@ $cn_contrastor_third_0: #c18176;
   height:46px;
 }
 
-#events_calendar_month_text {
-
-}
-
-#events_calendar_month_text_count {
-  color: $cn_colour_1;
-  border-color: $cn_colour_1;
-  padding:4px 6px 5px 6px !important;
-  vertical-align:top;
-  margin-left:5px;
-}
-#events_calendar_month_text_count:active,
-#events_calendar_month_text_count.active {
-  border-color: $cn_colour_1;
-  background: white;
-  color: $cn_colour_1;
-}
 
 
 
@@ -96,19 +75,19 @@ $cn_contrastor_third_0: #c18176;
 
 #events_calendar .calendar {
 
-  width:3360px;
+  width:678px; // + 6px for borders
 
   .events_calendar_week {
     display:block;
   }
   .events_calendar_day {
 //    background: url("app/timeline.png") no-repeat left center;
-    border:1px solid $cn_grey_0;
-    height: 96px !important;
-
+    border-right:1px solid $cn_grey_0;
+    border-bottom:1px solid $cn_grey_0;
+    height: 75px !important; //with 20px padding - 1 for border
+    padding-top:20px;
     position:relative;
-    
-    width: 96px !important;
+    width: 95px !important;// -1 for border
     display:block;
     float:left;
     vertical-align: top;
@@ -118,7 +97,7 @@ $cn_contrastor_third_0: #c18176;
 
     .events_calendar_day_num {
       position:absolute;
-      top:15px;
+      top:3px;
       width:20px;
       left:50%;
       margin-left:-10px;
@@ -127,38 +106,32 @@ $cn_contrastor_third_0: #c18176;
     }
     .events_calendar_day_name {
       position:absolute;
-      bottom:15px;
+      bottom:3px;
 
       width:30px;
       left:50%;
       margin-left:-15px;
       text-align:center;
       font-size:12px;
-    }
+    }    
 
-    .events_calendar_event_appts_container {
-      position:absolute;
-      top:0px;
-      bottom:0px;
-      left:0px;
-      width:60px;
-    }
-    
     .events_calendar_day_event {
       cursor:pointer;
 
-      width:15px;
+      -moz-border-radius:    3px;
+      -webkit-border-radius: 3px;
+      border-radius:         3px;
+      font-weight:400;
       height:15px;
-      border-radius:50%;
-      background:white;
-      position: absolute;
-      border:2px solid $cn_colour_0;
-      top: 45px;
-      z-index:20;
-
-      &:hover {
-        background:$cn_colour_0;
-        border:2px solid $cn_colour_0;  
+      background:$cn_colour_1;
+      margin:3px;
+      padding:5px;
+      color:white;
+      font-size:12px;
+      line-height:12px;
+      .events_calendar_day_event_datetime {
+        font-size:10px;
+        float:right;
       }
     }
   }
@@ -166,8 +139,9 @@ $cn_contrastor_third_0: #c18176;
 //  .notmonth, .notmonth a { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
 //  .today { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
 
-  .notmonth, .notmonth a { background: $cn_grey_0 no-repeat left center; }
-  .today { background: $cn_grey_0 no-repeat left center; }
+  .notmonth, .notmonth a { background: $cn_grey_0; }
+  .today { background: $cn_grey_0; }
+  .last_day_of_week { border-right: 0; }
 }
 
 .events_calendar_event_username {
@@ -176,24 +150,18 @@ $cn_contrastor_third_0: #c18176;
   padding-left:4px;
 }
 
-#events_calendar_month {
+#events_calendar_month_date {
+  vertical-align:middle;
+  font-size:18px;
+}
 
-//  border:1px solid $cn_grey_-1;
 
-//  -moz-border-radius:    3px;
-//  -webkit-border-radius: 3px;
-//  border-radius:         3px;
-//  padding:5px solid
-  margin: 0 0 10px 10px;
-  text-align:center;
-  font-size: 15px;
-  font-weight:bold;
-  a {
-    text-decoration: none;
-    padding: 0 10px;
-    font-size:12px;
-    display:inline-block;
-  }
+#events_calendar_month_text_count {
+  color: $cn_colour_1;
+  border-color: $cn_colour_1;
+  padding:4px 6px 5px 6px !important;
+  vertical-align:middle;
+  margin-left:5px;
 }
 
 
