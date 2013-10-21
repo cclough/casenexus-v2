@@ -162,6 +162,12 @@ body {
     min-height:100%; //without this devise and terms pages break - with extra margin on profile
   }
 
+  &.profile {
+    position:relative;
+    margin:0 auto;
+    width:1024px;
+    clear:both;
+  }
 }
 #application_container {
   margin-right: auto;

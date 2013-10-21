@@ -2,6 +2,8 @@
 #= require jquery_ujs
 #= require jquery.ui.effect-slide
 #= require jquery.ui.effect
+#= require bootstrap-wysihtml5
+
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
 #= require lib/jquery.truncate
@@ -9,12 +11,14 @@
 #= require lib/jquery.hoverIntent
 #= require lib/chosen.jquery
 #= require lib/slimscroll
-
 #= require lib/bootstrap
 #= require lib/bootstrap-clickover
 #= require lib/bootstrap-datetimepicker
 #= require lib/bootstrap-lightbox
-#= require bootstrap-wysihtml5
+#= require lib/pusher
+#= require lib/amcharts
+#= require lib/amcharts-serial
+#= require lib/mapbox
 
 #= require account
 #= require books
@@ -28,10 +32,7 @@
 #= require static_pages
 #= require votes
 
-#= require lib/pusher
-#= require lib/amcharts
-#= require lib/dragdealer
-#= require lib/mapbox
+
 
 
 # Get query params, global function
