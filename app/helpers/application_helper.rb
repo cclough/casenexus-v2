@@ -122,11 +122,11 @@ module ApplicationHelper
 
     case num
     when 1
-      content_tag :div, "Novice", class: "books_show_small_difficulty application_bootstrap_alert_green"
+      content_tag :div, "Novice", class: "books_show_small_difficulty novice"
     when 2
-      content_tag :div, "Intermediate", class: "books_show_small_difficulty application_bootstrap_alert_blue"
+      content_tag :div, "Intermediate", class: "books_show_small_difficulty intermediate"
     when 3
-      content_tag :div, "Advanced", class: "books_show_small_difficulty application_bootstrap_alert_red"
+      content_tag :div, "Advanced", class: "books_show_small_difficulty advanced"
     end
   end
 
