@@ -6,6 +6,6 @@
       = notification.sender.username
       %span.font-small.application_timestamp
         = time_ago_in_words(notification.created_at) + " ago"
-    %div.font-small
+    %div
       %span.header_menu_notifications_title= notification.title
       %span= notification.content_trunc

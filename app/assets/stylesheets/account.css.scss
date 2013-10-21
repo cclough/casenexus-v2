@@ -1,67 +1,4 @@
-$gray_background: #eceef1;
-$gray_Light: white;
-$gray_second: #BDC3C7;
-$gray_gunmetal: #363636;
-$gray_gunmetal_second: #2d2d2d;
-
-$gray_Lighter: #e1e1e1;
-$gray_Lightest: #f6f6f6;
-$gray_Mid: #767676;
-$gray_Dark: #555555;
-$gray_Darker: #333333;
-
-$green_flatui: #1ABC9C;
-$green_linkedin: #3489bd;
-
-$blue_pastel: #98cdff;
-$blue_linkedin: #006699;
-$blue_skype:#45adea;
-
-$alert-green: #88ff8e;
-$alert-red: #FF3030;
-$alert-blue: #7EB6FF;
-$alert-yellow: #FFFF7E;
-
-
-$cn_colour_-2:#7d8288; // button overlays
-$cn_colour_-1:#b0bcc3; // buttons
-
-$cn_colour_0: #242d32; // header
-$cn_colour_05: #313c44; // header button highlights
-$cn_colour_1: #72aac9; // header button highlights
-
-$cn_grey_-2: #697076; // Text and borders in places
-$cn_grey_-1: #dee1e3; // search input border
-$cn_grey_0: #f0f1f2; // users form
-
-$cn_contrastor_0: #c18176; // orange!
-$cn_contrastor_second_0: #9ac787;
-$cn_contrastor_third_0: #c18176;
-
-
-
-label, .account_form_label { // why the hell won't this work in app.css?
-  // font-size:12px !important;
-  .account_form_sublabel {
-    font-size:12px;
-    font-style:italic;
-  }
-}
-
-.account_form_label_gray {
-  color:$gray_Mid;
-}
-
-.account_form_label_bold {
-  font-weight:bold;
-}
-
-.account_form_label_university_logo {
-  img {
-    max-height:18px !important; 
-    min-width:18px !important; 
-  }
-}
+@import 'colours';
 
 
 
@@ -74,51 +11,23 @@ label, .account_form_label { // why the hell won't this work in app.css?
 /////////////////////////// EDIT ////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
-
-
+.account_edit_form_label {
+  font-size:12px;
+  font-style:italic;
+}
 
 
 .account_edit_form_spacer {
 
-//  background: $gray_second;
   height:10px;
   margin: 10px -10px;
-}
-
-
-
-#account_edit_form_info {
-  .btn {
-    width:150px;
-  }
-}
-
-
-
-#account_edit_form_info_avatar {
-  text-align:center;
-  font-size:50px;
-}
-
-
-
-.account_edit_block_title {
-  background: $gray_second;
-  height:30px;
-  text-align:center;
-  font-weight: bold;
-  line-height:31px;
-  color: white;
-  margin:-30px -10px 10px -10px;
 }
 
 .account_edit_form_emailing_label {
   text-align:left;
 }
 
-#account_edit_casesexternal_field {
-  font-size:20px;
-}
+
 
 /////////////////////////////////////////////////////////////////
 //////////////////////// COMPLETEEDIT ///////////////////////////
@@ -141,16 +50,8 @@ label, .account_form_label { // why the hell won't this work in app.css?
 #account_completeedit_map_location {
   height:20px;
   font-size:12px;
-}
-
-.account_completeedit_map_location_title {
-  font-weight:bold;
-}
-
-
-#account_completeedit_skype {
-  span {
-    margin-right:3px;
+  .account_completeedit_map_location_title {
+    font-weight:bold;
   }
 }
 
@@ -162,7 +63,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
 /////////////////////////////////////////////////////////////////
 
 
-
 #account_delete_panel {
   text-align:center;
 }
@@ -171,9 +71,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
 /////////////////////////////////////////////////////////////////
 ///////////////////// EDIT PASSWORD /////////////////////////////
 /////////////////////////////////////////////////////////////////
-
-
-
 
 #account_editpassword_panel {
   text-align:center;
@@ -209,9 +106,6 @@ label, .account_form_label { // why the hell won't this work in app.css?
   font-size:30px;
   margin-top:0px !important;
 }
-
-
-
 
 
 /////////////////////////////////////////////////////////////////
@@ -333,16 +227,11 @@ label, .account_form_label { // why the hell won't this work in app.css?
 
 
 
-#account_complete_panel_submit {
-
-}
-
 #account_complete_map_header {
   background: $cn_grey_0;
   height:30px;
   text-align:center;
   line-height:31px;
-
 
 }
 

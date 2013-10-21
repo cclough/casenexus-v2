@@ -30,7 +30,7 @@
     .row#map_index_user_profile_username
       = @user.username
 
-    .row.application_lastonline
+    .row
       - if @user.last_online_at
         Last online
         = time_ago_in_words(@user.last_online_at)
