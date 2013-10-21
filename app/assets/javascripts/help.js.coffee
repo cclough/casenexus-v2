@@ -10,13 +10,11 @@ window.modal_help_show = () ->
 
 
 
-
-
-
 $(document).ready ->
 
   # Modal Help nav
   if $("#modal_help").size() > 0
+    
     window.ArrowNav =
       init: ->
         $("a[href*=#]").click (e) ->

@@ -1,6 +1,3 @@
-window.map = null
-
-
 
 map_index_posts_prime = () ->
     # New post button
@@ -26,9 +23,6 @@ window.map_index_users_item_bless = () ->
   window.application_truncatables()
 
 
-
-
-
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   # show the spinner briefly
@@ -47,22 +41,15 @@ window.map_index_users_search = ->
   map_index_users_updatelist()
 
 
-
-
-
-
-
-
-
-window.marker_and_popup_actions_for = (marker, persistance) ->
+window.map_index_marker_and_popup_actions_for = (marker, persistance) ->
 
   if persistance == "temp"
     if window.current_active_marker
       unless window.current_active_marker == marker
-        popup = generate_popup_for marker
+        popup = map_index_generate_popup_for marker
         popup.openOn(map)
     else
-      popup = generate_popup_for marker
+      popup = map_index_generate_popup_for marker
       popup.openOn(map)
 
   else if persistance == "perm"
@@ -79,15 +66,15 @@ window.marker_and_popup_actions_for = (marker, persistance) ->
         window.current_active_marker.setIcon L.icon(current_active_marker.feature.properties.icon)
         map.removeLayer(window.current_active_popup)
 
-        activate_perm_popup_and_icon_for(marker)
+        map_index_activate_perm_popup_and_icon_for(marker)
     else
-      activate_perm_popup_and_icon_for(marker)
+      map_index_activate_perm_popup_and_icon_for(marker)
 
 
-window.activate_perm_popup_and_icon_for = (marker) ->
+window.map_index_activate_perm_popup_and_icon_for = (marker) ->
 
   # Add perm popup
-  popup = generate_popup_for marker
+  popup = map_index_generate_popup_for marker
   map.addLayer(popup)
 
   # Change Icon
@@ -104,7 +91,7 @@ window.activate_perm_popup_and_icon_for = (marker) ->
 
 
 
-window.generate_popup_for = (marker) ->
+window.map_index_generate_popup_for = (marker) ->
 
   feature = marker.feature
   popupContent =  '<div class="map_index_map_popup">' +
@@ -147,20 +134,13 @@ window.generate_popup_for = (marker) ->
 
 
 
-
-
 $(document).ready ->
-
-
-
-  # search
-  $("#header_nav_search_form").on "submit", ->
-    window.map_index_users_search()
 
   # Update list of user when enter is pressed
   $("#map_index_users_form input").keypress (e) ->
     map_index_users_updatelist()  if e.which is 13
 
+  # New posts button
   $("#map_index_users_form_button_posts_new").click ->
     if !($("#modal_post").hasClass("in"))
       $(".modal").modal("hide")
@@ -183,6 +163,7 @@ $(document).ready ->
         
     map_index_users_updatelist()
 
+  # Form switches
   $(".map_index_users_form_button_switch").click ->
 
     $(this).parent().find(".map_index_users_form_button_switch").removeClass "active"
@@ -207,10 +188,9 @@ $(document).ready ->
 
 
 
-  ######## IF MAP PAGE
+  ######## IF MAP PAGE, LOAD
 
   if typeof map_index_map_lat_start is "string"
-
 
     # Update the list of users
     map_index_users_updatelist()
@@ -226,29 +206,10 @@ $(document).ready ->
     window.map.setView([lat_start-0.005, lng_start+0.03], 15)
     #window.map.panTo new L.LatLng(lat_start, lng_start)
 
-
     # back to world view button (must be after map variable has been set)
     $("#map_index_map_zoomout").click ->
       window.map.setZoom(2);
       $(this).fadeOut("fast");
-
-    # # zoomer
-    # zooms = 17
-    # handle = document.getElementById("map_index_map_zoomer_handle")
-    # # Configure Dragdealer to update the map zoom
-    # zoom_bar = new Dragdealer("map_index_map_zoomer_zoom-bar",
-    #   steps: zooms
-    #   snap: true
-    #   callback: (x, y) ->
-    #     z = x * (zooms - 1)
-    #     map.setZoom z
-    #     handle.innerHTML = z
-    # )
-    # map.on "zoomend", ->
-    #   z = Math.round(map.getZoom())
-    #   zoom_bar.setValue z / 16
-    #   handle.innerHTML = z
-
 
     # DRAW SELF MARKER
     markerLayer_user = L.mapbox.markerLayer()

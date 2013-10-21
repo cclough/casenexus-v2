@@ -1,3 +1,27 @@
+console_countdown = (element, minutes, seconds) ->
+  
+  # set time for the particular countdown
+  time = minutes * 60 + seconds
+  window.interval = setInterval(->
+    el = document.getElementById(element)
+    
+    # if the time is 0 then end the counter
+    if time is 0
+      clearInterval window.interval
+      alert "Case Closed!"
+      return
+    minutes = Math.floor(time / 60)
+    minutes = "0" + minutes  if minutes < 10
+    seconds = time % 60
+    seconds = "0" + seconds  if seconds < 10
+    text = minutes + ":" + seconds
+    el.innerHTML = text
+    time--
+  , 1000)
+
+
+
+
 window.console_index_subnav_sendpdf_check = ->
 
   book_id = $("#console_index_subnav_select_books").val()
@@ -30,7 +54,7 @@ window.console_index_subnav_timer_prime = ->
     $("#console_index_subnav_timer").html new_time + ":00"
 
     # Now start the timer
-    countdown "console_index_subnav_timer", window.console_timer_set, 0
+    console_countdown "console_index_subnav_timer", window.console_timer_set, 0
 
     switch_to("pause")
 
@@ -54,13 +78,12 @@ window.console_index_subnav_timer_prime = ->
     current_time = $("#console_index_subnav_timer").html()
     current_mins = current_time.split(":").shift()
     current_secs = parseInt(current_time.substr(-2))
-    countdown "console_index_subnav_timer", current_mins, current_secs
+    console_countdown "console_index_subnav_timer", current_mins, current_secs
 
     switch_to("pause")
 
 
   ########### GOTO STATE
-
   switch_to = (state) ->
 
     # Hide other buttons
@@ -69,37 +92,12 @@ window.console_index_subnav_timer_prime = ->
     # Show new buttons
     $("#console_index_timer_"+state+"_container").css("display","inline")
 
-    # window.console_index_subnav_timer_prime()
-
-
-
-
-countdown = (element, minutes, seconds) ->
-  
-  # set time for the particular countdown
-  time = minutes * 60 + seconds
-  window.interval = setInterval(->
-    el = document.getElementById(element)
-    
-    # if the time is 0 then end the counter
-    if time is 0
-      clearInterval window.interval
-      alert "Case Closed!"
-      return
-    minutes = Math.floor(time / 60)
-    minutes = "0" + minutes  if minutes < 10
-    seconds = time % 60
-    seconds = "0" + seconds  if seconds < 10
-    text = minutes + ":" + seconds
-    el.innerHTML = text
-    time--
-  , 1000)
-
 
 
 
 $(document).ready ->
 
+  # Case select change
   $("#console_index_subnav_select_books").change ->
 
     book_id = $(this).val()
@@ -125,7 +123,7 @@ $(document).ready ->
 
 
 
-
+  # Friend select change
   $("#console_index_subnav_select_friends").change ->
 
     friend_id = $(this).val()
@@ -159,7 +157,6 @@ $(document).ready ->
       $("#console_index_feedback_frame").html ""
 
 
-
-
   # Prime the Timer
-  window.console_index_subnav_timer_prime()
+  if $(".console_index_timer_panel_container").size() > 0
+    window.console_index_subnav_timer_prime()

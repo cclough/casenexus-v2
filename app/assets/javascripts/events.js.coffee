@@ -13,6 +13,7 @@ events_ordinal = (date) ->
 
 events_set_week_date = () ->
 
+  # Get current
   current_week_div = $(".calendar").find(".events_calendar_week:nth-child("+window.events_current_week_number+")")
 
   $(".calendar").find(".events_calendar_week").addClass "out_of_focus"
@@ -151,13 +152,11 @@ window.modal_events_rebless = ->
     startDate: $("#events_modal_datetime_input").data "start_date"
     #startDate: "2013-07-07 10:00"
 
-
   $("#events_modal_friend_select").change ->
     window.modal_events_modal_timezone_calcs()
 
   $("#events_modal_datetime_input").change ->
     window.modal_events_modal_timezone_calcs()
-
 
   $("#events_modal_book_select").change ->
     book_id = $(this).val()
@@ -186,10 +185,6 @@ window.events_calendar_edit_modal_show = (event_id) ->
     $("#modal_event").modal("show")
 
 $(document).ready ->
-
-  # Params show event trigger used e.g. by event emails
-  # if typeof events_index_choosecase_event_id is "string"
-  #   window.events_calendar_edit_modal_show(events_index_choosecase_event_id)
 
   if $("#profile_index_panel_calendar_container").length > 0
     window.events_calendar_rebless()
