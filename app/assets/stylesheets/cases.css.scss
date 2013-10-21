@@ -14,16 +14,6 @@
   margin-left:-500px;
   background:white;
 
-
-  &.analysis {
-    height:557px !important;
-    margin-top:-260px;
-    .modal-body {
-      max-height:557px !important;
-      padding:0 !important;
-    }
-  }
-
   &.show {
     height:630px !important;
     margin-top:-315px;
@@ -56,7 +46,7 @@
 #cases_show_subnav {
   display:block;
   margin:0px 0px 0px 0px;
-//  background:$cn_grey_0;
+
   height:38px;
   padding:10px;
   border-bottom:1px solid $cn_grey_0;
@@ -84,8 +74,6 @@
       font-size:21px;
       color: $cn_colour_-2;
       width:200px;
-
-
     }
 
     #cases_show_subnav_date {
@@ -131,16 +119,13 @@
   #cases_show_subnav_browse_buttons_container {
     float:right;
     display:inline;
-
     .btn {
       margin-top:3px;
       i {
         font-size:15px !important;
       }
     }
-
   }
-
 }
 
 
@@ -226,7 +211,6 @@
       @include box_sizing;
       padding:5px;
       height:100%;
-//      background:rgb(255, 255, 204);
     }
   }
 
@@ -288,26 +272,16 @@
 }
 
 
-
-
-
-
 .cases_new_recommendation {
   width: 94% !important;
 
   height:50px !important;
 }
 
-
-
-
 #cases_new_recommendations_panel {
   text-align:center;
   margin: 0 15px;
 }
-
-
-
 
 .cases_new_block_title {
   line-height:31px;
@@ -318,16 +292,9 @@
 
 
 
-
-#cases_new_guide {
-
-}
-
 .cases_new_guide_num {
   width:15px;
 }
-
-
 
 
 .cases_new_block_desc {
@@ -353,8 +320,6 @@
   width:60%;
 }
 
-
-
 .cases_new_scoreselector_container {
   margin-top:5px;
 }
@@ -362,23 +327,6 @@
 .cases_new_scoreselector_button {
   width:15px;
 }
-
-
-
-
-
-
-
-#cases_new_submit_panel {
-  text-align:center;
-
-  #cases_new_submit_button {
-    width:300px;
-  }
-}
-
-
-
 
 
 
@@ -484,17 +432,26 @@
 
 
 
-
-
 #cases_new_recommendations_panel {
   background:$cn_grey_0;
   padding:15px;
 }
 
 
+#cases_new_submit_panel {
+  text-align:center;
+
+  #cases_new_submit_button {
+    width:300px;
+  }
+}
+
+
+
+
 //////////////////////////////////////////
-
-
+//////////////////////////////////////////
+//////////////////////////////////////////
 
 
 #cases_new_nobook {
@@ -560,8 +517,9 @@
 
 
 
-
-
+/////////////////////////////////////////////////////////////////
+/////////////////////// RESULTS TABLE ///////////////////////////
+/////////////////////////////////////////////////////////////////
 
 
 
@@ -570,15 +528,11 @@
   padding:10px;
   margin:0 0 5px 0;
 
-
   &.show {
     background:white;
   }
 
 }
-
-
-
 
 
 .cases_resultstable_table_empty {
@@ -628,16 +582,10 @@
 //    outline:1px solid red;
   }
 
-
-
-
   .cases_resultstable_cell_score {
     font-weight:300;
     font-size:14px;
   }
-
-
-
 
 
   // THE 'SHOW' PHENOTYPE

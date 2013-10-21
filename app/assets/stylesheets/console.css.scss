@@ -1,6 +1,12 @@
 @import 'colours';
 
 
+
+///////////////////////////////////////////////
+//////////////////// PDFJS ////////////////////
+///////////////////////////////////////////////
+
+
 #console_index_pdfjs {
 //  extra container required as iframes don't respond to css as normal
   position:absolute;
@@ -47,29 +53,10 @@
 
 
 
-//#console_index_feedback {
-//  height:100%;
-//  overflow-y: hidden;
-//  overflow-x: hidden;
-//  position:relative;
-//  border:0;
-//  position:absolute;
-//  left:50%;
-//  right:0;
-//  bottom:0px;
-//  top:50px;
-//}
 
-
-#console_index_feedback_subnav {
-  background: $cn_grey_0;
-  height: 50px;
-  position:absolute;
-  left:50%;
-  right:0;
-  top:50px;
-}
-
+///////////////////////////////////////////////
+///////////////// FEEDBACK ////////////////////
+///////////////////////////////////////////////
 
 
 #console_index_feedback_frame {
@@ -83,6 +70,14 @@
 }
 
 
+#console_index_feedback_subnav {
+  background: $cn_grey_0;
+  height: 50px;
+  position:absolute;
+  left:50%;
+  right:0;
+  top:50px;
+}
 
 #console_index_feedback_blank {
   text-align:center;
@@ -96,7 +91,10 @@
   }
 }
 
+/////////////////////////////////////////////
 //////////////// Send PDF Button ////////////
+/////////////////////////////////////////////
+
 
 #console_index_subnav_button_sendpdf_container {
   width:130px;
@@ -110,8 +108,9 @@
 }
 
 
-///////////////// BOOKS ////////////////////
-
+/////////////////////////////////////////////
+///////////////// BOOK //////////////////////
+/////////////////////////////////////////////
 
 #console_index_subnav_select_books_container {
   position:absolute;
@@ -123,7 +122,11 @@
 }
 
 
+
+/////////////////////////////////////////////
 ///////////////// FRIENDS ///////////////////
+/////////////////////////////////////////////
+
 
 #console_index_subnav_select_friends_container {
   float:right;
@@ -143,11 +146,11 @@
 
 
 
+/////////////////////////////////////////////
+/////////////////// TIMER ///////////////////
+/////////////////////////////////////////////
 
 
-
-
-////////////// TIMER ///////////////
 #console_index_subnav_timer_panel {
   position:absolute;
   left:50%;
@@ -165,8 +168,6 @@
 #console_index_subnav_timer {
   font-size:23px;
   line-height:30px;
-
-
 }
 
 .console_index_subnav_button_timer_set {
@@ -180,8 +181,6 @@
   display:block;
   float:left;
 }
-
-
 
 #console_index_timer_restartreset_container {
   .btn {
@@ -204,8 +203,6 @@
 .console_index_timer_panel_container{
   text-align:center;
 }
-
-
 
 #console_index_timer_pause_container, #console_index_timer_restartreset_container {
   display:none;

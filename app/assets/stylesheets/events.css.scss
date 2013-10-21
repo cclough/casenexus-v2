@@ -15,24 +15,6 @@
 
 
 
-.events_calendar_event_container {
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  margin-top:1px;
-  width:45px; // make sure below td width or will skew table
-
-  height:46px;
-}
-
-
-
-
-//.events_calendar_event_count {
-//  color:$blue_casenexus;
-//}
-
-
 #events_calendar .calendar {
 
   width:678px; // + 6px for borders
@@ -48,8 +30,8 @@
       opacity:0.3;
     }
   }
+
   .events_calendar_day {
-//    background: url("app/timeline.png") no-repeat left center;
     border-right:1px solid $cn_grey_0;
     border-bottom:1px solid $cn_grey_0;
     height: 95px !important; //with 20px padding - 1 for border
@@ -95,6 +77,15 @@
       height:55px;
       margin-bottom:20px;      
     }
+
+    .events_calendar_event_container {
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin-top:1px;
+      width:45px; // make sure below td width or will skew table
+      height:46px;
+    }
+
     .events_calendar_day_event {
       cursor:pointer;
 
@@ -112,10 +103,6 @@
       line-height:13px;
     }
   }
-
-//  .notmonth, .notmonth a { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
-//  .today { background: $cn_grey_0 url("app/timeline.png") no-repeat left center; }
-
   .notmonth, .notmonth a { background: $cn_grey_0; }
   .today { background: $cn_colour_2; }
   .last_day_of_week { border-right: 0; }
@@ -162,18 +149,24 @@
 #modal_event {
   background:white;
   width:855px !important;
+  height:640px !important;
   margin-left:-427px;
   margin-top:-320px;
-
-  height:640px !important;
-
   text-align:center !important;
+
+  .modal-body {
+    height:530px;
+    max-height:530px;
+    text-align:center !important;
+  }
+
   .close {
     margin:15px;
     position:absolute;
     top:15px;
     right:15px;
   }
+
   #events_modal_title {
     font-size:25px;
     margin:0 0 20px 0;
@@ -210,37 +203,22 @@
     font-size:20px;
   }
 
-  .modal-body {
-    height:530px;
-    max-height:530px;
-    text-align:center !important;
+  .events_modal_block {
+    width:396px;
+    height:190px;
+    float:left;
+    text-align:center;
+
   }
 
+  .events_modal_block_spacer {
+    height:190px;
+    width:15px;
+    float:left;
+  }
 
 }
 
-
-
-
-///////////////////////////////////////////////
-///////////////////// NEW /////////////////////
-///////////////////////////////////////////////
-
-
-.events_modal_block {
-  width:396px;
-  height:190px;
-  float:left;
-  text-align:center;
-
-}
-
-.events_modal_block_spacer {
-  height:190px;
-  width:15px;
-  float:left;
-
-}
 
 .events_modal_timezone_popup {
   border:1px solid $cn_grey_-1;
@@ -260,8 +238,6 @@
   border-radius:         3px;
   
 }
-
-
 
 
 .events_modal_book_viewer_title {
@@ -352,13 +328,6 @@
     padding:5px;
     background:$cn_contrastor_third_0;
     text-indent:0 !important;
-//    border-top-right-radius: 3px;
-//    -moz-border-top-right-radius: 3px;
-//    -webkit-border-top-right-radius: 3px;
-
-//    border-bottom-right-radius: 3px;
-//    -moz-border-bottom-right-radius: 3px;
-//    -webkit-border-bottom-right-radius: 3px;
   }
 }
 
@@ -368,6 +337,15 @@
 #events_modal_book_select {
   width:340px;
 }
+
+
+#events_modal_book_viewer_usertoprepare_container, #events_modal_book_viewer_partnertoprepare_container {
+  padding:10px;
+  text-align:center;
+  height:124px;
+  background:white;
+}
+
 
 #events_modal_book_viewer_partnertoprepare {
 
@@ -380,15 +358,7 @@
     line-height:35px;
     width:280px; // to make it up to 340px - alex's suggested
   }
-}
 
-
-#events_modal_book_viewer_usertoprepare_container, #events_modal_book_viewer_partnertoprepare_container {
-
-  padding:10px;
-  text-align:center;
-  height:124px;
-  background:white;
 }
 
 #events_modal_book_viewer_usertoprepare {
@@ -404,16 +374,6 @@
   }
 }
 
-
-.events_form_spacer {
-
-  border-top:1px solid $gray_Lighter;
-
-  height:1px;
-
-  margin: 10px 30px 20px 30px;
-
-}
 
 
 
@@ -437,12 +397,8 @@
   margin-top:20px;
 }
 
-#events_edit_partner_avatar {
-
-}
 
 #events_edit_partner_name {
-//  line-height:25px;
   font-weight:400;
 }
 
