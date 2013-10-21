@@ -1,9 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
-
-
 
 modal_cases_show_prime = () ->
 
@@ -26,7 +20,6 @@ modal_cases_show_prime = () ->
     $.get "/cases/" + next_case_id, (data) ->
       $("#modal_cases").html data
       modal_cases_show_prime()
-
 
   # $("#cases_show_panel_right").slimscroll
   #   width: '300px'
@@ -52,15 +45,12 @@ window.modal_cases_show_show = (case_id) ->
     $.get "/cases/" + case_id, (data) ->
       $("#modal_cases").html data
       modal_cases_show_prime()
-      
-    # $("#modal_cases").on "shown", ->
-    #   modal_cases_show_prime()
 
 
 
 $(document).ready ->
 
-  # If profile page
+  # Results table
   # if $("#profile_index_panel_calendar_container").length > 0
 
   #   # Load results table
@@ -71,25 +61,16 @@ $(document).ready ->
   #     else
   #       window.cases_resultstable_prime("analysis")
 
-
+  # Prime scrollers
   $('#profile_index_friends_friends').slimscroll
     height: 'auto'
     width: 'auto'
-
-
   $('#profile_index_feedback_cases').slimscroll
     height: 'auto',
     width: '260px'
 
 
-
-
-
-
-      
-
-
-  # Friends item - show actions on mouseover
+  # Friends item: show actions on mouseover
   mouseover = ->
     $(this).find(".profile_index_friends_friends_item_actions").show "slide", direction: "right", 100
   mouseout = ->
@@ -101,28 +82,23 @@ $(document).ready ->
 
 
 
-
-
   # On load animations
-  setTimeout (->
+  $("#profile_index_panel_user").size() > 0
+    setTimeout (->
+      # Fade in counts cases
+      $(".profile_index_info_cases_counts_container").fadeIn "500"
 
-    # Fade in counts cases
-    $(".profile_index_info_cases_counts_container").fadeIn "500"
+      # Users Item Cascade Fade
+      $(".profile_index_friends_friends_item").each (i) ->
+        $(this).delay((i + 1) * 50).fadeIn()
 
-    # Users Item Cascade Fade
-    $(".profile_index_friends_friends_item").each (i) ->
-      $(this).delay((i + 1) * 50).fadeIn()
-
-    $(".profile_index_feedback_cases_item").each (i) ->
-      $(this).delay((i + 1) * 50).fadeIn()
-
-
-
-  ), 500
-
+      $(".profile_index_feedback_cases_item").each (i) ->
+        $(this).delay((i + 1) * 50).fadeIn()
+    ), 500
   $("#profile_index_feedback_chart").fadeIn "500"
 
-  # INFO
+
+  # User action buttons - settings etc.
   $("#profile_index_info_actions_settings").click ->
 
     $("#modal_profile").off "shown"
@@ -139,7 +115,6 @@ $(document).ready ->
           $("#modal_profile").html data
           window.account_completeedit_bless()
 
-
   $("#profile_index_info_actions_invite").click ->
 
     $("#modal_profile").off "shown"
@@ -154,30 +129,17 @@ $(document).ready ->
         $("#modal_profile").html data
 
   # $("#profile_index_info_actions_visitors").click ->
-
   #   if !($("#modal_profile").hasClass("in"))
-
   #     $(".modal").modal("hide")
-
   #     $.get "/account/visitors", (data) ->
   #       $("#modal_profile").html data
-
   #       # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
   #       # $("#modal_profile").on "shown", ->
-
   #       #   #window.account_completeedit_bless()
-
   #       $("#modal_profile").modal "show"
 
 
-
-  # FRIENDS
-  # $("#profile_index_friends_actions_invite")
-  
-  # $("#profile_index_friends_actions_skype")
-  #   friend_id = $("#profile_index_friends_action_input").val()
-  #   window.location.href = "skype:friend's_skype?call" + friend_id
-
+  # FRIENDS items
   $("#profile_index_friends_actions_message").click ->
     friend_id = $("#profile_index_friends_action_input").val()
 
@@ -195,9 +157,7 @@ $(document).ready ->
       alert "Please select a friend from the list..."
 
 
-
-  # FEEDBACK
-
+  # FEEDBACK items
   $(".profile_index_feedback_cases_item").click ->
 
     # if item unread

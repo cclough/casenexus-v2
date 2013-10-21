@@ -14,8 +14,6 @@
 
     - unless Friendship.requested?(current_user,friends_item)
       .profile_index_friends_friends_item_actions
-        / %i#profile_index_friends_actions_invite.icon-plus
-        / %span#profile_index_friends_actions_skype.fui-skype
 
         #profile_index_friends_actions_message.btn.btn-colour.btn-round.btn-round-small{ "data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
           %i.icon-email-mail-streamline

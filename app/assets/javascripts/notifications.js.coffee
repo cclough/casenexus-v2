@@ -113,5 +113,6 @@ window.notifications_index_notifications_prime = () ->
 
 $(document).ready ->
 
-  window.notifications_index_notifications_prime();
+  if $("#notifications_index_notifications_container").size() > 0
+    window.notifications_index_notifications_prime()
 
