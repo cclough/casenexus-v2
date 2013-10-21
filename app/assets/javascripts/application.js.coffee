@@ -29,9 +29,7 @@
 #= require map
 #= require notifications
 #= require profile
-#= require questions
 #= require static_pages
-#= require votes
 
 
 

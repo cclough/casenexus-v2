@@ -1,4 +1,3 @@
-
 window.static_switch_view = (object) ->
 
   switch_from = $(object).data("switch_from")
@@ -28,7 +27,7 @@ window.modal_headsup_show = () ->
 
 $(document).ready ->
 
-  if $("#static_home_panel_left").length > 0
+  if $("#static_home_panel_left").size() > 0
     setTimeout (->
       window.modal_headsup_show()
     ), 2000
@@ -39,12 +38,16 @@ $(document).ready ->
   window.application_disablesubmit_prime "#static_home_signin"
   window.application_disablesubmit_prime "#static_home_signup"
 
-  ######################### SIGNUP ############################
+  #////////////////////////////////////////////////////
+  #//////////////////  SIGNUP   ///////////////////////
+  #////////////////////////////////////////////////////
 
   $('#static_home_signup_notlisted_button').click ->
     window.modal_contact_show()
 
-  ######################### DEVISE ############################
+  #////////////////////////////////////////////////////
+  #////////////////////  DEVISE   /////////////////////
+  #////////////////////////////////////////////////////
 
   window.application_disablesubmit_prime "#devise_confirmations_new_panel"
   window.application_disablesubmit_prime "#devise_passwords_new_panel"
