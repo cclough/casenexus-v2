@@ -45,11 +45,8 @@
 
 
 
-
-
-
 /////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
+/////////////////// CONTENTS ////////////////////////
 /////////////////////////////////////////////////////
 
 
@@ -80,10 +77,6 @@
 }
 
 
-
-
-
-
 #notifications_index_notifications_empty {
   padding-top:180px;
   padding-left:0px;
@@ -98,7 +91,12 @@
 }
 
 
+
+
+/////////////////////////////////////////////////////
 ////////////////////// ITEM /////////////////////////
+/////////////////////////////////////////////////////
+
 
 
 .notifications_index_notifications_item {
@@ -115,10 +113,6 @@
 
   &.notifications_index_notifications_item_select {
     background:$cn_colour_1;
-  }
-
-  &.read {
-    background:$cn_grey_0;
   }
 
 }
@@ -154,7 +148,6 @@
   font-size:12px;
 }
 
-
 .notifications_index_notifications_item_date {
   text-align:right;
   margin-top:15px;
@@ -162,11 +155,11 @@
   width:48px;
 }
 
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
 
 
+/////////////////////////////////////////////////////
+///////////////// CONVERSATION //////////////////////
+/////////////////////////////////////////////////////
 
 
 #notifications_index_conversation_empty {
@@ -181,8 +174,6 @@
   font-size:70px;
   margin-bottom:20px; 
 }
-
-
 
 #notifications_index_conversation #application_error_explanation {
   display:none;
@@ -199,27 +190,21 @@
   img {
     max-width:25px;
   }
-
 }
 
 
 #notifications_show_body {
-
   position:absolute;
   top:61px;
   bottom:170px;
   right:0px;
   left:0px;
-
   background:white;
-//  outline:1px solid red;
-//  margin:0 -10px 0 -10px;
-
 }
 
 
 
-#notifications_show_body_subcontainer{
+#notifications_show_body_subcontainer {
   position:absolute;
   bottom:0;
   width:100%;
@@ -235,23 +220,21 @@
   right:0px;
   left:0px;
   height:150px;
-
   padding:10px;
-//  outline:1px solid red;
 }
-
-
-
 
 
 #notifications_show_newmessage_textarea {
   height:100px;
   display:block;
+  width:667px;
 }
 
 
 
 
+/////////////////////////////////////////////////////
+////////////////////// ITEM /////////////////////////
 /////////////////////////////////////////////////////
 
 .notifications_show_item {
@@ -303,28 +286,15 @@
   color: $gray_second;
 }
 
+
+
+
+
+
+/////////////////////////////////////////////////////
+//////////////// MODAL MESSAGE //////////////////////
 /////////////////////////////////////////////////////
 
-
-.notifications_glowable {
-  -webkit-transition: opacity 0.5s linear;
-  -moz-transition: opacity 0.5s linear;
-  -ms-transition: opacity 0.5s linear;
-  -o-transition: opacity 0.5s linear;
-  transition: opacity 0.5s linear;
-  &.highlight {
-    a {
-      color:red !important;      
-    }
-  }
-  &.glow {
-//    text-shadow: 0 0 10px red;
-    opacity:0;
-  }
-}
-
-
-///////////////////////////////////////////////////
 
 #modal_message {
   .modal-header {
@@ -370,11 +340,12 @@
   -moz-border-radius: 3px;
   border-radius: 3px;
 
-
 }
 
 
-//////////////////////////////////////////////////
+////////////////////////////////////////////////////
+/////////////// MODAL CONTACT //////////////////////
+////////////////////////////////////////////////////
 
 #modal_contact {
   .modal-header {

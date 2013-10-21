@@ -24,7 +24,7 @@
 
 
     .row
-      = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea", class: "span58"
+      = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea"
 
       = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
       = f.hidden_field :user_id, value: @sender.id
