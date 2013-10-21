@@ -38,20 +38,6 @@
         %span.map_index_users_form_filters_button_user_count
           = online_now_count
 
-    .map_index_users_form_filters_span
-
-
-      %div
-        CONNECT
-
-      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>4}
-        Shoutouts
-        - user_with_post_count = User.list_users_with_posts.count
-        %span.map_index_users_form_filters_button_user_count
-          = user_with_post_count
-
-      #map_index_users_form_button_posts_new.btn.btn-micro.btn-colour
-        Shout!
 
 
   .spacer5
@@ -99,7 +85,7 @@
     = radio_button_tag :users_listtype, 'new'
     = radio_button_tag :users_listtype, 'online_today'
     = radio_button_tag :users_listtype, 'online_now'
-    = radio_button_tag :users_listtype, 'posts'
+
     / for params user_id link
     - unless params[:user_id].blank?
       = radio_button_tag :users_listtype, 'params', checked: true

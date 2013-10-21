@@ -1,4 +1,4 @@
-.map_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, id: "map_index_users_item_" + users_item.id.to_s, class: ("posts" if params[:users_listtype] == "posts")}
+.map_index_users_item{'data-id' => users_item.id.to_s, 'data-lat' => users_item.lat.to_s, 'data-lng' => users_item.lng.to_s, id: "map_index_users_item_" + users_item.id.to_s}
 
 
   .map_index_users_item_avatar
@@ -65,15 +65,6 @@
             %i.icon-linkedin-alt
 
 
-
-
-    - if params[:users_listtype] == "posts"
-      .map_index_users_item_post
-        = users_item.posts.last.content
-        .pull-right
-          = time_ago_in_words(users_item.posts.last.created_at)
-          ago
-        .map_index_users_item_post_triangle
 
 
   .map_index_users_item_cases

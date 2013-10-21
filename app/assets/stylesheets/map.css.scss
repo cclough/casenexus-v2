@@ -239,14 +239,6 @@
     background:#eff7ff;
   }
 
-  // POSTS PHENOTYPE
-  &.posts {
-    height:320px;
-    .map_index_users_item_info {
-      height:200px;
-    }
-  }
-
 }
 
 
@@ -420,33 +412,6 @@
 
 
 
-.map_index_users_item_post {
-
-  width:330px;
-  margin-top:5px;
-  background:$cn_colour_1;
-  padding:10px;
-  color:white;
-  position:relative;
-  height:105px;
-
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
-
-  .map_index_users_item_post_triangle {
-    position:absolute;
-    bottom:-20px; /* value = - border-top-width - border-bottom-width */
-    right:50px; /* controls horizontal position */
-    border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
-    border-style:solid;
-    border-color:$cn_colour_1 transparent; 
-    /* reduce the damage in FF3.0 */
-    display:block; 
-    width:0;
-  }
-}
-
 
 .map_index_users_item_friendship_requested {
   display:inline-block;
@@ -566,9 +531,9 @@
 
 
 
-
-
-
+//////////////////////////////////////////////
+///////////////// POSTS //////////////////////
+//////////////////////////////////////////////
 
 
 #map_index_guide_posts {
@@ -619,4 +584,12 @@
     width:0;
   }
 }
+
+
+
+
+
+
+
+
 

@@ -22,8 +22,6 @@ class MembersController < ApplicationController
         users_scope = users_pre_scope.where(["users.id <> ?",current_user.id]).list_online_today
       when "online_now"
         users_scope = users_pre_scope.where(["users.id <> ?",current_user.id]).list_online_now
-      when "posts"
-        users_scope = users_pre_scope.list_users_with_posts
     else
       users_scope = User.includes(:cases).list_all_excl_current(current_user)
     end
@@ -31,6 +29,7 @@ class MembersController < ApplicationController
     if users_scope
       @users = users_scope.paginate(per_page: 10, page: params[:page])
     end
+
 
     respond_to do |format|
       format.js # links index.js.erb!

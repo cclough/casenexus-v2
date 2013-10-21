@@ -58,23 +58,15 @@
 #map_index_guide
   #map_index_guide_text
 
-
-
   #map_index_guide_posts
-    
-    - @post_ondisplay = Post.where("approved = true").order("created_at asc").last
+      
+    #map_index_guide_posts_post_container{"data-current_post_id" => @post_in_view.id }
+      = render partial: 'posts/show', locals: { post: @post_in_view }
 
-    #map_index_guide_posts_post_container{"data-current_post_id" => @post_ondisplay.id }
-      = render partial: 'posts/show', locals: { post: @post_ondisplay }
-
-    #map_index_guide_posts_new_button.btn.btn-micro.btn-colour
-      +
+    #map_index_guide_posts_new_button.btn.btn-micro.btn-colour +
 
     #map_index_guide_posts_arrow_buttons_container
       .btn.btn-micro.btn-colour{"data-direction"=>"down"}
         %i.icon-arrow-down  
-
       .btn.btn-micro.btn-colour{"data-direction"=>"up"}
         %i.icon-arrow-up
-
-    / = render '/posts/posts'

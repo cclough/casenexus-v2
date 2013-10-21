@@ -289,10 +289,6 @@ class User < ActiveRecord::Base
       completed.where("id <> ?", user.id)
     end
 
-    def list_users_with_posts
-      includes(:posts).completed.where('posts.approved = ?',true)
-    end
-
     # Pulldown Filters
     def list_language(language_id)
       if !language_id.blank? && language_id != "0"
