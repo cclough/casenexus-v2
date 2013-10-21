@@ -238,3 +238,37 @@ $(document).ready ->
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  $("#map_index_guide_posts_arrow_buttons_container .btn").click ->
+
+    direction = $(this).attr("data-direction")
+    
+    # get current post id
+    current_post_id = $("#map_index_guide_posts_post_container").attr "data-current_post_id"
+
+    $.get "/posts/" + current_post_id + "?direction=" + direction, (data) ->
+      
+      $("#map_index_guide_posts_post_container").html data
+
+      # get new post id
+      new_post_id = $("#map_index_guide_posts_post").attr "data-post_id"
+
+      # update current_post_id
+      $('#map_index_guide_posts_post_container').attr('data-current_post_id', new_post_id)
+
+      # Prime close button
+      $("#map_index_guide_posts_post_close").click ->
+        $("#map_index_guide_posts_post").fadeOut "fast"
+
+
+

@@ -563,3 +563,60 @@
 
 
 
+
+
+
+
+
+
+
+
+#map_index_guide_posts {
+  float:right;
+  position:absolute;
+  bottom:15px;
+  right:100px;
+
+  #map_index_guide_posts_arrow_buttons_container {
+    display:inline;
+  }
+
+  #map_index_guide_posts_post {
+    position:absolute;
+    bottom:50px;
+    right:0;
+    color:white;
+    width:200px;
+    font-size:13px;
+    padding: 6px;
+    background: $cn_colour_1;
+    
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+
+    #map_index_guide_posts_post_username {
+      a {
+      color:white !important;
+      font-weight:bold;
+      font-size:14px;    
+      }
+    }
+  }
+
+  #map_index_guide_posts_post:after 
+  {
+    content:"";
+    position:absolute;
+    bottom:-20px; /* value = - border-top-width - border-bottom-width */
+    right:40px; /* controls horizontal position */
+    border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+    border-style:solid;
+    border-color:$cn_colour_1 transparent; 
+
+    /* reduce the damage in FF3.0 */
+    display:block; 
+    width:0;
+  }
+}
+

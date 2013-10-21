@@ -227,7 +227,11 @@
 
 
         .profile_index_friends_friends_item_status {
-          float:right;
+
+          position:absolute;
+          right:0px;
+          top:3px;
+
           color:$cn_contrastor_0;
           font-size:15px;
           margin-right:10px;
@@ -246,6 +250,7 @@
             }
           }
         }
+
 
 
       }
