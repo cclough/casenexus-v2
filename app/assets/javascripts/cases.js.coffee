@@ -13,8 +13,6 @@ window.cases_new_prime = () ->
     showMeridian: true
     pickerPosition: 'bottom-left'
     minuteStep: 15
-  # $("#cases_new_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
-   # // Put '{dateFormat: 'dd/mm/yy'}' in brackets to anglify
 
   $("[name=\"case[main_comment]\"]").wysihtml5
     emphasis: false #Italics, bold, etc. Default true
@@ -24,7 +22,6 @@ window.cases_new_prime = () ->
     autoLink: false
     composerClassName: "cases_new_maincomment_content"  
 
-      
   # Score selectors!
   $(".cases_new_scoreselector_button").click ->
     score = $(this).data("score")
@@ -36,11 +33,6 @@ window.cases_new_prime = () ->
     # make active
     $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
     $(this).addClass("active")
-
-  # Submit form and show spinner
-  # $(".application_submit_button_with_spinner").click ->
-  #   $(".application_spinner_container").show()
-  #   $(this).closest("form").submit()
 
   window.application_spinner_prime "#console_index_feedback_frame"
 
@@ -63,7 +55,7 @@ window.cases_new_prime = () ->
 
 window.cases_analysis_chart_progress_init = (case_count) ->
   
-  # loop through model json, construct AM compatabile array + run parseDate
+  #### loop through model json, construct AM compatabile array + run parseDate
   
   # load array for chart
   
@@ -83,8 +75,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
       backgroundColor: "#000000"
       backgroundAlpha: 0.15
 
-
-    if parseInt(case_count) > 1
+    if case_count > 1
       chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
     else
       chart_analysis_progress.colors = ["#dee1e3", "#dee1e3", "#dee1e3"]
@@ -125,7 +116,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     valueAxis.axisAlpha = 0
     valueAxis.maximum = 15
     valueAxis.labelsEnabled = false
-
 
     chart_analysis_progress.addValueAxis valueAxis
     
@@ -213,7 +203,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     legend.valueWidth = 20
     chart_analysis_progress.addLegend(legend, "profile_index_feedback_chart_legend")
 
-    # CURSOR //////////
+    # CURSOR
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
     chartCursor = new AmCharts.ChartCursor()
     chartCursor.cursorPosition = "mouse"
@@ -224,7 +214,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
 
     chart_analysis_progress.addChartCursor chartCursor
     
-
     # Balloon Settings
     balloon = chart_analysis_progress.balloon
     balloon.adjustBorderColor = true
@@ -233,7 +222,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     balloon.fillColor = "#000000"
     balloon.fillAlpha = 0.7
     balloon.color = "#FFFFFF"
-
 
     # SCROLLBAR
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
@@ -401,59 +389,18 @@ $(document).ready ->
 #///////////////////////////////////////////////////////////////
 #/////////////////////////// NEW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
-
-  window.cases_new_prime()
-
+  
+  # For console, when friend_id set in params
+  if $("#cases_new_subnav").size() > 0
+    window.cases_new_prime()
 
 #///////////////////////////////////////////////////////////////
 #///////////////////////// ANALYSIS ////////////////////////////
 #///////////////////////////////////////////////////////////////
 
-
-  # # Order and Period buttons
-  # $("#cases_analysis_section_table .btn").click ->
-
-  #   radio = $(this).data("radio")
-  #   type = $(this).data("type")
-
-  #   # Change radio
-  #   $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
-    
-  #   # Remove and add active class to buttons
-  #   $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
-  #   $(this).addClass "active"
-    
-  #   # Submit form
-  #   $.get("/cases/analysis", $("#cases_resultstable_form").serialize(), null, "script")
-  #   false
-
-
-
-
 #///////////////////////////////////////////////////////////////
 #////////////////////////// SHOW ///////////////////////////////
 #///////////////////////////////////////////////////////////////
-
-
-
-  # # Order and Period buttons
-  # $("#cases_show_charts_view_table .btn").click ->
-
-  #   radio = $(this).data("radio")
-  #   type = $(this).data("type")
-
-  #   # Change radio
-  #   $("input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
-    
-  #   # Remove and add active class to buttons
-  #   $("#cases_resultstable_"+type+"_container .btn").removeClass "active"
-  #   $(this).addClass "active"
-    
-  #   case_id = $("#cases_resultstable_caseid").val()
-  #   # Submit form
-  #   $.get("/cases/"+case_id, $("#cases_resultstable_form").serialize(), null, "script")
-  #   false
-
 
 
 
