@@ -1,4 +1,3 @@
-
 modal_cases_show_prime = () ->
 
   window.cases_resultstable_prime("show")
@@ -83,7 +82,7 @@ $(document).ready ->
 
 
   # On load animations
-  $("#profile_index_panel_user").size() > 0
+  if $("#profile_index_panel_user").size() > 0
     setTimeout (->
       # Fade in counts cases
       $(".profile_index_info_cases_counts_container").fadeIn "500"
@@ -95,6 +94,7 @@ $(document).ready ->
       $(".profile_index_feedback_cases_item").each (i) ->
         $(this).delay((i + 1) * 50).fadeIn()
     ), 500
+
   $("#profile_index_feedback_chart").fadeIn "500"
 
 
