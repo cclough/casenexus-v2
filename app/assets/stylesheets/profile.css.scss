@@ -4,31 +4,15 @@
 .profile_index_title {
   position:relative;
   font-size:20px;
-  .iconbar-unread {
-    position:absolute;
-    right:495px;
-  }
-
 }
+
 #profile_index_panel_user {
   position:absolute;
   left:0px;
   top:0px;
   width:231px;
   height:655px;
-//  background:$cn_colour_05;
-//  color:white;
   border-right:1px solid $cn_grey_0;
-//  border-left:1px solid $cn_grey_0;
-
-
-
-
-
-
-
-
-
 
   #profile_index_info {
     padding:20px;
@@ -49,70 +33,62 @@
         font-weight:bolder;
         margin:0 0 10px;
       }
-
-      #profile_index_info_degreelevel {
-
-      }
-      #profile_index_info_joined {
-
-      }
-
     }
-
   }
 
 
-    #profile_index_info_cases {
-      padding:0;
-      display:block;
-      border-top:1px solid $cn_grey_0;
+
+
+  #profile_index_info_cases {
+    padding:0;
+    display:block;
+    border-top:1px solid $cn_grey_0;
+    height:70px;
+    .profile_index_info_cases_counts_container {
+      display:none;
+    }
+    #profile_index_info_cases_recd, #profile_index_info_cases_givn, #profile_index_info_cases_external {
+      float:left;
       height:70px;
-      .profile_index_info_cases_counts_container {
-        display:none;
-      }
-      #profile_index_info_cases_recd, #profile_index_info_cases_givn, #profile_index_info_cases_external {
-        float:left;
-        height:70px;
-        text-align:center;
-        line-height:60px;
-        position:relative;
-      }
-
-
-      #profile_index_info_cases_recd {
-        font-size:30px;
-        font-weight:bolder;
-        color:#73bf72;
-        border-right:1px solid $cn_grey_0;
-        width:77px; // 231 divided 3
-      }
-
-      #profile_index_info_cases_givn {
-        font-size:30px;
-        font-weight:bolder;
-        color:$cn_colour_1;
-        border-right:1px solid $cn_grey_0;
-        width:76px; // 231 divided 3 = 71 minus 1 border
-      }
-
-      #profile_index_info_cases_external {
-        font-size:30px;
-        font-weight:bolder;
-        color:$cn_colour_-2;
-        width:76px; // 231 divided 3 = 71 minus 1 border
-      }
-
-      .profile_index_info_cases_text {
-        position:absolute;
-        left:0px;
-        right:0px;
-        text-align:center;
-        height:10px;
-        top:20px;
-        font-size:10px;
-      }
+      text-align:center;
+      line-height:60px;
+      position:relative;
     }
 
+
+    #profile_index_info_cases_recd {
+      font-size:30px;
+      font-weight:bolder;
+      color:#73bf72;
+      border-right:1px solid $cn_grey_0;
+      width:77px; // 231 divided 3
+    }
+
+    #profile_index_info_cases_givn {
+      font-size:30px;
+      font-weight:bolder;
+      color:$cn_colour_1;
+      border-right:1px solid $cn_grey_0;
+      width:76px; // 231 divided 3 = 71 minus 1 border
+    }
+
+    #profile_index_info_cases_external {
+      font-size:30px;
+      font-weight:bolder;
+      color:$cn_colour_-2;
+      width:76px; // 231 divided 3 = 71 minus 1 border
+    }
+
+    .profile_index_info_cases_text {
+      position:absolute;
+      left:0px;
+      right:0px;
+      text-align:center;
+      height:10px;
+      top:20px;
+      font-size:10px;
+    }
+  }
 
 
 
@@ -137,22 +113,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
   #profile_index_friends {
     height:350px;
     width:231px;
     margin-top:20px;
 
     .profile_index_title {
-//      text-align:center;
       padding-left:10px;
       .application_unread_label_large {
         position:absolute;
@@ -176,18 +142,18 @@
 
 
 
-
       .profile_index_friends_friends_item {
         display:none;
         height:50px;
         cursor:pointer;
         position:relative;
-        border-bottom:1px solid $cn_grey_0;//$cn_colour_0;
+        border-bottom:1px solid $cn_grey_0;
         line-height:50px;
 
         &:hover {
-          background:$cn_grey_0;//$cn_colour_0;
+          background:$cn_grey_0;
         }
+
         .profile_index_friends_friends_item_requested_highlight {
           display:none;
           &.unread {
@@ -202,15 +168,12 @@
           }
         }
 
-
-
         .profile_index_friends_friends_item_avatar {
           width:55px;
           float:left;
           img {
             margin:-4px 0 0 5px;
           }
-          
           text-align:center;
         }
 
@@ -227,7 +190,6 @@
             position:absolute;
             right:0px;
             top:2px;
-//            background:$cn_grey_0;
             height:50px;
             z-index:10;
             padding:0 5px;
@@ -240,7 +202,6 @@
             -moz-border-bottom-left-radius: 5px;
             -webkit-border-bottom-left-radius: 5px;
 
-
           }
 
         }
@@ -252,18 +213,17 @@
           .profile_index_friends_friends_item_friendship_button {
             padding:6px;
             margin-right:3px;
-  //          float:right;
           }          
         }
 
-        .profile_index_friends_friends_item_activity {
-          height:30px;
-          position:absolute;
-          right:0px;
-          bottom:0px;
-          width:100px;
-          opacity:0.5;
-        }
+//        .profile_index_friends_friends_item_activity {
+//          height:30px;
+//          position:absolute;
+//          right:0px;
+//          bottom:0px;
+//          width:100px;
+//          opacity:0.5;
+//        }
 
 
         .profile_index_friends_friends_item_status {
@@ -285,17 +245,12 @@
               font-color:$gray_second;
             }
           }
-
         }
-
 
 
       }
     }
   }
-
-
-
 
 
 }
@@ -307,10 +262,6 @@
   left:231px;
   top:0px;
   right:0px;  
-}
-
-
-
 
 
   #profile_index_panel_calendar {
@@ -342,8 +293,6 @@
         margin:0 auto;
       }
 
-
-
       .profile_index_panel_calendar_shift_button {
         width:100px;
         height:50px;
@@ -366,113 +315,109 @@
 
 
 
-#profile_index_panel_feedback {
+  #profile_index_panel_feedback {
 
-  width:100%;
-  border-top:1px solid $cn_grey_0;
-  height:260px;
-  padding:20px 0 20px 20px;
+    width:100%;
+    border-top:1px solid $cn_grey_0;
+    height:260px;
+    padding:20px 0 20px 20px;
 
-  .slimScrollDiv {
-    float:left;
-  }
-  #profile_index_feedback_cases {
-    position:relative;
-    width:260px;
-    height:100%;
-    float:left;
-
-    #profile_index_feedback_cases_empty {
-      text-align:center;
-      padding-top:90px;
-      i {
-        font-size:35px;
-        margin-bottom:7px;
-        display:block;
-      }
+    .slimScrollDiv {
+      float:left;
     }
-
-    .profile_index_feedback_cases_item {
-      cursor:pointer;
-
-      height:50px;
-      line-height:50px;
-      width:260px;
-      display:none;
+    #profile_index_feedback_cases {
       position:relative;
-      border-bottom:1px solid $cn_grey_0;
+      width:260px;
+      height:100%;
+      float:left;
 
-
-      .profile_index_feedback_cases_item_read_highlight {
-        display:none;
-        &.unread {
-          height:35px;
-          position:absolute;
-          left:0px;
-          top:0px;
-          bottom:0px;
-          width:5px;
-          background: $cn_colour_1;
-          display:inline;
-        }
-      }
-
-      .profile_index_feedback_cases_item_score {
-        display:inline-block;
-        width:35px;
-        font-weight:bold;
-        font-size:16px;
+      #profile_index_feedback_cases_empty {
         text-align:center;
-        color: $cn_grey_-2;
-        margin-left:10px;
-        vertical-align:middle;
-      }
-
-      .profile_index_feedback_cases_item_user {
-        vertical-align:middle;
-        display:inline-block;
-        width:150px;
-        line-height:16px;
-        margin-left:5px;
-        .profile_index_feedback_cases_item_username {
-          //outline:1px solid red;
-          font-weight:400;
-
-        }
-        .profile_index_feedback_cases_item_subject {
-          //outline:1px solid red;   
-          font-size:12px; 
+        padding-top:90px;
+        i {
+          font-size:35px;
+          margin-bottom:7px;
+          display:block;
         }
       }
-      .profile_index_feedback_cases_item_date {
-        display:inline-block;
-        position:absolute;
-        right:10px;
-        top:2px;
-        font-weight:bolder;
+
+      .profile_index_feedback_cases_item {
+        cursor:pointer;
+
+        height:50px;
+        line-height:50px;
+        width:260px;
+        display:none;
+        position:relative;
+        border-bottom:1px solid $cn_grey_0;
+
+        .profile_index_feedback_cases_item_read_highlight {
+          display:none;
+          &.unread {
+            height:35px;
+            position:absolute;
+            left:0px;
+            top:0px;
+            bottom:0px;
+            width:5px;
+            background: $cn_colour_1;
+            display:inline;
+          }
+        }
+
+        .profile_index_feedback_cases_item_score {
+          display:inline-block;
+          width:35px;
+          font-weight:bold;
+          font-size:16px;
+          text-align:center;
+          color: $cn_grey_-2;
+          margin-left:10px;
+          vertical-align:middle;
+        }
+
+        .profile_index_feedback_cases_item_user {
+          vertical-align:middle;
+          display:inline-block;
+          width:150px;
+          line-height:16px;
+          margin-left:5px;
+          .profile_index_feedback_cases_item_username {
+            //outline:1px solid red;
+            font-weight:400;
+
+          }
+          .profile_index_feedback_cases_item_subject {
+            //outline:1px solid red;   
+            font-size:12px; 
+          }
+        }
+        .profile_index_feedback_cases_item_date {
+          display:inline-block;
+          position:absolute;
+          right:10px;
+          top:2px;
+          font-weight:bolder;
+        }
+        &:hover {
+          background:$cn_grey_0;
+        }
       }
-      &:hover {
-        background:$cn_grey_0;
-      }
+    }
+
+    #profile_index_feedback_chart {
+      width:510px;
+      height:100%;
+      float:left;
+      margin-left:20px;
+      display:none;
+    }
+
+    #profile_index_feedback_results {
+      display:none;
     }
   }
 
-
-
-
-  #profile_index_feedback_chart {
-    width:510px;
-    height:100%;
-    float:left;
-    margin-left:20px;
-    display:none;
-  }
-
-
-
-  #profile_index_feedback_results {
-    display:none;
-  }
 }
 
 
