@@ -9,7 +9,6 @@
   #console_index_pdfjs_blank_header
 
   #console_index_pdfjs_blank_message
-    %i.icon-book.icon-white
     #console_index_panel_blank_message_text
       Select a case
 
@@ -38,6 +37,6 @@
     = render partial: "cases/new", locals: { user_id: @friend.id }
   - else
     #console_index_feedback_blank
-      = image_tag "icons/user.png"
+      = image_tag "icons/forms/user.png"
       #console_index_feedback_blank_text
         Select a friend to open a feedback form

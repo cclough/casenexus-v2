@@ -159,7 +159,7 @@ body {
     margin:0 auto;
     width:1024px;
     clear:both;
-//    min-height:100%;
+    min-height:100%; //without this devise and terms pages break - with extra margin on profile
   }
 
 }

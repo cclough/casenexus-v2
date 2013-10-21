@@ -2,27 +2,18 @@
 #= require jquery_ujs
 #= require jquery.ui.effect-slide
 #= require jquery.ui.effect
-#= require jquery.ui.widget
-#= require jquery.ui.accordion
 #= require lib/jquery.raty
 #= require lib/jquery.titlealert
 #= require lib/jquery.truncate
 #= require lib/jquery.placeholder
-#= require lib/jquery.uniform
 #= require lib/jquery.hoverIntent
 #= require lib/chosen.jquery
 #= require lib/slimscroll
 
-
-
-#= require lib/bootstrap.min
+#= require lib/bootstrap
 #= require lib/bootstrap-clickover
 #= require lib/bootstrap-datetimepicker
 #= require lib/bootstrap-lightbox
-#= require lib/bootstrap-select
-#= require lib/bootstrap-switch
-#= require lib/flatui-checkbox
-#= require lib/flatui-radio
 #= require bootstrap-wysihtml5
 
 #= require account
@@ -384,17 +375,11 @@ $(document).ready ->
   # Jquery truncate
   window.application_truncatables()
 
-  # Switch
-  $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch()
-
   # Chosen
   $(".chzn-select").chosen()
   $(".chzn-select-nosearch").chosen disable_search_threshold: 10
   $(".chzn-select-tags").chosen max_selected_options: 5
   $('.chzn-search').hide()
-
-  # Style for the checkboxes
-  # $("input:checkbox").uniform()
 
   # Tooltips throughout app
   $(".application_tooltip").tooltip()
@@ -404,7 +389,7 @@ $(document).ready ->
     window.application_countchar(this)
 
   # Placeholders
-  $("input, textarea").placeholder()
+  # $("input, textarea").placeholder()
 
   # Modals
   $("#modal_headsup, #modal_contact, #modal_post, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal

@@ -264,7 +264,7 @@ $cn_contrastor_third_0: #c18176;
   input {
     display:block;
     margin-bottom:15px;
-    border:1px solid $cn_grey_-1;
+//    border:1px solid $cn_grey_-1;
     -moz-border-radius:    3px;
     -webkit-border-radius: 3px;
     border-radius:         3px;
@@ -277,10 +277,9 @@ $cn_contrastor_third_0: #c18176;
     margin-right:3px;
   }
   #user_confirm_tac {
-    display:inline-block;
-    margin:0;
+    display:inline;
+    margin-left:40px;
     vertical-align:top;
-    width:110px;
   }
 }
 

@@ -75,11 +75,8 @@ $cn_contrastor_third_0: #c18176;
   }
   #console_index_pdfjs_blank_message {
     text-align:center;
-    margin-top: 270px;
-    i {
-      font-size:55px;
-      color:$cn_grey_0;
-    }
+    margin-top: 300px;
+
     #console_index_panel_blank_message_text {
       margin-top:10px;
     }
@@ -127,10 +124,6 @@ $cn_contrastor_third_0: #c18176;
 
 #console_index_feedback_blank {
   text-align:center;
-  img {
-    width:50px;
-  }
-
   position:absolute;
   left:0;
   right:0;

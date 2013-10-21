@@ -4,7 +4,7 @@
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     .static_home_form_input_container
       .static_home_form_input_icon_container
-        %i.input-icon.fui-user.huge
+        %i.icon-email-mail-streamline
       = f.text_field :email, tabindex: "1", placeholder: "Enter your email address...", class: "span30 large"
 
     .application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{tabindex: "2"}
