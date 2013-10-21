@@ -39,25 +39,19 @@ header {
 
   min-width:1050px;  
   max-width:1100px;
-
   background: transparent !important;
-
   border:0px;
-
   margin:auto;
 
   -moz-border-radius:    0px !important;
   -webkit-border-radius: 0px !important;
   border-radius:         0px !important;
   
-
   li {
     height:39px;
-
     -moz-border-radius:    3px !important;
     -webkit-border-radius: 3px !important;
     border-radius:         3px !important;
-
     margin-left:3px;
     a {
       padding:13px;
@@ -76,7 +70,6 @@ header {
       &.header_nav_links_left_map {
         margin-top:-5px
       }
-
     }
     &:hover {
       background:$cn_colour_05;
@@ -89,12 +82,8 @@ header {
 
 
 
-
-
-
 #header_nav_links_left {
   margin-left:190px;
-
 }
 
 #header_nav_links_right {

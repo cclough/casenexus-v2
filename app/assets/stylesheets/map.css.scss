@@ -2,19 +2,6 @@
 
 
 
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-
-
-
-/********************************************/
-
-
-
 
 #map_index_container_users_container {
   position:fixed;
@@ -22,11 +9,10 @@
   top:50px;
   width:425px;
   bottom:0px;
-
   background:$cn_grey_0;
-
   z-index:2;
 }
+
 
 #map_index_users_spinner_container {
   display:none;
@@ -36,8 +22,6 @@
   width:425px;
   bottom:0px;
   z-index:10;
-//  background: rgba(255,255,255,0.75);
-//  background:rgba(0,0,0,0.7s);
 }
 
 
@@ -60,7 +44,6 @@
 #map_index_users {
   padding: 0;
 }
-
 
 
 
@@ -165,17 +148,12 @@
     }
   }
 }
+
 #map_index_users_form_search_field {
   width:340px;
 }
 
-#map_index_users_form_search_submit_button {
-
-}
-
 .map_index_users_form_filters_button_user_count {
-
-
   padding: 7px 5px 8px;
   width:14px;
   margin:-7px -8px -8px 5px;
@@ -254,12 +232,11 @@
   cursor:pointer;
 
   &:hover {
-//    outline:1px solid white;
     background:#fafafa;
   }
 
   &.map_index_users_item_info_active {
-    background:#eff7ff;//$gray_background;
+    background:#eff7ff;
   }
 
   // POSTS PHENOTYPE
@@ -268,12 +245,9 @@
     .map_index_users_item_info {
       height:200px;
     }
-
   }
 
-
 }
-
 
 
 .map_index_users_item_avatar {
@@ -282,7 +256,6 @@
   padding:5px;
   float:left;
   text-align:center;
-
 }
 
 .map_index_users_item_info { 
@@ -328,9 +301,6 @@
 
   }
 
-
-
-
 }
 
 
@@ -341,19 +311,6 @@
   position:absolute;
   top:10px;
   right:10px;
-//  .btn {
-//    height:14px !important;
-//    width:14px;
-//    padding:8px;
-
-//    font-size:15px;
-//    line-height:14px;
-//    text-align:center;
-//    span {
-//      margin:0;
-//      padding:0;
-//    }
-//  }
 
   .map_index_users_item_button_add {
     width:110px;
@@ -378,7 +335,6 @@
 
   }
 
-
   .map_index_users_item_button_skype {
     background:$blue_skype;
     color:white;
@@ -392,101 +348,74 @@
     background-color: #3483b1;
 
   }
-
 }
 
 
 
+.map_index_users_item_cases {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  .map_index_users_item_cases {
-
-    float:left;
+  float:left;
+  width:60px;
+  padding:0;
+  margin:0;
+  div {
+    display:block;
     width:60px;
-    padding:0;
-    margin:0;
-    div {
-      display:block;
-      width:60px;
-      height:36px;
-      text-align:center;
-      line-height:26px;
-      position:relative;
-      float:left;
-    }
-
-    .map_index_users_item_cases_recd {
-      background: #73bf72;
-      font-size:20px;
-      font-weight:bolder;
-      color:white;
-    }
-
-    .map_index_users_item_cases_givn{
-      background: $cn_colour_1;
-      font-size:20px;
-      font-weight:bolder;
-      color:white;
-    }
-
-    .map_index_users_item_cases_external{
-      background: $cn_colour_-2;
-      font-size:20px;
-      font-weight:bolder;
-      color:white;
-    }
-
-    .map_index_users_item_cases_text {
-      position:absolute;
-      left:0px;
-      right:0px;
-      text-align:center;
-      top:15px;
-      font-size:10px;
-    }
-  }
-
-
-
-
-
-
-  .map_index_users_item_stats {
-    height:20px;
-    background:$cn_grey_-1;
-    font-weight:bold;
-    line-height:20px;
-    font-size:12px;
+    height:36px;
+    text-align:center;
+    line-height:26px;
+    position:relative;
     float:left;
-    width:355px;
-    padding:5px;
-  }
-  .map_index_users_item_activity {
-    opacity:0.5;
-    width:365px;
-    height:78px;
-    float:left;
-
   }
 
+  .map_index_users_item_cases_recd {
+    background: #73bf72;
+    font-size:20px;
+    font-weight:bolder;
+    color:white;
+  }
+
+  .map_index_users_item_cases_givn{
+    background: $cn_colour_1;
+    font-size:20px;
+    font-weight:bolder;
+    color:white;
+  }
+
+  .map_index_users_item_cases_external{
+    background: $cn_colour_-2;
+    font-size:20px;
+    font-weight:bolder;
+    color:white;
+  }
+
+  .map_index_users_item_cases_text {
+    position:absolute;
+    left:0px;
+    right:0px;
+    text-align:center;
+    top:15px;
+    font-size:10px;
+  }
+}
 
 
+.map_index_users_item_stats {
+  height:20px;
+  background:$cn_grey_-1;
+  font-weight:bold;
+  line-height:20px;
+  font-size:12px;
+  float:left;
+  width:355px;
+  padding:5px;
+}
+.map_index_users_item_activity {
+  opacity:0.5;
+  width:365px;
+  height:78px;
+  float:left;
+}
 
 
 
@@ -517,21 +446,6 @@
     width:0;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .map_index_users_item_friendship_requested {
@@ -643,52 +557,9 @@
       height:10px;
 
     }
-
-
-
-  }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-#map_index_map_zoomer {
-  display:none;
-  position: absolute;
-  top: 10px;
-  right: 100px;
-  z-index: 999;
-  #map_index_map_zoomer_zoom-bar {
-    width: 200px;
-    position: relative;
-    height: 30px;
-    background: #FFF;
-    border: 1px solid #BBB;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-  }
-
-  .dragdealer #map_index_map_zoomer_handle {
-    position: absolute;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    background: #222;
-    color: #fff;
-    font-weight: bold;
-    line-height: 30px;
-    text-align: center;
   }
 }
+
 
 
 
