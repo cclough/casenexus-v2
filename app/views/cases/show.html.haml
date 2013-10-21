@@ -6,13 +6,7 @@
   #cases_show_panel_left
 
 
-    #cases_show_results
-      .cases_resultstable_container
-        = render "results_table"
-      = render "results_table_form"
-
-  #cases_show_panel_right
-
+      
     #cases_show_book
 
       - if @case.book_id?
@@ -48,6 +42,16 @@
     #cases_show_maincomment
       #cases_show_maincomment_content
         = @case.main_comment.html_safe
+
+
+
+
+  #cases_show_panel_right
+
+    #cases_show_results
+      .cases_resultstable_container
+        = render "results_table"
+      = render "results_table_form"
 
 
 .modal-footer

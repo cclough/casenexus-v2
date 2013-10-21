@@ -132,9 +132,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     if case_count < 3
       graph.showBalloon = false
     else
+      graph.bulletBorderAlpha = 1
       graph.bulletBorderColor = "#72aac9"
       graph.bulletColor = "#ffffff"
-      graph.bulletBorderThickness = 1
+      graph.bulletBorderThickness = 2
     addclicklistener graph
     chart_analysis_progress.addGraph graph
 
@@ -151,9 +152,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     if case_count < 3
       graph.showBalloon = false
     else
+      graph.bulletBorderAlpha = 1
       graph.bulletBorderColor = "#73bf72"
       graph.bulletColor = "#ffffff"
-      graph.bulletBorderThickness = 1
+      graph.bulletBorderThickness = 2
     addclicklistener graph
     chart_analysis_progress.addGraph graph
 
@@ -169,9 +171,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     if case_count < 3
       graph.showBalloon = false
     else
+      graph.bulletBorderAlpha = 1
       graph.bulletBorderColor = "#f1d765"
       graph.bulletColor = "#ffffff"
-      graph.bulletBorderThickness = 1
+      graph.bulletBorderThickness = 2
     addclicklistener graph
     chart_analysis_progress.addGraph graph
     
@@ -195,12 +198,17 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     legend = new AmCharts.AmLegend()
     # legend.position = "bottom"
     legend.align = "center"
-    legend.rollOverGraphAlpha = "0.15"
+    # legend.rollOverGraphAlpha = "0.15"
     legend.fontSize = 8
     # legend.color = "#f6f6f6"
     legend.horizontalGap = 0
     legend.switchable = true
     legend.valueWidth = 20
+    legend.markerLabelGap = 10
+    legend.spacing = 10
+    legend.switchType = "v"
+    legend.horizontalGap = 0 #this is a good one to vary to adjust horizontal position
+    legend.markerType = "circle"
     chart_analysis_progress.addLegend(legend, "profile_index_feedback_chart_legend")
 
     # CURSOR

@@ -12,7 +12,6 @@
 
   #cases_show_subnav_browse
 
-
     %select#cases_show_subnav_select.chzn-select{"data-placeholder" => "Jump to Case...", value: @case.id }
       %option
         - @cases.each do |cases_select_item|
@@ -22,9 +21,9 @@
             - else
               = cases_select_item.created_at.strftime("%a %d %b") + " - " + @case.partner.username
 
-  #cases_show_subnav_browse_buttons_container
-    .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.prev.id }
-      %i.icon-fontawesome-webfont-16
-    .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.next.id }
-      %i.icon-fontawesome-webfont-18
+    #cases_show_subnav_browse_buttons_container
+      .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.prev.id }
+        %i.icon-fontawesome-webfont-16
+      .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.next.id }
+        %i.icon-fontawesome-webfont-18
 
