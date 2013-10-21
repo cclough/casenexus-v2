@@ -177,39 +177,7 @@ small {
   /* 31px */
 
 }
-blockquote {
-  position: relative;
-  border-left: none;
-  padding-left: 19px;
-}
-blockquote:before {
-  position: absolute;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  background-color: #ebedee;
-  content: "";
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-blockquote p {
-  font-size: 20.006px;
-  line-height: 1.549829;
-  font-weight: normal;
-  margin-bottom: .4em;
-}
-blockquote small {
-  font-size: 18.004px;
-  line-height: 1.722169;
-  font-style: italic;
-  color: #34495e;
-}
-blockquote small:before {
-  content: "";
-}
+
 .img-rounded {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
