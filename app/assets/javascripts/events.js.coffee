@@ -90,6 +90,88 @@ window.events_calendar_rebless = ->
     events_set_week_date()
 
 
+window.modal_event_new_show = (friend_id, book_id) ->
+
+  if !($("#modal_event").hasClass("in"))
+    $(".modal").modal("hide")
+
+    if friend_id && !book_id
+      url = "/events/new?friend_id=" + friend_id
+    else if book_id && !friend_id
+      url = "/events/new?book_id_usertoprepare=" + book_id
+    else if friend_id && book_id
+      url = "/events/new?friend_id=" + friend_id + "&book_id_usertoprepare=" + book_id
+    else
+      url = "/events/new"
+
+    $.get url, (data) ->
+      $("#modal_event").html data
+
+      if friend_id
+        $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
+          $("#events_modal_friend_timezone").html data
+
+
+      # to increase height of the modal (removed by new show)
+      $("#modal_event").removeClass "event_edit"
+
+      # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+      $("#modal_event").on "shown", ->
+        window.modal_events_rebless()
+
+      $("#modal_event").modal("show")
+
+
+window.modal_events_modal_timezone_calcs = ->
+
+  friend_id = $("#events_modal_friend_select").val()
+  datetime = $("#events_modal_datetime_input").val()
+  
+  if friend_id > 0
+    $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
+      $("#events_modal_friend_timezone").html data
+  else
+    $("#events_modal_friend_timezone").html("")
+
+  if (friend_id > 0) && (datetime != "")
+    $.get "/events/user_timezone?display_which=timeforfriend&user_id=" + friend_id + "&datetime=" + datetime, (data) ->
+      $("#events_modal_datetime_friend").html data
+  else
+    $("#events_modal_datetime_friend").html("")
+
+
+window.modal_events_rebless = ->
+
+  $("#events_modal_datetime_picker").datetimepicker
+    format: "dd M yyyy @ hh:ii"
+    minuteStep: 15
+    pickerPosition: 'bottom-left'
+    autoclose: true
+    showMeridian: true
+    startDate: $("#events_modal_datetime_input").data "start_date"
+    #startDate: "2013-07-07 10:00"
+
+
+  $("#events_modal_friend_select").change ->
+    window.modal_events_modal_timezone_calcs()
+
+  $("#events_modal_datetime_input").change ->
+    window.modal_events_modal_timezone_calcs()
+
+
+  $("#events_modal_book_select").change ->
+    book_id = $(this).val()
+
+    if book_id > 0
+      $.get "/books/" + book_id + "/show_small", (data) ->
+        $("#events_modal_book_viewer_partnertoprepare").html data
+    else
+      $("#events_modal_book_viewertoprepare").html "<div id=events_modal_book_viewer_empty>No book selected</div>"
+
+  window.application_spinner_prime(".modal.in")
+
+
+
 window.events_calendar_edit_modal_show = (event_id) ->
   if !($("#modal_event").hasClass("in"))
     $(".modal").modal("hide")

@@ -11,9 +11,7 @@
 
     = render 'shared/error_messages', object: @answer
     .row
-      .application_countchar_count#questions_new_countchar
-        500 characters left
-      = f.text_area :content, placeholder: "Your answer", id:"questions_new_content", class: "application_countchar"
+      = f.text_area :content, placeholder: "Your answer", id:"questions_new_content"
     .spacer5
     .row
       = f.submit "Save edits", class: "btn btn-primary "

@@ -23,7 +23,7 @@ $(function() {
       
       channel_priv.bind('new_message', function(data_inc) {
 
-        window.notification_trigger(data_inc)
+        window.application_notification_trigger(data_inc)
 
         // MODAL
         if ($("#modal_message").hasClass("in")) {

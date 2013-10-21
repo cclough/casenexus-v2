@@ -43,10 +43,7 @@ window.cases_new_prime = () ->
   #   $(this).closest("form").submit()
 
   window.application_spinner_prime "#console_index_feedback_frame"
-    
-  # Char counters
-  $('.application_countchar').keyup ->
-    window.application_countChar(this)
+
 
 
 #////////////////////////////////////////////////////

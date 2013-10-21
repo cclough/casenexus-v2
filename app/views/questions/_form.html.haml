@@ -10,9 +10,7 @@
   
   .spacer5
   .row
-    .application_countchar_count#questions_new_countchar
-      500 characters left
-    = f.text_area :content, placeholder: "Ask a question...", id: "questions_new_content", class: "application_countchar row"
+    = f.text_area :content, placeholder: "Ask a question...", id: "questions_new_content", class: "row"
   .spacer5
   .row
     /= f.text_field :tag_list, id: "questions_new_tags", placeholder: "Tags (separated by commas)"
