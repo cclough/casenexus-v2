@@ -27,6 +27,7 @@ window.modal_headsup_show = () ->
 
 $(document).ready ->
 
+
   if $("#static_home_panel_left").size() > 0
     setTimeout (->
       window.modal_headsup_show()
