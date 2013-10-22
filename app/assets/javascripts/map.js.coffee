@@ -1,10 +1,3 @@
-
-map_index_posts_prime = () ->
-    # New post button
-  $("#map_index_users_form_button_posts_new").click ->
-    window.modal_post_show()
-
-
 window.map_index_users_item_bless = () ->
 
   # Prime Button
@@ -134,6 +127,9 @@ window.map_index_generate_popup_for = (marker) ->
 
 
 
+
+
+
 $(document).ready ->
 
   # Update list of user when enter is pressed
@@ -141,7 +137,7 @@ $(document).ready ->
     map_index_users_updatelist()  if e.which is 13
 
   # New posts button
-  $("#map_index_users_form_button_posts_new").click ->
+  $("#map_index_guide_posts_new_button").click ->
     if !($("#modal_post").hasClass("in"))
       $(".modal").modal("hide")
       $("#modal_post").on "shown", ->
@@ -185,7 +181,10 @@ $(document).ready ->
 
 
 
+  $("#map_index_guide_posts_post").click ->
+    user_id = $(this).attr("data-user_id")
 
+    map_index_trigger_find_user(user_id)
 
 
   # Guide - posts browser controls
@@ -225,14 +224,14 @@ $(document).ready ->
     lng_start = parseFloat(map_index_map_lng_start)
 
     # Offset slightly and then pan to, to impress
-    window.map.setView([lat_start-0.005, lng_start+0.03], 15)
+    window.map.setMaxBounds([[-86, -220], [86, 220]], {animate:false}).setView([lat_start-0.005, lng_start+0.03], 15)
     #window.map.panTo new L.LatLng(lat_start, lng_start)
 
     # back to world view button (must be after map variable has been set)
     $("#map_index_map_zoomout").click ->
-      window.map.setZoom(2);
-      $(this).fadeOut("fast");
-
+      $(this).fadeOut "fast"
+      window.map.setZoom 2
+      window.map.panTo([lat_start, lng_start])
 
     ###### DRAW SELF MARKER
     markerLayer_user = L.mapbox.markerLayer()

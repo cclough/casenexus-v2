@@ -1,0 +1,21 @@
+#map_index_guide_posts
+    
+  #map_index_guide_posts_post_container{"data-current_post_id" => @post_in_view.id }
+    = render partial: 'posts/show', locals: { post: @post_in_view }
+
+  #map_index_guide_posts_label
+    Urgently need to practise? Broadcast it here:
+
+  #map_index_guide_posts_new_button.btn.btn-micro.btn-red
+    %i.icon-plus
+
+  #map_index_guide_posts_username
+    = avatar_for(@post_in_view.user)
+    = @post_in_view.user.username
+
+
+  #map_index_guide_posts_arrow_buttons_container
+    .btn.btn-micro.btn-colour{"data-direction"=>"down"}
+      %i.icon-arrow-down  
+    .btn.btn-micro.btn-colour{"data-direction"=>"up"}
+      %i.icon-arrow-up

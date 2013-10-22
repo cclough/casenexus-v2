@@ -12,7 +12,13 @@ class Post < ActiveRecord::Base
   ### Callbacks
   after_create :send_newpost_email_to_admin
 
-
+  def date_fb
+    if created_at > DateTime.now - 3.days
+      created_at.strftime("%a")
+    else
+      created_at.strftime("%d %b")   
+    end
+  end
 
 
   def content_trunc

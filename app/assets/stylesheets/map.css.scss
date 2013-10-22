@@ -411,8 +411,6 @@
 
 
 
-
-
 .map_index_users_item_friendship_requested {
   display:inline-block;
   margin:0 5px;
@@ -534,21 +532,39 @@
   float:right;
   position:absolute;
   bottom:15px;
-  right:100px;
-
+  right:60px;
+  color:white;
   #map_index_guide_posts_arrow_buttons_container {
     display:inline;
   }
 
+  #map_index_guide_posts_label {
+    display:inline;
+    vertical-align:middle;
+    font-size:12px;
+    margin-right:10px;
+  }
+  #map_index_guide_posts_username {
+    display:inline-block;
+    background:$cn_colour_05;
+    padding: 6px 6px 5px;
+    width:150px;
+    vertical-align:middle;
+  }
+  #map_index_guide_posts_new_button {
+    font-size:19px;
+    line-height:14px;
+  }
   #map_index_guide_posts_post {
+    cursor:pointer;
     position:absolute;
     bottom:50px;
-    right:0;
+    right:50px;
     color:white;
     width:200px;
     font-size:13px;
     padding: 6px;
-    background: $cn_colour_1;
+    background: $cn_colour_05;
     
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -571,7 +587,7 @@
     right:40px; /* controls horizontal position */
     border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
     border-style:solid;
-    border-color:$cn_colour_1 transparent; 
+    border-color:$cn_colour_05 transparent; 
 
     /* reduce the damage in FF3.0 */
     display:block; 

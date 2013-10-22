@@ -26,9 +26,9 @@ window.account_completeedit_bless = () ->
   # Icon for marker
   userIcon = L.icon(
     iconUrl: "/assets/markers/marker_" + account_completeedit_currentuser_university_image
-    iconSize: [35, 51]
+    iconSize: [35, 57]
     iconAnchor: [17, 51] # high is left, high is up + THINK IN TERMS OF HALVES OF THE ICON SIZE
-    popupAnchor: [17, 51]
+    popupAnchor: [17, 57]
   )
 
   # Marker

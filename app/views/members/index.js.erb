@@ -91,8 +91,11 @@ markerLayer.setGeoJSON(geoJson);
 
         window.map_index_marker_and_popup_actions_for(marker,"perm"); 
 
-        window.map.panTo(marker.getLatLng());
-        
+        setTimeout(function() {
+          // need pause as this pan isn't happening sometimes
+          window.map.panTo(marker.getLatLng());
+        }, 200);
+
       }
   });
 
@@ -147,23 +150,7 @@ $('.map_index_users_item').click(function () {
   // Marker interaction
   var target_id = $(this).attr('data-id');
 
-  markerLayer.eachLayer(function(marker) {
-
-    feature = marker.feature;
-
-    if (feature.properties.id == target_id) {
-
-      window.map_index_marker_and_popup_actions_for(marker,"perm"); 
-
-      window.map.setZoom(15,{animate:true});
-
-      window.map.panTo(marker.getLatLng(),{animate:true});
-
-      $("#map_index_map_zoomout").fadeIn("fast");
-    }
-
-  });
-
+  map_index_trigger_find_user(target_id)
 });
 
 
@@ -195,6 +182,25 @@ $("#map_index_users .pagination a").on("click", function() {
   return false;
 });
 
+function map_index_trigger_find_user(user_id) {
 
+  markerLayer.eachLayer(function(marker) {
+
+    feature = marker.feature;
+
+    if (feature.properties.id == user_id) {
+
+      window.map_index_marker_and_popup_actions_for(marker,"perm"); 
+
+      window.map.setZoom(15,{animate:true});
+
+      window.map.panTo(marker.getLatLng(),{animate:true});
+
+      $("#map_index_map_zoomout").fadeIn("fast");
+    }
+
+  });
+
+}
 
 

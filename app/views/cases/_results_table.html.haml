@@ -48,7 +48,7 @@
 
         - if @view != "show"
           / Growth cell
-          - if current_user.cases.count > 2
+          - if current_user.cases.count > 3
             - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
             - curr_av = value
             - growth = ((curr_av/prev_av)-1)*100

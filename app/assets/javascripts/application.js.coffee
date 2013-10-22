@@ -173,6 +173,10 @@ window.application_choiceNav = () ->
 
 $(document).ready ->
 
+  # Close buttons
+  $(".close").click ->
+    $(this).parent().hide()
+
   # Jquery truncate
   window.application_truncatables()
 
