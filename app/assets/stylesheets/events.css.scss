@@ -114,11 +114,13 @@
   padding-left:4px;
 }
 
+
+
 #events_calendar_month_date {
   vertical-align:middle;
   font-size:18px;
   position:absolute;
-  left:45px;
+  right:55px;
   bottom:-5px;
 
 }
@@ -127,12 +129,11 @@
   vertical-align:middle;
   position:absolute;
   right:55px;
-  bottom:-5px;
+  bottom:25px;
   color: $cn_colour_1;
   border-color: $cn_colour_1;
   padding:4px 6px 5px 6px !important;
   vertical-align:middle;
-  margin-top:5px;
   &:active {
     background:white;
   }
