@@ -179,18 +179,13 @@ $(document).ready ->
 
       $("#modal_cases").removeClass "show"
       $("#modal_cases").addClass "analysis"
-
       $("#modal_cases").html ""
       $(".modal").modal("hide")
 
-
       $.get "/cases/results?view=analysis", (data) ->
         $("#modal_cases").html data
-
         $("#modal_cases").modal "show"
-
         $("#modal_cases").on "shown", ->
-
           setTimeout (-> # prevents jurk as modal slides to the bottom
             if (cases_analysis_chart_case_count == 0)
               $("#cases_analysis_chart_table_empty").fadeIn "fast"
