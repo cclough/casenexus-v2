@@ -91,9 +91,10 @@
     }
 
     #cases_show_subnav_date {
-      font-size:13px;
+      font-size:12px;
       font-weight:normal;
-      line-height:15px;
+      line-height:16px;
+      color:$cn_grey_-2;
     }
 
     #cases_show_subnav_score {
@@ -133,7 +134,7 @@
     display:inline;
     vertical-align:top;
     .btn {
-      margin-top:0px;
+      margin-top:-5px;
       i {
         font-size:15px !important;
       }
