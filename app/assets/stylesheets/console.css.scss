@@ -16,6 +16,7 @@
   bottom:4px; // WHAT THE FUCK
   border:0 !important;
   margin:0 !important;
+  overflow-y:hidden;
 }
 
 #console_index_pdfjs_iframe {
@@ -23,6 +24,7 @@
   height:100%;
   border:0;
   outline:0;
+  overflow-y:hidden;
 }
 
 #console_index_pdfjs_blank {
@@ -115,10 +117,14 @@
 #console_index_subnav_select_books_container {
   position:absolute;
   left:50%;
-  top:58px;
+  top:57px;
   margin-left:-230px !important;
   z-index:1000;
   width:200px;
+  .chzn-container-single .chzn-single {
+    height:35px;
+    line-height:35px;
+  }
 }
 
 
@@ -131,17 +137,21 @@
 #console_index_subnav_select_friends_container {
   float:right;
   width:260px;
-  margin-top:8px;
+  margin-top:7px;
+
+  .chzn-container-single .chzn-single {
+    height:35px;
+    line-height:35px;
+  }
 
   #console_index_subnav_button_skype_container {
-
-
     width:50px;
     display:inline-block;
   }
   #console_index_subnav_select_friends{
     width:200px;
   }
+
 }
 
 

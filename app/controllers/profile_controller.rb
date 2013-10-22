@@ -11,7 +11,7 @@ class ProfileController < ApplicationController
 
     @cases = current_user.cases.includes(:interviewer).order("created_at desc")
 
-    @case_count_bracket = current_user.case_count_bracket
+    @case_count_recd = current_user.case_count_recd
   end
 
 end

@@ -19,7 +19,7 @@
             - unless @case.subject.blank?
               = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
             - else
-              = cases_select_item.created_at.strftime("%a %d %b") + " - " + @case.partner.username
+              = cases_select_item.created_at.strftime("%a %d %b") + " - " + @case.interviewer.username
 
     #cases_show_subnav_browse_buttons_container
       .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.prev.id }

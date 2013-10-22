@@ -48,10 +48,14 @@
 
         - if @view != "show"
           / Growth cell
-          - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
-          - curr_av = value
-          - growth = ((curr_av/prev_av)-1)*100
-          = colorcoded_cell(growth, "#{number_to_percentage(growth, precision: 0)} (#{prev_av})")
+          - if current_user.cases.count > 2
+            - prev_av = Case.criteria_av_user(current_user, 5, 5, key)
+            - curr_av = value
+            - growth = ((curr_av/prev_av)-1)*100
+            = colorcoded_cell(growth, "#{number_to_percentage(growth, precision: 0)} (#{prev_av})")
+          - else
+            %td
+              N/A
 
           / Diff from average cell
           / - site_av = Case.criteria_av_global(key)
