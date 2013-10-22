@@ -39,26 +39,23 @@ window.modal_cases_show_show = (case_id) ->
     $("#modal_cases").addClass "show"
 
     $(".modal").modal("hide")
-    $("#modal_cases").modal "show"
 
     $.get "/cases/" + case_id, (data) ->
       $("#modal_cases").html data
-      modal_cases_show_prime()
+
+      $("#modal_cases").modal "show"
+
+      $("#modal_cases").on "shown", ->  
+
+        setTimeout (-> # prevents jurk as modal slides to the bottom
+          modal_cases_show_prime()
+        ), 100
+
 
 
 
 $(document).ready ->
 
-  # Results table
-  # if $("#profile_index_panel_calendar_container").length > 0
-
-  #   # Load results table
-  #   $.get "/cases/results?view=analysis", (data) ->
-  #     $("#cases_analysis_results").html data
-  #     if (cases_analysis_chart_case_count == 0)
-  #       $("#cases_analysis_chart_table_empty").fadeIn "fast"
-  #     else
-  #       window.cases_resultstable_prime("analysis")
 
   # Prime scrollers
   $('#profile_index_friends_friends').slimscroll
@@ -175,6 +172,29 @@ $(document).ready ->
 
 
 
+  # Analysis in modal
+  $("#profile_index_feedback_actions_analysis").click ->
+
+    if !($("#modal_cases").hasClass("in"))
+
+      $("#modal_cases").removeClass "show"
+      $("#modal_cases").addClass "analysis"
+
+      $("#modal_cases").html ""
+      $(".modal").modal("hide")
 
 
+      $.get "/cases/results?view=analysis", (data) ->
+        $("#modal_cases").html data
+
+        $("#modal_cases").modal "show"
+
+        $("#modal_cases").on "shown", ->
+
+          setTimeout (-> # prevents jurk as modal slides to the bottom
+            if (cases_analysis_chart_case_count == 0)
+              $("#cases_analysis_chart_table_empty").fadeIn "fast"
+            else
+              window.cases_resultstable_prime("analysis")
+          ), 100
 

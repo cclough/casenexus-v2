@@ -10,13 +10,27 @@
 }
 
 #modal_cases {
-  width:1000px !important;
-  margin-left:-500px;
-  background:white;
 
+  background:white;
   &.show {
+    width:1000px !important;
+    margin-left:-500px;
     height:630px !important;
     margin-top:-315px;
+    .modal-body {
+      overflow-y:hidden;
+      position:relative;
+      max-height:560px !important;
+      height:560px;
+      padding:0 !important;
+
+    }
+  }
+  &.analysis {
+    width:800px !important;
+    margin-left:-400px;
+    height:470px !important;
+    margin-top:-235px;
     .modal-body {
       overflow-y:hidden;
       position:relative;
@@ -555,45 +569,53 @@
 
 .cases_resultstable_table {
   width:100%;
-  font-size:10px;
-  text-align:center;
 
-  td, tr, th {
-    height:9px;
-    padding:0px;
-  }
+  font-size:13px;
+
 //  tr {
 //    &:hover {
 //      font-weight:500;
 //    }
 //  }
+  text-align:center;
+
+  th {
+    height:40px;
+  }
+  th,td,th  {
+    padding:0;
+  }
+  td {
+    border-top: 0;
+    padding:1px 10px !important;
+    height:24px;
+    font-size:14px;
+  }
   .cases_resultstable_table_column_criteria {
-    width:140px;
+    text-align:left;
+    padding-left:10px;
+    width:200px;
   }
-
+  .cases_resultstable_chart_bar{
+    width:300px !important;
+    height:26px;
+  }
   .cases_resultstable_table_column_bar {
-    width:170px;
+    width:300px !important;
   }
-
   .cases_resultstable_table_cell_criteria {
     text-align:left !important;
   }
-
-  .cases_resultstable_chart_bar {
-    width:170px;
-    height:9px;
-//    outline:1px solid red;
-  }
-
   .cases_resultstable_cell_score {
-    font-weight:300;
-    font-size:14px;
+    font-size:13px;
+    width:50px;
+    font-weight:400;
   }
+
 
 
   // THE 'SHOW' PHENOTYPE
   &.show {
-    height:430px;
     font-size:12px;
     th {
       height:40px;

@@ -1,4 +1,4 @@
-$("#cases_<%= escape_javascript(@view) %>_results .cases_resultstable_container").html("<%= escape_javascript(render("results_table")) %>")
+$(".cases_resultstable_container").html("<%= escape_javascript(render("results_table")) %>")
 
 if (cases_analysis_chart_case_count == 0) {
   $(".cases_analysis_chart_table_empty").fadeIn("fast");

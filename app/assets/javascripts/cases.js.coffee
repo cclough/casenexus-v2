@@ -293,28 +293,29 @@ window.cases_analysis_chart_progress_init = (case_count) ->
 
 window.cases_resultstable_prime = (view) ->
 
-  $("#cases_"+view+"_results .btn").off 'click'
-  $("#cases_"+view+"_results .btn").click ->
+  # For type radio
+  $(".cases_resultstable_form .btn").off 'click'
+  $(".cases_resultstable_form .btn").click ->
 
     radio = $(this).data("radio")
     type = $(this).data("type")
 
     # Change radio
-    $("#cases_"+view+"_results input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
+    $(".cases_resultstable_form input[name=resultstable_"+type+"]:eq(" + radio + ")").prop "checked", true
     
     # Remove and add active class to buttons
-    $("#cases_"+view+"_results .cases_resultstable_"+type+"_container .btn").removeClass "active"
+    $(".cases_resultstable_"+type+"_container .btn").removeClass "active"
     $(this).addClass "active"
     
     # Submit form
-    $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
+    $.get("/cases/results?view=" + view, $(".cases_resultstable_form").serialize(), null, "script")
     false
 
   # For period slider
-  $("#cases_"+view+"_results .application_filtergroup_choicenav li").off 'click'
-  $("#cases_"+view+"_results .application_filtergroup_choicenav li").click ->
+  $(".modal.in .application_filtergroup_choicenav li").off 'click'
+  $(".modal.in .application_filtergroup_choicenav li").click ->
     # Submit form
-    $.get("/cases/results?view=" + view, $("#cases_"+view+"_results .cases_resultstable_form").serialize(), null, "script")
+    $.get("/cases/results?view=" + view, $(".cases_resultstable_form").serialize(), null, "script")
     false
 
   window.application_choiceNav()
