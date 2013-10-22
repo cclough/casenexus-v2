@@ -53,6 +53,26 @@ window.modal_cases_show_show = (case_id) ->
 
 
 
+window.profile_index_friends_item_prime = (friends_item) ->
+
+  # FRIENDS items
+
+  $(".profile_index_friends_actions_message").off "click"
+  $(".profile_index_friends_actions_event").off "click"
+
+  friends_item.find(".profile_index_friends_actions_message").click ->
+    friend_id = $(this).data "friend_id"
+
+    window.modal_message_show(friend_id)
+
+
+  friends_item.find(".profile_index_friends_actions_event").click ->
+    friend_id = $(this).data "friend_id"
+
+    window.modal_event_new_show(friend_id,null)
+
+
+
 
 $(document).ready ->
 
@@ -69,6 +89,7 @@ $(document).ready ->
   # Friends item: show actions on mouseover
   mouseover = ->
     $(this).find(".profile_index_friends_friends_item_actions").show "slide", direction: "right", 100
+    window.profile_index_friends_item_prime $(this)
   mouseout = ->
     $(this).find(".profile_index_friends_friends_item_actions").hide "slide", direction: "right", 100
   $(".profile_index_friends_friends_item").hoverIntent
@@ -136,22 +157,7 @@ $(document).ready ->
   #       $("#modal_profile").modal "show"
 
 
-  # FRIENDS items
-  $("#profile_index_friends_actions_message").click ->
-    friend_id = $("#profile_index_friends_action_input").val()
 
-    unless !friend_id
-      window.modal_message_show(friend_id)
-    else
-      alert "Please select a friend from the list..."
-
-  $("#profile_index_friends_actions_event").click ->
-    friend_id = $("#profile_index_friends_action_input").val()
-    
-    unless !friend_id
-      window.modal_event_new_show(friend_id,null)
-    else
-      alert "Please select a friend from the list..."
 
 
   # FEEDBACK items
