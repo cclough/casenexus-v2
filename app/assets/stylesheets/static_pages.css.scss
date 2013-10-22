@@ -121,9 +121,9 @@
 }
 
 #static_home_switch_link_signin {
-  margin:20px auto 0;
+  margin:50px auto 0;
   display:block;
-  width:200px;
+  width:120px;
 }
 
 
@@ -222,9 +222,11 @@
     margin-top:2px;
     margin-right:3px;
   }
+  #static_home_signup_university_select_chzn {
+    width:298px !important;
+  }
   #user_confirm_tac {
-    display:inline;
-    margin-left:40px;
+    display:inline-block;
     vertical-align:top;
   }
 }
@@ -242,22 +244,15 @@
 
 #static_terms_container {
 
-  background:$gray_background;
+  background:$cn_grey_0;
   padding:25px;
   position:absolute;
-
   left:10%;
   right:10%;
-  top:5%;
-  bottom:15%;
-
+  top:50px;
+  bottom:100px;
   z-index:10;
-
   overflow-y:scroll;
-
-  #static_forms_back_button {
-    bottom:-20px;
-  }
 }
 
 #static_forms_back_button {
@@ -266,4 +261,7 @@
   left:50%;
   width:100px;
   margin-left:-50px;
+  &.terms {
+    bottom:0px;
+  }
 }
