@@ -80,7 +80,7 @@ window.map_index_activate_perm_popup_and_icon_for = (marker) ->
   # Change Icon
   activeIcon = L.icon(
     iconUrl: "/assets/markers/marker_active_"+marker.feature.properties.university_image
-    iconSize: [35, 51]
+    iconSize: [35, 57]
     iconAnchor: [17, 51]
   )
   marker.setIcon activeIcon
@@ -233,7 +233,8 @@ $(document).ready ->
       window.map.setZoom(2);
       $(this).fadeOut("fast");
 
-    # DRAW SELF MARKER
+
+    ###### DRAW SELF MARKER
     markerLayer_user = L.mapbox.markerLayer()
 
     geoJson = [
@@ -242,19 +243,16 @@ $(document).ready ->
         type: "Point"
         coordinates: [parseFloat(map_index_map_lng_start), parseFloat(map_index_map_lat_start)]
       properties:
-        title: "self user"
         icon:
           iconUrl: "/assets/markers/user_location.png"
-          iconSize: [78, 78] # size of the icon
-          iconAnchor: [39, 39] # point of the icon which will correspond to marker's location
+          iconSize: [30, 30] # size of the icon
+          iconAnchor: [15, 15] # point of the icon which will correspond to marker's location
           popupAnchor: [0, -25] # point from which the popup should open relative to the iconAnchor
     ]
-
     markerLayer_user.on 'layeradd', (e) ->
       marker = e.layer
       feature = marker.feature
       marker.setIcon L.icon(feature.properties.icon)
-
     markerLayer_user.addTo map
     markerLayer_user.setGeoJSON geoJson
 

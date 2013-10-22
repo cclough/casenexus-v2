@@ -217,7 +217,7 @@ class User < ActiveRecord::Base
                         \"cases_ext\": \"#{user.cases_external}\",
                         \"icon\": {
                           \"iconUrl\": \"/assets/markers/marker_#{user.university.image}\",
-                          \"iconSize\": [35, 51],
+                          \"iconSize\": [35, 57],
                           \"iconAnchor\": [17, 51]
                         }
                       }

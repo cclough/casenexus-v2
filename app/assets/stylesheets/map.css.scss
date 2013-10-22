@@ -445,8 +445,8 @@
 
 .map_index_map_popup{
 
-  height:90px;
-  width:170px;
+  height:95px;
+  width:171px;
   padding:0px !important;
 
   .map_index_map_popup_avatar {
@@ -456,7 +456,7 @@
     height:40px;
     img {
       margin-left:2px;
-      margin-top:4px;
+      margin-top:2px;
     }
   }
   .map_index_map_popup_info {
@@ -478,38 +478,33 @@
 
   .map_index_map_popup_cases {
     display:block;
-    margin: 0 auto;
-    width:150px; // includes 18 margin
+    margin: 0 0;
+    width:171px; // includes 18 margin
+    border-top:1px solid $cn_grey_0;
     div {
-      width:50px;
-      height:45px;
+      width:56px;
+      height:50px;
       float:left;
-
       text-align:center;
-      line-height:33px;
+      line-height:42px;
       position:relative;
-
+      font-size:25px;
+      font-weight:bolder;
     }
 
     .map_index_users_item_cases_recd {
-      background: #73bf72;
-      font-size:20px;
-      font-weight:bolder;
-      color:white;
+      color:#73bf72;
+      border-right:1px solid $cn_grey_0;
+
     }
 
     .map_index_users_item_cases_givn{
-      background: $cn_colour_1;
-      font-size:20px;
-      font-weight:bolder;
-      color:white;
+      color:$cn_colour_1;
+      border-right:1px solid $cn_grey_0;
     }
 
     .map_index_users_item_cases_external{
-      background: $cn_colour_-2;
-      font-size:20px;
-      font-weight:bolder;
-      color:white;
+      color:$cn_colour_-2;
     }
 
     .map_index_users_item_cases_text {
@@ -520,7 +515,6 @@
       top:18px;
       font-size:10px;
       height:10px;
-
     }
   }
 }
