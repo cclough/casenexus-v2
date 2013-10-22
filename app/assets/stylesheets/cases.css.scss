@@ -409,7 +409,7 @@
   top:40px;
   right:0px !important;
   width:90%;
-  left:30px;
+  left:35px;
   height:420px;
   text-indent:0;
   padding-top:0px;
@@ -477,8 +477,18 @@
     margin-bottom: 0px !important;  
     width:250px;
   }
+  background:$cn_grey_0;
   width:390px;
   margin:-5px -3px;
+
+  border-top-right-radius: 3px;
+  -moz-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+
+  border-bottom-right-radius: 3px;
+  -moz-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+
 }
 
 
