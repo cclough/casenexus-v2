@@ -87,16 +87,15 @@ $(document).ready ->
 
 
   # Friends item: show actions on mouseover
-  mouseover = ->
+  profile_index_friends_friends_item_mouseover = ->
     $(this).find(".profile_index_friends_friends_item_actions").show "slide", direction: "right", 100
     window.profile_index_friends_item_prime $(this)
-  mouseout = ->
+  profile_index_friends_friends_item_mouseout = ->
     $(this).find(".profile_index_friends_friends_item_actions").hide "slide", direction: "right", 100
   $(".profile_index_friends_friends_item").hoverIntent
-    over: mouseover,
-    out: mouseout,
+    over: profile_index_friends_friends_item_mouseover,
+    out: profile_index_friends_friends_item_mouseout,
     interval: 250
-
 
 
   # On load animations
@@ -177,11 +176,18 @@ $(document).ready ->
 
     window.modal_cases_show_show(case_id)
 
-  $(".profile_index_feedback_cases_item").mouseenter ->
 
+
+
+
+  #### Mouseover - drive chart cursor
+  $(".profile_index_feedback_cases_item").mouseover ->
     case_date = $(this).data "case_date"
-
     window.chart_analysis_progress.chartCursor.showCursorAt window.parseDate(case_date)
+
+  # On mouse leave cases area, hide the cursor
+  $("#profile_index_feedback_cases").mouseleave ->
+    window.chart_analysis_progress.chartCursor.hideCursor()
 
 
   # Analysis in modal

@@ -16,6 +16,7 @@
       %option
         - @cases.each do |cases_select_item|
           %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
+          
             - unless @case.subject.blank?
               = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_trunc_menu
             - else
