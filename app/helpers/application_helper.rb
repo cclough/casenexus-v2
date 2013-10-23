@@ -10,6 +10,12 @@ module ApplicationHelper
     end
   end
 
+  def pluralize_without_count(count, noun, text = nil)
+    if count != 0
+      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
+    end
+  end
+
   def avatar_for(user, options = {})
 
     options[:size] ||= "small"
@@ -26,8 +32,7 @@ module ApplicationHelper
     end  
   end
 
-  def university_logo_for(university, options = {})
-
+  def university_logo_for(university, options = {}) # for small uni logo (not for books)
     options[:size] ||= "small"
 
     university_url = "universities/" + university.image
@@ -36,8 +41,7 @@ module ApplicationHelper
     image_tag(university_url, alt: university_alt, class: "application_userimage_" + options[:size], "data-original-title" => university_alt, rel: "tooltip", "data-placement"=>"bottom")
   end
 
-  # Render will_paginate with bootstrap pagination css - https://gist.github.com/robacarp/1562185
-  def paginate *params
+  def paginate *params # Render will_paginate with bootstrap pagination css - https://gist.github.com/robacarp/1562185
     params[1] = {} if params[1].nil?
     params[1][:renderer] = BootstrapPaginationHelper::LinkRenderer
     params[1][:class] ||= 'pagination pagination-centered small'
@@ -45,22 +49,6 @@ module ApplicationHelper
     params[1][:outer_window] ||= 2
     will_paginate *params
   end
-
-
-  def casecounts(user)
-    count_int = content_tag :span, user.cases.count.to_s, style: "font-weight:bolder;"
-    count_ext = content_tag :span, "+" + user.cases_external.to_s, style: "font-weight:lighter;"
-    count_int + count_ext
-  end
-
-  # def sortable(column, title)
-  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
-  #   direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-  #   link_to title, params.merge(:sort => column, :direction => direction, :page => nil), { :class => css_class }
-  # end
-
-
-
 
   def colorcoded_cell(num_to_code, value)
     if (num_to_code > 0)
@@ -71,7 +59,6 @@ module ApplicationHelper
   end
 
   def recommendation_cell(growth, diff_from_av)
-
     if (growth < 0) && (diff_from_av < 0)
       content_tag :td, "Needs work", class: "application_colorcode_red"
     else
@@ -79,10 +66,7 @@ module ApplicationHelper
     end
   end
   
-
-
   def timezone_difference(user1, user2)
-    
     time1 = Time.zone.now.in_time_zone(user1.time_zone)
     time2 = Time.zone.now.in_time_zone(user2.time_zone)
 
@@ -96,11 +80,9 @@ module ApplicationHelper
     elsif time_difference == 0
       "Same time zone as you"
     end
-
   end
 
   def books_difficulty_stamp(book)
-
     num = book.difficulty
 
     case num
@@ -112,10 +94,6 @@ module ApplicationHelper
       content_tag :span, "ADVANCED", class: "books_index_books_item_difficulty advanced"
     end
   end
-
-
-
-
 
   def books_small_difficulty_stamp(book)
     num = book.difficulty
@@ -129,19 +107,6 @@ module ApplicationHelper
       content_tag :div, "Advanced", class: "books_show_small_difficulty advanced"
     end
   end
-
-
-
-
-
-  def online_user_count
-      count = pluralize(User.online_now.count,"user")
-      count_tag = content_tag :span, count#, class: "application_colorcode_green"
-      count_tag + " online"
-  end
-
-
-
 
   def application_taglist(tags)
     max = 0
@@ -166,13 +131,5 @@ module ApplicationHelper
           class: "questions_comment_add_button"
     link
   end
-
-
-  def pluralize_without_count(count, noun, text = nil)
-    if count != 0
-      count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
-    end
-  end
-
 
 end
