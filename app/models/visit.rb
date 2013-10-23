@@ -1,8 +1,10 @@
 class Visit < ActiveRecord::Base
   attr_accessible :visitor_id
 
+  ### Associations
   belongs_to :user
 
+  ### Callbacks
   after_create :destroy_user_visits_over_limit
 
 
@@ -32,7 +34,6 @@ class Visit < ActiveRecord::Base
       false
     end
   end
-
 
   private
 

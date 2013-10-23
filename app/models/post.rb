@@ -20,16 +20,11 @@ class Post < ActiveRecord::Base
     end
   end
 
-
-  def content_trunc
-    content.truncate(17, separator: ' ')
-  end
-
   private
   
   def one_per_day
     if Post.where("user_id = ? AND DATE(created_at) = DATE(?)", self.user_id, Time.now).all.any?
-      errors.add(:base, "You are limited to one post per day")
+      errors.add(:base, "You are limited to one post per day.")
     end
   end
 

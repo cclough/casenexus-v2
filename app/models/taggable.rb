@@ -1,6 +1,5 @@
 module Taggable
   module ClassMethods
-        ### TAG STUFF - one day make a polymorphic (repeated in Book)
     def tagged_with(name)
       self.joins(:taggings).where(taggings: {tag_id: Tag.find_by_name!(name).id})
       # Tag.find_by_name!(name).id

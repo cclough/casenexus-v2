@@ -7,8 +7,7 @@ class Vote < ActiveRecord::Base
 
   ### Validations
   validate :no_vote_on_own
-    # Comment out the line below to allow multiple votes per user.
-  validates_uniqueness_of :voteable_id, :scope => [:voteable_type, :voter_type, :voter_id]
+  validates_uniqueness_of :voteable_id, :scope => [:voteable_type, :voter_type, :voter_id] # comment to allow multiple votes per user.
 
   ### Scopes
   scope :for_voter, lambda { |*args| where(["voter_id = ? AND voter_type = ?", args.first.id, args.first.class.base_class.name]) }
@@ -16,9 +15,8 @@ class Vote < ActiveRecord::Base
   scope :recent, lambda { |*args| where(["created_at > ?", (args.first || 2.weeks.ago)]) }
   scope :descending, order("created_at DESC")
 
-
   def no_vote_on_own
-    errors.add(:base, "You cannot vote on your own things") if self.voteable.user == self.voter
+    errors.add(:base, "You cannot vote on your own content.") if self.voteable.user == self.voter
   end
 
 end
