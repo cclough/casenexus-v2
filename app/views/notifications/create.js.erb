@@ -7,10 +7,6 @@
         // THIS IS GOING TO POPULATE THE MESSAGE MODAL ALL THE TIME
         $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
 
-
-        // if ($("#modal_message").hasClass("in")) {
-        // });
-
         <%- if @notification.ntype = "message" %>
             // MODAL
             window.modal_message_prime();
@@ -25,8 +21,6 @@
 
 
     <%- else %>
-
-
 
         <%- if @notification.ntype = "message" %>
         

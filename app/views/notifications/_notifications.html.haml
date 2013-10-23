@@ -1,5 +1,4 @@
 - if @notifications.size > 0
-  / = render partial: 'notifications/notifications_item', locals: {notifications_item: current_user.notifications_sent.last, asso_user: current_user}
   - @notifications.each do |notifications_item|
     - asso_user = ((notifications_item.sender == current_user) ? notifications_item.user : notifications_item.sender)
     = render partial: 'notifications/notifications_item' , locals: { notifications_item: notifications_item, asso_user: asso_user }

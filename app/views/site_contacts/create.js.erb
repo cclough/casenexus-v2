@@ -8,8 +8,6 @@
 
 <%- else %>
 
-
-
   $('#modal_contact').modal('hide');
 
   $("body").append("<%= escape_javascript(render :partial => 'layouts/flash' , :locals => { :flash => flash }).html_safe %>");

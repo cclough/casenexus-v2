@@ -1,6 +1,4 @@
 - provide(:title, 'Notification History')
-- provide(:sub_title, 'with ' + @user.username)
-
 
 
 .row#notifications_show_header
@@ -19,9 +17,8 @@
     = render "conversation", locals: { friend_id: @user.id }
 
 #notifications_show_form{"data-friend_id"=>@user.id}
-  / - notification = notification || @notification
-  = form_for @notification, remote: true do |f|
 
+  = form_for @notification, remote: true do |f|
 
     .row
       = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea"

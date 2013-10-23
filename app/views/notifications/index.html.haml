@@ -1,6 +1,4 @@
 - provide(:title, 'Your Notifications')
-- provide(:sub_title, 'Browse through all of your notifications')
-
 
 
 #notifications_index_notifications_container
@@ -9,8 +7,6 @@
       = render 'notifications_form'
   #notifications_index_notifications
     = render :partial => 'notifications'
-
-/     = link_to 'Load More Notifications', notifications_path(:page => @notifications.next_page), :class => 'load-more-posts', :remote => true if @notifications.next_page
 
 #notifications_index_conversation
 

@@ -6,7 +6,6 @@
     - if @question.tags.count > 0
       = raw @question.tags.map { |t| link_to t.name, question_tag_path(t.name), class: "btn btn-default btn-mini" }.join('<br>')
 
-
   .spacer10
   #questions_taglist
     - if @question.tags.count > 0

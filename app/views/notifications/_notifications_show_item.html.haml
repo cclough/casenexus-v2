@@ -1,5 +1,5 @@
 .notifications_show_item{id: "notification-"+notifications_show_item.id.to_s, 'data-id' => notifications_show_item.id.to_s, :class => ("white" if (params[:style] == "white"))}
-  /(("read " if notifications_show_item.read?) && ("select" if (notifications_show_item.id.to_s == @id) && 
+
   .row.notifications_show_item_date_line
   .row.notifications_show_item_date= notifications_show_item.date_fb
   .row
