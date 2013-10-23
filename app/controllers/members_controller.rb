@@ -30,34 +30,11 @@ class MembersController < ApplicationController
       @users = users_scope.paginate(per_page: 10, page: params[:page])
     end
 
-
     respond_to do |format|
       format.js # links index.js.erb!
       format.json { render json: User.markers_geojson(@users) } # USING get_markers_within_viewport INSTEAD
     end
 
-  end
-
-
-  def show
-    @user = User.find(params[:id])
-
-    unless Visit.shouldnt_create?(current_user, @user)
-      @user.visits.create(visitor_id: current_user.id)
-    end
-
-    # if via ajax render without layout form map, else redirect to map and profile link
-    if request.xhr?
-      render layout: false
-    else
-      redirect_to '/map?user_id='+params[:id]
-    end
-  end
-
-  def show_small
-    @user = User.find(params[:id])
-    
-    render layout: false
   end
 
 end

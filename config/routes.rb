@@ -54,9 +54,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Members
-  resources :members, only: [:index, :show] do
-    get :show_small, on: :member
-  end
+  resources :members, only: [:index]
 
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 

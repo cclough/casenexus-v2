@@ -36,7 +36,7 @@
   %div
     .row
       - if @invitations.count > 0
-        %table.table
+        %table
           %tbody
             - @invitations.each do |invitation|
               %tr
@@ -47,7 +47,7 @@
                     = link_to(invitation.name + "'s profile", member_path(invitation.invited))
                 - else
                   %td
-                    = "#{invitation.email} was invited"
+                    = "#{invitation.email} was invited - "
                   %td
                     = link_to("Cancel Invitation", invitation_path({id: invitation.id}), method: :delete, confirm: "Are you sure?")
       - else
