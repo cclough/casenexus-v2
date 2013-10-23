@@ -32,48 +32,15 @@ class Notification < ActiveRecord::Base
   scoped_search in: :sender, on: [:username]
   scoped_search on: [:content]
   
-  class << self
 
-    def readed
-      where(read: true)
-    end
-
-    def unread
-      where(read: false)
-    end
-
-    def for_display
-      where("ntype != 'welcome'")
-    end
-
-    # these were below before in a separate 'self' - can they stay here?
-    def header(user)
-      user.notifications.for_display.where(read: false).limit(5).order('created_at desc').reverse
-    end
-
-    def history(from_id, to_id)
-      for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
-                        from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app",
-                                                                "event_set_partner","event_set_sender",
-                                                                "event_change_partner","event_change_sender",
-                                                                "event_cancel_partner","event_cancel_sender",
-                                                                "event_remind_partner","event_remind_sender"]])
-    end
-
-    def recently_notified_by?(current_user, query_user)
-      true if where(user_id: current_user.id, sender_id: query_user.id, created_at: (1.minute.ago)..(Time.now)).count > 0
-    end
-
-  end
-
+  ### Micro
   def read!
     update_attribute(:read, true)
   end
 
   def content_trunc
     if self.ntype == "friendship_app"
-      "Contact Accepted"
+      "Partner request accepted"
     else
       content.truncate(50, :separator => ' ') unless (content == nil)
     end
@@ -88,9 +55,9 @@ class Notification < ActiveRecord::Base
       when "feedback"
         "New feedback"
       when "friendship_req"
-        "Case partner request"
+        "Partner request"
       when "friendship_app"
-        "Case partner accepted"
+        "Partner accepted"
 
       when "event_set_partner"
         "New case appointment"
@@ -163,6 +130,32 @@ class Notification < ActiveRecord::Base
     end
   end
 
+  ### Macro
+  class << self
+
+    def unread
+      where(read: false)
+    end
+
+    def for_display
+      where("ntype != 'welcome'")
+    end
+
+    def header(user)
+      user.notifications.for_display.where(read: false).limit(5).order('created_at desc').reverse
+    end
+
+    def history(from_id, to_id)
+      for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
+                        from_id, to_id,
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app",
+                                                                "event_set_partner","event_set_sender",
+                                                                "event_change_partner","event_change_sender",
+                                                                "event_cancel_partner","event_cancel_sender",
+                                                                "event_remind_partner","event_remind_sender"]])
+    end
+
+  end
 
   private
 
@@ -170,7 +163,7 @@ class Notification < ActiveRecord::Base
     if !user_id.blank?
       #exclude event notifications as they simulatenously send to self
       unless self.ntype == "event_set_partner" || "event_set_sender" || "event_cancel" || "event_change" || "event_remind"
-        errors.add(:user_id, "Cannot send a notification to self") if self.user_id == self.sender_id
+        errors.add(:user_id, "No need to send a notification to yourself.") if self.user_id == self.sender_id
       end
     end
   end
@@ -206,11 +199,6 @@ class Notification < ActiveRecord::Base
                                   self.user,
                                   self.url,
                                   self.title)
-
-
-
-
-
       when "event_set_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
@@ -224,8 +212,6 @@ class Notification < ActiveRecord::Base
                                                       self.title,
                                                       self.url,
                                                       self.ntype)
-
-
       when "event_change_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
@@ -233,16 +219,12 @@ class Notification < ActiveRecord::Base
                                                        self.title,
                                                        self.url,
                                                        self.ntype)
-
       when "event_change_sender"
         UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
                                                       self.ntype)
-
-
-
       when "event_cancel_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
@@ -250,18 +232,12 @@ class Notification < ActiveRecord::Base
                                                        self.title,
                                                        self.url,
                                                        self.ntype)
-
       when "event_cancel_sender"
         UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
                                                       self.ntype)
-
-
-
-
-
       when "event_remind_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.sender,
                                                        self.user,
@@ -277,18 +253,13 @@ class Notification < ActiveRecord::Base
                                                       self.url,
                                                       self.ntype)
 
-
-
       end
   end
 
 
 
 
-
-
-  # Still not correct yet
-  def self.most_recent_for(user_id)
+  def self.most_recent_for(user_id) # Vincent magic function
     sent = select("user_id as asso_id, MAX(id) as latest").where("(sender_id = ?)",
                         user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
