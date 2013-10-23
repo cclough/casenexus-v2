@@ -21,8 +21,7 @@ class Notification < ActiveRecord::Base
                          event_set_partner event_set_sender 
                          event_change_partner event_change_sender 
                          event_cancel_partner event_cancel_sender 
-                         event_remind_partner event_remind_sender points_unlock_voteup 
-                         points_unlock_votedown); end
+                         event_remind_partner event_remind_sender); end
   # The two validations below must be after the line above!
   validates :ntype, presence: true, length: { maximum: 25 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
@@ -59,8 +58,7 @@ class Notification < ActiveRecord::Base
                                                                 "event_set_partner","event_set_sender",
                                                                 "event_change_partner","event_change_sender",
                                                                 "event_cancel_partner","event_cancel_sender",
-                                                                "event_remind_partner","event_remind_sender",
-                                                                "points_unlock_voteup","points_unlock_votedown"]])
+                                                                "event_remind_partner","event_remind_sender"]])
     end
 
     def recently_notified_by?(current_user, query_user)
@@ -114,10 +112,6 @@ class Notification < ActiveRecord::Base
       when "event_remind_sender"
         "Case appointment reminder"
 
-      when "points_unlock_voteup"
-        "You can now up vote"
-      when "points_unlock_votedown"
-        "You can now down vote"
     end    
   end
 
@@ -166,11 +160,6 @@ class Notification < ActiveRecord::Base
         Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
 
 
-
-      when "points_unlock_voteup"
-        Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
-      when "points_unlock_votedown"
-        Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
     end
   end
 
@@ -290,16 +279,6 @@ class Notification < ActiveRecord::Base
 
 
 
-
-
-      when "points_unlock_voteup"
-        UserMailer.delay.points_unlock_voteup(self.user,
-                                        self.title,
-                                        self.url)
-      when "points_unlock_votedown"
-        UserMailer.delay.points_unlock_votedown(self.user,
-                                          self.title,
-                                          self.url)
       end
   end
 

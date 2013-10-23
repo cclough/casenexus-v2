@@ -112,14 +112,6 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  # # IS THIS NEEDED
-  # def password_reset(user)
-  #   @user_target = user
-
-  #   email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-  #   mail(to: email_with_name, subject: "casenexus.com: " + "Password Reset")
-  # end
-
   def invitation(invitation)
     receiver = "#{invitation.name} <#{invitation.email}>"
 
@@ -142,7 +134,6 @@ class UserMailer < ActionMailer::Base
   end
 
 
-
   def case_pdf(user_from, user_target, book)
     
     @user_from = user_from
@@ -159,21 +150,4 @@ class UserMailer < ActionMailer::Base
 
   end
 
-
-
-  def points_unlock_voteup(user_target, title, url)
-    @user_target = user_target
-    @url = url
-
-    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
-  end
-
-  def points_unlock_votedown(user_target, title, url)
-    @user_target = user_target
-    @url = url
-
-    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
-  end
 end

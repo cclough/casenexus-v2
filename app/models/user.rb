@@ -45,8 +45,6 @@ class User < ActiveRecord::Base
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
   
-  has_many :points, dependent: :destroy
-
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
@@ -145,10 +143,6 @@ class User < ActiveRecord::Base
     when 6..1000
       5
     end
-  end
-
-  def points_tally
-    points.map { |a| a.score }.sum
   end
 
   def degree_level_in_words

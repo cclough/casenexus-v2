@@ -15,7 +15,6 @@ class Answer < ActiveRecord::Base
   acts_as_voteable
 
   ### Micro
-
   def content_trunc
     content.truncate(50, separator: ' ')
   end

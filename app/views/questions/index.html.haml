@@ -52,8 +52,6 @@
                 .span15.offset1
                   .row
                     = questions_item.user.username
-                  .row
-                    / = questions_item.user.points
             .spacer5
             .row.questions_index_questions_item_tags.application_tags_container
               / = raw questions_item.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ')
