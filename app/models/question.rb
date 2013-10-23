@@ -17,7 +17,7 @@ class Question < ActiveRecord::Base
   # validates_presence_of :taggings
 
   ### Voting
-  acts_as_voteable
+  # acts_as_voteable
 
 
   ### Scoped_search Gem

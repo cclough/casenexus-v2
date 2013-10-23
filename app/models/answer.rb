@@ -12,7 +12,7 @@ class Answer < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 1000 } 
 
   ### Voteable
-  acts_as_voteable
+  #acts_as_voteable
 
   ### Micro
   def content_trunc

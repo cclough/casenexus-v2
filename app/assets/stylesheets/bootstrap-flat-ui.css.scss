@@ -1109,7 +1109,7 @@ input[type="color"]:focus,
   right: -3px;
 }
 .tooltip-inner {
-  background-color: #34495e;
+  background-color: $cn_colour_05;//#34495e;
   line-height: 17.99px;
   padding: 12px 12px;
   text-align: center;

@@ -13,7 +13,7 @@ class Comment < ActiveRecord::Base
   validates :rating, presence: true, :if => :is_book?
 
   ### Voting
-  acts_as_voteable
+  # acts_as_voteable
 
 	def is_book?
 	  self.commentable_type == "Book"
