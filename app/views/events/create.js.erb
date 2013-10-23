@@ -1,6 +1,6 @@
 <%- if @event.errors.any? %>
 
-  $('#modal_event').html("<%= escape_javascript(render('shared/modal_event_new_form')) %>");
+  $('#modal_event').html("<%= escape_javascript(render('events/modal_event_new_form')) %>");
 
   window.application_form_errors_close();
 

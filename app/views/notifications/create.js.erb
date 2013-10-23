@@ -4,10 +4,11 @@
     <%- if @notification.errors.any? %>
 
 
-        // THIS IS GOING TO POPULATE THE MESSAGE MODAL ALL THE TIME
-        $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('shared/modal_' + @notification.ntype + '_form')) %>');
-
         <%- if @notification.ntype = "message" %>
+
+            // THIS IS GOING TO POPULATE THE MESSAGE MODAL
+            $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('notifications/modal_' + @notification.ntype + '_form')) %>');
+
             // MODAL
             window.modal_message_prime();
 
@@ -16,6 +17,11 @@
             $("#notifications_index_conversation #application_error_explanation ul").html("<%= j(@notification.errors.full_messages.map {|error| "<li>#{error}</li>"}.join).html_safe %>")
             window.application_spinner_prime("#notifications_show_form");
             window.application_form_errors_close();
+
+        <%- else %>
+
+            // THIS IS GOING TO POPULATE THE FRIENDSHIP_REQ MODAL
+            $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('friendships/modal_' + @notification.ntype + '_form')) %>');
 
         <%- end %>
 

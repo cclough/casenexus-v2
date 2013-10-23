@@ -1,6 +1,6 @@
 <%- if @post.errors.any? %>
 
-    $('#modal_post').html('<%= escape_javascript(render('shared/modal_post_form')) %>');
+    $('#modal_post').html('<%= escape_javascript(render('posts/modal_post_form')) %>');
 
     window.application_spinner_prime(".modal.in");
 

@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:id])
     @friendship = Friendship.new
 
-    render partial: "shared/modal_friendship_req_form", layout:false
+    render partial: "friendships/modal_friendship_req_form", layout:false
   end
 
   def create

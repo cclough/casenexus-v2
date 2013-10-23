@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     @book_partnertoprepare = Book.find(params[:book_id_partnertoprepare]) if params[:book_id_partnertoprepare]
     @friend = User.find(params[:friend_id]) if params[:friend_id]
 
-    render partial: "shared/modal_event_new_form", layout: false
+    render partial: "events/modal_event_new_form", layout: false
   end
 
   def create
@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     @book_usertoprepare = Book.find(@event.book_id_usertoprepare) if @event.book_id_usertoprepare
     @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare) if @event.book_id_partnertoprepare
 
-    render partial: "shared/modal_event_edit_form", layout: false
+    render partial: "events/modal_event_edit_form", layout: false
   end
 
   def update

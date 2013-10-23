@@ -31,7 +31,7 @@ class NotificationsController < ApplicationController
     @user = User.find(params[:id])
     @notification = @user.notifications.build
 
-    render partial: "shared/modal_message_form", layout:false
+    render partial: "notifications/modal_message_form", layout:false
   end
 
   def create
