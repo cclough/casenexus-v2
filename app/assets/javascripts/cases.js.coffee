@@ -225,7 +225,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartCursor = new AmCharts.ChartCursor()
     chartCursor.cursorPosition = "mouse"
     chartCursor.pan = false
-    chartCursor.cursorColor = "#c18176"
+    chartCursor.cursorColor = "#313c44"#"#c18176"
     chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
     chartCursor.zoomable = false
 
