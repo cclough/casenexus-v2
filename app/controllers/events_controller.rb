@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+
+  before_filter :authenticate_user!
+  before_filter :completed_user
+  
   require 'icalendar'
 
   def new
@@ -32,7 +36,6 @@ class EventsController < ApplicationController
         @friend = @event.partner unless @event.partner.blank?
         @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare) unless @event.book_id_partnertoprepare.blank?
       end
-
     end
 
   end

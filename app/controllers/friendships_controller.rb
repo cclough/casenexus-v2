@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
-    
+
   def index
     @friendships = current_user.accepted_friendships.includes(:friend)
   end
