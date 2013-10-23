@@ -8,7 +8,7 @@ window.parseDate = (dateString) ->
 
   # now lets create a new Date instance, using year, month and day as parameters
   # month count starts with 0, so we have to convert the month number
-  date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]))
+  date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]), Number(dateArray[3]), Number(dateArray[4]), Number(dateArray[5]))
   date
 
 #///////////////////////////////////////////////////////////////
@@ -116,7 +116,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     categoryAxis.parseDates = true
     
     #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    categoryAxis.minPeriod = "DD" # our data is daily, so we set minPeriod to DD
+    categoryAxis.minPeriod = "SS" # our data is daily, so we set minPeriod to DD
     
     # Value
     valueAxis = new AmCharts.ValueAxis()
@@ -226,7 +226,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartCursor.cursorPosition = "mouse"
     chartCursor.pan = false
     chartCursor.cursorColor = "#313c44"#"#c18176"
-    chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
+    chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY, JJ:NN:SS"
     chartCursor.zoomable = false
 
     window.chart_analysis_progress.addChartCursor chartCursor

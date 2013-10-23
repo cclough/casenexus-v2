@@ -71,7 +71,7 @@
   
     user = User.find(3)
 
-    50.times do
+    5.times do
       interviewer_id = 1 + rand(1)
       next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(

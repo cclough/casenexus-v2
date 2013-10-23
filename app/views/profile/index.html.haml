@@ -195,7 +195,7 @@
 
       - if @cases.count > 0
         - @cases.each do |cases_item|
-          .profile_index_feedback_cases_item{"data-case_id" => cases_item.id, "data-case_date" => cases_item.created_at.strftime("%Y-%m-%d") }
+          .profile_index_feedback_cases_item{"data-case_id" => cases_item.id, "data-case_date" => cases_item.created_at.strftime("%Y-%m-%d-%H-%I-%S") }
             
             .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
 
