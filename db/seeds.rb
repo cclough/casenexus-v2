@@ -44,6 +44,71 @@
 
 
 
+  def random_date(params={ })
+    years_back = params[:year_range] || 5
+    latest_year = params [:year_latest] || 0
+    year = (rand * (years_back)).ceil + (Time.now.year - latest_year - years_back)
+    month = (rand * 12).ceil
+    day = (rand * 31).ceil
+    series = [date = Time.local(year, month, day)]
+    if params[:series]
+      params[:series].each do |some_time_after|
+        series << series.last + (rand * some_time_after).ceil
+      end
+      return series
+    end
+    date
+  end
+
+  def rand_time(from, to=Time.now)
+    Time.at(rand_in_range(from.to_f, to.to_f))
+  end
+
+  def rand_in_range(from, to)
+    rand * (to - from) + from
+  end
+
+  
+    user = User.find(3)
+
+    50.times do
+      interviewer_id = 1 + rand(1)
+      next if interviewer_id.to_i == user.id.to_i
+      user.cases.create!(
+          interviewer_id: interviewer_id,
+          book_id: 1 + rand(30),
+          subject: Faker::Lorem.sentence(5),
+          source: Faker::Lorem.sentence(3),
+
+          recommendation1: Faker::Lorem.sentence(10),
+          recommendation2: Faker::Lorem.sentence(10),
+          recommendation3: Faker::Lorem.sentence(10),
+
+          main_comment: Faker::Lorem.sentence(100),
+
+          quantitativebasics: 1 + rand(4),
+          problemsolving: 1 + rand(4),
+          prioritisation: 1 + rand(4),
+          sanitychecking: 1 + rand(4),
+
+          rapport: 1 + rand(4),
+          articulation: 1 + rand(4),
+          concision: 1 + rand(4),
+          askingforinformation: 1 + rand(4),
+
+          approachupfront: 1 + rand(4),
+          stickingtostructure: 1 + rand(4),
+          announceschangedstructure: 1 + rand(4),
+          pushingtoconclusion: 1 + rand(4)
+      )
+      user.cases.last.created_at = random_date(year_range: 1, year_latest: 0.1)
+      
+      puts "Case created for user #{user.username}"
+    end
+
+  
+
+
 if %w(production development).include?(Rails.env) && User.count == 0
   
   puts "Creating countries"

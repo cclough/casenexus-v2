@@ -187,21 +187,21 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     addclicklistener graph
     window.chart_analysis_progress.addGraph graph
     
-    # Fourth graph - FOR ZOOMER - NOT DRAWN
-    graph = new AmCharts.AmGraph()
-    graph.type = "line"
-    graph.title = "Total Score"
-    graph.valueField = "totalscore"
-    graph.lineAlpha = 1
-    graph.fillAlphas = 0.6
-    graph.bullet = "none"
-    #graph.hidden = true;
-    graph.showBalloon = false
-    graph.visibleInLegend = false
-    graph.fillAlphas = [0]
-    graph.lineAlpha = 0
-    graph.includeInMinMax = false
-    window.chart_analysis_progress.addGraph graph
+    # # Fourth graph - FOR ZOOMER - NOT DRAWN
+    # graph = new AmCharts.AmGraph()
+    # graph.type = "line"
+    # graph.title = "Total Score"
+    # graph.valueField = "totalscore"
+    # graph.lineAlpha = 1
+    # graph.fillAlphas = 0.6
+    # graph.bullet = "none"
+    # #graph.hidden = true;
+    # graph.showBalloon = false
+    # graph.visibleInLegend = false
+    # graph.fillAlphas = [0]
+    # graph.lineAlpha = 0
+    # graph.includeInMinMax = false
+    # window.chart_analysis_progress.addGraph graph
     
     # LEGEND
     legend = new AmCharts.AmLegend()
@@ -240,16 +240,16 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     balloon.fillAlpha = 0.7
     balloon.color = "#FFFFFF"
 
-    # SCROLLBAR
-    # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    chartScrollbar = new AmCharts.ChartScrollbar()
-    chartScrollbar.graph = graph # uses 'fifth graph' above - last to use graph variable
-    chartScrollbar.autoGridCount = true
-    chartScrollbar.scrollbarHeight = 25
-    chartScrollbar.color = "#697076"
-    chartScrollbar.backgroundColor = "#f0f1f2"
-    chartScrollbar.selectedBackgroundColor = "#dee1e3"
-    window.chart_analysis_progress.addChartScrollbar chartScrollbar
+    # # SCROLLBAR
+    # # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
+    # chartScrollbar = new AmCharts.ChartScrollbar()
+    # chartScrollbar.graph = graph # uses 'fifth graph' above - last to use graph variable
+    # chartScrollbar.autoGridCount = true
+    # chartScrollbar.scrollbarHeight = 25
+    # chartScrollbar.color = "#697076"
+    # chartScrollbar.backgroundColor = "#f0f1f2"
+    # chartScrollbar.selectedBackgroundColor = "#dee1e3"
+    # window.chart_analysis_progress.addChartScrollbar chartScrollbar
     
     # WRITE
     window.chart_analysis_progress.write "profile_index_feedback_chart"
