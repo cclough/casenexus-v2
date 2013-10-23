@@ -3,7 +3,6 @@ class ProfileController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
 
-
   def index
     @friends = current_user.accepted_friends.order("username ASC").includes(:university)
     

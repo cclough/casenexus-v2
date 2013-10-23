@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
 
   def create
-
     @post = current_user.posts.build(params[:post])
 
     respond_to do |format|
@@ -16,7 +15,6 @@ class PostsController < ApplicationController
         format.js
       end
     end
-
   end
   
   def show

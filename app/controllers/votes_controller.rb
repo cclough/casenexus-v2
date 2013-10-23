@@ -1,8 +1,9 @@
 class VotesController < ApplicationController
 
+  before_filter :authenticate_user!
+  before_filter :completed_user
 
   before_filter :get_voteable, only: [:up, :down, :control]
-
 
   def destroy
     @vote = Vote.find(params[:id])

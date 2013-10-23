@@ -1,23 +1,16 @@
 class PusherController < ApplicationController
   protect_from_forgery :except => :auth # stop rails CSRF protection for this action
 
-  def auth
-    if current_user
-      
-      if params[:channel_name] == "presence-all"
-        response = Pusher[params[:channel_name]].authenticate(params[:socket_id], {
-          :user_id => current_user.id,
-          :user_info => { name: current_user.username }
-        })
-  	  else
-  	  	response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
-  	  end
+  before_filter :authenticate_user!
+  before_filter :completed_user
 
+  def auth
+    if current_user      
+  	  response = Pusher[params[:channel_name]].authenticate(params[:socket_id])
       render :json => response
     else
       render :text => "Not authorized", :status => '403'
     end
   end
-
 
 end
