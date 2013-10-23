@@ -89,8 +89,8 @@
 
         #events_modal_book_viewer_partnertoprepare
           - if @book_partnertoprepare.blank?
-            #events_modal_book_viewer_empty 
-              No book selected
+            #events_modal_book_viewer_partnertoprepare_empty 
+              Select a case...
           -else
             = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
 
