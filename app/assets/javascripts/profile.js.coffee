@@ -183,6 +183,7 @@ $(document).ready ->
 
     window.chart_analysis_progress.chartCursor.showCursorAt window.parseDate(case_date)
 
+
   # Analysis in modal
   $("#profile_index_feedback_actions_analysis").click ->
 
