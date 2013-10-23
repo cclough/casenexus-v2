@@ -1,10 +1,9 @@
 - provide(:title, 'Delete my Account')
 - provide(:sub_title, 'Confirm below that you would like to delete your account')
 
-.row
-	.span38.offset30
-		#account_delete_panel
 
-			= link_to("No, I don't want to delete my account", edit_account_path, class: "btn btn-large")
-			.spacer20
-			= link_to("I confirm that I would like to delete my account", account_path, method: :delete, class: "btn btn-primary ", confirm: "This cannot be undone. All of your data will be deleted. Are you sure you want to proceed?")
+#account_delete_panel
+
+	= link_to("No, I do not wish to delete my account", "/", class: "btn btn-large")
+	.spacer20
+	= link_to("I confirm that I would like to delete my account", account_path, method: :delete, class: "btn btn-primary ", confirm: "This cannot be undone. All of your data will be deleted. Are you sure you want to proceed?")

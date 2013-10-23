@@ -50,7 +50,7 @@ Casenexus::Application.routes.draw do
     get :edit_password, on: :member
     put :show_help, on: :member
     get :delete, on: :member
-    get :visitors, on: :collection
+    # get :visitors, on: :collection
   end
 
   # Members

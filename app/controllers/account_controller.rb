@@ -3,34 +3,30 @@ class AccountController < ApplicationController
   before_filter :completed_user, except: [:complete_profile, :update]
 
   def show
-    #@user = current_user
     redirect_to action: :edit
   end
 
   def edit
     @user = current_user
-
-    render partial: 'edit', layout:false
+    render partial: 'edit', layout: false
   end
 
   def visitors
     @users = User.all
-
     render layout:false
   end
 
   def update
     @user = current_user
 
-
     if @user.update_attributes(params[:user])
       if @user.completed
-        flash[:success] = 'Your profile has been updated'
+        flash[:success] = 'Your profile has been updated.'
         respond_to(:js)
       else
         @user.completed = true
         @user.save
-        flash[:success] = 'Welcome'
+        flash[:success] = 'Welcome ' + @user.username
         redirect_to "/"
       end
     else
@@ -53,7 +49,6 @@ class AccountController < ApplicationController
 
   def complete_profile
     @user = current_user
-
     if @user.completed?
       redirect_to "/"
     else

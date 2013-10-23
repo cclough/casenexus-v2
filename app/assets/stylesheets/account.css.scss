@@ -61,6 +61,15 @@
 
 #account_delete_panel {
   text-align:center;
+
+  background:$cn_grey_0;
+  width:230px;
+  padding:10px;
+  margin:60px auto;
+
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
 }
 
 
@@ -75,10 +84,14 @@
     margin:10px auto;
     display:block;
   }
-  background:$gray_second;
+  background:$cn_grey_0;
   width:230px;
   padding:10px;
   margin:20px auto;
+
+  -moz-border-radius:    3px;
+  -webkit-border-radius: 3px;
+  border-radius:         3px;
 }
 
 /////////////////////////////////////////////////////////////////

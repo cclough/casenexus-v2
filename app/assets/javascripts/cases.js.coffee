@@ -82,7 +82,6 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chart_analysis_progress.dataProvider = data
     chart_analysis_progress.categoryField = "date"
   
-
     chart_analysis_progress.autoMargins = false
     chart_analysis_progress.marginRight = 0
     chart_analysis_progress.marginLeft = 0
@@ -209,7 +208,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     legend.switchType = "v"
     legend.horizontalGap = 0 #this is a good one to vary to adjust horizontal position
     legend.markerType = "circle"
-    chart_analysis_progress.addLegend(legend, "profile_index_feedback_chart_legend")
+    chart_analysis_progress.addLegend(legend)
 
     # CURSOR
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/

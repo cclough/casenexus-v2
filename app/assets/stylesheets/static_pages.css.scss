@@ -256,11 +256,9 @@
 }
 
 #static_forms_back_button {
-  position:absolute;
-  bottom:-100px;
-  left:50%;
-  width:100px;
-  margin-left:-50px;
+  width: 100px;
+  margin: 20px auto;
+  display:block;
   &.terms {
     bottom:0px;
   }
