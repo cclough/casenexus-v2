@@ -144,11 +144,10 @@ $(document).ready ->
           $.get "/books/" + book_id + "/show_small", (data) ->
             $("#cases_new_book").html data
 
-
       # change skypebutton
-      $.get ("/console/skypebutton?friend_id=" + friend_id), (data) ->
-      	$("#console_index_subnav_button_skype_container").html data
-      $("#console_index_subnav_button_skype").tooltip()
+      $.get "/console/skypebutton?friend_id=" + friend_id, (data) ->
+        $("#console_index_subnav_button_skype_container").html data
+        $("#console_index_subnav_button_skype").tooltip()
 
       # Pdf button  
       console_index_subnav_sendpdf_check()

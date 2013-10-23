@@ -147,6 +147,9 @@
   #console_index_subnav_button_skype_container {
     width:50px;
     display:inline-block;
+    #console_index_subnav_button_skype {
+      font-size:20px;
+    }
   }
   #console_index_subnav_select_friends{
     width:200px;
@@ -181,11 +184,11 @@
 }
 
 .console_index_subnav_button_timer_set {
-  width:12px !important;
+  width:14px !important;
   height:15px;
   line-height:11px;
   text-align:center;
-  padding: 5px 9px 10px 6px !important;
+  padding: 5px 9px 10px 4px !important;
   font-weight:bold;
   margin:-1px 2px 0;
   display:block;

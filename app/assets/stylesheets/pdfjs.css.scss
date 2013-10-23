@@ -644,7 +644,7 @@ html[dir='rtl'] .splitToolbarButtonSeparator {
   border-radius: 2px;
 
 //  color: hsl(0,0%,95%);
-  color:$gray_Dark;
+  color:$cn_grey_-1;
 
   font-size: 12px;
   line-height: 14px;
@@ -772,7 +772,7 @@ html[dir='rtl'] .dropdownToolbarButton {
   font-size: 12px;
 
 //  color: hsl(0,0%,95%);
-  color:$gray_Dark;
+  color:$cn_grey_-1;
 
   margin: 0;
   padding: 0;
@@ -966,7 +966,7 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   box-shadow: 0 1px 0 hsla(0,0%,0%,.05) inset,
               0 1px 0 hsla(0,0%,100%,.05);
 
-  color:$gray_Dark;
+  color:$cn_grey_-1;
 
 //  color: hsl(0,0%,95%);
 
@@ -1011,7 +1011,7 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   margin: 4px 2px 4px 0;
   border: 1px solid transparent;
   border-radius: 2px;
-  color: $gray_Dark;
+  color: $cn_grey_-1;
   font-size: 12px;
   line-height: 14px;
   text-align: left;
