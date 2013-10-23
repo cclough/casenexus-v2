@@ -5,28 +5,15 @@
   / Params link to user marker
   - if params[:user_id]
     :javascript
-      // although not neccessary to pan, looks better due to requirement for set timeout on indowwindow load
-
       var map_index_map_lat_start = "#{User.find(params[:user_id]).lat}";
       var map_index_map_lng_start = "#{User.find(params[:user_id]).lng}";
-
       var map_index_map_marker_id_start = "#{params[:user_id]}";
       
   - else
     :javascript
-      // although not neccessary to pan, looks better due to requirement for set timeout on indowwindow load
-
       var map_index_map_lat_start = "#{current_user.lat}";
       var map_index_map_lng_start = "#{current_user.lng}";
-
       var map_index_map_marker_id_start = "#{current_user.id}";
-
-
-  / :javascript
-  /   $(document).ready(function() {
-  /     window.application_show_help(1);
-  /   });
-
 
 
 #map_index_container_users_container
