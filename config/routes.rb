@@ -61,7 +61,7 @@ Casenexus::Application.routes.draw do
   # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 
   # Friendships
-  resources :friendships, path: 'contacts', except: [:edit, :update] do
+  resources :friendships, path: 'contacts', except: [:index, :new, :show, :edit, :update] do
     member do
       put :accept
       put :reject
