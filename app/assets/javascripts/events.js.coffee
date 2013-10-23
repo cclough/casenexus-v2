@@ -31,7 +31,7 @@ events_set_week_date = () ->
 
   # Set number of appts this week
   events_this_week = current_week_div.data "events_this_week"
-  $("#events_calendar_month_text_count").html events_this_week + " appointments"
+  $("#events_calendar_month_text_count").html events_this_week + " appointments this week"
 
 
 window.events_calendar_rebless = ->
@@ -43,6 +43,11 @@ window.events_calendar_rebless = ->
     $('#profile_index_panel_calendar_container').animate
       scrollTop: distance_to_this_week
     , 500
+
+    setTimeout (->
+      $("#events_calendar_month_text_count").fadeIn "500"
+    ), 1000
+    
   ), 500
 
   # Set current week variable

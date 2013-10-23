@@ -111,6 +111,7 @@ $(document).ready ->
 
       $(".profile_index_feedback_cases_item").each (i) ->
         $(this).delay((i + 1) * 50).fadeIn()
+
     ), 500
 
   $("#profile_index_feedback_chart").fadeIn "500"
