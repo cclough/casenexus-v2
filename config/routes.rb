@@ -1,12 +1,11 @@
 Casenexus::Application.routes.draw do
 
-
   # Rails Admin
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   ##### Devise
   devise_for :users, skip: :registrations, path_names: { :sign_in => 'signin', :sign_out => 'signout' }, :path => '', 
-      controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'sessions' }
+      controllers: { sessions: 'sessions' }
 
   # custom so doesn't include e.g. edit routes
   devise_scope :user do
@@ -16,7 +15,6 @@ Casenexus::Application.routes.draw do
       controller: 'registrations',
       as: :user_registration
   end
-
 
   authenticated :user do
     # root :to => "profile#index"
@@ -28,8 +26,6 @@ Casenexus::Application.routes.draw do
       get "/" => 'static_pages#home'
     end
   end
-
-
 
   # Pusher
   post 'pusher/auth'
@@ -48,15 +44,12 @@ Casenexus::Application.routes.draw do
   resource :account, controller: 'account' do
     get :complete_profile, on: :collection
     get :edit_password, on: :member
-    put :show_help, on: :member
     get :delete, on: :member
     # get :visitors, on: :collection
   end
 
   # Members
   resources :members, only: [:index]
-
-  # match '/get_markers_within_viewport',  to: 'users#get_markers_within_viewport' # Switched off until lots of users
 
   # Friendships
   resources :friendships, path: 'contacts', except: [:index, :new, :show, :edit, :update] do
@@ -72,13 +65,6 @@ Casenexus::Application.routes.draw do
 
   # Invitations
   resources :invitations, except: [:edit, :update]
-
-  # Votes
-  resources :votes, only: [:destroy]
-  match '/votes/control', to: 'votes#control'
-  match '/votes/control_comments', to: 'votes#control_comments'
-  match '/votes/up', to: 'votes#up'
-  match '/votes/down', to: 'votes#down'
 
   # Cases
   resources :cases, only: [:show, :new, :create] do
@@ -96,19 +82,9 @@ Casenexus::Application.routes.draw do
     get :menu, on: :collection
   end
 
-  # Questions # COMMENTED FOR LAUNCH
-    # resources :questions do
-    # end
-
-    # Answers
-    # resources :answers, only: [:create, :update, :show, :destroy, :edit] do
-    # end
-
-
   # Tagging
   get 'questions/tags/:tag', to: 'questions#index', as: :question_tag
   get 'books/tags/:tag', to: 'books#index', as: :book_tag
-
 
   # Library
   resources :books, only: [:index, :show] do
@@ -117,7 +93,7 @@ Casenexus::Application.routes.draw do
   match '/library', to: 'books#index', as: :library
 
   # Comments
-  resources :comments
+  resources :comments, except: [:delete, :index]
 
   # PDF Viewer
   resources :console, only: [:index] do
@@ -133,13 +109,24 @@ Casenexus::Application.routes.draw do
   # Headsups
   match '/headsups/create', to: 'headsups#create', as: :headsups
 
-
   # Events
   resources :events, except: [:index,:show] do
     get :ics, on: :collection
     get :user_timezone, on: :collection
   end
 
-  match '/calendar', to: 'events#index', as: :calendar
+  # Questions # COMMENTED FOR LAUNCH
+    # resources :questions do
+    # end
 
+    # Answers
+    # resources :answers, only: [:create, :update, :show, :destroy, :edit] do
+    # end
+
+  # Votes # COMMENTED FOR LAUNCH
+    # resources :votes, only: [:destroy]
+    # match '/votes/control', to: 'votes#control'
+    # match '/votes/control_comments', to: 'votes#control_comments'
+    # match '/votes/up', to: 'votes#up'
+    # match '/votes/down', to: 'votes#down'
 end

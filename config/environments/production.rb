@@ -20,7 +20,6 @@ Casenexus::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
@@ -48,7 +47,7 @@ Casenexus::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w( application.js books.js events.js cases.js profile.js questions.js static_pages.js map.js notifications.js console.js account.js onlinepanel.js votes.js lib/*.js application.css pdfjs.css)
+  config.assets.precompile += %w( application.js books.js events.js cases.js profile.js static_pages.js map.js notifications.js console.js account.js lib/*.js application.css pdfjs.css)
 
   # For deflate gem
   # RAILS_ENV=production rake assets:precompile
@@ -71,8 +70,6 @@ Casenexus::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => "www.casenexus.com" }
-
-
 
   # Exception notification
   # config.middleware.use ExceptionNotifier,

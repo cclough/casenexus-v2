@@ -1,4 +1,3 @@
-
 # Mini-profiler-Delfater fix - https://github.com/SamSaffron/MiniProfiler/issues/131
 if Rails.env == 'production'
   Rails.application.config.middleware.delete(Rack::MiniProfiler)

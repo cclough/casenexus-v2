@@ -19,6 +19,7 @@ module Casenexus
 
 
 
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -86,8 +87,7 @@ module Casenexus
       Devise::Mailer.layout "email" # email.haml or email.erb
       Devise::SessionsController.layout "home"
       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "home" }
-      Devise::ConfirmationsController.layout "home"
-      Devise::UnlocksController.layout "home"            
+      Devise::ConfirmationsController.layout "home"         
       Devise::PasswordsController.layout "home"
     end
     
