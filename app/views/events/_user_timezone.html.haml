@@ -1,12 +1,9 @@
 - display_which = params[:display_which] if !display_which
 
-/ - @datetime = date_and_time if date_and_time?
 - @user = User.find(user_id) if !@user
-
 
 - if display_which == "timezone"
   /LEFT
-
   .events_modal_timezone_popup
     %i.icon-clock
     = timezone_difference(current_user, @user)
@@ -15,11 +12,8 @@
 
 
 - elsif display_which == "timeforfriend"
-
   - @datetime = date_and_time if !@datetime
-
   /RIGHT
-
   .events_modal_timezone_popup
     %strong For #{@user.username}
     %br
