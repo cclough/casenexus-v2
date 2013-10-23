@@ -4,10 +4,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :update_last_online_at
   before_filter :set_timezone 
-
-  before_filter :authenticate_user!, only: [:online_panel, :online_user_item]
-  before_filter :completed_user, only: [:online_panel, :online_user_item]
-
   before_filter :miniprofiler
   
   def set_timezone  
@@ -39,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def miniprofiler
+  def miniprofiler # enables mini profiler for admin user in production
     if signed_in?
       Rack::MiniProfiler.authorize_request if current_user.admin?
     end

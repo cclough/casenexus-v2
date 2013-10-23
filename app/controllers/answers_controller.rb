@@ -1,9 +1,9 @@
 class AnswersController < ApplicationController
-
+  before_filter :authenticate_user!
+  before_filter :completed_user
   before_filter :correct_user, :only => [:edit, :update, :destroy]
 
   layout "questions"
-
 
   def show
     @answer = Answer.find(params[:id])
@@ -15,7 +15,7 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.build(params[:answer])
 
     if @answer.save
-      flash[:success] = 'Answer posted'
+      flash[:success] = 'Answer posted.'
       redirect_to @answer.question
     else
       flash[:error] = @answer.errors.full_messages.map {|error| "#{error}<br>"}.join
@@ -33,7 +33,7 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
 
     if @answer.update_attributes(params[:answer])
-      flash[:success] = 'Your answer has been updated'
+      flash[:success] = 'Your answer has been updated.'
       redirect_to @answer.question
     else
       @question = @answer.question
