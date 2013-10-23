@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :rating, :user_id, :commentable, :commentable_type, :commentable_id #last 2 can be removed!
+  attr_accessible :content, :rating, :user_id, :commentable, :commentable_type, :commentable_id
 
   ### Associations
   belongs_to :commentable, polymorphic: true
@@ -18,6 +18,5 @@ class Comment < ActiveRecord::Base
 	def is_book?
 	  self.commentable_type == "Book"
 	end
-  
 
 end

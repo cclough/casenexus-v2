@@ -1,12 +1,15 @@
 class Invitation < ActiveRecord::Base
+  attr_accessible :name, :email
+
+  ### Associations
   belongs_to :user
   belongs_to :invited, class_name: 'User'
 
-  attr_accessible :name, :email
-
+  ### Callbacks
   before_create :reset_activation_key
   after_create :send_invitation
 
+  ### Validations
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates_format_of :email,
@@ -14,7 +17,6 @@ class Invitation < ActiveRecord::Base
                       :message => "must be a valid email address"
   validate :limit_invitations_per_user
   validate :validate_university_email, on: :create
-
   INVITATION_LIMIT = 20
 
   def reset_activation_key

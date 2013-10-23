@@ -177,8 +177,6 @@ class Friendship < ActiveRecord::Base
       fs
     end
 
-
-
     # Notificates that a friendship has been requested
     def send_friend_request(sender, friend, invitation_message, friendship)
       Notification.create!(user_id: friend.id,

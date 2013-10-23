@@ -267,6 +267,9 @@ form {
 
 textarea {
   resize: none;
+  text-indent:0;
+  padding-left:10px;
+  padding-right:10px;
 }
 
 // For jquery placeholder
