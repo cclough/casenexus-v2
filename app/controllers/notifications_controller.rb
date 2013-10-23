@@ -2,43 +2,27 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :completed_user
 
-  helper_method :sort_column, :sort_direction
-
-
   def index
-    @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search]).paginate(per_page: 12, page: params[:page])
-  
+    @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search]).paginate(per_page: 25, page: params[:page])
     respond_to do |format|
       format.js
       format.html
     end
-
   end
 
+  def show # notifications#index right panel
+    @id = params[:id] # of user
+    @user = User.find(@id)
+    @notification = @user.notifications.build
 
-  def show
-    # of user
-    @id = params[:id]
-
-    @sender = User.find(@id)
-
-    if @sender == current_user
-      @notifications = current_user.notifications_sent.order('created_at')
-    else
-      @notifications = Notification.history(current_user, @sender)
-    end
-    
-    @notifications.each { |n| n.read! }
-
-    # for new message
-    @notification = Notification.new
+    # mark them as read here, even though used SQL call is in partial - SAD
+    Notification.history(current_user, @sender).each { |n| n.read! }
 
     render layout: false
-
   end
 
   def conversation
-    @id = params[:id]
+    @id = params[:id] # of user
 
     render partial: "conversation", layout: false
   end
@@ -64,7 +48,7 @@ class NotificationsController < ApplicationController
             flash.now[:success] = 'Message sent to ' + @notification.sender.username
           when "friendship_req"
             format.js
-            flash.now[:success] = 'Case Partner request sent'
+            flash.now[:success] = 'Partner request sent'
         end
 
         # Send a Pusher notification
@@ -84,21 +68,12 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
 
     render layout: false
-
   end
 
   def menu
     @unread_count = current_user.notifications.unread.for_display.count
-    # @notifications = Notification.header(current_user)
 
     render partial: "menu", layout: false
-  end
-
-
-  def read
-    @notification = current_user.notifications.find(params[:id])
-    @notification.read!
-    render text: "OK"
   end
 
 end

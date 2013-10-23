@@ -95,7 +95,6 @@ Casenexus::Application.routes.draw do
   
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
-    put :read, on: :member
     get :modal_message_form, on: :collection
     get :conversation, on: :collection
     get :notify, on: :member

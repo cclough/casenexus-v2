@@ -12,6 +12,14 @@
   z-index:999;
   border-right:1px solid $cn_grey_0;
   border-left:1px solid $cn_grey_0;
+
+  .slimScrollDiv {
+    position:absolute;
+    bottom:0px;
+    top:0px;
+    left:0px;
+    width:298px;
+  }
 }
 
 #notifications_index_form_container {
@@ -19,16 +27,16 @@
   top:0px;
   left:0px;
   right:0px;
-  height:80px;
+  height:75px;
+  border-bottom:1px solid $cn_grey_0;
 }
 
 #notifications_index_notifications {
   position:absolute;
   bottom:0px;
-  top:65px;
+  top:76px;
   left:0px;
-  width:296px;
-  overflow-y:scroll;
+  right:0;
 }
 
 
@@ -56,7 +64,7 @@
   text-align:center;
   line-height:31px;
 
-  padding:15px;
+  padding:20px 15px;
   margin: 0 0 0 0;
 }
 
@@ -113,6 +121,7 @@
 
   &.notifications_index_notifications_item_select {
     background:$cn_colour_1;
+    color:white;
   }
 
 }
@@ -180,10 +189,9 @@
 }
 
 #notifications_show_header {
-
   height:30px; 
   font-size:20px;
-  padding:15px;
+  padding:22px 22px 23px 22px;
 
   line-height:31px;
   border-bottom:1px solid $cn_grey_0;
@@ -195,7 +203,7 @@
 
 #notifications_show_body {
   position:absolute;
-  top:61px;
+  top:76px;
   bottom:170px;
   right:0px;
   left:0px;
