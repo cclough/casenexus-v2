@@ -5,107 +5,104 @@
 - provide(:breadcrumb_url, "/questions")
 
 
+
 .row
-  .panel.dark
+  .span6.votes_control_container{ "data-voteable_id" => @question.id, "data-voteable_type" => @question.class.name }
+    = render partial: "/votes/control", locals: { voteable: @question }
+  .span60
+    .row#questions_show_title
+      = @question.title
+    .spacer10
     .row
-      .span6.votes_control_container{ "data-voteable_id" => @question.id, "data-voteable_type" => @question.class.name }
-        = render partial: "/votes/control", locals: { voteable: @question }
-      .span60
-        .row#questions_show_title
-          = @question.title
-        .spacer10
-        .row
-          = @question.content.html_safe
+      = @question.content.html_safe
 
-        .spacer10
+    .spacer10
 
-        - if @question.user == current_user
-          .row
-            %span.questions_show_edit
-              = link_to "edit", edit_question_path(@question)
-            |
-            %span.questions_show_delete
-              = link_to("delete", @question, method: :delete, confirm: "Are you sure you want to delete your question?")
+    - if @question.user == current_user
+      .row
+        %span.questions_show_edit
+          = link_to "edit", edit_question_path(@question)
+        |
+        %span.questions_show_delete
+          = link_to("delete", @question, method: :delete, confirm: "Are you sure you want to delete your question?")
 
 
-        .row.pull-right
-          .row.questions_date
-            = time_ago_in_words(@question.last_active_at)
-            ago
-          .spacer5
-          .span2
-            = avatar_for(@question.user, size: "small")
-          .span13.offset1
-            = link_to @question.user.username, "/map?user_id=" +  @question.user.id.to_s
+    .row.pull-right
+      .row.questions_date
+        = time_ago_in_words(@question.last_active_at)
+        ago
+      .spacer5
+      .span2
+        = avatar_for(@question.user, size: "small")
+      .span13.offset1
+        = link_to @question.user.username, "/map?user_id=" +  @question.user.id.to_s
 
+.row
+  .offset6.span60
+    - if @question.comments.count > 0
+      .spacer10
+      - @question.comments.each do |question_comment|
+
+        = render partial: "comments/comment_questions", locals: { comment: question_comment }
+
+    .spacer10
     .row
-      .offset6.span60
-        - if @question.comments.count > 0
-          .spacer10
-          - @question.comments.each do |question_comment|
-
-            = render partial: "comments/comment_questions", locals: { comment: question_comment }
-
-        .spacer10
-        .row
-          = questions_addcomment_link(@question.id,"Question")
+      = questions_addcomment_link(@question.id,"Question")
 
 - if @question.answers.count > 0
   - @question.answers.sort_by{|t| - t.plusminus.to_i}.each do |question_answer|
+
     .row
-      .panel.dark.kill_top
+      .span6.votes_control_container{ "data-voteable_id" => question_answer.id, "data-voteable_type" => question_answer.class.name }
+        = render partial: "/votes/control", locals: { voteable: question_answer }
+      .span60
         .row
-          .span6.votes_control_container{ "data-voteable_id" => question_answer.id, "data-voteable_type" => question_answer.class.name }
-            = render partial: "/votes/control", locals: { voteable: question_answer }
-          .span60
-            .row
-              = question_answer.content.html_safe
+          = question_answer.content.html_safe
 
-            .spacer10
+        .spacer10
 
-            - if question_answer.user == current_user
+        - if question_answer.user == current_user
 
-              .row
-                %span.questions_show_edit{ "data-question_id" => question_answer.id }
-                  = link_to "edit", edit_answer_path(question_answer)
-                |
-                %span.questions_show_delete
-                  = link_to("delete", question_answer, method: :delete, confirm: "Are you sure you want to delete your question?")
+          .row
+            %span.questions_show_edit{ "data-question_id" => question_answer.id }
+              = link_to "edit", edit_answer_path(question_answer)
+            |
+            %span.questions_show_delete
+              = link_to("delete", question_answer, method: :delete, confirm: "Are you sure you want to delete your question?")
 
-            .row.pull-right
-              .row.questions_date
-                = time_ago_in_words(question_answer.created_at)
-                ago
-              .spacer5
-              .span2
-                = avatar_for(question_answer.user, size: "small")
-              .span13.offset1
-                = link_to question_answer.user.username, "/map?user_id=" +  question_answer.user.id.to_s
-        .row
-          .offset6.span60
-            - if question_answer.comments.count > 0
-              .spacer10
-              - question_answer.comments.each do |question_answer_comment|
+        .row.pull-right
+          .row.questions_date
+            = time_ago_in_words(question_answer.created_at)
+            ago
+          .spacer5
+          .span2
+            = avatar_for(question_answer.user, size: "small")
+          .span13.offset1
+            = link_to question_answer.user.username, "/map?user_id=" +  question_answer.user.id.to_s
+    .row
+      .offset6.span60
+        - if question_answer.comments.count > 0
+          .spacer10
+          - question_answer.comments.each do |question_answer_comment|
 
-                = render partial: "comments/comment_questions", locals: { comment: question_answer_comment }
+            = render partial: "comments/comment_questions", locals: { comment: question_answer_comment }
 
 
-              .spacer10
-              .row
-                = questions_addcomment_link(question_answer.id,"Answer")
+          .spacer10
+          .row
+            = questions_addcomment_link(question_answer.id,"Answer")
 
 
 
-.row.panel.darker
-  #questions_show_answer_label
-    Your Answer
-    .spacer5
-    = form_for @answer do |f|
-      .row
-        = f.text_area :content, id:"questions_show_answer_content"
-        = f.hidden_field :question_id, value: @question.id
-      .row
-        = f.submit "Post your answer", class: "btn btn-primary "
+#questions_show_answer_label
+  Your Answer
+  .spacer5
+  = form_for @answer do |f|
+    .row
+      = f.text_area :content, id:"questions_show_answer_content"
+      = f.hidden_field :question_id, value: @question.id
+    .row
+      = f.submit "Post your answer", class: "btn btn-primary "
 
 
 - content_for :questions_sidecolumn_includes do

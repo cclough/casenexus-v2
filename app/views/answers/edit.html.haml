@@ -5,16 +5,14 @@
 - provide(:breadcrumb_url, question_path(@question))
 
 
-.panel.dark
+= form_for @answer do |f|
 
-  = form_for @answer do |f|
-
-    = render 'shared/error_messages', object: @answer
-    .row
-      = f.text_area :content, placeholder: "Your answer", id:"questions_new_content"
-    .spacer5
-    .row
-      = f.submit "Save edits", class: "btn btn-primary "
+  = render 'shared/error_messages', object: @answer
+  .row
+    = f.text_area :content, placeholder: "Your answer", id:"questions_new_content"
+  .spacer5
+  .row
+    = f.submit "Save edits", class: "btn btn-primary "
 
 
 - content_for :questions_sidecolumn_includes do

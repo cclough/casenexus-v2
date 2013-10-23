@@ -13,7 +13,7 @@
 
         / Just for book comment
         - if params[:controller] == "books"
-          #books_show_form_rating_panel.panel.dark.kill_all
+          #books_show_form_rating_panel
             .books_rating_set
             How do you rate it?
             = f.hidden_field :rating, id: "books_rating_set_field"
@@ -21,4 +21,4 @@
 
         = f.hidden_field :user_id, value: current_user.id
 
-        = f.submit "Save Edits", class: "btn btn-primary "
+        = f.submit "Save Edits", class: "btn btn-primary"

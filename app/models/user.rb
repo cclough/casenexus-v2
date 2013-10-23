@@ -325,9 +325,8 @@ class User < ActiveRecord::Base
         errors.add(:base, "Sorry, casenexus is not yet available for your university")
       end
     else
-      self.university = University.find(1) # Set to cambridge if on exception list
+      self.university = University.find(1) # Set to cambridge if on exception list
     end
-
   end
 
   def validate_cases_external?

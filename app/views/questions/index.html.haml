@@ -3,25 +3,23 @@
 
 
 .row
-  .panel.transparent.kill_bottom
-    .row
-      .span
-        = form_tag questions_path, method: 'get', class: "form-search" do
-          .input-append
-            = text_field_tag :search, params[:search], placeholder: "Search questions...", class: 'search-query'
-            %button.btn{type: "submit"}
-              %span.fui-search
+  .span
+    = form_tag questions_path, method: 'get', class: "form-search" do
+      .input-append
+        = text_field_tag :search, params[:search], placeholder: "Search questions...", class: 'search-query'
+        %button.btn{type: "submit"}
+          %span.fui-search
 
-      .span.pull-right
+  .span.pull-right
 
-        = link_to "Ask a question", new_question_path, class: "btn btn-primary "
+    = link_to "Ask a question", new_question_path, class: "btn btn-primary "
 .row
 
 
 
   - if @questions.count > 0
     - for questions_item in @questions
-      #questions_index_questions_item.panel.dark
+      #questions_index_questions_item
         .row
           .span7
             .questions_index_questions_item_stats.votes
