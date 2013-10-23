@@ -61,26 +61,6 @@
     .application_tags_container
       = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-tag btn-micro" }.join('')
 
-  / %div
-  /   - if books_item.title.blank?
-  /     = books_item.source_title
-  /   - else
-  /     = "#{books_item.source_title}:&nbsp;".html_safe
-
-  / %div{class: ("books_index_books_item_body_show" if params[:action] == "show")}
-
-
-  /     / .span.books_index_books_item_author
-  /     /   = books_item.author
-  /     / .span.offset1.books_index_books_item_university_image
-  /     /   - unless books_item.university.blank?
-  /     /     .span
-  /     /       = image_tag "universities/" + books_item.university.image
-  /     /     .span.offset1
-  /     /       = books_item.university.name
-
-
-
 
 
 
