@@ -291,7 +291,7 @@ textarea {
   border-top:0 !important;
   border-left:0 !important;
   border-right:0 !important;
-  border-bottom:1px dotted $gray_Dark !important;
+  border-bottom:1px dotted $cn_grey_-1 !important;
 
   -moz-border-radius:    0px !important;
   -webkit-border-radius: 0px !important;
@@ -307,8 +307,8 @@ textarea {
   padding-bottom:0px !important;
 
   &.whitebg {
-    color:$gray_Dark !important;
-    border-bottom:1px dotted $gray_Dark !important;
+    color:$cn_grey_-1 !important;
+    border-bottom:1px dotted $cn_grey_-1 !important;
   }
 
   &:focus{
@@ -362,7 +362,7 @@ textarea {
   margin-top:-25px;
   margin-left:-25px;
 
-  color:$gray_Light;
+  color:$cn_grey_0;
 
   -webkit-mask-image: url(app/spinner.png);
   background-color: #000;
@@ -576,7 +576,7 @@ textarea {
     }
 
     &.current {
-      border-bottom: 2px solid $blue_pastel;
+      border-bottom: 2px solid $cn_colour_1;
       color: #555;
     }
   }

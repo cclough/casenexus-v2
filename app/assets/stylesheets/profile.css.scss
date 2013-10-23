@@ -236,15 +236,15 @@
           .profile_index_friends_friends_item_status_icon {
             display:inline;
             &.online_now {
-              font-color: $alert-green;   
+              font-color: $cn_contrastor_second_0;
             }
 
             &.online_earlier {
-              font-color: $alert-red;   
+              font-color: $cn_contrastor_0;
             }
 
             &.online_not {
-              font-color:$gray_second;
+              font-color: $cn_grey_-1;
             }
           }
         }
