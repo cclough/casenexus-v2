@@ -1,5 +1,4 @@
 - provide(:title, 'Give Feedback')
-- provide(:sub_title, 'Score and comment on your case partners performance')
 
 
 - if @user.blank? then @user = User.find(user_id) end
@@ -12,14 +11,11 @@
   = render 'shared/error_messages', object: @case
   .row#cases_new_subnav
 
-
     #cases_new_book_container
 
       #cases_new_book
         - if @book
           = render partial: 'books/show_small', locals: { book_id: @book.id }
-
-
 
 
       #cases_new_nobook{class: ("show_at_start" unless @book) }
@@ -56,28 +52,6 @@
 
 
 
-
-
-  / .cases_new_block_title
-  /   Scoring Guide
-  / .row#cases_new_guide
-  /   .row
-  /     %span.cases_new_guide_num.btn.btn-primary 1
-  /     &#61; Low
-  /   .row
-  /     %span.cases_new_guide_num.btn.btn-primary 2
-  /     &#61; Below Average
-  /   .row
-  /     %span.cases_new_guide_num.btn.btn-primary 3
-  /     &#61; Average
-  /   .row
-  /     %span.cases_new_guide_num.btn.btn-primary 4
-  /     &#61; Above Average
-  /   .row
-  /     %span.cases_new_guide_num.btn.btn-primary 5
-  /     &#61; Exceptional
-
-
   .row    
     .span.cases_new_expander
       .cases_new_block_title
@@ -85,7 +59,6 @@
       .cases_new_block
 
         .row
-   
 
           .cases_new_block_desc
             .row
@@ -129,9 +102,6 @@
 
 
   .spacer20
-
-
-
 
 
 
