@@ -114,37 +114,11 @@ class Case < ActiveRecord::Base
       created_at.strftime("%d %b")   
     end
   end
-  
-  def to_s
-    self.subject
-  end
-
-  def next
-    if user.cases.where("id > ?", id).count == 0
-      user.cases.order("id ASC").first
-    else
-      user.cases.where("id > ?", id).order("id ASC").first
-    end
-  end
-
-  def prev
-    if user.cases.where("id < ?", id).count == 0
-      user.cases.order("id DESC").first
-    else
-      user.cases.where("id < ?", id).order("id DESC").first
-    end
-  end
 
   def read!
     update_attribute(:read, true)
   end
   
-  ## Macro
-
-  def self.unread
-    where(read: false)
-  end
-
   def criteria(num)
     case num
       when 0
@@ -184,7 +158,6 @@ class Case < ActiveRecord::Base
         interpersonal_combined
     end
   end
-
 
   def self.criteria_name(num)
     case num
@@ -237,13 +210,36 @@ class Case < ActiveRecord::Base
     end
   end
 
-  def self.user_has_done_case(user,book_id)
+  ## Macro
+
+  def next
+    if user.cases.where("id > ?", id).count == 0
+      user.cases.order("id ASC").first
+    else
+      user.cases.where("id > ?", id).order("id ASC").first
+    end
+  end
+
+  def prev
+    if user.cases.where("id < ?", id).count == 0
+      user.cases.order("id DESC").first
+    else
+      user.cases.where("id < ?", id).order("id DESC").first
+    end
+  end
+
+  def self.unread
+    where(read: false)
+  end
+
+  def self.user_has_done_case(user,book_id) # event modal book lists
     user.cases.map { |c| c.id }.include?(book_id)
   end
 
-  def self.user_has_given_case(user,book_id)
+  def self.user_has_given_case(user,book_id) # event modal book lists
     where(interviewer_id: user.id).map { |c| c.book_id }.include?(book_id)
   end
+
 
   ### Charts
 
@@ -281,7 +277,6 @@ class Case < ActiveRecord::Base
   end
   
   def self.cases_analysis_table(user, period)
-
     # make hash
     hash = Hash.new
     12.times do |criteria_num|
@@ -289,11 +284,9 @@ class Case < ActiveRecord::Base
     end
 
     hash
-
   end
 
   def cases_show_table
-
     # make hash
     hash = Hash.new
     12.times do |criteria_num|
@@ -301,7 +294,6 @@ class Case < ActiveRecord::Base
     end
 
     hash
-
   end
 
   def self.cases_analysis_chart_progress_data(user)
@@ -343,7 +335,6 @@ class Case < ActiveRecord::Base
   def self.criteria_av_global(num)
     (Case.all.map { |a| a.criteria(num) }.sum/Case.all.count).round(2)
   end
-
 
   def self.criteria_av_user(user, period, offset, num)
     (user.cases.offset(offset.to_i).last(period.to_i).collect{|i| i.criteria(num) }.sum.to_f/period.to_i).round(1)
