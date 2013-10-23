@@ -177,6 +177,11 @@ $(document).ready ->
 
     window.modal_cases_show_show(case_id)
 
+  $(".profile_index_feedback_cases_item").mouseenter ->
+
+    case_date = $(this).data "case_date"
+
+    window.chart_analysis_progress.chartCursor.showCursorAt window.parseDate(case_date)
 
   # Analysis in modal
   $("#profile_index_feedback_actions_analysis").click ->

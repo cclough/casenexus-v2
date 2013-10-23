@@ -1,3 +1,15 @@
+window.chart_analysis_progress = undefined
+
+# method to parse sql date string into AM compataible Date Object
+window.parseDate = (dateString) ->
+
+  # split the string get each field
+  dateArray = dateString.split("-")
+
+  # now lets create a new Date instance, using year, month and day as parameters
+  # month count starts with 0, so we have to convert the month number
+  date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]))
+  date
 
 #///////////////////////////////////////////////////////////////
 #/////////////////////////// NEW ///////////////////////////////
@@ -62,40 +74,38 @@ window.cases_analysis_chart_progress_init = (case_count) ->
   # DRAW BOTH CHARTS
   cases_analysis_chart_progress_draw = (data) ->
     
-    chart_analysis_progress = undefined
-    
     # SERIAL CHART
-    chart_analysis_progress = new AmCharts.AmSerialChart()
-    chart_analysis_progress.pathToImages = "/assets/amcharts/"
+    window.chart_analysis_progress = new AmCharts.AmSerialChart()
+    window.chart_analysis_progress.pathToImages = "/assets/amcharts/"
     
     # below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    chart_analysis_progress.panEventsEnabled = true
-    chart_analysis_progress.color = "#697076"
-    chart_analysis_progress.zoomOutButton =
+    window.chart_analysis_progress.panEventsEnabled = true
+    window.chart_analysis_progress.color = "#697076"
+    window.chart_analysis_progress.zoomOutButton =
       backgroundColor: "#000000"
       backgroundAlpha: 0.15
 
     if case_count > 1
-      chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
+      window.chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
     else
-      chart_analysis_progress.colors = ["#dee1e3", "#dee1e3", "#dee1e3"]
-    chart_analysis_progress.dataProvider = data
-    chart_analysis_progress.categoryField = "date"
+      window.chart_analysis_progress.colors = ["#dee1e3", "#dee1e3", "#dee1e3"]
+    window.chart_analysis_progress.dataProvider = data
+    window.chart_analysis_progress.categoryField = "date"
   
-    chart_analysis_progress.autoMargins = false
-    chart_analysis_progress.marginRight = 0
-    chart_analysis_progress.marginLeft = 0
-    chart_analysis_progress.marginBottom = 30
-    chart_analysis_progress.marginTop = 0
+    window.chart_analysis_progress.autoMargins = false
+    window.chart_analysis_progress.marginRight = 0
+    window.chart_analysis_progress.marginLeft = 0
+    window.chart_analysis_progress.marginBottom = 30
+    window.chart_analysis_progress.marginTop = 0
     
     # animations
-    chart_analysis_progress.startDuration = 0.3
-    chart_analysis_progress.startEffect = ">"
-    chart_analysis_progress.sequencedAnimation = true
+    window.chart_analysis_progress.startDuration = 0.3
+    window.chart_analysis_progress.startEffect = ">"
+    window.chart_analysis_progress.sequencedAnimation = true
     
     # AXES
     # Category
-    categoryAxis = chart_analysis_progress.categoryAxis
+    categoryAxis = window.chart_analysis_progress.categoryAxis
     categoryAxis.gridAlpha = 0.07
     categoryAxis.axisColor = "#DADADA"
     categoryAxis.startOnAxis = true
@@ -116,7 +126,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     valueAxis.maximum = 15
     valueAxis.labelsEnabled = false
 
-    chart_analysis_progress.addValueAxis valueAxis
+    window.chart_analysis_progress.addValueAxis valueAxis
     
     # GRAPHS
     # first graph - Business Analytics
@@ -136,7 +146,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
       graph.bulletColor = "#ffffff"
       graph.bulletBorderThickness = 2
     addclicklistener graph
-    chart_analysis_progress.addGraph graph
+    window.chart_analysis_progress.addGraph graph
 
     
     # second graph - Structure
@@ -156,7 +166,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
       graph.bulletColor = "#ffffff"
       graph.bulletBorderThickness = 2
     addclicklistener graph
-    chart_analysis_progress.addGraph graph
+    window.chart_analysis_progress.addGraph graph
 
     # third graph - Interpersonal
     graph = new AmCharts.AmGraph()
@@ -175,7 +185,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
       graph.bulletColor = "#ffffff"
       graph.bulletBorderThickness = 2
     addclicklistener graph
-    chart_analysis_progress.addGraph graph
+    window.chart_analysis_progress.addGraph graph
     
     # Fourth graph - FOR ZOOMER - NOT DRAWN
     graph = new AmCharts.AmGraph()
@@ -191,7 +201,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     graph.fillAlphas = [0]
     graph.lineAlpha = 0
     graph.includeInMinMax = false
-    chart_analysis_progress.addGraph graph
+    window.chart_analysis_progress.addGraph graph
     
     # LEGEND
     legend = new AmCharts.AmLegend()
@@ -208,7 +218,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     legend.switchType = "v"
     legend.horizontalGap = 0 #this is a good one to vary to adjust horizontal position
     legend.markerType = "circle"
-    chart_analysis_progress.addLegend(legend)
+    window.chart_analysis_progress.addLegend(legend)
 
     # CURSOR
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
@@ -219,10 +229,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
     chartCursor.zoomable = false
 
-    chart_analysis_progress.addChartCursor chartCursor
+    window.chart_analysis_progress.addChartCursor chartCursor
     
     # Balloon Settings
-    balloon = chart_analysis_progress.balloon
+    balloon = window.chart_analysis_progress.balloon
     balloon.adjustBorderColor = true
     balloon.cornerRadius = 5
     balloon.showBullet = false
@@ -239,21 +249,11 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     chartScrollbar.color = "#697076"
     chartScrollbar.backgroundColor = "#f0f1f2"
     chartScrollbar.selectedBackgroundColor = "#dee1e3"
-    chart_analysis_progress.addChartScrollbar chartScrollbar
+    window.chart_analysis_progress.addChartScrollbar chartScrollbar
     
     # WRITE
-    chart_analysis_progress.write "profile_index_feedback_chart"
+    window.chart_analysis_progress.write "profile_index_feedback_chart"
   
-  # method to parse sql date string into AM compataible Date Object
-  parseDate = (dateString) ->
-    
-    # split the string get each field
-    dateArray = dateString.split("-")
-    
-    # now lets create a new Date instance, using year, month and day as parameters
-    # month count starts with 0, so we have to convert the month number
-    date = new Date(Number(dateArray[0]), Number(dateArray[1]) - 1, Number(dateArray[2]))
-    date
   addclicklistener = (graph) ->
     graph.addListener "clickGraphItem", (event) ->
       window.modal_cases_show_show(event.item.dataContext.id)
@@ -267,7 +267,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     $.each json, (i, item) ->
       dataObject =
         id: json[i].id
-        date: parseDate(json[i].date)
+        date: window.parseDate(json[i].date)
         interpersonal: json[i].interpersonal
         businessanalytics: json[i].businessanalytics
         structure: json[i].structure
