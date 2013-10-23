@@ -4,7 +4,6 @@ gem 'rails', '3.2.9'
 gem 'pg'                                         # Database
 gem 'jquery-rails'                               # jQuery
 gem 'jquery-ui-rails'                            # jQuery UI
-
 gem 'haml'                                       # HAML Views
 gem 'devise'                                     # User Auth / Registration
 gem 'will_paginate'                              # Pagination
@@ -12,18 +11,17 @@ gem 'simple_form'                                # Rails form builder
 gem 'scoped_search'                              # Active Record Easy Search
 gem 'geocoder'                                   # Geocoding solution for rails
 gem 'bootstrap-wysihtml5-rails'                  # Bootstrap template
-gem 'ffaker'                                     # Generate random data
-# gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
 gem 'country-select'                             # Country select for admin
 gem 'icalendar'                                  # ICS output for calendar
 gem 'pusher'                                     # Push notifications and messaging
 gem 'rails_admin'                                # Admin
-gem 'thumbs_up'                                  # Stack Overflow like voting on things
 gem 'delayed_job_active_record'                  # For threaded email sending
 gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
+gem 'rack-mini-profiler'                         # Profiling back-end
+#gem 'ffaker'                                     # Generate random data
+#gem 'thumbs_up'                                  # Stack Overflow like voting on things
+# gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
 #gem 'griddler'                                   # Receive emails
-gem 'rack-mini-profiler'
-
 
 group :production do
   gem 'heroku-deflater'                          # Enables GZIP compression on heroku - alt to 'heroku_rails_deflate' - used because fix for mini-profiler in production doesn't work with latter gem
@@ -55,11 +53,9 @@ group :test do
   gem 'simplecov'                                # Code coverage
   gem 'database_cleaner'                         # Clean database strategy
   gem 'factory_girl_rails'                       # Fixtures
-
   gem 'launchy'                                  # To open pages when developing capybara tests
   #gem 'ruby-debug19', require: 'ruby-debug'      # Debug on testing
   gem 'debugger'
-
   gem 'email_spec'                               # Email for rspec
   gem 'rb-fsevent', require: false               # Mac OSX FSEvents API
   gem 'growl'                                    # Ruby growlnotify bindings

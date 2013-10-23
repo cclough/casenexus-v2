@@ -1,4 +1,4 @@
 casenexus
 =========
 
-casenexus v1.1 - refactored and complete with test-suite
+casenexus v2.0 - refactor

@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
   ### Other
 
   # Thumbs Up Gem
-  acts_as_voter
+  # acts_as_voter
 
   # Scoped_search Gem
   scoped_search on: [:username]
