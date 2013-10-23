@@ -1,8 +1,6 @@
 #application_flash{ class: ("signedout" if !signed_in? || !current_user.completed?) }
   - if flash.any? && flash[:success] != 'Welcome'
     - flash.each do |key, value|
-      / fade in function doesn't seem to work yet
       %div{ class: "alert alert-#{key} fade in", "data-dismiss" => "alert", :href => "#"}
-        / inserts close button
         %a.close ×
         = flash.discard(key).html_safe

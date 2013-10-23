@@ -18,14 +18,11 @@
     = render partial: 'shared/pusher'
 
     = render 'shared/google_analytics'
-  %body
 
-    / #application_container_master
-    
+  %body
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
-
 
     #application_container.regular
       = yield

@@ -20,12 +20,9 @@
     = render partial: 'shared/pusher'
 
     = render 'shared/google_analytics'
+
+
   %body
-
-
-
-    / #application_container_master
-
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
@@ -42,7 +39,6 @@
 
             = yield :questions_sidecolumn_includes
 
-        / footer
         = render 'layouts/footer'
 
 

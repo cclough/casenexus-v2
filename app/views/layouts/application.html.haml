@@ -16,8 +16,8 @@
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
     = render 'shared/google_analytics'
+
   %body
-    / header
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
@@ -25,7 +25,6 @@
     .container.main
       = yield
 
-      / footer
       = render 'layouts/footer'
 
   = render 'shared/modal_help' if signed_in?

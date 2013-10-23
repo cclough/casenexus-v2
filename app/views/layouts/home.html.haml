@@ -19,7 +19,6 @@
     = render 'shared/google_analytics'
 
   %body{:class => ("signedout" if !signed_in? || params[:action] == "complete_profile" || params[:back_url] == "/account/complete_profile") }
-  
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash

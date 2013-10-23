@@ -67,11 +67,6 @@ Casenexus::Application.routes.draw do
       put :unblock
       get 'delete_patch' => "friendships#destroy"
     end
-    collection do
-      get :requests
-      get :invites
-      get :blocked
-    end
     get "modal_friendship_req_form", on: :collection
   end
 

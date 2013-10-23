@@ -10,9 +10,6 @@
 
 	$('#modal_friendship_req').modal('hide');
 
-  // Important - so friendship status is refreshed
-  $("#map_index_container_user_profile_small").fadeOut("fast");
-
   $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
 	
 	$("div[id=application_flash]:last").fadeIn("fast", function () {
