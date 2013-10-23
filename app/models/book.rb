@@ -6,18 +6,17 @@ class Book < ActiveRecord::Base
   belongs_to :university
 
   has_many :comments, as: :commentable, :after_add => :update_average_rating, :after_remove => :update_average_rating
-
   has_many :taggings, :as => :taggable, :dependent => :destroy
   has_many :tags, :through => :taggings
 
   # Scoped_search Gem
   scoped_search on: [:title, :source_title, :author, :desc]
   scoped_search in: :university, on: [:name]
+  
   scope :tagged_on_type, ->(type) {joins(:taggings).where(taggings: {tag_id: type})}
   scope :tagged_on, ->(type_tag_ids, industry_tag_ids) {joins("LEFT OUTER JOIN taggings as tts ON tts.taggable_id = books.id AND tts.taggable_type = 'Book' LEFT OUTER JOIN taggings as idts ON idts.taggable_id = books.id AND idts.taggable_type = 'Book' ").where("tts.tag_id IN (#{type_tag_ids.join(',')}) AND idts.tag_id IN(#{industry_tag_ids.join(',')})")}#.where('taggings' => {tag_id: (type_tag_ids || [])}).joins(:taggings).where('taggings' => {tag_id: (industry_tag_ids || [])})}
 
   ### Micro
-
   def desc_trunc
     desc.to_s.truncate(180, separator: ' ')
   end
@@ -39,19 +38,6 @@ class Book < ActiveRecord::Base
   end
 
   ### Macro
-
-	class << self
-	  def list_cases
-	  	where("btype = 'case'")
-	  end
-
-	  def list_guides
-	  	where("btype = 'guide' OR btype = 'link'")
-	  end
-	end
-
-
-
   def update_average_rating(book=nil) #http://stackoverflow.com/questions/6008015/how-can-i-sort-my-records-by-average-rating
     s = self.comments.sum(:rating)
     c = self.comments.count
