@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
 
+  before_filter :authenticate_user!
+  before_filter :completed_user
+
   before_filter :correct_user, :only => [:edit, :update, :destroy]
 
   def new
@@ -9,7 +12,6 @@ class CommentsController < ApplicationController
 
     render partial: "new", layout: false
   end
-
 
   def edit
     @comment = Comment.find(params[:id])
@@ -22,14 +24,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     if @comment.update_attributes(params[:comment])
-      flash[:success] = 'Your comment has been updated'
+      flash[:success] = 'Your comment has been updated.'
       redirect_to @comment.commentable
     else
       render "edit"
     end
 
   end
-
 
   def create
     @commentable_model = params[:comment][:commentable_type]
@@ -50,8 +51,6 @@ class CommentsController < ApplicationController
       redirect_to @commentable
       flash[:error] = @comment.errors.full_messages.map {|error| "#{error}<br>"}.join
     end
-
-
   end
 
   def destroy
@@ -63,16 +62,9 @@ class CommentsController < ApplicationController
 
 private
 
-  # def load_commentable
-  #   resource, id = request.path.split('/')[1, 2]
-  #   @commentable = resource.singularize.classify.constantize.find(id)
-  # end
-
-
   def correct_user
     @comment = Comment.find params[:id]
     redirect_to @comment.commentable unless current_user == @comment.user
   end
   
-
 end

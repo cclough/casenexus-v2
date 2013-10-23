@@ -197,6 +197,7 @@ $(document).ready ->
 
     $.get "/posts/" + current_post_id + "?direction=" + direction, (data) ->
       $("#map_index_guide_posts_post_container").html data
+      $("#map_index_guide_posts_post").fadeIn "fast"
       # get new post id
       new_post_id = $("#map_index_guide_posts_post").attr "data-post_id"
       # update current_post_id
@@ -205,8 +206,11 @@ $(document).ready ->
       $("#map_index_guide_posts_post_close").click ->
         $("#map_index_guide_posts_post").fadeOut "fast"
 
-
-
+  # Post fade in after short delay
+  if $("#map_index_guide_posts_post").size() > 0
+    setTimeout (->
+      $("#map_index_guide_posts_post").fadeIn "fast"
+    ),1000
 
 
 

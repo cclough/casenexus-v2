@@ -21,11 +21,10 @@ class ConsoleController < ApplicationController
 		@user_target = User.find(params[:target_id])
 		book = Book.find(params[:book_id])
 
-        UserMailer.case_pdf(current_user,
-                            @user_target,
-                            book).deliver
+    UserMailer.case_pdf(current_user,
+                        @user_target,
+                        book).deliver # not delayed intentionally to give accurate loading time on callback
 	end
-
 
 	def sendpdfbutton
 		@friend = User.find(params[:friend_id])

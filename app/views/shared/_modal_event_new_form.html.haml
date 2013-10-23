@@ -90,18 +90,18 @@
           %option{value:""} Which case should they prepare for you?
           / = options_from_collection_for_select(Book.all, "id", "title")
           - @books.each do |books_select_item|
-            %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_user.id) unless @book_user.blank?) }
+            %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book_partnertoprepare.id) unless @book_partnertoprepare.blank?) }
               = "DONE " if Case.user_has_done_case(current_user,books_select_item.id)
               = "GIVEN " if Case.user_has_given_case(current_user,books_select_item.id)
               = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
 
 
         #events_modal_book_viewer_partnertoprepare
-          - if @book_user.blank?
+          - if @book_partnertoprepare.blank?
             #events_modal_book_viewer_partnertoprepare_empty 
               Select a case...
           -else
-            = render partial: 'books/show_small', locals: { book_id: @book_user.id }
+            = render partial: 'books/show_small', locals: { book_id: @book_partnertoprepare.id }
 
 
     .events_modal_block_spacer
