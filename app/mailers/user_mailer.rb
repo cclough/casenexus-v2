@@ -52,7 +52,6 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-
   def friendship_req(user_from, user_target, url, message, title)
     @user_from = user_from
     @user_target = user_target
@@ -71,8 +70,6 @@ class UserMailer < ActionMailer::Base
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
-
-
 
 
   def event_setchangecancelremind_partner(user_from, user_target, event_id, title, url, ntype)
@@ -96,7 +93,6 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-
   def event_setchangecancelremind_sender(user_target, event_id, title, url, ntype)
     @user_target = user_target
     @event = Event.find(event_id)
@@ -116,17 +112,13 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
+  # # IS THIS NEEDED
+  # def password_reset(user)
+  #   @user_target = user
 
-
-
-
-
-  def password_reset(user)
-    @user_target = user
-
-    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + "Password Reset")
-  end
+  #   email_with_name = "#{@user_target.username} <#{@user_target.email}>"
+  #   mail(to: email_with_name, subject: "casenexus.com: " + "Password Reset")
+  # end
 
   def invitation(invitation)
     receiver = "#{invitation.name} <#{invitation.email}>"
