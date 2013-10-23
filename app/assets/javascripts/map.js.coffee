@@ -1,3 +1,4 @@
+
 window.map_index_users_item_bless = () ->
 
   # Prime Button
@@ -99,16 +100,16 @@ window.map_index_generate_popup_for = (marker) ->
                     '   </div>' +
 
                     '   <div class="map_index_map_popup_cases">' +
-                    '     <div class="map_index_users_item_cases_recd">' + 
-                    '         <div class="map_index_users_item_cases_text">taken</div>' +
+                    '     <div class="map_index_map_popup_cases_recd">' + 
+                    '         <div class="map_index_map_popup_cases_text">cases</div>' +
                               feature.properties.cases_recd + 
                     '     </div>' +
-                    '     <div class="map_index_users_item_cases_givn">' + 
-                    '         <div class="map_index_users_item_cases_text">given</div>' +
+                    '     <div class="map_index_map_popup_cases_givn">' + 
+                    '         <div class="map_index_map_popup_cases_text">given</div>' +
                               feature.properties.cases_givn + 
                     '     </div>' +
-                    '     <div class="map_index_users_item_cases_external">' + 
-                    '         <div class="map_index_users_item_cases_text">ext</div>' +
+                    '     <div class="map_index_map_popup_cases_external">' + 
+                    '         <div class="map_index_map_popup_cases_text">ext</div>' +
                               feature.properties.cases_ext + 
                     '     </div>' +
                     '   </div>' +

@@ -358,27 +358,22 @@
     line-height:26px;
     position:relative;
     float:left;
+    font-size:20px;
+    font-weight:bolder;
   }
 
   .map_index_users_item_cases_recd {
-    background: #73bf72;
-    font-size:20px;
-    font-weight:bolder;
-    color:white;
+    color:#73bf72;
+    border-bottom:1px solid $cn_grey_0;
   }
 
   .map_index_users_item_cases_givn{
-    background: $cn_colour_1;
-    font-size:20px;
-    font-weight:bolder;
-    color:white;
+      color:$cn_colour_1;
+      border-bottom:1px solid $cn_grey_0;
   }
 
   .map_index_users_item_cases_external{
-    background: $cn_colour_-2;
-    font-size:20px;
-    font-weight:bolder;
-    color:white;
+    color:$cn_colour_-2;
   }
 
   .map_index_users_item_cases_text {
@@ -490,22 +485,22 @@
       font-weight:bolder;
     }
 
-    .map_index_users_item_cases_recd {
+    .map_index_map_popup_cases_recd {
       color:#73bf72;
       border-right:1px solid $cn_grey_0;
 
     }
 
-    .map_index_users_item_cases_givn{
+    .map_index_map_popup_cases_givn{
       color:$cn_colour_1;
       border-right:1px solid $cn_grey_0;
     }
 
-    .map_index_users_item_cases_external{
+    .map_index_map_popup_external{
       color:$cn_colour_-2;
     }
 
-    .map_index_users_item_cases_text {
+    .map_index_map_popup_cases_text {
       position:absolute;
       left:0px;
       right:0px;

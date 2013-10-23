@@ -16,7 +16,7 @@
   bottom:4px; // WHAT THE FUCK
   border:0 !important;
   margin:0 !important;
-  overflow-y:hidden;
+  overflow-y:hidden !important;
 }
 
 #console_index_pdfjs_iframe {
@@ -24,7 +24,7 @@
   height:100%;
   border:0;
   outline:0;
-  overflow-y:hidden;
+  overflow-y:hidden !important;
 }
 
 #console_index_pdfjs_blank {

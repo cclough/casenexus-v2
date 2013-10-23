@@ -20,7 +20,7 @@ modal_cases_show_prime = () ->
       $("#modal_cases").html data
       modal_cases_show_prime()
 
-  # $("#cases_show_panel_right").slimscroll
+  # $("#cases_show_panel_left").slimscroll
   #   width: '300px'
   #   height: '500px'
 
@@ -175,7 +175,6 @@ $(document).ready ->
     case_id = $(this).attr "data-case_id"
 
     window.modal_cases_show_show(case_id)
-
 
 
   # Analysis in modal
