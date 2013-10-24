@@ -83,8 +83,6 @@ class User < ActiveRecord::Base
   ### Scopes
   # unused now - vincent work
   scope :not_friends, ->(user) {select('users.*, friends.id as fid').joins("left join friendships on users.id = friendships.friend_id and friendships.user_id = #{User.sanitize(user.id)} left join users as friends on friends.id = friendships.friend_id").where("friends.id is null and users.id != ?",user.id)}
-  
-  #default_scope where(active: true)
 
   ### Other
 
@@ -226,9 +224,8 @@ class User < ActiveRecord::Base
     end
 
     def markers_geojson(users)
-      users_active = users.active
       string = "["
-      for user in users_active
+      for user in users
         new_bit = "{
                     \"type\": \"Feature\",
                     \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },

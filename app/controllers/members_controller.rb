@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # Map - access via /map
   def index
 
-    users_pre_scope = User.where(degree_level:params[:users_filter_degreelevel]).list_language(params[:users_filter_language]).search_for(params[:search]).order("last_online_at desc")
+    users_pre_scope = User.active.where(degree_level:params[:users_filter_degreelevel]).list_language(params[:users_filter_language]).search_for(params[:search]).order("last_online_at desc")
 
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
