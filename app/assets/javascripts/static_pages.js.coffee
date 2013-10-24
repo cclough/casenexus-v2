@@ -31,7 +31,7 @@ $(document).ready ->
   if $("#static_home_panel_left").size() > 0
     setTimeout (->
       window.modal_headsup_show()
-    ), 2000
+    ), 5000
 
   $(".static_home_switch_link").click ->
     window.static_switch_view(this,"normal")

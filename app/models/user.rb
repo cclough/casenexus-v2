@@ -318,7 +318,7 @@ class User < ActiveRecord::Base
   end
 
   def suggest_username
-    username = email.split("a")[0]
+    self.username = self.email.split("@")[0]
   end
 
   def set_university

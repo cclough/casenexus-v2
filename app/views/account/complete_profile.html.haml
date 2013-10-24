@@ -18,11 +18,14 @@
     = render 'shared/error_messages', object: @user
 
     #account_complete_panel_column_left
-
+          
       .static_home_form_input_container
         .static_home_form_input_icon_container
           = image_tag "icons/forms/user.png"
-        = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large"
+        = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large", id:"static_home_form_username_input"
+
+      #static_home_form_username_label
+        Suggested username (you can change this later)
 
       = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option>".html_safe, {:prompt => "What's your degree level?"}, { class: "chzn-select", tabindex: "2"}
 
@@ -53,7 +56,7 @@
     #account_complete_panel_column_right
 
       #account_complete_map_header
-        Drag the marker to your location
+        Drag the marker to your location, and others nearby who wish to practise will contact you
       #account_completeedit_map.complete.map
 
       = f.hidden_field :lat, id: "account_completeedit_lat"
