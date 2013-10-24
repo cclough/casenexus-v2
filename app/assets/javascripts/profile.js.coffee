@@ -178,7 +178,7 @@ $(document).ready ->
 
 
 
-  if typeof cases_analysis_chart_case_count is "integer"
+  if typeof cases_analysis_chart_case_count is "number"
     if cases_analysis_chart_case_count > 2
       #### Mouseover - drive chart cursor
       $(".profile_index_feedback_cases_item").mouseover ->
