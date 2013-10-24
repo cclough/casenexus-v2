@@ -177,11 +177,11 @@ class Notification < ActiveRecord::Base
                                  self.title)
       when "feedback"
         UserMailer.delay.feedback(self.sender,
-                            self.user,
-                            self.url,
-                            self.event_date,
-                            self.content,
-                            self.title)
+                                  self.user,
+                                  self.url,
+                                  self.event_date,
+                                  self.content,
+                                  self.title)
       when "message"
         UserMailer.delay.usermessage(self.sender,
                                self.user,

@@ -1,114 +1,3 @@
-
-  # 50.times do |n|
-
-  #   university_rand = 1 + rand(10)
-  #   email = "example#{n+100}@" + University.find(university_rand).domain
-
-  #   password = "password"
-  #   lat = -90 + rand(180)
-  #   lng = -180 + rand(360)
-  #   skype = "skpye"
-  #   language_ids = 1
-
-  #   subject_id = rand(15)
-  #   degree_level = rand(1)
-
-  #   cases_external = 10
-
-  #   confirm_tac = "1"
-
-  #   time_zone = ["Lisbon", "UTC", "Atlantic Time (Canada)", "Bogota", "Mid-Atlantic", "Fiji"].sample
-
-  #   ip_address = "%d.%d.%d.%d" % [rand(255) + 1, rand(256), rand(256), rand(256)]
-
-  #   user = User.new(email: email, password: password,
-  #                   password_confirmation: password,
-  #                   lat: lat, lng: lng,
-  #                   language_ids: language_ids,
-  #                   skype: skype,
-  #                   subject_id: subject_id,
-  #                   degree_level: degree_level,
-  #                   cases_external: cases_external,
-  #                   confirm_tac: confirm_tac,
-  #                   ip_address: ip_address,
-  #                   time_zone: time_zone,
-  #                   invitation_code: 'BYPASS_CASENEXUS_INV')
-
-  #   user.completed = true
-  #   user.save!
-  #   user.confirm!
-
-  #   puts "User #{user.username} created"
-
-  # end
-
-
-
-  def random_date(params={ })
-    years_back = params[:year_range] || 5
-    latest_year = params [:year_latest] || 0
-    year = (rand * (years_back)).ceil + (Time.now.year - latest_year - years_back)
-    month = (rand * 12).ceil
-    day = (rand * 31).ceil
-    series = [date = Time.local(year, month, day)]
-    if params[:series]
-      params[:series].each do |some_time_after|
-        series << series.last + (rand * some_time_after).ceil
-      end
-      return series
-    end
-    date
-  end
-
-  def rand_time(from, to=Time.now)
-    Time.at(rand_in_range(from.to_f, to.to_f))
-  end
-
-  def rand_in_range(from, to)
-    rand * (to - from) + from
-  end
-
-  
-    user = User.find(3)
-
-    5.times do
-      interviewer_id = 1 + rand(1)
-      next if interviewer_id.to_i == user.id.to_i
-      user.cases.create!(
-          interviewer_id: interviewer_id,
-          book_id: 1 + rand(30),
-          subject: Faker::Lorem.sentence(5),
-          source: Faker::Lorem.sentence(3),
-
-          recommendation1: Faker::Lorem.sentence(10),
-          recommendation2: Faker::Lorem.sentence(10),
-          recommendation3: Faker::Lorem.sentence(10),
-
-          main_comment: Faker::Lorem.sentence(100),
-
-          quantitativebasics: 1 + rand(4),
-          problemsolving: 1 + rand(4),
-          prioritisation: 1 + rand(4),
-          sanitychecking: 1 + rand(4),
-
-          rapport: 1 + rand(4),
-          articulation: 1 + rand(4),
-          concision: 1 + rand(4),
-          askingforinformation: 1 + rand(4),
-
-          approachupfront: 1 + rand(4),
-          stickingtostructure: 1 + rand(4),
-          announceschangedstructure: 1 + rand(4),
-          pushingtoconclusion: 1 + rand(4)
-      )
-      user.cases.last.created_at = random_date(year_range: 1, year_latest: 0.1)
-      
-      puts "Case created for user #{user.username}"
-    end
-
-  
-
-
 if %w(production development).include?(Rails.env) && User.count == 0
   
   puts "Creating countries"
@@ -126,20 +15,16 @@ if %w(production development).include?(Rails.env) && User.count == 0
     )
   end
 
-
-
-
-
   puts "Creating Languages"
 
   Language.create!(name: "English", country_code: "GB")
   Language.create!(name: "French", country_code: "FR")
 
-
   puts "Creating universities"
 
   University.create!(name: "Cambridge", image: "cambridge.png", domain: "cam.ac.uk", enabled: true)
   University.create!(name: "Oxford", image: "oxford.png", domain: "ox.ac.uk", enabled: true)
+
   University.create!(name: "Imperial", image: "imperial.png", domain: "imperial.ac.uk", enabled: false)
   University.create!(name: "LBS", image: "lbs.png", domain: "london.edu", enabled: false)
   University.create!(name: "LSE", image: "lse.png", domain: "lse.ac.uk", enabled: false)
@@ -157,8 +42,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   University.create!(name: "Dartmouth", image: "dartmouth.png", domain: "dartmouth.edu", enabled: false)
   University.create!(name: "Princeton", image: "princeton.png", domain: "princeton.edu", enabled: false)
   University.create!(name: "Yale", image: "yale.png", domain: "yale.edu", enabled: false)
-
-
 
 
   puts "Creating Tags"
@@ -201,8 +84,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Tag.create!(category_id: 3, name: "Announces changed structure")
   Tag.create!(category_id: 3, name: "Pushing to conclusion")
 
-
-
   Tag.create!(category_id: 4, name: "Break-even analysis")
   Tag.create!(category_id: 4, name: "Capacity change")
   Tag.create!(category_id: 4, name: "Competitive analysis")
@@ -225,7 +106,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Tag.create!(category_id: 4, name: "Strategic analysis")
   Tag.create!(category_id: 4, name: "Valuation")
   Tag.create!(category_id: 4, name: "Various")
-
 
   Tag.create!(category_id: 5, name: "Accounting")
   Tag.create!(category_id: 5, name: "Aerospace & Defense")
@@ -303,17 +183,12 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Book.create!(btype: "case", tag_list: ["Hotel","Market entry"], url: "wharton_2010_14.pdf", thumb: "wharton.png", university_id: "11", chart_num: "0", difficulty: "3", title: "Zenith Hotel", source_title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "http://www.wharton.upenn.edu/", desc: "Zenith Hotel is a global hotel chain with 50 hotels in 20 countries. The company is evaluating the construction of a new hotel in the Bahamas. Zenith has come to us asking whether it should and can move forward with the project.")
 
   # Guides
-
   Book.create!(btype: "guide", url: "guide_wharton_2009-2010.pdf", thumb: "wharton.png", university_id: "10", title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "http://www.wharton.upenn.edu/")
   Book.create!(btype: "guide", url: "guide_fuqua_2010-2011.pdf", thumb: "fuqua.png", university_id: "8", title: "Fuqua Casebook 2010-2011", author: "The Fuqua School of Business, Duke", author_url: "http://www.fuqua.duke.edu/")
   
   # Links
-
   Book.create!(btype: "link", title: "Introduction to Case Interviews", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "The best introduction out there to case interviews. 6 hours of Videos of a presentation at Harvard Business School - 12 videos", url: "http://www.youtube.com/watch?v=fBwUxnTpTBo&list=UU-YKX7L2GNNA-IHrhMpwzWA&index=13", thumb: "caseinterview.png")
   Book.create!(btype: "link", title: "Look Over My Shoulder Programme", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "Series of Audio Tapes", url: "http://www.caseinterview.com/look-over-my-shoulder", thumb: "caseinterview.png")
-
-
-
 
 
 
@@ -324,83 +199,22 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   admin = User.new(
       email: "christian.clough@gmail.com",
-      password: "testing",
-      password_confirmation: "testing",
+      password: "venturecapital27?",
+      password_confirmation: "venturecapital27?",
       lat: 51.51030,
       lng: -0.1344,
       invitation_code: 'BYPASS_CASENEXUS_INV',
       username: "christian.clough",
       language_ids: 1,
-
       degree_level: 0,
-      linkedin: "christian.clough",
+      linkedin: "christianclough",
       cases_external: 24,
-
       skype: "christianclough",
-
       confirm_tac: "1",
-
-      time_zone: "UTC",
+      time_zone: "London",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  admin.completed = true
-  admin.admin = true
-  admin.save!
-  admin.confirm!
-
-
-  puts "Creating dan's user"
-
-  admin = User.new(
-      email: "danb@cam.ac.uk",
-      password: "testing",
-      password_confirmation: "testing",
-      lat: 51.3100,
-      lng: -0.1344,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-
-      language_ids: 1,
-      username: "dan.b",
-      degree_level: 0,
-      linkedin: "dan.b",
-      cases_external: 14,
-
-      skype: "testing",
-
-      confirm_tac: "1",
-
-      time_zone: "UTC",
-
-      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  admin.completed = true
-  admin.admin = false
-  admin.save!
-  admin.confirm!
-
-
-  puts "Creating alastair's user"
-
-  admin = User.new(
-      email: "alastair.willey@cam.ac.uk",
-      password: "design",
-      password_confirmation: "design",
-      lat: 51.90128232665856,
-      lng: -0.5421188764572144,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-
-      language_ids: 1,
-      username: "alastair.willey",
-      degree_level: 1,
-      linkedin: "alastair.wiley",
-      cases_external: 12,
-
-      skype: "cloughrobin",
-
-      confirm_tac: "1",
-
-      time_zone: "Lisbon",
-
-      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+  
   admin.completed = true
   admin.admin = true
   admin.save!
@@ -409,42 +223,133 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating robin's user"
 
   admin = User.new(
-      email: "robin.clough@keble.ox.ac.uk",
-      password: "testing",
-      password_confirmation: "testing",
+      email: "robin.clough@rady.ucsd.edu",
+      password: "snaptor",
+      password_confirmation: "snaptor",
       lat: 32.869627,
       lng: -117.221015,
       invitation_code: 'BYPASS_CASENEXUS_INV',
       username: "robin.clough",
       language_ids: 1,
-      linkedin: "robin.clough",
       degree_level: 1,
-
       cases_external: 14,
-
       skype: "cloughrobin",
-
       confirm_tac: "1",
-
       time_zone: "Fiji",
-
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
 
   admin.completed = true
   admin.admin = true
+  admin.active = false # FOR ROBIN SPECIAL
   admin.save!
   admin.confirm!
 
+  puts "Creating Julia's user"
+
+  user = User.new(
+      email: "julia.richardson@careers.ox.ac.uk",
+      password: "oxford123",
+      password_confirmation: "oxford123",
+      lat: 51.763127,
+      lng: -1.260194,
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+      username: "julia.richardson",
+      language_ids: 1,
+      degree_level: 0,
+      cases_external: 0,
+      confirm_tac: "1",
+      time_zone: "London",
+      ip_address: "89.168.69.119"
+
+  user.completed = true
+  user.admin = false
+  user.active = false # FOR JULIA SPECIAL
+  user.save!
+  user.confirm!
+
+
+  puts "Creating Mehdi's user"
+
+  user = User.new(
+      email: "mmg36@cam.ac.uk",
+      password: "cambridge123",
+      password_confirmation: "cambridge123",
+      lat: 52.2,
+      lng: 0.1167,
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+      username: "mmhdgd",
+      language_ids: 1,
+      degree_level: 0,
+      cases_external: 10,
+      skype: "mmhdgd",
+      confirm_tac: "1",
+      time_zone: "London",
+      ip_address: "131.111.236.122"
+
+  user.completed = true
+  user.admin = false
+  user.save!
+  user.confirm!
+
+  puts "Creating Jack's user"
+
+  user = User.new(
+      email: "jack.cooney@hertford.ox.ac.uk",
+      password: "oxford123",
+      password_confirmation: "oxford123",
+      lat: 51.5507117121074,
+      lng: -0.26043176651001,
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+      username: "jack.cooney",
+      language_ids: 1,
+      degree_level: 0,
+      cases_external: 10,
+      skype: "jack.cooney.1",
+      confirm_tac: "1",
+      time_zone: "London",
+      ip_address: "89.168.69.119"
+
+  user.completed = true
+  user.admin = false
+  user.save!
+  user.confirm!
+
+  puts "Creating Dara's user"
+
+  user = User.new(
+      email: "dara.latinwo@hertford.ox.ac.uk",
+      password: "oxford123",
+      password_confirmation: "oxford123",
+      lat: 51.7507117121074,
+      lng: -0.24043176651001,
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+      username: "dara.latinwo",
+      language_ids: 1,
+      degree_level: 0,
+      cases_external: 10,
+      skype: "daralatinwo74",
+      confirm_tac: "1",
+      time_zone: "London",
+      ip_address: "89.168.69.119"
+
+  user.completed = true
+  user.admin = false
+  user.save!
+  user.confirm!
 
   puts "Creating Christian's Friendships"
 
   Friendship.connect(User.find(1), User.find(2))
   Friendship.connect(User.find(1), User.find(3))
 
-
 end
 
-#if Rails.env == 'development'
+
+
+
+
+
+if Rails.env == 'development'
 
   ####### PRIVATE FUNCTIONS #######
 
@@ -476,15 +381,7 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
+  # Users
   15.times do |n|
 
     university_rand = 1 + rand(2)
@@ -541,73 +438,8 @@ end
 
 
 
-
-
-
-  # Questions & Answers
-
-
-  User.all.each do |user|
-    3.times do
-
-      # Create a new Question
-      user.questions.create!(
-          title:  Faker::Lorem.sentence(10),
-          content: Faker::Lorem.sentence(40),
-          view_count: rand(50)
-      )
-
-      # Tag Question
-
-      5.times do
-        
-        tag_id = 1 + rand(10)
-        tag = Tag.find(tag_id)
-        
-        if !Question.last.tags.include? tag
-          Question.last.tags << tag
-        end
-
-      end
-
-
-      # Create three comments for last QUESTION
-      3.times do
-        Question.last.comments.create!(
-          user_id: 1 + rand(5),
-          content: Faker::Lorem.sentence(10)
-        )
-      end
-
-      # Create three answers for last QUESTION
-      3.times do
-        user.answers.create!(
-            question_id: Question.last.id,
-            content: Faker::Lorem.sentence(40)
-        )
-      end
-
-      # Create three comments for last ANSWER
-      3.times do
-        Answer.last.comments.create!(
-          user_id: 1 + rand(5),
-          content: Faker::Lorem.sentence(10)
-        )
-      end
-
-      puts "Question & Answers created for user #{user.username}"
-    end
-
-  end
-
-
-
-
-
-
-
   # Languages
-  #User.all.each do |user|
+  User.all.each do |user|
 
     5.times do
 
@@ -621,21 +453,13 @@ end
         user.languages << lang
         puts "Language association created for user #{user.username}"
       end
-
     end
-
-  #end
-
-
-
-
+  end
 
 
 
   # Posts
   User.all.each do |user|
-    #user = User.find(1)
-
     1.times do
       user.posts.create!(
           content: Faker::Lorem.sentence(20)
@@ -649,7 +473,7 @@ end
 
 
 
-
+  # Cases
   User.all.each do |user|
     #user = User.find(1)
 
@@ -703,9 +527,7 @@ end
 
       puts "Message Notifications created for user #{user.username}"
     end
-
-  #end
-
+  end
 
   Notification.all.each do |notification|
     if rand(2) == 1
@@ -713,9 +535,6 @@ end
       puts "Notification marked as read"
     end
   end
-
-
-
 
   user = User.find(1)
 
@@ -734,5 +553,63 @@ end
 
 
 
-#end
+
+
+  # Questions & Answers
+
+
+  # User.all.each do |user|
+  #   3.times do
+
+  #     # Create a new Question
+  #     user.questions.create!(
+  #         title:  Faker::Lorem.sentence(10),
+  #         content: Faker::Lorem.sentence(40),
+  #         view_count: rand(50)
+  #     )
+
+  #     # Tag Question
+  #     5.times do
+        
+  #       tag_id = 1 + rand(10)
+  #       tag = Tag.find(tag_id)
+        
+  #       if !Question.last.tags.include? tag
+  #         Question.last.tags << tag
+  #       end
+
+  #     end
+
+  #     # Create three comments for last QUESTION
+  #     3.times do
+  #       Question.last.comments.create!(
+  #         user_id: 1 + rand(5),
+  #         content: Faker::Lorem.sentence(10)
+  #       )
+  #     end
+
+  #     # Create three answers for last QUESTION
+  #     3.times do
+  #       user.answers.create!(
+  #           question_id: Question.last.id,
+  #           content: Faker::Lorem.sentence(40)
+  #       )
+  #     end
+
+  #     # Create three comments for last ANSWER
+  #     3.times do
+  #       Answer.last.comments.create!(
+  #         user_id: 1 + rand(5),
+  #         content: Faker::Lorem.sentence(10)
+  #       )
+  #     end
+
+  #     puts "Question & Answers created for user #{user.username}"
+  #   end
+
+  # end
+
+
+
+end
 

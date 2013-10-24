@@ -9,11 +9,11 @@ class BooksController < ApplicationController
     # TAGS
     params[:books_filter_tag] = nil if params[:books_filter_tag] == ""
     if params[:tag]
-      relation = Book.tagged_with(params[:tag])
+      relation = Book.approved.tagged_with(params[:tag])
     elsif params[:books_filter_tag]
-      relation = Book.tagged_on_type(params[:books_filter_tag])
+      relation = Book.approved.tagged_on_type(params[:books_filter_tag])
     else
-      relation = Book
+      relation = Book.approved
     end
 
     # BTYPE

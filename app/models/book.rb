@@ -38,6 +38,10 @@ class Book < ActiveRecord::Base
   end
 
   ### Macro
+
+  def self.approved
+    where(approved:true)
+  end
   def update_average_rating(book=nil) #http://stackoverflow.com/questions/6008015/how-can-i-sort-my-records-by-average-rating
     s = self.comments.sum(:rating)
     c = self.comments.count

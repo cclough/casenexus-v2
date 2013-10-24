@@ -83,7 +83,8 @@ class User < ActiveRecord::Base
   ### Scopes
   # unused now - vincent work
   scope :not_friends, ->(user) {select('users.*, friends.id as fid').joins("left join friendships on users.id = friendships.friend_id and friendships.user_id = #{User.sanitize(user.id)} left join users as friends on friends.id = friendships.friend_id").where("friends.id is null and users.id != ?",user.id)}
-
+  
+  default_scope where(active: true)
 
   ### Other
 
@@ -162,6 +163,10 @@ class User < ActiveRecord::Base
       where(completed: true)
     end
 
+    def active
+      where(active: true)
+    end
+
     def admin?
       admin == true
     end
@@ -170,7 +175,6 @@ class User < ActiveRecord::Base
       where(admin: false)
     end
 
-    # used by list_online_today above
     def online_today
       where(last_online_at: (1.day.ago)..(Time.now))
     end
@@ -288,7 +292,7 @@ class User < ActiveRecord::Base
   end
 
   def validate_university_email
-    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu"
       begin
         # finds database listed domain within string after at sign http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
         domain = self.email.split("@")[1]
@@ -298,7 +302,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-
 
   def send_newuser_email_to_admin
     UserMailer.delay.newuser_to_admin(self)
@@ -316,7 +319,7 @@ class User < ActiveRecord::Base
   end
 
   def set_university
-    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu"
       domain = self.email.split("@")[1]
       # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
       if found = University.find{ |d| domain[d.domain] } # Switch on enabled here eventually

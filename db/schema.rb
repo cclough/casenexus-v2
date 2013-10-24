@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017024503) do
+ActiveRecord::Schema.define(:version => 20131024014308) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -163,7 +163,6 @@ ActiveRecord::Schema.define(:version => 20131017024503) do
     t.integer  "sender_id",                           :null => false
     t.string   "ntype",                               :null => false
     t.text     "content"
-    t.date     "event_date"
     t.boolean  "read",             :default => false
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
@@ -172,14 +171,6 @@ ActiveRecord::Schema.define(:version => 20131017024503) do
   end
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
-
-  create_table "points", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "method_id"
-    t.string   "pointable_type"
-    t.integer  "pointable_id"
-    t.datetime "created_at"
-  end
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
@@ -258,9 +249,6 @@ ActiveRecord::Schema.define(:version => 20131017024503) do
     t.integer  "country_id"
     t.string   "time_zone",              :default => "UTC"
     t.integer  "degree_level"
-    t.integer  "subject_id"
-    t.boolean  "can_upvote"
-    t.boolean  "can_downvote"
     t.string   "linkedin"
     t.string   "username"
   end
