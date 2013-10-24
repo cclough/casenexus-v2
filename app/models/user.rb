@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
 
   ### Callbacks
   before_create :set_university
+  before_create :suggest_username
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
   after_create :update_invitation
@@ -314,6 +315,10 @@ class User < ActiveRecord::Base
   def update_invitation
     return if self.invitation_code == "BYPASS_CASENEXUS_INV"
     Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)
+  end
+
+  def suggest_username
+    username = email.split("a")[0]
   end
 
   def set_university

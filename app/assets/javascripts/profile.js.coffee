@@ -178,16 +178,16 @@ $(document).ready ->
 
 
 
+  if typeof cases_analysis_chart_case_count is "integer"
+    if cases_analysis_chart_case_count > 2
+      #### Mouseover - drive chart cursor
+      $(".profile_index_feedback_cases_item").mouseover ->
+        case_date = $(this).data "case_date"
+        window.chart_analysis_progress.chartCursor.showCursorAt window.parseDate(case_date)
 
-  if cases_analysis_chart_case_count > 2
-    #### Mouseover - drive chart cursor
-    $(".profile_index_feedback_cases_item").mouseover ->
-      case_date = $(this).data "case_date"
-      window.chart_analysis_progress.chartCursor.showCursorAt window.parseDate(case_date)
-
-    # On mouse leave cases area, hide the cursor
-    $("#profile_index_feedback_cases").mouseleave ->
-      window.chart_analysis_progress.chartCursor.hideCursor()
+      # On mouse leave cases area, hide the cursor
+      $("#profile_index_feedback_cases").mouseleave ->
+        window.chart_analysis_progress.chartCursor.hideCursor()
 
 
   # Analysis in modal
