@@ -116,7 +116,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     categoryAxis.parseDates = true
     
     #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    categoryAxis.minPeriod = "SS" # our data is daily, so we set minPeriod to DD
+    categoryAxis.minPeriod = "ss" # our data is daily, so we set minPeriod to DD
     
     # Value
     valueAxis = new AmCharts.ValueAxis()
@@ -222,14 +222,15 @@ window.cases_analysis_chart_progress_init = (case_count) ->
 
     # CURSOR
     # http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    chartCursor = new AmCharts.ChartCursor()
-    chartCursor.cursorPosition = "mouse"
-    chartCursor.pan = false
-    chartCursor.cursorColor = "#313c44"#"#c18176"
-    chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
-    chartCursor.zoomable = false
+    if case_count > 2
+      chartCursor = new AmCharts.ChartCursor()
+      chartCursor.cursorPosition = "mouse"
+      chartCursor.pan = false
+      chartCursor.cursorColor = "#313c44"#"#c18176"
+      chartCursor.categoryBalloonDateFormat = "DD MMM, YYYY"
+      chartCursor.zoomable = false
 
-    window.chart_analysis_progress.addChartCursor chartCursor
+      window.chart_analysis_progress.addChartCursor chartCursor
     
     # Balloon Settings
     balloon = window.chart_analysis_progress.balloon

@@ -1,7 +1,8 @@
 #map_index_guide_posts
     
-  #map_index_guide_posts_post_container{"data-current_post_id" => @post_in_view.id }
-    = render partial: 'posts/show', locals: { post: @post_in_view }
+  #map_index_guide_posts_post_container{"data-current_post_id" => (@post_in_view.id unless @post_in_view.blank?) }
+    - unless @post_in_view.blank?
+      = render partial: 'posts/show', locals: { post: @post_in_view }
 
   #map_index_guide_posts_label
     Urgently need to practise? Broadcast it here:
@@ -10,8 +11,11 @@
     %i.icon-plus
 
   #map_index_guide_posts_username
-    = avatar_for(@post_in_view.user)
-    = @post_in_view.user.username
+    - unless @post_in_view.blank?
+      = avatar_for(@post_in_view.user)
+      = @post_in_view.user.username
+    - else
+      No recent broadcasts
 
   #map_index_guide_posts_arrow_buttons_container
     .btn.btn-micro.btn-colour{"data-direction"=>"down"}
