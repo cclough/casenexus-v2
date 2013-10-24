@@ -57,7 +57,7 @@
 
         - elsif !Friendship.exist?(current_user, users_item)
           %a.map_index_users_item_button_add.btn.btn-colour.btn-micro{"data-friend_id" => users_item.id }
-            %i.icon-plus-sign.icon-white
+            %i.icon-plus
             ADD PARTNER
 
         - unless users_item.linkedin.blank?
@@ -83,7 +83,8 @@
 
 
   .map_index_users_item_stats
-    CASES PER WEEK
+    CASES PER WEEK:
+    = users_item.cases_per_week
 
   .map_index_users_item_activity{style: "background: url(#{Case.user_activity_chart(users_item,"map")})no-repeat"}
 

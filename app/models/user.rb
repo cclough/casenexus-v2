@@ -111,6 +111,10 @@ class User < ActiveRecord::Base
 
   ### Micro
 
+  def cases_per_week
+    (cases.where(created_at: (4.week.ago)..(Time.now)).count / 4).round(1)
+  end
+
   def username_trunc
     (username).truncate(15, separator: ' ')
   end
@@ -200,12 +204,12 @@ class User < ActiveRecord::Base
       end
     end
 
-    def list_online_today
-      completed.online_today
+    def list_online_today(user_to_exclude)
+      where(["users.id <> ?",user_to_exclude.id]).completed.online_today
     end
 
-    def list_online_now
-      completed.online_now
+    def list_online_now(user_to_exclude)
+      where(["users.id <> ?",user_to_exclude.id]).completed.online_now
     end
 
     def list_all_excl_current(user)

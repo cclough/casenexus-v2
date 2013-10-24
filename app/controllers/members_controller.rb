@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # Map - access via /map
   def index
 
-    users_pre_scope = User.active.where(degree_level:params[:users_filter_degreelevel]).list_language(params[:users_filter_language]).search_for(params[:search]).order("last_online_at desc")
+    users_pre_scope = User.active.where(degree_level:params[:users_filter_degreelevel]).list_language(params[:users_filter_language]).search_for(params[:search])
 
     # Set scope of users list depending on params from filter menu
     case params[:users_listtype]
@@ -16,18 +16,18 @@ class MembersController < ApplicationController
       when "local"
         require 'will_paginate/array' # neccessary to allow list_local to work in members
         users_scope = users_pre_scope.list_local(current_user,true).reverse! # reverse brings current_user to the top
-      when "new"
-        users_scope = users_pre_scope.list_new
+      when "all"
+        users_scope = users_pre_scope.list_all_excl_current(current_user)
       when "online_today"
-        users_scope = users_pre_scope.where(["users.id <> ?",current_user.id]).list_online_today
+        users_scope = users_pre_scope.list_online_today(current_user)
       when "online_now"
-        users_scope = users_pre_scope.where(["users.id <> ?",current_user.id]).list_online_now
+        users_scope = users_pre_scope.list_online_now(current_user)
     else
       users_scope = User.includes(:cases).list_all_excl_current(current_user)
     end
 
     if users_scope
-      @users = users_scope.paginate(per_page: 10, page: params[:page])
+      @users = users_scope.sort_by{|e| -e.cases_per_week}.paginate(per_page: 10, page: params[:page])
     end
 
     respond_to do |format|

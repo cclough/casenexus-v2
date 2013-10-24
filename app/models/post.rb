@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 
   ### Validations
   validates :content, presence: true, length: { maximum: 255 }
-  validate :one_per_day
+  validate :one_per_day, on: :create
 
   ### Callbacks
   after_create :send_newpost_email_to_admin

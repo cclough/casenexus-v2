@@ -15,11 +15,31 @@
 
       %div
         LOCATION
+
       .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>0, class: ("active" if params[:user_id].blank?)}
         Near you
         - user_near_count = User.list_local(current_user,false).count
         %span.map_index_users_form_filters_button_user_count
           = user_near_count
+
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>1}
+        All
+        - user_all_count = User.list_all_excl_current(current_user).count
+        %span.map_index_users_form_filters_button_user_count
+          = user_all_count
+
+
+    .map_index_users_form_filters_span
+
+      %div
+        JOINED
+
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>0}
+        New
+        - user_near_count = User.list_local(current_user,false).count
+        %span.map_index_users_form_filters_button_user_count
+          = user_near_count
+
 
     .map_index_users_form_filters_span
 
@@ -28,15 +48,16 @@
         ONLINE
       .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>2}
         Today
-        - online_today_count = User.where(["users.id <> ?",current_user.id]).list_online_today.count
+        - online_today_count = User.list_online_today(current_user).count
         %span.map_index_users_form_filters_button_user_count
           = online_today_count
 
       .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>3}
         Now
-        - online_now_count = User.where(["users.id <> ?",current_user.id]).list_online_now.count
+        - online_now_count = User.list_online_now(current_user).count
         %span.map_index_users_form_filters_button_user_count
           = online_now_count
+
 
 
 
@@ -76,13 +97,27 @@
           = language_item.name
 
 
+    .map_index_users_form_filters_span
+
+      %div
+        EXPERIENCE
+
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => "", "data-switch_name" => "degreelevel" ,class: "active"}
+        All
+
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 0, "data-switch_name" => "degreelevel"}
+        0-10
+
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 1, "data-switch_name" => "degreelevel"}
+        10+
+
 
   .spacer15
 
 
   #map_index_users_form_radiogroup
     = radio_button_tag :users_listtype, 'local', checked: true
-    = radio_button_tag :users_listtype, 'new'
+    = radio_button_tag :users_listtype, 'all'
     = radio_button_tag :users_listtype, 'online_today'
     = radio_button_tag :users_listtype, 'online_now'
 
