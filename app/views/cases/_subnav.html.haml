@@ -7,8 +7,6 @@
       = @case.interviewer.username
       #cases_show_subnav_date
         = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
-    #cases_show_subnav_score
-      = @case.totalscore_percentage.to_f.round(0).to_s + "%"
 
   #cases_show_subnav_browse
 
@@ -28,3 +26,6 @@
       .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.next.id }
         %i.icon-fontawesome-webfont-18
 
+
+  #cases_show_subnav_score
+    = @case.totalscore_percentage.to_f.round(0).to_s + "%"
