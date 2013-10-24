@@ -82,16 +82,19 @@
     margin-left:10px;
   }
 
+  .slimScrollDiv {
+    margin:10px;
+  }
   #books_index_form_filters_tag_selector {
 
-    width:238px;
+    width:240px;
     -moz-border-radius:    3px;
     -webkit-border-radius: 3px;
     border-radius:         3px;
     background:$cn_grey_-1;
     height:300px;
-    overflow-y:scroll;
-    margin:10px;
+    position:relative;
+
     .books_index_form_fitlers_tag_selector_item {
       padding:5px 8px;
       cursor:pointer;

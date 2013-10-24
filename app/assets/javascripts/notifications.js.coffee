@@ -14,11 +14,20 @@ window.modal_contact_show = () ->
 
 
 window.modal_message_prime = () ->
-  # Scroll div
-  $(".modal.in #modal_message_conversation").scrollTop($(".modal.in #modal_message_conversation").prop("scrollHeight"));
 
+  # Scroll conversation and scrollTo
+  scroll_bottom_height = $(".modal.in #modal_message_conversation").prop('scrollHeight') + 'px'
+  $(".modal.in #modal_message_conversation").slimScroll
+    width: '100%'
+    height: '310px'
+
+  $(".modal.in #modal_message_conversation").slimScroll
+    scrollTo: scroll_bottom_height
+
+  # Prime spinner and submit
   window.application_spinner_prime(".modal.in")
 
+  # Enter key submits
   $(".modal.in #modal_message_textarea").keydown((event) ->
     if event.keyCode is 13
       $(@form).submit()
@@ -66,7 +75,15 @@ window.modal_friendship_req_show = (friend_id) ->
 window.notifications_index_show_prime = (user_id) ->
   $.get "/notifications/" + user_id, (data) ->
     $("#notifications_index_conversation").html data
-    $("#notifications_show_body_subcontainer").scrollTop document.getElementById("notifications_show_body_subcontainer").scrollHeight
+
+    # Scroll conversation and scrollTo
+    $("#notifications_show_body_subcontainer").slimScroll
+      width: '100%'
+      height: '100%'
+
+    scroll_bottom_height = $("#notifications_show_body_subcontainer").prop('scrollHeight') + 'px'
+    $("#notifications_show_body_subcontainer").slimScroll
+      scrollTo: scroll_bottom_height
 
     # Keep currently selected conversation id in memory so can re activate the item in the index on refresh if needed
     window.notifications_index_notifications_currently_selected = user_id
@@ -88,6 +105,8 @@ window.notifications_index_show_prime = (user_id) ->
     # Update the menu
     $.get "/notifications/menu", (data) ->
       $("#header_notifications_menu_container").html data
+
+
 
 
 window.notifications_index_notifications_prime = () ->

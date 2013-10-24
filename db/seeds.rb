@@ -195,7 +195,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 
 
-  puts "Creating christian's user"
+  puts "Creating christian's admin user"
 
   admin = User.new(
       email: "christian.clough@gmail.com",
@@ -220,7 +220,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.save!
   admin.confirm!
 
-  puts "Creating robin's user"
+  puts "Creating robin's admin user"
 
   admin = User.new(
       email: "robin.clough@rady.ucsd.edu",
@@ -244,6 +244,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.save!
   admin.confirm!
 
+
+
   puts "Creating Julia's user"
 
   user = User.new(
@@ -259,10 +261,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
       cases_external: 0,
       confirm_tac: "1",
       time_zone: "London",
-      ip_address: "89.168.69.119"
+      ip_address: "89.168.69.119")
 
   user.completed = true
-  user.admin = false
   user.active = false # FOR JULIA SPECIAL
   user.save!
   user.confirm!
@@ -284,10 +285,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
       skype: "mmhdgd",
       confirm_tac: "1",
       time_zone: "London",
-      ip_address: "131.111.236.122"
+      ip_address: "131.111.236.122")
 
   user.completed = true
-  user.admin = false
   user.save!
   user.confirm!
 
@@ -307,10 +307,9 @@ if %w(production development).include?(Rails.env) && User.count == 0
       skype: "jack.cooney.1",
       confirm_tac: "1",
       time_zone: "London",
-      ip_address: "89.168.69.119"
+      ip_address: "89.168.69.119")
 
   user.completed = true
-  user.admin = false
   user.save!
   user.confirm!
 
@@ -330,17 +329,23 @@ if %w(production development).include?(Rails.env) && User.count == 0
       skype: "daralatinwo74",
       confirm_tac: "1",
       time_zone: "London",
-      ip_address: "89.168.69.119"
+      ip_address: "89.168.69.119")
 
   user.completed = true
-  user.admin = false
   user.save!
   user.confirm!
 
-  puts "Creating Christian's Friendships"
 
+
+
+
+
+  puts "Creating Christian's Friendships"
   Friendship.connect(User.find(1), User.find(2))
   Friendship.connect(User.find(1), User.find(3))
+  Friendship.connect(User.find(1), User.find(4))
+  Friendship.connect(User.find(1), User.find(5))
+  Friendship.connect(User.find(1), User.find(6))
 
 end
 
@@ -440,7 +445,7 @@ if Rails.env == 'development'
 
   # Languages
   User.all.each do |user|
-
+    
     5.times do
 
       user = User.find(rand(3) + 1)
@@ -453,7 +458,9 @@ if Rails.env == 'development'
         user.languages << lang
         puts "Language association created for user #{user.username}"
       end
+
     end
+
   end
 
 
@@ -467,7 +474,6 @@ if Rails.env == 'development'
       Post.last.toggle!(:approved)
       puts "Post created for user #{user.username}"
     end
-
   end
 
 
@@ -481,31 +487,31 @@ if Rails.env == 'development'
       interviewer_id = 1 + rand(1)
       next if interviewer_id.to_i == user.id.to_i
       user.cases.create!(
-          interviewer_id: interviewer_id,
-          book_id: 1 + rand(30),
-          subject: Faker::Lorem.sentence(5),
-          source: Faker::Lorem.sentence(3),
+                                  interviewer_id: interviewer_id,
+                                  book_id: 1 + rand(30),
+                                  subject: Faker::Lorem.sentence(5),
+                                  source: Faker::Lorem.sentence(3),
 
-          recommendation1: Faker::Lorem.sentence(10),
-          recommendation2: Faker::Lorem.sentence(10),
-          recommendation3: Faker::Lorem.sentence(10),
+                                  recommendation1: Faker::Lorem.sentence(10),
+                                  recommendation2: Faker::Lorem.sentence(10),
+                                  recommendation3: Faker::Lorem.sentence(10),
 
-          main_comment: Faker::Lorem.sentence(100),
+                                  main_comment: Faker::Lorem.sentence(100),
 
-          quantitativebasics: 1 + rand(4),
-          problemsolving: 1 + rand(4),
-          prioritisation: 1 + rand(4),
-          sanitychecking: 1 + rand(4),
+                                  quantitativebasics: 1 + rand(4),
+                                  problemsolving: 1 + rand(4),
+                                  prioritisation: 1 + rand(4),
+                                  sanitychecking: 1 + rand(4),
 
-          rapport: 1 + rand(4),
-          articulation: 1 + rand(4),
-          concision: 1 + rand(4),
-          askingforinformation: 1 + rand(4),
+                                  rapport: 1 + rand(4),
+                                  articulation: 1 + rand(4),
+                                  concision: 1 + rand(4),
+                                  askingforinformation: 1 + rand(4),
 
-          approachupfront: 1 + rand(4),
-          stickingtostructure: 1 + rand(4),
-          announceschangedstructure: 1 + rand(4),
-          pushingtoconclusion: 1 + rand(4)
+                                  approachupfront: 1 + rand(4),
+                                  stickingtostructure: 1 + rand(4),
+                                  announceschangedstructure: 1 + rand(4),
+                                  pushingtoconclusion: 1 + rand(4)
       )
       user.cases.last.created_at = random_date(year_range: 1, year_latest: 0.1)
       
@@ -517,17 +523,16 @@ if Rails.env == 'development'
   
   #User.all.each do |user|
   user = User.find(1)
+  2.times do
+    sender_id = rand(2) + 1
+    next if user.id.to_s == sender_id.to_s
+    user.notifications.create!(ntype: "message",
+                               sender_id: sender_id,
+                               content: Faker::Lorem.sentence(5))
 
-    2.times do
-      sender_id = rand(2) + 1
-      next if user.id.to_s == sender_id.to_s
-      user.notifications.create!(ntype: "message",
-                                 sender_id: sender_id,
-                                 content: Faker::Lorem.sentence(5))
-
-      puts "Message Notifications created for user #{user.username}"
-    end
+    puts "Message Notifications created for user #{user.username}"
   end
+
 
   Notification.all.each do |notification|
     if rand(2) == 1
@@ -536,21 +541,17 @@ if Rails.env == 'development'
     end
   end
 
+  # Events
   user = User.find(1)
+  5.times do
+    partner_id = rand(2) + 1
+    user.events.create!(partner_id: partner_id,
+                        book_id_usertoprepare: 1,
+                        book_id_partnertoprepare: 1,
+                        datetime: random_date(year_range: 2, year_latest: 0.5))
 
-    5.times do
-      partner_id = rand(2) + 1
-      user.events.create!(partner_id: partner_id,
-                          book_id_usertoprepare: 1,
-                          book_id_partnertoprepare: 1,
-                          datetime: random_date(year_range: 2, year_latest: 0.5))
-
-      puts "Events created for user #{user.username}"
-    end
-
-
-
-
+    puts "Events created for user #{user.username}"
+  end
 
 
 

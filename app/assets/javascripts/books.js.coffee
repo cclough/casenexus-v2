@@ -30,6 +30,11 @@ window.books_index_books_item_prime = ->
 
 $(document).ready ->
 
+  # Scroller
+  $('#books_index_form_filters_tag_selector').slimscroll
+    height: '300px'
+    width: '240px'
+
   if $("#books_show_comments_form_container").size() > 0
     window.books_index_books_item_prime()
 
