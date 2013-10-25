@@ -205,11 +205,11 @@ class User < ActiveRecord::Base
     end
 
     def list_online_today(user_to_exclude)
-      where(["users.id <> ?",user_to_exclude.id]).completed.online_today
+      where(active: true).where(["users.id <> ?",user_to_exclude.id]).completed.online_today
     end
 
     def list_online_now(user_to_exclude)
-      where(["users.id <> ?",user_to_exclude.id]).completed.online_now
+      where(active: true).where(["users.id <> ?",user_to_exclude.id]).completed.online_now
     end
 
     def list_all_excl_current(user)
