@@ -23,7 +23,9 @@ class Case < ActiveRecord::Base
   validates :interviewer, presence: true, if: Proc.new { |c| c.interviewer_id.nil? }
 
   validates :subject, length: { maximum: 500 }
+  validates_presence_of :subject, :unless => :book_id?
   validates :source, length: { maximum: 100 }
+  validates_presence_of :source, :unless => :book_id?
 
   validates :quantitativebasics, presence: true,
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
@@ -62,22 +64,9 @@ class Case < ActiveRecord::Base
   validate :is_a_friend
   validate :no_case_to_self
 
-  ### Scopes
-
-  # Scoped_search Gem
-  scoped_search on: [:subject, :source, :recommendation1, :recommendation2, :recommendation3, 
-                     :main_comment]
-  scoped_search in: :interviewer, on: [:username]
-
-
   ### Outputs
 
   ## Micro
-
-  # for Cases options_from_collection_for_select helper
-  def interviewer_name
-    interviewer.username
-  end
 
   def businessanalytics_combined
     ((quantitativebasics + problemsolving + prioritisation + sanitychecking).to_f / 4).round(1)
@@ -99,13 +88,36 @@ class Case < ActiveRecord::Base
     (totalscore / 15) * 100
   end
 
-  def subject_trunc
-    subject.truncate(40, separator: ' ')
+
+
+
+
+  def subject_function
+    unless book_id.blank?
+      Book.find(book_id).title
+    else
+      subject
+    end
   end
 
-  def subject_trunc_menu
-    subject.truncate(25, separator: ' ')
+  def subject_function_trunc
+    subject_function.truncate(25, separator: ' ')
   end
+
+  def source_function
+    unless book_id.blank?
+      Book.find(book_id).author
+    else
+      source
+    end
+  end
+
+  def source_function_trunc
+    source_function.truncate(25, separator: ' ')
+  end
+
+
+
 
   def date_fb
     if created_at > DateTime.now - 3.days

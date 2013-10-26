@@ -204,15 +204,13 @@
             .profile_index_feedback_cases_item_user
               .profile_index_feedback_cases_item_username
                 = cases_item.interviewer.username
-              - unless cases_item.subject.blank?
-                .profile_index_feedback_cases_item_subject
-                  = cases_item.subject_trunc_menu
+              .profile_index_feedback_cases_item_subject
+                = cases_item.subject_function_trunc
             .profile_index_feedback_cases_item_date
               = cases_item.date_fb
       - else
         #profile_index_feedback_cases_empty
           %div
             No feedback yet
-
 
     #profile_index_feedback_chart
