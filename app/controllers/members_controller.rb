@@ -18,6 +18,8 @@ class MembersController < ApplicationController
         users_scope = users_pre_scope.list_local(current_user,true).reverse! # reverse brings current_user to the top
       when "all"
         users_scope = users_pre_scope.list_all_excl_current(current_user)
+      when "new"
+        users_scope = users_pre_scope.list_new
       when "online_today"
         users_scope = users_pre_scope.list_online_today(current_user)
       when "online_now"

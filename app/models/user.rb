@@ -295,7 +295,7 @@ class User < ActiveRecord::Base
   end
 
   def validate_university_email
-    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com"
       begin
         # finds database listed domain within string after at sign http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
         domain = self.email.split("@")[1]
@@ -326,7 +326,7 @@ class User < ActiveRecord::Base
   end
 
   def set_university
-    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com"
       domain = self.email.split("@")[1]
       # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
       if found = University.find{ |d| domain[d.domain] } # Switch on enabled here eventually
@@ -335,7 +335,11 @@ class User < ActiveRecord::Base
         errors.add(:base, "Sorry, casenexus is not yet available for your university")
       end
     else
-      self.university = University.find(1) # Set to cambridge if on exception list
+      if self.email == "gerald.templer@gmail.com"
+        self.university = University.find(2) # Set to oxford for certain people
+      else
+        self.university = University.find(1) # Set to cambridge if on exception list
+      end
     end
   end
 

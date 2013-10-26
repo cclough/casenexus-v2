@@ -36,9 +36,8 @@
 
       .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>0}
         New
-        - user_near_count = User.list_local(current_user,false).count
         %span.map_index_users_form_filters_button_user_count
-          = user_near_count
+          = User.list_new.count
 
 
     .map_index_users_form_filters_span
