@@ -19,9 +19,13 @@
 
     });
 
-
-
-
+- if params[:event_id]
+  :javascript
+    $(document).ready(function(){  
+      setTimeout(function() {
+        window.events_calendar_edit_modal_show(#{params[:event_id]});
+      }, 500);
+    });   
 
 - if flash[:success] == 'Welcome'
   :javascript

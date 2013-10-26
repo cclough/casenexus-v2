@@ -75,9 +75,9 @@ class Notification < ActiveRecord::Base
         "Case appointment cancelled"
 
       when "event_remind_partner"
-        "Reminder: You have a case in 5 hours " + user.username
+        "Reminder: You have a case in 5 hours " + sender.username
       when "event_remind_sender"
-        "Reminder: You have a case in 5 hours with " + partner.username
+        "Reminder: You have a case in 5 hours with " + user.username
 
     end    
   end
