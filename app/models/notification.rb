@@ -238,20 +238,23 @@ class Notification < ActiveRecord::Base
                                                       self.title,
                                                       self.url,
                                                       self.ntype)
+
+
+        
       when "event_remind_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.sender,
-                                                       self.user,
-                                                       self.notificable_id,
-                                                       self.title,
-                                                       self.url,
-                                                       self.ntype)
+                                                             self.user,
+                                                             self.notificable_id,
+                                                             self.title,
+                                                             self.url,
+                                                             self.ntype)
 
       when "event_remind_sender"
         UserMailer.delay.event_setchangecancelremind_sender(self.user,
-                                                      self.notificable_id,
-                                                      self.title,
-                                                      self.url,
-                                                      self.ntype)
+                                                            self.notificable_id,
+                                                            self.title,
+                                                            self.url,
+                                                            self.ntype)
       end
   end
 
