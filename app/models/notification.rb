@@ -122,9 +122,9 @@ class Notification < ActiveRecord::Base
         Rails.application.routes.url_helpers.events_url(host: host)
 
       when "event_remind_partner"
-        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
+        Rails.application.routes.url_helpers.profile_url(host: host, event_id: notificable_id)
       when "event_remind_sender"
-        Rails.application.routes.url_helpers.events_url(host: host, event_id: notificable_id)
+        Rails.application.routes.url_helpers.profile_url(host: host, event_id: notificable_id)
 
 
     end
@@ -251,7 +251,6 @@ class Notification < ActiveRecord::Base
                                                       self.title,
                                                       self.url,
                                                       self.ntype)
-
       end
   end
 
