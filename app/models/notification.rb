@@ -123,9 +123,9 @@ class Notification < ActiveRecord::Base
 
 
       when "event_remind_partner"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id
+        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
       when "event_remind_sender"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id
+        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
 
 
     end
