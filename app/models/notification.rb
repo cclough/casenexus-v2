@@ -121,10 +121,11 @@ class Notification < ActiveRecord::Base
       when "event_cancel_sender"
         Rails.application.routes.url_helpers.events_url(host: host)
 
+
       when "event_remind_partner"
-        Rails.application.routes.url_helpers.profile_url(host: host, event_id: notificable_id)
+        "https://www.casenexus.com/profile?event_id=" + notificable_id
       when "event_remind_sender"
-        Rails.application.routes.url_helpers.profile_url(host: host, event_id: notificable_id)
+        "https://www.casenexus.com/profile?event_id=" + notificable_id
 
 
     end
