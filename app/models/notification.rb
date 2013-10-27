@@ -21,7 +21,7 @@ class Notification < ActiveRecord::Base
                          event_set_partner event_set_sender 
                          event_change_partner event_change_sender 
                          event_cancel_partner event_cancel_sender 
-                         event_remind); end
+                         event_remind_partner event_remind_sender); end
   # The two validations below must be after the line above!
   validates :ntype, presence: true, length: { maximum: 25 }, inclusion: { in: self.valid_types }
   validates :content, presence: true, if: lambda { self.ntype == 'message' }
@@ -74,8 +74,10 @@ class Notification < ActiveRecord::Base
       when "event_cancel_sender"
         "Case appointment cancelled"
 
-      when "event_remind"
+      when "event_remind_partner"
         "Reminder: You have a case in 5 hours " + sender.username
+      when "event_remind_sender"
+        "Reminder: You have a case in 5 hours with " + user.username
 
     end    
   end
@@ -120,8 +122,10 @@ class Notification < ActiveRecord::Base
         Rails.application.routes.url_helpers.events_url(host: host)
 
 
-      when "event_remind"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+      when "event_remind_partner"
+        "https://www.casenexus.com/profile?event_id=" + notificable_id
+      when "event_remind_sender"
+        "https://www.casenexus.com/profile?event_id=" + notificable_id
 
 
     end
@@ -149,7 +153,7 @@ class Notification < ActiveRecord::Base
                                                                 "event_set_partner","event_set_sender",
                                                                 "event_change_partner","event_change_sender",
                                                                 "event_cancel_partner","event_cancel_sender",
-                                                                "event_remind"]])
+                                                                "event_remind_partner","event_remind_sender"]])
     end
 
   end
@@ -234,18 +238,20 @@ class Notification < ActiveRecord::Base
                                                       self.title,
                                                       self.url,
                                                       self.ntype)
-
-
-
-      when "event_remind"
+      when "event_remind_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.sender,
-                                                             self.user,
-                                                             self.notificable_id,
-                                                             self.title,
-                                                             self.url,
-                                                             self.ntype)
+                                                       self.user,
+                                                       self.notificable_id,
+                                                       self.title,
+                                                       self.url,
+                                                       self.ntype)
 
-
+      when "event_remind_sender"
+        UserMailer.delay.event_setchangecancelremind_sender(self.user,
+                                                      self.notificable_id,
+                                                      self.title,
+                                                      self.url,
+                                                      self.ntype)
       end
   end
 
