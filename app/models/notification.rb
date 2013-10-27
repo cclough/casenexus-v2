@@ -207,7 +207,7 @@ class Notification < ActiveRecord::Base
                                                        self.url,
                                                        self.ntype)
       when "event_set_sender"
-        UserMailer.delay.event_setchangecancelremind_sender(self.user,
+        UserMailer.delay.event_setchangecancelremind_sender(self.sender,
                                                       self.notificable_id,
                                                       self.title,
                                                       self.url,
