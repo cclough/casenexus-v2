@@ -32,7 +32,7 @@ class Event < ActiveRecord::Base
         create_notification(user, partner, notificable, "event_set_sender")
 
 
-        notificable = create!(user: partner, partner: user, datetime: datetime, book_id_usertoprepare: book_id_usertoprepare, book_id_partnertoprepare: book_id_partnertoprepare)
+        notificable = create!(user: partner, partner: user, datetime: datetime, book_id_usertoprepare: book_id_partnertoprepare, book_id_partnertoprepare: book_id_usertoprepare)
         # keep user and partner the same until the end of the chain ()
         create_notification(partner, user, notificable, "event_set_partner")
       end

@@ -2,7 +2,8 @@ class EventsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:ics]
   before_filter :completed_user, except: [:ics]
-  
+  before_filter :correct_user, :only => [:edit, :update, :destroy]
+
   require 'icalendar'
 
   def new
@@ -108,4 +109,11 @@ class EventsController < ApplicationController
     render :text => @calendar.to_ical
   end
     
+  private
+
+    def correct_user
+      @event = Event.find params[:id]
+      redirect_to "/" unless current_user == @event.user
+    end
+  
 end
