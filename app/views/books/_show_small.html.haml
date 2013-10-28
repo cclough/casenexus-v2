@@ -1,4 +1,6 @@
-- if @book.blank? then @book = Book.find(book_id) end
+/ - if @book.blank? && book_id then @book = Book.find(book_id) end
+
+- if defined?(book_id) then @book = Book.find(book_id) end
 
 .books_show_small
   - unless @book.difficulty.blank?

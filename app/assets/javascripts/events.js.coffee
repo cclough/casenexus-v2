@@ -183,14 +183,14 @@ window.events_calendar_edit_modal_show = (event_id) ->
     $.get "/events/" + event_id + "/edit", (data) ->
       $("#modal_event").html data
 
-    # to increase height of the modal (removed by new show)
-    $("#modal_event").addClass "event_edit"
+      # to increase height of the modal (removed by new show)
+      $("#modal_event").addClass "event_edit"
 
-    # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-    $("#modal_event").on "shown", ->
-      window.modal_events_rebless()
+      # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+      $("#modal_event").on "shown", ->
+        window.modal_events_rebless()
 
-    $("#modal_event").modal("show")
+      $("#modal_event").modal("show")
 
 $(document).ready ->
 
