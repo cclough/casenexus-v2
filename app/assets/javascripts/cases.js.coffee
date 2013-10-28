@@ -107,23 +107,51 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     # Category
     categoryAxis = window.chart_analysis_progress.categoryAxis
     categoryAxis.gridAlpha = 0.07
-    categoryAxis.axisColor = "#DADADA"
+    categoryAxis.axisColor = "#f0f1f2"
     categoryAxis.startOnAxis = true
     categoryAxis.equalSpacing = true
     # categoryAxis.labelRotation = 45
     # categoryAxis.fillColor = "#dee1e3"
     # categoryAxis.fillAlpha = 100
     categoryAxis.parseDates = true
-    
+    categoryAxis.dateFormats = [
+                                  period: "fff"
+                                  format: "JJ:NN:SS"
+                                ,
+                                  period: "ss"
+                                  format: "DD MMM"
+                                ,
+                                  period: "mm"
+                                  format: "JJ:NN"
+                                ,
+                                  period: "hh"
+                                  format: "JJ:NN"
+                                ,
+                                  period: "DD"
+                                  format: "MMM DD"
+                                ,
+                                  period: "WW"
+                                  format: "MMM DD"
+                                ,
+                                  period: "MM"
+                                  format: "MMM"
+                                ,
+                                  period: "YYYY"
+                                  format: "YYYY"
+                                ]
     #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
     categoryAxis.minPeriod = "ss" # our data is daily, so we set minPeriod to DD
     
     # Value
     valueAxis = new AmCharts.ValueAxis()
     valueAxis.stackType = "regular" # this line makes the chart "stacked"
-    valueAxis.gridAlpha = 0.07
-    valueAxis.axisAlpha = 0
+    valueAxis.gridAlpha = 0.2
+    valueAxis.axisAlpha = 1
+    valueAxis.axisColor = "#f0f1f2"
+    valueAxis.gridColor = "#f0f1f2"
     valueAxis.maximum = 15
+    valueAxis.gridCount = 15
+    valueAxis.autoGridCount = false
     valueAxis.labelsEnabled = false
 
     window.chart_analysis_progress.addValueAxis valueAxis
@@ -219,6 +247,7 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     legend.switchType = "v"
     legend.horizontalGap = 0 #this is a good one to vary to adjust horizontal position
     legend.markerType = "circle"
+    legend.valueText = ""
     window.chart_analysis_progress.addLegend(legend)
 
     # CURSOR
