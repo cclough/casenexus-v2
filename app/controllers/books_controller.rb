@@ -29,6 +29,8 @@ class BooksController < ApplicationController
       format.js
       format.html
     end
+
+    @post_in_view = Post.where("approved = true").order("created_at asc").last
   end
 
   def show

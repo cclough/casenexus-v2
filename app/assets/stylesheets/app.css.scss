@@ -1,5 +1,3 @@
-
-
 @import 'colours';
 
 
@@ -20,7 +18,7 @@ html {
 body {
   position: absolute;
   top: 0px;
-  bottom: 0px;
+  bottom: 50px;
   right:0px;
   left:0px;
   padding-top:50px; // so all content is pushed down below header
@@ -112,7 +110,15 @@ footer {
   }
 }
 
-
+#application_footer {
+  height:30px;
+  padding:10px;
+  background:$cn_colour_0;
+  position:absolute;
+  bottom:-50px;
+  left:0;
+  right:0;
+}
 
 
 
