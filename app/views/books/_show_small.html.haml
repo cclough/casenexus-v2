@@ -3,6 +3,7 @@
 .books_show_small
   - unless @book.difficulty.blank?
     = books_small_difficulty_stamp(@book)
+
   %input#case_book_id{ type:"hidden", name: "case[book_id]", value: @book.id }
 
   = link_to book_path(@book), target: "_blank", class: "btn btn-small btn-colour " do

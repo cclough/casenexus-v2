@@ -34,14 +34,9 @@
           = render "events/user_timezone", user_id: @event.partner.id, display_which: "timezone"
 
 
-
     .events_modal_block_spacer
 
-
-
     .events_modal_block
-
-
 
       .events_modal_block_number
         %i.icon-fontawesome-webfont-3
@@ -113,7 +108,7 @@
               You will be notified when your partner chooses a case for you to prepare
           -else
             = render partial: 'books/show_small', locals: { book_id: @book_usertoprepare.id }
-
+            %input#event_book_id_usertoprepare{ type:"hidden", name: "event[book_id_usertoprepare]", value: @book_usertoprepare.id }
 
 
 

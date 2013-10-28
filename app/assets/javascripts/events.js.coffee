@@ -113,6 +113,7 @@ window.modal_event_new_show = (friend_id, book_id) ->
     $.get url, (data) ->
       $("#modal_event").html data
 
+      # why is this again?
       if friend_id
         $.get "/events/user_timezone?display_which=timezone&user_id=" + friend_id, (data) ->
           $("#events_modal_friend_timezone").html data
@@ -181,10 +182,13 @@ window.events_calendar_edit_modal_show = (event_id) ->
     
     $.get "/events/" + event_id + "/edit", (data) ->
       $("#modal_event").html data
-      window.modal_events_rebless()
 
     # to increase height of the modal (removed by new show)
     $("#modal_event").addClass "event_edit"
+
+    # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
+    $("#modal_event").on "shown", ->
+      window.modal_events_rebless()
 
     $("#modal_event").modal("show")
 
