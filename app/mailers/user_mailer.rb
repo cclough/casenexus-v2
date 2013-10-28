@@ -82,7 +82,7 @@ class UserMailer < ActionMailer::Base
     # event here has usertoprepare as partner, and partnertoprepare as suser
     unless (ntype == "event_cancel_partner") || @event.book_id_usertoprepare.blank?
       @book_usertoprepare = Book.find(@event.book_id_usertoprepare)
-      #attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
+      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
     end
 
     # Attach selected case file, if selected
@@ -108,7 +108,7 @@ class UserMailer < ActionMailer::Base
 
     unless @event.book_id_usertoprepare.blank? || (ntype == "event_cancel_sender")
       @book_usertoprepare = Book.find(@event.book_id_usertoprepare)
-      #attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
+      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
     end
 
     email_with_name = "#{@user_current.username} <#{@user_current.email}>"
