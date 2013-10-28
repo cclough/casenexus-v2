@@ -78,7 +78,7 @@ class CasesController < ApplicationController
     
     respond_to do |format|
       format.html { render layout:false }
-      format.json { render json: Case.cases_analysis_chart_progress_data(current_user) }
+      format.json { render json: Case.cases_analysis_chart_progress_data(current_user,params[:progress_type], params[:criteria_id]) }
       format.js #for table form
     end
     

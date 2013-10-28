@@ -59,7 +59,7 @@ window.cases_new_prime = () ->
 # Progress chart //////////////////////////
 #//////////////////////////////////////////
 
-window.cases_analysis_chart_progress_init = (case_count) ->
+window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria_id) ->
   
   #### loop through model json, construct AM compatabile array + run parseDate
   
@@ -73,11 +73,11 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     window.chart_analysis_progress.pathToImages = "/assets/amcharts/"
     
     # below from http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    window.chart_analysis_progress.panEventsEnabled = true
+    # window.chart_analysis_progress.panEventsEnabled = true
     window.chart_analysis_progress.color = "#697076"
-    window.chart_analysis_progress.zoomOutButton =
-      backgroundColor: "#000000"
-      backgroundAlpha: 0.15
+    # window.chart_analysis_progress.zoomOutButton =
+    #   backgroundColor: "#000000"
+    #   backgroundAlpha: 0.15
 
     if case_count > 1
       window.chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
@@ -143,7 +143,10 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     valueAxis.axisAlpha = 0
     valueAxis.axisColor = "#f0f1f2"
     valueAxis.gridColor = "#f0f1f2"
-    valueAxis.maximum = 15
+    if progress_type == "categories"
+      valueAxis.maximum = 15
+    else if progress_type == "criteria"
+      valueAxis.maximum = 15
     valueAxis.gridCount = 15
     valueAxis.autoGridCount = false
     valueAxis.labelsEnabled = false
@@ -151,64 +154,88 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     window.chart_analysis_progress.addValueAxis valueAxis
     
     # GRAPHS
-    # first graph - Business Analytics
-    graph = new AmCharts.AmGraph()
-    graph.type = "line"
-    graph.title = "Business Analytics"
-    graph.valueField = "businessanalytics"
-    graph.lineAlpha = 1
-    graph.fillAlphas = 0.5 # setting fillAlphas to > 0 value makes it area graph
-    graph.bullet = "round"
-    graph.bulletSize = 5
-    if case_count < 3
-      graph.showBalloon = false
-    else
+
+    if progress_type == "categories"
+
+      # first graph - Business Analytics
+      graph = new AmCharts.AmGraph()
+      graph.type = "line"
+      graph.title = "Business Analytics"
+      graph.valueField = "businessanalytics"
+      graph.lineAlpha = 1
+      graph.fillAlphas = 0.5 # setting fillAlphas to > 0 value makes it area graph
+      graph.bullet = "round"
+      graph.bulletSize = 5
+      if case_count < 3
+        graph.showBalloon = false
+      else
+        graph.bulletBorderAlpha = 1
+        graph.bulletBorderColor = "#72aac9"
+        graph.bulletColor = "#ffffff"
+        graph.bulletBorderThickness = 2
+      addclicklistener graph
+      window.chart_analysis_progress.addGraph graph
+
+      
+      # second graph - Structure
+      graph = new AmCharts.AmGraph()
+      graph.type = "line"
+      graph.title = "Structure"
+      graph.valueField = "structure"
+      graph.lineAlpha = 1
+      graph.fillAlphas = 0.5
+      graph.bullet = "round"
+      graph.bulletSize = 5
+      if case_count < 3
+        graph.showBalloon = false
+      else
+        graph.bulletBorderAlpha = 1
+        graph.bulletBorderColor = "#73bf72"
+        graph.bulletColor = "#ffffff"
+        graph.bulletBorderThickness = 2
+      addclicklistener graph
+      window.chart_analysis_progress.addGraph graph
+
+      # third graph - Interpersonal
+      graph = new AmCharts.AmGraph()
+      graph.type = "line"
+      graph.title = "Interpersonal"
+      graph.valueField = "interpersonal"
+      graph.lineAlpha = 1
+      graph.fillAlphas = 0.5
+      graph.bullet = "round"
+      graph.bulletSize = 5
+      if case_count < 3
+        graph.showBalloon = false
+      else
+        graph.bulletBorderAlpha = 1
+        graph.bulletBorderColor = "#f1d765"
+        graph.bulletColor = "#ffffff"
+        graph.bulletBorderThickness = 2
+      addclicklistener graph
+      window.chart_analysis_progress.addGraph graph
+    
+
+    else if progress_type == "criteria"
+
+      # first graph - Business Analytics
+      graph = new AmCharts.AmGraph()
+      graph.type = "line"
+      graph.title = "Criteria"
+      graph.valueField = "score"
+      graph.lineAlpha = 1
+      graph.fillAlphas = 0.5 # setting fillAlphas to > 0 value makes it area graph
+      graph.bullet = "round"
+      graph.bulletSize = 5
       graph.bulletBorderAlpha = 1
       graph.bulletBorderColor = "#72aac9"
       graph.bulletColor = "#ffffff"
       graph.bulletBorderThickness = 2
-    addclicklistener graph
-    window.chart_analysis_progress.addGraph graph
 
-    
-    # second graph - Structure
-    graph = new AmCharts.AmGraph()
-    graph.type = "line"
-    graph.title = "Structure"
-    graph.valueField = "structure"
-    graph.lineAlpha = 1
-    graph.fillAlphas = 0.5
-    graph.bullet = "round"
-    graph.bulletSize = 5
-    if case_count < 3
-      graph.showBalloon = false
-    else
-      graph.bulletBorderAlpha = 1
-      graph.bulletBorderColor = "#73bf72"
-      graph.bulletColor = "#ffffff"
-      graph.bulletBorderThickness = 2
-    addclicklistener graph
-    window.chart_analysis_progress.addGraph graph
+      addclicklistener graph
 
-    # third graph - Interpersonal
-    graph = new AmCharts.AmGraph()
-    graph.type = "line"
-    graph.title = "Interpersonal"
-    graph.valueField = "interpersonal"
-    graph.lineAlpha = 1
-    graph.fillAlphas = 0.5
-    graph.bullet = "round"
-    graph.bulletSize = 5
-    if case_count < 3
-      graph.showBalloon = false
-    else
-      graph.bulletBorderAlpha = 1
-      graph.bulletBorderColor = "#f1d765"
-      graph.bulletColor = "#ffffff"
-      graph.bulletBorderThickness = 2
-    addclicklistener graph
-    window.chart_analysis_progress.addGraph graph
-    
+      window.chart_analysis_progress.addGraph graph
+
     # # Fourth graph - FOR ZOOMER - NOT DRAWN
     # graph = new AmCharts.AmGraph()
     # graph.type = "line"
@@ -278,7 +305,9 @@ window.cases_analysis_chart_progress_init = (case_count) ->
     
     # WRITE
     window.chart_analysis_progress.write "profile_index_feedback_chart"
-  
+    
+    window.chart_analysis_progress.validateData()
+
   addclicklistener = (graph) ->
     graph.addListener "clickGraphItem", (event) ->
       window.modal_cases_show_show(event.item.dataContext.id)
@@ -288,21 +317,39 @@ window.cases_analysis_chart_progress_init = (case_count) ->
   $("#cases_analysis_chart_progress").fadeIn "fast"
 
   cases_analysis_chart_progress_data = []
-  $.getJSON("/cases/results", (json) ->
-    $.each json, (i, item) ->
-      dataObject =
-        id: json[i].id
-        date: window.parseDate(json[i].date)
-        interpersonal: json[i].interpersonal
-        businessanalytics: json[i].businessanalytics
-        structure: json[i].structure
-        totalscore: json[i].totalscore
 
-      cases_analysis_chart_progress_data.push dataObject
+  if (progress_type == "categories")
+    $.getJSON("/cases/results?progress_type=categories&criteria_id=0", (json) ->
+      $.each json, (i, item) ->
 
-  ).complete ->
-    cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
-    # used to call other chart draw functions here, but now in navigation button click
+        dataObject =
+          id: json[i].id
+          date: window.parseDate(json[i].date)
+          interpersonal: json[i].interpersonal
+          businessanalytics: json[i].businessanalytics
+          structure: json[i].structure
+          totalscore: json[i].totalscore
+
+        cases_analysis_chart_progress_data.push dataObject
+
+    ).complete ->
+          cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
+          # used to call other chart draw functions here, but now in navigation button click
+
+  else if progress_type == "criteria"
+    $.getJSON("/cases/results?progress_type=criteria&criteria_id="+criteria_id, (json) ->
+      $.each json, (i, item) ->
+
+        dataObject =
+          id: json[i].id
+          date: window.parseDate(json[i].date)
+          score: json[i].score
+
+        cases_analysis_chart_progress_data.push dataObject    
+
+    ).complete ->
+      cases_analysis_chart_progress_draw cases_analysis_chart_progress_data
+      # used to call other chart draw functions here, but now in navigation button click
 
 
 

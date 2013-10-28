@@ -179,6 +179,9 @@ $(document).ready ->
 
 
   if typeof cases_analysis_chart_case_count is "number"
+
+    window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)
+
     if cases_analysis_chart_case_count > 2
       #### Mouseover - drive chart cursor
       $(".profile_index_feedback_cases_item").mouseover ->
@@ -211,3 +214,10 @@ $(document).ready ->
               window.cases_resultstable_prime("analysis")
           ), 100
 
+  # # Feedback - chart data select
+  $("#profile_index_feedback_select").change ->
+    criteria_id = $(this).val()
+    if criteria_id != "--Categories"
+      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "criteria", criteria_id)
+    else
+      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)
