@@ -63,7 +63,7 @@ class Event < ActiveRecord::Base
     def cancel(user, partner)
       transaction do
         # sent to self so user, user
-        create_notification(user, user, event(user, partner), "event_cancel_sender") 
+        create_notification(user, partner, event(user, partner), "event_cancel_sender") 
         destroy(event(user, partner))
 
         create_notification(partner, user, event(partner, user), "event_cancel_partner")
