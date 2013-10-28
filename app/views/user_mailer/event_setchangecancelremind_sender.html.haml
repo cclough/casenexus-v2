@@ -4,22 +4,22 @@
       %td{style: "padding-left: 5.2%;padding-right:5.2%;font-size:16px;"}
 
         - if @ntype == "event_set_sender"
-          You have booked a case appointment with #{@user_target.username}
+          You have booked a case appointment with #{@user_partner.username}
         - elsif @ntype == "event_change_sender"
-          You have amended your case appointment with #{@user_target.username}
+          You have amended your case appointment with #{@user_partner.username}
         - elsif @ntype == "event_cancel_sender"
-          You have cancelled your case appointment with #{@user_target.username} has
+          You have cancelled your case appointment with #{@user_partner.username} has
         - elsif @ntype == "event_remind_sender"
-          Reminder: you have a case appointment with #{@user_target.username}
+          Reminder: you have a case appointment with #{@user_partner.username}
 
 %table{style:"padding-bottom:10px;margin-left:50px;"}
   %tr
     %td
-      %img{src: "https://www.casenexus.com/assets/universities/" + @user_target.university.image, style: "font-size: 20px; text-align: left; border: none; font-size: 14px; max-height: 30px; outline: none; text-decoration: none;font-weight: bold;"}/
+      %img{src: "https://www.casenexus.com/assets/universities/" + @user_partner.university.image, style: "font-size: 20px; text-align: left; border: none; font-size: 14px; max-height: 30px; outline: none; text-decoration: none;font-weight: bold;"}/
 
     %td{style: "font-size:13px;margin-left:10px;text-align:left;"}
       %strong
-        #{@user_target.username}
+        #{@user_partner.username}
       %br
       #{@event.datetime.strftime("%A %e %B at %I:%M%p")}
 
@@ -32,20 +32,20 @@
           %tr{style:"height:40px;"}
             %td{style: "border-bottom:1px solid #f0f1f2;padding:5px;margin-bottom:5px;"}
               - unless @event.book_id_partnertoprepare.blank?
-                You have asked #{@user_target.username} to prepare a case
+                You have asked #{@user_partner.username} to prepare a case
                 %br
                 %div{style:"text-align:center;font-weight:bold;padding-top:5px;"}
                   = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
               - else
-                You have not yet asked #{@user_target.username} to prepare a case
+                You have not yet asked #{@user_partner.username} to prepare a case
                 %br
                 = link_to "CHOOSE CASE FOR THEM TO PREPARE NOW", @url
 
             %td{style:"text-align:left;"}
-              = link_to "skype:#{@user_target.skype}?call", "data-original-title"=>"Call #{@user_target.username} on Skype" do
+              = link_to "skype:#{@user_partner.skype}?call", "data-original-title"=>"Call #{@user_partner.username} on Skype" do
                 %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/skype.jpg", style: "font-size: 20px; text-align: left; border: none; height: 30px; outline: none; text-decoration: none;font-weight: bold;display:inline-block;vertical-align:middle;", width: "30"}/
                 %span{style:"display:inline-block;vertical-align:middle;margin-left:7px;"}
-                  Call #{@user_target.username}
+                  Call #{@user_partner.username}
 
           %tr{style:"height:40px;"}
             %td{style: "padding:5px;"}

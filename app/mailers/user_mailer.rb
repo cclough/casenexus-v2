@@ -72,9 +72,9 @@ class UserMailer < ActionMailer::Base
   end
 
 
-  def event_setchangecancelremind_partner(user_from, user_target, event_id, title, url, ntype)
-    @user_from = user_from
-    @user_target = user_target
+  def event_setchangecancelremind_partner(user_partner, user_current, event_id, title, url, ntype)
+    @user_partner = user_partner
+    @user_current = user_current
     @event = Event.find(event_id)
     @url = url
     @ntype = ntype
@@ -86,15 +86,16 @@ class UserMailer < ActionMailer::Base
     # Attach selected case file, if selected
     unless (ntype == "event_cancel_partner") || @event.book_id_partnertoprepare.blank?
       @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare)
-      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_partnertoprepare.url))
+      #attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_partnertoprepare.url))
     end
 
-    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
+    email_with_name = "#{@user_partner.username} <#{@user_partner.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def event_setchangecancelremind_sender(user_target, event_id, title, url, ntype)
-    @user_target = user_target
+  def event_setchangecancelremind_sender(user_current, user_partner, event_id, title, url, ntype)
+    @user_partner = user_partner
+    @user_current = user_current
     @event = Event.find(event_id)
     @url = url
     @ntype = ntype
@@ -105,10 +106,10 @@ class UserMailer < ActionMailer::Base
 
     unless @event.book_id_usertoprepare.blank? #(ntype == "event_cancel_sender" || "event_set_sender") || 
       @book_usertoprepare = Book.find(@event.book_id_usertoprepare)
-      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
+      #attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
     end
 
-    email_with_name = "#{@user_target.username} <#{@user_target.email}>"
+    email_with_name = "#{@user_current.username} <#{@user_current.email}>"
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
