@@ -20,12 +20,6 @@ window.cases_new_prime = () ->
   $("#application_error_explanation").click ->
     $(this).fadeOut "fast"
 
-  $("#cases_new_datepicker").datetimepicker
-    format: "dd MM yyyy - hh:ii"
-    showMeridian: true
-    pickerPosition: 'bottom-left'
-    minuteStep: 15
-
   $("[name=\"case[main_comment]\"]").wysihtml5
     emphasis: false #Italics, bold, etc. Default true
     "font-styles": false #Font styling, e.g. h1, h2, etc. Default true

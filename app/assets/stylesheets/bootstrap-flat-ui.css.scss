@@ -9,6 +9,9 @@
 
 
 
+
+
+
 body {
   color: $cn_grey_-2;
   font-family: 'Lato', sans-serif;
@@ -437,10 +440,59 @@ a:hover {
 
 
 
-.btn, .btn-group > .btn, .btn-group > .dropdown-menu, .btn-group > .popover {
-  font-size: 14.994px;
-  font-weight: 500;
+
+
+
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+
+
+
+.btn-group > .btn {
+  border-radius: 0;
+  text-align: center;
 }
+.btn-group > .btn:active + .btn,
+.btn-group > .btn.active + .btn {
+  border-left-color: transparent;
+}
+.btn-group > .btn:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.btn-group > .btn:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.btn-group > .btn + .btn {
+  margin-left: 0;
+}
+.btn-group > .btn + .dropdown-toggle {
+  border-left: 2px solid rgba(52, 73, 94, 0.15);
+  padding-left: 13px;
+  padding-right: 13px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.btn-group > .btn + .dropdown-toggle .caret {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.btn-group > .btn.btn-huge + .dropdown-toggle .caret {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.btn-group > .btn.btn-small + .dropdown-toggle .caret {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
 
 
 

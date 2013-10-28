@@ -5,38 +5,41 @@
 
   #cases_show_panel_left
 
+    #cases_show_book_and_score_container
+      #cases_show_book
 
-      
-    #cases_show_book
+        - if @case.book_id?
+          = render partial: 'books/show_small', locals: { book_id: @case.book_id }
 
-      - if @case.book_id?
-        = render partial: 'books/show_small', locals: { book_id: @case.book_id }
+        - else
+          - unless @case.subject.blank?
+            #cases_show_book_subject
+              = @case.subject
+          - unless @case.source.blank?
+            #cases_show_book_source
+              = @case.source
 
-      - else
-        - unless @case.subject.blank?
-          #cases_show_book_subject
-            = @case.subject
-        - unless @case.source.blank?
-          #cases_show_book_source
-            = @case.source
+      #cases_show_score
+        = @case.totalscore_percentage.to_f.round(0).to_s + "%"
+
 
     #cases_show_recommendations
       .cases_show_recommendation
         .cases_show_recommendation_content
-          .cases_show_recommendation_title 1st
+          .cases_show_recommendation_title 1st recommendation
           = @case.recommendation1
 
 
 
       .cases_show_recommendation
         .cases_show_recommendation_content
-          .cases_show_recommendation_title 2nd
+          .cases_show_recommendation_title 2nd recommendation
           = @case.recommendation2
 
 
       .cases_show_recommendation.cases_show_recommendation_third
         .cases_show_recommendation_content
-          .cases_show_recommendation_title 3rd
+          .cases_show_recommendation_title 3rd recommendation
           = @case.recommendation3
 
     #cases_show_maincomment
@@ -49,12 +52,14 @@
   #cases_show_panel_right
 
     #cases_show_results
+      = render "results_table_form"
       .cases_resultstable_container
         = render "results_table"
-      = render "results_table_form"
 
 
 .modal-footer
 
-  %a.btn.btn-micro.btn-colour{"data-dismiss" => "modal", href: "#"} Close
+  %a.btn.btn-micro.btn-colour{"data-dismiss" => "modal", href: "#"}
+    %i.icon-check-5
+    Close
 

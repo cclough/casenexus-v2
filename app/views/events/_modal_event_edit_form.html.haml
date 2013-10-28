@@ -16,9 +16,9 @@
 
     .events_modal_block
 
-      .events_modal_block_number
-        %i.icon-man-people-streamline-user
-
+      / .events_modal_block_number
+      /   %i.icon-man-people-streamline-user
+      .spacer5
       .events_modal_block_title
         Partner
 
@@ -38,16 +38,16 @@
 
     .events_modal_block
 
-      .events_modal_block_number
-        %i.icon-fontawesome-webfont-3
-
+      / .events_modal_block_number
+      /   %i.icon-fontawesome-webfont-3
+      .spacer5
       .events_modal_block_title
         Date and time
 
 
 
       #events_modal_datetime_picker.input-append.date
-        = f.text_field :datetime, id: "events_modal_datetime_input", placeholder: "...", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y - %H:%M')
+        = f.text_field :datetime, id: "events_modal_datetime_input", placeholder: "...", "readonly" => "readonly", "data-start_date"=> Time.now.strftime("%Y-%m-%d %H:%M"), value: @event.datetime.strftime('%d %b %Y @ %H:%M%p')
         
         %span.add-on
           %i.icon-calendar
@@ -127,6 +127,7 @@
     %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 
     .application_submit_button_with_spinner.btn.btn-colour.btn-micro{tabindex: "102"}
+      %i.icon-arrow-right
       Edit appointment
 
 

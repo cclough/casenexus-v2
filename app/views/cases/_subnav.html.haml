@@ -1,12 +1,12 @@
 #cases_show_subnav
 
-  #cases_show_subnav_basics
+  #cases_show_subnav_user
     #cases_show_subnav_avatar
       = avatar_for(@case.interviewer,size:"medium")
     #cases_show_subnav_name
       = @case.interviewer.username
-      #cases_show_subnav_date
-        = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
+      / #cases_show_subnav_date
+      /   = @case.created_at.strftime("%a %d %b %Y %l:%M%P")
 
   #cases_show_subnav_browse
 
@@ -14,11 +14,7 @@
       %option
         - @cases.each do |cases_select_item|
           %option{value: cases_select_item.id, "selected" => ("selected" if (cases_select_item.id == @case.id))}
-          
-            - unless @case.subject.blank?
-              = cases_select_item.created_at.strftime("%a %d %b") + " - " + cases_select_item.subject_function_trunc
-            - else
-              = cases_select_item.created_at.strftime("%a %d %b") + " - " + @case.interviewer.username
+            = cases_select_item.created_at.strftime("%a %d %b") + " - " + @case.interviewer.username
 
     #cases_show_subnav_browse_buttons_container
       .cases_show_subnav_browse_button.btn.btn-colour.btn-round{ "data-case_id" => @case.prev.id }
@@ -27,5 +23,6 @@
         %i.icon-fontawesome-webfont-18
 
 
-  #cases_show_subnav_score
-    = @case.totalscore_percentage.to_f.round(0).to_s + "%"
+  #cases_show_subnav_date
+    = @case.created_at.strftime("%l%P on %a %d %b %Y")
+    /= @case.totalscore_percentage.to_f.round(0).to_s + "%"

@@ -73,7 +73,7 @@
   -moz-border-top-right-radius: 3px;
   -webkit-border-top-right-radius: 3px;
 
-  #cases_show_subnav_basics {
+  #cases_show_subnav_user {
     float:left;
 
     #cases_show_subnav_avatar{
@@ -88,28 +88,23 @@
       font-size:21px;
       color: $cn_colour_-2;
       width:200px;
-    }
-
-    #cases_show_subnav_date {
-      font-size:12px;
-      font-weight:normal;
-      line-height:16px;
-      color:$cn_grey_-2;
+      font-weight:400;
+      line-height:37px;
     }
 
   }
 
-  #cases_show_subnav_score {
+
+  #cases_show_subnav_date {
     float:right;
     display:inline-block;
-    padding:16px 20px;
+    padding:17px 20px;
     height:28px;
     margin:-10px 0 0 0px;
     color:$cn_colour_-2;
-    font-size: 25px;
+    font-size: 20px;
     text-align:right;
   }
-
 
   #cases_show_subnav_browse {
     float:right;
@@ -118,7 +113,7 @@
     #cases_show_subnav_select {
       margin-right:10px;
       margin-top:6px;
-      width:270px;
+      width:280px;
     }
 
   }
@@ -150,26 +145,39 @@
   padding:20px 20px 0 20px;
   border-left:1px solid $cn_grey_0;
 
-  #cases_show_book {
-    height:88px;
-    text-align:right;
+  #cases_show_book_and_score_container {
+    height:108px;
+    #cases_show_book {
+      height:88px;
+      width:400px;
+      float:left;
+      #cases_show_book_subject {
+        font-size:20px;
+        margin-top:5px;
+      }
 
-    #cases_show_book_subject {
-      font-size:20px;
+      #cases_show_book_source {
+        font-size:16px;
+        padding-top:10px;
+      }
     }
+  }
 
-    #cases_show_book_source {
-      font-size:16px;
-    }
+  #cases_show_score {
+    width:150px;
+    font-size:45px;
+    float:left;
+    line-height:80px;
+    text-align:center;
   }
 
   #cases_show_recommendations {
     height:138px;
-    margin-top:20px;
-    border-top:1px solid $cn_grey_0;
-    border-bottom:1px solid $cn_grey_0;
+
     .cases_show_recommendation {
-      width:176px;
+      border-top:1px solid $cn_grey_0;
+      border-bottom:1px solid $cn_grey_0;
+      width:185px;
       height:138px;
       float:left;
       border-right:1px solid $cn_grey_0;
@@ -561,16 +569,20 @@
 
 
 
+.cases_resultstable_form {
+  height:0 !important;
+  margin:0;
+  padding:0;
+  .cases_resultstable_order_by_container {
+    position:absolute;
+    top:8px;
+    right:38px;
+  }
+}
+
+
 .cases_resultstable_table {
   width:100%;
-
-  font-size:13px;
-
-//  tr {
-//    &:hover {
-//      font-weight:500;
-//    }
-//  }
   text-align:center;
 
   th {
@@ -610,27 +622,27 @@
 
   // THE 'SHOW' PHENOTYPE
   &.show {
-    font-size:12px;
     th {
-      height:40px;
+      height:32px;
+      font-size:12px;
     }
     td {
       border-top: 0;
       padding:1px 10px !important;
-      height:24px;
-      font-size:14px;
+      height:32px;
+      font-size:12px;
+      border-top:1px solid $cn_grey_0;
     }
     .cases_resultstable_table_column_criteria {
       text-align:left;
       padding-left:10px;
-      width:200px;
     }
     .cases_resultstable_chart_bar{
-      width:130px !important;
-      height:26px;
+      width:120px !important;
+      height:28px;
     }
     .cases_resultstable_table_column_bar {
-      width:130px !important;
+      width:120px !important;
     }
     .cases_resultstable_cell_score {
       font-size:13px;

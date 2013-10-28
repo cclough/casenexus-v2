@@ -22,9 +22,9 @@ class Case < ActiveRecord::Base
   validates :interviewer_id, presence: true, if: Proc.new { |c| c.interviewer.nil? }
   validates :interviewer, presence: true, if: Proc.new { |c| c.interviewer_id.nil? }
 
-  validates :subject, length: { maximum: 500 }
+  validates :subject, length: { maximum: 80 }
   validates_presence_of :subject, :unless => :book_id?
-  validates :source, length: { maximum: 100 }
+  validates :source, length: { maximum: 45 }
   validates_presence_of :source, :unless => :book_id?
 
   validates :quantitativebasics, presence: true,

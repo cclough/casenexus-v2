@@ -149,7 +149,7 @@ window.modal_events_modal_timezone_calcs = ->
 window.modal_events_rebless = ->
 
   $("#events_modal_datetime_picker").datetimepicker
-    format: "dd M yyyy @ hh:ii"
+    format: "dd M yyyy @ hh:iip"
     minuteStep: 15
     pickerPosition: 'bottom-left'
     autoclose: true
