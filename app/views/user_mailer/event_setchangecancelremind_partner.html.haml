@@ -40,34 +40,38 @@
                   = @book_usertoprepare.author.split(' ')[0] + " - " + @book_usertoprepare.title
               - else
                 You have not yet asked #{@user_from.username} to prepare a case
-                %div{style:"background-color:#e7f6ff;height:35px;width:180px;margin:2px;padding:3px;"}
-                  = link_to "CHOOSE CASE FOR THEM TO PREPARE", @url
+                %br
+                = link_to "CHOOSE CASE FOR THEM TO PREPARE", @url
 
-            %td
+            %td{style:"text-align:left;"}
               = link_to "skype:#{@user_from.skype}?call", "data-original-title"=>"Call #{@user_from.username} on Skype" do
-                %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/skype.jpg", style: "font-size: 20px; text-align: left; border: none; font-size: 14px; height: 30px; outline: none; text-decoration: none;font-weight: bold;", width: "30"}/
-                Call #{@user_from.username}
+                %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/skype.jpg", style: "font-size: 20px; text-align: left; border: none; height: 30px; outline: none; text-decoration: none;font-weight: bold;display:inline-block;vertical-align:middle;", width: "30"}/
+                %span{style:"display:inline-block;vertical-align:middle;margin-left:7px;"}
+                  Call #{@user_from.username}
 
           %tr{style:"height:40px;"}
             %td{style: "padding:5px;"}
               - unless @event.book_id_partnertoprepare.blank?
                 You have been asked to prepare (see PDF attached)
+                %br
                 %strong
                   = @book_partnertoprepare.author.split(' ')[0] + " - " + @book_partnertoprepare.title
               - else
                 You have not yet been asked to prepare a case
 
-            %td
+            %td{style:"text-align:left;"}
               - unless @event.book_id_partnertoprepare.blank?
 
                 %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_partnertoprepare.id.to_s }
-                  %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/start.jpg", style: "font-size: 20px; text-align: left; border: none; font-size: 14px; height: 30px; outline: none; text-decoration: none;font-weight: bold;", width: "30"}/
-                  Start case as Interviewer
+                  %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/start.jpg", style: "font-size: 20px; text-align: left; border: none; height: 30px; outline: none; text-decoration: none;font-weight: bold;display:inline-block;vertical-align:middle;", width: "30"}/
+                  %span{style:"display:inline-block;vertical-align:middle;margin-left:7px;"}
+                    Start case as Interviewer
               - else
 
                 %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
-                  %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/start.jpg", style: "font-size: 20px; text-align: left; border: none; font-size: 14px; height: 30px; outline: none; text-decoration: none;font-weight: bold;", width: "30"}/
-                  Start case as Interviewer now
+                  %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/start.jpg", style: "font-size: 20px; text-align: left; border: none; height: 30px; outline: none; text-decoration: none;font-weight: bold;display:inline-block;vertical-align:middle;", width: "30"}/
+                  %span{style:"display:inline-block;vertical-align:middle;margin-left:7px;"}
+                    Start case as Interviewer now
 
 
 
