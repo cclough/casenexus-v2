@@ -79,14 +79,15 @@ class UserMailer < ActionMailer::Base
     @url = url
     @ntype = ntype
 
-    unless @event.book_id_usertoprepare.blank?
+    # event here has usertoprepare as partner, and partnertoprepare as suser
+    unless (ntype == "event_cancel_partner") || @event.book_id_usertoprepare.blank?
       @book_usertoprepare = Book.find(@event.book_id_usertoprepare)
+      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
     end
 
     # Attach selected case file, if selected
     unless (ntype == "event_cancel_partner") || @event.book_id_partnertoprepare.blank?
       @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare)
-      #attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_partnertoprepare.url))
     end
 
     email_with_name = "#{@user_partner.username} <#{@user_partner.email}>"
@@ -100,13 +101,14 @@ class UserMailer < ActionMailer::Base
     @url = url
     @ntype = ntype
 
-    unless @event.book_id_partnertoprepare.blank?
+    # user here is usertoprepare, partner is partnertoprepare
+    unless @event.book_id_partnertoprepare.blank? || (ntype == "event_cancel_sender")
       @book_partnertoprepare = Book.find(@event.book_id_partnertoprepare)
     end
 
-    unless @event.book_id_usertoprepare.blank? #(ntype == "event_cancel_sender" || "event_set_sender") || 
+    unless @event.book_id_usertoprepare.blank? || (ntype == "event_cancel_sender")
       @book_usertoprepare = Book.find(@event.book_id_usertoprepare)
-      #attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
+      attachments["case.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library',@book_usertoprepare.url))
     end
 
     email_with_name = "#{@user_current.username} <#{@user_current.email}>"
