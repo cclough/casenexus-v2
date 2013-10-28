@@ -20,9 +20,9 @@
       .books_show_small_title
         - unless @book.title.blank?
           = @book.title
-      .books_show_small_university
-        = university_logo_for(@book.university,size:"small")
-        = @book.university.name
+      / .books_show_small_university
+      /   = university_logo_for(@book.university,size:"small")
+      /   = @book.university.name
 
       .books_show_small_desc
         = @book.desc_trunc_very

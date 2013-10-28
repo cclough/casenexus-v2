@@ -34,7 +34,7 @@
       %div
         JOINED
 
-      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>0}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>2}
         New
         %span.map_index_users_form_filters_button_user_count
           = User.list_new.count
@@ -45,13 +45,13 @@
 
       %div
         ONLINE
-      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>2}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>3}
         Today
         - online_today_count = User.list_online_today(current_user).count
         %span.map_index_users_form_filters_button_user_count
           = online_today_count
 
-      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>3}
+      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>4}
         Now
         - online_now_count = User.list_online_now(current_user).count
         %span.map_index_users_form_filters_button_user_count
@@ -101,13 +101,13 @@
       %div
         EXPERIENCE
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => "", "data-switch_name" => "degreelevel" ,class: "active"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => "", "data-switch_name" => "degreelevel", class: "active"}
         All
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 0, "data-switch_name" => "degreelevel"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 0, "data-switch_name" => "experience"}
         0-10
 
-      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 1, "data-switch_name" => "degreelevel"}
+      .map_index_users_form_button_switch.btn.btn-micro.btn-colour{ "data-choice_id" => 1, "data-switch_name" => "experience"}
         10+
 
 
@@ -117,6 +117,7 @@
   #map_index_users_form_radiogroup
     = radio_button_tag :users_listtype, 'local', checked: true
     = radio_button_tag :users_listtype, 'all'
+    = radio_button_tag :users_listtype, 'new'
     = radio_button_tag :users_listtype, 'online_today'
     = radio_button_tag :users_listtype, 'online_now'
 
@@ -127,3 +128,4 @@
 
     = text_field_tag :users_filter_degreelevel
     = text_field_tag :users_filter_language
+    = text_field_tag :users_filter_experience

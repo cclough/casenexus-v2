@@ -45,15 +45,16 @@ $(document).ready ->
   # Direction of sort
   $("#books_index_form_filters_sort_direction_button").click ->
     
-    if $("#books_filter_sort_direction").val "asc"
-      $("#books_filter_sort_direction").val "desc"
-      $(this).html "Descending <i class=icon-arrow-down></i>"
+    if $("#books_filter_sort_direction").val() == "asc"
+      $("#books_filter_sort_direction").val("desc")
+      $("#books_index_form_filters_sort_direction_button").html "Descending <i class=icon-arrow-down></i>"
       window.books_index_books_updatelist()
     
-    if $("#books_filter_sort_direction").val "desc"
-      $("#books_filter_sort_direction").val "asc"
-      $(this).html "Ascending <i class=icon-arrow-up></i>"
+    else if $("#books_filter_sort_direction").val() == "desc"
+      $("#books_filter_sort_direction").val("asc")
+      $("#books_index_form_filters_sort_direction_button").html "Ascending <i class=icon-arrow-up></i>"
       window.books_index_books_updatelist()
+
 
   # Tag Select click
   $(".books_index_form_fitlers_tag_selector_item").click ->

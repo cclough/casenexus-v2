@@ -22,7 +22,7 @@ class Book < ActiveRecord::Base
   end
 
   def desc_trunc_very
-    desc.to_s.truncate(40, separator: ' ')
+    desc.to_s.truncate(120, separator: ' ')
   end
 
   def charts_file_name

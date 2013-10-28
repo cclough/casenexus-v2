@@ -49,10 +49,10 @@ private
 
   # For index book sorting
   def sort_column
-    Book.column_names.include?(params[:books_filter_sort]) ? params[:books_filter_sort] : "title"
+    Book.column_names.include?(params[:books_filter_sort]) ? params[:books_filter_sort] : "average_rating"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:books_filter_sort_direction]) ? params[:books_filter_sort_direction] : "asc"
+    %w[asc desc].include?(params[:books_filter_sort_direction]) ? params[:books_filter_sort_direction] : "desc"
   end
 end

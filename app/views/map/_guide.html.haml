@@ -5,11 +5,14 @@ Showing
 #{pluralize_without_count(users.count, 'user')},
 
 - if users.count > 1
-  who've done a total of 
+  who together have done
 - else
   who's done
 
+
+- case_count = users.map { |a| a.cases.where("created_at > ?", Time.now - 1.month).count }.sum
 %span#map_index_guide_count_cases
-  = users.map { |a| a.cases.where("created_at > ?", Time.now - 1.month).count }.sum.to_s
-cases in the last month
+  = case_count.to_s
+= pluralize_without_count(case_count, 'case')
+in the last month
 

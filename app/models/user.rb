@@ -139,6 +139,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def case_count_total
+    case_count_recd + case_count_givn + case_count_external
+  end
+
   def degree_level_in_words
     case degree_level
     when 0
@@ -209,22 +213,32 @@ class User < ActiveRecord::Base
     end
 
     def list_online_today(user_to_exclude)
-      where(active: true).where(["users.id <> ?",user_to_exclude.id]).completed.online_today
+      where(active: true).where(["users.id <> ?",user_to_exclude.id]).online_today
     end
 
     def list_online_now(user_to_exclude)
-      where(active: true).where(["users.id <> ?",user_to_exclude.id]).completed.online_now
+      where(active: true).where(["users.id <> ?",user_to_exclude.id]).online_now
     end
 
     def list_all_excl_current(user)
-      completed.where("id <> ?", user.id)
+      where(["users.id <> ?",user.id])
     end
 
     def list_language(language_id)
       if !language_id.blank? && language_id != "0"
-        completed.joins(:languages_users).where(languages_users: {language_id: language_id})
+        joins(:languages_users).where(languages_users: {language_id: language_id})
       else
-        completed
+        where(["users.id <> ?",0])
+      end
+    end
+
+    def list_by_experience(choice_id)
+      if choice_id == "0"
+        where(case_count_total: 1)
+      elsif choice_id == "1"
+        where(case_count_total: 2)
+      else
+        where(["users.id <> ?",0])
       end
     end
 

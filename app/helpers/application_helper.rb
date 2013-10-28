@@ -13,6 +13,8 @@ module ApplicationHelper
   def pluralize_without_count(count, noun, text = nil)
     if count != 0
       count == 1 ? "#{noun}#{text}" : "#{noun.pluralize}#{text}"
+    else
+      "#{noun.pluralize}"
     end
   end
 
@@ -100,11 +102,11 @@ module ApplicationHelper
 
     case num
     when 1
-      content_tag :div, "Nov.", class: "books_show_small_difficulty novice"
+      content_tag :div, "Novice", class: "books_show_small_difficulty novice"
     when 2
-      content_tag :div, "Inter.", class: "books_show_small_difficulty intermediate"
+      content_tag :div, "Intermediate", class: "books_show_small_difficulty intermediate"
     when 3
-      content_tag :div, "Adv.", class: "books_show_small_difficulty advanced"
+      content_tag :div, "Advanced", class: "books_show_small_difficulty advanced"
     end
   end
 
