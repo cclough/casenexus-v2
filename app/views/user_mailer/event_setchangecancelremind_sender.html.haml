@@ -11,7 +11,8 @@
 %table
   %tr
     %td
-      = image_tag "https://www.casenexus.com/assets/universities/" + @user_target.university.image
+      %img{alt: "Estately", src: "https://www.casenexus.com/assets/universities/" + @user_target.university.image, style: "font-size: 20px; text-align: left; border: none; font-size: 14px; max-height: 30px; outline: none; text-decoration: none;font-weight: bold;"}/
+
     %td{style: "font-size:13px;margin-left:10px;"}
       %strong
         #{@user_target.username}
