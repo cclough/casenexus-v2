@@ -20,8 +20,13 @@ class Event < ActiveRecord::Base
 
     def send_reminders
       Event.in_reminder_window.each do |notificable|
-        create_notification(notificable.user, notificable.partner, notificable, "event_remind_sender")
-        create_notification(notificable.partner, notificable.user, notificable, "event_remind_partner")
+        
+        if notificable.user == current_user
+          create_notification(notificable.user, notificable.partner, notificable, "event_remind_sender")
+        else
+          create_notification(notificable.user, notificable.partner, notificable, "event_remind_partner")
+        end
+
       end
     end
 

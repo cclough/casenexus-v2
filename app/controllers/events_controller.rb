@@ -86,10 +86,12 @@ class EventsController < ApplicationController
     render partial: "user_timezone", layout: false
   end
 
-  def ics   # For subscribe
+  def ics # For subscribe
+
+    user = User.find User.decrypt(params[:id])
     @calendar = Icalendar::Calendar.new
     
-    @events = current_user.events
+    @events = user.events
     @events.each do |event|
       @calendar.event do
         start       event.datetime.strftime("%Y%m%dT%H%M%S")

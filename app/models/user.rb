@@ -106,7 +106,11 @@ class User < ActiveRecord::Base
   end
 
 
-
+  # Obfuscate - hide user_ids for calendar logins - http://stackoverflow.com/questions/9305036/how-do-i-obfuscate-the-ids-of-my-records-in-rails
+  include ObfuscateHelper
+  def obfuscated_id
+    encrypt id
+  end
 
 
   ### Micro
