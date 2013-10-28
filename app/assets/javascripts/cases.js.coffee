@@ -146,7 +146,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
     if progress_type == "categories"
       valueAxis.maximum = 15
     else if progress_type == "criteria"
-      valueAxis.maximum = 15
+      valueAxis.maximum = 5
     valueAxis.gridCount = 15
     valueAxis.autoGridCount = false
     valueAxis.labelsEnabled = false

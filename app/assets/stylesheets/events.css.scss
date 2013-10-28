@@ -100,7 +100,7 @@
       color:white;
       font-size:12px;
 
-      line-height:13px;
+      line-height:16px;
     }
   }
   .notmonth, .notmonth a { background: $cn_grey_0; }
@@ -123,9 +123,10 @@
   vertical-align:middle;
   font-size:18px;
   position:absolute;
-  right:55px;
-  bottom:-5px;
-
+  left:55px;
+  bottom:10px;
+  padding-bottom:5px; // to replicate count div
+  font-style:italic;
 }
 
 #events_calendar_month_text_count{
@@ -133,7 +134,7 @@
   display:none;
   position:absolute;
   right:55px;
-  bottom:25px;
+  bottom:10px;
   color: $cn_colour_1;
   border-color: $cn_colour_1;
   padding:4px 6px 5px 6px !important;
