@@ -4,6 +4,30 @@
 
 
 /////////////////////////////////////////////////////////////////
+////////////////////////// MODAL ////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+
+
+
+
+#modal_profile {
+  width:855px !important;
+  height:560px !important;
+
+  margin-left:-400px;
+  margin-top:-280px;
+
+//  text-align:center !important;
+
+  .modal-body {
+    height:385px;
+//    text-align:center !important;
+  }
+}
+
+
+/////////////////////////////////////////////////////////////////
 /////////////////////////// EDIT ////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
@@ -12,7 +36,23 @@
   text-align:left;
 }
 
+#account_edit_panel_left {
+  float:left;
+  width:450px;
 
+  tr {
+    height:50px;
+  }
+}
+
+
+#account_edit_panel_right {
+  float:left;
+  width:350px;
+  tr {
+    height:30px;
+  }
+}
 
 /////////////////////////////////////////////////////////////////
 //////////////////////// COMPLETEEDIT ///////////////////////////
@@ -27,8 +67,8 @@
     width:300px;
   }
   &.edit {
-    height:261px;
-    width:540px;
+    height:200px;
+    width:350px;
   }
 }
 
@@ -37,6 +77,9 @@
   font-size:12px;
   .account_completeedit_map_location_title {
     font-weight:bold;
+    display:inline-block;
+    margin:0 20px;
+
   }
 }
 
@@ -255,25 +298,4 @@
 }
 
 
-/////////////////////////////////////////////////////////////////
-////////////////////////// MODAL ////////////////////////////////
-/////////////////////////////////////////////////////////////////
 
-
-
-
-
-#modal_profile {
-  width:855px !important;
-  height:560px !important;
-
-  margin-left:-400px;
-  margin-top:-280px;
-
-  text-align:center !important;
-
-  .modal-body {
-    height:385px;
-    text-align:center !important;
-  }
-}
