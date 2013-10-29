@@ -38,10 +38,13 @@
 
 #account_edit_panel_left {
   float:left;
-  width:450px;
+  width:440px;
 
   tr {
     height:55px;
+    td {
+      padding-right:20px;
+    }
   }
 }
 

@@ -58,7 +58,7 @@
 
         %tr
           %td
-            Cases outside of casenexus
+            = "# external cases"
           %td
             = f.text_field :cases_external, class: "application_form_input_alternative", id: "account_edit_casesexternal_field"
 
@@ -80,16 +80,16 @@
       #account_completeedit_map.edit.map
 
 
-      #account_completeedit_map_location
-        .row
-          .account_completeedit_map_location_title
-            Country:
+      / #account_completeedit_map_location
+      /   .row
+      /     .account_completeedit_map_location_title
+      /       Country:
 
-            = @user.country.name unless @user.country.blank?
-          .account_completeedit_map_location_title
-            City:
+      /       = @user.country.name unless @user.country.blank?
+      /     .account_completeedit_map_location_title
+      /       City:
 
-            = @user.city unless @user.city.blank?
+      /       = @user.city unless @user.city.blank?
 
 
       .spacer20
