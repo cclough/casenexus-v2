@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   belongs_to :country
 
   has_many :cases, dependent: :destroy
+  has_many :cases_givn, foreign_key: 'interviewer_id', class_name: 'Case'
   has_many :cases_created, class_name: "Case", foreign_key: :interviewer_id, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :notifications_sent, class_name: 'Notification', foreign_key: :sender_id, dependent: :destroy
@@ -47,6 +48,9 @@ class User < ActiveRecord::Base
   
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
+
+  scope :case_count_total_less_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').includes(:cases).includes(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
+  scope :case_count_total_great_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').includes(:cases).includes(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
 
 
 
@@ -234,9 +238,9 @@ class User < ActiveRecord::Base
 
     def list_by_experience(choice_id)
       if choice_id == "0"
-        where(case_count_total: 1)
+        case_count_total_less_10
       elsif choice_id == "1"
-        where(case_count_total: 2)
+        case_count_total_great_10
       else
         where(["users.id <> ?",0])
       end

@@ -56,7 +56,7 @@ $(document).ready ->
       window.books_index_books_updatelist()
 
 
-  # Tag Select click
+  # Tag Select click for form
   $(".books_index_form_fitlers_tag_selector_item").click ->
     tag_id = $(this).data "tag_id"
 
@@ -65,3 +65,4 @@ $(document).ready ->
     $(this).addClass "books_index_form_fitlers_tag_selector_item_active"
 
     window.books_index_books_updatelist()
+
