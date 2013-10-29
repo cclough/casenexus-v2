@@ -1,0 +1,6 @@
+- unless post.blank?
+  #footer_posts_username_avatar
+    = avatar_for(post.user)
+  = post.user.username
+- else
+  No recent broadcasts

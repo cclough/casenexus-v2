@@ -72,7 +72,9 @@ Casenexus::Application.routes.draw do
   end
 
   # Posts
-  resources :posts, only: [:create,:show]
+  resources :posts, only: [:create,:show] do
+    get :show_username, on: :member
+  end
   
   # Notifications
   resources :notifications, only: [:index, :show, :create] do

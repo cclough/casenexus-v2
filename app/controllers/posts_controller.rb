@@ -32,6 +32,11 @@ class PostsController < ApplicationController
     render partial: "show", locals: { post: @post }
   end
 
+  def show_username
+    @post = Post.find(params[:id])
+    render partial: "show_username", locals: { post: @post }
+  end
+
   
   
 end

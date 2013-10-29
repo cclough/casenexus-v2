@@ -55,7 +55,7 @@
     font-size:12px;
     margin-right:10px;
   }
-  #footer_posts_username {
+  #footer_posts_widget {
     display:inline-block;
     background:$cn_colour_05;
     padding: 6px 25px 5px 12px;
@@ -73,6 +73,10 @@
     -webkit-border-bottom-right-radius: 3px;
     border-top-bottom-right-radius:         3px;
 
+    #footer_posts_username_avatar {
+      width:20px;
+      display:inline-block;
+    }
     &:hover {
       -webkit-transition: 0.25s;
       -moz-transition: 0.25s;

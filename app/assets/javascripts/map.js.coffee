@@ -127,7 +127,7 @@ window.map_index_generate_popup_for = (marker) ->
   popup
 
 
-map_index_users_form_reset = () ->
+window.map_index_users_form_reset = () ->
   # RESET THE FORM JUST IN CASE
   $("#users_filter_degreelevel").val ""
   $("#users_filter_language").val ""

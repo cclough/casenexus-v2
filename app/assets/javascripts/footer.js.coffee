@@ -5,7 +5,7 @@ footer_posts_post_prime = () ->
     user_id = $(this).attr("data-user_id")
 
     if typeof map_index_map_lat_start is "string"
-      map_index_users_form_reset()
+      window.map_index_users_form_reset()
 
       # Check params, add user_id and update the list - sweet
       $("#users_listtype_params").prop "checked", true
@@ -19,9 +19,9 @@ footer_posts_post_prime = () ->
   $("#footer_posts_post_close").click ->
     $("#footer_posts_post").fadeOut "fast"
 
-  # Prime username
-  $("#footer_posts_username").off "click"
-  $("#footer_posts_username").click ->
+  # Prime widget for click to show post
+  $("#footer_posts_widget").off "click"
+  $("#footer_posts_widget").click ->
     $("#footer_posts_post").fadeIn "fast"
 
 
@@ -55,6 +55,11 @@ $(document).ready ->
       # update current_post_id
       $('#footer_posts_post_container').attr('data-current_post_id', new_post_id)
 
+      # update username
+      $.get "/posts/" + new_post_id + "/show_username", (data) ->
+        $("#footer_posts_username").html data
+
+
       # hide up arrow if nothing in future
       if ($("#footer_posts_post").attr("data-post_next_id") == "nil")
         $("#footer_posts_arrow_button_up").fadeOut "fast"
@@ -87,7 +92,7 @@ $(document).ready ->
   $("#footer_onlineusers").click ->
     
     if typeof map_index_map_lat_start is "string"
-      map_index_users_form_reset()
+      window.map_index_users_form_reset()
       # Check params, add user_id and update the list - sweet
       $("#users_listtype_online_now").prop "checked", true
       $("#map_index_users_form_button_online_now").addClass "active"

@@ -12,12 +12,9 @@
   #footer_posts_new_button.btn.btn-micro.btn-green
     %i.icon-plus
 
-  #footer_posts_username
-    - unless @post_in_view.blank?
-      = avatar_for(@post_in_view.user)
-      = @post_in_view.user.username
-    - else
-      No recent broadcasts
+  #footer_posts_widget
+    #footer_posts_username
+      = render partial: 'posts/show_username', locals: { post: @post_in_view }
 
     #footer_posts_arrow_buttons_container
       .footer_posts_arrow_buttons_container_block
