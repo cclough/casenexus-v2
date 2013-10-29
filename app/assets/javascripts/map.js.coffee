@@ -15,7 +15,7 @@ window.map_index_users_item_bless = () ->
     window.modal_friendship_req_show(friend_id)
 
   window.application_truncatables()
-
+  $(".application_tooltip").tooltip()
 
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
@@ -127,9 +127,37 @@ window.map_index_generate_popup_for = (marker) ->
   popup
 
 
+map_index_users_form_reset = () ->
+  # RESET THE FORM JUST IN CASE
+  $("#users_filter_degreelevel").val ""
+  $("#users_filter_language").val ""
+  $("#users_filter_experience").val ""
+  $(".map_index_users_form_button").removeClass "active"
+  $(".map_index_users_form_filters_span .map_index_users_form_button_switch").removeClass "active"
+  $("#map_index_users_form_filters_span_education .map_index_users_form_button_switch:first").addClass "active"
+  $("#map_index_users_form_filters_span_language .map_index_users_form_button_switch:first").addClass "active"
+  $("#map_index_users_form_filters_span_experience .map_index_users_form_button_switch:first").addClass "active"
 
+map_index_guide_posts_post_prime = () ->
 
+  $("#map_index_guide_posts_post").click ->
+    user_id = $(this).attr("data-user_id")
 
+    map_index_users_form_reset()
+
+    # Check params, add user_id and update the list - sweet
+    $("#users_listtype_params").prop "checked", true
+    $("#user_id").val user_id
+    window.map_index_users_updatelist()
+
+  # Prime close button
+  $("#map_index_guide_posts_post_close").click ->
+    $("#map_index_guide_posts_post").fadeOut "fast"
+
+  # Prime username
+  $("#map_index_guide_posts_username").off "click"
+  $("#map_index_guide_posts_username").click ->
+    $("#map_index_guide_posts_post").fadeIn "fast"
 
 $(document).ready ->
 
@@ -182,10 +210,7 @@ $(document).ready ->
 
 
 
-  $("#map_index_guide_posts_post").click ->
-    user_id = $(this).attr("data-user_id")
 
-    map_index_trigger_find_user(user_id)
 
 
   # Guide - posts browser controls
@@ -197,20 +222,57 @@ $(document).ready ->
 
     $.get "/posts/" + current_post_id + "?direction=" + direction, (data) ->
       $("#map_index_guide_posts_post_container").html data
+
       $("#map_index_guide_posts_post").fadeIn "fast"
+
       # get new post id
       new_post_id = $("#map_index_guide_posts_post").attr "data-post_id"
       # update current_post_id
       $('#map_index_guide_posts_post_container').attr('data-current_post_id', new_post_id)
-      # Prime close button
-      $("#map_index_guide_posts_post_close").click ->
-        $("#map_index_guide_posts_post").fadeOut "fast"
+
+      # hide up arrow if nothing in future
+      if ($("#map_index_guide_posts_post").attr("data-post_next_id") == "nil")
+        $("#map_index_guide_posts_arrow_button_up").fadeOut "fast"
+      else
+        $("#map_index_guide_posts_arrow_button_up").fadeIn "fast"
+
+      # hide down arrow if nothing in past
+      if ($("#map_index_guide_posts_post").attr("data-post_prev_id") == "nil")
+        $("#map_index_guide_posts_arrow_button_down").fadeOut "fast"
+      else
+        $("#map_index_guide_posts_arrow_button_down").fadeIn "fast"
+
+      # prime click
+      map_index_guide_posts_post_prime()
+
 
   # Post fade in after short delay
   if $("#map_index_guide_posts_post").size() > 0
-    setTimeout (->
-      $("#map_index_guide_posts_post").fadeIn "fast"
-    ),1000
+
+    unless $("#map_index_guide_posts_post").hasClass "initial_show_complete"
+      setTimeout (->
+        $("#map_index_guide_posts_post").fadeIn "fast"
+      ),1000
+
+    # prime initial post
+    map_index_guide_posts_post_prime()
+
+
+
+
+  # Onlineusers button
+  $("#map_index_guide_onlineusers").click ->
+    map_index_users_form_reset()
+
+    # Check params, add user_id and update the list - sweet
+    $("#users_listtype_online_now").prop "checked", true
+    $("#map_index_users_form_button_online_now").addClass "active"
+    window.map_index_users_updatelist()
+
+
+
+
+
 
 
 

@@ -241,9 +241,9 @@ a:hover {
 
 
 .btn {
-  border: 1px solid $cn_grey_-1;
+  border: 1px solid $cn_colour_2;
   background: transparent;
-  color: $cn_grey_-1;
+  color: $cn_colour_2;
   padding: 9px 12px 10px;
   line-height: 22px;
   text-decoration: none;
@@ -381,7 +381,7 @@ a:hover {
 .btn.btn-red {
   border:0;
   color:white;
-  background-color: #c18176;
+  background-color: $cn_contrastor_0;
 }
 .btn.btn-red:hover,
 .btn.btn-red:focus,
@@ -396,10 +396,28 @@ a:hover {
 
 
 
+.btn.btn-green {
+  border:0;
+  color:white;
+  background-color: $cn_contrastor_third_0;
+}
+.btn.btn-green:hover,
+.btn.btn-green:focus,
+.btn-group:focus .btn.btn-green.dropdown-toggle {
+  background-color: #91db92;
+}
+.btn.btn-green:active,
+.btn-group.open .btn.btn-green.dropdown-toggle,
+.btn.btn-green.active {
+  background-color: #6da56e;
+}
+
+
+
 
 .btn.btn-colour {
-  border-color: $cn_grey_-1;
-  color: $cn_grey_-1;
+  border-color: $cn_colour_-1;
+  color: $cn_colour_-1;
 }
 .btn.btn-colour:hover,
 .btn.btn-colour:focus,

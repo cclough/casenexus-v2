@@ -20,6 +20,26 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def prev
+    if Post.where("approved", true).where("created_at < ?", created_at).count == 0
+      nil
+    else
+      Post.where("approved", true).where("created_at < ?", created_at).last
+    end
+  end
+
+  def next
+    if Post.where("approved", true).where("created_at > ?", created_at).count == 0
+      nil
+    else
+      Post.where("approved", true).where("created_at > ?", created_at).first
+    end
+  end
+
+  def self.approved
+    where(approved: true)
+  end
+
   private
   
   def one_per_day

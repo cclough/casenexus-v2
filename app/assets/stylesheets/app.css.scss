@@ -51,6 +51,7 @@ body {
 
   margin-right: auto;
   margin-left: auto;
+  padding-bottom:50px !important;
   *zoom: 1;
 
   &.map {
@@ -114,10 +115,11 @@ footer {
   height:30px;
   padding:10px;
   background:$cn_colour_0;
-  position:absolute;
-  bottom:-50px;
-  left:0;
+  position:fixed;
+  bottom:0;
   right:0;
+  left:0;
+  z-index:1039;
 }
 
 

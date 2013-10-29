@@ -1,3 +1,5 @@
+- @post_in_view = Post.where("approved = true").order("created_at asc").last
+
 #map_index_guide_posts
     
   #map_index_guide_posts_post_container{"data-current_post_id" => (@post_in_view.id unless @post_in_view.blank?) }
@@ -5,9 +7,9 @@
       = render partial: 'posts/show', locals: { post: @post_in_view }
 
   #map_index_guide_posts_label
-    Urgently need to practise? Broadcast it here:
+    Urgently need to practise? Let others know
 
-  #map_index_guide_posts_new_button.btn.btn-micro.btn-red
+  #map_index_guide_posts_new_button.btn.btn-micro.btn-green
     %i.icon-plus
 
   #map_index_guide_posts_username
@@ -17,8 +19,18 @@
     - else
       No recent broadcasts
 
-  #map_index_guide_posts_arrow_buttons_container
-    .btn.btn-micro.btn-colour{"data-direction"=>"down"}
-      %i.icon-arrow-down  
-    .btn.btn-micro.btn-colour{"data-direction"=>"up"}
-      %i.icon-arrow-up
+    #map_index_guide_posts_arrow_buttons_container
+      .map_index_guide_posts_arrow_buttons_container_block
+        .btn.btn-micro.btn-colour#map_index_guide_posts_arrow_button_up{"data-direction"=>"up"}
+          %i.icon-arrow-up
+      .map_index_guide_posts_arrow_buttons_container_block
+        .btn.btn-micro.btn-colour#map_index_guide_posts_arrow_button_down{"data-direction"=>"down", style: ("display:none;" unless Post.approved.count > 1)}
+          %i.icon-arrow-down
+
+
+  #map_index_guide_onlineusers
+    = User.list_online_now(current_user).count
+    #map_index_guide_onlineusers_text
+      online
+
+- session[:posts_initial_show_complete] = "yes"
