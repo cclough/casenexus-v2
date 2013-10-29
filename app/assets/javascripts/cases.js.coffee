@@ -163,7 +163,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
       graph.title = "Business Analytics"
       graph.valueField = "businessanalytics"
       graph.lineAlpha = 1
-      graph.fillAlphas = 0.5 # setting fillAlphas to > 0 value makes it area graph
+      graph.fillAlphas = 0.3 # setting fillAlphas to > 0 value makes it area graph
       graph.bullet = "round"
       graph.bulletSize = 5
       if case_count < 3
@@ -172,7 +172,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
         graph.bulletBorderAlpha = 1
         graph.bulletBorderColor = "#72aac9"
         graph.bulletColor = "#ffffff"
-        graph.bulletBorderThickness = 2
+        graph.bulletBorderThickness = 1
       addclicklistener graph
       window.chart_analysis_progress.addGraph graph
 
@@ -183,7 +183,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
       graph.title = "Structure"
       graph.valueField = "structure"
       graph.lineAlpha = 1
-      graph.fillAlphas = 0.5
+      graph.fillAlphas = 0.3
       graph.bullet = "round"
       graph.bulletSize = 5
       if case_count < 3
@@ -192,7 +192,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
         graph.bulletBorderAlpha = 1
         graph.bulletBorderColor = "#73bf72"
         graph.bulletColor = "#ffffff"
-        graph.bulletBorderThickness = 2
+        graph.bulletBorderThickness = 1
       addclicklistener graph
       window.chart_analysis_progress.addGraph graph
 
@@ -202,7 +202,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
       graph.title = "Interpersonal"
       graph.valueField = "interpersonal"
       graph.lineAlpha = 1
-      graph.fillAlphas = 0.5
+      graph.fillAlphas = 0.3
       graph.bullet = "round"
       graph.bulletSize = 5
       if case_count < 3
@@ -211,7 +211,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
         graph.bulletBorderAlpha = 1
         graph.bulletBorderColor = "#f1d765"
         graph.bulletColor = "#ffffff"
-        graph.bulletBorderThickness = 2
+        graph.bulletBorderThickness = 1
       addclicklistener graph
       window.chart_analysis_progress.addGraph graph
     
@@ -224,13 +224,13 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
       graph.title = "Criteria"
       graph.valueField = "score"
       graph.lineAlpha = 1
-      graph.fillAlphas = 0.5 # setting fillAlphas to > 0 value makes it area graph
+      graph.fillAlphas = 0.3 # setting fillAlphas to > 0 value makes it area graph
       graph.bullet = "round"
       graph.bulletSize = 5
       graph.bulletBorderAlpha = 1
       graph.bulletBorderColor = "#72aac9"
       graph.bulletColor = "#ffffff"
-      graph.bulletBorderThickness = 2
+      graph.bulletBorderThickness = 1
 
       addclicklistener graph
 
