@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
-  scope :case_count_total_less_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').includes(:cases).includes(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
-  scope :case_count_total_great_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').includes(:cases).includes(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
+  scope :case_count_total_less_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').joins(:cases).joins(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
+  scope :case_count_total_great_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').joins(:cases).joins(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
 
 
 
