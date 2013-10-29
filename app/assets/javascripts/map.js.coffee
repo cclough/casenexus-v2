@@ -20,14 +20,14 @@ window.map_index_users_item_bless = () ->
 # Update the User List - submits form...
 window.map_index_users_updatelist = ->
   # show the spinner briefly
-  $("#map_index_guide_text").fadeOut("fast");
+  $("#footer_guide_text").fadeOut("fast");
   $("#map_index_users_empty").fadeOut(100)
   $("#map_index_users_spinner_container").fadeIn("fast")
 
   $.get "/members", $("#map_index_users_form").serialize(), null, "script"
   false
 
-  $("#map_index_map_guide").fadeOut("fast")
+  #("#footer_guide").fadeOut("fast")
 
 
 window.map_index_users_search = ->
@@ -138,31 +138,7 @@ map_index_users_form_reset = () ->
   $("#map_index_users_form_filters_span_language .map_index_users_form_button_switch:first").addClass "active"
   $("#map_index_users_form_filters_span_experience .map_index_users_form_button_switch:first").addClass "active"
 
-map_index_guide_posts_post_prime = () ->
 
-  $("#map_index_guide_posts_post").click ->
-
-    user_id = $(this).attr("data-user_id")
-
-    if typeof map_index_map_lat_start is "string"
-      map_index_users_form_reset()
-
-      # Check params, add user_id and update the list - sweet
-      $("#users_listtype_params").prop "checked", true
-      $("#user_id").val user_id
-      window.map_index_users_updatelist()
-    else
-      $(window.location.replace("/map"))
-
-      
-  # Prime close button
-  $("#map_index_guide_posts_post_close").click ->
-    $("#map_index_guide_posts_post").fadeOut "fast"
-
-  # Prime username
-  $("#map_index_guide_posts_username").off "click"
-  $("#map_index_guide_posts_username").click ->
-    $("#map_index_guide_posts_post").fadeIn "fast"
 
 $(document).ready ->
 
@@ -170,13 +146,7 @@ $(document).ready ->
   $("#map_index_users_form input").keypress (e) ->
     map_index_users_updatelist()  if e.which is 13
 
-  # New posts button
-  $("#map_index_guide_posts_new_button").click ->
-    if !($("#modal_post").hasClass("in"))
-      $(".modal").modal("hide")
-      $("#modal_post").on "shown", ->
-        window.application_spinner_prime(".modal.in")
-      $("#modal_post").modal "show"
+
 
 
   # List type Button-Radio link
@@ -222,66 +192,6 @@ $(document).ready ->
 
 
 
-
-
-
-
-  # Guide - posts browser controls
-  $("#map_index_guide_posts_arrow_buttons_container .btn").click ->
-
-    direction = $(this).attr("data-direction")
-    # get current post id
-    current_post_id = $("#map_index_guide_posts_post_container").attr "data-current_post_id"
-
-    $.get "/posts/" + current_post_id + "?direction=" + direction, (data) ->
-      $("#map_index_guide_posts_post_container").html data
-
-      $("#map_index_guide_posts_post").fadeIn "fast"
-
-      # get new post id
-      new_post_id = $("#map_index_guide_posts_post").attr "data-post_id"
-      # update current_post_id
-      $('#map_index_guide_posts_post_container').attr('data-current_post_id', new_post_id)
-
-      # hide up arrow if nothing in future
-      if ($("#map_index_guide_posts_post").attr("data-post_next_id") == "nil")
-        $("#map_index_guide_posts_arrow_button_up").fadeOut "fast"
-      else
-        $("#map_index_guide_posts_arrow_button_up").fadeIn "fast"
-
-      # hide down arrow if nothing in past
-      if ($("#map_index_guide_posts_post").attr("data-post_prev_id") == "nil")
-        $("#map_index_guide_posts_arrow_button_down").fadeOut "fast"
-      else
-        $("#map_index_guide_posts_arrow_button_down").fadeIn "fast"
-
-      # prime click
-      map_index_guide_posts_post_prime()
-
-
-  # Post fade in after short delay
-  if $("#map_index_guide_posts_post").size() > 0
-
-    unless $("#map_index_guide_posts_post").hasClass "initial_show_complete"
-      setTimeout (->
-        $("#map_index_guide_posts_post").fadeIn "fast"
-      ),1000
-
-    # prime initial post
-    map_index_guide_posts_post_prime()
-
-
-  # Onlineusers button
-  $("#map_index_guide_onlineusers").click ->
-    
-    if typeof map_index_map_lat_start is "string"
-      map_index_users_form_reset()
-      # Check params, add user_id and update the list - sweet
-      $("#users_listtype_online_now").prop "checked", true
-      $("#map_index_users_form_button_online_now").addClass "active"
-      window.map_index_users_updatelist()
-    else
-      $(window.location.replace("/map"))
 
 
 

@@ -9,11 +9,11 @@
   - post_next_id = "nil"
 
 
-#map_index_guide_posts_post{"data-post_id" => post.id, "data-user_id" => post.user.id,"data-post_next_id" => post_next_id, "data-post_prev_id" => post_prev_id, class: ("initial_show_complete" if session[:posts_initial_show_complete] == "yes")}
+#footer_posts_post{"data-post_id" => post.id, "data-user_id" => post.user.id,"data-post_next_id" => post_next_id, "data-post_prev_id" => post_prev_id, class: ("initial_show_complete" if session[:posts_initial_show_complete] == "yes")}
 
-  #map_index_guide_posts_post_close.close{type: "button"} ×
+  #footer_posts_post_close.close{type: "button"} ×
   
-  #map_index_guide_posts_post_username
+  #footer_posts_post_username
     = link_to post.user.username, "/map?user_id=" + post.user.id.to_s
     - " - "
     = post.date_fb

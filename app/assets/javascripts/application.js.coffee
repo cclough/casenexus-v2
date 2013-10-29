@@ -25,6 +25,7 @@
 #= require cases
 #= require console
 #= require events
+#= require footer
 #= require help
 #= require map
 #= require notifications
@@ -171,7 +172,14 @@ window.application_choiceNav = () ->
   window.ChoiceNav.init()
 
 
+
+
+
+
+
+
 $(document).ready ->
+
 
   # Close buttons
   $(".close").click ->
@@ -216,5 +224,11 @@ $(document).ready ->
   # FILTER SLIDERS
   if $(".application_filtergroup_choicenav").size() > 0
     window.application_choiceNav()
+
+
+
+
+
+
 
 
