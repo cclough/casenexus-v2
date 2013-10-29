@@ -51,7 +51,7 @@
         %span.map_index_users_form_filters_button_user_count
           = online_today_count
 
-      .map_index_users_form_button.btn.btn-micro.btn-colour{"data-radio"=>4}
+      .map_index_users_form_button#map_index_users_form_button_online_now.btn.btn-micro.btn-colour{"data-radio"=>4}
         Now
         - online_now_count = User.list_online_now(current_user).count
         %span.map_index_users_form_filters_button_user_count
@@ -64,7 +64,7 @@
 
   #map_index_users_form_filters_row_second.row
 
-    .map_index_users_form_filters_span
+    .map_index_users_form_filters_span#map_index_users_form_filters_span_education
 
       %div
         EDUCATION
@@ -83,7 +83,7 @@
       /   %span.iconbar-unread
       /     = User.list_new.count
 
-    .map_index_users_form_filters_span
+    .map_index_users_form_filters_span#map_index_users_form_filters_span_language
 
       %div
         LANGUAGE
@@ -96,7 +96,7 @@
           = language_item.name
 
 
-    .map_index_users_form_filters_span
+    .map_index_users_form_filters_span#map_index_users_form_filters_span_experience
 
       %div
         EXPERIENCE
@@ -121,10 +121,13 @@
     = radio_button_tag :users_listtype, 'online_today'
     = radio_button_tag :users_listtype, 'online_now'
 
-    / for params user_id link
+    / for params user_id link + posts
     - unless params[:user_id].blank?
       = radio_button_tag :users_listtype, 'params', checked: true
       = hidden_field_tag :user_id, params[:user_id]
+    - else
+      = radio_button_tag :users_listtype, 'params'
+      = hidden_field_tag :user_id
 
     = text_field_tag :users_filter_degreelevel
     = text_field_tag :users_filter_language

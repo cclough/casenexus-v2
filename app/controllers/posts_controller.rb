@@ -21,9 +21,9 @@ class PostsController < ApplicationController
     unless params[:direction].blank?
       @current_post = Post.find(params[:id])
       if params[:direction] == "down"
-        @post = Post.where("approved",true).where("created_at < ?", @current_post.created_at).last
+        @post = @current_post.prev
       elsif params[:direction] == "up"
-        @post = Post.where("approved",true).where("created_at > ?", @current_post.created_at).first
+        @post = @current_post.next
       end
     else
       @post = Post.find(params[:id])

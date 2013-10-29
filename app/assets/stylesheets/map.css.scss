@@ -52,7 +52,7 @@
   top:50px;
   //left:604px;
   left:425px;
-  bottom:60px;
+  bottom:50px;
   right:0px;
   z-index:1;
 
@@ -89,7 +89,7 @@
 #map_index_guide {
   position:fixed;
   bottom:0px;
-  height:60px;
+  height:50px;
   left:0px;
   z-index:999;
   right:0px;
@@ -98,7 +98,7 @@
   #map_index_guide_text {
     margin-left:15px;
     color:white;
-    line-height:60px;
+    line-height:50px;
   }
 
   #map_index_guide_count_users {
@@ -527,12 +527,9 @@
 #map_index_guide_posts {
   float:right;
   position:absolute;
-  bottom:15px;
+  bottom:4px;
   right:60px;
   color:white;
-  #map_index_guide_posts_arrow_buttons_container {
-    display:inline;
-  }
 
   #map_index_guide_posts_label {
     display:inline;
@@ -543,13 +540,65 @@
   #map_index_guide_posts_username {
     display:inline-block;
     background:$cn_colour_05;
-    padding: 6px 6px 5px;
+    padding: 6px 25px 5px 12px;
     width:150px;
+    height:18px;
     vertical-align:middle;
+    cursor:pointer;
+    position:relative;
+
+    -moz-border-top-right-radius:    3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius:         3px;
+
+    -moz-border-bottom-right-radius:    3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-top-bottom-right-radius:         3px;
+
+    &:hover {
+      -webkit-transition: 0.25s;
+      -moz-transition: 0.25s;
+      -o-transition: 0.25s;
+      transition: 0.25s;
+      color:$cn_colour_1;
+    }
+    img {
+      margin-top:-3px;
+      margin-right:3px;
+    }
+    #map_index_guide_posts_arrow_buttons_container {
+      display:inline;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      .btn {
+        border:0;
+        padding-left:1px;
+        padding-right:1px;
+        padding-bottom:3px !important;
+      }
+      position:absolute;
+      right:3px;
+      top:4px;
+      #map_index_guide_posts_arrow_button_up {
+        display:none;
+      }
+
+      .map_index_guide_posts_arrow_buttons_container_block {
+        width:15px;
+        display:inline-block;
+        vertical-align:middle;
+      }
+    }
+
   }
   #map_index_guide_posts_new_button {
     font-size:19px;
     line-height:14px;
+    margin-right:-4px;
   }
   #map_index_guide_posts_post {
     cursor:pointer;
@@ -589,6 +638,44 @@
     /* reduce the damage in FF3.0 */
     display:block; 
     width:0;
+  }
+}
+
+#map_index_guide_onlineusers {
+  width:30px;
+  height:30px;
+  padding:5px;
+  font-size:20px;
+  margin-left:10px;
+  color:white;
+  background:$cn_colour_05;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display:inline-block;
+  vertical-align:middle;
+  text-align:center;
+  position:relative;
+  cursor:pointer;
+
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+
+  &:hover {
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -o-transition: 0.25s;
+    transition: 0.25s;
+    color:$cn_colour_1;
+  }
+  #map_index_guide_onlineusers_text {
+    position:absolute;
+    bottom:3px;
+    left:8px;
+    font-size:9px;
+
   }
 }
 
