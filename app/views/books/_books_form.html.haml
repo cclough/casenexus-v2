@@ -1,7 +1,7 @@
 = form_tag "#", method: 'get', remote: true, id: "books_index_form" do
 
   #books_index_form_search_container
-    = hidden_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_form_search_input"
+    = text_field_tag :search, params[:search], placeholder: "Search the case library...", id: "books_index_form_search_input"
     %button.btn.btn-red.btn-small{type: "submit"}
       %i.icon-search
 

@@ -41,7 +41,7 @@
   width:450px;
 
   tr {
-    height:50px;
+    height:55px;
   }
 }
 
@@ -52,6 +52,22 @@
   tr {
     height:30px;
   }
+  td {
+    padding-left:5px;
+  }
+}
+
+#account_edit_map_header {
+  background: $cn_grey_0;
+  height:20px;
+  text-align:center;
+  line-height:20px;
+  padding:5px;
+}
+
+#account_edit_casesexternal_field {
+  width:50px;
+  text-align:center;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -78,7 +94,7 @@
   .account_completeedit_map_location_title {
     font-weight:bold;
     display:inline-block;
-    margin:0 20px;
+    margin:0 35px;
 
   }
 }

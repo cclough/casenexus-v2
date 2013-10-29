@@ -74,7 +74,7 @@
       = f.hidden_field :lat, id: "account_completeedit_lat"
       = f.hidden_field :lng, id: "account_completeedit_lng"
 
-      %div
+      #account_edit_map_header
         Move the marker to your location
 
       #account_completeedit_map.edit.map
@@ -83,11 +83,11 @@
       #account_completeedit_map_location
         .row
           .account_completeedit_map_location_title
-            Country
+            Country:
 
             = @user.country.name unless @user.country.blank?
           .account_completeedit_map_location_title
-            City
+            City:
 
             = @user.city unless @user.city.blank?
 
@@ -101,14 +101,14 @@
             = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select span26" }
 
         %tr
-          %td
+          %td{align:"center"}
             = f.check_box :email_admin
           %td
             .account_edit_form_emailing_label
               Receive site news and consulting advice
 
         %tr
-          %td
+          %td{align:"center"}
             = f.check_box :email_users
           %td
             .account_edit_form_emailing_label
@@ -120,6 +120,7 @@
     %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 
     .application_submit_button_with_spinner.btn.btn-colour.btn-micro{tabindex: "102"}
+      %i.icon-check-5
       Save Settings
 
 

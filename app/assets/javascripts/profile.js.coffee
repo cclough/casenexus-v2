@@ -217,7 +217,7 @@ $(document).ready ->
   # # Feedback - chart data select
   $("#profile_index_feedback_select").change ->
     criteria_id = $(this).val()
-    if criteria_id != "--Categories"
+    if criteria_id != "--Select specific criteria"
       window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "criteria", criteria_id)
     else
       window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)

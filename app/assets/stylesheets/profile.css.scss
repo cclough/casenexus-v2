@@ -183,15 +183,16 @@
           }
 
           .profile_index_friends_friends_item_actions {
-            height:30px;
+            height:50px; // one for border
             display:none;
             position:absolute;
             right:0px;
-            top:2px;
-            height:50px;
+            top:0px;
             z-index:10;
             padding:0 5px;
             line-height:45px;
+            background:white;
+
             border-top-left-radius: 5px;
             -moz-border-top-left-radius: 5px;
             -webkit-border-top-left-radius: 5px;

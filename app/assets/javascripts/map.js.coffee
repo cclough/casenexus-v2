@@ -141,15 +141,20 @@ map_index_users_form_reset = () ->
 map_index_guide_posts_post_prime = () ->
 
   $("#map_index_guide_posts_post").click ->
+
     user_id = $(this).attr("data-user_id")
 
-    map_index_users_form_reset()
+    if typeof map_index_map_lat_start is "string"
+      map_index_users_form_reset()
 
-    # Check params, add user_id and update the list - sweet
-    $("#users_listtype_params").prop "checked", true
-    $("#user_id").val user_id
-    window.map_index_users_updatelist()
+      # Check params, add user_id and update the list - sweet
+      $("#users_listtype_params").prop "checked", true
+      $("#user_id").val user_id
+      window.map_index_users_updatelist()
+    else
+      $(window.location.replace("/map"))
 
+      
   # Prime close button
   $("#map_index_guide_posts_post_close").click ->
     $("#map_index_guide_posts_post").fadeOut "fast"
@@ -213,6 +218,14 @@ $(document).ready ->
 
 
 
+
+
+
+
+
+
+
+
   # Guide - posts browser controls
   $("#map_index_guide_posts_arrow_buttons_container .btn").click ->
 
@@ -258,16 +271,17 @@ $(document).ready ->
     map_index_guide_posts_post_prime()
 
 
-
-
   # Onlineusers button
   $("#map_index_guide_onlineusers").click ->
-    map_index_users_form_reset()
-
-    # Check params, add user_id and update the list - sweet
-    $("#users_listtype_online_now").prop "checked", true
-    $("#map_index_users_form_button_online_now").addClass "active"
-    window.map_index_users_updatelist()
+    
+    if typeof map_index_map_lat_start is "string"
+      map_index_users_form_reset()
+      # Check params, add user_id and update the list - sweet
+      $("#users_listtype_online_now").prop "checked", true
+      $("#map_index_users_form_button_online_now").addClass "active"
+      window.map_index_users_updatelist()
+    else
+      $(window.location.replace("/map"))
 
 
 

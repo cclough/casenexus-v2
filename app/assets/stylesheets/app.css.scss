@@ -7,7 +7,7 @@ html {
   overflow-x: hidden;
   height:100%;
   min-height: 100%;
-  padding-bottom:0px;
+  padding-bottom:50px; // so all content is pushed down above footer
   margin-bottom:0px;
 
   background: white;
@@ -18,7 +18,7 @@ html {
 body {
   position: absolute;
   top: 0px;
-  bottom: 50px;
+  bottom: 0px;
   right:0px;
   left:0px;
   padding-top:50px; // so all content is pushed down below header
@@ -51,7 +51,6 @@ body {
 
   margin-right: auto;
   margin-left: auto;
-  padding-bottom:50px !important;
   *zoom: 1;
 
   &.map {
@@ -116,7 +115,7 @@ footer {
   padding:10px;
   background:$cn_colour_0;
   position:fixed;
-  bottom:0;
+  bottom:0px;
   right:0;
   left:0;
   z-index:1039;

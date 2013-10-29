@@ -184,7 +184,7 @@
         / %a#profile_index_feedback_actions_start
 
         %select#profile_index_feedback_select.chzn-select{"data-placeholder" => "Select a criteria..."}
-          %option --Categories
+          %option --Select specific criteria
           - 11.times do |n|
             %option{value: n}
               = Case.criteria_name(n)
