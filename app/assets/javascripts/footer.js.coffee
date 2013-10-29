@@ -98,4 +98,4 @@ $(document).ready ->
       $("#map_index_users_form_button_online_now").addClass "active"
       window.map_index_users_updatelist()
     else
-      $(window.location.replace("/map"))
+      $(window.location.replace("/map?show=onlinenow"))

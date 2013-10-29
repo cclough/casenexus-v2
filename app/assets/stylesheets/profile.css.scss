@@ -276,6 +276,13 @@
       position:absolute;
       right:0px;
       top:0;
+
+      #profile_index_calendar_actions_new {
+        cursor:pointer;
+        font-size:30px;
+        line-height:28px;
+        //text-indent:-1px;
+      }
     }
 
     #profile_index_panel_calendar_container_container { // allows positioning up on title line
@@ -283,9 +290,7 @@
       margin-top:-30px;
       position:relative;
 
-      #profile_index_calendar_actions_new {
-        cursor:pointer;
-      }
+
 
       #profile_index_panel_calendar_container {
         padding:48px 0;

@@ -38,7 +38,7 @@ $(document).ready ->
           # NEXT BUTTON - on last, change
           $('#modal_help_button_next').off('click');
           if page == "5"
-            $("#modal_help_button_next").html("Finish")
+            $("#modal_help_button_next").html("<i class=icon-check-5></i> Finish")
             $("#modal_help_button_skip").hide()
             $("#modal_help_button_next").click ->
               $("#modal_help").modal('hide')
