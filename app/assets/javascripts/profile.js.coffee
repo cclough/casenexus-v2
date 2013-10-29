@@ -95,7 +95,7 @@ $(document).ready ->
   $(".profile_index_friends_friends_item").hoverIntent
     over: profile_index_friends_friends_item_mouseover,
     out: profile_index_friends_friends_item_mouseout,
-    interval: 250
+    interval: 200
 
 
   # On load animations

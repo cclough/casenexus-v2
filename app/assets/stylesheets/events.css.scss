@@ -51,6 +51,7 @@
       margin-left:-15px;
       text-align:center;
       font-size:30px;
+      z-index:-1;
       color:$cn_grey_-1;
     }
     .events_calendar_day_name {
@@ -66,25 +67,16 @@
     }    
 
     .slimScrollDiv {
-      margin-top:20px;
-      height:55px;
+      height:92px;
       margin-bottom:20px;
       .events_calendar_day_events {
         margin:0;
       }
     }
-    .events_calendar_day_events {
-      margin-top:20px;
-      height:55px;
-      margin-bottom:20px;      
-    }
 
-    .events_calendar_event_container {
-      overflow-y: auto;
-      overflow-x: hidden;
-      margin-top:1px;
-      width:45px; // make sure below td width or will skew table
-      height:46px;
+    .events_calendar_day_events {
+      height:92px;
+      margin-bottom:20px;      
     }
 
     .events_calendar_day_event {

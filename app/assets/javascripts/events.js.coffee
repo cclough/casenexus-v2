@@ -70,7 +70,7 @@ window.events_calendar_rebless = ->
 
   # Prime scroll within days
   $(".more_than_two_events").slimscroll({
-    height: '55px'
+    height: '92px'
     width: 'auto'
   });
 
