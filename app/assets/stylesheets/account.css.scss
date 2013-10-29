@@ -18,11 +18,9 @@
   margin-left:-400px;
   margin-top:-280px;
 
-//  text-align:center !important;
-
   .modal-body {
-    height:385px;
-//    text-align:center !important;
+    height:385px !important;
+    clear:both;
   }
 }
 
@@ -39,7 +37,7 @@
 #account_edit_panel_left {
   float:left;
   width:440px;
-
+  height:385px;
   tr {
     height:55px;
     td {

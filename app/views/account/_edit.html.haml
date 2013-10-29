@@ -3,7 +3,7 @@
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    Profile settings
+    Your settings
 
   .modal-body
     #flash_notifications
@@ -98,7 +98,7 @@
           %td
             Time Zone
           %td
-            = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "chzn-select span26" }
+            = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "span27" }
 
         %tr
           %td{align:"center"}
