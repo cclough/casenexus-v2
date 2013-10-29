@@ -59,7 +59,9 @@
     .spacer10
 
     .application_tags_container
-      = raw books_item.tags.map { |t| link_to t.name, book_tag_path(t.name), class: "btn btn-tag btn-micro" }.join('')
+      - books_item.tags.each do |t|
+        .books_index_list_fitlers_tag_item.btn.btn-tag.btn-micro{'data-tag_id' => t.id}
+          = t.name + ' '
 
 
 
