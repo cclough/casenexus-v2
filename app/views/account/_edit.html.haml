@@ -27,7 +27,7 @@
           %td
 
           %td
-            %a.btn.btn-colour.btn-micro{href: "/account/edit_password"}
+            %a.btn.btn-micro{href: "/account/edit_password"}
               %i.icon-pencil
               Edit my password
 
@@ -49,8 +49,8 @@
         %tr
           %td
             = image_tag 'icons/skype_large.png'
-            #account_completeedit_skype_link
-              = link_to "Need to register?", "https://login.skype.com/account/signup-form"
+            #account_edit_skype_link
+              = link_to "Need to register?", "https://login.skype.com/account/signup-form",target: "_new"
 
           %td
             = f.text_field :skype, placeholder: "Skype username", class: "application_form_input_alternative"
@@ -98,7 +98,7 @@
           %td
             Time Zone
           %td
-            = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "span27" }
+            = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, {selected: @user.time_zone}, { class: "span26" }
 
         %tr
           %td{align:"center"}
@@ -117,9 +117,9 @@
 
 
   .modal-footer
-    %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
+    %a.btn.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 
-    .application_submit_button_with_spinner.btn.btn-colour.btn-micro{tabindex: "102"}
+    .application_submit_button_with_spinner.btn.btn-micro{tabindex: "102"}
       %i.icon-check-5
       Save Settings
 

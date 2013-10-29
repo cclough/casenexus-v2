@@ -240,10 +240,12 @@ a:hover {
 
 
 
+
+
 .btn {
-  border: 1px solid $cn_colour_2;
+  border: 1px solid $cn_colour_-1;
   background: transparent;
-  color: $cn_colour_2;
+  color: $cn_colour_-1;
   padding: 9px 12px 10px;
   line-height: 22px;
   text-decoration: none;
@@ -418,24 +420,6 @@ a:hover {
 
 
 
-.btn.btn-colour {
-  border-color: $cn_colour_-1;
-  color: $cn_colour_-1;
-}
-.btn.btn-colour:hover,
-.btn.btn-colour:focus,
-.btn-group:focus .btn.btn-red.dropdown-toggle {
-  border-color: $cn_colour_1;
-  color: $cn_colour_1;
-}
-.btn.btn-colour:active,
-.btn-group.open .btn.btn-colour.dropdown-toggle,
-.btn.btn-colour.active {
-  border-color: $cn_colour_1;
-  background: $cn_colour_1;
-  color: white;
-}
-
 
 
 
@@ -446,14 +430,14 @@ a:hover {
 .btn.btn-tag:hover,
 .btn.btn-tag:focus,
 .btn-group:focus .btn.btn-red.dropdown-toggle {
-  border: 1px solid $cn_colour_0;
-  color: $cn_colour_0;
+  border: 1px solid $cn_colour_1;
+  color: $cn_colour_1;
 }
 .btn.btn-tag:active,
 .btn-group.open .btn.btn-tag.dropdown-toggle,
 .btn.btn-tag.active {
-  border: 1px solid $cn_colour_-2;
-  color: $cn_colour_-2;
+  border: 1px solid $cn_colour_1;
+  color: $cn_colour_1;
 }
 
 

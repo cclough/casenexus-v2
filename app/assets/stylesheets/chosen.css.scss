@@ -77,7 +77,8 @@
   padding: 0 0 0 8px;
 //  font-weight:bold;
   text-decoration: none;
-  color:$cn_colour_-2 !important;
+  color: $cn_colour_-1 !important;
+  font-weight:400;
   font-size:15px;
 }
 .chzn-container-single .chzn-default {
@@ -292,7 +293,8 @@
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
-  border:1px solid #BDC3C7;
+  border:1px solid $cn_grey_-1;
+  color: $cn_colour_-1 !important; // not working
   -webkit-overflow-scrolling: touch;
 }
 .chzn-container-multi .chzn-results {

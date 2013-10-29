@@ -45,12 +45,13 @@
 
     .events_calendar_day_num {
       position:absolute;
-      top:3px;
-      width:20px;
+      top:10px;
+      width:30px;
       left:50%;
-      margin-left:-10px;
+      margin-left:-15px;
       text-align:center;
-      font-size:12px;
+      font-size:30px;
+      color:$cn_grey_-1;
     }
     .events_calendar_day_name {
       position:absolute;
@@ -210,7 +211,7 @@
   }
 
   .events_modal_block {
-    width:392px; // reduced by 4px for windows
+    width:390px; // reduced by 6px for windows
     height:190px;
     float:left;
     text-align:center;

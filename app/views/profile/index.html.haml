@@ -88,10 +88,10 @@
     /     %span.iconbar-unread
     /       = current_user.visits.count
 
-    #profile_index_info_actions_settings.btn.btn-colour.btn-round{"data-original-title"=>"Your settings", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
+    #profile_index_info_actions_settings.btn.btn-round{"data-original-title"=>"Your settings", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
       %i.icon-settings
 
-    #profile_index_info_actions_invite.btn.btn-colour.btn-round{"data-original-title"=>"Invite friends", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
+    #profile_index_info_actions_invite.btn.btn-round{"data-original-title"=>"Invite friends", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
       %i.icon-users-outline
 
 
@@ -157,17 +157,17 @@
       #profile_index_feedback_actions
 
 
-        / #profile_index_feedback_actions_analysis.btn.btn-colour.btn-round{"data-container"=>"body", "data-original-title"=>"Itemised results...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btn btn-colour btn-round"}
+        / #profile_index_feedback_actions_analysis.btn.btn-round{"data-container"=>"body", "data-original-title"=>"Itemised results...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btn btn-colour btn-round"}
         /   %i.icon-graph-horizontal
 
 
-        / %a#profile_index_feedback_actions_start.btn.btn-colour.btn-round{href:"/console", "data-container"=>"body", "data-original-title"=>"Start new case...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+        / %a#profile_index_feedback_actions_start.btn.btn-round{href:"/console", "data-container"=>"body", "data-original-title"=>"Start new case...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
         /   %i.icon-arrow-right-1
         
         / %a#profile_index_feedback_actions_start
 
         %select#profile_index_feedback_select.chzn-select{"data-placeholder" => "Select a criteria..."}
-          %option Show single criteria
+          %option - Show single criteria
           - 11.times do |n|
             %option{value: n}
               = Case.criteria_name(n)

@@ -18,10 +18,10 @@
 
     #footer_posts_arrow_buttons_container
       .footer_posts_arrow_buttons_container_block
-        .btn.btn-micro.btn-colour#footer_posts_arrow_button_up{"data-direction"=>"up"}
+        .btn.btn-micro#footer_posts_arrow_button_up{"data-direction"=>"up"}
           %i.icon-arrow-up
       .footer_posts_arrow_buttons_container_block
-        .btn.btn-micro.btn-colour#footer_posts_arrow_button_down{"data-direction"=>"down", style: ("display:none;" unless Post.approved.count > 1)}
+        .btn.btn-micro#footer_posts_arrow_button_down{"data-direction"=>"down", style: ("display:none;" unless Post.approved.count > 1)}
           %i.icon-arrow-down
 
 

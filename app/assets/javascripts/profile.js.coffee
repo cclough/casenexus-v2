@@ -215,7 +215,7 @@ $(document).ready ->
 
     unless cases_analysis_chart_case_count < 3
 
-      if criteria_id != "Show single criteria"
+      if criteria_id != "- Show single criteria"
         window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "criteria", criteria_id)
       else
         window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)

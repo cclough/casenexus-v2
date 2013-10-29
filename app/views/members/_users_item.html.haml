@@ -32,17 +32,17 @@
 
         - if Friendship.friends?(current_user, users_item)
 
-          .map_index_users_item_button_message.btn.btn-colour.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => users_item.id }
+          .map_index_users_item_button_message.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => users_item.id }
             %i.icon-email-mail-streamline
 
-          .map_index_users_item_button_event.btn.btn-colour.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id.to_s}
+          .map_index_users_item_button_event.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
 
-          %a.map_index_users_item_button_startcase.btn.btn-colour.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", href:"/console?friend_id=" + users_item.id.to_s}
+          %a.map_index_users_item_button_startcase.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", href:"/console?friend_id=" + users_item.id.to_s}
             %i.icon-arrow-right-1
 
           - unless users_item.skype.blank?
-            %a.map_index_users_item_button_skype.btn.btn-round.btn-round-small.btn-colour.application_tooltip{"data-container"=>"body", "data-original-title"=>"Call on Skype...", rel: "tooltip", "data-placement"=>"bottom", href: "skype:#{users_item.skype}?call"}
+            %a.map_index_users_item_button_skype.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Call on Skype...", rel: "tooltip", "data-placement"=>"bottom", href: "skype:#{users_item.skype}?call"}
               %i.icon-skype
 
 
@@ -60,12 +60,12 @@
             Decline
 
         - elsif !Friendship.exist?(current_user, users_item)
-          %a.map_index_users_item_button_add.btn.btn-colour.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
+          %a.map_index_users_item_button_add.btn.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
             %i.icon-plus
             ADD PARTNER
 
         - unless users_item.linkedin.blank?
-          %a.map_index_users_item_button_linkedin.btn.btn-colour.btn-round.btn-round-small.application_tooltip{href: "http://www.linkedin.com/"+users_item.linkedin,target:"_new","data-container"=>"body", "data-original-title"=>"Jump to Linkedin profile", rel: "tooltip", "data-placement"=>"bottom"}
+          %a.map_index_users_item_button_linkedin.btn.btn-round.btn-round-small.application_tooltip{href: "http://www.linkedin.com/"+users_item.linkedin,target:"_new","data-container"=>"body", "data-original-title"=>"Jump to Linkedin profile", rel: "tooltip", "data-placement"=>"bottom"}
             %i.icon-linkedin-alt
 
 
