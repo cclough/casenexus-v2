@@ -1,8 +1,9 @@
 - provide(:title, 'Notification History')
 
+- user = @user if user.blank?#unless defined?(user)
 
 .row#notifications_show_header
-  = @user.username
+  = user.username
 
 
 #notifications_show_body
@@ -14,9 +15,9 @@
         .close.pull-right
           
   #notifications_show_body_subcontainer
-    = render "conversation", locals: { friend_id: @user.id }
+    = render "conversation", locals: { friend_id: user.id }
 
-#notifications_show_form{"data-friend_id"=>@user.id}
+#notifications_show_form{"data-friend_id"=>user.id}
 
   = form_for @notification, remote: true do |f|
 
@@ -24,7 +25,7 @@
       = f.text_area :content, placeholder: "Write a reply...", tabindex: "101", id: "notifications_show_newmessage_textarea"
 
       = hidden_field_tag :page_reload, defined?(page_reload) ? true : false
-      = f.hidden_field :user_id, value: @user.id
+      = f.hidden_field :user_id, value: user.id
       = f.hidden_field :sender_id, value: current_user.id
       = f.hidden_field :ntype, value: "message"
 

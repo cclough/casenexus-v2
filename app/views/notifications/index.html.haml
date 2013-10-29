@@ -8,8 +8,8 @@
   #notifications_index_notifications
     = render :partial => 'notifications'
 
-#notifications_index_conversation
-
+#notifications_index_conversation{"data-last_user_id" => @last_user.id }
+  = render :partial => 'show', locals: { user: @last_user }
   #notifications_index_conversation_empty
     #notifications_index_conversation_empty_icon
       %i.icon-envelope

@@ -4,6 +4,13 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search]).paginate(per_page: 25, page: params[:page])
+    
+    # For open conversation
+    @last_user = Notification.includes(:sender).most_recent_conversation_with(current_user)
+    @id = @last_user.id # of user
+    @user = @last_user
+    @notification = @user.notifications.build
+
     respond_to do |format|
       format.js
       format.html
@@ -15,10 +22,10 @@ class NotificationsController < ApplicationController
     @user = User.find(@id)
     @notification = @user.notifications.build
 
-    # mark them as read here, even though used SQL call is in partial - SAD
-    Notification.history(current_user, @sender).each { |n| n.read! }
+    # # mark them as read here, even though used SQL call is in partial - SAD
+    # Notification.history(current_user, @sender).each { |n| n.read! }
 
-    render layout: false
+    render partial: "show", layout: false
   end
 
   def conversation

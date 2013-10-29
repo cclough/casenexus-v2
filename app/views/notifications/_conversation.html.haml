@@ -1,7 +1,7 @@
 - if @id.blank? then @id = friend_id end
 
 - @sender = User.find(@id)
-- @notifications = Notification.history(current_user, @sender)
+- @notifications = Notification.includes(:sender).history(current_user, @sender)
 
 / line won't work in show model action for some reason
 - Notification.history(current_user, @sender).each { |n| n.read! }

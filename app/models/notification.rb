@@ -35,7 +35,9 @@ class Notification < ActiveRecord::Base
 
   ### Micro
   def read!
-    update_attribute(:read, true)
+    if read == false
+      update_attribute(:read, true)
+    end
   end
 
   def content_trunc
@@ -274,6 +276,15 @@ class Notification < ActiveRecord::Base
                     user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
     ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
     where(id: ids).order('created_at desc')
+  end
+
+  def self.most_recent_conversation_with(current_user)
+    first_attempt_user = Notification.most_recent_for(current_user.id).first.user
+    if first_attempt_user == current_user
+      Notification.most_recent_for(current_user.id).first.sender
+    else
+      first_attempt_user
+    end
   end
 
 

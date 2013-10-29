@@ -72,41 +72,48 @@ window.modal_friendship_req_show = (friend_id) ->
       window.application_spinner_prime(".modal.in")
 
 
-window.notifications_index_show_prime = (user_id) ->
+
+
+
+window.notifications_index_show_show = (user_id) ->
   $.get "/notifications/" + user_id, (data) ->
+
     $("#notifications_index_conversation").html data
-
-    # Scroll conversation and scrollTo
-    $("#notifications_show_body_subcontainer").slimScroll
-      width: '100%'
-      height: '100%'
-
-    scroll_bottom_height = $("#notifications_show_body_subcontainer").prop('scrollHeight') + 'px'
-    $("#notifications_show_body_subcontainer").slimScroll
-      scrollTo: scroll_bottom_height
-
-    # Keep currently selected conversation id in memory so can re activate the item in the index on refresh if needed
-    window.notifications_index_notifications_currently_selected = user_id
-
-    # prime spinner
-    window.application_spinner_prime("#notifications_show_form")
-
-    # Bind enter submit
-    $("#notifications_show_newmessage_textarea").keydown((event) ->
-      if event.keyCode is 13
-        $(@form).submit()
-        $("#notifications_show_form .application_spinner_container").show()
-        false
-    )
-
-    # Hide the read highlight
-    $("#notifications_index_notifications_item_" + user_id).removeClass "unread"
-
-    # Update the menu
-    $.get "/notifications/menu", (data) ->
-      $("#header_notifications_menu_container").html data
+    window.notifications_index_show_prime(user_id)
 
 
+
+window.notifications_index_show_prime = (user_id) ->
+
+  # Scroll conversation and scrollTo
+  $("#notifications_show_body_subcontainer").slimScroll
+    width: '100%'
+    height: '100%'
+
+  scroll_bottom_height = $("#notifications_show_body_subcontainer").prop('scrollHeight') + 'px'
+  $("#notifications_show_body_subcontainer").slimScroll
+    scrollTo: scroll_bottom_height
+
+  # Keep currently selected conversation id in memory so can re activate the item in the index on refresh if needed
+  window.notifications_index_notifications_currently_selected = user_id
+
+  # prime spinner
+  window.application_spinner_prime("#notifications_show_form")
+
+  # Bind enter submit
+  $("#notifications_show_newmessage_textarea").keydown((event) ->
+    if event.keyCode is 13
+      $(@form).submit()
+      $("#notifications_show_form .application_spinner_container").show()
+      false
+  )
+
+  # Hide the read highlight
+  $("#notifications_index_notifications_item_" + user_id).removeClass "unread"
+
+  # Update the menu
+  $.get "/notifications/menu", (data) ->
+    $("#header_notifications_menu_container").html data
 
 
 window.notifications_index_notifications_prime = () ->
@@ -116,13 +123,12 @@ window.notifications_index_notifications_prime = () ->
     current_item = window.notifications_index_notifications_currently_selected
     $("#notifications_index_notifications_item_" + current_item).addClass "notifications_index_notifications_item_select"
   
-  
   $(".notifications_index_notifications_item").click ->
 
     user_id = $(this).data("user_id")
 
     # get and load
-    window.notifications_index_show_prime user_id
+    window.notifications_index_show_show user_id
 
     # add selected class
     $(".notifications_index_notifications_item").removeClass "notifications_index_notifications_item_select"
@@ -138,4 +144,12 @@ $(document).ready ->
 
   if $("#notifications_index_notifications_container").size() > 0
     window.notifications_index_notifications_prime()
+
+    # prime the initial conversation
+    last_user_id = $("#notifications_index_conversation").data "last_user_id"
+    window.notifications_index_show_prime(last_user_id)
+
+    # highlight intial conversation in index
+    $("#notifications_index_notifications .notifications_index_notifications_item:first").addClass "notifications_index_notifications_item_select"
+
 

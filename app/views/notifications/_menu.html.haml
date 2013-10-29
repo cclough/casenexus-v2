@@ -1,7 +1,7 @@
 - if @unread_count.blank? then @unread_count = current_user.notifications.unread.for_display.count end
 - if @notifications.blank? then @notifications = Notification.header(current_user) end
 
-%a#header_nav_icon_notifications_container{:href => "/notifications", "data-original-title"=>"You have " + @unread_count.to_s + "  unread notification(s)", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+%a#header_nav_icon_notifications_container{:href => "/notifications", "data-original-title"=>"You have " + pluralize(@unread_count.to_s, "unread notification"), rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
 
   %img#header_nav_icon_notifications{src:"/assets/icons/header/notifications.png", class: ("unread" if @unread_count > 0)}
   - if @unread_count > 0

@@ -12,7 +12,7 @@
           %ul#header_nav_links_left.nav.pull-left
 
             %li{:class => ("active" if params[:controller] == "map") }
-              = link_to raw("<img class=header_nav_links_left_map src=/assets/icons/header/map.png\> Find partners"), map_path, "data-original-title"=>"Browse for people to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
+              = link_to raw("<img class=header_nav_links_left_map src=/assets/icons/header/map.png\> Find partners"), map_path, "data-original-title"=>"Find others to do cases with", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
 
             %li{:class => ("active" if params[:controller] == "books") }
               = link_to raw("<img src=/assets/icons/header/library.png\> Case library"), library_path, "data-original-title"=>"Choose a case to practise", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
