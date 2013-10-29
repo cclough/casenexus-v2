@@ -120,11 +120,6 @@
 
     .profile_index_title {
       padding-left:10px;
-      .iconbar-unread {
-        position:absolute;
-        right:125px;
-        top:0px;
-      }
     }
 
     #profile_index_friends_friends {
@@ -151,19 +146,25 @@
         &:hover {
           background:$cn_grey_0;
         }
-
-        .profile_index_friends_friends_item_requested_highlight {
-          display:none;
-          &.unread {
-            height:50px;
-            position:absolute;
-            left:0px;
-            top:0px;
-            bottom:0px;
-            width:5px;
+        &.unread {
+          background:$cn_colour_2;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+          .profile_index_friends_friends_item_requested_highlight {
             background: $cn_colour_1;
-            display:inline;
-          }
+            display:inline;    
+          }     
+        }
+        .profile_index_friends_friends_item_requested_highlight {
+          height:50px;
+          position:absolute;
+          left:0px;
+          top:0px;
+          bottom:0px;
+          width:5px;
+          display:none;
         }
 
         .profile_index_friends_friends_item_avatar {
@@ -212,6 +213,13 @@
           .profile_index_friends_friends_item_friendship_button {
             padding:6px;
             margin-right:3px;
+            height:14px;
+            .icon-cancel {
+              display:inline-block;
+//              font-size:12px !important;
+              vertical-align:middle;
+//              margin-left:-7px;
+            }
           }          
         }
 
@@ -329,10 +337,6 @@
     height:260px;
     padding:20px 0 20px 20px;
 
-    .iconbar-unread {
-      right:670px;
-
-    }
     #profile_index_feedback_actions {
       z-index:100;
       position:absolute;
@@ -383,19 +387,13 @@
         position:relative;
         border-bottom:1px solid $cn_grey_0;
 
-        .profile_index_feedback_cases_item_read_highlight {
-          display:none;
-          &.unread {
-//            height:10px;
-//            width:10px;
-//            margin: 0 4px;
-//            position:absolute;
-//            left:0px;
-//            top:22px;
-//            border-radius:50%;
-//            background: $cn_colour_1;
-//            display:inline;
-
+        &.unread {
+          background:$cn_colour_2;
+          -webkit-transition: all 0.5s ease;
+          -moz-transition: all 0.5s ease;
+          -o-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+          .profile_index_feedback_cases_item_read_highlight {
             height:50px;
             position:absolute;
             left:0px;
@@ -404,8 +402,12 @@
             width:5px;
             background: $cn_colour_1;
             display:inline;
-
           }
+
+        }
+
+        .profile_index_feedback_cases_item_read_highlight {
+          display:none;
         }
 
         .profile_index_feedback_cases_item_score {
@@ -454,6 +456,21 @@
       float:left;
       margin-left:20px;
       display:none;
+    }
+
+    #profile_index_feedback_chart_empty_cover{
+      background:rgba(255,255,255,0.5);
+      position:absolute;
+      right:0;
+      top:410px;
+      width:495px;
+      height:120px;
+      z-index:1;
+      text-align:center;
+      padding-top:100px;
+      #profile_index_feedback_chart_empty_cover_popup {
+        display:none;
+      }
     }
 
     #profile_index_feedback_results {

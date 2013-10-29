@@ -311,7 +311,7 @@ class Case < ActiveRecord::Base
   def self.cases_analysis_chart_progress_data(user,type,criteria_id)
 
     if type == "categories"
-      if user.cases.count >= 2
+      if user.cases.count > 2
         cases_analysis_chart_progress_data = user.cases.order('created_at asc').map { |c|
           { id: c.id,
             date: c.created_at.strftime("%Y-%m-%d-%H-%I-%S"),
@@ -321,18 +321,12 @@ class Case < ActiveRecord::Base
             totalscore: c.totalscore } }
       else
         # DUMMY DATA
-        cases_analysis_chart_progress_data = []
-        starting_date = Time.now - 1.month
+        require 'json'
+        #'[{"id":1,"date":"2013-10-24-17-05-42","businessanalytics":3.8,"structure":2.0,"interpersonal":1.8,"totalscore":7.6},{"id":2,"date":"2013-10-24-17-05-42","businessanalytics":2.3,"structure":2.3,"interpersonal":1.5,"totalscore":6.1},{"id":3,"date":"2013-10-24-17-05-42","businessanalytics":3.0,"structure":2.3,"interpersonal":3.5,"totalscore":8.8},{"id":4,"date":"2013-10-24-17-05-43","businessanalytics":3.0,"structure":1.3,"interpersonal":2.0,"totalscore":6.3},{"id":5,"date":"2013-10-24-17-05-43","businessanalytics":2.5,"structure":2.5,"interpersonal":2.0,"totalscore":7.0},{"id":6,"date":"2013-10-24-17-05-43","businessanalytics":1.8,"structure":2.3,"interpersonal":3.0,"totalscore":7.1},{"id":7,"date":"2013-10-24-17-05-43","businessanalytics":2.3,"structure":2.5,"interpersonal":2.8,"totalscore":7.6},{"id":8,"date":"2013-10-24-17-05-43","businessanalytics":1.5,"structure":2.5,"interpersonal":3.3,"totalscore":7.3},{"id":9,"date":"2013-10-24-17-05-43","businessanalytics":2.3,"structure":2.3,"interpersonal":2.8,"totalscore":7.3999999999999995},{"id":10,"date":"2013-10-24-17-05-43","businessanalytics":2.0,"structure":3.0,"interpersonal":3.0,"totalscore":8.0},{"id":11,"date":"2013-10-24-17-05-43","businessanalytics":2.3,"structure":1.8,"interpersonal":3.0,"totalscore":7.1}]'
+        #dummy_json ='[{"id":1,"date":"2013-10-24-17-05-42","businessanalytics":2.5,"structure":2.0,"interpersonal":1.8,"totalscore":7.6},{"id":2,"date":"2013-10-24-17-05-42","businessanalytics":2.3,"structure":2.3,"interpersonal":1.5,"totalscore":6.1},{"id":3,"date":"2013-10-24-17-05-42","businessanalytics":2.5,"structure":2.3,"interpersonal":2.0,"totalscore":8.8},{"id":4,"date":"2013-10-24-17-05-43","businessanalytics":3.0,"structure":1.3,"interpersonal":2.0,"totalscore":6.3},{"id":5,"date":"2013-10-24-17-05-43","businessanalytics":2.5,"structure":2.5,"interpersonal":2.0,"totalscore":7.0},{"id":6,"date":"2013-10-24-17-05-43","businessanalytics":1.9,"structure":2.4,"interpersonal":3.1,"totalscore":7.2},{"id":7,"date":"2013-10-24-17-05-43","businessanalytics":2.5,"structure":2.7,"interpersonal":3.0,"totalscore":7.8},{"id":8,"date":"2013-10-24-17-05-43","businessanalytics":1.8,"structure":2.8,"interpersonal":3.6,"totalscore":7.6},{"id":9,"date":"2013-10-24-17-05-43","businessanalytics":2.8,"structure":2.8,"interpersonal":3.3,"totalscore":7.9},{"id":10,"date":"2013-10-24-17-05-43","businessanalytics":2.5,"structure":3.5,"interpersonal":3.5,"totalscore":8.5},{"id":11,"date":"2013-10-24-17-05-43","businessanalytics":3.2,"structure":3.0,"interpersonal":3.5,"totalscore":7.6}]'
+        dummy_json ='[{"id":1,"date":"2013-8-2-17-05-42","businessanalytics":2.5,"structure":2.0,"interpersonal":1.8,"totalscore":7.6},{"id":2,"date":"2013-9-5-17-05-42","businessanalytics":2.3,"structure":2.3,"interpersonal":1.5,"totalscore":6.1},{"id":3,"date":"2013-9-8-17-05-42","businessanalytics":2.5,"structure":2.3,"interpersonal":2.0,"totalscore":8.8},{"id":4,"date":"2013-9-15-17-05-43","businessanalytics":3.0,"structure":1.3,"interpersonal":2.0,"totalscore":6.3},{"id":5,"date":"2013-9-20-17-05-43","businessanalytics":2.5,"structure":2.5,"interpersonal":2.0,"totalscore":7.0},{"id":6,"date":"2013-9-25-17-05-43","businessanalytics":1.9,"structure":2.4,"interpersonal":3.1,"totalscore":7.2},{"id":7,"date":"2013-10-3-17-05-43","businessanalytics":2.5,"structure":2.7,"interpersonal":3.0,"totalscore":7.8},{"id":8,"date":"2013-10-8-17-05-43","businessanalytics":1.8,"structure":2.8,"interpersonal":3.6,"totalscore":7.6},{"id":9,"date":"2013-10-15-17-05-43","businessanalytics":2.8,"structure":2.8,"interpersonal":3.3,"totalscore":7.9},{"id":10,"date":"2013-10-23-17-05-43","businessanalytics":2.5,"structure":3.5,"interpersonal":3.5,"totalscore":8.5},{"id":11,"date":"2013-10-29-17-05-43","businessanalytics":3.2,"structure":3.0,"interpersonal":3.5,"totalscore":7.6}]'
 
-        4.times do |n|
-          cases_analysis_chart_progress_data << { id: n,
-                                                  date: starting_date.strftime("%Y-%m-%d"),
-                                                  businessanalytics: 2,
-                                                  structure: 2,
-                                                  interpersonal: 2,
-                                                  totalscore: 6 }
-          starting_date = starting_date + 1.week
-        end
+        cases_analysis_chart_progress_data = JSON.parse(dummy_json)
       end
     elsif type == "criteria"
 

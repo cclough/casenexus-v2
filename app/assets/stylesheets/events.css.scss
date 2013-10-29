@@ -105,8 +105,8 @@
   }
   .notmonth, .notmonth a { background: $cn_grey_0; }
   .today { 
-    outline: 1px solid $cn_colour_2;
-    background: #edf4f8; 
+    outline: 1px solid $cn_colour_25;
+    background: $cn_colour_2;
   }
   .last_day_of_week { border-right: 0; }
 }

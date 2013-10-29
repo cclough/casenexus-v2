@@ -1,7 +1,7 @@
-.profile_index_friends_friends_item
+.profile_index_friends_friends_item{ class: ("unread" if Friendship.requested?(current_user,friends_item)) }
 
 
-  .profile_index_friends_friends_item_requested_highlight{ class: ("unread" if Friendship.requested?(current_user,friends_item)) }
+  .profile_index_friends_friends_item_requested_highlight
 
 
   .profile_index_friends_friends_item_avatar
@@ -32,15 +32,16 @@
 
     - if Friendship.requested?(current_user,friends_item)
       .profile_index_friends_friends_requested
-        = link_to accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button" do
+        = link_to accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
           %i.icon-checkmark
-        = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button" do
+        = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button application_tooltip","data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
           %i.icon-cancel
           %a.profile_index_friends_actions_profile.btn.btn-colour.btn-round.btn-round-small{ href: "/map?user_id=" + friends_item.id.to_s, "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
             %i.icon-map-pin-streamline
 
   / .profile_index_friends_friends_item_activity{style: "background: url(#{Case.user_activity_chart(friends_item,"profile")})no-repeat"}
 
-  .profile_index_friends_friends_item_status
+  - unless Friendship.requested?(current_user,friends_item)
+    .profile_index_friends_friends_item_status
 
-    %i.icon-fontawesome-webfont-26.profile_index_friends_friends_item_status_icon{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}
+      %i.icon-fontawesome-webfont-26.profile_index_friends_friends_item_status_icon{class: (if friends_item.online_now? then "online_now" elsif friends_item.online_earlier? then "online_earlier" else "online_not" end)}

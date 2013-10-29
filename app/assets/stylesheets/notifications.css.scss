@@ -115,7 +115,7 @@
   height:50px;
   
   &:hover {
-    background:$cn_colour_1;
+    background:$cn_grey_0;
     cursor:pointer;
   }
 
@@ -124,27 +124,31 @@
     color:white;
   }
 
+  &.unread {
+    background:$cn_colour_2;
+    .notifications_index_notifications_item_read_highlight {
+      background: $cn_colour_1;
+      display:inline;
+    }
+  }
+
 }
 
 .notifications_index_notifications_item_avatar {
   text-align:center;
-  font-size:40px;
+  font-size:34px;
   float:left;
   width:70px;
 }
 
 .notifications_index_notifications_item_read_highlight {
   display:none;
-  &.unread {
-    height:66px;
-    position:absolute;
-    left:0px;
-    top:0px;
-    bottom:0px;
-    width:5px;
-    background: $cn_colour_1;
-    display:inline;
-  }
+  height:66px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  bottom:0px;
+  width:5px;
 }
 
 .notifications_index_notifications_item_text_container {

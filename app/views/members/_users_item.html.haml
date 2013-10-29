@@ -52,11 +52,15 @@
 
         - elsif Friendship.pending?(users_item, current_user)
 
-          = link_to("Accept", accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button")
-          = link_to("Reject", reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button")
+          = link_to accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
+            %i.icon-checkmark
+            Accept
+          = link_to reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button application_tooltip", "data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
+            %i.icon-cancel
+            Decline
 
         - elsif !Friendship.exist?(current_user, users_item)
-          %a.map_index_users_item_button_add.btn.btn-colour.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Add as case partner...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
+          %a.map_index_users_item_button_add.btn.btn-colour.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
             %i.icon-plus
             ADD PARTNER
 

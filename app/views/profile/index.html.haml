@@ -113,19 +113,7 @@
     .profile_index_title
       Partners
 
-      - if @friends_requested.count > 0
-        %span.iconbar-unread
-          = @friends_requested.count.to_s
-      %span.iconbar-unread
-        1
-
-
-
-      %input#profile_index_friends_action_input{type:"hidden"}
-
-
     .spacer20
-
 
 
     #profile_index_friends_friends
@@ -166,11 +154,6 @@
     .profile_index_title
       Feedback
 
-      - if @cases.unread.count > 0
-        %span.iconbar-unread
-          = @cases.unread.count.to_s
-
-
       #profile_index_feedback_actions
 
 
@@ -184,7 +167,7 @@
         / %a#profile_index_feedback_actions_start
 
         %select#profile_index_feedback_select.chzn-select{"data-placeholder" => "Select a criteria..."}
-          %option --Select specific criteria
+          %option Show single criteria
           - 11.times do |n|
             %option{value: n}
               = Case.criteria_name(n)
@@ -195,9 +178,9 @@
 
       - if @cases.count > 0
         - @cases.each do |cases_item|
-          .profile_index_feedback_cases_item{"data-case_id" => cases_item.id, "data-case_date" => cases_item.created_at.strftime("%Y-%m-%d-%H-%I-%S") }
+          .profile_index_feedback_cases_item{"data-case_id" => cases_item.id, "data-case_date" => cases_item.created_at.strftime("%Y-%m-%d-%H-%I-%S"), class: ("unread" unless cases_item.read?)}
             
-            .profile_index_feedback_cases_item_read_highlight{ class: ("unread" unless cases_item.read?) }
+            .profile_index_feedback_cases_item_read_highlight
 
             .profile_index_feedback_cases_item_score
               = cases_item.totalscore_percentage.to_f.round(0).to_s + "%"
@@ -216,4 +199,9 @@
           %div
             No feedback yet
 
+
     #profile_index_feedback_chart
+    - if @cases.count < 3
+      #profile_index_feedback_chart_empty_cover
+        #profile_index_feedback_chart_empty_cover_popup
+          This chart will show the trend in your scores once you've done three cases

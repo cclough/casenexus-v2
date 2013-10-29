@@ -79,7 +79,7 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
     #   backgroundColor: "#000000"
     #   backgroundAlpha: 0.15
 
-    if case_count > 1
+    if case_count > 2
       window.chart_analysis_progress.colors = ["#72aac9", "#73bf72", "#f1d765"]
     else
       window.chart_analysis_progress.colors = ["#dee1e3", "#dee1e3", "#dee1e3"]
@@ -104,22 +104,25 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
     categoryAxis.axisColor = "#f0f1f2"
     categoryAxis.startOnAxis = true
     categoryAxis.equalSpacing = true
-    # categoryAxis.labelRotation = 45
+    categoryAxis.labelRotation = 30
     # categoryAxis.fillColor = "#dee1e3"
     # categoryAxis.fillAlpha = 100
+    # if case_count < 3
+    #   categoryAxis.labelsEnabled = false
     categoryAxis.parseDates = true
+    categoryAxis.minPeriod = "ss" # our data is daily, so we set minPeriod to DD
     categoryAxis.dateFormats = [
                                   period: "fff"
-                                  format: "JJ:NN:SS"
+                                  format: "DD MMM"
                                 ,
-                                  period: "ss"
+                                  period: "ss" #edited
                                   format: "DD MMM"
                                 ,
                                   period: "mm"
                                   format: "JJ:NN"
                                 ,
                                   period: "hh"
-                                  format: "JJ:NN"
+                                  format: "DD MMM"
                                 ,
                                   period: "DD"
                                   format: "MMM DD"
@@ -134,7 +137,6 @@ window.cases_analysis_chart_progress_init = (case_count, progress_type, criteria
                                   format: "YYYY"
                                 ]
     #http://www.amcharts.com/javascript/line-chart-with-date-based-data/
-    categoryAxis.minPeriod = "ss" # our data is daily, so we set minPeriod to DD
     
     # Value
     valueAxis = new AmCharts.ValueAxis()

@@ -163,14 +163,9 @@ $(document).ready ->
   # FEEDBACK items
   $(".profile_index_feedback_cases_item").click ->
 
-    # if item unread
-    unread_flag = $(this).find(".profile_index_feedback_cases_item_read_highlight")
-    if unread_flag.hasClass "unread"
-      # Fade out unread marker
-      unread_flag.fadeOut "fast"
-      # Update unread count
-      current_count = $("#profile_index_feedback").find(".iconbar-unread").html()
-      $("#profile_index_feedback").find(".iconbar-unread").html(Number(current_count) - 1)
+    if $(this).hasClass "unread"
+      # take off read class (Faded by css)
+      $(this).removeClass "unread"
 
     case_id = $(this).attr "data-case_id"
 
@@ -217,7 +212,14 @@ $(document).ready ->
   # # Feedback - chart data select
   $("#profile_index_feedback_select").change ->
     criteria_id = $(this).val()
-    if criteria_id != "--Select specific criteria"
-      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "criteria", criteria_id)
+
+    unless cases_analysis_chart_case_count < 3
+
+      if criteria_id != "Show single criteria"
+        window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "criteria", criteria_id)
+      else
+        window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)
+
     else
-      window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)
+      $("#profile_index_feedback_chart_empty_cover_popup").fadeIn "500"
+

@@ -5,11 +5,11 @@
   .modal-header
     %button.close{"data-dismiss" => "modal", type: "button"} ×
 
-    Shoutout!
+    Broadcast
 
   .modal-body
 
-    %p Note: you are limited to one shoutout per day
+    %p Note, you are limited to one broadcast per day
 
     = render 'shared/error_messages', object: @post
 
@@ -20,7 +20,7 @@
     %a.btn.btn-colour.btn-micro{"data-dismiss" => "modal", href: "#"} Close
     .application_submit_button_with_spinner.btn.btn-colour.btn-micro{tabindex: "102"}
       %i.icon-arrow-right.icon-white
-      Submit post
+      Submit
 
 
 .application_spinner_container

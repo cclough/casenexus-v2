@@ -100,7 +100,7 @@ window.notifications_index_show_prime = (user_id) ->
     )
 
     # Hide the read highlight
-    $("#notifications_index_notifications_item_" + user_id + " .notifications_index_notifications_item_read_highlight").fadeOut "fast"
+    $("#notifications_index_notifications_item_" + user_id).removeClass "unread"
 
     # Update the menu
     $.get "/notifications/menu", (data) ->
