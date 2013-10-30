@@ -389,9 +389,9 @@ textarea {
 #modal_help {
   background:white;
   overflow-x: hidden;
-  margin-left:-350px;
+  margin-left:-355px;
   margin-top:-300px;
-  width:700px;
+  width:710px;
   height:600px;
   .modal-body {
     height:490px;
@@ -438,6 +438,10 @@ textarea {
 .modal_help_text {
   margin:20px 0 30px 0;
   text-align:left;
+  color:$cn_grey_-2;
+  &.last_page {
+    text-align:center;
+  }
 }
 
 .modal_help_image {
