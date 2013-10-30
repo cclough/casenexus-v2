@@ -1,6 +1,6 @@
 - case notifications_show_item.ntype
   - when "feedback"
-    = link_to '/cases/' + notifications_show_item.notificable.id.to_s, class: "btn btn-colour  btn-small" do
+    = link_to '/profile?case_id=' + notifications_show_item.notificable.id.to_s, class: "btn btn-colour  btn-small" do
       Jump to case record
   - when "friendship_req"
     - if notifications_show_item.notificable

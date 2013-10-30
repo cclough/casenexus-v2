@@ -172,7 +172,6 @@ $(document).ready ->
     window.modal_cases_show_show(case_id)
 
 
-
   if typeof cases_analysis_chart_case_count is "number"
 
     window.cases_analysis_chart_progress_init(cases_analysis_chart_case_count, "categories", 0)
