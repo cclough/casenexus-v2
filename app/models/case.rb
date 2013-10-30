@@ -64,6 +64,8 @@ class Case < ActiveRecord::Base
   validate :is_a_friend
   validate :no_case_to_self
 
+  validate :limit_send_five_per_day, on: :create
+
   ### Outputs
 
   ## Micro
@@ -388,5 +390,10 @@ class Case < ActiveRecord::Base
                                    notificable: self)
   end
 
+  def limit_send_five_per_day
+    if Case.where("user_id = ? AND DATE(created_at) = DATE(?)", self.user_id, Time.now).all.count > 4
+      errors.add(:base, "You are limited to submitting five feedback forms for the same user per day.")
+    end
+  end
 
 end
