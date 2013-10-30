@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
-  scope :case_count_total_less_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').joins(:cases).joins(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
-  scope :case_count_total_great_10, -> {User.select('(count(cases.id) + count(cases_givns_users.id) + cases_external) as case_count_total').joins(:cases).joins(:cases_givn).group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
+  scope :case_count_total_less_10, -> {joins("LEFT OUTER JOIN \"cases\" ON \"cases\".\"user_id\" = \"users\".\"id\" LEFT OUTER JOIN \"cases\" \"cases_givns_users\" ON \"cases_givns_users\".\"interviewer_id\" = \"users\".\"id\"").group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
+  scope :case_count_total_great_10, -> {joins("LEFT OUTER JOIN \"cases\" ON \"cases\".\"user_id\" = \"users\".\"id\" LEFT OUTER JOIN \"cases\" \"cases_givns_users\" ON \"cases_givns_users\".\"interviewer_id\" = \"users\".\"id\"").group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
 
 
 
@@ -212,11 +212,14 @@ class User < ActiveRecord::Base
       completed.where(created_at: (1.day.ago)..(Time.now))
     end
 
-    def list_local(user,include_current_user)
+    def list_local(user,include_current_user, with_case = false)
       if include_current_user == true
-        user.nearbys(50).completed << user
+
+        # near([user.lat, user.lng], 50, :select => "cases.*, cases_givns_users.*")
+        user.nearbys(50, :select => (with_case ? "cases.*, cases_givns_users.*" : '')).completed << user
       else
-        user.nearbys(50).completed
+        # near([user.lat, user.lng], 50, :select => "cases.*, cases_givns_users.*")
+        user.nearbys(50, :select => (with_case ? "cases.*, cases_givns_users.*" : '')).completed
       end
     end
 
@@ -301,6 +304,7 @@ class User < ActiveRecord::Base
   end
 
   def validate_not_too_close_to_another?
+
      self.errors.add :base, "Your marker is too close to someone else." if self.nearbys(0.008).count > 0
   end
 

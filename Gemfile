@@ -1,6 +1,6 @@
  source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.15'
 gem 'pg'                                         # Database
 gem 'jquery-rails'                               # jQuery
 gem 'jquery-ui-rails'                            # jQuery UI
