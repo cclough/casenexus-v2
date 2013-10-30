@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        flash[:success] = 'Your post has been submitted for review, and will be online shortly.'
+        flash[:success] = 'Your broadcast has been submitted for review, and will be online shortly.'
         format.js
       else
         format.js

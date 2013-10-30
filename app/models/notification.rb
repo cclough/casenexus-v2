@@ -57,9 +57,9 @@ class Notification < ActiveRecord::Base
       when "feedback"
         "New feedback"
       when "friendship_req"
-        "Partner request"
+        "New partner request"
       when "friendship_app"
-        "Partner accepted"
+        "Partner request accepted"
 
       when "event_set_partner"
         "New case appointment"

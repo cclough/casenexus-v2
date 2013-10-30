@@ -131,9 +131,10 @@
 
 
       - else
-        #profile_index_friends_friends_empty
-          %div
-            No partners yet
+        - unless @friends_requested.count > 0
+          #profile_index_friends_friends_empty
+            %div
+              No partners yet
 
 
 
