@@ -3,7 +3,7 @@
 .spacer10
 .spacer5
 
-.btn.btn-small{onClick:"history.go(-1);return true;"}
+= link_to library_path, class: "btn btn-small" do
   %i.icon-arrow-left-1
   Return
 
@@ -21,5 +21,3 @@
 
 #books_show_comments_form_container
   = render "comments/new"
-
-.spacer20
