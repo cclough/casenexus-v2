@@ -21,16 +21,16 @@
       = f.password_field :password, placeholder: 'New password', tabindex: "11", class: "span30 large"
       = f.password_field :password_confirmation, placeholder: 'Confirm password', tabindex: "12", class: "span30 large"
 
-      .row
-        .span24
+      %div
+        #static_home_signup_terms_text
           I agree to the 
           = link_to "Terms & Conditions", terms_path, target:"_new", tabindex: "13", style:"display:inline;"
-        .span1
+        #static_home_signup_terms_checkbox
           = f.check_box :confirm_tac, tabindex: "14"
 
       = f.hidden_field :ip_address, value: request.remote_ip
       
-      .spacer10
+      .spacer15
       
       .application_submit_button_with_disable.with_icon.btn.btn-red.btn-large.btn-block{tabindex: "16"}
         = image_tag "icons/submit_button.png"
