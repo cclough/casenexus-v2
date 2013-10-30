@@ -389,7 +389,14 @@ textarea {
 #modal_help {
   background:white;
   overflow-x: hidden;
-
+  margin-left:-350px;
+  margin-top:-300px;
+  width:700px;
+  height:600px;
+  .modal-body {
+    height:490px;
+    max-height:490px;
+  }
   .arrownav_page {
     display:none;
     margin: 0px;
@@ -400,14 +407,11 @@ textarea {
     right:20px;
     top:15px;
   }
-  .modal-body {
-    height:430px;
-    max-height:430px;
-  }
   .modal-header {
     border-bottom:0px;
   }
   .modal-footer {
+    //outline:1px solid red;
     .btn {
       width:65px;
       -webkit-touch-callout: none;
@@ -432,11 +436,19 @@ textarea {
 }
 
 .modal_help_text {
-  margin:5px 0 15px 0;
-  text-align:center;
+  margin:20px 0 30px 0;
+  text-align:left;
 }
 
-
+.modal_help_image {
+  text-align:center;
+  img {
+    width:580px;
+    height:363px;
+    margin:0 auto;
+    border:1px solid $cn_grey_0;
+  }
+}
 
 
 ///////////////////////////////////////////
