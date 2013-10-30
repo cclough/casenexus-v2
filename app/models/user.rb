@@ -123,6 +123,9 @@ class User < ActiveRecord::Base
 
   ### Micro
 
+  def not_admin
+    where(admin:false)
+  end
   def cases_per_week
     (cases.where(created_at: (4.week.ago)..(Time.now)).count / 4).round(1)
   end
