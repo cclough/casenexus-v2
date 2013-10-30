@@ -16,7 +16,7 @@ class SiteContact < ActiveRecord::Base
   after_create :send_mail_to_admin
 
   def send_mail_to_admin
-    UserMailer.site_contact(self).deliver
+    UserMailer.delay.site_contact(self)
   end
 
 end

@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
       redirect_to @commentable, notice: "Comment posted."
     else
       
-      unless @commentable_model == "books"
+      unless @comment.commentable_type == "Book"
         respond_to do |format|
           format.js
         end

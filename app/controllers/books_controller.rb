@@ -36,7 +36,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @commentable = @book
-    @comments = @commentable.comments.order("created_at desc").paginate(per_page: 20, page: params[:page])
+    @comments = @commentable.comments.includes(:user).order("created_at desc").paginate(per_page: 20, page: params[:page])
     @comment = Comment.new
   end
 

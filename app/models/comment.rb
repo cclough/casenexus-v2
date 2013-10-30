@@ -12,11 +12,16 @@ class Comment < ActiveRecord::Base
   validates_presence_of :commentable
   validates :rating, presence: true, :if => :is_book?
 
+  # One comment per book
+  validates :user_id, :uniqueness => { :scope => :commentable_id,
+    :message => "you are limited to one review per item." }, :if => :is_book?
+
   ### Voting
   # acts_as_voteable
 
 	def is_book?
 	  self.commentable_type == "Book"
 	end
+
 
 end
