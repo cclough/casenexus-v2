@@ -18,12 +18,6 @@ class UserMailer < ActionMailer::Base
     mail(to: "info@casenexus.com", subject: "New User")
   end
 
-  def newheadsup_to_admin(headsup)
-    @headsup = headsup
-
-    mail(to: "info@casenexus.com", subject: "New Headsup")
-  end
-
   def newpost_to_admin(post)
     @post = post
 
@@ -41,11 +35,10 @@ class UserMailer < ActionMailer::Base
     mail(to: email_with_name, subject: "casenexus.com: " + title)
   end
 
-  def feedback(user_from, user_target, url, date, subject, title)
+  def feedback(user_from, user_target, url, subject, title)
     @user_from = user_from
     @user_target = user_target
     @url = url
-    @date = date
     @subject = subject
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"

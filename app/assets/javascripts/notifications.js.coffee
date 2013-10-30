@@ -69,9 +69,6 @@ window.modal_friendship_req_show = (friend_id) ->
       $("#modal_friendship_req").modal "show"
 
 
-      window.application_spinner_prime(".modal.in")
-
-
 
 
 

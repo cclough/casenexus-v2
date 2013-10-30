@@ -6,7 +6,7 @@
   .row
     = simple_form_for @user, url: user_registration_path(@user), :html => { "autocomplete"=>"off" } do |f|
 
-      = f.text_field :invitation_code, placeholder: "Enter your invitation code...", tabindex: "6", class: "span30 large"
+      = f.hidden_field :invitation_code, placeholder: "Invitation code (optional)", tabindex: "6", class: "span30 large"
       
       = render 'shared/error_messages', object: f.object
 

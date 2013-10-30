@@ -23,25 +23,30 @@ window.account_completeedit_bless = () ->
     markerLayer.addTo map
     markerLayer.setGeoJSON json
 
-  # Icon for marker
-  userIcon = L.icon(
-    iconUrl: "/assets/markers/marker_" + account_completeedit_currentuser_university_image
-    iconSize: [35, 57]
-    iconAnchor: [17, 51] # high is left, high is up + THINK IN TERMS OF HALVES OF THE ICON SIZE
-    popupAnchor: [17, 57]
-  )
+    # DRAW USER MARKER AFTER OTHERS TO ENSURE ITS ON TOP
+    # Icon for user marker
+    userIcon = L.icon(
+      # iconUrl: "/assets/markers/marker_" + account_completeedit_currentuser_university_image
+      # iconSize: [35, 57]
+      # iconAnchor: [17, 51] # high is left, high is up + THINK IN TERMS OF HALVES OF THE ICON SIZE
+      # popupAnchor: [17, 57]
+      iconUrl: "/assets/markers/user_location.png"
+      iconSize: [30, 30] # size of the icon
+      iconAnchor: [15, 15] # point of the icon which will correspond to marker's location
+      popupAnchor: [0, -25] # point from which the popup should open relative to the iconAnchor
+    )
 
-  # Marker
-  marker = L.marker(new L.LatLng(parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)),
-    icon: userIcon#L.mapbox.marker.icon("marker-color": "CC0033")
-    draggable: true
-  )
+    # User Marker
+    marker = L.marker(new L.LatLng(parseFloat(account_completeedit_map_lat_start), parseFloat(account_completeedit_map_lng_start)),
+      icon: userIcon#L.mapbox.marker.icon("marker-color": "CC0033")
+      draggable: true
+    )
 
-  marker.addTo map
-  marker.on "dragend", (e) ->
-    coords = e.target.getLatLng()
-    $("#account_completeedit_lat").val(coords.lat)
-    $("#account_completeedit_lng").val(coords.lng)
+    marker.addTo map
+    marker.on "dragend", (e) ->
+      coords = e.target.getLatLng()
+      $("#account_completeedit_lat").val(coords.lat)
+      $("#account_completeedit_lng").val(coords.lng)
 
 
   # Start at current_user, zoomed

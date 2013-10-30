@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   before_create :suggest_username
   before_save { |user| user.email = user.email.downcase }
   before_create :send_newuser_email_to_admin
-  after_create :update_invitation
+
   after_save :send_welcome
   after_validation :geocode, :reverse_geocode
 
@@ -69,7 +69,6 @@ class User < ActiveRecord::Base
 
   # ON CREATE
   validate :validate_university_email, on: :create
-  validate :validate_invitation, on: :create
 
   # ON UPDATE
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
@@ -84,6 +83,11 @@ class User < ActiveRecord::Base
             on: :update
   validate :validate_has_languages?, on: :update
   validate :validate_cases_external?, on: :update
+
+
+  #### Invitation validations - commented for launch
+  # after_create :update_invitation
+  # validate :validate_invitation, on: :create
 
   ### Scopes
   # unused now - vincent work
@@ -292,25 +296,9 @@ class User < ActiveRecord::Base
 
   private
 
-  def validate_invitation
-    return if self.invitation_code == "BYPASS_CASENEXUS_INV"
-    if self.invitation_code.blank?
-      errors.add(:invitation_code, "not given")
-    else
-      if Invitation.where(code: self.invitation_code).exists?
-        if Invitation.where("code = ? and invited_id is not null", self.invitation_code).exists?
-          errors.add(:invitaiton_code, "already used.")
-        end
-      else
-        errors.add(:invitation_code, "doesn't exist.")
-      end
-    end
-  end
-
   def validate_has_languages?
     self.errors.add :base, "You must choose at least one language." if self.languages.blank?
   end
-
 
   def validate_not_too_close_to_another?
      self.errors.add :base, "Your marker is too close to someone else." if self.nearbys(0.008).count > 0
@@ -336,11 +324,6 @@ class User < ActiveRecord::Base
     if completed_was == false and completed == true
       Notification.create!(user: self, sender_id: 1, ntype: "welcome") unless self.id == 1
     end
-  end
-
-  def update_invitation
-    return if self.invitation_code == "BYPASS_CASENEXUS_INV"
-    Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)
   end
 
   def suggest_username
@@ -372,5 +355,25 @@ class User < ActiveRecord::Base
       errors.add(:cases_external, "must be a number between 0 and 500") unless cases_external.between?(0, 500)
     end
   end
+
+  # def validate_invitation
+  #   return if self.invitation_code == "BYPASS_CASENEXUS_INV"
+  #   if self.invitation_code.blank?
+  #     errors.add(:invitation_code, "not given")
+  #   else
+  #     if Invitation.where(code: self.invitation_code).exists?
+  #       if Invitation.where("code = ? and invited_id is not null", self.invitation_code).exists?
+  #         errors.add(:invitaiton_code, "already used.")
+  #       end
+  #     else
+  #       errors.add(:invitation_code, "doesn't exist.")
+  #     end
+  #   end
+  # end
+  
+  # def update_invitation
+  #   return if self.invitation_code == "BYPASS_CASENEXUS_INV"
+  #   Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)
+  # end
 
 end

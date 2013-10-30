@@ -101,11 +101,11 @@ class Notification < ActiveRecord::Base
       when "message"
         Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
       when "feedback"
-        Rails.application.routes.url_helpers.cases_url(id: notificable_id, host: host)
+        "https://www.casenexus.com/profile"
       when "friendship_req"
-        Rails.application.routes.url_helpers.notifications_url(host: host)
+        "https://www.casenexus.com/profile"
       when "friendship_app"
-        Rails.application.routes.url_helpers.events_url(host: host, user_id: sender_id)
+        "https://www.casenexus.com/profile"
 
 
       when "event_set_partner"
@@ -185,21 +185,22 @@ class Notification < ActiveRecord::Base
                                   self.title)
       when "message"
         UserMailer.delay.usermessage(self.sender,
-                               self.user,
-                               self.url,
-                               self.content,
-                               self.title) unless self.user.online_now?
+                                     self.user,
+                                     self.url,
+                                     self.content,
+                                     self.title) unless self.user.online_now?
+        
       when "friendship_req"
-        UserMailer.delay.friendship_req(self.sender,
-                                  self.user,
-                                  self.url,
-                                  self.content,
-                                  self.title)
+        UserMailer.friendship_req(self.sender,
+                                        self.user,
+                                        self.url,
+                                        self.content,
+                                        self.title).deliver
       when "friendship_app"
-        UserMailer.delay.friendship_app(self.sender,
-                                  self.user,
-                                  self.url,
-                                  self.title)
+        UserMailer.friendship_app(self.sender,
+                                        self.user,
+                                        self.url,
+                                        self.title).deliver
 
 
       when "event_set_partner"

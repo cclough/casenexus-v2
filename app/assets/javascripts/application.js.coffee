@@ -201,7 +201,7 @@ $(document).ready ->
   $("input, textarea").placeholder()
 
   # Modals
-  $("#modal_help, #modal_headsup, #modal_contact, #modal_post, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
+  $("#modal_help, #modal_contact, #modal_post, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
     backdrop: true
     show: false
 

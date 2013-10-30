@@ -288,7 +288,7 @@ a:hover {
 .btn.disabled,
 .btn[disabled] {
   background: transparent;
-  color: rgba(255, 255, 255, 0.75);
+  color: $cn_grey_-2;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;

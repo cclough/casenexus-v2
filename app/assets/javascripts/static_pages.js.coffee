@@ -7,31 +7,11 @@ window.static_switch_view = (object) ->
     $("#static_home_" + switch_to).fadeIn 300
 
 
-window.modal_headsup_show = () ->
-  if !($("#modal_headsup").hasClass("in"))
-
-    # clear out inputs and textareas
-    $("#modal_headsup input, #modal_headsup textarea").val ""
-
-    $(".modal").modal "hide"
-
-    $("#modal_headsup").on "shown", ->      
-      window.application_spinner_prime(".modal.in")
-      # prevent enter submission
-      # $("#headsup_email").keypress (e) ->
-      #   return false if e.keyCode is "13"
-
-    $("#modal_headsup").modal "show"
 
 
 
 $(document).ready ->
 
-
-  if $("#static_home_panel_left").size() > 0
-    setTimeout (->
-      window.modal_headsup_show()
-    ), 5000
 
   $(".static_home_switch_link").click ->
     window.static_switch_view(this,"normal")

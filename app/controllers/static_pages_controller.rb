@@ -23,7 +23,6 @@ class StaticPagesController < ApplicationController
     else
       @login = User.new
       @user = User.new
-      @headsup = Headsup.new
       @user.invitation_code = session[:code]
     end
   end

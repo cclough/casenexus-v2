@@ -108,9 +108,6 @@ Casenexus::Application.routes.draw do
   # Site contacts
   match '/site_contacts/create', to: 'site_contacts#create', as: :site_contact
 
-  # Headsups
-  match '/headsups/create', to: 'headsups#create', as: :headsups
-
   # Events
   resources :events, except: [:index,:show] do
     get :ics, on: :collection

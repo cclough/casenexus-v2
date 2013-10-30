@@ -10,7 +10,7 @@ class InvitationsController < ApplicationController
   end
 
   def show
-    redirect_to edit_account_path
+    redirect_to "/"
   end
 
   def create

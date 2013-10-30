@@ -1,14 +1,20 @@
-%h3 Welcome, #{@user_target.username}
+%div{style:"text-align:left;"}
+  %h3 Welcome, #{@user_target.username}
 
-%p Your first step should be to start sending other users a 'Case Partner request' via the Map page. Once they accept, you will open up the rest of the site's functions.
+  %p Casenexus.com is a platform for live case interview practice, and aims to help you prepare for your upcoming strategy consulting interviews. It offers a number of functions that are not available any where else:
 
-%p As you start to explore, the Help dialog will open automatically to explain things - do read it carefully to ensure you don't miss anything.
+  %ul
+    %li Find other people to practise strategy consulting cases with, local to you, or anywhere else in the world, in person or via Skype
+    %li A library of cases carefully selected from the top business schools, rated and reviewed by users
+    %li Book case appointments across time zones, emailing a case script to your case partner so they can prepare it in advance for you, and reminding both of you a few hours beforehand
+    %li Capture qualitative and quantitative feedback on your performance from your peers, in a form designed by a senior BCG consultant with many years of interviewing experience
+    %li Collate and illustrate your feedback, to help you identify your strengths, weaknesses
 
-%p A few points to note:
-%ul
-  %li We take your privacy seriously. Scores and comments you receive in your case feedback are your own, and are not shared with anyone.
-  %li The site is designed to complement your existing case interview preparation materials
+  %p The site is only open to current Oxford and Cambridge students initially, and we hope it gives you a leg up on the competition.
 
-%p You are a founding user, and we are glad to have you on board at this early stage. We would be grateful if you would communicate with us as often as possible, to help improve the site into something that you find useful and that many might benefit from.
+  %p Casenexus.com is still in Beta, and you are amongst the very first students to use it. There are still some bugs to iron out, and we would be very grateful if you would contact us immediately using the site's contact form, or at #{link_to "info@casenexus.com","mailto:info@casenexus.com"}, if you encounter any problems.
 
-%p= link_to("Sign in now", @url)
+  %p Wishing you the best of luck in your interviews this year.
+
+  = link_to "Casenexus.com", "https://www.casenexus.com/"
+
