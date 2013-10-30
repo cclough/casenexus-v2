@@ -184,7 +184,7 @@ footer {
   left:50%;
   margin-left:-300px;
   width:600px;
-  z-index:2147483647;
+  z-index:1051;//above modal
   &.signedout {
     top:90px;
   }

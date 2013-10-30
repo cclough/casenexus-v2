@@ -245,6 +245,24 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.confirm!
 
 
+  puts "Creating Gerald's user"
+
+  user = User.new(
+      email: "gerald.templer@gmail.com",
+      password: "candesic123",
+      password_confirmation: "candesic123",
+      lat: 50.51030,
+      lng: -0.1344,
+      invitation_code: 'BYPASS_CASENEXUS_INV',
+      username: "gtempler",
+      confirm_tac: "1",
+      time_zone: "London",
+      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+
+  user.completed = false
+  user.active = false # FOR GERALD SPECIAL
+  user.save!
+  user.confirm!
 
   puts "Creating Julia's user"
 
@@ -256,14 +274,11 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lng: -1.260194,
       invitation_code: 'BYPASS_CASENEXUS_INV',
       username: "julia.richardson",
-      language_ids: 1,
-      degree_level: 0,
-      cases_external: 0,
       confirm_tac: "1",
       time_zone: "London",
       ip_address: "89.168.69.119")
 
-  user.completed = true
+  user.completed = false
   user.active = false # FOR JULIA SPECIAL
   user.save!
   user.confirm!
@@ -279,9 +294,6 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lng: 0.1167,
       invitation_code: 'BYPASS_CASENEXUS_INV',
       username: "mmhdgd",
-      language_ids: 1,
-      degree_level: 0,
-      cases_external: 10,
       skype: "mmhdgd",
       confirm_tac: "1",
       time_zone: "London",
@@ -301,15 +313,12 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lng: -0.26043176651001,
       invitation_code: 'BYPASS_CASENEXUS_INV',
       username: "jack.cooney",
-      language_ids: 1,
-      degree_level: 0,
-      cases_external: 10,
       skype: "jack.cooney.1",
       confirm_tac: "1",
       time_zone: "London",
       ip_address: "89.168.69.119")
 
-  user.completed = true
+  user.completed = false
   user.save!
   user.confirm!
 
@@ -323,15 +332,12 @@ if %w(production development).include?(Rails.env) && User.count == 0
       lng: -0.24043176651001,
       invitation_code: 'BYPASS_CASENEXUS_INV',
       username: "dara.latinwo",
-      language_ids: 1,
-      degree_level: 0,
-      cases_external: 10,
       skype: "daralatinwo74",
       confirm_tac: "1",
       time_zone: "London",
       ip_address: "89.168.69.119")
 
-  user.completed = true
+  user.completed = false
   user.save!
   user.confirm!
 
@@ -346,7 +352,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Friendship.connect(User.find(1), User.find(4))
   Friendship.connect(User.find(1), User.find(5))
   Friendship.connect(User.find(1), User.find(6))
-
+  Friendship.connect(User.find(1), User.find(7))
 end
 
 

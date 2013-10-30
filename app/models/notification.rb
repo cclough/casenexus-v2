@@ -191,16 +191,16 @@ class Notification < ActiveRecord::Base
                                      self.title) unless self.user.online_now?
         
       when "friendship_req"
-        UserMailer.friendship_req(self.sender,
+        UserMailer.delay.friendship_req(self.sender,
                                         self.user,
                                         self.url,
                                         self.content,
-                                        self.title).deliver
+                                        self.title)
       when "friendship_app"
-        UserMailer.friendship_app(self.sender,
+        UserMailer.delay.friendship_app(self.sender,
                                         self.user,
                                         self.url,
-                                        self.title).deliver
+                                        self.title)
 
 
       when "event_set_partner"
