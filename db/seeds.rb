@@ -183,12 +183,12 @@ if %w(production development).include?(Rails.env) && User.count == 0
   Book.create!(btype: "case", tag_list: ["Hotel","Market entry"], url: "wharton_2010_14.pdf", thumb: "wharton.png", university_id: "11", chart_num: "0", difficulty: "3", title: "Zenith Hotel", source_title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "http://www.wharton.upenn.edu/", desc: "Zenith Hotel is a global hotel chain with 50 hotels in 20 countries. The company is evaluating the construction of a new hotel in the Bahamas. Zenith has come to us asking whether it should and can move forward with the project.")
 
   # Guides
-  Book.create!(btype: "guide", url: "guide_wharton_2009-2010.pdf", thumb: "wharton.png", university_id: "10", title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "http://www.wharton.upenn.edu/")
-  Book.create!(btype: "guide", url: "guide_fuqua_2010-2011.pdf", thumb: "fuqua.png", university_id: "8", title: "Fuqua Casebook 2010-2011", author: "The Fuqua School of Business, Duke", author_url: "http://www.fuqua.duke.edu/")
+  Book.create!(btype: "guide", url: "guide_wharton_2009-2010.pdf", thumb: "wharton.png", university_id: "10", title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "http://www.wharton.upenn.edu/", desc: "The Wharton School's 2009-2010 guide to strategy consulting case interviews.")
+  Book.create!(btype: "guide", url: "guide_fuqua_2010-2011.pdf", thumb: "fuqua.png", university_id: "8", title: "Fuqua Casebook 2010-2011", author: "The Fuqua School of Business, Duke", author_url: "http://www.fuqua.duke.edu/", desc: "The Fuqua Business School at Duke's 2010-2011 guide on how to approach a consulting interview.")
   
   # Links
-  Book.create!(btype: "link", title: "Introduction to Case Interviews", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "The best introduction out there to case interviews. 6 hours of Videos of a presentation at Harvard Business School - 12 videos", url: "http://www.youtube.com/watch?v=fBwUxnTpTBo&list=UU-YKX7L2GNNA-IHrhMpwzWA&index=13", thumb: "caseinterview.png")
-  Book.create!(btype: "link", title: "Look Over My Shoulder Programme", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "Series of Audio Tapes", url: "http://www.caseinterview.com/look-over-my-shoulder", thumb: "caseinterview.png")
+  Book.create!(btype: "web", title: "Introduction to Case Interviews", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "Widely regarded as one of the the best introductions to case interviews. 6 hours of video is offered for free, of a presentation by the site's ex-McKinsey founder Victor Cheng, at Harvard Business School.", url: "http://www.caseinterview.com/", thumb: "caseinterview.png")
+  Book.create!(btype: "web", title: "Look Over My Shoulder Programme", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "Series of audio tapes walking through live case interviews with voice-over commentary.", url: "http://www.caseinterview.com/look-over-my-shoulder", thumb: "caseinterview.png")
 
 
 
