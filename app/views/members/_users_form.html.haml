@@ -18,13 +18,13 @@
 
       .map_index_users_form_button.btn.btn-micro{"data-radio"=>0, class: ("active" if params[:user_id].blank? && params[:show].blank?)}
         Near you
-        - user_near_count = User.list_local(current_user,false).completed.count
+        - user_near_count = User.list_local(current_user,false).completed.not_admin.count
         %span.map_index_users_form_filters_button_user_count
           = user_near_count
 
       .map_index_users_form_button.btn.btn-micro{"data-radio"=>1}
         All
-        - user_all_count = User.list_all_excl_current(current_user).completed.count
+        - user_all_count = User.list_all_excl_current(current_user).completed.not_admin.count
         %span.map_index_users_form_filters_button_user_count
           = user_all_count
 
@@ -37,7 +37,7 @@
       .map_index_users_form_button.btn.btn-micro{"data-radio"=>2}
         New
         %span.map_index_users_form_filters_button_user_count
-          = User.list_new.count
+          = User.list_new.not_admin.count
 
 
     .map_index_users_form_filters_span
@@ -47,13 +47,13 @@
         ONLINE
       .map_index_users_form_button.btn.btn-micro{"data-radio"=>3}
         Today
-        - online_today_count = User.list_online_today(current_user).completed.count
+        - online_today_count = User.list_online_today(current_user).completed.not_admin.count
         %span.map_index_users_form_filters_button_user_count
           = online_today_count
 
       .map_index_users_form_button#map_index_users_form_button_online_now.btn.btn-micro{"data-radio"=>4, class: ("active" unless params[:show].blank?) }
         Now
-        - online_now_count = User.list_online_now(current_user).completed.count
+        - online_now_count = User.list_online_now(current_user).completed.not_admin.count
         %span.map_index_users_form_filters_button_user_count
           = online_now_count
 
