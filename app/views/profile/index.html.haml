@@ -111,6 +111,9 @@
     = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-container"=>"body", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: " btn btn-colour btn-round application_tooltip", method: :delete do
       %i.icon-logout
 
+    - if current_user.admin?
+      = link_to rails_admin_url, "data-container"=>"body", "data-original-title"=>"Admin", rel: "tooltip", "data-placement"=>"bottom", class: " btn btn-colour btn-round application_tooltip" do
+        A
 
 
 

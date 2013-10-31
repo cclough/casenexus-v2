@@ -56,9 +56,11 @@ $(document).ready ->
       $('#footer_posts_post_container').attr('data-current_post_id', new_post_id)
 
       # update username
-      $.get "/posts/" + new_post_id + "/show_username", (data) ->
-        $("#footer_posts_username").html data
 
+      $("#footer_posts_username").fadeOut "fast", ->
+        $.get "/posts/" + new_post_id + "/show_username", (data) ->
+          $("#footer_posts_username").html data
+          $("#footer_posts_username").fadeIn "fast"
 
       # hide up arrow if nothing in future
       if ($("#footer_posts_post").attr("data-post_next_id") == "nil")
