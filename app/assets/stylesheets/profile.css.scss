@@ -278,7 +278,8 @@
   #profile_index_panel_calendar {
     height:309px;
     padding:20px 0 20px 20px;
-
+    @include prevent_text_highlight;
+    
     #profile_index_calendar_actions {
       z-index:100;
       position:absolute;
