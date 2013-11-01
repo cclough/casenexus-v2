@@ -21,7 +21,7 @@
     %option{value: ""} Select a case...
     - @books.each do |books_select_item|
       %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
-        = books_select_item.author.split(' ')[0] + " - " + books_select_item.title
+        = books_select_item.author.split(' ')[0] + " - " + books_select_item.title_trunc
 
 
 

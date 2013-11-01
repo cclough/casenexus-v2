@@ -29,6 +29,10 @@ class Book < ActiveRecord::Base
     url.partition('.').first + "_charts.pdf"
   end
 
+  def title_trunc
+    title.truncate(28, separator: ' ')
+  end
+
   def chart_num_in_words
     if chart_num == 0
       "No charts"

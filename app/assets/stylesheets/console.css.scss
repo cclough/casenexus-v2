@@ -120,17 +120,20 @@
   top:57px;
   margin-left:-270px !important;
   z-index:1000;
-  width:250px;
-  .chzn-results {
-    width:250px;
-    .active-result {
-      width:250px;
+  width:260px;
+  .chzn-drop {
+    width:260px;
+    .chzn-results {
+      width:260px;
+      .active-result {
+        width:248px; // subtract padding of 12
+      }
     }
   }
   .chzn-container-single .chzn-single {
     height:35px;
     line-height:35px;
-    width:250px;
+    width:252px;
   }
 }
 
