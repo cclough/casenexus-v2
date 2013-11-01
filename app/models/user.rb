@@ -58,8 +58,8 @@ class User < ActiveRecord::Base
   before_create :set_university
   before_create :suggest_username
   before_save { |user| user.email = user.email.downcase }
-  before_create :send_newuser_email_to_admin
-
+  
+  after_create :send_newuser_email_to_admin # has to be after user has a username set
   after_save :send_welcome
   after_validation :geocode, :reverse_geocode
 
