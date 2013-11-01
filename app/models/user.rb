@@ -177,6 +177,10 @@ class User < ActiveRecord::Base
 
   class << self
 
+    def users_allowed_on_map
+      completed.active.not_admin
+    end
+
     def confirmed
       where("confirmed_at is not null")
     end
@@ -212,7 +216,7 @@ class User < ActiveRecord::Base
     ### Lists for filters
 
     def list_new
-      completed.where(created_at: (1.day.ago)..(Time.now))
+      where(created_at: (1.day.ago)..(Time.now))
     end
 
     def list_local(user,include_current_user, with_case = false)

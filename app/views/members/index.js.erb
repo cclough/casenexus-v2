@@ -44,7 +44,7 @@ markerLayer.on('layeradd', function(e) {
     marker.on('click', function () {
  
       // pan, offset pan, (zoom?) and show button
-      // window.map.setZoom(15);
+      window.map.setZoom(15);
       window.map.panTo(marker.getLatLng());
       $("#map_index_map_zoomout").fadeIn("fast");
 
