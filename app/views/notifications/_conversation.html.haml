@@ -4,7 +4,7 @@
 - @notifications = Notification.includes(:sender).history(current_user, @sender)
 
 / line won't work in show model action for some reason
-- Notification.history(current_user, @sender).each { |n| n.read! }
+- Notification.history(current_user, @sender).where(user_id: current_user.id).each { |n| n.read! }
 
 - if @notifications.count > 0
   - @notifications.each do |notifications_show_item|

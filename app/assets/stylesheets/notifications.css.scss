@@ -122,6 +122,9 @@
   &.notifications_index_notifications_item_select {
     background:$cn_colour_1;
     color:white;
+    &:hover {
+      background:$cn_colour_15;
+    }
   }
 
   &.unread {
@@ -129,6 +132,9 @@
     .notifications_index_notifications_item_read_highlight {
       background: $cn_colour_1;
       display:inline;
+    }
+    &:hover {
+      background:$cn_colour_25;
     }
   }
 
