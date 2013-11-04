@@ -286,7 +286,7 @@ class Case < ActiveRecord::Base
 
     activity_str = array.map(&:inspect).join(',')
 
-    return "https://chart.googleapis.com/chart?#{options[:gridlines]}chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=0,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
+    return "https://chart.googleapis.com/chart?#{options[:gridlines]}chs=#{options[:size]}&cht=ls&chco=#{options[:line_color]}&chm=B,#{options[:area_color]},0,0,0&chd=t:#{activity_str}&chds=-0.3,#{max_data_point}&chf=bg,s,#{options[:bgcolor]}&"
 
   end
   
