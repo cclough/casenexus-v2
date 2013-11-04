@@ -51,7 +51,7 @@
       margin-left:-15px;
       text-align:center;
       font-size:30px;
-      z-index:-1;
+      z-index:0;
       color:$cn_grey_-1;
     }
     .events_calendar_day_name {
@@ -76,7 +76,9 @@
 
     .events_calendar_day_events {
       height:92px;
-      margin-bottom:20px;      
+      margin-bottom:20px; 
+      z-index:1;
+      position:relative;     
     }
 
     .events_calendar_day_event {
@@ -100,6 +102,10 @@
   .today { 
     outline: 1px solid $cn_colour_25;
     background: $cn_colour_2;
+    color:$cn_colour_1;
+    .events_calendar_day_num {
+      color:$cn_colour_1;
+    }
   }
   .last_day_of_week { border-right: 0; }
 }
