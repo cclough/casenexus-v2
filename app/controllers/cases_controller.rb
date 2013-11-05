@@ -84,5 +84,11 @@ class CasesController < ApplicationController
     
   end
 
+  def destroy
+    @case = Case.find(params[:id])
+    @case.destroy
+    flash[:success] = "The feedback has been deleted from your profile."
+    redirect_to "/"
+  end
 
 end

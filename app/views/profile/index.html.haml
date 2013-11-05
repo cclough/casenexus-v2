@@ -206,6 +206,11 @@
                 = cases_item.interviewer.username
               .profile_index_feedback_cases_item_subject
                 = cases_item.subject_function_trunc
+
+            .profile_index_feedback_cases_item_delete
+              = link_to cases_item, method: :delete, confirm: "Are you sure you want to delete your comment? This cannot be undone." do
+                %i.icon-cancel
+
             .profile_index_feedback_cases_item_date
               = cases_item.date_fb
             / = link_to_remote cases_path(cases_item), :method => :delete, :confirm => "Are you sure you want to permanently delete this post?", :success => "$(this).up('.profile_index_feedback_cases_item').remove();" do

@@ -38,7 +38,7 @@ Casenexus::Application.routes.draw do
   match '/map', to: 'map#index', as: :map
 
   # Profile
-  match '/profile', to: 'profile#index', as: :root
+  # match '/profile', to: 'profile#index', as: :root
 
   # Account
   resource :account, controller: 'account' do
@@ -67,7 +67,7 @@ Casenexus::Application.routes.draw do
   resources :invitations, except: [:edit, :update]
 
   # Cases
-  resources :cases, only: [:show, :new, :create] do
+  resources :cases, only: [:show, :new, :create, :destroy] do
     get :results, on: :collection
   end
 

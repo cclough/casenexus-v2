@@ -452,6 +452,19 @@
         }
         &:hover {
           background:$cn_grey_0;
+
+          .profile_index_feedback_cases_item_delete {
+            display:inline-block;
+          }
+        }
+
+        .profile_index_feedback_cases_item_delete {
+          display:inline-block;
+          position:absolute;
+          right:60px;
+          top:3px;
+          display:none;
+          opacity:0.4;
         }
       }
     }
