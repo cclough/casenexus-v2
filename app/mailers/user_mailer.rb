@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
   def newuser_to_admin(user)
@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
   def feedback(user_from, user_target, url, subject, title)
@@ -42,7 +42,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
   def friendship_req(user_from, user_target, url, message, title)
@@ -52,7 +52,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
   def friendship_app(user_from, user_target, url, title)
@@ -61,7 +61,7 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
 
@@ -84,7 +84,7 @@ class UserMailer < ActionMailer::Base
     end
 
     email_with_name = "#{@user_partner.username} <#{@user_partner.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
   def event_setchangecancelremind_sender(user_current, user_partner, event_id, title, url, ntype)
@@ -105,7 +105,7 @@ class UserMailer < ActionMailer::Base
     end
 
     email_with_name = "#{@user_current.username} <#{@user_current.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: " + title)
+    mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
 
   def invitation(invitation)
@@ -114,9 +114,9 @@ class UserMailer < ActionMailer::Base
     @invitation = invitation
 
     if invitation.user.id == 1
-      mail(to: receiver, subject: "Invitation to casenexus.com")
+      mail(to: receiver, subject: "Invitation to Casenexus.com")
     else
-      mail(to: receiver, subject: "Invitation to casenexus.com", template_name: 'invitation_user')
+      mail(to: receiver, subject: "Invitation to Casenexus.com", template_name: 'invitation_user')
     end
   end
 
@@ -142,7 +142,7 @@ class UserMailer < ActionMailer::Base
     attachments["charts.pdf"] = File.read(File.join(Rails.root, 'app','assets','images','library','charts',book.charts_file_name))
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "casenexus.com: Charts for a Case") 
+    mail(to: email_with_name, subject: "Casenexus.com: Charts for a case") 
 
   end
 
