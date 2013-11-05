@@ -29,8 +29,11 @@
         %i.icon-calendar 
 
     - unless books_item.btype == "web"
-      = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small"
 
+      - if books_item.url[0,7] == "http://"
+        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, class: "btn btn-colour btn-round btn-round-small"
+      - else
+        = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small"
 
 
 
