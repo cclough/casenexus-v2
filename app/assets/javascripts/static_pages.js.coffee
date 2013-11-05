@@ -19,6 +19,17 @@ $(document).ready ->
   window.application_disablesubmit_prime "#static_home_signin"
   window.application_disablesubmit_prime "#static_home_signup"
 
+  # Contact modal show 
+  $("#static_home_footer_contact").click ->
+    window.modal_contact_show()
+
+  # $("#static_home_title_url").fadeIn "200"
+  # $("#static_home_subtitle").fadeIn "300"
+  # $("#static_home_logo").fadeIn "400"
+  # $("#static_home_footer").fadeIn "500"
+
+
+
   #////////////////////////////////////////////////////
   #//////////////////  SIGNUP   ///////////////////////
   #////////////////////////////////////////////////////

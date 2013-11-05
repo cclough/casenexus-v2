@@ -18,7 +18,7 @@
 
 
 #static_home_panel_left { 
-  width: 600px;
+  width: 600px !important;
   float:left;
   height:100%;
 
@@ -26,11 +26,14 @@
 
   #static_home_title {
     font-size:35px;
-    margin-top:110px;
+    margin-top:90px;
     line-height:30px;
+
+
     #static_home_title_url {
       font-weight:400;
       margin-top:10px;
+//      display:none;
     }
 
     #static_home_title_beta {
@@ -44,13 +47,13 @@
       -moz-border-radius:    3px;
       -webkit-border-radius: 3px;
       border-radius:         3px;
-
     }
   }
 
   #static_home_subtitle {
     margin-top:25px;
     font-size:20px;
+//    display:none;
   }
 
   #static_home_logo {
@@ -58,6 +61,19 @@
 
     img {
       max-height:160px;
+    }
+//    display:none;
+  }
+
+  #static_home_footer {
+//    display:none;
+    width:200px;
+    margin:50px auto 0;
+    border-top:1px solid $cn_grey_0;
+    padding:5px;
+
+    #static_home_footer_contact {
+      cursor:pointer;
     }
   }
 
@@ -152,6 +168,7 @@
     position:absolute;
     left:11px;
     top:10px;
+    opacity:0.4;
   }
   i {
     // For complete_profile skype and linkedin
@@ -159,6 +176,7 @@
     top:9px;
     left:13px;
     font-size:20px;
+    opacity:0.6;
   }
 }
 
