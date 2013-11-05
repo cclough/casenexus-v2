@@ -10,7 +10,9 @@
     url("cn-font-icons.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+
 }
+
 [data-icon]:before {
   font-family: "cn-font-icons" !important;
   content: attr(data-icon);
@@ -632,5 +634,49 @@
 
 .icon-th-list:before {
   content: "\e02e";
+}
+
+.icon-fontawesome-webfont-31:before {
+  content: "\e037";
+}
+
+.icon-fontawesome-webfont-34:before {
+  content: "\e038";
+}
+
+.icon-fontawesome-webfont-35:before {
+  content: "\e039";
+}
+
+.icon-edit-modify-streamline:before {
+  content: "\e03a";
+}
+
+.icon-page-edit:before {
+  content: "\e03b";
+}
+
+.icon-pencil:before {
+  content: "\e03c";
+}
+
+.icon-fontawesome-webfont-36:before {
+  content: "\e03d";
+}
+
+.icon-pencil-1:before {
+  content: "\e03e";
+}
+
+.icon-pencil-2:before {
+  content: "\e03f";
+}
+
+.icon-pen:before {
+  content: "\e040";
+}
+
+.icon-fontawesome-webfont-37:before {
+  content: "\e041";
 }
 

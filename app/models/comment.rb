@@ -8,7 +8,7 @@ class Comment < ActiveRecord::Base
   
   ### Validations
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 1000, minimum: 10 }
   validates_presence_of :commentable
   validates :rating, presence: true, :if => :is_book?
 
@@ -23,5 +23,12 @@ class Comment < ActiveRecord::Base
 	  self.commentable_type == "Book"
 	end
 
+  def date_fb
+    if created_at > DateTime.now - 3.days
+      created_at.strftime("%a")
+    else
+      created_at.strftime("%d %b")   
+    end
+  end
 
 end

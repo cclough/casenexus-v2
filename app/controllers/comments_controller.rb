@@ -27,7 +27,8 @@ class CommentsController < ApplicationController
       flash[:success] = 'Your comment has been updated.'
       redirect_to @comment.commentable
     else
-      render "edit"
+      redirect_to @comment.commentable
+      flash[:error] = @comment.errors.full_messages.map {|error| "#{error}<br>"}.join
     end
 
   end

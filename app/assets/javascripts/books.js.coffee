@@ -47,12 +47,12 @@ $(document).ready ->
     
     if $("#books_filter_sort_direction").val() == "asc"
       $("#books_filter_sort_direction").val("desc")
-      $("#books_index_form_filters_sort_direction_button").html "Descending <i class=icon-arrow-down></i>"
+      $("#books_index_form_filters_sort_direction_button").html "Descending <i class=icon-fontawesome-webfont-35></i>"
       window.books_index_books_updatelist()
     
     else if $("#books_filter_sort_direction").val() == "desc"
       $("#books_filter_sort_direction").val("asc")
-      $("#books_index_form_filters_sort_direction_button").html "Ascending <i class=icon-arrow-up></i>"
+      $("#books_index_form_filters_sort_direction_button").html "Ascending <i class=icon-fontawesome-webfont-34></i>"
       window.books_index_books_updatelist()
 
 
@@ -66,3 +66,14 @@ $(document).ready ->
 
     window.books_index_books_updatelist()
 
+
+
+  # SHOW - comment edit
+  $(".books_show_comment_edit_button").click ->
+
+    this_button = $(this)
+    comment_id = this_button.data("comment_id")
+    
+    $.get "/comments/"+comment_id+"/edit", (data) ->
+      this_button.parent().parent().parent().html(data)
+      this_button.parent().parent().hide()

@@ -10,6 +10,9 @@
       window.books_index_books_updatelist()
     });
   });
+
+/ = paginate @books
+
 - if @books.to_a.size > 0
 
   - @books.each do |books_item|

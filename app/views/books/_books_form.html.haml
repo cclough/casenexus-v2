@@ -36,6 +36,7 @@
     = hidden_field_tag :books_filter_btype, "all"
 
 
+    .spacer30
 
     .books_index_form_filters_title
       Sort by
@@ -64,9 +65,10 @@
 
     .spacer30
 
-    #books_index_form_filters_sort_direction_button.btn.btn-micro
+    #books_index_form_filters_sort_direction_button.btn.btn-micro.active
       Descending
-      %i.icon-arrow-down
+      %i.icon-fontawesome-webfont-35 
+      / arrow-down
     = hidden_field_tag :books_filter_sort_direction, "desc"
 
     .spacer20
