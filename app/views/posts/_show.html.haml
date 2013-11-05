@@ -13,8 +13,9 @@
 
   #footer_posts_post_close.close{type: "button"} ×
   
-  #footer_posts_post_username
-    = link_to post.user.username, "/map?user_id=" + post.user.id.to_s
-    - " - "
-    = post.date_fb
-  = post.content
+  #footer_posts_post_content{ "data-user_id" => post.user.id }
+    #footer_posts_post_username
+      = link_to post.user.username, "/map?user_id=" + post.user.id.to_s
+      - " - "
+      = post.date_fb
+    = post.content

@@ -1,6 +1,6 @@
 footer_posts_post_prime = () ->
 
-  $("#footer_posts_post").click ->
+  $("#footer_posts_post_content").click ->
 
     user_id = $(this).attr("data-user_id")
 
