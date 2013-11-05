@@ -222,9 +222,11 @@ class User < ActiveRecord::Base
     def list_local(user,include_current_user, with_case = false)
       if include_current_user == true
         # near([user.lat, user.lng], 50, :select => "cases.*, cases_givns_users.*")
+        # user.nearbys(50, :select => (with_case ? "cases.*, cases_givns_users.*" : '')).completed << user
         user.nearbys(50).completed << user
       else
         # near([user.lat, user.lng], 50, :select => "cases.*, cases_givns_users.*")
+        # user.nearbys(50, :select => (with_case ? "cases.*, cases_givns_users.*" : '')).completed
         user.nearbys(50).completed
       end
     end
