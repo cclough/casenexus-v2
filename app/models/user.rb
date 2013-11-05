@@ -131,7 +131,7 @@ class User < ActiveRecord::Base
   end
 
   def username_trunc
-    (username).truncate(15, separator: ' ')
+    (username).truncate(13)
   end
 
   def case_count_recd
