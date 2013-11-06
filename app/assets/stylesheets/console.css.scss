@@ -93,20 +93,30 @@
   }
 }
 
+
+
+#console_index_subnav_button_viewswitch {
+  position:absolute;
+  top:8px;
+  margin-left:-50px !important;
+  font-size:20px;
+  height:20px;
+}
+
 /////////////////////////////////////////////
 //////////////// Send PDF Button ////////////
 /////////////////////////////////////////////
 
 
 #console_index_subnav_button_sendpdf_container {
-  width:130px;
+  width:110px;
   float:left;
   margin-top:8px;
   margin-left:10px;
 }
 
 .console_index_subnav_button_sendpdf_state {
-  width: 130px;
+  width: 110px;
 }
 
 
@@ -117,7 +127,7 @@
 #console_index_subnav_select_books_container {
   position:absolute;
   top:8px;
-  margin-left:-270px !important;
+  margin-left:-320px !important;
   .chzn-drop {
     width:260px;
     .chzn-results {
@@ -156,6 +166,7 @@
     display:inline-block;
     #console_index_subnav_button_skype {
       font-size:20px;
+      height:20px;
     }
   }
   #console_index_subnav_select_friends{

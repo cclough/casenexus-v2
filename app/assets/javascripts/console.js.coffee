@@ -20,7 +20,27 @@ console_countdown = (element, minutes, seconds) ->
   , 1000)
 
 
+console_index_subnav_viewswitch_toggle = ->
 
+  current_view_state = $("#console_index_subnav_form").attr "data-current_view_state"
+
+  if current_view_state == "split"
+    $("#console_index_pdfjs").css("right","0px")
+    $("#console_index_pdfjs_blank").css("width","100%")
+    $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
+
+    $("#console_index_feedback_frame").hide "slide", direction: "right", 100
+    $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-41></i>"
+    $("#console_index_subnav_form").attr("data-current_view_state","single-left")
+
+  else
+    $("#console_index_pdfjs").css("right","50%")
+    $("#console_index_pdfjs_blank").css("width","50%")
+    $("#console_index_feedback_frame").show "slide", direction: "right", 100
+
+    $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
+
+    $("#console_index_subnav_form").attr("data-current_view_state","split")
 
 window.console_index_subnav_sendpdf_check = ->
 
@@ -96,6 +116,10 @@ window.console_index_subnav_timer_prime = ->
 
 
 $(document).ready ->
+
+  # View switch button
+  $("#console_index_subnav_button_viewswitch").click ->
+    console_index_subnav_viewswitch_toggle()
 
   # Case select change
   $("#console_index_subnav_select_books").change ->

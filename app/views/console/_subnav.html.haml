@@ -1,4 +1,4 @@
-= form_tag 'console/sendpdf', remote: true, id: "console_index_subnav_form" do |f| # form must be at top as has to include e.g target_id field
+= form_tag 'console/sendpdf', remote: true, id: "console_index_subnav_form", "data-current_view_state"=>"split" do |f| # form must be at top as has to include e.g target_id field
 
 
 
@@ -12,6 +12,8 @@
           = books_select_item.author.split(' ')[0] + " - " + books_select_item.title_trunc
 
 
+  #console_index_subnav_button_viewswitch.btn.btn-colour.btn-small.application_tooltip{"data-original-title"=>"Toggle fullscreen...", rel: "tooltip", "data-placement"=>"bottom"}
+    %i.icon-fontawesome-webfont-38
 
   #console_index_subnav_button_sendpdf_container
     = render 'console/sendpdfbutton', layout: false
