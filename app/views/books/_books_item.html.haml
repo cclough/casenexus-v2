@@ -31,7 +31,7 @@
     - unless books_item.btype == "web"
 
       - if books_item.url[0,7] == "http://"
-        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, class: "btn btn-colour btn-round btn-round-small"
+        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, target:"_new",class: "btn btn-colour btn-round btn-round-small"
       - else
         = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small"
 
