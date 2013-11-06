@@ -45,17 +45,19 @@
 
       %div
         ONLINE
-      .map_index_users_form_button.btn.btn-micro{"data-radio"=>3}
-        Today
-        - online_today_count = User.users_allowed_on_map.list_online_today(current_user).count
-        %span.map_index_users_form_filters_button_user_count
-          = online_today_count
 
       .map_index_users_form_button#map_index_users_form_button_online_now.btn.btn-micro{"data-radio"=>4, class: ("active" unless params[:show].blank?) }
         Now
         - online_now_count = User.users_allowed_on_map.list_online_now(current_user).count
         %span.map_index_users_form_filters_button_user_count
           = online_now_count
+          
+      .map_index_users_form_button.btn.btn-micro{"data-radio"=>3}
+        Today
+        - online_today_count = User.users_allowed_on_map.list_online_today(current_user).count
+        %span.map_index_users_form_filters_button_user_count
+          = online_today_count
+
 
 
 
