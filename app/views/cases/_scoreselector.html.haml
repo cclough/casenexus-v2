@@ -6,4 +6,11 @@
     - else
       - class_content = "cases_new_scoreselector_button btn btn-colour"
 
-    = content_tag :div, i, class: class_content, "data-score" => i, "data-criteria" => criteria, "data-category" => category
+    = content_tag :div, class: class_content, "data-score" => i, "data-criteria" => criteria, "data-category" => category do
+      = i
+      - if i == 1
+        .cases_new_scoreselector_button_desc
+          POOR
+      - elsif i == 5
+        .cases_new_scoreselector_button_desc
+          GOOD

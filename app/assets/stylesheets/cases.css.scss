@@ -335,6 +335,19 @@
 
 .cases_new_scoreselector_button {
   width:15px;
+  position:relative;
+  margin-right: 3px;
+}
+
+.cases_new_scoreselector_button_desc {
+  font-size:7px;
+  position:absolute;
+  width:20px;
+  left:50%;
+  margin-left:-10px;
+  text-align:center;
+  bottom:8px;
+  height:10px;
 }
 
 
