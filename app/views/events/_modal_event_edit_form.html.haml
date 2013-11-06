@@ -116,18 +116,18 @@
 
   .modal-footer
     .pull-left
-      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btn btn-colour btn-micro", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btn btn-colour btn-micro application_tooltip",  "data-original-title"=>"Cancel this event", rel: "tooltip", "data-placement"=>"top", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+
+      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"top", class: "btn btn-colour btn-micro events_edit_actions_button application_tooltip" do
+        %i.icon-skype
 
       = render 'events/button_startcase'
-
-      = link_to "skype:#{@event.partner.skype}?call", "data-original-title"=>"Call #{@event.partner.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-colour btn-micro events_edit_actions_button" do
-        %i.icon-skype
-        
+  
 
     %a.btn.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 
     .application_submit_button_with_spinner.btn.btn-micro{tabindex: "102"}
-      %i.icon-arrow-right
+      %i.icon-check-5
       Edit appointment
 
 

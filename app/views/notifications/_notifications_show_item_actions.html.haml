@@ -1,7 +1,7 @@
 - case notifications_show_item.ntype
   - when "feedback"
     = link_to '/?case_id=' + notifications_show_item.notificable.id.to_s, class: "btn btn-colour  btn-small" do
-      Jump to case record
+      Show feedback
   - when "friendship_req"
     - if notifications_show_item.notificable
       - if notifications_show_item.notificable.status == Friendship::ACCEPTED
@@ -15,7 +15,7 @@
   - when "friendship_app"
     - if notifications_show_item.notificable
       = link_to "/map?user_id=" + notifications_show_item.notificable.friend.id.to_s, class: "btn btn-colour  btn-small" do
-        Jump to #{notifications_show_item.notificable.friend.username}'s profile
+        Show #{notifications_show_item.notificable.friend.username}'s profile
 
 
       

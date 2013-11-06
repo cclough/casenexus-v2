@@ -163,6 +163,19 @@
     height:510px;
     max-height:510px;
     text-align:center !important;
+    overflow-y:hidden;
+  }
+
+  .modal-footer {
+    .btn {
+      display:inline-block;
+      position:relative;
+      margin-left:5px;
+      margin-right:5px;
+    }
+    .tooltip {
+      z-index:50000;
+    }
   }
 
   .close {
@@ -171,6 +184,7 @@
     top:15px;
     right:15px;
   }
+
 
   #events_modal_title {
     font-size:25px;

@@ -157,6 +157,9 @@ window.modal_events_rebless = ->
     startDate: $("#events_modal_datetime_input").data "start_date"
     #startDate: "2013-07-07 10:00"
 
+  # Tooltips
+  $(".application_tooltip").tooltip()
+
   $("#events_modal_friend_select").change ->
     window.modal_events_modal_timezone_calcs()
 

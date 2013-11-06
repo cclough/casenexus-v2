@@ -16,7 +16,7 @@
     - unless users_item.last_online_at.blank?
       .map_index_users_item_onlinestatus
 
-        %i.icon-circle-blank.map_index_users_item_onlinestatus_icon{class: (if users_item.online_now? then "online_now" elsif users_item.online_earlier? then "online_earlier" else "online_not" end)}
+        %i.icon-circle-blank.map_index_users_item_onlinestatus_icon{ class: (if users_item.online_now? then "online_now" elsif users_item.online_earlier? then "online_earlier" else "online_not" end)}
 
         - unless users_item.online_now? || users_item.online_earlier? 
           .map_index_users_item_onlinestatus_text
