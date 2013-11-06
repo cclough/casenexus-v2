@@ -51,12 +51,14 @@ html {
   height: 100%;
   padding:0;
   margin:0;
+  overflow-y:hidden; //hack
 }
 
 body {
   height: 100%;
   padding:0;
   margin:0;
+  overflow-y:hidden; //hack
 }
 
 body,
@@ -386,7 +388,7 @@ html[dir='rtl'] #sidebarContent {
   top: 50px;
   position: absolute;
   z-index: 10000;
-  height: 32px;
+  height: 32px; //just the search popup
 
   min-width: 16px;
   padding: 0px 6px 0px 6px;
@@ -1329,7 +1331,7 @@ canvas {
   background: none repeat scroll 0 0 white;
   border: 1px solid #666666;
   position: fixed;
-  top: 32px;
+  top: 50px;
   right: 0;
   bottom: 0;
   font-size: 10px;
@@ -1452,10 +1454,10 @@ canvas {
     z-index: 100;
   }
   .loadingInProgress #sidebarContainer {
-    top: 32px;
+    top: 50px;
   }
   #sidebarContent {
-    top: 32px;
+    top: 50px;
     background-color: hsla(0,0%,0%,.7);
   }
 

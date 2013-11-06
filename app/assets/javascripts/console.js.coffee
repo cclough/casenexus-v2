@@ -24,23 +24,19 @@ console_index_subnav_viewswitch_toggle = ->
 
   current_view_state = $("#console_index_subnav_form").attr "data-current_view_state"
 
-  if current_view_state == "split"
-    $("#console_index_pdfjs").css("right","0px")
-    $("#console_index_pdfjs_blank").css("width","100%")
+  if $("#console_index_pdfjs").hasClass "single-left"
+    # switch back to split
+    $("#console_index_pdfjs").removeClass "single-left"
+    $("#console_index_pdfjs_blank").removeClass "single-left"
+
+    $("#console_index_feedback_frame").show "slide", direction: "right", 100
     $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
+  else
+    $("#console_index_pdfjs").addClass "single-left"
+    $("#console_index_pdfjs_blank").addClass "single-left"
 
     $("#console_index_feedback_frame").hide "slide", direction: "right", 100
     $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-41></i>"
-    $("#console_index_subnav_form").attr("data-current_view_state","single-left")
-
-  else
-    $("#console_index_pdfjs").css("right","50%")
-    $("#console_index_pdfjs_blank").css("width","50%")
-    $("#console_index_feedback_frame").show "slide", direction: "right", 100
-
-    $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
-
-    $("#console_index_subnav_form").attr("data-current_view_state","split")
 
 window.console_index_subnav_sendpdf_check = ->
 

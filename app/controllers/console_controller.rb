@@ -9,6 +9,8 @@ class ConsoleController < ApplicationController
 		
 		@friends = current_user.accepted_friends
     @books = Book.where(btype: "case")
+
+    @view = params[:view]
 	end
 
 	# PDF JS

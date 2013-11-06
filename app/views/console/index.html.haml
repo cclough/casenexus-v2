@@ -1,10 +1,10 @@
 
 
-#console_index_pdfjs
+#console_index_pdfjs{ class: ("single-left" if @view == "single-left") }
   %iframe#console_index_pdfjs_iframe{ src: ("/console/pdfjs?id=#{@book.id}" unless @book.blank?) }
 
 
-#console_index_pdfjs_blank{style:("display:none;" unless @book.blank?)}
+#console_index_pdfjs_blank{style:("display:none;" unless @book.blank?), class: ("single-left" if @view == "single-left")}
 
   #console_index_pdfjs_blank_header
 
@@ -19,7 +19,7 @@
 #console_index_feedback_subnav
   = render 'subnav'
 
-#console_index_feedback_frame
+#console_index_feedback_frame{class: ("single-left" if @view == "single-left")}
   - unless @friend.blank?
     = render partial: "cases/new", locals: { user_id: @friend.id }
   - else
