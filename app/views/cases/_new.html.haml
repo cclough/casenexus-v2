@@ -4,7 +4,7 @@
 - if @user.blank? then @user = User.find(user_id) end
 - if @case.blank? then @case = @user.cases.build end
 
-= form_for @case, remote: true, id: "cases_new_form", url: { controller: :cases, action: :create } do |f|
+= form_for @case, remote: true, html: { id: "cases_new_form", "data-username" => @user.username }, url: { controller: :cases, action: :create } do |f|
 
   = f.hidden_field :user_id, value: @user.id
 

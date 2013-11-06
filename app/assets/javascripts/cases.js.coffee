@@ -40,7 +40,8 @@ window.cases_new_prime = () ->
     $("#cases_new_scoreselector_" + criteria + " .cases_new_scoreselector_button").removeClass("active")
     $(this).addClass("active")
 
-  window.application_spinner_prime "#console_index_feedback_frame"
+  target_username = $("#cases_new_form").attr "data-username"
+  window.application_spinner_prime "#console_index_feedback_frame", "Confirm send feedback to " + target_username + "?"
 
 
 
