@@ -19,7 +19,7 @@
     
     - unless params[:action] == "show"
       = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button" do
-        Comment
+        Review
         %strong (#{books_item.comments.count})
 
 
