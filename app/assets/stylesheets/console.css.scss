@@ -13,18 +13,18 @@
   top:50px;
   left:0px;
   right:50%;
-  bottom:4px; // WHAT THE FUCK
+  bottom:3px; // WHAT THE FUCK
   border:0 !important;
   margin:0 !important;
-  overflow-y:hidden !important;
+  padding:0 !important;
 }
 
 #console_index_pdfjs_iframe {
   width:100%;
   height:100%;
-  border:0;
-  outline:0;
-  overflow-y:hidden !important;
+  border:0 !important;
+  margin:0 !important;
+  padding:0 !important;
 }
 
 #console_index_pdfjs_blank {
@@ -98,9 +98,12 @@
 #console_index_subnav_button_viewswitch {
   position:absolute;
   top:8px;
-  margin-left:-50px !important;
+  margin-left:-60px !important;
   font-size:20px;
   height:20px;
+  padding-top:7px;
+  padding-bottom:7px;
+  width:20px;
 }
 
 /////////////////////////////////////////////
@@ -127,7 +130,7 @@
 #console_index_subnav_select_books_container {
   position:absolute;
   top:8px;
-  margin-left:-320px !important;
+  margin-left:-330px !important;
   .chzn-drop {
     width:260px;
     .chzn-results {
@@ -167,6 +170,8 @@
     #console_index_subnav_button_skype {
       font-size:20px;
       height:20px;
+      padding-top:7px;
+      padding-bottom:7px;
     }
   }
   #console_index_subnav_select_friends{

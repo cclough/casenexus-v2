@@ -49,10 +49,14 @@ display:none;
 
 html {
   height: 100%;
+  padding:0;
+  margin:0;
 }
 
 body {
   height: 100%;
+  padding:0;
+  margin:0;
 }
 
 body,
@@ -71,7 +75,7 @@ select {
 
 #viewerContainer:-webkit-full-screen {
   top: 0px;
-  border-top: 2px solid transparent;
+//  border-top: 2px solid transparent;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -80,7 +84,7 @@ select {
 
 #viewerContainer:-moz-full-screen {
   top: 0px;
-  border-top: 2px solid transparent;
+//  border-top: 2px solid transparent;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -89,7 +93,7 @@ select {
 
 #viewerContainer:fullscreen {
   top: 0px;
-  border-top: 2px solid transparent;
+//  border-top: 2px solid transparent;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -233,7 +237,7 @@ html[dir='rtl'] #outerContainer.sidebarOpen > #mainContainer {
 }
 
 #sidebarContent {
-  top: 32px;
+  top: 50px;
   bottom: 0;
   overflow: auto;
   position: absolute;
@@ -282,9 +286,9 @@ html[dir='rtl'] #sidebarContent {
 
 #toolbarSidebar {
   width: 200px;
-  height: 32px;
+  height: 50px;
   background-color: #424242;
-  border-bottom: 1px solid #252525;
+//  border-bottom: 1px solid #252525;
   background-color: #3D3D3D;
   background-image: -moz-linear-gradient(top, #383838, #1C1C1C);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#383838), to(#1C1C1C));
@@ -305,7 +309,7 @@ html[dir='rtl'] #sidebarContent {
 
 
 #toolbarViewer {
-  height: 32px;
+  height: 50px;
 }
 
 #loadingBar {
@@ -379,7 +383,7 @@ html[dir='rtl'] #sidebarContent {
 }
 
 .findbar {
-  top: 32px;
+  top: 50px;
   position: absolute;
   z-index: 10000;
   height: 32px;
