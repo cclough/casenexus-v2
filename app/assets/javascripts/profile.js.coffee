@@ -77,6 +77,17 @@ window.profile_index_friends_item_prime = (friends_item) ->
 $(document).ready ->
 
 
+  # Mouse over feedback cover 
+  profile_index_feedback_chart_empty_cover_mouseover = ->
+    $("#profile_index_feedback_chart_empty_cover_popup").fadeIn("500")
+  profile_index_feedback_chart_empty_cover_mouseout = ->
+    $("#profile_index_feedback_chart_empty_cover_popup").fadeOut("1000")
+  $("#profile_index_feedback_chart_empty_cover").hoverIntent
+    over: profile_index_feedback_chart_empty_cover_mouseover,
+    out: profile_index_feedback_chart_empty_cover_mouseout,
+    interval: 100
+
+
   # Prime scrollers
   $('#profile_index_friends_friends').slimscroll
     height: 'auto'
