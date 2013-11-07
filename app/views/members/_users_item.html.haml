@@ -60,9 +60,12 @@
             Decline
 
         - elsif !Friendship.exist?(current_user, users_item)
-          %a.map_index_users_item_button_add.btn.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
-            %i.icon-plus
-            ADD PARTNER
+          %span{id:"map_index_users_item_friendship_initiator_buttons_" + users_item.id.to_s}
+            %a.map_index_users_item_button_add.btn.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
+              %i.icon-plus
+              ADD PARTNER
+            .map_index_users_item_friendship_requested{ style: "display:none;"}
+              Request sent
 
         - unless users_item.linkedin.blank?
           %a.map_index_users_item_button_linkedin.btn.btn-round.btn-round-small.application_tooltip{href: "http://www.linkedin.com/"+users_item.linkedin,target:"_new","data-container"=>"body", "data-original-title"=>"Jump to Linkedin profile", rel: "tooltip", "data-placement"=>"bottom"}

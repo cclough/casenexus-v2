@@ -22,6 +22,10 @@
 
 	});
 
-  window.map_index_users_updatelist();
+  //window.map_index_users_updatelist();
+
+  var initiator_button_container = $('#map_index_users_item_friendship_initiator_buttons_<%= escape_javascript(@friendship.friend.id.to_s) %>');
+  initiator_button_container.find(".map_index_users_item_button_add").hide();
+  initiator_button_container.find(".map_index_users_item_friendship_requested").show();
 
 <%- end %>
