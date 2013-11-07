@@ -1,5 +1,5 @@
 class Notification < ActiveRecord::Base
-  attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :event_date, :read,
+  attr_accessible :user, :user_id, :sender, :sender_id, :ntype, :content, :read,
                   :notificable_id, :notificable_type, :notificable
 
   ### Relationships
@@ -44,7 +44,7 @@ class Notification < ActiveRecord::Base
     if self.ntype == "friendship_app"
       "Partner request accepted"
     else
-      content.truncate(50, :separator => ' ') unless (content == nil)
+      content.truncate(23) unless (content == nil)
     end
   end
 
@@ -276,7 +276,7 @@ class Notification < ActiveRecord::Base
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
                     user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
     ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
-    where(id: ids).order('created_at desc')
+    where(id: ids).order('users.created_at desc')
   end
 
   def self.most_recent_conversation_with(current_user)

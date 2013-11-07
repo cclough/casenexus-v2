@@ -4,22 +4,27 @@
 
 #notifications_index_notifications_container {
   width:298px;
-  position:absolute;
-  left:0px;
-  top:0px;
-  bottom:50px;
   display:block;
+  height:100%;
   z-index:999;
   border-right:1px solid $cn_grey_0;
   border-left:1px solid $cn_grey_0;
 
+
   .slimScrollDiv {
     position:absolute;
-    bottom:50px;
-    top:0px;
+    bottom:0px;
+    top:76px;
     left:0px;
+    right:0;
     width:298px;
+    position:relative;
+    @include box_sizing;
+    #notifications_index_notifications {
+      top:0px;
+    }
   }
+  
 }
 
 #notifications_index_form_container {
@@ -27,24 +32,21 @@
   top:0px;
   left:0px;
   right:0px;
+    width:298px;
   height:75px;
   border-bottom:1px solid $cn_grey_0;
 }
 
 #notifications_index_notifications {
-  position:absolute;
-  bottom:50px;
-  top:76px;
-  left:0px;
-  right:0;
+
 }
 
 
 #notifications_index_conversation {
   position:absolute;
-  left:300px;
+  left:301px;
   right:0px;
-  bottom:50px;
+  bottom:0px;
   top:0px;
   border-right:1px solid $cn_grey_0;
 }
@@ -245,7 +247,8 @@
 #notifications_show_newmessage_textarea {
   height:100px;
   display:block;
-  width:657px;
+  width:100%;
+  @include box_sizing;
 }
 
 

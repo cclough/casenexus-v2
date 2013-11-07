@@ -65,10 +65,16 @@ body {
   }
 
   &.notifications {
-    height:100%;
-    width:1000px;
-    margin: 0px auto;
-    position:relative;
+    position:absolute;
+    left:10%;
+    right:10%;
+    top:0px;
+    bottom:50px;
+//    @include box_sizing; 
+//    width:1000px;
+//    margin: 0px auto;
+//    position:relative;
+
   }
 
   &.regular {

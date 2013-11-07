@@ -135,8 +135,8 @@ window.notifications_index_notifications_prime = () ->
 
 
   $("#notifications_index_notifications").slimscroll
-    width: 'auto'
-    height: 'auto'
+    width: '100%'
+    height: '100%'
 
 
 $(document).ready ->
