@@ -24,8 +24,8 @@ class MembersController < ApplicationController
         users_scope = users_pre_scope.list_online_today(current_user)
       when "online_now"
         users_scope = users_pre_scope.list_online_now(current_user)
-    else
-      users_scope = User.includes(:cases).list_all_excl_current(current_user)
+    else # user on complete_profile
+      users_scope = User.users_allowed_on_map.list_all_excl_current(current_user)
     end
 
     if users_scope
