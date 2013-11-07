@@ -118,8 +118,10 @@ window.notifications_index_notifications_prime = () ->
   # Reselect current item if needed
   if window.notifications_index_notifications_currently_selected
     current_item = window.notifications_index_notifications_currently_selected
+    $("#notifications_index_notifications_item_" + current_item).removeClass "unread"
     $("#notifications_index_notifications_item_" + current_item).addClass "notifications_index_notifications_item_select"
   
+  $(".notifications_index_notifications_item").off 'click'
   $(".notifications_index_notifications_item").click ->
 
     user_id = $(this).data("user_id")

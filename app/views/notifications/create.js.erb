@@ -45,7 +45,6 @@
 
             $.get("/notifications", null, null, "script");
 
-
         <%- else %>
 
             $('#modal_<%= escape_javascript(@notification.ntype) %>').modal('hide');
