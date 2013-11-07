@@ -1,5 +1,5 @@
 class University < ActiveRecord::Base
-  attr_accessible :name, :image, :domain, :enabled
+  attr_accessible :name, :image, :domain, :domain2, :enabled
 
   ### Assocaitions
   has_many :users

@@ -312,7 +312,6 @@ class User < ActiveRecord::Base
   end
 
   def validate_not_too_close_to_another?
-
      self.errors.add :base, "Your marker is too close to someone else." if self.nearbys(0.008).count > 0
   end
 
@@ -321,9 +320,9 @@ class User < ActiveRecord::Base
       begin
         # finds database listed domain within string after at sign http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
         domain = self.email.split("@")[1]
-        errors.add(:base, "Sorry, casenexus is not yet available for your university") if University.all.none?{ |d| domain[d.domain] }
+        errors.add(:base, "Sorry, casenexus is not yet available for your university yet") if University.all.none?{ |d| domain[d.domain] }
       rescue Exception => e
-        errors.add(:base, "Sorry, casenexus is not yet available for your university")
+        errors.add(:base, "Sorry, casenexus is not yet available for your university neither")
       end
     end
   end
@@ -346,11 +345,13 @@ class User < ActiveRecord::Base
     unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com"
       domain = self.email.split("@")[1]
       # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
+      
       if found = University.find{ |d| domain[d.domain] } # Switch on enabled here eventually
         self.university = found
       else # not the important one
-        errors.add(:base, "Sorry, casenexus is not yet available for your university")
+        errors.add(:base, "Sorry, casenexus is not yet available for your university either")
       end
+
     else
       if self.email == "gerald.templer@gmail.com"
         self.university = University.find(2) # Set to oxford for certain people

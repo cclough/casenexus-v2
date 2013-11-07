@@ -16,12 +16,12 @@ window.account_completeedit_bless = () ->
 
   # Plot other members
   $.getJSON "/members", null, (json) ->
-    markerLayer = L.mapbox.markerLayer()
-    markerLayer.on "layeradd", (e) ->
-      marker = e.layer
-      marker.setIcon L.icon(marker.feature.properties.icon)
-    markerLayer.addTo map
-    markerLayer.setGeoJSON json
+    # markerLayer = L.mapbox.markerLayer()
+    # markerLayer.on "layeradd", (e) ->
+    #   marker = e.layer
+    #   marker.setIcon L.icon(marker.feature.properties.icon)
+    # markerLayer.addTo map
+    # markerLayer.setGeoJSON json
 
     # DRAW USER MARKER AFTER OTHERS TO ENSURE ITS ON TOP
     # Icon for user marker
