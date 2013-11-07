@@ -15,6 +15,7 @@
   - when "friendship_app"
     - if notifications_show_item.notificable
       = link_to "/map?user_id=" + notifications_show_item.notificable.friend.id.to_s, class: "btn btn-colour  btn-small" do
+        %i.icon-map-pin-streamline
         Show #{notifications_show_item.notificable.friend.username}'s profile
 
 
