@@ -18,25 +18,25 @@
     .spacer20
     
     - unless params[:action] == "show"
-      = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button" do
+      = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button application_tooltip","data-container"=>"body", "data-original-title"=>"Review and rate...", rel: "tooltip", "data-placement"=>"bottom" do
         Review
         %strong (#{books_item.comments.count})
 
 
     - if books_item.btype == "case"
 
-      .btn.btn-round.btn-round-small.books_index_books_item_event_button{"data-book_id" => books_item.id.to_s}
+      .btn.btn-round.btn-round-small.books_index_books_item_event_button.application_tooltip{"data-book_id" => books_item.id.to_s, "data-container"=>"body", "data-original-title"=>"Schedule partner to give you this case...", rel: "tooltip", "data-placement"=>"bottom"}
         %i.icon-calendar 
 
     - unless books_item.btype == "web"
 
       - if books_item.url[0,7] == "http://"
-        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, target:"_new",class: "btn btn-colour btn-round btn-round-small"
+        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, target:"_new",class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show me where I can get it...", rel: "tooltip", "data-placement"=>"bottom"
       - else
         - if books_item.btype == "guide"
-          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small"
+          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show it...", rel: "tooltip", "data-placement"=>"bottom"
         - else
-          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small"
+          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
 
 
 

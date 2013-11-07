@@ -7,7 +7,6 @@ window.books_index_books_item_prime = ->
 
   # Schedule button
   $(".books_index_books_item_event_button").click ->
-
     book_id = $(this).data("book_id")
     window.modal_event_new_show(null,book_id)
 
@@ -22,6 +21,9 @@ window.books_index_books_item_prime = ->
     targetKeep   : true
     target: "#books_rating_set_field"
 
+  # Tooltips
+  $(".application_tooltip").tooltip()
+  
   # WHEN I PUT FUNCTIONS ABOVE, BELOW PRIME RATY IT DOESN"T WORK - SOMETHING BROKEN?
   window.application_raty_prime()
 
