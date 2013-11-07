@@ -55,18 +55,20 @@
 
     #account_complete_panel_column_right
 
-      #account_complete_map_header
-        Move the blue marker to your location, so others nearby who wish to practise can contact you
+      = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, { prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
+
+      .spacer15
+
       #account_completeedit_map.complete.map
+
+      #account_complete_map_header
+        Move the blue marker to your location, so others nearby can contact you
 
       = f.hidden_field :lat, id: "account_completeedit_lat"
       = f.hidden_field :lng, id: "account_completeedit_lng"
 
       .spacer15
-      
-      = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, { prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
-
-      .spacer15
+    
 
       #account_complete_panel_submit.application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "8"}
         Complete Sign up

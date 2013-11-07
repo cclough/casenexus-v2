@@ -84,7 +84,7 @@
 #account_completeedit_map {
 
   &.complete {
-    height:210px;
+    height:214px;
     width:300px;
   }
   &.edit {
@@ -178,13 +178,12 @@
 
 #account_complete_panel {
 
-
-  padding:25px;
+  padding:50px 25px 25px;
 
   width:620px;
-  height:350px;
+  height:430px;
 
-  margin:50px auto 0;
+  margin:0 auto; //adding 50 top margin here doesn't work for some reason, use padding
   z-index:10;
 
   -moz-border-radius:    3px;
