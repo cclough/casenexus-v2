@@ -5,7 +5,7 @@ class SiteContactsController < ApplicationController
     @site_contact.user = current_user if current_user
 
     if @site_contact.save
-      flash[:notice] = "Thank you for your message"
+      flash[:notice] = "Thank you for your message."
     else
       # Not neccessary as errors handled in the form
       # flash[:error] = "Oops! There was an error"

@@ -120,10 +120,10 @@
   }
 
   &.notifications_index_notifications_item_select {
-    background:$cn_colour_1;
+    background:$cn_colour_1 !important;
     color:white;
     &:hover {
-      background:$cn_colour_15;
+      background:$cn_colour_15 !important;
     }
   }
 
