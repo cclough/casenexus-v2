@@ -25,10 +25,9 @@ body {
   bottom: 0px;
   right:0px;
   left:0px;
-  //padding-top:50px; // so all content is pushed down below header
 
   &.signedout {
-//    padding-top:100px;
+
     header {
       height:95px; //5px padding-top applied in header.css for tab aesthetic
       #header_logo_nav {
@@ -59,7 +58,7 @@ body {
   
   margin-top:50px !important;
 
-//  *zoom: 1;
+  *zoom: 1;
 
   &.map {
     z-index:1;
@@ -77,7 +76,7 @@ body {
     margin:0 auto;
     width:1024px;
     clear:both;
-    //min-height:100%; //without this devise and terms pages break - with extra margin on profile
+    //min-height:100%; BREAKS STUFF //without this devise and terms pages break - with extra margin on profile
   }
 
   &.profile {
