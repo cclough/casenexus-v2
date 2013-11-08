@@ -197,7 +197,7 @@ footer {
   left:50%;
   margin-left:-300px;
   width:600px;
-  z-index:1051;//above modal
+  z-index:10051;//above modal + above map stuff?
   &.signedout {
     top:90px;
   }
