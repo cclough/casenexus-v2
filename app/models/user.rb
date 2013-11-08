@@ -178,7 +178,7 @@ class User < ActiveRecord::Base
   class << self
 
     def users_allowed_on_map
-      completed.active.not_admin
+      completed.active#.not_admin
     end
 
     def confirmed
