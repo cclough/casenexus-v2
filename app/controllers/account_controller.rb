@@ -22,7 +22,10 @@ class AccountController < ApplicationController
     if @user.update_attributes(params[:user])
       if @user.completed
         flash[:success] = 'Your profile has been updated.'
-        respond_to(:js)
+        respond_to do |format|
+          format.js
+          format.html { redirect_to '/' }
+        end
       else
         @user.completed = true
         @user.save
@@ -30,8 +33,8 @@ class AccountController < ApplicationController
         redirect_to "/"
       end
     else
-      @invitations = current_user.invitations
-      @invitation = current_user.invitations.build(params[:invitation])
+      # @invitations = current_user.invitations
+      # @invitation = current_user.invitations.build(params[:invitation])
 
       if params[:back_url]
         if params[:back_url].include?('complete')
@@ -40,7 +43,10 @@ class AccountController < ApplicationController
           redirect_to params[:back_url]
         end
       else
-        respond_to(:js)
+        respond_to do |format|
+          format.js
+          format.html { render template: "account/edit_password" }
+        end
       end
     end
 

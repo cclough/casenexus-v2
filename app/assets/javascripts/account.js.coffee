@@ -64,7 +64,8 @@ $(document).ready ->
   #////////////////////////////////////////////////////////
   #////////////////////// COMPLETE ////////////////////////
   #////////////////////////////////////////////////////////
-
+  
+  window.application_disablesubmit_prime "#account_editpassword_panel"
   window.application_disablesubmit_prime "#account_complete_panel"
 
   if $("#account_complete_panel").length > 0
