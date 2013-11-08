@@ -17,7 +17,8 @@
       .static_home_form_input_icon_container
         = image_tag "icons/forms/password.png"
       = f.password_field :password, tabindex: "2", placeholder: "Password", class: "span30 large"
-      
+    
+    = f.hidden_field :remember_me, :as => :boolean, value: true
 
     .application_submit_button_with_disable.with_icon.btn.btn-red.btn-large.btn-block{tabindex: "3"}
       = image_tag "icons/submit_button.png"

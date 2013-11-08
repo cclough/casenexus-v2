@@ -27,8 +27,10 @@
         .events_calendar_day_num
           = date.day
         .events_calendar_day_name
-          = date.strftime('%a').upcase
-
+          - if date == Date.today
+            = date.strftime('%A').upcase
+          - else
+            = date.strftime('%a').upcase
 
         - if @events_by_date[date]
           .events_calendar_day_events{class: ("more_than_two_events" if @events_by_date[date].count > 2)}
