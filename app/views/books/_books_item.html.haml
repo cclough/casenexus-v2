@@ -36,7 +36,7 @@
         - if books_item.btype == "guide"
           = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show it...", rel: "tooltip", "data-placement"=>"bottom"
         - else
-          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
+          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small btn-green application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
 
 
 
@@ -47,8 +47,9 @@
       = books_difficulty_stamp(books_item)
 
     - unless books_item.title.blank?
-      %span.books_index_books_item_title
+      %a.books_index_books_item_title{href:"/console?book_id=" + books_item.id.to_s}
         = books_item.title
+
 
     - if books_item.btype == "case"
       .books_index_books_item_chartnum.pull-right

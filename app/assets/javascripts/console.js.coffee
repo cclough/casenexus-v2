@@ -153,6 +153,10 @@ $(document).ready ->
     	# change feedback form
       $.get "/cases/new?user_id=" + friend_id, (data) ->
         $("#console_index_feedback_frame").html data
+
+        # Scroll up page - a detail
+        $('#console_index_feedback_frame').animate({scrollTop: 0},'slow')
+
         window.cases_new_prime()
 
         book_id = $("#console_index_subnav_select_books").val()

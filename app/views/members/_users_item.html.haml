@@ -38,7 +38,7 @@
           .map_index_users_item_button_event.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id.to_s}
             %i.icon-calendar.icon-white
 
-          %a.map_index_users_item_button_startcase.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", href:"/console?friend_id=" + users_item.id.to_s}
+          %a.map_index_users_item_button_startcase.btn.btn-round.btn-green.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", href:"/console?friend_id=" + users_item.id.to_s}
             %i.icon-arrow-right-1
 
           - unless users_item.skype.blank?
@@ -61,7 +61,7 @@
 
         - elsif !Friendship.exist?(current_user, users_item)
           %span{id:"map_index_users_item_friendship_initiator_buttons_" + users_item.id.to_s}
-            %a.map_index_users_item_button_add.btn.btn-micro.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
+            %a.map_index_users_item_button_add.btn.btn-micro.btn-green.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => users_item.id }
               %i.icon-plus
               ADD PARTNER
             .map_index_users_item_friendship_requested{ style: "display:none;"}
