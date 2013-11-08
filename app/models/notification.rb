@@ -101,32 +101,32 @@ class Notification < ActiveRecord::Base
       when "message"
         Rails.application.routes.url_helpers.notifications_url(id: id, host: host)
       when "feedback"
-        "https://www.casenexus.com/profile"
+        "https://www.casenexus.com/"
       when "friendship_req"
-        "https://www.casenexus.com/profile"
+        "https://www.casenexus.com/"
       when "friendship_app"
-        "https://www.casenexus.com/profile"
+        "https://www.casenexus.com/"
 
 
       when "event_set_partner"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+        "https://www.casenexus.com/?event_id=" + notificable_id.to_s
       when "event_set_sender"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+        "https://www.casenexus.com/?event_id=" + notificable_id.to_s
 
       when "event_change_partner"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+        "https://www.casenexus.com/?event_id=" + notificable_id.to_s
       when "event_change_sender"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+        "https://www.casenexus.com/?event_id=" + notificable_id.to_s
 
       when "event_cancel_partner"
-        "https://www.casenexus.com/profile"
+        "https://www.casenexus.com/"
       when "event_cancel_sender"
-        "https://www.casenexus.com/profile"
+        "https://www.casenexus.com/"
 
       when "event_remind_partner"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+        "https://www.casenexus.com/?event_id=" + notificable_id.to_s
       when "event_remind_sender"
-        "https://www.casenexus.com/profile?event_id=" + notificable_id.to_s
+        "https://www.casenexus.com/?event_id=" + notificable_id.to_s
 
 
     end
