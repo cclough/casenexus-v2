@@ -28,9 +28,7 @@
 
             %li
               = link_to raw("<img src=/assets/icons/header/help.png\>"), '#', id: 'header_link_help', "data-original-title"=>"Help", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"
-            %li
-              = link_to '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip" do
-                %i.icon-fontawesome-webfont-45.icon-white
+
 
             %li#header_notifications_menu_container{:class => ("active" if params[:controller] == "notifications") }
               = render '/notifications/menu'

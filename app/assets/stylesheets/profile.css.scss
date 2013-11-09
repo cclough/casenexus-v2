@@ -150,7 +150,7 @@
     }
 
     #profile_index_friends_friends_item_popup:after {
-      top:37px; /* controls vertical position */
+      top:36px; /* controls vertical position */
       left:-20px; /* value = - border-left-width - border-right-width */
       bottom:auto;
       border-width:20px 20px 20px 0;
@@ -208,8 +208,32 @@
           display:none;
         }
 
+
+        .profile_index_friends_friends_item_status {
+          float:left;
+          width:15px;
+
+          .profile_index_friends_friends_item_status_icon {
+            color:$cn_contrastor_0;
+            font-size:15px;
+            margin-top:3px;
+            margin-left:3px;
+            &.online_now {
+              font-color: $cn_contrastor_second_0;
+            }
+
+            &.online_earlier {
+              font-color: $cn_contrastor_0;
+            }
+
+            &.online_not {
+              font-color: $cn_grey_-1;
+            }
+          }
+        }
+
         .profile_index_friends_friends_item_avatar {
-          width:55px;
+          width:40px;
           float:left;
           img {
             margin:-4px 0 0 5px;
@@ -249,40 +273,16 @@
 //          opacity:0.5;
 //        }
 
-
-        .profile_index_friends_friends_item_stuff {
-
+        .profile_index_friends_friends_item_actions {
           position:absolute;
-          right:10px;
-          top:-1px;
-
-          .profile_index_friends_actions_start {
-            display:inline-block;
-            vertical-align:middle;
-            margin-right:5px;
-          }
-          .profile_index_friends_friends_item_status_icon {
-            display:inline-block;
-            vertical-align:middle;
-            color:$cn_contrastor_0;
-            font-size:15px;
-            margin-top:3px;
-            &.online_now {
-              font-color: $cn_contrastor_second_0;
-            }
-
-            &.online_earlier {
-              font-color: $cn_contrastor_0;
-            }
-
-            &.online_not {
-              font-color: $cn_grey_-1;
-            }
-          }
+          right:5px;
+          top:3px;
         }
-
-
-
+        .profile_index_friends_actions_start {
+          display:inline-block;
+          vertical-align:middle;
+          margin-right:5px;
+        }
       }
     }
   }

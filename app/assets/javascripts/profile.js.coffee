@@ -81,7 +81,7 @@ $(document).ready ->
   profile_index_feedback_chart_empty_cover_mouseover = ->
     $("#profile_index_feedback_chart_empty_cover_popup").fadeIn("500")
   profile_index_feedback_chart_empty_cover_mouseout = ->
-    $("#profile_index_feedback_chart_empty_cover_popup").fadeOut("1000")
+    $("#profile_index_feedback_chart_empty_cover_popup").fadeOut("500")
   $("#profile_index_feedback_chart_empty_cover").hoverIntent
     over: profile_index_feedback_chart_empty_cover_mouseover,
     out: profile_index_feedback_chart_empty_cover_mouseout,
@@ -97,40 +97,39 @@ $(document).ready ->
     width: '260px'
 
 
-  # Friends item: show actions on mouseover
+  ## Friends item: show actions on mouseover
   profile_index_friends_friends_item_mouseover = ->
     user_id = $(this).data "friend_id"
     item_offset_top =  $(this).offset().top - 80 + "px"
     $.get "/members/" + user_id + "?origin=profile", (data) ->
       $("#profile_index_friends_friends_item_popup").html data
       $("#profile_index_friends_friends_item_popup").css("top",item_offset_top)
-      $("#profile_index_friends_friends_item_popup").fadeIn("fast")
+      $("#profile_index_friends_friends_item_popup").fadeIn(100)
       window.map_index_users_item_bless()
   profile_index_friends_friends_item_mouseout = ->
-    if !$('#profile_index_friends_friends_item_popup').is(':hover') 
-      $("#profile_index_friends_friends_item_popup").fadeOut("fast")
+    if !$('#profile_index_friends_friends_item_popup').is(':hover')
+      $("#profile_index_friends_friends_item_popup").fadeOut(100)
 
   $(".profile_index_friends_friends_item").hoverIntent
     over: profile_index_friends_friends_item_mouseover,
     out: profile_index_friends_friends_item_mouseout,
-    interval: 200
+    interval: 100
   # allowed to persist, so must close when leave
   $("#profile_index_friends_friends_item_popup").mouseleave ->
     $(this).fadeOut "fast"
+
+
 
   # On load animations
   if $("#profile_index_panel_user").size() > 0
     setTimeout (->
       # Fade in counts cases
       $(".profile_index_info_cases_counts_container").fadeIn "500"
-
       # Users Item Cascade Fade
       $(".profile_index_friends_friends_item").each (i) ->
         $(this).delay((i + 1) * 50).fadeIn()
-
       $(".profile_index_feedback_cases_item").each (i) ->
         $(this).delay((i + 1) * 50).fadeIn()
-
     ), 500
 
   $("#profile_index_feedback_chart").fadeIn "500"

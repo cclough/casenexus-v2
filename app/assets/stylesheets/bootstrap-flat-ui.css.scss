@@ -420,6 +420,23 @@ a:hover {
 
 
 
+.btn.btn-start {
+  
+}
+.btn.btn-start:hover,
+.btn.btn-start:focus,
+.btn-group:focus .btn.btn-start.dropdown-toggle {
+  color: $cn_contrastor_third_0;
+  border-color: $cn_contrastor_third_0;
+}
+.btn.btn-start:active,
+.btn-group.open .btn.btn-start.dropdown-toggle,
+.btn.btn-start.active {
+  background-color: $cn_contrastor_third_0;
+}
+
+
+
 
 
 
