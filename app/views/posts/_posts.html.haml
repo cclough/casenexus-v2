@@ -9,7 +9,7 @@
   #footer_posts_label
     Urgently need to practise? Let others know
 
-  #footer_posts_new_button.btn.btn-micro.btn-green
+  #footer_posts_new_button.btn.btn-micro.btn-green{"data-original-title" => "Write a new broadcast...", rel: "tooltip", "data-placement"=>"top", class: "application_tooltip"}
     %i.icon-plus
 
   #footer_posts_widget
@@ -25,13 +25,13 @@
           %i.icon-arrow-down
 
 
-  #footer_onlineusers
+  #footer_onlineusers{"data-original-title"=>"Show these " + User.list_online_now(current_user).count.to_s + " online users", rel: "tooltip", "data-placement"=>"top", class: "application_tooltip"}
     = User.list_online_now(current_user).count
     #footer_onlineusers_text
       online
 
-  #footer_bugs
-    = link_to '#', id: "header_link_contact", "data-original-title"=>"Contact us", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip" do
+  #footer_bugs{"data-original-title"=>"Report bugs/Contact us", rel: "tooltip", "data-placement"=>"top", class: "application_tooltip"}
+    = link_to '#', id: "header_link_contact" do
       %i.icon-fontawesome-webfont-43.icon-white
 
 - session[:posts_initial_show_complete] = "yes"

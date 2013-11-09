@@ -45,6 +45,7 @@
     display:block;
     border-top:1px solid $cn_grey_0;
     height:70px;
+    @include prevent_text_highlight;
     .profile_index_info_cases_counts_container {
       display:none;
     }
@@ -93,7 +94,7 @@
 
 
   #profile_index_info_actions {
-
+    @include prevent_text_highlight;
     height:50px;
     line-height:47px;
     text-align:center;
@@ -105,10 +106,6 @@
       position:relative;
       margin: 0 5px;
     }
-    .btn-round {
-    }
-
-
   }
 
 

@@ -201,3 +201,31 @@
   }
 }
 
+#footer_bugs {
+  display:inline-block;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  width:30px;
+  height:30px;
+  padding:5px;
+  font-size:17px;
+  margin-left:10px;
+  color:white;
+  vertical-align:middle;
+  text-align:center;
+  cursor:pointer;
+  line-height:33px;
+
+  &:hover {
+    background:$cn_colour_05;
+    a {
+      -webkit-transition: 0.25s;
+      -moz-transition: 0.25s;
+      -o-transition: 0.25s;
+      transition: 0.25s;
+      color:$cn_colour_1;
+    }
+  }
+}
+
