@@ -339,13 +339,13 @@
   }
 
   .map_index_users_item_cases_recd {
-    color:#73bf72;
+    color:$cn_colour_1;
     border-bottom:1px solid $cn_grey_0;
   }
 
   .map_index_users_item_cases_givn{
-      color:$cn_colour_1;
-      border-bottom:1px solid $cn_grey_0;
+    color:$cn_contrastor_third_0;
+    border-bottom:1px solid $cn_grey_0;
   }
 
   .map_index_users_item_cases_external{
@@ -384,7 +384,7 @@
 
 .map_index_users_item_friendship_requested {
   display:inline-block;
-  margin:0 5px;
+  margin:0 0 0 5px;
   width:100px !important;
   font-size:15px;
   border: 1px solid $cn_grey_-2;

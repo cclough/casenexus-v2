@@ -134,6 +134,10 @@ class User < ActiveRecord::Base
     (username).truncate(13)
   end
 
+  def username_trunc_partnerslist
+    (username).truncate(17)
+  end
+
   def case_count_recd
     cases.count
   end

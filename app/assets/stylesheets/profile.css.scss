@@ -1,6 +1,7 @@
 @import 'colours';
 
 
+
 .profile_index_title {
   position:relative;
   font-size:20px;
@@ -59,7 +60,7 @@
     #profile_index_info_cases_recd {
       font-size:30px;
       font-weight:bolder;
-      color:#73bf72;
+      color:$cn_contrastor_third_0;
       border-right:1px solid $cn_grey_0;
       width:77px; // 231 divided 3
     }
@@ -117,9 +118,42 @@
     height:350px;
     width:231px;
     margin-top:20px;
-
+    
     .profile_index_title {
       padding-left:10px;
+    }
+
+    #profile_index_friends_friends_item_popup {
+      position:absolute;
+      width:425px;
+      height:170px;
+      z-index:10;
+      display:none;
+      background:white;
+      left:242px;
+      top:0px;
+      outline:1px solid $cn_grey_-2;
+      .map_index_users_item{ 
+        display:block;
+        border-top:0;
+        &:hover {
+          background:white;
+        }
+      }
+    }
+
+    #profile_index_friends_friends_item_popup:after {
+      top:37px; /* controls vertical position */
+      left:-20px; /* value = - border-left-width - border-right-width */
+      bottom:auto;
+      border-width:20px 20px 20px 0;
+      border-color:transparent $cn_grey_-2;
+      content:"";
+      position:absolute;
+      border-style:solid;
+      /* reduce the damage in FF3.0 */
+      display:block; 
+      width:0;
     }
 
     #profile_index_friends_friends {
@@ -182,28 +216,6 @@
           .profile_index_friends_friends_item_username{
             height:30px;
           }
-
-          .profile_index_friends_friends_item_actions {
-            height:50px; // one for border
-            display:none;
-            position:absolute;
-            right:0px;
-            top:0px;
-            z-index:10;
-            padding:0 5px;
-            line-height:45px;
-            background:white;
-
-            border-top-left-radius: 5px;
-            -moz-border-top-left-radius: 5px;
-            -webkit-border-top-left-radius: 5px;
-       
-            border-bottom-left-radius: 5px;
-            -moz-border-bottom-left-radius: 5px;
-            -webkit-border-bottom-left-radius: 5px;
-
-          }
-
         }
 
         .profile_index_friends_friends_requested {
@@ -216,9 +228,7 @@
             height:14px;
             .icon-cancel {
               display:inline-block;
-//              font-size:12px !important;
               vertical-align:middle;
-//              margin-left:-7px;
             }
           }          
         }
@@ -233,17 +243,22 @@
 //        }
 
 
-        .profile_index_friends_friends_item_status {
+        .profile_index_friends_friends_item_stuff {
 
           position:absolute;
-          right:0px;
-          top:3px;
+          right:10px;
+          top:-1px;
 
-          color:$cn_contrastor_0;
-          font-size:15px;
-          margin-right:10px;
+          .profile_index_friends_actions_start {
+            display:inline-block;
+            vertical-align:middle;
+            margin-right:5px;
+          }
           .profile_index_friends_friends_item_status_icon {
-            display:inline;
+            display:inline-block;
+            vertical-align:middle;
+            color:$cn_contrastor_0;
+            font-size:15px;
             &.online_now {
               font-color: $cn_contrastor_second_0;
             }

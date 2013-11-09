@@ -49,7 +49,7 @@ Casenexus::Application.routes.draw do
   end
 
   # Members
-  resources :members, only: [:index]
+  resources :members, only: [:index, :show]
 
   # Friendships
   resources :friendships, path: 'contacts', except: [:index, :new, :show, :edit, :update] do

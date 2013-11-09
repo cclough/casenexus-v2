@@ -39,4 +39,10 @@ class MembersController < ApplicationController
 
   end
 
+  def show
+    user = User.find(params[:id])
+
+    render partial: "users_item", layout: false, locals: { users_item: user}
+  end
+
 end

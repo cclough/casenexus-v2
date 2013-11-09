@@ -66,9 +66,10 @@
 
       #profile_index_info_joined
         %i.icon-clock
-        = time_ago_in_words(current_user.created_at)
-        ago
-
+        / = time_ago_in_words(current_user.created_at)
+        / ago
+        = current_user.cases_per_week
+        cases per week
       / #profile_index_info_cases_rate
       /   Rate: 2 cases per week
 
@@ -131,7 +132,11 @@
     .spacer20
 
 
+    #profile_index_friends_friends_item_popup
+
     #profile_index_friends_friends
+
+
       - if @friends_requested.count > 0
         - for friends_requested_item in @friends_requested
           = render partial: "friends_item",locals:{friends_item: friends_requested_item}

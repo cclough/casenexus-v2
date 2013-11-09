@@ -57,11 +57,17 @@ header {
       padding:13px;
       color:white !important;
     }
-    i {
+    i.header_nav_links_left_map {
       padding:12px 8px 7px 0px;
       margin-top:5px;
       font-size:16px;
       vertical-align:middle;
+    }
+    a#header_link_contact {
+//      padding:12px 8px 7px 0px;
+      margin-top:0px;
+      font-size:19px !important;
+//      vertical-align:middle;  
     }
     img {
       vertical-align:middle;

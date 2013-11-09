@@ -30,6 +30,10 @@
 
       - if users_item != current_user
 
+        - unless users_item.linkedin.blank?
+          %a.map_index_users_item_button_linkedin.btn.btn-round.btn-round-small.application_tooltip{href: "http://www.linkedin.com/"+users_item.linkedin,target:"_new","data-container"=>"body", "data-original-title"=>"Jump to Linkedin profile", rel: "tooltip", "data-placement"=>"bottom"}
+            %i.icon-linkedin-alt
+
         - if Friendship.friends?(current_user, users_item)
 
           .map_index_users_item_button_message.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => users_item.id }
@@ -41,9 +45,15 @@
           %a.map_index_users_item_button_startcase.btn.btn-round.btn-green.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", href:"/console?friend_id=" + users_item.id.to_s}
             %i.icon-arrow-right-1
 
+          - if params[:origin] == "profile"
+            %a.profile_index_friends_actions_profile.btn.btn-round.btn-round-small{ href: "/map?user_id=" + users_item.id.to_s, "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
+              %i.icon-map-pin-streamline
+
+
           - unless users_item.skype.blank?
             %a.map_index_users_item_button_skype.btn.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Call on Skype...", rel: "tooltip", "data-placement"=>"bottom", href: "skype:#{users_item.skype}?call"}
               %i.icon-skype
+
 
 
         - elsif Friendship.requested?(users_item, current_user)
@@ -66,11 +76,6 @@
               ADD PARTNER
             .map_index_users_item_friendship_requested{ style: "display:none;"}
               Request sent
-
-        - unless users_item.linkedin.blank?
-          %a.map_index_users_item_button_linkedin.btn.btn-round.btn-round-small.application_tooltip{href: "http://www.linkedin.com/"+users_item.linkedin,target:"_new","data-container"=>"body", "data-original-title"=>"Jump to Linkedin profile", rel: "tooltip", "data-placement"=>"bottom"}
-            %i.icon-linkedin-alt
-
 
 
 
