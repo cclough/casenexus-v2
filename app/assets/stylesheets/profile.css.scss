@@ -438,14 +438,32 @@
 
         .profile_index_feedback_cases_item_score {
           display:inline-block;
-          width:40px;
+          width:36px;
+          height:36px;
+          margin-top:-3px;
+          line-height:36px;
           font-weight:400;
-          font-size:18px;
+          font-size:15px;
           text-align:center;
           color: $cn_grey_-2;
           margin-left:10px;
           vertical-align:middle;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          padding:1px !important;
+          border:1px solid $cn_grey_-2;
         }
+
+
+
+
+
+
+
+
+
+
 
         .profile_index_feedback_cases_item_user {
           vertical-align:middle;
