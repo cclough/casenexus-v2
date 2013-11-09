@@ -441,6 +441,34 @@ a:hover {
 }
 
 
+.btn-linkedin {
+  background:$green_linkedin;
+  color:white;
+}
+.btn-linkedin:hover,
+.btn-linkedin:focus {
+  background-color: #2e79a6;
+}
+.btn-linkedin:active,
+.btn-linkedin.active {
+  background-color: #215676;
+
+}
+
+.btn-skype {
+  background:$blue_skype;
+  color:white;
+}
+.btn-skype:hover,
+.btn-skype:focus {
+  color:white;
+  background-color: #40a0d8;
+}
+.btn-skype:active,
+.btn-skype.active {
+  background-color: #3483b1;
+
+}
 
 
 

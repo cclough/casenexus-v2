@@ -123,6 +123,10 @@
 
       = render 'events/button_startcase'
   
+      - unless @event.partner.skype.blank?
+        %a.map_index_users_item_button_skype.btn.btn-skype.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Call on Skype...", rel: "tooltip", "data-placement"=>"bottom", href: "skype:#{@event.partner.skype}?call"}
+          %i.icon-skype
+
 
     %a.btn.btn-micro{"data-dismiss" => "modal", href: "#"} Close
 

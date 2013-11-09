@@ -99,23 +99,14 @@ $(document).ready ->
 
   # Friends item: show actions on mouseover
   profile_index_friends_friends_item_mouseover = ->
-    # $(this).find(".profile_index_friends_friends_item_actions").show "slide", direction: "right", 100
-    # window.profile_index_friends_item_prime $(this)
     user_id = $(this).data "friend_id"
-
     item_offset_top =  $(this).offset().top - 80 + "px"
-
-    # $(this).append("<div id=profile_index_friends_friends_item_popup></div>")
-
     $.get "/members/" + user_id + "?origin=profile", (data) ->
       $("#profile_index_friends_friends_item_popup").html data
       $("#profile_index_friends_friends_item_popup").css("top",item_offset_top)
       $("#profile_index_friends_friends_item_popup").fadeIn("fast")
       window.map_index_users_item_bless()
-
-
   profile_index_friends_friends_item_mouseout = ->
-    # $(this).find(".profile_index_friends_friends_item_actions").hide "slide", direction: "right", 100
     if !$('#profile_index_friends_friends_item_popup').is(':hover') 
       $("#profile_index_friends_friends_item_popup").fadeOut("fast")
 
@@ -123,7 +114,7 @@ $(document).ready ->
     over: profile_index_friends_friends_item_mouseover,
     out: profile_index_friends_friends_item_mouseout,
     interval: 200
-  #
+  # allowed to persist, so must close when leave
   $("#profile_index_friends_friends_item_popup").mouseleave ->
       $(this).fadeOut "fast"
 
