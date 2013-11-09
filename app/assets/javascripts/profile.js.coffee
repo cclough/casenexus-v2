@@ -116,7 +116,7 @@ $(document).ready ->
     interval: 200
   # allowed to persist, so must close when leave
   $("#profile_index_friends_friends_item_popup").mouseleave ->
-      $(this).fadeOut "fast"
+    $(this).fadeOut "fast"
 
   # On load animations
   if $("#profile_index_panel_user").size() > 0
