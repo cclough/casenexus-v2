@@ -3,7 +3,7 @@
 
 %p ...has sent you a partner request
 
-%p
+%p{style:"text-align:left;"}
   = @message
  
 %p= link_to "Sign in to see this request from " + @user_from.username, @url, :method => "put"
