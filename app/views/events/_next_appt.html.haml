@@ -1,0 +1,36 @@
+
+- @next_appt = Event.next_appt_for(current_user)
+
+- unless @next_appt.blank?
+
+  - @next_appt_time_diff = Event.time_diff_to_next_appt_for(current_user)
+
+  #events_calendar_nextappt{"data-event_id" => @next_appt.id}
+
+    #events_calendar_nextappt_nextappt
+      Next
+      %br
+      case
+
+    #events_calendar_nextappt_appt
+      %span#events_calendar_nextappt_appt_user
+        = avatar_for(@next_appt.partner,size: "small")
+        = @next_appt.partner.username
+      %br
+      = "in " + @next_appt_time_diff[:diff]
+    #events_calendar_nextappt_start
+
+      = render partial:'events/button_startcase', locals: { event: @next_appt }
+
+- else
+
+  #events_calendar_nextappt
+
+    #events_calendar_nextappt_nextappt
+      Next
+      %br
+      case
+
+    #events_calendar_nextappt_appt
+      No appointments booked
+    #events_calendar_nextappt_start

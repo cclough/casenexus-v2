@@ -220,8 +220,10 @@
           .profile_index_friends_friends_item_status_icon {
             color:$cn_contrastor_0;
             font-size:15px;
-            margin-top:4px;
-            margin-left:3px;
+            display:inline-block;
+            height:20px;
+            line-height:32px;
+            margin-left:5px;
             &.online_now {
               font-color: $cn_contrastor_second_0;
             }
@@ -240,7 +242,7 @@
           width:40px;
           float:left;
           img {
-            margin:-4px 0 0 5px;
+            margin:-3px 0 0 5px;
           }
           text-align:center;
         }
@@ -256,7 +258,7 @@
         .profile_index_friends_friends_requested {
           position:absolute;
           right:5px;
-          top:0px;
+          top:-1px;
           .profile_index_friends_friends_item_friendship_button {
             padding:6px;
             margin-right:3px;
@@ -267,7 +269,6 @@
             }
           }          
         }
-
 //        .profile_index_friends_friends_item_activity {
 //          height:30px;
 //          position:absolute;
@@ -276,16 +277,10 @@
 //          width:100px;
 //          opacity:0.5;
 //        }
-
         .profile_index_friends_friends_item_actions {
           position:absolute;
           right:5px;
           top:3px;
-        }
-        .profile_index_friends_actions_start {
-          display:inline-block;
-          vertical-align:middle;
-          margin-right:5px;
         }
       }
     }

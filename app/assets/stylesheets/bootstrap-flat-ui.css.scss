@@ -379,6 +379,14 @@ a:hover {
       font-size:17px;
     }
   }
+  &.btn-round-large {
+    width:40px;
+    height:40px;
+    line-height:42px;
+    i {
+      font-size:25px;
+    }
+  }
 }
 
 
@@ -421,18 +429,19 @@ a:hover {
 
 
 .btn.btn-start {
-  
+  color: $cn_contrastor_third_0;
+  border-color: $cn_contrastor_third_0;
 }
 .btn.btn-start:hover,
 .btn.btn-start:focus,
 .btn-group:focus .btn.btn-start.dropdown-toggle {
-  color: $cn_contrastor_third_0;
-  border-color: $cn_contrastor_third_0;
+  color: white;
+  background: $cn_contrastor_third_0;
 }
 .btn.btn-start:active,
 .btn-group.open .btn.btn-start.dropdown-toggle,
 .btn.btn-start.active {
-  background-color: $cn_contrastor_third_0;
+  background-color: #0BD318;
 }
 
 

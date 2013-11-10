@@ -1,9 +1,9 @@
 
 - unless event.book_id_usertoprepare.blank?
 
-  %a.btn.btn-round.btn-round-small.btn-green.application_tooltip{ href:"/console?friend_id=" + event.partner.id.to_s + "&book_id=" + event.book_id_usertoprepare.to_s, "data-original-title"=>"Start case with #{event.partner.username} ", rel: "tooltip", "data-placement"=>"top","data-container"=>"body" }
+  %a.btn.btn-round.btn-round-large.btn-start.application_tooltip{ href:"/console?friend_id=" + event.partner.id.to_s + "&book_id=" + event.book_id_usertoprepare.to_s, "data-original-title"=>"Start case with #{event.partner.username} ", rel: "tooltip", "data-placement"=>"top","data-container"=>"body" }
     %i.icon-arrow-right-1.icon-white
 
 - else
-  %a.btn.btn-round.btn-round-small.btn-green.application_tooltip{ href:"/console?friend_id=" + event.partner.id.to_s,"data-original-title"=>"Start case with #{event.partner.username} ", rel: "tooltip", "data-placement"=>"top" }
+  %a.btn.btn-round.btn-round-large.btn-start.application_tooltip{ href:"/console?friend_id=" + event.partner.id.to_s,"data-original-title"=>"Start case with #{event.partner.username} ", rel: "tooltip", "data-placement"=>"top" }
     %i.icon-arrow-right-1.icon-white
