@@ -20,15 +20,17 @@ class Event < ActiveRecord::Base
 
     def time_diff_to_next_appt_for(user)
       next_appt = Event.next_appt_for(user)
-      time_diff = Time.diff(Time.now, next_appt.datetime, '%y, %d, %h hours and %m minutes')
+      time_diff = Time.diff(Time.now, next_appt.datetime)
 
       if time_diff[:day] > 0
-        Time.diff(Time.now, next_appt.datetime, '%y, %d, %H')
+        strftime = '%y, %d, %H'
       elsif time_diff[:hour] > 5
-        Time.diff(Time.now, next_appt.datetime, '%H')
+        strftime = '%H'
       else
-        Time.diff(Time.now, next_appt.datetime, '%H and %N')
+        strftime = '%H and %N'
       end
+
+      Time.diff(Time.now.in_time_zone, next_appt.datetime.in_time_zone, strftime)      
     end
 
     def in_reminder_window

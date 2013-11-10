@@ -59,7 +59,12 @@
           = @next_appt.partner.username
         %br
         = "in " + @next_appt_time_diff[:diff]
-        /= Time.now.strftime("%H:%M")
+        %br
+        = Time.now.strftime("%Y-%m-%d %H:%M")
+        / %br
+        / = Time.now.strftime("%H:%M")
+        / %br
+        / = @next_appt.datetime.strftime("%H:%M")
       #events_calendar_nextappt_start
 
         = render partial:'events/button_startcase', locals: { event: @next_appt }
