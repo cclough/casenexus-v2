@@ -276,7 +276,7 @@
 .map_index_users_item_actions {
 
   position:absolute;
-  top:10px;
+  top:8px;
   right:10px;
 
   .map_index_users_item_button_add {
@@ -289,6 +289,9 @@
     }
   }
 
+  .map_index_users_item_actions_main{
+
+  }
 
 }
 
@@ -359,8 +362,8 @@
 .map_index_users_item_friendship_requested {
   display:inline-block;
   margin:0 0 0 5px;
-  width:100px !important;
-  font-size:15px;
+  width:110px !important;
+  font-size:12px;
   border: 1px solid $cn_grey_-2;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -372,7 +375,7 @@
 }
 
 .map_index_users_item_friendship_action_button {
-  font-size:15px !important;
+  font-size:12px !important;
   width:80px !important;
   height:18px;
   .icon-cancel {

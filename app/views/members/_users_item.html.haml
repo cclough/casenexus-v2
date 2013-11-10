@@ -51,21 +51,21 @@
               %i.icon-map-pin-streamline
 
           %a.map_index_users_item_button_startcase.btn.btn-round.btn-start.btn-round-large.application_tooltip{"data-original-title"=>"Start case...", rel: "tooltip", "data-placement"=>"bottom", href:"/console?friend_id=" + users_item.id.to_s}
-            %i.icon-arrow-right-1
+            START
 
 
         - elsif Friendship.requested?(users_item, current_user)
           .map_index_users_item_friendship_requested
-            Request sent
+            REQUEST SENT
 
         - elsif Friendship.pending?(users_item, current_user)
 
           = link_to accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
             %i.icon-checkmark
-            Accept
+            ACCEPT
           = link_to reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button application_tooltip", "data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
             %i.icon-cancel
-            Decline
+            DECLINE
 
         - elsif !Friendship.exist?(current_user, users_item)
           %span{id:"map_index_users_item_friendship_initiator_buttons_" + users_item.id.to_s}
