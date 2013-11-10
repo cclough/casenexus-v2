@@ -215,7 +215,7 @@ footer {
   z-index:9999;
   width:350px;
   height:75px;
-
+  cursor:pointer;
   padding:10px;
   text-align:left;
 
@@ -227,7 +227,7 @@ footer {
   #application_notify_close {
     border: 0;
     position:absolute;
-    right:5px;
+    right:15px;
     top:37px;
   }
 

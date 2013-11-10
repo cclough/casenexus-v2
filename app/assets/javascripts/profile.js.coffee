@@ -104,8 +104,8 @@ $(document).ready ->
     $.get "/members/" + user_id + "?origin=profile", (data) ->
       $("#profile_index_friends_friends_item_popup").html ''
       $("#profile_index_friends_friends_item_popup").fadeIn(100)
-      $("#profile_index_friends_friends_item_popup").html data
       $("#profile_index_friends_friends_item_popup").css("top",item_offset_top)
+      $("#profile_index_friends_friends_item_popup").html data
       window.map_index_users_item_bless()
   profile_index_friends_friends_item_mouseout = ->
     if !$('#profile_index_friends_friends_item_popup').is(':hover')

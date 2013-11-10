@@ -59,6 +59,11 @@ window.application_notification_trigger = (data_inc) ->
     # Truncatables
     window.application_truncatables()
 
+    # Click prime
+    $("#application_notify").off 'click'
+    $("#application_notify").click ->
+      window.modal_message_show(data_inc.from_id)
+
   # TitleAlert options here: http://heyman.info/2010/sep/30/jquery-title-alert/
   title_msg = "You have a new notification from " + data_inc.from
   $.titleAlert title_msg,
