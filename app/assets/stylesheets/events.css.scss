@@ -145,8 +145,8 @@
   position:absolute;
   right:55px;
   bottom:-10px;
-  border:1px solid $cn_grey_-2;
-  color:$cn_grey_-2;
+  border:1px solid $cn_colour_1;
+  color:$cn_colour_1;
 
   padding:0px 3px;
   -moz-border-radius:    3px;
@@ -158,20 +158,21 @@
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 //  border-right:0 !important;
-  &:hover {
-    border:1px solid $cn_colour_1;
-    color:$cn_colour_1;
-    #events_calendar_nextappt_nextappt {
-      background:$cn_colour_1;
-    }
-  }
+//  &:hover {
+//    border:1px solid $cn_colour_1;
+//    color:$cn_colour_1;
+//    #events_calendar_nextappt_nextappt {
+//      background:$cn_colour_1;
+//      color:white;
+//    }
+//  }
   div {
     display:inline-block;
     vertical-align:middle;
   }
   #events_calendar_nextappt_nextappt {
     font-size:12px;
-    background:$cn_grey_-2;
+    background:$cn_colour_1;
     color:white;
     font-weight:400;
     padding:11px 8px;
@@ -196,6 +197,7 @@
   #events_calendar_nextappt_appt {
     padding:0 5px;
     width:140px;
+    text-align:center;
     #events_calendar_nextappt_appt_user {
       font-weight:400;
     }
