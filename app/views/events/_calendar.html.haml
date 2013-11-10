@@ -61,9 +61,8 @@
         = "in " + @next_appt_time_diff[:diff]
         /= Time.now.strftime("%H:%M")
       #events_calendar_nextappt_start
-        %a.btn.btn-round.btn-round-small.btn-green.application_tooltip{ href:"/console?friend_id=" + @next_appt.partner.id.to_s,"data-original-title"=>"Start case with #{@next_appt.partner.username} ", rel: "tooltip", "data-placement"=>"top" }
-          %i.icon-arrow-right-1.icon-white
 
+        = render partial:'events/button_startcase', locals: { event: @next_appt }
 
     .profile_index_panel_calendar_shift_button{"data-direction"=>"down"}
       %i.icon-fontawesome-webfont-15
