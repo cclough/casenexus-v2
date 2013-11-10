@@ -26,8 +26,10 @@ class Event < ActiveRecord::Base
         strftime = '%y, %d, %H'
       elsif time_diff[:hour] > 5
         strftime = '%H'
-      else
+      elsif time_diff[:hour] > 0
         strftime = '%H and %N'
+      else
+        strftime = '%N'        
       end
 
       Time.diff(Time.now.in_time_zone, next_appt.datetime.in_time_zone, strftime)      
