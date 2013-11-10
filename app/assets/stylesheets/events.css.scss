@@ -148,7 +148,7 @@
   border:1px solid $cn_grey_-2;
   color:$cn_grey_-2;
 
-  padding:0 3px;
+  padding:0px 3px;
   -moz-border-radius:    3px;
   -webkit-border-radius: 3px;
   border-radius:         3px;
@@ -157,7 +157,7 @@
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  border-right:0 !important;
+//  border-right:0 !important;
   &:hover {
     border:1px solid $cn_colour_1;
     color:$cn_colour_1;
@@ -174,7 +174,7 @@
     background:$cn_grey_-2;
     color:white;
     font-weight:400;
-    padding:8px;
+    padding:11px 8px;
     margin-left:-3px;
 
     border-top-left-radius: 3px;
@@ -202,7 +202,7 @@
   }
 
   #events_calendar_nextappt_start {
-    margin-right:-35px;
+//    margin-right:-15px;
   }
 }
 

@@ -210,8 +210,8 @@
   border-radius: 3px;
   font-weight:400;
   &.novice {
-    border: 1px solid #73bf72;
-    background: #73bf72;
+    border: 1px solid $cn_contrastor_third_0;
+    background: $cn_contrastor_third_0;
     color:  white;
   }
   &.intermediate {
@@ -220,8 +220,8 @@
     color:  white;
   }
   &.advanced {
-    border: 1px solid $cn_contrastor_third_0;
-    background: $cn_contrastor_third_0;
+    border: 1px solid $cn_contrastor_0;
+    background: $cn_contrastor_0;
     color:  white;
   }
 }
