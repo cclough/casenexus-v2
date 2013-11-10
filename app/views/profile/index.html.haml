@@ -136,7 +136,6 @@
 
     #profile_index_friends_friends
 
-
       - if @friends_requested.count > 0
         - for friends_requested_item in @friends_requested
           = render partial: "friends_item",locals:{friends_item: friends_requested_item}
