@@ -1,14 +1,14 @@
 .books_show_comments_item
   .row
-    .span4.books_show_comments_item_avatar
+    .span3.books_show_comments_item_avatar
       = avatar_for(comment.user, size:"medium")
-    .span10.offset2
+    .span12.offset2
       .row
         %strong
           = comment.user.username
       .row.books_show_comments_item_date
         = comment.date_fb
-    .span30.offset2
+    .span35.offset2
       = comment.content
     .span#books_show_comments_item_panel_rating.pull-right
       .row

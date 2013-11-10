@@ -2,6 +2,9 @@
 
 - @date = params[:date] ? Date.parse(params[:date]) : Date.today
 
+- @next_appt = Event.next_appt_for(current_user)
+
+- @next_appt_time_diff = Event.time_diff_to_next_appt_for(current_user)
 
 #events_calendar
 
@@ -39,9 +42,27 @@
                 = event.partner.username
 
 
-    #events_calendar_month_date
+    #events_calendar_week_date
 
-    #events_calendar_month_text_count.btn
+    #events_calendar_week_text_count
+
+    #events_calendar_nextappt{"data-event_id" => @next_appt.id}
+
+      #events_calendar_nextappt_nextappt
+        Next
+        %br
+        case
+
+      #events_calendar_nextappt_appt
+        %span#events_calendar_nextappt_appt_user
+          = avatar_for(@next_appt.partner,size: "small")
+          = @next_appt.partner.username
+        %br
+        = "in " + @next_appt_time_diff[:diff]
+        /= Time.now.strftime("%H:%M")
+      #events_calendar_nextappt_start
+        %a.btn.btn-round.btn-round-small.btn-green.application_tooltip{ href:"/console?friend_id=" + @next_appt.partner.id.to_s,"data-original-title"=>"Start case with #{@next_appt.partner.username} ", rel: "tooltip", "data-placement"=>"top" }
+          %i.icon-arrow-right-1.icon-white
 
 
     .profile_index_panel_calendar_shift_button{"data-direction"=>"down"}

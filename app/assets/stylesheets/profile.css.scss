@@ -464,14 +464,6 @@
 
 
 
-
-
-
-
-
-
-
-
         .profile_index_feedback_cases_item_user {
           vertical-align:middle;
           display:inline-block;
@@ -494,12 +486,17 @@
           right:10px;
           top:2px;
           font-weight:bolder;
+          color:$cn_grey_-1;
         }
         &:hover {
-          background:$cn_grey_0;
+          background:$cn_grey_05;
 
           .profile_index_feedback_cases_item_delete {
             display:inline-block;
+          }
+
+          .profile_index_feedback_cases_item_date {
+            color:$cn_grey_-2;
           }
         }
 

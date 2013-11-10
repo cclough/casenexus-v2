@@ -14,6 +14,23 @@ class Event < ActiveRecord::Base
 
   class << self
 
+    def next_appt_for(user)
+      user.events.where("datetime > ?", Time.now).order("datetime asc").first
+    end
+
+    def time_diff_to_next_appt_for(user)
+      next_appt = Event.next_appt_for(user)
+      time_diff = Time.diff(Time.now, next_appt.datetime, '%y, %d, %h hours and %m minutes')
+
+      if time_diff[:day] > 0
+        Time.diff(Time.now, next_appt.datetime, '%y, %d, %H')
+      elsif time_diff[:hour] > 5
+        Time.diff(Time.now, next_appt.datetime, '%H')
+      else
+        Time.diff(Time.now, next_appt.datetime, '%H and %N')
+      end
+    end
+
     def in_reminder_window
       where(datetime: (Time.now + 5.hours)..(Time.now + 6.hours))
     end

@@ -102,6 +102,7 @@ $(document).ready ->
     user_id = $(this).data "friend_id"
     item_offset_top =  $(this).offset().top - 80 + "px"
     $.get "/members/" + user_id + "?origin=profile", (data) ->
+      $("#profile_index_friends_friends_item_popup").html ''
       $("#profile_index_friends_friends_item_popup").fadeIn(100)
       $("#profile_index_friends_friends_item_popup").html data
       $("#profile_index_friends_friends_item_popup").css("top",item_offset_top)

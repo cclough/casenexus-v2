@@ -27,11 +27,11 @@ events_set_week_date = () ->
   current_week_first_day_num_with_ord = current_week_first_day_num + events_ordinal(current_week_first_day_num)
   current_week_last_day_num_with_ord = current_week_last_day_num + events_ordinal(current_week_last_day_num)
   string = current_week_month + ", week " + current_week_first_day_num_with_ord + " - " + current_week_last_day_num_with_ord
-  $("#events_calendar_month_date").html string
+  $("#events_calendar_week_date").html string
 
   # Set number of appts this week
   events_this_week = current_week_div.data "events_this_week"
-  $("#events_calendar_month_text_count").html events_this_week + " appointments this week"
+  $("#events_calendar_week_text_count").html events_this_week + " appointments this week"
 
 
 window.events_calendar_rebless = ->
@@ -45,7 +45,7 @@ window.events_calendar_rebless = ->
     , 500
 
     setTimeout (->
-      $("#events_calendar_month_text_count").fadeIn "500"
+      $("#events_calendar_week_text_count").fadeIn "500"
     ), 1000
     
   ), 500
@@ -94,6 +94,11 @@ window.events_calendar_rebless = ->
         , 150
 
     events_set_week_date()
+
+  # Prime next appt
+  $("#events_calendar_nextappt").click ->
+    event_id = $(this).data "event_id"
+    window.events_calendar_edit_modal_show(event_id)
 
 
 window.modal_event_new_show = (friend_id, book_id) ->
