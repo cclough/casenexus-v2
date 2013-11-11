@@ -496,7 +496,7 @@ if Rails.env == 'development'
                                   interviewer_id: interviewer_id,
                                   book_id: 1 + rand(30),
                                   subject: Faker::Lorem.sentence(5),
-                                  source: Faker::Lorem.sentence(3),
+                                  source: Faker::Lorem.sentence(2),
 
                                   recommendation1: Faker::Lorem.sentence(10),
                                   recommendation2: Faker::Lorem.sentence(10),
