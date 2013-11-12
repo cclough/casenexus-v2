@@ -13,7 +13,6 @@
         - elsif @ntype == "event_remind_partner"
           Reminder: you have a case appointment with #{@user_current.username}
 
-
 %table{style:"padding-bottom:10px;margin-left:10%;"}
   %tr
     %td
@@ -63,15 +62,17 @@
               - unless @event.book_id_usertoprepare.blank?
 
                 %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s + "&book_id=" + @book_usertoprepare.id.to_s }
-                  %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/start.jpg", style: "font-size: 20px; text-align: left; border: none; height: 30px; outline: none; text-decoration: none;font-weight: bold;display:inline-block;vertical-align:middle;", width: "30"}/
+                  %div{style: "color: #73bf72; border: 2px solid #73bf72; font-size:9px; font-weight:bold; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; padding:1px !important; width:35px; height:35px; line-height:37px; background: transparent; text-decoration: none;display:inline-block; vertical-align:middle;text-align:center;"}
+                    START
                   %span{style:"display:inline-block;vertical-align:middle;margin-left:7px;"}
                     Start case as Interviewer
               - else
 
                 %a{ href:"https://www.casenexus.com/console?friend_id=" + @event.partner.id.to_s }
-                  %img{height: "30", src: "https://www.casenexus.com/assets/icons/email/start.jpg", style: "font-size: 20px; text-align: left; border: none; height: 30px; outline: none; text-decoration: none;font-weight: bold;display:inline-block;vertical-align:middle;", width: "30"}/
+                  %div{style: "color: #73bf72; border: 2px solid #73bf72; font-size:9px; font-weight:bold; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; padding:1px !important; width:35px; height:35px; line-height:37px; background: transparent; text-decoration: none;display:inline-block; vertical-align:middle;text-align:center;"}
+                    START
                   %span{style:"display:inline-block;vertical-align:middle;margin-left:7px;"}
-                    Start case as Interviewer now
+                    Start case as Interviewer
 
 
 

@@ -4,11 +4,7 @@
 
 //@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400");
 
-
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400'");
-
-
-
 
 
 
@@ -209,8 +205,6 @@ a:hover {
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 ///////////////////////////////////////////
-
-
 
 
 
@@ -431,7 +425,9 @@ a:hover {
 .btn.btn-start {
   color: $cn_contrastor_third_0;
   border-color: $cn_contrastor_third_0;
+  border-width:2px;
   font-size:9px;
+  font-weight:bold;
 }
 .btn.btn-start:hover,
 .btn.btn-start:focus,
