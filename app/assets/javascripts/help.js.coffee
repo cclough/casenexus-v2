@@ -1,15 +1,4 @@
 
-window.modal_help_show = () ->
-  if !($("#modal_help").hasClass("in"))
-    $(".arrownav_page").hide()
-    $(".modal").modal "hide"
-    $("#modal_help").modal "show"
-    $("#modal_help").on "shown", ->
-      # window.ArrowNav.init()
-      window.ArrowNav.goTo "1"
-
-
-
 $(document).ready ->
 
   # Modal Help nav

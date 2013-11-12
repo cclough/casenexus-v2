@@ -5,12 +5,18 @@
   .row
     .span5
       .notifications_show_item_avatar
-        = image_tag notifications_show_item.sender.university.image_file
+        = avatar_for(notifications_show_item.sender,size:"medium")
+        
+        / = image_tag notifications_show_item.sender.university.image_file
     .span50
       .notifications_show_item_username
-        = notifications_show_item.sender.username
-      .row
-        = notifications_show_item.title
+        = link_to "/map?user_id=" + notifications_show_item.sender.id.to_s, target: "_new" do
+          = notifications_show_item.sender.username
+
+        - unless notifications_show_item.title == "Message"
+          %span.notifications_show_item_title
+            = " - "
+            = notifications_show_item.title
       .row.notifications_show_item_content
         = notifications_show_item.content
       .spacer10

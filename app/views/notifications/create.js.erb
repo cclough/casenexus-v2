@@ -6,17 +6,20 @@
 
         <%- if @notification.ntype = "message" %>
 
-            // THIS IS GOING TO POPULATE THE MESSAGE MODAL
-            $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('notifications/modal_' + @notification.ntype + '_form')) %>');
+            if ($("#notifications_index_notifications_container").size() > 0) {
 
-            // MODAL
-            window.modal_message_prime();
+                // INDEX
+                $("#notifications_index_conversation #application_error_explanation").fadeIn("fast");
+                $("#notifications_index_conversation #application_error_explanation ul").html("<%= j(@notification.errors.full_messages.map {|error| "<li>#{error}</li>"}.join).html_safe %>")
+                window.application_spinner_prime("#notifications_show_form");
+                window.application_form_errors_close();
+            } else {
+                // THIS IS GOING TO POPULATE THE MESSAGE MODAL
+                $('#modal_<%= escape_javascript(@notification.ntype) %>.modal.in').html('<%= escape_javascript(render('notifications/modal_' + @notification.ntype + '_form')) %>');
 
-            // INDEX
-            $("#notifications_index_conversation #application_error_explanation").fadeIn("fast");
-            $("#notifications_index_conversation #application_error_explanation ul").html("<%= j(@notification.errors.full_messages.map {|error| "<li>#{error}</li>"}.join).html_safe %>")
-            window.application_spinner_prime("#notifications_show_form");
-            window.application_form_errors_close();
+                // MODAL
+                window.modal_message_prime();
+            }
 
         <%- else %>
 
@@ -30,20 +33,22 @@
 
         <%- if @notification.ntype = "message" %>
         
-            // MODAL
-            $("#modal_message.modal.in #modal_message_textarea").val("");
-            $("#modal_message.modal.in #flash_notifications").html("");
-            $("#modal_message.modal.in #modal_message_conversation").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
-            window.modal_message_prime();
+            if ($("#notifications_index_notifications_container").size() > 0) {
 
+                // INDEX
+                $("#notifications_show_body_subcontainer").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
+                window.application_spinner_prime("#notifications_show_form");
+                $("#notifications_show_newmessage_textarea").val('');
+                $("#notifications_show_body_subcontainer").scrollTop(document.getElementById("notifications_show_body_subcontainer").scrollHeight);
 
-            // INDEX
-            $("#notifications_show_body_subcontainer").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
-            window.application_spinner_prime("#notifications_show_form");
-            $("#notifications_show_newmessage_textarea").val('');
-            $("#notifications_show_body_subcontainer").scrollTop(document.getElementById("notifications_show_body_subcontainer").scrollHeight);
-
-            $.get("/notifications", null, null, "script");
+                $.get("/notifications", null, null, "script");
+            } else {
+                // MODAL
+                $("#modal_message.modal.in #modal_message_textarea").val("");
+                $("#modal_message.modal.in #flash_notifications").html("");
+                $("#modal_message.modal.in #modal_message_conversation").html("<%= escape_javascript(render partial: 'notifications/conversation', locals: { friend_id: @notification.user.id }) %>")
+                window.modal_message_prime();
+            }
 
         <%- else %>
 

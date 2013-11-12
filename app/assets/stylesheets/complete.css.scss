@@ -180,3 +180,87 @@
   line-height:20px;
   padding:5px;
 }
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+
+#modal_help {
+  background:white;
+  overflow-x: hidden;
+  margin-left:-355px;
+  margin-top:-300px;
+  width:710px;
+  height:600px;
+  .modal-body {
+    height:490px;
+    max-height:490px;
+  }
+  .arrownav_page {
+    display:none;
+    margin: 0px;
+  }
+
+  .close {
+    position:absolute;
+    right:20px;
+    top:15px;
+  }
+  .modal-header {
+    border-bottom:0px;
+  }
+  .modal-footer {
+    //outline:1px solid red;
+    .btn {
+      width:65px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    #modal_help_page_num {
+      margin-top:5px;
+    }
+  }
+}
+
+.modal_help_title {
+  font-size:25px;
+  font-weight:bold;
+  text-align:center;
+  z-index:10;
+}
+
+.modal_help_text {
+  margin:20px 0 30px 0;
+  text-align:left;
+  color:$cn_grey_-2;
+  &.last_page {
+    text-align:center;
+  }
+}
+
+.modal_help_image {
+  text-align:center;
+  img {
+    width:580px;
+    height:363px;
+    margin:0 auto;
+    border:1px solid $cn_grey_0;
+  }
+}
+
+

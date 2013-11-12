@@ -142,12 +142,6 @@
 
 }
 
-.notifications_index_notifications_item_avatar {
-  text-align:center;
-  font-size:34px;
-  float:left;
-  width:70px;
-}
 
 .notifications_index_notifications_item_read_highlight {
   display:none;
@@ -157,6 +151,17 @@
   top:0px;
   bottom:0px;
   width:5px;
+}
+
+.notifications_index_notifications_item_avatar {
+  text-align:center;
+  font-size:34px;
+  float:left;
+  width:70px;
+}
+
+.notifications_index_notifications_item_name {
+  font-weight:400;
 }
 
 .notifications_index_notifications_item_text_container {
@@ -282,17 +287,23 @@
   font-size:16px;
   margin-bottom:5px;
   font-weight:400;
+  color:$cn_colour_1;
+  a {
+    color:$cn_colour_1;
+  }
 }
+
+.notifications_show_item_title {
+  font-weight:200;
+  color:$cn_grey_-2;
+}
+ 
 .notifications_show_item_content {
-  font-size:12px;
+  font-size:13px;
 }
-
-
 
 .notifications_show_item_avatar {
-  img {
-    max-width:30px;
-  }
+
 }
 
 .notifications_show_item_date_line {

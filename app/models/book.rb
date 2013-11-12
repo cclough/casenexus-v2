@@ -30,7 +30,7 @@ class Book < ActiveRecord::Base
   end
 
   def title_trunc
-    title.truncate(28, separator: ' ')
+    title.truncate(31)
   end
 
   def chart_num_in_words

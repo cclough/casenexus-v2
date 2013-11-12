@@ -28,6 +28,7 @@ window.modal_message_prime = () ->
   window.application_spinner_prime(".modal.in")
 
   # Enter key submits
+  $(".modal.in #modal_message_textarea").off 'keydown'
   $(".modal.in #modal_message_textarea").keydown((event) ->
     if event.keyCode is 13
       $(@form).submit()
@@ -142,6 +143,7 @@ window.notifications_index_notifications_prime = () ->
 $(document).ready ->
 
   if $("#notifications_index_notifications_container").size() > 0
+
     window.notifications_index_notifications_prime()
 
     # prime the initial conversation

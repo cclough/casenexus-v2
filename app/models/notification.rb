@@ -150,11 +150,10 @@ class Notification < ActiveRecord::Base
     def history(from_id, to_id)
       for_display.where("(sender_id = ? and user_id = ?) or (sender_id = ? and user_id = ?)",
                         from_id, to_id,
-                        to_id, from_id).where(["ntype in (?)", ["message", "feedback", "friendship_req","friendship_app",
-                                                                "event_set_partner","event_set_sender",
-                                                                "event_change_partner","event_change_sender",
-                                                                "event_cancel_partner","event_cancel_sender",
-                                                                "event_remind_partner","event_remind_sender"]])
+                        to_id, from_id).where(["ntype in (?)", ["message", "feedback","friendship_app",
+                                                                "event_set_partner",
+                                                                "event_change_partner",
+                                                                "event_cancel_partner"]])
     end
 
   end
