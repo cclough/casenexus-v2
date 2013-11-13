@@ -3,7 +3,7 @@
 
 - unless @next_appt.blank?
 
-  - @next_appt_time_diff = Event.time_diff_to_next_appt_for(current_user)
+  - @next_appt_time_diff = Event.next_appt_date_string_for(current_user)
 
   #events_calendar_nextappt{"data-event_id" => @next_appt.id}
 
@@ -17,7 +17,7 @@
         = avatar_for(@next_appt.partner,size: "small")
         = @next_appt.partner.username
       %br
-      = "in " + @next_appt_time_diff[:diff]
+      = @next_appt_time_diff
     #events_calendar_nextappt_start
 
       = render partial:'events/button_startcase', locals: { event: @next_appt }

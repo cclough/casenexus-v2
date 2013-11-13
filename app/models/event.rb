@@ -18,6 +18,17 @@ class Event < ActiveRecord::Base
       user.events.where("datetime > ?", Time.now).order("datetime asc").first
     end
 
+    def next_appt_date_string_for(user)
+      next_appt_datetime = Event.next_appt_for(user).datetime
+
+      if next_appt_datetime > DateTime.now + 1.days
+        next_appt_datetime.strftime("%A at %-I:%M%P")
+      else
+        next_appt_datetime.strftime("TODAY at %-I:%M%P")
+      end
+    end
+
+
     def time_diff_to_next_appt_for(user)
       next_appt = Event.next_appt_for(user)
       time_diff = Time.diff(Time.now, next_appt.datetime)

@@ -149,23 +149,11 @@
   color:$cn_colour_1;
 
   padding:0px 3px;
-//  -moz-border-radius:    3px;
-//  -webkit-border-radius: 3px;
-//  border-radius:         3px;
   cursor:pointer;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-//  border-right:0 !important;
-//  &:hover {
-//    border:1px solid $cn_colour_1;
-//    color:$cn_colour_1;
-//    #events_calendar_nextappt_nextappt {
-//      background:$cn_colour_1;
-//      color:white;
-//    }
-//  }
   div {
     display:inline-block;
     vertical-align:middle;
@@ -177,17 +165,7 @@
     font-weight:400;
     padding:11px 8px;
     margin-left:-3px;
-
-//    border-top-left-radius: 3px;
-//    -moz-border-top-left-radius: 3px;
-//    -webkit-border-top-left-radius: 3px;
-
-//    border-bottom-left-radius: 3px;
-//    -moz-border-bottom-left-radius: 3px;
-//    -webkit-border-bottom-left-radius: 3px;
-
     text-align:center;
-
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -198,6 +176,10 @@
     padding:0 5px;
     width:140px;
     text-align:center;
+    font-size:12px;
+    img {
+      margin-right:5px;
+    }
     #events_calendar_nextappt_appt_user {
       font-weight:400;
     }
