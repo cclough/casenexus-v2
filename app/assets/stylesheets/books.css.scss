@@ -31,6 +31,16 @@
   }
 }
 
+#books_index_books_pagination {
+  height:36px;
+//  outline: 1px solid red;
+  padding-top:16px;
+  .pagination {
+    margin-top:0;
+    display:block;
+  }
+}
+
 
 /////////////////////////////////////////////////////////////////
 /////////////////////////// FORM ////////////////////////////////

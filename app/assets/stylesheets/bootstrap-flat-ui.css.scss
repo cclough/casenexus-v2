@@ -746,6 +746,9 @@ input[type="color"]:focus,
 
 .pagination {
   position: relative;
+  &.pagination_hide {
+    display:none;
+  }
 }
 .pagination ul {
   background: $cn_grey_0;

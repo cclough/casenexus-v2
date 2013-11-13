@@ -11,7 +11,8 @@
     });
   });
 
-/ = paginate @books
+#books_index_books_pagination
+  = paginate @books
 
 - if @books.to_a.size > 0
 
