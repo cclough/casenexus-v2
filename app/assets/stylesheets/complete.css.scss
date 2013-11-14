@@ -45,7 +45,7 @@
 
   padding:50px 25px 25px;
 
-  width:620px;
+  width:640px;
   height:430px;
 
   margin:0 auto; //adding 50 top margin here doesn't work for some reason, use padding
@@ -122,7 +122,7 @@
 }
 
 #account_complete_panel_column_left {
-  margin-right:20px;
+  margin-right:40px;
 }
 
 
@@ -245,11 +245,31 @@
 }
 
 .modal_help_text {
-  margin:20px 0 30px 0;
+  margin:20px 0 20px 0;
   text-align:left;
   color:$cn_grey_-2;
   &.last_page {
     text-align:center;
+  }
+}
+
+.modal_help_control_centered {
+  text-align:center;
+  margin-bottom:10px;
+  .static_home_form_input_container {
+    width:300px;
+    margin:0 auto !important;
+  }
+}
+
+#modal_help_usersnearby {
+  overflow-y:scroll;
+  height:350px;
+  width:650px;
+  position:relative;
+  .map_index_users_item {
+    float:left;
+    width:325px;
   }
 }
 

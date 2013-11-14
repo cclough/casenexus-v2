@@ -1,13 +1,24 @@
+
 <%- if @user.errors.any? %>
 
-  $('#modal_profile').html("<%= escape_javascript(render('account/edit')) %>");
-
+  if ($("#account_complete_panel").size() > 0) {
+    alert("Hello");
+    $("#account_complete_panel").html("<%= escape_javascript(render partial: 'account/complete_profile_form') %>");
+  } else {
+    $('#modal_profile').html("<%= escape_javascript(render('account/edit')) %>");
+  }
   window.account_completeedit_bless();
 
   window.application_form_errors_close();
   
 <%- else %>
 
-  $(window.location.replace("/"))
-   
+
+  if ($("#account_complete_panel").size() > 0) {
+    window.ArrowNav.goTo String(parseInt(page) - 1)
+  } else {
+    // when not complete_profile
+    $(window.location.replace("/"))
+  }
+
 <%- end %>

@@ -23,10 +23,10 @@
 #= require account
 #= require books
 #= require cases
+#= require complete
 #= require console
 #= require events
 #= require footer
-#= require help
 #= require map
 #= require notifications
 #= require profile

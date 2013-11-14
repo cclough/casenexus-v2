@@ -65,8 +65,16 @@ $(document).ready ->
   #////////////////////// COMPLETE ////////////////////////
   #////////////////////////////////////////////////////////
   
+
   window.application_disablesubmit_prime "#account_editpassword_panel"
   window.application_disablesubmit_prime "#account_complete_panel"
 
   if $("#account_complete_panel").length > 0
     window.account_completeedit_bless()
+
+    $(".map_index_users_item").each (i) ->
+      if ((i+1) == $(".map_index_users_item").length)
+        $(this).delay((i + 1) * 50).fadeIn ->
+          $("#map_index_users .pagination").fadeIn(500); 
+      else
+        $(this).delay((i + 1) * 50).fadeIn();

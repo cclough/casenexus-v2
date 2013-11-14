@@ -26,7 +26,7 @@
 
 
   #footer_onlineusers{"data-original-title"=>"Show these " + User.list_online_now(current_user).count.to_s + " online users", rel: "tooltip", "data-placement"=>"top", class: "application_tooltip"}
-    = User.list_online_now(current_user).count
+    = User.users_allowed_on_map.list_online_now(current_user).count
     #footer_onlineusers_text
       online
 

@@ -27,10 +27,14 @@ class AccountController < ApplicationController
           format.html { redirect_to '/' }
         end
       else
-        @user.completed = true
+        # @user.completed = true
         @user.save
         flash[:success] = 'Welcome ' + @user.username
-        redirect_to "/"
+        # redirect_to "/"
+        respond_to do |format|
+          format.js
+          format.html { redirect_to '/' }
+        end
       end
     else
       # @invitations = current_user.invitations
@@ -38,7 +42,10 @@ class AccountController < ApplicationController
 
       if params[:back_url]
         if params[:back_url].include?('complete')
-          render 'complete_profile', layout: "home"
+          respond_to do |format|
+            format.js
+            format.html { render 'complete_profile', layout: "home" }
+          end
         else
           redirect_to params[:back_url]
         end
