@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :completed_user, except: [:complete_profile, :update]
+  before_filter :completed_user, except: [:complete, :update]
 
   def show
     redirect_to action: :edit
@@ -44,7 +44,7 @@ class AccountController < ApplicationController
         if params[:back_url].include?('complete')
           respond_to do |format|
             format.js
-            format.html { render 'complete_profile', layout: "home" }
+            format.html { render 'complete', layout: "home" }
           end
         else
           redirect_to params[:back_url]
@@ -60,7 +60,7 @@ class AccountController < ApplicationController
 
   end
 
-  def complete_profile
+  def complete
     @user = current_user
     if @user.completed?
       redirect_to "/"

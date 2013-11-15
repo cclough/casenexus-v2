@@ -1,0 +1,162 @@
+
+#application_arrownav_page_1.arrownav_page
+
+  .modal_help_title Welcome #{current_user.username}
+  
+  .modal_help_text 
+    Casenexus.com is a platform for live case interview practice. This tour gives a brief overview of how you use it.
+
+  .modal_help_image
+    = image_tag "help/image_1.png"
+
+#application_arrownav_page_2.arrownav_page
+
+  .modal_help_title Profile info
+
+  .modal_help_text 
+    We need some information to help other users find you
+
+  %div
+
+    #account_complete_panel_column_left
+          
+      .static_home_form_input_container
+        .static_home_form_input_icon_container
+          = image_tag "icons/forms/user.png"
+        = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large", id: "static_home_form_username_input"
+
+      #static_home_form_username_label
+        Suggested username (you can change this later)
+
+      = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option>".html_safe, {:prompt => "What's your degree level?"}, { class: "chzn-select", tabindex: "2"}
+
+      .spacer15
+
+      .static_home_form_input_container
+        .static_home_form_input_icon_container
+          %i.input-icon.icon-linkedin-alt
+        = f.text_field :linkedin, tabindex: "3", placeholder: "Linkedin username (optional)", class: "span30 large"
+        
+      = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", tabindex: "5", "data-placeholder" => "Which languages do you speak?"}
+
+      .spacer15
+
+      #account_complete_cases_ext_label
+        How many cases have you done outside of casenexus.com?
+
+      = f.text_field :cases_external, tabindex: "6", id: "account_complete_cases_ext_input",placeholder:"0"
+
+
+
+
+    #account_complete_panel_column_right
+
+      #account_completeedit_map.complete.map
+
+      #account_complete_map_header
+        Move the blue marker to your location, so others nearby can contact you
+
+      = f.hidden_field :lat, id: "account_completeedit_lat"
+      = f.hidden_field :lng, id: "account_completeedit_lng"
+
+
+
+
+#application_arrownav_page_3.arrownav_page
+
+  .modal_help_title Add first partners
+  
+  .modal_help_text 
+    Don't be shy, add all these guys
+
+    .btn.btn-colour.btn-green.pull-right
+      Send requests to all
+
+  #modal_help_usersnearby
+
+    - @users_suggested = User.list_suggested(current_user)
+
+    - if @users_suggested.count > 0
+      - for users_nearby_item in @users_suggested
+
+        = render partial: 'members/users_item' , locals: { users_item: users_nearby_item }
+
+    - else
+      No users found
+
+#application_arrownav_page_4.arrownav_page
+
+  .modal_help_title Your profile
+  
+  .modal_help_text 
+    Your profile is your case interview HQ
+
+  .modal_help_image
+    = image_tag "help/image_1.png"
+
+#application_arrownav_page_5.arrownav_page
+
+  .modal_help_title Arrange case appointments
+  
+  .modal_help_text Once approved as a partner, use case appointments to book cases across time zones. Your partner needs 30mins to prepare a case for you beforehand, so select a case from our library and it will be emailed to them.
+
+  .modal_help_control_centered
+    = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, { prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
+
+  .modal_help_image
+    = image_tag "help/image_2.png"
+
+#application_arrownav_page_6.arrownav_page
+
+  .modal_help_title Do cases
+  
+  .modal_help_text When you're ready to start a case, a console brings together the case script, a timer, and a performance feedback form, designed by a consultant from a top-tier firm with years of interviewing experience. LOOK FOR THE START BUTTON.
+
+  .modal_help_control_centered
+    .static_home_form_input_container{rel: "popover", "data-content"=> "Sign up at <a href=https://login.skype.com/account/signup-form target=_blank><span class=fui-skype></span>Skype.com</a>".html_safe, "data-original-title"=>"Not registered?", id: "account_completeedit_skype"}
+      .static_home_form_input_icon_container
+        %i.input-icon.icon-skype
+      = f.text_field :skype, tabindex: "4", placeholder: "Skype username (recommended)", class: "span30 large"
+
+  .modal_help_image
+    = image_tag "help/image_3.png"
+
+#application_arrownav_page_7.arrownav_page
+
+  .modal_help_title HOW CASES WORK
+  
+  .modal_help_text Brief tutorial explaining how you take it turns...we provide a mechanism to be the interviewer
+
+  .modal_help_image
+    = image_tag "help/image_3.png"
+
+#application_arrownav_page_8.arrownav_page
+
+  .modal_help_title Review your feedback
+
+  .modal_help_text Feedback you receive is collected in your profile, for you to review whenever you wish. Your scores are illustrated to help you identify your strengths and weaknesses.
+    
+  .modal_help_image
+    = image_tag "help/image_4.png"
+
+#application_arrownav_page_9.arrownav_page
+
+  .spacer100
+
+  .modal_help_title That's it, good luck.
+  
+  .modal_help_text.last_page
+
+    Feel free to only use the features you need.
+    %br
+    %br
+    Casenexus is still in Beta - do contact us if you encounter any bugs.
+
+
+.modal-footer
+  .pull-left
+    #modal_help_page_num
+      Part 1 of 8
+  .pull-right
+    %a#modal_help_button_prev.btn.btn-micro Previous
+    %a#modal_help_button_next.btn.btn-micro Next

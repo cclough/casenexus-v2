@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
   
   def completed_user
-    redirect_to complete_profile_account_path, notice: flash[:notice] unless current_user.completed?
+    redirect_to complete_account_path, notice: flash[:notice] unless current_user.completed?
   end
 
   # Redirection after sign in with devise

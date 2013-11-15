@@ -42,7 +42,7 @@ Casenexus::Application.routes.draw do
 
   # Account
   resource :account, controller: 'account' do
-    get :complete_profile, on: :collection
+    get :complete, on: :collection
     get :edit_password, on: :member
     get :delete, on: :member
     # get :visitors, on: :collection
