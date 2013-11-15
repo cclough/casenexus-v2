@@ -7,7 +7,132 @@
 
 #account_complete_panel
 
-  = render 'complete_form'
+
+  #application_arrownav_page_1.arrownav_page
+
+    .modal_help_title Welcome #{current_user.username}
+    
+    .modal_help_text 
+      Casenexus.com is a platform for live case interview practice. This tour gives a brief overview of how you use it.
+
+    .modal_help_image
+      = image_tag "help/image_1.png"
+
+  #application_arrownav_page_2.arrownav_page
+
+    .modal_help_title Profile info
+
+    .modal_help_text 
+      We need some information to help other users find you
+
+    #account_complete_form_info_container
+      = render 'complete_form_info'
+
+
+
+
+  #application_arrownav_page_3.arrownav_page
+
+    .modal_help_title Add first partners
+    
+    .modal_help_text 
+      Don't be shy, add all these guys
+
+      .btn.btn-colour.btn-green.pull-right
+        Send requests to all
+
+    #modal_help_usersnearby
+
+      - @users_suggested = User.list_suggested(current_user)
+
+      - if @users_suggested.count > 0
+        - for users_nearby_item in @users_suggested
+
+          = render partial: 'members/users_item' , locals: { users_item: users_nearby_item }
+
+      - else
+        No users found
+
+  #application_arrownav_page_4.arrownav_page
+
+    .modal_help_title Your profile
+    
+    .modal_help_text 
+      Your profile is your case interview HQ
+
+    .modal_help_image
+      = image_tag "help/image_1.png"
+
+  #application_arrownav_page_5.arrownav_page
+
+    .modal_help_title Arrange case appointments
+    
+    .modal_help_text Once approved as a partner, use case appointments to book cases across time zones. Your partner needs 30mins to prepare a case for you beforehand, so select a case from our library and it will be emailed to them.
+
+   
+      
+     #account_complete_form_timezone_container.modal_help_control_centered
+      = render 'complete_form_timezone'
+
+
+    .modal_help_image
+      = image_tag "help/image_2.png"
+
+  #application_arrownav_page_6.arrownav_page
+
+    .modal_help_title Do cases
+    
+    .modal_help_text When you're ready to start a case, a console brings together the case script, a timer, and a performance feedback form, designed by a consultant from a top-tier firm with years of interviewing experience. LOOK FOR THE START BUTTON.
+
+    .modal_help_control_centered
+
+      #account_complete_form_timezone_container.modal_help_control_centered
+        = render 'complete_form_skype'
+
+
+    .modal_help_image
+      = image_tag "help/image_3.png"
+
+  #application_arrownav_page_7.arrownav_page
+
+    .modal_help_title HOW CASES WORK
+    
+    .modal_help_text Brief tutorial explaining how you take it turns...we provide a mechanism to be the interviewer
+
+    .modal_help_image
+      = image_tag "help/image_3.png"
+
+  #application_arrownav_page_8.arrownav_page
+
+    .modal_help_title Review your feedback
+
+    .modal_help_text Feedback you receive is collected in your profile, for you to review whenever you wish. Your scores are illustrated to help you identify your strengths and weaknesses.
+      
+    .modal_help_image
+      = image_tag "help/image_4.png"
+
+  #application_arrownav_page_9.arrownav_page
+
+    .spacer100
+
+    .modal_help_title That's it, good luck.
+    
+    .modal_help_text.last_page
+
+      Feel free to only use the features you need.
+      %br
+      %br
+      Casenexus is still in Beta - do contact us if you encounter any bugs.
+
+
+  .modal-footer
+    .pull-left
+      #modal_help_page_num
+        Part 1 of 8
+    .pull-right
+      %a#modal_help_button_prev.btn.btn-micro Previous
+      %a#modal_help_button_next.btn.btn-micro Next
+
 
 / #account_complete_panel_submit.application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "8"}
 /   Complete Sign up

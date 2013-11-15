@@ -1,0 +1,44 @@
+= render 'shared/error_messages', object: @user
+
+%div
+
+  #account_complete_panel_column_left
+        
+    .static_home_form_input_container
+      .static_home_form_input_icon_container
+        = image_tag "icons/forms/user.png"
+      = f.text_field :username, tabindex: "1", placeholder: "Choose a unique username", class: "span30 large", id: "static_home_form_username_input"
+
+    #static_home_form_username_label
+      Suggested username (you can change this later)
+
+    = f.select :degree_level, "<option>Undergraduate</option><option>MBA</option>".html_safe, {:prompt => "What's your degree level?"}, { class: "chzn-select", tabindex: "2"}
+
+    .spacer15
+
+    .static_home_form_input_container
+      .static_home_form_input_icon_container
+        %i.input-icon.icon-linkedin-alt
+      = f.text_field :linkedin, tabindex: "3", placeholder: "Linkedin username (optional)", class: "span30 large"
+      
+    = f.collection_select :language_ids, Language.all, :id, :name, {:selected => @user.language_ids}, {multiple: true, class: "chzn-select span30", tabindex: "5", "data-placeholder" => "Which languages do you speak?"}
+
+    .spacer15
+
+    #account_complete_cases_ext_label
+      How many cases have you done outside of casenexus.com?
+
+    = f.text_field :cases_external, tabindex: "6", id: "account_complete_cases_ext_input",placeholder:"0"
+
+
+
+
+  #account_complete_panel_column_right
+
+    #account_completeedit_map.complete.map
+
+    #account_complete_map_header
+      Move the blue marker to your location, so others nearby can contact you
+
+    = f.hidden_field :lat, id: "account_completeedit_lat"
+    = f.hidden_field :lng, id: "account_completeedit_lng"
