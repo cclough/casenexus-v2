@@ -1,24 +1,43 @@
+$(".application_spinner_container").hide()
 
 <%- if @user.errors.any? %>
+  
+  alert('<%= params[:user][:complete_page] %>');
 
   if ($("#account_complete_panel").size() > 0) {
-    alert("Hello");
-    $("#account_complete_panel").html("<%= escape_javascript(render partial: 'account/complete_form') %>");
+
+    <%- if params[:user][:complete_page] == "info" %>
+      $("#account_complete_form_info_container").html("<%= escape_javascript(render partial: 'account/complete_form_info') %>");
+      window.account_completeedit_bless();
+    <%- elsif params[:user][:complete_page] == "timezone" %>
+      $("#account_complete_form_timezone_container").html("<%= escape_javascript(render partial: 'account/complete_form_timezone') %>");
+    <%- elsif params[:user][:complete_page] == "skype" %>
+      $("#account_complete_form_skype_container").html("<%= escape_javascript(render partial: 'account/complete_form_skype') %>");
+    <%- end %>
+
   } else {
+
     $('#modal_profile').html("<%= escape_javascript(render('account/edit')) %>");
+    window.account_completeedit_bless();
   }
-  window.account_completeedit_bless();
+
 
   window.application_form_errors_close();
-  
-  window.ArrowNav.goTo("2");
+
 <%- else %>
 
   if ($("#account_complete_panel").size() > 0) {
-    window.ArrowNav.goTo String(parseInt(page) - 1)
+
+    <%- if params[:user][:complete_page] == "info" %>
+      window.ArrowNav.goTo("3");
+    <%- elsif params[:user][:complete_page] == "timezone" %>
+      window.ArrowNav.goTo("6");
+    <%- elsif params[:user][:complete_page] == "skype" %>
+      window.ArrowNav.goTo("7");
+    <%- end %>
+
   } else {
     // when not complete_profile
     $(window.location.replace("/"))
   }
-
 <%- end %>

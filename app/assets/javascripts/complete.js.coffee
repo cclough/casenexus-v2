@@ -24,9 +24,9 @@ $(document).ready ->
 
         # NEXT BUTTON - on last, change
         $('#modal_help_button_next').off('click');
-        if page == "8"
-          $("#modal_help_button_next").html("<i class=icon-check-5></i> Finish")
+        if page == "9"
           $("#modal_help_button_skip").hide()
+          $("#modal_help_button_next").hide()
           $("#modal_help_button_next").click ->
             $(window.location.replace("/"))
         else
@@ -41,8 +41,16 @@ $(document).ready ->
           $("#modal_help_button_next").off 'click'
           $("#modal_help_button_next").click ->
  
-            if page == "2" || page == "5" || page == "7"   
-              $("#account_complete_form").submit()
+            if page == "2"
+              $(".application_spinner_container").show()
+              $("#account_complete_form_info").submit()
+            else if page == "5"
+              $(".application_spinner_container").show()
+              $("#account_complete_form_timezone").submit()
+            else if page == "6"   
+              $(".application_spinner_container").show()
+              $("#account_complete_form_skype").submit()
+
             else
               window.ArrowNav.goTo String(parseInt(page) + 1)
 

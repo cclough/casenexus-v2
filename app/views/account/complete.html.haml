@@ -18,6 +18,7 @@
     .modal_help_image
       = image_tag "help/image_1.png"
 
+
   #application_arrownav_page_2.arrownav_page
 
     .modal_help_title Profile info
@@ -27,8 +28,6 @@
 
     #account_complete_form_info_container
       = render 'complete_form_info'
-
-
 
 
   #application_arrownav_page_3.arrownav_page
@@ -53,6 +52,7 @@
       - else
         No users found
 
+
   #application_arrownav_page_4.arrownav_page
 
     .modal_help_title Your profile
@@ -63,6 +63,7 @@
     .modal_help_image
       = image_tag "help/image_1.png"
 
+
   #application_arrownav_page_5.arrownav_page
 
     .modal_help_title Arrange case appointments
@@ -71,7 +72,7 @@
 
    
       
-     #account_complete_form_timezone_container.modal_help_control_centered
+    #account_complete_form_timezone_container.modal_help_control_centered
       = render 'complete_form_timezone'
 
 
@@ -86,7 +87,7 @@
 
     .modal_help_control_centered
 
-      #account_complete_form_timezone_container.modal_help_control_centered
+      #account_complete_form_skype_container.modal_help_control_centered
         = render 'complete_form_skype'
 
 
@@ -124,6 +125,12 @@
       %br
       Casenexus is still in Beta - do contact us if you encounter any bugs.
 
+      = form_for(@user, url: account_path) do |f|
+
+        = f.hidden_field :complete_page, value: "end"
+
+        %button.btn.btn-large
+          Start now!
 
   .modal-footer
     .pull-left
@@ -133,6 +140,9 @@
       %a#modal_help_button_prev.btn.btn-micro Previous
       %a#modal_help_button_next.btn.btn-micro Next
 
+
+.application_spinner_container
+  .application_spinner
 
 / #account_complete_panel_submit.application_submit_button_with_disable.btn.btn-red.btn-large.btn-block{:href => "#", :type => "submit", tabindex: "8"}
 /   Complete Sign up

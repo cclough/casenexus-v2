@@ -27,13 +27,17 @@ class AccountController < ApplicationController
           format.html { redirect_to '/' }
         end
       else
-        # @user.completed = true
-        @user.save
-        flash[:success] = 'Welcome ' + @user.username
-        # redirect_to "/"
         respond_to do |format|
-          format.js
-          format.html { redirect_to '/' }
+
+          if params[:user][:complete_page] == "end"
+            flash[:success] = 'Welcome ' + @user.username
+            @user.completed = true
+            @user.save
+            format.html { redirect_to '/' }
+          else
+            format.js
+          end
+          
         end
       end
     else
