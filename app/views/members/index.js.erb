@@ -68,6 +68,7 @@ markerLayer.on('layeradd', function(e) {
 
       if (users_item.is(":visible")) {
         scroll_to_user();
+        $("#map_index_users_spinner_container").fadeOut("fast");
       };
 
     });
@@ -152,8 +153,10 @@ if($("input[name=users_listtype]:eq(0)").is(':checked') || $("input[name=users_l
 ///////////////////////////////////////////////////////////////////////////////
 
 $("#map_index_users .pagination a").on("click", function() {
+  $("#map_index_users_spinner_container").fadeIn("fast")
   $.getScript(this.href);
   return false;
+
 });
 
 
@@ -161,7 +164,7 @@ $("#map_index_users .pagination a").on("click", function() {
 
 function scroll_to_user() {
 
-  if (typeof window.user_item_to_scroll_to_id != null) {
+  if (typeof window.user_item_to_scroll_to_id === "string") {
 
      // Set item
     var users_item = $("#map_index_users_item_" + window.user_item_to_scroll_to_id);
@@ -189,12 +192,11 @@ $(".map_index_users_item").each(function (i) {
 
   if ((i+1) == $(".map_index_users_item").length) { // if last item
     $(this).delay((i + 1) * 50).fadeIn(function(){
+
       $("#map_index_users #map_index_users_form_paginate").appendTo("#footer_map_pagination");
       
       $("#footer_map_pagination .pagination").fadeIn("fast",function(){
-
         scroll_to_user();
-
       });
 
     });

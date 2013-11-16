@@ -1,5 +1,3 @@
-window.user_item_to_scroll_to_top = null
-window.user_item_to_scroll_to = null
 window.user_item_to_scroll_to_id = null
 
 window.map_index_users_item_bless = () ->

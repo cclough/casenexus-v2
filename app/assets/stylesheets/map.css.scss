@@ -129,7 +129,7 @@
 
 .map_index_users_form_filters_button_user_count {
   padding: 7px 5px 8px;
-  width:14px;
+  width:21px;
   margin:-7px -8px -8px 5px;
   display:inline-block;
   color:white;
@@ -148,12 +148,25 @@
 
 #map_index_users_form_paginate {
   .pagination {
-    display:none;
+      display:none;
+    ul {
+      background:transparent;
+    }
     a.active {
       background:white;
       color:$cn_colour_1;
     }
   }
+  .pagination ul li > a, .pagination ul li > span {
+    border-left: 1px solid $cn_colour_0;
+    i {
+      font-size: 15.988px;
+      line-height: 16px;
+    }
+  }
+.pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
+  padding-bottom:5px !important;
+}
 }
 
 #map_index_users_form_radiogroup {

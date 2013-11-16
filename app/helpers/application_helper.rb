@@ -47,6 +47,8 @@ module ApplicationHelper
     params[1] = {} if params[1].nil?
     params[1][:renderer] = BootstrapPaginationHelper::LinkRenderer
     params[1][:class] ||= 'pagination pagination-centered small'
+    params[1][:previous_label] ||= '<i class=icon-fontawesome-webfont-31></i>'
+    params[1][:next_label] ||= '<i class=icon-fontawesome-webfont-2></i>'
     params[1][:inner_window] ||= 2
     params[1][:outer_window] ||= 2
     will_paginate *params
