@@ -24,7 +24,7 @@ window.map_index_users_item_bless();
 ////// NB ORDER OF STUFF IS IMPORTANT HERE OR YOU GET MARKER FUCKUPS ON LOAD
 ///////////////////////////////////////////////////////////////////////////////
 
-var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users).html_safe) %>";
+var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users_unpaginated).html_safe) %>";
 
 var geoJson = $.parseJSON(geoJson_precursor);
 
@@ -142,7 +142,8 @@ $(".map_index_users_item").each(function (i) {
 
   if ((i+1) == $(".map_index_users_item").length) {
     $(this).delay((i + 1) * 50).fadeIn(function(){
-      $("#map_index_users .pagination").fadeIn(500); 
+      $("#map_index_users #map_index_users_form_paginate").appendTo("#footer_map_pagination");
+      $("#footer_map_pagination .pagination").fadeIn("fast"); 
     });
   } else {
     $(this).delay((i + 1) * 50).fadeIn();

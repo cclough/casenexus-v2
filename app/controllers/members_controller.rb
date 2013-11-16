@@ -29,12 +29,13 @@ class MembersController < ApplicationController
     end
 
     if users_scope
-      @users = users_scope.sort_by{|e| -e.cases_per_week}.paginate(per_page: 100, page: params[:page])
+      @users_unpaginated = users_scope.sort_by{|e| -e.cases_per_week}
+      @users = @users_unpaginated.paginate(per_page: 20, page: params[:page])
     end
 
     respond_to do |format|
       format.js # links index.js.erb!
-      format.json { render json: User.markers_geojson(@users) } # USING get_markers_within_viewport INSTEAD
+      #format.json { render json: User.markers_geojson(@users_unpaginated) } # USING get_markers_within_viewport INSTEAD
     end
 
   end

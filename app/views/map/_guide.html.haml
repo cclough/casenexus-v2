@@ -1,22 +1,24 @@
-Showing
-%span#footer_guide_count_users
-  = users.count.to_s
+%span#footer_map_pagination
 
-#{pluralize_without_count(users.count, 'user')}
+/ Showing
+/ %span#footer_guide_count_users
+/   = users.count.to_s
 
-
-- case_count = users.map { |a| a.cases.where("created_at > ?", Time.now - 1.month).count }.sum
-
-- if case_count > 0
-
-  - if users.count > 1
-    who together have done
-  - else
-    who's done
+/ #{pluralize_without_count(users.count, 'user')}
 
 
-  %span#footer_guide_count_cases
-    = case_count.to_s
-  = pluralize_without_count(case_count, 'case')
-  in the last month
+/ - case_count = users.map { |a| a.cases.where("created_at > ?", Time.now - 1.month).count }.sum
+
+/ - if case_count > 0
+
+/   - if users.count > 1
+/     who together have done
+/   - else
+/     who's done
+
+
+/   %span#footer_guide_count_cases
+/     = case_count.to_s
+/   = pluralize_without_count(case_count, 'case')
+/   in the last month
 

@@ -13,7 +13,25 @@
   left:0;
   z-index:1039;
 
-  // for map
+  #map_index_users_form_paginate {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:425px;
+    height:50px;
+
+    // for map
+    .pagination {
+      display:none;
+      margin:10px 0 0;
+      a {
+        background:$cn_colour_05;
+        padding:6px 4px;
+      }
+    }
+
+  }
+
   #footer_guide_text {
     margin-left:15px;
     color:white;
