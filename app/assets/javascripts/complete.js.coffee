@@ -25,11 +25,11 @@ $(document).ready ->
         # NEXT BUTTON - on last, change
         $('#modal_help_button_next').off('click');
         if page == "9"
-          $("#modal_help_button_skip").hide()
           $("#modal_help_button_next").hide()
           $("#modal_help_button_next").click ->
             $(window.location.replace("/"))
         else
+          $("#modal_help_button_next").show()
           $("#modal_help_button_next").html("Next")
           if page == "1"
             $("#modal_help_button_prev").hide()
@@ -64,4 +64,4 @@ $(document).ready ->
         $("#modal_help_page_num").html("Part " + page + " of 8")
 
 
-    window.ArrowNav.goTo "1"
+    window.ArrowNav.goTo "3"

@@ -155,6 +155,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def distance_between(user)
+    distance_to(user).round(1)
+  end
+
   def case_count_total
     case_count_recd + case_count_givn + case_count_external
   end
@@ -238,27 +242,26 @@ class User < ActiveRecord::Base
     ### Lists for filters
 
     def list_suggested(user)
-      if user.nearbys(1).users_allowed_on_map.count > 10
-        if user.nearbys(1).users_allowed_on_map.list_by_experience(user.case_count_bracket_id).count > 10
-          scope = user.nearbys(1).users_allowed_on_map.list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(10)
+      if user.nearbys(1).users_allowed_on_map.not_friends(user).count > 6
+        if user.nearbys(1).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).count > 6
+          scope = user.nearbys(1).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(10)
         else
-          scope = user.nearbys(1).users_allowed_on_map.order("cases desc").first(10)
+          scope = user.nearbys(1).users_allowed_on_map.not_friends(user).order("cases desc").first(10)
         end
-      elsif user.nearbys(10).users_allowed_on_map.count > 10
-        if user.nearbys(10).users_allowed_on_map.list_by_experience(user.case_count_bracket_id).count > 10
-          scope = user.nearbys(10).users_allowed_on_map.list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(10)
+      elsif user.nearbys(100).users_allowed_on_map.not_friends(user).count > 6
+        if user.nearbys(100).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).count > 6
+          scope = user.nearbys(100).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(10)
         else
-          scope = user.nearbys(10).users_allowed_on_map.order("cases desc").first(10)
+          scope = user.nearbys(100).users_allowed_on_map.not_friends(user).order("cases desc").first(10)
         end
       else
-        if User.users_allowed_on_map.list_by_experience(user.case_count_bracket_id).count > 10
-          scope = User.users_allowed_on_map.list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(10)
+        if User.users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).count > 6
+          scope = User.users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(10)
         else
-          scope = User.order("cases desc").users_allowed_on_map.first(10)
+          scope = User.order("cases desc").users_allowed_on_map.not_friends(user).first(10)
         end
       end
       scope
-
 
     end
 
@@ -400,7 +403,6 @@ class User < ActiveRecord::Base
       else # not the important one
         errors.add(:base, "Sorry, casenexus is not yet available for your university")
       end
-
     else
       if self.email == "gerald.templer@gmail.com"
         self.university = University.find(2) # Set to oxford for certain people

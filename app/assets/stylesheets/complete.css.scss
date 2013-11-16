@@ -260,4 +260,50 @@
   }
 }
 
+.account_complete_suggested_item {
+  width:300px;
+  outline:1px solid red;
+  float:left;
+  div {
+    float:left;
+  }
+  .account_complete_suggested_item_case_count {
+    font-weight:400;
+    font-size:15px;
+    padding:10px;
+    position:relative;
+    .account_complete_suggested_item_case_count_text {
+      font-size:10px;
+      position:absolute;
+      bottom:5px;
+    }
+  }
+  .account_complete_suggested_item_distance {
+    font-size:18px;
+    padding:10px;
+  }
+  height:70px;
+
+  .account_complete_suggested_item_button_add {
+    width:50px;
+    line-height:42px;
+    i {
+      font-size:30px;
+      margin-right:1px;
+    }
+    height:40px;
+    margin-top:-5px;
+    margin-right:-5px;
+    -moz-border-radius:    0px !important;
+    -webkit-border-radius: 0px !important;
+    border-radius:         0px !important;
+    &.sent {
+      background:$cn_grey_-2;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+  }
+}
 

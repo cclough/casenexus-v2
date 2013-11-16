@@ -35,22 +35,12 @@
     .modal_help_title Add first partners
     
     .modal_help_text 
-      Don't be shy, add all these guys
+      Here are a selection of other users near you with similar case experience
 
-      .btn.btn-colour.btn-green.pull-right
+      .btn.btn-colour.btn-green.pull-right#account_complete_form_suggested_button_sendtoall
         Send requests to all
 
-    #modal_help_usersnearby
-
-      - @users_suggested = User.list_suggested(current_user)
-
-      - if @users_suggested.count > 0
-        - for users_nearby_item in @users_suggested
-
-          = render partial: 'members/users_item' , locals: { users_item: users_nearby_item }
-
-      - else
-        No users found
+    = render 'complete_form_suggested'
 
 
   #application_arrownav_page_4.arrownav_page

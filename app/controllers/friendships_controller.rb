@@ -1,12 +1,12 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :completed_user
+  before_filter :completed_user, except: [:create]
 
   def modal_friendship_req_form
     @user = User.find(params[:id])
     @friendship = Friendship.new
 
-    render partial: "friendships/modal_friendship_req_form", layout:false
+    render partial: "friendships/modal_friendship_req_form", layout: false
   end
 
   def create

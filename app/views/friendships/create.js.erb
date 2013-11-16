@@ -8,6 +8,8 @@
 
 <%- else %>
 
+  alert("friendship created");
+
 	$('#modal_friendship_req').modal('hide');
 
   $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
@@ -21,6 +23,13 @@
     }, 4000);
 
 	});
+
+  // COMPLETE
+  var initiator_button_container = $('#account_complete_suggested_item_friendship_initiator_button_<%= escape_javascript(@friendship.friend.id.to_s) %>');
+  initiator_button_container.addClass("sent");
+  initiator_button_container.html("Sent");
+
+  // MAP
 
   //window.map_index_users_updatelist();
 

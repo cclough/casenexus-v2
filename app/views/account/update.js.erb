@@ -30,6 +30,20 @@ $(".application_spinner_container").hide()
 
     <%- if params[:user][:complete_page] == "info" %>
       window.ArrowNav.goTo("3");
+      $(".account_complete_suggested_item_button_add").off("click");
+      $(".account_complete_suggested_item_button_add").click(function(){
+        friend_id = $(this).data("friend_id");
+        $("#account_complete_suggested_input_friend_id").val(friend_id);
+        $(this).html("Sending...");
+        $("#account_complete_form_suggested").submit();
+        $(this).off("click");
+      });
+      $("#account_complete_form_suggested_button_sendtoall").click(function() {
+        $(".account_complete_suggested_item_button_add").trigger("click");
+      });
+
+
+
     <%- elsif params[:user][:complete_page] == "timezone" %>
       window.ArrowNav.goTo("6");
     <%- elsif params[:user][:complete_page] == "skype" %>

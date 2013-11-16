@@ -1,0 +1,24 @@
+.account_complete_suggested_item{'data-id' => suggested_item.id.to_s, id:"account_complete_suggested_item_" + suggested_item.id.to_s}
+
+  .map_index_suggested_item_avatar
+    = avatar_for(suggested_item, { link: 0, size: "large" })
+
+  .map_index_suggested_item_university
+    = suggested_item.username
+
+  .map_index_suggested_item_university
+    = suggested_item.university.name.upcase
+
+  .account_complete_suggested_item_case_count
+    = suggested_item.case_count_total
+    .account_complete_suggested_item_case_count_text
+      cases
+  .account_complete_suggested_item_distance
+    #{current_user.distance_between(suggested_item)}km
+
+  %span
+    %a.account_complete_suggested_item_button_add.btn.btn-micro.btn-green.application_tooltip{"data-container"=>"body", "data-original-title"=>"Send partner request...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => suggested_item.id, id:"account_complete_suggested_item_friendship_initiator_button_" + suggested_item.id.to_s }
+      %i.icon-plus
+
+/ .map_index_suggested_item_friendship_requested
+/   REQUEST SENT

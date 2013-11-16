@@ -189,17 +189,6 @@ $(document).ready ->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
   ######## IF MAP PAGE, LOAD
 
   if typeof map_index_map_lat_start is "string"

@@ -1,0 +1,15 @@
+#modal_help_usersnearby
+
+  = form_for(@friendship, remote: true, html: {id: "account_complete_form_suggested"}) do |f|
+
+    = f.hidden_field :friend_id, id: "account_complete_suggested_input_friend_id"
+
+    - @users_suggested = User.list_suggested(current_user)
+
+    - if @users_suggested.count > 0
+      - for suggested_item in @users_suggested
+
+        = render partial: 'complete_suggested_item' , locals: { suggested_item: suggested_item }
+
+    - else
+      No users found

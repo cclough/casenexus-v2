@@ -65,6 +65,7 @@ class AccountController < ApplicationController
   end
 
   def complete
+    @friendship = Friendship.new
     @user = current_user
     if @user.completed?
       redirect_to "/"
