@@ -50,15 +50,27 @@ markerLayer.on('layeradd', function(e) {
 
       window.map_index_marker_and_popup_actions_for(marker,"perm"); 
 
-      // scroll to item
-      var users_item = $("#map_index_users_item_" + feature.properties.id);
-      $("#application_container_main").animate({
-        scrollTop: users_item.position().top - 5
-      }, "fast");
-      // activate item
-      $('.map_index_users_item').removeClass("map_index_users_item_info_active");
-      users_item.addClass("map_index_users_item_info_active");
-      
+      page_containing = Math.floor(feature.properties.index / 20) + 2; // add 1 for 'prev' %a in pagination
+
+      $(".pagination li:nth-child("+page_containing+") a").trigger("click");
+
+      setTimeout(function() {
+         // scroll to item
+        var users_item = $("#map_index_users_item_" + feature.properties.id);
+
+        // activate item
+        $('.map_index_users_item').removeClass("map_index_users_item_info_active");
+        users_item.addClass("map_index_users_item_info_active");
+
+        $("body").animate({
+          scrollTop: users_item.position().top - 5
+        }, "fast");
+
+
+      }, 3000);
+
+
+
 
     });
 

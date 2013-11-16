@@ -325,6 +325,7 @@ class User < ActiveRecord::Base
                     \"geometry\": { \"type\": \"Point\", \"coordinates\": [#{user.lng},#{user.lat}] },
                     \"properties\": {
                       \"id\": \"#{user.id}\",
+                      \"index\": \"#{users.index(user)}\",
                       \"username\": \"#{user.username_trunc}\",
                       \"university_image\": \"#{user.university.image}\",
                       \"university_name\": \"#{user.university.name.upcase}\",
