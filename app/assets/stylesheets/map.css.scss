@@ -149,6 +149,10 @@
 #map_index_users_form_paginate {
   .pagination {
     display:none;
+    a.active {
+      background:white;
+      color:$cn_colour_1;
+    }
   }
 }
 

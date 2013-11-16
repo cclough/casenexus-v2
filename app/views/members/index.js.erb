@@ -60,25 +60,15 @@ markerLayer.on('layeradd', function(e) {
       window.map_index_marker_and_popup_actions_for(marker,"perm"); 
 
       page_containing = Math.floor(feature.properties.index / 20) + 2; // add 1 for 'prev' %a in pagination
-
-      // alert(page_containing);
-
       $(".pagination li:nth-child("+page_containing+") a").trigger("click");
 
-      setTimeout(function() {
-         // scroll to item
-        var users_item = $("#map_index_users_item_" + feature.properties.id);
+      // set global
+      window.user_item_to_scroll_to_id = feature.properties.id;
+      var users_item = $("#map_index_users_item_" + window.user_item_to_scroll_to_id);
 
-        // activate item
-        $('.map_index_users_item').removeClass("map_index_users_item_info_active");
-        users_item.addClass("map_index_users_item_info_active");
-
-        $("body").animate({
-          scrollTop: users_item.position().top - 5
-        }, "slow","easeOutExpo");
-
-      }, 3000);
-
+      if (users_item.is(":visible")) {
+        scroll_to_user();
+      };
 
     });
 
@@ -156,6 +146,7 @@ if($("input[name=users_listtype]:eq(0)").is(':checked') || $("input[name=users_l
 
 <%- end %>
 
+
 ///////////////////////////////////////////////////////////////////////////////
 // Pagination
 ///////////////////////////////////////////////////////////////////////////////
@@ -168,7 +159,26 @@ $("#map_index_users .pagination a").on("click", function() {
 
 
 
+function scroll_to_user() {
 
+  if (typeof window.user_item_to_scroll_to_id != null) {
+
+     // Set item
+    var users_item = $("#map_index_users_item_" + window.user_item_to_scroll_to_id);
+
+    // Scroll to
+    $("body").animate({
+      scrollTop: users_item.position().top - 5
+    }, "slow","easeOutExpo");
+
+    // activate item
+    $('.map_index_users_item').removeClass("map_index_users_item_info_active");
+    users_item.addClass("map_index_users_item_info_active");
+
+    window.user_item_to_scroll_to_id = null;
+  };
+
+};
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -177,17 +187,23 @@ $("#map_index_users .pagination a").on("click", function() {
 
 $(".map_index_users_item").each(function (i) {
 
-  if ((i+1) == $(".map_index_users_item").length) {
+  if ((i+1) == $(".map_index_users_item").length) { // if last item
     $(this).delay((i + 1) * 50).fadeIn(function(){
       $("#map_index_users #map_index_users_form_paginate").appendTo("#footer_map_pagination");
-      $("#footer_map_pagination .pagination").fadeIn("fast"); 
+      
+      $("#footer_map_pagination .pagination").fadeIn("fast",function(){
+
+        scroll_to_user();
+
+      });
+
     });
   } else {
+
     $(this).delay((i + 1) * 50).fadeIn();
   }
 
 });
-
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -255,6 +271,9 @@ $('.map_index_users_item').mouseenter(function () {
 
 
 
+
+
+  
 
 
 
