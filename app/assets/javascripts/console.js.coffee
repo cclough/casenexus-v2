@@ -113,6 +113,22 @@ window.console_index_subnav_timer_prime = ->
 
 $(document).ready ->
 
+  # Splash -> interviewee
+  $("#console_index_splash_panel_button_interviewee").click ->
+    $("#console_index_splash").hide()
+    $("#console_index_interviewee_container").show()
+
+  # Splash -> interviewer
+  $("#console_index_splash_panel_button_interviewer").click ->
+    $("#console_index_splash").hide()
+    $("#console_index_interviewer_container").show()
+
+  # Return from intervewee to splash
+  $("#console_index_interviewee_panel_button_return, #console_index_subnav_button_return").click ->
+    $("#console_index_splash").show()
+    $("#console_index_interviewee_container").hide()
+    $("#console_index_interviewer_container").hide()
+
   # View switch button
   $("#console_index_subnav_button_viewswitch").click ->
     console_index_subnav_viewswitch_toggle()

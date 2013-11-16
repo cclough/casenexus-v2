@@ -1,32 +1,47 @@
 
 
-#console_index_pdfjs{ class: ("single-left" if @view == "single-left") }
-  %iframe#console_index_pdfjs_iframe{ src: ("/console/pdfjs?id=#{@book.id}" unless @book.blank?) }
+#console_index_splash
+  #console_index_splash_header 
+  #console_index_splash_panel
+    #console_index_splash_panel_button_interviewer.btn.pull-left
+      Interviewer
+    #console_index_splash_text
+      Are you the
+    #console_index_splash_panel_button_interviewee.btn.pull-right
+      Interviewee
+
+#console_index_interviewee_container
+  = render 'interviewee_panel'
+
+#console_index_interviewer_container
+
+  #console_index_pdfjs{ class: ("single-left" if @view == "single-left") }
+    %iframe#console_index_pdfjs_iframe{ src: ("/console/pdfjs?id=#{@book.id}" unless @book.blank?) }
 
 
-#console_index_pdfjs_blank{style:("display:none;" unless @book.blank?), class: ("single-left" if @view == "single-left")}
+  #console_index_pdfjs_blank{style:("display:none;" unless @book.blank?), class: ("single-left" if @view == "single-left")}
 
-  #console_index_pdfjs_blank_header
+    #console_index_pdfjs_blank_header
 
-  #console_index_pdfjs_blank_message
-    #console_index_panel_blank_message_text
-      Select a case
-
-
+    #console_index_pdfjs_blank_message
+      #console_index_panel_blank_message_text
+        Select a case
 
 
 
-#console_index_feedback_subnav
-  = render 'subnav'
 
-#console_index_feedback_frame{class: ("single-left" if @view == "single-left")}
-  - unless @friend.blank?
-    = render partial: "cases/new", locals: { user_id: @friend.id }
-  - else
-    #console_index_feedback_blank
-      = image_tag "icons/forms/user.png"
-      #console_index_feedback_blank_text
-        Select a friend to open a feedback form
+
+  #console_index_feedback_subnav
+    = render 'subnav'
+
+  #console_index_feedback_frame{class: ("single-left" if @view == "single-left")}
+    - unless @friend.blank?
+      = render partial: "cases/new", locals: { user_id: @friend.id }
+    - else
+      #console_index_feedback_blank
+        = image_tag "icons/forms/user.png"
+        #console_index_feedback_blank_text
+          Select a friend to open a feedback form
 
 
 
