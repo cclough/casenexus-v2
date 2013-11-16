@@ -1,7 +1,11 @@
+
+//alert("<%= params[:page].to_i.to_s == params[:page] %>")
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Re-renders the user list
 ///////////////////////////////////////////////////////////////////////////////
-$("#map_index_users").html("<%= escape_javascript(render("users")) %>")
+$("#map_index_users").html("<%= escape_javascript(render("users")) %>");
 
 $("#map_index_users_spinner_container").fadeOut("fast");
 
@@ -23,6 +27,11 @@ window.map_index_users_item_bless();
 ///////////////////////////////////////////////////////////////////////////////
 ////// NB ORDER OF STUFF IS IMPORTANT HERE OR YOU GET MARKER FUCKUPS ON LOAD
 ///////////////////////////////////////////////////////////////////////////////
+
+<%- unless params[:page].to_i.to_s == params[:page] %> // don't perform if just paginating
+
+
+// alert("drawing markers");
 
 var geoJson_precursor = "<%= escape_javascript(User.markers_geojson(@users_unpaginated).html_safe) %>";
 
@@ -52,6 +61,8 @@ markerLayer.on('layeradd', function(e) {
 
       page_containing = Math.floor(feature.properties.index / 20) + 2; // add 1 for 'prev' %a in pagination
 
+      // alert(page_containing);
+
       $(".pagination li:nth-child("+page_containing+") a").trigger("click");
 
       setTimeout(function() {
@@ -64,12 +75,9 @@ markerLayer.on('layeradd', function(e) {
 
         $("body").animate({
           scrollTop: users_item.position().top - 5
-        }, "fast");
-
+        }, "slow","easeOutExpo");
 
       }, 3000);
-
-
 
 
     });
@@ -118,10 +126,12 @@ markerLayer.setGeoJSON(geoJson);
 
   $('.map_index_users_item').removeClass("map_index_users_item_info_active");
   $("#map_index_users").find('.map_index_users_item').first().addClass("map_index_users_item_info_active");
+
 <%- end %>
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -143,6 +153,21 @@ if($("input[name=users_listtype]:eq(0)").is(':checked') || $("input[name=users_l
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+<%- end %>
+
+///////////////////////////////////////////////////////////////////////////////
+// Pagination
+///////////////////////////////////////////////////////////////////////////////
+
+$("#map_index_users .pagination a").on("click", function() {
+  $.getScript(this.href);
+  return false;
+});
+
+
+
+
 
 
 
@@ -228,17 +253,6 @@ $('.map_index_users_item').mouseenter(function () {
 
 });
 
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Pagination
-///////////////////////////////////////////////////////////////////////////////
-
-$("#map_index_users .pagination a").on("click", function() {
-  $.getScript(this.href);
-  return false;
-});
 
 
 
