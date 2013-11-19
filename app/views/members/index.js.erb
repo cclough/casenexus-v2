@@ -192,18 +192,18 @@ function scroll_to_user() {
 $(".map_index_users_item").each(function (i) {
 
   if ((i+1) == $(".map_index_users_item").length) { // if last item
-    $(this).delay((i + 1) * 50).fadeIn(function(){
+    $(this).delay((i + 1) * 5).show(0,function(){
 
       $("#map_index_users #map_index_users_form_paginate").appendTo("#footer_map_pagination");
       
-      $("#footer_map_pagination .pagination").fadeIn("fast",function(){
+      $("#footer_map_pagination .pagination").show(0, function(){
         scroll_to_user();
       });
 
     });
   } else {
 
-    $(this).delay((i + 1) * 50).fadeIn();
+    $(this).delay((i + 1) * 5).show();
   }
 
 });

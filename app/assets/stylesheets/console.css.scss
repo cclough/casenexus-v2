@@ -27,7 +27,7 @@
     .btn {
       height:100px;
       width:100px;
-      font-size:20px;
+      font-size:19px;
       line-height:100px;
     }
     #console_index_splash_text {
@@ -37,8 +37,10 @@
       margin-left:-50px;
       top:50%;
       height:50px;
+      padding-top:53px;
       margin-top:-50px;
       text-align:center;
+      color:$cn_colour_1;
     }
   }
 }
