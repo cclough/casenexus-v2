@@ -75,18 +75,29 @@
     .spacer15
 
     .books_index_form_filters_title
+      Difficulty
+
+    #books_index_form_filters_selector_difficulty.books_index_form_filters_selector
+      .books_index_form_fitlers_selector_item.books_index_form_fitlers_selector_item_active{value: ""} All
+      .books_index_form_fitlers_selector_item{"data-difficulty_id"=> 1 } Novice
+      .books_index_form_fitlers_selector_item{"data-difficulty_id"=> 2 } Intermediate
+      .books_index_form_fitlers_selector_item{"data-difficulty_id"=> 3 } Advanced
+
+    .spacer5
+
+    = hidden_field_tag :books_filter_difficulty
+
+    .books_index_form_filters_title
       Type
 
 
-    #books_index_form_filters_tag_selector
-      .books_index_form_fitlers_tag_selector_item.books_index_form_fitlers_tag_selector_item_active{value: ""} All
+    #books_index_form_filters_selector_tag.books_index_form_filters_selector
+      .books_index_form_fitlers_selector_item.books_index_form_fitlers_selector_item_active{value: ""} All
       - Tag.where(category_id:4).each do |tags_type_item|
-        .books_index_form_fitlers_tag_selector_item{"data-tag_id"=> tags_type_item.id }
+        .books_index_form_fitlers_selector_item{"data-tag_id"=> tags_type_item.id }
           = tags_type_item.name
 
 
     = hidden_field_tag :books_filter_tag
-
-    .spacer5
 
 

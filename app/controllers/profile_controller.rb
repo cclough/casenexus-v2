@@ -11,8 +11,6 @@ class ProfileController < ApplicationController
     @cases = current_user.cases.includes(:interviewer).order("created_at desc")
 
     @case_count_recd = current_user.case_count_recd
-
-    @post_in_view = Post.where("approved = true").order("created_at asc").last
   
     @current_user_id_masked = current_user.obfuscated_id
   end

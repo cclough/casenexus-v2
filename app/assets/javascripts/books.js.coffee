@@ -59,12 +59,21 @@ $(document).ready ->
 
 
   # Tag Select click for form
-  $(".books_index_form_fitlers_tag_selector_item").click ->
+  $("#books_index_form_filters_selector_tag .books_index_form_fitlers_selector_item").click ->
     tag_id = $(this).data "tag_id"
 
     $("#books_filter_tag").val tag_id
-    $(".books_index_form_fitlers_tag_selector_item").removeClass "books_index_form_fitlers_tag_selector_item_active"
-    $(this).addClass "books_index_form_fitlers_tag_selector_item_active"
+    $(".books_index_form_fitlers_selector_item").removeClass "books_index_form_fitlers_selector_item_active"
+    $(this).addClass "books_index_form_fitlers_selector_item_active"
+
+    window.books_index_books_updatelist()
+
+  $("#books_index_form_filters_selector_difficulty .books_index_form_fitlers_selector_item").click ->
+    difficulty_id = $(this).data "difficulty_id"
+
+    $("#books_filter_difficulty").val difficulty_id
+    $(".books_index_form_fitlers_selector_item").removeClass "books_index_form_fitlers_selector_item_active"
+    $(this).addClass "books_index_form_fitlers_selector_item_active"
 
     window.books_index_books_updatelist()
 

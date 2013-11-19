@@ -1,3 +1,4 @@
+
 @import 'colours';
 
 
@@ -95,20 +96,29 @@
   .slimScrollDiv {
     margin:10px;
   }
-  #books_index_form_filters_tag_selector {
 
+  #books_index_form_filters_selector_tag {
+    height:300px;
+  }
+
+  #books_index_form_filters_selector_difficulty {
+    height:110px;
+  }
+
+  .books_index_form_filters_selector {
+    margin:10px;
+    overflow-y:scroll;
     width:240px;
     -moz-border-radius:    3px;
     -webkit-border-radius: 3px;
     border-radius:         3px;
     background:$cn_grey_-1;
-    height:300px;
     position:relative;
 
-    .books_index_form_fitlers_tag_selector_item {
+    .books_index_form_fitlers_selector_item {
       padding:5px 8px;
       cursor:pointer;
-      &.books_index_form_fitlers_tag_selector_item_active {
+      &.books_index_form_fitlers_selector_item_active {
         background:$cn_colour_-2;
         color:white;
       }
@@ -117,6 +127,7 @@
       }
     }
   }
+
   #books_index_form_filters_sort_direction_button {
     margin-right:15px;
     float:right;
@@ -126,6 +137,9 @@
 }
 
 
+#books_filter_difficulty { //input field in form
+//  display:none;
+}
 
 
 

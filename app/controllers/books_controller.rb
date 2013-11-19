@@ -16,6 +16,12 @@ class BooksController < ApplicationController
       relation = Book.approved
     end
 
+    # DIFFICULTY
+    params[:books_filter_difficulty] = nil if params[:books_filter_difficulty] == "" || params[:books_filter_difficulty] == "all"
+    if params[:books_filter_difficulty]
+      relation = relation.where(difficulty: params[:books_filter_difficulty])
+    end
+
     # BTYPE
     params[:books_filter_btype] = nil if params[:books_filter_btype] == "" || params[:books_filter_btype] == "all"
     if params[:books_filter_btype]
@@ -29,8 +35,6 @@ class BooksController < ApplicationController
       format.js
       format.html
     end
-
-    @post_in_view = Post.where("approved = true").order("created_at asc").last
   end
 
   def show

@@ -54,6 +54,7 @@ markerLayer.on('layeradd', function(e) {
  
       // pan, offset pan, (zoom?) and show button
       window.map.setZoom(15);
+      // need an if to say 'if already zoomed, do not pan'
       window.map.panTo(marker.getLatLng());
       $("#map_index_map_zoomout").fadeIn("fast");
 
