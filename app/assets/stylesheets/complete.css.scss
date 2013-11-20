@@ -5,13 +5,21 @@
 
 #account_complete_panel {
 
+  position:relative;
+  #modal_help_page_num {
+    position:absolute;
+    bottom:-30px;
+    left:50%;
+    width:100px;
+    margin-left:-50px;
+  }
 
   #account_complete_panel_nav_arrow_left {
-    left:50px;
+    left:-50px;
   }
 
   #account_complete_panel_nav_arrow_right {
-    right:50px;
+    right:-50px;
   }
 
   #account_complete_panel_nav_arrow_left, #account_complete_panel_nav_arrow_right {
@@ -189,6 +197,13 @@
 ///////////////////////////////////////////
 
 
+#account_complete_form_timezone {
+  text-align:left;
+  .chzn-single {
+
+  }
+}
+
 .modal_help_title {
   font-size:25px;
   font-weight:bold;
@@ -206,9 +221,12 @@
 }
 
 .modal_help_control_centered {
-  text-align:center;
   margin-bottom:10px;
   .static_home_form_input_container {
+    width:300px;
+    margin:0 auto !important;
+  }
+  .chzn-container {
     width:300px;
     margin:0 auto !important;
   }
@@ -235,6 +253,18 @@
   }
 }
 
+#account_complete_form_suggested_button_sendtoall {
+  width:120px;
+  margin-top:-10px;
+  margin-right:30px;
+  &.sent {
+    background:$cn_grey_-2;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+}
 .account_complete_suggested_item {
   width:290px;
   height:60px;
@@ -248,6 +278,9 @@
     height:50px;
     margin-right:10px;
     width:45px;
+    img {
+      margin-top:5px;
+    }
   }
   .account_complete_suggested_item_body_left {
     width:115px;

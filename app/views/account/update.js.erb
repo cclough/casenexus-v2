@@ -39,6 +39,7 @@ $(".application_spinner_container").hide()
         $(this).off("click");
       });
       $("#account_complete_form_suggested_button_sendtoall").click(function() {
+        $(this).html("Sending...");
         $(".account_complete_suggested_item_button_add").trigger("click");
       });
 

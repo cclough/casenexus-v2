@@ -8,8 +8,6 @@
 
 <%- else %>
 
-  alert("friendship created");
-
 	$('#modal_friendship_req').modal('hide');
 
   $("body").append("<%= escape_javascript(render partial: 'layouts/flash' , locals: { flash: flash }).html_safe %>");
@@ -24,15 +22,17 @@
 
 	});
 
-  // COMPLETE
+  //// COMPLETE
   var initiator_button_container = $('#account_complete_suggested_item_friendship_initiator_button_<%= escape_javascript(@friendship.friend.id.to_s) %>');
   initiator_button_container.addClass("sent");
-  initiator_button_container.html("Sent");
+  initiator_button_container.html("Request sent");
 
-  // MAP
+  $("#account_complete_form_suggested_button_sendtoall").addClass("sent");
+  $("#account_complete_form_suggested_button_sendtoall").html("Complete");
 
+
+  //// MAP
   //window.map_index_users_updatelist();
-
   var initiator_button_container = $('#map_index_users_item_friendship_initiator_buttons_<%= escape_javascript(@friendship.friend.id.to_s) %>');
   initiator_button_container.find(".map_index_users_item_button_add").hide();
   initiator_button_container.find(".map_index_users_item_friendship_requested").show();

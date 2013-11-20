@@ -1,6 +1,12 @@
 
 $(document).ready ->
 
+  # 
+  $(".account_complete_suggested_item").click ->
+    friend_id = $(this).data "id"
+
+  if $("#account_complete_panel").length > 0
+    window.account_completeedit_bless()
 
   # Modal Help nav
   if $("#account_complete_panel").size() > 0
@@ -56,6 +62,6 @@ $(document).ready ->
           window.ArrowNav.goTo String(parseInt(page) - 1)    
 
         # PAGE NUM
-        $("#modal_help_page_num").html("Part " + page + " of 8")
+        $("#modal_help_page_num").html("Part " + page + " of 9")
 
-    window.ArrowNav.goTo "3"
+    window.ArrowNav.goTo "5"

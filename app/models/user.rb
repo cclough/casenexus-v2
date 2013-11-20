@@ -156,7 +156,11 @@ class User < ActiveRecord::Base
   end
 
   def distance_between(user)
-    distance_to(user).round(1)
+    if distance_to(user).to_s.split(".")[0].size > 2
+      distance_to(user).round(0)
+    else
+      distance_to(user).round(1)
+    end
   end
 
   def case_count_total
