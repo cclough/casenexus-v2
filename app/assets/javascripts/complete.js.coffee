@@ -23,23 +23,20 @@ $(document).ready ->
         next_page.fadeIn 100
 
         # NEXT BUTTON - on last, change
-        $('#modal_help_button_next').off('click');
+        $('#account_complete_panel_nav_arrow_right').off('click');
         if page == "9"
-          $("#modal_help_button_next").hide()
-          $("#modal_help_button_next").click ->
+          $("#account_complete_panel_nav_arrow_right").hide()
+          $("#account_complete_panel_nav_arrow_right").click ->
             $(window.location.replace("/"))
         else
-          $("#modal_help_button_next").show()
-          $("#modal_help_button_next").html("Next")
+          $("#account_complete_panel_nav_arrow_right").show()
           if page == "1"
-            $("#modal_help_button_prev").hide()
+            $("#account_complete_panel_nav_arrow_left").hide()
           else
-            $("#modal_help_button_prev").show()
+            $("#account_complete_panel_nav_arrow_left").show()
 
-          $("#modal_help_button_skip").show()
-
-          $("#modal_help_button_next").off 'click'
-          $("#modal_help_button_next").click ->
+          $("#account_complete_panel_nav_arrow_right").off 'click'
+          $("#account_complete_panel_nav_arrow_right").click ->
  
             if page == "2"
               $(".application_spinner_container").show()
@@ -50,18 +47,15 @@ $(document).ready ->
             else if page == "6"   
               $(".application_spinner_container").show()
               $("#account_complete_form_skype").submit()
-
             else
               window.ArrowNav.goTo String(parseInt(page) + 1)
 
-
         # PREVIOUS BUTTON
-        $('#modal_help_button_prev').off('click');
-        $("#modal_help_button_prev").click ->
+        $('#account_complete_panel_nav_arrow_left').off('click');
+        $("#account_complete_panel_nav_arrow_left").click ->
           window.ArrowNav.goTo String(parseInt(page) - 1)    
 
         # PAGE NUM
         $("#modal_help_page_num").html("Part " + page + " of 8")
-
 
     window.ArrowNav.goTo "3"

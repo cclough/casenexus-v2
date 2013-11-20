@@ -6,6 +6,27 @@
 #account_complete_panel {
 
 
+  #account_complete_panel_nav_arrow_left {
+    left:50px;
+  }
+
+  #account_complete_panel_nav_arrow_right {
+    right:50px;
+  }
+
+  #account_complete_panel_nav_arrow_left, #account_complete_panel_nav_arrow_right {
+    position:absolute;
+    top:260px;
+    color:$cn_grey_-1;
+    cursor:pointer;
+    @include prevent_text_highlight;
+    &:hover {
+      color:$cn_colour_1;
+    }
+    i {
+      font-size:50px;
+    }
+  }
 
   .arrownav_page {
     display:none;
@@ -14,9 +35,6 @@
       display:block;
     }
   }
-
-
-
 
 
 
@@ -171,49 +189,6 @@
 ///////////////////////////////////////////
 
 
-
-#modal_help {
-  background:white;
-  overflow-x: hidden;
-  margin-left:-355px;
-  margin-top:-300px;
-  width:710px;
-  height:600px;
-  .modal-body {
-    height:490px;
-    max-height:490px;
-  }
-  .arrownav_page {
-    display:none;
-    margin: 0px;
-  }
-
-  .close {
-    position:absolute;
-    right:20px;
-    top:15px;
-  }
-  .modal-header {
-    border-bottom:0px;
-  }
-  .modal-footer {
-    //outline:1px solid red;
-    .btn {
-      width:65px;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    #modal_help_page_num {
-      margin-top:5px;
-    }
-  }
-}
-
 .modal_help_title {
   font-size:25px;
   font-weight:bold;
@@ -261,17 +236,34 @@
 }
 
 .account_complete_suggested_item {
-  width:300px;
-  outline:1px solid red;
+  width:290px;
+  height:70px;
   float:left;
-  div {
+  border:1px solid $cn_grey_0;
+  margin:5px;
+  padding:10px;
+  @include prevent_text_highlight;
+  .account_complete_suggested_item_avatar {
     float:left;
+    height:70px;
+    margin-right:10px;
+    img {
+      margin-top:2px;
+    }
+  }
+  .account_complete_suggested_item_username {
+    font-size:13px;
+    font-weight:400;
+  }
+  .account_complete_suggested_item_university {
+    font-size:12px;
   }
   .account_complete_suggested_item_case_count {
     font-weight:400;
     font-size:15px;
     padding:10px;
     position:relative;
+    float:left;
     .account_complete_suggested_item_case_count_text {
       font-size:10px;
       position:absolute;
@@ -281,22 +273,18 @@
   .account_complete_suggested_item_distance {
     font-size:18px;
     padding:10px;
+    float:left;
   }
-  height:70px;
-
   .account_complete_suggested_item_button_add {
-    width:50px;
-    line-height:42px;
+    float:left;
+    width:110px !important;
+    font-size:12px;
+    line-height:12px;
     i {
-      font-size:30px;
+      font-size:13px;
       margin-right:1px;
     }
-    height:40px;
-    margin-top:-5px;
-    margin-right:-5px;
-    -moz-border-radius:    0px !important;
-    -webkit-border-radius: 0px !important;
-    border-radius:         0px !important;
+
     &.sent {
       background:$cn_grey_-2;
       -webkit-transition: all 0.5s ease;
@@ -304,6 +292,14 @@
       -o-transition: all 0.5s ease;
       transition: all 0.5s ease;
     }
+
+  }
+  &:hover {
+    border:1px solid $cn_grey_-2;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 }
 

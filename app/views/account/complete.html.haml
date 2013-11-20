@@ -6,7 +6,13 @@
     var account_completeedit_currentuser_university_image = "#{current_user.university.image}";
 
 #account_complete_panel
+  
+  #account_complete_panel_nav_arrow_left.application_tooltip{"data-container"=>"body", "data-original-title"=>"Previous page...", rel: "tooltip", "data-placement"=>"bottom"}
+    %i.icon-fontawesome-webfont-31
 
+
+  #account_complete_panel_nav_arrow_right.application_tooltip{"data-container"=>"body", "data-original-title"=>"Next page...", rel: "tooltip", "data-placement"=>"bottom"}
+    %i.icon-fontawesome-webfont-2
 
   #application_arrownav_page_1.arrownav_page
 
@@ -115,6 +121,8 @@
       %br
       Casenexus is still in Beta - do contact us if you encounter any bugs.
 
+      .spacer15
+
       = form_for(@user, url: account_path) do |f|
 
         = f.hidden_field :complete_page, value: "end"
@@ -122,14 +130,9 @@
         %button.btn.btn-large
           Start now!
 
-  .modal-footer
-    .pull-left
-      #modal_help_page_num
-        Part 1 of 8
-    .pull-right
-      %a#modal_help_button_prev.btn.btn-micro Previous
-      %a#modal_help_button_next.btn.btn-micro Next
 
+  #modal_help_page_num
+    Part 1 of 9
 
 .application_spinner_container
   .application_spinner
