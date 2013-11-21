@@ -63,7 +63,7 @@ $(document).ready ->
 
         # NAV LINE
         nav_item = $(".account_complete_panel_nav_progress_blip.blip" + page)
-        left_margin = (nav_item.position().left + nav_item.width()/2) - (nav_item.width() / 2)
+        left_margin = nav_item.position().left - 30
         $("#account_complete_panel_nav_progress_follower_line").animate
           width: left_margin
         , 100

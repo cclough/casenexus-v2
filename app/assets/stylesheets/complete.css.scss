@@ -4,11 +4,10 @@
 
 
 #account_complete_panel {
-
   position:relative;
   #modal_help_page_num {
     position:absolute;
-    bottom:-40px;
+    bottom:-90px;
     left:50%;
     width:100px;
     margin-left:-50px;
@@ -16,7 +15,7 @@
 
   #account_complete_panel_nav_progress_container {
     position:absolute;
-    bottom:-10px;
+    bottom:-20px;
     left:0;
     right:0;
     #account_complete_panel_nav_progress_backbone_line {
@@ -35,7 +34,7 @@
       background:$cn_colour_0;
       height:3px;
       position:absolute;
-      left:30px;
+      left:35px;
       top:3px;
       padding:0;
       margin:0;
@@ -49,40 +48,62 @@
       border-radius:50%;
       background:$cn_grey_-1;
       position:absolute;
-      
       z-index:0;
+      .account_complete_panel_nav_progress_blip_text {
+        position:absolute;
+        top:15px;
+        left:0;
+        font-size:10px;
+        width:70px;
+        text-align:center;
+        margin-left:-30px;
+      }
+      .account_complete_panel_nav_progress_blip_outline {
+        width:14px;
+        left:-3px;
+        top:-4px;
+        position:absolute;
+        height:15px;
+        border-radius:50%;
+        border:1px solid $cn_grey_-1;
+      }
       &.blip1 {
         left:28px;
       }
       &.blip2 {
-        left:50px;
+        left:#{28+(63 * 1)}px;
       }
       &.blip3 {
-        left:150px;
+        left:#{28+(63 * 2)}px;
+        border:1px solid $cn_grey_-1;
+        background:white;
+        top:-2px;
       }
+
       &.blip4 {
-        left:200px;
+        left:#{28+(63 * 3)}px;
       }
       &.blip5 {
-        left:250px;
+        left:#{58+(63 * 3)}px;
       }
       &.blip6 {
-        left:300px;
+        left:#{88+(63 * 3)}px;
       }
+
       &.blip7 {
-        left:350px;
+        left:#{28+(78 * 4)}px;
       }
       &.blip8 {
-        left:400px;
+        left:#{28+(78 * 5)}px;
       }
       &.blip9 {
-        left:450px;
+        left:#{28+(78 * 6)}px;
       }
       &.blip10 {
-        left:500px;
+        left:#{28+(78 * 7)}px;
       }
       &.blip11 {
-        left:550px;
+        left:#{28+(78 * 8)}px;
       }
     }
 
