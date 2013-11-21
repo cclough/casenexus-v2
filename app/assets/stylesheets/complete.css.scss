@@ -8,11 +8,86 @@
   position:relative;
   #modal_help_page_num {
     position:absolute;
-    bottom:-30px;
+    bottom:-40px;
     left:50%;
     width:100px;
     margin-left:-50px;
   }
+
+  #account_complete_panel_nav_progress_container {
+    position:absolute;
+    bottom:-10px;
+    left:0;
+    right:0;
+    #account_complete_panel_nav_progress_backbone_line {
+      background:$cn_grey_-1;
+      height:3px;
+      position:absolute;
+      left:30px;
+      top:3px;
+      padding:0;
+      margin:0;
+      z-index:0;
+      right:30px;
+    }
+
+    #account_complete_panel_nav_progress_follower_line {
+      background:$cn_colour_0;
+      height:3px;
+      position:absolute;
+      left:30px;
+      top:3px;
+      padding:0;
+      margin:0;
+      z-index:19;
+      width:2px;
+    }
+
+    .account_complete_panel_nav_progress_blip {
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:$cn_grey_-1;
+      position:absolute;
+      
+      z-index:0;
+      &.blip1 {
+        left:28px;
+      }
+      &.blip2 {
+        left:50px;
+      }
+      &.blip3 {
+        left:150px;
+      }
+      &.blip4 {
+        left:200px;
+      }
+      &.blip5 {
+        left:250px;
+      }
+      &.blip6 {
+        left:300px;
+      }
+      &.blip7 {
+        left:350px;
+      }
+      &.blip8 {
+        left:400px;
+      }
+      &.blip9 {
+        left:450px;
+      }
+      &.blip10 {
+        left:500px;
+      }
+      &.blip11 {
+        left:550px;
+      }
+    }
+
+  }
+
 
   #account_complete_panel_nav_arrow_left {
     left:-50px;

@@ -29,7 +29,7 @@ $(".application_spinner_container").hide()
   if ($("#account_complete_panel").size() > 0) {
 
     <%- if params[:user][:complete_page] == "info" %>
-      window.ArrowNav.goTo("3");
+      window.ArrowNav.goTo("5");
       $(".account_complete_suggested_item_button_add").off("click");
       $(".account_complete_suggested_item_button_add").click(function(){
         friend_id = $(this).data("friend_id");
@@ -46,9 +46,9 @@ $(".application_spinner_container").hide()
 
 
     <%- elsif params[:user][:complete_page] == "timezone" %>
-      window.ArrowNav.goTo("6");
+      window.ArrowNav.goTo("8");
     <%- elsif params[:user][:complete_page] == "skype" %>
-      window.ArrowNav.goTo("7");
+      window.ArrowNav.goTo("9");
     <%- end %>
 
   } else {

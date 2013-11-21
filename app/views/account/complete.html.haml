@@ -19,13 +19,40 @@
     .modal_help_title Welcome #{current_user.username}
     
     .modal_help_text 
-      Casenexus.com is a platform for live case interview practice. This tour gives a brief overview of how you use it.
+      Casenexus.com is a platform for live case interview practice.
+      %br
+      The best way to practice for case interviews is live practice
+      %br
+      It's said that you should do 50 cases before walking in to your first round!
+
+  #application_arrownav_page_2.arrownav_page
+
+    .modal_help_title The Premise
+    
+    .modal_help_text 
+      Not only can you practice in person, but you can also practice effectively via teleconference e.g. using Skype
+      %br
+      collect case ‘partners’ to practice with regularly, and learn together
+      %br
+      Brief tutorial explaining how you take it turns...we provide a mechanism to be the interviewer
 
     .modal_help_image
       = image_tag "help/image_1.png"
 
+  #application_arrownav_page_3.arrownav_page
 
-  #application_arrownav_page_2.arrownav_page
+    .modal_help_title Use Casenexus to
+    
+    .modal_help_text
+
+      %ul
+        %li Find partners
+        %li Find cases
+        %li Book appointments
+        %li Do cases
+        %li Review feedback
+
+  #application_arrownav_page_4.arrownav_page
 
     .modal_help_title Profile info
 
@@ -36,7 +63,7 @@
       = render 'complete_form_info'
 
 
-  #application_arrownav_page_3.arrownav_page
+  #application_arrownav_page_5.arrownav_page
 
     .modal_help_title Add first partners
     
@@ -49,7 +76,7 @@
     = render 'complete_form_suggested'
 
 
-  #application_arrownav_page_4.arrownav_page
+  #application_arrownav_page_6.arrownav_page
 
     .modal_help_title Your profile
     
@@ -60,7 +87,7 @@
       = image_tag "help/image_1.png"
 
 
-  #application_arrownav_page_5.arrownav_page
+  #application_arrownav_page_7.arrownav_page
 
     .modal_help_title Arrange case appointments
     
@@ -73,7 +100,7 @@
     .modal_help_image
       = image_tag "help/image_2.png"
 
-  #application_arrownav_page_6.arrownav_page
+  #application_arrownav_page_8.arrownav_page
 
     .modal_help_title Do cases
     
@@ -88,7 +115,7 @@
     .modal_help_image
       = image_tag "help/image_3.png"
 
-  #application_arrownav_page_7.arrownav_page
+  #application_arrownav_page_9.arrownav_page
 
     .modal_help_title HOW CASES WORK
     
@@ -97,7 +124,7 @@
     .modal_help_image
       = image_tag "help/image_3.png"
 
-  #application_arrownav_page_8.arrownav_page
+  #application_arrownav_page_10.arrownav_page
 
     .modal_help_title Review your feedback
 
@@ -106,7 +133,7 @@
     .modal_help_image
       = image_tag "help/image_4.png"
 
-  #application_arrownav_page_9.arrownav_page
+  #application_arrownav_page_11.arrownav_page
 
     .spacer100
 
@@ -130,8 +157,23 @@
 
 
   #modal_help_page_num
-    Part 1 of 9
+    Part 1 of 11
 
+  #account_complete_panel_nav_progress_container
+    #account_complete_panel_nav_progress_backbone_line
+    #account_complete_panel_nav_progress_follower_line
+
+    .account_complete_panel_nav_progress_blip.blip1
+    .account_complete_panel_nav_progress_blip.blip2
+    .account_complete_panel_nav_progress_blip.blip3
+    .account_complete_panel_nav_progress_blip.blip4
+    .account_complete_panel_nav_progress_blip.blip5
+    .account_complete_panel_nav_progress_blip.blip6
+    .account_complete_panel_nav_progress_blip.blip7
+    .account_complete_panel_nav_progress_blip.blip8
+    .account_complete_panel_nav_progress_blip.blip9
+    .account_complete_panel_nav_progress_blip.blip10
+    .account_complete_panel_nav_progress_blip.blip11
 .application_spinner_container
   .application_spinner
 

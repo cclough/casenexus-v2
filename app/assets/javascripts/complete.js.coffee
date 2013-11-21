@@ -30,7 +30,7 @@ $(document).ready ->
 
         # NEXT BUTTON - on last, change
         $('#account_complete_panel_nav_arrow_right').off('click');
-        if page == "9"
+        if page == "11"
           $("#account_complete_panel_nav_arrow_right").hide()
           $("#account_complete_panel_nav_arrow_right").click ->
             $(window.location.replace("/"))
@@ -44,13 +44,13 @@ $(document).ready ->
           $("#account_complete_panel_nav_arrow_right").off 'click'
           $("#account_complete_panel_nav_arrow_right").click ->
  
-            if page == "2"
+            if page == "4"
               $(".application_spinner_container").show()
               $("#account_complete_form_info").submit()
-            else if page == "5"
+            else if page == "7"
               $(".application_spinner_container").show()
               $("#account_complete_form_timezone").submit()
-            else if page == "6"   
+            else if page == "8"   
               $(".application_spinner_container").show()
               $("#account_complete_form_skype").submit()
             else
@@ -61,7 +61,14 @@ $(document).ready ->
         $("#account_complete_panel_nav_arrow_left").click ->
           window.ArrowNav.goTo String(parseInt(page) - 1)    
 
+        # NAV LINE
+        nav_item = $(".account_complete_panel_nav_progress_blip.blip" + page)
+        left_margin = (nav_item.position().left + nav_item.width()/2) - (nav_item.width() / 2)
+        $("#account_complete_panel_nav_progress_follower_line").animate
+          width: left_margin
+        , 100
+
         # PAGE NUM
-        $("#modal_help_page_num").html("Part " + page + " of 9")
+        $("#modal_help_page_num").html("Part " + page + " of 11")
 
     window.ArrowNav.goTo "5"
