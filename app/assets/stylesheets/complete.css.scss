@@ -14,6 +14,7 @@
   }
 
   #account_complete_panel_nav_progress_container {
+    @include prevent_text_highlight;
     position:absolute;
     bottom:-20px;
     left:0;
@@ -23,7 +24,7 @@
       height:3px;
       position:absolute;
       left:30px;
-      top:3px;
+      top:4px;
       padding:0;
       margin:0;
       z-index:0;
@@ -35,7 +36,7 @@
       height:3px;
       position:absolute;
       left:35px;
-      top:3px;
+      top:4px;
       padding:0;
       margin:0;
       z-index:19;
@@ -46,9 +47,11 @@
       width:10px;
       height:10px;
       border-radius:50%;
-      background:$cn_grey_-1;
+      background:white;
       position:absolute;
       z-index:0;
+      border:1px solid $cn_grey_-1;
+      //cursor:pointer;
       .account_complete_panel_nav_progress_blip_text {
         position:absolute;
         top:15px;
@@ -59,8 +62,8 @@
         margin-left:-30px;
       }
       .account_complete_panel_nav_progress_blip_outline {
-        width:14px;
-        left:-3px;
+        width:15px;
+        left:-4px;
         top:-4px;
         position:absolute;
         height:15px;
@@ -311,6 +314,7 @@
   margin:20px 0 20px 0;
   text-align:left;
   color:$cn_grey_-2;
+  font-size:14px;
   &.last_page {
     text-align:center;
   }

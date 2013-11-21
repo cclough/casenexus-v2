@@ -1,9 +1,11 @@
 
 $(document).ready ->
 
-  # 
-  $(".account_complete_suggested_item").click ->
-    friend_id = $(this).data "id"
+  # Click to nav - DISALLOW AS ENABLES SKIPPING FORMS
+  # $(".account_complete_panel_nav_progress_blip").click ->
+  #   page_id = $(this).data "page_id"
+
+  #   window.ArrowNav.goTo page_id
 
   if $("#account_complete_panel").length > 0
     window.account_completeedit_bless()
