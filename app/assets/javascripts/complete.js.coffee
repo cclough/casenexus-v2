@@ -47,8 +47,8 @@ $(document).ready ->
           $("#account_complete_panel_nav_arrow_right").click ->
             
             if page == "3"
-              $(".account_complete_panel_nav_progress_blip_text").fadeIn "slow", ->
-                window.ArrowNav.goTo String(parseInt(page) + 1)
+              $(".account_complete_panel_nav_progress_blip_text").fadeIn "slow"
+              window.ArrowNav.goTo String(parseInt(page) + 1)
             else if page == "5"
               $(".application_spinner_container").show()
               $("#account_complete_form_info").submit()
@@ -67,13 +67,16 @@ $(document).ready ->
           window.ArrowNav.goTo String(parseInt(page) - 1)    
 
         # NAV LINE
-        nav_item = $(".account_complete_panel_nav_progress_blip.blip" + page)
-        left_margin = nav_item.position().left - 30
+        blip_item = $(".account_complete_panel_nav_progress_blip.blip" + page)
+        left_margin = blip_item.position().left - 30
         $("#account_complete_panel_nav_progress_follower_line").animate
           width: left_margin
         , 100
 
+        # BLIP COLOUR
+        blip_item.css("background","#242d32")
+
         # PAGE NUM
         $("#modal_help_page_num").html("Part " + page + " of 11")
 
-    window.ArrowNav.goTo "9"
+    window.ArrowNav.goTo "1"
