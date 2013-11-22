@@ -281,7 +281,7 @@
   &.page_welcome {
     text-align:center;
     line-height:30px;
-    #modal_help_text.page_welcome_bold {
+    .page_welcome_bold {
       font-weight:400;
     }
   }
@@ -365,18 +365,6 @@
   text-align:left;
   .chzn-single {
 
-  }
-}
-
-
-#account_complete_suggested {
-  overflow-y:scroll;
-  height:370px;
-  width:650px;
-  position:relative;
-  .map_index_users_item {
-    float:left;
-    width:325px;
   }
 }
 

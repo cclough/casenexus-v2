@@ -186,7 +186,11 @@ window.application_choiceNav = () ->
 
 
 
-
+window.application_chosen_prime = () ->
+  $(".chzn-select").chosen()
+  $(".chzn-select-nosearch").chosen disable_search_threshold: 10
+  $(".chzn-select-tags").chosen max_selected_options: 5
+  $('.chzn-search').hide()
 
 
 
@@ -201,10 +205,7 @@ $(document).ready ->
   window.application_truncatables()
 
   # Chosen
-  $(".chzn-select").chosen()
-  $(".chzn-select-nosearch").chosen disable_search_threshold: 10
-  $(".chzn-select-tags").chosen max_selected_options: 5
-  $('.chzn-search').hide()
+  window.application_chosen_prime()
 
   # Tooltips throughout app
   $(".application_tooltip").tooltip()
@@ -213,17 +214,13 @@ $(document).ready ->
   $("input, textarea").placeholder()
 
   # Modals
-  $("#modal_help, #modal_contact, #modal_post, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
+  $("#modal_contact, #modal_post, #modal_cases, #modal_profile, #modal_message, #modal_friendship_req, #modal_event").modal
     backdrop: true
     show: false
 
   # Contact modal show 
   $("#header_link_contact").click ->
     window.modal_contact_show()
-
-  # Help modal show
-  $("#header_link_help").click ->
-    window.modal_help_show()
 
   # Fade out any flash
   setTimeout ->

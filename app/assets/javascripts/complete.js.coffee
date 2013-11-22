@@ -6,11 +6,14 @@ $(document).ready ->
   #   page_id = $(this).data "page_id"
   #   window.ArrowNav.goTo page_id
 
-  if $("#account_complete_panel").length > 0
-    window.account_completeedit_bless()
+  # if $("#account_complete_panel").length > 0
+  #   window.account_completeedit_bless()
 
   # Modal Help nav
   if $("#account_complete_panel").size() > 0
+
+    # completeedit prime not run at beginning, so this must be run separately
+    window.application_chosen_prime()
 
     window.ArrowNav =
       init: ->
@@ -27,7 +30,9 @@ $(document).ready ->
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
         
-        next_page.fadeIn 100
+        next_page.fadeIn 100, ->
+          if page == "5"
+            window.account_completeedit_bless()
 
         # NEXT BUTTON - on last, change
         $('#account_complete_panel_nav_arrow_right').off('click');

@@ -23,13 +23,7 @@
       setTimeout(function() {
         window.modal_cases_show_show(#{params[:case_id]});
       }, 500);
-    });   
-
-- if flash[:success] == 'Welcome ' + current_user.username
-  :javascript
-    // hack to hide the welcome flash, as repeated in help modal
-    / $("div[id=application_flash]:last").hide()
-    
+    });
 
 
 
