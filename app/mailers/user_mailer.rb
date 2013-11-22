@@ -51,6 +51,9 @@ class UserMailer < ActionMailer::Base
     @url = url
     @message = message
 
+    @distance = user_from.distance_between(user_target)
+    @case_count = user_from.case_count_recd_total
+    
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     mail(to: email_with_name, subject: "Casenexus.com: " + title)
   end
@@ -126,7 +129,7 @@ class UserMailer < ActionMailer::Base
 
     @site_contact = site_contact
 
-    mail(to: receiver, subject: "Site Contact: #{site_contact.subject}")
+    mail(to: receiver, subject: "Contact form: #{site_contact.subject}")
   end
 
 

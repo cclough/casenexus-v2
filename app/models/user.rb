@@ -50,8 +50,8 @@ class User < ActiveRecord::Base
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
-  scope :case_count_total_less_10, -> {joins("LEFT OUTER JOIN \"cases\" ON \"cases\".\"user_id\" = \"users\".\"id\" LEFT OUTER JOIN \"cases\" \"cases_givns_users\" ON \"cases_givns_users\".\"interviewer_id\" = \"users\".\"id\"").group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
-  scope :case_count_total_great_10, -> {joins("LEFT OUTER JOIN \"cases\" ON \"cases\".\"user_id\" = \"users\".\"id\" LEFT OUTER JOIN \"cases\" \"cases_givns_users\" ON \"cases_givns_users\".\"interviewer_id\" = \"users\".\"id\"").group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
+  scope :case_count_recd_total_less_10, -> {joins("LEFT OUTER JOIN \"cases\" ON \"cases\".\"user_id\" = \"users\".\"id\" LEFT OUTER JOIN \"cases\" \"cases_givns_users\" ON \"cases_givns_users\".\"interviewer_id\" = \"users\".\"id\"").group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) < 10')}
+  scope :case_count_recd_total_great_10, -> {joins("LEFT OUTER JOIN \"cases\" ON \"cases\".\"user_id\" = \"users\".\"id\" LEFT OUTER JOIN \"cases\" \"cases_givns_users\" ON \"cases_givns_users\".\"interviewer_id\" = \"users\".\"id\"").group('users.id, cases.id, cases_givns_users.id').having('(count(cases.id) + count(cases_givns_users.id) + cases_external) >= 10')}
 
 
 
@@ -164,8 +164,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def case_count_total
-    case_count_recd + case_count_givn + case_count_external
+  def case_count_recd_total
+    case_count_recd + case_count_external
   end
 
   def degree_level_in_words
@@ -190,7 +190,7 @@ class User < ActiveRecord::Base
   end
 
   def case_count_bracket_id
-    if case_count_total < 10
+    if case_count_recd_total < 10
       0
     else
       1
@@ -310,9 +310,9 @@ class User < ActiveRecord::Base
 
     def list_by_experience(choice_id)
       if choice_id == "0"
-        case_count_total_less_10
+        case_count_recd_total_less_10
       elsif choice_id == "1"
-        case_count_total_great_10
+        case_count_recd_total_great_10
       else
         where(["users.id <> ?",0])
       end

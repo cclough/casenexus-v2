@@ -6,4 +6,6 @@
 %p{style:"text-align:left;"}
   = @message
  
+%p Christian is #{@distance}km away from you, and has done #{@case_count} cases
+
 %p= link_to "Sign in to see this request from " + @user_from.username, @url, :method => "put"
