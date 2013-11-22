@@ -12,7 +12,7 @@ $(document).ready ->
 
   # Modal Help nav
   if $("#account_complete_panel").size() > 0
-    
+
     window.ArrowNav =
       init: ->
         $("a[href*=#]").click (e) ->

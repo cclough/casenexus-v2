@@ -136,7 +136,7 @@ class Notification < ActiveRecord::Base
     end
 
     def for_display
-      where("ntype != 'welcome'")
+      where("ntype != 'welcome'").where("ntype <> ?","friendship_req")
     end
 
     def header(user)
@@ -252,9 +252,9 @@ class Notification < ActiveRecord::Base
 
   def self.most_recent_for(user_id) # Vincent magic function
     sent = select("user_id as asso_id, MAX(id) as latest").where("(sender_id = ?)",
-                        user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
+                        user_id).for_display.group('asso_id').order("latest")
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
-                    user_id).where("ntype <> ?","welcome").group('asso_id').order("latest")
+                    user_id).for_display.group('asso_id').order("latest")
     ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
     where(id: ids).order('users.created_at desc')
   end
