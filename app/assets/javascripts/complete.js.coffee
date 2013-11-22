@@ -76,4 +76,4 @@ $(document).ready ->
         # PAGE NUM
         $("#modal_help_page_num").html("Part " + page + " of 11")
 
-    window.ArrowNav.goTo "7"
+    window.ArrowNav.goTo "9"
