@@ -4,7 +4,6 @@ $(document).ready ->
   # Click to nav - DISALLOW AS ENABLES SKIPPING FORMS
   # $(".account_complete_panel_nav_progress_blip").click ->
   #   page_id = $(this).data "page_id"
-
   #   window.ArrowNav.goTo page_id
 
   if $("#account_complete_panel").length > 0
@@ -77,6 +76,6 @@ $(document).ready ->
         blip_item.css("background","#242d32")
 
         # PAGE NUM
-        $("#modal_help_page_num").html("Part " + page + " of 11")
+        $("#account_complete_pagenum").html("Part " + page + " of 11")
 
     window.ArrowNav.goTo "1"

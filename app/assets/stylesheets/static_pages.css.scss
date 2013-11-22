@@ -186,6 +186,33 @@
   margin-bottom:20px;
 }
 
+#static_home_form_username_input {
+  -moz-border-bottom-left-radius:    0px !important;
+  -webkit-border-bottom-left-radius: 0px !important;
+  border-bottom-left-radius:         0px !important;
+  -moz-border-bottom-right-radius:    0px !important;
+  -webkit-border-bottom-right-radius: 0px !important;
+  border-bottom-right-radius:         0px !important;
+}
+
+#static_home_form_username_label {
+  height:30px;
+  text-align:center;
+  border:1px solid $cn_grey_0;
+
+  -moz-border-bottom-left-radius:    3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius:         3px;
+  -moz-border-bottom-right-radius:    3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius:         3px;
+  width:296px;
+  margin-top:-15px;
+  margin-bottom:15px;
+  background:$cn_grey_0;
+  line-height:30px;
+}
+
 /////////////////////////////////////////////
 ///////////////  SIGNIN  ////////////////////
 /////////////////////////////////////////////

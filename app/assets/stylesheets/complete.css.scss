@@ -18,7 +18,7 @@
   -webkit-border-radius: 3px;
   border-radius:         3px;
 
-  #modal_help_page_num {
+  #account_complete_pagenum {
     position:absolute;
     bottom:-120px;
     left:50%;
@@ -188,33 +188,6 @@
 }
 
 
-#static_home_form_username_input {
-  -moz-border-bottom-left-radius:    0px !important;
-  -webkit-border-bottom-left-radius: 0px !important;
-  border-bottom-left-radius:         0px !important;
-  -moz-border-bottom-right-radius:    0px !important;
-  -webkit-border-bottom-right-radius: 0px !important;
-  border-bottom-right-radius:         0px !important;
-}
-
-#static_home_form_username_label {
-  height:30px;
-  text-align:center;
-  border:1px solid $cn_grey_0;
-
-  -moz-border-bottom-left-radius:    3px;
-  -webkit-border-bottom-left-radius: 3px;
-  border-bottom-left-radius:         3px;
-  -moz-border-bottom-right-radius:    3px;
-  -webkit-border-bottom-right-radius: 3px;
-  border-bottom-right-radius:         3px;
-  width:296px;
-  margin-top:-15px;
-  margin-bottom:15px;
-  background:$cn_grey_0;
-  line-height:30px;
-}
-
 
 #account_complete_panel_column_left, #account_complete_panel_column_right {
   float:left;
@@ -283,32 +256,20 @@
 
 
 
-
-
-
-
-
-
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 
 
-#account_complete_form_timezone {
-  text-align:left;
-  .chzn-single {
 
-  }
-}
-
-.modal_help_title {
+.account_complete_page_title {
   font-size:25px;
   font-weight:bold;
   text-align:center;
   z-index:10;
 }
 
-.modal_help_text {
+.account_complete_page_text {
   margin:20px 0 20px 0;
   text-align:left;
   color:$cn_grey_-2;
@@ -357,7 +318,7 @@
   }
 }
 
-.modal_help_text_col_left {
+.account_complete_page_text_col_left {
   position:absolute;
   left:20px;
   top:200px;
@@ -368,7 +329,7 @@
   }
 }
 
-.modal_help_control_centered {
+.account_complete_page_control_centered {
   margin-bottom:10px;
   .static_home_form_input_container {
     width:300px;
@@ -381,7 +342,34 @@
   }
 }
 
-#modal_help_usersnearby {
+
+.account_complete_page_image {
+  text-align:center;
+  img {
+    margin:0 auto;
+    border:1px solid $cn_grey_0;
+  }
+}
+
+
+
+
+
+
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+
+
+#account_complete_form_timezone {
+  text-align:left;
+  .chzn-single {
+
+  }
+}
+
+
+#account_complete_suggested {
   overflow-y:scroll;
   height:370px;
   width:650px;
@@ -389,14 +377,6 @@
   .map_index_users_item {
     float:left;
     width:325px;
-  }
-}
-
-.modal_help_image {
-  text-align:center;
-  img {
-    margin:0 auto;
-    border:1px solid $cn_grey_0;
   }
 }
 
