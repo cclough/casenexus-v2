@@ -8,12 +8,25 @@
 
         $('#console_index_feedback_frame').html('<%= escape_javascript(render partial: 'cases/new') %>');
 
+        // Prime book show small on _new
+        var book_id;
+        book_id = $("#console_index_subnav_select_books").val();
+        if (book_id) {
+          $("#cases_new_nobook").css("display", "none");
+          $.get("/books/" + book_id + "/show_small", function(data) {
+            return $("#cases_new_book").html(data);
+          });
+        }
+
+
         // Scroll up page - a detail
         $('#console_index_feedback_frame').animate({scrollTop: 0},'slow');
 
         window.cases_new_prime();
 
         window.application_form_errors_close();
+
+
 
     <%- else %>
 

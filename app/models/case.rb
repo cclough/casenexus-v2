@@ -372,7 +372,7 @@ class Case < ActiveRecord::Base
   def is_a_friend
     user = User.find(self.user_id)
     interviewer = User.find(self.interviewer_id)
-    if !Friendship.friendship(user, interviewer)
+    unless Friendship.friends?(user, interviewer)
       errors.add(:base, "You need to be case partners to send case feedback")
     end
   end
