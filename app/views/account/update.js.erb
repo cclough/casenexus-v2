@@ -9,8 +9,10 @@ $(".application_spinner_container").hide()
       window.account_completeedit_bless();
     <%- elsif params[:user][:complete_page] == "timezone" %>
       $("#account_complete_form_timezone_container").html("<%= escape_javascript(render partial: 'account/complete_form_timezone') %>");
+      $(".chzn-select").chosen();
     <%- elsif params[:user][:complete_page] == "skype" %>
       $("#account_complete_form_skype_container").html("<%= escape_javascript(render partial: 'account/complete_form_skype') %>");
+      $(".chzn-select").chosen();
     <%- end %>
 
   } else {

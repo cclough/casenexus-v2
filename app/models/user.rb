@@ -82,6 +82,7 @@ class User < ActiveRecord::Base
   validates :skype, length: { maximum: 32 },
             allow_blank: true,
             on: :update
+  validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone"
   validate :validate_has_languages?, on: :update
   validate :validate_cases_external?, on: :update
 

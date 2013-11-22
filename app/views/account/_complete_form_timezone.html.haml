@@ -1,6 +1,8 @@
 
 = form_for(@user, url: account_path, remote: true, html: {id: "account_complete_form_timezone"}) do |f|
-  = render 'shared/error_messages', object: @user
-  = f.hidden_field :complete_page, value: "timezone"
 
-  = f.collection_select :time_zone, ActiveSupport::TimeZone.all, :name, :to_s, { prompt: "What time zone are you in?"}, { class: "chzn-select", tabindex: "7" }
+  = render 'shared/error_messages', object: @user
+
+  = f.hidden_field :complete_page, value: "timezone"
+ 
+  = f.time_zone_select :time_zone, nil, { prompt: "Select your Timezone..." }, {:class => 'chzn-select'}
