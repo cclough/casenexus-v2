@@ -113,6 +113,8 @@ window.notifications_index_show_prime = (user_id) ->
   $.get "/notifications/menu", (data) ->
     $("#header_notifications_menu_container").html data
 
+  # Prime action buttons
+  window.map_index_users_item_bless()
 
 window.notifications_index_notifications_prime = () ->
 

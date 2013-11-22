@@ -87,7 +87,13 @@
 
       #events_modal_book_viewer_partnertoprepare_container
 
-        %select#events_modal_book_select.chzn-select{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
+        / %select#events_modal_book_difficulty_select
+        /   %option{value:""} Which difficulty of case would you like?
+        /   %option{value:"0"} Novice
+        /   %option{value:"1"} Intermediate
+        /   %option{value:"2"} Advanced
+          
+        %select#events_modal_book_select{"data-placeholder" => "Choose a case", name: "event[book_id_partnertoprepare]"}
           %option{value:""} Which case should they prepare for you?
           / = options_from_collection_for_select(Book.all, "id", "title")
           - @books.each do |books_select_item|
