@@ -45,14 +45,17 @@ $(document).ready ->
 
           $("#account_complete_panel_nav_arrow_right").off 'click'
           $("#account_complete_panel_nav_arrow_right").click ->
- 
-            if page == "4"
+            
+            if page == "3"
+              $(".account_complete_panel_nav_progress_blip_text").fadeIn "slow", ->
+                window.ArrowNav.goTo String(parseInt(page) + 1)
+            else if page == "5"
               $(".application_spinner_container").show()
               $("#account_complete_form_info").submit()
             else if page == "7"
               $(".application_spinner_container").show()
               $("#account_complete_form_timezone").submit()
-            else if page == "8"   
+            else if page == "9"   
               $(".application_spinner_container").show()
               $("#account_complete_form_skype").submit()
             else
@@ -73,4 +76,4 @@ $(document).ready ->
         # PAGE NUM
         $("#modal_help_page_num").html("Part " + page + " of 11")
 
-    window.ArrowNav.goTo "5"
+    window.ArrowNav.goTo "7"

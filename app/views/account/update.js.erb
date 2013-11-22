@@ -2,8 +2,6 @@ $(".application_spinner_container").hide()
 
 <%- if @user.errors.any? %>
   
-  alert('<%= params[:user][:complete_page] %>');
-
   if ($("#account_complete_panel").size() > 0) {
 
     <%- if params[:user][:complete_page] == "info" %>
@@ -29,18 +27,23 @@ $(".application_spinner_container").hide()
   if ($("#account_complete_panel").size() > 0) {
 
     <%- if params[:user][:complete_page] == "info" %>
-      window.ArrowNav.goTo("5");
-      $(".account_complete_suggested_item_button_add").off("click");
-      $(".account_complete_suggested_item_button_add").click(function(){
-        friend_id = $(this).data("friend_id");
+      window.ArrowNav.goTo("6");
+      $("#account_complete_panel_nav_arrow_right").fadeOut("fast");
+      $(".account_complete_suggested_item").off("click");
+      $(".account_complete_suggested_item").click(function(){
+        friend_id = $(this).data("id");
         $("#account_complete_suggested_input_friend_id").val(friend_id);
-        $(this).html("Sending...");
+        $(this).find(".account_complete_suggested_item_button_add").html("Sending...");
         $("#account_complete_form_suggested").submit();
-        $(this).off("click");
+        $("#account_complete_panel_nav_arrow_right").fadeIn("fast");
       });
+      $("#account_complete_form_suggested_button_sendtoall").off("click");
       $("#account_complete_form_suggested_button_sendtoall").click(function() {
-        $(this).html("Sending...");
-        $(".account_complete_suggested_item_button_add").trigger("click");
+        //$(this).html("Sending...");
+        //$(this).addClass("disabled");
+        $(this).off("click");
+        $(this).addClass("sent");
+        $(".account_complete_suggested_item").trigger("click");
       });
 
 
@@ -48,7 +51,7 @@ $(".application_spinner_container").hide()
     <%- elsif params[:user][:complete_page] == "timezone" %>
       window.ArrowNav.goTo("8");
     <%- elsif params[:user][:complete_page] == "skype" %>
-      window.ArrowNav.goTo("9");
+      window.ArrowNav.goTo("10");
     <%- end %>
 
   } else {

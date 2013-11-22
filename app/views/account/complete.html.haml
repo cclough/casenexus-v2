@@ -16,69 +16,62 @@
 
   #application_arrownav_page_1.arrownav_page
 
-    .modal_help_title Welcome #{current_user.username}
+    .modal_help_title Get started in 60 seconds...
     
-    .modal_help_text 
-      Casenexus.com is a platform for live case interview practice.
+    .modal_help_text.page_welcome
+
       %br
-      The best way to practice for case interviews is live practice
       %br
-      It's said that you should do 50 cases before walking in to your first round!
+      %br
+      %i "the candidates that typically get multiple job offers have practiced over 50 cases"
+      %br
+      = "- Victor Cheng, Caseinterview.com"
+
+      %br
+      %br
+      The best way to prepare for case interviews is live practice.
+
+      %br
+      %br
+      #modal_help_text.page_welcome_bold Casenexus.com helps you do this.
 
   #application_arrownav_page_2.arrownav_page
 
-    .modal_help_title The Premise
+    .modal_help_title The basics
     
     .modal_help_text 
-      Not only can you practice in person, but you can also practice effectively via teleconference e.g. using Skype
-      %br
-      collect case ‘partners’ to practice with regularly, and learn together
-      %br
-      Brief tutorial explaining how you take it turns...we provide a mechanism to be the interviewer
+      You can practise cases in person, or via Skype, with other's you haven't met before. 
+      
+    .modal_help_text_col_left
+      %ol
+        %li
+          Arrange to meet for 1-2 hours
+        %li
+          Take up to 1 hour to prepare a case for your partner
+        %li
+          Take it in turns to be the Interviewer, and the Interviewee
+        %li
+          Give feedback on eachother's performance
 
-    .modal_help_image
-      = image_tag "help/image_1.png"
+    .modal_help_image.pull-right
+      = image_tag "help/person_or_skype.png"
 
   #application_arrownav_page_3.arrownav_page
 
-    .modal_help_title Use Casenexus to
+    .modal_help_title Casenexus.com helps you
     
-    .modal_help_text
+    .modal_help_text.page_features
 
       %ul
         %li Find partners
-        %li Find cases
         %li Book appointments
+        %li Find cases
         %li Do cases
         %li Review feedback
 
   #application_arrownav_page_4.arrownav_page
 
-    .modal_help_title Profile info
-
-    .modal_help_text 
-      We need some information to help other users find you
-
-    #account_complete_form_info_container
-      = render 'complete_form_info'
-
-
-  #application_arrownav_page_5.arrownav_page
-
-    .modal_help_title Add first partners
-    
-    .modal_help_text 
-      Here are a selection of other users near you with similar case experience
-
-      .btn.btn-colour.btn-green.pull-right#account_complete_form_suggested_button_sendtoall
-        Send requests to all
-
-    = render 'complete_form_suggested'
-
-
-  #application_arrownav_page_6.arrownav_page
-
-    .modal_help_title Your profile
+    .modal_help_title Find partners on our map page
     
     .modal_help_text 
       Your profile is your case interview HQ
@@ -87,11 +80,34 @@
       = image_tag "help/image_1.png"
 
 
+  #application_arrownav_page_5.arrownav_page
+
+    .modal_help_title We need some information about you...
+
+    .modal_help_text 
+
+    #account_complete_form_info_container
+      = render 'complete_form_info'
+
+  #application_arrownav_page_6.arrownav_page
+
+    .modal_help_title Add your first partners...
+    
+    .modal_help_text.page_suggested
+      Below are a selection of other users, near you with similar case experience
+
+      #account_complete_form_suggested_button_sendtoall.btn.btn-colour.btn-green.pull-right
+        Send requests to all
+
+    = render 'complete_form_suggested'
+
+
+
   #application_arrownav_page_7.arrownav_page
 
     .modal_help_title Arrange case appointments
     
-    .modal_help_text Once approved as a partner, use case appointments to book cases across time zones. Your partner needs 30mins to prepare a case for you beforehand, so select a case from our library and it will be emailed to them.
+    .modal_help_text Once approved as a partner, use case appointments to book cases across time zones. Select a case from the library that you haven't done yet, and it will be emailed to them.
 
     #account_complete_form_timezone_container.modal_help_control_centered
       = render 'complete_form_timezone'
@@ -141,7 +157,7 @@
 
     .modal_help_title That's it, good luck.
     
-    .modal_help_text.last_page
+    .modal_help_text.page_last
 
       Feel free to only use the features you need.
       %br
@@ -165,23 +181,23 @@
     #account_complete_panel_nav_progress_backbone_line
     #account_complete_panel_nav_progress_follower_line
 
-    .account_complete_panel_nav_progress_blip.blip1{"data-page_id"=> 1}
-    .account_complete_panel_nav_progress_blip.blip2{"data-page_id"=> 2}
-    .account_complete_panel_nav_progress_blip.blip3{"data-page_id"=> 3}
-    .account_complete_panel_nav_progress_blip.blip4{"data-page_id"=> 4}
+    .account_complete_panel_nav_progress_blip.blip1
+    .account_complete_panel_nav_progress_blip.blip2
+    .account_complete_panel_nav_progress_blip.blip3
+    .account_complete_panel_nav_progress_blip.blip4
       .account_complete_panel_nav_progress_blip_outline
-    .account_complete_panel_nav_progress_blip.blip5{"data-page_id"=> 5}
-      .account_complete_panel_nav_progress_blip_text PARTNER
+    .account_complete_panel_nav_progress_blip.blip5
+      .account_complete_panel_nav_progress_blip_text PARTNERS
       .account_complete_panel_nav_progress_blip_outline 
     .account_complete_panel_nav_progress_blip.blip6{"data-page_id"=> 6}
     .account_complete_panel_nav_progress_blip.blip7{"data-page_id"=> 7}
-      .account_complete_panel_nav_progress_blip_text APPOINTMENT
+      .account_complete_panel_nav_progress_blip_text APPOINTMENTS
       .account_complete_panel_nav_progress_blip_outline
     .account_complete_panel_nav_progress_blip.blip8{"data-page_id"=> 8}
       .account_complete_panel_nav_progress_blip_outline 
       .account_complete_panel_nav_progress_blip_text CASE LIBRARY
     .account_complete_panel_nav_progress_blip.blip9{"data-page_id"=> 9}
-      .account_complete_panel_nav_progress_blip_text DO CASES
+      .account_complete_panel_nav_progress_blip_text DOING CASES
     .account_complete_panel_nav_progress_blip.blip10{"data-page_id"=> 10}
       .account_complete_panel_nav_progress_blip_text REVIEW FEEDBACK
     .account_complete_panel_nav_progress_blip.blip11{"data-page_id"=> 11}
