@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
     def next_appt_date_string_for(user)
       next_appt_datetime = Event.next_appt_for(user).datetime
 
-      if next_appt_datetime > DateTime.now + 1.days
+      if next_appt_datetime > Date.tomorrow
         next_appt_datetime.strftime("%A at %-I:%M%P")
       else
         next_appt_datetime.strftime("TODAY at %-I:%M%P")
