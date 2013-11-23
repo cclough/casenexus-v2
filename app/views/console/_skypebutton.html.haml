@@ -10,4 +10,4 @@
     = link_to "skype:#{@friend.skype}?call", id: "console_index_interviewee_panel_button_skype", "data-original-title"=>"Call #{@friend.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-colour btn-small application_tooltip" do
       %i.icon-skype
       #console_index_interviewee_panel_button_skype_text
-        Call #{@friend.username}
+        #{@friend.username}
