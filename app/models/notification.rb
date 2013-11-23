@@ -179,11 +179,11 @@ class Notification < ActiveRecord::Base
                                   self.content,
                                   self.title)
       when "message"
-        UserMailer.usermessage(self.sender,
+        UserMailer.delay.usermessage(self.sender,
                                      self.user,
                                      self.url,
                                      self.content,
-                                     self.title).deliver unless self.user.online_now?
+                                     self.title) unless self.user.online_now?
       when "friendship_req"
         UserMailer.delay.friendship_req(self.sender,
                                         self.user,
@@ -196,19 +196,19 @@ class Notification < ActiveRecord::Base
                                         self.url,
                                         self.title)
       when "event_set_partner"
-        UserMailer.event_setchangecancelremind_partner(self.user,
+        UserMailer.delay.event_setchangecancelremind_partner(self.user,
                                                              self.sender,
                                                              self.notificable_id,
                                                              self.title,
                                                              self.url,
-                                                             self.ntype).deliver
+                                                             self.ntype)
       when "event_set_sender"
-        UserMailer.event_setchangecancelremind_sender(self.user,
+        UserMailer.delay.event_setchangecancelremind_sender(self.user,
                                                             self.sender,
                                                             self.notificable_id,
                                                             self.title,
                                                             self.url,
-                                                            self.ntype).deliver
+                                                            self.ntype)
       when "event_change_partner"
         UserMailer.delay.event_setchangecancelremind_partner(self.user,
                                                              self.sender,
