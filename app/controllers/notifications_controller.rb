@@ -6,10 +6,12 @@ class NotificationsController < ApplicationController
     @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search]).paginate(per_page: 25, page: params[:page])
     
     # For open conversation
-    @last_user = Notification.includes(:sender).most_recent_conversation_with(current_user)
-    @id = @last_user.id # of user
-    @user = @last_user
-    @notification = @user.notifications.build
+    if Notification.most_recent_for(current_user.id).count > 0
+      @last_user = Notification.includes(:sender).most_recent_conversation_with(current_user)
+      @id = @last_user.id # of user
+      @user = @last_user
+      @notification = @user.notifications.build
+    end
 
     respond_to do |format|
       format.js
