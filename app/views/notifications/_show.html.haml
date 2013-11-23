@@ -16,9 +16,6 @@
       - unless user.skype.blank?
         %a.map_index_users_item_button_skype.btn.btn-round.btn-skype.btn-round-small.application_tooltip{"data-original-title"=>"Call on Skype...", rel: "tooltip", "data-placement"=>"bottom", href: "skype:#{user.skype}?call"}
           %i.icon-skype
-          
-      .map_index_users_item_button_message.btn.btn-round.btn-round-small.application_tooltip{"data-original-title"=>"Send message...", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => user.id }
-        %i.icon-email-mail-streamline
 
       .map_index_users_item_button_event.btn.btn-round.btn-round-small.application_tooltip{"data-original-title"=>"Book case appointment...", rel: "tooltip", "data-placement"=>"bottom","data-friend_id" => user.id.to_s}
         %i.icon-calendar.icon-white
