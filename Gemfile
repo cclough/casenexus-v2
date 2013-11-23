@@ -20,10 +20,11 @@ gem 'workless', "~> 1.1.3"                       # Start worker ad hoc
 gem 'rack-mini-profiler'                         # Profiling back-end
 gem 'ffaker'                                     # Generate random data (needed in seeds)
 gem 'time_diff'                                  # For time difference to next appt 
-#gem 'obfuscate_id'                                  # obfuscate ids
-#gem 'thumbs_up'                                  # Stack Overflow like voting on things
-# gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
-#gem 'griddler'                                   # Receive emails
+#gem 'obfuscate_id'                              # obfuscate ids
+#gem 'thumbs_up'                                 # Stack Overflow like voting on things
+#gem 'exception_notification', git: 'git://github.com/smartinez87/exception_notification.git' # Exception notification
+#gem 'griddler'                                  # Receive emails
+gem 'airbrake'                                   # Exception notification
 
 group :production do
   gem 'heroku-deflater'                          # Enables GZIP compression on heroku - alt to 'heroku_rails_deflate' - used because fix for mini-profiler in production doesn't work with latter gem
