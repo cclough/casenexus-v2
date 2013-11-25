@@ -2,7 +2,6 @@ class Case < ActiveRecord::Base
 
   attr_accessible :user, :user_id, :interviewer, :interviewer_id, :subject, :source, :book_id,
                   :main_comment, :created_at,
-                  :recommendation1, :recommendation2, :recommendation3,
                   :quantitativebasics, :problemsolving, :prioritisation, :sanitychecking,
                   :rapport, :articulation, :concision, :askingforinformation,
                   :approachupfront, :stickingtostructure, :announceschangedstructure, :pushingtoconclusion
@@ -56,10 +55,6 @@ class Case < ActiveRecord::Base
             numericality: { greater_than: 0, less_than_or_equal_to: 5 }
 
   validates :main_comment, length: { maximum: 1000 }
-
-  validates :recommendation1, length: { maximum: 200 }
-  validates :recommendation2, length: { maximum: 200 }
-  validates :recommendation3, length: { maximum: 200 }
 
   validate :is_a_friend
   validate :no_case_to_self

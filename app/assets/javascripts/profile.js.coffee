@@ -24,10 +24,6 @@ modal_cases_show_prime = () ->
   #   width: '300px'
   #   height: '500px'
 
-  $(".cases_show_recommendation_content").slimscroll
-    width: '170px'
-    height: '138px'
-
 
 window.modal_cases_show_show = (case_id) ->
 

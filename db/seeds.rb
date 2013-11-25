@@ -498,10 +498,6 @@ if Rails.env == 'development'
                                   subject: Faker::Lorem.sentence(5),
                                   source: Faker::Lorem.sentence(2),
 
-                                  recommendation1: Faker::Lorem.sentence(10),
-                                  recommendation2: Faker::Lorem.sentence(10),
-                                  recommendation3: Faker::Lorem.sentence(10),
-
                                   main_comment: Faker::Lorem.sentence(100),
 
                                   quantitativebasics: 1 + rand(4),

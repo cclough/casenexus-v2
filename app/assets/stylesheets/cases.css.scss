@@ -171,44 +171,14 @@
     text-align:center;
   }
 
-  #cases_show_recommendations {
-    height:138px;
 
-    .cases_show_recommendation {
-      border-top:1px solid $cn_grey_0;
-      border-bottom:1px solid $cn_grey_0;
-      width:185px;
-      height:138px;
-      float:left;
-      border-right:1px solid $cn_grey_0;
-      @include box_sizing;
-
-      &.cases_show_recommendation_third {
-        border-right:0;
-      }
-      .cases_show_recommendation_content {
-        height:100%;
-        width:100%;
-        padding:10px;
-        @include box_sizing;
-
-      }
-
-      .cases_show_recommendation_title {
-        text-align:center;
-        margin-bottom:5px;
-        font-size:14px;
-        font-weight:400;
-      }
-
-    }
-  }
   #cases_show_maincomment {
     line-height:26px;
     font-size:15px;
     display:block;
     padding:10px 0px;
     @include box_sizing;
+    border-top:1px solid $cn_grey_0;
     #cases_show_maincomment_content {
       @include box_sizing;
       padding:5px;
@@ -282,16 +252,6 @@
 }
 
 
-.cases_new_recommendation {
-  width: 94% !important;
-
-  height:50px !important;
-}
-
-#cases_new_recommendations_panel {
-  text-align:center;
-  margin: 0 15px;
-}
 
 .cases_new_block_title {
   line-height:31px;
@@ -444,11 +404,6 @@
 }
 
 
-
-#cases_new_recommendations_panel {
-  background:$cn_grey_0;
-  padding:15px;
-}
 
 
 #cases_new_submit_panel {

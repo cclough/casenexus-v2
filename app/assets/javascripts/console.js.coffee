@@ -30,7 +30,11 @@ console_index_subnav_viewswitch_toggle = ->
     $("#console_index_pdfjs_blank").removeClass "single-left"
 
     $("#console_index_feedback_frame").show "slide", direction: "right", 100
+
     $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
+  
+
+
   else
     $("#console_index_pdfjs").addClass "single-left"
     $("#console_index_pdfjs_blank").addClass "single-left"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107133951) do
+ActiveRecord::Schema.define(:version => 20131125233745) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -48,9 +48,6 @@ ActiveRecord::Schema.define(:version => 20131107133951) do
     t.integer  "interviewer_id",                               :null => false
     t.integer  "rapport"
     t.integer  "approachupfront"
-    t.text     "recommendation1"
-    t.text     "recommendation2"
-    t.text     "recommendation3"
     t.integer  "quantitativebasics"
     t.integer  "problemsolving"
     t.integer  "prioritisation"

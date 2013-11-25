@@ -23,25 +23,6 @@
         = @case.totalscore_percentage.to_f.round(0).to_s + "%"
 
 
-    #cases_show_recommendations
-      .cases_show_recommendation
-        .cases_show_recommendation_content
-          .cases_show_recommendation_title 1st recommendation
-          = @case.recommendation1
-
-
-
-      .cases_show_recommendation
-        .cases_show_recommendation_content
-          .cases_show_recommendation_title 2nd recommendation
-          = @case.recommendation2
-
-
-      .cases_show_recommendation.cases_show_recommendation_third
-        .cases_show_recommendation_content
-          .cases_show_recommendation_title 3rd recommendation
-          = @case.recommendation3
-
     #cases_show_maincomment
       #cases_show_maincomment_content
         = @case.main_comment.html_safe
