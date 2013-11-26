@@ -1,4 +1,4 @@
-- @events_by_date = current_user.events.includes(:partner).group_by {|i| i.datetime.to_date}
+- @events_by_date = current_user.events.includes(:partner).order("datetime asc").group_by {|i| i.datetime.to_date}
 
 - @date = params[:date] ? Date.parse(params[:date]) : Date.today
 
@@ -35,7 +35,7 @@
           .events_calendar_day_events{class: ("more_than_two_events" if @events_by_date[date].count > 2)}
             - @events_by_date[date].each do |event|
               .events_calendar_day_event.application_tooltip{"data-id" => event.id,"data-original-title"=>"Case with " + event.partner.username + " @ " + event.datetime.strftime("%I:%M%p"), rel: "tooltip", "data-placement"=>"top","data-container"=>"body" }
-                = event.partner.username
+                = event.partner.username_trunc
 
 
     #events_calendar_week_date
