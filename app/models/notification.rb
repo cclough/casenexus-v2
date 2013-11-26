@@ -83,7 +83,6 @@ class Notification < ActiveRecord::Base
   end
 
   def date_fb
-    Rails.logger.ap self.id
     if created_at > DateTime.now - 3.days
       created_at.strftime("%a")
     else
