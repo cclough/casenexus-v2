@@ -149,7 +149,7 @@ class Notification < ActiveRecord::Base
                         to_id, from_id).where(["ntype in (?)", ["message", "feedback","friendship_app",
                                                                 "event_set_partner",
                                                                 "event_change_partner",
-                                                                "event_cancel_partner"]])
+                                                                "event_cancel_partner"]]).order("created_at asc")
     end
 
   end

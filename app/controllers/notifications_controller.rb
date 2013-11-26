@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   before_filter :completed_user
 
   def index
-    @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search]).paginate(per_page: 25, page: params[:page])
+    @notifications = Notification.most_recent_for(current_user.id).includes(:sender).includes(:user).search_for(params[:search])
     
     # For open conversation
     if Notification.most_recent_for(current_user.id).count > 0
