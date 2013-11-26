@@ -83,6 +83,7 @@ class Notification < ActiveRecord::Base
   end
 
   def date_fb
+    Rails.logger.ap self.id
     if created_at > DateTime.now - 3.days
       created_at.strftime("%a")
     else
@@ -256,7 +257,7 @@ class Notification < ActiveRecord::Base
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
                     user_id).for_display.group('asso_id').order("latest")
     ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
-    where(id: ids).order('users.created_at desc')
+    where(id: ids).order('notifications.created_at desc')
   end
 
   def self.most_recent_conversation_with(current_user)

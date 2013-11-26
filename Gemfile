@@ -58,7 +58,7 @@ group :test do
   gem 'factory_girl_rails'                       # Fixtures
   gem 'launchy'                                  # To open pages when developing capybara tests
   #gem 'ruby-debug19', require: 'ruby-debug'      # Debug on testing
-  gem 'debugger'
+  # gem 'debugger'
   gem 'email_spec'                               # Email for rspec
   gem 'rb-fsevent', require: false               # Mac OSX FSEvents API
   gem 'growl'                                    # Ruby growlnotify bindings
