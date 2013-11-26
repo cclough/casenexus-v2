@@ -136,7 +136,7 @@ class Notification < ActiveRecord::Base
     end
 
     def for_display
-      where("ntype != 'welcome'").where("ntype <> ?","friendship_req").where("ntype <> ?","event_remind")
+      where("ntype != 'welcome'").where("ntype <> ?","friendship_req").where("ntype <> ?","event_remind").where("ntype <> ?", "event_change_sender").where("ntype <> ?", "event_cancel_sender").where("ntype <> ?", "event_set_sender")
     end
 
     def header(user)
