@@ -1,7 +1,8 @@
 
 
-#console_index_splash
+#console_index_splash{ class: ("single-left" if @view == "single-left") }
   #console_index_splash_header 
+    CASE CONSOLE
   #console_index_splash_panel
     #console_index_splash_panel_button_interviewer.btn.pull-left
       Interviewer
@@ -13,7 +14,7 @@
 #console_index_interviewee_container
   = render 'interviewee_panel'
 
-#console_index_interviewer_container
+#console_index_interviewer_container{ class: ("single-left" if @view == "single-left") }
 
   #console_index_pdfjs{ class: ("single-left" if @view == "single-left") }
     %iframe#console_index_pdfjs_iframe{ src: ("/console/pdfjs?id=#{@book.id}" unless @book.blank?) }

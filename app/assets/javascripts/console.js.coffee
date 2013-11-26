@@ -33,8 +33,6 @@ console_index_subnav_viewswitch_toggle = ->
 
     $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
   
-
-
   else
     $("#console_index_pdfjs").addClass "single-left"
     $("#console_index_pdfjs_blank").addClass "single-left"
@@ -76,6 +74,7 @@ window.console_index_subnav_timer_prime = ->
     # Now start the timer
     console_countdown "console_index_subnav_timer", window.console_timer_set, 0
 
+    $("#console_index_subnav_timer").removeClass "with_cover"
     switch_to("pause")
 
   # Prime Pause Button
@@ -116,6 +115,15 @@ window.console_index_subnav_timer_prime = ->
 
 
 $(document).ready ->
+
+
+  # Prime Message button on load
+  $("#console_index_subnav_button_skype_message").click ->
+    friend_id = $(this).data "friend_id"
+    window.modal_message_show(friend_id)
+
+  # Fade on load
+  $("#console_index_splash_panel").fadeIn "slow"
 
   # Splash -> interviewee
   $("#console_index_splash_panel_button_interviewee").click ->
@@ -194,6 +202,12 @@ $(document).ready ->
 
       # Pdf button  
       console_index_subnav_sendpdf_check()
+
+      # Message button
+      $("#console_index_subnav_button_skype_message").click ->
+        friend_id = $(this).data "friend_id"
+        window.modal_message_show(friend_id)
+
 
     else
       $("#console_index_feedback_frame").html ""

@@ -8,6 +8,10 @@
   right:0;
   bottom:0;
   top:50px;
+
+  &.single-left {
+    display:none;
+  }
   #console_index_splash_header {
     position:absolute;
     top:0;
@@ -15,15 +19,21 @@
     right:0;
     height:50px;
     background:$cn_grey_-1;
+    font-size:23px;
+    line-height:50px;
+    text-align:center;
   }
   #console_index_splash_panel {
+    display:none;
     position:absolute;
     top:50%;
     left:50%;
     width:400px;
-    height:100px;
-    margin-left:-200px;
+    height:150px;
+    margin-left:-250px;
     margin-top:-50px;
+    padding:0 50px;
+    border-bottom:1px solid $cn_grey_0;
     .btn {
       height:100px;
       width:100px;
@@ -37,7 +47,7 @@
       margin-left:-50px;
       top:50%;
       height:50px;
-      padding-top:53px;
+      padding-top:30px;
       margin-top:-50px;
       text-align:center;
       color:$cn_colour_1;
@@ -100,6 +110,9 @@
 
 #console_index_interviewer_container {
   display:none;
+  &.single-left {
+    display:block;
+  }
 }
 
 ///////////////////////////////////////////////
@@ -235,14 +248,14 @@
 
 
 #console_index_subnav_button_sendpdf_container {
-  width:110px;
+  width:90px;
   float:left;
   margin-top:8px;
   margin-left:10px;
 }
 
 .console_index_subnav_button_sendpdf_state {
-  width: 110px;
+  width: 90px;
 }
 
 
@@ -279,7 +292,7 @@
 
 #console_index_subnav_select_friends_container {
   float:right;
-  width:260px;
+  width:290px;
   margin-top:7px;
 
   .chzn-container-single .chzn-single {
@@ -288,14 +301,8 @@
   }
 
   #console_index_subnav_button_skype_container {
-    width:50px;
+    width:35px;
     display:inline-block;
-    #console_index_subnav_button_skype {
-      font-size:20px;
-      height:20px;
-      padding-top:7px;
-      padding-bottom:7px;
-    }
   }
   #console_index_subnav_select_friends{
     width:200px;
@@ -329,6 +336,11 @@
   line-height:28px;
   text-align:center;
   width:60px;
+  &.with_cover {
+    padding-top:3px;
+    line-height:13px;
+    font-size:11px;
+  }
 }
 
 .console_index_subnav_button_timer_set {

@@ -24,7 +24,7 @@
       - if @friend.blank?
         %select#events_modal_friend_select.chzn-select{"data-placeholder" => "Choose a friend", name:"event[partner_id]"}
           %option{value:""} Choose a friend
-          = options_from_collection_for_select(current_user.accepted_friends, "id", "username")
+          = options_from_collection_for_select(current_user.accepted_friends.order("username ASC").includes(:university), "id", "username")
 
 
         #events_modal_friend_timezone
