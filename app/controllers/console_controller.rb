@@ -7,7 +7,7 @@ class ConsoleController < ApplicationController
 		@book = Book.find_by_id(params[:book_id]) unless params[:book_id].blank?
 		@friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
 		
-		@friends = current_user.accepted_friends
+		@friends = current_user.accepted_friends.order("username asc")
     @books = Book.where(btype: "case")
 
     @view = params[:view]
