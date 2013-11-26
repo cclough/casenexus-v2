@@ -256,8 +256,8 @@ class Notification < ActiveRecord::Base
                         user_id).for_display.group('asso_id').order("latest")
     received = select("sender_id as asso_id, MAX(id) as latest").where("(user_id = ?)",
                     user_id).for_display.group('asso_id').order("latest")
-    ids = (sent + received).sort_by(&:latest).reverse.uniq_by(&:asso_id).collect(&:latest)
-    where(id: ids).order('notifications.created_at desc')
+    ids = (sent + received).sort_by{|f|f.latest.to_i}.reverse.uniq_by(&:asso_id).collect(&:latest)
+    where(id: ids).order("id desc")#.order('notifications.created_at desc')
   end
 
   def self.most_recent_conversation_with(current_user)
