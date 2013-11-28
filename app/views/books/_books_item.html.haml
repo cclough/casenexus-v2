@@ -47,7 +47,7 @@
       = books_difficulty_stamp(books_item)
 
     - unless books_item.title.blank?
-      %a.books_index_books_item_title{href:"/console?book_id=" + books_item.id.to_s}
+      %a.books_index_books_item_title{href:"/console?view=single-left&book_id=" + books_item.id.to_s}
         = books_item.title
 
 
