@@ -8,7 +8,7 @@
 
   %input#case_book_id{ type:"hidden", name: "case[book_id]", value: @book.id }
 
-  = link_to book_path(@book), target: "_blank", class: "btn btn-small btn-colour" do
+  = link_to book_path(@book), target: "_blank", class: "btn btn-small" do
 
     .books_show_small_image
       - if @book.thumb.blank?

@@ -49,12 +49,12 @@ $(document).ready ->
     
     if $("#books_filter_sort_direction").val() == "asc"
       $("#books_filter_sort_direction").val("desc")
-      $("#books_index_form_filters_sort_direction_button").html "Descending <i class=icon-fontawesome-webfont-35></i>"
+      $("#books_index_form_filters_sort_direction_button").html "Descending <i class=icon-arrow-1-down></i>"
       window.books_index_books_updatelist()
     
     else if $("#books_filter_sort_direction").val() == "desc"
       $("#books_filter_sort_direction").val("asc")
-      $("#books_index_form_filters_sort_direction_button").html "Ascending <i class=icon-fontawesome-webfont-34></i>"
+      $("#books_index_form_filters_sort_direction_button").html "Ascending <i class=icon-arrow-1-up></i>"
       window.books_index_books_updatelist()
 
 

@@ -18,7 +18,7 @@
     .spacer20
     
     - unless params[:action] == "show"
-      = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-colour btn-micro books_index_books_item_comments_button application_tooltip","data-container"=>"body", "data-original-title"=>"Review and rate...", rel: "tooltip", "data-placement"=>"bottom" do
+      = link_to book_path(books_item), "data-id"=>books_item.id, class: "btn btn-micro books_index_books_item_comments_button application_tooltip","data-container"=>"body", "data-original-title"=>"Review and rate...", rel: "tooltip", "data-placement"=>"bottom" do
         Review
         %strong (#{books_item.comments.count})
 
@@ -31,12 +31,12 @@
     - unless books_item.btype == "web"
 
       - if books_item.url[0,7] == "http://"
-        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, target:"_new",class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show me where I can get it...", rel: "tooltip", "data-placement"=>"bottom"
+        = link_to raw("<i class=icon-arrow-right-1></i>"), books_item.url, target:"_new",class: "btn btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show me where I can get it...", rel: "tooltip", "data-placement"=>"bottom"
       - else
         - if books_item.btype == "guide"
-          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show it...", rel: "tooltip", "data-placement"=>"bottom"
+          = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show it...", rel: "tooltip", "data-placement"=>"bottom"
         - else
-          = link_to raw("START"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-colour btn-round btn-round-small btn-start application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
+          = link_to raw("START"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-round btn-round-small btn-start application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
 
 
 
@@ -67,7 +67,7 @@
 
     .application_tags_container
       - books_item.tags.each do |t|
-        .books_index_list_fitlers_tag_item.btn.btn-tag.btn-micro{'data-tag_id' => t.id}
+        .books_index_list_fitlers_tag_item.btn.btn-tag{'data-tag_id' => t.id}
           = t.name + ' '
 
 

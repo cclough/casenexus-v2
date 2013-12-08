@@ -22,9 +22,9 @@
 
     - if Friendship.requested?(current_user,friends_item)
       .profile_index_friends_friends_requested
-        = link_to accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
+        = link_to accept_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btnbtn-micro profile_index_friends_friends_item_friendship_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
           %i.icon-checkmark
-        = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btn btn-colour btn-micro profile_index_friends_friends_item_friendship_button application_tooltip","data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
+        = link_to reject_friendship_path(id: Friendship.friendship(current_user,friends_item), back_url: "/"), method: :put, class: "btnbtn-micro profile_index_friends_friends_item_friendship_button application_tooltip","data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
           %i.icon-cancel
           %a.profile_index_friends_actions_profile.btn.btn-round.btn-round-small{ href: "/map?user_id=" + friends_item.id.to_s, "data-container"=>"body", "data-original-title"=>"Jump to map profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip"}
             %i.icon-map-pin-streamline

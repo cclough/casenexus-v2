@@ -59,10 +59,10 @@
 
         - elsif Friendship.pending?(users_item, current_user)
 
-          = link_to accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
+          = link_to accept_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btnbtn-micro map_index_users_item_friendship_action_button application_tooltip","data-container"=>"body", "data-original-title"=>"Accept partner request...", rel: "tooltip", "data-placement"=>"bottom" do
             %i.icon-checkmark
             ACCEPT
-          = link_to reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btn btn-colour btn-micro map_index_users_item_friendship_action_button application_tooltip", "data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
+          = link_to reject_friendship_path(id: Friendship.friendship(current_user, users_item), back_url: map_path), method: :put, class: "btnbtn-micro map_index_users_item_friendship_action_button application_tooltip", "data-container"=>"body", "data-original-title"=>"Decline partner request...", rel: "tooltip", "data-placement"=>"bottom" do
             %i.icon-cancel
             DECLINE
 

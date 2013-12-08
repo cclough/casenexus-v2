@@ -96,11 +96,11 @@
     / #profile_index_info_actions_invite.btn.btn-round{"data-original-title"=>"Invite friends", rel: "tooltip", "data-container"=>"body", "data-placement"=>"bottom", class: "application_tooltip"}
     /   %i.icon-users-outline
 
-    = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-container"=>"body", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: " btn btn-colour btn-round application_tooltip", method: :delete do
+    = link_to destroy_user_session_path, id: "profile_index_info_actions_signout", "data-container"=>"body", "data-original-title"=>"Sign out", rel: "tooltip", "data-placement"=>"bottom", class: " btnbtn-round application_tooltip", method: :delete do
       %i.icon-logout
 
     - if current_user.admin?
-      = link_to rails_admin_url, "data-container"=>"body", "data-original-title"=>"Admin", rel: "tooltip", "data-placement"=>"bottom", class: " btn btn-colour btn-round application_tooltip" do
+      = link_to rails_admin_url, "data-container"=>"body", "data-original-title"=>"Admin", rel: "tooltip", "data-placement"=>"bottom", class: " btnbtn-round application_tooltip" do
         A
 
 
@@ -164,7 +164,7 @@
       #profile_index_feedback_actions
 
 
-        / #profile_index_feedback_actions_analysis.btn.btn-round{"data-container"=>"body", "data-original-title"=>"Itemised results...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btn btn-colour btn-round"}
+        / #profile_index_feedback_actions_analysis.btn.btn-round{"data-container"=>"body", "data-original-title"=>"Itemised results...", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip btnbtn-round"}
         /   %i.icon-graph-horizontal
 
 
