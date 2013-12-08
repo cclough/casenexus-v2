@@ -49,16 +49,3 @@
         TIMER
 
       #console_index_subnav_timer
-
-  #console_index_subnav_select_friends_container
-        
-    - if !@friend.blank?
-      #console_index_subnav_button_skype_message.btn.btn-round.btn-round-small.application_tooltip{"data-original-title"=>"Send #{@friend.username} message...", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @friend.id }
-        %i.icon-email-mail-streamline
-
-    #console_index_subnav_button_skype_container
-      = render 'console/skypebutton', layout: false
-      
-    %select#console_index_subnav_select_friends.chzn-select{name: "target_id", "data-placeholder" => "Select Friend" }
-      %option{value: ""} Select a partner...
-      = options_from_collection_for_select @friends, :id, :username, (@friend.id unless @friend.blank?)

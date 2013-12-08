@@ -11,6 +11,14 @@
     #console_index_splash_panel_button_interviewee.btn.pull-right
       Interviewee
 
+  #console_index_splash_friend
+    Case with
+
+    %select#console_index_subnav_select_friends.chzn-select{name: "target_id", "data-placeholder" => "Select Friend" }
+      %option{value: ""} Select a partner...
+      = options_from_collection_for_select @friends, :id, :username, (@friend.id unless @friend.blank?)
+
+
 #console_index_interviewee_container
   = render 'interviewee_panel'
 

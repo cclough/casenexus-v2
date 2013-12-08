@@ -118,7 +118,7 @@ $(document).ready ->
 
 
   # Prime Message button on load
-  $("#console_index_subnav_button_skype_message").click ->
+  $("#console_index_subnav_button_message").click ->
     friend_id = $(this).data "friend_id"
     window.modal_message_show(friend_id)
 

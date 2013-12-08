@@ -229,15 +229,28 @@
 #cases_new_user {
   text-align:center;
   display:inline-block;
-  width:100px;
+  width:150px;
   padding:0px;
   float:right;
+  #cases_new_user_user_container {
+    display:inline-block;
+    vertical-align:middle;
+  }
   img {
     margin-top:7px;
   }
   #cases_new_user_username {
     margin-top:5px;
     font-size:15px;
+  }
+  #cases_new_user_buttons_container {
+    width:30px;
+    display:inline-block;
+    vertical-align:middle;
+    margin-left:5px;
+    #console_index_subnav_button_message {
+      margin-bottom:6px;
+    }
   }
 }
 

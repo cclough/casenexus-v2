@@ -32,9 +32,20 @@
 
 
     #cases_new_user
-      = avatar_for(@user,size:"large")
-      #cases_new_user_username
-        = @user.username
+
+      %span#cases_new_user_buttons_container
+
+        #console_index_subnav_button_message.btn.btn-round.btn-round-small.application_tooltip{"data-original-title"=>"Send #{@user.username} message...", rel: "tooltip", "data-placement"=>"bottom", "data-friend_id" => @user.id }
+          %i.icon-email-mail-streamline
+
+        #console_index_subnav_button_skype_container
+          = render partial: 'console/skypebutton', layout: false, locals: {user: @user }
+
+      %span#cases_new_user_user_container
+        = avatar_for(@user,size:"large")
+        #cases_new_user_username
+          = @user.username
+
 
 
 

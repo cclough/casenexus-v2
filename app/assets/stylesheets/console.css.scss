@@ -53,6 +53,21 @@
       color:$cn_colour_1;
     }
   }
+  #console_index_splash_friend {
+    position:absolute;
+    left:50%;
+    top:50%;
+    font-size:18px;
+    width:350px;
+    margin-left:-150px;
+    margin-top:150px;
+    #console_index_subnav_select_friends {
+      text-align:left;
+      font-size:12px;
+      display:inline-block;
+      margin-left:20px !important;
+    }
+  }
 }
 
 
@@ -285,30 +300,6 @@
 
 
 
-/////////////////////////////////////////////
-///////////////// FRIENDS ///////////////////
-/////////////////////////////////////////////
-
-
-#console_index_subnav_select_friends_container {
-  float:right;
-  width:290px;
-  margin-top:7px;
-
-  .chzn-container-single .chzn-single {
-    height:35px;
-    line-height:35px;
-  }
-
-  #console_index_subnav_button_skype_container {
-    width:35px;
-    display:inline-block;
-  }
-  #console_index_subnav_select_friends{
-    width:200px;
-  }
-
-}
 
 
 

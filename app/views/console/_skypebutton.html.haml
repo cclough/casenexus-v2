@@ -1,13 +1,11 @@
-- if !@friend.blank?
+- unless defined?(size)
 
-  - unless defined?(size)
+  = link_to "skype:#{user.skype}?call", id: "console_index_subnav_button_skype", "data-original-title"=>"Call #{user.username} on Skype...", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-round btn-skype btn-round-small application_tooltip" do
+    %i.icon-skype
 
-    = link_to "skype:#{@friend.skype}?call", id: "console_index_subnav_button_skype", "data-original-title"=>"Call #{@friend.username} on Skype...", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-round btn-skype btn-round-small application_tooltip" do
-      %i.icon-skype
+- else
 
-  - else
-
-    = link_to "skype:#{@friend.skype}?call", id: "console_index_interviewee_panel_button_skype", "data-original-title"=>"Call #{@friend.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn application_tooltip" do
-      %i.icon-skype
-      #console_index_interviewee_panel_button_skype_text
-        #{@friend.username}
+  = link_to "skype:#{user.skype}?call", id: "console_index_interviewee_panel_button_skype", "data-original-title"=>"Call #{user.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn application_tooltip" do
+    %i.icon-skype
+    #console_index_interviewee_panel_button_skype_text
+      #{user.username}
