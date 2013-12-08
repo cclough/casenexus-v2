@@ -116,7 +116,7 @@
 
   .modal-footer
     #modal_event_footer_actions
-      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btnbtn-micro application_tooltip",  "data-original-title"=>"Cancel this event", rel: "tooltip", "data-placement"=>"top", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
+      = link_to("Cancel", event_path(@event), remote:true, method: :delete, class: "btn btn-micro application_tooltip",  "data-original-title"=>"Cancel this event", rel: "tooltip", "data-placement"=>"top", confirm: "Are you sure you want to cancel this appointment? This cannot be undone.")
   
       - unless @event.partner.skype.blank?
         %a.map_index_users_item_button_skype.btn.btn-skype.btn-round.btn-round-small.application_tooltip{"data-container"=>"body", "data-original-title"=>"Call on Skype...", rel: "tooltip", "data-placement"=>"bottom", href: "skype:#{@event.partner.skype}?call"}

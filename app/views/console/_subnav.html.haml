@@ -1,51 +1,45 @@
 = form_tag 'console/sendpdf', remote: true, id: "console_index_subnav_form" do |f| # form must be at top as has to include e.g target_id field
 
 
-  #console_index_subnav_button_return.btn
-    %i.icon-arrow-left-1
-    Return
-
-  / BOOK SELECT - if you put in subnav can't locate here with css
-  #console_index_subnav_select_books_container
-    %select#console_index_subnav_select_books.chzn-select{name: "book_id", "data-placeholder" => "Choose a Case" }
-      %option{value: ""} Select a case...
-      - @books.each do |books_select_item|
-        %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
-          = books_select_item.author.split(' ')[0] + " - " + books_select_item.title_trunc
-
-
-  #console_index_subnav_button_viewswitch.btn.btn-small.application_tooltip{"data-original-title"=>"Toggle fullscreen...", rel: "tooltip", "data-placement"=>"bottom"}
-    - if @view == "single-left"
-      %i.icon-fontawesome-webfont-41
-    - else
-      %i.icon-fontawesome-webfont-38
 
   #console_index_subnav_button_sendpdf_container
     = render 'console/sendpdfbutton', layout: false
 
-  #console_index_subnav_timer_panel
-    .span10#console_index_timer_timeset_container.console_index_timer_panel_container
-      .btn.btn-small.console_index_subnav_button_timer_set.application_tooltip{"data-set"=>30,"data-original-title"=>"Start timer at 30 minutes", rel: "tooltip", "data-placement"=>"bottom"}
-        30
-      .btn.btn-small.console_index_subnav_button_timer_set.application_tooltip{"data-set"=>45,"data-original-title"=>"Start timer at 45 minutes", rel: "tooltip", "data-placement"=>"bottom"}
-        45
-      .btn.btn-small.console_index_subnav_button_timer_set.application_tooltip{"data-set"=>60,"data-original-title"=>"Start timer at 60 minutes", rel: "tooltip", "data-placement"=>"bottom"}
-        60
-    .span10#console_index_timer_pause_container.console_index_timer_panel_container
-      #console_index_subnav_button_timer_pause.btn.btn-small
-        Pause
-    .span10#console_index_timer_restartreset_container.console_index_timer_panel_container
+  #console_index_subnav_console
 
-      #console_index_subnav_button_timer_restart.btn.btn-small
-        Start
+    %span#console_index_subnav_timer_panel
+      .span10#console_index_timer_timeset_container.console_index_timer_panel_container
+        .btn.btn-small.console_index_subnav_button_timer_set.application_tooltip{"data-set"=>30,"data-original-title"=>"Start timer at 30 minutes", rel: "tooltip", "data-placement"=>"bottom"}
+          30
+        .btn.btn-small.console_index_subnav_button_timer_set.application_tooltip{"data-set"=>45,"data-original-title"=>"Start timer at 45 minutes", rel: "tooltip", "data-placement"=>"bottom"}
+          45
+        .btn.btn-small.console_index_subnav_button_timer_set.application_tooltip{"data-set"=>60,"data-original-title"=>"Start timer at 60 minutes", rel: "tooltip", "data-placement"=>"bottom"}
+          60
+      .span10#console_index_timer_pause_container.console_index_timer_panel_container
+        #console_index_subnav_button_timer_pause.btn.btn-small
+          Pause
+      .span10#console_index_timer_restartreset_container.console_index_timer_panel_container
 
-      #console_index_subnav_button_timer_reset.btn.btn-small
-        Reset
+        #console_index_subnav_button_timer_restart.btn.btn-small
+          Start
 
-    .span.offset1.pull-right
-      #console_index_subnav_timer.with_cover
-        START
-        %br
-        TIMER
+        #console_index_subnav_button_timer_reset.btn.btn-small
+          Reset
 
-      #console_index_subnav_timer
+      .span.offset1
+        #console_index_subnav_timer.with_cover
+          START
+          %br
+          TIMER
+
+        #console_index_subnav_timer
+
+
+    #console_index_subnav_button_return.btn
+      Menu
+
+    #console_index_subnav_button_viewswitch.btn.btn-small.application_tooltip{"data-original-title"=>"Toggle fullscreen...", rel: "tooltip", "data-placement"=>"bottom"}
+      - if @view == "single-left"
+        %i.icon-fontawesome-webfont-41
+      - else
+        %i.icon-fontawesome-webfont-38

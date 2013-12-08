@@ -12,11 +12,24 @@
       Interviewee
 
   #console_index_splash_friend
-    Case with
 
-    %select#console_index_subnav_select_friends.chzn-select{name: "target_id", "data-placeholder" => "Select Friend" }
+    %span#console_index_splash_friend_text
+      With:
+
+    %select#console_index_subnav_select_friends{name: "target_id", "data-placeholder" => "Select Friend" }
       %option{value: ""} Select a partner...
       = options_from_collection_for_select @friends, :id, :username, (@friend.id unless @friend.blank?)
+
+  #console_index_splash_book
+
+    %span#console_index_splash_book_text
+      Case:
+
+    %select#console_index_subnav_select_books{name: "book_id", "data-placeholder" => "Choose a Case" }
+      %option{value: ""} Select a case...
+      - @books.each do |books_select_item|
+        %option{value: books_select_item.id, "selected" => ("selected" if (books_select_item.id == @book.id) unless @book.blank?) }
+          = books_select_item.author.split(' ')[0] + " - " + books_select_item.title_trunc
 
 
 #console_index_interviewee_container

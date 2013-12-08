@@ -59,14 +59,37 @@
     top:50%;
     font-size:18px;
     width:350px;
-    margin-left:-150px;
-    margin-top:150px;
+    margin-left:-175px;
+    margin-top:230px;
+    text-align:center;
+    #console_index_splash_friend_text {
+      display:inline-block;
+      margin-right:5px;
+      margin-top:-10px;
+    }
     #console_index_subnav_select_friends {
       text-align:left;
       font-size:12px;
-      display:inline-block;
-      margin-left:20px !important;
     }
+  }
+  #console_index_splash_book {
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:350px;
+    font-size:18px;
+    margin-left:-175px;
+    margin-top:175px;
+    text-align:center;
+    #console_index_splash_book_text {
+      display:inline-block;
+      margin-right:5px;
+      margin-top:-10px;
+    }
+    #console_index_subnav_select_books {
+      font-size:12px;
+    }
+
   }
 }
 
@@ -237,25 +260,6 @@
 
 
 
-#console_index_subnav_button_viewswitch {
-  position:absolute;
-  top:8px;
-  margin-left:-425px !important;
-  font-size:20px;
-  height:20px;
-  padding-top:7px;
-  padding-bottom:7px;
-  width:20px;
-}
-
-#console_index_subnav_button_return {
-  position:absolute;
-  top:8px;
-  margin-left:-100px !important;
-  height:20px;
-  padding-top:7px;
-  padding-bottom:7px;
-}
 
 /////////////////////////////////////////////
 //////////////// Send PDF Button ////////////
@@ -274,34 +278,45 @@
 }
 
 
+
 /////////////////////////////////////////////
-///////////////// BOOK //////////////////////
+/////////////// SUBCONSOLE //////////////////
 /////////////////////////////////////////////
 
-#console_index_subnav_select_books_container {
+
+
+
+#console_index_subnav_console {
   position:absolute;
-  top:8px;
-  margin-left:-370px !important;
-  .chzn-drop {
-    width:260px;
-    .chzn-results {
-      width:260px;
-      .active-result {
-        width:248px; // subtract padding of 12
-      }
-    }
-  }
-  .chzn-container-single .chzn-single {
-    height:35px;
-    line-height:35px;
-    width:252px;
-  }
+  left:0;
+  margin-left:-150px;
+  margin-top:0px;
+  background-color: $cn_grey_-2;
+  padding: 10px;
+  height:30px;
+  width:300px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color:white;
+  padding-left:13px; // to make up for random smaller margin
 }
 
 
+#console_index_subnav_button_viewswitch {
 
+  font-size:20px;
+  height:15px;
+  padding-top:5px;
+  padding-bottom:10px;
+  width:20px;
+}
 
-
+#console_index_subnav_button_return {
+  height:15px;
+  padding-top:5px;
+  padding-bottom:10px;
+}
 
 /////////////////////////////////////////////
 /////////////////// TIMER ///////////////////
@@ -309,17 +324,8 @@
 
 
 #console_index_subnav_timer_panel {
-  position:absolute;
-  left:50%;
-  margin-left:-142px;
-  margin-top:5px;
-//  background-color: $cn_grey_-1;
-  padding: 5px;
-  height:30px;
-  width:170px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+  width:190px;
+  margin-right:10px;
 }
 
 #console_index_subnav_timer {
