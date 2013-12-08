@@ -251,19 +251,19 @@ class User < ActiveRecord::Base
         if user.nearbys(1).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).count > 7
           scope = user.nearbys(1).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(8)
         else
-          scope = user.nearbys(1).users_allowed_on_map.not_friends(user).order("cases desc").first(8)
+          scope = user.nearbys(1).users_allowed_on_map.not_friends(user).order("cases_external desc").first(8)
         end
       elsif user.nearbys(100).users_allowed_on_map.not_friends(user).count > 7
         if user.nearbys(100).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).count > 7
           scope = user.nearbys(100).users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(8)
         else
-          scope = user.nearbys(100).users_allowed_on_map.not_friends(user).order("cases desc").first(8)
+          scope = user.nearbys(100).users_allowed_on_map.not_friends(user).order("cases_external desc").first(8)
         end
       else
         if User.users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).count > 7
           scope = User.users_allowed_on_map.not_friends(user).list_by_experience(user.case_count_bracket_id).order("cases_external desc").first(8)
         else
-          scope = User.order("cases desc").users_allowed_on_map.not_friends(user).first(8)
+          scope = User.order("cases_external desc").users_allowed_on_map.not_friends(user).first(8)
         end
       end
       scope
