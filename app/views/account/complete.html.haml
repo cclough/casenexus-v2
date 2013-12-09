@@ -7,12 +7,12 @@
 
 #account_complete_panel
   
-  #account_complete_panel_nav_arrow_left.application_tooltip{"data-container"=>"body", "data-original-title"=>"Previous page...", rel: "tooltip", "data-placement"=>"bottom"}
-    %i.icon-fontawesome-webfont-31
+  #account_complete_panel_nav_arrow_left.application_tooltip{"data-container"=>"body", "data-original-title"=>"Previous step...", rel: "tooltip", "data-placement"=>"bottom"}
+    %i.icon-fontawesome-webfont-16
 
 
-  #account_complete_panel_nav_arrow_right.application_tooltip{"data-container"=>"body", "data-original-title"=>"Next page...", rel: "tooltip", "data-placement"=>"bottom"}
-    %i.icon-fontawesome-webfont-2
+  #account_complete_panel_nav_arrow_right.application_tooltip{"data-container"=>"body", "data-original-title"=>"Next step...", rel: "tooltip", "data-placement"=>"bottom"}
+    %i.icon-fontawesome-webfont-18
 
   #application_arrownav_page_1.arrownav_page
 
@@ -40,38 +40,44 @@
     .account_complete_page_title The basics
     
     .account_complete_page_text 
-      You can practise cases in person, or via Skype, with other's you haven't met before. 
+      You can practise cases in person, or via Skype, with others you haven't met before. 
       
     .account_complete_page_text_col_left
       %ol
         %li
           Arrange to meet for 1-2 hours
         %li
-          Take up to 1 hour to prepare a case for your partner
+          Take 30-60mins to prepare a case for your partner
         %li
-          Take it in turns to be the Interviewer, and the Interviewee
+          Take it in turns to be the Interviewer
         %li
-          Give feedback on eachother's performance
+          Give feedback on each other's performance
 
-    .account_complete_page_image.pull-right
-      = image_tag "art/complete_scenario_f2f.png"
+    #account_complete_page_image_scenario.pull-right
+      = image_tag "art/complete_scenario_f2f.png", id:"account_complete_page_image_scenario_f2f"
+      = image_tag "art/complete_scenario_skype.png", id:"account_complete_page_image_scenario_skype", class: "hidden"
+      
+      #account_complete_page_image_scenario_text
+        In Person or via Skype
 
   #application_arrownav_page_3.arrownav_page
 
-    .account_complete_page_title Casenexus.com helps you
-    
+    .account_complete_page_title Casenexus.com helps you to...
+
+    = image_tag "art/laptop.png", id: "account_complete_page_features_art"
+
     .account_complete_page_text.page_features
 
-      %ul
+      %ol
         %li Find partners
-        %li Book appointments
+        %li Arrange case appointments
         %li Find cases
         %li Do cases
-        %li Review feedback
+        %li Review your feedback
 
   #application_arrownav_page_4.arrownav_page
 
-    .account_complete_page_title Find partners...
+    .account_complete_page_title 1. Find partners
     
     .account_complete_page_text 
       Select Partners by how close they are to you, their case experience to date, recent activity or languages they speak
@@ -82,7 +88,7 @@
 
   #application_arrownav_page_5.arrownav_page
 
-    .account_complete_page_title We need some information about you...
+    .account_complete_page_title And so that others can find you...
 
     .account_complete_page_text 
 
@@ -97,7 +103,7 @@
       Below are a selection of other users, near you with similar case experience
 
       #account_complete_form_suggested_button_sendtoall.btn.btn-green.pull-right
-        Send requests to all
+        Send requests to all 8
 
     = render 'complete_form_suggested'
 
@@ -105,7 +111,7 @@
 
   #application_arrownav_page_7.arrownav_page
 
-    .account_complete_page_title Arrange case appointments
+    .account_complete_page_title 2. Arrange case appointments
     
     .account_complete_page_text Once approved as a partner, use case appointments to book cases across time zones. Select a case from the library that you haven't done yet, and it will be emailed to them.
 
@@ -118,7 +124,7 @@
 
   #application_arrownav_page_8.arrownav_page
 
-    .account_complete_page_title The Library
+    .account_complete_page_title 3. Find cases
     
     .account_complete_page_text The Library contains carefully selected cases from the the top business schools, links to introductory case guides and other online resources
 
@@ -128,7 +134,7 @@
 
   #application_arrownav_page_9.arrownav_page
 
-    .account_complete_page_title When it's time for a case...
+    .account_complete_page_title 4. Do cases
     
     .account_complete_page_text Click the 'START' button. When you are the 'Intereviewer' you will see the case script, a timer, and a feedback form to complete for your Partner. Enter your Skype username so your Partner can call you:
 
@@ -144,7 +150,7 @@
 
   #application_arrownav_page_10.arrownav_page
 
-    .account_complete_page_title Review your feedback
+    .account_complete_page_title 5. Review your feedback
 
     .account_complete_page_text Feedback you receive is collected in your profile, for you to review whenever you wish. Your scores are illustrated to help you identify your strengths and weaknesses.
       
@@ -159,10 +165,9 @@
     
     .account_complete_page_text.page_last
 
-      Feel free to only use the features you need.
       %br
       %br
-      Casenexus is still in Beta - do contact us if you encounter any bugs.
+      Casenexus is still in Beta - contact us if you have any problems.
 
       .spacer30
 
@@ -171,7 +176,7 @@
         = f.hidden_field :complete_page, value: "end"
 
         %button.btn.btn-large
-          Start now!
+          Start now
 
 
   #account_complete_pagenum

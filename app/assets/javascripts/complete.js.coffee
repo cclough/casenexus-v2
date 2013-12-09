@@ -1,13 +1,23 @@
 
 $(document).ready ->
 
+  $("#account_complete_page_image_scenario_text").click ->
+
+    if $("#account_complete_page_image_scenario_skype").hasClass "hidden"
+      $("#account_complete_page_image_scenario_f2f").fadeOut "fast", ->
+        $("#account_complete_page_image_scenario_skype").removeClass "hidden"
+        $("#account_complete_page_image_scenario_f2f").addClass "hidden"
+        $("#account_complete_page_image_scenario_skype").fadeIn "fast"
+    else
+      $("#account_complete_page_image_scenario_skype").fadeOut "fast", ->
+        $("#account_complete_page_image_scenario_f2f").removeClass "hidden"
+        $("#account_complete_page_image_scenario_skype").addClass "hidden"
+        $("#account_complete_page_image_scenario_f2f").fadeIn "fast"
+
   # Click to nav - DISALLOW AS ENABLES SKIPPING FORMS
   # $(".account_complete_panel_nav_progress_blip").click ->
   #   page_id = $(this).data "page_id"
   #   window.ArrowNav.goTo page_id
-
-  # if $("#account_complete_panel").length > 0
-  #   window.account_completeedit_bless()
 
   # Modal Help nav
   if $("#account_complete_panel").size() > 0
