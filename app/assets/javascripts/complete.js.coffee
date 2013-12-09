@@ -1,19 +1,6 @@
 
 $(document).ready ->
 
-  $("#account_complete_page_image_scenario_text").click ->
-
-    if $("#account_complete_page_image_scenario_skype").hasClass "hidden"
-      $("#account_complete_page_image_scenario_f2f").fadeOut "fast", ->
-        $("#account_complete_page_image_scenario_skype").removeClass "hidden"
-        $("#account_complete_page_image_scenario_f2f").addClass "hidden"
-        $("#account_complete_page_image_scenario_skype").fadeIn "fast"
-    else
-      $("#account_complete_page_image_scenario_skype").fadeOut "fast", ->
-        $("#account_complete_page_image_scenario_f2f").removeClass "hidden"
-        $("#account_complete_page_image_scenario_skype").addClass "hidden"
-        $("#account_complete_page_image_scenario_f2f").fadeIn "fast"
-
   # Click to nav - DISALLOW AS ENABLES SKIPPING FORMS
   # $(".account_complete_panel_nav_progress_blip").click ->
   #   page_id = $(this).data "page_id"
@@ -94,3 +81,41 @@ $(document).ready ->
         $("#account_complete_pagenum").html("Part " + page + " of 11")
 
     window.ArrowNav.goTo "1"
+
+    #### Slideshow on Scenarios
+    account_complete_scenarios_slideshow_switchto_f2f = () ->
+      $("#account_complete_page_image_scenario_skype").fadeOut 500, ->
+        $("#account_complete_page_image_scenario_skype").removeClass "hidden"
+        $("#account_complete_page_image_scenario_f2f").addClass "hidden"
+        $("#account_complete_page_image_scenario_f2f").fadeIn 500
+
+        $("#account_complete_page_image_scenario_button_f2f").addClass "active"
+        $("#account_complete_page_image_scenario_button_skype").removeClass "active"
+
+    account_complete_scenarios_slideshow_switchto_skype = () ->
+      clearInterval account_complete_scenarios_slideshow_interval
+      $("#account_complete_page_image_scenario_f2f").fadeOut 500, ->
+        $("#account_complete_page_image_scenario_f2f").removeClass "hidden"
+        $("#account_complete_page_image_scenario_skype").addClass "hidden"
+        $("#account_complete_page_image_scenario_skype").fadeIn 500
+
+        $("#account_complete_page_image_scenario_button_skype").addClass "active"
+        $("#account_complete_page_image_scenario_button_f2f").removeClass "active"
+
+    # Slideshow buttons
+    $("#account_complete_page_image_scenario_button_f2f").click ->
+      clearInterval account_complete_scenarios_slideshow_interval
+      account_complete_scenarios_slideshow_switchto_f2f()
+
+    $("#account_complete_page_image_scenario_button_skype").click ->
+      clearInterval account_complete_scenarios_slideshow_interval
+      account_complete_scenarios_slideshow_switchto_skype()
+
+    # Slideshow interval
+    account_complete_scenarios_slideshow_interval = setInterval (->
+      if $("#account_complete_page_image_scenario_skype").hasClass "hidden"
+        account_complete_scenarios_slideshow_switchto_skype()
+      else
+        account_complete_scenarios_slideshow_switchto_f2f()
+    ), 5000
+

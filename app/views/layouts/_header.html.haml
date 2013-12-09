@@ -45,7 +45,8 @@
         - else
           %ul#header_nav_links_right_incomplete.nav.pull-right
             %li
-              = current_user.email
+              #header_nav_links_right_incomplete_email
+                = current_user.email
               #header_nav_links_right_incomplete_university
                 = avatar_for(@user, link: 0)
                 = @user.university.name

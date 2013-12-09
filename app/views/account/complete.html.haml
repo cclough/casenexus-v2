@@ -56,9 +56,14 @@
     #account_complete_page_image_scenario.pull-right
       = image_tag "art/complete_scenario_f2f.png", id:"account_complete_page_image_scenario_f2f"
       = image_tag "art/complete_scenario_skype.png", id:"account_complete_page_image_scenario_skype", class: "hidden"
-      
-      #account_complete_page_image_scenario_text
-        In Person or via Skype
+
+      #account_complete_page_image_scenario_legend
+        #account_complete_page_image_scenario_text
+          You can practise
+        #account_complete_page_image_scenario_button_f2f.btn.btn-micro.active
+          in Person
+        #account_complete_page_image_scenario_button_skype.btn.btn-micro
+          via Skype
 
   #application_arrownav_page_3.arrownav_page
 
@@ -166,10 +171,9 @@
     .account_complete_page_text.page_last
 
       %br
-      %br
       Casenexus is still in Beta - contact us if you have any problems.
 
-      .spacer30
+      .spacer50
 
       = form_for(@user, url: account_path) do |f|
 

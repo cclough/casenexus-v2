@@ -289,7 +289,6 @@
     padding-left:350px;
     padding-top:100px;
     font-size:18px;
-    font-weight:400;
     li {
       margin-bottom:15px;
     }
@@ -347,7 +346,7 @@
   text-align:center;
   img {
     margin:0 auto;
-    margin-right:-30px;
+    outline:1px solid $cn_grey_0;
   }
 }
 
@@ -360,12 +359,26 @@
   max-width:300px;
 }
 
-#account_complete_page_image_scenario{
-  img {
-//    max-width:450px;  
+#account_complete_page_image_scenario {
+  margin-right:-40px;
+  #account_complete_page_image_scenario_f2f {
+    max-width:450px;
   }
   #account_complete_page_image_scenario_skype {
     display:none;
+    max-width:370px;
+    padding-right:30px;
+    padding-top:10px;
+  }
+}
+
+#account_complete_page_image_scenario_legend {
+  position:absolute;
+  bottom:-40px;
+  right:150px;
+  #account_complete_page_image_scenario_text {
+    display:inline-block;
+    margin-right:10px;
   }
 }
 
