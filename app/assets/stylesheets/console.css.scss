@@ -28,27 +28,32 @@
     position:absolute;
     top:50%;
     left:50%;
-    width:400px;
-    height:150px;
-    margin-left:-250px;
-    margin-top:-50px;
-    padding:0 50px;
+    width:100px;
+    margin-top:-100px;
+    margin-left:200px;
     border-bottom:1px solid $cn_grey_0;
     .btn {
-      height:100px;
-      width:100px;
+      height:60px;
+      width:120px;
       font-size:19px;
-      line-height:100px;
+      line-height:62px;
+      position:relative;
+      padding-right:30px;
+      i {
+        position:absolute;
+        top:10px;
+        right:5px;
+        font-size:35px;
+      }
     }
     #console_index_splash_text {
       position:absolute;
       left:50%;
       width:100px;
-      margin-left:-50px;
       top:50%;
       height:50px;
-      padding-top:30px;
-      margin-top:-50px;
+      margin-top:-10px;
+      margin-left:-20px;
       text-align:center;
       color:$cn_colour_1;
     }
@@ -56,7 +61,7 @@
   #console_index_splash_art {
     position:absolute;
     left:50%;
-    margin-left:-600px;
+    margin-left:-550px;
 
     top:50%;
     margin-top:-150px;
@@ -69,7 +74,7 @@
     font-size:18px;
     width:350px;
     margin-left:-175px;
-    margin-top:230px;
+    margin-top:-30px;
     text-align:center;
     #console_index_splash_friend_text {
       display:inline-block;
@@ -88,7 +93,7 @@
     width:350px;
     font-size:18px;
     margin-left:-175px;
-    margin-top:175px;
+    margin-top:20px;
     text-align:center;
     #console_index_splash_book_text {
       display:inline-block;
@@ -277,9 +282,10 @@
 
 #console_index_subnav_button_sendpdf_container {
   width:110px;
-  float:left;
-  margin-top:8px;
-  margin-left:10px;
+  position:absolute;
+  left:0;
+  top:8px;
+  margin-left:-300px;
 }
 
 .console_index_subnav_button_sendpdf_state {
@@ -301,12 +307,12 @@
   margin-left:-150px;
   margin-top:0px;
   background-color: $cn_grey_-2;
-  padding: 10px;
-  height:30px;
+  padding: 9px;
+  height:32px;
   width:300px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+//  border-radius: 3px;
+//  -moz-border-radius: 3px;
+//  -webkit-border-radius: 3px;
   color:white;
   padding-left:13px; // to make up for random smaller margin
 }
