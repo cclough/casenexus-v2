@@ -53,6 +53,15 @@
       color:$cn_colour_1;
     }
   }
+  #console_index_splash_art {
+    position:absolute;
+    left:50%;
+    margin-left:-600px;
+
+    top:50%;
+    margin-top:-150px;
+    max-width:400px;
+  }
   #console_index_splash_friend {
     position:absolute;
     left:50%;
