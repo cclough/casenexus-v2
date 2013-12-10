@@ -125,10 +125,10 @@ $(document).ready ->
   # Fade on load
   $("#console_index_splash_panel").fadeIn "slow"
 
-  # Splash -> interviewee
+  # Splash -> interviewee - DISABLED CURRENTLY
   $("#console_index_splash_panel_button_interviewee").click ->
-    $("#console_index_splash").hide()
-    $("#console_index_interviewee_container").show()
+    # $("#console_index_splash").hide()
+    # $("#console_index_interviewee_container").show()
 
   # Splash -> interviewer
   $("#console_index_splash_panel_button_interviewer").click ->
