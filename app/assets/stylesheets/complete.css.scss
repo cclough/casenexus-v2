@@ -9,7 +9,7 @@
   padding:50px 25px 25px;
 
   width:640px;
-  height:380px;
+  height:420px;
 
   margin:0 auto; //adding 50 top margin here doesn't work for some reason, use padding
   z-index:10;
@@ -29,7 +29,7 @@
   #account_complete_panel_nav_progress_container {
     @include prevent_text_highlight;
     position:absolute;
-    bottom:-60px;
+    bottom:-20px;
     left:0;
     right:0;
     #account_complete_panel_nav_progress_backbone_line {
@@ -374,7 +374,7 @@
 
 #account_complete_page_image_scenario_legend {
   position:absolute;
-  bottom:-40px;
+  bottom:0px;
   right:150px;
   #account_complete_page_image_scenario_text {
     display:inline-block;
