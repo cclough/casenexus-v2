@@ -351,12 +351,35 @@
 }
 
 
-
-#account_complete_page_features_art {
+#account_complete_page_intro_art {
   position:absolute;
-  left:40px;
-  top:180px;
-  max-width:300px;
+  left:50%;
+  margin-left:-90px;
+  top:110px;
+
+  max-width:180px;
+
+}
+#account_complete_page_features_art_container {
+
+  position:absolute;
+  left:90px;
+  top:175px;
+
+  height:220px;
+  width:220px;
+
+  -moz-border-radius:    50%;
+  -webkit-border-radius: 50%;
+  border-radius:         50%;
+  border:1px solid $cn_grey_0;
+
+  #account_complete_page_features_art {
+    max-width:160px;
+    margin-top:35px;
+    margin-left:32px;
+  }
+
 }
 
 #account_complete_page_image_scenario {

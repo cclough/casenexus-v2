@@ -20,6 +20,11 @@
     
     .account_complete_page_text.page_welcome
 
+      = image_tag "art/laptop.png", id: "account_complete_page_intro_art"
+
+      %br
+      %br
+      %br
       %br
       %br
       %br
@@ -69,7 +74,8 @@
 
     .account_complete_page_title Casenexus.com helps you to...
 
-    = image_tag "art/laptop.png", id: "account_complete_page_features_art"
+    #account_complete_page_features_art_container
+      = image_tag "art/logo.png", id: "account_complete_page_features_art"
 
     .account_complete_page_text.page_features
 
