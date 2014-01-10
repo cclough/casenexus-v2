@@ -36,7 +36,7 @@
 
 
             %li#header_nav_links_right_user.dropdown.open{ class: ("active" if params[:controller]=="profile")}
-              = link_to "#", "data-original-title"=>"Show your profile", rel: "tooltip", "data-placement"=>"bottom", class: "application_tooltip dropdown-toggle","data-toggle" => "dropdown", href: "#", role: "button" do
+              = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown", href: "#" do
                 / = avatar_for(current_user, size:"small", link:0)
                 %img{src:"/assets/icons/header/user.png"}
                 %b.caret
@@ -49,10 +49,9 @@
                   %a#header_nav_links_right_user_dropdown_item_settings{href: "#", tabindex: "-1"}
                     %i.icon-settings
                     Settings
-
                 - if current_user.admin?
                   %li
-                    = link_to rails_admin_url, class: "application_tooltip" do
+                    = link_to rails_admin_url, tabindex: "-1" do
                       Administration
                 %li.divider
                 %li
