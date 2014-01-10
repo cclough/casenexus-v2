@@ -36,7 +36,7 @@
         - if books_item.btype == "guide"
           = link_to raw("<i class=icon-arrow-right-1></i>"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-round btn-round-small application_tooltip","data-container"=>"body", "data-original-title"=>"Show it...", rel: "tooltip", "data-placement"=>"bottom"
         - else
-          = link_to raw("START"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-round btn-round-small btn-start application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
+          = link_to raw("VIEW"), "/console?view=single-left&book_id=" + books_item.id.to_s, class: "btn btn-round btn-round-small btn-start application_tooltip","data-container"=>"body", "data-original-title"=>"Start case as interviewer now...", rel: "tooltip", "data-placement"=>"bottom"
 
 
 

@@ -48,9 +48,9 @@
     }
     #console_index_splash_panel_button_interviewee_comingsoon {
       position:absolute;
-      font-size:11px;
+      font-size:9px;
       bottom:-14px;
-      left:35px;
+      left:22px;
     }
     #console_index_splash_text {
       position:absolute;
@@ -310,12 +310,12 @@
 #console_index_subnav_console {
   position:absolute;
   left:0;
-  margin-left:-150px;
+  margin-left:-220px;
   margin-top:0px;
   background-color: $cn_grey_-2;
   padding: 9px;
   height:32px;
-  width:300px;
+  width:440px;
 //  border-radius: 3px;
 //  -moz-border-radius: 3px;
 //  -webkit-border-radius: 3px;
@@ -325,18 +325,33 @@
 
 
 #console_index_subnav_button_viewswitch {
-
-  font-size:20px;
+  height:15px;
+  width:100px;
   height:15px;
   padding-top:5px;
   padding-bottom:10px;
-  width:20px;
+  vertical-align:middle;
+  i {
+    font-size:20px;
+    vertical-align:middle;
+    display:inline-block;
+    margin-top:-4px;
+    margin-left:3px;
+  }
 }
 
 #console_index_subnav_button_return {
   height:15px;
+  width:100px;
   padding-top:5px;
   padding-bottom:10px;
+  i {
+    font-size:20px;
+    vertical-align:middle;
+    display:inline-block;
+    margin-top:-4px;
+    margin-left:3px;
+  }
 }
 
 /////////////////////////////////////////////

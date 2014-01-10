@@ -31,14 +31,14 @@ console_index_subnav_viewswitch_toggle = ->
 
     $("#console_index_feedback_frame").show "slide", direction: "right", 100
 
-    $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-38></i>"
+    $("#console_index_subnav_button_viewswitch").html "Full screen <i class=icon-fontawesome-webfont-38></i>"
   
   else
     $("#console_index_pdfjs").addClass "single-left"
     $("#console_index_pdfjs_blank").addClass "single-left"
 
     $("#console_index_feedback_frame").hide "slide", direction: "right", 100
-    $("#console_index_subnav_button_viewswitch").html "<i class=icon-fontawesome-webfont-41></i>"
+    $("#console_index_subnav_button_viewswitch").html "Split screen <i class=icon-fontawesome-webfont-41></i>"
 
 window.console_index_subnav_sendpdf_check = ->
 

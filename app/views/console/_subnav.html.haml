@@ -36,10 +36,13 @@
 
 
     #console_index_subnav_button_return.btn
-      Menu
+      Case menu
+      %i.icon-list-bullet
 
     #console_index_subnav_button_viewswitch.btn.btn-small.application_tooltip{"data-original-title"=>"Toggle fullscreen...", rel: "tooltip", "data-placement"=>"bottom"}
       - if @view == "single-left"
+        Split screen
         %i.icon-fontawesome-webfont-41
       - else
+        Full screen
         %i.icon-fontawesome-webfont-38
