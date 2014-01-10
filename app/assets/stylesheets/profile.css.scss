@@ -44,6 +44,7 @@
     padding:0;
     display:block;
     border-top:1px solid $cn_grey_0;
+    border-bottom:1px solid $cn_grey_0;
     height:70px;
     @include prevent_text_highlight;
     .profile_index_info_cases_counts_container {
@@ -93,26 +94,9 @@
   }
 
 
-  #profile_index_info_actions {
-    @include prevent_text_highlight;
-    height:50px;
-    line-height:47px;
-    text-align:center;
-    border-top:1px solid $cn_grey_0;
-    border-bottom:1px solid $cn_grey_0;
-    div, a {
-      display:inline-block;
-      cursor:pointer;
-      position:relative;
-      margin: 0 5px;
-    }
-  }
-
-
-
 
   #profile_index_friends {
-    height:350px;
+    height:380px;
     width:231px;
     margin-top:20px;
     

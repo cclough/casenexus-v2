@@ -132,45 +132,6 @@ $(document).ready ->
   $("#profile_index_feedback_chart").fadeIn "500"
 
 
-  # User action buttons - settings etc.
-  $("#profile_index_info_actions_settings").click ->
-
-    $("#modal_profile").off "shown"
-    
-    if !($("#modal_profile").hasClass("in"))
-
-      $(".modal").modal("hide")
-      $("#modal_profile").html("")
-      $("#modal_profile").modal "show"
-
-      # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-      $("#modal_profile").on "shown", ->
-        $.get "/account/edit", (data) ->
-          $("#modal_profile").html data
-          window.account_completeedit_bless()
-
-  $("#profile_index_info_actions_invite").click ->
-
-    $("#modal_profile").off "shown"
-
-    if !($("#modal_profile").hasClass("in"))
-
-      $(".modal").modal("hide")
-      $("#modal_profile").html("")
-      $("#modal_profile").modal "show"
-
-      $.get "/invitations", (data) ->
-        $("#modal_profile").html data
-
-  # $("#profile_index_info_actions_visitors").click ->
-  #   if !($("#modal_profile").hasClass("in"))
-  #     $(".modal").modal("hide")
-  #     $.get "/account/visitors", (data) ->
-  #       $("#modal_profile").html data
-  #       # Bless after modal 'shown' callback fires - prevents bless missing which was a big problem!
-  #       # $("#modal_profile").on "shown", ->
-  #       #   #window.account_completeedit_bless()
-  #       $("#modal_profile").modal "show"
 
 
 

@@ -40,17 +40,25 @@ header {
   -moz-border-radius:    0px !important;
   -webkit-border-radius: 0px !important;
   border-radius:         0px !important;
-  
-  li {
+
+  ul .dropdown-menu li {
+    text-align:left;
+    a {
+      padding-left:20px !important;
+      i {
+        margin-right:5px;
+      }
+    }
+  }
+}
+
+
+.container > ul > li {
     height:39px;
     -moz-border-radius:    3px !important;
     -webkit-border-radius: 3px !important;
     border-radius:         3px !important;
     margin-left:3px;
-    a {
-      padding:13px;
-      color:white !important;
-    }
     i.header_nav_links_left_map {
       padding:12px 8px 7px 0px;
       margin-top:5px;
@@ -77,8 +85,14 @@ header {
     &.active {
       background:$cn_colour_05;
     }
-  }
 }
+.container > ul > li > a {
+  padding:13px;
+  color:white !important;
+}
+
+
+
 
 
 
@@ -90,6 +104,9 @@ header {
 
   li {
     a {
+      &.dropdown-toggle {
+        background:0 !important;
+      }
       img {
         margin-right:0 !important; // counter the rule for the whole bar
       }
