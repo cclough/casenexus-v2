@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable,
+         :confirmable #,:rememberable
 
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :lat, :lng,
+  attr_accessible :username, :email, :password, :password_confirmation, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
                   :invitation_code, :ip_address, :language_ids, :cases_external, :last_online_at, 
                   :time_zone, :degree_level, :linkedin, :completed, :active, :confirmation_token, :confirmed_at,
-                  :complete_page
+                  :complete_page #,:remember_me
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code, :complete_page
 
