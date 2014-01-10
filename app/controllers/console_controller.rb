@@ -16,6 +16,7 @@ class ConsoleController < ApplicationController
 	# PDF JS
 	def pdfjs
 		@book = Book.find_by_id(params[:id])
+    @book.increment!(:read_count)
 		render layout: "pdfjs"
 	end
 

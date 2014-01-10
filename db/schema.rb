@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125233745) do
+ActiveRecord::Schema.define(:version => 20140110203253) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20131125233745) do
     t.boolean  "approved",       :default => true
     t.integer  "chart_num"
     t.integer  "difficulty"
+    t.integer  "read_count",     :default => 0
   end
 
   create_table "cases", :force => true do |t|
