@@ -169,9 +169,9 @@ class Notification < ActiveRecord::Base
     return if self.user.email_users == false
     case self.ntype
       when "welcome"
-        UserMailer.delay.welcome(self.user,
+        UserMailer.welcome(self.user,
                                  self.url,
-                                 self.title)
+                                 self.title).deliver
       when "feedback"
         UserMailer.delay.feedback(self.sender,
                                   self.user,
@@ -179,11 +179,11 @@ class Notification < ActiveRecord::Base
                                   self.content,
                                   self.title)
       when "message"
-        UserMailer.delay.usermessage(self.sender,
+        UserMailer.usermessage(self.sender,
                                      self.user,
                                      self.url,
                                      self.content,
-                                     self.title) unless self.user.online_now?
+                                     self.title).deliver unless self.user.online_now?
       when "friendship_req"
         UserMailer.delay.friendship_req(self.sender,
                                         self.user,

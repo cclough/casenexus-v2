@@ -8,21 +8,24 @@
       @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {body { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} }
       @media only screen and (-webkit-min-device-pixel-ratio : 1.5),only screen and (min-device-pixel-ratio : 1.5) {body { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; } }
       a { color: #72aac9; text-decoration: none; font-weight:bold; }
-  %body{style: "width:100% !important; max-width: 800px; background: #ffffff;  margin: 0 auto; padding: 0; color: #697076; text-align: center; font-size:14px;"}
+  %body{style: "width:100% !important; max-width: 800px; background: #ffffff;  margin: 0 auto; padding: 0; color: #697076; text-align: center; font-size:12px;"}
   
-    / %table{align: "center", border: "0", cellpadding: "0", cellspacing: "0", style: "width:100%; max-width:600px;padding:0;position: relative;"}
-    /   %tbody
-    /     %tr
-    /       %td{style: "background-color: #242d32;padding: 25px 0 25px 5.2%;", width: "100%"}
-    /         %span{style: "position: relative; display: block; height: 29px;"}
-    /           %a.logo-link{href: "#", style: "position: relative; display: block; height: auto; color: #4C6A8B; font-weight: bold; text-decoration: none; text-align: left;"}
-    /             %b
-    /             %img#estately{height: "29", src: "https://www.casenexus.com/assets/app/logo.png", style: "font-size: 20px; text-align: left; border: none; font-size: 14px; height: 29px; outline: none; text-decoration: none;font-weight: bold;", width: "160"}/
+    %table{align: "center", border: "0", cellpadding: "0", cellspacing: "0", style: "width:100%; max-width:600px;padding:0;position: relative;"}
+      %tbody
+        %tr
+          %td{style: "padding: 25px 0 25px 5.2%;", width: "100%"}
+            %span{style: "position: relative; display: block; height: 29px;"}
+              %a.logo-link{href: "#", style: "position: relative; display: block; height: auto; color: #4C6A8B; font-weight: bold; text-decoration: none; text-align: left;"}
 
-    %table{align: "center", border: "0", cellpadding: "0", cellspacing: "0", style: "width:100%; max-width:600px; background: #ffffff;padding-bottom: 20px;padding-top: 20px;"}
+                %div{style:"background-color: #242d32;padding:8px 5px 5px;border-radius:5px;width:180px;text-align:center;"}
+
+                  %img#estately{height: "29", src: "https://www.casenexus.com/assets/app/logo.png", style: "font-size: 20px; text-align: left; border: none; font-size: 14px; height: 29px; outline: none; text-decoration: none;font-weight: bold;", width: "160"}/
+
+    %table{align: "center", border: "0", cellpadding: "0", cellspacing: "0", style: "width:100%; max-width:600px; background: #ffffff;padding-bottom: 20px;"}
       %tbody
         %tr
           %td{style: "padding-left: 5.2%;padding-right:5.2%;"}
+
             = yield
 
 

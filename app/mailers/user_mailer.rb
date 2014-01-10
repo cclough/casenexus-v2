@@ -1,15 +1,19 @@
 class UserMailer < ActionMailer::Base
 
-  default from: "mailer@casenexus.com"
+  default from: "Casenexus <mailer@casenexus.com>"
 
-  layout 'email'
+  layout 'email', :except => "welcome"
 
   def welcome(user_target, url, title)
     @user_target = user_target
     @url = url
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    
+    mail(to: email_with_name, subject: "Casenexus.com: " + title) do |format|
+      format.html { render layout: "email_formal" }
+      format.text
+    end
   end
 
   def newuser_to_admin(user)
