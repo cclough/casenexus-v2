@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
 
   default from: "Casenexus <mailer@casenexus.com>"
 
-  layout 'email', :except => "welcome"
+  layout 'email'
 
   def welcome(user_target, url, title)
     @user_target = user_target
@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
     
-    mail(to: email_with_name, subject: "Casenexus.com: " + title) do |format|
+    mail(to: email_with_name, subject: title) do |format|
       format.html { render layout: "email_formal" }
       format.text
     end
@@ -36,7 +36,7 @@ class UserMailer < ActionMailer::Base
     @message = message
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    mail(to: email_with_name, subject: title)
   end
 
   def feedback(user_from, user_target, url, subject, title)
@@ -46,7 +46,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    mail(to: email_with_name, subject: title)
   end
 
   def friendship_req(user_from, user_target, url, message, title)
@@ -59,7 +59,7 @@ class UserMailer < ActionMailer::Base
     @case_count = user_from.case_count_recd_total
     
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    mail(to: email_with_name, subject: title)
   end
 
   def friendship_app(user_from, user_target, url, title)
@@ -68,7 +68,7 @@ class UserMailer < ActionMailer::Base
     @url = url
 
     email_with_name = "#{@user_target.username} <#{@user_target.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    mail(to: email_with_name, subject: title)
   end
 
 
@@ -91,7 +91,7 @@ class UserMailer < ActionMailer::Base
     end
 
     email_with_name = "#{@user_partner.username} <#{@user_partner.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    mail(to: email_with_name, subject: title)
   end
 
   def event_setchangecancelremind_sender(user_current, user_partner, event_id, title, url, ntype)
@@ -112,7 +112,7 @@ class UserMailer < ActionMailer::Base
     end
 
     email_with_name = "#{@user_current.username} <#{@user_current.email}>"
-    mail(to: email_with_name, subject: "Casenexus.com: " + title)
+    mail(to: email_with_name, subject: title)
   end
 
   def invitation(invitation)
