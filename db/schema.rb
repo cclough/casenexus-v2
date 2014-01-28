@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110203253) do
+ActiveRecord::Schema.define(:version => 20140128210037) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id", :null => false
@@ -240,7 +240,7 @@ ActiveRecord::Schema.define(:version => 20140110203253) do
     t.integer  "cases_external"
     t.boolean  "active",                 :default => true
     t.integer  "country_id"
-    t.string   "time_zone",              :default => "UTC"
+    t.string   "time_zone"
     t.integer  "degree_level"
     t.string   "linkedin"
     t.string   "username"
