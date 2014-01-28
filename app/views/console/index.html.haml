@@ -25,17 +25,16 @@
 
   #console_index_splash_friend
 
-    %span#console_index_splash_friend_text
-      With:
-
+    %span#console_index_splash_friend_icon
+      = image_tag "icons/forms/user.png"
     %select#console_index_subnav_select_friends{name: "target_id", "data-placeholder" => "Select Friend" }
       %option{value: ""} Select a partner...
       = options_from_collection_for_select @friends, :id, :username, (@friend.id unless @friend.blank?)
 
   #console_index_splash_book
 
-    %span#console_index_splash_book_text
-      Case:
+    %span#console_index_splash_book_icon
+      = image_tag "icons/forms/case.png"
 
     %select#console_index_subnav_select_books{name: "book_id", "data-placeholder" => "Choose a Case" }
       %option{value: ""} Select a case...
@@ -58,10 +57,9 @@
     #console_index_pdfjs_blank_header
 
     #console_index_pdfjs_blank_message
+      = image_tag "icons/forms/case.png"
       #console_index_panel_blank_message_text
-        Select a case
-
-
+        Select a case, using the Console menu
 
 
 

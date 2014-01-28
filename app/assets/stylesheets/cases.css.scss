@@ -229,6 +229,7 @@
 #cases_new_user {
   text-align:center;
   display:inline-block;
+  position:relative;
   width:150px;
   padding:0px;
   float:right;
@@ -240,32 +241,41 @@
     margin-top:7px;
   }
   #cases_new_user_username {
-    margin-top:5px;
+    margin-top:7px;
     font-size:15px;
     font-weight:400;
   }
   #cases_new_user_buttons_container {
     width:30px;
-    display:inline-block;
-    vertical-align:middle;
-    margin-right:10px;
-    padding-top:7px;
+    position:absolute;
+    top:0px;
+    left:-10px;
     #console_index_subnav_button_message {
-      margin-top:6px;
+      margin-top:2px;
     }
   }
 }
 
 
-//force 100%
-.cases_new_expander {
-  width:100%;
+
+#cases_new_column_container {
+  text-align:center;
+}
+
+.cases_new_column {
+  width:192px;
+  display:inline-block;
+  margin:0;
+}
+
+.cases_new_column_spacer {
+  width:15px;
+  display:inline-block;
 }
 
 .cases_new_block {
   padding:0;
 }
-
 
 
 .cases_new_block_title {
@@ -278,32 +288,42 @@
 .cases_new_block_desc {
   margin:0px;
   margin-bottom:2px;
-
   min-height:50px;
-
-  padding:10px;
-
+  padding:5px;
   border-bottom: 1px solid $cn_grey_0;
   &.not_bordered {
     border-bottom:0;
   }
 }
 
-.cases_new_block_desc_title {
-  font-size:17px;
-  color:$cn_grey_-2;
-}
 
 .cases_new_block_desc_panel_text {
-  width:60%;
+  width:100%;
+  .cases_new_block_desc_title {
+    text-align:left !important;
+    margin-top:7px;
+    font-size:14px;
+    color:$cn_grey_-2;
+    float:left;
+  }
+
+  .cases_new_criteria_popover {
+    float:right;
+    height:14px;
+    padding-top:4px;
+  }
+
 }
 
 .cases_new_scoreselector_container {
   margin-top:5px;
+  .cases_new_scoreselector_button:last-child {
+    margin-right: 0 !important;
+  }
 }
 
 .cases_new_scoreselector_button {
-  width:15px;
+  width:8px;
   position:relative;
   margin-right: 3px;
 }

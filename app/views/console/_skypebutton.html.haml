@@ -1,11 +1,15 @@
-- unless defined?(size)
+- if !defined?(user) then user = @friend end
 
-  = link_to "skype:#{user.skype}?call", id: "console_index_subnav_button_skype", "data-original-title"=>"Call #{user.username} on Skype...", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-round btn-skype btn-round-small application_tooltip" do
-    %i.icon-skype
+- unless user.skype.blank?
 
-- else
+  - unless defined?(size)
 
-  = link_to "skype:#{user.skype}?call", id: "console_index_interviewee_panel_button_skype", "data-original-title"=>"Call #{user.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn application_tooltip" do
-    %i.icon-skype
-    #console_index_interviewee_panel_button_skype_text
-      #{user.username}
+    = link_to "skype:#{user.skype}?call", id: "console_index_subnav_button_skype", "data-original-title"=>"Call #{user.username} on Skype...", rel: "tooltip", "data-placement"=>"bottom", class: "btn btn-round btn-skype btn-round-small application_tooltip" do
+      %i.icon-skype
+
+  - else
+
+    = link_to "skype:#{user.skype}?call", id: "console_index_interviewee_panel_button_skype", "data-original-title"=>"Call #{user.username} on Skype", rel: "tooltip", "data-placement"=>"bottom", class: "btn application_tooltip" do
+      %i.icon-skype
+      #console_index_interviewee_panel_button_skype_text
+        #{user.username}

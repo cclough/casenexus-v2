@@ -28,6 +28,8 @@ window.cases_new_prime = () ->
   #   autoLink: false
   #   composerClassName: "cases_new_maincomment_content"  
 
+  $(".cases_new_criteria_popover").popover()
+
   # Score selectors!
   $(".cases_new_scoreselector_button").click ->
     score = $(this).data("score")
@@ -45,6 +47,12 @@ window.cases_new_prime = () ->
   window.application_spinner_prime "#console_index_feedback_frame", "Confirm send feedback to " + target_username + "?"
 
 
+  
+
+  # Message button
+  $("#console_index_subnav_button_message").click ->
+    friend_id = $(this).data "friend_id"
+    window.modal_message_show(friend_id)
 
 #////////////////////////////////////////////////////
 #////////////////////  SHOW   ///////////////////////

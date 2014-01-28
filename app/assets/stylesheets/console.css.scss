@@ -82,10 +82,14 @@
     margin-left:-175px;
     margin-top:-30px;
     text-align:center;
-    #console_index_splash_friend_text {
+    #console_index_splash_friend_icon {
+      img {
+        margin-top:-7px;
+      }
       display:inline-block;
       margin-right:5px;
       margin-top:-10px;
+      width:50px;
     }
     #console_index_subnav_select_friends {
       text-align:left;
@@ -101,15 +105,18 @@
     margin-left:-175px;
     margin-top:20px;
     text-align:center;
-    #console_index_splash_book_text {
+    #console_index_splash_book_icon {
+      img {
+        margin-top:-7px;
+      }
       display:inline-block;
       margin-right:5px;
       margin-top:-10px;
+      width:50px;
     }
     #console_index_subnav_select_books {
       font-size:12px;
     }
-
   }
 }
 
@@ -271,13 +278,12 @@
   position:absolute;
   left:0;
   right:0;
-  top:220px;
+  top:247px;
 
   #console_index_feedback_blank_text {
     margin-top:10px;
   }
 }
-
 
 
 
