@@ -201,11 +201,11 @@
 
 #account_complete_cases_ext_label {
   width:150px;
-  height:48px;
+  height:40px;
   float:left;
   margin:0;
   background:$cn_grey_0;
-  padding:5px 10px 9px;
+  padding:13px 10px 9px;
   border:1px solid $cn_grey_-1;
   -moz-border-top-left-radius:    3px;
   -webkit-border-top-left-radius: 3px;
@@ -250,7 +250,7 @@
   background: $cn_grey_0;
   height:40px;
   text-align:center;
-  line-height:20px;
+  line-height:37px;
   padding:5px;
 }
 
@@ -274,6 +274,7 @@
   text-align:left;
   color:$cn_grey_-2;
   font-size:15px;
+  line-height:20px;
   min-height:15px; /// IMORTANT
   &.page_last {
     text-align:center;
@@ -294,14 +295,14 @@
     }
   }
   &.page_suggested {
-    width:450px;
+    width:420px;
     position:relative;
     margin-bottom:15px;
     #account_complete_form_suggested_button_sendtoall {
       width:140px;
       position:absolute;
-      top:-5px;
-      right:-130px;
+      top:0px;
+      right:-170px;
       &.sent {
         background:$cn_grey_-2;
         opacity: 0.5;
@@ -414,7 +415,7 @@
 #account_complete_form_timezone {
   text-align:left;
   .chzn-single {
-
+    margin-top:-8px;
   }
 }
 

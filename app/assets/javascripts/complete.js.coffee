@@ -23,10 +23,10 @@ $(document).ready ->
         nav_item = $("nav ul li a[href=#" + page + "]")
         $("nav ul li").removeClass "current"
         nav_item.parent().addClass "current"
+
         $(".arrownav_page").hide()
         $(".arrownav_page").removeClass "current"
         next_page.addClass "current"
-        
         next_page.fadeIn 100, ->
           if page == "5"
             window.account_completeedit_bless()
@@ -38,7 +38,13 @@ $(document).ready ->
           $("#account_complete_panel_nav_arrow_right").click ->
             $(window.location.replace("/"))
         else
-          $("#account_complete_panel_nav_arrow_right").show()
+          # alert page
+          if page == "7" # For timezone validate
+            if $("#user_time_zone").val() == ""
+              $("#account_complete_panel_nav_arrow_right").hide()
+          else # show on all other pages
+            $("#account_complete_panel_nav_arrow_right").show()
+
           if page == "1"
             $("#account_complete_panel_nav_arrow_left").hide()
           else
@@ -118,4 +124,16 @@ $(document).ready ->
       else
         account_complete_scenarios_slideshow_switchto_f2f()
     ), 5000
+
+    # Timezone validation
+    $("#user_time_zone").change ->
+      if $(this).val() != ""
+        $("#account_complete_panel_nav_arrow_right").show()
+      else
+        $("#account_complete_panel_nav_arrow_right").hide()
+
+    # Skype popover
+    $("#account_completeedit_skype").clickover 
+      trigger: "hover"
+      html: true
 

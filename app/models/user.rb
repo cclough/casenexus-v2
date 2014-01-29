@@ -72,6 +72,9 @@ class User < ActiveRecord::Base
   validate :validate_university_email, on: :create
 
   # ON UPDATE
+
+  # validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone"
+  
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
   validate :validate_not_too_close_to_another?, on: :update
@@ -82,7 +85,6 @@ class User < ActiveRecord::Base
   validates :skype, length: { maximum: 32 },
             allow_blank: true,
             on: :update
-  validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone", on: :update
   validate :validate_has_languages?, on: :update
   validate :validate_cases_external?, on: :update
 
@@ -157,7 +159,7 @@ class User < ActiveRecord::Base
   end
 
   def distance_between(user)
-    if distance_to(user).to_s.split(".")[0].size > 2
+    if distance_to(user).to_s.split(".")[0].size > 1
       distance_to(user).round(0)
     else
       distance_to(user).round(1)

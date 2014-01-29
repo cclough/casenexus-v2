@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
   # before_filter :authenticate_user!, :unless => :devise_controller?
 
   before_filter :update_last_online_at
-  before_filter :set_timezone 
+  before_filter :set_timezone
   before_filter :miniprofiler
   
   def set_timezone  
-    Time.zone = current_user.time_zone if current_user
+    Time.zone = current_user.time_zone if current_user && current_user.completed
   end
   
   def completed_user
