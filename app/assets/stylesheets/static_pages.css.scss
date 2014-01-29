@@ -131,13 +131,14 @@
 #static_home_switch_link_signup {
   margin:50px auto 0;
   display:block;
-  width:200px;
+  width:80px;
+  font-size:15px;
 }
 
 #static_home_switch_link_signin {
   margin:50px auto 0;
   display:block;
-  width:120px;
+  width:100px;
 }
 
 
@@ -300,16 +301,9 @@
 
 
 #static_terms_container {
-
   background:$cn_grey_0;
   padding:25px;
-  position:absolute;
-  left:10%;
-  right:10%;
-  top:50px;
-  bottom:100px;
-  z-index:10;
-  overflow-y:scroll;
+  margin:25px;
 }
 
 #static_forms_back_button {
