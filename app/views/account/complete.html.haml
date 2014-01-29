@@ -147,7 +147,7 @@
 
     .account_complete_page_title 4. Do cases
     
-    .account_complete_page_text Click the 'START' button. When you are the 'Intereviewer' you will see the case script, a timer, and a feedback form to complete for your Partner. Enter your Skype username so your Partner can call you:
+    .account_complete_page_text Click 'START'. When you are the 'interviewer' you will see the case script, a timer, and a feedback form for your Partner. Enter your Skype username to make it easy for your Partner to call you:
 
     .account_complete_page_control_centered
 
@@ -155,7 +155,7 @@
         = render 'complete_form_skype'
 
 
-    .account_complete_page_image
+    .account_complete_page_image.page_skype
       = image_tag "complete/console.png"
 
 
@@ -186,7 +186,7 @@
         = f.hidden_field :complete_page, value: "end"
 
         %button.btn.btn-large
-          Start now
+          Start now!
 
 
   #account_complete_pagenum
