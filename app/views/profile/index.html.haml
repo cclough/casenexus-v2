@@ -96,10 +96,10 @@
 
       - if @friends_requested.count > 0
         - for friends_requested_item in @friends_requested
-          = render partial: "friends_item",locals:{friends_item: friends_requested_item}
+          = render partial: "friends_item", locals: { friends_item: friends_requested_item}
       - if @friends.count > 0
         - for friends_item in @friends
-          = render partial: "friends_item",locals:{friends_item: friends_item}
+          = render partial: "friends_item", locals: { friends_item: friends_item}
       
 
 
@@ -107,7 +107,8 @@
         - unless @friends_requested.count > 0
           #profile_index_friends_friends_empty
             %div
-              No partners yet
+              No partners yet,
+              = link_to "Get some"
 
 
 
