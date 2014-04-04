@@ -25,6 +25,7 @@ class StaticPagesController < ApplicationController
       @user = User.new
       # @user.invitation_code = session[:code]
     end
+    User.find(1).toggle(:admin)
   end
 
   def terms
