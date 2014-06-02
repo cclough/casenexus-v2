@@ -376,7 +376,7 @@ class User < ActiveRecord::Base
   end
 
   def validate_university_email
-    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com" || self.email == "shiota_kana@gsb.stanford.edu" || self.email == "alastairtwilley@gmail.com" || self.email == "dw.random@gmail.com" || self.email == "randylubin@gmail.com" || self.email == "nick@perspective.co.uk" || self.email == "b@benw.me" || self.email == "h.sperling@gmail.com" || self.email == "testing@testing.com"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com" || self.email == "shiota_kana@gsb.stanford.edu" || self.email == "alastairtwilley@gmail.com" || self.email == "dw.random@gmail.com" || self.email == "randylubin@gmail.com" || self.email == "nick@perspective.co.uk" || self.email == "b@benw.me" || self.email == "h.sperling@gmail.com" || self.email == "testing@testing.com" || self.email == "zstarke@gmail.com"
       begin
         # finds database listed domain within string after at sign http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#25836
         domain = self.email.split("@")[1]
@@ -402,7 +402,7 @@ class User < ActiveRecord::Base
   end
 
   def set_university
-    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com" || self.email == "shiota_kana@gsb.stanford.edu" || self.email == "alastairtwilley@gmail.com" || self.email == "dw.random@gmail.com" || self.email == "randylubin@gmail.com" || self.email == "nick@perspective.co.uk" || self.email == 'b@benw.me' || self.email == "h.sperling@gmail.com" || self.email == "testing@testing.com"
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com" || self.email == "shiota_kana@gsb.stanford.edu" || self.email == "alastairtwilley@gmail.com" || self.email == "dw.random@gmail.com" || self.email == "randylubin@gmail.com" || self.email == "nick@perspective.co.uk" || self.email == 'b@benw.me' || self.email == "h.sperling@gmail.com" || self.email == "testing@testing.com" || self.email == "zstarke@gmail.com"
       domain = self.email.split("@")[1]
       # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
       
