@@ -43,7 +43,7 @@ group :development, :test do
   gem 'capybara'                                 # Browser Engine
   gem 'haml-rails'                               # Haml generator
   gem 'wirble'
-  gem 'awesome_print'                                   # Colors on console
+  gem 'awesome_print'                            # Colors on console
   gem 'pry'
   gem 'bullet'
 end
@@ -57,7 +57,7 @@ group :test do
   gem 'database_cleaner'                         # Clean database strategy
   gem 'factory_girl_rails'                       # Fixtures
   gem 'launchy'                                  # To open pages when developing capybara tests
-  #gem 'ruby-debug19', require: 'ruby-debug'      # Debug on testing
+  #gem 'ruby-debug19', require: 'ruby-debug'     # Debug on testing
   # gem 'debugger'
   gem 'email_spec'                               # Email for rspec
   gem 'rb-fsevent', require: false               # Mac OSX FSEvents API
