@@ -1,5 +1,3 @@
-
-
 #static_home_panel_left
 
   #static_home_title
@@ -21,20 +19,27 @@
     %span.pull-left
       &#169; casenexus.com
 
-#static_home_panel_right
-  %p Hello Stanford student,
 
-  %p Created by an Oxford graduate from the UK, Casenexus helps you organise live practice case interviews for strategy consulting firms such as McKinsey, Bain and BCG:
+#arrivals_panel_right
+
+  .spacer100
+
+  %p
+    Hello <b>Stanford student</b>,
+
+  %p Created by an Oxford graduate from the UK, Casenexus helps you organise live practice case interviews for strategy consulting firms such as <b>McKinsey, Bain and BCG</b>:
 
   %ul
     %li
-      Get matched with a partner from another top-tier university, with the same case experience
+      Get matched with a partner from another <b>top-tier university</b> with <b>equivalent case experience</b>
     %li
-      Be placed in a video call within 24 hours time, at a time that suits you both across time zones
+      Be placed in a video call <b>within 24 hours time</b> at a time that suits you across time zones
     %li
-      Review feedback from your partner, and track it over time
+      <b>Review feedback</b> from your partner, and track your performance over time
 
-  %p To be transparent, we ask $10 per month for this service.
+  %p To be transparent, we ask <b>$10 per month</b> for this service.
 
-  = link_to new_arrival_path, id: "static_home_switch_link_signup", class: "static_home_switch_link btn btn-small" do
-    Next
+  .spacer20
+  %center
+    = link_to new_arrival_path, class: "btn btn-large" do
+      Sign me up

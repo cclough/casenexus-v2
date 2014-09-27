@@ -13,9 +13,10 @@ class ArrivalsController < ApplicationController
     @arrival = Arrival.new(params[:arrival])
 
     if @arrival.save
-      flash[:success] = 'Thank you'
-      redirect_to new_arrival_path
+      flash[:success] = 'Thanks for your interest - we will be in touch soon'
+      redirect_to arrivals_path
     else
+      flash[:error]
       render 'new'
     end
   end

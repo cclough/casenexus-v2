@@ -21,9 +21,16 @@ class StaticPagesController < ApplicationController
       # flash[:notice] = "You must be signed out to accept an invitation" if @invitation
       redirect_to "/"
     else
-      @login = User.new
-      @user = User.new
-      # @user.invitation_code = session[:code]
+
+
+      # FOR AD TESTING
+      redirect_to "/arrivals"
+
+
+      # COMMENTED WHILE AD TESTING
+      #@login = User.new
+      #@user = User.new
+      ## @user.invitation_code = session[:code]
     end
   end
 
