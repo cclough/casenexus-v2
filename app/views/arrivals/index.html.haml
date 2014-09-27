@@ -1,0 +1,40 @@
+
+
+#static_home_panel_left
+
+  #static_home_title
+    Welcome to
+    #static_home_title_url
+      casenexus
+      %span#static_home_title_beta
+        BETA
+  #static_home_subtitle
+    Platform for live case interview practice
+
+  #static_home_logo
+    / = image_tag "home/logo.png"
+    = image_tag "art/complete_scenario_f2f.png"
+
+  #static_home_footer
+    %span.pull-right
+      = link_to "Contact", "#", id:"static_home_footer_contact"
+    %span.pull-left
+      &#169; casenexus.com
+
+#static_home_panel_right
+  %p Hello Stanford student,
+
+  %p Created by an Oxford graduate from the UK, Casenexus helps you organise live practice case interviews for strategy consulting firms such as McKinsey, Bain and BCG:
+
+  %ul
+    %li
+      Get matched with a partner from another top-tier university, with the same case experience
+    %li
+      Be placed in a video call within 24 hours time, at a time that suits you both across time zones
+    %li
+      Review feedback from your partner, and track it over time
+
+  %p To be transparent, we ask $10 per month for this service.
+
+  = link_to new_arrival_path, id: "static_home_switch_link_signup", class: "static_home_switch_link btn btn-small" do
+    Next

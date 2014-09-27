@@ -34,6 +34,9 @@ Casenexus::Application.routes.draw do
   match '/terms', to: 'static_pages#terms'
   match '/invited/:code', to: 'static_pages#home', as: :invitation_registration
 
+  # Arrivals - landing page
+  resources :arrivals, only: [:index, :new, :create]
+
   # Map
   match '/map', to: 'map#index', as: :map
 
@@ -47,6 +50,8 @@ Casenexus::Application.routes.draw do
     get :delete, on: :member
     # get :visitors, on: :collection
   end
+
+  match '/weemo/gettoken', to: 'weemo#gettoken'
 
   # Members
   resources :members, only: [:index, :show]
@@ -128,4 +133,5 @@ Casenexus::Application.routes.draw do
     # match '/votes/control_comments', to: 'votes#control_comments'
     # match '/votes/up', to: 'votes#up'
     # match '/votes/down', to: 'votes#down'
+
 end
