@@ -1,6 +1,6 @@
 %center
   .spacer50
-  %h4 Coming soon - Fall 2014
+  %h4 Add me to the waiting list...
   Enter your email address below to be the first to be notified once Casenexus is out of development
   .spacer20
   = simple_form_for(@arrival) do |f|
@@ -10,5 +10,5 @@
     = f.text_field :email, tabindex: "1", placeholder: "University email address", class: "span40 large"
 
     .spacer10
-    %button.btn.btn-large
+    %button.btn.btn-large{style:"background:#73bf72;color:white;"}
       Keep me informed...
