@@ -24,13 +24,11 @@ class StaticPagesController < ApplicationController
 
 
       # FOR AD TESTING
-      redirect_to "/arrivals"
+      # redirect_to "/arrivals"
 
-
-      # COMMENTED WHILE AD TESTING
-      #@login = User.new
-      #@user = User.new
-      ## @user.invitation_code = session[:code]
+      @login = User.new
+      @user = User.new
+      # @user.invitation_code = session[:code]
     end
   end
 
