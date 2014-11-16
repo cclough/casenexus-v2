@@ -133,7 +133,7 @@ class UserMailer < ActionMailer::Base
 
     @site_contact = site_contact
 
-    mail(to: receiver, subject: "Contact form: #{site_contact.subject}")
+    mail(to: receiver, from: sender, subject: "Contact form: #{site_contact.subject}")
   end
 
 
