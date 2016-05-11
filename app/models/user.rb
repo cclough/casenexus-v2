@@ -346,13 +346,13 @@ class User < ActiveRecord::Base
   # Devise email overides (to enable async)
   # Emails not sending? Have to re-initialize the API-KEY: http://stackoverflow.com/questions/13367838/401-unauthorized-errors-on-heroku-with-delayed-job
   def send_on_create_confirmation_instructions
-    Devise::Mailer.delay.confirmation_instructions(self)
+    # Devise::Mailer.delay.confirmation_instructions(self)
   end
   def send_reset_password_instructions
-    Devise::Mailer.delay.reset_password_instructions(self)
+    # Devise::Mailer.delay.reset_password_instructions(self)
   end
   def send_unlock_instructions
-    Devise::Mailer.delay.unlock_instructions(self)
+    # Devise::Mailer.delay.unlock_instructions(self)
   end
 
   private
@@ -398,7 +398,7 @@ class User < ActiveRecord::Base
 
 
   def send_newuser_email_to_admin
-    UserMailer.delay.newuser_to_admin(self)
+    # UserMailer.delay.newuser_to_admin(self)
   end
 
   def send_welcome

@@ -325,7 +325,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   puts "Creating Christian's Friendships"
   Friendship.connect(User.find(1), User.find(2))
-  Friendship.connect(User.find(1), User.find(3))
+  # Friendship.connect(User.find(1), User.find(3))
   # Friendship.connect(User.find(1), User.find(4))
   # Friendship.connect(User.find(1), User.find(5))
   # Friendship.connect(User.find(1), User.find(6))

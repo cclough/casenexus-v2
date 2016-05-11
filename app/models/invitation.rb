@@ -26,7 +26,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def send_invitation
-    UserMailer.delay.invitation(self)
+    #UserMailer.delay.invitation(self)
   end
 
   #private

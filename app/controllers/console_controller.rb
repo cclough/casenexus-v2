@@ -6,7 +6,7 @@ class ConsoleController < ApplicationController
 	def index
     @book = Book.find_by_id(params[:book_id]) unless params[:book_id].blank?
     @friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
-		
+
     @friends = current_user.accepted_friends.order("username asc")
     @books = Book.where(btype: "case")
 
@@ -23,10 +23,10 @@ class ConsoleController < ApplicationController
 	def sendpdf
 		@user_target = User.find(params[:target_id])
 		book = Book.find(params[:book_id])
-
-    UserMailer.case_pdf(current_user,
-                        @user_target,
-                        book).deliver # not delayed intentionally to give accurate loading time on callback
+    #
+    # UserMailer.case_pdf(current_user,
+    #                     @user_target,
+    #                     book).deliver # not delayed intentionally to give accurate loading time on callback
 	end
 
 	def sendpdfbutton
@@ -38,7 +38,7 @@ class ConsoleController < ApplicationController
 
 	def skypebutton
 		@friend = User.find(params[:friend_id]) unless params[:friend_id].blank?
-		
+
 		render partial: "skypebutton", layout: false
 	end
 end
