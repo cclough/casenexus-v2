@@ -4,7 +4,7 @@ Casenexus::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   ##### Devise
-  devise_for :users, skip: :registrations, path_names: { :sign_in => 'signin', :sign_out => 'signout' }, :path => '', 
+  devise_for :users, skip: :registrations, path_names: { :sign_in => 'signin', :sign_out => 'signout' }, :path => '',
       controllers: { sessions: 'sessions' }
 
   # custom so doesn't include e.g. edit routes
@@ -22,7 +22,7 @@ Casenexus::Application.routes.draw do
   end
 
   unauthenticated :user do
-    devise_scope :user do 
+    devise_scope :user do
       get "/" => 'static_pages#home'
     end
   end
@@ -51,7 +51,7 @@ Casenexus::Application.routes.draw do
     # get :visitors, on: :collection
   end
 
-  match '/weemo/gettoken', to: 'weemo#gettoken'
+  # match '/weemo/gettoken', to: 'weemo#gettoken'
 
   # Members
   resources :members, only: [:index, :show]
@@ -80,7 +80,7 @@ Casenexus::Application.routes.draw do
   resources :posts, only: [:create,:show] do
     get :show_username, on: :member
   end
-  
+
   # Notifications
   resources :notifications, only: [:index, :show, :create] do
     get :modal_message_form, on: :collection
