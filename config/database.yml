@@ -15,13 +15,14 @@ test: &TEST
   password:
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['PGDB_NAME'] %>
-  username: <%= ENV['PGDB_USERNAME'] %>
-  password: <%= ENV['PGDB_PASSWORD'] %>
-  host: <%= ENV['PGDB_HOST'] %>
-  port: <%= ENV['PGDB_PORT'] %>
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    database: <%= ENV['RDS_DB_NAME'] %>
+    username: <%= ENV['RDS_USERNAME'] %>
+    password: <%= ENV['RDS_PASSWORD'] %>
+    host: <%= ENV['RDS_HOSTNAME'] %>
+    port: <%= ENV['RDS_PORT'] %>
 
 cucumber:
   <<: *TEST
