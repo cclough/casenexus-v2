@@ -104,7 +104,7 @@ window.application_spinner_prime = (container, confirm_text) ->
 
 
 window.application_disablesubmit_prime = (container) ->
-  
+
   # unbind the click (cause of event duplication bug)
   $(container + " .application_submit_button_with_disable").off 'click'
 
@@ -126,7 +126,7 @@ window.application_disablesubmit_prime = (container) ->
 
 
 window.application_raty_prime = () ->
-  
+
   $(".books_rating_read").raty
     readOnly: true
     # hints: ["Very Poor", "Poor", "OK", "Good", "Excellent"]
@@ -161,13 +161,13 @@ window.application_choiceNav = () ->
 
       window.ChoiceNav.centerArrow nav_item, filter_name_complete
       window.ChoiceNav.growLine nav_item, filter_name_complete
-    
+
     centerArrow: (nav_item, filter_name_complete) ->
       if filter_name_complete == "#application_filtergroup_choicenav_period"
         arrow_offset = 5
       else
         arrow_offset = 22
-    
+
       left_margin = ((nav_item.position().left + nav_item.width()/2) + arrow_offset) - (nav_item.width() / 2)
       $(filter_name_complete + " nav .arrow").animate
         left: left_margin
@@ -179,7 +179,7 @@ window.application_choiceNav = () ->
       $(filter_name + " nav .application_filtergroup_choicenav_follower_line").animate
         width: left_margin
       , 100, ->
-        $(this).show()  
+        $(this).show()
 
   window.ChoiceNav.init()
 
@@ -233,7 +233,7 @@ $(document).ready ->
 
   #### HEADER
 
-  # Contact modal show 
+  # Contact modal show
   $("#header_link_contact").click ->
     window.modal_contact_show()
 
@@ -268,9 +268,3 @@ $(document).ready ->
   #       # $("#modal_profile").on "shown", ->
   #       #   #window.account_completeedit_bless()
   #       $("#modal_profile").modal "show"
-
-
-
-
-
-

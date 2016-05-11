@@ -19,3 +19,7 @@ pickle-email-*.html
 .idea
 config/database.yml
 .ruby-version
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

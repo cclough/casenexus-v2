@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :trackable, :validatable,
          :confirmable,:rememberable
 
-  attr_accessible :username, :email, :password, :password_confirmation, :lat, :lng,
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :lat, :lng,
                   :skype, :email_admin, :email_users, :confirm_tac, :university, :university_id,
-                  :invitation_code, :ip_address, :language_ids, :cases_external, :last_online_at, 
+                  :invitation_code, :ip_address, :language_ids, :cases_external, :last_online_at,
                   :time_zone, :degree_level, :linkedin, :completed, :active, :confirmation_token, :confirmed_at,
-                  :complete_page,:remember_me, :admin
+                  :complete_page,:remember_me, :admin, :username
 
   attr_accessor :ip_address, :confirm_tac, :invitation_code, :complete_page
 
@@ -32,21 +32,21 @@ class User < ActiveRecord::Base
   has_many :languages, :through => :languages_users
 
   has_many :friendships, dependent: :destroy
-  
+
   has_many :accepted_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::ACCEPTED}", dependent: :destroy
   has_many :accepted_friends, through: :accepted_friendships, source: :friend
-  
+
   has_many :requested_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REQUESTED}", dependent: :destroy
   has_many :requested_friends, through: :requested_friendships, source: :friend
-  
+
   has_many :pending_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::PENDING}", dependent: :destroy
   has_many :pending_friends, through: :pending_friendships, source: :friend
-  
+
   has_many :rejected_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::REJECTED}", dependent: :destroy
   has_many :rejected_friends, through: :rejected_friendships, source: :friend
   has_many :blocked_friendships, class_name: "Friendship", foreign_key: 'user_id', conditions: "friendships.status = #{Friendship::BLOCKED}", dependent: :destroy
   has_many :blocked_friends, through: :blocked_friendships, source: :friend
-  
+
   has_many :invitations, dependent: :destroy
   has_one :invitation, foreign_key: 'invited_id'
 
@@ -57,10 +57,9 @@ class User < ActiveRecord::Base
 
   ### Callbacks
   before_create :set_university
-  before_create :suggest_username
   before_save { |user| user.email = user.email.downcase }
-  
-  after_create :send_newuser_email_to_admin # has to be after user has a username set
+
+  after_create :send_newuser_email_to_admin # has to be after user has a first_name set
   after_save :send_welcome
   after_validation :geocode, :reverse_geocode
 
@@ -74,12 +73,13 @@ class User < ActiveRecord::Base
   # ON UPDATE
 
   # validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }, :message => "is not a valid Time Zone"
-  
+
   validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, on: :update
   validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, on: :update
   validate :validate_not_too_close_to_another?, on: :update
 
-  validates :username, presence: true, uniqueness: true, length: { maximum: 30 }, on: :update
+  # validates :first_name, presence: true, length: { maximum: 30 }, on: :update
+  # validates :last_name, presence: true, length: { maximum: 30 }, on: :update
   validates :linkedin, length: { maximum: 100 }
   validates :degree_level, presence: true, on: :update
   validates :skype, length: { maximum: 32 },
@@ -101,9 +101,6 @@ class User < ActiveRecord::Base
 
   # Thumbs Up Gem
   # acts_as_voter
-
-  # Scoped_search Gem
-  scoped_search on: [:username]
 
   # Geocoder
   geocoded_by :ip_address, :latitude => :lat, :longitude => :lng
@@ -132,14 +129,6 @@ class User < ActiveRecord::Base
   end
   def cases_per_week
     (cases.where(created_at: (4.week.ago)..(Time.now)).count / 4).round(1)
-  end
-
-  def username_trunc
-    (username).truncate(13)
-  end
-
-  def username_trunc_partnerslist
-    (username).truncate(17)
   end
 
   def case_count_recd
@@ -333,7 +322,7 @@ class User < ActiveRecord::Base
                     \"properties\": {
                       \"id\": \"#{user.id}\",
                       \"index\": \"#{users.index(user)}\",
-                      \"username\": \"#{user.username_trunc}\",
+                      \"username\": \"#{user.username}\",
                       \"university_image\": \"#{user.university.image}\",
                       \"university_name\": \"#{user.university.name.upcase}\",
                       \"cases_recd\": \"#{user.case_count_recd}\",
@@ -388,6 +377,26 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_university
+    unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com" || self.email == "alastairtwilley@gmail.com" || self.email == "dw.random@gmail.com" || self.email == "randylubin@gmail.com" || self.email == "nick@perspective.co.uk" || self.email == 'b@benw.me' || self.email == "h.sperling@gmail.com" || self.email == "testing@testing.com" || self.email == "zstarke@gmail.com"
+      domain = self.email.split("@")[1]
+      # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
+
+      if found = University.find{ |d| domain[d.domain] } || found = University.where( "domain2 <> ''" ).find{ |d| domain[d.domain2] } # Switch on enabled here eventually
+        self.university = found
+      else # not the important one
+        errors.add(:base, "Sorry, casenexus is not yet available for your university")
+      end
+    else
+      if self.email == "gerald.templer@gmail.com"
+        self.university = University.find(2) # Set to oxford for certain people
+      else
+        self.university = University.find(1) # Set to cambridge if on exception list
+      end
+    end
+  end
+
+
   def send_newuser_email_to_admin
     UserMailer.delay.newuser_to_admin(self)
   end
@@ -398,15 +407,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def suggest_username
-    self.username = self.email.split("@")[0]
-  end
-
   def set_university
     unless self.email == "christian.clough@gmail.com" || self.email == "cclough@candesic.com" || self.email == "robin.clough@rady.ucsd.edu" || self.email == "gerald.templer@gmail.com" || self.email == "info@casenexus.com" || self.email == "alastairtwilley@gmail.com" || self.email == "dw.random@gmail.com" || self.email == "randylubin@gmail.com" || self.email == "nick@perspective.co.uk" || self.email == 'b@benw.me' || self.email == "h.sperling@gmail.com" || self.email == "testing@testing.com" || self.email == "zstarke@gmail.com"
       domain = self.email.split("@")[1]
       # See SO Answer http://codereview.stackexchange.com/questions/25814/ruby-check-if-email-address-contains-one-of-many-domains-from-a-table-ignoring/25836?noredirect=1#comment40331_25836
-      
+
       if found = University.find{ |d| domain[d.domain] } || found = University.where( "domain2 <> ''" ).find{ |d| domain[d.domain2] } # Switch on enabled here eventually
         self.university = found
       else # not the important one
@@ -443,7 +448,7 @@ class User < ActiveRecord::Base
   #     end
   #   end
   # end
-  
+
   # def update_invitation
   #   return if self.invitation_code == "BYPASS_CASENEXUS_INV"
   #   Invitation.where(code: self.invitation_code).first.update_attribute(:invited_id, self.id)

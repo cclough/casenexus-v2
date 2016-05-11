@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # Map - access via /map
   def index
 
-    users_pre_scope = User.users_allowed_on_map.where(degree_level:params[:users_filter_degreelevel]).list_language(params[:users_filter_language]).list_by_experience(params[:users_filter_experience]).search_for(params[:search])
+    users_pre_scope = User.users_allowed_on_map.where(degree_level:params[:users_filter_degreelevel]).list_language(params[:users_filter_language]).list_by_experience(params[:users_filter_experience])#.search(params[:search])
 
     require 'will_paginate/array' # neccessary to allow params to work in members
 

@@ -114,7 +114,7 @@ Casenexus::Application.routes.draw do
   match '/site_contacts/create', to: 'site_contacts#create', as: :site_contact
 
   # Events
-  resources :events, except: [:index,:show] do
+  resources :events, except: [:index, :show] do
     get :ics, on: :collection
     get :user_timezone, on: :collection
   end

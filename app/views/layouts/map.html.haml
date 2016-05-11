@@ -12,20 +12,23 @@
     %meta{charset: "UTF-8"}/
     %meta{content: "notranslate", name: "google"}/
     %meta{content: "en", "http-equiv" => "Content-Language"}/
-    
+
     /[if lte IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svb/trunk/html5.js", media: 'screen', rel: 'stylesheet'
 
-    = render partial: 'shared/pusher'
+    -# = render partial: 'shared/pusher'
+
+    -# %script{:src => "https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js"}
+    -# %link{:href => "https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css", :rel => "stylesheet"}/
 
     = render 'shared/google_analytics'
-    
+
   %body
     = render 'layouts/header'
 
     = render 'layouts/flash', flash: flash
 
-        
+
     #application_container.map
       = yield
 
@@ -41,5 +44,3 @@
   = render 'shared/modal_post'
   = render 'shared/modal_message'
   = render 'shared/modal_friendship_req'
-
-  

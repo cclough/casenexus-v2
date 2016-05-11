@@ -1,5 +1,5 @@
 if %w(production development).include?(Rails.env) && User.count == 0
-  
+
   puts "Creating countries"
 
   file = "#{Rails.root}/db/countries.csv"
@@ -45,7 +45,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
 
   puts "Creating Tags"
-  
+
   Tag.create!(category_id: 1, name: "McKinsey & Company")
   Tag.create!(category_id: 1, name: "BCG")
   Tag.create!(category_id: 1, name: "Bain & Company")
@@ -162,7 +162,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
   # Guides
   Book.create!(btype: "guide", url: "guide_wharton_2009-2010.pdf", thumb: "wharton.png", university_id: "10", title: "Wharton Consulting Club Casebook 2009-2010", author: "Wharton Consulting Club", author_url: "http://www.wharton.upenn.edu/", desc: "The Wharton School's 2009-2010 guide to strategy consulting case interviews.")
   Book.create!(btype: "guide", url: "guide_fuqua_2010-2011.pdf", thumb: "fuqua.png", university_id: "8", title: "Fuqua Casebook 2010-2011", author: "The Fuqua School of Business, Duke", author_url: "http://www.fuqua.duke.edu/", desc: "The Fuqua Business School at Duke's 2010-2011 guide on how to approach a consulting interview.")
-  
+
   # Links
   Book.create!(btype: "web", title: "Introduction to Case Interviews", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "Widely regarded as one of the the best introductions to case interviews. 6 hours of video is offered for free, of a presentation by the site's ex-McKinsey founder Victor Cheng, at Harvard Business School.", url: "http://www.caseinterview.com/", thumb: "caseinterview.png")
   Book.create!(btype: "web", title: "Look Over My Shoulder Programme", source_title: "CaseInterview.com", author: "Victor Cheng", author_url: "http://www.caseinterview.com/", desc: "Series of audio tapes walking through live case interviews with voice-over commentary.", url: "http://www.caseinterview.com/look-over-my-shoulder", thumb: "caseinterview.png")
@@ -176,8 +176,8 @@ if %w(production development).include?(Rails.env) && User.count == 0
 
   admin = User.new(
       email: "christian.clough@gmail.com",
-      password: "venturecapital27?",
-      password_confirmation: "venturecapital27?",
+      password: "testing",
+      password_confirmation: "testing",
       lat: 51.51030,
       lng: -0.1344,
       invitation_code: 'BYPASS_CASENEXUS_INV',
@@ -191,7 +191,7 @@ if %w(production development).include?(Rails.env) && User.count == 0
       time_zone: "London",
 
       ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-  
+
   admin.completed = true
   admin.admin = true
   admin.save!
@@ -220,103 +220,103 @@ if %w(production development).include?(Rails.env) && User.count == 0
   admin.active = false # FOR ROBIN SPECIAL
   admin.save!
   admin.confirm!
-
-
-  puts "Creating Gerald's user"
-
-  user = User.new(
-      email: "gerald.templer@gmail.com",
-      password: "candesic123",
-      password_confirmation: "candesic123",
-      lat: 50.51030,
-      lng: -0.1344,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-      username: "gtempler",
-      confirm_tac: "1",
-      time_zone: "London",
-      ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
-
-  user.completed = false
-  user.active = false # FOR GERALD SPECIAL
-  user.save!
-  user.confirm!
-
-  puts "Creating Julia's user"
-
-  user = User.new(
-      email: "julia.richardson@careers.ox.ac.uk",
-      password: "oxford123",
-      password_confirmation: "oxford123",
-      lat: 51.763127,
-      lng: -1.260194,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-      username: "julia.richardson",
-      confirm_tac: "1",
-      time_zone: "London",
-      ip_address: "89.168.69.119")
-
-  user.completed = false
-  user.active = false # FOR JULIA SPECIAL
-  user.save!
-  user.confirm!
-
-
-  puts "Creating Mehdi's user"
-
-  user = User.new(
-      email: "mmg36@cam.ac.uk",
-      password: "cambridge123",
-      password_confirmation: "cambridge123",
-      lat: 52.2,
-      lng: 0.1167,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-      username: "mmhdgd",
-      skype: "mmhdgd",
-      confirm_tac: "1",
-      time_zone: "London",
-      ip_address: "131.111.236.122")
-
-  user.completed = true
-  user.save!
-  user.confirm!
-
-  puts "Creating Jack's user"
-
-  user = User.new(
-      email: "jack.cooney@hertford.ox.ac.uk",
-      password: "oxford123",
-      password_confirmation: "oxford123",
-      lat: 51.5507117121074,
-      lng: -0.26043176651001,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-      username: "jack.cooney",
-      skype: "jack.cooney.1",
-      confirm_tac: "1",
-      time_zone: "London",
-      ip_address: "89.168.69.119")
-
-  user.completed = false
-  user.save!
-  user.confirm!
-
-  puts "Creating Dara's user"
-
-  user = User.new(
-      email: "dara.latinwo@hertford.ox.ac.uk",
-      password: "oxford123",
-      password_confirmation: "oxford123",
-      lat: 51.7507117121074,
-      lng: -0.24043176651001,
-      invitation_code: 'BYPASS_CASENEXUS_INV',
-      username: "dara.latinwo",
-      skype: "daralatinwo74",
-      confirm_tac: "1",
-      time_zone: "London",
-      ip_address: "89.168.69.119")
-
-  user.completed = false
-  user.save!
-  user.confirm!
+  #
+  #
+  # puts "Creating Gerald's user"
+  #
+  # user = User.new(
+  #     email: "gerald.templer@gmail.com",
+  #     password: "candesic123",
+  #     password_confirmation: "candesic123",
+  #     lat: 50.51030,
+  #     lng: -0.1344,
+  #     invitation_code: 'BYPASS_CASENEXUS_INV',
+  #     username: "gtempler",
+  #     confirm_tac: "1",
+  #     time_zone: "London",
+  #     ip_address: "%d.%d.%d.%d" % [rand(256), rand(256), rand(256), rand(256)])
+  #
+  # user.completed = false
+  # user.active = false # FOR GERALD SPECIAL
+  # user.save!
+  # user.confirm!
+  #
+  # puts "Creating Julia's user"
+  #
+  # user = User.new(
+  #     email: "julia.richardson@careers.ox.ac.uk",
+  #     password: "oxford123",
+  #     password_confirmation: "oxford123",
+  #     lat: 51.763127,
+  #     lng: -1.260194,
+  #     invitation_code: 'BYPASS_CASENEXUS_INV',
+  #     username: "julia.richardson",
+  #     confirm_tac: "1",
+  #     time_zone: "London",
+  #     ip_address: "89.168.69.119")
+  #
+  # user.completed = false
+  # user.active = false # FOR JULIA SPECIAL
+  # user.save!
+  # user.confirm!
+  #
+  #
+  # puts "Creating Mehdi's user"
+  #
+  # user = User.new(
+  #     email: "mmg36@cam.ac.uk",
+  #     password: "cambridge123",
+  #     password_confirmation: "cambridge123",
+  #     lat: 52.2,
+  #     lng: 0.1167,
+  #     invitation_code: 'BYPASS_CASENEXUS_INV',
+  #     username: "mmhdgd",
+  #     skype: "mmhdgd",
+  #     confirm_tac: "1",
+  #     time_zone: "London",
+  #     ip_address: "131.111.236.122")
+  #
+  # user.completed = true
+  # user.save!
+  # user.confirm!
+  #
+  # puts "Creating Jack's user"
+  #
+  # user = User.new(
+  #     email: "jack.cooney@hertford.ox.ac.uk",
+  #     password: "oxford123",
+  #     password_confirmation: "oxford123",
+  #     lat: 51.5507117121074,
+  #     lng: -0.26043176651001,
+  #     invitation_code: 'BYPASS_CASENEXUS_INV',
+  #     username: "jack.cooney",
+  #     skype: "jack.cooney.1",
+  #     confirm_tac: "1",
+  #     time_zone: "London",
+  #     ip_address: "89.168.69.119")
+  #
+  # user.completed = false
+  # user.save!
+  # user.confirm!
+  #
+  # puts "Creating Dara's user"
+  #
+  # user = User.new(
+  #     email: "dara.latinwo@hertford.ox.ac.uk",
+  #     password: "oxford123",
+  #     password_confirmation: "oxford123",
+  #     lat: 51.7507117121074,
+  #     lng: -0.24043176651001,
+  #     invitation_code: 'BYPASS_CASENEXUS_INV',
+  #     username: "dara.latinwo",
+  #     skype: "daralatinwo74",
+  #     confirm_tac: "1",
+  #     time_zone: "London",
+  #     ip_address: "89.168.69.119")
+  #
+  # user.completed = false
+  # user.save!
+  # user.confirm!
 
 
 
@@ -326,10 +326,10 @@ if %w(production development).include?(Rails.env) && User.count == 0
   puts "Creating Christian's Friendships"
   Friendship.connect(User.find(1), User.find(2))
   Friendship.connect(User.find(1), User.find(3))
-  Friendship.connect(User.find(1), User.find(4))
-  Friendship.connect(User.find(1), User.find(5))
-  Friendship.connect(User.find(1), User.find(6))
-  Friendship.connect(User.find(1), User.find(7))
+  # Friendship.connect(User.find(1), User.find(4))
+  # Friendship.connect(User.find(1), User.find(5))
+  # Friendship.connect(User.find(1), User.find(6))
+  # Friendship.connect(User.find(1), User.find(7))
 end
 
 
@@ -418,7 +418,7 @@ if Rails.env == 'development'
 
     Friendship.connect(user, User.find(1))
     Friendship.connect(user, User.find(2))
-    Friendship.connect(user, User.find(3))
+    # Friendship.connect(user, User.find(3))
 
   end
 
@@ -428,14 +428,14 @@ if Rails.env == 'development'
 
   # Languages
   User.all.each do |user|
-    
+
     5.times do
 
       user = User.find(rand(3) + 1)
 
       language_id = 2
       lang = Language.find(language_id)
-      
+
       # check if exists already though!
       if !user.languages.include? lang
         user.languages << lang
@@ -493,13 +493,13 @@ if Rails.env == 'development'
                                   pushingtoconclusion: 1 + rand(4)
       )
       user.cases.last.created_at = random_date(year_range: 1, year_latest: 0.1)
-      
+
       puts "Case created for user #{user.username}"
     end
 
   end
 
-  
+
   #User.all.each do |user|
   user = User.find(1)
   2.times do
@@ -550,10 +550,10 @@ if Rails.env == 'development'
 
   #     # Tag Question
   #     5.times do
-        
+
   #       tag_id = 1 + rand(10)
   #       tag = Tag.find(tag_id)
-        
+
   #       if !Question.last.tags.include? tag
   #         Question.last.tags << tag
   #       end
@@ -592,4 +592,3 @@ if Rails.env == 'development'
 
 
 end
-

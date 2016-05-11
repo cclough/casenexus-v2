@@ -7,7 +7,7 @@ window.map_index_users_item_bless = () ->
     friend_id = $(this).data "friend_id"
     window.modal_message_show(friend_id)
 
-  $(".map_index_users_item_button_event").click ->          
+  $(".map_index_users_item_button_event").click ->
     friend_id = $(this).data("friend_id")
     window.modal_event_new_show(friend_id,null)
 
@@ -95,23 +95,23 @@ window.map_index_generate_popup_for = (marker) ->
                     '     <img src="/assets/universities/' + feature.properties.university_image + '" class="application_userimage_medium">' +
                     '   </div>' +
 
-                    '   <div class="map_index_map_popup_info">' +                      
+                    '   <div class="map_index_map_popup_info">' +
                     '     <div class="map_index_map_popup_username">' + feature.properties.username + '</div>' +
                     '     <div class="map_index_map_popup_university">' + feature.properties.university_name + '</div>' +
                     '   </div>' +
 
                     '   <div class="map_index_map_popup_cases">' +
-                    '     <div class="map_index_map_popup_cases_recd">' + 
+                    '     <div class="map_index_map_popup_cases_recd">' +
                     '         <div class="map_index_map_popup_cases_text">cases</div>' +
-                              feature.properties.cases_recd + 
+                              feature.properties.cases_recd +
                     '     </div>' +
-                    '     <div class="map_index_map_popup_cases_givn">' + 
+                    '     <div class="map_index_map_popup_cases_givn">' +
                     '         <div class="map_index_map_popup_cases_text">given</div>' +
-                              feature.properties.cases_givn + 
+                              feature.properties.cases_givn +
                     '     </div>' +
-                    '     <div class="map_index_map_popup_cases_external">' + 
+                    '     <div class="map_index_map_popup_cases_external">' +
                     '         <div class="map_index_map_popup_cases_text">ext</div>' +
-                              feature.properties.cases_ext + 
+                              feature.properties.cases_ext +
                     '     </div>' +
                     '   </div>' +
 
@@ -161,7 +161,7 @@ $(document).ready ->
 
     # Change radio
     $("input[name=users_listtype]:eq(" + radio + ")").prop "checked", true
-        
+
     map_index_users_updatelist()
 
   # Form switches
@@ -198,7 +198,8 @@ $(document).ready ->
     map_index_users_updatelist()
 
     # Draw map
-    window.map = L.mapbox.map("map_index_map", "christianclough.map-pzcx86x2")
+    #L.mapbox.accessToken = 'pk.eyJ1IjoiY2hyaXN0aWFuY2xvdWdoIiwiYSI6IkR6ZDZ1TFEifQ.i_3w7Q8o7bpB9YJhflFZ7g'
+    window.map = L.mapbox.map("map_index_map", "christianclough.03j4a64l")
 
     # Start at current_user, zoomed
     lat_start = parseFloat(map_index_map_lat_start)
@@ -235,15 +236,3 @@ $(document).ready ->
       marker.setIcon L.icon(feature.properties.icon)
     markerLayer_user.addTo map
     markerLayer_user.setGeoJSON geoJson
-
-
-
-
-
-
-
-
-
-
-
-
