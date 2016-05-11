@@ -1,0 +1,27 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: casenexus_development
+  pool: 5
+  username: user1
+  password:
+
+test: &TEST
+  adapter: postgresql
+  encoding: utf8
+  database: casenexus_test
+  pool: 5
+  username: user1
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: <%= ENV['PGDB_NAME'] %>
+  username: <%= ENV['PGDB_USERNAME'] %>
+  password: <%= ENV['PGDB_PASSWORD'] %>
+  host: <%= ENV['PGDB_HOST'] %>
+  port: <%= ENV['PGDB_PORT'] %>
+
+cucumber:
+  <<: *TEST

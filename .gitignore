@@ -17,7 +17,6 @@ pickle-email-*.html
 .DS_Store
 /**/.DS_Store
 .idea
-config/database.yml
 .ruby-version
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
