@@ -1,7 +1,8 @@
  source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
-gem 'pg'                                         # Database
+gem 'pg'
+gem 'puma'                                # Database
 gem 'jquery-rails'                               # jQuery
 gem 'jquery-ui-rails'                            # jQuery UI
 gem 'haml'                                       # HAML Views
