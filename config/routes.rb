@@ -18,7 +18,7 @@ Casenexus::Application.routes.draw do
 
   authenticated :user do
     # root :to => "profile#index"
-    match '/' => 'profile#index', :as => :root
+    match '/' => 'map#index', :as => :root
   end
 
   unauthenticated :user do
@@ -39,6 +39,9 @@ Casenexus::Application.routes.draw do
 
   # Map
   match '/map', to: 'map#index', as: :map
+
+  # Profile
+  match '/profile', to: 'profile#index'
 
   # Profile
   # match '/profile', to: 'profile#index', as: :root

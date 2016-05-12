@@ -188,6 +188,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def username_trunc
+    username.truncate(8)
+  end
+
   class << self
 
     def users_allowed_on_map
