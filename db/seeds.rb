@@ -337,7 +337,7 @@ end
 
 
 
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
   ####### PRIVATE FUNCTIONS #######
 
@@ -591,4 +591,4 @@ if Rails.env == 'development'
 
 
 
-end
+#end
